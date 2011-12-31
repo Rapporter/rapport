@@ -50,7 +50,8 @@ rp.palette <- function(num, theme=getOption('rp.color.palette'), colorize=getOpt
 	} else {
 		if (!(theme %in% row.names(brewer.pal.info))) stop('Wrong theme provided.')
 		if (num > brewer.pal.info[theme,'maxcolors']) stop(paste('Maximum number of colors (', brewer.pal.info[theme, "maxcolors"], ') with choosen palette is lower then provided (', num, ').', sep=''))
-		if (num <3) stop('Minimum number (3) of colors with choosen palette is higher then provided.')
+		##if (num <3) stop('Minimum number (3) of colors with choosen palette is higher then provided.')
+        if (num < 3) n <- 3
 		cols <- brewer.pal(brewer.pal.info[theme,'maxcolors'], theme)
 	}
 	if (colorize == TRUE) cols <- sample(cols)
