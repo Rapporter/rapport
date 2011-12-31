@@ -5,9 +5,10 @@ Title: Rapport - a report templating system
 Type: Package
 Author: Aleksandar Blagotić <aca.blagotic@gmail.com> and Gergely Daróczi
     <gergely@snowl.net>
-Description: Package contains templating system that facilitates
-    automated, mass and easy creation of statistical reports in R  with the option to export 
-    reports (to markdown format/HTML/pdf/odt etc.) besides various tools and helpers to use in templates.
+Description: Package contains templating system that facilitates automated,
+    mass and easy creation of statistical reports in R with the option to
+    export reports (to markdown format/HTML/pdf/odt etc.) besides various tools
+    and helpers to use in templates.
 Version: 0.1
 Date: 2011-11-26
 Depends:
