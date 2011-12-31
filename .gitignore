@@ -1,0 +1,8 @@
+*~
+*.Rcheck/
+.Rpackages
+.Rhistory
+.Rprofile
+.RData
+*.r
+#*.*
