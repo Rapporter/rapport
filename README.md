@@ -1,6 +1,6 @@
 # rapport
 
-_rapport_ is an engine for creating dynamic statistical report templates, built to play along nicely with web applications. Template syntax is practically a pandoc markdown syntax with some extra features, such as dynamic expressions, input definition, etc.
+_rapport_ is an engine for easily creating automated, mass statistical reports in R  with the option to export those (to markdown format/HTML/pdf/odt etc.). Template syntax is practically a pandoc markdown syntax with some extra features, such as dynamic expressions, input definition, etc.
 
 ## Installation
 
