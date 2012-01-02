@@ -26,6 +26,10 @@ h6 {
 	padding-bottom: 2px;
 }
 
+ul.tabs li {
+    margin:left: 0px;
+}
+
 /*
 * Skeleton V1.0.3
 * Copyright 2011, Dave Gamache
