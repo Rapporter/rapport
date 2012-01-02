@@ -4,6 +4,7 @@ Author: Daróczi Gergely
 Email: gergely@snowl.net
 Description: This template will return the correlation matrix of supplied numerical variables. 
 Packages: ascii
+Example: rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
 vars        | numeric[1,10] | Variable              | Numerical variables
 cor.matrix  | TRUE          | Correlation matrix    | Show correlation matrix (numbers)?
 cor.plot    | TRUE          | Scatterplot matrix    | Show scatterplot matrix (image)?
