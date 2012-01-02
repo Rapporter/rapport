@@ -29,5 +29,5 @@ if (cor.matrix) as.data.frame(cm)
 %>
 
 <%
-if (cor.plot) pairs(vars)
+if (cor.plot) rp.cor.plot(vars)
 %>
