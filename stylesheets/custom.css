@@ -30,6 +30,15 @@ ul.tabs li {
     margin-left: 0px;
 }
 
+#logo {
+    width: 160px;
+    text-align: center;
+}
+#logo a:link {text-decoration:none;}
+#logo a:visited {text-decoration:none;}
+#logo a:hover {text-decoration:none;}
+#logo a:active {text-decoration:underline;}
+
 /*
 * Skeleton V1.0.3
 * Copyright 2011, Dave Gamache
