@@ -183,7 +183,7 @@ female   2.9409     -2.8277          -1.1712
 
  === Mosaic chart  
 
-/tmp/RtmpCAfBcV/file3f334dd7.png
+/tmp/RtmpCAfBcV/file1e306239.png
 
 {% endhighlight %}
 </li>
@@ -272,7 +272,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpCAfBcV/file6d824270.png
+/tmp/RtmpCAfBcV/file4294dad8.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -375,7 +375,7 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 
  == Boxplot  
 
-/tmp/RtmpCAfBcV/file1bb2817b.png
+/tmp/RtmpCAfBcV/file6a9f3a0c.png
 
  == Lund test  
 
@@ -588,7 +588,7 @@ This variable seems to be numeric.
 
  == Histogram  
 
-/tmp/RtmpCAfBcV/file1f44ac69.png
+/tmp/RtmpCAfBcV/file3bb036b2.png
 
 It seems that the highest value is 12 which is exactly Inf times higher than the smalles values (0).
 
