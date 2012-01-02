@@ -1,6 +1,6 @@
 <!--head
 Title:        example script
-Author:       Gergely Daróczi 
+Author:       Aleksandar Blagotić
 Description:  A simple report.
 Example:      rapport("example", mtcars, x = "mpg", y = "hp")
 x      | numeric   | Var X   | One or two factors for one/two-way ANOVA

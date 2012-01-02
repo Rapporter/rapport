@@ -1,6 +1,6 @@
 <!--head
 Title: Correlations
-Author: daroczig
+Author: Daróczi Gergely 
 Email: gergely@snowl.net
 Description: This template will return the correlation matrix of supplied numerical variables. 
 Packages: ascii

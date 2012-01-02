@@ -1,6 +1,6 @@
 <!--head
 Title:        Rapport types demo
-Author:       aL3xa
+Author:       Aleksandar Blagotić
 Description:  A sample template that describes the basic rapport types
 Packages:     wordcloud
 a    | character[1,6]  | variable A | var A - from 1 up to 6 character variables
