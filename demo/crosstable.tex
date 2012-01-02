@@ -1,0 +1,172 @@
+\documentclass{article}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifxetex
+  \usepackage{fontspec,xltxtra,xunicode}
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+\else
+  \ifluatex
+    \usepackage{fontspec}
+    \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \else
+    \usepackage[utf8]{inputenc}
+  \fi
+\fi
+\usepackage{ctable}
+\usepackage{float} % provides the H option for float placement
+\usepackage{graphicx}
+% We will generate all images so they have a width \maxwidth. This means
+% that they will get their normal width if they fit onto the page, but
+% are scaled down if they would overflow the margins.
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+\else\Gin@nat@width\fi}
+\makeatother
+\let\Oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true, pdfborder={0 0 0}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+
+\title{Crosstable}
+\author{Rapport package team @ https://github.com/aL3xa/rapport}
+\date{2011--04--26 20:25 CET}
+
+\begin{document}
+\maketitle
+
+\subsection{Description}
+
+Returning the Chi-squared test of two given variables with count,
+percentages and Pearson's residuals table.
+
+\subsubsection{Variable description}
+
+Two variables specified: * ``gender'' (``Gender'') with 709 and *
+``dwell'' (``Dwelling'') with 709 valid values.
+
+\subsubsection{Counts}
+
+\ctable[pos = H, center, botcap]{llll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{city} & \textbf{small town} & \textbf{village}
+\ML
+male & 380.00000 & 30.00000 & 22.00000
+\\\noalign{\medskip}
+female & 262.00000 & 6.00000 & 9.00000
+\LL
+}
+
+\subsubsection{Percentages}
+
+\ctable[pos = H, center, botcap]{llll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{city} & \textbf{small town} & \textbf{village}
+\ML
+male & 0.53597 & 0.04231 & 0.03103
+\\\noalign{\medskip}
+female & 0.36953 & 0.00846 & 0.01269
+\LL
+}
+
+\paragraph{Row percentages}
+
+\ctable[pos = H, center, botcap]{llll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{city} & \textbf{small town} & \textbf{village}
+\ML
+male & 0.87963 & 0.06944 & 0.05093
+\\\noalign{\medskip}
+female & 0.94585 & 0.02166 & 0.03249
+\LL
+}
+
+\paragraph{Column percentages}
+
+\ctable[pos = H, center, botcap]{llll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{city} & \textbf{small town} & \textbf{village}
+\ML
+male & 0.59190 & 0.83333 & 0.70968
+\\\noalign{\medskip}
+female & 0.40810 & 0.16667 & 0.29032
+\LL
+}
+
+\subsubsection{Chi-squared test}
+
+\ctable[pos = H, center, botcap]{llll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{X-squared} & \textbf{df} & \textbf{p-value}
+\ML
+X-squared & 9.71883 & 2.00000 & 0.00776
+\LL
+}
+
+\ctable[pos = H, center, botcap]{l}
+{% notes
+}
+{% rows
+\FL
+It seems that a real association can be pointed out between
+\emph{gender} and \emph{dwell} by the \emph{Pearson's Chi-squared test}
+(χ=9.7188 at the degree of freedom being 2) at the significance level of
+0.00776.
+\\\noalign{\medskip}
+Based on Goodman and Kruskal's lambda it seems that \emph{dwell}
+(λ=0.75812) has an effect on \emph{gender} (λ=0) if we assume both
+variables to be nominal.
+\\\noalign{\medskip}
+The association between the two variables seems to be weak based on
+Cramer's V (0.08279).
+\LL
+}
+
+\paragraph{Pearson's residuals}
+
+\ctable[pos = H, center, botcap]{llll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{city} & \textbf{small town} & \textbf{village}
+\ML
+male & --2.94090 & 2.82766 & 1.17125
+\\\noalign{\medskip}
+female & 2.94090 & --2.82766 & --1.17125
+\LL
+}
+
+\paragraph{Mosaic chart}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{H8O52JlQ87h75AQNGOOe5BNj0GOH52IjPIggo.png}
+\caption{}
+\end{figure}
+
+\end{document}

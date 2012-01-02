@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<article>
+  <articleinfo>
+    <title>Correlations</title>
+    <author>
+      <firstname>Rapport package team @</firstname>
+      <surname>https://github.com/aL3xa/rapport</surname>
+    </author>
+    <date>2011-04-26 20:25 CET</date>
+  </articleinfo>
+<section id="description">
+  <title>Description</title>
+  <para>
+    This template will return the correlation matrix of supplied
+    numerical variables.
+  </para>
+  <section id="variable-description">
+    <title>Variable description</title>
+    <para>
+      3 variables provided.
+    </para>
+    <para>
+      The highest correlation coefficient (0.23644) is between
+      &quot;it.edu&quot; and &quot;age&quot; and the lowest (-0.04905)
+      is between &quot;it.leisure&quot; and &quot;age&quot;. It seems
+      that the strongest association (r=0.23644) is between
+      &quot;it.edu&quot; and &quot;age&quot;.
+    </para>
+    <para>
+      Higly correlated (r &lt; 0.7 or r &gt; 0.7) variables: -
+    </para>
+    <para>
+      Uncorrelated (-0.2 &lt; r &lt; 0.2) variables: * &quot;age&quot; -
+      &quot;it.leisure&quot; * &quot;it.edu&quot; -
+      &quot;it.leisure&quot;
+    </para>
+    <section id="correlation-matrix">
+      <title>Correlation matrix</title>
+      <informaltable>
+        <tgroup cols="4">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">age</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">it.edu</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">it.leisure</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                age
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                0.23644
+              </entry>
+              <entry>
+                -0.04905
+              </entry>
+            </row>
+            <row>
+              <entry>
+                it.edu
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                0.17142
+              </entry>
+            </row>
+            <row>
+              <entry>
+                it.leisure
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <figure>
+        <title></title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="23OhJ8oolQ87oOoloJ8oolQ87hZ5oOo.png" />
+          </imageobject>
+          <textobject><phrase></phrase></textobject>
+        </mediaobject>
+      </figure>
+    </section>
+  </section>
+</section>
+</article>

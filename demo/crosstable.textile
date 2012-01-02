@@ -1,0 +1,59 @@
+h2. Description
+
+Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
+
+h3. Variable description
+
+Two variables specified: &#42; &quot;gender&quot; (&quot;Gender&quot;) with 709 and &#42; &quot;dwell&quot; (&quot;Dwelling&quot;) with 709 valid values.
+
+h3. Counts
+
+|_. |_. *city*|_. *small town*|_. *village*|
+|male|380.00000|30.00000|22.00000|
+|female|262.00000|6.00000|9.00000|
+
+
+h3. Percentages
+
+|_. |_. *city*|_. *small town*|_. *village*|
+|male|0.53597|0.04231|0.03103|
+|female|0.36953|0.00846|0.01269|
+
+
+h4. Row percentages
+
+|_. |_. *city*|_. *small town*|_. *village*|
+|male|0.87963|0.06944|0.05093|
+|female|0.94585|0.02166|0.03249|
+
+
+h4. Column percentages
+
+|_. |_. *city*|_. *small town*|_. *village*|
+|male|0.59190|0.83333|0.70968|
+|female|0.40810|0.16667|0.29032|
+
+
+h3. Chi-squared test
+
+|_. |_. *X-squared*|_. *df*|_. *p-value*|
+|X-squared|9.71883|2.00000|0.00776|
+
+
+
+|It seems that a real association can be pointed out between _gender_ and _dwell_ by the _Pearson's Chi-squared test_ (χ=9.7188 at the degree of freedom being 2) at the significance level of 0.00776.|
+|Based on Goodman and Kruskal's lambda it seems that _dwell_ (λ=0.75812) has an effect on _gender_ (λ=0) if we assume both variables to be nominal.|
+|The association between the two variables seems to be weak based on Cramer's V (0.08279).|
+
+
+h4. Pearson's residuals
+
+|_. |_. *city*|_. *small town*|_. *village*|
+|male|-2.94090|2.82766|1.17125|
+|female|2.94090|-2.82766|-1.17125|
+
+
+h4. Mosaic chart
+
+!H8O52JlQ87h75AQNGOOe5BNj0GOH52IjPIggo.png!
+

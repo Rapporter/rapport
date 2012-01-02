@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<article>
+  <articleinfo>
+    <title>Crosstable</title>
+    <author>
+      <firstname>Rapport package team @</firstname>
+      <surname>https://github.com/aL3xa/rapport</surname>
+    </author>
+    <date>2011-04-26 20:25 CET</date>
+  </articleinfo>
+<section id="description">
+  <title>Description</title>
+  <para>
+    Returning the Chi-squared test of two given variables with count,
+    percentages and Pearson's residuals table.
+  </para>
+  <section id="variable-description">
+    <title>Variable description</title>
+    <para>
+      Two variables specified: * &quot;gender&quot; (&quot;Gender&quot;)
+      with 709 and * &quot;dwell&quot; (&quot;Dwelling&quot;) with 709
+      valid values.
+    </para>
+  </section>
+  <section id="counts">
+    <title>Counts</title>
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">city</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">small town</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">village</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              male
+            </entry>
+            <entry>
+              380.00000
+            </entry>
+            <entry>
+              30.00000
+            </entry>
+            <entry>
+              22.00000
+            </entry>
+          </row>
+          <row>
+            <entry>
+              female
+            </entry>
+            <entry>
+              262.00000
+            </entry>
+            <entry>
+              6.00000
+            </entry>
+            <entry>
+              9.00000
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+  <section id="percentages">
+    <title>Percentages</title>
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">city</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">small town</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">village</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              male
+            </entry>
+            <entry>
+              0.53597
+            </entry>
+            <entry>
+              0.04231
+            </entry>
+            <entry>
+              0.03103
+            </entry>
+          </row>
+          <row>
+            <entry>
+              female
+            </entry>
+            <entry>
+              0.36953
+            </entry>
+            <entry>
+              0.00846
+            </entry>
+            <entry>
+              0.01269
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <section id="row-percentages">
+      <title>Row percentages</title>
+      <informaltable>
+        <tgroup cols="4">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">city</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">small town</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">village</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                male
+              </entry>
+              <entry>
+                0.87963
+              </entry>
+              <entry>
+                0.06944
+              </entry>
+              <entry>
+                0.05093
+              </entry>
+            </row>
+            <row>
+              <entry>
+                female
+              </entry>
+              <entry>
+                0.94585
+              </entry>
+              <entry>
+                0.02166
+              </entry>
+              <entry>
+                0.03249
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+    <section id="column-percentages">
+      <title>Column percentages</title>
+      <informaltable>
+        <tgroup cols="4">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">city</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">small town</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">village</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                male
+              </entry>
+              <entry>
+                0.59190
+              </entry>
+              <entry>
+                0.83333
+              </entry>
+              <entry>
+                0.70968
+              </entry>
+            </row>
+            <row>
+              <entry>
+                female
+              </entry>
+              <entry>
+                0.40810
+              </entry>
+              <entry>
+                0.16667
+              </entry>
+              <entry>
+                0.29032
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+  <section id="chi-squared-test">
+    <title>Chi-squared test</title>
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">X-squared</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">df</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">p-value</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              X-squared
+            </entry>
+            <entry>
+              9.71883
+            </entry>
+            <entry>
+              2.00000
+            </entry>
+            <entry>
+              0.00776
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <informaltable>
+      <tgroup cols="1">
+        <colspec align="left" />
+        <tbody>
+          <row>
+            <entry>
+              It seems that a real association can be pointed out
+              between <emphasis>gender</emphasis> and
+              <emphasis>dwell</emphasis> by the <emphasis>Pearson's
+              Chi-squared test</emphasis> (χ=9.7188 at the degree of
+              freedom being 2) at the significance level of 0.00776.
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Based on Goodman and Kruskal's lambda it seems that
+              <emphasis>dwell</emphasis> (λ=0.75812) has an effect on
+              <emphasis>gender</emphasis> (λ=0) if we assume both
+              variables to be nominal.
+            </entry>
+          </row>
+          <row>
+            <entry>
+              The association between the two variables seems to be weak
+              based on Cramer's V (0.08279).
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <section id="pearsons-residuals">
+      <title>Pearson's residuals</title>
+      <informaltable>
+        <tgroup cols="4">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">city</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">small town</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">village</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                male
+              </entry>
+              <entry>
+                -2.94090
+              </entry>
+              <entry>
+                2.82766
+              </entry>
+              <entry>
+                1.17125
+              </entry>
+            </row>
+            <row>
+              <entry>
+                female
+              </entry>
+              <entry>
+                2.94090
+              </entry>
+              <entry>
+                -2.82766
+              </entry>
+              <entry>
+                -1.17125
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+    <section id="mosaic-chart">
+      <title>Mosaic chart</title>
+      <figure>
+        <title></title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="H8O52JlQ87h75AQNGOOe5BNj0GOH52IjPIggo.png" />
+          </imageobject>
+          <textobject><phrase></phrase></textobject>
+        </mediaobject>
+      </figure>
+    </section>
+  </section>
+</section>
+</article>

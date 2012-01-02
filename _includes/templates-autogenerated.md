@@ -20,13 +20,13 @@ Please find below a detailed description about each with sample outputs of those
 </ul>
 
  <ul class="tabs-content">
-	<li class="active" id="info-correlations"><div><h5>Correlations</h5> by <em>daroczig</em>
+	<li class="active" id="info-correlations"><div><h5>Correlations</h5> by <em>Daróczi Gergely</em>
 <br><br>
  This template will return the correlation matrix of supplied numerical variables.
 <br><br>
 <em>Required packages:</em> ascii
 <br>
-<em>Example:</em> </div></li>
+<em>Example:</em> rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))</div></li>
 	<li id="inputs-correlations"><div><h5>Input parameters</h5><em>correlations.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
 	<li><h6>vars: <small><em>Variable</em></small></h6>
 <div class="options">    <div class="options-desc">Numerical variables
@@ -62,8 +62,67 @@ Please find below a detailed description about each with sample outputs of those
 </li>
 <br>
 </ul></div></li>
-	<li id="example-correlations">No examples provided with template, sorry.</li>
-	<li id="export-correlations">No examples provided with template, sorry.</li>
+	<li id="example-correlations">
+{% highlight text %}
+
+
+ == Variable description  
+
+3 variables provided.
+
+The highest correlation coefficient (0.23644) is between "it.edu" and "age" and the lowest (-0.04905) is between "it.leisure" and "age". It seems that the strongest association (r=0.23644) is between "it.edu" and "age".
+
+Higly correlated (r < 0.7 or r > 0.7) variables: -
+
+
+Uncorrelated (-0.2 < r < 0.2) variables: 
+ * "age" - "it.leisure"
+ * "it.edu" - "it.leisure"
+
+ === Correlation matrix  
+
+
+             **age**   **it.edu**   **it.leisure**  
+------------ --------- ------------ ----------------
+age                    0.24         -0.05           
+it.edu                              0.17            
+it.leisure                                          
+------------ --------- ------------ ----------------
+
+
+/tmp/Rtmp9oLnbm/file652855b7.png
+
+{% endhighlight %}
+</li>
+	<li id="export-correlations"><div>
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the following command:
+{% highlight text %}
+
+rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
+
+{% endhighlight %}
+<h6>Popular formats:</h6>
+<ul>
+	<li><a href="demo/correlations.html" target="_blank">HTML</a></li>
+	<li><a href="demo/correlations.odt">odt (MS Word compatibile)</a></li>
+	<li><a href="demo/correlations.rtf">rtf (MS Word compatibile)</a></li>
+	<li><a href="demo/correlations.epub">epub</a></li>
+	<li><a href="demo/correlations.latex" target="_blank">latex</a></li>
+	<li><a href="demo/correlations-slidy.html" target="_blank">HTML slidy</a></li>
+</ul>
+<h6>Other morkdown formats</h6>
+<ul>
+	<li><a href="demo/correlations.plain" target="_blank">plain text</a></li>
+	<li><a href="demo/correlations.textile" target="_blank">textile</a></li>
+	<li><a href="demo/correlations.xml" target="_blank">docbook</a></li>
+	<li><a href="demo/correlations.man" target="_blank">man</a></li>
+	<li><a href="demo/correlations.md" target="_blank">markdown</a></li>
+	<li><a href="demo/correlations.mediawiki" target="_blank">mediawiki</a></li>
+	<li><a href="demo/correlations.wiki" target="_blank">wiki</a></li>
+	<li><a href="demo/correlations.org" target="_blank">org</a></li>
+	<li><a href="demo/correlations.pandoc" target="_blank">pandoc</a></li>
+</ul>
+</div></li>
 </ul>
 
 <a id="crosstable"> </a>
@@ -183,14 +242,39 @@ female   2.9409     -2.8277          -1.1712
 
  === Mosaic chart  
 
-/tmp/RtmpCAfBcV/file1e306239.png
+/tmp/Rtmp9oLnbm/file18a77528.png
 
 {% endhighlight %}
 </li>
-	<li id="export-crosstable"><div><h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have the following types for demonstartion purposes:<ul>
+	<li id="export-crosstable"><div>
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the following command:
+{% highlight text %}
+
+rapport('crosstable', data=ius2009, row='gender', col='dwell')
+
+{% endhighlight %}
+<h6>Popular formats:</h6>
+<ul>
 	<li><a href="demo/crosstable.html" target="_blank">HTML</a></li>
 	<li><a href="demo/crosstable.odt">odt (MS Word compatibile)</a></li>
-</ul></div></li>
+	<li><a href="demo/crosstable.rtf">rtf (MS Word compatibile)</a></li>
+	<li><a href="demo/crosstable.epub">epub</a></li>
+	<li><a href="demo/crosstable.latex" target="_blank">latex</a></li>
+	<li><a href="demo/crosstable-slidy.html" target="_blank">HTML slidy</a></li>
+</ul>
+<h6>Other morkdown formats</h6>
+<ul>
+	<li><a href="demo/crosstable.plain" target="_blank">plain text</a></li>
+	<li><a href="demo/crosstable.textile" target="_blank">textile</a></li>
+	<li><a href="demo/crosstable.xml" target="_blank">docbook</a></li>
+	<li><a href="demo/crosstable.man" target="_blank">man</a></li>
+	<li><a href="demo/crosstable.md" target="_blank">markdown</a></li>
+	<li><a href="demo/crosstable.mediawiki" target="_blank">mediawiki</a></li>
+	<li><a href="demo/crosstable.wiki" target="_blank">wiki</a></li>
+	<li><a href="demo/crosstable.org" target="_blank">org</a></li>
+	<li><a href="demo/crosstable.pandoc" target="_blank">pandoc</a></li>
+</ul>
+</div></li>
 </ul>
 
 <a id="example"> </a>
@@ -272,7 +356,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpCAfBcV/file4294dad8.png
+/tmp/Rtmp9oLnbm/file3e6d8722.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -299,10 +383,35 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 
 {% endhighlight %}
 </li>
-	<li id="export-example"><div><h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have the following types for demonstartion purposes:<ul>
+	<li id="export-example"><div>
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the following command:
+{% highlight text %}
+
+rapport("example", mtcars, x = "mpg", y = "hp")
+
+{% endhighlight %}
+<h6>Popular formats:</h6>
+<ul>
 	<li><a href="demo/example.html" target="_blank">HTML</a></li>
 	<li><a href="demo/example.odt">odt (MS Word compatibile)</a></li>
-</ul></div></li>
+	<li><a href="demo/example.rtf">rtf (MS Word compatibile)</a></li>
+	<li><a href="demo/example.epub">epub</a></li>
+	<li><a href="demo/example.latex" target="_blank">latex</a></li>
+	<li><a href="demo/example-slidy.html" target="_blank">HTML slidy</a></li>
+</ul>
+<h6>Other morkdown formats</h6>
+<ul>
+	<li><a href="demo/example.plain" target="_blank">plain text</a></li>
+	<li><a href="demo/example.textile" target="_blank">textile</a></li>
+	<li><a href="demo/example.xml" target="_blank">docbook</a></li>
+	<li><a href="demo/example.man" target="_blank">man</a></li>
+	<li><a href="demo/example.md" target="_blank">markdown</a></li>
+	<li><a href="demo/example.mediawiki" target="_blank">mediawiki</a></li>
+	<li><a href="demo/example.wiki" target="_blank">wiki</a></li>
+	<li><a href="demo/example.org" target="_blank">org</a></li>
+	<li><a href="demo/example.pandoc" target="_blank">pandoc</a></li>
+</ul>
+</div></li>
 </ul>
 
 <a id="outlier-test"> </a>
@@ -375,7 +484,7 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 
  == Boxplot  
 
-/tmp/RtmpCAfBcV/file6a9f3a0c.png
+/tmp/Rtmp9oLnbm/file3d20f4bc.png
 
  == Lund test  
 
@@ -419,10 +528,35 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
 {% endhighlight %}
 </li>
-	<li id="export-outlier-test"><div><h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have the following types for demonstartion purposes:<ul>
+	<li id="export-outlier-test"><div>
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the following command:
+{% highlight text %}
+
+rapport('outlier-test', data=ius2009, var='it.edu')
+
+{% endhighlight %}
+<h6>Popular formats:</h6>
+<ul>
 	<li><a href="demo/outlier-test.html" target="_blank">HTML</a></li>
 	<li><a href="demo/outlier-test.odt">odt (MS Word compatibile)</a></li>
-</ul></div></li>
+	<li><a href="demo/outlier-test.rtf">rtf (MS Word compatibile)</a></li>
+	<li><a href="demo/outlier-test.epub">epub</a></li>
+	<li><a href="demo/outlier-test.latex" target="_blank">latex</a></li>
+	<li><a href="demo/outlier-test-slidy.html" target="_blank">HTML slidy</a></li>
+</ul>
+<h6>Other morkdown formats</h6>
+<ul>
+	<li><a href="demo/outlier-test.plain" target="_blank">plain text</a></li>
+	<li><a href="demo/outlier-test.textile" target="_blank">textile</a></li>
+	<li><a href="demo/outlier-test.xml" target="_blank">docbook</a></li>
+	<li><a href="demo/outlier-test.man" target="_blank">man</a></li>
+	<li><a href="demo/outlier-test.md" target="_blank">markdown</a></li>
+	<li><a href="demo/outlier-test.mediawiki" target="_blank">mediawiki</a></li>
+	<li><a href="demo/outlier-test.wiki" target="_blank">wiki</a></li>
+	<li><a href="demo/outlier-test.org" target="_blank">org</a></li>
+	<li><a href="demo/outlier-test.pandoc" target="_blank">pandoc</a></li>
+</ul>
+</div></li>
 </ul>
 
 <a id="type_demo"> </a>
@@ -588,7 +722,7 @@ This variable seems to be numeric.
 
  == Histogram  
 
-/tmp/RtmpCAfBcV/file3bb036b2.png
+/tmp/Rtmp9oLnbm/file3520f1b6.png
 
 It seems that the highest value is 12 which is exactly Inf times higher than the smalles values (0).
 
@@ -596,9 +730,34 @@ If we suppose that "Internet usage for educational purposes (hours per day) is n
 
 {% endhighlight %}
 </li>
-	<li id="export-univar-descriptive"><div><h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have the following types for demonstartion purposes:<ul>
+	<li id="export-univar-descriptive"><div>
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the following command:
+{% highlight text %}
+
+rapport('univar-descriptive', data=ius2009, var='it.edu')
+
+{% endhighlight %}
+<h6>Popular formats:</h6>
+<ul>
 	<li><a href="demo/univar-descriptive.html" target="_blank">HTML</a></li>
 	<li><a href="demo/univar-descriptive.odt">odt (MS Word compatibile)</a></li>
-</ul></div></li>
+	<li><a href="demo/univar-descriptive.rtf">rtf (MS Word compatibile)</a></li>
+	<li><a href="demo/univar-descriptive.epub">epub</a></li>
+	<li><a href="demo/univar-descriptive.latex" target="_blank">latex</a></li>
+	<li><a href="demo/univar-descriptive-slidy.html" target="_blank">HTML slidy</a></li>
+</ul>
+<h6>Other morkdown formats</h6>
+<ul>
+	<li><a href="demo/univar-descriptive.plain" target="_blank">plain text</a></li>
+	<li><a href="demo/univar-descriptive.textile" target="_blank">textile</a></li>
+	<li><a href="demo/univar-descriptive.xml" target="_blank">docbook</a></li>
+	<li><a href="demo/univar-descriptive.man" target="_blank">man</a></li>
+	<li><a href="demo/univar-descriptive.md" target="_blank">markdown</a></li>
+	<li><a href="demo/univar-descriptive.mediawiki" target="_blank">mediawiki</a></li>
+	<li><a href="demo/univar-descriptive.wiki" target="_blank">wiki</a></li>
+	<li><a href="demo/univar-descriptive.org" target="_blank">org</a></li>
+	<li><a href="demo/univar-descriptive.pandoc" target="_blank">pandoc</a></li>
+</ul>
+</div></li>
 </ul>
 

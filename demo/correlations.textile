@@ -1,0 +1,24 @@
+h2. Description
+
+This template will return the correlation matrix of supplied numerical variables.
+
+h3. Variable description
+
+3 variables provided.
+
+The highest correlation coefficient (0.23644) is between &quot;it.edu&quot; and &quot;age&quot; and the lowest (-0.04905) is between &quot;it.leisure&quot; and &quot;age&quot;. It seems that the strongest association (r=0.23644) is between &quot;it.edu&quot; and &quot;age&quot;.
+
+Higly correlated (r &lt; 0.7 or r &gt; 0.7) variables: -
+
+Uncorrelated (-0.2 &lt; r &lt; 0.2) variables: &#42; &quot;age&quot; - &quot;it.leisure&quot; &#42; &quot;it.edu&quot; - &quot;it.leisure&quot;
+
+h4. Correlation matrix
+
+|_. |_. *age*|_. *it.edu*|_. *it.leisure*|
+|age||0.23644|-0.04905|
+|it.edu|||0.17142|
+|it.leisure||||
+
+
+!23OhJ8oolQ87oOoloJ8oolQ87hZ5oOo.png!
+

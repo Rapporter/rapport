@@ -1,38 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Rapport package team @ https://github.com/aL3xa/rapport" />
-  <meta name="date" content="2011-04-26 20:25 CET" />
-  <title>Outlier test</title>
-  <link rel="stylesheet" type="text/css" href="css/default.css">
-  <script type="text/javascript" src="js/default.js"></script>
-</head>
-<body>
-<div id="header">
-<h1 class="title">Outlier test</h1>
-<h3 class="author">Rapport package team @ https://github.com/aL3xa/rapport</h3>
-<h4 class="date">2011-04-26 20:25 CET</h4>
-</div>
-<h2 id="description">Description</h2>
-<p>This template will check if provided variable has any outliers.</p>
-<h3 id="boxplot">Boxplot</h3>
-<div class="figure">
-<img src="oloA8PlQ87hZ5oo.png" /><p class="caption"></p>
-</div>
-<h3 id="lund-test">Lund test</h3>
-<p>It seems that 5 extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 10, 12, 12, 12.</p>
-<h4 id="explanation">Explanation</h4>
-<p>The above test for outliers was based on <em>lm(1 ~ it.edu)</em>:</p>
+== Description ==
+
+This template will check if provided variable has any outliers.
+
+=== Boxplot ===
+
+[[Image:oloA8PlQ87hZ5oo.png|frame|none]]
+
+=== Lund test ===
+
+It seems that 5 extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 10, 12, 12, 12.
+
+==== Explanation ====
+
+The above test for outliers was based on ''lm(1 ~ it.edu)'':
+
 <table>
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left"><strong>Estimate</strong></th>
-<th align="left"><strong>Std. Error</strong></th>
-<th align="left"><strong>t value</strong></th>
-<th align="left"><strong>Pr(&gt;|t|)</strong></th>
+<th align="left">'''Estimate'''</th>
+<th align="left">'''Std. Error'''</th>
+<th align="left">'''t value'''</th>
+<th align="left">'''Pr(&gt;|t|)'''</th>
 </tr>
 </thead>
 <tbody>
@@ -45,7 +34,9 @@
 </tr>
 </tbody>
 </table>
-<h4 id="the-residuals-returned">The residuals returned:</h4>
+
+==== The residuals returned: ====
+
 <table>
 <tbody>
 <tr class="odd">
@@ -53,7 +44,9 @@
 </tr>
 </tbody>
 </table>
-<h4 id="references">References</h4>
+
+==== References ====
+
 <table>
 <tbody>
 <tr class="odd">
@@ -64,7 +57,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="grubbs-test">Grubb's test</h3>
+
+=== Grubb's test ===
+
 <table>
 <tbody>
 <tr class="odd">
@@ -72,7 +67,9 @@
 </tr>
 </tbody>
 </table>
-<h4 id="references-1">References</h4>
+
+==== References ====
+
 <table>
 <tbody>
 <tr class="odd">
@@ -80,7 +77,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="dixons-test">Dixon's test</h3>
+
+=== Dixon's test ===
+
 <table>
 <tbody>
 <tr class="odd">
@@ -88,7 +87,9 @@
 </tr>
 </tbody>
 </table>
-<h4 id="references-2">References</h4>
+
+==== References ====
+
 <table>
 <tbody>
 <tr class="odd">
@@ -96,7 +97,3 @@
 </tr>
 </tbody>
 </table>
-<hr>
-<p align="center">This report was generated in <a href="http://www.r-project.org/">R</a> with <a href="http://cran.r-project.org/package=rapport">Rapport</a>. Feel free to create <a href="http://link to github wiki: writing templates">your own reporting templates</a>!</p>
-</body>
-</html>

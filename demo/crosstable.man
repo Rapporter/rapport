@@ -1,0 +1,224 @@
+.\"t
+.TH Crosstable "" "2011\[en]04\[en]26 20:25 CET" 
+.SS Description
+.PP
+Returning the Chi-squared test of two given variables with count,
+percentages and Pearson's residuals table.
+.SS Variable description
+.PP
+Two variables specified: * \[lq]gender\[rq] (\[lq]Gender\[rq]) with 709
+and * \[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with 709 valid values.
+.SS Counts
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]city\f[]
+T}@T{
+\f[B]small town\f[]
+T}@T{
+\f[B]village\f[]
+T}
+_
+T{
+male
+T}@T{
+380.00000
+T}@T{
+30.00000
+T}@T{
+22.00000
+T}
+T{
+female
+T}@T{
+262.00000
+T}@T{
+6.00000
+T}@T{
+9.00000
+T}
+.TE
+.SS Percentages
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]city\f[]
+T}@T{
+\f[B]small town\f[]
+T}@T{
+\f[B]village\f[]
+T}
+_
+T{
+male
+T}@T{
+0.53597
+T}@T{
+0.04231
+T}@T{
+0.03103
+T}
+T{
+female
+T}@T{
+0.36953
+T}@T{
+0.00846
+T}@T{
+0.01269
+T}
+.TE
+.SS Row percentages
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]city\f[]
+T}@T{
+\f[B]small town\f[]
+T}@T{
+\f[B]village\f[]
+T}
+_
+T{
+male
+T}@T{
+0.87963
+T}@T{
+0.06944
+T}@T{
+0.05093
+T}
+T{
+female
+T}@T{
+0.94585
+T}@T{
+0.02166
+T}@T{
+0.03249
+T}
+.TE
+.SS Column percentages
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]city\f[]
+T}@T{
+\f[B]small town\f[]
+T}@T{
+\f[B]village\f[]
+T}
+_
+T{
+male
+T}@T{
+0.59190
+T}@T{
+0.83333
+T}@T{
+0.70968
+T}
+T{
+female
+T}@T{
+0.40810
+T}@T{
+0.16667
+T}@T{
+0.29032
+T}
+.TE
+.SS Chi-squared test
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]X-squared\f[]
+T}@T{
+\f[B]df\f[]
+T}@T{
+\f[B]p-value\f[]
+T}
+_
+T{
+X-squared
+T}@T{
+9.71883
+T}@T{
+2.00000
+T}@T{
+0.00776
+T}
+.TE
+.PP
+.TS
+tab(@);
+l.
+T{
+It seems that a real association can be pointed out between
+\f[I]gender\f[] and \f[I]dwell\f[] by the \f[I]Pearson's Chi-squared
+test\f[] (χ=9.7188 at the degree of freedom being 2) at the significance
+level of 0.00776.
+T}
+T{
+Based on Goodman and Kruskal's lambda it seems that \f[I]dwell\f[]
+(λ=0.75812) has an effect on \f[I]gender\f[] (λ=0) if we assume both
+variables to be nominal.
+T}
+T{
+The association between the two variables seems to be weak based on
+Cramer's V (0.08279).
+T}
+.TE
+.SS Pearson's residuals
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]city\f[]
+T}@T{
+\f[B]small town\f[]
+T}@T{
+\f[B]village\f[]
+T}
+_
+T{
+male
+T}@T{
+\[en]2.94090
+T}@T{
+2.82766
+T}@T{
+1.17125
+T}
+T{
+female
+T}@T{
+2.94090
+T}@T{
+\[en]2.82766
+T}@T{
+\[en]1.17125
+T}
+.TE
+.SS Mosaic chart
+.PP
+[IMAGE: image (H8O52JlQ87h75AQNGOOe5BNj0GOH52IjPIggo.png)]
+.SH AUTHORS
+Rapport package team \@ https://github.com/aL3xa/rapport.

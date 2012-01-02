@@ -1,32 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Rapport package team @ https://github.com/aL3xa/rapport" />
-  <meta name="date" content="2011-04-26 20:25 CET" />
-  <title>example script</title>
-  <link rel="stylesheet" type="text/css" href="css/default.css">
-  <script type="text/javascript" src="js/default.js"></script>
-</head>
-<body>
-<div id="header">
-<h1 class="title">example script</h1>
-<h3 class="author">Rapport package team @ https://github.com/aL3xa/rapport</h3>
-<h4 class="date">2011-04-26 20:25 CET</h4>
-</div>
-<h2 id="description">Description</h2>
-<p>A simple report.</p>
-<h3 id="descriptive-statistics">Descriptive statistics</h3>
-<p>The average fuel consumption is 20.091 with SD of 6.027. Let's add one more line to this paragraph. And another one. Now, you've probably heard of <em>pi</em>? Right? Its value is 3.1416.</p>
-<h3 id="graphs">Graphs</h3>
-<p>And some graphs:</p>
-<div class="figure">
-<img src="KKORo27NO5ORo5llNoO38oO7e2OWO2IOO757OolWmlQ87hPGOlJeOjOv5om7NP7hPGOQ5ANQOjOo8RoI5HNOholoB575oGOl8OOjOto.png" /><p class="caption"></p>
-</div>
-<p>So far we've been dealing with data.frames and plots, now let's deal with variables</p>
-<p>Now we'll see if the Z var is working properly. If I omit it, it should perserve the default value (TRUE)... aaaand.... TRUE.</p>
-<p>OK, so far, so good, but let's see what's going on with code chunks...</p>
+== Description ==
+
+A simple report.
+
+=== Descriptive statistics ===
+
+The average fuel consumption is 20.091 with SD of 6.027. Let's add one more line to this paragraph. And another one. Now, you've probably heard of ''pi''? Right? Its value is 3.1416.
+
+=== Graphs ===
+
+And some graphs:
+
+[[Image:KKORo27NO5ORo5llNoO38oO7e2OWO2IOO757OolWmlQ87hPGOlJeOjOv5om7NP7hPGOQ5ANQOjOo8RoI5HNOholoB575oGOl8OOjOto.png|frame|none]]
+
+So far we've been dealing with data.frames and plots, now let's deal with variables
+
+Now we'll see if the Z var is working properly. If I omit it, it should perserve the default value (TRUE)... aaaand.... TRUE.
+
+OK, so far, so good, but let's see what's going on with code chunks...
+
 <table>
 <tbody>
 <tr class="odd">
@@ -151,8 +142,5 @@
 </tr>
 </tbody>
 </table>
-<p>When it comes to CSV values, let us see how do they work. You have chosen the &quot;foo&quot;.</p>
-<hr>
-<p align="center">This report was generated in <a href="http://www.r-project.org/">R</a> with <a href="http://cran.r-project.org/package=rapport">Rapport</a>. Feel free to create <a href="http://link to github wiki: writing templates">your own reporting templates</a>!</p>
-</body>
-</html>
+
+When it comes to CSV values, let us see how do they work. You have chosen the &quot;foo&quot;.

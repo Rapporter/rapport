@@ -1,0 +1,119 @@
+.\"t
+.TH Descriptives "" "2011\[en]04\[en]26 20:25 CET" 
+.SS Description
+.PP
+This template will return descriptive statistics of a numerical, or a
+frequency table of a categorical variable.
+.SS Variable description
+.PP
+The dataset has 709 observations with 709 valid values (missing: 0) in
+\[lq]it.edu\[rq] (\[lq]Internet usage for educational purposes (hours
+per day)\[rq]).
+This variable seems to be numeric.
+.SS Base statistics
+.PP
+.TS
+tab(@);
+l l l l l l l l l l l l l l l l l l l l l.
+T{
+T}@T{
+\f[B]0\f[]
+T}@T{
+\f[B]0.5\f[]
+T}@T{
+\f[B]1\f[]
+T}@T{
+\f[B]1.5\f[]
+T}@T{
+\f[B]2\f[]
+T}@T{
+\f[B]2.5\f[]
+T}@T{
+\f[B]3\f[]
+T}@T{
+\f[B]3.5\f[]
+T}@T{
+\f[B]4\f[]
+T}@T{
+\f[B]4.5\f[]
+T}@T{
+\f[B]5\f[]
+T}@T{
+\f[B]5.5\f[]
+T}@T{
+\f[B]6\f[]
+T}@T{
+\f[B]6.5\f[]
+T}@T{
+\f[B]7\f[]
+T}@T{
+\f[B]8\f[]
+T}@T{
+\f[B]8.5\f[]
+T}@T{
+\f[B]9\f[]
+T}@T{
+\f[B]10\f[]
+T}@T{
+\f[B]12\f[]
+T}
+_
+T{
+1
+T}@T{
+61.00000
+T}@T{
+102.00000
+T}@T{
+204.00000
+T}@T{
+27.00000
+T}@T{
+109.00000
+T}@T{
+17.00000
+T}@T{
+66.00000
+T}@T{
+2.00000
+T}@T{
+37.00000
+T}@T{
+2.00000
+T}@T{
+33.00000
+T}@T{
+1.00000
+T}@T{
+13.00000
+T}@T{
+1.00000
+T}@T{
+1.00000
+T}@T{
+25.00000
+T}@T{
+1.00000
+T}@T{
+2.00000
+T}@T{
+2.00000
+T}@T{
+3.00000
+T}
+.TE
+.SS Histogram
+.PP
+[IMAGE: image (23Oh2OoI5HNo2JhZ5oooO4mOOOOOOOOoloe2O7hZ5oomOOOOLONQONO4mOOOOOOOOoloA5olQ87hZ5oomOOOOL.png)]
+.PP
+It seems that the highest value is 12 which is exactly Inf times higher
+than the smalles values (0).
+.PP
+If we suppose that "Internet usage for educational purposes (hours per
+day) is not near to a normal distribution (test: , skewness: 1.8593,
+kurtosis: 6.8501), checking the median (1) might be a better option
+instead of the mean.
+The interquartile range (2) measures the statistics dispersion of the
+variable (similar to standard deviation) based on median.
+.SH AUTHORS
+Rapport package team \@ https://github.com/aL3xa/rapport.

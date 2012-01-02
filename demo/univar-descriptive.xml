@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<article>
+  <articleinfo>
+    <title>Descriptives</title>
+    <author>
+      <firstname>Rapport package team @</firstname>
+      <surname>https://github.com/aL3xa/rapport</surname>
+    </author>
+    <date>2011-04-26 20:25 CET</date>
+  </articleinfo>
+<section id="description">
+  <title>Description</title>
+  <para>
+    This template will return descriptive statistics of a numerical, or
+    a frequency table of a categorical variable.
+  </para>
+  <section id="variable-description">
+    <title>Variable description</title>
+    <para>
+      The dataset has 709 observations with 709 valid values (missing:
+      0) in &quot;it.edu&quot; (&quot;Internet usage for educational
+      purposes (hours per day)&quot;). This variable seems to be
+      numeric.
+    </para>
+  </section>
+  <section id="base-statistics">
+    <title>Base statistics</title>
+    <informaltable>
+      <tgroup cols="21">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">0</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">0.5</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">1</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">1.5</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">2</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">2.5</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">3</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">3.5</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">4</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">4.5</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">5</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">5.5</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">6</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">6.5</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">7</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">8</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">8.5</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">9</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">10</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">12</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              1
+            </entry>
+            <entry>
+              61.00000
+            </entry>
+            <entry>
+              102.00000
+            </entry>
+            <entry>
+              204.00000
+            </entry>
+            <entry>
+              27.00000
+            </entry>
+            <entry>
+              109.00000
+            </entry>
+            <entry>
+              17.00000
+            </entry>
+            <entry>
+              66.00000
+            </entry>
+            <entry>
+              2.00000
+            </entry>
+            <entry>
+              37.00000
+            </entry>
+            <entry>
+              2.00000
+            </entry>
+            <entry>
+              33.00000
+            </entry>
+            <entry>
+              1.00000
+            </entry>
+            <entry>
+              13.00000
+            </entry>
+            <entry>
+              1.00000
+            </entry>
+            <entry>
+              1.00000
+            </entry>
+            <entry>
+              25.00000
+            </entry>
+            <entry>
+              1.00000
+            </entry>
+            <entry>
+              2.00000
+            </entry>
+            <entry>
+              2.00000
+            </entry>
+            <entry>
+              3.00000
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+  <section id="histogram">
+    <title>Histogram</title>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="23Oh2OoI5HNo2JhZ5oooO4mOOOOOOOOoloe2O7hZ5oomOOOOLONQONO4mOOOOOOOOoloA5olQ87hZ5oomOOOOL.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
+    <para>
+      It seems that the highest value is 12 which is exactly Inf times
+      higher than the smalles values (0).
+    </para>
+    <para>
+      If we suppose that &quot;Internet usage for educational purposes
+      (hours per day) is not near to a normal distribution (test: ,
+      skewness: 1.8593, kurtosis: 6.8501), checking the median (1) might
+      be a better option instead of the mean. The interquartile range
+      (2) measures the statistics dispersion of the variable (similar to
+      standard deviation) based on median.
+    </para>
+  </section>
+</section>
+</article>

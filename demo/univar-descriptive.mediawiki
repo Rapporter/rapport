@@ -1,0 +1,70 @@
+== Description ==
+
+This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.
+
+=== Variable description ===
+
+The dataset has 709 observations with 709 valid values (missing: 0) in &quot;it.edu&quot; (&quot;Internet usage for educational purposes (hours per day)&quot;). This variable seems to be numeric.
+
+=== Base statistics ===
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''0'''</th>
+<th align="left">'''0.5'''</th>
+<th align="left">'''1'''</th>
+<th align="left">'''1.5'''</th>
+<th align="left">'''2'''</th>
+<th align="left">'''2.5'''</th>
+<th align="left">'''3'''</th>
+<th align="left">'''3.5'''</th>
+<th align="left">'''4'''</th>
+<th align="left">'''4.5'''</th>
+<th align="left">'''5'''</th>
+<th align="left">'''5.5'''</th>
+<th align="left">'''6'''</th>
+<th align="left">'''6.5'''</th>
+<th align="left">'''7'''</th>
+<th align="left">'''8'''</th>
+<th align="left">'''8.5'''</th>
+<th align="left">'''9'''</th>
+<th align="left">'''10'''</th>
+<th align="left">'''12'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">61.00000</td>
+<td align="left">102.00000</td>
+<td align="left">204.00000</td>
+<td align="left">27.00000</td>
+<td align="left">109.00000</td>
+<td align="left">17.00000</td>
+<td align="left">66.00000</td>
+<td align="left">2.00000</td>
+<td align="left">37.00000</td>
+<td align="left">2.00000</td>
+<td align="left">33.00000</td>
+<td align="left">1.00000</td>
+<td align="left">13.00000</td>
+<td align="left">1.00000</td>
+<td align="left">1.00000</td>
+<td align="left">25.00000</td>
+<td align="left">1.00000</td>
+<td align="left">2.00000</td>
+<td align="left">2.00000</td>
+<td align="left">3.00000</td>
+</tr>
+</tbody>
+</table>
+
+=== Histogram ===
+
+[[Image:23Oh2OoI5HNo2JhZ5oooO4mOOOOOOOOoloe2O7hZ5oomOOOOLONQONO4mOOOOOOOOoloA5olQ87hZ5oomOOOOL.png|frame|none]]
+
+It seems that the highest value is 12 which is exactly Inf times higher than the smalles values (0).
+
+If we suppose that &quot;Internet usage for educational purposes (hours per day) is not near to a normal distribution (test: , skewness: 1.8593, kurtosis: 6.8501), checking the median (1) might be a better option instead of the mean. The interquartile range (2) measures the statistics dispersion of the variable (similar to standard deviation) based on median.

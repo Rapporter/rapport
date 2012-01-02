@@ -1,0 +1,60 @@
+.\"t
+.TH Correlations "" "2011\[en]04\[en]26 20:25 CET" 
+.SS Description
+.PP
+This template will return the correlation matrix of supplied numerical
+variables.
+.SS Variable description
+.PP
+3 variables provided.
+.PP
+The highest correlation coefficient (0.23644) is between
+\[lq]it.edu\[rq] and \[lq]age\[rq] and the lowest (\[en]0.04905) is
+between \[lq]it.leisure\[rq] and \[lq]age\[rq].
+It seems that the strongest association (r=0.23644) is between
+\[lq]it.edu\[rq] and \[lq]age\[rq].
+.PP
+Higly correlated (r < 0.7 or r > 0.7) variables: -
+.PP
+Uncorrelated (\[en]0.2 < r < 0.2) variables: * \[lq]age\[rq] -
+\[lq]it.leisure\[rq] * \[lq]it.edu\[rq] - \[lq]it.leisure\[rq]
+.SS Correlation matrix
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]age\f[]
+T}@T{
+\f[B]it.edu\f[]
+T}@T{
+\f[B]it.leisure\f[]
+T}
+_
+T{
+age
+T}@T{
+T}@T{
+0.23644
+T}@T{
+\[en]0.04905
+T}
+T{
+it.edu
+T}@T{
+T}@T{
+T}@T{
+0.17142
+T}
+T{
+it.leisure
+T}@T{
+T}@T{
+T}@T{
+T}
+.TE
+.PP
+[IMAGE: image (23OhJ8oolQ87oOoloJ8oolQ87hZ5oOo.png)]
+.SH AUTHORS
+Rapport package team \@ https://github.com/aL3xa/rapport.
