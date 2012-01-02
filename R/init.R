@@ -11,9 +11,9 @@
     options('asciiType'        = 'pandoc')
 
     ## generate static encryption key
-    options('.encrypt.chars'   = paste(c(LETTERS, letters, 0:9, ' ', '(', ')', '=', '~', '.', '+', '"', "'",'$'), collapse = ""))
+    options('.encrypt.chars'   = paste(c(LETTERS, letters, 0:9, ' ', '(', ')', '=', '~', '.', '+', '"', "'",'$', '#'), collapse = ""))
     set.seed(1956)
-    options('.encrypt.key'     = paste(sample(c(LETTERS, letters, 0:9,'=','|','_','.',',','*','$',':',';','~'), nchar(getOption('.encrypt.chars'))), collapse=''))
+    options('.encrypt.key'     = paste(sample(c(LETTERS, letters, 0:9,'=','|','_','.',',','*','$',':',';','~','-'), nchar(getOption('.encrypt.chars'))), collapse=''))
 
     ## ## stats options
     ## options('rp.stats' = c(

@@ -25,9 +25,9 @@ encrypt <- function(message) {
 ##'	@references Credits goes to Barry Rowlingson and Hadley Wickham: \url{https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html}
 ##'	@export
 ##' @examples \dontrun{
-##'		decrypt("l;pp8C|8.pB!")
-##'		strsplit(decrypt("Em0C1apCB2rmCSmCB.q*C|*CIr;1CjrCqEC0;q.C1q.7"), " ")[[1]]
-##'		eval(parse(text=decrypt("mp8*vE*1q.rtSm,CE*1q.rt|*,C18pdn0.;;4ny")))
+##'		decrypt("loRR7KT72R=!")
+##'		strsplit(decrypt("MrhKPzRK=tBrK0rK=2g~KT~K8BoPK1BKgMKhog2KPg2A"), " ")[[1]]
+##'		eval(parse(text=decrypt("rR7~HM~Pg2B40r,KP7Rkp2o=pc")))
 ##'	}
 decrypt <- function(message) {
 	chartr(getOption('.encrypt.key'), getOption('.encrypt.chars'), message)
