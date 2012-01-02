@@ -41,6 +41,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 ##' @param file filename (NULL returns a tempfile)
 ##' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added
 ##' @param create should export really happen? It might be handy if you want to append several reports.
+##' @param open open the exported document? Default set to TRUE.
 ##' @param format format of the wanted report, see: \code{ascii:::asciiOpts(".outputs")}
 ##' @param backend backend for the format conversions, see: \code{scii:::asciiOpts(".backends")}
 ##' @param options command line options passed to backend
@@ -73,7 +74,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 ##' ## Eg. pandoc uses "--reference-odt" as styles reference for odt exports.
 ##'}
 ##' @export
-tpl.export <- function(a=NULL, file=NULL, append=FALSE, create=TRUE, format='html', backend='pandoc', options=NULL) {
+tpl.export <- function(a=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, format='html', backend='pandoc', options=NULL) {
 
     ## dummy checks and config parameters set
     if (!(format %in% tpl.export.outputs()))
@@ -138,7 +139,7 @@ tpl.export <- function(a=NULL, file=NULL, append=FALSE, create=TRUE, format='htm
                 cat(gsub('"templates/', sprintf('"%s/templates/', system.file(package='rapport')), readLines(system.file('templates/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
             options <- sprintf('-H %s -A %s', sprintf('%s%s', tempdir(), '/rapport-header.html'), system.file('templates/html/footer.html', package='rapport'))
         }
-        r$create(file=file, options=options)
+        r$create(file=file, open=open, options=options)
     } else
         return(r)
 }

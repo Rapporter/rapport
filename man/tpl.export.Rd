@@ -3,8 +3,8 @@
 \title{Export rapport class}
 \usage{
   tpl.export(a = NULL, file = NULL, append = FALSE,
-    create = TRUE, format = "html", backend = "pandoc",
-    options = NULL)
+    create = TRUE, open = TRUE, format = "html",
+    backend = "pandoc", options = NULL)
 }
 \arguments{
   \item{a}{an rapport class object}
@@ -17,6 +17,9 @@
 
   \item{create}{should export really happen? It might be
   handy if you want to append several reports.}
+
+  \item{open}{open the exported document? Default set to
+  TRUE.}
 
   \item{format}{format of the wanted report, see:
   \code{ascii:::asciiOpts(".outputs")}}
