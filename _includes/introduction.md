@@ -1,0 +1,1 @@
+*rapport* is an [R](http://www.r-project.org/) package giving birth to a templating system that facilitates automated, mass and easy creation of statistical reports in R with the option to export reports (to markdown format/HTML/pdf/odt etc.) besides various tools and helpers to use in templates.
