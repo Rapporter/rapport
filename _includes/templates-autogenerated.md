@@ -90,12 +90,12 @@ it.leisure
 ------------ --------- ------------ ----------------
 
 
-/tmp/Rtmp9oLnbm/file652855b7.png
+/tmp/Rtmp9oLnbm/file7d9acea1.png
 
 {% endhighlight %}
 </li>
 	<li id="export-correlations"><div>
-<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the following command:
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
 rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
@@ -107,7 +107,7 @@ rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
 	<li><a href="demo/correlations.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/correlations.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/correlations.epub">epub</a></li>
-	<li><a href="demo/correlations.latex" target="_blank">latex</a></li>
+	<li><a href="demo/correlations.tex" target="_blank">latex</a></li>
 	<li><a href="demo/correlations-slidy.html" target="_blank">HTML slidy</a></li>
 </ul>
 <h6>Other morkdown formats</h6>
@@ -242,12 +242,12 @@ female   2.9409     -2.8277          -1.1712
 
  === Mosaic chart  
 
-/tmp/Rtmp9oLnbm/file18a77528.png
+/tmp/Rtmp9oLnbm/file2674e176.png
 
 {% endhighlight %}
 </li>
 	<li id="export-crosstable"><div>
-<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the following command:
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
 rapport('crosstable', data=ius2009, row='gender', col='dwell')
@@ -259,7 +259,7 @@ rapport('crosstable', data=ius2009, row='gender', col='dwell')
 	<li><a href="demo/crosstable.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/crosstable.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/crosstable.epub">epub</a></li>
-	<li><a href="demo/crosstable.latex" target="_blank">latex</a></li>
+	<li><a href="demo/crosstable.tex" target="_blank">latex</a></li>
 	<li><a href="demo/crosstable-slidy.html" target="_blank">HTML slidy</a></li>
 </ul>
 <h6>Other morkdown formats</h6>
@@ -356,7 +356,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/Rtmp9oLnbm/file3e6d8722.png
+/tmp/Rtmp9oLnbm/file1608bc8f.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -384,7 +384,7 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 {% endhighlight %}
 </li>
 	<li id="export-example"><div>
-<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the following command:
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
 rapport("example", mtcars, x = "mpg", y = "hp")
@@ -396,7 +396,7 @@ rapport("example", mtcars, x = "mpg", y = "hp")
 	<li><a href="demo/example.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/example.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/example.epub">epub</a></li>
-	<li><a href="demo/example.latex" target="_blank">latex</a></li>
+	<li><a href="demo/example.tex" target="_blank">latex</a></li>
 	<li><a href="demo/example-slidy.html" target="_blank">HTML slidy</a></li>
 </ul>
 <h6>Other morkdown formats</h6>
@@ -484,7 +484,7 @@ rapport("example", mtcars, x = "mpg", y = "hp")
 
  == Boxplot  
 
-/tmp/Rtmp9oLnbm/file3d20f4bc.png
+/tmp/Rtmp9oLnbm/file2f0452a8.png
 
  == Lund test  
 
@@ -529,7 +529,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 {% endhighlight %}
 </li>
 	<li id="export-outlier-test"><div>
-<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the following command:
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
 rapport('outlier-test', data=ius2009, var='it.edu')
@@ -541,7 +541,7 @@ rapport('outlier-test', data=ius2009, var='it.edu')
 	<li><a href="demo/outlier-test.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/outlier-test.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/outlier-test.epub">epub</a></li>
-	<li><a href="demo/outlier-test.latex" target="_blank">latex</a></li>
+	<li><a href="demo/outlier-test.tex" target="_blank">latex</a></li>
 	<li><a href="demo/outlier-test-slidy.html" target="_blank">HTML slidy</a></li>
 </ul>
 <h6>Other morkdown formats</h6>
@@ -722,7 +722,7 @@ This variable seems to be numeric.
 
  == Histogram  
 
-/tmp/Rtmp9oLnbm/file3520f1b6.png
+/tmp/Rtmp9oLnbm/file592dfda7.png
 
 It seems that the highest value is 12 which is exactly Inf times higher than the smalles values (0).
 
@@ -731,7 +731,7 @@ If we suppose that "Internet usage for educational purposes (hours per day) is n
 {% endhighlight %}
 </li>
 	<li id="export-univar-descriptive"><div>
-<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the following command:
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
 rapport('univar-descriptive', data=ius2009, var='it.edu')
@@ -743,7 +743,7 @@ rapport('univar-descriptive', data=ius2009, var='it.edu')
 	<li><a href="demo/univar-descriptive.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/univar-descriptive.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/univar-descriptive.epub">epub</a></li>
-	<li><a href="demo/univar-descriptive.latex" target="_blank">latex</a></li>
+	<li><a href="demo/univar-descriptive.tex" target="_blank">latex</a></li>
 	<li><a href="demo/univar-descriptive-slidy.html" target="_blank">HTML slidy</a></li>
 </ul>
 <h6>Other morkdown formats</h6>
