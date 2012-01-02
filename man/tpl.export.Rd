@@ -3,8 +3,9 @@
 \title{Export rapport class}
 \usage{
   tpl.export(a = NULL, file = NULL, append = FALSE,
-    create = TRUE, open = TRUE, format = "html",
-    backend = "pandoc", options = NULL)
+    create = TRUE, open = TRUE,
+    date = format(Sys.time(), "\%Y/\%m/\%d \%X"),
+    format = "html", backend = "pandoc", options = NULL)
 }
 \arguments{
   \item{a}{an rapport class object}
@@ -20,6 +21,9 @@
 
   \item{open}{open the exported document? Default set to
   TRUE.}
+
+  \item{date}{character string as the date field of the
+  report. If not set, current time will be set.}
 
   \item{format}{format of the wanted report, see:
   \code{ascii:::asciiOpts(".outputs")}}
