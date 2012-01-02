@@ -28,7 +28,7 @@ Please find below a detailed description about each with sample outputs of those
 <br>
 <em>Example:</em> </div></li>
 	<li id="inputs-correlations"><div><h5>Input parameters</h5><em>correlations.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	<h6>vars: <small><em>Variable</em></small></h6>
+	<li><h6>vars: <small><em>Variable</em></small></h6>
 <div class="options">    <div class="options-desc">Numerical variables
 </div>
     <em>Type:</em>	numeric
@@ -37,8 +37,9 @@ Please find below a detailed description about each with sample outputs of those
 <br>
 
 </div>
+</li>
 <br>
-<h6>cor.matrix: <small><em>Correlation matrix</em></small></h6>
+<li><h6>cor.matrix: <small><em>Correlation matrix</em></small></h6>
 <div class="options">    <div class="options-desc">Show correlation matrix (numbers)?
 </div>
     <em>Type:</em>	boolean
@@ -47,8 +48,9 @@ Please find below a detailed description about each with sample outputs of those
 <br>
     <em>Default value:</em>	TRUE
 </div>
+</li>
 <br>
-<h6>cor.plot: <small><em>Scatterplot matrix</em></small></h6>
+<li><h6>cor.plot: <small><em>Scatterplot matrix</em></small></h6>
 <div class="options">    <div class="options-desc">Show scatterplot matrix (image)?
 </div>
     <em>Type:</em>	boolean
@@ -57,6 +59,7 @@ Please find below a detailed description about each with sample outputs of those
 <br>
     <em>Default value:</em>	TRUE
 </div>
+</li>
 <br>
 </ul></div></li>
 	<li id="example-correlations">No examples provided with template, sorry.</li>
@@ -82,7 +85,7 @@ Please find below a detailed description about each with sample outputs of those
 <br>
 <em>Example:</em> rapport('crosstable', data=ius2009, row='gender', col='dwell')</div></li>
 	<li id="inputs-crosstable"><div><h5>Input parameters</h5><em>crosstable.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	<h6>row: <small><em>Row variable</em></small></h6>
+	<li><h6>row: <small><em>Row variable</em></small></h6>
 <div class="options">    <div class="options-desc">A categorical variable.
 </div>
     <em>Type:</em>	factor
@@ -91,8 +94,9 @@ Please find below a detailed description about each with sample outputs of those
 <br>
 
 </div>
+</li>
 <br>
-<h6>col: <small><em>Column variable</em></small></h6>
+<li><h6>col: <small><em>Column variable</em></small></h6>
 <div class="options">    <div class="options-desc">A categorical variable.
 </div>
     <em>Type:</em>	factor
@@ -101,6 +105,7 @@ Please find below a detailed description about each with sample outputs of those
 <br>
 
 </div>
+</li>
 <br>
 </ul></div></li>
 	<li id="example-crosstable">
@@ -178,7 +183,7 @@ female   2.9409     -2.8277          -1.1712
 
  === Mosaic chart  
 
-/tmp/RtmpCAfBcV/file72760790.png
+/tmp/RtmpCAfBcV/file3f334dd7.png
 
 {% endhighlight %}
 </li>
@@ -207,7 +212,7 @@ female   2.9409     -2.8277          -1.1712
 <br>
 <em>Example:</em> rapport("example", mtcars, x = "mpg", y = "hp")</div></li>
 	<li id="inputs-example"><div><h5>Input parameters</h5><em>example.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	<h6>x: <small><em>Var X</em></small></h6>
+	<li><h6>x: <small><em>Var X</em></small></h6>
 <div class="options">    <div class="options-desc">One or two factors for one/two-way ANOVA
 </div>
     <em>Type:</em>	numeric
@@ -216,8 +221,9 @@ female   2.9409     -2.8277          -1.1712
 <br>
 
 </div>
+</li>
 <br>
-<h6>y: <small><em>Var Y</em></small></h6>
+<li><h6>y: <small><em>Var Y</em></small></h6>
 <div class="options">    <div class="options-desc">A dependent (response) variable
 </div>
     <em>Type:</em>	numeric
@@ -226,8 +232,9 @@ female   2.9409     -2.8277          -1.1712
 <br>
 
 </div>
+</li>
 <br>
-<h6>bool: <small><em>Boolean</em></small></h6>
+<li><h6>bool: <small><em>Boolean</em></small></h6>
 <div class="options">    <div class="options-desc">some boolean values
 </div>
     <em>Type:</em>	boolean
@@ -236,8 +243,9 @@ female   2.9409     -2.8277          -1.1712
 <br>
     <em>Default value:</em>	TRUE
 </div>
+</li>
 <br>
-<h6>csv: <small><em>CSV</em></small></h6>
+<li><h6>csv: <small><em>CSV</em></small></h6>
 <div class="options">    <div class="options-desc">comma separated values
 </div>
     <em>Type:</em>	option
@@ -246,6 +254,7 @@ female   2.9409     -2.8277          -1.1712
 <br>
     <em>Default value:</em>	foo, bar
 </div>
+</li>
 <br>
 </ul></div></li>
 	<li id="example-example">
@@ -263,7 +272,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpCAfBcV/file332ee093.png
+/tmp/RtmpCAfBcV/file6d824270.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -315,7 +324,7 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 <br>
 <em>Example:</em> rapport('outlier-test', data=ius2009, var='it.edu')</div></li>
 	<li id="inputs-outlier-test"><div><h5>Input parameters</h5><em>outlier-test.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	<h6>var: <small><em>Variable</em></small></h6>
+	<li><h6>var: <small><em>Variable</em></small></h6>
 <div class="options">    <div class="options-desc">Numerical variable
 </div>
     <em>Type:</em>	numeric
@@ -324,8 +333,9 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 <br>
 
 </div>
+</li>
 <br>
-<h6>references: <small><em>References</em></small></h6>
+<li><h6>references: <small><em>References</em></small></h6>
 <div class="options">    <div class="options-desc">Print references?
 </div>
     <em>Type:</em>	boolean
@@ -334,8 +344,9 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 <br>
     <em>Default value:</em>	TRUE
 </div>
+</li>
 <br>
-<h6>grubb: <small><em>Grubb's test</em></small></h6>
+<li><h6>grubb: <small><em>Grubb's test</em></small></h6>
 <div class="options">    <div class="options-desc">Show Grubb's test?
 </div>
     <em>Type:</em>	boolean
@@ -344,8 +355,9 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 <br>
     <em>Default value:</em>	TRUE
 </div>
+</li>
 <br>
-<h6>dixon: <small><em>Dixon's test</em></small></h6>
+<li><h6>dixon: <small><em>Dixon's test</em></small></h6>
 <div class="options">    <div class="options-desc">Show Dixon's test?
 </div>
     <em>Type:</em>	boolean
@@ -354,6 +366,7 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 <br>
     <em>Default value:</em>	TRUE
 </div>
+</li>
 <br>
 </ul></div></li>
 	<li id="example-outlier-test">
@@ -362,7 +375,7 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 
  == Boxplot  
 
-/tmp/RtmpCAfBcV/file82406de.png
+/tmp/RtmpCAfBcV/file1bb2817b.png
 
  == Lund test  
 
@@ -431,7 +444,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <br>
 <em>Example:</em> </div></li>
 	<li id="inputs-type_demo"><div><h5>Input parameters</h5><em>type_demo.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	<h6>a: <small><em>variable A</em></small></h6>
+	<li><h6>a: <small><em>variable A</em></small></h6>
 <div class="options">    <div class="options-desc">var A - from 1 up to 6 character variables
 </div>
     <em>Type:</em>	character
@@ -440,8 +453,9 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <br>
 
 </div>
+</li>
 <br>
-<h6>b: <small><em>variable B</em></small></h6>
+<li><h6>b: <small><em>variable B</em></small></h6>
 <div class="options">    <div class="options-desc">var B - length-one complex
 </div>
     <em>Type:</em>	complex
@@ -450,8 +464,9 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <br>
 
 </div>
+</li>
 <br>
-<h6>c: <small><em>variable C</em></small></h6>
+<li><h6>c: <small><em>variable C</em></small></h6>
 <div class="options">    <div class="options-desc">var C - length-one factor
 </div>
     <em>Type:</em>	factor
@@ -460,8 +475,9 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <br>
 
 </div>
+</li>
 <br>
-<h6>d: <small><em>variable D</em></small></h6>
+<li><h6>d: <small><em>variable D</em></small></h6>
 <div class="options">    <div class="options-desc">var D - length-one logical, defaults to FALSE
 </div>
     <em>Type:</em>	logical
@@ -470,8 +486,9 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <br>
 
 </div>
+</li>
 <br>
-<h6>e: <small><em>variable E</em></small></h6>
+<li><h6>e: <small><em>variable E</em></small></h6>
 <div class="options">    <div class="options-desc">var E - 2-10 numeric vectors
 </div>
     <em>Type:</em>	numeric
@@ -480,8 +497,9 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <br>
 
 </div>
+</li>
 <br>
-<h6>f: <small><em>variable F</em></small></h6>
+<li><h6>f: <small><em>variable F</em></small></h6>
 <div class="options">    <div class="options-desc">var F - a variable (atomic vector of any type)
 </div>
     <em>Type:</em>	variable
@@ -490,8 +508,9 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <br>
 
 </div>
+</li>
 <br>
-<h6>g: <small><em>variable G</em></small></h6>
+<li><h6>g: <small><em>variable G</em></small></h6>
 <div class="options">    <div class="options-desc">var G - it's an option list
 </div>
     <em>Type:</em>	option
@@ -500,8 +519,9 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <br>
     <em>Default value:</em>	foo, bar, blah
 </div>
+</li>
 <br>
-<h6>h: <small><em>variable H</em></small></h6>
+<li><h6>h: <small><em>variable H</em></small></h6>
 <div class="options">    <div class="options-desc">var H - a boolean var
 </div>
     <em>Type:</em>	boolean
@@ -510,6 +530,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <br>
     <em>Default value:</em>	TRUE
 </div>
+</li>
 <br>
 </ul></div></li>
 	<li id="example-type_demo">No examples provided with template, sorry.</li>
@@ -535,7 +556,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <br>
 <em>Example:</em> rapport('univar-descriptive', data=ius2009, var='it.edu')</div></li>
 	<li id="inputs-univar-descriptive"><div><h5>Input parameters</h5><em>univar-descriptive.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	<h6>var: <small><em>Variable</em></small></h6>
+	<li><h6>var: <small><em>Variable</em></small></h6>
 <div class="options">    <div class="options-desc">A categorical or numerical variable. The template will determine the measurement level of the given variable and will return a detailed frequency table or appropriate descriptive statistics for numerics.
 </div>
     <em>Type:</em>	variable
@@ -544,6 +565,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <br>
 
 </div>
+</li>
 <br>
 </ul></div></li>
 	<li id="example-univar-descriptive">
@@ -566,7 +588,7 @@ This variable seems to be numeric.
 
  == Histogram  
 
-/tmp/RtmpCAfBcV/file5d7d1664.png
+/tmp/RtmpCAfBcV/file1f44ac69.png
 
 It seems that the highest value is 12 which is exactly Inf times higher than the smalles values (0).
 

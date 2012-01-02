@@ -1,6 +1,6 @@
 % Crosstable
 % Rapport package team @ https://github.com/aL3xa/rapport
-% 2012/01/02 14.36.25
+% 2012/01/02 15.33.31
 
 
 ## Description 
@@ -89,5 +89,5 @@ female   2.94090    -2.82766         -1.17125
 
 #### Mosaic chart 
 
-![](/tmp/RtmpCAfBcV/file61fc733a.png)
+![](/tmp/RtmpCAfBcV/file5ee51600.png)
 

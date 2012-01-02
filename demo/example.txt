@@ -1,6 +1,6 @@
 % example script
 % Rapport package team @ https://github.com/aL3xa/rapport
-% 2012/01/02 14.36.26
+% 2012/01/02 15.33.32
 
 
 ## Description 
@@ -18,7 +18,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs: 
 
-![](/tmp/RtmpCAfBcV/file743986e1.png)
+![](/tmp/RtmpCAfBcV/file2881b673.png)
 
 
 So far we've been dealing with data.frames and plots, now let's deal with variables 

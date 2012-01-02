@@ -1,6 +1,6 @@
 % Descriptives
 % Rapport package team @ https://github.com/aL3xa/rapport
-% 2012/01/02 14.36.28
+% 2012/01/02 15.33.34
 
 
 ## Description 
@@ -24,7 +24,7 @@ This variable seems to be numeric.
 
 ### Histogram 
 
-![](/tmp/RtmpCAfBcV/file4fbd7aa0.png)
+![](/tmp/RtmpCAfBcV/filed43fecc.png)
 
 
 It seems that the highest value is 12 which is exactly Inf times higher than the smalles values (0). 

@@ -1,6 +1,6 @@
 % Outlier test
 % Rapport package team @ https://github.com/aL3xa/rapport
-% 2012/01/02 14.36.27
+% 2012/01/02 15.33.33
 
 
 ## Description 
@@ -9,7 +9,7 @@ This template will check if provided variable has any outliers.
 
 ### Boxplot 
 
-![](/tmp/RtmpCAfBcV/file432a1ae9.png)
+![](/tmp/RtmpCAfBcV/file7b97facc.png)
 
 
 ### Lund test 
