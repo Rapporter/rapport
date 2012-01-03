@@ -13,7 +13,7 @@
   \item{data}{a \code{data.frame} that is to be used with
   given template}
 
-  \item{...}{matches template variables in format 'key =
+  \item{...}{matches template inputs in format 'key =
   "value"'}
 }
 \value{
@@ -27,11 +27,7 @@
 }
 \examples{
 \dontrun{
-    ## only a template name can be passed
-    tpl.eval(name = "example")
 
-    ## or a path to the template
-    tpl.eval(system.file("templates", "example.tpl", package = "rapport"))
 }
 }
 

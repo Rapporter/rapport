@@ -211,27 +211,31 @@ tpl.inputs <- function(fp, use.header = TRUE){
 ##'
 ##' Runs the "Example" field found in specified template. Handy to check out what a template does and looks like. Could be easily exported to HTML, odt etc. - check out the examples below.
 ##' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
-##' @param index a numeric vector indicating the example index
+##' @param index a numeric vector indicating the example index. Meaningful only while running templates with multiple examples specified, otherwise omitted. In most cases this should be a single numeric value. If multiple numbers are provided, the examples are returned in a list. Using 'all' (character string) as index will return all examples.
 ##' @export
 ##' @examples \dontrun{
 ##' tpl.example('example')
 ##' tpl.example('crosstable')
 ##' tpl.export(tpl.example('crosstable'))
+##' tpl.example('example', 1:2)
+##' tpl.example('example', 'all')
 ##' }
 tpl.example <- function(fp, index = NULL) {
     examples <- tpl.meta(fp)$example
     if (is.null(example))
         stop('Sorry, provided template does not have an example field.')
+    if (any(index == 'all')) index <- 1:length(examples)
     if (length(examples) > 1){
         if (is.null(index)){
-            message("Pick one:\n")
+            message("Pick one of the below examples:\n")
             return(examples)
         }
-        eval(parse(text = examples[index]))
-    }
+        if (length(index) > 1)
+            return(lapply(examples[index], function(x) eval(parse(text = x))))
+    } else
+        index <- 1
     eval(parse(text = examples[index]))
 }
-
 
 ##' @export
 elem.eval <- function(x, ...)  UseMethod('elem.eval')
