@@ -65,6 +65,7 @@ tpl.export(append=report, format='rst')
 
 ### exporting multiple reports at once
 tpl.export(tpl.example('example', 'all'))
+tpl.export(tpl.example('example', 'all'), format='odt')
 tpl.export(list(rapport('univar-descriptive', data=mtcars, var="hp"),
     rapport('univar-descriptive', data=mtcars, var="mpg")))
 
