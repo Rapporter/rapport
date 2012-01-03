@@ -37,7 +37,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 ##' This function exports rapport class objects to various formats based on ascii package.
 ##' Note that no error/warning messages will be shown!
 ##' By default this function tries to export the report to HTML with pandoc. Some default styles are applied. If you do not need those default settings, use your own \code{options}.
-##' @param a an rapport class object
+##' @param rp a rapport class object or list of rapport class objects
 ##' @param file filename (NULL returns a tempfile)
 ##' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added
 ##' @param create should export really happen? It might be handy if you want to append several reports.
@@ -66,6 +66,12 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 ##' # 4) Export it to other formats too! (optional)
 ##' tpl.export(append=report, format='rst')
 ##'
+##' ### exporting multiple reports at once
+##' tpl.export(tpl.example('example', 'all'))
+##' tpl.export(tpl.example('example', 'all'), format='odt')
+##' tpl.export(list(rapport('univar-descriptive', data=mtcars, var="hp"),
+##'     rapport('univar-descriptive', data=mtcars, var="mpg")))
+##'
 ##' ### Never do this as being dumb:
 ##' tpl.export()
 ##'
@@ -75,7 +81,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 ##' ## Eg. pandoc uses "--reference-odt" as styles reference for odt exports.
 ##'}
 ##' @export
-tpl.export <- function(a=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), "%Y/%m/%d %X"),format='html', backend='pandoc', options=NULL) {
+tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), "%Y/%m/%d %X"), format='html', backend='pandoc', options=NULL) {
 
     ## dummy checks and config parameters set
     if (!(format %in% tpl.export.outputs()))
@@ -88,31 +94,46 @@ tpl.export <- function(a=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, 
         warning(paste('Wrong backend provided, using instead:', backends[1], '\nAll compatible backends:', paste(backends, collapse=', ')))
         backend <- backends[1]
     }
+    if (!is.null(file))
+        if (!is.character(file))
+            stop('Wrong file parameter!')
     if (!is.logical(append)) {
-        if (!(deparse(substitute(append)) %in% ls(envir = .GlobalEnv))) stop('Not existing object given as append parameter!')
-        if (class(Report$new()) != 'Report') stop('Wrong class (!="Report") found in append parameter!')
+        ## if (!(deparse(substitute(append)) %in% ls(envir = .GlobalEnv))) stop('Not existing object given as append parameter!')
+        if (class(append) != 'Report') stop('Wrong class (!="Report") found in append parameter!')
         r <- append
     } else {
         if (append != 'FALSE') stop('Wrong append parameter!')
-        if (is.null(a)) stop('There is no sense in exporting a blank report :)')
+        if (is.null(rp)) stop('There is no sense in exporting a blank report :)')
         r <- Report$new()
-        r$title <- as.character(a$metadata['title'])
+        r$title <- as.character(rp$metadata['title'])
         r$author <- as.character(getOption('rp.user'))
         r$email <- as.character(getOption('rp.email'))
     }
     if (!is.logical(create)) stop('Wrong create (!=TRUE|FALSE) parameter!')
-    r$backend <- backend
-    r$format <- format
 
     ## a == NULL
-    if (is.null(a)) return(r$create(file=file))
+    if (is.null(rp)) return(r$create(file=file))
 
+    ## exporting multiple rapport classes at once
+    if (class(rp) == 'list') {
+        if (all(lapply(rp, class) == 'rapport')) {
+            r$title <- as.character(rp[[1]]$metadata['title'])
+            for (i in 1:length(rp)) {
+            	r <- tpl.export(rp[[i]], file=file, append=r, create=FALSE, open=FALSE, date=date)
+            }
+        } else
+            stop('Wrong rp parameter!')
+    }
+
+    r$backend <- backend
+    r$format <- format
+    
     ## header stuff
     r$addSection('Description', 2)
-    r$add(paragraph(as.character(a$metadata['desc'])))
+    r$add(paragraph(as.character(rp$metadata['desc'])))
 
     ## body
-    lapply(a$report, function(x) {
+    lapply(rp$report, function(x) {
         if (x$type=='heading') r$addSection(x$text$eval, 2+x$level)
         if (x$type=='block')
             r$add(paragraph(ifelse(is.null(unlist(x$chunks$raw)),
@@ -144,7 +165,6 @@ tpl.export <- function(a=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, 
     } else
         return(r)
 }
-
 
 ##' Export rapport class (deprecated)
 ##'

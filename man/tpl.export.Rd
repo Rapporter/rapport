@@ -2,13 +2,14 @@
 \alias{tpl.export}
 \title{Export rapport class}
 \usage{
-  tpl.export(a = NULL, file = NULL, append = FALSE,
+  tpl.export(rp = NULL, file = NULL, append = FALSE,
     create = TRUE, open = TRUE,
     date = format(Sys.time(), "\%Y/\%m/\%d \%X"),
     format = "html", backend = "pandoc", options = NULL)
 }
 \arguments{
-  \item{a}{an rapport class object}
+  \item{rp}{a rapport class object or list of rapport class
+  objects}
 
   \item{file}{filename (NULL returns a tempfile)}
 
@@ -61,6 +62,11 @@ report <- tpl.export(x, create=F, append=report)
 tpl.export(append=report)
 # 4) Export it to other formats too! (optional)
 tpl.export(append=report, format='rst')
+
+### exporting multiple reports at once
+tpl.export(tpl.example('example', 'all'))
+tpl.export(list(rapport('univar-descriptive', data=mtcars, var="hp"),
+    rapport('univar-descriptive', data=mtcars, var="mpg")))
 
 ### Never do this as being dumb:
 tpl.export()
