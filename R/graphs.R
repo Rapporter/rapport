@@ -13,7 +13,7 @@
 ####################################################################################################
 # DO IT:
 ########
-#TODO: collect all graph-related option(...) to options('rp.graph')
+#TODO: update examples to use ius2009
 #TODO: add option to most plots to include a text (values) layer
 #TODO: pie chart
 #TODO: error bar
@@ -121,6 +121,56 @@ rp.hist <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'
 		# plot
 		histogram(x=eval(parse(text=text)), col=col, ylab='%', xlab=xlab, ...)
 	}
+}
+
+##' Density plot
+##'
+##' This function is a wrapper around \code{\link{densityplot}} which operates only on numeric vectors
+##' with optional facet.
+##'
+##' @param x a numeric variable
+##' @param facet an optional categorical variable to make facets by
+##' @param data an optional data frame from which the variables should be taken
+##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
+##' @param colorize if set the color is chosen from palette at random
+##' @param ... additional parameters to \code{\link{histogram}}
+##' @export
+##' @examples \dontrun{
+##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
+##'     am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+##' rp.densityplot(df$hp)
+##' rp.densityplot(df$hp, facet=df$am)
+##' rp.densityplot(df$hp, df$am)
+##' rp.label(df$hp) <- 'horsepower'; rp.densityplot(df$hp)
+##' rp.densityplot(df$hp, colorize=TRUE)
+##' with(df, rp.densityplot(hp, facet = am))
+##' rp.densityplot(hp, data = df)
+##' rp.densityplot(hp, am, df)
+##' }
+rp.densityplot <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
+    if (!missing(data)) {
+        if (missing(facet)) {
+            rp.densityplot(x=eval(match.call()$x, data), theme=theme, colorize=colorize, ...)
+        } else {
+            rp.densityplot(x=eval(match.call()$x, data), facet=eval(match.call()$facet, data),
+                    theme=theme, colorize=colorize, ...)
+        }
+    } else {
+        rp.graph.check(x, ...)
+        # generating color from given palette
+        col <- rp.palette(1, theme, colorize)
+        # getting xlab
+        xlab <- rp.label(x)
+        if (xlab=='x') xlab <- tail(as.character(substitute(x)), 1)
+        # if facet set
+        if (is.null(facet)) {
+            text <- 'x'
+        } else {
+            text='~x|facet'
+        }
+        # plot
+        densityplot(x=eval(parse(text=text)), col=col, ylab=NULL, xlab=xlab, ...)
+    }
 }
 
 ##' Barplot
