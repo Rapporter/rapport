@@ -593,17 +593,6 @@ rp.round <- function(x, scientific=FALSE) {
 }
 
 
-guess.value <- function(dtf){
-
-    if ('value' %in% colnames(dtf))
-        return('value')
-
-    if ('(all)' %in% colnames(dtf))
-        return('Total')
-
-    return(colnames(dtf)[ncol(dtf)])
-}
-
 
 ########################################
 ## undocumented functions

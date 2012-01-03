@@ -124,7 +124,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         ## list of required tags
         fields <- list(
                        list(title = 'Title'         , regex = '[[:print:]]+'),
-                       list(title = 'Author'        , regex = '[^[:digit:][:space:][:punct:]]+( [^[:digit:][:space:][:punct:]]+)*'),
+                       list(title = 'Author'        , regex = '.+'),
                        list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
                        list(title = 'Description'   , regex = '[[:print:]]+', short = 'desc'),
                        list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
@@ -139,6 +139,15 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         x$x <- header[m]
         do.call(extract.meta, x)
     })
+
+    if (!is.null(l$example)){
+        ## select all "untagged" lines after Example: that contain rapport(<smth>) string
+        ## but it will not check if they're syntactically correct
+        ind.start <- grep('^Example:', header)
+        ind <- adj.rle(grep("^.*(rapport::)?rapport\\(.+)\\.*$", header))$values[[1]]
+        ind <- ind[!ind %in% ind.start]
+        l$example <- c(l$example, header[ind])
+    }
 
     structure(l, class = 'rp.meta')
 }
@@ -195,6 +204,32 @@ tpl.inputs <- function(fp, use.header = TRUE){
 
     inputs <- lapply(inputs.raw, chk.fn)
     structure(inputs, class = 'rp.inputs')
+}
+
+
+##' Template Examples
+##'
+##' Runs the "Example" field found in specified template. Handy to check out what a template does and looks like. Could be easily exported to HTML, odt etc. - check out the examples below.
+##' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
+##' @param index a numeric vector indicating the example index
+##' @export
+##' @examples \dontrun{
+##' tpl.example('example')
+##' tpl.example('crosstable')
+##' tpl.export(tpl.example('crosstable'))
+##' }
+tpl.example <- function(fp, index = NULL) {
+    examples <- tpl.meta(fp)$example
+    if (is.null(example))
+        stop('Sorry, provided template does not have an example field.')
+    if (length(examples) > 1){
+        if (is.null(index)){
+            message("Pick one:\n")
+            return(examples)
+        }
+        eval(parse(text = examples[index]))
+    }
+    eval(parse(text = examples[index]))
 }
 
 
@@ -396,14 +431,10 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'block', 'chunk'), use.bo
 ##' Evaluates template file and returns a list with \code{rapport} class.
 ##' @param fp a string containing a template path or a character vector with template contents
 ##' @param data a \code{data.frame} that is to be used with given template
-##' @param ... matches template variables in format 'key = "value"'
+##' @param ... matches template inputs in format 'key = "value"'
 ##' @return a list with \code{rapport} class.
 ##' @examples \dontrun{
-##'     ## only a template name can be passed
-##'     tpl.eval(name = "example")
 ##'
-##'     ## or a path to the template
-##'     tpl.eval(system.file("templates", "example.tpl", package = "rapport"))
 ##' }
 ##' @export
 rapport <- function(fp, data = NULL, ...){

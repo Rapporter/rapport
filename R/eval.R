@@ -208,20 +208,3 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         return(res[output])
     })
 }
-
-
-##' Template examples
-##'
-##' Runs the "Example" field found in specified template. Handy to check out what a template does and looks like. Could be easily exported to HTML, odt etc. - check out the examples below.
-##' @param template character string: name of a template to check out 
-##' @return rapport class
-##' @export
-##' @examples \dontrun{
-##' tpl.example('example')
-##' tpl.example('crosstable')
-##' tpl.export(tpl.example('crosstable'))
-##' }
-tpl.example <- function(template) {
-    if (is.null(tpl.meta(template)$example)) stop(sprintf('Sorry, "%s" template do not have an example field.', template))
-    eval(parse(text=tpl.meta(template)$example))
-}

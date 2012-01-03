@@ -3,6 +3,8 @@ Title:        example script
 Author:       Aleksandar Blagotić
 Description:  A simple report.
 Example:      rapport("example", mtcars, x = "mpg", y = "hp")
+              rapport("example", mtcars, x = "hp", y = "wt")
+              rapport("example", ius2009, x = "it.edu", y = "it.leisure")              
 x      | numeric   | Var X   | One or two factors for one/two-way ANOVA
 y      | numeric   | Var Y   | A dependent (response) variable
 bool   | TRUE      | Boolean | some boolean values
