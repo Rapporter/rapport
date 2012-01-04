@@ -98,7 +98,7 @@ it.leisure   -0.04905      0.17142 ***
 ------------ ------------- ------------- ----------------
 
 
-/tmp/RtmpV1PMjn/file3a680b48.png
+/tmp/RtmpV1PMjn/file13d8d1c0.png
 
 
 {% endhighlight %}
@@ -107,11 +107,7 @@ it.leisure   -0.04905      0.17142 ***
 <h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
-
-{% highlight text %}
 rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
-{% endhighlight %}
-
 
 {% endhighlight %}
 <h6>Popular formats:</h6>
@@ -263,7 +259,7 @@ female   2.9409     -2.8277          -1.1712
 
  === Mosaic chart  
 
-/tmp/RtmpV1PMjn/filed15c41.png
+/tmp/RtmpV1PMjn/file5afb1ab.png
 
 
 {% endhighlight %}
@@ -272,11 +268,7 @@ female   2.9409     -2.8277          -1.1712
 <h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
-
-{% highlight text %}
 rapport('crosstable', data=ius2009, row='gender', col='dwell')
-{% endhighlight %}
-
 
 {% endhighlight %}
 <h6>Popular formats:</h6>
@@ -392,7 +384,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpV1PMjn/file56c78f7d.png
+/tmp/RtmpV1PMjn/file1dbeadc8.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -402,16 +394,16 @@ OK, so far, so good, but let's see what's going on with code chunks...
 
 
 ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
--1.27636   0.96081    0.19199    0.51244    1.29318    -0.82680   -0.28635   -0.45113   -0.11866   -0.11821  
-1.19881    -0.42282   -2.06247   0.28793    0.93021    -0.04774   -0.49743   0.27583    0.98154    0.08292   
--0.14084   0.52121    -0.78167   0.61880    0.97000    0.02538    0.29040    2.74724    2.36473    -1.45499  
-0.87975    -1.07376   -0.12692   0.72526    -0.15434   -1.51862   0.31935    -0.50143   -0.89776   -1.18791  
-1.18793    0.92908    0.72780    0.18187    1.12828    -0.75949   -2.42037   1.90834    1.00548    0.25622   
--1.27256   -0.04073   -0.54227   0.29410    0.51848    -0.09437   0.59731    0.28967    -0.65800   0.99000   
--0.62991   -0.71978   0.24608    0.88538    0.92780    0.39946    -0.67847   0.35863    0.46481    -0.07676  
-0.32348    -0.29905   -1.30131   3.52997    -2.23682   -0.69281   0.97283    -0.36578   -0.31037   0.23444   
--0.06335   -0.35513   1.04456    0.16292    -0.65003   -1.01636   -0.53073   0.88828    1.07396    -0.97657  
-1.02907    -1.56559   -0.88096   -0.48706   1.31933    0.64340    0.81668    1.22500    -1.54932   1.03326   
+0.68581    1.02705    1.84060    -0.93514   -0.88256   0.05850    0.50313    0.97422    0.40265    1.20301   
+-0.42391   1.49881    0.23022    1.75651    2.12127    1.05795    0.31745    -0.66831   -1.13775   -0.08294  
+-0.39504   0.44203    -0.05203   0.75932    0.28744    0.12987    -0.05781   -0.24921   -0.09108   -1.23996  
+-1.49650   1.22348    -0.74750   0.04138    0.72973    0.38346    -0.57475   -0.50059   -1.85845   0.02823   
+1.12419    -1.01385   0.76911    1.03493    1.90332    -0.45268   0.68487    1.84153    -0.26411   -0.38101  
+-0.45158   0.20689    -1.66460   0.31363    2.20809    -0.32738   -0.67558   0.54113    -1.57139   -0.13375  
+2.18045    -0.40841   -0.23173   -0.04850   -0.89918   -0.58743   0.27330    -0.23866   0.35055    0.40085   
+0.49154    0.95370    -1.04429   0.39949    -1.20858   -0.79431   -0.76594   -0.36113   -0.29245   1.45965   
+0.47843    -1.63091   -0.93888   1.48541    -1.74184   -1.20638   1.05930    0.03196    -0.80265   1.74231   
+-0.70797   0.48712    -0.60968   0.45807    -1.12980   0.79780    1.13584    -0.62595   0.84215    1.16999   
 ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 
 
@@ -433,7 +425,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpV1PMjn/file5a66b585.png
+/tmp/RtmpV1PMjn/file4980c2e3.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -443,16 +435,16 @@ OK, so far, so good, but let's see what's going on with code chunks...
 
 
 ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
-0.81077    0.23123    0.94538    -1.40375   0.45960    -0.87336   -0.64105   1.09390    -1.38965   -0.39066  
--0.77254   0.68833    -0.78643   0.64142    0.75162    0.46680    0.58316    -0.33615   1.03916    0.03863   
--0.60618   -0.64189   -1.33575   -1.63239   0.53177    -0.84403   0.90804    -2.15938   0.37262    0.26030   
--1.31719   -0.03783   0.15223    1.28806    1.21800    0.05418    -0.39239   -0.18316   0.35853    -1.16219  
-0.70113    -1.33815   -1.38986   -0.06633   -0.80063   0.20983    1.43452    0.00025    2.02889    -0.09806  
--0.64748   -1.23123   1.01092    -1.87250   0.16680    -0.44258   -0.89983   -0.78854   -0.98486   1.34389   
--0.57151   -0.77686   -0.39192   -1.61887   0.58786    -0.57619   0.02274    1.23910    -1.20468   -1.40794  
-1.73160    -0.32638   1.24241    1.49652    -0.03991   0.52671    1.08254    -1.61040   -1.56102   1.20094   
--0.47591   -2.70098   1.02962    -0.94826   -0.59977   -0.44253   -1.34469   1.26127    1.75049    -0.29679  
--0.92829   1.57782    -1.08072   2.19359    1.01465    -1.70510   0.82853    0.42864    -0.66320   1.08963   
+-0.20438   -0.97608   -0.37527   -0.00471   0.42691    0.64429    -0.37826   -0.02315   1.08438    -0.55651  
+-0.89103   -0.87173   1.28848    1.48051    -0.24372   -1.67347   -1.54156   -0.32257   0.45316    -0.73320  
+-0.15353   -0.44144   0.84805    -0.54710   -1.41090   2.00564    0.66384    -1.04778   1.00067    0.81082   
+0.87244    -2.18386   0.53396    1.67174    1.54852    -0.40589   -1.54990   0.68612    0.27048    -0.27375  
+-1.33242   0.10848    0.16683    1.19140    2.27289    -0.82416   0.98360    0.86021    -0.84644   1.50901   
+0.76963    -0.08177   -0.48671   -1.33007   -0.45298   0.34856    -0.00249   0.90691    -0.19339   -1.30748  
+-0.51805   0.66530    1.75604    -0.87319   0.78045    1.47267    -0.47716   0.38239    0.78734    -0.87843  
+0.31337    -1.16321   -1.36180   -0.72139   0.52902    -0.88114   0.33539    1.22315    -0.75551   0.36756   
+0.62489    0.08321    0.02511    -0.60689   -2.34480   0.27271    -1.80025   -1.89355   -0.24590   0.01972   
+-1.84983   0.36127    -0.09217   0.62969    0.24963    0.56068    -0.62246   -0.39854   -2.30407   -0.95548  
 ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 
 
@@ -474,7 +466,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpV1PMjn/file3a5ef46c.png
+/tmp/RtmpV1PMjn/file8947597.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -484,16 +476,16 @@ OK, so far, so good, but let's see what's going on with code chunks...
 
 
 ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
--1.11625   0.15397    0.70807    -0.56996   -0.01887   1.71365    0.98635    0.59693    -0.87190   0.66118   
-0.81533    0.42288    -0.66562   1.47900    -0.59480   -0.26437   -1.48043   -0.19521   -1.53085   0.49847   
-0.03088    -1.04953   -0.02020   0.00573    0.61759    0.30647    0.42549    0.16405    1.58203    -0.81203  
--1.28201   -0.03730   -0.11698   0.08172    0.36286    -1.55510   0.75167    -0.23912   0.16146    2.15956   
-0.10498    -0.56516   1.99188    -0.65875   -0.27765   0.42691    -0.30430   0.49028    -1.23781   0.07006   
--0.22958   -0.32969   -1.04122   1.75488    -1.29384   -0.21514   -0.31531   0.52219    -0.78471   -0.97331  
-0.84577    -0.57077   -0.60929   -1.58908   -1.29564   1.44880    -0.80586   2.13437    -0.59078   0.88979   
-0.25180    0.13418    1.64411    0.08629    -0.53475   0.11754    0.31651    0.44102    -1.46816   -0.07527  
--0.88805   -0.67393   1.14999    -0.73687   0.62511    0.94937    1.51905    1.02928    0.38598    -1.29219  
--0.78823   1.51008    -0.19413   0.95899    0.16995    0.92247    -0.05349   -1.17871   -1.74851   -0.53615  
+-1.11399   -1.43540   -0.61238   0.80214    -2.74797   0.99691    1.96794    0.68774    0.43944    0.16000   
+-0.04246   1.57804    0.77817    1.15685    -1.00604   0.09471    -0.62177   -0.77256   0.27875    0.94441   
+-1.07627   -0.14223   0.26994    0.31511    -2.06595   -0.71035   1.12444    -1.07330   -0.73219   -1.16904  
+0.45218    1.29579    0.18678    -0.51041   -1.43740   0.20114    0.03252    -0.39004   -1.50238   -0.10493  
+3.62513    -1.88824   -0.42495   1.25649    -0.79032   -0.35434   -0.28040   0.48377    0.08898    -0.13333  
+0.45540    2.46298    -0.08426   -0.15603   0.11776    0.19825    -1.26084   -0.48908   0.90705    1.07223   
+-0.41106   -0.28563   0.83612    0.08258    -0.61284   -1.10612   -0.65941   -0.23793   -0.76714   1.45379   
+-0.11498   -0.50775   -0.32924   -1.05956   0.95726    0.00047    1.37302    -0.79764   -0.60718   0.43473   
+1.84206    0.66827    0.49570    0.09892    -1.18682   -1.60310   0.71164    1.88750    -0.30469   -0.24915  
+-0.07789   0.13431    -0.54607   -1.17242   1.19911    0.09651    1.25640    0.21273    1.97152    -1.29210  
 ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 
 
@@ -506,13 +498,9 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 <h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
-
-{% highlight text %}
 rapport("example", mtcars, x = "mpg", y = "hp")
 rapport("example", mtcars, x = "hp", y = "wt")
 rapport("example", ius2009, x = "it.edu", y = "it.leisure")
-{% endhighlight %}
-
 
 {% endhighlight %}
 <h6>Popular formats:</h6>
@@ -617,7 +605,7 @@ rapport('outlier-test', data=ius2009, var='it.edu')
 
  == Boxplot  
 
-/tmp/RtmpV1PMjn/file10c45998.png
+/tmp/RtmpV1PMjn/file5b2bbc80.png
 
  == Lund test  
 
@@ -666,11 +654,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
-
-{% highlight text %}
 rapport('outlier-test', data=ius2009, var='it.edu')
-{% endhighlight %}
-
 
 {% endhighlight %}
 <h6>Popular formats:</h6>
@@ -868,7 +852,7 @@ This variable seems to be numeric.
 
  == Histogram  
 
-/tmp/RtmpV1PMjn/file8c563e1.png
+/tmp/RtmpV1PMjn/file3c58326e.png
 
 It seems that the highest value is 12 which is exactly Inf times higher than the smalles values (0).
 
@@ -881,11 +865,7 @@ If we suppose that "Internet usage for educational purposes (hours per day) is n
 <h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
-
-{% highlight text %}
 rapport('univar-descriptive', data=ius2009, var='it.edu')
-{% endhighlight %}
-
 
 {% endhighlight %}
 <h6>Popular formats:</h6>
