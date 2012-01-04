@@ -133,7 +133,7 @@ rp.hist <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'
 ##' @param data an optional data frame from which the variables should be taken
 ##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
 ##' @param colorize if set the color is chosen from palette at random
-##' @param ... additional parameters to \code{\link{histogram}}
+##' @param ... additional parameters to \code{\link{densityplot}}
 ##' @export
 ##' @examples \dontrun{
 ##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
