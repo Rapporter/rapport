@@ -58,6 +58,8 @@ rp.desc <- function(ndep = NULL, dep, fn, data, na.rm = TRUE, margins = NULL, su
         y
     })
 
+    class(res) <- 'rp.table'
+
     return(res)
 }
 
@@ -75,5 +77,7 @@ rp.freq <- function(f.vars, data, count = TRUE, pct = TRUE, cum.n = TRUE, cum.pc
     if (all(keep == FALSE))
         stop('no summary to show')
     keep <- c(rep(TRUE, length(f.vars)), keep)
-    cc[keep]
+    res <- cc[keep]
+    class(res) <- c('data.frame', 'rp.table')
+    return(res)
 }

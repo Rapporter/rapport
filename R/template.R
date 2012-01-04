@@ -1,6 +1,6 @@
 ##' Read Template
 ##'
-##' Reads file either form a template name, file path or URL, and splits it into lines for easier handling.
+##' Reads file either from template name, file path or URL, and splits it into lines for easier handling. "find" in \code{tpl.find} is borrowed from Emacs parlance - this function reads, and does not search for a template.
 ##' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
 ##' @return a character vector with template contents
 ##' @export
@@ -43,14 +43,13 @@ tpl.find <- function(fp){
 
 ##' Template Header
 ##'
-##' Returns template header contents from provided path or a character vector.
+##' Returns template header from provided path or a character vector.
 ##' @param fp a string containing a path to template, or a character vector with template lines
 ##' @param open.tag a string with opening tag
 ##' @param close.tag a string with closing tag
 ##' @param ... additional arguments to be passed to \code{\link{grep}} function
 ##' @return a character vector with template header contents
-##' @export
-tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), pretty = TRUE, ...){
+tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
 
     txt <- tpl.find(fp)                 # split by newlines
 
@@ -77,12 +76,6 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
         )
         stop('template header empty')
 
-    if (isTRUE(pretty)){
-        m <- tpl.meta(hsection, use.header = TRUE)
-        i <- tpl.inputs(hsection, use.header = TRUE)
-        hsection <- structure(list(meta = m, inputs = i), class = 'rp.header')
-    }
-
     return(hsection)
 }
 
@@ -103,6 +96,38 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 }
 
 
+##' Template Info
+##'
+##' Provides information about template metadata and inputs.
+##' @param fp a string containing a path to template, or a character vector with template lines
+##' @param meta return template metadata? (defaults to \code{TRUE})
+##' @param inputs return template inputs? (defaults to \code{TRUE})
+##' @examples \dontrun{
+##' tpl.info('example')  # return both metadata and inputs
+##' tpl.info('crosstable', inputs = FALSE)  # return only template metadata
+##' tpl.info('correlations', meta = FALSE)  # return only template inputs
+##' }
+##' @export
+tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
+
+    h <- tpl.header(fp)                 # get header
+
+    if (!meta & !inputs)
+        stop('Either "meta" or "inputs" should be set to TRUE')
+
+    res <- list()
+
+    if (meta)
+        res$meta <- tpl.meta(h, use.header = TRUE)
+
+    if (inputs)
+        res$inputs <- tpl.inputs(h, use.header = TRUE)
+
+    class(res) <- 'rp.header'
+    return(res)
+}
+
+
 ##' Header Metadata
 ##'
 ##' Returns metadata stored in template's header section, usually template title, nickname of an author, template description and list of required packages.
@@ -117,7 +142,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
     header <- tpl.find(fp)
 
     if (!isTRUE(use.header))
-        header <- tpl.header(header, pretty = FALSE)
+        header <- tpl.header(header)
 
     if (isTRUE(trim.white))
         header <- trim.space(header, TRUE)
@@ -167,7 +192,7 @@ tpl.inputs <- function(fp, use.header = TRUE){
     header <- tpl.find(fp)
 
     if (!isTRUE(use.header))
-        header <- tpl.header(header, pretty = FALSE)
+        header <- tpl.header(header)
 
     inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
 
@@ -238,6 +263,33 @@ tpl.example <- function(fp, index = NULL) {
         index <- 1
     eval(parse(text = examples[index]))
 }
+
+
+##' Reproduce Template
+##'
+##' Runs template with data and arguments included in \code{rapport} object. In order to get reproducible example, you have to make sure that \code{reproducible} argument is set to \code{TRUE} in \code{rapport} function.
+##' @param tpl a \code{rapport} object
+##' @examples \dontrun{
+##' tmp <- rapport("example", mtcars, x = "hp", y = "mpg")
+##' tpl.rerun(tmp)
+##' }
+##' @export
+tpl.rerun <- function(tpl){
+
+    if (!inherits(tpl, 'rapport'))
+        stop("You haven't provided a rapport template")
+
+    cl <- tpl$call
+    dt <- tpl$data
+
+    if (is.null(cl) || is.null(dt))
+        stop("Provided rapport object doesn't have included call and/or data, therefore not reproducible")
+
+    cl <- as.list(cl)
+    cl$data <- dt
+    do.call(rapport, cl)
+}
+
 
 ##' @export
 elem.eval <- function(x, ...)  UseMethod('elem.eval')
@@ -435,15 +487,16 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'block', 'chunk'), use.bo
 ##' Evaluate Template
 ##'
 ##' Evaluates template file and returns a list with \code{rapport} class.
-##' @param fp a string containing a template path or a character vector with template contents
-##' @param data a \code{data.frame} that is to be used with given template
+##' @param fp a string containing a template name/path or a character vector with template contents
+##' @param data a \code{data.frame} to be used in template
 ##' @param ... matches template inputs in format 'key = "value"'
+##' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 ##' @return a list with \code{rapport} class.
 ##' @examples \dontrun{
 ##'
 ##' }
 ##' @export
-rapport <- function(fp, data = NULL, ...){
+rapport <- function(fp, data = NULL, ..., reproducible = TRUE){
 
     txt    <- tpl.find(fp)                      # split file to text
     h      <- suppressMessages(tpl.header(txt)) # template header
@@ -475,13 +528,12 @@ rapport <- function(fp, data = NULL, ...){
     } else {
         ## check if template input names match the provided input names
         input.names <- sapply(inputs, function(x) x$name) # inputs required by template
-        input.nodef <- sapply(inputs, function(x) structure(is.null(x$default), .Names = x$name)) # TRUE stands for: has no default value (input required by the user)
+        input.nodef <- sapply(inputs, function(x) structure(is.null(x$default), .Names = x$name)) # TRUE, stands for: has no default value (input required by the user)
         input.ok    <- input.names[input.nodef] %in% names(i)
         ## take default inputs in an account
         if (!all(input.ok))
             stop("you haven't provided all inputs required by the template!\n", 'missing inputs: ', paste(input.names[input.nodef], collapse = ', '))
 
-        ## what if I only want to pass some vars? no data, just vars
         if(is.null(data))
             stop('"data" not provided, but is required')
 
@@ -578,9 +630,15 @@ rapport <- function(fp, data = NULL, ...){
 
     res <- list(
                 metadata = meta,
-                inputs = inputs,
-                report = report
+                inputs   = inputs,
+                report   = report
                 )
+
+    if (isTRUE(reproducible)){
+        res$call <- match.call()
+        res$data <- data
+    }
+
     class(res) <- 'rapport'
 
     return (res)

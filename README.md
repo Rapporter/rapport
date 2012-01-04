@@ -13,7 +13,7 @@ _rapport_ comes bundled with several report templates, and we hope that their nu
  - *data* that will be used with template (a `data.frame` in R parlance), and if data is provided,
  - *inputs* that usually correspond to column names in provided dataset, but with some additional functionality (boolean types and CSV inputs).
 
-In order to see a template description alongside input requirements you can use `tpl.header()` function. You need to provide either a full path to the template file (usually ending in `.tpl`), a file name, or a file name sans extension (if the template is located in system directory).
+In order to see a template description alongside input requirements you can use `tpl.info()` function. You need to provide either a full path to the template file (usually ending in `.tpl`), a file name, or a file name sans extension (if the template is located in system directory).
 
 ```
 tpl.header('example.tpl')

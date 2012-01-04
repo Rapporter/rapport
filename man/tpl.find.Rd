@@ -13,7 +13,9 @@
   a character vector with template contents
 }
 \description{
-  Reads file either form a template name, file path or URL,
-  and splits it into lines for easier handling.
+  Reads file either from template name, file path or URL,
+  and splits it into lines for easier handling. "find" in
+  \code{tpl.find} is borrowed from Emacs parlance - this
+  function reads, and does not search for a template.
 }
 

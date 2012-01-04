@@ -4,17 +4,21 @@
 \alias{rapport-package}
 \title{rapport templating system}
 \usage{
-  rapport(fp, data = NULL, ...)
+  rapport(fp, data = NULL, ..., reproducible = TRUE)
 }
 \arguments{
-  \item{fp}{a string containing a template path or a
+  \item{fp}{a string containing a template name/path or a
   character vector with template contents}
 
-  \item{data}{a \code{data.frame} that is to be used with
-  given template}
+  \item{data}{a \code{data.frame} to be used in template}
 
   \item{...}{matches template inputs in format 'key =
   "value"'}
+
+  \item{reproducible}{a logical value indicating if the
+  call and data should be stored in template object, thus
+  making it reproducible (see \code{\link{tpl.rerun}} for
+  details)}
 }
 \value{
   a list with \code{rapport} class.

@@ -3,8 +3,7 @@
 \title{Template Header}
 \usage{
   tpl.header(fp, open.tag = get.tags("header.open"),
-    close.tag = get.tags("header.close"), pretty = TRUE,
-    ...)
+    close.tag = get.tags("header.close"), ...)
 }
 \arguments{
   \item{fp}{a string containing a path to template, or a
@@ -21,7 +20,7 @@
   a character vector with template header contents
 }
 \description{
-  Returns template header contents from provided path or a
-  character vector.
+  Returns template header from provided path or a character
+  vector.
 }
 
