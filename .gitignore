@@ -4,6 +4,7 @@
 .Rhistory
 .Rprofile
 .RData
+.Rbuildignore
 rapport-Ex.R
 *.r
 #*.*
