@@ -4,5 +4,6 @@
 .Rhistory
 .Rprofile
 .RData
+rapport-Ex.R
 *.r
 #*.*
