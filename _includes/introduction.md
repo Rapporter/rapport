@@ -4,4 +4,6 @@ The package holds some [predefined, package shipped templates](#templates) but [
  
 For a really short introduction run:
 
-    demo(rapport)
+{% highlight r %}
+demo(rapport)
+{% endhighlight %}
