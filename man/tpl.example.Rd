@@ -19,9 +19,12 @@
 }
 \description{
   Runs the "Example" field found in specified template.
-  Handy to check out what a template does and looks like.
-  Could be easily exported to HTML, odt etc. - check out
-  the examples below.
+  Handy to check out what template does and how does it
+  look like once rendered. If multiple examples are
+  available, and \code{index} argument is \code{NULL}, you
+  will be prompted for input. Example output can be easily
+  exported to various formats (HTML, ODT, etc.) - check out
+  documentation for \code{tpl.export} for more info.
 }
 \examples{
 \dontrun{

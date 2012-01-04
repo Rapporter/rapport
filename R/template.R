@@ -24,8 +24,8 @@ tpl.find <- function(fp){
             ## is it local file?
             if (!file.exists(fp))
                 fp <- system.file('templates', ifelse(grepl('.+\\.tpl$', fp, ignore.case = TRUE), fp, sprintf('%s.tpl', fp)), package = 'rapport')
-                if (!file.exists(fp))
-                    stop('File not found!')
+            if (!file.exists(fp))
+                stop('File not found!')
         }
         txt <- readLines(fp, warn = FALSE) # load template from file path
     } else if (l > 1){
@@ -236,7 +236,7 @@ tpl.inputs <- function(fp, use.header = TRUE){
 
 ##' Template Examples
 ##'
-##' Runs the "Example" field found in specified template. Handy to check out what a template does and looks like. Could be easily exported to HTML, odt etc. - check out the examples below.
+##' Runs the "Example" field found in specified template. Handy to check out what template does and how does it look like once rendered. If multiple examples are available, and \code{index} argument is \code{NULL}, you will be prompted for input. Example output can be easily exported to various formats (HTML, ODT, etc.) - check out documentation for \code{tpl.export} for more info.
 ##' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
 ##' @param index a numeric vector indicating the example index. Meaningful only while running templates with multiple examples specified, otherwise omitted. In most cases this should be a single numeric value. If multiple numbers are provided, the examples are returned in a list. Using 'all' (character string) as index will return all examples.
 ##' @export
@@ -248,20 +248,42 @@ tpl.inputs <- function(fp, use.header = TRUE){
 ##' tpl.example('example', 'all')
 ##' }
 tpl.example <- function(fp, index = NULL) {
+
     examples <- tpl.meta(fp)$example
+    n.examples <- 1:length(examples)
+
     if (is.null(example))
         stop('Sorry, provided template does not have an example field.')
-    if (any(index == 'all')) index <- 1:length(examples)
+
     if (length(examples) > 1){
         if (is.null(index)){
-            message("Pick one of the below examples:\n")
-            return(examples)
+            opts <- c(n.examples, 'all')
+            catn('Enter example ID from the list below:')
+            catn(sprintf('\n(%s)\t%s', opts, c(examples, 'Run all examples')))
+            cat('\nTemplate ID> ')
+            con <- file('stdin')
+            index <- unique(strsplit(readLines(con, 1), ' ?, ?')[[1]])
+            close(con)
         }
-        if (length(index) > 1)
-            return(lapply(examples[index], function(x) eval(parse(text = x))))
-    } else
+    } else {
         index <- 1
-    eval(parse(text = examples[index]))
+    }
+
+    if (length(index) == 1 && index == 'all')
+        index <- n.examples
+
+    old.index <- index
+    if (!any(index %in% n.examples))
+        stop(sprintf('Invalid template ID found in: ', paste(setdiff(index, n.examples), collapse = ', ')))
+    suppressWarnings(index <- as.integer(index))
+
+    if (any(is.na(index)))
+        stop(sprintf('Invalid template ID found in: "%s"', paste(old.index, collapse = ', ')))
+
+    if (length(index) > 1)
+        return(lapply(examples[index], function(x) eval(parse(text = x))))
+    else
+        eval(parse(text = examples[index]))
 }
 
 
@@ -496,7 +518,7 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'block', 'chunk'), use.bo
 ##'
 ##' }
 ##' @export
-rapport <- function(fp, data = NULL, ..., reproducible = TRUE){
+rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
 
     txt    <- tpl.find(fp)                      # split file to text
     h      <- suppressMessages(tpl.info(txt))   # template header
@@ -631,11 +653,11 @@ rapport <- function(fp, data = NULL, ..., reproducible = TRUE){
     res <- list(
                 metadata = meta,
                 inputs   = inputs,
-                report   = report
+                report   = report,
+                call     = match.call()
                 )
 
     if (isTRUE(reproducible)){
-        res$call <- match.call()
         res$data <- data
     }
 
