@@ -26,7 +26,11 @@ Please find below a detailed description about each with sample outputs of those
 <br><br>
 <em>Required packages:</em> ascii
 <br>
-<em>Example:</em> rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))</div></li>
+<em>Example:</em> 
+{% highlight text %}
+rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
+{% endhighlight %}
+</div></li>
 	<li id="inputs-correlations"><div><h5>Input parameters</h5><em>correlations.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
 	<li><h6>vars: <small><em>Variable</em></small></h6>
 <div class="options">    <div class="options-desc">Numerical variables
@@ -86,15 +90,15 @@ Uncorrelated (-0.2 < r < 0.2) variables:
  === Correlation matrix  
 
 
-             **age**   **it.edu**   **it.leisure**  
------------- --------- ------------ ----------------
-age                    0.24         -0.05           
-it.edu                              0.17            
-it.leisure                                          
------------- --------- ------------ ----------------
+             **age**       **it.edu**    **it.leisure**  
+------------ ------------- ------------- ----------------
+age                        0.23644 ***   -0.04905        
+it.edu       0.23644 ***                 0.17142 ***     
+it.leisure   -0.04905      0.17142 ***                   
+------------ ------------- ------------- ----------------
 
 
-/tmp/RtmpV1PMjn/file45da7436.png
+/tmp/RtmpV1PMjn/file3a680b48.png
 
 
 {% endhighlight %}
@@ -103,7 +107,11 @@ it.leisure
 <h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
+
+{% highlight text %}
 rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
+{% endhighlight %}
+
 
 {% endhighlight %}
 <h6>Popular formats:</h6>
@@ -147,7 +155,11 @@ rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
 <br><br>
 <em>Required packages:</em> descr
 <br>
-<em>Example:</em> rapport('crosstable', data=ius2009, row='gender', col='dwell')</div></li>
+<em>Example:</em> 
+{% highlight text %}
+rapport('crosstable', data=ius2009, row='gender', col='dwell')
+{% endhighlight %}
+</div></li>
 	<li id="inputs-crosstable"><div><h5>Input parameters</h5><em>crosstable.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
 	<li><h6>row: <small><em>Row variable</em></small></h6>
 <div class="options">    <div class="options-desc">A categorical variable.
@@ -251,7 +263,7 @@ female   2.9409     -2.8277          -1.1712
 
  === Mosaic chart  
 
-/tmp/RtmpV1PMjn/file4e400c0f.png
+/tmp/RtmpV1PMjn/filed15c41.png
 
 
 {% endhighlight %}
@@ -260,7 +272,11 @@ female   2.9409     -2.8277          -1.1712
 <h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
+
+{% highlight text %}
 rapport('crosstable', data=ius2009, row='gender', col='dwell')
+{% endhighlight %}
+
 
 {% endhighlight %}
 <h6>Popular formats:</h6>
@@ -304,7 +320,13 @@ rapport('crosstable', data=ius2009, row='gender', col='dwell')
 <br><br>
 <em>Required packages:</em> 
 <br>
-<em>Example:</em> rapport("example", mtcars, x = "mpg", y = "hp")</div></li>
+<em>Example:</em> 
+{% highlight text %}
+rapport("example", mtcars, x = "mpg", y = "hp")
+rapport("example", mtcars, x = "hp", y = "wt")
+rapport("example", ius2009, x = "it.edu", y = "it.leisure")
+{% endhighlight %}
+</div></li>
 	<li id="inputs-example"><div><h5>Input parameters</h5><em>example.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
 	<li><h6>x: <small><em>Var X</em></small></h6>
 <div class="options">    <div class="options-desc">One or two factors for one/two-way ANOVA
@@ -370,7 +392,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpV1PMjn/file162a518a.png
+/tmp/RtmpV1PMjn/file56c78f7d.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -411,7 +433,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpV1PMjn/file2ce848c7.png
+/tmp/RtmpV1PMjn/file5a66b585.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -452,7 +474,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpV1PMjn/file660d126f.png
+/tmp/RtmpV1PMjn/file3a5ef46c.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -484,7 +506,13 @@ When it comes to CSV values, let us see how do they work. You have chosen the "f
 <h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
+
+{% highlight text %}
 rapport("example", mtcars, x = "mpg", y = "hp")
+rapport("example", mtcars, x = "hp", y = "wt")
+rapport("example", ius2009, x = "it.edu", y = "it.leisure")
+{% endhighlight %}
+
 
 {% endhighlight %}
 <h6>Popular formats:</h6>
@@ -528,7 +556,11 @@ rapport("example", mtcars, x = "mpg", y = "hp")
 <br><br>
 <em>Required packages:</em> outliers
 <br>
-<em>Example:</em> rapport('outlier-test', data=ius2009, var='it.edu')</div></li>
+<em>Example:</em> 
+{% highlight text %}
+rapport('outlier-test', data=ius2009, var='it.edu')
+{% endhighlight %}
+</div></li>
 	<li id="inputs-outlier-test"><div><h5>Input parameters</h5><em>outlier-test.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
 	<li><h6>var: <small><em>Variable</em></small></h6>
 <div class="options">    <div class="options-desc">Numerical variable
@@ -585,7 +617,7 @@ rapport("example", mtcars, x = "mpg", y = "hp")
 
  == Boxplot  
 
-/tmp/RtmpV1PMjn/file4ac000f3.png
+/tmp/RtmpV1PMjn/file10c45998.png
 
  == Lund test  
 
@@ -634,7 +666,11 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 <h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
+
+{% highlight text %}
 rapport('outlier-test', data=ius2009, var='it.edu')
+{% endhighlight %}
+
 
 {% endhighlight %}
 <h6>Popular formats:</h6>
@@ -790,7 +826,11 @@ rapport('outlier-test', data=ius2009, var='it.edu')
 <br><br>
 <em>Required packages:</em> 
 <br>
-<em>Example:</em> rapport('univar-descriptive', data=ius2009, var='it.edu')</div></li>
+<em>Example:</em> 
+{% highlight text %}
+rapport('univar-descriptive', data=ius2009, var='it.edu')
+{% endhighlight %}
+</div></li>
 	<li id="inputs-univar-descriptive"><div><h5>Input parameters</h5><em>univar-descriptive.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
 	<li><h6>var: <small><em>Variable</em></small></h6>
 <div class="options">    <div class="options-desc">A categorical or numerical variable. The template will determine the measurement level of the given variable and will return a detailed frequency table or appropriate descriptive statistics for numerics.
@@ -828,7 +868,7 @@ This variable seems to be numeric.
 
  == Histogram  
 
-/tmp/RtmpV1PMjn/file62b76eb4.png
+/tmp/RtmpV1PMjn/file8c563e1.png
 
 It seems that the highest value is 12 which is exactly Inf times higher than the smalles values (0).
 
@@ -841,7 +881,11 @@ If we suppose that "Internet usage for educational purposes (hours per day) is n
 <h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
+
+{% highlight text %}
 rapport('univar-descriptive', data=ius2009, var='it.edu')
+{% endhighlight %}
+
 
 {% endhighlight %}
 <h6>Popular formats:</h6>

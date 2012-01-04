@@ -24,12 +24,12 @@ Uncorrelated (-0.2 < r < 0.2) variables: * "age" - "it.leisure" *
 
 **** Correlation matrix
 
-|              | *age*   | *it.edu*   | *it.leisure*   |
-|--------------+---------+------------+----------------|
-| age          |         | 0.23644    | -0.04905       |
-| it.edu       |         |            | 0.17142        |
-| it.leisure   |         |            |                |
+|              | *age*         | *it.edu*      | *it.leisure*   |
+|--------------+---------------+---------------+----------------|
+| age          |               | 0.23644 /*/   | -0.04905       |
+| it.edu       | 0.23644 /*/   |               | 0.17142 /*/    |
+| it.leisure   | -0.04905      | 0.17142 /*/   |                |
 
 #+CAPTION: 
 
-[[23OhJ8oolQ87oOoloJ8oolQ87hZ5oOo.png]]
+[[d760560f48bf99d7066d3eff5eba360a.png]]

@@ -219,6 +219,6 @@ T}
 .TE
 .SS Mosaic chart
 .PP
-[IMAGE: image (H8O52JlQ87h75AQNGOOe5BNj0GOH52IjPIggo.png)]
+[IMAGE: image (174005806d0dea09f20abab24746f774.png)]
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

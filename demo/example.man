@@ -15,7 +15,7 @@ Its value is 3.1416.
 .PP
 And some graphs:
 .PP
-[IMAGE: image (/tmp/RtmpV1PMjn/file16ff105e.png)]
+[IMAGE: image (bcc0dbaf4a393aacd8f480329c88e68f.png)]
 .PP
 So far we've been dealing with data.frames and plots, now let's deal
 with variables
@@ -259,7 +259,7 @@ Its value is 3.1416.
 .PP
 And some graphs:
 .PP
-[IMAGE: image (/tmp/RtmpV1PMjn/file285ca29b.png)]
+[IMAGE: image (31cfadc943dc05ceb88d3c07b411cf28.png)]
 .PP
 So far we've been dealing with data.frames and plots, now let's deal
 with variables
@@ -503,7 +503,7 @@ Its value is 3.1416.
 .PP
 And some graphs:
 .PP
-[IMAGE: image (/tmp/RtmpV1PMjn/file17ef3152.png)]
+[IMAGE: image (a28c9526df56f14f4db444f97f519855.png)]
 .PP
 So far we've been dealing with data.frames and plots, now let's deal
 with variables

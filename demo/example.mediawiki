@@ -10,7 +10,7 @@ The average fuel consumption is 20.091 with SD of 6.027. Let's add one more line
 
 And some graphs:
 
-[[Image:/tmp/RtmpV1PMjn/file16ff105e.png|frame|none]]
+[[Image:bcc0dbaf4a393aacd8f480329c88e68f.png|frame|none]]
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -157,7 +157,7 @@ The average fuel consumption is 146.69 with SD of 68.563. Let's add one more lin
 
 And some graphs:
 
-[[Image:/tmp/RtmpV1PMjn/file285ca29b.png|frame|none]]
+[[Image:31cfadc943dc05ceb88d3c07b411cf28.png|frame|none]]
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -304,7 +304,7 @@ The average fuel consumption is 2.0628 with SD of 2.0404. Let's add one more lin
 
 And some graphs:
 
-[[Image:/tmp/RtmpV1PMjn/file17ef3152.png|frame|none]]
+[[Image:a28c9526df56f14f4db444f97f519855.png|frame|none]]
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 

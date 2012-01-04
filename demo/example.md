@@ -16,7 +16,7 @@ of *pi*? Right? Its value is 3.1416.
 
 And some graphs:
 
-![image](/tmp/RtmpV1PMjn/file16ff105e.png)
+![image](bcc0dbaf4a393aacd8f480329c88e68f.png)
 
 So far we've been dealing with data.frames and plots, now let's deal
 with variables
@@ -56,7 +56,7 @@ of *pi*? Right? Its value is 3.1416.
 
 And some graphs:
 
-![image](/tmp/RtmpV1PMjn/file285ca29b.png)
+![image](31cfadc943dc05ceb88d3c07b411cf28.png)
 
 So far we've been dealing with data.frames and plots, now let's deal
 with variables
@@ -96,7 +96,7 @@ of *pi*? Right? Its value is 3.1416.
 
 And some graphs:
 
-![image](/tmp/RtmpV1PMjn/file17ef3152.png)
+![image](a28c9526df56f14f4db444f97f519855.png)
 
 So far we've been dealing with data.frames and plots, now let's deal
 with variables

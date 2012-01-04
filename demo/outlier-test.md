@@ -8,7 +8,7 @@ This template will check if provided variable has any outliers.
 
 ### Boxplot
 
-![image](oloA8PlQ87hZ5oo.png)
+![image](d30dda4b6d42b184f75e9550cae167eb.png)
 
 ### Lund test
 

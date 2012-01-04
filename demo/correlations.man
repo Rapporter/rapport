@@ -36,25 +36,28 @@ T{
 age
 T}@T{
 T}@T{
-0.23644
+0.23644 \f[I]*\f[]
 T}@T{
 \[en]0.04905
 T}
 T{
 it.edu
 T}@T{
+0.23644 \f[I]*\f[]
 T}@T{
 T}@T{
-0.17142
+0.17142 \f[I]*\f[]
 T}
 T{
 it.leisure
 T}@T{
+\[en]0.04905
 T}@T{
+0.17142 \f[I]*\f[]
 T}@T{
 T}
 .TE
 .PP
-[IMAGE: image (23OhJ8oolQ87oOoloJ8oolQ87hZ5oOo.png)]
+[IMAGE: image (d760560f48bf99d7066d3eff5eba360a.png)]
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

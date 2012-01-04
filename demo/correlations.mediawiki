@@ -27,22 +27,22 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables: * &quot;age&quot; - &quot;it.leis
 <tr class="odd">
 <td align="left">age</td>
 <td align="left"></td>
-<td align="left">0.23644</td>
+<td align="left">0.23644 ''*''</td>
 <td align="left">-0.04905</td>
 </tr>
 <tr class="even">
 <td align="left">it.edu</td>
+<td align="left">0.23644 ''*''</td>
 <td align="left"></td>
-<td align="left"></td>
-<td align="left">0.17142</td>
+<td align="left">0.17142 ''*''</td>
 </tr>
 <tr class="odd">
 <td align="left">it.leisure</td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left">-0.04905</td>
+<td align="left">0.17142 ''*''</td>
 <td align="left"></td>
 </tr>
 </tbody>
 </table>
 
-[[Image:23OhJ8oolQ87oOoloJ8oolQ87hZ5oOo.png|frame|none]]
+[[Image:d760560f48bf99d7066d3eff5eba360a.png|frame|none]]

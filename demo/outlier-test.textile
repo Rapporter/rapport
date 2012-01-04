@@ -4,7 +4,7 @@ This template will check if provided variable has any outliers.
 
 h3. Boxplot
 
-!oloA8PlQ87hZ5oo.png!
+!d30dda4b6d42b184f75e9550cae167eb.png!
 
 
 h3. Lund test

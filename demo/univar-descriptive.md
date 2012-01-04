@@ -21,7 +21,7 @@ This variable seems to be numeric.
 
 ### Histogram
 
-![image](23Oh2OoI5HNo2JhZ5oooO4mOOOOOOOOoloe2O7hZ5oomOOOOLONQONO4mOOOOOOOOoloA5olQ87hZ5oomOOOOL.png)
+![image](598faf698f82b8217e0ed3137a62daaf.png)
 
 It seems that the highest value is 12 which is exactly Inf times higher
 than the smalles values (0).

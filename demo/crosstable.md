@@ -61,4 +61,4 @@ Two variables specified: \* "gender" ("Gender") with 709 and \* "dwell"
 
 #### Mosaic chart
 
-![image](H8O52JlQ87h75AQNGOOe5BNj0GOH52IjPIggo.png)
+![image](174005806d0dea09f20abab24746f774.png)

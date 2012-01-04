@@ -11,7 +11,7 @@ This template will check if provided variable has any outliers.
 
 ==== Boxplot ====
 
-[[Image:oloA8PlQ87hZ5oo.png|center]]
+[[Image:d30dda4b6d42b184f75e9550cae167eb.png|center]]
 
 ==== Lund test ====
 

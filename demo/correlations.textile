@@ -15,10 +15,10 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables: &#42; &quot;age&quot; - &quot;it.
 h4. Correlation matrix
 
 |_. |_. *age*|_. *it.edu*|_. *it.leisure*|
-|age||0.23644|-0.04905|
-|it.edu|||0.17142|
-|it.leisure||||
+|age||0.23644 _&#42;_|-0.04905|
+|it.edu|0.23644 _&#42;_||0.17142 _&#42;_|
+|it.leisure|-0.04905|0.17142 _&#42;_||
 
 
-!23OhJ8oolQ87oOoloJ8oolQ87hZ5oOo.png!
+!d760560f48bf99d7066d3eff5eba360a.png!
 

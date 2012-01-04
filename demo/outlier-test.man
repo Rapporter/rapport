@@ -5,7 +5,7 @@
 This template will check if provided variable has any outliers.
 .SS Boxplot
 .PP
-[IMAGE: image (oloA8PlQ87hZ5oo.png)]
+[IMAGE: image (d30dda4b6d42b184f75e9550cae167eb.png)]
 .SS Lund test
 .PP
 It seems that 5 extreme values can be found in \[lq]Internet usage for

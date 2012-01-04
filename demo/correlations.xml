@@ -67,7 +67,7 @@
               <entry>
               </entry>
               <entry>
-                0.23644
+                0.23644 <emphasis>*</emphasis>
               </entry>
               <entry>
                 -0.04905
@@ -78,11 +78,12 @@
                 it.edu
               </entry>
               <entry>
+                0.23644 <emphasis>*</emphasis>
               </entry>
               <entry>
               </entry>
               <entry>
-                0.17142
+                0.17142 <emphasis>*</emphasis>
               </entry>
             </row>
             <row>
@@ -90,8 +91,10 @@
                 it.leisure
               </entry>
               <entry>
+                -0.04905
               </entry>
               <entry>
+                0.17142 <emphasis>*</emphasis>
               </entry>
               <entry>
               </entry>
@@ -103,7 +106,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="23OhJ8oolQ87oOoloJ8oolQ87hZ5oOo.png" />
+            <imagedata fileref="d760560f48bf99d7066d3eff5eba360a.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
