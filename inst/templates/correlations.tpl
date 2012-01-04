@@ -25,7 +25,17 @@ Uncorrelated (-0.2 < r < 0.2) variables: <%l <- row.names(cm)[which((cm < 0.2)&(
 ## <%if (cor.matrix) 'Correlation matrix'%>
 
 <%
-if (cor.matrix) as.data.frame(cm)
+if (cor.matrix) {
+    cm <- rp.round(cor(vars))
+    d <- attributes(cm)
+    for (row in attr(cm, 'dimnames')[[1]])
+        for (col in attr(cm, 'dimnames')[[2]]) {
+            test.p <- cor.test(vars[, row], vars[, col])$p.value 
+            cm[row, col] <- paste(cm[row, col], ' ', ifelse(test.p > 0.05, '', ifelse(test.p > 0.01, '*', ifelse(test.p > 0.001, '**', '***'))), sep='')
+        }
+    diag(cm) <- ''
+    as.data.frame(cm)
+}
 %>
 
 <%
