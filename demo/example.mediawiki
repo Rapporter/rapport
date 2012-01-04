@@ -10,7 +10,154 @@ The average fuel consumption is 20.091 with SD of 6.027. Let's add one more line
 
 And some graphs:
 
-[[Image:KKORo27NO5ORo5llNoO38oO7e2OWO2IOO757OolWmlQ87hPGOlJeOjOv5om7NP7hPGOQ5ANQOjOo8RoI5HNOholoB575oGOl8OOjOto.png|frame|none]]
+[[Image:/tmp/RtmpV1PMjn/file16ff105e.png|frame|none]]
+
+So far we've been dealing with data.frames and plots, now let's deal with variables
+
+Now we'll see if the Z var is working properly. If I omit it, it should perserve the default value (TRUE)... aaaand.... TRUE.
+
+OK, so far, so good, but let's see what's going on with code chunks...
+
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">0.21696</td>
+<td align="left">0.50174</td>
+<td align="left">0.22349</td>
+<td align="left">-2.49296</td>
+<td align="left">0.83943</td>
+<td align="left">0.92650</td>
+<td align="left">0.12971</td>
+<td align="left">0.28960</td>
+<td align="left">2.49944</td>
+<td align="left">0.70745</td>
+</tr>
+<tr class="even">
+<td align="left">-0.00474</td>
+<td align="left">-0.44688</td>
+<td align="left">0.63431</td>
+<td align="left">0.16124</td>
+<td align="left">0.13629</td>
+<td align="left">-1.68244</td>
+<td align="left">-0.77522</td>
+<td align="left">0.04510</td>
+<td align="left">-2.16911</td>
+<td align="left">-1.36643</td>
+</tr>
+<tr class="odd">
+<td align="left">-0.60781</td>
+<td align="left">-0.49399</td>
+<td align="left">-0.76930</td>
+<td align="left">1.15453</td>
+<td align="left">-0.25689</td>
+<td align="left">1.10013</td>
+<td align="left">-2.02654</td>
+<td align="left">-0.19706</td>
+<td align="left">0.20225</td>
+<td align="left">-1.49571</td>
+</tr>
+<tr class="even">
+<td align="left">0.15967</td>
+<td align="left">-0.13376</td>
+<td align="left">-0.01630</td>
+<td align="left">-0.66398</td>
+<td align="left">-1.34999</td>
+<td align="left">0.27609</td>
+<td align="left">-1.59700</td>
+<td align="left">-0.92464</td>
+<td align="left">1.22796</td>
+<td align="left">0.86069</td>
+</tr>
+<tr class="odd">
+<td align="left">0.85585</td>
+<td align="left">1.98238</td>
+<td align="left">0.86331</td>
+<td align="left">-0.58917</td>
+<td align="left">-2.07967</td>
+<td align="left">0.35422</td>
+<td align="left">-0.23036</td>
+<td align="left">0.56239</td>
+<td align="left">-0.44610</td>
+<td align="left">0.41423</td>
+</tr>
+<tr class="even">
+<td align="left">0.44926</td>
+<td align="left">-3.02493</td>
+<td align="left">0.16428</td>
+<td align="left">-0.64600</td>
+<td align="left">1.01250</td>
+<td align="left">-1.25318</td>
+<td align="left">0.00740</td>
+<td align="left">0.06426</td>
+<td align="left">0.30169</td>
+<td align="left">0.05773</td>
+</tr>
+<tr class="odd">
+<td align="left">0.48462</td>
+<td align="left">1.18370</td>
+<td align="left">-1.12861</td>
+<td align="left">0.76260</td>
+<td align="left">-0.20068</td>
+<td align="left">0.82466</td>
+<td align="left">2.01900</td>
+<td align="left">-1.11847</td>
+<td align="left">0.29299</td>
+<td align="left">-0.80400</td>
+</tr>
+<tr class="even">
+<td align="left">0.38761</td>
+<td align="left">-1.37269</td>
+<td align="left">-0.73651</td>
+<td align="left">-0.51947</td>
+<td align="left">-0.52728</td>
+<td align="left">-0.84735</td>
+<td align="left">0.85965</td>
+<td align="left">1.28130</td>
+<td align="left">-0.96874</td>
+<td align="left">-1.48523</td>
+</tr>
+<tr class="odd">
+<td align="left">-0.52076</td>
+<td align="left">0.16741</td>
+<td align="left">1.61759</td>
+<td align="left">-0.43654</td>
+<td align="left">-0.85698</td>
+<td align="left">-1.26634</td>
+<td align="left">0.09499</td>
+<td align="left">1.23600</td>
+<td align="left">0.04324</td>
+<td align="left">0.58843</td>
+</tr>
+<tr class="even">
+<td align="left">-1.93349</td>
+<td align="left">0.78008</td>
+<td align="left">0.56110</td>
+<td align="left">0.83768</td>
+<td align="left">-0.67731</td>
+<td align="left">1.07995</td>
+<td align="left">-0.39401</td>
+<td align="left">-0.79811</td>
+<td align="left">-1.18033</td>
+<td align="left">0.62871</td>
+</tr>
+</tbody>
+</table>
+
+When it comes to CSV values, let us see how do they work. You have chosen the &quot;foo&quot;.
+
+== Description ==
+
+A simple report.
+
+=== Descriptive statistics ===
+
+The average fuel consumption is 146.69 with SD of 68.563. Let's add one more line to this paragraph. And another one. Now, you've probably heard of ''pi''? Right? Its value is 3.1416.
+
+=== Graphs ===
+
+And some graphs:
+
+[[Image:/tmp/RtmpV1PMjn/file285ca29b.png|frame|none]]
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -139,6 +286,153 @@ OK, so far, so good, but let's see what's going on with code chunks...
 <td align="left">1.77922</td>
 <td align="left">1.05258</td>
 <td align="left">1.01411</td>
+</tr>
+</tbody>
+</table>
+
+When it comes to CSV values, let us see how do they work. You have chosen the &quot;foo&quot;.
+
+== Description ==
+
+A simple report.
+
+=== Descriptive statistics ===
+
+The average fuel consumption is 2.0628 with SD of 2.0404. Let's add one more line to this paragraph. And another one. Now, you've probably heard of ''pi''? Right? Its value is 3.1416.
+
+=== Graphs ===
+
+And some graphs:
+
+[[Image:/tmp/RtmpV1PMjn/file17ef3152.png|frame|none]]
+
+So far we've been dealing with data.frames and plots, now let's deal with variables
+
+Now we'll see if the Z var is working properly. If I omit it, it should perserve the default value (TRUE)... aaaand.... TRUE.
+
+OK, so far, so good, but let's see what's going on with code chunks...
+
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">1.72828</td>
+<td align="left">0.00902</td>
+<td align="left">-0.42988</td>
+<td align="left">-0.42918</td>
+<td align="left">-0.31233</td>
+<td align="left">0.86316</td>
+<td align="left">-0.76035</td>
+<td align="left">0.73025</td>
+<td align="left">-1.29166</td>
+<td align="left">0.47547</td>
+</tr>
+<tr class="even">
+<td align="left">0.72337</td>
+<td align="left">1.48224</td>
+<td align="left">-0.59635</td>
+<td align="left">0.10393</td>
+<td align="left">0.55306</td>
+<td align="left">-0.45044</td>
+<td align="left">-2.02105</td>
+<td align="left">-0.57019</td>
+<td align="left">0.71030</td>
+<td align="left">1.13604</td>
+</tr>
+<tr class="odd">
+<td align="left">1.22395</td>
+<td align="left">0.10938</td>
+<td align="left">0.38807</td>
+<td align="left">-0.51683</td>
+<td align="left">1.79204</td>
+<td align="left">-0.18481</td>
+<td align="left">0.40610</td>
+<td align="left">-0.22629</td>
+<td align="left">1.32677</td>
+<td align="left">-1.73743</td>
+</tr>
+<tr class="even">
+<td align="left">0.36481</td>
+<td align="left">2.31903</td>
+<td align="left">0.69694</td>
+<td align="left">0.54454</td>
+<td align="left">0.76660</td>
+<td align="left">-1.21620</td>
+<td align="left">-0.38909</td>
+<td align="left">0.46635</td>
+<td align="left">-0.04112</td>
+<td align="left">-1.84051</td>
+</tr>
+<tr class="odd">
+<td align="left">-1.27903</td>
+<td align="left">0.73900</td>
+<td align="left">-0.52441</td>
+<td align="left">-1.00506</td>
+<td align="left">2.15166</td>
+<td align="left">-0.92249</td>
+<td align="left">-0.34753</td>
+<td align="left">0.97207</td>
+<td align="left">0.07277</td>
+<td align="left">1.82394</td>
+</tr>
+<tr class="even">
+<td align="left">0.05284</td>
+<td align="left">0.43922</td>
+<td align="left">0.01174</td>
+<td align="left">0.15163</td>
+<td align="left">-1.51874</td>
+<td align="left">-2.05551</td>
+<td align="left">-0.51695</td>
+<td align="left">-0.27935</td>
+<td align="left">-0.26791</td>
+<td align="left">0.98499</td>
+</tr>
+<tr class="odd">
+<td align="left">-0.27293</td>
+<td align="left">2.10518</td>
+<td align="left">-1.91476</td>
+<td align="left">-0.25366</td>
+<td align="left">0.32643</td>
+<td align="left">1.37410</td>
+<td align="left">-0.33690</td>
+<td align="left">0.85166</td>
+<td align="left">0.02857</td>
+<td align="left">-1.01447</td>
+</tr>
+<tr class="even">
+<td align="left">-0.08657</td>
+<td align="left">0.24202</td>
+<td align="left">-0.58678</td>
+<td align="left">-1.14747</td>
+<td align="left">-1.78722</td>
+<td align="left">-0.14218</td>
+<td align="left">-1.70038</td>
+<td align="left">1.11414</td>
+<td align="left">-1.02090</td>
+<td align="left">0.84343</td>
+</tr>
+<tr class="odd">
+<td align="left">-1.14003</td>
+<td align="left">0.36409</td>
+<td align="left">0.14422</td>
+<td align="left">0.62636</td>
+<td align="left">1.81143</td>
+<td align="left">0.12810</td>
+<td align="left">0.45547</td>
+<td align="left">1.25006</td>
+<td align="left">0.61398</td>
+<td align="left">-0.58169</td>
+</tr>
+<tr class="even">
+<td align="left">-0.81676</td>
+<td align="left">1.19413</td>
+<td align="left">0.96644</td>
+<td align="left">0.84559</td>
+<td align="left">-0.48541</td>
+<td align="left">0.36482</td>
+<td align="left">0.77711</td>
+<td align="left">-1.64583</td>
+<td align="left">0.28705</td>
+<td align="left">-0.75663</td>
 </tr>
 </tbody>
 </table>
