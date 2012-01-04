@@ -112,7 +112,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
     if (!is.logical(create)) stop('Wrong create (!=TRUE|FALSE) parameter!')
 
     ## a == NULL
-    if (is.null(rp)) return(r$create(file=file))
+    #if (is.null(rp)) return(r$create(file=file))  #############################################BUG
 
     ## exporting multiple rapport classes at once
     if (class(rp) == 'list') {
@@ -128,30 +128,33 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
     r$backend <- backend
     r$format <- format
     
-    ## header stuff
-    r$addSection('Description', 2)
-    r$add(paragraph(as.character(rp$metadata['desc'])))
-
-    ## body
-    lapply(rp$report, function(x) {
-        if (x$type=='heading') r$addSection(x$text$eval, 2+x$level)
-        if (x$type=='block')
-            r$add(paragraph(ifelse(is.null(unlist(x$chunks$raw)),
-                                   unlist(x$text$raw),
-                                   unlist(x$text$eval))
-                            )
-                  )
-        if (x$type=='chunk' & !is.null(x$robjects[[1]]$type)) {
-            if (x$robjects[[1]]$type == 'error')
-                r$add(paragraph(as.character(x$robjects[[1]]$msg$errors)))
-            if (x$robjects[[1]]$type == 'image') r$addFig(file=x$robjects[[1]]$output)
-            if (all(x$robjects[[1]]$type != c('image', 'error')))
-                r$add(ascii(x$robjects[[1]]$output, digits = getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark')))
-            if (!is.null(x$robjects[[1]]$msg$warnings))
-                r$add(paragraph(sprintf('**Warning** in "%s": "%s"', x$robjects[[1]]$src, as.character(x$robjects[[1]]$msg$warnings))
-            ))
+    ## header stuff #############################################BUG
+    if (!is.null(rp))
+        if(class(rp) == 'rapport') {
+            r$addSection('Description', 2)
+            r$add(paragraph(as.character(rp$metadata['desc'])))
+        
+            ## body
+            lapply(rp$report, function(x) {
+                if (x$type=='heading') r$addSection(x$text$eval, 2+x$level)
+                if (x$type=='block')
+                    r$add(paragraph(ifelse(is.null(unlist(x$chunks$raw)),
+                                           unlist(x$text$raw),
+                                           unlist(x$text$eval))
+                                    )
+                          )
+                if (x$type=='chunk' & !is.null(x$robjects[[1]]$type)) {
+                    if (x$robjects[[1]]$type == 'error')
+                        r$add(paragraph(as.character(x$robjects[[1]]$msg$errors)))
+                    if (x$robjects[[1]]$type == 'image') r$addFig(file=x$robjects[[1]]$output)
+                    if (all(x$robjects[[1]]$type != c('image', 'error')))
+                        r$add(ascii(x$robjects[[1]]$output, digits = getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark')))
+                    if (!is.null(x$robjects[[1]]$msg$warnings))
+                        r$add(paragraph(sprintf('**Warning** in "%s": "%s"', x$robjects[[1]]$src, as.character(x$robjects[[1]]$msg$warnings))
+                    ))
+                }
+            })
         }
-    })
 
     ## create report or return the Report class
     if (create) {
