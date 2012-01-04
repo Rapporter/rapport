@@ -24,6 +24,8 @@ tpl.find <- function(fp){
             ## is it local file?
             if (!file.exists(fp))
                 fp <- system.file('templates', ifelse(grepl('.+\\.tpl$', fp, ignore.case = TRUE), fp, sprintf('%s.tpl', fp)), package = 'rapport')
+                if (!file.exists(fp))
+                    stop('File not found!')
         }
         txt <- readLines(fp, warn = FALSE) # load template from file path
     } else if (l > 1){
