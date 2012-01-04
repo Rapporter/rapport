@@ -499,7 +499,7 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'block', 'chunk'), use.bo
 rapport <- function(fp, data = NULL, ..., reproducible = TRUE){
 
     txt    <- tpl.find(fp)                      # split file to text
-    h      <- suppressMessages(tpl.header(txt)) # template header
+    h      <- suppressMessages(tpl.info(txt))   # template header
     meta   <- h$meta                            # header metadata
     inputs <- h$inputs                          # header inputs
     b      <- tpl.body(txt)                     # template body
