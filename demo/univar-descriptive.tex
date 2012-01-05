@@ -49,41 +49,69 @@
 This template will return descriptive statistics of a numerical, or a
 frequency table of a categorical variable.
 
-\subsubsection{Variable description}
+\subsubsection{\emph{gender} (``Gender'')}
 
 The dataset has 709 observations with 709 valid values (missing: 0) in
-``it.edu'' (``Internet usage for educational purposes (hours per
-day)''). This variable seems to be numeric.
+\emph{gender} (``Gender''). This variable seems to be a factor.
 
-\subsubsection{Base statistics}
+\paragraph{Base statistics}
 
-\ctable[pos = H, center, botcap]{lllllllllllllllllllll}
+\ctable[pos = H, center, botcap]{lllll}
 {% notes
 }
 {% rows
 \FL
- & \textbf{0} & \textbf{0.5} & \textbf{1} & \textbf{1.5} & \textbf{2} & \textbf{2.5} & \textbf{3} & \textbf{3.5} & \textbf{4} & \textbf{4.5} & \textbf{5} & \textbf{5.5} & \textbf{6} & \textbf{6.5} & \textbf{7} & \textbf{8} & \textbf{8.5} & \textbf{9} & \textbf{10} & \textbf{12}
+\textbf{gender} & \textbf{N} & \textbf{pct} & \textbf{cum.n} & \textbf{cum.pct}
 \ML
-1 & 61.00000 & 102.00000 & 204.00000 & 27.00000 & 109.00000 & 17.00000 & 66.00000 & 2.00000 & 37.00000 & 2.00000 & 33.00000 & 1.00000 & 13.00000 & 1.00000 & 1.00000 & 25.00000 & 1.00000 & 2.00000 & 2.00000 & 3.00000
+male & 7344.00 & 60.93 & 7344.00 & 60.93
+\\\noalign{\medskip}
+female & 4709.00 & 39.07 & 12053.00 & 100.00
 \LL
 }
 
-\subsubsection{Histogram}
+\paragraph{Barplot}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{598faf698f82b8217e0ed3137a62daaf.png}
+\includegraphics{7a6fc939fb3b30bcfda9ac649fd9d9af.png}
 \caption{}
 \end{figure}
 
-It seems that the highest value is 12 which is exactly Inf times higher
-than the smalles values (0).
+It seems that the highest value is 2 which is exactly 2 times higher
+than the smallest value (1).
 
-If we suppose that "Internet usage for educational purposes (hours per
-day) is not near to a normal distribution (test: , skewness: 1.8593,
-kurtosis: 6.8501), checking the median (1) might be a better option
-instead of the mean. The interquartile range (2) measures the statistics
-dispersion of the variable (similar to standard deviation) based on
-median.
+\subsection{Description}
+
+This template will return descriptive statistics of a numerical, or a
+frequency table of a categorical variable.
+
+\subsubsection{\emph{age}}
+
+The dataset has 709 observations with 709 valid values (missing: 0) in
+\emph{age}. This variable seems to be numeric.
+
+\paragraph{Base statistics}
+
+\ctable[pos = H, center, botcap]{llll}
+{% notes
+}
+{% rows
+\FL
+\textbf{value} & \textbf{mean} & \textbf{sd} & \textbf{var}
+\ML
+(all) & 24.56 & 6.84 & 46.78
+\LL
+}
+
+\paragraph{Histogram}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{ec60bf38bca8471ace82e1b6dfb6ae3f.png}
+\caption{}
+\end{figure}
+
+It seems that the highest value is 58 which is exactly 3.625 times
+higher than the smallest value (16).
 
 \end{document}

@@ -2,69 +2,77 @@
 
 This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.
 
-=== Variable description ===
+=== ''gender'' (&quot;Gender&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in &quot;it.edu&quot; (&quot;Internet usage for educational purposes (hours per day)&quot;). This variable seems to be numeric.
+The dataset has 709 observations with 709 valid values (missing: 0) in ''gender'' (&quot;Gender&quot;). This variable seems to be a factor.
 
-=== Base statistics ===
+==== Base statistics ====
 
 <table>
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="left">'''0'''</th>
-<th align="left">'''0.5'''</th>
-<th align="left">'''1'''</th>
-<th align="left">'''1.5'''</th>
-<th align="left">'''2'''</th>
-<th align="left">'''2.5'''</th>
-<th align="left">'''3'''</th>
-<th align="left">'''3.5'''</th>
-<th align="left">'''4'''</th>
-<th align="left">'''4.5'''</th>
-<th align="left">'''5'''</th>
-<th align="left">'''5.5'''</th>
-<th align="left">'''6'''</th>
-<th align="left">'''6.5'''</th>
-<th align="left">'''7'''</th>
-<th align="left">'''8'''</th>
-<th align="left">'''8.5'''</th>
-<th align="left">'''9'''</th>
-<th align="left">'''10'''</th>
-<th align="left">'''12'''</th>
+<th align="left">'''gender'''</th>
+<th align="left">'''N'''</th>
+<th align="left">'''pct'''</th>
+<th align="left">'''cum.n'''</th>
+<th align="left">'''cum.pct'''</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">1</td>
-<td align="left">61.00000</td>
-<td align="left">102.00000</td>
-<td align="left">204.00000</td>
-<td align="left">27.00000</td>
-<td align="left">109.00000</td>
-<td align="left">17.00000</td>
-<td align="left">66.00000</td>
-<td align="left">2.00000</td>
-<td align="left">37.00000</td>
-<td align="left">2.00000</td>
-<td align="left">33.00000</td>
-<td align="left">1.00000</td>
-<td align="left">13.00000</td>
-<td align="left">1.00000</td>
-<td align="left">1.00000</td>
-<td align="left">25.00000</td>
-<td align="left">1.00000</td>
-<td align="left">2.00000</td>
-<td align="left">2.00000</td>
-<td align="left">3.00000</td>
+<td align="left">male</td>
+<td align="left">7344.00</td>
+<td align="left">60.93</td>
+<td align="left">7344.00</td>
+<td align="left">60.93</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">4709.00</td>
+<td align="left">39.07</td>
+<td align="left">12053.00</td>
+<td align="left">100.00</td>
 </tr>
 </tbody>
 </table>
 
-=== Histogram ===
+==== Barplot ====
 
-[[Image:598faf698f82b8217e0ed3137a62daaf.png|frame|none]]
+[[Image:7a6fc939fb3b30bcfda9ac649fd9d9af.png|frame|none]]
 
-It seems that the highest value is 12 which is exactly Inf times higher than the smalles values (0).
+It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
 
-If we suppose that &quot;Internet usage for educational purposes (hours per day) is not near to a normal distribution (test: , skewness: 1.8593, kurtosis: 6.8501), checking the median (1) might be a better option instead of the mean. The interquartile range (2) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+== Description ==
+
+This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.
+
+=== ''age'' ===
+
+The dataset has 709 observations with 709 valid values (missing: 0) in ''age''. This variable seems to be numeric.
+
+==== Base statistics ====
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">'''value'''</th>
+<th align="left">'''mean'''</th>
+<th align="left">'''sd'''</th>
+<th align="left">'''var'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(all)</td>
+<td align="left">24.56</td>
+<td align="left">6.84</td>
+<td align="left">46.78</td>
+</tr>
+</tbody>
+</table>
+
+==== Histogram ====
+
+[[Image:ec60bf38bca8471ace82e1b6dfb6ae3f.png|frame|none]]
+
+It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).

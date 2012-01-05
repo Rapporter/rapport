@@ -2,6 +2,7 @@
  	<li><a href="#correlations">correlations.tpl</a></li>
  	<li><a href="#crosstable">crosstable.tpl</a></li>
  	<li><a href="#example">example.tpl</a></li>
+ 	<li><a href="#multivar-descriptive">multivar-descriptive.tpl</a></li>
  	<li><a href="#outlier-test">outlier-test.tpl</a></li>
  	<li><a href="#type_demo">type_demo.tpl</a></li>
  	<li><a href="#univar-descriptive">univar-descriptive.tpl</a></li>
@@ -78,7 +79,7 @@ rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
 
 3 variables provided.
 
-The highest correlation coefficient (0.23644) is between "it.edu" and "age" and the lowest (-0.04905) is between "it.leisure" and "age". It seems that the strongest association (r=0.23644) is between "it.edu" and "age".
+The highest correlation coefficient (0.2364) is between "it.edu" and "age" and the lowest (-0.049) is between "it.leisure" and "age". It seems that the strongest association (r=0.2364) is between "it.edu" and "age".
 
 Higly correlated (r < 0.7 or r > 0.7) variables: -
 
@@ -90,15 +91,15 @@ Uncorrelated (-0.2 < r < 0.2) variables:
  === Correlation matrix  
 
 
-             **age**       **it.edu**    **it.leisure**  
------------- ------------- ------------- ----------------
-age                        0.23644 ***   -0.04905        
-it.edu       0.23644 ***                 0.17142 ***     
-it.leisure   -0.04905      0.17142 ***                   
------------- ------------- ------------- ----------------
+             **age**      **it.edu**   **it.leisure**  
+------------ ------------ ------------ ----------------
+age                       0.2364 ***   -0.0490         
+it.edu       0.2364 ***                0.1714 ***      
+it.leisure   -0.0490      0.1714 ***                   
+------------ ------------ ------------ ----------------
 
 
-/tmp/RtmpV1PMjn/file13d8d1c0.png
+/tmp/RtmpMBlCON/file15c574bb.png
 
 
 {% endhighlight %}
@@ -197,69 +198,34 @@ Two variables specified:
  == Counts  
 
 
-         **city**   **small town**   **village**  
--------- ---------- ---------------- -------------
-male     380        30               22           
-female   262        6                9            
--------- ---------- ---------------- -------------
-
 
  == Percentages  
 
-
-         **city**   **small town**   **village**  
--------- ---------- ---------------- -------------
-male     0.53597    0.04231          0.03103      
-female   0.36953    0.00846          0.01269      
--------- ---------- ---------------- -------------
 
 
  === Row percentages  
 
 
-         **city**   **small town**   **village**  
--------- ---------- ---------------- -------------
-male     0.87963    0.06944          0.05093      
-female   0.94585    0.02166          0.03249      
--------- ---------- ---------------- -------------
-
 
  === Column percentages  
 
-
-         **city**   **small town**   **village**  
--------- ---------- ---------------- -------------
-male     0.59190    0.83333          0.70968      
-female   0.40810    0.16667          0.29032      
--------- ---------- ---------------- -------------
 
 
  == Chi-squared test  
 
 
-            **X-squared**   **df**   **p-value**  
------------ --------------- -------- -------------
-X-squared   9.72            2.00     0.01         
------------ --------------- -------- -------------
 
-
-It seems that a real association can be pointed out between *gender* and *dwell* by the *Pearson's Chi-squared test* (χ=9.7188 at the degree of freedom being 2) at the significance level of 0.00776.
-Based on Goodman and Kruskal's lambda it seems that *dwell* (λ=0.75812) has an effect on *gender* (λ=0) if we assume both variables to be nominal.
-The association between the two variables seems to be weak based on Cramer's V (0.08279).
+It seems that a real association can be pointed out between *gender* and *dwell* by the *Pearson's Chi-squared test* (χ=9.7188 at the degree of freedom being 2) at the significance level of 0.0078.
+Based on Goodman and Kruskal's lambda it seems that *dwell* (λ=0.7581) has an effect on *gender* (λ=0) if we assume both variables to be nominal.
+The association between the two variables seems to be weak based on Cramer's V (0.0828).
 
  === Pearson's residuals  
 
 
-         **city**   **small town**   **village**  
--------- ---------- ---------------- -------------
-male     -2.9409    2.8277           1.1712       
-female   2.9409     -2.8277          -1.1712      
--------- ---------- ---------------- -------------
-
 
  === Mosaic chart  
 
-/tmp/RtmpV1PMjn/file5afb1ab.png
+/tmp/RtmpMBlCON/file546cc4c6.png
 
 
 {% endhighlight %}
@@ -375,7 +341,7 @@ rapport("example", ius2009, x = "it.edu", y = "it.leisure")
 
  == Descriptive statistics  
 
-The average fuel consumption is 20.091 with SD of 6.027.
+The average fuel consumption is 20.091 with SD of 6.0269.
 Let's add one more line to this paragraph.
 And another one.
 Now, you've probably heard of _pi_? Right? Its value is 3.1416.
@@ -384,7 +350,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpV1PMjn/file1dbeadc8.png
+/tmp/RtmpMBlCON/file6c627280.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -392,19 +358,6 @@ Now we'll see if the Z var is working properly. If I omit it, it should perserve
 
 OK, so far, so good, but let's see what's going on with code chunks...
 
-
----------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
-0.68581    1.02705    1.84060    -0.93514   -0.88256   0.05850    0.50313    0.97422    0.40265    1.20301   
--0.42391   1.49881    0.23022    1.75651    2.12127    1.05795    0.31745    -0.66831   -1.13775   -0.08294  
--0.39504   0.44203    -0.05203   0.75932    0.28744    0.12987    -0.05781   -0.24921   -0.09108   -1.23996  
--1.49650   1.22348    -0.74750   0.04138    0.72973    0.38346    -0.57475   -0.50059   -1.85845   0.02823   
-1.12419    -1.01385   0.76911    1.03493    1.90332    -0.45268   0.68487    1.84153    -0.26411   -0.38101  
--0.45158   0.20689    -1.66460   0.31363    2.20809    -0.32738   -0.67558   0.54113    -1.57139   -0.13375  
-2.18045    -0.40841   -0.23173   -0.04850   -0.89918   -0.58743   0.27330    -0.23866   0.35055    0.40085   
-0.49154    0.95370    -1.04429   0.39949    -1.20858   -0.79431   -0.76594   -0.36113   -0.29245   1.45965   
-0.47843    -1.63091   -0.93888   1.48541    -1.74184   -1.20638   1.05930    0.03196    -0.80265   1.74231   
--0.70797   0.48712    -0.60968   0.45807    -1.12980   0.79780    1.13584    -0.62595   0.84215    1.16999   
----------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 
 
 When it comes to CSV values, let us see how do they work. You have chosen the "foo".
@@ -425,7 +378,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpV1PMjn/file4980c2e3.png
+/tmp/RtmpMBlCON/file3a1d34c9.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -433,19 +386,6 @@ Now we'll see if the Z var is working properly. If I omit it, it should perserve
 
 OK, so far, so good, but let's see what's going on with code chunks...
 
-
----------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
--0.20438   -0.97608   -0.37527   -0.00471   0.42691    0.64429    -0.37826   -0.02315   1.08438    -0.55651  
--0.89103   -0.87173   1.28848    1.48051    -0.24372   -1.67347   -1.54156   -0.32257   0.45316    -0.73320  
--0.15353   -0.44144   0.84805    -0.54710   -1.41090   2.00564    0.66384    -1.04778   1.00067    0.81082   
-0.87244    -2.18386   0.53396    1.67174    1.54852    -0.40589   -1.54990   0.68612    0.27048    -0.27375  
--1.33242   0.10848    0.16683    1.19140    2.27289    -0.82416   0.98360    0.86021    -0.84644   1.50901   
-0.76963    -0.08177   -0.48671   -1.33007   -0.45298   0.34856    -0.00249   0.90691    -0.19339   -1.30748  
--0.51805   0.66530    1.75604    -0.87319   0.78045    1.47267    -0.47716   0.38239    0.78734    -0.87843  
-0.31337    -1.16321   -1.36180   -0.72139   0.52902    -0.88114   0.33539    1.22315    -0.75551   0.36756   
-0.62489    0.08321    0.02511    -0.60689   -2.34480   0.27271    -1.80025   -1.89355   -0.24590   0.01972   
--1.84983   0.36127    -0.09217   0.62969    0.24963    0.56068    -0.62246   -0.39854   -2.30407   -0.95548  
----------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 
 
 When it comes to CSV values, let us see how do they work. You have chosen the "foo".
@@ -466,7 +406,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpV1PMjn/file8947597.png
+/tmp/RtmpMBlCON/file6453256b.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -474,19 +414,6 @@ Now we'll see if the Z var is working properly. If I omit it, it should perserve
 
 OK, so far, so good, but let's see what's going on with code chunks...
 
-
----------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
--1.11399   -1.43540   -0.61238   0.80214    -2.74797   0.99691    1.96794    0.68774    0.43944    0.16000   
--0.04246   1.57804    0.77817    1.15685    -1.00604   0.09471    -0.62177   -0.77256   0.27875    0.94441   
--1.07627   -0.14223   0.26994    0.31511    -2.06595   -0.71035   1.12444    -1.07330   -0.73219   -1.16904  
-0.45218    1.29579    0.18678    -0.51041   -1.43740   0.20114    0.03252    -0.39004   -1.50238   -0.10493  
-3.62513    -1.88824   -0.42495   1.25649    -0.79032   -0.35434   -0.28040   0.48377    0.08898    -0.13333  
-0.45540    2.46298    -0.08426   -0.15603   0.11776    0.19825    -1.26084   -0.48908   0.90705    1.07223   
--0.41106   -0.28563   0.83612    0.08258    -0.61284   -1.10612   -0.65941   -0.23793   -0.76714   1.45379   
--0.11498   -0.50775   -0.32924   -1.05956   0.95726    0.00047    1.37302    -0.79764   -0.60718   0.43473   
-1.84206    0.66827    0.49570    0.09892    -1.18682   -1.60310   0.71164    1.88750    -0.30469   -0.24915  
--0.07789   0.13431    -0.54607   -1.17242   1.19911    0.09651    1.25640    0.21273    1.97152    -1.29210  
----------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 
 
 When it comes to CSV values, let us see how do they work. You have chosen the "foo".
@@ -523,6 +450,386 @@ rapport("example", ius2009, x = "it.edu", y = "it.leisure")
 	<li><a href="demo/example.wiki" target="_blank">wiki</a></li>
 	<li><a href="demo/example.org" target="_blank">org</a></li>
 	<li><a href="demo/example.pandoc" target="_blank">pandoc</a></li>
+</ul>
+</div></li>
+</ul>
+
+<a id="multivar-descriptive"> </a>
+#### multivar-descriptive.tpl
+
+ <ul class="tabs">
+	<li><a class="active" href="#info-multivar-descriptive">Description</a></li>
+	<li><a href="#inputs-multivar-descriptive">Inputs</a></li>
+	<li><a href="#example-multivar-descriptive">Example</a></li>
+	<li><a href="#export-multivar-descriptive">Export</a></li>
+</ul>
+
+ <ul class="tabs-content">
+	<li class="active" id="info-multivar-descriptive"><div><h5>Descriptives</h5> by <em>Gergely Daróczi</em>
+<br><br>
+ This template will return descriptive statistics of numerical, or frequency tables of categorical variables.
+<br><br>
+<em>Required packages:</em> 
+<br>
+<em>Example:</em> 
+{% highlight text %}
+rapport('multivar-descriptive', data=ius2009, vars=c("gender", 'age'))
+rapport('multivar-descriptive', data=ius2009, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx", "long.use"))
+{% endhighlight %}
+</div></li>
+	<li id="inputs-multivar-descriptive"><div><h5>Input parameters</h5><em>multivar-descriptive.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
+	<li><h6>vars: <small><em>Variables</em></small></h6>
+<div class="options">    <div class="options-desc">Categorical or numerical variables. The template will determine the measurement level of the given variable and will return detailed frequency tables or appropriate descriptive statistics for numerics.
+</div>
+    <em>Type:</em>	variable
+<br>
+    <em>Limits:</em>	from 1, up to 10 variables
+<br>
+
+</div>
+</li>
+<br>
+</ul></div></li>
+	<li id="example-multivar-descriptive">
+{% highlight text %}
+
+
+##########################################################################################
+##	 Running: rapport('multivar-descriptive', data=ius2009, vars=c("gender", 'age'))
+##########################################################################################
+
+
+ == *gender* ("Gender")  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *gender* ("Gender").
+This variable seems to be a factor.
+
+ === Base statistics  
+
+
+**gender**   **N**     **pct**   **cum.n**   **cum.pct**  
+------------ --------- --------- ----------- -------------
+male         7344.00   60.93     7344.00     60.93        
+female       4709.00   39.07     12053.00    100.00       
+------------ --------- --------- ----------- -------------
+
+
+ === Barplot  
+
+/tmp/RtmpMBlCON/file6b16c6ba.png
+
+It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
+
+ == *age*  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *age*.
+This variable seems to be numeric.
+
+ === Base statistics  
+
+
+**value**   **mean**   **sd**   **var**  
+----------- ---------- -------- ---------
+(all)       24.56      6.84     46.78    
+----------- ---------- -------- ---------
+
+
+ === Histogram  
+
+/tmp/RtmpMBlCON/file2fc755ea.png
+
+It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
+
+The standard deviation is 6.8399 (variance: 46.784). The expected value is around 24.557, somewhere between 24.054 and 25.061 (SE: 0.2569).
+
+If we suppose that *age* is not near to a normal distribution (test: , skewness: 1.9568, kurtosis: 7.6428), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+
+
+
+
+##############################################################################################################################################################
+##	 Running: rapport('multivar-descriptive', data=ius2009, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx", "long.use"))
+##############################################################################################################################################################
+
+
+ == *chatim* ("Chat & IM usage")  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *chatim* ("Chat & IM usage").
+This variable seems to be a factor.
+
+ === Base statistics  
+
+
+**chatim**    **N**     **pct**   **cum.n**   **cum.pct**  
+------------- --------- --------- ----------- -------------
+never         896.00    9.03      896.00      9.03         
+very rarely   1092.00   11.00     1988.00     20.03        
+rarely        910.00    9.17      2898.00     29.20        
+sometimes     1736.00   17.49     4634.00     46.69        
+often         1988.00   20.03     6622.00     66.71        
+very often    1316.00   13.26     7938.00     79.97        
+always        1988.00   20.03     9926.00     100.00       
+------------- --------- --------- ----------- -------------
+
+**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated"
+
+ === Barplot  
+
+/tmp/RtmpMBlCON/file4600d540.png
+
+It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+
+ == *game* ("On-line games usage")  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *game* ("On-line games usage").
+This variable seems to be a factor.
+
+ === Base statistics  
+
+
+**game**      **N**     **pct**   **cum.n**   **cum.pct**  
+------------- --------- --------- ----------- -------------
+never         5152.00   51.90     5152.00     51.90        
+very rarely   1848.00   18.62     7000.00     70.52        
+rarely        490.00    4.94      7490.00     75.46        
+sometimes     910.00    9.17      8400.00     84.63        
+often         532.00    5.36      8932.00     89.99        
+very often    518.00    5.22      9450.00     95.20        
+always        476.00    4.80      9926.00     100.00       
+------------- --------- --------- ----------- -------------
+
+**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated"
+
+ === Barplot  
+
+/tmp/RtmpMBlCON/file6cbd0f0.png
+
+It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+
+ == *surf* ("Web surfing usage")  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *surf* ("Web surfing usage").
+This variable seems to be a factor.
+
+ === Base statistics  
+
+
+**surf**      **N**     **pct**   **cum.n**   **cum.pct**  
+------------- --------- --------- ----------- -------------
+never         238.00    2.40      238.00      2.40         
+very rarely   364.00    3.67      602.00      6.06         
+rarely        476.00    4.80      1078.00     10.86        
+sometimes     1624.00   16.36     2702.00     27.22        
+often         2296.00   23.13     4998.00     50.35        
+very often    2114.00   21.30     7112.00     71.65        
+always        2814.00   28.35     9926.00     100.00       
+------------- --------- --------- ----------- -------------
+
+**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated"
+
+ === Barplot  
+
+/tmp/RtmpMBlCON/fileeb2db69.png
+
+It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+
+ == *email* ("Email usage")  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *email* ("Email usage").
+This variable seems to be a factor.
+
+ === Base statistics  
+
+
+**email**     **N**     **pct**   **cum.n**   **cum.pct**  
+------------- --------- --------- ----------- -------------
+never         182.00    1.83      182.00      1.83         
+very rarely   532.00    5.36      714.00      7.19         
+rarely        714.00    7.19      1428.00     14.39        
+sometimes     1260.00   12.69     2688.00     27.08        
+often         1806.00   18.19     4494.00     45.28        
+very often    1624.00   16.36     6118.00     61.64        
+always        3808.00   38.36     9926.00     100.00       
+------------- --------- --------- ----------- -------------
+
+**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated"
+
+ === Barplot  
+
+/tmp/RtmpMBlCON/file106ccbe3.png
+
+It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+
+ == *download* ("Download usage")  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *download* ("Download usage").
+This variable seems to be a factor.
+
+ === Base statistics  
+
+
+**download**   **N**     **pct**   **cum.n**   **cum.pct**  
+-------------- --------- --------- ----------- -------------
+never          154.00    1.55      154.00      1.55         
+very rarely    406.00    4.09      560.00      5.64         
+rarely         420.00    4.23      980.00      9.87         
+sometimes      1190.00   11.99     2170.00     21.86        
+often          1820.00   18.34     3990.00     40.20        
+very often     2394.00   24.12     6384.00     64.32        
+always         3542.00   35.68     9926.00     100.00       
+-------------- --------- --------- ----------- -------------
+
+**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated"
+
+ === Barplot  
+
+/tmp/RtmpMBlCON/file610f734c.png
+
+It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+
+ == *forum* ("Web forums usage")  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *forum* ("Web forums usage").
+This variable seems to be a factor.
+
+ === Base statistics  
+
+
+**forum**     **N**     **pct**   **cum.n**   **cum.pct**  
+------------- --------- --------- ----------- -------------
+never         1120.00   11.28     1120.00     11.28        
+very rarely   1176.00   11.85     2296.00     23.13        
+rarely        1036.00   10.44     3332.00     33.57        
+sometimes     1736.00   17.49     5068.00     51.06        
+often         1568.00   15.80     6636.00     66.85        
+very often    1750.00   17.63     8386.00     84.49        
+always        1540.00   15.51     9926.00     100.00       
+------------- --------- --------- ----------- -------------
+
+**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated"
+
+ === Barplot  
+
+/tmp/RtmpMBlCON/file19062322.png
+
+It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+
+ == *socnet* ("Social networks usage")  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *socnet* ("Social networks usage").
+This variable seems to be a factor.
+
+ === Base statistics  
+
+
+**socnet**    **N**     **pct**   **cum.n**   **cum.pct**  
+------------- --------- --------- ----------- -------------
+never         2940.00   29.62     2940.00     29.62        
+very rarely   1554.00   15.66     4494.00     45.28        
+rarely        826.00    8.32      5320.00     53.60        
+sometimes     1316.00   13.26     6636.00     66.85        
+often         1148.00   11.57     7784.00     78.42        
+very often    1190.00   11.99     8974.00     90.41        
+always        952.00    9.59      9926.00     100.00       
+------------- --------- --------- ----------- -------------
+
+**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated"
+
+ === Barplot  
+
+/tmp/RtmpMBlCON/file5d444757.png
+
+It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+
+ == *xxx* ("Adult sites usage")  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *xxx* ("Adult sites usage").
+This variable seems to be a factor.
+
+ === Base statistics  
+
+
+**xxx**       **N**     **pct**   **cum.n**   **cum.pct**  
+------------- --------- --------- ----------- -------------
+never         4102.00   41.33     4102.00     41.33        
+very rarely   1792.00   18.05     5894.00     59.38        
+rarely        770.00    7.76      6664.00     67.14        
+sometimes     1918.00   19.32     8582.00     86.46        
+often         672.00    6.77      9254.00     93.23        
+very often    406.00    4.09      9660.00     97.32        
+always        266.00    2.68      9926.00     100.00       
+------------- --------- --------- ----------- -------------
+
+**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated"
+
+ === Barplot  
+
+/tmp/RtmpMBlCON/file794b852.png
+
+It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+
+ == *long.use* ("How long you've been on the Internet?")  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *long.use* ("How long you've been on the Internet?").
+This variable seems to be a factor.
+
+ === Base statistics  
+
+
+**long.use**         **N**     **pct**   **cum.n**   **cum.pct**  
+-------------------- --------- --------- ----------- -------------
+less than 6 months   294.00    2.96      294.00      2.96         
+1 years              728.00    7.33      1022.00     10.30        
+2 years              966.00    9.73      1988.00     20.03        
+3 years              1092.00   11.00     3080.00     31.03        
+4 years              1064.00   10.72     4144.00     41.75        
+5 years              1036.00   10.44     5180.00     52.19        
+5 years and more     4746.00   47.81     9926.00     100.00       
+-------------------- --------- --------- ----------- -------------
+
+**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated"
+
+ === Barplot  
+
+/tmp/RtmpMBlCON/file2729ab81.png
+
+It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+
+
+
+
+
+{% endhighlight %}
+</li>
+	<li id="export-multivar-descriptive"><div>
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
+{% highlight text %}
+
+rapport('multivar-descriptive', data=ius2009, vars=c("gender", 'age'))
+rapport('multivar-descriptive', data=ius2009, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx", "long.use"))
+
+{% endhighlight %}
+<h6>Popular formats:</h6>
+<ul>
+	<li><a href="demo/multivar-descriptive.html" target="_blank">HTML</a></li>
+	<li><a href="demo/multivar-descriptive.odt">odt (MS Word compatibile)</a></li>
+	<li><a href="demo/multivar-descriptive.rtf">rtf (MS Word compatibile)</a></li>
+	<li><a href="demo/multivar-descriptive.epub">epub</a></li>
+	<li><a href="demo/multivar-descriptive.tex" target="_blank">latex</a></li>
+	<li><a href="demo/multivar-descriptive-slidy.html" target="_blank">HTML slidy</a></li>
+</ul>
+<h6>Other morkdown formats</h6>
+<ul>
+	<li><a href="demo/multivar-descriptive.plain" target="_blank">plain text</a></li>
+	<li><a href="demo/multivar-descriptive.textile" target="_blank">textile</a></li>
+	<li><a href="demo/multivar-descriptive.xml" target="_blank">docbook</a></li>
+	<li><a href="demo/multivar-descriptive.man" target="_blank">man</a></li>
+	<li><a href="demo/multivar-descriptive.md" target="_blank">markdown</a></li>
+	<li><a href="demo/multivar-descriptive.mediawiki" target="_blank">mediawiki</a></li>
+	<li><a href="demo/multivar-descriptive.wiki" target="_blank">wiki</a></li>
+	<li><a href="demo/multivar-descriptive.org" target="_blank">org</a></li>
+	<li><a href="demo/multivar-descriptive.pandoc" target="_blank">pandoc</a></li>
 </ul>
 </div></li>
 </ul>
@@ -605,7 +912,7 @@ rapport('outlier-test', data=ius2009, var='it.edu')
 
  == Boxplot  
 
-/tmp/RtmpV1PMjn/file5b2bbc80.png
+/tmp/RtmpMBlCON/file38a1f1b4.png
 
  == Lund test  
 
@@ -616,15 +923,10 @@ It seems that 5 extreme values can be found in "Internet usage for educational p
 The above test for outliers was based on *lm(1 ~ it.edu)*:
 
 
-              **Estimate**   **Std. Error**   **t value**   **Pr(>|t|)**  
-------------- -------------- ---------------- ------------- --------------
-(Intercept)   2.06           0.08             26.92         0.00          
-------------- -------------- ---------------- ------------- --------------
-
 
  === The residuals returned:  
 
--0.03078,  2.91195, -0.27601, -0.52124, -0.52124, -0.76647, -1.01169, -0.27601, -0.52124,  1.44058, -0.52124,  0.95013,  3.89286, -0.03078, -0.52124, -0.76647, -0.03078,  1.44058, -0.52124,  0.45967,  1.93104, -0.52124,  0.95013, -0.52124,  0.95013, -0.03078,  0.45967, -0.76647,  0.95013, -0.76647, -0.52124, -0.52124, -0.52124,  1.44058,  3.40240, -0.52124, -0.52124, -0.27601, -0.52124, -0.52124, -0.76647, -0.76647,  0.95013,  0.45967, -0.52124,  1.44058,  1.44058, -0.52124, -0.76647,  0.45967, -0.03078,  1.44058, -0.52124,  2.91195,  0.45967, -0.76647,  1.44058,  0.95013,  1.44058, -0.76647, -0.52124, -0.03078, -0.76647, -0.52124,  0.45967, -0.76647,  0.95013, -0.76647, -0.52124, -0.76647, -0.03078, -0.52124,  0.45967,  0.45967, -0.03078, -0.76647, -1.01169, -0.76647, -0.52124, -0.52124, -0.27601, -0.76647, -0.76647,  2.91195, -0.03078,  2.91195,  0.45967, -0.03078, -0.52124, -0.52124, -0.27601, -0.76647,  0.95013, -0.52124, -0.03078, -0.76647,  0.70490, -0.52124, -0.76647, -0.52124,  0.21444, -0.03078, -0.03078, -0.03078, -1.01169, -0.76647, -0.27601,  2.91195, -1.01169,  1.19535,  0.95013,  2.91195, -0.27601, -0.03078,  0.95013, -0.76647, -1.01169, -0.76647, -0.52124,  0.45967, -0.76647, -1.01169,  2.91195, -0.52124, -0.76647, -0.52124, -0.76647, -0.52124, -1.01169, -0.52124,  2.42149, -0.52124, -0.52124,  1.44058,  0.21444,  0.21444,  0.95013,  0.45967,  0.21444, -0.27601,  0.95013,  1.93104, -0.76647,  0.21444, -0.03078, -0.52124, -1.01169, -1.01169, -0.03078, -0.03078, -0.03078, -0.76647, -0.52124, -0.52124, -0.52124, -0.52124, -0.52124, -1.01169, -0.52124,  0.45967, -0.03078, -0.52124,  0.45967, -0.76647,  0.21444,  1.44058,  1.44058, -1.01169,  1.44058,  0.95013, -0.76647, -0.52124, -0.76647, -0.76647, -0.03078, -0.52124,  0.45967, -0.03078, -0.52124, -0.52124, -0.03078, -0.76647, -0.52124,  2.91195, -0.76647, -0.76647, -0.52124, -0.76647, -0.03078, -0.03078, -0.76647, -0.52124, -0.52124, -1.01169, -0.52124, -0.52124,  0.45967, -0.03078,  0.45967, -0.52124, -0.52124, -1.01169, -1.01169, -0.03078, -1.01169, -0.52124, -0.52124,  0.95013, -0.76647,  2.91195, -0.52124, -0.03078, -1.01169,  1.44058,  0.45967, -0.52124, -0.03078, -0.76647, -0.52124, -0.52124, -1.01169, -0.76647, -0.76647, -1.01169, -0.76647, -0.52124,  0.45967, -0.03078, -0.03078, -1.01169, -0.76647, -0.52124, -0.03078, -0.52124, -0.03078, -1.01169,  0.95013,  0.45967, -0.03078, -0.03078,  0.45967, -0.52124, -1.01169,  2.91195, -0.03078, -0.52124,  0.95013, -0.52124, -0.03078,  3.40240,  0.45967, -0.52124, -0.52124, -0.52124, -0.03078, -0.76647, -0.52124, -0.76647, -0.76647, -0.52124, -1.01169, -0.52124,  0.45967, -0.03078, -0.52124, -0.03078, -0.52124, -0.52124,  0.45967, -1.01169, -0.03078, -0.76647,  3.89286,  0.45967, -0.76647,  0.45967, -1.01169, -0.76647, -0.76647, -0.03078, -0.27601, -0.03078, -0.76647, -0.76647, -0.03078,  0.45967, -0.52124, -0.52124, -0.52124, -0.03078, -0.27601, -0.52124, -0.03078,  1.93104,  1.93104,  2.91195, -0.76647,  0.45967,  4.87377, -0.76647,  1.44058,  2.91195, -0.52124,  0.95013, -1.01169, -0.52124,  2.91195, -0.03078,  2.91195, -0.52124,  0.95013,  0.95013,  0.45967, -0.52124, -0.27601, -0.52124, -0.76647, -0.52124, -0.52124, -0.52124, -0.52124,  0.45967, -0.76647,  1.44058, -0.52124, -0.03078, -0.03078, -0.03078, -0.52124, -0.52124, -0.76647,  1.93104, -0.52124, -0.03078, -0.52124, -1.01169, -0.52124,  0.45967, -0.76647, -0.52124,  0.45967, -0.52124,  4.87377, -0.52124, -0.27601, -0.52124,  0.45967, -1.01169, -0.76647, -0.52124,  2.91195,  1.44058, -0.03078, -0.27601,  1.93104,  2.91195, -0.52124,  2.91195,  0.45967, -0.52124,  0.95013,  0.21444, -0.03078, -0.52124, -1.01169, -1.01169,  1.68581,  0.21444, -0.52124, -0.52124, -0.27601, -1.01169, -0.52124, -1.01169, -0.52124, -0.76647, -0.52124,  0.45967, -0.03078, -1.01169, -0.03078,  0.45967,  0.45967,  0.45967, -0.52124, -0.52124,  2.91195, -0.52124, -1.01169,  2.91195, -1.01169, -0.52124,  0.45967, -1.01169,  1.44058, -0.03078,  0.95013, -1.01169,  2.91195, -0.52124, -0.76647,  0.95013, -0.03078, -0.52124,  0.21444, -0.03078, -0.52124, -0.76647,  4.87377,  1.93104,  0.95013, -0.03078,  0.95013,  1.19535,  0.45967, -0.76647, -0.76647, -1.01169,  0.95013,  2.91195,  0.45967,  1.44058,  2.91195, -0.52124,  0.45967,  1.44058, -1.01169, -0.03078,  0.45967, -0.03078,  1.93104, -0.52124, -0.52124,  1.44058, -0.03078, -0.52124, -0.76647, -0.52124, -0.52124,  0.21444, -0.52124, -0.52124, -0.52124, -0.52124, -0.03078, -0.76647, -0.03078,  0.95013, -0.52124,  0.45967, -0.03078, -0.76647, -0.03078, -0.52124, -0.52124, -0.52124, -0.03078, -0.52124, -0.52124, -0.76647, -0.52124, -0.27601, -0.76647, -0.03078, -0.76647, -0.52124,  1.44058, -1.01169,  0.95013, -0.03078, -0.76647, -0.76647, -0.52124, -0.52124, -0.52124, -0.52124, -0.03078, -0.76647, -0.52124, -0.52124, -0.52124, -0.52124,  0.70490, -0.03078, -0.52124,  0.45967, -0.03078, -0.52124, -0.76647, -0.52124, -0.76647, -1.01169, -0.03078, -0.52124, -0.03078,  0.95013, -0.52124, -0.52124, -0.03078, -0.76647, -0.52124,  0.21444, -0.27601, -0.03078, -0.52124, -0.76647, -0.52124, -0.03078, -0.03078, -0.52124, -0.03078, -0.52124,  1.93104, -0.27601,  1.93104, -0.52124, -0.52124, -0.27601, -0.52124, -0.03078,  0.45967, -0.76647, -0.52124,  0.45967,  0.95013, -0.03078,  1.44058, -0.52124,  0.45967,  0.45967, -0.52124, -0.27601,  0.21444,  1.44058, -0.27601,  1.44058, -0.03078,  0.45967,  1.44058, -0.52124, -0.27601, -0.52124, -0.52124, -0.03078, -0.52124, -0.03078, -0.76647, -0.76647, -0.76647, -0.52124, -0.76647, -0.52124, -0.27601, -0.03078,  0.45967,  0.95013, -1.01169, -0.27601,  1.93104,  1.93104, -0.52124, -0.52124,  0.45967, -0.52124,  0.95013, -0.52124, -1.01169, -0.03078,  0.95013, -0.76647, -0.03078,  0.95013, -0.52124, -0.27601,  2.17627, -0.03078,  0.95013,  0.45967,  1.44058,  0.21444, -0.76647, -0.52124, -1.01169, -0.03078,  0.45967, -0.76647, -1.01169, -1.01169, -0.52124, -0.52124, -0.03078, -0.52124, -0.27601, -1.01169, -0.03078,  0.45967, -0.76647, -0.52124, -0.52124, -0.52124, -0.03078, -0.52124, -0.52124,  0.45967, -0.52124, -1.01169, -1.01169,  0.45967, -0.27601, -0.52124,  1.93104, -0.03078, -0.52124, -1.01169, -0.52124, -0.76647, -1.01169,  0.95013,  0.95013,  1.44058, -0.76647, -0.52124, -0.52124, -0.03078,  1.44058, -1.01169,  0.45967, -0.52124,  1.44058,  0.45967, -0.76647, -0.52124, -0.76647, -1.01169, -0.76647, -0.76647, -0.03078, -1.01169,  0.21444,  0.45967,  2.91195,  0.45967, -0.76647, -0.76647, -0.03078,  0.21444, -0.03078,  0.45967, -0.52124,  0.21444,  2.91195, -1.01169, -0.52124, -0.52124,  1.44058, -0.52124, -0.27601, -1.01169, -0.03078, -0.03078, -0.03078,  0.21444, -1.01169,  0.45967, -0.52124, -0.76647, -0.52124, -0.76647, -0.03078, -0.52124,  0.45967, -0.52124, -1.01169, -0.03078, -0.03078, -0.03078, -0.03078,  1.44058,  0.95013, -1.01169, -0.03078,  1.44058, -0.52124, -0.03078,  0.45967, -0.52124,  1.44058,  0.45967, -0.52124,  0.45967, -0.52124, -0.76647, -0.52124, -1.01169, -0.76647, -0.03078, -0.52124, -0.76647, -0.03078, -0.76647, -0.52124, -0.52124, -0.76647,  2.91195,  3.15718, -1.01169, -1.01169, -0.76647, -0.52124
+-0.0308,  2.9119, -0.2760, -0.5212, -0.5212, -0.7665, -1.0117, -0.2760, -0.5212,  1.4406, -0.5212,  0.9501,  3.8929, -0.0308, -0.5212, -0.7665, -0.0308,  1.4406, -0.5212,  0.4597,  1.9310, -0.5212,  0.9501, -0.5212,  0.9501, -0.0308,  0.4597, -0.7665,  0.9501, -0.7665, -0.5212, -0.5212, -0.5212,  1.4406,  3.4024, -0.5212, -0.5212, -0.2760, -0.5212, -0.5212, -0.7665, -0.7665,  0.9501,  0.4597, -0.5212,  1.4406,  1.4406, -0.5212, -0.7665,  0.4597, -0.0308,  1.4406, -0.5212,  2.9119,  0.4597, -0.7665,  1.4406,  0.9501,  1.4406, -0.7665, -0.5212, -0.0308, -0.7665, -0.5212,  0.4597, -0.7665,  0.9501, -0.7665, -0.5212, -0.7665, -0.0308, -0.5212,  0.4597,  0.4597, -0.0308, -0.7665, -1.0117, -0.7665, -0.5212, -0.5212, -0.2760, -0.7665, -0.7665,  2.9119, -0.0308,  2.9119,  0.4597, -0.0308, -0.5212, -0.5212, -0.2760, -0.7665,  0.9501, -0.5212, -0.0308, -0.7665,  0.7049, -0.5212, -0.7665, -0.5212,  0.2144, -0.0308, -0.0308, -0.0308, -1.0117, -0.7665, -0.2760,  2.9119, -1.0117,  1.1954,  0.9501,  2.9119, -0.2760, -0.0308,  0.9501, -0.7665, -1.0117, -0.7665, -0.5212,  0.4597, -0.7665, -1.0117,  2.9119, -0.5212, -0.7665, -0.5212, -0.7665, -0.5212, -1.0117, -0.5212,  2.4215, -0.5212, -0.5212,  1.4406,  0.2144,  0.2144,  0.9501,  0.4597,  0.2144, -0.2760,  0.9501,  1.9310, -0.7665,  0.2144, -0.0308, -0.5212, -1.0117, -1.0117, -0.0308, -0.0308, -0.0308, -0.7665, -0.5212, -0.5212, -0.5212, -0.5212, -0.5212, -1.0117, -0.5212,  0.4597, -0.0308, -0.5212,  0.4597, -0.7665,  0.2144,  1.4406,  1.4406, -1.0117,  1.4406,  0.9501, -0.7665, -0.5212, -0.7665, -0.7665, -0.0308, -0.5212,  0.4597, -0.0308, -0.5212, -0.5212, -0.0308, -0.7665, -0.5212,  2.9119, -0.7665, -0.7665, -0.5212, -0.7665, -0.0308, -0.0308, -0.7665, -0.5212, -0.5212, -1.0117, -0.5212, -0.5212,  0.4597, -0.0308,  0.4597, -0.5212, -0.5212, -1.0117, -1.0117, -0.0308, -1.0117, -0.5212, -0.5212,  0.9501, -0.7665,  2.9119, -0.5212, -0.0308, -1.0117,  1.4406,  0.4597, -0.5212, -0.0308, -0.7665, -0.5212, -0.5212, -1.0117, -0.7665, -0.7665, -1.0117, -0.7665, -0.5212,  0.4597, -0.0308, -0.0308, -1.0117, -0.7665, -0.5212, -0.0308, -0.5212, -0.0308, -1.0117,  0.9501,  0.4597, -0.0308, -0.0308,  0.4597, -0.5212, -1.0117,  2.9119, -0.0308, -0.5212,  0.9501, -0.5212, -0.0308,  3.4024,  0.4597, -0.5212, -0.5212, -0.5212, -0.0308, -0.7665, -0.5212, -0.7665, -0.7665, -0.5212, -1.0117, -0.5212,  0.4597, -0.0308, -0.5212, -0.0308, -0.5212, -0.5212,  0.4597, -1.0117, -0.0308, -0.7665,  3.8929,  0.4597, -0.7665,  0.4597, -1.0117, -0.7665, -0.7665, -0.0308, -0.2760, -0.0308, -0.7665, -0.7665, -0.0308,  0.4597, -0.5212, -0.5212, -0.5212, -0.0308, -0.2760, -0.5212, -0.0308,  1.9310,  1.9310,  2.9119, -0.7665,  0.4597,  4.8738, -0.7665,  1.4406,  2.9119, -0.5212,  0.9501, -1.0117, -0.5212,  2.9119, -0.0308,  2.9119, -0.5212,  0.9501,  0.9501,  0.4597, -0.5212, -0.2760, -0.5212, -0.7665, -0.5212, -0.5212, -0.5212, -0.5212,  0.4597, -0.7665,  1.4406, -0.5212, -0.0308, -0.0308, -0.0308, -0.5212, -0.5212, -0.7665,  1.9310, -0.5212, -0.0308, -0.5212, -1.0117, -0.5212,  0.4597, -0.7665, -0.5212,  0.4597, -0.5212,  4.8738, -0.5212, -0.2760, -0.5212,  0.4597, -1.0117, -0.7665, -0.5212,  2.9119,  1.4406, -0.0308, -0.2760,  1.9310,  2.9119, -0.5212,  2.9119,  0.4597, -0.5212,  0.9501,  0.2144, -0.0308, -0.5212, -1.0117, -1.0117,  1.6858,  0.2144, -0.5212, -0.5212, -0.2760, -1.0117, -0.5212, -1.0117, -0.5212, -0.7665, -0.5212,  0.4597, -0.0308, -1.0117, -0.0308,  0.4597,  0.4597,  0.4597, -0.5212, -0.5212,  2.9119, -0.5212, -1.0117,  2.9119, -1.0117, -0.5212,  0.4597, -1.0117,  1.4406, -0.0308,  0.9501, -1.0117,  2.9119, -0.5212, -0.7665,  0.9501, -0.0308, -0.5212,  0.2144, -0.0308, -0.5212, -0.7665,  4.8738,  1.9310,  0.9501, -0.0308,  0.9501,  1.1954,  0.4597, -0.7665, -0.7665, -1.0117,  0.9501,  2.9119,  0.4597,  1.4406,  2.9119, -0.5212,  0.4597,  1.4406, -1.0117, -0.0308,  0.4597, -0.0308,  1.9310, -0.5212, -0.5212,  1.4406, -0.0308, -0.5212, -0.7665, -0.5212, -0.5212,  0.2144, -0.5212, -0.5212, -0.5212, -0.5212, -0.0308, -0.7665, -0.0308,  0.9501, -0.5212,  0.4597, -0.0308, -0.7665, -0.0308, -0.5212, -0.5212, -0.5212, -0.0308, -0.5212, -0.5212, -0.7665, -0.5212, -0.2760, -0.7665, -0.0308, -0.7665, -0.5212,  1.4406, -1.0117,  0.9501, -0.0308, -0.7665, -0.7665, -0.5212, -0.5212, -0.5212, -0.5212, -0.0308, -0.7665, -0.5212, -0.5212, -0.5212, -0.5212,  0.7049, -0.0308, -0.5212,  0.4597, -0.0308, -0.5212, -0.7665, -0.5212, -0.7665, -1.0117, -0.0308, -0.5212, -0.0308,  0.9501, -0.5212, -0.5212, -0.0308, -0.7665, -0.5212,  0.2144, -0.2760, -0.0308, -0.5212, -0.7665, -0.5212, -0.0308, -0.0308, -0.5212, -0.0308, -0.5212,  1.9310, -0.2760,  1.9310, -0.5212, -0.5212, -0.2760, -0.5212, -0.0308,  0.4597, -0.7665, -0.5212,  0.4597,  0.9501, -0.0308,  1.4406, -0.5212,  0.4597,  0.4597, -0.5212, -0.2760,  0.2144,  1.4406, -0.2760,  1.4406, -0.0308,  0.4597,  1.4406, -0.5212, -0.2760, -0.5212, -0.5212, -0.0308, -0.5212, -0.0308, -0.7665, -0.7665, -0.7665, -0.5212, -0.7665, -0.5212, -0.2760, -0.0308,  0.4597,  0.9501, -1.0117, -0.2760,  1.9310,  1.9310, -0.5212, -0.5212,  0.4597, -0.5212,  0.9501, -0.5212, -1.0117, -0.0308,  0.9501, -0.7665, -0.0308,  0.9501, -0.5212, -0.2760,  2.1763, -0.0308,  0.9501,  0.4597,  1.4406,  0.2144, -0.7665, -0.5212, -1.0117, -0.0308,  0.4597, -0.7665, -1.0117, -1.0117, -0.5212, -0.5212, -0.0308, -0.5212, -0.2760, -1.0117, -0.0308,  0.4597, -0.7665, -0.5212, -0.5212, -0.5212, -0.0308, -0.5212, -0.5212,  0.4597, -0.5212, -1.0117, -1.0117,  0.4597, -0.2760, -0.5212,  1.9310, -0.0308, -0.5212, -1.0117, -0.5212, -0.7665, -1.0117,  0.9501,  0.9501,  1.4406, -0.7665, -0.5212, -0.5212, -0.0308,  1.4406, -1.0117,  0.4597, -0.5212,  1.4406,  0.4597, -0.7665, -0.5212, -0.7665, -1.0117, -0.7665, -0.7665, -0.0308, -1.0117,  0.2144,  0.4597,  2.9119,  0.4597, -0.7665, -0.7665, -0.0308,  0.2144, -0.0308,  0.4597, -0.5212,  0.2144,  2.9119, -1.0117, -0.5212, -0.5212,  1.4406, -0.5212, -0.2760, -1.0117, -0.0308, -0.0308, -0.0308,  0.2144, -1.0117,  0.4597, -0.5212, -0.7665, -0.5212, -0.7665, -0.0308, -0.5212,  0.4597, -0.5212, -1.0117, -0.0308, -0.0308, -0.0308, -0.0308,  1.4406,  0.9501, -1.0117, -0.0308,  1.4406, -0.5212, -0.0308,  0.4597, -0.5212,  1.4406,  0.4597, -0.5212,  0.4597, -0.5212, -0.7665, -0.5212, -1.0117, -0.7665, -0.0308, -0.5212, -0.7665, -0.0308, -0.7665, -0.5212, -0.5212, -0.7665,  2.9119,  3.1572, -1.0117, -1.0117, -0.7665, -0.5212
 
  === References  
 
@@ -633,7 +935,7 @@ The above test for outliers was based on *lm(1 ~ it.edu)*:
 
  == Grubb's test  
 
-Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.00032).
+Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.0003).
 
  === References  
 
@@ -812,7 +1114,8 @@ rapport('outlier-test', data=ius2009, var='it.edu')
 <br>
 <em>Example:</em> 
 {% highlight text %}
-rapport('univar-descriptive', data=ius2009, var='it.edu')
+rapport('univar-descriptive', data=ius2009, var='gender')
+rapport('univar-descriptive', data=ius2009, var='age')
 {% endhighlight %}
 </div></li>
 	<li id="inputs-univar-descriptive"><div><h5>Input parameters</h5><em>univar-descriptive.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
@@ -833,30 +1136,58 @@ rapport('univar-descriptive', data=ius2009, var='it.edu')
 
 
 #############################################################################
-##	 Running: rapport('univar-descriptive', data=ius2009, var='it.edu')
+##	 Running: rapport('univar-descriptive', data=ius2009, var='gender')
 #############################################################################
 
- == Variable description  
+ == *gender* ("Gender")  
 
-The dataset has 709 observations with 709 valid values (missing: 0) in "it.edu" ("Internet usage for educational purposes (hours per day)").
+The dataset has 709 observations with 709 valid values (missing: 0) in *gender* ("Gender").
+This variable seems to be a factor.
+
+ === Base statistics  
+
+
+**gender**   **N**     **pct**   **cum.n**   **cum.pct**  
+------------ --------- --------- ----------- -------------
+male         7344.00   60.93     7344.00     60.93        
+female       4709.00   39.07     12053.00    100.00       
+------------ --------- --------- ----------- -------------
+
+
+ === Barplot  
+
+/tmp/RtmpMBlCON/file16e6403a.png
+
+It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
+
+
+##########################################################################
+##	 Running: rapport('univar-descriptive', data=ius2009, var='age')
+##########################################################################
+
+ == *age*  
+
+The dataset has 709 observations with 709 valid values (missing: 0) in *age*.
 This variable seems to be numeric.
 
- == Base statistics  
+ === Base statistics  
 
 
-    **0**   **0.5**   **1**   **1.5**   **2**   **2.5**   **3**   **3.5**   **4**   **4.5**   **5**   **5.5**   **6**   **6.5**   **7**   **8**   **8.5**   **9**   **10**   **12**  
---- ------- --------- ------- --------- ------- --------- ------- --------- ------- --------- ------- --------- ------- --------- ------- ------- --------- ------- -------- --------
-1   61      102       204     27        109     17        66      2         37      2         33      1         13      1         1       25      1         2       2        3       
---- ------- --------- ------- --------- ------- --------- ------- --------- ------- --------- ------- --------- ------- --------- ------- ------- --------- ------- -------- --------
+**value**   **mean**   **sd**   **var**  
+----------- ---------- -------- ---------
+(all)       24.56      6.84     46.78    
+----------- ---------- -------- ---------
 
 
- == Histogram  
+ === Histogram  
 
-/tmp/RtmpV1PMjn/file3c58326e.png
+/tmp/RtmpMBlCON/file4274b0d9.png
 
-It seems that the highest value is 12 which is exactly Inf times higher than the smalles values (0).
+It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
 
-If we suppose that "Internet usage for educational purposes (hours per day) is not near to a normal distribution (test: , skewness: 1.8593, kurtosis: 6.8501), checking the median (1) might be a better option instead of the mean. The interquartile range (2) measures the statistics dispersion of the variable (similar to standard deviation) based on median. 
+The standard deviation is 6.8399 (variance: 46.784). The expected value is around 24.557, somewhere between 24.054 and 25.061 (SE: 0.2569).
+
+If we suppose that *age* is not near to a normal distribution (test: , skewness: 1.9568, kurtosis: 7.6428), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
 
 
 {% endhighlight %}
@@ -865,7 +1196,8 @@ If we suppose that "Internet usage for educational purposes (hours per day) is n
 <h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
 {% highlight text %}
 
-rapport('univar-descriptive', data=ius2009, var='it.edu')
+rapport('univar-descriptive', data=ius2009, var='gender')
+rapport('univar-descriptive', data=ius2009, var='age')
 
 {% endhighlight %}
 <h6>Popular formats:</h6>

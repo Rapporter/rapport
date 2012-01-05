@@ -4,116 +4,96 @@
 .PP
 This template will return descriptive statistics of a numerical, or a
 frequency table of a categorical variable.
-.SS Variable description
+.SS \f[I]gender\f[] (\[lq]Gender\[rq])
 .PP
 The dataset has 709 observations with 709 valid values (missing: 0) in
-\[lq]it.edu\[rq] (\[lq]Internet usage for educational purposes (hours
-per day)\[rq]).
+\f[I]gender\f[] (\[lq]Gender\[rq]).
+This variable seems to be a factor.
+.SS Base statistics
+.PP
+.TS
+tab(@);
+l l l l l.
+T{
+\f[B]gender\f[]
+T}@T{
+\f[B]N\f[]
+T}@T{
+\f[B]pct\f[]
+T}@T{
+\f[B]cum.n\f[]
+T}@T{
+\f[B]cum.pct\f[]
+T}
+_
+T{
+male
+T}@T{
+7344.00
+T}@T{
+60.93
+T}@T{
+7344.00
+T}@T{
+60.93
+T}
+T{
+female
+T}@T{
+4709.00
+T}@T{
+39.07
+T}@T{
+12053.00
+T}@T{
+100.00
+T}
+.TE
+.SS Barplot
+.PP
+[IMAGE: image (7a6fc939fb3b30bcfda9ac649fd9d9af.png)]
+.PP
+It seems that the highest value is 2 which is exactly 2 times higher
+than the smallest value (1).
+.SS Description
+.PP
+This template will return descriptive statistics of a numerical, or a
+frequency table of a categorical variable.
+.SS \f[I]age\f[]
+.PP
+The dataset has 709 observations with 709 valid values (missing: 0) in
+\f[I]age\f[].
 This variable seems to be numeric.
 .SS Base statistics
 .PP
 .TS
 tab(@);
-l l l l l l l l l l l l l l l l l l l l l.
+l l l l.
 T{
+\f[B]value\f[]
 T}@T{
-\f[B]0\f[]
+\f[B]mean\f[]
 T}@T{
-\f[B]0.5\f[]
+\f[B]sd\f[]
 T}@T{
-\f[B]1\f[]
-T}@T{
-\f[B]1.5\f[]
-T}@T{
-\f[B]2\f[]
-T}@T{
-\f[B]2.5\f[]
-T}@T{
-\f[B]3\f[]
-T}@T{
-\f[B]3.5\f[]
-T}@T{
-\f[B]4\f[]
-T}@T{
-\f[B]4.5\f[]
-T}@T{
-\f[B]5\f[]
-T}@T{
-\f[B]5.5\f[]
-T}@T{
-\f[B]6\f[]
-T}@T{
-\f[B]6.5\f[]
-T}@T{
-\f[B]7\f[]
-T}@T{
-\f[B]8\f[]
-T}@T{
-\f[B]8.5\f[]
-T}@T{
-\f[B]9\f[]
-T}@T{
-\f[B]10\f[]
-T}@T{
-\f[B]12\f[]
+\f[B]var\f[]
 T}
 _
 T{
-1
+(all)
 T}@T{
-61.00000
+24.56
 T}@T{
-102.00000
+6.84
 T}@T{
-204.00000
-T}@T{
-27.00000
-T}@T{
-109.00000
-T}@T{
-17.00000
-T}@T{
-66.00000
-T}@T{
-2.00000
-T}@T{
-37.00000
-T}@T{
-2.00000
-T}@T{
-33.00000
-T}@T{
-1.00000
-T}@T{
-13.00000
-T}@T{
-1.00000
-T}@T{
-1.00000
-T}@T{
-25.00000
-T}@T{
-1.00000
-T}@T{
-2.00000
-T}@T{
-2.00000
-T}@T{
-3.00000
+46.78
 T}
 .TE
 .SS Histogram
 .PP
-[IMAGE: image (598faf698f82b8217e0ed3137a62daaf.png)]
+[IMAGE: image (ec60bf38bca8471ace82e1b6dfb6ae3f.png)]
 .PP
-It seems that the highest value is 12 which is exactly Inf times higher
-than the smalles values (0).
-.PP
-If we suppose that "Internet usage for educational purposes (hours per
-day) is not near to a normal distribution (test: , skewness: 1.8593,
-kurtosis: 6.8501), checking the median (1) might be a better option
-instead of the mean.
-The interquartile range (2) measures the statistics dispersion of the
-variable (similar to standard deviation) based on median.
+It seems that the highest value is 58 which is exactly 3.625 times
+higher than the smallest value (16).
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

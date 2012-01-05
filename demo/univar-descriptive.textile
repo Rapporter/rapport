@@ -2,21 +2,41 @@ h2. Description
 
 This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.
 
-h3. Variable description
+h3. _gender_ (&quot;Gender&quot;)
 
-The dataset has 709 observations with 709 valid values (missing: 0) in &quot;it.edu&quot; (&quot;Internet usage for educational purposes (hours per day)&quot;). This variable seems to be numeric.
+The dataset has 709 observations with 709 valid values (missing: 0) in _gender_ (&quot;Gender&quot;). This variable seems to be a factor.
 
-h3. Base statistics
+h4. Base statistics
 
-|_. |_. *0*|_. *0.5*|_. *1*|_. *1.5*|_. *2*|_. *2.5*|_. *3*|_. *3.5*|_. *4*|_. *4.5*|_. *5*|_. *5.5*|_. *6*|_. *6.5*|_. *7*|_. *8*|_. *8.5*|_. *9*|_. *10*|_. *12*|
-|1|61.00000|102.00000|204.00000|27.00000|109.00000|17.00000|66.00000|2.00000|37.00000|2.00000|33.00000|1.00000|13.00000|1.00000|1.00000|25.00000|1.00000|2.00000|2.00000|3.00000|
-
-
-h3. Histogram
-
-!598faf698f82b8217e0ed3137a62daaf.png!
+|_. *gender*|_. *N*|_. *pct*|_. *cum.n*|_. *cum.pct*|
+|male|7344.00|60.93|7344.00|60.93|
+|female|4709.00|39.07|12053.00|100.00|
 
 
-It seems that the highest value is 12 which is exactly Inf times higher than the smalles values (0).
+h4. Barplot
 
-If we suppose that &quot;Internet usage for educational purposes (hours per day) is not near to a normal distribution (test: , skewness: 1.8593, kurtosis: 6.8501), checking the median (1) might be a better option instead of the mean. The interquartile range (2) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+!7a6fc939fb3b30bcfda9ac649fd9d9af.png!
+
+
+It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
+
+h2. Description
+
+This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.
+
+h3. _age_
+
+The dataset has 709 observations with 709 valid values (missing: 0) in _age_. This variable seems to be numeric.
+
+h4. Base statistics
+
+|_. *value*|_. *mean*|_. *sd*|_. *var*|
+|(all)|24.56|6.84|46.78|
+
+
+h4. Histogram
+
+!ec60bf38bca8471ace82e1b6dfb6ae3f.png!
+
+
+It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).

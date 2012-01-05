@@ -16,199 +16,169 @@
     This template will return descriptive statistics of a numerical, or
     a frequency table of a categorical variable.
   </para>
-  <section id="variable-description">
-    <title>Variable description</title>
+  <section id="gender-gender">
+    <title><emphasis>gender</emphasis> (&quot;Gender&quot;)</title>
     <para>
       The dataset has 709 observations with 709 valid values (missing:
-      0) in &quot;it.edu&quot; (&quot;Internet usage for educational
-      purposes (hours per day)&quot;). This variable seems to be
-      numeric.
+      0) in <emphasis>gender</emphasis> (&quot;Gender&quot;). This
+      variable seems to be a factor.
     </para>
+    <section id="base-statistics">
+      <title>Base statistics</title>
+      <informaltable>
+        <tgroup cols="5">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+                <emphasis role="strong">gender</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">N</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">pct</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">cum.n</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">cum.pct</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                male
+              </entry>
+              <entry>
+                7344.00
+              </entry>
+              <entry>
+                60.93
+              </entry>
+              <entry>
+                7344.00
+              </entry>
+              <entry>
+                60.93
+              </entry>
+            </row>
+            <row>
+              <entry>
+                female
+              </entry>
+              <entry>
+                4709.00
+              </entry>
+              <entry>
+                39.07
+              </entry>
+              <entry>
+                12053.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+    <section id="barplot">
+      <title>Barplot</title>
+      <figure>
+        <title></title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="7a6fc939fb3b30bcfda9ac649fd9d9af.png" />
+          </imageobject>
+          <textobject><phrase></phrase></textobject>
+        </mediaobject>
+      </figure>
+      <para>
+        It seems that the highest value is 2 which is exactly 2 times
+        higher than the smallest value (1).
+      </para>
+    </section>
   </section>
-  <section id="base-statistics">
-    <title>Base statistics</title>
-    <informaltable>
-      <tgroup cols="21">
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <colspec align="left" />
-        <thead>
-          <row>
-            <entry>
-            </entry>
-            <entry>
-              <emphasis role="strong">0</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">0.5</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">1</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">1.5</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">2</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">2.5</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">3</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">3.5</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">4</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">4.5</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">5</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">5.5</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">6</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">6.5</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">7</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">8</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">8.5</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">9</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">10</emphasis>
-            </entry>
-            <entry>
-              <emphasis role="strong">12</emphasis>
-            </entry>
-          </row>
-        </thead>
-        <tbody>
-          <row>
-            <entry>
-              1
-            </entry>
-            <entry>
-              61.00000
-            </entry>
-            <entry>
-              102.00000
-            </entry>
-            <entry>
-              204.00000
-            </entry>
-            <entry>
-              27.00000
-            </entry>
-            <entry>
-              109.00000
-            </entry>
-            <entry>
-              17.00000
-            </entry>
-            <entry>
-              66.00000
-            </entry>
-            <entry>
-              2.00000
-            </entry>
-            <entry>
-              37.00000
-            </entry>
-            <entry>
-              2.00000
-            </entry>
-            <entry>
-              33.00000
-            </entry>
-            <entry>
-              1.00000
-            </entry>
-            <entry>
-              13.00000
-            </entry>
-            <entry>
-              1.00000
-            </entry>
-            <entry>
-              1.00000
-            </entry>
-            <entry>
-              25.00000
-            </entry>
-            <entry>
-              1.00000
-            </entry>
-            <entry>
-              2.00000
-            </entry>
-            <entry>
-              2.00000
-            </entry>
-            <entry>
-              3.00000
-            </entry>
-          </row>
-        </tbody>
-      </tgroup>
-    </informaltable>
-  </section>
-  <section id="histogram">
-    <title>Histogram</title>
-    <figure>
-      <title></title>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="598faf698f82b8217e0ed3137a62daaf.png" />
-        </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+</section>
+<section id="description-1">
+  <title>Description</title>
+  <para>
+    This template will return descriptive statistics of a numerical, or
+    a frequency table of a categorical variable.
+  </para>
+  <section id="age">
+    <title><emphasis>age</emphasis></title>
     <para>
-      It seems that the highest value is 12 which is exactly Inf times
-      higher than the smalles values (0).
+      The dataset has 709 observations with 709 valid values (missing:
+      0) in <emphasis>age</emphasis>. This variable seems to be numeric.
     </para>
-    <para>
-      If we suppose that &quot;Internet usage for educational purposes
-      (hours per day) is not near to a normal distribution (test: ,
-      skewness: 1.8593, kurtosis: 6.8501), checking the median (1) might
-      be a better option instead of the mean. The interquartile range
-      (2) measures the statistics dispersion of the variable (similar to
-      standard deviation) based on median.
-    </para>
+    <section id="base-statistics-1">
+      <title>Base statistics</title>
+      <informaltable>
+        <tgroup cols="4">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+                <emphasis role="strong">value</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">mean</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">sd</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">var</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                (all)
+              </entry>
+              <entry>
+                24.56
+              </entry>
+              <entry>
+                6.84
+              </entry>
+              <entry>
+                46.78
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+    <section id="histogram">
+      <title>Histogram</title>
+      <figure>
+        <title></title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="ec60bf38bca8471ace82e1b6dfb6ae3f.png" />
+          </imageobject>
+          <textobject><phrase></phrase></textobject>
+        </mediaobject>
+      </figure>
+      <para>
+        It seems that the highest value is 58 which is exactly 3.625
+        times higher than the smallest value (16).
+      </para>
+    </section>
   </section>
 </section>
 </article>
