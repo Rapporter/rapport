@@ -6,7 +6,7 @@
     limit = 20L)
 }
 \arguments{
-  \item{x}{a character or factor vector}
+  \item{x}{an atomic vector to merge its elements}
 
   \item{sep.last}{last separator}
 
@@ -20,8 +20,8 @@
   a string with catenated vector contents
 }
 \description{
-  Merge character vector in one string for pretty inline
-  printing.
+  Merge atomic vector elements in one string for pretty
+  inline printing.
 }
 \examples{
 p(c("fee", "fi", "foo", "fam"))

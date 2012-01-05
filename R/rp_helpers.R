@@ -624,8 +624,8 @@ rp.prettyascii <- function(x) {
 
 ##' Inline Printing
 ##'
-##' Merge character vector in one string for pretty inline printing.
-##' @param x a character or factor vector
+##' Merge atomic vector elements in one string for pretty inline printing.
+##' @param x an atomic vector to merge its elements
 ##' @param sep.last last separator
 ##' @param wrap string to wrap results
 ##' @param sep main separator
@@ -636,14 +636,14 @@ rp.prettyascii <- function(x) {
 ##' ## [1] "_fee_, _fi_, _foo_ and _fam_"
 ##' @export
 p <- function(x, sep.last = 'and', wrap = '_', sep = ', ', limit = 20L){
-    stopifnot(is.character(x) | is.factor(x))
 
+    stopifnot(is.atomic(x))
     x.len <- length(x)
     stopifnot(x.len > 0)
     stopifnot(x.len <= limit)
 
     if (x.len == 1)
-        x
+        wrap(x, wrap)
     else if (x.len == 2)
         paste(wrap(x, wrap), collapse = wrap(sep.last, ' '))
     else
