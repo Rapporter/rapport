@@ -4,7 +4,7 @@
 \alias{rapport-package}
 \title{rapport templating system}
 \usage{
-  rapport(fp, data = NULL, ..., reproducible = TRUE)
+  rapport(fp, data = NULL, ..., reproducible = FALSE)
 }
 \arguments{
   \item{fp}{a string containing a template name/path or a
