@@ -170,7 +170,7 @@ print.rapport <- function(x, metadata=FALSE, inputs=FALSE, body=TRUE) {
                        ## if (part$robjects[[1]]$type == 'error')   ## error handling done in \code{rapport}
                        ##    cat(part$robjects[[1]]$msg$errors)     ##
                        if (!is.null(part$robjects[[1]]$output)) {
-                           if (part$robjects[[1]]$type == 'image')
+                           if (any(part$robjects[[1]]$type == 'image'))
                                cat(as.character(part$robjects[[1]]$output))
                            else
                                cat(rp.prettyascii(part$robjects[[1]]$output))
