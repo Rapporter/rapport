@@ -150,7 +150,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             warnings <- NULL
         } else {
             ##warnings <- sprintf('**Warning** in "%s": "%s"', paste(src, collapse=' ; '), names(warnings()[1]))
-            warnings <- sprintf('**Warning** in "%s": "%s"', paste(src, collapse=' ; '), eval[[warnings]]$message)
+            warnings <- sprintf('**Warning** in "%s": "%s"', paste(src, collapse=' ; '), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
         }
 
         ## good code survived!
