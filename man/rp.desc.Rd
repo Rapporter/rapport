@@ -2,20 +2,21 @@
 \alias{rp.desc}
 \title{Descriptive Statistics}
 \usage{
-  rp.desc(ndep = NULL, dep, fn, data, na.rm = TRUE,
+  rp.desc(id.vars, measure.vars, fn, data, na.rm = TRUE,
     margins = NULL, subset = TRUE, fill = NA,
     add.missing = FALSE, total.name = "Total")
 }
 \arguments{
-  \item{ndep}{a character vector with \code{id.vars}}
+  \item{id.vars}{a character vector with \code{id.vars}}
 
-  \item{dep}{a character vector with \code{measure.vars}}
+  \item{measure.vars}{a character vector with
+  \code{measure.vars}}
 
   \item{fn}{a list with functions or a character vector
   with function names}
 
   \item{data}{a \code{data.frame} holding variables
-  specified in \code{ndep} and \code{dep}}
+  specified in \code{id.vars} and \code{measure.vars}}
 
   \item{na.rm}{a logical value indicating whether \code{NA}
   values should be removed}
@@ -43,9 +44,9 @@
   Aggregate table of descriptives according to functions
   provided in \code{fn} argument. This function follows
   melt/cast approach used in \code{reshape} package.
-  Variable names specified in \code{dep} argument are
-  treated as \code{measure.vars}, while the ones in
-  \code{ndep} are treated as \code{id.vars} (see
+  Variable names specified in \code{measure.vars} argument
+  are treated as \code{measure.vars}, while the ones in
+  \code{id.vars} are treated as \code{id.vars} (see
   \code{\link[reshape]{melt.data.frame}} for details).
   Other its formal arguments match with corresponding
   arguments for \code{\link[reshape]{cast}} function. Some
@@ -53,6 +54,7 @@
   pretty row and column labels.
 }
 \examples{
+rp.
 rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)
 }
 

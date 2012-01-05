@@ -1,10 +1,10 @@
 ##' Descriptive Statistics
 ##'
-##' Aggregate table of descriptives according to functions provided in \code{fn} argument. This function follows melt/cast approach used in \code{reshape} package. Variable names specified in \code{dep} argument are treated as \code{measure.vars}, while the ones in \code{ndep} are treated as \code{id.vars} (see \code{\link[reshape]{melt.data.frame}} for details). Other its formal arguments match with corresponding arguments for \code{\link[reshape]{cast}} function. Some post-processing is done after reshaping, in order to get pretty row and column labels.
-##' @param ndep a character vector with \code{id.vars}
-##' @param dep a character vector with \code{measure.vars}
+##' Aggregate table of descriptives according to functions provided in \code{fn} argument. This function follows melt/cast approach used in \code{reshape} package. Variable names specified in \code{measure.vars} argument are treated as \code{measure.vars}, while the ones in \code{id.vars} are treated as \code{id.vars} (see \code{\link[reshape]{melt.data.frame}} for details). Other its formal arguments match with corresponding arguments for \code{\link[reshape]{cast}} function. Some post-processing is done after reshaping, in order to get pretty row and column labels.
+##' @param id.vars a character vector with \code{id.vars}
+##' @param measure.vars a character vector with \code{measure.vars}
 ##' @param fn a list with functions or a character vector with function names
-##' @param data a \code{data.frame} holding variables specified in \code{ndep} and \code{dep}
+##' @param data a \code{data.frame} holding variables specified in \code{id.vars} and \code{measure.vars}
 ##' @param na.rm a logical value indicating whether \code{NA} values should be removed
 ##' @param margins should margins be included? (see documentation for eponymous argument in \code{\link[reshape]{melt.data.frame}})
 ##' @param subset a logical vector to subset the data before aggregating
@@ -13,12 +13,15 @@
 ##' @param total.name a character string with name for "grand" margin (defaults to "Total")
 ##' @return a \code{data.frame} with aggregated data
 ##' @examples
+##' rp.
 ##' rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)
 ##' @export
-rp.desc <- function(ndep = NULL, dep, fn, data, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total') {
+rp.desc <- function(id.vars, measure.vars, fn, data, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total') {
 
-    m   <- melt.data.frame(data, id.vars = ndep, measure.vars = dep, na.rm = na.rm) # melt data
-    fml <- sprintf('%s ~ variable', paste(ndep, collapse = ' + ')) # generate cast formula
+    m   <- melt.data.frame(data, id.vars = id.vars, measure.vars = measure.vars, na.rm = na.rm) # melt data
+    if (is.null(id.vars))
+        id.vars <- '.'
+    fml <- sprintf('%s ~ variable', paste(id.vars, collapse = ' + ')) # generate cast formula
 
     if (!is.character(fn)){
 
@@ -49,16 +52,19 @@ rp.desc <- function(ndep = NULL, dep, fn, data, na.rm = TRUE, margins = NULL, su
         names(res)[res.ind] <- sapply(strsplit(nms.res[res.ind], '_'), function(x) sprintf('%s(%s)', x[2], x[1]))
 
     ## remove (all) arrrgh...
-
     names(res) <- gsub('(all)', total.name, names(res), fixed = TRUE) # ...from colnames
-    ## from factor levels
-    facs <- 1:length(ndep)
+    facs <- 1:length(id.vars)           # ...from factor levels
     res[facs] <- lapply(res[facs], function(y){
         levels(y) <- gsub('(all)', total.name, levels(y), fixed = TRUE)
         y
     })
 
-    class(res) <- 'rp.table'
+    ## remove "value" as colname
+    if (id.vars == '.'){
+        names(res)[1] <- gsub('value', '', names(res)[1])
+    }
+
+    class(res) <- c('rp.table', 'data.frame')
 
     return(res)
 }
