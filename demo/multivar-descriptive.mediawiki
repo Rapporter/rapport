@@ -38,7 +38,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''gender'
 
 ==== Barplot ====
 
-[[Image:/tmp/RtmpMBlCON/file2194acec.png|frame|none]]
+[[Image:/tmp/RtmpMBlCON/file3b743a1a.png|frame|none]]
 
 It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
 
@@ -69,7 +69,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''age''. 
 
 ==== Histogram ====
 
-[[Image:/tmp/RtmpMBlCON/file394325a.png|frame|none]]
+[[Image:/tmp/RtmpMBlCON/file98a4723.png|frame|none]]
 
 It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
 
@@ -150,7 +150,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''chatim'
 
 ==== Barplot ====
 
-[[Image:/tmp/RtmpMBlCON/file633ff331.png|frame|none]]
+[[Image:/tmp/RtmpMBlCON/file7eb47e7a.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -227,7 +227,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''game'' 
 
 ==== Barplot ====
 
-[[Image:/tmp/RtmpMBlCON/filee5d2e07.png|frame|none]]
+[[Image:/tmp/RtmpMBlCON/file5546bd02.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -304,7 +304,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''surf'' 
 
 ==== Barplot ====
 
-[[Image:/tmp/RtmpMBlCON/file6e66c0f6.png|frame|none]]
+[[Image:/tmp/RtmpMBlCON/file6b2b43aa.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -381,7 +381,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''email''
 
 ==== Barplot ====
 
-[[Image:/tmp/RtmpMBlCON/file5fe06873.png|frame|none]]
+[[Image:/tmp/RtmpMBlCON/file10be4543.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -458,7 +458,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''downloa
 
 ==== Barplot ====
 
-[[Image:/tmp/RtmpMBlCON/file131118b5.png|frame|none]]
+[[Image:/tmp/RtmpMBlCON/file46b8f0e.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -535,7 +535,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''forum''
 
 ==== Barplot ====
 
-[[Image:/tmp/RtmpMBlCON/file518fa691.png|frame|none]]
+[[Image:/tmp/RtmpMBlCON/file7a7e9726.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -612,7 +612,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''socnet'
 
 ==== Barplot ====
 
-[[Image:/tmp/RtmpMBlCON/file2c55beae.png|frame|none]]
+[[Image:/tmp/RtmpMBlCON/file7a050d7b.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -689,7 +689,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''xxx'' (
 
 ==== Barplot ====
 
-[[Image:/tmp/RtmpMBlCON/file746b98a4.png|frame|none]]
+[[Image:/tmp/RtmpMBlCON/file21419ce0.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -766,6 +766,6 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''long.us
 
 ==== Barplot ====
 
-[[Image:/tmp/RtmpMBlCON/filec6a6189.png|frame|none]]
+[[Image:/tmp/RtmpMBlCON/file6acfe10f.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).

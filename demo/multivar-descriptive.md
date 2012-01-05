@@ -21,7 +21,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file2194acec.png)
+![image](/tmp/RtmpMBlCON/file3b743a1a.png)
 
 It seems that the highest value is 2 which is exactly 2 times higher
 than the smallest value (1).
@@ -39,7 +39,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in
 
 #### Histogram
 
-![image](/tmp/RtmpMBlCON/file394325a.png)
+![image](/tmp/RtmpMBlCON/file98a4723.png)
 
 It seems that the highest value is 58 which is exactly 3.625 times
 higher than the smallest value (16).
@@ -73,7 +73,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file633ff331.png)
+![image](/tmp/RtmpMBlCON/file7eb47e7a.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -102,7 +102,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/filee5d2e07.png)
+![image](/tmp/RtmpMBlCON/file5546bd02.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -131,7 +131,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file6e66c0f6.png)
+![image](/tmp/RtmpMBlCON/file6b2b43aa.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -160,7 +160,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file5fe06873.png)
+![image](/tmp/RtmpMBlCON/file10be4543.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -189,7 +189,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file131118b5.png)
+![image](/tmp/RtmpMBlCON/file46b8f0e.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -218,7 +218,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file518fa691.png)
+![image](/tmp/RtmpMBlCON/file7a7e9726.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -247,7 +247,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file2c55beae.png)
+![image](/tmp/RtmpMBlCON/file7a050d7b.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -276,7 +276,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file746b98a4.png)
+![image](/tmp/RtmpMBlCON/file21419ce0.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -306,7 +306,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/filec6a6189.png)
+![image](/tmp/RtmpMBlCON/file6acfe10f.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).

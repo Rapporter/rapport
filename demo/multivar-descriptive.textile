@@ -15,7 +15,7 @@ h4. Base statistics
 
 h4. Barplot
 
-!/tmp/RtmpMBlCON/file2194acec.png!
+!/tmp/RtmpMBlCON/file3b743a1a.png!
 
 
 It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
@@ -32,7 +32,7 @@ h4. Base statistics
 
 h4. Histogram
 
-!/tmp/RtmpMBlCON/file394325a.png!
+!/tmp/RtmpMBlCON/file98a4723.png!
 
 
 It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
@@ -61,7 +61,7 @@ h4. Base statistics
 
 h4. Barplot
 
-!/tmp/RtmpMBlCON/file633ff331.png!
+!/tmp/RtmpMBlCON/file7eb47e7a.png!
 
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
@@ -86,7 +86,7 @@ h4. Base statistics
 
 h4. Barplot
 
-!/tmp/RtmpMBlCON/filee5d2e07.png!
+!/tmp/RtmpMBlCON/file5546bd02.png!
 
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
@@ -111,7 +111,7 @@ h4. Base statistics
 
 h4. Barplot
 
-!/tmp/RtmpMBlCON/file6e66c0f6.png!
+!/tmp/RtmpMBlCON/file6b2b43aa.png!
 
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
@@ -136,7 +136,7 @@ h4. Base statistics
 
 h4. Barplot
 
-!/tmp/RtmpMBlCON/file5fe06873.png!
+!/tmp/RtmpMBlCON/file10be4543.png!
 
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
@@ -161,7 +161,7 @@ h4. Base statistics
 
 h4. Barplot
 
-!/tmp/RtmpMBlCON/file131118b5.png!
+!/tmp/RtmpMBlCON/file46b8f0e.png!
 
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
@@ -186,7 +186,7 @@ h4. Base statistics
 
 h4. Barplot
 
-!/tmp/RtmpMBlCON/file518fa691.png!
+!/tmp/RtmpMBlCON/file7a7e9726.png!
 
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
@@ -211,7 +211,7 @@ h4. Base statistics
 
 h4. Barplot
 
-!/tmp/RtmpMBlCON/file2c55beae.png!
+!/tmp/RtmpMBlCON/file7a050d7b.png!
 
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
@@ -236,7 +236,7 @@ h4. Base statistics
 
 h4. Barplot
 
-!/tmp/RtmpMBlCON/file746b98a4.png!
+!/tmp/RtmpMBlCON/file21419ce0.png!
 
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
@@ -261,7 +261,7 @@ h4. Base statistics
 
 h4. Barplot
 
-!/tmp/RtmpMBlCON/filec6a6189.png!
+!/tmp/RtmpMBlCON/file6acfe10f.png!
 
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
