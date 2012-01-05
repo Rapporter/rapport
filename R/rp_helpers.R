@@ -95,7 +95,8 @@ rp.label <- function(var){
     lbl <- attr(var, 'label')
 
     if (is.null(lbl)) {
-        return (tail(as.character(substitute(var)), 1)) # return variable name if no label
+        ## return (tail(as.character(substitute(var)), 1)) # return variable name if no label
+        return (deparse(substitute(var)))
     } else {
         if (length(lbl) > 1)
             warning('variable label is not a length-one vector, only the first element is displayed')
@@ -620,6 +621,34 @@ rp.prettyascii <- function(x) {
             return(paste(capture.output(ascii(x)), collapse='\n'))
 }
 
+
+##' Inline Printing
+##'
+##' Merge character vector in one string for pretty inline printing.
+##' @param x a character or factor vector
+##' @param sep.last last separator
+##' @param wrap string to wrap results
+##' @param sep main separator
+##' @param limit maximum character length
+##' @return a string with catenated vector contents
+##' @examples
+##' p(c("fee", "fi", "foo", "fam"))
+##' ## [1] "_fee_, _fi_, _foo_ and _fam_"
+##' @export
+p <- function(x, sep.last = 'and', wrap = '_', sep = ', ', limit = 20L){
+    stopifnot(is.character(x) | is.factor(x))
+
+    x.len <- length(x)
+    stopifnot(x.len > 0)
+    stopifnot(x.len <= limit)
+
+    if (x.len == 1)
+        x
+    else if (x.len == 2)
+        paste(wrap(x, wrap), collapse = wrap(sep.last, ' '))
+    else
+        paste(paste(wrap(x[1:(x.len - 1)], wrap), collapse = sep), sep.last, wrap(x[x.len], wrap))
+}
 
 
 ########################################

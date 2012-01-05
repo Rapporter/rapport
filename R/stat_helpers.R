@@ -40,6 +40,7 @@ rp.outlier <- function(x) {
         return()
 }
 
+
 ##' Goodman and Kruskal's lambda
 ##'
 ##' Computes Goodman and Kruskal's lambda for given table.
@@ -54,3 +55,20 @@ lambda.test <- function(table, direction=0) {
         return(list(row=lambda.test(table, 1), col=lambda.test(table, 2)))
     }
 }
+
+
+##' Hypothesis Test Helper
+##'
+##' This function extracts only the most important information from \code{htest} class objects.
+##' @param x arguments to be passed to function specified in \code{test}
+##' @param test a function to be applied
+##' @param ... additional arguments for function specified in \code{test}
+##' @export
+htest <- function(x, test, ...) {
+  h <- do.call(test, list(x, ...))      # get htest object
+  res <- c(h$statistic, p = h$p.value)
+  if (!is.null(h$parameter))
+      res['parameter'] <- h$parameter
+  return(res)
+}
+

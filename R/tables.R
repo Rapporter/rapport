@@ -46,22 +46,27 @@ rp.desc <- function(id.vars, measure.vars, fn, data, na.rm = TRUE, margins = NUL
 
     res <- cast(m, fml, fun.aggregate = each(fn), margins = margins, subset = subset, fill = fill, add.missing = add.missing)
 
-    ## fix names with underscores
-    nms.res <- names(res)
-    if (length(res.ind <- grep('_', nms.res)))
-        names(res)[res.ind] <- sapply(strsplit(nms.res[res.ind], '_'), function(x) sprintf('%s(%s)', x[2], x[1]))
+    nms.res <- names(res)               # column names
 
-    ## remove (all) arrrgh...
-    names(res) <- gsub('(all)', total.name, names(res), fixed = TRUE) # ...from colnames
-    facs <- 1:length(id.vars)           # ...from factor levels
-    res[facs] <- lapply(res[facs], function(y){
-        levels(y) <- gsub('(all)', total.name, levels(y), fixed = TRUE)
-        y
-    })
+    ## if only one measure.var is specified, ommit its name from colnames
+    if (length(measure.vars == 1)){
+        names(res) <- gsub(sprintf('%s_', measure.vars), '', names(res))
+    } else {
+        ## fix names with underscores
+        if (length(res.ind <- grep('_', nms.res)))
+            names(res)[res.ind] <- sapply(strsplit(nms.res[res.ind], '_'), function(x) sprintf('%s(%s)', x[2], x[1]))
 
-    ## remove "value" as colname
-    if (id.vars == '.'){
-        names(res)[1] <- gsub('value', '', names(res)[1])
+        ## remove (all) arrrgh...
+        names(res) <- gsub('(all)', total.name, names(res), fixed = TRUE) # ...from colnames
+        facs <- 1:length(id.vars)           # ...from factor levels
+        res[facs] <- lapply(res[facs], function(y){
+            levels(y) <- gsub('(all)', total.name, levels(y), fixed = TRUE)
+            y
+        })
+
+        ## remove "value" as colname
+        if (length(id.vars) == 1 && id.vars == '.')
+            names(res)[1] <- gsub('value', '', names(res)[1])
     }
 
     class(res) <- c('rp.table', 'data.frame')
@@ -71,15 +76,15 @@ rp.desc <- function(id.vars, measure.vars, fn, data, na.rm = TRUE, margins = NUL
 
 
 ##' @export
-rp.freq <- function(f.vars, data, count = TRUE, pct = TRUE, cum.n = TRUE, cum.pct = TRUE, na.rm = TRUE, subset = TRUE, fill = NULL, add.missing = FALSE){
+rp.freq <- function(f.vars, data, count = TRUE, pct = TRUE, cum.n = TRUE, cum.pct = TRUE, na.rm = TRUE, subset = TRUE, fill = NA, add.missing = FALSE){
 
     m <- melt.data.frame(data, id.vars = f.vars, na.rm = na.rm)
     fml <- sprintf('%s ~ .', paste(f.vars, collapse = ' + '))
     suppressWarnings(cc <- cast(m, fml, length, subset = subset, fill = fill, add.missing = add.missing))
-    colnames(cc) <- gsub('^\\(all\\)$', 'N', colnames(cc)) # fix colnames
+    colnames(cc) <- gsub('(all)', 'N', colnames(cc), fixed = TRUE) # remove nasty (all)
     cc <- transform(cc, pct = N / sum(N) * 100)
     cc <- transform(cc, cum.n = cumsum(N), cum.pct = cumsum(pct))
-    keep <- sapply(list(count = count, pct = pct, cum.n = cum.n, cum.pct = cum.pct), isTRUE)
+    keep <- sapply(list(count, pct, cum.n, cum.pct), isTRUE)
     if (all(keep == FALSE))
         stop('no summary to show')
     keep <- c(rep(TRUE, length(f.vars)), keep)
