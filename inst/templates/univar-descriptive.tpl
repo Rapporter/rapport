@@ -9,12 +9,12 @@ Example:    rapport('univar-descriptive', data=ius2009, var='gender')
 var          | variable | Variable        | A categorical or numerical variable. The template will determine the measurement level of the given variable and will return a detailed frequency table or appropriate descriptive statistics for numerics. 
 head-->
 
-# Variable description
+# *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>
 
 The dataset has <%nvar<-as.numeric(var);rp.n(nvar)%> observations with <%=rp.valid(nvar)%> valid values (missing: <%=rp.missing(nvar)%>) in *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>.
 This variable seems to be <%=ifelse(is.numeric(var), 'numeric', 'a factor')%>.
 
-# Base statistics
+## Base statistics
 
 <%
 if (is.numeric(var)) {
@@ -24,7 +24,7 @@ if (is.numeric(var)) {
     }
 %>
 
-# <%ifelse(is.numeric(var), 'Histogram', 'Barplot')%>
+## <%ifelse(is.numeric(var), 'Histogram', 'Barplot')%>
 
 <%
 if (is.numeric(var)) {
