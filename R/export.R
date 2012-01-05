@@ -1,28 +1,3 @@
-##' Return pretty ascii form
-##'
-##' Some standard formatting is applied to the value which is returned as ascii object.
-##' @param x R object
-##' @return ascii
-##' @examples \dontrun{
-##' rp.prettyascii('Hallo, World?')
-##' rp.prettyascii(22/7)
-##' rp.prettyascii(matrix(runif(25), 5, 5))
-##'	rp.prettyascii(lm(hp~wt, mtcars))
-##'
-##' }
-##' @export
-rp.prettyascii <- function(x) {
-    if (is.numeric(x)) {
-        class <- class(x); x <- rp.round(x);
-        if (length(x) != 1)
-            class(x) <- class
-    }
-    if (is.vector(x))
-        return(paste(x, collapse=', '))
-    else
-        return(paste(capture.output(ascii(x)), collapse='\n'))
-}
-
 ##' tpl.export.outputs
 ##'
 ##' List of all available output formats (from ascii package).

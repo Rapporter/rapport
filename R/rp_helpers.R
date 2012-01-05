@@ -592,6 +592,34 @@ rp.round <- function(x, scientific=FALSE) {
     format(round(x, getOption('rp.decimal')), decimal.mark = getOption('rp.decimal.mark'), scientific = scientific)
 }
 
+##' Return pretty ascii form
+##'
+##' Some standard formatting is applied to the value which is returned as ascii object.
+##' @param x R object
+##' @return ascii
+##' @examples \dontrun{
+##' rp.prettyascii('Hallo, World?')
+##' rp.prettyascii(22/7)
+##' rp.prettyascii(matrix(runif(25), 5, 5))
+##' rp.prettyascii(lm(hp~wt, mtcars))
+##'
+##' }
+##' @export
+rp.prettyascii <- function(x) {
+    if (is.numeric(x)) {
+        class <- class(x); x <- rp.round(x);
+        if (length(x) != 1)
+            class(x) <- class
+    }
+    if (is.vector(x))
+        return(paste(x, collapse=', '))
+    if (is.data.frame(x))
+        if (all(row.names(x) == 1:nrow(x)))
+            return(paste(capture.output(ascii(x, include.rownames = FALSE)), collapse='\n'))
+        else
+            return(paste(capture.output(ascii(x)), collapse='\n'))
+}
+
 
 
 ########################################
