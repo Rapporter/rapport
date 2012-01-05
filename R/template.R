@@ -641,7 +641,16 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
                     var.value <- input.default
             }
 
-            assign(name, var.value, env = e)
+            assign(name, var.value, env = e) # assign input value
+            assign(sprintf('%s.iname', name), name, env = e) # store input name
+            if (is.data.frame(var.value)){
+                assign(sprintf('%s.name', name), names(var.value), env = e)
+                assign(sprintf('%s.label', name), sapply(var.value, rp.label), env = e)
+            } else {
+                assign(sprintf('%s.name', name), rp.name(var.value), env = e)
+                assign(sprintf('%s.label', name), rp.label(var.value), env = e)
+            }
+            ## add .name and .label too?
         })
     }
 

@@ -209,3 +209,17 @@ guess.convert <- function(x, trim.white = FALSE){
 }
 
 
+##' Wrap Vector Elements
+##'
+##' Wraps vector elements with string provided in \code{wrap} argument.
+##' @param x a vector to wrap
+##' @param wrap a string to wrap around vector elements
+##' @return a string with wrapped elements
+##' @examples
+##' wrap(c("fee", "fi", "foo", "fam"), "_")
+##' ## [1] "_fee_" "_fi_"  "_foo_" "_fam_"
+##' @export
+wrap <- function(x, wrap = '"'){
+    stopifnot(is.variable(x))
+    sprintf('%s%s%s', wrap, x, wrap)
+}
