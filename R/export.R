@@ -144,9 +144,9 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                                     )
                           )
                 if (x$type=='chunk' & !is.null(x$robjects[[1]]$type)) {
-                    if (x$robjects[[1]]$type == 'error')
+                    if (any(x$robjects[[1]]$type == 'error'))
                         r$add(paragraph(as.character(x$robjects[[1]]$msg$errors)))
-                    if (x$robjects[[1]]$type == 'image') r$addFig(file=x$robjects[[1]]$output)
+                    if (any(x$robjects[[1]]$type == 'image')) r$addFig(file=x$robjects[[1]]$output)
                     if (all(x$robjects[[1]]$type != c('image', 'error')))
                         r$add(ascii(x$robjects[[1]]$output, digits = getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark')))
                     if (!is.null(x$robjects[[1]]$msg$warnings))
