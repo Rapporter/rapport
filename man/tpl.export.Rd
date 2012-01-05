@@ -5,7 +5,8 @@
   tpl.export(rp = NULL, file = NULL, append = FALSE,
     create = TRUE, open = TRUE,
     date = format(Sys.time(), "\%Y/\%m/\%d \%X"),
-    format = "html", backend = "pandoc", options = NULL)
+    desc = TRUE, format = "html", backend = "pandoc",
+    options = NULL)
 }
 \arguments{
   \item{rp}{a rapport class object or list of rapport class
@@ -25,6 +26,9 @@
 
   \item{date}{character string as the date field of the
   report. If not set, current time will be set.}
+
+  \item{desc}{add Description of the rapport class
+  (template)? Default set to TRUE.}
 
   \item{format}{format of the wanted report, see:
   \code{ascii:::asciiOpts(".outputs")}}

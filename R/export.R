@@ -18,6 +18,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 ##' @param create should export really happen? It might be handy if you want to append several reports.
 ##' @param open open the exported document? Default set to TRUE.
 ##' @param date character string as the date field of the report. If not set, current time will be set.
+##' @param desc add Description of the rapport class (template)? Default set to TRUE.
 ##' @param format format of the wanted report, see: \code{ascii:::asciiOpts(".outputs")}
 ##' @param backend backend for the format conversions, see: \code{scii:::asciiOpts(".backends")}
 ##' @param options command line options passed to backend
@@ -56,7 +57,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 ##' ## Eg. pandoc uses "--reference-odt" as styles reference for odt exports.
 ##'}
 ##' @export
-tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), "%Y/%m/%d %X"), format='html', backend='pandoc', options=NULL) {
+tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), "%Y/%m/%d %X"), desc=TRUE, format='html', backend='pandoc', options=NULL) {
 
     ## dummy checks and config parameters set
     if (!(format %in% tpl.export.outputs()))
@@ -106,8 +107,10 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
     ## header stuff #############################################BUG
     if (!is.null(rp))
         if(class(rp) == 'rapport') {
-            r$addSection('Description', 2)
-            r$add(paragraph(as.character(rp$metadata['desc'])))
+            if (desc) {
+                r$addSection('Description', 2)
+                r$add(paragraph(as.character(rp$metadata['desc'])))
+            }
         
             ## body
             lapply(rp$report, function(x) {
@@ -122,11 +125,16 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                     if (any(x$robjects[[1]]$type == 'error'))
                         r$add(paragraph(as.character(x$robjects[[1]]$msg$errors)))
                     if (any(x$robjects[[1]]$type == 'image')) r$addFig(file=x$robjects[[1]]$output)
-                    if (all(x$robjects[[1]]$type != c('image', 'error')))
-                        r$add(ascii(x$robjects[[1]]$output, digits = getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark')))
-                    if (!is.null(x$robjects[[1]]$msg$warnings))
-                        r$add(paragraph(sprintf('**Warning** in "%s": "%s"', x$robjects[[1]]$src, as.character(x$robjects[[1]]$msg$warnings))
-                    ))
+                    if (is.list(x$robjects[[1]]$output))
+                        if (all(lapply(x$robjects[[1]]$output, class) == 'rapport')){
+                            for (i in 1:length(x$robjects[[1]]$output)) {
+                                r <- tpl.export(x$robjects[[1]]$output[[i]], file=file, append=r, create=FALSE, open=FALSE, date=date, desc=FALSE)
+                            }
+                        } else 
+                            if (all(x$robjects[[1]]$type != c('image', 'error')))
+                                r$add(paragraph(rp.prettyascii(x$robjects[[1]]$output)))
+                            if (!is.null(x$robjects[[1]]$msg$warnings))
+                                r$add(paragraph(as.character(x$robjects[[1]]$msg$warnings)))
                 }
             })
         }

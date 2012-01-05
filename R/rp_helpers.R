@@ -606,6 +606,11 @@ rp.round <- function(x, scientific=FALSE) {
 ##' }
 ##' @export
 rp.prettyascii <- function(x) {
+    if (is.rapport(x))
+        return(x)
+    if (is.list(x))
+        if (all(lapply(x, class) == 'rapport'))
+            return(l_ply(x, print))
     if (is.numeric(x)) {
         class <- class(x); x <- rp.round(x);
         if (length(x) != 1)
@@ -619,8 +624,6 @@ rp.prettyascii <- function(x) {
         else
             return(paste(capture.output(ascii(x)), collapse='\n'))
 }
-
-
 
 ########################################
 ## undocumented functions
