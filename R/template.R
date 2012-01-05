@@ -364,10 +364,12 @@ elem.eval.default <- function(x, tag.open = get.tags('inline.open'), tag.close =
                 stop('output exceeds allowed length for an inline chunk (', x$src, ')')
             ## return info on errors, don't just bleed to death! (bug spotted & fixed by Gergely)
             err <- x$msg$errors
-            if (!is.null(err))
-                stop(err)
+            if (!is.null(err)) {        ## error handling in blocks:
+                warning(err, call.=F)   ##  * shoot warning()
+                return('<ERROR>')       ##  * returning '<ERROR>' inline
+            }
             if (!is.null(x$output))
-                rp.prettyascii(x$output)    # get output
+                return(rp.prettyascii(x$output))    # get output
         })
         ## check chunk for tables an graphs!
 
@@ -644,7 +646,13 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
     }
 
     report <- lapply(elem, elem.eval, env = e)      # get report
-    report <- report[sapply(report, function(x) {   # remove NULL/blank parts
+    report <- lapply(report, function(x) {          # error handling in chunks
+                        if (x$type == 'chunk')      #  * shoot warning() and return '<ERROR>' inline
+                            ifelse(!is.null(x$robjects[[1]]$msg$errors), {warning(x$robjects[[1]]$msg$errors, call. = FALSE); x$robjects[[1]]$output <- '<ERROR>'; return(x)}, return(x))
+                        else
+                            return(x)
+                    })
+    report <- report[sapply(report, function(x) {   # and remove NULL/blank parts
         if (x$type=='chunk')
             ifelse(is.null(x$robjects[[1]]$output), FALSE, TRUE)
         else ifelse(x$text$eval == 'NULL', FALSE, TRUE)

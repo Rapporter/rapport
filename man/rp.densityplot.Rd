@@ -22,7 +22,7 @@
   at random}
 
   \item{...}{additional parameters to
-  \code{\link{histogram}}}
+  \code{\link{densityplot}}}
 }
 \description{
   This function is a wrapper around

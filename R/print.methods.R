@@ -167,8 +167,8 @@ print.rapport <- function(x, metadata=FALSE, inputs=FALSE, body=TRUE) {
             cat('\n')
             switch(part$type,
                    'chunk' = {
-                       if (part$robjects[[1]]$type == 'error') # errors
-                           cat(part$robjects[[1]]$msg$errors)
+                       ## if (part$robjects[[1]]$type == 'error')   ## error handling done in \code{rapport}
+                       ##    cat(part$robjects[[1]]$msg$errors)     ##
                        if (!is.null(part$robjects[[1]]$output)) {
                            if (part$robjects[[1]]$type == 'image')
                                cat(as.character(part$robjects[[1]]$output))
@@ -182,8 +182,6 @@ print.rapport <- function(x, metadata=FALSE, inputs=FALSE, body=TRUE) {
                    cat(rp.prettyascii(as.character(part$text$eval)))
                    )
             cat('\n')
-
-            ##TODO: errors and warnings (!)
         }
     }
 }
