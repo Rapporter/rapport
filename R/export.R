@@ -122,20 +122,21 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                                     )
                           )
                 if (x$type=='chunk' & !is.null(x$robjects[[1]]$type)) {
-                    if (any(x$robjects[[1]]$type == 'error'))
-                        r$add(paragraph(as.character(x$robjects[[1]]$msg$errors)))
-                    if (any(x$robjects[[1]]$type == 'image')) r$addFig(file=x$robjects[[1]]$output)
-                    if (is.list(x$robjects[[1]]$output))
-                        if (all(lapply(x$robjects[[1]]$output, class) == 'rapport')){
-                            for (i in 1:length(x$robjects[[1]]$output)) {
-                                r <- tpl.export(x$robjects[[1]]$output[[i]], file=file, append=r, create=FALSE, open=FALSE, date=date, desc=FALSE)
-                            }
-                        } else 
-                            if (all(x$robjects[[1]]$type != c('image', 'error')))
-                                r$add(paragraph(rp.prettyascii(x$robjects[[1]]$output)))
-                            if (!is.null(x$robjects[[1]]$msg$warnings))
-                                r$add(paragraph(as.character(x$robjects[[1]]$msg$warnings)))
-                }
+                    ## if (any(x$robjects[[1]]$type == 'error'))        # error handling is done in rapport
+                    ##     r$add(paragraph(as.character(x$robjects[[1]]$msg$errors)))
+                    if (any(x$robjects[[1]]$type == 'image')) r$addFig(file=x$robjects[[1]]$output)    # no nested rapport classes (halleluja)
+                    #if (is.list(x$robjects[[1]]$output)) {
+                    #    if (all(lapply(x$robjects[[1]]$output, class) == 'rapport')) {
+                    #        for (i in 1:length(x$robjects[[1]]$output)) {
+                    #            r <- tpl.export(x$robjects[[1]]$output[[i]], file=file, append=r, create=FALSE, open=FALSE, date=date, desc=FALSE)
+                    #        }
+                    #   }
+                    #}
+                    if (all(x$robjects[[1]]$type != c('image', 'error')))
+                        r$add(paragraph(rp.prettyascii(x$robjects[[1]]$output)))
+                    if (!is.null(x$robjects[[1]]$msg$warnings))
+                        r$add(paragraph(as.character(x$robjects[[1]]$msg$warnings)))
+                    }
             })
         }
 

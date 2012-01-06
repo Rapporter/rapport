@@ -673,7 +673,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
                     if (any(x$robjects[[1]]$type == 'rapport'))
                         return(x$robjects[[1]]$output$report)
                 if (x$type == 'chunk')
-                    if (class(x$robjects[[1]]$output) == 'list')    #  * chunk holding a list of rapport classes
+                    if (all(class(x$robjects[[1]]$output) == 'list'))    #  * chunk holding a list of rapport classes
                         if (all(lapply(x$robjects[[1]]$output, class) == 'rapport'))
                             return(unlist(lapply(x$robjects[[1]]$output, function(x) x$report), recursive=F))
                 return(list(x))
