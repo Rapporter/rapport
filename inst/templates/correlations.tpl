@@ -17,10 +17,10 @@ head-->
 The highest correlation coefficient (<%cm <- cor(vars);diag(cm) <- NA; rp.round(max(cm, na.rm=T))%>) is between <%paste('"', row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2], '"', sep='', collapse=' and ')%> and the lowest (<%rp.round(min(cm, na.rm=T))%>) is between <%paste('"', row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2], '"', sep='', collapse=' and ')%>. It seems that the strongest association (r=<%rp.round(cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1])%>) is between <%paste('"', row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2], '"', sep='', collapse=' and ')%>.
 
 Higly correlated (r < 0.7 or r > 0.7) variables: <%cm[lower.tri(cm)] <- NA; l <- row.names(cm)[which((cm > 0.7) | (cm < -0.7), arr.ind=T)]; ifelse(length(l) == 0, '-', '')%>
-<%ifelse(length(l) > 0, paste(' *', lapply(split(l, 1:(length(l)/2)), function(x) paste('"', x, '"', sep='', collapse=' - ')), collapse='\n'), '')%>
+<%ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), function(x) paste('"', x, '"', sep='', collapse=' - ')), collapse=''), '')%>
 
 Uncorrelated (-0.2 < r < 0.2) variables: <%l <- row.names(cm)[which((cm < 0.2)&(cm > -0.2), arr.ind=T)]; ifelse(length(l) == 0, '-', '')%>
-<%ifelse(length(l) > 0, paste(' *', lapply(split(l, 1:(length(l)/2)), function(x) paste('"', x, '"', sep='', collapse=' - ')), collapse='\n'), '')%>
+<%ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), function(x) paste('"', x, '"', sep='', collapse=' - ')), collapse=''), '')%>
 
 ## <%if (cor.matrix) 'Correlation matrix'%>
 
