@@ -631,29 +631,29 @@ rp.prettyascii <- function(x) {
 ##' Inline Printing
 ##'
 ##' Merge atomic vector elements in one string for pretty inline printing.
-##' @param x an atomic vector to merge its elements
-##' @param sep.last last separator
-##' @param wrap string to wrap results
-##' @param sep main separator
-##' @param limit maximum character length
+##' @param x an atomic vector to get merged for inline printing
+##' @param wrap string to wrap vector elements (defaults to \code{_}, i.e. underline in pandoc)
+##' @param sep a string with main separator (separates all vector elements but the last one)
+##' @param copula a string with last separator (usually a copula like "and")
+##' @param limit maximum character length (defaults to 20 elements)
 ##' @return a string with catenated vector contents
 ##' @examples
 ##' p(c("fee", "fi", "foo", "fam"))
 ##' ## [1] "_fee_, _fi_, _foo_ and _fam_"
 ##' @export
-p <- function(x, sep.last = 'and', wrap = '_', sep = ', ', limit = 20L){
+p <- function(x, wrap = getOption('p.wrap'), sep = getOption('p.sep'), copula = getOption('p.copula'), limit = 20L){
 
-    stopifnot(is.atomic(x))
-    x.len <- length(x)
-    stopifnot(x.len > 0)
-    stopifnot(x.len <= limit)
+    stopifnot(is.atomic(x))           # check for atomic vector
+    x.len <- length(x)                # vector lenght
+    stopifnot(x.len > 0)              # no zero-length vectors allowed
+    stopifnot(x.len <= limit)         # check limits
 
     if (x.len == 1)
         wrap(x, wrap)
     else if (x.len == 2)
-        paste(wrap(x, wrap), collapse = wrap(sep.last, ' '))
+        paste(wrap(x, wrap), collapse = wrap(copula, ' '))
     else
-        paste(paste(wrap(x[1:(x.len - 1)], wrap), collapse = sep), sep.last, wrap(x[x.len], wrap))
+        paste(paste(wrap(x[1:(x.len - 1)], wrap), collapse = sep), copula, wrap(x[x.len], wrap))
 }
 
 

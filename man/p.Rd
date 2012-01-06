@@ -2,19 +2,25 @@
 \alias{p}
 \title{Inline Printing}
 \usage{
-  p(x, sep.last = "and", wrap = "_", sep = ", ",
-    limit = 20L)
+  p(x, wrap = getOption("p.wrap"),
+    sep = getOption("p.sep"),
+    copula = getOption("p.copula"), limit = 20L)
 }
 \arguments{
-  \item{x}{an atomic vector to merge its elements}
+  \item{x}{an atomic vector to get merged for inline
+  printing}
 
-  \item{sep.last}{last separator}
+  \item{wrap}{string to wrap vector elements (defaults to
+  \code{_}, i.e. underline in pandoc)}
 
-  \item{wrap}{string to wrap results}
+  \item{sep}{a string with main separator (separates all
+  vector elements but the last one)}
 
-  \item{sep}{main separator}
+  \item{copula}{a string with last separator (usually a
+  copula like "and")}
 
-  \item{limit}{maximum character length}
+  \item{limit}{maximum character length (defaults to 20
+  elements)}
 }
 \value{
   a string with catenated vector contents

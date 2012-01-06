@@ -25,4 +25,10 @@
             comment.open  = '<!--',
             comment.close = '-->'
             ))
+
+    ## rp_helpers stuff
+    ## p()
+    options('p.wrap'   = '_')     # wrapping character (italic by default)
+    options('p.sep'    = ', ')    # separator: comma followed by space
+    options('p.copula' = 'and')   # last separator (copula)
 }
