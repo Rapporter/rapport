@@ -1,6 +1,6 @@
 #### What does "rapport" mean?
 
-Quite a bunch of stuff! First of all, it's a name of a marvellous<a id="infinite-loop"> </a>[R package](#infinite-loop), means *["the relationship of two or more people who are in sync or on the same wavelength because they feel similar and/or relate well to each other"](http://en.wikipedia.org/wiki/Rapport)* and has some trivial resemblance to *reports*. Just ask a German! BTW in Hungarian *rapport* means interrogation in military language too.
+Quite a bunch of stuff! First of all, it's a name of a marvellous<a id="infinite-loop" href="#infinite-loop">R package</a>, means *["the relationship of two or more people who are in sync or on the same wavelength because they feel similar and/or relate well to each other"](http://en.wikipedia.org/wiki/Rapport)* and has some trivial resemblance to *reports*. Just ask a German! BTW in Hungarian *rapport* means interrogation in military language too.
 
 #### Why should I use *rapport* instead of [Sweave](http://www.stat.uni-muenchen.de/~leisch/Sweave/), [brew](http://cran.r-project.org/web/packages/brew/index.html), [knitr](https://github.com/yihui/knitr) etc.
 
