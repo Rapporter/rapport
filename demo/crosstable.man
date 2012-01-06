@@ -25,20 +25,20 @@ _
 T{
 male
 T}@T{
-380.00000
+380
 T}@T{
-30.00000
+30
 T}@T{
-22.00000
+22
 T}
 T{
 female
 T}@T{
-262.00000
+262
 T}@T{
-6.00000
+6
 T}@T{
-9.00000
+9
 T}
 .TE
 .SS Percentages
@@ -58,20 +58,20 @@ _
 T{
 male
 T}@T{
-0.53597
+0.5360
 T}@T{
-0.04231
+0.0423
 T}@T{
-0.03103
+0.0310
 T}
 T{
 female
 T}@T{
-0.36953
+0.3695
 T}@T{
-0.00846
+0.0085
 T}@T{
-0.01269
+0.0127
 T}
 .TE
 .SS Row percentages
@@ -91,20 +91,20 @@ _
 T{
 male
 T}@T{
-0.87963
+0.8796
 T}@T{
-0.06944
+0.0694
 T}@T{
-0.05093
+0.0509
 T}
 T{
 female
 T}@T{
-0.94585
+0.9458
 T}@T{
-0.02166
+0.0217
 T}@T{
-0.03249
+0.0325
 T}
 .TE
 .SS Column percentages
@@ -124,20 +124,20 @@ _
 T{
 male
 T}@T{
-0.59190
+0.5919
 T}@T{
-0.83333
+0.8333
 T}@T{
-0.70968
+0.7097
 T}
 T{
 female
 T}@T{
-0.40810
+0.4081
 T}@T{
-0.16667
+0.1667
 T}@T{
-0.29032
+0.2903
 T}
 .TE
 .SS Chi-squared test
@@ -157,33 +157,23 @@ _
 T{
 X-squared
 T}@T{
-9.71883
+9.72
 T}@T{
-2.00000
+2.00
 T}@T{
-0.00776
+0.01
 T}
 .TE
 .PP
-.TS
-tab(@);
-l.
-T{
 It seems that a real association can be pointed out between
 \f[I]gender\f[] and \f[I]dwell\f[] by the \f[I]Pearson's Chi-squared
 test\f[] (χ=9.7188 at the degree of freedom being 2) at the significance
-level of 0.00776.
-T}
-T{
+level of 0.0078.
 Based on Goodman and Kruskal's lambda it seems that \f[I]dwell\f[]
-(λ=0.75812) has an effect on \f[I]gender\f[] (λ=0) if we assume both
+(λ=0.7581) has an effect on \f[I]gender\f[] (λ=0) if we assume both
 variables to be nominal.
-T}
-T{
 The association between the two variables seems to be weak based on
-Cramer's V (0.08279).
-T}
-.TE
+Cramer's V (0.0828).
 .SS Pearson's residuals
 .PP
 .TS
@@ -201,24 +191,24 @@ _
 T{
 male
 T}@T{
-\[en]2.94090
+\[en]2.9409
 T}@T{
-2.82766
+2.8277
 T}@T{
-1.17125
+1.1713
 T}
 T{
 female
 T}@T{
-2.94090
+2.9409
 T}@T{
-\[en]2.82766
+\[en]2.8277
 T}@T{
-\[en]1.17125
+\[en]1.1713
 T}
 .TE
 .SS Mosaic chart
 .PP
-[IMAGE: image (174005806d0dea09f20abab24746f774.png)]
+[IMAGE: image (66ba5aa603e08fec150848bb688f0953.png)]
 .SH AUTHORS
-Rapport package team \@ https://github.com/aL3xa/rapport.
+(Username not set) (E-mail address not set).

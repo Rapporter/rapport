@@ -38,7 +38,7 @@
 \setcounter{secnumdepth}{0}
 
 \title{Crosstable}
-\author{Rapport package team @ https://github.com/aL3xa/rapport}
+\author{(Username not set) (E-mail address not set)}
 \date{2011--04--26 20:25 CET}
 
 \begin{document}
@@ -63,9 +63,9 @@ Two variables specified: * ``gender'' (``Gender'') with 709 and *
 \FL
  & \textbf{city} & \textbf{small town} & \textbf{village}
 \ML
-male & 380.00000 & 30.00000 & 22.00000
+male & 380 & 30 & 22
 \\\noalign{\medskip}
-female & 262.00000 & 6.00000 & 9.00000
+female & 262 & 6 & 9
 \LL
 }
 
@@ -78,9 +78,9 @@ female & 262.00000 & 6.00000 & 9.00000
 \FL
  & \textbf{city} & \textbf{small town} & \textbf{village}
 \ML
-male & 0.53597 & 0.04231 & 0.03103
+male & 0.5360 & 0.0423 & 0.0310
 \\\noalign{\medskip}
-female & 0.36953 & 0.00846 & 0.01269
+female & 0.3695 & 0.0085 & 0.0127
 \LL
 }
 
@@ -93,9 +93,9 @@ female & 0.36953 & 0.00846 & 0.01269
 \FL
  & \textbf{city} & \textbf{small town} & \textbf{village}
 \ML
-male & 0.87963 & 0.06944 & 0.05093
+male & 0.8796 & 0.0694 & 0.0509
 \\\noalign{\medskip}
-female & 0.94585 & 0.02166 & 0.03249
+female & 0.9458 & 0.0217 & 0.0325
 \LL
 }
 
@@ -108,9 +108,9 @@ female & 0.94585 & 0.02166 & 0.03249
 \FL
  & \textbf{city} & \textbf{small town} & \textbf{village}
 \ML
-male & 0.59190 & 0.83333 & 0.70968
+male & 0.5919 & 0.8333 & 0.7097
 \\\noalign{\medskip}
-female & 0.40810 & 0.16667 & 0.29032
+female & 0.4081 & 0.1667 & 0.2903
 \LL
 }
 
@@ -123,28 +123,17 @@ female & 0.40810 & 0.16667 & 0.29032
 \FL
  & \textbf{X-squared} & \textbf{df} & \textbf{p-value}
 \ML
-X-squared & 9.71883 & 2.00000 & 0.00776
+X-squared & 9.72 & 2.00 & 0.01
 \LL
 }
 
-\ctable[pos = H, center, botcap]{l}
-{% notes
-}
-{% rows
-\FL
 It seems that a real association can be pointed out between
 \emph{gender} and \emph{dwell} by the \emph{Pearson's Chi-squared test}
 (χ=9.7188 at the degree of freedom being 2) at the significance level of
-0.00776.
-\\\noalign{\medskip}
-Based on Goodman and Kruskal's lambda it seems that \emph{dwell}
-(λ=0.75812) has an effect on \emph{gender} (λ=0) if we assume both
-variables to be nominal.
-\\\noalign{\medskip}
-The association between the two variables seems to be weak based on
-Cramer's V (0.08279).
-\LL
-}
+0.0078. Based on Goodman and Kruskal's lambda it seems that \emph{dwell}
+(λ=0.7581) has an effect on \emph{gender} (λ=0) if we assume both
+variables to be nominal. The association between the two variables seems
+to be weak based on Cramer's V (0.0828).
 
 \paragraph{Pearson's residuals}
 
@@ -155,9 +144,9 @@ Cramer's V (0.08279).
 \FL
  & \textbf{city} & \textbf{small town} & \textbf{village}
 \ML
-male & --2.94090 & 2.82766 & 1.17125
+male & --2.9409 & 2.8277 & 1.1713
 \\\noalign{\medskip}
-female & 2.94090 & --2.82766 & --1.17125
+female & 2.9409 & --2.8277 & --1.1713
 \LL
 }
 
@@ -165,7 +154,7 @@ female & 2.94090 & --2.82766 & --1.17125
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{174005806d0dea09f20abab24746f774.png}
+\includegraphics{66ba5aa603e08fec150848bb688f0953.png}
 \caption{}
 \end{figure}
 

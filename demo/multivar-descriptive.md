@@ -1,5 +1,5 @@
 % Descriptives
-% Rapport package team @ https://github.com/aL3xa/rapport
+% (Username not set) (E-mail address not set)
 % 2011-04-26 20:25 CET
 
 ## Description
@@ -21,15 +21,15 @@ The dataset has 709 observations with 709 valid values (missing: 0) in
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file3b743a1a.png)
+![image](2a42fb1eb44bf1361b44216c6b0c16ee.png)
 
 It seems that the highest value is 2 which is exactly 2 times higher
 than the smallest value (1).
 
-### *age*
+### *age* ("Age")
 
 The dataset has 709 observations with 709 valid values (missing: 0) in
-*age*. This variable seems to be numeric.
+*age* ("Age"). This variable seems to be numeric.
 
 #### Base statistics
 
@@ -39,10 +39,19 @@ The dataset has 709 observations with 709 valid values (missing: 0) in
 
 #### Histogram
 
-![image](/tmp/RtmpMBlCON/file98a4723.png)
+![image](76fc57f9d2387aff730be60323f25624.png)
 
 It seems that the highest value is 58 which is exactly 3.625 times
 higher than the smallest value (16).
+
+The standard deviation is 6.8399 (variance: 46.784). The expected value
+is around 24.557, somewhere between 24.054 and 25.061 (SE: 0.2569).
+
+If we suppose that *Age* is not near to a normal distribution (test: ,
+skewness: 1.9568, kurtosis: 7.6428), checking the median (23) might be a
+better option instead of the mean. The interquartile range (6) measures
+the statistics dispersion of the variable (similar to standard
+deviation) based on median.
 
 ## Description
 
@@ -73,7 +82,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file7eb47e7a.png)
+![image](18ee2d4410677e2bbc343a9a4889cc97.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -102,7 +111,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file5546bd02.png)
+![image](db92f166fe1966dbd5c6f0b909c181b2.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -131,7 +140,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file6b2b43aa.png)
+![image](42a485477f7c7e629c55f3f106b2f482.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -160,7 +169,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file10be4543.png)
+![image](4271956be974e19ffa2034d316fd201c.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -189,7 +198,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file46b8f0e.png)
+![image](ec8a2289e719ec679a4abc2f1b3a62ec.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -218,7 +227,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file7a7e9726.png)
+![image](3f14c76d2ae5a41c21a771f3fd794ca3.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -247,7 +256,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file7a050d7b.png)
+![image](c1a552be1b3a4299ff06e272129d8096.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -276,7 +285,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file21419ce0.png)
+![image](053614b5b842759f559adcc0da8cc645.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).
@@ -306,7 +315,7 @@ level, NAs generated + invalid factor level, NAs generated"
 
 #### Barplot
 
-![image](/tmp/RtmpMBlCON/file6acfe10f.png)
+![image](ac7f8b3e1fb841eb17beaceee8e09dd1.png)
 
 It seems that the highest value is 7 which is exactly 7 times higher
 than the smallest value (1).

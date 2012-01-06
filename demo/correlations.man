@@ -1,4 +1,3 @@
-.\"t
 .TH Correlations "" "2011\[en]04\[en]26 20:25 CET" 
 .SS Description
 .PP
@@ -8,10 +7,10 @@ variables.
 .PP
 3 variables provided.
 .PP
-The highest correlation coefficient (0.23644) is between
-\[lq]it.edu\[rq] and \[lq]age\[rq] and the lowest (\[en]0.04905) is
-between \[lq]it.leisure\[rq] and \[lq]age\[rq].
-It seems that the strongest association (r=0.23644) is between
+The highest correlation coefficient (0.2364) is between \[lq]it.edu\[rq]
+and \[lq]age\[rq] and the lowest (\[en]0.049) is between
+\[lq]it.leisure\[rq] and \[lq]age\[rq].
+It seems that the strongest association (r=0.2364) is between
 \[lq]it.edu\[rq] and \[lq]age\[rq].
 .PP
 Higly correlated (r < 0.7 or r > 0.7) variables: -
@@ -20,44 +19,6 @@ Uncorrelated (\[en]0.2 < r < 0.2) variables: * \[lq]age\[rq] -
 \[lq]it.leisure\[rq] * \[lq]it.edu\[rq] - \[lq]it.leisure\[rq]
 .SS Correlation matrix
 .PP
-.TS
-tab(@);
-l l l l.
-T{
-T}@T{
-\f[B]age\f[]
-T}@T{
-\f[B]it.edu\f[]
-T}@T{
-\f[B]it.leisure\f[]
-T}
-_
-T{
-age
-T}@T{
-T}@T{
-0.23644 \f[I]*\f[]
-T}@T{
-\[en]0.04905
-T}
-T{
-it.edu
-T}@T{
-0.23644 \f[I]*\f[]
-T}@T{
-T}@T{
-0.17142 \f[I]*\f[]
-T}
-T{
-it.leisure
-T}@T{
-\[en]0.04905
-T}@T{
-0.17142 \f[I]*\f[]
-T}@T{
-T}
-.TE
-.PP
-[IMAGE: image (d760560f48bf99d7066d3eff5eba360a.png)]
+[IMAGE: image (7abdf648965ac14c778c4d61dddc7023.png)]
 .SH AUTHORS
-Rapport package team \@ https://github.com/aL3xa/rapport.
+(Username not set) (E-mail address not set).

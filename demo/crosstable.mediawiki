@@ -20,15 +20,15 @@ Two variables specified: * &quot;gender&quot; (&quot;Gender&quot;) with 709 and 
 <tbody>
 <tr class="odd">
 <td align="left">male</td>
-<td align="left">380.00000</td>
-<td align="left">30.00000</td>
-<td align="left">22.00000</td>
+<td align="left">380</td>
+<td align="left">30</td>
+<td align="left">22</td>
 </tr>
 <tr class="even">
 <td align="left">female</td>
-<td align="left">262.00000</td>
-<td align="left">6.00000</td>
-<td align="left">9.00000</td>
+<td align="left">262</td>
+<td align="left">6</td>
+<td align="left">9</td>
 </tr>
 </tbody>
 </table>
@@ -47,15 +47,15 @@ Two variables specified: * &quot;gender&quot; (&quot;Gender&quot;) with 709 and 
 <tbody>
 <tr class="odd">
 <td align="left">male</td>
-<td align="left">0.53597</td>
-<td align="left">0.04231</td>
-<td align="left">0.03103</td>
+<td align="left">0.5360</td>
+<td align="left">0.0423</td>
+<td align="left">0.0310</td>
 </tr>
 <tr class="even">
 <td align="left">female</td>
-<td align="left">0.36953</td>
-<td align="left">0.00846</td>
-<td align="left">0.01269</td>
+<td align="left">0.3695</td>
+<td align="left">0.0085</td>
+<td align="left">0.0127</td>
 </tr>
 </tbody>
 </table>
@@ -74,15 +74,15 @@ Two variables specified: * &quot;gender&quot; (&quot;Gender&quot;) with 709 and 
 <tbody>
 <tr class="odd">
 <td align="left">male</td>
-<td align="left">0.87963</td>
-<td align="left">0.06944</td>
-<td align="left">0.05093</td>
+<td align="left">0.8796</td>
+<td align="left">0.0694</td>
+<td align="left">0.0509</td>
 </tr>
 <tr class="even">
 <td align="left">female</td>
-<td align="left">0.94585</td>
-<td align="left">0.02166</td>
-<td align="left">0.03249</td>
+<td align="left">0.9458</td>
+<td align="left">0.0217</td>
+<td align="left">0.0325</td>
 </tr>
 </tbody>
 </table>
@@ -101,15 +101,15 @@ Two variables specified: * &quot;gender&quot; (&quot;Gender&quot;) with 709 and 
 <tbody>
 <tr class="odd">
 <td align="left">male</td>
-<td align="left">0.59190</td>
-<td align="left">0.83333</td>
-<td align="left">0.70968</td>
+<td align="left">0.5919</td>
+<td align="left">0.8333</td>
+<td align="left">0.7097</td>
 </tr>
 <tr class="even">
 <td align="left">female</td>
-<td align="left">0.40810</td>
-<td align="left">0.16667</td>
-<td align="left">0.29032</td>
+<td align="left">0.4081</td>
+<td align="left">0.1667</td>
+<td align="left">0.2903</td>
 </tr>
 </tbody>
 </table>
@@ -128,26 +128,14 @@ Two variables specified: * &quot;gender&quot; (&quot;Gender&quot;) with 709 and 
 <tbody>
 <tr class="odd">
 <td align="left">X-squared</td>
-<td align="left">9.71883</td>
-<td align="left">2.00000</td>
-<td align="left">0.00776</td>
+<td align="left">9.72</td>
+<td align="left">2.00</td>
+<td align="left">0.01</td>
 </tr>
 </tbody>
 </table>
 
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">It seems that a real association can be pointed out between ''gender'' and ''dwell'' by the ''Pearson's Chi-squared test'' (χ=9.7188 at the degree of freedom being 2) at the significance level of 0.00776.</td>
-</tr>
-<tr class="even">
-<td align="left">Based on Goodman and Kruskal's lambda it seems that ''dwell'' (λ=0.75812) has an effect on ''gender'' (λ=0) if we assume both variables to be nominal.</td>
-</tr>
-<tr class="odd">
-<td align="left">The association between the two variables seems to be weak based on Cramer's V (0.08279).</td>
-</tr>
-</tbody>
-</table>
+It seems that a real association can be pointed out between ''gender'' and ''dwell'' by the ''Pearson's Chi-squared test'' (χ=9.7188 at the degree of freedom being 2) at the significance level of 0.0078. Based on Goodman and Kruskal's lambda it seems that ''dwell'' (λ=0.7581) has an effect on ''gender'' (λ=0) if we assume both variables to be nominal. The association between the two variables seems to be weak based on Cramer's V (0.0828).
 
 ==== Pearson's residuals ====
 
@@ -163,19 +151,19 @@ Two variables specified: * &quot;gender&quot; (&quot;Gender&quot;) with 709 and 
 <tbody>
 <tr class="odd">
 <td align="left">male</td>
-<td align="left">-2.94090</td>
-<td align="left">2.82766</td>
-<td align="left">1.17125</td>
+<td align="left">-2.9409</td>
+<td align="left">2.8277</td>
+<td align="left">1.1713</td>
 </tr>
 <tr class="even">
 <td align="left">female</td>
-<td align="left">2.94090</td>
-<td align="left">-2.82766</td>
-<td align="left">-1.17125</td>
+<td align="left">2.9409</td>
+<td align="left">-2.8277</td>
+<td align="left">-1.1713</td>
 </tr>
 </tbody>
 </table>
 
 ==== Mosaic chart ====
 
-[[Image:174005806d0dea09f20abab24746f774.png|frame|none]]
+[[Image:66ba5aa603e08fec150848bb688f0953.png|frame|none]]

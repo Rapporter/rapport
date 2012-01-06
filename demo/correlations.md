@@ -1,5 +1,5 @@
 % Correlations
-% Rapport package team @ https://github.com/aL3xa/rapport
+% (Username not set) (E-mail address not set)
 % 2011-04-26 20:25 CET
 
 ## Description
@@ -11,9 +11,9 @@ variables.
 
 3 variables provided.
 
-The highest correlation coefficient (0.23644) is between "it.edu" and
-"age" and the lowest (-0.04905) is between "it.leisure" and "age". It
-seems that the strongest association (r=0.23644) is between "it.edu" and
+The highest correlation coefficient (0.2364) is between "it.edu" and
+"age" and the lowest (-0.049) is between "it.leisure" and "age". It
+seems that the strongest association (r=0.2364) is between "it.edu" and
 "age".
 
 Higly correlated (r < 0.7 or r \> 0.7) variables: -
@@ -23,10 +23,4 @@ Uncorrelated (-0.2 < r < 0.2) variables: \* "age" - "it.leisure" \*
 
 #### Correlation matrix
 
-               **age**        **it.edu**     **it.leisure**
-  ------------ -------------- -------------- ----------------
-  age                         0.23644 *\**   -0.04905
-  it.edu       0.23644 *\**                  0.17142 *\**
-  it.leisure   -0.04905       0.17142 *\**   
-
-![image](d760560f48bf99d7066d3eff5eba360a.png)
+![image](7abdf648965ac14c778c4d61dddc7023.png)

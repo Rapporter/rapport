@@ -5,8 +5,8 @@
   <articleinfo>
     <title>Descriptives</title>
     <author>
-      <firstname>Rapport package team @</firstname>
-      <surname>https://github.com/aL3xa/rapport</surname>
+      <firstname>(Username not set) (E-mail address not</firstname>
+      <surname>set)</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -96,7 +96,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="/tmp/RtmpMBlCON/file3b743a1a.png" />
+            <imagedata fileref="2a42fb1eb44bf1361b44216c6b0c16ee.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -107,11 +107,12 @@
       </para>
     </section>
   </section>
-  <section id="age">
-    <title><emphasis>age</emphasis></title>
+  <section id="age-age">
+    <title><emphasis>age</emphasis> (&quot;Age&quot;)</title>
     <para>
       The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>age</emphasis>. This variable seems to be numeric.
+      0) in <emphasis>age</emphasis> (&quot;Age&quot;). This variable
+      seems to be numeric.
     </para>
     <section id="base-statistics-1">
       <title>Base statistics</title>
@@ -162,7 +163,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="/tmp/RtmpMBlCON/file98a4723.png" />
+            <imagedata fileref="76fc57f9d2387aff730be60323f25624.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -170,6 +171,19 @@
       <para>
         It seems that the highest value is 58 which is exactly 3.625
         times higher than the smallest value (16).
+      </para>
+      <para>
+        The standard deviation is 6.8399 (variance: 46.784). The
+        expected value is around 24.557, somewhere between 24.054 and
+        25.061 (SE: 0.2569).
+      </para>
+      <para>
+        If we suppose that <emphasis>Age</emphasis> is not near to a
+        normal distribution (test: , skewness: 1.9568, kurtosis:
+        7.6428), checking the median (23) might be a better option
+        instead of the mean. The interquartile range (6) measures the
+        statistics dispersion of the variable (similar to standard
+        deviation) based on median.
       </para>
     </section>
   </section>
@@ -354,7 +368,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="/tmp/RtmpMBlCON/file7eb47e7a.png" />
+            <imagedata fileref="18ee2d4410677e2bbc343a9a4889cc97.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -539,7 +553,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="/tmp/RtmpMBlCON/file5546bd02.png" />
+            <imagedata fileref="db92f166fe1966dbd5c6f0b909c181b2.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -724,7 +738,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="/tmp/RtmpMBlCON/file6b2b43aa.png" />
+            <imagedata fileref="42a485477f7c7e629c55f3f106b2f482.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -908,7 +922,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="/tmp/RtmpMBlCON/file10be4543.png" />
+            <imagedata fileref="4271956be974e19ffa2034d316fd201c.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -1093,7 +1107,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="/tmp/RtmpMBlCON/file46b8f0e.png" />
+            <imagedata fileref="ec8a2289e719ec679a4abc2f1b3a62ec.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -1278,7 +1292,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="/tmp/RtmpMBlCON/file7a7e9726.png" />
+            <imagedata fileref="3f14c76d2ae5a41c21a771f3fd794ca3.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -1463,7 +1477,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="/tmp/RtmpMBlCON/file7a050d7b.png" />
+            <imagedata fileref="c1a552be1b3a4299ff06e272129d8096.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -1648,7 +1662,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="/tmp/RtmpMBlCON/file21419ce0.png" />
+            <imagedata fileref="053614b5b842759f559adcc0da8cc645.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -1833,7 +1847,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="/tmp/RtmpMBlCON/file6acfe10f.png" />
+            <imagedata fileref="ac7f8b3e1fb841eb17beaceee8e09dd1.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>

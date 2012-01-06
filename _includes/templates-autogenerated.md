@@ -91,15 +91,8 @@ Uncorrelated (-0.2 < r < 0.2) variables:
  === Correlation matrix  
 
 
-             **age**      **it.edu**   **it.leisure**  
------------- ------------ ------------ ----------------
-age                       0.2364 ***   -0.0490         
-it.edu       0.2364 ***                0.1714 ***      
-it.leisure   -0.0490      0.1714 ***                   
------------- ------------ ------------ ----------------
 
-
-/tmp/RtmpMBlCON/file15c574bb.png
+/tmp/RtmpJbaurQ/file5e68b945.png
 
 
 {% endhighlight %}
@@ -198,21 +191,50 @@ Two variables specified:
  == Counts  
 
 
+         **city**   **small town**   **village**  
+-------- ---------- ---------------- -------------
+male     380        30               22           
+female   262        6                9            
+-------- ---------- ---------------- -------------
+
 
  == Percentages  
 
+
+         **city**   **small town**   **village**  
+-------- ---------- ---------------- -------------
+male     0.5360     0.0423           0.0310       
+female   0.3695     0.0085           0.0127       
+-------- ---------- ---------------- -------------
 
 
  === Row percentages  
 
 
+         **city**   **small town**   **village**  
+-------- ---------- ---------------- -------------
+male     0.8796     0.0694           0.0509       
+female   0.9458     0.0217           0.0325       
+-------- ---------- ---------------- -------------
+
 
  === Column percentages  
 
 
+         **city**   **small town**   **village**  
+-------- ---------- ---------------- -------------
+male     0.5919     0.8333           0.7097       
+female   0.4081     0.1667           0.2903       
+-------- ---------- ---------------- -------------
+
 
  == Chi-squared test  
 
+
+            **X-squared**   **df**   **p-value**  
+----------- --------------- -------- -------------
+X-squared   9.72            2.00     0.01         
+----------- --------------- -------- -------------
 
 
 It seems that a real association can be pointed out between *gender* and *dwell* by the *Pearson's Chi-squared test* (χ=9.7188 at the degree of freedom being 2) at the significance level of 0.0078.
@@ -222,10 +244,16 @@ The association between the two variables seems to be weak based on Cramer's V (
  === Pearson's residuals  
 
 
+         **city**   **small town**   **village**  
+-------- ---------- ---------------- -------------
+male     -2.9409    2.8277           1.1713       
+female   2.9409     -2.8277          -1.1713      
+-------- ---------- ---------------- -------------
+
 
  === Mosaic chart  
 
-/tmp/RtmpMBlCON/file546cc4c6.png
+/tmp/RtmpJbaurQ/file41963948.png
 
 
 {% endhighlight %}
@@ -350,7 +378,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpMBlCON/file6c627280.png
+/tmp/RtmpJbaurQ/file61bcd58b.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -358,6 +386,19 @@ Now we'll see if the Z var is working properly. If I omit it, it should perserve
 
 OK, so far, so good, but let's see what's going on with code chunks...
 
+
+--------- --------- --------- --------- --------- --------- --------- --------- --------- ---------
+-0.9327   -0.6299   -0.7198   0.2461    0.8854    0.9278    0.3995    -0.6785   0.3586    0.4648   
+-0.4344   0.3235    -0.2991   -1.3013   3.5300    -2.2368   -0.6928   0.9728    -0.3658   -0.3104  
+-0.8237   -0.0634   -0.3551   1.0446    0.1629    -0.6500   -1.0164   -0.5307   0.8883    1.0740   
+0.4113    1.0291    -1.5656   -0.8810   -0.4871   1.3193    0.6434    0.8167    1.2250    -1.5493  
+-1.2764   0.9608    0.1920    0.5124    1.2932    -0.8268   -0.2864   -0.4511   -0.1187   -0.1182  
+1.1988    -0.4228   -2.0625   0.2879    0.9302    -0.0477   -0.4974   0.2758    0.9815    0.0829   
+-0.1408   0.5212    -0.7817   0.6188    0.9700    0.0254    0.2904    2.7472    2.3647    -1.4550  
+0.8798    -1.0738   -0.1269   0.7253    -0.1543   -1.5186   0.3193    -0.5014   -0.8978   -1.1879  
+1.1879    0.9291    0.7278    0.1819    1.1283    -0.7595   -2.4204   1.9083    1.0055    0.2562   
+-1.2726   -0.0407   -0.5423   0.2941    0.5185    -0.0944   0.5973    0.2897    -0.6580   0.9900   
+--------- --------- --------- --------- --------- --------- --------- --------- --------- ---------
 
 
 When it comes to CSV values, let us see how do they work. You have chosen the "foo".
@@ -378,7 +419,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpMBlCON/file3a1d34c9.png
+/tmp/RtmpJbaurQ/file61095cba.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -386,6 +427,19 @@ Now we'll see if the Z var is working properly. If I omit it, it should perserve
 
 OK, so far, so good, but let's see what's going on with code chunks...
 
+
+--------- --------- --------- --------- --------- --------- --------- --------- --------- ---------
+-0.1616   -0.5715   -0.7769   -0.3919   -1.6189   0.5879    -0.5762   0.0227    1.2391    -1.2047  
+1.0642    1.7316    -0.3264   1.2424    1.4965    -0.0399   0.5267    1.0825    -1.6104   -1.5610  
+-1.3431   -0.4759   -2.7010   1.0296    -0.9483   -0.5998   -0.4425   -1.3447   1.2613    1.7505   
+-0.3118   -0.9283   1.5778    -1.0807   2.1936    1.0146    -1.7051   0.8285    0.4286    -0.6632  
+0.8108    0.2312    0.9454    -1.4038   0.4596    -0.8734   -0.6411   1.0939    -1.3897   -0.3907  
+-0.7725   0.6883    -0.7864   0.6414    0.7516    0.4668    0.5832    -0.3362   1.0392    0.0386   
+-0.6062   -0.6419   -1.3357   -1.6324   0.5318    -0.8440   0.9080    -2.1594   0.3726    0.2603   
+-1.3172   -0.0378   0.1522    1.2881    1.2180    0.0542    -0.3924   -0.1832   0.3585    -1.1622  
+0.7011    -1.3382   -1.3899   -0.0663   -0.8006   0.2098    1.4345    0.0003    2.0289    -0.0981  
+-0.6475   -1.2312   1.0109    -1.8725   0.1668    -0.4426   -0.8998   -0.7885   -0.9849   1.3439   
+--------- --------- --------- --------- --------- --------- --------- --------- --------- ---------
 
 
 When it comes to CSV values, let us see how do they work. You have chosen the "foo".
@@ -406,7 +460,7 @@ Now, you've probably heard of _pi_? Right? Its value is 3.1416.
 
 And some graphs:
 
-/tmp/RtmpMBlCON/file6453256b.png
+/tmp/RtmpJbaurQ/file1a286603.png
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -414,6 +468,19 @@ Now we'll see if the Z var is working properly. If I omit it, it should perserve
 
 OK, so far, so good, but let's see what's going on with code chunks...
 
+
+--------- --------- --------- --------- --------- --------- --------- --------- --------- ---------
+0.1148    0.8458    -0.5708   -0.6093   -1.5891   -1.2956   1.4488    -0.8059   2.1344    -0.5908  
+-1.0334   0.2518    0.1342    1.6441    0.0863    -0.5348   0.1175    0.3165    0.4410    -1.4682  
+0.9537    -0.8880   -0.6739   1.1500    -0.7369   0.6251    0.9494    1.5190    1.0293    0.3860   
+-0.1916   -0.7882   1.5101    -0.1941   0.9590    0.1699    0.9225    -0.0535   -1.1787   -1.7485  
+-1.1163   0.1540    0.7081    -0.5700   -0.0189   1.7136    0.9864    0.5969    -0.8719   0.6612   
+0.8153    0.4229    -0.6656   1.4790    -0.5948   -0.2644   -1.4804   -0.1952   -1.5308   0.4985   
+0.0309    -1.0495   -0.0202   0.0057    0.6176    0.3065    0.4255    0.1641    1.5820    -0.8120  
+-1.2820   -0.0373   -0.1170   0.0817    0.3629    -1.5551   0.7517    -0.2391   0.1615    2.1596   
+0.1050    -0.5652   1.9919    -0.6588   -0.2776   0.4269    -0.3043   0.4903    -1.2378   0.0701   
+-0.2296   -0.3297   -1.0412   1.7549    -1.2938   -0.2151   -0.3153   0.5222    -0.7847   -0.9733  
+--------- --------- --------- --------- --------- --------- --------- --------- --------- ---------
 
 
 When it comes to CSV values, let us see how do they work. You have chosen the "foo".
@@ -498,7 +565,6 @@ rapport('multivar-descriptive', data=ius2009, vars=c("chatim", "game", "surf", "
 ##	 Running: rapport('multivar-descriptive', data=ius2009, vars=c("gender", 'age'))
 ##########################################################################################
 
-
  == *gender* ("Gender")  
 
 The dataset has 709 observations with 709 valid values (missing: 0) in *gender* ("Gender").
@@ -516,13 +582,13 @@ female       4709.00   39.07     12053.00    100.00
 
  === Barplot  
 
-/tmp/RtmpMBlCON/file6b16c6ba.png
+/tmp/RtmpJbaurQ/file1a65c456.png
 
 It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
 
- == *age*  
+ == *age* ("Age")  
 
-The dataset has 709 observations with 709 valid values (missing: 0) in *age*.
+The dataset has 709 observations with 709 valid values (missing: 0) in *age* ("Age").
 This variable seems to be numeric.
 
  === Base statistics  
@@ -536,14 +602,13 @@ This variable seems to be numeric.
 
  === Histogram  
 
-/tmp/RtmpMBlCON/file2fc755ea.png
+/tmp/RtmpJbaurQ/file3db9807d.png
 
 It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
 
 The standard deviation is 6.8399 (variance: 46.784). The expected value is around 24.557, somewhere between 24.054 and 25.061 (SE: 0.2569).
 
-If we suppose that *age* is not near to a normal distribution (test: , skewness: 1.9568, kurtosis: 7.6428), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
-
+If we suppose that *Age* is not near to a normal distribution (test: , skewness: 1.9568, kurtosis: 7.6428), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
 
 
 
@@ -551,7 +616,6 @@ If we suppose that *age* is not near to a normal distribution (test: , skewness:
 ##############################################################################################################################################################
 ##	 Running: rapport('multivar-descriptive', data=ius2009, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx", "long.use"))
 ##############################################################################################################################################################
-
 
  == *chatim* ("Chat & IM usage")  
 
@@ -576,7 +640,7 @@ always        1988.00   20.03     9926.00     100.00
 
  === Barplot  
 
-/tmp/RtmpMBlCON/file4600d540.png
+/tmp/RtmpJbaurQ/file44f7759e.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -603,7 +667,7 @@ always        476.00    4.80      9926.00     100.00
 
  === Barplot  
 
-/tmp/RtmpMBlCON/file6cbd0f0.png
+/tmp/RtmpJbaurQ/file1499300.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -630,7 +694,7 @@ always        2814.00   28.35     9926.00     100.00
 
  === Barplot  
 
-/tmp/RtmpMBlCON/fileeb2db69.png
+/tmp/RtmpJbaurQ/file3fc74fca.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -657,7 +721,7 @@ always        3808.00   38.36     9926.00     100.00
 
  === Barplot  
 
-/tmp/RtmpMBlCON/file106ccbe3.png
+/tmp/RtmpJbaurQ/file6670860f.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -684,7 +748,7 @@ always         3542.00   35.68     9926.00     100.00
 
  === Barplot  
 
-/tmp/RtmpMBlCON/file610f734c.png
+/tmp/RtmpJbaurQ/file657bd4a9.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -711,7 +775,7 @@ always        1540.00   15.51     9926.00     100.00
 
  === Barplot  
 
-/tmp/RtmpMBlCON/file19062322.png
+/tmp/RtmpJbaurQ/file74e090c5.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -738,7 +802,7 @@ always        952.00    9.59      9926.00     100.00
 
  === Barplot  
 
-/tmp/RtmpMBlCON/file5d444757.png
+/tmp/RtmpJbaurQ/file25106382.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -765,7 +829,7 @@ always        266.00    2.68      9926.00     100.00
 
  === Barplot  
 
-/tmp/RtmpMBlCON/file794b852.png
+/tmp/RtmpJbaurQ/file4c8c554b.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -792,10 +856,9 @@ less than 6 months   294.00    2.96      294.00      2.96
 
  === Barplot  
 
-/tmp/RtmpMBlCON/file2729ab81.png
+/tmp/RtmpJbaurQ/file7f33dbd7.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
-
 
 
 
@@ -912,7 +975,7 @@ rapport('outlier-test', data=ius2009, var='it.edu')
 
  == Boxplot  
 
-/tmp/RtmpMBlCON/file38a1f1b4.png
+/tmp/RtmpJbaurQ/file1aefbb67.png
 
  == Lund test  
 
@@ -922,6 +985,11 @@ It seems that 5 extreme values can be found in "Internet usage for educational p
 
 The above test for outliers was based on *lm(1 ~ it.edu)*:
 
+
+              **Estimate**   **Std. Error**   **t value**   **Pr(>|t|)**  
+------------- -------------- ---------------- ------------- --------------
+(Intercept)   2.06           0.08             26.92         0.00          
+------------- -------------- ---------------- ------------- --------------
 
 
  === The residuals returned:  
@@ -1156,7 +1224,7 @@ female       4709.00   39.07     12053.00    100.00
 
  === Barplot  
 
-/tmp/RtmpMBlCON/file16e6403a.png
+/tmp/RtmpJbaurQ/file648aada5.png
 
 It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
 
@@ -1165,9 +1233,9 @@ It seems that the highest value is 2 which is exactly 2 times higher than the sm
 ##	 Running: rapport('univar-descriptive', data=ius2009, var='age')
 ##########################################################################
 
- == *age*  
+ == *age* ("Age")  
 
-The dataset has 709 observations with 709 valid values (missing: 0) in *age*.
+The dataset has 709 observations with 709 valid values (missing: 0) in *age* ("Age").
 This variable seems to be numeric.
 
  === Base statistics  
@@ -1181,13 +1249,13 @@ This variable seems to be numeric.
 
  === Histogram  
 
-/tmp/RtmpMBlCON/file4274b0d9.png
+/tmp/RtmpJbaurQ/file69c4e20a.png
 
 It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
 
 The standard deviation is 6.8399 (variance: 46.784). The expected value is around 24.557, somewhere between 24.054 and 25.061 (SE: 0.2569).
 
-If we suppose that *age* is not near to a normal distribution (test: , skewness: 1.9568, kurtosis: 7.6428), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+If we suppose that *Age* is not near to a normal distribution (test: , skewness: 1.9568, kurtosis: 7.6428), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
 
 
 {% endhighlight %}

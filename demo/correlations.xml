@@ -5,8 +5,8 @@
   <articleinfo>
     <title>Correlations</title>
     <author>
-      <firstname>Rapport package team @</firstname>
-      <surname>https://github.com/aL3xa/rapport</surname>
+      <firstname>(Username not set) (E-mail address not</firstname>
+      <surname>set)</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -22,11 +22,11 @@
       3 variables provided.
     </para>
     <para>
-      The highest correlation coefficient (0.23644) is between
-      &quot;it.edu&quot; and &quot;age&quot; and the lowest (-0.04905)
-      is between &quot;it.leisure&quot; and &quot;age&quot;. It seems
-      that the strongest association (r=0.23644) is between
-      &quot;it.edu&quot; and &quot;age&quot;.
+      The highest correlation coefficient (0.2364) is between
+      &quot;it.edu&quot; and &quot;age&quot; and the lowest (-0.049) is
+      between &quot;it.leisure&quot; and &quot;age&quot;. It seems that
+      the strongest association (r=0.2364) is between &quot;it.edu&quot;
+      and &quot;age&quot;.
     </para>
     <para>
       Higly correlated (r &lt; 0.7 or r &gt; 0.7) variables: -
@@ -38,75 +38,11 @@
     </para>
     <section id="correlation-matrix">
       <title>Correlation matrix</title>
-      <informaltable>
-        <tgroup cols="4">
-          <colspec align="left" />
-          <colspec align="left" />
-          <colspec align="left" />
-          <colspec align="left" />
-          <thead>
-            <row>
-              <entry>
-              </entry>
-              <entry>
-                <emphasis role="strong">age</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">it.edu</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">it.leisure</emphasis>
-              </entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>
-                age
-              </entry>
-              <entry>
-              </entry>
-              <entry>
-                0.23644 <emphasis>*</emphasis>
-              </entry>
-              <entry>
-                -0.04905
-              </entry>
-            </row>
-            <row>
-              <entry>
-                it.edu
-              </entry>
-              <entry>
-                0.23644 <emphasis>*</emphasis>
-              </entry>
-              <entry>
-              </entry>
-              <entry>
-                0.17142 <emphasis>*</emphasis>
-              </entry>
-            </row>
-            <row>
-              <entry>
-                it.leisure
-              </entry>
-              <entry>
-                -0.04905
-              </entry>
-              <entry>
-                0.17142 <emphasis>*</emphasis>
-              </entry>
-              <entry>
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </informaltable>
       <figure>
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="d760560f48bf99d7066d3eff5eba360a.png" />
+            <imagedata fileref="7abdf648965ac14c778c4d61dddc7023.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>

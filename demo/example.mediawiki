@@ -4,13 +4,13 @@ A simple report.
 
 === Descriptive statistics ===
 
-The average fuel consumption is 20.091 with SD of 6.027. Let's add one more line to this paragraph. And another one. Now, you've probably heard of ''pi''? Right? Its value is 3.1416.
+The average fuel consumption is 20.091 with SD of 6.0269. Let's add one more line to this paragraph. And another one. Now, you've probably heard of ''pi''? Right? Its value is 3.1416.
 
 === Graphs ===
 
 And some graphs:
 
-[[Image:bcc0dbaf4a393aacd8f480329c88e68f.png|frame|none]]
+[[Image:0ec1f788fe2feb5d233de865b51e9eaf.png|frame|none]]
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -21,124 +21,124 @@ OK, so far, so good, but let's see what's going on with code chunks...
 <table>
 <tbody>
 <tr class="odd">
-<td align="left">0.21696</td>
-<td align="left">0.50174</td>
-<td align="left">0.22349</td>
-<td align="left">-2.49296</td>
-<td align="left">0.83943</td>
-<td align="left">0.92650</td>
-<td align="left">0.12971</td>
-<td align="left">0.28960</td>
-<td align="left">2.49944</td>
-<td align="left">0.70745</td>
+<td align="left">-0.7233</td>
+<td align="left">0.4846</td>
+<td align="left">1.1837</td>
+<td align="left">-1.1286</td>
+<td align="left">0.7626</td>
+<td align="left">-0.2007</td>
+<td align="left">0.8247</td>
+<td align="left">2.0190</td>
+<td align="left">-1.1185</td>
+<td align="left">0.2930</td>
 </tr>
 <tr class="even">
-<td align="left">-0.00474</td>
-<td align="left">-0.44688</td>
-<td align="left">0.63431</td>
-<td align="left">0.16124</td>
-<td align="left">0.13629</td>
-<td align="left">-1.68244</td>
-<td align="left">-0.77522</td>
-<td align="left">0.04510</td>
-<td align="left">-2.16911</td>
-<td align="left">-1.36643</td>
+<td align="left">-0.4760</td>
+<td align="left">0.3876</td>
+<td align="left">-1.3727</td>
+<td align="left">-0.7365</td>
+<td align="left">-0.5195</td>
+<td align="left">-0.5273</td>
+<td align="left">-0.8474</td>
+<td align="left">0.8597</td>
+<td align="left">1.2813</td>
+<td align="left">-0.9687</td>
 </tr>
 <tr class="odd">
-<td align="left">-0.60781</td>
-<td align="left">-0.49399</td>
-<td align="left">-0.76930</td>
-<td align="left">1.15453</td>
-<td align="left">-0.25689</td>
-<td align="left">1.10013</td>
-<td align="left">-2.02654</td>
-<td align="left">-0.19706</td>
-<td align="left">0.20225</td>
-<td align="left">-1.49571</td>
+<td align="left">-1.1426</td>
+<td align="left">-0.5208</td>
+<td align="left">0.1674</td>
+<td align="left">1.6176</td>
+<td align="left">-0.4365</td>
+<td align="left">-0.8570</td>
+<td align="left">-1.2663</td>
+<td align="left">0.0950</td>
+<td align="left">1.2360</td>
+<td align="left">0.0432</td>
 </tr>
 <tr class="even">
-<td align="left">0.15967</td>
-<td align="left">-0.13376</td>
-<td align="left">-0.01630</td>
-<td align="left">-0.66398</td>
-<td align="left">-1.34999</td>
-<td align="left">0.27609</td>
-<td align="left">-1.59700</td>
-<td align="left">-0.92464</td>
-<td align="left">1.22796</td>
-<td align="left">0.86069</td>
+<td align="left">2.5510</td>
+<td align="left">-1.9335</td>
+<td align="left">0.7801</td>
+<td align="left">0.5611</td>
+<td align="left">0.8377</td>
+<td align="left">-0.6773</td>
+<td align="left">1.0799</td>
+<td align="left">-0.3940</td>
+<td align="left">-0.7981</td>
+<td align="left">-1.1803</td>
 </tr>
 <tr class="odd">
-<td align="left">0.85585</td>
-<td align="left">1.98238</td>
-<td align="left">0.86331</td>
-<td align="left">-0.58917</td>
-<td align="left">-2.07967</td>
-<td align="left">0.35422</td>
-<td align="left">-0.23036</td>
-<td align="left">0.56239</td>
-<td align="left">-0.44610</td>
-<td align="left">0.41423</td>
+<td align="left">0.2170</td>
+<td align="left">0.5017</td>
+<td align="left">0.2235</td>
+<td align="left">-2.4930</td>
+<td align="left">0.8394</td>
+<td align="left">0.9265</td>
+<td align="left">0.1297</td>
+<td align="left">0.2896</td>
+<td align="left">2.4994</td>
+<td align="left">0.7075</td>
 </tr>
 <tr class="even">
-<td align="left">0.44926</td>
-<td align="left">-3.02493</td>
-<td align="left">0.16428</td>
-<td align="left">-0.64600</td>
-<td align="left">1.01250</td>
-<td align="left">-1.25318</td>
-<td align="left">0.00740</td>
-<td align="left">0.06426</td>
-<td align="left">0.30169</td>
-<td align="left">0.05773</td>
+<td align="left">-0.0047</td>
+<td align="left">-0.4469</td>
+<td align="left">0.6343</td>
+<td align="left">0.1612</td>
+<td align="left">0.1363</td>
+<td align="left">-1.6824</td>
+<td align="left">-0.7752</td>
+<td align="left">0.0451</td>
+<td align="left">-2.1691</td>
+<td align="left">-1.3664</td>
 </tr>
 <tr class="odd">
-<td align="left">0.48462</td>
-<td align="left">1.18370</td>
-<td align="left">-1.12861</td>
-<td align="left">0.76260</td>
-<td align="left">-0.20068</td>
-<td align="left">0.82466</td>
-<td align="left">2.01900</td>
-<td align="left">-1.11847</td>
-<td align="left">0.29299</td>
-<td align="left">-0.80400</td>
+<td align="left">-0.6078</td>
+<td align="left">-0.4940</td>
+<td align="left">-0.7693</td>
+<td align="left">1.1545</td>
+<td align="left">-0.2569</td>
+<td align="left">1.1001</td>
+<td align="left">-2.0265</td>
+<td align="left">-0.1971</td>
+<td align="left">0.2023</td>
+<td align="left">-1.4957</td>
 </tr>
 <tr class="even">
-<td align="left">0.38761</td>
-<td align="left">-1.37269</td>
-<td align="left">-0.73651</td>
-<td align="left">-0.51947</td>
-<td align="left">-0.52728</td>
-<td align="left">-0.84735</td>
-<td align="left">0.85965</td>
-<td align="left">1.28130</td>
-<td align="left">-0.96874</td>
-<td align="left">-1.48523</td>
+<td align="left">0.1597</td>
+<td align="left">-0.1338</td>
+<td align="left">-0.0163</td>
+<td align="left">-0.6640</td>
+<td align="left">-1.3500</td>
+<td align="left">0.2761</td>
+<td align="left">-1.5970</td>
+<td align="left">-0.9246</td>
+<td align="left">1.2280</td>
+<td align="left">0.8607</td>
 </tr>
 <tr class="odd">
-<td align="left">-0.52076</td>
-<td align="left">0.16741</td>
-<td align="left">1.61759</td>
-<td align="left">-0.43654</td>
-<td align="left">-0.85698</td>
-<td align="left">-1.26634</td>
-<td align="left">0.09499</td>
-<td align="left">1.23600</td>
-<td align="left">0.04324</td>
-<td align="left">0.58843</td>
+<td align="left">0.8559</td>
+<td align="left">1.9824</td>
+<td align="left">0.8633</td>
+<td align="left">-0.5892</td>
+<td align="left">-2.0797</td>
+<td align="left">0.3542</td>
+<td align="left">-0.2304</td>
+<td align="left">0.5624</td>
+<td align="left">-0.4461</td>
+<td align="left">0.4142</td>
 </tr>
 <tr class="even">
-<td align="left">-1.93349</td>
-<td align="left">0.78008</td>
-<td align="left">0.56110</td>
-<td align="left">0.83768</td>
-<td align="left">-0.67731</td>
-<td align="left">1.07995</td>
-<td align="left">-0.39401</td>
-<td align="left">-0.79811</td>
-<td align="left">-1.18033</td>
-<td align="left">0.62871</td>
+<td align="left">0.4493</td>
+<td align="left">-3.0249</td>
+<td align="left">0.1643</td>
+<td align="left">-0.6460</td>
+<td align="left">1.0125</td>
+<td align="left">-1.2532</td>
+<td align="left">0.0074</td>
+<td align="left">0.0643</td>
+<td align="left">0.3017</td>
+<td align="left">0.0577</td>
 </tr>
 </tbody>
 </table>
@@ -157,7 +157,7 @@ The average fuel consumption is 146.69 with SD of 68.563. Let's add one more lin
 
 And some graphs:
 
-[[Image:31cfadc943dc05ceb88d3c07b411cf28.png|frame|none]]
+[[Image:0221aa97b1343432a8450115ebf9089f.png|frame|none]]
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -168,124 +168,124 @@ OK, so far, so good, but let's see what's going on with code chunks...
 <table>
 <tbody>
 <tr class="odd">
-<td align="left">0.22234</td>
-<td align="left">0.65173</td>
-<td align="left">1.39133</td>
-<td align="left">0.98333</td>
-<td align="left">-0.58344</td>
-<td align="left">-0.99095</td>
-<td align="left">-0.45373</td>
-<td align="left">-0.65796</td>
-<td align="left">2.37939</td>
-<td align="left">2.06748</td>
+<td align="left">-0.3962</td>
+<td align="left">-1.5590</td>
+<td align="left">3.4704</td>
+<td align="left">1.3368</td>
+<td align="left">0.2663</td>
+<td align="left">-0.1400</td>
+<td align="left">0.4214</td>
+<td align="left">-0.1471</td>
+<td align="left">-0.9187</td>
+<td align="left">-1.7328</td>
 </tr>
 <tr class="even">
-<td align="left">-0.31492</td>
-<td align="left">-0.84771</td>
-<td align="left">-0.55026</td>
-<td align="left">0.91617</td>
-<td align="left">-0.16968</td>
-<td align="left">1.27141</td>
-<td align="left">0.46340</td>
-<td align="left">-0.10636</td>
-<td align="left">-0.18371</td>
-<td align="left">-0.24102</td>
+<td align="left">-0.6559</td>
+<td align="left">-1.0874</td>
+<td align="left">-0.6273</td>
+<td align="left">0.5882</td>
+<td align="left">-1.5250</td>
+<td align="left">-0.6167</td>
+<td align="left">0.0354</td>
+<td align="left">-0.8753</td>
+<td align="left">0.4180</td>
+<td align="left">-0.4941</td>
 </tr>
 <tr class="odd">
-<td align="left">0.07103</td>
-<td align="left">0.00653</td>
-<td align="left">-0.35326</td>
-<td align="left">0.81124</td>
-<td align="left">0.17430</td>
-<td align="left">-0.15579</td>
-<td align="left">-0.14371</td>
-<td align="left">1.03454</td>
-<td align="left">-0.11201</td>
-<td align="left">0.77493</td>
+<td align="left">-0.4818</td>
+<td align="left">-0.1483</td>
+<td align="left">-0.0883</td>
+<td align="left">-1.6596</td>
+<td align="left">0.3462</td>
+<td align="left">0.5981</td>
+<td align="left">0.1383</td>
+<td align="left">0.6230</td>
+<td align="left">0.7428</td>
+<td align="left">0.7190</td>
 </tr>
 <tr class="even">
-<td align="left">0.85391</td>
-<td align="left">-1.71403</td>
-<td align="left">0.53827</td>
-<td align="left">0.22948</td>
-<td align="left">0.32925</td>
-<td align="left">-0.39897</td>
-<td align="left">1.07016</td>
-<td align="left">-1.15996</td>
-<td align="left">-0.04254</td>
-<td align="left">0.99816</td>
+<td align="left">0.2829</td>
+<td align="left">-0.6523</td>
+<td align="left">-0.7189</td>
+<td align="left">-2.8530</td>
+<td align="left">0.0879</td>
+<td align="left">-0.3051</td>
+<td align="left">-1.7278</td>
+<td align="left">0.7643</td>
+<td align="left">1.7792</td>
+<td align="left">1.0526</td>
 </tr>
 <tr class="odd">
-<td align="left">1.84811</td>
-<td align="left">-1.97597</td>
-<td align="left">1.90410</td>
-<td align="left">0.29464</td>
-<td align="left">-0.26010</td>
-<td align="left">0.05813</td>
-<td align="left">-1.38199</td>
-<td align="left">0.54703</td>
-<td align="left">-0.05245</td>
-<td align="left">0.24624</td>
+<td align="left">0.2223</td>
+<td align="left">0.6517</td>
+<td align="left">1.3913</td>
+<td align="left">0.9833</td>
+<td align="left">-0.5834</td>
+<td align="left">-0.9909</td>
+<td align="left">-0.4537</td>
+<td align="left">-0.6580</td>
+<td align="left">2.3794</td>
+<td align="left">2.0675</td>
 </tr>
 <tr class="even">
-<td align="left">-0.74688</td>
-<td align="left">1.50558</td>
-<td align="left">-0.13179</td>
-<td align="left">1.68098</td>
-<td align="left">1.29912</td>
-<td align="left">0.21735</td>
-<td align="left">0.89660</td>
-<td align="left">0.09138</td>
-<td align="left">-0.31560</td>
-<td align="left">0.93897</td>
+<td align="left">-0.3149</td>
+<td align="left">-0.8477</td>
+<td align="left">-0.5503</td>
+<td align="left">0.9162</td>
+<td align="left">-0.1697</td>
+<td align="left">1.2714</td>
+<td align="left">0.4634</td>
+<td align="left">-0.1064</td>
+<td align="left">-0.1837</td>
+<td align="left">-0.2410</td>
 </tr>
 <tr class="odd">
-<td align="left">-1.55898</td>
-<td align="left">3.47041</td>
-<td align="left">1.33684</td>
-<td align="left">0.26634</td>
-<td align="left">-0.14000</td>
-<td align="left">0.42141</td>
-<td align="left">-0.14711</td>
-<td align="left">-0.91866</td>
-<td align="left">-1.73281</td>
-<td align="left">0.48034</td>
+<td align="left">0.0710</td>
+<td align="left">0.0065</td>
+<td align="left">-0.3533</td>
+<td align="left">0.8112</td>
+<td align="left">0.1743</td>
+<td align="left">-0.1558</td>
+<td align="left">-0.1437</td>
+<td align="left">1.0345</td>
+<td align="left">-0.1120</td>
+<td align="left">0.7749</td>
 </tr>
 <tr class="even">
-<td align="left">-1.08743</td>
-<td align="left">-0.62727</td>
-<td align="left">0.58817</td>
-<td align="left">-1.52503</td>
-<td align="left">-0.61666</td>
-<td align="left">0.03544</td>
-<td align="left">-0.87532</td>
-<td align="left">0.41800</td>
-<td align="left">-0.49410</td>
-<td align="left">-0.47320</td>
+<td align="left">0.8539</td>
+<td align="left">-1.7140</td>
+<td align="left">0.5383</td>
+<td align="left">0.2295</td>
+<td align="left">0.3292</td>
+<td align="left">-0.3990</td>
+<td align="left">1.0702</td>
+<td align="left">-1.1600</td>
+<td align="left">-0.0425</td>
+<td align="left">0.9982</td>
 </tr>
 <tr class="odd">
-<td align="left">-0.14827</td>
-<td align="left">-0.08834</td>
-<td align="left">-1.65963</td>
-<td align="left">0.34622</td>
-<td align="left">0.59807</td>
-<td align="left">0.13834</td>
-<td align="left">0.62300</td>
-<td align="left">0.74279</td>
-<td align="left">0.71904</td>
-<td align="left">1.04388</td>
+<td align="left">1.8481</td>
+<td align="left">-1.9760</td>
+<td align="left">1.9041</td>
+<td align="left">0.2946</td>
+<td align="left">-0.2601</td>
+<td align="left">0.0581</td>
+<td align="left">-1.3820</td>
+<td align="left">0.5470</td>
+<td align="left">-0.0525</td>
+<td align="left">0.2462</td>
 </tr>
 <tr class="even">
-<td align="left">-0.65230</td>
-<td align="left">-0.71892</td>
-<td align="left">-2.85295</td>
-<td align="left">0.08785</td>
-<td align="left">-0.30507</td>
-<td align="left">-1.72776</td>
-<td align="left">0.76428</td>
-<td align="left">1.77922</td>
-<td align="left">1.05258</td>
-<td align="left">1.01411</td>
+<td align="left">-0.7469</td>
+<td align="left">1.5056</td>
+<td align="left">-0.1318</td>
+<td align="left">1.6810</td>
+<td align="left">1.2991</td>
+<td align="left">0.2174</td>
+<td align="left">0.8966</td>
+<td align="left">0.0914</td>
+<td align="left">-0.3156</td>
+<td align="left">0.9390</td>
 </tr>
 </tbody>
 </table>
@@ -304,7 +304,7 @@ The average fuel consumption is 2.0628 with SD of 2.0404. Let's add one more lin
 
 And some graphs:
 
-[[Image:a28c9526df56f14f4db444f97f519855.png|frame|none]]
+[[Image:f1891776819c845a6068c59a90f70d8f.png|frame|none]]
 
 So far we've been dealing with data.frames and plots, now let's deal with variables
 
@@ -315,124 +315,124 @@ OK, so far, so good, but let's see what's going on with code chunks...
 <table>
 <tbody>
 <tr class="odd">
-<td align="left">1.72828</td>
-<td align="left">0.00902</td>
-<td align="left">-0.42988</td>
-<td align="left">-0.42918</td>
-<td align="left">-0.31233</td>
-<td align="left">0.86316</td>
-<td align="left">-0.76035</td>
-<td align="left">0.73025</td>
-<td align="left">-1.29166</td>
-<td align="left">0.47547</td>
+<td align="left">1.5299</td>
+<td align="left">-0.2729</td>
+<td align="left">2.1052</td>
+<td align="left">-1.9148</td>
+<td align="left">-0.2537</td>
+<td align="left">0.3264</td>
+<td align="left">1.3741</td>
+<td align="left">-0.3369</td>
+<td align="left">0.8517</td>
+<td align="left">0.0286</td>
 </tr>
 <tr class="even">
-<td align="left">0.72337</td>
-<td align="left">1.48224</td>
-<td align="left">-0.59635</td>
-<td align="left">0.10393</td>
-<td align="left">0.55306</td>
-<td align="left">-0.45044</td>
-<td align="left">-2.02105</td>
-<td align="left">-0.57019</td>
-<td align="left">0.71030</td>
-<td align="left">1.13604</td>
+<td align="left">0.9124</td>
+<td align="left">-0.0866</td>
+<td align="left">0.2420</td>
+<td align="left">-0.5868</td>
+<td align="left">-1.1475</td>
+<td align="left">-1.7872</td>
+<td align="left">-0.1422</td>
+<td align="left">-1.7004</td>
+<td align="left">1.1141</td>
+<td align="left">-1.0209</td>
 </tr>
 <tr class="odd">
-<td align="left">1.22395</td>
-<td align="left">0.10938</td>
-<td align="left">0.38807</td>
-<td align="left">-0.51683</td>
-<td align="left">1.79204</td>
-<td align="left">-0.18481</td>
-<td align="left">0.40610</td>
-<td align="left">-0.22629</td>
-<td align="left">1.32677</td>
-<td align="left">-1.73743</td>
+<td align="left">0.9227</td>
+<td align="left">-1.1400</td>
+<td align="left">0.3641</td>
+<td align="left">0.1442</td>
+<td align="left">0.6264</td>
+<td align="left">1.8114</td>
+<td align="left">0.1281</td>
+<td align="left">0.4555</td>
+<td align="left">1.2501</td>
+<td align="left">0.6140</td>
 </tr>
 <tr class="even">
-<td align="left">0.36481</td>
-<td align="left">2.31903</td>
-<td align="left">0.69694</td>
-<td align="left">0.54454</td>
-<td align="left">0.76660</td>
-<td align="left">-1.21620</td>
-<td align="left">-0.38909</td>
-<td align="left">0.46635</td>
-<td align="left">-0.04112</td>
-<td align="left">-1.84051</td>
+<td align="left">-0.1787</td>
+<td align="left">-0.8168</td>
+<td align="left">1.1941</td>
+<td align="left">0.9664</td>
+<td align="left">0.8456</td>
+<td align="left">-0.4854</td>
+<td align="left">0.3648</td>
+<td align="left">0.7771</td>
+<td align="left">-1.6458</td>
+<td align="left">0.2871</td>
 </tr>
 <tr class="odd">
-<td align="left">-1.27903</td>
-<td align="left">0.73900</td>
-<td align="left">-0.52441</td>
-<td align="left">-1.00506</td>
-<td align="left">2.15166</td>
-<td align="left">-0.92249</td>
-<td align="left">-0.34753</td>
-<td align="left">0.97207</td>
-<td align="left">0.07277</td>
-<td align="left">1.82394</td>
+<td align="left">1.7283</td>
+<td align="left">0.0090</td>
+<td align="left">-0.4299</td>
+<td align="left">-0.4292</td>
+<td align="left">-0.3123</td>
+<td align="left">0.8632</td>
+<td align="left">-0.7604</td>
+<td align="left">0.7302</td>
+<td align="left">-1.2917</td>
+<td align="left">0.4755</td>
 </tr>
 <tr class="even">
-<td align="left">0.05284</td>
-<td align="left">0.43922</td>
-<td align="left">0.01174</td>
-<td align="left">0.15163</td>
-<td align="left">-1.51874</td>
-<td align="left">-2.05551</td>
-<td align="left">-0.51695</td>
-<td align="left">-0.27935</td>
-<td align="left">-0.26791</td>
-<td align="left">0.98499</td>
+<td align="left">0.7234</td>
+<td align="left">1.4822</td>
+<td align="left">-0.5963</td>
+<td align="left">0.1039</td>
+<td align="left">0.5531</td>
+<td align="left">-0.4504</td>
+<td align="left">-2.0211</td>
+<td align="left">-0.5702</td>
+<td align="left">0.7103</td>
+<td align="left">1.1360</td>
 </tr>
 <tr class="odd">
-<td align="left">-0.27293</td>
-<td align="left">2.10518</td>
-<td align="left">-1.91476</td>
-<td align="left">-0.25366</td>
-<td align="left">0.32643</td>
-<td align="left">1.37410</td>
-<td align="left">-0.33690</td>
-<td align="left">0.85166</td>
-<td align="left">0.02857</td>
-<td align="left">-1.01447</td>
+<td align="left">1.2239</td>
+<td align="left">0.1094</td>
+<td align="left">0.3881</td>
+<td align="left">-0.5168</td>
+<td align="left">1.7920</td>
+<td align="left">-0.1848</td>
+<td align="left">0.4061</td>
+<td align="left">-0.2263</td>
+<td align="left">1.3268</td>
+<td align="left">-1.7374</td>
 </tr>
 <tr class="even">
-<td align="left">-0.08657</td>
-<td align="left">0.24202</td>
-<td align="left">-0.58678</td>
-<td align="left">-1.14747</td>
-<td align="left">-1.78722</td>
-<td align="left">-0.14218</td>
-<td align="left">-1.70038</td>
-<td align="left">1.11414</td>
-<td align="left">-1.02090</td>
-<td align="left">0.84343</td>
+<td align="left">0.3648</td>
+<td align="left">2.3190</td>
+<td align="left">0.6969</td>
+<td align="left">0.5445</td>
+<td align="left">0.7666</td>
+<td align="left">-1.2162</td>
+<td align="left">-0.3891</td>
+<td align="left">0.4663</td>
+<td align="left">-0.0411</td>
+<td align="left">-1.8405</td>
 </tr>
 <tr class="odd">
-<td align="left">-1.14003</td>
-<td align="left">0.36409</td>
-<td align="left">0.14422</td>
-<td align="left">0.62636</td>
-<td align="left">1.81143</td>
-<td align="left">0.12810</td>
-<td align="left">0.45547</td>
-<td align="left">1.25006</td>
-<td align="left">0.61398</td>
-<td align="left">-0.58169</td>
+<td align="left">-1.2790</td>
+<td align="left">0.7390</td>
+<td align="left">-0.5244</td>
+<td align="left">-1.0051</td>
+<td align="left">2.1517</td>
+<td align="left">-0.9225</td>
+<td align="left">-0.3475</td>
+<td align="left">0.9721</td>
+<td align="left">0.0728</td>
+<td align="left">1.8239</td>
 </tr>
 <tr class="even">
-<td align="left">-0.81676</td>
-<td align="left">1.19413</td>
-<td align="left">0.96644</td>
-<td align="left">0.84559</td>
-<td align="left">-0.48541</td>
-<td align="left">0.36482</td>
-<td align="left">0.77711</td>
-<td align="left">-1.64583</td>
-<td align="left">0.28705</td>
-<td align="left">-0.75663</td>
+<td align="left">0.0528</td>
+<td align="left">0.4392</td>
+<td align="left">0.0117</td>
+<td align="left">0.1516</td>
+<td align="left">-1.5187</td>
+<td align="left">-2.0555</td>
+<td align="left">-0.5169</td>
+<td align="left">-0.2793</td>
+<td align="left">-0.2679</td>
+<td align="left">0.9850</td>
 </tr>
 </tbody>
 </table>
