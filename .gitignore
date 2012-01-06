@@ -1,4 +1,6 @@
 *~
+*#
+*.r
 *.Rcheck/
 .Rpackages
 .Rhistory
@@ -6,5 +8,3 @@
 .RData
 .Rbuildignore
 rapport-Ex.R
-*.r
-#*.*
