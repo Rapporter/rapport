@@ -75,20 +75,61 @@ rp.desc <- function(id.vars, measure.vars, fn, data, na.rm = TRUE, margins = NUL
 }
 
 
+##' Frequency Table
+##'
+##' Diplay frequency table
+##' @param f.vars a character vector with variable names
+##' @param data a \code{data.frame}
+##' @param na.rm should missing values be removed?
+##' @param include.na should missing values be included in frequency table?
+##' @param drop.levels should unused levels be removed
+##' @param count show frequencies?
+##' @param pct show percentage?
+##' @param cum.n show cumulative frequencies?
+##' @param cum.pct
+##' @return a \code{data.frame} with frequencies
+##' @examples \dontrun{
+##' rp.freq(c("am", "cyl", "vs"), mtcars)
+##' }
 ##' @export
-rp.freq <- function(f.vars, data, count = TRUE, pct = TRUE, cum.n = TRUE, cum.pct = TRUE, na.rm = TRUE, subset = TRUE, fill = NA, add.missing = FALSE){
+rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.levels = FALSE, count = TRUE, pct = TRUE, cum.n = TRUE, cum.pct = TRUE){
 
-    m <- melt.data.frame(data, id.vars = f.vars, na.rm = na.rm)
-    fml <- sprintf('%s ~ .', paste(f.vars, collapse = ' + '))
-    suppressWarnings(cc <- cast(m, fml, length, subset = subset, fill = fill, add.missing = add.missing))
-    colnames(cc) <- gsub('(all)', 'N', colnames(cc), fixed = TRUE) # remove nasty (all)
-    cc <- transform(cc, pct = N / sum(N) * 100)
-    cc <- transform(cc, cum.n = cumsum(N), cum.pct = cumsum(pct))
+    ## TODO: subset
+
+    exclude <- if (isTRUE(na.rm)) NA else NULL
+    tbl <- melt(xtabs(fml('', f.vars), data = data, exclude = exclude, na.action = na.pass))
+    names(tbl)[ncol(tbl)] <- 'N'        # rename frequency column
+    nfac <- length(f.vars)              # number of factors
+
+    if (drop.unused.levels)  tbl <- tbl[tbl$N != 0, ] # remove 0-count levels
+
+    ## calculate freqs
+    tbl <- transform(tbl, pct = N / sum(N) * 100) # add percentage
+    tbl <- transform(tbl, cum.n = cumsum(N), cum.pct = cumsum(pct)) # add cumulatives
+
+    ## NAs not removed
+    if (na.rm == FALSE){
+        if (include.na == FALSE){
+            cc <- complete.cases(tbl)
+            tbl <- tbl[cc, ]
+        }
+        ## TODO: add Valid/Missing
+    }
+
+    ## calculate total
+    freqs <- colSums(tbl[c("N", "pct")])            # frequency totals
+    cumuls <- tail(as.numeric(tbl[nrow(tbl), ]), 2) # cumulative totals
+    total <- c(rep(NA, nfac), freqs, cumuls)        # grand total
+
+    rownames(tbl) <- NULL               # reset row names
+    tbl <- rbind(tbl, Total = total)    # update table contents
+
+    ## summary stats
     keep <- sapply(list(count, pct, cum.n, cum.pct), isTRUE)
-    if (all(keep == FALSE))
-        stop('no summary to show')
+    if (all(keep == FALSE))  stop('no summary to show') # no summary selected
     keep <- c(rep(TRUE, length(f.vars)), keep)
-    res <- cc[keep]
-    class(res) <- c('data.frame', 'rp.table')
-    return(res)
+    tbl <- tbl[keep]                    # choose desired stats
+
+    class(tbl) <- c('data.frame', 'rp.table')
+    return(tbl)
 }

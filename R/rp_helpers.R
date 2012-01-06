@@ -593,6 +593,7 @@ rp.round <- function(x, scientific=FALSE) {
     format(round(x, getOption('rp.decimal')), decimal.mark = getOption('rp.decimal.mark'), scientific = scientific)
 }
 
+
 ##' Return pretty ascii form
 ##'
 ##' Some standard formatting is applied to the value which is returned as ascii object.
@@ -626,6 +627,7 @@ rp.prettyascii <- function(x) {
             return(paste(capture.output(ascii(x)), collapse='\n'))
 }
 
+
 ##' Inline Printing
 ##'
 ##' Merge atomic vector elements in one string for pretty inline printing.
@@ -653,6 +655,20 @@ p <- function(x, sep.last = 'and', wrap = '_', sep = ', ', limit = 20L){
     else
         paste(paste(wrap(x[1:(x.len - 1)], wrap), collapse = sep), sep.last, wrap(x[x.len], wrap))
 }
+
+
+##' Create Formula from Strings
+##'
+##' Takes left and right-hand side arguments of a formula
+##' @param left a string with left-hand side formula argument
+##' @param right a character vector with right-hand side formula arguments
+##' @return a string with formula
+##' @examples
+##' fml("hp", c("am", "cyl"))
+fml <- function(left, right, join.left = ' + ', join.right = ' + '){
+    sprintf('%s ~ %s', paste(left, collapse = join.left), paste(right, collapse = join.right))
+}
+
 
 ########################################
 ## undocumented functions
