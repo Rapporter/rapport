@@ -654,18 +654,30 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
         })
     }
 
-    report <- lapply(elem, elem.eval, env = e)      # get report
-    report <- lapply(report, function(x) {          # error handling in chunks
-                        if (x$type == 'chunk')      #  * shoot warning() and return '<ERROR>' inline
+    report <- lapply(elem, elem.eval, env = e)          # get report
+    
+    report <- lapply(report, function(x) {              # error handling in chunks:
+                        if (x$type == 'chunk')          #  * shoot warning() and return '<ERROR>' inline
                             ifelse(!is.null(x$robjects[[1]]$msg$errors), {warning(x$robjects[[1]]$msg$errors, call. = FALSE); x$robjects[[1]]$output <- '<ERROR>'; return(x)}, return(x))
                         else
                             return(x)
                     })
-    report <- report[sapply(report, function(x) {   # and remove NULL/blank parts
+    report <- report[sapply(report, function(x) {       # and remove NULL/blank parts
         if (x$type=='chunk')
             ifelse(is.null(x$robjects[[1]]$output), FALSE, TRUE)
         else ifelse(x$text$eval == 'NULL', FALSE, TRUE)
     })]
+
+    report <- unlist(lapply(report, function(x) {                   # tidy up (remove header etc.) nested templates:
+                if (x$type == 'chunk')                              #  * chunk holding a rapport class
+                    if (any(x$robjects[[1]]$type == 'rapport'))
+                        return(x$robjects[[1]]$output$report)
+                if (x$type == 'chunk')
+                    if (class(x$robjects[[1]]$output) == 'list')    #  * chunk holding a list of rapport classes
+                        if (all(lapply(x$robjects[[1]]$output, class) == 'rapport'))
+                            return(unlist(lapply(x$robjects[[1]]$output, function(x) x$report), recursive=F))
+                return(list(x))
+            }), recursive=F)
 
     res <- list(
                 metadata = meta,
