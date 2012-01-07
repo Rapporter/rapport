@@ -57,7 +57,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 ##' ## Eg. pandoc uses "--reference-odt" as styles reference for odt exports.
 ##'}
 ##' @export
-tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), "%Y/%m/%d %X"), desc=TRUE, format='html', backend='pandoc', options=NULL) {
+tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), getOption('rp.date.format')), desc=TRUE, format='html', backend='pandoc', options=NULL) {
 
     ## dummy checks and config parameters set
     if (!(format %in% tpl.export.outputs()))
