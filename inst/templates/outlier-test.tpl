@@ -1,14 +1,17 @@
 <!--head
-Title: Outlier test
-Author: Gergely Daróczi 
-Email: gergely@snowl.net
-Description: This template will check if provided variable has any outliers. 
-Packages: outliers
-Example: rapport('outlier-test', data=ius2009, var='it.edu')
-var          | numeric | Variable        | Numerical variable
-references   | TRUE    | References      | Print references?
-grubb        | TRUE    | Grubb's test    | Show Grubb's test?
-dixon        | TRUE    | Dixon's test    | Show Dixon's test?
+Title:          Outlier test
+Author:         Gergely Daróczi 
+Email:          gergely@snowl.net
+Description:    This template will check if provided variable has any outliers. 
+Packages:       outliers
+Example:        rapport('outlier-test', data=ius2009, var='it.edu')
+                rapport('outlier-test', data=ius2009, var='it.edu', lund.res=FALSE)
+                rapport('outlier-test', data=ius2009, var='it.edu', lund.res=FALSE, references=FALSE, grubb=FALSE, dixon=FALSE)
+var             | numeric | Variable        | Numerical variable
+lund.res        | FALSE   | Residuals       | Return Lund's residuals?
+references      | TRUE    | References      | Print references?
+grubb           | TRUE    | Grubb's test    | Show Grubb's test?
+dixon           | TRUE    | Dixon's test    | Show Dixon's test?
 head-->
 
 # Boxplot
@@ -29,10 +32,10 @@ The above test for outliers was based on *lm(1 ~ <%rp.name(var)%>)*:
 lm(var ~ 1)
 %>
 
-## The residuals returned:
+## <% if (lund.res) 'The residuals returned:'%>
 
 <%
-paste((rp.round(rstandard(lm(var ~ 1)))), collapse=', ')
+if (lund.res) p(rp.round(rstandard(lm(var ~ 1))), limit=Inf)
 %>
 
 ## <%if (references) 'References'%>

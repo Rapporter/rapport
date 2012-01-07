@@ -4,7 +4,7 @@
 \usage{
   tpl.export(rp = NULL, file = NULL, append = FALSE,
     create = TRUE, open = TRUE,
-    date = format(Sys.time(), "\%Y/\%m/\%d \%X"),
+    date = format(Sys.time(), getOption("rp.date.format")),
     desc = TRUE, format = "html", backend = "pandoc",
     options = NULL)
 }

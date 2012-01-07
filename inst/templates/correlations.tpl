@@ -5,6 +5,7 @@ Email: gergely@snowl.net
 Description: This template will return the correlation matrix of supplied numerical variables. 
 Packages: ascii
 Example: rapport('correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
+         rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
 vars        | numeric[1,10] | Variable              | Numerical variables
 cor.matrix  | TRUE          | Correlation matrix    | Show correlation matrix (numbers)?
 cor.plot    | TRUE          | Scatterplot matrix    | Show scatterplot matrix (image)?
@@ -31,7 +32,7 @@ if (cor.matrix) {
     for (row in attr(cm, 'dimnames')[[1]])
         for (col in attr(cm, 'dimnames')[[2]]) {
             test.p <- cor.test(vars[, row], vars[, col])$p.value 
-            cm[row, col] <- paste(cm[row, col], ' ', ifelse(test.p > 0.05, '', ifelse(test.p > 0.01, '*', ifelse(test.p > 0.001, '**', '***'))), sep='')
+            cm[row, col] <- paste(cm[row, col], ' ', ifelse(test.p > 0.05, '', ifelse(test.p > 0.01, '\\*', ifelse(test.p > 0.001, '\\*\\*', '\\*\\*\\*'))), sep='')
         }
     diag(cm) <- ''
     as.data.frame(cm)

@@ -5,6 +5,7 @@ Email: gergely@snowl.net
 Description: Folytonos változók közötti lineáris összefüggések vizsgálata.
 Packages: ascii
 Example: rapport('hu/correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
+         rapport('hu/correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
 vars        | numeric[1,10] | Változók              | Folytonos változók
 cor.matrix  | TRUE          | Korrelációs mátrix    | Korrelációs mátrix hozzáadása
 cor.plot    | TRUE          | Pontdiagram           | Pontdiagram hozzáadása
