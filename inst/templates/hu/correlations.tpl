@@ -13,6 +13,9 @@ head-->
 <%
 ## get locale settings
 p.copula <- getOption('p.copula')
+%>
+
+<%
 ## setting Hungarian locale
 options('p.copula' = 'és'); NULL
 %>
