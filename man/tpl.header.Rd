@@ -6,8 +6,8 @@
     close.tag = get.tags("header.close"), ...)
 }
 \arguments{
-  \item{fp}{a string containing a path to template, or a
-  character vector with template lines}
+  \item{fp}{a string containing template path, or a
+  character vector with template contents}
 
   \item{open.tag}{a string with opening tag}
 
@@ -20,7 +20,9 @@
   a character vector with template header contents
 }
 \description{
-  Returns template header from provided path or a character
-  vector.
+  Returns \em{rapport} template header from provided path
+  or a character vector. In case you're refering to a
+  template bundled with package, you don't need to provide
+  a template extension.
 }
 

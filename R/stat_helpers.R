@@ -57,18 +57,41 @@ lambda.test <- function(table, direction=0) {
 }
 
 
-##' Hypothesis Test Helper
+##' Hypothesis Tests
 ##'
-##' This function extracts only the most important information from \code{htest} class objects.
+##' This function extracts only the most important information from \code{htest} class objects - statistic and its p-value.
 ##' @param x arguments to be passed to function specified in \code{test}
 ##' @param test a function to be applied
 ##' @param ... additional arguments for function specified in \code{test}
 ##' @export
-htest <- function(x, test, ...) {
-  h <- do.call(test, list(x, ...))      # get htest object
-  res <- c(h$statistic, p = h$p.value)
-  if (!is.null(h$parameter))
-      res['parameter'] <- h$parameter
-  return(res)
+htest <- function(x, ...){
+
+    e <- function(y){
+        c(y$statistic, p = y$p.value)
+    }
+
+    test <- list(...)
+    test.len <- length(test)
+
+    if (is.atomic(x)){
+        res <- each(test)(x)
+        if (test.len == 1)
+            e(res)
+        else
+            sapply(res, e)
+    }
+
+    if (is.recursive(x)){
+        if (test.len == 1){
+            sapply(x, test)
+        } else {
+            t(data.frame(lapply(x, function(y) sapply(each(test)(y), e))))
+        }
+    }
 }
 
+
+##' @export
+e <- function(y){
+    c(y$statistic, p = y$p.value)
+}

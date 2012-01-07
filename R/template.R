@@ -1,7 +1,7 @@
 ##' Read Template
 ##'
-##' Reads file either from template name, file path or URL, and splits it into lines for easier handling. "find" in \code{tpl.find} is borrowed from Emacs parlance - this function reads, and does not search for a template.
-##' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
+##' Reads file either from template name, file path or URL, and splits it into lines for easier handling. "find" in \code{tpl.find} is borrowed from Emacs parlance - this function actually reads the template.
+##' @param fp a character string containing a template path, a template name (for package-bundled templates only, and ".tpl" extension is optional), or template contents separated by newline (\code{\n}), or a character vector with template contents.
 ##' @return a character vector with template contents
 ##' @export
 tpl.find <- function(fp){
@@ -43,8 +43,8 @@ tpl.find <- function(fp){
 
 ##' Template Header
 ##'
-##' Returns template header from provided path or a character vector.
-##' @param fp a string containing a path to template, or a character vector with template lines
+##' Returns \em{rapport} template header from provided path or a character vector. In case you're refering to a template bundled with package, you don't need to provide a template extension.
+##' @param fp a string containing template path, or a character vector with template contents
 ##' @param open.tag a string with opening tag
 ##' @param close.tag a string with closing tag
 ##' @param ... additional arguments to be passed to \code{\link{grep}} function
@@ -656,12 +656,12 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
 
     ## saving all options before run to be able to reset after run
     options <- options()
-    
+
     report <- lapply(elem, elem.eval, env = e)          # get report
-    
+
     ## resetting options
     options(options)
-    
+
     report <- lapply(report, function(x) {              # error handling in chunks:
                         if (x$type == 'chunk')          #  * shoot warning() and return '<ERROR>' inline
                             ifelse(!is.null(x$robjects[[1]]$msg$errors), {warning(x$robjects[[1]]$msg$errors, call. = FALSE); x$robjects[[1]]$output <- '<ERROR>'; return(x)}, return(x))
