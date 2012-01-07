@@ -2,6 +2,11 @@ body {
     font-family: 'YanoneKaffeesatzRegular';
 }
 
+code {
+    background-color: whiteSmoke;
+    padding: 2px;
+    border: solid 1px #DDD;
+}
 .highlight {
 	background-color: whiteSmoke;
 	margin: 10px;
@@ -11,6 +16,10 @@ body {
 	font-family:     "Courier New",
                     Courier,
                     monospace;
+}
+.highlight code {
+    padding: 0px;
+    border: none;
 }
 
 .content li {
