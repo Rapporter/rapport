@@ -39,7 +39,7 @@ There are a bunch of other helper functions in *rapport* to deal with templates.
 {% highlight r %}
 tpl.info('example')
 TODO
-{% endhighlight %
+{% endhighlight %}
 
 Do not forget to check out other examples of this package too! :)
 
