@@ -1,8 +1,8 @@
 ##' Descriptive Statistics
 ##'
 ##' Aggregate table of descriptives according to functions provided in \code{fn} argument. This function follows melt/cast approach used in \code{reshape} package. Variable names specified in \code{measure.vars} argument are treated as \code{measure.vars}, while the ones in \code{id.vars} are treated as \code{id.vars} (see \code{\link[reshape]{melt.data.frame}} for details). Other its formal arguments match with corresponding arguments for \code{\link[reshape]{cast}} function. Some post-processing is done after reshaping, in order to get pretty row and column labels.
-##' @param id.vars a character vector with \code{id.vars}
-##' @param measure.vars a character vector with \code{measure.vars}
+##' @param id.vars either a character vector with variable names from \code{data}, a numeric vector, or a \code{data.frame}
+##' @param measure.vars same as \code{id.vars}
 ##' @param fn a list with functions or a character vector with function names
 ##' @param data a \code{data.frame} holding variables specified in \code{id.vars} and \code{measure.vars}
 ##' @param na.rm a logical value indicating whether \code{NA} values should be removed
@@ -16,7 +16,14 @@
 ##' rp.
 ##' rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)
 ##' @export
-rp.desc <- function(id.vars, measure.vars, fn, data, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total') {
+rp.desc <- function(id.vars, measure.vars, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total') {
+
+    if (!is.character(id.vars) && !is.character(measure.vars)){
+        data <- data.frame(id.vars, measure.vars)
+        id.vars <- if (is.atomic(id.vars)) deparse(substitute(id.vars)) else names(id.vars)
+        measure.vars <- if (is.atomic(measure.vars)) deparse(substitute(measure.vars)) else names(measure.vars)
+        names(data) <- c(id.vars, measure.vars)
+    }
 
     m   <- melt.data.frame(data, id.vars = id.vars, measure.vars = measure.vars, na.rm = na.rm) # melt data
     if (is.null(id.vars))
@@ -25,21 +32,24 @@ rp.desc <- function(id.vars, measure.vars, fn, data, na.rm = TRUE, margins = NUL
 
     if (!is.character(fn)){
 
-        fn.subs <- sapply(substitute(fn), deparse)[-1] # get function names
-        fn.nms <- names(fn)             # get names of function list
-        fn.ind <- names(fn.subs) == ''  # get indices of non-named elems
+        if (is.list(fn)){
 
-        ## fun list has no named elements, use deparsed/substituted ones
-        if (!length(fn.nms)){
-            names(fn) <- fn.subs
-        } else {
-            ## some function names found...
-            if (any(fn.ind)){
-                ## ...some missing, replace them with deparsed/substituted ones
-                names(fn.subs)[fn.ind] <- fn.subs[fn.ind]
-                names(fn) <- names(fn.subs)
+            fn.subs <- sapply(substitute(fn), deparse)[-1] # get function names
+            fn.nms <- names(fn)             # get names of function list
+            fn.ind <- names(fn.subs) == ''  # get indices of non-named elems
+
+            ## fun list has no named elements, use deparsed/substituted ones
+            if (!length(fn.nms)){
+                names(fn) <- fn.subs
             } else {
-                names(fn) <- fn.nms     # ...no missing elems, use names
+                ## some function names found...
+                if (any(fn.ind)){
+                    ## ...some missing, replace them with deparsed/substituted ones
+                    names(fn.subs)[fn.ind] <- fn.subs[fn.ind]
+                    names(fn) <- names(fn.subs)
+                } else {
+                    names(fn) <- fn.nms     # ...no missing elems, use names
+                }
             }
         }
     }
@@ -48,26 +58,28 @@ rp.desc <- function(id.vars, measure.vars, fn, data, na.rm = TRUE, margins = NUL
 
     nms.res <- names(res)               # column names
 
+    ## this sucks, use function names to get proper column names
+
     ## if only one measure.var is specified, ommit its name from colnames
-    if (length(measure.vars == 1)){
-        names(res) <- gsub(sprintf('%s_', measure.vars), '', names(res))
-    } else {
-        ## fix names with underscores
-        if (length(res.ind <- grep('_', nms.res)))
-            names(res)[res.ind] <- sapply(strsplit(nms.res[res.ind], '_'), function(x) sprintf('%s(%s)', x[2], x[1]))
+    ## if (length(measure.vars == 1)){
+    ##     names(res) <- gsub(sprintf('%s_', measure.vars), '', names(res))
+    ## } else {
+    ##     ## fix names with underscores
+    ##     if (length(res.ind <- grep('_', nms.res)))
+    ##         names(res)[res.ind] <- sapply(strsplit(nms.res[res.ind], '_'), function(x) sprintf('%s(%s)', x[2], x[1]))
 
-        ## remove (all) arrrgh...
-        names(res) <- gsub('(all)', total.name, names(res), fixed = TRUE) # ...from colnames
-        facs <- 1:length(id.vars)           # ...from factor levels
-        res[facs] <- lapply(res[facs], function(y){
-            levels(y) <- gsub('(all)', total.name, levels(y), fixed = TRUE)
-            y
-        })
+    ##     ## remove (all) arrrgh...
+    ##     names(res) <- gsub('(all)', total.name, names(res), fixed = TRUE) # ...from colnames
+    ##     facs <- 1:length(id.vars)           # ...from factor levels
+    ##     res[facs] <- lapply(res[facs], function(y){
+    ##         levels(y) <- gsub('(all)', total.name, levels(y), fixed = TRUE)
+    ##         y
+    ##     })
 
-        ## remove "value" as colname
-        if (length(id.vars) == 1 && id.vars == '.')
-            names(res)[1] <- gsub('value', '', names(res)[1])
-    }
+    ##     ## remove "value" as colname
+    ##     if (length(id.vars) == 1 && id.vars == '.')
+    ##         names(res)[1] <- gsub('value', '', names(res)[1])
+    ## }
 
     class(res) <- c('rp.table', 'data.frame')
 

@@ -5,9 +5,11 @@
   tpl.find(fp)
 }
 \arguments{
-  \item{fp}{a character vector containing template name
-  (".tpl" extension is optional), file path or a text to be
-  split by lines}
+  \item{fp}{a character string containing a template path,
+  a template name (for package-bundled templates only, and
+  ".tpl" extension is optional), or template contents
+  separated by newline (\code{\n}), or a character vector
+  with template contents.}
 }
 \value{
   a character vector with template contents
@@ -16,6 +18,6 @@
   Reads file either from template name, file path or URL,
   and splits it into lines for easier handling. "find" in
   \code{tpl.find} is borrowed from Emacs parlance - this
-  function reads, and does not search for a template.
+  function actually reads the template.
 }
 

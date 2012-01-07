@@ -1,8 +1,8 @@
 \name{htest}
 \alias{htest}
-\title{Hypothesis Test Helper}
+\title{Hypothesis Tests}
 \usage{
-  htest(x, test, ...)
+  htest(x, ...)
 }
 \arguments{
   \item{x}{arguments to be passed to function specified in
@@ -15,6 +15,7 @@
 }
 \description{
   This function extracts only the most important
-  information from \code{htest} class objects.
+  information from \code{htest} class objects - statistic
+  and its p-value.
 }
 
