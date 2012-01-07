@@ -620,13 +620,11 @@ rp.prettyascii <- function(x) {
     }
     if (is.vector(x))
         return(paste(x, collapse=', '))
-    if (is.data.frame(x)) {
+    if (is.data.frame(x))
         if (all(row.names(x) == 1:nrow(x)))
             return(paste(capture.output(ascii(x, include.rownames = FALSE)), collapse='\n'))
-    } else
-        return(paste(capture.output(ascii(x)), collapse='\n'))
+    return(paste(capture.output(ascii(x)), collapse='\n'))
 }
-
 
 ##' Inline Printing
 ##'
