@@ -2,7 +2,7 @@
 Title: Korrelációs együtthatók
 Author: Daróczi Gergely 
 Email: gergely@snowl.net
-Description: This template will return the correlation matrix of supplied numerical variables. 
+Description: Folytonos változók közötti lineáris összefüggések vizsgálata.
 Packages: ascii
 Example: rapport('hu/correlations', data=ius2009, vars=c('age', 'it.edu', 'it.leisure'))
 vars        | numeric[1,10] | Változók              | Folytonos változók
@@ -17,7 +17,7 @@ options('p.copula' = 'és'); NULL
 
 # Változó-információk
 
-<%length(vars)%> változó vizsgálata.
+<%length(vars)%> változó vizsgálata:
 
 A legmagasabb korrelációs együtthatót (<%cm <- cor(vars);diag(cm) <- NA; rp.round(max(cm, na.rm=T))%>) a <%p(row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2])%>, és a legalacsonyabb értéket (<%rp.round(min(cm, na.rm=T))%>) a <%p(row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2])%> változók között találjuk. Úgy tűnik, hogy a legerősebb kapcsolat (r=<%rp.round(cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1])%>) a <%
 p(row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2])%> változók között található.
