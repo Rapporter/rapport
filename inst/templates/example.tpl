@@ -1,45 +1,47 @@
 <!--head
-Title:        example script
-Author:       Aleksandar Blagotić
-Description:  A simple report.
-Example:      rapport("example", mtcars, x = "mpg", y = "hp")
-              rapport("example", mtcars, x = "hp", y = "wt")
-              rapport("example", ius2009, x = "it.edu", y = "it.leisure")              
-x      | numeric   | Var X   | One or two factors for one/two-way ANOVA
-y      | numeric   | Var Y   | A dependent (response) variable
-bool   | TRUE      | Boolean | some boolean values
-csv    | foo, bar  | CSV     | comma separated values
+Title:        Example template
+Author:       Gergely Daróczi 
+Description:  This template demonstrates the basic features of rapport. We all hope you will like it!
+Packages:     lattice
+Example:      rapport("example", ius2009, var='it.leisure')
+              rapport("example", ius2009, var='it.leisure', desc=FALSE)
+              rapport("example", ius2009, var='it.leisure', desc=FALSE, hist=T)
+              rapport("example", ius2009, var='it.leisure', desc=FALSE, hist=T, color='green')             
+var    | numeric   | Variable| A numeric variable.
+desc   | TRUE      | Boolean | Show descriptive statistics of specified variable?
+hist   | FALSE     | Boolean | Show histogram of specified variable?
+color  | red, white, green   | Color  | Color of the diagram
 head-->
-# Descriptive <% "statistics" %>
 
-The average fuel consumption is <% rp.mean(x) %> with SD of <% rp.sd(x) %>.
-Let's add one more line to this paragraph.
-And another one.
-Now, you've probably heard of _pi_? Right? Its value is <%pi%>.
+# Début
 
-# Graphs
+Hello, world!
 
-And some graphs:
+I have just specified a *Variable* in this template named to **<%rp.name(var)%>**. The label of this variable is "<%rp.label(var)%>".
+
+And wow, the mean of *<%rp.name(var)%>* is <%rp.mean(var)%>!
 
 <%
-
-## write a wrapper for this? in stats.R?
-
-plot(x, pch = 19)
-text(x, label = row.names(rp.data), pos = 4)
+if (!desc) '**For more detailed statistics, you should have set `desc=TRUE`!**'
 %>
 
-So far we've been dealing with data.frames and plots, now let's deal with variables
+
+## <%if (desc) 'Descriptive statistics'%>
 
 <%
-x <- rnorm(100)
+if (desc) summary(var)
 %>
 
-Now we'll see if the Z var is working properly. If I omit it, it should perserve the default value (TRUE)... aaaand.... <%bool%>.
-
-OK, so far, so good, but let's see what's going on with code chunks...
 <%
-if (bool) matrix(rnorm(100), 10)
+if (desc) sprintf('The 5 highest value are: %s.', p(sort(var, decreasing = TRUE)[1:5]))
 %>
 
-When it comes to CSV values, let us see how do they work. You have chosen the "<% csv %>".
+## <%if (hist) 'Histogram'%>
+
+<%
+if (hist)
+    if (require(lattice)) {
+        histogram(rp.data[, rp.name(var)], col=color)
+    } else
+        hist(rp.data[, rp.name(var)], col=color)
+%>
