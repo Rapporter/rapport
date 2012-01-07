@@ -10,17 +10,23 @@ cor.matrix  | TRUE          | Korrelációs mátrix    | Korrelációs mátrix h
 cor.plot    | TRUE          | Pontdiagram           | Pontdiagram hozzáadása
 head-->
 
+<%
+# setting Hungarian locale
+options('p.copula' = 'és'); NULL
+%>
+
 # Változó-információk
 
 <%length(vars)%> változó vizsgálata.
 
-A legmagasabb korrelációs együtthatót (<%cm <- cor(vars);diag(cm) <- NA; rp.round(max(cm, na.rm=T))%>) a <%paste('"', row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2], '"', sep='', collapse=' and ')%>, és a legalacsonyabb értéket (<%rp.round(min(cm, na.rm=T))%>) a <%paste('"', row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2], '"', sep='', collapse=' and ')%> változók között találjuk. Úgy tűnik, hogy a legerősebb kapcsolat (r=<%rp.round(cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1])%>) a <%paste('"', row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2], '"', sep='', collapse=' and ')%> változók között található.
+A legmagasabb korrelációs együtthatót (<%cm <- cor(vars);diag(cm) <- NA; rp.round(max(cm, na.rm=T))%>) a <%p(row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2])%>, és a legalacsonyabb értéket (<%rp.round(min(cm, na.rm=T))%>) a <%p(row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2])%> változók között találjuk. Úgy tűnik, hogy a legerősebb kapcsolat (r=<%rp.round(cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1])%>) a <%
+p(row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2])%> változók között található.
 
 Erős összefüggést mutató (r < 0.7 or r > 0.7) változók: <%cm[lower.tri(cm)] <- NA; l <- row.names(cm)[which((cm > 0.7) | (cm < -0.7), arr.ind=T)]; ifelse(length(l) == 0, '-', '')%>
-<%ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), function(x) paste('"', x, '"', sep='', collapse=' - ')), collapse=''), '')%>
+<%ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), p), collapse=''), '')%>
 
 Korrelálatlan (-0.2 < r < 0.2) változók: <%l <- row.names(cm)[which((cm < 0.2)&(cm > -0.2), arr.ind=T)]; ifelse(length(l) == 0, '-', '')%>
-<%ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), function(x) paste('"', x, '"', sep='', collapse=' - ')), collapse=''), '')%>
+<%ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), p), collapse=''), '')%>
 
 ## <%if (cor.matrix) 'Korrelációs mátrix'%>
 
