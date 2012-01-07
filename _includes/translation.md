@@ -1,6 +1,6 @@
 Translating an existing template could not be easier: just copy the content of the desired template to a new file and translate the text in the header and body of the template.
 
-See eg. `tpl.find('hu/correlations')` which is based on `tpl.find('correlations')`.
+See eg. `tpl.find('hu/correlations')` which is based on `tpl.find('correlations')`. Check out the [colorized diff of the two files](http://diffchecker.com/BN316P7)!
 
 Fields to be translated in header section (between `<!--head` and `head-->` tags):
 
