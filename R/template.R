@@ -654,7 +654,13 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
         })
     }
 
+    ## saving all options before run to be able to reset after run
+    options <- options()
+    
     report <- lapply(elem, elem.eval, env = e)          # get report
+    
+    ## resetting options
+    options(options)
     
     report <- lapply(report, function(x) {              # error handling in chunks:
                         if (x$type == 'chunk')          #  * shoot warning() and return '<ERROR>' inline

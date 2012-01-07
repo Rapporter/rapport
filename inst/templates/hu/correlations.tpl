@@ -11,12 +11,7 @@ cor.plot    | TRUE          | Pontdiagram           | Pontdiagram hozzáadása
 head-->
 
 <%
-## get locale settings
-p.copula <- getOption('p.copula')
-%>
-
-<%
-## setting Hungarian locale
+## setting Hungarian locale and returning NULL not be exported to report
 options('p.copula' = 'és'); NULL
 %>
 
@@ -51,9 +46,4 @@ if (cor.matrix) {
 
 <%
 if (cor.plot) rp.cor.plot(vars)
-%>
-
-<%
-# resetting  locale
-options('p.copula' = p.copula); NULL
 %>
