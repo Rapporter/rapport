@@ -3,6 +3,7 @@
     options('rp.user'  = '(Username not set)')
     options('rp.email' = '(E-mail address not set)')
 
+    options('rp.date.format'   = "%Y/%m/%d %X")
     options('rp.decimal'       = 4)
     options('rp.decimal.mark'  = '.')
     options('rp.color.palette' = 'default')
