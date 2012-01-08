@@ -1,7 +1,20 @@
 body {
     font-family: 'YanoneKaffeesatzRegular';
 }
-
+td
+{
+padding-left: 5px;
+padding-right: 5px;
+}
+h6 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+p, table {
+    margin-left: 20px;
+    text-align: justify;
+}
 code {
     background-color: whiteSmoke;
     padding: 2px;
