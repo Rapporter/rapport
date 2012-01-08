@@ -1,17 +1,13 @@
 #### Generic functions
 
 ##### decrypt: Decrypt a string
- ###### Description:
+###### Description:
 <p> Decrypts string encrypted by <code>encrypt</code> .</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-decrypt(message)
-		</code>
-	</pre>
+	<pre><code class="r">decrypt(message)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -22,38 +18,34 @@ decrypt(message)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>string</p>
- ###### References:
+###### References:
 <p>
  Credits goes to Barry Rowlingson and Hadley Wickham:
  <a href="https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html">https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html</a>
 </p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 		decrypt(&quot;loRR7KT72R=!&quot;)
 		strsplit(decrypt(&quot;MrhKPzRK=tBrK0rK=2g~KT~K8BoPK1BKgMKhog2KPg2A&quot;), &quot; &quot;)[[1]]
 		eval(parse(text=decrypt(&quot;rR7~HM~Pg2B40r,KP7Rkp2o=pc&quot;)))
 	
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### encrypt: Encrypt a string
- ###### Description:
+###### Description:
 <p> A simple encryption function which reorders thecharacters in a given string based on a predefined key.As it can be seen: the used encryption is easy to crack,do not use this for sensitive data! The key is set bydefault on library startup. It can be changed bymodifying <code>options(&apos;.encrypt.key&apos;)</code> to any characterstring with same lenght as <code>options(&apos;.encrypt.chars&apos;)</code> . E.g. <code>intToUtf8(sample(c(33, 36:38, 48:57, 64:90, 97:122,  192:246, 248:382), nchar(getOption(&apos;.encrypt.chars&apos;)))))</code> would return a quite complex but readable key.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-encrypt(message)
-		</code>
-	</pre>
+	<pre><code class="r">encrypt(message)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -64,37 +56,33 @@ encrypt(message)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>string</p>
- ###### References:
+###### References:
 <p>
  Credits goes to Barry Rowlingson and Hadley Wickham:
  <a href="https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html">https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html</a>
 </p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 		encrypt(&quot;Hello world!&quot;)
 		encrypt(paste(names(mtcars), collapse=&quot; &quot;))
 	
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### evals: Evals chunk(s) of R code
- ###### Description:
+###### Description:
 <p> This function takes either a list of integer indiceswhich point to position of R code in body charactervector, or a list of strings with actual R code, thenevaluates each list element, and returns a list with twoelements: a character value with R code and generatedoutput. The output can be NULL (eg. <code>x &lt;-  runif(100)</code> ), a table (eg. <code>table(mtcars$am,  mtcars$cyl)</code> or any other R object. If a graph is plottedin the given text, the returned object is a stringspecifying the path to the saved png in temporarydirectory (see: <code>tmpfile()</code> ). The function takescare of warnings and errors too, please check the thereturned value below.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-evals(txt = NULL, ind = NULL, body = NULL,    classes = NULL, hooks = NULL, length = Inf,    output = c(&quot;all&quot;, &quot;src&quot;, &quot;output&quot;, &quot;type&quot;, &quot;msg&quot;),    env = NULL, ...)
-		</code>
-	</pre>
+	<pre><code class="r">evals(txt = NULL, ind = NULL, body = NULL,    classes = NULL, hooks = NULL, length = Inf,    output = c(&quot;all&quot;, &quot;src&quot;, &quot;output&quot;, &quot;type&quot;, &quot;msg&quot;),    env = NULL, ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -211,18 +199,18 @@ created.</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a list of parsed elements each containg: src (the command
 run), output (what the command returns, NULL if nothing
 returned), type (class of returned object if any) and
 messages: warnings (if any returned by the command run,
 otherwise set to NULL) and errors (if any returned by the
 command run, otherwise set to NULL)</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 # parsing line-by-line
 txt &lt;- readLines(textConnection(&apos;x &lt;- rnorm(100)
 	runif(10)
@@ -304,7 +292,7 @@ rm(myenv)
 evals(&apos;x &lt;- c(0,10)&apos;)
 evals(&apos;mean(x)&apos;)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
@@ -312,17 +300,13 @@ evals(&apos;mean(x)&apos;)
 #### Generic graph functions
 
 ##### rp.barplot: Barplot
- ###### Description:
+###### Description:
 <p> This function is a wrapper around <code>barchart</code> which operates only on factors with optional facet.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.barplot(x, facet = NULL, data = NULL, groups = FALSE,    auto.key = FALSE, horizontal = TRUE, percent = FALSE,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.barplot(x, facet = NULL, data = NULL, groups = FALSE,    auto.key = FALSE, horizontal = TRUE, percent = FALSE,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -430,11 +414,11 @@ at random</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 	rp.barplot(df$cyl)
 	rp.barplot(df$cyl, horizontal = FALSE)
@@ -448,22 +432,18 @@ df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&a
 	rp.barplot(cyl, data=df)
 	rp.barplot(cyl, am, df)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.boxplot: Boxplot
- ###### Description:
+###### Description:
 <p> This function is a wrapper around <code>bwplot</code> which operates only on numeric variables with optionalfacet.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.boxplot(x, y = NULL, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.boxplot(x, y = NULL, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -532,11 +512,11 @@ at random</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 rp.boxplot(df$cyl)
 	rp.boxplot(df$cyl, df$wt)
@@ -547,22 +527,18 @@ rp.boxplot(df$cyl)
 	rp.boxplot(cyl, wt, data=df)
 	rp.boxplot(cyl, wt, am, df)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.cor.plot: Scatterplot matrices
- ###### Description:
+###### Description:
 <p> This function is a wrapper around <code>pairs</code> which operates only on numeric variables. Panel optionsare: <code>c(&apos;panel.cor&apos;, &apos;panel.smooth&apos;, &apos;panel.hist&apos;)</code> .Custom panels may be also added.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.cor.plot(x, lower.panel = &quot;panel.smooth&quot;,    upper.panel = &quot;panel.cor&quot;, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.cor.plot(x, lower.panel = &quot;panel.smooth&quot;,    upper.panel = &quot;panel.cor&quot;, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -643,31 +619,27 @@ at random</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 	rp.cor.plot(df)
 rp.cor.plot(df, diag.panel=&apos;panel.hist&apos;)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.densityplot: Density plot
- ###### Description:
+###### Description:
 <p> This function is a wrapper around <code>densityplot</code> which operates only on numericvectors with optional facet.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.densityplot(x, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.densityplot(x, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -728,11 +700,11 @@ at random</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)),
     am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 rp.densityplot(df$hp)
@@ -744,22 +716,18 @@ with(df, rp.densityplot(hp, facet = am))
 rp.densityplot(hp, data = df)
 rp.densityplot(hp, am, df)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.dotplot: Dotplot
- ###### Description:
+###### Description:
 <p> This function is a wrapper around <code>dotplot</code> which operates only on factors with optional facet.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.dotplot(x, facet = NULL, data = NULL, groups = FALSE,    auto.key = FALSE, horizontal = TRUE,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.dotplot(x, facet = NULL, data = NULL, groups = FALSE,    auto.key = FALSE, horizontal = TRUE,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -853,11 +821,11 @@ at random</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 	rp.dotplot(df$cyl)
 	rp.dotplot(df$cyl, horizontal = FALSE)
@@ -870,22 +838,18 @@ df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&a
 	rp.dotplot(cyl, data=df)
 	rp.dotplot(cyl, am, df)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.graph.check: Input cheks (internal)
- ###### Description:
+###### Description:
 <p> Internal function used by eg. <code>rp.histogram</code> .</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.graph.check(x, facet = NULL, subset = NULL, ...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.graph.check(x, facet = NULL, subset = NULL, ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -921,17 +885,13 @@ rp.graph.check(x, facet = NULL, subset = NULL, ...)
  </tr>
 </table>
 ##### rp.hist: Histogram
- ###### Description:
+###### Description:
 <p> This function is a wrapper around <code>histogram</code> which operates only on numeric vectors with optionalfacet.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.hist(x, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.hist(x, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -992,11 +952,11 @@ at random</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)),
 	    am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 	rp.hist(df$hp)
@@ -1008,22 +968,18 @@ df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&a
 	rp.hist(hp, data = df)
 	rp.hist(hp, am, df)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.lineplot: Lineplot
- ###### Description:
+###### Description:
 <p> This function is a wrapper around <code>xyplot</code> with custom panel. Only numeric variables are acceptedwith optional facet.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.lineplot(x, y, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.lineplot(x, y, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1092,11 +1048,11 @@ at random</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 a &lt;- aggregate(wt~gear, df, mean)
 rp.lineplot(a$gear, a$wt)
@@ -1105,22 +1061,18 @@ rp.label(a$wt) &lt;- &apos;weight&apos;; rp.lineplot(a$gear, a$wt)
 rp.lineplot(a$gear, a$wt, colorize=TRUE)
 rp.lineplot(gear, wt, data=a)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.palette: Color palettes
- ###### Description:
+###### Description:
 <p> This function returns a given number of color codes fromgiven palette by default falling back to acolor-blind-friendly palette from <a href="http://jfly.iam.u-tokyo.ac.jp/color/">http://jfly.iam.u-tokyo.ac.jp/color/</a> .</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.palette(num, theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;))
-		</code>
-	</pre>
+	<pre><code class="r">rp.palette(num, theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;))</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1152,7 +1104,7 @@ random order</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
@@ -1166,17 +1118,13 @@ rp.palette(5, &apos;Greens&apos;, colorize = TRUE)
 	</pre>
 </div>
 ##### rp.scatterplot: Scatterplot
- ###### Description:
+###### Description:
 <p> This function is a wrapper around <code>xyplot</code> which operates only on numeric variables with optionalfacet.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.scatterplot(x, y, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.scatterplot(x, y, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1245,11 +1193,11 @@ at random</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 	rp.scatterplot(df$hp, df$wt)
 	rp.scatterplot(df$hp, df$wt, facet=df$cyl)
@@ -1259,7 +1207,7 @@ df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&a
 	rp.scatterplot(hp, wt, data=df)
 	rp.scatterplot(hp, wt, am, df)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
@@ -1267,17 +1215,13 @@ df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&a
 #### Generic helper functions
 
 ##### adj.rle: Adjacent Values Run Length Encoding
- ###### Description:
+###### Description:
 <p> Similar to <code>rle</code> function, this functiondetects &quot;runs&quot; of adjacent integers, and displays vectorof run lengths and list of corresponding integersequences. Taken from &lt;ahref=&quot;http://stackoverflow.com/a/8467446/457898&quot;&gt;rle-likefunction that catches “run” of adjacent integers&lt;/a&gt;question on StackOverflow.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-adj.rle(x)
-		</code>
-	</pre>
+	<pre><code class="r">adj.rle(x)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1288,22 +1232,18 @@ adj.rle(x)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a list with two elements: vector of run lengths, and
 another list of values corresponding to generated
 sequences&apos; lengths.</p>
 ##### alike.integer: Check integers
- ###### Description:
+###### Description:
 <p> This function tests if given variable &quot;appears&quot; to be aninteger. To qualify as such, two conditions need to besatisfied: it should be stored as <code>numeric</code> object, and it should pass regular expression test if itconsists only of digits.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-alike.integer(x)
-		</code>
-	</pre>
+	<pre><code class="r">alike.integer(x)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1314,21 +1254,17 @@ alike.integer(x)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a logical value that indicates that tested variable
 &quot;looks like&quot; integer</p>
 ##### catn: Concatenate with newline
- ###### Description:
+###### Description:
 <p> A simple wrapper for <code>cat</code> function thatappends newline to output.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-catn(...)
-		</code>
-	</pre>
+	<pre><code class="r">catn(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1343,20 +1279,16 @@ catn(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>None (invisible ‘NULL’).</p>
 ##### guess.convert: Guess Mode
- ###### Description:
+###### Description:
 <p>&quot;Guesses&quot; a mode of provided character vector andconverts it to appropriate mode.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-guess.convert(x, trim.white = FALSE)
-		</code>
-	</pre>
+	<pre><code class="r">guess.convert(x, trim.white = FALSE)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1376,14 +1308,14 @@ white spaces should be removed before guessing</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>an atomic vector with (hopefully) successfully guessed
 mode</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 storage.mode(guess.mode(&quot;234&quot;))
 
 storage.mode(guess.mode(&quot;234.23&quot;))
@@ -1397,22 +1329,18 @@ storage.mode(guess.mode(&quot;TRUE         &quot;))
 storage.mode(guess.mode(&quot;     TRUE         &quot;, TRUE))
 
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### is.string: Strings
- ###### Description:
+###### Description:
 <p>Checks if provided object is a string i.e. a length-onecharacter vector.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-is.string(x)
-		</code>
-	</pre>
+	<pre><code class="r">is.string(x)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1423,10 +1351,10 @@ is.string(x)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a logical value indicating whether provided object is a
 string</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
@@ -1437,17 +1365,13 @@ is.string(&quot;foobar&quot;)          # [1] TRUE
 	</pre>
 </div>
 ##### makes.plot: Check plot creation
- ###### Description:
+###### Description:
 <p>This function checks if given expression generates aplot. See &lt;ahref=&quot;http://stackoverflow.com/a/2744434/457898&quot;&gt;originalthread&lt;/a&gt; for more details.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-makes.plot(cmd)
-		</code>
-	</pre>
+	<pre><code class="r">makes.plot(cmd)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1458,32 +1382,28 @@ makes.plot(cmd)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a logical value</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
     makes.plot(plot(rnorm(100))) # returns TRUE
     makes.plot(sample(10))       # returns FALSE
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### tocamel: CamelCase
- ###### Description:
+###### Description:
 <p>Convert character vector to camelcase - capitalise firstletter of each word.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tocamel(x, sep = &quot;[^[:alnum:]]&quot;, upper = FALSE, ...)
-		</code>
-	</pre>
+	<pre><code class="r">tocamel(x, sep = &quot;[^[:alnum:]]&quot;, upper = FALSE, ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1528,9 +1448,9 @@ to
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a character vector with strings put in camelcase</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
@@ -1546,17 +1466,13 @@ tocamel(&quot;foo.bar&quot;)
 	</pre>
 </div>
 ##### trim.space: Trim Spaces
- ###### Description:
+###### Description:
 <p> Removes leading and/or trailing space(s) from a charactervector value. By default, it removes only trailingspaces. In order to trim both leading and trailingspaces, pass <code>TRUE</code> to both <code>leading</code> and <code>trailing</code> arguments.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-trim.space(x, leading = FALSE, trailing = TRUE,    re = &quot;[:space:]&quot;, ...)
-		</code>
-	</pre>
+	<pre><code class="r">trim.space(x, leading = FALSE, trailing = TRUE,    re = &quot;[:space:]&quot;, ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1615,20 +1531,16 @@ defines a space character</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a character vector with removed spaces</p>
 ##### vgsub: Vectorised String Replacement
- ###### Description:
+###### Description:
 <p> A simple wrapper for <code>gsub</code> that replaces allpatterns from <code>pattern</code> argument with ones in <code>replacement</code> over vector provided in argument <code>x</code> . Taken from &lt;ahref=&quot;http://stackoverflow.com/a/6954308/457898&quot;&gt;StackOverflow&lt;/a&gt;.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-vgsub(pattern, replacement, x, ...)
-		</code>
-	</pre>
+	<pre><code class="r">vgsub(pattern, replacement, x, ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1679,20 +1591,16 @@ vgsub(pattern, replacement, x, ...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a character vector with string replacements</p>
 ##### wrap: Wrap Vector Elements
- ###### Description:
+###### Description:
 <p> Wraps vector elements with string provided in <code>wrap</code> argument.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-wrap(x, wrap = &quot;\&quot;&quot;)
-		</code>
-	</pre>
+	<pre><code class="r">wrap(x, wrap = &quot;\&quot;&quot;)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1711,9 +1619,9 @@ wrap(x, wrap = &quot;\&quot;&quot;)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a string with wrapped elements</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
@@ -1726,17 +1634,13 @@ wrap(c(&quot;fee&quot;, &quot;fi&quot;, &quot;foo&quot;, &quot;fam&quot;), &quot
 #### Generic stat functions
 
 ##### rp.desc: Descriptive Statistics
- ###### Description:
+###### Description:
 <p> Aggregate table of descriptives according to functionsprovided in <code>fn</code> argument. This function followsmelt/cast approach used in <code>reshape</code> package.Variable names specified in <code>measure.vars</code> argumentare treated as <code>measure.vars</code> , while the ones in <code>id.vars</code> are treated as <code>id.vars</code> (see <code>melt.data.frame</code> for details).Other its formal arguments match with correspondingarguments for <code>cast</code> function. Somepost-processing is done after reshaping, in order to getpretty row and column labels.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.desc(id.vars, measure.vars, fn, data = NULL,    na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA,    add.missing = FALSE, total.name = &quot;Total&quot;)
-		</code>
-	</pre>
+	<pre><code class="r">rp.desc(id.vars, measure.vars, fn, data = NULL,    na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA,    add.missing = FALSE, total.name = &quot;Total&quot;)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1853,13 +1757,13 @@ aggregating</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>
  a
  <code>data.frame</code>
  with aggregated data
 </p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
@@ -1869,17 +1773,13 @@ rp.desc(&quot;cyl&quot;, &quot;am&quot;, c(mean, sd), mtcars, margins = TRUE)
 	</pre>
 </div>
 ##### rp.freq: Frequency Table
- ###### Description:
+###### Description:
 <p>Diplay frequency table</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.freq(f.vars, data, na.rm = TRUE, include.na = FALSE,    drop.unused.levels = FALSE, count = TRUE, pct = TRUE,    cum.n = TRUE, cum.pct = TRUE)
-		</code>
-	</pre>
+	<pre><code class="r">rp.freq(f.vars, data, na.rm = TRUE, include.na = FALSE,    drop.unused.levels = FALSE, count = TRUE, pct = TRUE,    cum.n = TRUE, cum.pct = TRUE)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1956,35 +1856,31 @@ frequency table?</p>
   <td/>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>
  a
  <code>data.frame</code>
  with frequencies
 </p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 rp.freq(c(&quot;am&quot;, &quot;cyl&quot;, &quot;vs&quot;), mtcars)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.iqr: Interquartile Range
- ###### Description:
+###### Description:
 <p> Calculates interquartile range of given variable. See <code>rp.univar</code> for details.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.iqr(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.iqr(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -1999,20 +1895,16 @@ rp.iqr(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with variable&apos;s interquartile range</p>
 ##### rp.kurtosis: Kurtosis
- ###### Description:
+###### Description:
 <p> Calculates kurtosis of given variable. See <code>rp.univar</code> for details.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.kurtosis(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.kurtosis(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2027,20 +1919,16 @@ rp.kurtosis(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with variable&apos;s kurtosis</p>
 ##### rp.max: Maximum
- ###### Description:
+###### Description:
 <p> Returns the maximum of all values in a vector by passing{codemax as <code>fn</code> argument to <code>rp.univar</code> function.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.max(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.max(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2055,20 +1943,16 @@ rp.max(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with maximum value</p>
 ##### rp.mean: Mean
- ###### Description:
+###### Description:
 <p> Calculates mean of given variable by passing <code>sum</code> as <code>fn</code> argument to <code>rp.univar</code> function.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.mean(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.mean(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2083,20 +1967,16 @@ rp.mean(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with variable&apos;s mean</p>
 ##### rp.median: Median
- ###### Description:
+###### Description:
 <p> Calculates median of given variable. See <code>rp.univar</code> for details.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.median(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.median(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2111,20 +1991,16 @@ rp.median(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with variable&apos;s median</p>
 ##### rp.min: Minimum
- ###### Description:
+###### Description:
 <p> Returns the minimum of all values in a vector by passing{codemin as <code>fn</code> argument to <code>rp.univar</code> function.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.min(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.min(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2139,20 +2015,16 @@ rp.min(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with minimum value</p>
 ##### rp.missing: Missing Cases
- ###### Description:
+###### Description:
 <p> Returns a number of missing ( <code>NA</code> ) values in avariable. This is a wrapper around <code>rp.univar</code> function with anonymous functionpassed to count number of <code>NA</code> elements in avariable.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.missing(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.missing(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2167,20 +2039,16 @@ rp.missing(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with number of missing vector elements</p>
 ##### rp.n: Sample Size
- ###### Description:
+###### Description:
 <p> Returns sample size with <code>NA</code> s included. This is awrapper around <code>rp.univar</code> function with <code>length</code> function passed in <code>fn</code> argument. However, it will not account for missing valuesregardless of the value of <code>na.rm</code> argument. Inorder to get a number of valid responses, use <code>rp.valid</code> .</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.n(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.n(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2195,20 +2063,16 @@ rp.n(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value specifying vector length</p>
 ##### rp.range: Range
- ###### Description:
+###### Description:
 <p> Calculates difference between the largest and thesmallest value in a vector. See <code>rp.univar</code> for details.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.range(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.range(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2223,20 +2087,16 @@ rp.range(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with calculated range</p>
 ##### rp.sd: Standard Deviation
- ###### Description:
+###### Description:
 <p> Calculates standard deviation of given variable. See <code>rp.univar</code> for details.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.sd(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.sd(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2251,20 +2111,16 @@ rp.sd(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with variable&apos;s standard deviation</p>
 ##### rp.se.mean: Standard Error of Mean
- ###### Description:
+###### Description:
 <p> Calculates standard error of mean for given variable. See <code>rp.univar</code> for details.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.se.mean(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.se.mean(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2279,20 +2135,16 @@ rp.se.mean(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with standard error of mean</p>
 ##### rp.skewness: Skewness
- ###### Description:
+###### Description:
 <p> Calculates skewness of given variable. See <code>rp.univar</code> for details.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.skewness(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.skewness(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2307,20 +2159,16 @@ rp.skewness(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with variable&apos;s skewness</p>
 ##### rp.sum: Sum
- ###### Description:
+###### Description:
 <p> Returns the sum of variable&apos;s elements, by passing <code>sum</code> as <code>fn</code> argument to <code>rp.univar</code> function.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.sum(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.sum(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2335,20 +2183,16 @@ rp.sum(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with sum of vector elements</p>
 ##### rp.univar: Descriptive Statistics
- ###### Description:
+###### Description:
 <p> This function operates only on vectors or their subsets,by calculating a descriptive statistic specified in <code>fn</code> argument. Yielded result is rounded to 3decimal places by default (which can be changed bypassing an integer to <code>decimals</code> argument).</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.univar(x, subset = NULL, fn, na.rm = TRUE, ...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.univar(x, subset = NULL, fn, na.rm = TRUE, ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2408,20 +2252,16 @@ should be removed (defaults to
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric</p>
 ##### rp.valid: Valid Cases
- ###### Description:
+###### Description:
 <p> Returns a number of valid (non- <code>NA</code> ) values in avariable. This is a wrapper around <code>rp.univar</code> function with <code>length</code> function passed in <code>fn</code> argument, but with missing values previously removed.However, it&apos;s not possible to cancel <code>NA</code> omissionwith this function(doing so will yield error) - use <code>rp.n</code> for those purposes.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.valid(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.valid(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2436,21 +2276,17 @@ rp.valid(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with number of valid (non-NA) vector
 elements</p>
 ##### rp.var: Variance
- ###### Description:
+###### Description:
 <p> Calculates variance of given variable. See <code>rp.univar</code> for details.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.var(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.var(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2465,23 +2301,19 @@ rp.var(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a numeric value with variable&apos;s variance</p>
 
 #### Generic stat helper functions
 
 ##### htest: Hypothesis Tests
- ###### Description:
+###### Description:
 <p> This function extracts only the most importantinformation from <code>htest</code> class objects - statisticand its p-value.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-htest(x, ...)
-		</code>
-	</pre>
+	<pre><code class="r">htest(x, ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2515,17 +2347,13 @@ htest(x, ...)
  </tr>
 </table>
 ##### lambda.test: Goodman and Kruskal&apos;s lambda
- ###### Description:
+###### Description:
 <p>Computes Goodman and Kruskal&apos;s lambda for given table.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-lambda.test(table, direction = 0)
-		</code>
-	</pre>
+	<pre><code class="r">lambda.test(table, direction = 0)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2554,20 +2382,16 @@ and 0 for both
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>numeric</p>
 ##### rp.outlier: Outlier test
- ###### Description:
+###### Description:
 <p>A simple test for outliers. This functions returns allextreme values (if any) found in the specified vector.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.outlier(x)
-		</code>
-	</pre>
+	<pre><code class="r">rp.outlier(x)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2578,9 +2402,9 @@ rp.outlier(x)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>vecotor of outlier values</p>
- ###### References:
+###### References:
 <p>
  Credit goes to PaulHurleyuk:
  <a href="http://stackoverflow.com/a/1444548/564164">http://stackoverflow.com/a/1444548/564164</a>
@@ -2591,16 +2415,16 @@ Linear Models&quot;, Technometrics, vol. 17, no. 4, pp.
 Outliers in Linear Models&quot;, Technometrics, vol. 17, no.
 1, pp. 129-132.
 </p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 rp.outlier(mtcars$hp)
 rp.outlier(c(rep(1,100), 200))
 rp.outlier(c(rep(1,100), 200,201))
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
@@ -2608,17 +2432,13 @@ rp.outlier(c(rep(1,100), 200,201))
 #### Template related functions
 
 ##### check.limit: Input Limits
- ###### Description:
+###### Description:
 <p> Checks input limits based on provided string. If providedstring is syntactically correct, a list with integerscontaining limit boundaries (minimum and maximum value)is returned. If provided input limit exceeds valuespecified in <code>max.lim</code> argument, it will be coercedto <code>max.lim</code> and warning will be returned. Defaultupper input limit is 50 (variables).</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-check.limit(x, max.lim = 50L)
-		</code>
-	</pre>
+	<pre><code class="r">check.limit(x, max.lim = 50L)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2637,7 +2457,7 @@ check.limit(x, max.lim = 50L)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>
  a named list with
  <code>min</code>
@@ -2646,31 +2466,27 @@ check.limit(x, max.lim = 50L)
  imal input
 limit
 </p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 rapport:::check.limit(&quot;[1,20]&quot;)
 rapport:::check.limit(&quot;[1]&quot;)
 
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### check.name: Naming Conventions
- ###### Description:
+###### Description:
 <p>Checks package-specific naming conventions: variablesshould start by a letter, followed either by a letter ora digit, while the words should be separated with dots orunderscores.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-check.name(x, size = 30L, ...)
-		</code>
-	</pre>
+	<pre><code class="r">check.name(x, size = 30L, ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2702,21 +2518,17 @@ length</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a logical vector indicating which values satisfy the
 naming conventions</p>
 ##### check.type: Check Type
- ###### Description:
+###### Description:
 <p>Checks type of template input, based on provided sting.If input definition is syntactically correct, a list isreturned, containing input type, size limits, and defaultvalue (for CSV options and boolean types only).</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-check.type(x)
-		</code>
-	</pre>
+	<pre><code class="r">check.type(x)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2727,32 +2539,28 @@ check.type(x)
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 rapport:::check.type(&quot;factor&quot;)
 rapport:::check.type(&quot;character[1,20]&quot;)
 rapport:::check.type(&quot;fee, fi, foo, fam&quot;)
 rapport:::check.type(&quot;FALSE&quot;)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### extract.meta: Extract Template Metadata
- ###### Description:
+###### Description:
 <p>Check if template metadata field matches provided format,and return matched value in a list.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-extract.meta(x, title, regex, replacement = &quot;\1&quot;,    short = NULL, trim.white = TRUE, mandatory = TRUE, ...)
-		</code>
-	</pre>
+	<pre><code class="r">extract.meta(x, title, regex, replacement = &quot;\1&quot;,    short = NULL, trim.white = TRUE, mandatory = TRUE, ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2834,18 +2642,18 @@ field</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>
  a list with matched content, or
  <code>NULL</code>
  if the field
 is not required
 </p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
     extract.metadata(&quot;Name: John Smith&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
     ## $name
     ## [1] &quot;John Smith&quot;
@@ -2854,22 +2662,18 @@ is not required
     ## $name
     ## [1] &quot;John&quot;
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### fml: Create Formula from Strings
- ###### Description:
+###### Description:
 <p>Takes left and right-hand side arguments of a formula</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-fml(left, right, join.left = &quot; + &quot;, join.right = &quot; + &quot;)
-		</code>
-	</pre>
+	<pre><code class="r">fml(left, right, join.left = &quot; + &quot;, join.right = &quot; + &quot;)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2890,9 +2694,9 @@ formula arguments</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a string with formula</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
@@ -2901,17 +2705,13 @@ fml(&quot;hp&quot;, c(&quot;am&quot;, &quot;cyl&quot;))
 	</pre>
 </div>
 ##### get.tags: Tag Values
- ###### Description:
+###### Description:
 <p>Returns report tag vales: either ones that were set byuser, or the default ones.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-get.tags(tag.type = c(&quot;all&quot;, &quot;chunk.open&quot;, &quot;chunk.close&quot;, &quot;inline.open&quot;, &quot;inline.close&quot;, &quot;header.open&quot;, &quot;header.close&quot;, &quot;comment.open&quot;, &quot;comment.close&quot;),    preset = c(&quot;user&quot;, &quot;default&quot;))
-		</code>
-	</pre>
+	<pre><code class="r">get.tags(tag.type = c(&quot;all&quot;, &quot;chunk.open&quot;, &quot;chunk.close&quot;, &quot;inline.open&quot;, &quot;inline.close&quot;, &quot;header.open&quot;, &quot;header.close&quot;, &quot;comment.open&quot;, &quot;comment.close&quot;),    preset = c(&quot;user&quot;, &quot;default&quot;))</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2931,21 +2731,17 @@ to return</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>either a list (default) or a character value with tag
 names</p>
 ##### grab.chunks: Inline Chunk Contents
- ###### Description:
+###### Description:
 <p>Returns inline code chunks with or without tags that wrapthem.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-grab.chunks(x, tag.open = get.tags(&quot;inline.open&quot;),    tag.close = get.tags(&quot;inline.close&quot;), include = FALSE,    ...)
-		</code>
-	</pre>
+	<pre><code class="r">grab.chunks(x, tag.open = get.tags(&quot;inline.open&quot;),    tag.close = get.tags(&quot;inline.close&quot;), include = FALSE,    ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -2999,35 +2795,31 @@ should be returned (defaults to
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a character vector with code chunks</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
     s &lt;- c(&quot;As you know, pi equals &lt;%pi%&gt;&quot;,  &quot;2 raised to the power of 3 is &lt;%2^3%&gt;&quot;)
     grab.chunks(s, &quot;&lt;%&quot;, &quot;%&gt;&quot;, FALSE)
     ## [1] &quot;pi&quot;  &quot;2^3&quot;
     grab.chunks(s, &quot;&lt;%&quot;, &quot;%&gt;&quot;, FALSE)
     ## [1] &quot;&lt;%pi%&gt;&quot;  &quot;&lt;%2^3%&gt;&quot;
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### has.tags: Tag Existence
- ###### Description:
+###### Description:
 <p>Checks if a character value contains specified tags.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-has.tags(x, ...)
-		</code>
-	</pre>
+	<pre><code class="r">has.tags(x, ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3054,21 +2846,17 @@ has.tags(x, ...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a logical value indicating if the string has passed the
 check</p>
 ##### is.heading: Pandoc Heading
- ###### Description:
+###### Description:
 <p>Checks if provided string is a valid ATX-style pandocheading.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-is.heading(x)
-		</code>
-	</pre>
+	<pre><code class="r">is.heading(x)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3079,21 +2867,17 @@ is.heading(x)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a logical value indicating the string is (not) a pandoc
 heading</p>
 ##### is.rapport: Rapport
- ###### Description:
+###### Description:
 <p>Checks if provided R object is &quot;rapport&quot; class.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-is.rapport(x)
-		</code>
-	</pre>
+	<pre><code class="r">is.rapport(x)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3104,20 +2888,16 @@ is.rapport(x)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>logical</p>
 ##### is.tabular: Tabular Structure
- ###### Description:
+###### Description:
 <p> Checks if object has &quot;tabular&quot; structure - in thisparticular case, that means <code>matrix</code> and <code>data.frame</code> classes only.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-is.tabular(x)
-		</code>
-	</pre>
+	<pre><code class="r">is.tabular(x)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3128,21 +2908,17 @@ is.tabular(x)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a logical value indicating that provided object has
 tabular structure</p>
 ##### is.variable: Variables
- ###### Description:
+###### Description:
 <p> From our point of view, a <code>variable</code> is anon- <code>NULL</code> atomic vector that has no dimensions.This approach bypasses <code>factor</code> issues with <code>is.vector</code> , and also eliminatesmultidimensional vectors, such as matrices and arrays.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-is.variable(x)
-		</code>
-	</pre>
+	<pre><code class="r">is.variable(x)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3153,21 +2929,17 @@ is.variable(x)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a logical value indicating that provided object is a
 &quot;variable&quot;</p>
 ##### pct: Percent
- ###### Description:
+###### Description:
 <p> Appends a percent sign to provided numerical value.Rounding is carried out according to value passed in <code>decimals</code> formal argument (defaults to 2 decimalplaces).</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-pct(x, decimals = 2,    type = c(&quot;percent&quot;, &quot;%&quot;, &quot;proportion&quot;))
-		</code>
-	</pre>
+	<pre><code class="r">pct(x, decimals = 2,    type = c(&quot;percent&quot;, &quot;%&quot;, &quot;proportion&quot;))</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3198,20 +2970,16 @@ allowed)</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a character value with formatted percent</p>
 ##### p: Inline Printing
- ###### Description:
+###### Description:
 <p>Merge atomic vector elements in one string for prettyinline printing.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-p(x, wrap = getOption(&quot;p.wrap&quot;),    sep = getOption(&quot;p.sep&quot;),    copula = getOption(&quot;p.copula&quot;), limit = 20L)
-		</code>
-	</pre>
+	<pre><code class="r">p(x, wrap = getOption(&quot;p.wrap&quot;),    sep = getOption(&quot;p.sep&quot;),    copula = getOption(&quot;p.copula&quot;), limit = 20L)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3262,9 +3030,9 @@ elements)</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a string with catenated vector contents</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
@@ -3274,17 +3042,13 @@ p(c(&quot;fee&quot;, &quot;fi&quot;, &quot;foo&quot;, &quot;fam&quot;))
 	</pre>
 </div>
 ##### print.rapport: Prints rapport
- ###### Description:
+###### Description:
 <p>Default print method for &quot;rapport&quot; class objects.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-print.rapport(x, metadata = FALSE, inputs = FALSE,    body = TRUE)
-		</code>
-	</pre>
+	<pre><code class="r">print.rapport(x, metadata = FALSE, inputs = FALSE,    body = TRUE)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3319,33 +3083,29 @@ print.rapport(x, metadata = FALSE, inputs = FALSE,    body = TRUE)
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;)
 print(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;), metadata=T)
 print(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;), metadata=T, inputs=T)
 print(rapport(&apos;example&apos;, data=mtcars, x=&apos;hp&apos;, y=&apos;mpg&apos;), metadata=T, inputs=T)
 print(rapport(&apos;example&apos;, data=mtcars, x=&apos;hp&apos;, y=&apos;mpg&apos;), metadata=T, inputs=T, body=F)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### print.rp.header: Print Template Header
- ###### Description:
+###### Description:
 <p>Prints out the contents of template header (metadata andinputs) in human-readable format, so you can get insightabout template requirements.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-print.rp.header(x, type = c(&quot;text&quot;, &quot;pandoc&quot;))
-		</code>
-	</pre>
+	<pre><code class="r">print.rp.header(x, type = c(&quot;text&quot;, &quot;pandoc&quot;))</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3372,17 +3132,13 @@ plain text output.</p>
  </tr>
 </table>
 ##### print.rp.inputs: Print Template Inputs
- ###### Description:
+###### Description:
 <p>Prints out the contents of template inputs inhuman-readable format.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-print.rp.inputs(x, type = c(&quot;text&quot;, &quot;pandoc&quot;))
-		</code>
-	</pre>
+	<pre><code class="r">print.rp.inputs(x, type = c(&quot;text&quot;, &quot;pandoc&quot;))</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3409,17 +3165,13 @@ plain text output.</p>
  </tr>
 </table>
 ##### print.rp.meta: Print Template Metadata
- ###### Description:
+###### Description:
 <p>Prints out the contents of template metadata inhuman-readable format.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-print.rp.meta(x, type = c(&quot;text&quot;, &quot;pandoc&quot;))
-		</code>
-	</pre>
+	<pre><code class="r">print.rp.meta(x, type = c(&quot;text&quot;, &quot;pandoc&quot;))</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3446,17 +3198,13 @@ plain text output.</p>
  </tr>
 </table>
 ##### purge.comments: Purge Comments
- ###### Description:
+###### Description:
 <p>Remove comments from provided character vector.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-purge.comments(x,    comment.open = get.tags(&quot;comment.open&quot;),    comment.close = get.tags(&quot;comment.close&quot;))
-		</code>
-	</pre>
+	<pre><code class="r">purge.comments(x,    comment.open = get.tags(&quot;comment.open&quot;),    comment.close = get.tags(&quot;comment.close&quot;))</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3483,20 +3231,16 @@ purge.comments(x,    comment.open = get.tags(&quot;comment.open&quot;),    comme
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a string with removed pandoc comments</p>
 ##### rapport: rapport templating system
- ###### Description:
+###### Description:
 <p>Description goes here.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rapport(fp, data = NULL, ..., reproducible = FALSE)
-		</code>
-	</pre>
+	<pre><code class="r">rapport(fp, data = NULL, ..., reproducible = FALSE)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3544,24 +3288,20 @@ details)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>
  a list with
  <code>rapport</code>
  class.
 </p>
 ##### rp.export: Export rapport class (deprecated)
- ###### Description:
+###### Description:
 <p> This function points to <code>tpl.export</code> . Usethat insted <code>rp.export</code> , as this function remainedhere only for backward compatibily of the package.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.export(...)
-		</code>
-	</pre>
+	<pre><code class="r">rp.export(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3576,17 +3316,13 @@ rp.export(...)
  </tr>
 </table>
 ##### rp.label: Get variable label
- ###### Description:
+###### Description:
 <p> This function returns character value previously storedin variable&apos;s <code>label</code> attribute. If none found, thefunction fallbacks to object&apos;s name.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.label(var)
-		</code>
-	</pre>
+	<pre><code class="r">rp.label(var)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3597,32 +3333,28 @@ rp.label(var)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a character value with variable&apos;s label</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 	rp.label(mtcars$am)
 	x &lt;- 1:10; rp.label(x)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.label-set: Set variable label
- ###### Description:
+###### Description:
 <p> this function sets a label to an <code>atomic</code> vector, by storing a character value to its <code>label</code> attribute.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.label(var, value) &lt;- value
-		</code>
-	</pre>
+	<pre><code class="r">rp.label(var, value) &lt;- value</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3642,30 +3374,26 @@ variable label</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
     rp.label(mtcars$mpg) &lt;- &quot;fuel consumption&quot;
     x &lt;- rnorm(100); ( rp.label(x) &lt;- &quot;pseudo-random normal variable&quot; )
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.name: Get variable name
- ###### Description:
+###### Description:
 <p> This function returns character value previously storedin variable&apos;s <code>name</code> attribute. If none found, thefunction fallbacks to object&apos;s name.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.name(var)
-		</code>
-	</pre>
+	<pre><code class="r">rp.name(var)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3676,32 +3404,28 @@ rp.name(var)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a character value with variable&apos;s label</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 rp.name(mtcars$am)
 x &lt;- 1:10; rp.name(x)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.prettyascii: Return pretty ascii form
- ###### Description:
+###### Description:
 <p>Some standard formatting is applied to the value which isreturned as ascii object.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.prettyascii(x)
-		</code>
-	</pre>
+	<pre><code class="r">rp.prettyascii(x)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3712,35 +3436,31 @@ rp.prettyascii(x)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>ascii</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 rp.prettyascii(&apos;Hallo, World?&apos;)
 rp.prettyascii(22/7)
 rp.prettyascii(matrix(runif(25), 5, 5))
 rp.prettyascii(lm(hp~wt, mtcars))
 
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### rp.round: Round numeric values
- ###### Description:
+###### Description:
 <p> Round numeric values with default number of decimals(see: <code>getOption(&apos;rp.decimal&apos;</code> ) and decimal mark(see: <code>getOption(&apos;rp.decimal&apos;)</code> ).</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-rp.round(x, scientific = FALSE)
-		</code>
-	</pre>
+	<pre><code class="r">rp.round(x, scientific = FALSE)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3767,9 +3487,9 @@ values correspond to the current default penalty.
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>character vector of rounded value(s)</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
@@ -3781,17 +3501,13 @@ values correspond to the current default penalty.
 	</pre>
 </div>
 ##### table.json: Convert table-like structures to JSON object
- ###### Description:
+###### Description:
 <p> This function takes either a <code>matrix</code> or a <code>data.frame</code> object to extract column names,row names and the &quot;body&quot; of the table-like object, henceexports them to JSON.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-table.json(d, name.rows = &quot;rows&quot;, name.cols = &quot;cols&quot;,    name.body = &quot;body&quot;)
-		</code>
-	</pre>
+	<pre><code class="r">table.json(d, name.rows = &quot;rows&quot;, name.cols = &quot;cols&quot;,    name.body = &quot;body&quot;)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3835,7 +3551,7 @@ table body</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>
  string with JSON object containing
  <code>rows</code>
@@ -3845,33 +3561,29 @@ table body</p>
  <code>body</code>
  attributes.
 </p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
     table.json(mtcars)
 
     set.seed(1)
     m &lt;- matrix(sample(10, 100, TRUE), 10)
     table.json(m)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### tags.misplaced: Misplaced Tags
- ###### Description:
+###### Description:
 <p>Searches for misplaced tags</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tags.misplaced(x, tag.open = get.tags(&quot;inline.open&quot;),    tag.close = get.tags(&quot;inline.close&quot;))
-		</code>
-	</pre>
+	<pre><code class="r">tags.misplaced(x, tag.open = get.tags(&quot;inline.open&quot;),    tag.close = get.tags(&quot;inline.close&quot;))</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3898,22 +3610,18 @@ tags.misplaced(x, tag.open = get.tags(&quot;inline.open&quot;),    tag.close = g
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>if no tags, or no mismatches are found, original string
 is returned, otherwise the function will return
 appropriate error</p>
 ##### tpl.body: Template Body
- ###### Description:
+###### Description:
 <p>Returns template body contents from provided path or acharacter vector.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.body(fp, htag = get.tags(&quot;header.close&quot;), ...)
-		</code>
-	</pre>
+	<pre><code class="r">tpl.body(fp, htag = get.tags(&quot;header.close&quot;), ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -3945,20 +3653,16 @@ character vector with template lines</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a character vector with template body contents</p>
 ##### tpl.elem: Template Elements
- ###### Description:
+###### Description:
 <p> Returns a <code>data.frame</code> containing summary ofrelevant template elements: <code>ind</code> - indice ofcurrent element in template&apos;s body, <code>type</code> - astring indicating the type of the content (&quot;heading&quot;,&quot;block&quot; or &quot;chunk&quot;), and <code>chunk</code> - a stringcontaining R expression found in a code chunk.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.elem(fp,    extract = c(&quot;all&quot;, &quot;heading&quot;, &quot;block&quot;, &quot;chunk&quot;),    use.body = FALSE, skip.blank.lines = TRUE,    skip.r.comments = FALSE, ...)
-		</code>
-	</pre>
+	<pre><code class="r">tpl.elem(fp,    extract = c(&quot;all&quot;, &quot;heading&quot;, &quot;block&quot;, &quot;chunk&quot;),    use.body = FALSE, skip.blank.lines = TRUE,    skip.r.comments = FALSE, ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -4020,39 +3724,35 @@ chunks</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>
  a
  <code>data.frame</code>
  with 3 columns:
 </p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
     fp &lt;- system.file(&quot;templates&quot;, &quot;example.tpl&quot;, package = &quot;rapport&quot;)
     tpl.elem(fp) # returns all elements (headings, blocks and chunks)
 
     ## returns only code chunks
     tpl.elem(fp, extract = &quot;chunk&quot;)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### tpl.example: Template Examples
- ###### Description:
+###### Description:
 <p> Runs the &quot;Example&quot; field found in specified template.Handy to check out what template does and how does itlook like once rendered. If multiple examples areavailable, and <code>index</code> argument is <code>NULL</code> , youwill be prompted for input. Example output can be easilyexported to various formats (HTML, ODT, etc.) - check outdocumentation for <code>tpl.export</code> for more info.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.example(fp, index = NULL)
-		</code>
-	</pre>
+	<pre><code class="r">tpl.example(fp, index = NULL)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -4079,55 +3779,43 @@ all examples.</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 tpl.example(&apos;example&apos;)
 tpl.example(&apos;crosstable&apos;)
 tpl.export(tpl.example(&apos;crosstable&apos;))
 tpl.example(&apos;example&apos;, 1:2)
 tpl.example(&apos;example&apos;, &apos;all&apos;)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### tpl.export.backends: tpl.export.backends
- ###### Description:
+###### Description:
 <p>List of all available backend formats (from asciipackage).</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.export.backends()
-		</code>
-	</pre>
+	<pre><code class="r">tpl.export.backends()</code></pre>
 </div>
 ##### tpl.export.outputs: tpl.export.outputs
- ###### Description:
+###### Description:
 <p>List of all available output formats (from asciipackage).</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.export.outputs()
-		</code>
-	</pre>
+	<pre><code class="r">tpl.export.outputs()</code></pre>
 </div>
 ##### tpl.export: Export rapport class
- ###### Description:
+###### Description:
 <p> This function exports rapport class objects to variousformats based on ascii package. Note that noerror/warning messages will be shown! By default thisfunction tries to export the report to HTML with pandoc.Some default styles are applied. If you do not need thosedefault settings, use your own <code>options</code> .</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.export(rp = NULL, file = NULL, append = FALSE,    create = TRUE, open = TRUE,    date = format(Sys.time(), getOption(&quot;rp.date.format&quot;)),    desc = TRUE, format = &quot;html&quot;, backend = &quot;pandoc&quot;,    options = NULL)
-		</code>
-	</pre>
+	<pre><code class="r">tpl.export(rp = NULL, file = NULL, append = FALSE,    create = TRUE, open = TRUE,    date = format(Sys.time(), getOption(&quot;rp.date.format&quot;)),    desc = TRUE, format = &quot;html&quot;, backend = &quot;pandoc&quot;,    options = NULL)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -4223,11 +3911,11 @@ report. If not set, current time will be set.</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 
 ## eval some template
 x &lt;- rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;hp&quot;)
@@ -4261,22 +3949,18 @@ tpl.export(x, options=sprintf(&apos;-c %s&apos;, system.file(&apos;templates/css
 ## For other formats check out backend specific documentation!
 ## Eg. pandoc uses &quot;--reference-odt&quot; as styles reference for odt exports.
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### tpl.find: Read Template
- ###### Description:
+###### Description:
 <p> Reads file either from template name, file path or URL,and splits it into lines for easier handling. &quot;find&quot; in <code>tpl.find</code> is borrowed from Emacs parlance - thisfunction actually reads the template.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.find(fp)
-		</code>
-	</pre>
+	<pre><code class="r">tpl.find(fp)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -4295,20 +3979,16 @@ with template contents.
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a character vector with template contents</p>
 ##### tpl.header: Template Header
- ###### Description:
+###### Description:
 <p>Returns \emrapport template header from provided pathor a character vector. In case you&apos;re refering to atemplate bundled with package, you don&apos;t need to providea template extension.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.header(fp, open.tag = get.tags(&quot;header.open&quot;),    close.tag = get.tags(&quot;header.close&quot;), ...)
-		</code>
-	</pre>
+	<pre><code class="r">tpl.header(fp, open.tag = get.tags(&quot;header.open&quot;),    close.tag = get.tags(&quot;header.close&quot;), ...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -4348,20 +4028,16 @@ character vector with template contents</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a character vector with template header contents</p>
 ##### tpl.info: Template Info
- ###### Description:
+###### Description:
 <p>Provides information about template metadata and inputs.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.info(fp, meta = TRUE, inputs = TRUE)
-		</code>
-	</pre>
+	<pre><code class="r">tpl.info(fp, meta = TRUE, inputs = TRUE)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -4397,31 +4073,27 @@ character vector with template lines</p>
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 tpl.info(&apos;example&apos;)  # return both metadata and inputs
 tpl.info(&apos;crosstable&apos;, inputs = FALSE)  # return only template metadata
 tpl.info(&apos;correlations&apos;, meta = FALSE)  # return only template inputs
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### tpl.inputs: Template Inputs
- ###### Description:
+###### Description:
 <p>Grabs variable definitions from template header.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.inputs(fp, use.header = TRUE)
-		</code>
-	</pre>
+	<pre><code class="r">tpl.inputs(fp, use.header = TRUE)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -4447,20 +4119,16 @@ header section is provided in
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a list with variable info</p>
 ##### tpl.list: Package Templates
- ###### Description:
+###### Description:
 <p>Lists all templates bundled with current package build.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.list(...)
-		</code>
-	</pre>
+	<pre><code class="r">tpl.list(...)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -4475,31 +4143,27 @@ tpl.list(...)
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a character vector with template files</p>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 tpl.list()
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
 ##### tpl.meta: Header Metadata
- ###### Description:
+###### Description:
 <p>Returns metadata stored in template&apos;s header section,usually template title, nickname of an author, templatedescription and list of required packages.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.meta(fp, fields = NULL, use.header = FALSE,    trim.white = TRUE)
-		</code>
-	</pre>
+	<pre><code class="r">tpl.meta(fp, fields = NULL, use.header = FALSE,    trim.white = TRUE)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -4555,20 +4219,16 @@ extraction</p>
   </td>
  </tr>
 </table>
- ###### Returned value:
+###### Returned value:
 <p>a list with template metadata</p>
 ##### tpl.rerun: Reproduce Template
- ###### Description:
+###### Description:
 <p> Runs template with data and arguments included in <code>rapport</code> object. In order to get reproducibleexample, you have to make sure that <code>reproducible</code> argument is set to <code>TRUE</code> in <code>rapport</code> function.</p>
- ###### Usage:
+###### Usage:
 <div class="highlight">
-	<pre>
-		<code class="r">
-tpl.rerun(tpl)
-		</code>
-	</pre>
+	<pre><code class="r">tpl.rerun(tpl)</code></pre>
 </div>
- ###### Arguments:
+###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
@@ -4583,15 +4243,15 @@ tpl.rerun(tpl)
   </td>
  </tr>
 </table>
- ###### Examples:
+###### Examples:
 <div class="highlight">
 	<pre>
 		<code class="r">
-## Not run: 
+ 
 tmp &lt;- rapport(&quot;example&quot;, mtcars, x = &quot;hp&quot;, y = &quot;mpg&quot;)
 tpl.rerun(tmp)
 
-## End(Not run)
+
 		</code>
 	</pre>
 </div>
