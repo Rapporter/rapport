@@ -4,11 +4,11 @@
 
 @font-face {
     font-family: 'YanoneKaffeesatzRegular';
-    src: url('../font/yanonekaffeesatz-regular-webfont.eot');
-    src: url('../font/yanonekaffeesatz-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../font/yanonekaffeesatz-regular-webfont.woff') format('woff'),
-         url('../font/yanonekaffeesatz-regular-webfont.ttf') format('truetype'),
-         url('../font/yanonekaffeesatz-regular-webfont.svg#YanoneKaffeesatzRegular') format('svg');
+    src: url('../fonts/yanonekaffeesatz-regular-webfont.eot');
+    src: url('../fonts/yanonekaffeesatz-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/yanonekaffeesatz-regular-webfont.woff') format('woff'),
+         url('../fonts/yanonekaffeesatz-regular-webfont.ttf') format('truetype'),
+         url('../fonts/yanonekaffeesatz-regular-webfont.svg#YanoneKaffeesatzRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -16,11 +16,11 @@
 
 @font-face {
     font-family: 'YanoneKaffeesatzLight';
-    src: url('../font/yanonekaffeesatz-light-webfont.eot');
-    src: url('../font/yanonekaffeesatz-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../font/yanonekaffeesatz-light-webfont.woff') format('woff'),
-         url('../font/yanonekaffeesatz-light-webfont.ttf') format('truetype'),
-         url('../font/yanonekaffeesatz-light-webfont.svg#YanoneKaffeesatzLight') format('svg');
+    src: url('../fonts/yanonekaffeesatz-light-webfont.eot');
+    src: url('../fonts/yanonekaffeesatz-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/yanonekaffeesatz-light-webfont.woff') format('woff'),
+         url('../fonts/yanonekaffeesatz-light-webfont.ttf') format('truetype'),
+         url('../fonts/yanonekaffeesatz-light-webfont.svg#YanoneKaffeesatzLight') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -28,11 +28,11 @@
 
 @font-face {
     font-family: 'YanoneKaffeesatzThin';
-    src: url('../font/yanonekaffeesatz-thin-webfont.eot');
-    src: url('../font/yanonekaffeesatz-thin-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../font/yanonekaffeesatz-thin-webfont.woff') format('woff'),
-         url('../font/yanonekaffeesatz-thin-webfont.ttf') format('truetype'),
-         url('../font/yanonekaffeesatz-thin-webfont.svg#YanoneKaffeesatzThin') format('svg');
+    src: url('../fonts/yanonekaffeesatz-thin-webfont.eot');
+    src: url('../fonts/yanonekaffeesatz-thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/yanonekaffeesatz-thin-webfont.woff') format('woff'),
+         url('../fonts/yanonekaffeesatz-thin-webfont.ttf') format('truetype'),
+         url('../fonts/yanonekaffeesatz-thin-webfont.svg#YanoneKaffeesatzThin') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -40,11 +40,11 @@
 
 @font-face {
     font-family: 'YanoneKaffeesatzBold';
-    src: url('../font/yanonekaffeesatz-bold-webfont.eot');
-    src: url('../font/yanonekaffeesatz-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../font/yanonekaffeesatz-bold-webfont.woff') format('woff'),
-         url('../font/yanonekaffeesatz-bold-webfont.ttf') format('truetype'),
-         url('../font/yanonekaffeesatz-bold-webfont.svg#YanoneKaffeesatzBold') format('svg');
+    src: url('../fonts/yanonekaffeesatz-bold-webfont.eot');
+    src: url('../fonts/yanonekaffeesatz-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/yanonekaffeesatz-bold-webfont.woff') format('woff'),
+         url('../fonts/yanonekaffeesatz-bold-webfont.ttf') format('truetype'),
+         url('../fonts/yanonekaffeesatz-bold-webfont.svg#YanoneKaffeesatzBold') format('svg');
     font-weight: normal;
     font-style: normal;
 
