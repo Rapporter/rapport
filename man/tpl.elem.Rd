@@ -3,7 +3,7 @@
 \title{Template Elements}
 \usage{
   tpl.elem(fp,
-    extract = c("all", "heading", "block", "chunk"),
+    extract = c("all", "heading", "inline", "block"),
     use.body = FALSE, skip.blank.lines = TRUE,
     skip.r.comments = FALSE, ...)
 }

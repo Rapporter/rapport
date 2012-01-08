@@ -61,14 +61,9 @@ lambda.test <- function(table, direction=0) {
 ##'
 ##' This function extracts only the most important information from \code{htest} class objects - statistic and its p-value.
 ##' @param x arguments to be passed to function specified in \code{test}
-##' @param test a function to be applied
 ##' @param ... additional arguments for function specified in \code{test}
 ##' @export
 htest <- function(x, ...){
-
-    e <- function(y){
-        c(y$statistic, p = y$p.value)
-    }
 
     test <- list(...)
     test.len <- length(test)
@@ -91,7 +86,16 @@ htest <- function(x, ...){
 }
 
 
+##' Extract Values from \code{htest} Objects
+##'
+##' Extract value of statistic and its p-value from \code{htest} object.
+##' @param x \code{htest}-class object
+##' @return named numeric vector with the value of statistic and its p-value
+##' @examples \dontrun{
+##' e(shapiro.test(rnorm(100))
+##' }
 ##' @export
-e <- function(y){
-    c(y$statistic, p = y$p.value)
+e <- function(x){
+    stopifnot(inherits(x, 'htest'))
+    c(x$statistic, p = x$p.value)
 }
