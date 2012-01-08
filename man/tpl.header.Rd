@@ -20,7 +20,7 @@
   a character vector with template header contents
 }
 \description{
-  Returns \em{rapport} template header from provided path
+  Returns \code{rapport} template header from provided path
   or a character vector. In case you're refering to a
   template bundled with package, you don't need to provide
   a template extension.

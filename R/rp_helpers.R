@@ -657,12 +657,14 @@ p <- function(x, wrap = getOption('p.wrap'), sep = getOption('p.sep'), copula = 
 
 ##' Create Formula from Strings
 ##'
-##' Takes left and right-hand side arguments of a formula
+##' Takes multiple character arguments as left and right-hand side arguments of a formula, and concatenates them in a single string.
 ##' @param left a string with left-hand side formula argument
 ##' @param right a character vector with right-hand side formula arguments
-##' @return a string with formula
+##' @param join.left a string to catenate elements of character vector specified in \code{left}
+##' @param join.right a string to catenate elements of character vector specified in \code{right}
 ##' @examples
 ##' fml("hp", c("am", "cyl"))
+##' @export
 fml <- function(left, right, join.left = ' + ', join.right = ' + '){
     sprintf('%s ~ %s', paste(left, collapse = join.left), paste(right, collapse = join.right))
 }

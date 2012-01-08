@@ -13,7 +13,6 @@
 ##' @param total.name a character string with name for "grand" margin (defaults to "Total")
 ##' @return a \code{data.frame} with aggregated data
 ##' @examples
-##' rp.
 ##' rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)
 ##' @export
 rp.desc <- function(id.vars, measure.vars, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total') {
@@ -56,60 +55,67 @@ rp.desc <- function(id.vars, measure.vars, fn, data = NULL, na.rm = TRUE, margin
 
     res <- cast(m, fml, fun.aggregate = each(fn), margins = margins, subset = subset, fill = fill, add.missing = add.missing)
 
-    nms.res <- names(res)               # column names
+    ## remove nasty (all)
+    nms.res <- names(res)       # column names
+    ## (all) occurs only if margins is not NULL or FALSE
+    if (!is.null(margins)){
+        if (margins != FALSE){
+            ## fix column names
+            names(res) <- gsub('(all)', total.name, nms.res, fixed = TRUE)
 
-    ## this sucks, use function names to get proper column names
+            ## fix factor levels
+            fac.ind <- sapply(res, is.factor)
+            fac.all <- '(all)' == res[fac.ind]
+            if (any(fac.all)){
+                res[fac.ind] <- lapply(res[fac.ind], function(y){
+                    ly <- levels(y)
+                    levels(y) <- gsub('(all)', total.name, ly, fixed = TRUE)
+                    y
+                })
+            }
+        }
+    }
 
-    ## if only one measure.var is specified, ommit its name from colnames
-    ## if (length(measure.vars == 1)){
-    ##     names(res) <- gsub(sprintf('%s_', measure.vars), '', names(res))
-    ## } else {
-    ##     ## fix names with underscores
-    ##     if (length(res.ind <- grep('_', nms.res)))
-    ##         names(res)[res.ind] <- sapply(strsplit(nms.res[res.ind], '_'), function(x) sprintf('%s(%s)', x[2], x[1]))
-
-    ##     ## remove (all) arrrgh...
-    ##     names(res) <- gsub('(all)', total.name, names(res), fixed = TRUE) # ...from colnames
-    ##     facs <- 1:length(id.vars)           # ...from factor levels
-    ##     res[facs] <- lapply(res[facs], function(y){
-    ##         levels(y) <- gsub('(all)', total.name, levels(y), fixed = TRUE)
-    ##         y
-    ##     })
-
-    ##     ## remove "value" as colname
-    ##     if (length(id.vars) == 1 && id.vars == '.')
-    ##         names(res)[1] <- gsub('value', '', names(res)[1])
-    ## }
+    ## fix underscores in colnames
+    nms.res <- names(res)       # column names, again
+    if (length(res.ind <- grep('_', nms.res))){
+        names(res)[res.ind] <- sapply(strsplit(nms.res[res.ind], '_'), function(x){
+            lx <- length(x)
+            sprintf('%s(%s)', x[lx], paste(x[-lx], collapse = '_'))
+        })
+    }
 
     class(res) <- c('rp.table', 'data.frame')
-
     return(res)
 }
 
 
 ##' Frequency Table
 ##'
-##' Diplay frequency table
+##' Diplay frequency table.
 ##' @param f.vars a character vector with variable names
 ##' @param data a \code{data.frame}
 ##' @param na.rm should missing values be removed?
 ##' @param include.na should missing values be included in frequency table?
-##' @param drop.levels should unused levels be removed
+##' @param drop.unused.levels should empty level combinations be left out
 ##' @param count show frequencies?
 ##' @param pct show percentage?
-##' @param cum.n show cumulative frequencies?
-##' @param cum.pct
+##' @param cumul.count show cumulative frequencies?
+##' @param cumul.pct show cumulative percentage?
+##' @param drop.levels should unused levels be removed
 ##' @return a \code{data.frame} with frequencies
 ##' @examples \dontrun{
 ##' rp.freq(c("am", "cyl", "vs"), mtcars)
 ##' }
 ##' @export
-rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.levels = FALSE, count = TRUE, pct = TRUE, cum.n = TRUE, cum.pct = TRUE){
+rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.levels = FALSE, count = TRUE, pct = TRUE, cumul.count = TRUE, cumul.pct = TRUE){
 
     ## TODO: subset
-
+    ## TODO: add variables/data.frames instead of names
     exclude <- if (isTRUE(na.rm)) NA else NULL
-    tbl <- melt(xtabs(fml('', f.vars), data = data, exclude = exclude, na.action = na.pass))
+
+    tbl <- xtabs(fml('', f.vars), data = data, exclude = exclude, na.action = na.pass)
+    tbl <- melt(tbl)
     names(tbl)[ncol(tbl)] <- 'N'        # rename frequency column
     nfac <- length(f.vars)              # number of factors
 
@@ -117,7 +123,7 @@ rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.
 
     ## calculate freqs
     tbl <- transform(tbl, pct = N / sum(N) * 100) # add percentage
-    tbl <- transform(tbl, cum.n = cumsum(N), cum.pct = cumsum(pct)) # add cumulatives
+    tbl <- transform(tbl, cumul.count = cumsum(N), cumul.pct = cumsum(pct)) # add cumulatives
 
     ## NAs not removed
     if (na.rm == FALSE){
@@ -137,7 +143,7 @@ rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.
     tbl <- rbind(tbl, Total = total)    # update table contents
 
     ## summary stats
-    keep <- sapply(list(count, pct, cum.n, cum.pct), isTRUE)
+    keep <- sapply(list(count, pct, cumul.count, cumul.pct), isTRUE)
     if (all(keep == FALSE))  stop('no summary to show') # no summary selected
     keep <- c(rep(TRUE, length(f.vars)), keep)
     tbl <- tbl[keep]                    # choose desired stats

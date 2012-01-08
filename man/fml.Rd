@@ -10,12 +10,17 @@
 
   \item{right}{a character vector with right-hand side
   formula arguments}
-}
-\value{
-  a string with formula
+
+  \item{join.left}{a string to catenate elements of
+  character vector specified in \code{left}}
+
+  \item{join.right}{a string to catenate elements of
+  character vector specified in \code{right}}
 }
 \description{
-  Takes left and right-hand side arguments of a formula
+  Takes multiple character arguments as left and right-hand
+  side arguments of a formula, and concatenates them in a
+  single string.
 }
 \examples{
 fml("hp", c("am", "cyl"))

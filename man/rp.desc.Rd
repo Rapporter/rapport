@@ -55,7 +55,6 @@
   pretty row and column labels.
 }
 \examples{
-rp.
 rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)
 }
 

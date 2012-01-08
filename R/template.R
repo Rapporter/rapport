@@ -1,7 +1,7 @@
 ##' Read Template
 ##'
 ##' Reads file either from template name, file path or URL, and splits it into lines for easier handling. "find" in \code{tpl.find} is borrowed from Emacs parlance - this function actually reads the template.
-##' @param fp a character string containing a template path, a template name (for package-bundled templates only, and ".tpl" extension is optional), or template contents separated by newline (\code{\n}), or a character vector with template contents.
+##' @param fp a character string containing a template path, a template name (for package-bundled templates only, and ".tpl" extension is optional), or template contents separated by newline (\code{\\n}), or a character vector with template contents.
 ##' @return a character vector with template contents
 ##' @export
 tpl.find <- function(fp){
@@ -43,7 +43,7 @@ tpl.find <- function(fp){
 
 ##' Template Header
 ##'
-##' Returns \em{rapport} template header from provided path or a character vector. In case you're refering to a template bundled with package, you don't need to provide a template extension.
+##' Returns \code{rapport} template header from provided path or a character vector. In case you're refering to a template bundled with package, you don't need to provide a template extension.
 ##' @param fp a string containing template path, or a character vector with template contents
 ##' @param open.tag a string with opening tag
 ##' @param close.tag a string with closing tag
@@ -123,7 +123,7 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
     if (inputs)
         res$inputs <- tpl.inputs(h, use.header = TRUE)
 
-    class(res) <- 'rp.header'
+    class(res) <- 'rp.info'
     return(res)
 }
 
@@ -269,6 +269,11 @@ tpl.example <- function(fp, index = NULL) {
         index <- 1
     }
 
+    if (length(index) == 0){
+        message('No example selected')
+        return(invisible(NULL))
+    }
+
     if (length(index) == 1 && index == 'all')
         index <- n.examples
 
@@ -313,26 +318,132 @@ tpl.rerun <- function(tpl){
 }
 
 
-##' @export
+##' Template Elements
+##'
+##' Returns a \code{data.frame} containing summary of relevant template elements: \code{ind} - indice of current element in template's body, \code{type} - a string indicating the type of the content ("heading", "block" or "chunk"), and \code{chunk} - a string containing R expression found in a code chunk.
+##' @param fp a string containing a path to template, or a character vector with template lines
+##' @param extract a string indicating which elements should be extracted from the template: headings, blocks, or code chunks (by default it returns all of the above)
+##' @param use.body a logical value indicating whether the whole template should be used, or just its body
+##' @param skip.blank.lines remove blank lines within R chunks
+##' @param skip.r.comments remove comments withing R chunks
+##' @param ... additional arguments to be passed to \code{\link{grep}} and \code{\link{get.tags}} functions
+##' @return a \code{data.frame} with 3 columns:
+##' @examples \dontrun{
+##'     fp <- system.file("templates", "example.tpl", package = "rapport")
+##'     tpl.elem(fp) # returns all elements (headings, blocks and chunks)
+##'
+##'     ## returns only code chunks
+##'     tpl.elem(fp, extract = "chunk")
+##' }
+tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.body = FALSE, skip.blank.lines = TRUE, skip.r.comments = FALSE, ...){
+
+    txt <- tpl.find(fp)
+    ext <- match.arg(extract)
+
+    ## "isTRUE" will evaluate some crazy inputs such as "letters" or even "mtcars" to FALSE
+    ## is it smart? I guess not, but hey... it works! and it skips my notorious sanity checks!
+    if (isTRUE(use.body))
+        b <- txt
+    else
+        b <- tpl.body(txt)
+
+    ## bunch of regexes
+    re.blank     <- '^([[:blank:]]+|)$'              # blank line
+    re.head      <- '^#{1,6}([ |\t]+)?[[:print:]]+$' # heading
+    re.co        <- get.tags('chunk.open', ...)      # chunk open
+    re.cc        <- get.tags('chunk.close', ...)     # chunk closed
+    re.cmt.open  <- get.tags('comment.open', ...)    # comment open
+    re.cmt.close <- get.tags('comment.close', ...)   # comment close
+
+    ## get blank line indices
+    blank.ind <- grep(re.blank, b, ...) # get blank line indices
+
+    ## get pandoc (HTML) comment indices
+    cmt.o.ind <- grep(re.cmt.open, b, ...)
+    cmt.c.ind <- grep(re.cmt.close, b, ...)
+
+    ## chunks
+    co.ind    <- grep(re.co, b, ...) # get indices of opening chunk tags
+    cc.ind    <- grep(re.cc, b, ...) # get indices of closing chunk tags
+    chunk.lst <- mapply(seq, co.ind + 1, cc.ind - 1, SIMPLIFY = FALSE) # get indices of lines within the chunk tags and store them in a list
+    chunk.all <- c(co.ind, unlist(chunk.lst), cc.ind) # get all chunk indices
+    ## skip blank lines
+    if (isTRUE(skip.blank.lines))
+        chunk.lst <- lapply(chunk.lst, function(x) x[!x %in% blank.ind])
+    ## skip R comments
+    if (isTRUE(skip.blank.lines))
+        chunk.lst <- lapply(chunk.lst, function(x) x[!grepl('^#', x)])
+    ## exclude empty list elements
+    chunk.lst <- chunk.lst[sapply(chunk.lst, length) > 0]
+
+    ## heading
+    h.ind    <- grep(re.head, b, ...) # get heading-like indices (this matches R in chunks)
+    h.ind    <- h.ind[!h.ind %in% chunk.all] # exclude chunks (bye-bye R comments)
+    h.is.1st <- 1 %in% h.ind                 # check 1st line heading
+    h.adj    <- (h.ind %in% (h.ind - 1)) | (h.ind %in% (h.ind + 1)) # get adjacent headers
+    h.white  <- ((h.ind - 1) %in% blank.ind) & ((h.ind + 1) %in% blank.ind) # get whitespace before/after the heading
+    h        <- h.ind[h.adj | h.white]
+    if (h.is.1st == TRUE)
+        h <- c(1, h)
+
+    ## blocks
+    len   <- 1:length(b)
+    block <- adj.rle(len[!len %in% c(blank.ind, h.ind, chunk.all)])$values
+    ## TODO: check tag mismatch
+    ## TODO: check comment mismatch, but yield only warnings
+
+    ## prepare response list
+    ind <- switch(ext,
+                  all = list(
+                      heading = lapply(h, structure, type = "heading"),
+                      inline = lapply(block, structure, type = "inline"),
+                      block = lapply(chunk.lst, structure, type = "block")
+                      ),
+                  heading = lapply(h, structure, type = "heading"),
+                  inline = lapply(block, structure, type = "inline"),
+                  block = lapply(chunk.lst, structure, type = "block"),
+                  stop('unknown indices type')
+                  )
+
+    ## preserve original element order
+    u <- unlist(ind, recursive = FALSE, use.names = FALSE)
+    u.ind <- order(sapply(u, function(x) x[1]))
+    u <- u[u.ind]
+    lapply(u, function(x){
+        tx <- attr(x, 'type')
+        bx <- b[x]
+        switch(tx,
+               heading = structure(bx, class = 'rp.heading'),
+               inline = structure(paste(bx, collapse = '\n'), class = 'rp.inline'),
+               block = structure(list(bx), class = 'rp.block'),
+               stop('unknown element class')
+               )
+    })
+}
+
+
+##' Evaluate Template Element
+##'
+##' This is a generic method that evaluates R code found in \code{rapport} template elements. Currently there are two types of template elements: \code{blocks} of R code (similar to chunks in \code{Sweave}) or \code{inline} elements.
+##' @param x either a list with character vector
+##' @param ... additional arguments passed to other evaluation methods
 elem.eval <- function(x, ...)  UseMethod('elem.eval')
 
 
-##' @export
-elem.eval.rp.chunk <- function(x, ...){
+elem.eval.rp.block <- function(x, ...){
 
     list(
-         type = 'chunk',
+         type = 'block',
          robjects = evals(x, ...)
          )
 }
 
 
-##' @export
 elem.eval.default <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, ...){
 
     stopifnot(is.string(x))
 
-    if (!inherits(x, c('rp.heading', 'rp.block')))
+    if (!inherits(x, c('rp.heading', 'rp.inline')))
         stop('invalid element class, either a heading or a block should be provided')
 
     if (isTRUE(remove.comments))
@@ -397,114 +508,9 @@ elem.eval.default <- function(x, tag.open = get.tags('inline.open'), tag.close =
     if (isTRUE(head))
         res <- c(type = 'heading', level = lvl, lst)        # this is heading
     else
-        res <- c(type = 'block', lst)   # this is block
+        res <- c(type = 'inline', lst)   # this is block
 
     return (res)
-}
-
-
-##' Template Elements
-##'
-##' Returns a \code{data.frame} containing summary of relevant template elements: \code{ind} - indice of current element in template's body, \code{type} - a string indicating the type of the content ("heading", "block" or "chunk"), and \code{chunk} - a string containing R expression found in a code chunk.
-##' @param fp a string containing a path to template, or a character vector with template lines
-##' @param extract a string indicating which elements should be extracted from the template: headings, blocks, or code chunks (by default it returns all of the above)
-##' @param use.body a logical value indicating whether the whole template should be used, or just its body
-##' @param skip.blank.lines remove blank lines within R chunks
-##' @param skip.r.comments remove comments withing R chunks
-##' @param ... additional arguments to be passed to \code{\link{grep}} and \code{\link{get.tags}} functions
-##' @return a \code{data.frame} with 3 columns:
-##' @examples \dontrun{
-##'     fp <- system.file("templates", "example.tpl", package = "rapport")
-##'     tpl.elem(fp) # returns all elements (headings, blocks and chunks)
-##'
-##'     ## returns only code chunks
-##'     tpl.elem(fp, extract = "chunk")
-##' }
-##' @export
-tpl.elem <- function(fp, extract = c('all', 'heading', 'block', 'chunk'), use.body = FALSE, skip.blank.lines = TRUE, skip.r.comments = FALSE, ...){
-
-    txt <- tpl.find(fp)
-    ext <- match.arg(extract)
-
-    ## "isTRUE" will evaluate some crazy inputs such as "letters" or even "mtcars" to FALSE
-    ## is it smart? I guess not, but hey... it works! and it skips my notorious sanity checks!
-    if (isTRUE(use.body))
-        b <- txt
-    else
-        b <- tpl.body(txt)
-
-    ## bunch of regexes
-    re.blank     <- '^([[:blank:]]+|)$'              # blank line
-    re.head      <- '^#{1,6}([ |\t]+)?[[:print:]]+$' # heading
-    re.co        <- get.tags('chunk.open', ...)      # chunk open
-    re.cc        <- get.tags('chunk.close', ...)     # chunk closed
-    re.cmt.open  <- get.tags('comment.open', ...)    # comment open
-    re.cmt.close <- get.tags('comment.close', ...)   # comment close
-
-    ## get blank line indices
-    blank.ind <- grep(re.blank, b, ...) # get blank line indices
-
-    ## get pandoc (HTML) comment indices
-    cmt.o.ind <- grep(re.cmt.open, b, ...)
-    cmt.c.ind <- grep(re.cmt.close, b, ...)
-
-    ## chunks
-    co.ind    <- grep(re.co, b, ...) # get indices of opening chunk tags
-    cc.ind    <- grep(re.cc, b, ...) # get indices of closing chunk tags
-    chunk.lst <- mapply(seq, co.ind + 1, cc.ind - 1, SIMPLIFY = FALSE) # get indices of lines within the chunk tags and store them in a list
-    chunk.all <- c(co.ind, unlist(chunk.lst), cc.ind) # get all chunk indices
-    ## skip blank lines
-    if (isTRUE(skip.blank.lines))
-        chunk.lst <- lapply(chunk.lst, function(x) x[!x %in% blank.ind])
-    ## skip R comments
-    if (isTRUE(skip.blank.lines))
-        chunk.lst <- lapply(chunk.lst, function(x) x[!grepl('^#', x)])
-    ## exclude empty list elements
-    chunk.lst <- chunk.lst[sapply(chunk.lst, length) > 0]
-
-    ## heading
-    h.ind    <- grep(re.head, b, ...) # get heading-like indices (this matches R in chunks)
-    h.ind    <- h.ind[!h.ind %in% chunk.all] # exclude chunks (bye-bye R comments)
-    h.is.1st <- 1 %in% h.ind                 # check 1st line heading
-    h.adj    <- (h.ind %in% (h.ind - 1)) | (h.ind %in% (h.ind + 1)) # get adjacent headers
-    h.white  <- ((h.ind - 1) %in% blank.ind) & ((h.ind + 1) %in% blank.ind) # get whitespace before/after the heading
-    h        <- h.ind[h.adj | h.white]
-    if (h.is.1st == TRUE)
-        h <- c(1, h)
-
-    ## blocks
-    len   <- 1:length(b)
-    block <- adj.rle(len[!len %in% c(blank.ind, h.ind, chunk.all)])$values
-    ## TODO: check tag mismatch
-    ## TODO: check comment mismatch, but yield only warnings
-
-    ## prepare response list
-    ind <- switch(ext,
-                  all = list(
-                      heading = lapply(h, structure, type = "heading"),
-                      block = lapply(block, structure, type = "block"),
-                      chunk = lapply(chunk.lst, structure, type = "chunk")
-                      ),
-                  heading = lapply(h, structure, type = "heading"),
-                  block = lapply(block, structure, type = "block"),
-                  chunk = lapply(chunk.lst, structure, type = "chunk"),
-                  stop('unknown indices type')
-                  )
-
-    ## preserve original element order
-    u <- unlist(ind, recursive = FALSE, use.names = FALSE)
-    u.ind <- order(sapply(u, function(x) x[1]))
-    u <- u[u.ind]
-    lapply(u, function(x){
-        tx <- attr(x, 'type')
-        bx <- b[x]
-        switch(tx,
-               heading = structure(bx, class = 'rp.heading'),
-               block = structure(paste(bx, collapse = '\n'), class = 'rp.block'),
-               chunk = structure(list(bx), class = 'rp.chunk'),
-               stop('unknown element class')
-               )
-    })
 }
 
 
@@ -654,36 +660,54 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
         })
     }
 
-    ## saving all options before run to be able to reset after run
-    options <- options()
+    opts.bak <- options()                      # backup options
+    report <- lapply(elem, elem.eval, env = e) # render template body
+    options(opts.bak)                          # resetting options
 
-    report <- lapply(elem, elem.eval, env = e)          # get report
+    ## error handling in chunks
+    report <- lapply(report, function(x){
+        ## * shoot warning() and return '<ERROR>' inline
+        if (x$type == 'block'){
+            rerr <- x$robjects[[1]]$msg$errors
+            if (!is.null(rerr)){
+                warning(rerr, call. = FALSE)
+                x$robjects[[1]]$output <- '<ERROR>'
+            }
+        }
+        return(x)
+    })
 
-    ## resetting options
-    options(options)
-
-    report <- lapply(report, function(x) {              # error handling in chunks:
-                        if (x$type == 'chunk')          #  * shoot warning() and return '<ERROR>' inline
-                            ifelse(!is.null(x$robjects[[1]]$msg$errors), {warning(x$robjects[[1]]$msg$errors, call. = FALSE); x$robjects[[1]]$output <- '<ERROR>'; return(x)}, return(x))
-                        else
-                            return(x)
-                    })
-    report <- report[sapply(report, function(x) {       # and remove NULL/blank parts
-        if (x$type=='chunk')
+    ## remove NULL/blank parts
+    ind.nullblank <- sapply(report, function(x){
+        if (x$type == 'block')
             ifelse(is.null(x$robjects[[1]]$output), FALSE, TRUE)
-        else ifelse(x$text$eval == 'NULL', FALSE, TRUE)
-    })]
+        else
+            ifelse(x$text$eval == 'NULL', FALSE, TRUE)
+    })
+    report <- report[ind.nullblank]     # update template body contents
 
-    report <- unlist(lapply(report, function(x) {                   # tidy up (remove header etc.) nested templates:
-                if (x$type == 'chunk')                              #  * chunk holding a rapport class
-                    if (any(x$robjects[[1]]$type == 'rapport'))
-                        return(x$robjects[[1]]$output$report)
-                if (x$type == 'chunk')
-                    if (all(class(x$robjects[[1]]$output) == 'list'))    #  * chunk holding a list of rapport classes
-                        if (all(lapply(x$robjects[[1]]$output, class) == 'rapport'))
-                            return(unlist(lapply(x$robjects[[1]]$output, function(x) x$report), recursive=F))
-                return(list(x))
-            }), recursive=F)
+    ## tidy up (remove header etc.) nested templates
+    report <- unlist(lapply(report, function(x){
+        robj <- x$robjects[[1]]
+        rout <- robj$output
+        xtype <- x$type
+
+        ## chunk holding a rapport class
+        if (xtype == 'block'){
+
+            if (any(robj$type == 'rapport'))
+                return(rout$report)
+
+            ## chunk holding a list of rapport class
+            if (all(is.list(rout)))
+                if (all(sapply(rout, class) == 'rapport'))
+                    return(unlist(lapply(rout, function(x) x$report), recursive = FALSE))
+
+        }
+
+        return(list(x))
+
+    }), recursive = FALSE)
 
     res <- list(
                 metadata = meta,

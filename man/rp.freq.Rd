@@ -4,7 +4,7 @@
 \usage{
   rp.freq(f.vars, data, na.rm = TRUE, include.na = FALSE,
     drop.unused.levels = FALSE, count = TRUE, pct = TRUE,
-    cum.n = TRUE, cum.pct = TRUE)
+    cumul.count = TRUE, cumul.pct = TRUE)
 }
 \arguments{
   \item{f.vars}{a character vector with variable names}
@@ -16,21 +16,24 @@
   \item{include.na}{should missing values be included in
   frequency table?}
 
-  \item{drop.levels}{should unused levels be removed}
+  \item{drop.unused.levels}{should empty level combinations
+  be left out}
 
   \item{count}{show frequencies?}
 
   \item{pct}{show percentage?}
 
-  \item{cum.n}{show cumulative frequencies?}
+  \item{cumul.count}{show cumulative frequencies?}
 
-  \item{cum.pct}{}
+  \item{cumul.pct}{show cumulative percentage?}
+
+  \item{drop.levels}{should unused levels be removed}
 }
 \value{
   a \code{data.frame} with frequencies
 }
 \description{
-  Diplay frequency table
+  Diplay frequency table.
 }
 \examples{
 \dontrun{

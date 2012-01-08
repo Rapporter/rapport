@@ -8,7 +8,7 @@
   \item{fp}{a character string containing a template path,
   a template name (for package-bundled templates only, and
   ".tpl" extension is optional), or template contents
-  separated by newline (\code{\n}), or a character vector
+  separated by newline (\code{\\n}), or a character vector
   with template contents.}
 }
 \value{

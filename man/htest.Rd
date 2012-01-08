@@ -8,8 +8,6 @@
   \item{x}{arguments to be passed to function specified in
   \code{test}}
 
-  \item{test}{a function to be applied}
-
   \item{...}{additional arguments for function specified in
   \code{test}}
 }
