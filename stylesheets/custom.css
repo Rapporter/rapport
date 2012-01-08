@@ -1,27 +1,31 @@
-body {
+body, h1, h2, h3, h4, h5, h6, p, table{
     font-family: 'YanoneKaffeesatzRegular';
 }
-td
-{
-padding-left: 5px;
-padding-right: 5px;
+
+td {
+    padding-left: 5px;
+    padding-right: 5px;
 }
+
 h6 {
     font-size: 16px;
     margin-bottom: 5px;
     margin-top: 5px;
-#    padding-bottom: 5px;
+    padding-bottom: 5px;
 }
+
 p, table {
     margin-left: 20px;
     text-align: justify;
 }
+
 code {
     background-color: whiteSmoke;
     padding-left: 2px;
     padding-right: 2px;
     border: solid 1px #DDD;
 }
+
 .highlight {
 	background-color: whiteSmoke;
 	margin: 10px;
@@ -32,6 +36,7 @@ code {
                     Courier,
                     monospace;
 }
+
 .highlight code {
     padding: 0px;
     border: none;
