@@ -26,17 +26,11 @@
  <a href="https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html">https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html</a>
 </p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-		decrypt(&quot;loRR7KT72R=!&quot;)
+<div class="highlight"><pre><code class="r">		decrypt(&quot;loRR7KT72R=!&quot;)
 		strsplit(decrypt(&quot;MrhKPzRK=tBrK0rK=2g~KT~K8BoPK1BKgMKhog2KPg2A&quot;), &quot; &quot;)[[1]]
 		eval(parse(text=decrypt(&quot;rR7~HM~Pg2B40r,KP7Rkp2o=pc&quot;)))
 	
-
-		</code>
-	</pre>
+</code></pre>
 </div>
 ##### encrypt: Encrypt a string
 ###### Description:
@@ -64,16 +58,10 @@
  <a href="https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html">https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html</a>
 </p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-		encrypt(&quot;Hello world!&quot;)
+<div class="highlight"><pre><code class="r">		encrypt(&quot;Hello world!&quot;)
 		encrypt(paste(names(mtcars), collapse=&quot; &quot;))
 	
-
-		</code>
-	</pre>
+</code></pre>
 </div>
 ##### evals: Evals chunk(s) of R code
 ###### Description:
@@ -207,11 +195,7 @@ messages: warnings (if any returned by the command run,
 otherwise set to NULL) and errors (if any returned by the
 command run, otherwise set to NULL)</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-# parsing line-by-line
+<div class="highlight"><pre><code class="r"># parsing line-by-line
 txt &lt;- readLines(textConnection(&apos;x &lt;- rnorm(100)
 	runif(10)
 	warning(&quot;You should check out rapport package!&quot;)
@@ -222,79 +206,45 @@ txt &lt;- readLines(textConnection(&apos;x &lt;- rnorm(100)
 	crl &lt;- cor.test(runif(10), runif(10))
 	table(mtcars$am, mtcars$cyl)
 	ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))&apos;))
-evals(txt)
-
-## parsing a list of commnads
+evals(txt)n## parsing a list of commnads
 txt &lt;- list(&apos;df &lt;- mtcars&apos;,
 		c(&apos;plot(mtcars$hp, pch = 19)&apos;,&apos;text(mtcars$hp, label = rownames(mtcars), pos = 4)&apos;),
 		&apos;ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))&apos;)
-evals(txt)
-
-## returning only a few classes
+evals(txt)n## returning only a few classes
 txt &lt;- readLines(textConnection(&apos;rnorm(100)
 	list(x = 10:1, y = &quot;Godzilla!&quot;)
 	c(1,2,3)
 	matrix(0,3,5)&apos;))
 evals(txt, classes=&apos;numeric&apos;)
-evals(txt, classes=c(&apos;numeric&apos;, &apos;list&apos;))
-
-## handling warnings
-evals(&apos;chisq.test(mtcars$gear, mtcars$hp)&apos;)
-
-## handling errors
+evals(txt, classes=c(&apos;numeric&apos;, &apos;list&apos;))n## handling warnings
+evals(&apos;chisq.test(mtcars$gear, mtcars$hp)&apos;)n## handling errors
 evals(&apos;runiff(20)&apos;)
 evals(&apos;Old MacDonald had a farm\\dots&apos;)
-evals(&apos;## Some comment&apos;)
-
-## hooks
+evals(&apos;## Some comment&apos;)n## hooks
 hooks &lt;- list(&apos;numeric&apos;=round, &apos;matrix&apos;=ascii)
 evals(txt, hooks=hooks)
 evals(&apos;22/7&apos;, hooks=list(&apos;numeric&apos;=rp.round))
-evals(&apos;matrix(runif(25), 5, 5)&apos;, hooks=list(&apos;matrix&apos;=rp.round))
-
-## using rapport&apos;s default hook
-evals(&apos;22/7&apos;, hooks=TRUE)
-
-## setting default hook
+evals(&apos;matrix(runif(25), 5, 5)&apos;, hooks=list(&apos;matrix&apos;=rp.round))n## using rapport&apos;s default hook
+evals(&apos;22/7&apos;, hooks=TRUE)n## setting default hook
 evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks=list(&apos;default&apos;=round))
 ## round all values except for matrices
-evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks=list(matrix=&apos;print&apos;, &apos;default&apos;=round))
-
-# advanced hooks
+evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks=list(matrix=&apos;print&apos;, &apos;default&apos;=round))n# advanced hooks
 fun &lt;- function(x, asciiformat) paste(capture.output(print(ascii(x), asciiformat)), collapse=&apos;\n&apos;)
 hooks &lt;- list(&apos;numeric&apos;=list(round, 2), &apos;matrix&apos;=list(fun, &quot;rest&quot;))
-evals(txt, hooks=hooks)
-
-# return only returned values
-evals(txt, output=&apos;output&apos;)
-
-# return only messages (for checking syntax errors etc.)
-evals(txt, output=&apos;msg&apos;)
-
-# check the length of returned values
-evals(&apos;runif(10)&apos;, length=5)
-
-# note the following will not be filtered!
-evals(&apos;matrix(1,1,1)&apos;, length=1)
-
-# if you do not want to let such things be evaled in the middle of a string use it with other filters :)
-evals(&apos;matrix(1,1,1)&apos;, length=1, classes=&apos;numeric&apos;)
-
-	# hooks &amp; filtering
-evals(&apos;matrix(5,5,5)&apos;, hooks=list(&apos;matrix&apos;=ascii), output=&apos;output&apos;)
-
-# evaling chunks in given environment
+evals(txt, hooks=hooks)n# return only returned values
+evals(txt, output=&apos;output&apos;)n# return only messages (for checking syntax errors etc.)
+evals(txt, output=&apos;msg&apos;)n# check the length of returned values
+evals(&apos;runif(10)&apos;, length=5)n# note the following will not be filtered!
+evals(&apos;matrix(1,1,1)&apos;, length=1)n# if you do not want to let such things be evaled in the middle of a string use it with other filters :)
+evals(&apos;matrix(1,1,1)&apos;, length=1, classes=&apos;numeric&apos;)n	# hooks &amp; filtering
+evals(&apos;matrix(5,5,5)&apos;, hooks=list(&apos;matrix&apos;=ascii), output=&apos;output&apos;)n# evaling chunks in given environment
 myenv &lt;- new.env()
 evals(&apos;x &lt;- c(0,10)&apos;, env=myenv)
 evals(&apos;mean(x)&apos;, env=myenv)
 rm(myenv)
 # note: if you had not specified &apos;myenv&apos;, the second &apos;evals&apos; would have failed
 evals(&apos;x &lt;- c(0,10)&apos;)
-evals(&apos;mean(x)&apos;)
-
-
-		</code>
-	</pre>
+evals(&apos;mean(x)&apos;)n</code></pre>
 </div>
 
 #### Generic graph functions
@@ -415,11 +365,7 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
+<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 	rp.barplot(df$cyl)
 	rp.barplot(df$cyl, horizontal = FALSE)
 	rp.barplot(df$cyl, facet=df$am)
@@ -430,11 +376,7 @@ df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&a
 	rp.label(df$cyl) &lt;- &apos;Number of cylinders&apos;; rp.barplot(df$cyl)
 	with(df, rp.barplot(cyl, facet = am))
 	rp.barplot(cyl, data=df)
-	rp.barplot(cyl, am, df)
-
-
-		</code>
-	</pre>
+	rp.barplot(cyl, am, df)n</code></pre>
 </div>
 ##### rp.boxplot: Boxplot
 ###### Description:
@@ -513,11 +455,7 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
+<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 rp.boxplot(df$cyl)
 	rp.boxplot(df$cyl, df$wt)
 	rp.boxplot(df$cyl, df$hp, facet=df$am)
@@ -525,11 +463,7 @@ rp.boxplot(df$cyl)
 	rp.boxplot(df$cyl, df$wt, colorize=TRUE)
 	with(df, rp.scatterplot(hp, wt, facet = am))
 	rp.boxplot(cyl, wt, data=df)
-	rp.boxplot(cyl, wt, am, df)
-
-
-		</code>
-	</pre>
+	rp.boxplot(cyl, wt, am, df)n</code></pre>
 </div>
 ##### rp.cor.plot: Scatterplot matrices
 ###### Description:
@@ -620,17 +554,9 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
+<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 	rp.cor.plot(df)
-rp.cor.plot(df, diag.panel=&apos;panel.hist&apos;)
-
-
-		</code>
-	</pre>
+rp.cor.plot(df, diag.panel=&apos;panel.hist&apos;)n</code></pre>
 </div>
 ##### rp.densityplot: Density plot
 ###### Description:
@@ -701,11 +627,7 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)),
+<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)),
     am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 rp.densityplot(df$hp)
 rp.densityplot(df$hp, facet=df$am)
@@ -714,11 +636,7 @@ rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.densityplot(df$hp)
 rp.densityplot(df$hp, colorize=TRUE)
 with(df, rp.densityplot(hp, facet = am))
 rp.densityplot(hp, data = df)
-rp.densityplot(hp, am, df)
-
-
-		</code>
-	</pre>
+rp.densityplot(hp, am, df)n</code></pre>
 </div>
 ##### rp.dotplot: Dotplot
 ###### Description:
@@ -822,11 +740,7 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
+<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 	rp.dotplot(df$cyl)
 	rp.dotplot(df$cyl, horizontal = FALSE)
 	rp.dotplot(df$cyl, facet=df$am)
@@ -836,11 +750,7 @@ df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&a
 	rp.label(df$cyl) &lt;- &apos;Number of cylinders&apos;; rp.dotplot(df$cyl)
 	with(df, rp.dotplot(cyl, facet = am))
 	rp.dotplot(cyl, data=df)
-	rp.dotplot(cyl, am, df)
-
-
-		</code>
-	</pre>
+	rp.dotplot(cyl, am, df)n</code></pre>
 </div>
 ##### rp.graph.check: Input cheks (internal)
 ###### Description:
@@ -953,11 +863,7 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)),
+<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)),
 	    am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 	rp.hist(df$hp)
 	rp.hist(df$hp, facet=df$am)
@@ -966,11 +872,7 @@ df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&a
 	rp.hist(df$hp, colorize=TRUE)
 	with(df, rp.hist(hp, facet = am))
 	rp.hist(hp, data = df)
-	rp.hist(hp, am, df)
-
-
-		</code>
-	</pre>
+	rp.hist(hp, am, df)n</code></pre>
 </div>
 ##### rp.lineplot: Lineplot
 ###### Description:
@@ -1049,21 +951,13 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
+<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 a &lt;- aggregate(wt~gear, df, mean)
 rp.lineplot(a$gear, a$wt)
 rp.lineplot(1:length(df$hp), df$hp, facet=df$cyl)
 rp.label(a$wt) &lt;- &apos;weight&apos;; rp.lineplot(a$gear, a$wt)
 rp.lineplot(a$gear, a$wt, colorize=TRUE)
-rp.lineplot(gear, wt, data=a)
-
-
-		</code>
-	</pre>
+rp.lineplot(gear, wt, data=a)n</code></pre>
 </div>
 ##### rp.palette: Color palettes
 ###### Description:
@@ -1105,17 +999,11 @@ random order</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
-{
-rp.palette(1)
+<div class="highlight"><pre><code class="r">rp.palette(1)
 rp.palette(1, colorize = TRUE)
 rp.palette(5, &apos;Greens&apos;)
 rp.palette(5, &apos;Greens&apos;, colorize = TRUE)
-}
-		</code>
-	</pre>
+}</code></pre>
 </div>
 ##### rp.scatterplot: Scatterplot
 ###### Description:
@@ -1194,22 +1082,14 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
+<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 	rp.scatterplot(df$hp, df$wt)
 	rp.scatterplot(df$hp, df$wt, facet=df$cyl)
 	rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.label(df$wt) &lt;- &apos;weight&apos;; rp.scatterplot(df$hp, df$wt)
 	rp.scatterplot(df$hp, df$wt, colorize=TRUE)
 	with(df, rp.scatterplot(hp, wt, facet = am))
 	rp.scatterplot(hp, wt, data=df)
-	rp.scatterplot(hp, wt, am, df)
-
-
-		</code>
-	</pre>
+	rp.scatterplot(hp, wt, am, df)n</code></pre>
 </div>
 
 #### Generic helper functions
@@ -1312,26 +1192,8 @@ white spaces should be removed before guessing</p>
 <p>an atomic vector with (hopefully) successfully guessed
 mode</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-storage.mode(guess.mode(&quot;234&quot;))
-
-storage.mode(guess.mode(&quot;234.23&quot;))
-
-storage.mode(guess.mode(&quot;234.23.234&quot;))
-
-storage.mode(guess.mode(&quot;TRUE&quot;))
-
-storage.mode(guess.mode(&quot;TRUE         &quot;))
-
-storage.mode(guess.mode(&quot;     TRUE         &quot;, TRUE))
-
-
-
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">storage.mode(guess.mode(&quot;234&quot;))nstorage.mode(guess.mode(&quot;234.23&quot;))nstorage.mode(guess.mode(&quot;234.23.234&quot;))nstorage.mode(guess.mode(&quot;TRUE&quot;))nstorage.mode(guess.mode(&quot;TRUE         &quot;))nstorage.mode(guess.mode(&quot;     TRUE         &quot;, TRUE))n
+</code></pre>
 </div>
 ##### is.string: Strings
 ###### Description:
@@ -1355,14 +1217,9 @@ storage.mode(guess.mode(&quot;     TRUE         &quot;, TRUE))
 <p>a logical value indicating whether provided object is a
 string</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
-is.string(&quot;foobar&quot;)          # [1] TRUE
+<div class="highlight"><pre><code class="r">is.string(&quot;foobar&quot;)          # [1] TRUE
     is.string(1)                 # [1] FALSE
-    is.string(c(&quot;foo&quot;, &quot;bar&quot;))   # [1] FALSE
-		</code>
-	</pre>
+    is.string(c(&quot;foo&quot;, &quot;bar&quot;))   # [1] FALSE</code></pre>
 </div>
 ##### makes.plot: Check plot creation
 ###### Description:
@@ -1385,16 +1242,8 @@ is.string(&quot;foobar&quot;)          # [1] TRUE
 ###### Returned value:
 <p>a logical value</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-    makes.plot(plot(rnorm(100))) # returns TRUE
-    makes.plot(sample(10))       # returns FALSE
-
-
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">    makes.plot(plot(rnorm(100))) # returns TRUE
+    makes.plot(sample(10))       # returns FALSEn</code></pre>
 </div>
 ##### tocamel: CamelCase
 ###### Description:
@@ -1451,19 +1300,10 @@ to
 ###### Returned value:
 <p>a character vector with strings put in camelcase</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
-tocamel(&quot;foo.bar&quot;)
-    ## [1] &quot;fooBar&quot;
-
-    tocamel(&quot;foo.bar&quot;, upper = TRUE)
-    ## [1] &quot;FooBar&quot;
-
-    tocamel(c(&quot;foobar&quot;, &quot;foo.bar&quot;, &quot;camel_case&quot;, &quot;a.b.c.d&quot;))
-    ## [1] &quot;foobar&quot;    &quot;fooBar&quot;    &quot;camelCase&quot; &quot;aBCD&quot;
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">tocamel(&quot;foo.bar&quot;)
+    ## [1] &quot;fooBar&quot;n    tocamel(&quot;foo.bar&quot;, upper = TRUE)
+    ## [1] &quot;FooBar&quot;n    tocamel(c(&quot;foobar&quot;, &quot;foo.bar&quot;, &quot;camel_case&quot;, &quot;a.b.c.d&quot;))
+    ## [1] &quot;foobar&quot;    &quot;fooBar&quot;    &quot;camelCase&quot; &quot;aBCD&quot;</code></pre>
 </div>
 ##### trim.space: Trim Spaces
 ###### Description:
@@ -1622,13 +1462,8 @@ defines a space character</p>
 ###### Returned value:
 <p>a string with wrapped elements</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
-wrap(c(&quot;fee&quot;, &quot;fi&quot;, &quot;foo&quot;, &quot;fam&quot;), &quot;_&quot;)
-## [1] &quot;_fee_&quot; &quot;_fi_&quot;  &quot;_foo_&quot; &quot;_fam_&quot;
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">wrap(c(&quot;fee&quot;, &quot;fi&quot;, &quot;foo&quot;, &quot;fam&quot;), &quot;_&quot;)
+## [1] &quot;_fee_&quot; &quot;_fi_&quot;  &quot;_foo_&quot; &quot;_fam_&quot;</code></pre>
 </div>
 
 #### Generic stat functions
@@ -1764,13 +1599,8 @@ aggregating</p>
  with aggregated data
 </p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
-rp.
-rp.desc(&quot;cyl&quot;, &quot;am&quot;, c(mean, sd), mtcars, margins = TRUE)
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">rp.
+rp.desc(&quot;cyl&quot;, &quot;am&quot;, c(mean, sd), mtcars, margins = TRUE)</code></pre>
 </div>
 ##### rp.freq: Frequency Table
 ###### Description:
@@ -1863,15 +1693,7 @@ frequency table?</p>
  with frequencies
 </p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-rp.freq(c(&quot;am&quot;, &quot;cyl&quot;, &quot;vs&quot;), mtcars)
-
-
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">rp.freq(c(&quot;am&quot;, &quot;cyl&quot;, &quot;vs&quot;), mtcars)n</code></pre>
 </div>
 ##### rp.iqr: Interquartile Range
 ###### Description:
@@ -2416,17 +2238,9 @@ Outliers in Linear Models&quot;, Technometrics, vol. 17, no.
 1, pp. 129-132.
 </p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-rp.outlier(mtcars$hp)
+<div class="highlight"><pre><code class="r">rp.outlier(mtcars$hp)
 rp.outlier(c(rep(1,100), 200))
-rp.outlier(c(rep(1,100), 200,201))
-
-
-		</code>
-	</pre>
+rp.outlier(c(rep(1,100), 200,201))n</code></pre>
 </div>
 
 #### Template related functions
@@ -2467,17 +2281,9 @@ rp.outlier(c(rep(1,100), 200,201))
 limit
 </p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-rapport:::check.limit(&quot;[1,20]&quot;)
-rapport:::check.limit(&quot;[1]&quot;)
-
-
-
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">rapport:::check.limit(&quot;[1,20]&quot;)
+rapport:::check.limit(&quot;[1]&quot;)n
+</code></pre>
 </div>
 ##### check.name: Naming Conventions
 ###### Description:
@@ -2540,18 +2346,10 @@ naming conventions</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-rapport:::check.type(&quot;factor&quot;)
+<div class="highlight"><pre><code class="r">rapport:::check.type(&quot;factor&quot;)
 rapport:::check.type(&quot;character[1,20]&quot;)
 rapport:::check.type(&quot;fee, fi, foo, fam&quot;)
-rapport:::check.type(&quot;FALSE&quot;)
-
-
-		</code>
-	</pre>
+rapport:::check.type(&quot;FALSE&quot;)n</code></pre>
 </div>
 ##### extract.meta: Extract Template Metadata
 ###### Description:
@@ -2650,21 +2448,11 @@ field</p>
 is not required
 </p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-    extract.metadata(&quot;Name: John Smith&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
+<div class="highlight"><pre><code class="r">    extract.metadata(&quot;Name: John Smith&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
     ## $name
-    ## [1] &quot;John Smith&quot;
-
-    extract.metadata(&quot;Name: John&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
+    ## [1] &quot;John Smith&quot;n    extract.metadata(&quot;Name: John&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
     ## $name
-    ## [1] &quot;John&quot;
-
-
-		</code>
-	</pre>
+    ## [1] &quot;John&quot;n</code></pre>
 </div>
 ##### fml: Create Formula from Strings
 ###### Description:
@@ -2697,12 +2485,7 @@ formula arguments</p>
 ###### Returned value:
 <p>a string with formula</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
-fml(&quot;hp&quot;, c(&quot;am&quot;, &quot;cyl&quot;))
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">fml(&quot;hp&quot;, c(&quot;am&quot;, &quot;cyl&quot;))</code></pre>
 </div>
 ##### get.tags: Tag Values
 ###### Description:
@@ -2798,19 +2581,11 @@ should be returned (defaults to
 ###### Returned value:
 <p>a character vector with code chunks</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-    s &lt;- c(&quot;As you know, pi equals &lt;%pi%&gt;&quot;,  &quot;2 raised to the power of 3 is &lt;%2^3%&gt;&quot;)
+<div class="highlight"><pre><code class="r">    s &lt;- c(&quot;As you know, pi equals &lt;%pi%&gt;&quot;,  &quot;2 raised to the power of 3 is &lt;%2^3%&gt;&quot;)
     grab.chunks(s, &quot;&lt;%&quot;, &quot;%&gt;&quot;, FALSE)
     ## [1] &quot;pi&quot;  &quot;2^3&quot;
     grab.chunks(s, &quot;&lt;%&quot;, &quot;%&gt;&quot;, FALSE)
-    ## [1] &quot;&lt;%pi%&gt;&quot;  &quot;&lt;%2^3%&gt;&quot;
-
-
-		</code>
-	</pre>
+    ## [1] &quot;&lt;%pi%&gt;&quot;  &quot;&lt;%2^3%&gt;&quot;n</code></pre>
 </div>
 ##### has.tags: Tag Existence
 ###### Description:
@@ -3033,13 +2808,8 @@ elements)</p>
 ###### Returned value:
 <p>a string with catenated vector contents</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
-p(c(&quot;fee&quot;, &quot;fi&quot;, &quot;foo&quot;, &quot;fam&quot;))
-## [1] &quot;_fee_, _fi_, _foo_ and _fam_&quot;
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">p(c(&quot;fee&quot;, &quot;fi&quot;, &quot;foo&quot;, &quot;fam&quot;))
+## [1] &quot;_fee_, _fi_, _foo_ and _fam_&quot;</code></pre>
 </div>
 ##### print.rapport: Prints rapport
 ###### Description:
@@ -3084,19 +2854,11 @@ p(c(&quot;fee&quot;, &quot;fi&quot;, &quot;foo&quot;, &quot;fam&quot;))
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;)
+<div class="highlight"><pre><code class="r">rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;)
 print(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;), metadata=T)
 print(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;), metadata=T, inputs=T)
 print(rapport(&apos;example&apos;, data=mtcars, x=&apos;hp&apos;, y=&apos;mpg&apos;), metadata=T, inputs=T)
-print(rapport(&apos;example&apos;, data=mtcars, x=&apos;hp&apos;, y=&apos;mpg&apos;), metadata=T, inputs=T, body=F)
-
-
-		</code>
-	</pre>
+print(rapport(&apos;example&apos;, data=mtcars, x=&apos;hp&apos;, y=&apos;mpg&apos;), metadata=T, inputs=T, body=F)n</code></pre>
 </div>
 ##### print.rp.header: Print Template Header
 ###### Description:
@@ -3336,16 +3098,8 @@ details)
 ###### Returned value:
 <p>a character value with variable&apos;s label</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-	rp.label(mtcars$am)
-	x &lt;- 1:10; rp.label(x)
-
-
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">	rp.label(mtcars$am)
+	x &lt;- 1:10; rp.label(x)n</code></pre>
 </div>
 ##### rp.label-set: Set variable label
 ###### Description:
@@ -3375,16 +3129,8 @@ variable label</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-    rp.label(mtcars$mpg) &lt;- &quot;fuel consumption&quot;
-    x &lt;- rnorm(100); ( rp.label(x) &lt;- &quot;pseudo-random normal variable&quot; )
-
-
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">    rp.label(mtcars$mpg) &lt;- &quot;fuel consumption&quot;
+    x &lt;- rnorm(100); ( rp.label(x) &lt;- &quot;pseudo-random normal variable&quot; )n</code></pre>
 </div>
 ##### rp.name: Get variable name
 ###### Description:
@@ -3407,16 +3153,8 @@ variable label</p>
 ###### Returned value:
 <p>a character value with variable&apos;s label</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-rp.name(mtcars$am)
-x &lt;- 1:10; rp.name(x)
-
-
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">rp.name(mtcars$am)
+x &lt;- 1:10; rp.name(x)n</code></pre>
 </div>
 ##### rp.prettyascii: Return pretty ascii form
 ###### Description:
@@ -3439,19 +3177,11 @@ x &lt;- 1:10; rp.name(x)
 ###### Returned value:
 <p>ascii</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-rp.prettyascii(&apos;Hallo, World?&apos;)
+<div class="highlight"><pre><code class="r">rp.prettyascii(&apos;Hallo, World?&apos;)
 rp.prettyascii(22/7)
 rp.prettyascii(matrix(runif(25), 5, 5))
-rp.prettyascii(lm(hp~wt, mtcars))
-
-
-
-		</code>
-	</pre>
+rp.prettyascii(lm(hp~wt, mtcars))n
+</code></pre>
 </div>
 ##### rp.round: Round numeric values
 ###### Description:
@@ -3490,15 +3220,9 @@ values correspond to the current default penalty.
 ###### Returned value:
 <p>character vector of rounded value(s)</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
-{
-	rp.round(22/7)
+<div class="highlight"><pre><code class="r">	rp.round(22/7)
 	rp.round(matrix(runif(9),3,3))
-}
-		</code>
-	</pre>
+}</code></pre>
 </div>
 ##### table.json: Convert table-like structures to JSON object
 ###### Description:
@@ -3562,19 +3286,9 @@ table body</p>
  attributes.
 </p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-    table.json(mtcars)
-
-    set.seed(1)
+<div class="highlight"><pre><code class="r">    table.json(mtcars)n    set.seed(1)
     m &lt;- matrix(sample(10, 100, TRUE), 10)
-    table.json(m)
-
-
-		</code>
-	</pre>
+    table.json(m)n</code></pre>
 </div>
 ##### tags.misplaced: Misplaced Tags
 ###### Description:
@@ -3731,19 +3445,9 @@ chunks</p>
  with 3 columns:
 </p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-    fp &lt;- system.file(&quot;templates&quot;, &quot;example.tpl&quot;, package = &quot;rapport&quot;)
-    tpl.elem(fp) # returns all elements (headings, blocks and chunks)
-
-    ## returns only code chunks
-    tpl.elem(fp, extract = &quot;chunk&quot;)
-
-
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">    fp &lt;- system.file(&quot;templates&quot;, &quot;example.tpl&quot;, package = &quot;rapport&quot;)
+    tpl.elem(fp) # returns all elements (headings, blocks and chunks)n    ## returns only code chunks
+    tpl.elem(fp, extract = &quot;chunk&quot;)n</code></pre>
 </div>
 ##### tpl.example: Template Examples
 ###### Description:
@@ -3780,19 +3484,11 @@ all examples.</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-tpl.example(&apos;example&apos;)
+<div class="highlight"><pre><code class="r">tpl.example(&apos;example&apos;)
 tpl.example(&apos;crosstable&apos;)
 tpl.export(tpl.example(&apos;crosstable&apos;))
 tpl.example(&apos;example&apos;, 1:2)
-tpl.example(&apos;example&apos;, &apos;all&apos;)
-
-
-		</code>
-	</pre>
+tpl.example(&apos;example&apos;, &apos;all&apos;)n</code></pre>
 </div>
 ##### tpl.export.backends: tpl.export.backends
 ###### Description:
@@ -3912,20 +3608,11 @@ report. If not set, current time will be set.</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-
-## eval some template
-x &lt;- rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;hp&quot;)
-
-## try basic parameters
+<div class="highlight"><pre><code class="r"> n## eval some template
+x &lt;- rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;hp&quot;)n## try basic parameters
 tpl.export(x)
 tpl.export(x, file=&apos;demo&apos;)
-tpl.export(x, file=&apos;demo&apos;, format=&apos;odt&apos;)
-
-### append reports
+tpl.export(x, file=&apos;demo&apos;, format=&apos;odt&apos;)n### append reports
 # 1) Create a report object with the first report and do not export (optional)
 report &lt;- tpl.export(x, create=F)
 # 2) Append some other reports without exporting (optional)
@@ -3933,25 +3620,15 @@ report &lt;- tpl.export(x, create=F, append=report)
 # 3) Export it!
 tpl.export(append=report)
 # 4) Export it to other formats too! (optional)
-tpl.export(append=report, format=&apos;rst&apos;)
-
-### exporting multiple reports at once
+tpl.export(append=report, format=&apos;rst&apos;)n### exporting multiple reports at once
 tpl.export(tpl.example(&apos;example&apos;, &apos;all&apos;))
 tpl.export(tpl.example(&apos;example&apos;, &apos;all&apos;), format=&apos;odt&apos;)
 tpl.export(list(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;hp&quot;),
-    rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;mpg&quot;)))
-
-### Never do this as being dumb:
-tpl.export()
-
-### Adding own custom CSS to exported HTML
+    rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;mpg&quot;)))n### Never do this as being dumb:
+tpl.export()n### Adding own custom CSS to exported HTML
 tpl.export(x, options=sprintf(&apos;-c %s&apos;, system.file(&apos;templates/css/default.css&apos;, package=&apos;rapport&apos;)))
 ## For other formats check out backend specific documentation!
-## Eg. pandoc uses &quot;--reference-odt&quot; as styles reference for odt exports.
-
-
-		</code>
-	</pre>
+## Eg. pandoc uses &quot;--reference-odt&quot; as styles reference for odt exports.n</code></pre>
 </div>
 ##### tpl.find: Read Template
 ###### Description:
@@ -4074,17 +3751,9 @@ character vector with template lines</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-tpl.info(&apos;example&apos;)  # return both metadata and inputs
+<div class="highlight"><pre><code class="r">tpl.info(&apos;example&apos;)  # return both metadata and inputs
 tpl.info(&apos;crosstable&apos;, inputs = FALSE)  # return only template metadata
-tpl.info(&apos;correlations&apos;, meta = FALSE)  # return only template inputs
-
-
-		</code>
-	</pre>
+tpl.info(&apos;correlations&apos;, meta = FALSE)  # return only template inputsn</code></pre>
 </div>
 ##### tpl.inputs: Template Inputs
 ###### Description:
@@ -4146,15 +3815,7 @@ header section is provided in
 ###### Returned value:
 <p>a character vector with template files</p>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-tpl.list()
-
-
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">tpl.list()n</code></pre>
 </div>
 ##### tpl.meta: Header Metadata
 ###### Description:
@@ -4244,15 +3905,7 @@ extraction</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight">
-	<pre>
-		<code class="r">
- 
-tmp &lt;- rapport(&quot;example&quot;, mtcars, x = &quot;hp&quot;, y = &quot;mpg&quot;)
-tpl.rerun(tmp)
-
-
-		</code>
-	</pre>
+<div class="highlight"><pre><code class="r">tmp &lt;- rapport(&quot;example&quot;, mtcars, x = &quot;hp&quot;, y = &quot;mpg&quot;)
+tpl.rerun(tmp)n</code></pre>
 </div>
 
