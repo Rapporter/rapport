@@ -5,14 +5,16 @@ library(devtools)
 install_github('rapport', 'aL3xa')
 {% endhighlight %}
 
-*Rapport* heavily uses the following [R](http://www.r-project.org/) packages:
- * ascii,
- * evaluate,
- * lattice,
- * moments,
- * RColorBrewer,
- * reshape,
- * RJSONIO.
+*Rapport* heavily uses the following [R](http://www.r-project.org/) packages\*:
+ * [ascii](http://cran.r-project.org/web/packages/ascii/index.html) by David Hajage, 
+ * [evaluate](http://cran.r-project.org/web/packages/evaluate/index.html) by Hadley Wickham,
+ * [lattice](http://cran.r-project.org/web/packages/lattice/index.html) by Deepayan Sarkar,
+ * [moments](http://cran.r-project.org/web/packages/moments/index.html) by Lukasz Komsta,
+ * [RColorBrewer](http://cran.r-project.org/web/packages/RColorBrewer/index.html) by Erich Neuwirth,
+ * [reshape](http://cran.r-project.org/web/packages/reshape/index.html) by Hadley Wickham and
+ * [RJSONIO](http://cran.r-project.org/web/packages/RJSONIO/index.html) by Duncan Temple Lang.
+
+\*: list was sorted in strict alphabetical order
 
 If you would like to use HTML/odt/pdf export, please install pandoc or other backend for [ascii](http://eusebe.github.com/ascii/).
 
