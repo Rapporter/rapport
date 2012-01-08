@@ -12,9 +12,9 @@
 }
 \description{
   This function checks if given expression generates a
-  plot. See <a
-  href="http://stackoverflow.com/a/2744434/457898">original
-  thread</a> for more details.
+  plot. See original thread for more details
+  (\url{http://stackoverflow.com/a/2744434/457898}). Thanks
+  for this one, Hadley Wickam!
 }
 \examples{
 \dontrun{

@@ -1,8 +1,8 @@
-\name{print.rp.header}
-\alias{print.rp.header}
+\name{print.rp.info}
+\alias{print.rp.info}
 \title{Print Template Header}
 \usage{
-  print.rp.header(x, type = c("text", "pandoc"))
+  print.rp.info(x, type = c("text", "pandoc"))
 }
 \arguments{
   \item{x}{object of class \code{rp.header}. See

@@ -173,7 +173,7 @@ print.rapport <- function(x, metadata=FALSE, inputs=FALSE, body=TRUE) {
         for (part in x$report) {
             cat('\n')
             switch(part$type,
-                   'chunk' = {
+                   'block' = {
                        ## if (part$robjects[[1]]$type == 'error')   ## error handling done in \code{rapport}
                        ##    cat(part$robjects[[1]]$msg$errors)     ##
                        if (!is.null(part$robjects[[1]]$output)) {

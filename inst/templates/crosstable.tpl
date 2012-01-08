@@ -4,8 +4,8 @@ Author:       Gergely Daróczi
 Email:        gergely@snowl.net
 Description:  Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table. 
 Packages:     descr
-Example:      rapport('crosstable', data=ius2009, row='gender', col='dwell')
-              rapport('crosstable', data=ius2009, row='email', col='dwell')
+Example:      rapport('crosstable', data=ius2008, row='gender', col='dwell')
+              rapport('crosstable', data=ius2008, row='email', col='dwell')
 row           | factor | Row variable        | A categorical variable.
 col           | factor | Column variable     | A categorical variable. 
 head-->

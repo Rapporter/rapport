@@ -31,7 +31,7 @@ alike.integer <- function(x){
 
 ##' Check plot creation
 ##'
-##' This function checks if given expression generates a plot. See <a href="http://stackoverflow.com/a/2744434/457898">original thread</a> for more details.
+##' This function checks if given expression generates a plot. See original thread for more details (\url{http://stackoverflow.com/a/2744434/457898}). Thanks for this one, Hadley Wickam!
 ##' @param cmd an expression that is to be tested
 ##' @return a logical value
 ##' @author <a href="http://had.co.nz/">Hadley Wickham</a>
@@ -41,13 +41,6 @@ alike.integer <- function(x){
 ##' }
 ##' @export
 makes.plot <- function(cmd){
-
-    if (missing(cmd))
-        stop("plot command missing")
-
-    if (character(cmd)){
-
-    }
 
     before <- .Internal(getSnapshot())
     force(cmd)

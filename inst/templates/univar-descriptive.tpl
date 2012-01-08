@@ -4,8 +4,8 @@ Author: Gergely Daróczi
 Email: gergely@snowl.net
 Description: This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable. 
 Packages: 
-Example:    rapport('univar-descriptive', data=ius2009, var='gender')
-            rapport('univar-descriptive', data=ius2009, var='age')
+Example:    rapport('univar-descriptive', data=ius2008, var='gender')
+            rapport('univar-descriptive', data=ius2008, var='age')
 var          | variable | Variable        | A categorical or numerical variable. The template will determine the measurement level of the given variable and will return a detailed frequency table or appropriate descriptive statistics for numerics. 
 head-->
 

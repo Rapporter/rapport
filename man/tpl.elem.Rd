@@ -34,16 +34,16 @@
   relevant template elements: \code{ind} - indice of
   current element in template's body, \code{type} - a
   string indicating the type of the content ("heading",
-  "block" or "chunk"), and \code{chunk} - a string
+  "inline" or "block"), and \code{chunk} - a string
   containing R expression found in a code chunk.
 }
 \examples{
 \dontrun{
     fp <- system.file("templates", "example.tpl", package = "rapport")
-    tpl.elem(fp) # returns all elements (headings, blocks and chunks)
+    tpl.elem(fp) # returns all elements (headings, inlines and blocks)
 
-    ## returns only code chunks
-    tpl.elem(fp, extract = "chunk")
+    ## returns only code blocks
+    tpl.elem(fp, extract = "block")
 }
 }
 
