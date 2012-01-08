@@ -320,7 +320,7 @@ tpl.rerun <- function(tpl){
 
 ##' Template Elements
 ##'
-##' Returns a \code{data.frame} containing summary of relevant template elements: \code{ind} - indice of current element in template's body, \code{type} - a string indicating the type of the content ("heading", "block" or "chunk"), and \code{chunk} - a string containing R expression found in a code chunk.
+##' Returns a \code{data.frame} containing summary of relevant template elements: \code{ind} - indice of current element in template's body, \code{type} - a string indicating the type of the content ("heading", "inline" or "block"), and \code{chunk} - a string containing R expression found in a code chunk.
 ##' @param fp a string containing a path to template, or a character vector with template lines
 ##' @param extract a string indicating which elements should be extracted from the template: headings, blocks, or code chunks (by default it returns all of the above)
 ##' @param use.body a logical value indicating whether the whole template should be used, or just its body
@@ -330,10 +330,10 @@ tpl.rerun <- function(tpl){
 ##' @return a \code{data.frame} with 3 columns:
 ##' @examples \dontrun{
 ##'     fp <- system.file("templates", "example.tpl", package = "rapport")
-##'     tpl.elem(fp) # returns all elements (headings, blocks and chunks)
+##'     tpl.elem(fp) # returns all elements (headings, inlines and blocks)
 ##'
-##'     ## returns only code chunks
-##'     tpl.elem(fp, extract = "chunk")
+##'     ## returns only code blocks
+##'     tpl.elem(fp, extract = "block")
 ##' }
 tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.body = FALSE, skip.blank.lines = TRUE, skip.r.comments = FALSE, ...){
 
@@ -427,9 +427,11 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
 ##' This is a generic method that evaluates R code found in \code{rapport} template elements. Currently there are two types of template elements: \code{blocks} of R code (similar to chunks in \code{Sweave}) or \code{inline} elements.
 ##' @param x either a list with character vector
 ##' @param ... additional arguments passed to other evaluation methods
+##' @export
 elem.eval <- function(x, ...)  UseMethod('elem.eval')
 
 
+##' @export
 elem.eval.rp.block <- function(x, ...){
 
     list(
@@ -439,6 +441,7 @@ elem.eval.rp.block <- function(x, ...){
 }
 
 
+##' @export
 elem.eval.default <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, ...){
 
     stopifnot(is.string(x))

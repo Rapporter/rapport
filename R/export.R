@@ -103,7 +103,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
 
     r$backend <- backend
     r$format <- format
-    
+
     ## header stuff #############################################BUG
     if (!is.null(rp))
         if(class(rp) == 'rapport') {
@@ -111,17 +111,17 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                 r$addSection('Description', 2)
                 r$add(paragraph(as.character(rp$metadata['desc'])))
             }
-        
+
             ## body
             lapply(rp$report, function(x) {
                 if (x$type=='heading') r$addSection(x$text$eval, 2+x$level)
-                if (x$type=='block')
+                if (x$type=='inline')
                     r$add(paragraph(ifelse(is.null(unlist(x$chunks$raw)),
                                            unlist(x$text$raw),
                                            unlist(x$text$eval))
                                     )
                           )
-                if (x$type=='chunk' & !is.null(x$robjects[[1]]$type)) {
+                if (x$type=='block' & !is.null(x$robjects[[1]]$type)) {
                     ## if (any(x$robjects[[1]]$type == 'error'))        # error handling is done in rapport
                     ##     r$add(paragraph(as.character(x$robjects[[1]]$msg$errors)))
                     if (any(x$robjects[[1]]$type == 'image')) r$addFig(file=x$robjects[[1]]$output)    # no nested rapport classes (halleluja)
