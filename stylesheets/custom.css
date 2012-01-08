@@ -10,6 +10,7 @@ h6 {
     font-size: 16px;
     margin-bottom: 5px;
     margin-top: 5px;
+#    padding-bottom: 5px;
 }
 p, table {
     margin-left: 20px;
@@ -17,7 +18,8 @@ p, table {
 }
 code {
     background-color: whiteSmoke;
-    padding: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
     border: solid 1px #DDD;
 }
 .highlight {
@@ -38,10 +40,6 @@ code {
 .content li {
 	list-style-type:circle;
 	margin-left: 40px;
-}
-
-h6 {
-	padding-bottom: 5px;
 }
 
 .options {
@@ -86,7 +84,7 @@ ul.tabs li {
 		width: 160px; }
 	#logo {
 		margin-bottom: 20px;
-		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		# font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 		letter-spacing: -1px;
 		font-weight: bold; }
 	nav ul {
@@ -109,7 +107,7 @@ ul.tabs li {
 		line-height: 61px;
 		letter-spacing: -1px;
 		font-weight: normal;
-		font-family: "Georgia", "Times New Roman", Helvetica, Arial, sans-serif; }
+		# font-family: "Georgia", "Times New Roman", Helvetica, Arial, sans-serif; }
 	hr.large {
 		border: none;
 		height: 8px;
