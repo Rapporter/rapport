@@ -123,7 +123,7 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
     if (inputs)
         res$inputs <- tpl.inputs(h, use.header = TRUE)
 
-    class(res) <- 'rp.header'
+    class(res) <- 'rp.info'
     return(res)
 }
 
@@ -267,6 +267,11 @@ tpl.example <- function(fp, index = NULL) {
         }
     } else {
         index <- 1
+    }
+
+    if (length(index) == 0){
+        message('No example selected')
+        return(invisible(NULL))
     }
 
     if (length(index) == 1 && index == 'all')

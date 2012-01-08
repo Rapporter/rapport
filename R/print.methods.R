@@ -15,7 +15,7 @@ is.rapport <- function(x)  inherits(x, 'rapport')
 ##' @export
 print.rp.meta <- function(x, type = c('text', 'pandoc')){
 
-    ind <- c('title', 'author', 'email', 'desc')
+    ind <- c('title', 'author', 'email', 'desc', 'example')
     other.meta <- x[!names(x) %in% ind]
     fn <- function(x){
         titles <- names(x)
@@ -29,7 +29,8 @@ print.rp.meta <- function(x, type = c('text', 'pandoc')){
                     sprintf('\n`%s`\n\n', x$title),
                     sprintf('by %s%s\n\n', x$author, ifelse(is.null(x$email), '', sprintf(' (%s)', x$email))),
                     sprintf('%s\n', x$desc),
-                    fn(other.meta)
+                    fn(other.meta),
+                    sprintf('\n %s', c('Examples:', x$example))
                     )
            },
            pandoc = {
@@ -37,7 +38,8 @@ print.rp.meta <- function(x, type = c('text', 'pandoc')){
                     sprintf('\n# %s\n\n', x$title),
                     sprintf('by `@%s`\n\n', x$author, ifelse(is.null(x$email), '', sprintf(' (%s)', x$email))),
                     sprintf('_%s_\n', x$desc),
-                    fn(other.meta)
+                    fn(other.meta),
+                    sprintf('\n%s', c('Examples:', x$example))
                     )
            },
            stop('unknown metadata print type')
@@ -117,9 +119,14 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
 ##' @param x object of class \code{rp.header}. See \code{\link{tpl.header}} for details.
 ##' @param type a string with output format. Defaults to plain text output.
 ##' @export
-print.rp.header <- function(x, type = c('text', 'pandoc')){
+print.rp.info <- function(x, type = c('text', 'pandoc')){
 
-    lapply(x, print, type = match.arg(type)) # once a cheater, always a cheater
+    tp <- match.arg(type)
+
+    sapply(x, function(x){
+        print(x, type = tp)
+        invisible(x)
+    })
 }
 
 
