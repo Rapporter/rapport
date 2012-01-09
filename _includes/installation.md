@@ -7,7 +7,7 @@ install_github('rapport', 'aL3xa')
 
 Or download the [sources in a zip file](https://github.com/aL3xa/rapport/zipball/master) and build manually. To do so, please unzip the file to an empty dir and run the following commands there:
 
-{% highlight plain %}
+{% highlight r %}
 R CMD build rapport
 R CMD INSTALL rapport_0.1.tar.gz
 {% endhighlight %}
