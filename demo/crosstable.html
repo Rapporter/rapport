@@ -3,22 +3,45 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="(Username not set) (E-mail address not set)" />
+  <meta name="author" content="Rapport package team @ https://github.com/aL3xa/rapport" />
   <meta name="date" content="2011-04-26 20:25 CET" />
   <title>Crosstable</title>
-  <link rel="stylesheet" type="text/css" href="css/default.css">
-  <script type="text/javascript" src="js/default.js"></script>
+  <!--<link rel="stylesheet" type="text/css" href="css/default.css">
+  <script type="text/javascript" src="js/default.js"></script>-->
+  
+  	<!--[if lt IE 9]>
+  		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  
+  	<link rel="stylesheet" href="stylesheets/base.css">
+  	<link rel="stylesheet" href="stylesheets/skeleton.css">
+  	<link rel="stylesheet" href="stylesheets/layout.css">
+  	<link rel="stylesheet" href="stylesheets/fonts.css">
+  	<link rel="stylesheet" href="stylesheets/custom.css">
+  
+  	<link rel="shortcut icon" href="images/favicon.ico">
+  	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+  	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  
+  	<script src="javascripts/jquery-1.7.1.min.js"></script>
+  	<script src="javascripts/nav.js"></script>
+  	<script src="javascripts/tabs.js"></script>
 </head>
 <body>
 <div id="header">
 <h1 class="title">Crosstable</h1>
-<h3 class="author">(Username not set) (E-mail address not set)</h3>
+<h3 class="author">Rapport package team @ https://github.com/aL3xa/rapport</h3>
 <h4 class="date">2011-04-26 20:25 CET</h4>
 </div>
 <h2 id="description">Description</h2>
 <p>Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.</p>
 <h3 id="variable-description">Variable description</h3>
-<p>Two variables specified: * &quot;gender&quot; (&quot;Gender&quot;) with 709 and * &quot;dwell&quot; (&quot;Dwelling&quot;) with 709 valid values.</p>
+<p>Two variables specified:</p>
+<ul>
+<li>&quot;gender&quot; (&quot;Gender&quot;) with 709 and</li>
+<li>&quot;dwell&quot; (&quot;Dwelling&quot;) with 709 valid values.</li>
+</ul>
 <h3 id="counts">Counts</h3>
 <table>
 <thead>
@@ -168,7 +191,314 @@
 <div class="figure">
 <img src="66ba5aa603e08fec150848bb688f0953.png" /><p class="caption"></p>
 </div>
+<h2 id="description-1">Description</h2>
+<p>Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.</p>
+<h3 id="variable-description-1">Variable description</h3>
+<p>Two variables specified:</p>
+<ul>
+<li>&quot;email&quot; (&quot;Email usage&quot;) with 709 and</li>
+<li>&quot;dwell&quot; (&quot;Dwelling&quot;) with 709 valid values.</li>
+</ul>
+<h3 id="counts-1">Counts</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>city</strong></th>
+<th align="left"><strong>small town</strong></th>
+<th align="left"><strong>village</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">never</td>
+<td align="left">12</td>
+<td align="left">0</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">very rarely</td>
+<td align="left">34</td>
+<td align="left">1</td>
+<td align="left">3</td>
+</tr>
+<tr class="odd">
+<td align="left">rarely</td>
+<td align="left">46</td>
+<td align="left">3</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">sometimes</td>
+<td align="left">76</td>
+<td align="left">6</td>
+<td align="left">8</td>
+</tr>
+<tr class="odd">
+<td align="left">often</td>
+<td align="left">113</td>
+<td align="left">11</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">very often</td>
+<td align="left">106</td>
+<td align="left">5</td>
+<td align="left">5</td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td align="left">255</td>
+<td align="left">10</td>
+<td align="left">7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="percentages-1">Percentages</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>city</strong></th>
+<th align="left"><strong>small town</strong></th>
+<th align="left"><strong>village</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">never</td>
+<td align="left">0.0169</td>
+<td align="left">0.0000</td>
+<td align="left">0.0014</td>
+</tr>
+<tr class="even">
+<td align="left">very rarely</td>
+<td align="left">0.0480</td>
+<td align="left">0.0014</td>
+<td align="left">0.0042</td>
+</tr>
+<tr class="odd">
+<td align="left">rarely</td>
+<td align="left">0.0649</td>
+<td align="left">0.0042</td>
+<td align="left">0.0028</td>
+</tr>
+<tr class="even">
+<td align="left">sometimes</td>
+<td align="left">0.1072</td>
+<td align="left">0.0085</td>
+<td align="left">0.0113</td>
+</tr>
+<tr class="odd">
+<td align="left">often</td>
+<td align="left">0.1594</td>
+<td align="left">0.0155</td>
+<td align="left">0.0071</td>
+</tr>
+<tr class="even">
+<td align="left">very often</td>
+<td align="left">0.1495</td>
+<td align="left">0.0071</td>
+<td align="left">0.0071</td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td align="left">0.3597</td>
+<td align="left">0.0141</td>
+<td align="left">0.0099</td>
+</tr>
+</tbody>
+</table>
+<h4 id="row-percentages-1">Row percentages</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>city</strong></th>
+<th align="left"><strong>small town</strong></th>
+<th align="left"><strong>village</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">never</td>
+<td align="left">0.9231</td>
+<td align="left">0.0000</td>
+<td align="left">0.0769</td>
+</tr>
+<tr class="even">
+<td align="left">very rarely</td>
+<td align="left">0.8947</td>
+<td align="left">0.0263</td>
+<td align="left">0.0789</td>
+</tr>
+<tr class="odd">
+<td align="left">rarely</td>
+<td align="left">0.9020</td>
+<td align="left">0.0588</td>
+<td align="left">0.0392</td>
+</tr>
+<tr class="even">
+<td align="left">sometimes</td>
+<td align="left">0.8444</td>
+<td align="left">0.0667</td>
+<td align="left">0.0889</td>
+</tr>
+<tr class="odd">
+<td align="left">often</td>
+<td align="left">0.8760</td>
+<td align="left">0.0853</td>
+<td align="left">0.0388</td>
+</tr>
+<tr class="even">
+<td align="left">very often</td>
+<td align="left">0.9138</td>
+<td align="left">0.0431</td>
+<td align="left">0.0431</td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td align="left">0.9375</td>
+<td align="left">0.0368</td>
+<td align="left">0.0257</td>
+</tr>
+</tbody>
+</table>
+<h4 id="column-percentages-1">Column percentages</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>city</strong></th>
+<th align="left"><strong>small town</strong></th>
+<th align="left"><strong>village</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">never</td>
+<td align="left">0.0187</td>
+<td align="left">0.0000</td>
+<td align="left">0.0323</td>
+</tr>
+<tr class="even">
+<td align="left">very rarely</td>
+<td align="left">0.0530</td>
+<td align="left">0.0278</td>
+<td align="left">0.0968</td>
+</tr>
+<tr class="odd">
+<td align="left">rarely</td>
+<td align="left">0.0717</td>
+<td align="left">0.0833</td>
+<td align="left">0.0645</td>
+</tr>
+<tr class="even">
+<td align="left">sometimes</td>
+<td align="left">0.1184</td>
+<td align="left">0.1667</td>
+<td align="left">0.2581</td>
+</tr>
+<tr class="odd">
+<td align="left">often</td>
+<td align="left">0.1760</td>
+<td align="left">0.3056</td>
+<td align="left">0.1613</td>
+</tr>
+<tr class="even">
+<td align="left">very often</td>
+<td align="left">0.1651</td>
+<td align="left">0.1389</td>
+<td align="left">0.1613</td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td align="left">0.3972</td>
+<td align="left">0.2778</td>
+<td align="left">0.2258</td>
+</tr>
+</tbody>
+</table>
+<h3 id="chi-squared-test-1">Chi-squared test</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>X-squared</strong></th>
+<th align="left"><strong>df</strong></th>
+<th align="left"><strong>p-value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">X-squared</td>
+<td align="left">14.37</td>
+<td align="left">12.00</td>
+<td align="left">0.28</td>
+</tr>
+</tbody>
+</table>
+<p>It seems that no real association can be pointed out between <em>email</em> and <em>dwell</em> by the <em>Pearson's Chi-squared test</em> (χ=14.366 at the degree of freedom being 12) at the significance level of 0.2779. For this end no other statistical tests were performed.</p>
+<h4 id="pearsons-residuals-1">Pearson's residuals</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>city</strong></th>
+<th align="left"><strong>small town</strong></th>
+<th align="left"><strong>village</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">never</td>
+<td align="left">0.2187</td>
+<td align="left">-0.8417</td>
+<td align="left">0.5908</td>
+</tr>
+<tr class="even">
+<td align="left">very rarely</td>
+<td align="left">-0.2332</td>
+<td align="left">-0.7060</td>
+<td align="left">1.0915</td>
+</tr>
+<tr class="odd">
+<td align="left">rarely</td>
+<td align="left">-0.0897</td>
+<td align="left">0.2717</td>
+<td align="left">-0.1634</td>
+</tr>
+<tr class="even">
+<td align="left">sometimes</td>
+<td align="left">-2.1192</td>
+<td align="left">0.7349</td>
+<td align="left">2.2426</td>
+</tr>
+<tr class="odd">
+<td align="left">often</td>
+<td align="left">-1.2678</td>
+<td align="left">1.9731</td>
+<td align="left">-0.3048</td>
+</tr>
+<tr class="even">
+<td align="left">very often</td>
+<td align="left">0.3338</td>
+<td align="left">-0.4116</td>
+<td align="left">-0.0357</td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td align="left">2.2980</td>
+<td align="left">-1.3407</td>
+<td align="left">-1.8480</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mosaic-chart-1">Mosaic chart</h4>
+<div class="figure">
+<img src="b26fc463113e2f16bc930c620677e929.png" /><p class="caption"></p>
+</div>
 <hr>
-<p align="center">This report was generated in <a href="http://www.r-project.org/">R</a> with <a href="http://cran.r-project.org/package=rapport">Rapport</a>. Feel free to create <a href="http://link to github wiki: writing templates">your own reporting templates</a>!</p>
+<p align="center">This report was generated in <a href="http://www.r-project.org/">R</a> with <a href="http://al3xa.github.com/rapport/">Rapport</a>. Feel free to create <a href="http://al3xa.github.com/rapport/#custom">your own reporting templates</a>!</p>
 </body>
 </html>

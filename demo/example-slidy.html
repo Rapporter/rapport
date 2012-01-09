@@ -5,7 +5,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="(Username not set) (E-mail address not set)" />
+  <meta name="author" content="Rapport package team @ https://github.com/aL3xa/rapport" />
   <meta name="date" content="2011-04-26 20:25 CET" />
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
@@ -14,424 +14,74 @@
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">example script</h1>
+  <h1 class="title">Example template</h1>
   <p class="author">
-(Username not set) (E-mail address not set)
+Rapport package team @ https://github.com/aL3xa/rapport
   </p>
   <p class="date">2011-04-26 20:25 CET</p>
 </div>
 <div class="slide">
 <h2 id="description">Description</h2>
-<p>A simple report.</p>
-<h3 id="descriptive-statistics">Descriptive statistics</h3>
-<p>The average fuel consumption is 20.091 with SD of 6.0269. Let's add one more line to this paragraph. And another one. Now, you've probably heard of <em>pi</em>? Right? Its value is 3.1416.</p>
-<h3 id="graphs">Graphs</h3>
-<p>And some graphs:</p>
-<div class="figure">
-<img src="0ec1f788fe2feb5d233de865b51e9eaf.png" /><p class="caption"></p>
-</div>
-<p>So far we've been dealing with data.frames and plots, now let's deal with variables</p>
-<p>Now we'll see if the Z var is working properly. If I omit it, it should perserve the default value (TRUE)... aaaand.... TRUE.</p>
-<p>OK, so far, so good, but let's see what's going on with code chunks...</p>
+<p>This template demonstrates the basic features of rapport. We all hope you will like it!</p>
+<h3 id="d&#233;but">Début</h3>
+<p>Hello, world!</p>
+<p>I have just specified a <em>Variable</em> in this template named to <strong>leisure</strong>. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.</p>
+<p>And wow, the mean of <em>leisure</em> is 3.2221!</p>
+<h4 id="descriptive-statistics">Descriptive statistics</h4>
 <table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>Min.</strong></th>
+<th align="left"><strong>1st Qu.</strong></th>
+<th align="left"><strong>Median</strong></th>
+<th align="left"><strong>Mean</strong></th>
+<th align="left"><strong>3rd Qu.</strong></th>
+<th align="left"><strong>Max.</strong></th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td align="left">-0.7233</td>
-<td align="left">0.4846</td>
-<td align="left">1.1837</td>
-<td align="left">-1.1286</td>
-<td align="left">0.7626</td>
-<td align="left">-0.2007</td>
-<td align="left">0.8247</td>
-<td align="left">2.0190</td>
-<td align="left">-1.1185</td>
-<td align="left">0.2930</td>
-</tr>
-<tr class="even">
-<td align="left">-0.4760</td>
-<td align="left">0.3876</td>
-<td align="left">-1.3727</td>
-<td align="left">-0.7365</td>
-<td align="left">-0.5195</td>
-<td align="left">-0.5273</td>
-<td align="left">-0.8474</td>
-<td align="left">0.8597</td>
-<td align="left">1.2813</td>
-<td align="left">-0.9687</td>
-</tr>
-<tr class="odd">
-<td align="left">-1.1426</td>
-<td align="left">-0.5208</td>
-<td align="left">0.1674</td>
-<td align="left">1.6176</td>
-<td align="left">-0.4365</td>
-<td align="left">-0.8570</td>
-<td align="left">-1.2663</td>
-<td align="left">0.0950</td>
-<td align="left">1.2360</td>
-<td align="left">0.0432</td>
-</tr>
-<tr class="even">
-<td align="left">2.5510</td>
-<td align="left">-1.9335</td>
-<td align="left">0.7801</td>
-<td align="left">0.5611</td>
-<td align="left">0.8377</td>
-<td align="left">-0.6773</td>
-<td align="left">1.0799</td>
-<td align="left">-0.3940</td>
-<td align="left">-0.7981</td>
-<td align="left">-1.1803</td>
-</tr>
-<tr class="odd">
-<td align="left">0.2170</td>
-<td align="left">0.5017</td>
-<td align="left">0.2235</td>
-<td align="left">-2.4930</td>
-<td align="left">0.8394</td>
-<td align="left">0.9265</td>
-<td align="left">0.1297</td>
-<td align="left">0.2896</td>
-<td align="left">2.4994</td>
-<td align="left">0.7075</td>
-</tr>
-<tr class="even">
-<td align="left">-0.0047</td>
-<td align="left">-0.4469</td>
-<td align="left">0.6343</td>
-<td align="left">0.1612</td>
-<td align="left">0.1363</td>
-<td align="left">-1.6824</td>
-<td align="left">-0.7752</td>
-<td align="left">0.0451</td>
-<td align="left">-2.1691</td>
-<td align="left">-1.3664</td>
-</tr>
-<tr class="odd">
-<td align="left">-0.6078</td>
-<td align="left">-0.4940</td>
-<td align="left">-0.7693</td>
-<td align="left">1.1545</td>
-<td align="left">-0.2569</td>
-<td align="left">1.1001</td>
-<td align="left">-2.0265</td>
-<td align="left">-0.1971</td>
-<td align="left">0.2023</td>
-<td align="left">-1.4957</td>
-</tr>
-<tr class="even">
-<td align="left">0.1597</td>
-<td align="left">-0.1338</td>
-<td align="left">-0.0163</td>
-<td align="left">-0.6640</td>
-<td align="left">-1.3500</td>
-<td align="left">0.2761</td>
-<td align="left">-1.5970</td>
-<td align="left">-0.9246</td>
-<td align="left">1.2280</td>
-<td align="left">0.8607</td>
-</tr>
-<tr class="odd">
-<td align="left">0.8559</td>
-<td align="left">1.9824</td>
-<td align="left">0.8633</td>
-<td align="left">-0.5892</td>
-<td align="left">-2.0797</td>
-<td align="left">0.3542</td>
-<td align="left">-0.2304</td>
-<td align="left">0.5624</td>
-<td align="left">-0.4461</td>
-<td align="left">0.4142</td>
-</tr>
-<tr class="even">
-<td align="left">0.4493</td>
-<td align="left">-3.0249</td>
-<td align="left">0.1643</td>
-<td align="left">-0.6460</td>
-<td align="left">1.0125</td>
-<td align="left">-1.2532</td>
-<td align="left">0.0074</td>
-<td align="left">0.0643</td>
-<td align="left">0.3017</td>
-<td align="left">0.0577</td>
+<td align="left">1</td>
+<td align="left">0.00</td>
+<td align="left">2.00</td>
+<td align="left">3.00</td>
+<td align="left">3.22</td>
+<td align="left">4.00</td>
+<td align="left">12.00</td>
 </tr>
 </tbody>
 </table>
-<p>When it comes to CSV values, let us see how do they work. You have chosen the &quot;foo&quot;.</p>
+<p>The 5 highest values are: <em>12</em>, <em>12</em>, <em>10</em>, <em>10</em> and <em>10</em>.</p>
 <h2 id="description-1">Description</h2>
-<p>A simple report.</p>
-<h3 id="descriptive-statistics-1">Descriptive statistics</h3>
-<p>The average fuel consumption is 146.69 with SD of 68.563. Let's add one more line to this paragraph. And another one. Now, you've probably heard of <em>pi</em>? Right? Its value is 3.1416.</p>
-<h3 id="graphs-1">Graphs</h3>
-<p>And some graphs:</p>
-<div class="figure">
-<img src="0221aa97b1343432a8450115ebf9089f.png" /><p class="caption"></p>
-</div>
-<p>So far we've been dealing with data.frames and plots, now let's deal with variables</p>
-<p>Now we'll see if the Z var is working properly. If I omit it, it should perserve the default value (TRUE)... aaaand.... TRUE.</p>
-<p>OK, so far, so good, but let's see what's going on with code chunks...</p>
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">-0.3962</td>
-<td align="left">-1.5590</td>
-<td align="left">3.4704</td>
-<td align="left">1.3368</td>
-<td align="left">0.2663</td>
-<td align="left">-0.1400</td>
-<td align="left">0.4214</td>
-<td align="left">-0.1471</td>
-<td align="left">-0.9187</td>
-<td align="left">-1.7328</td>
-</tr>
-<tr class="even">
-<td align="left">-0.6559</td>
-<td align="left">-1.0874</td>
-<td align="left">-0.6273</td>
-<td align="left">0.5882</td>
-<td align="left">-1.5250</td>
-<td align="left">-0.6167</td>
-<td align="left">0.0354</td>
-<td align="left">-0.8753</td>
-<td align="left">0.4180</td>
-<td align="left">-0.4941</td>
-</tr>
-<tr class="odd">
-<td align="left">-0.4818</td>
-<td align="left">-0.1483</td>
-<td align="left">-0.0883</td>
-<td align="left">-1.6596</td>
-<td align="left">0.3462</td>
-<td align="left">0.5981</td>
-<td align="left">0.1383</td>
-<td align="left">0.6230</td>
-<td align="left">0.7428</td>
-<td align="left">0.7190</td>
-</tr>
-<tr class="even">
-<td align="left">0.2829</td>
-<td align="left">-0.6523</td>
-<td align="left">-0.7189</td>
-<td align="left">-2.8530</td>
-<td align="left">0.0879</td>
-<td align="left">-0.3051</td>
-<td align="left">-1.7278</td>
-<td align="left">0.7643</td>
-<td align="left">1.7792</td>
-<td align="left">1.0526</td>
-</tr>
-<tr class="odd">
-<td align="left">0.2223</td>
-<td align="left">0.6517</td>
-<td align="left">1.3913</td>
-<td align="left">0.9833</td>
-<td align="left">-0.5834</td>
-<td align="left">-0.9909</td>
-<td align="left">-0.4537</td>
-<td align="left">-0.6580</td>
-<td align="left">2.3794</td>
-<td align="left">2.0675</td>
-</tr>
-<tr class="even">
-<td align="left">-0.3149</td>
-<td align="left">-0.8477</td>
-<td align="left">-0.5503</td>
-<td align="left">0.9162</td>
-<td align="left">-0.1697</td>
-<td align="left">1.2714</td>
-<td align="left">0.4634</td>
-<td align="left">-0.1064</td>
-<td align="left">-0.1837</td>
-<td align="left">-0.2410</td>
-</tr>
-<tr class="odd">
-<td align="left">0.0710</td>
-<td align="left">0.0065</td>
-<td align="left">-0.3533</td>
-<td align="left">0.8112</td>
-<td align="left">0.1743</td>
-<td align="left">-0.1558</td>
-<td align="left">-0.1437</td>
-<td align="left">1.0345</td>
-<td align="left">-0.1120</td>
-<td align="left">0.7749</td>
-</tr>
-<tr class="even">
-<td align="left">0.8539</td>
-<td align="left">-1.7140</td>
-<td align="left">0.5383</td>
-<td align="left">0.2295</td>
-<td align="left">0.3292</td>
-<td align="left">-0.3990</td>
-<td align="left">1.0702</td>
-<td align="left">-1.1600</td>
-<td align="left">-0.0425</td>
-<td align="left">0.9982</td>
-</tr>
-<tr class="odd">
-<td align="left">1.8481</td>
-<td align="left">-1.9760</td>
-<td align="left">1.9041</td>
-<td align="left">0.2946</td>
-<td align="left">-0.2601</td>
-<td align="left">0.0581</td>
-<td align="left">-1.3820</td>
-<td align="left">0.5470</td>
-<td align="left">-0.0525</td>
-<td align="left">0.2462</td>
-</tr>
-<tr class="even">
-<td align="left">-0.7469</td>
-<td align="left">1.5056</td>
-<td align="left">-0.1318</td>
-<td align="left">1.6810</td>
-<td align="left">1.2991</td>
-<td align="left">0.2174</td>
-<td align="left">0.8966</td>
-<td align="left">0.0914</td>
-<td align="left">-0.3156</td>
-<td align="left">0.9390</td>
-</tr>
-</tbody>
-</table>
-<p>When it comes to CSV values, let us see how do they work. You have chosen the &quot;foo&quot;.</p>
+<p>This template demonstrates the basic features of rapport. We all hope you will like it!</p>
+<h3 id="d&#233;but-1">Début</h3>
+<p>Hello, world!</p>
+<p>I have just specified a <em>Variable</em> in this template named to <strong>leisure</strong>. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.</p>
+<p>And wow, the mean of <em>leisure</em> is 3.2221!</p>
+<p><strong>For more detailed statistics, you should have set <code>desc=TRUE</code>!</strong></p>
 <h2 id="description-2">Description</h2>
-<p>A simple report.</p>
-<h3 id="descriptive-statistics-2">Descriptive statistics</h3>
-<p>The average fuel consumption is 2.0628 with SD of 2.0404. Let's add one more line to this paragraph. And another one. Now, you've probably heard of <em>pi</em>? Right? Its value is 3.1416.</p>
-<h3 id="graphs-2">Graphs</h3>
-<p>And some graphs:</p>
+<p>This template demonstrates the basic features of rapport. We all hope you will like it!</p>
+<h3 id="d&#233;but-2">Début</h3>
+<p>Hello, world!</p>
+<p>I have just specified a <em>Variable</em> in this template named to <strong>leisure</strong>. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.</p>
+<p>And wow, the mean of <em>leisure</em> is 3.2221!</p>
+<p><strong>For more detailed statistics, you should have set <code>desc=TRUE</code>!</strong></p>
+<h4 id="histogram">Histogram</h4>
 <div class="figure">
-<img src="f1891776819c845a6068c59a90f70d8f.png" /><p class="caption"></p>
+<img src="fe9021434b8db586fac253cd0fedbfc2.png" /><p class="caption"></p>
 </div>
-<p>So far we've been dealing with data.frames and plots, now let's deal with variables</p>
-<p>Now we'll see if the Z var is working properly. If I omit it, it should perserve the default value (TRUE)... aaaand.... TRUE.</p>
-<p>OK, so far, so good, but let's see what's going on with code chunks...</p>
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">1.5299</td>
-<td align="left">-0.2729</td>
-<td align="left">2.1052</td>
-<td align="left">-1.9148</td>
-<td align="left">-0.2537</td>
-<td align="left">0.3264</td>
-<td align="left">1.3741</td>
-<td align="left">-0.3369</td>
-<td align="left">0.8517</td>
-<td align="left">0.0286</td>
-</tr>
-<tr class="even">
-<td align="left">0.9124</td>
-<td align="left">-0.0866</td>
-<td align="left">0.2420</td>
-<td align="left">-0.5868</td>
-<td align="left">-1.1475</td>
-<td align="left">-1.7872</td>
-<td align="left">-0.1422</td>
-<td align="left">-1.7004</td>
-<td align="left">1.1141</td>
-<td align="left">-1.0209</td>
-</tr>
-<tr class="odd">
-<td align="left">0.9227</td>
-<td align="left">-1.1400</td>
-<td align="left">0.3641</td>
-<td align="left">0.1442</td>
-<td align="left">0.6264</td>
-<td align="left">1.8114</td>
-<td align="left">0.1281</td>
-<td align="left">0.4555</td>
-<td align="left">1.2501</td>
-<td align="left">0.6140</td>
-</tr>
-<tr class="even">
-<td align="left">-0.1787</td>
-<td align="left">-0.8168</td>
-<td align="left">1.1941</td>
-<td align="left">0.9664</td>
-<td align="left">0.8456</td>
-<td align="left">-0.4854</td>
-<td align="left">0.3648</td>
-<td align="left">0.7771</td>
-<td align="left">-1.6458</td>
-<td align="left">0.2871</td>
-</tr>
-<tr class="odd">
-<td align="left">1.7283</td>
-<td align="left">0.0090</td>
-<td align="left">-0.4299</td>
-<td align="left">-0.4292</td>
-<td align="left">-0.3123</td>
-<td align="left">0.8632</td>
-<td align="left">-0.7604</td>
-<td align="left">0.7302</td>
-<td align="left">-1.2917</td>
-<td align="left">0.4755</td>
-</tr>
-<tr class="even">
-<td align="left">0.7234</td>
-<td align="left">1.4822</td>
-<td align="left">-0.5963</td>
-<td align="left">0.1039</td>
-<td align="left">0.5531</td>
-<td align="left">-0.4504</td>
-<td align="left">-2.0211</td>
-<td align="left">-0.5702</td>
-<td align="left">0.7103</td>
-<td align="left">1.1360</td>
-</tr>
-<tr class="odd">
-<td align="left">1.2239</td>
-<td align="left">0.1094</td>
-<td align="left">0.3881</td>
-<td align="left">-0.5168</td>
-<td align="left">1.7920</td>
-<td align="left">-0.1848</td>
-<td align="left">0.4061</td>
-<td align="left">-0.2263</td>
-<td align="left">1.3268</td>
-<td align="left">-1.7374</td>
-</tr>
-<tr class="even">
-<td align="left">0.3648</td>
-<td align="left">2.3190</td>
-<td align="left">0.6969</td>
-<td align="left">0.5445</td>
-<td align="left">0.7666</td>
-<td align="left">-1.2162</td>
-<td align="left">-0.3891</td>
-<td align="left">0.4663</td>
-<td align="left">-0.0411</td>
-<td align="left">-1.8405</td>
-</tr>
-<tr class="odd">
-<td align="left">-1.2790</td>
-<td align="left">0.7390</td>
-<td align="left">-0.5244</td>
-<td align="left">-1.0051</td>
-<td align="left">2.1517</td>
-<td align="left">-0.9225</td>
-<td align="left">-0.3475</td>
-<td align="left">0.9721</td>
-<td align="left">0.0728</td>
-<td align="left">1.8239</td>
-</tr>
-<tr class="even">
-<td align="left">0.0528</td>
-<td align="left">0.4392</td>
-<td align="left">0.0117</td>
-<td align="left">0.1516</td>
-<td align="left">-1.5187</td>
-<td align="left">-2.0555</td>
-<td align="left">-0.5169</td>
-<td align="left">-0.2793</td>
-<td align="left">-0.2679</td>
-<td align="left">0.9850</td>
-</tr>
-</tbody>
-</table>
-<p>When it comes to CSV values, let us see how do they work. You have chosen the &quot;foo&quot;.</p>
+<h2 id="description-3">Description</h2>
+<p>This template demonstrates the basic features of rapport. We all hope you will like it!</p>
+<h3 id="d&#233;but-3">Début</h3>
+<p>Hello, world!</p>
+<p>I have just specified a <em>Variable</em> in this template named to <strong>leisure</strong>. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.</p>
+<p>And wow, the mean of <em>leisure</em> is 3.2221!</p>
+<p><strong>For more detailed statistics, you should have set <code>desc=TRUE</code>!</strong></p>
+<h4 id="histogram-1">Histogram</h4>
+<div class="figure">
+<img src="3f5075e30419f077ee974a022dd89e33.png" /><p class="caption"></p>
+</div>
 </div>
 </body>
 </html>

@@ -5,8 +5,8 @@
   <articleinfo>
     <title>Outlier test</title>
     <author>
-      <firstname>(Username not set) (E-mail address not</firstname>
-      <surname>set)</surname>
+      <firstname>Rapport package team @</firstname>
+      <surname>https://github.com/aL3xa/rapport</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -38,7 +38,7 @@
       <title>Explanation</title>
       <para>
         The above test for outliers was based on <emphasis>lm(1 ~
-        it.edu)</emphasis>:
+        edu)</emphasis>:
       </para>
       <informaltable>
         <tgroup cols="5">
@@ -86,113 +86,6 @@
           </tbody>
         </tgroup>
       </informaltable>
-    </section>
-    <section id="the-residuals-returned">
-      <title>The residuals returned:</title>
-      <para>
-        -0.0308, 2.9119, -0.2760, -0.5212, -0.5212, -0.7665, -1.0117,
-        -0.2760, -0.5212, 1.4406, -0.5212, 0.9501, 3.8929, -0.0308,
-        -0.5212, -0.7665, -0.0308, 1.4406, -0.5212, 0.4597, 1.9310,
-        -0.5212, 0.9501, -0.5212, 0.9501, -0.0308, 0.4597, -0.7665,
-        0.9501, -0.7665, -0.5212, -0.5212, -0.5212, 1.4406, 3.4024,
-        -0.5212, -0.5212, -0.2760, -0.5212, -0.5212, -0.7665, -0.7665,
-        0.9501, 0.4597, -0.5212, 1.4406, 1.4406, -0.5212, -0.7665,
-        0.4597, -0.0308, 1.4406, -0.5212, 2.9119, 0.4597, -0.7665,
-        1.4406, 0.9501, 1.4406, -0.7665, -0.5212, -0.0308, -0.7665,
-        -0.5212, 0.4597, -0.7665, 0.9501, -0.7665, -0.5212, -0.7665,
-        -0.0308, -0.5212, 0.4597, 0.4597, -0.0308, -0.7665, -1.0117,
-        -0.7665, -0.5212, -0.5212, -0.2760, -0.7665, -0.7665, 2.9119,
-        -0.0308, 2.9119, 0.4597, -0.0308, -0.5212, -0.5212, -0.2760,
-        -0.7665, 0.9501, -0.5212, -0.0308, -0.7665, 0.7049, -0.5212,
-        -0.7665, -0.5212, 0.2144, -0.0308, -0.0308, -0.0308, -1.0117,
-        -0.7665, -0.2760, 2.9119, -1.0117, 1.1954, 0.9501, 2.9119,
-        -0.2760, -0.0308, 0.9501, -0.7665, -1.0117, -0.7665, -0.5212,
-        0.4597, -0.7665, -1.0117, 2.9119, -0.5212, -0.7665, -0.5212,
-        -0.7665, -0.5212, -1.0117, -0.5212, 2.4215, -0.5212, -0.5212,
-        1.4406, 0.2144, 0.2144, 0.9501, 0.4597, 0.2144, -0.2760, 0.9501,
-        1.9310, -0.7665, 0.2144, -0.0308, -0.5212, -1.0117, -1.0117,
-        -0.0308, -0.0308, -0.0308, -0.7665, -0.5212, -0.5212, -0.5212,
-        -0.5212, -0.5212, -1.0117, -0.5212, 0.4597, -0.0308, -0.5212,
-        0.4597, -0.7665, 0.2144, 1.4406, 1.4406, -1.0117, 1.4406,
-        0.9501, -0.7665, -0.5212, -0.7665, -0.7665, -0.0308, -0.5212,
-        0.4597, -0.0308, -0.5212, -0.5212, -0.0308, -0.7665, -0.5212,
-        2.9119, -0.7665, -0.7665, -0.5212, -0.7665, -0.0308, -0.0308,
-        -0.7665, -0.5212, -0.5212, -1.0117, -0.5212, -0.5212, 0.4597,
-        -0.0308, 0.4597, -0.5212, -0.5212, -1.0117, -1.0117, -0.0308,
-        -1.0117, -0.5212, -0.5212, 0.9501, -0.7665, 2.9119, -0.5212,
-        -0.0308, -1.0117, 1.4406, 0.4597, -0.5212, -0.0308, -0.7665,
-        -0.5212, -0.5212, -1.0117, -0.7665, -0.7665, -1.0117, -0.7665,
-        -0.5212, 0.4597, -0.0308, -0.0308, -1.0117, -0.7665, -0.5212,
-        -0.0308, -0.5212, -0.0308, -1.0117, 0.9501, 0.4597, -0.0308,
-        -0.0308, 0.4597, -0.5212, -1.0117, 2.9119, -0.0308, -0.5212,
-        0.9501, -0.5212, -0.0308, 3.4024, 0.4597, -0.5212, -0.5212,
-        -0.5212, -0.0308, -0.7665, -0.5212, -0.7665, -0.7665, -0.5212,
-        -1.0117, -0.5212, 0.4597, -0.0308, -0.5212, -0.0308, -0.5212,
-        -0.5212, 0.4597, -1.0117, -0.0308, -0.7665, 3.8929, 0.4597,
-        -0.7665, 0.4597, -1.0117, -0.7665, -0.7665, -0.0308, -0.2760,
-        -0.0308, -0.7665, -0.7665, -0.0308, 0.4597, -0.5212, -0.5212,
-        -0.5212, -0.0308, -0.2760, -0.5212, -0.0308, 1.9310, 1.9310,
-        2.9119, -0.7665, 0.4597, 4.8738, -0.7665, 1.4406, 2.9119,
-        -0.5212, 0.9501, -1.0117, -0.5212, 2.9119, -0.0308, 2.9119,
-        -0.5212, 0.9501, 0.9501, 0.4597, -0.5212, -0.2760, -0.5212,
-        -0.7665, -0.5212, -0.5212, -0.5212, -0.5212, 0.4597, -0.7665,
-        1.4406, -0.5212, -0.0308, -0.0308, -0.0308, -0.5212, -0.5212,
-        -0.7665, 1.9310, -0.5212, -0.0308, -0.5212, -1.0117, -0.5212,
-        0.4597, -0.7665, -0.5212, 0.4597, -0.5212, 4.8738, -0.5212,
-        -0.2760, -0.5212, 0.4597, -1.0117, -0.7665, -0.5212, 2.9119,
-        1.4406, -0.0308, -0.2760, 1.9310, 2.9119, -0.5212, 2.9119,
-        0.4597, -0.5212, 0.9501, 0.2144, -0.0308, -0.5212, -1.0117,
-        -1.0117, 1.6858, 0.2144, -0.5212, -0.5212, -0.2760, -1.0117,
-        -0.5212, -1.0117, -0.5212, -0.7665, -0.5212, 0.4597, -0.0308,
-        -1.0117, -0.0308, 0.4597, 0.4597, 0.4597, -0.5212, -0.5212,
-        2.9119, -0.5212, -1.0117, 2.9119, -1.0117, -0.5212, 0.4597,
-        -1.0117, 1.4406, -0.0308, 0.9501, -1.0117, 2.9119, -0.5212,
-        -0.7665, 0.9501, -0.0308, -0.5212, 0.2144, -0.0308, -0.5212,
-        -0.7665, 4.8738, 1.9310, 0.9501, -0.0308, 0.9501, 1.1954,
-        0.4597, -0.7665, -0.7665, -1.0117, 0.9501, 2.9119, 0.4597,
-        1.4406, 2.9119, -0.5212, 0.4597, 1.4406, -1.0117, -0.0308,
-        0.4597, -0.0308, 1.9310, -0.5212, -0.5212, 1.4406, -0.0308,
-        -0.5212, -0.7665, -0.5212, -0.5212, 0.2144, -0.5212, -0.5212,
-        -0.5212, -0.5212, -0.0308, -0.7665, -0.0308, 0.9501, -0.5212,
-        0.4597, -0.0308, -0.7665, -0.0308, -0.5212, -0.5212, -0.5212,
-        -0.0308, -0.5212, -0.5212, -0.7665, -0.5212, -0.2760, -0.7665,
-        -0.0308, -0.7665, -0.5212, 1.4406, -1.0117, 0.9501, -0.0308,
-        -0.7665, -0.7665, -0.5212, -0.5212, -0.5212, -0.5212, -0.0308,
-        -0.7665, -0.5212, -0.5212, -0.5212, -0.5212, 0.7049, -0.0308,
-        -0.5212, 0.4597, -0.0308, -0.5212, -0.7665, -0.5212, -0.7665,
-        -1.0117, -0.0308, -0.5212, -0.0308, 0.9501, -0.5212, -0.5212,
-        -0.0308, -0.7665, -0.5212, 0.2144, -0.2760, -0.0308, -0.5212,
-        -0.7665, -0.5212, -0.0308, -0.0308, -0.5212, -0.0308, -0.5212,
-        1.9310, -0.2760, 1.9310, -0.5212, -0.5212, -0.2760, -0.5212,
-        -0.0308, 0.4597, -0.7665, -0.5212, 0.4597, 0.9501, -0.0308,
-        1.4406, -0.5212, 0.4597, 0.4597, -0.5212, -0.2760, 0.2144,
-        1.4406, -0.2760, 1.4406, -0.0308, 0.4597, 1.4406, -0.5212,
-        -0.2760, -0.5212, -0.5212, -0.0308, -0.5212, -0.0308, -0.7665,
-        -0.7665, -0.7665, -0.5212, -0.7665, -0.5212, -0.2760, -0.0308,
-        0.4597, 0.9501, -1.0117, -0.2760, 1.9310, 1.9310, -0.5212,
-        -0.5212, 0.4597, -0.5212, 0.9501, -0.5212, -1.0117, -0.0308,
-        0.9501, -0.7665, -0.0308, 0.9501, -0.5212, -0.2760, 2.1763,
-        -0.0308, 0.9501, 0.4597, 1.4406, 0.2144, -0.7665, -0.5212,
-        -1.0117, -0.0308, 0.4597, -0.7665, -1.0117, -1.0117, -0.5212,
-        -0.5212, -0.0308, -0.5212, -0.2760, -1.0117, -0.0308, 0.4597,
-        -0.7665, -0.5212, -0.5212, -0.5212, -0.0308, -0.5212, -0.5212,
-        0.4597, -0.5212, -1.0117, -1.0117, 0.4597, -0.2760, -0.5212,
-        1.9310, -0.0308, -0.5212, -1.0117, -0.5212, -0.7665, -1.0117,
-        0.9501, 0.9501, 1.4406, -0.7665, -0.5212, -0.5212, -0.0308,
-        1.4406, -1.0117, 0.4597, -0.5212, 1.4406, 0.4597, -0.7665,
-        -0.5212, -0.7665, -1.0117, -0.7665, -0.7665, -0.0308, -1.0117,
-        0.2144, 0.4597, 2.9119, 0.4597, -0.7665, -0.7665, -0.0308,
-        0.2144, -0.0308, 0.4597, -0.5212, 0.2144, 2.9119, -1.0117,
-        -0.5212, -0.5212, 1.4406, -0.5212, -0.2760, -1.0117, -0.0308,
-        -0.0308, -0.0308, 0.2144, -1.0117, 0.4597, -0.5212, -0.7665,
-        -0.5212, -0.7665, -0.0308, -0.5212, 0.4597, -0.5212, -1.0117,
-        -0.0308, -0.0308, -0.0308, -0.0308, 1.4406, 0.9501, -1.0117,
-        -0.0308, 1.4406, -0.5212, -0.0308, 0.4597, -0.5212, 1.4406,
-        0.4597, -0.5212, 0.4597, -0.5212, -0.7665, -0.5212, -1.0117,
-        -0.7665, -0.0308, -0.5212, -0.7665, -0.0308, -0.7665, -0.5212,
-        -0.5212, -0.7665, 2.9119, 3.1572, -1.0117, -1.0117, -0.7665,
-        -0.5212
-      </para>
     </section>
     <section id="references">
       <title>References</title>
@@ -248,6 +141,219 @@
           </para>
         </listitem>
       </itemizedlist>
+    </section>
+  </section>
+</section>
+<section id="description-1">
+  <title>Description</title>
+  <para>
+    This template will check if provided variable has any outliers.
+  </para>
+  <section id="boxplot-1">
+    <title>Boxplot</title>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="7e4826ae32ce6332453510e91fb95335.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
+  </section>
+  <section id="lund-test-1">
+    <title>Lund test</title>
+    <para>
+      It seems that 5 extreme values can be found in &quot;Internet
+      usage for educational purposes (hours per day)&quot;. These are:
+      10, 10, 12, 12, 12.
+    </para>
+    <section id="explanation-1">
+      <title>Explanation</title>
+      <para>
+        The above test for outliers was based on <emphasis>lm(1 ~
+        edu)</emphasis>:
+      </para>
+      <informaltable>
+        <tgroup cols="5">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">Estimate</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">Std. Error</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">t value</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">Pr(&gt;|t|)</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                (Intercept)
+              </entry>
+              <entry>
+                2.06
+              </entry>
+              <entry>
+                0.08
+              </entry>
+              <entry>
+                26.92
+              </entry>
+              <entry>
+                0.00
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+    <section id="references-3">
+      <title>References</title>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Lund, R. E. 1975, &quot;Tables for An Approximate Test for
+            Outliers in Linear Models&quot;, Technometrics, vol. 17, no.
+            4, pp. 473-476.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Prescott, P. 1975, &quot;An Approximate Test for Outliers in
+            Linear Models&quot;, Technometrics, vol. 17, no. 1, pp.
+            129-132.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+  <section id="grubbs-test-1">
+    <title>Grubb's test</title>
+    <para>
+      Grubbs test for one outlier shows that highest value 12 is an
+      outlier (p=0.0003).
+    </para>
+    <section id="references-4">
+      <title>References</title>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Grubbs, F.E. (1950). Sample Criteria for testing outlying
+            observations. Ann. Math. Stat. 21, 1, 27-58.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+  <section id="dixons-test-1">
+    <title>Dixon's test</title>
+    <para>
+      chi-squared test for outlier shows that highest value 12 is an
+      outlier (p=0).
+    </para>
+    <section id="references-5">
+      <title>References</title>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Dixon, W.J. (1950). Analysis of extreme values. Ann. Math.
+            Stat. 21, 4, 488-506.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+</section>
+<section id="description-2">
+  <title>Description</title>
+  <para>
+    This template will check if provided variable has any outliers.
+  </para>
+  <section id="boxplot-2">
+    <title>Boxplot</title>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="7e4826ae32ce6332453510e91fb95335.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
+  </section>
+  <section id="lund-test-2">
+    <title>Lund test</title>
+    <para>
+      It seems that 5 extreme values can be found in &quot;Internet
+      usage for educational purposes (hours per day)&quot;. These are:
+      10, 10, 12, 12, 12.
+    </para>
+    <section id="explanation-2">
+      <title>Explanation</title>
+      <para>
+        The above test for outliers was based on <emphasis>lm(1 ~
+        edu)</emphasis>:
+      </para>
+      <informaltable>
+        <tgroup cols="5">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">Estimate</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">Std. Error</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">t value</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">Pr(&gt;|t|)</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                (Intercept)
+              </entry>
+              <entry>
+                2.06
+              </entry>
+              <entry>
+                0.08
+              </entry>
+              <entry>
+                26.92
+              </entry>
+              <entry>
+                0.00
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
     </section>
   </section>
 </section>

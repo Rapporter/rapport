@@ -5,8 +5,8 @@
   <articleinfo>
     <title>Descriptives</title>
     <author>
-      <firstname>(Username not set) (E-mail address not</firstname>
-      <surname>set)</surname>
+      <firstname>Rapport package team @</firstname>
+      <surname>https://github.com/aL3xa/rapport</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -26,7 +26,8 @@
     <section id="base-statistics">
       <title>Base statistics</title>
       <informaltable>
-        <tgroup cols="5">
+        <tgroup cols="6">
+          <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
@@ -34,6 +35,8 @@
           <colspec align="left" />
           <thead>
             <row>
+              <entry>
+              </entry>
               <entry>
                 <emphasis role="strong">gender</emphasis>
               </entry>
@@ -44,26 +47,29 @@
                 <emphasis role="strong">pct</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.n</emphasis>
+                <emphasis role="strong">cumul.count</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.pct</emphasis>
+                <emphasis role="strong">cumul.pct</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
+                1
+              </entry>
+              <entry>
                 male
               </entry>
               <entry>
-                7344.00
+                432.00
               </entry>
               <entry>
                 60.93
               </entry>
               <entry>
-                7344.00
+                432.00
               </entry>
               <entry>
                 60.93
@@ -71,16 +77,38 @@
             </row>
             <row>
               <entry>
+                2
+              </entry>
+              <entry>
                 female
               </entry>
               <entry>
-                4709.00
+                277.00
               </entry>
               <entry>
                 39.07
               </entry>
               <entry>
-                12053.00
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Total
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+              <entry>
+                709.00
               </entry>
               <entry>
                 100.00
@@ -135,13 +163,13 @@
                 <emphasis role="strong">value</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">mean</emphasis>
+                <emphasis role="strong">mean(age)</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">sd</emphasis>
+                <emphasis role="strong">sd(age)</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">var</emphasis>
+                <emphasis role="strong">var(age)</emphasis>
               </entry>
             </row>
           </thead>

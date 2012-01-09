@@ -5,8 +5,8 @@
   <articleinfo>
     <title>Crosstable</title>
     <author>
-      <firstname>(Username not set) (E-mail address not</firstname>
-      <surname>set)</surname>
+      <firstname>Rapport package team @</firstname>
+      <surname>https://github.com/aL3xa/rapport</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -19,10 +19,21 @@
   <section id="variable-description">
     <title>Variable description</title>
     <para>
-      Two variables specified: * &quot;gender&quot; (&quot;Gender&quot;)
-      with 709 and * &quot;dwell&quot; (&quot;Dwelling&quot;) with 709
-      valid values.
+      Two variables specified:
     </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          &quot;gender&quot; (&quot;Gender&quot;) with 709 and
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          &quot;dwell&quot; (&quot;Dwelling&quot;) with 709 valid
+          values.
+        </para>
+      </listitem>
+    </itemizedlist>
   </section>
   <section id="counts">
     <title>Counts</title>
@@ -363,6 +374,723 @@
         <mediaobject>
           <imageobject>
             <imagedata fileref="66ba5aa603e08fec150848bb688f0953.png" />
+          </imageobject>
+          <textobject><phrase></phrase></textobject>
+        </mediaobject>
+      </figure>
+    </section>
+  </section>
+</section>
+<section id="description-1">
+  <title>Description</title>
+  <para>
+    Returning the Chi-squared test of two given variables with count,
+    percentages and Pearson's residuals table.
+  </para>
+  <section id="variable-description-1">
+    <title>Variable description</title>
+    <para>
+      Two variables specified:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          &quot;email&quot; (&quot;Email usage&quot;) with 709 and
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          &quot;dwell&quot; (&quot;Dwelling&quot;) with 709 valid
+          values.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section id="counts-1">
+    <title>Counts</title>
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">city</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">small town</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">village</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              never
+            </entry>
+            <entry>
+              12
+            </entry>
+            <entry>
+              0
+            </entry>
+            <entry>
+              1
+            </entry>
+          </row>
+          <row>
+            <entry>
+              very rarely
+            </entry>
+            <entry>
+              34
+            </entry>
+            <entry>
+              1
+            </entry>
+            <entry>
+              3
+            </entry>
+          </row>
+          <row>
+            <entry>
+              rarely
+            </entry>
+            <entry>
+              46
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              2
+            </entry>
+          </row>
+          <row>
+            <entry>
+              sometimes
+            </entry>
+            <entry>
+              76
+            </entry>
+            <entry>
+              6
+            </entry>
+            <entry>
+              8
+            </entry>
+          </row>
+          <row>
+            <entry>
+              often
+            </entry>
+            <entry>
+              113
+            </entry>
+            <entry>
+              11
+            </entry>
+            <entry>
+              5
+            </entry>
+          </row>
+          <row>
+            <entry>
+              very often
+            </entry>
+            <entry>
+              106
+            </entry>
+            <entry>
+              5
+            </entry>
+            <entry>
+              5
+            </entry>
+          </row>
+          <row>
+            <entry>
+              always
+            </entry>
+            <entry>
+              255
+            </entry>
+            <entry>
+              10
+            </entry>
+            <entry>
+              7
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+  <section id="percentages-1">
+    <title>Percentages</title>
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">city</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">small town</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">village</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              never
+            </entry>
+            <entry>
+              0.0169
+            </entry>
+            <entry>
+              0.0000
+            </entry>
+            <entry>
+              0.0014
+            </entry>
+          </row>
+          <row>
+            <entry>
+              very rarely
+            </entry>
+            <entry>
+              0.0480
+            </entry>
+            <entry>
+              0.0014
+            </entry>
+            <entry>
+              0.0042
+            </entry>
+          </row>
+          <row>
+            <entry>
+              rarely
+            </entry>
+            <entry>
+              0.0649
+            </entry>
+            <entry>
+              0.0042
+            </entry>
+            <entry>
+              0.0028
+            </entry>
+          </row>
+          <row>
+            <entry>
+              sometimes
+            </entry>
+            <entry>
+              0.1072
+            </entry>
+            <entry>
+              0.0085
+            </entry>
+            <entry>
+              0.0113
+            </entry>
+          </row>
+          <row>
+            <entry>
+              often
+            </entry>
+            <entry>
+              0.1594
+            </entry>
+            <entry>
+              0.0155
+            </entry>
+            <entry>
+              0.0071
+            </entry>
+          </row>
+          <row>
+            <entry>
+              very often
+            </entry>
+            <entry>
+              0.1495
+            </entry>
+            <entry>
+              0.0071
+            </entry>
+            <entry>
+              0.0071
+            </entry>
+          </row>
+          <row>
+            <entry>
+              always
+            </entry>
+            <entry>
+              0.3597
+            </entry>
+            <entry>
+              0.0141
+            </entry>
+            <entry>
+              0.0099
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <section id="row-percentages-1">
+      <title>Row percentages</title>
+      <informaltable>
+        <tgroup cols="4">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">city</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">small town</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">village</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                never
+              </entry>
+              <entry>
+                0.9231
+              </entry>
+              <entry>
+                0.0000
+              </entry>
+              <entry>
+                0.0769
+              </entry>
+            </row>
+            <row>
+              <entry>
+                very rarely
+              </entry>
+              <entry>
+                0.8947
+              </entry>
+              <entry>
+                0.0263
+              </entry>
+              <entry>
+                0.0789
+              </entry>
+            </row>
+            <row>
+              <entry>
+                rarely
+              </entry>
+              <entry>
+                0.9020
+              </entry>
+              <entry>
+                0.0588
+              </entry>
+              <entry>
+                0.0392
+              </entry>
+            </row>
+            <row>
+              <entry>
+                sometimes
+              </entry>
+              <entry>
+                0.8444
+              </entry>
+              <entry>
+                0.0667
+              </entry>
+              <entry>
+                0.0889
+              </entry>
+            </row>
+            <row>
+              <entry>
+                often
+              </entry>
+              <entry>
+                0.8760
+              </entry>
+              <entry>
+                0.0853
+              </entry>
+              <entry>
+                0.0388
+              </entry>
+            </row>
+            <row>
+              <entry>
+                very often
+              </entry>
+              <entry>
+                0.9138
+              </entry>
+              <entry>
+                0.0431
+              </entry>
+              <entry>
+                0.0431
+              </entry>
+            </row>
+            <row>
+              <entry>
+                always
+              </entry>
+              <entry>
+                0.9375
+              </entry>
+              <entry>
+                0.0368
+              </entry>
+              <entry>
+                0.0257
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+    <section id="column-percentages-1">
+      <title>Column percentages</title>
+      <informaltable>
+        <tgroup cols="4">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">city</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">small town</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">village</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                never
+              </entry>
+              <entry>
+                0.0187
+              </entry>
+              <entry>
+                0.0000
+              </entry>
+              <entry>
+                0.0323
+              </entry>
+            </row>
+            <row>
+              <entry>
+                very rarely
+              </entry>
+              <entry>
+                0.0530
+              </entry>
+              <entry>
+                0.0278
+              </entry>
+              <entry>
+                0.0968
+              </entry>
+            </row>
+            <row>
+              <entry>
+                rarely
+              </entry>
+              <entry>
+                0.0717
+              </entry>
+              <entry>
+                0.0833
+              </entry>
+              <entry>
+                0.0645
+              </entry>
+            </row>
+            <row>
+              <entry>
+                sometimes
+              </entry>
+              <entry>
+                0.1184
+              </entry>
+              <entry>
+                0.1667
+              </entry>
+              <entry>
+                0.2581
+              </entry>
+            </row>
+            <row>
+              <entry>
+                often
+              </entry>
+              <entry>
+                0.1760
+              </entry>
+              <entry>
+                0.3056
+              </entry>
+              <entry>
+                0.1613
+              </entry>
+            </row>
+            <row>
+              <entry>
+                very often
+              </entry>
+              <entry>
+                0.1651
+              </entry>
+              <entry>
+                0.1389
+              </entry>
+              <entry>
+                0.1613
+              </entry>
+            </row>
+            <row>
+              <entry>
+                always
+              </entry>
+              <entry>
+                0.3972
+              </entry>
+              <entry>
+                0.2778
+              </entry>
+              <entry>
+                0.2258
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+  </section>
+  <section id="chi-squared-test-1">
+    <title>Chi-squared test</title>
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">X-squared</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">df</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">p-value</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              X-squared
+            </entry>
+            <entry>
+              14.37
+            </entry>
+            <entry>
+              12.00
+            </entry>
+            <entry>
+              0.28
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <para>
+      It seems that no real association can be pointed out between
+      <emphasis>email</emphasis> and <emphasis>dwell</emphasis> by the
+      <emphasis>Pearson's Chi-squared test</emphasis> (χ=14.366 at the
+      degree of freedom being 12) at the significance level of 0.2779.
+      For this end no other statistical tests were performed.
+    </para>
+    <section id="pearsons-residuals-1">
+      <title>Pearson's residuals</title>
+      <informaltable>
+        <tgroup cols="4">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">city</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">small town</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">village</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                never
+              </entry>
+              <entry>
+                0.2187
+              </entry>
+              <entry>
+                -0.8417
+              </entry>
+              <entry>
+                0.5908
+              </entry>
+            </row>
+            <row>
+              <entry>
+                very rarely
+              </entry>
+              <entry>
+                -0.2332
+              </entry>
+              <entry>
+                -0.7060
+              </entry>
+              <entry>
+                1.0915
+              </entry>
+            </row>
+            <row>
+              <entry>
+                rarely
+              </entry>
+              <entry>
+                -0.0897
+              </entry>
+              <entry>
+                0.2717
+              </entry>
+              <entry>
+                -0.1634
+              </entry>
+            </row>
+            <row>
+              <entry>
+                sometimes
+              </entry>
+              <entry>
+                -2.1192
+              </entry>
+              <entry>
+                0.7349
+              </entry>
+              <entry>
+                2.2426
+              </entry>
+            </row>
+            <row>
+              <entry>
+                often
+              </entry>
+              <entry>
+                -1.2678
+              </entry>
+              <entry>
+                1.9731
+              </entry>
+              <entry>
+                -0.3048
+              </entry>
+            </row>
+            <row>
+              <entry>
+                very often
+              </entry>
+              <entry>
+                0.3338
+              </entry>
+              <entry>
+                -0.4116
+              </entry>
+              <entry>
+                -0.0357
+              </entry>
+            </row>
+            <row>
+              <entry>
+                always
+              </entry>
+              <entry>
+                2.2980
+              </entry>
+              <entry>
+                -1.3407
+              </entry>
+              <entry>
+                -1.8480
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+    <section id="mosaic-chart-1">
+      <title>Mosaic chart</title>
+      <figure>
+        <title></title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="b26fc463113e2f16bc930c620677e929.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>

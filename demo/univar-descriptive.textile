@@ -8,9 +8,10 @@ The dataset has 709 observations with 709 valid values (missing: 0) in _gender_ 
 
 h4. Base statistics
 
-|_. *gender*|_. *N*|_. *pct*|_. *cum.n*|_. *cum.pct*|
-|male|7344.00|60.93|7344.00|60.93|
-|female|4709.00|39.07|12053.00|100.00|
+|_. |_. *gender*|_. *N*|_. *pct*|_. *cumul.count*|_. *cumul.pct*|
+|1|male|432.00|60.93|432.00|60.93|
+|2|female|277.00|39.07|709.00|100.00|
+|Total||709.00|100.00|709.00|100.00|
 
 
 h4. Barplot
@@ -30,7 +31,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in _age_ (&q
 
 h4. Base statistics
 
-|_. *value*|_. *mean*|_. *sd*|_. *var*|
+|_. *value*|_. *mean(age)*|_. *sd(age)*|_. *var(age)*|
 |(all)|24.56|6.84|46.78|
 
 

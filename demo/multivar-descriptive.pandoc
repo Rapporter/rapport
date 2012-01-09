@@ -1,5 +1,5 @@
 % Descriptives
-% (Username not set) (E-mail address not set)
+% Rapport package team @ https://github.com/aL3xa/rapport
 % 2011-04-26 20:25 CET
 
 
@@ -15,11 +15,12 @@ This variable seems to be a factor.
 #### Base statistics 
 
 
-**gender**   **N**     **pct**   **cum.n**   **cum.pct**  
------------- --------- --------- ----------- -------------
-male         7344.00   60.93     7344.00     60.93        
-female       4709.00   39.07     12053.00    100.00       
------------- --------- --------- ----------- -------------
+        **gender**   **N**    **pct**   **cumul.count**   **cumul.pct**  
+------- ------------ -------- --------- ----------------- ---------------
+1       male         432.00   60.93     432.00            60.93          
+2       female       277.00   39.07     709.00            100.00         
+Total                709.00   100.00    709.00            100.00         
+------- ------------ -------- --------- ----------------- ---------------
  
 
 #### Barplot 
@@ -37,10 +38,10 @@ This variable seems to be numeric.
 #### Base statistics 
 
 
-**value**   **mean**   **sd**   **var**  
------------ ---------- -------- ---------
-(all)       24.56      6.84     46.78    
------------ ---------- -------- ---------
+**value**   **mean(age)**   **sd(age)**   **var(age)**  
+----------- --------------- ------------- --------------
+(all)       24.56           6.84          46.78         
+----------- --------------- ------------- --------------
  
 
 #### Histogram 
@@ -68,19 +69,18 @@ This variable seems to be a factor.
 #### Base statistics 
 
 
-**chatim**    **N**     **pct**   **cum.n**   **cum.pct**  
-------------- --------- --------- ----------- -------------
-never         896.00    9.03      896.00      9.03         
-very rarely   1092.00   11.00     1988.00     20.03        
-rarely        910.00    9.17      2898.00     29.20        
-sometimes     1736.00   17.49     4634.00     46.69        
-often         1988.00   20.03     6622.00     66.71        
-very often    1316.00   13.26     7938.00     79.97        
-always        1988.00   20.03     9926.00     100.00       
-------------- --------- --------- ----------- -------------
+        **chatim**    **N**    **pct**   **cumul.count**   **cumul.pct**  
+------- ------------- -------- --------- ----------------- ---------------
+1       never         64.00    9.03      64.00             9.03           
+2       very rarely   78.00    11.00     142.00            20.03          
+3       rarely        65.00    9.17      207.00            29.20          
+4       sometimes     124.00   17.49     331.00            46.69          
+5       often         142.00   20.03     473.00            66.71          
+6       very often    94.00    13.26     567.00            79.97          
+7       always        142.00   20.03     709.00            100.00         
+Total                 709.00   100.00    709.00            100.00         
+------- ------------- -------- --------- ----------------- ---------------
  
-
-**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated" 
 
 #### Barplot 
 
@@ -97,19 +97,18 @@ This variable seems to be a factor.
 #### Base statistics 
 
 
-**game**      **N**     **pct**   **cum.n**   **cum.pct**  
-------------- --------- --------- ----------- -------------
-never         5152.00   51.90     5152.00     51.90        
-very rarely   1848.00   18.62     7000.00     70.52        
-rarely        490.00    4.94      7490.00     75.46        
-sometimes     910.00    9.17      8400.00     84.63        
-often         532.00    5.36      8932.00     89.99        
-very often    518.00    5.22      9450.00     95.20        
-always        476.00    4.80      9926.00     100.00       
-------------- --------- --------- ----------- -------------
+        **game**      **N**    **pct**   **cumul.count**   **cumul.pct**  
+------- ------------- -------- --------- ----------------- ---------------
+1       never         368.00   51.90     368.00            51.90          
+2       very rarely   132.00   18.62     500.00            70.52          
+3       rarely        35.00    4.94      535.00            75.46          
+4       sometimes     65.00    9.17      600.00            84.63          
+5       often         38.00    5.36      638.00            89.99          
+6       very often    37.00    5.22      675.00            95.20          
+7       always        34.00    4.80      709.00            100.00         
+Total                 709.00   100.00    709.00            100.00         
+------- ------------- -------- --------- ----------------- ---------------
  
-
-**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated" 
 
 #### Barplot 
 
@@ -126,19 +125,18 @@ This variable seems to be a factor.
 #### Base statistics 
 
 
-**surf**      **N**     **pct**   **cum.n**   **cum.pct**  
-------------- --------- --------- ----------- -------------
-never         238.00    2.40      238.00      2.40         
-very rarely   364.00    3.67      602.00      6.06         
-rarely        476.00    4.80      1078.00     10.86        
-sometimes     1624.00   16.36     2702.00     27.22        
-often         2296.00   23.13     4998.00     50.35        
-very often    2114.00   21.30     7112.00     71.65        
-always        2814.00   28.35     9926.00     100.00       
-------------- --------- --------- ----------- -------------
+        **surf**      **N**    **pct**   **cumul.count**   **cumul.pct**  
+------- ------------- -------- --------- ----------------- ---------------
+1       never         17.00    2.40      17.00             2.40           
+2       very rarely   26.00    3.67      43.00             6.06           
+3       rarely        34.00    4.80      77.00             10.86          
+4       sometimes     116.00   16.36     193.00            27.22          
+5       often         164.00   23.13     357.00            50.35          
+6       very often    151.00   21.30     508.00            71.65          
+7       always        201.00   28.35     709.00            100.00         
+Total                 709.00   100.00    709.00            100.00         
+------- ------------- -------- --------- ----------------- ---------------
  
-
-**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated" 
 
 #### Barplot 
 
@@ -155,19 +153,18 @@ This variable seems to be a factor.
 #### Base statistics 
 
 
-**email**     **N**     **pct**   **cum.n**   **cum.pct**  
-------------- --------- --------- ----------- -------------
-never         182.00    1.83      182.00      1.83         
-very rarely   532.00    5.36      714.00      7.19         
-rarely        714.00    7.19      1428.00     14.39        
-sometimes     1260.00   12.69     2688.00     27.08        
-often         1806.00   18.19     4494.00     45.28        
-very often    1624.00   16.36     6118.00     61.64        
-always        3808.00   38.36     9926.00     100.00       
-------------- --------- --------- ----------- -------------
+        **email**     **N**    **pct**   **cumul.count**   **cumul.pct**  
+------- ------------- -------- --------- ----------------- ---------------
+1       never         13.00    1.83      13.00             1.83           
+2       very rarely   38.00    5.36      51.00             7.19           
+3       rarely        51.00    7.19      102.00            14.39          
+4       sometimes     90.00    12.69     192.00            27.08          
+5       often         129.00   18.19     321.00            45.28          
+6       very often    116.00   16.36     437.00            61.64          
+7       always        272.00   38.36     709.00            100.00         
+Total                 709.00   100.00    709.00            100.00         
+------- ------------- -------- --------- ----------------- ---------------
  
-
-**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated" 
 
 #### Barplot 
 
@@ -184,19 +181,18 @@ This variable seems to be a factor.
 #### Base statistics 
 
 
-**download**   **N**     **pct**   **cum.n**   **cum.pct**  
--------------- --------- --------- ----------- -------------
-never          154.00    1.55      154.00      1.55         
-very rarely    406.00    4.09      560.00      5.64         
-rarely         420.00    4.23      980.00      9.87         
-sometimes      1190.00   11.99     2170.00     21.86        
-often          1820.00   18.34     3990.00     40.20        
-very often     2394.00   24.12     6384.00     64.32        
-always         3542.00   35.68     9926.00     100.00       
--------------- --------- --------- ----------- -------------
+        **download**   **N**    **pct**   **cumul.count**   **cumul.pct**  
+------- -------------- -------- --------- ----------------- ---------------
+1       never          11.00    1.55      11.00             1.55           
+2       very rarely    29.00    4.09      40.00             5.64           
+3       rarely         30.00    4.23      70.00             9.87           
+4       sometimes      85.00    11.99     155.00            21.86          
+5       often          130.00   18.34     285.00            40.20          
+6       very often     171.00   24.12     456.00            64.32          
+7       always         253.00   35.68     709.00            100.00         
+Total                  709.00   100.00    709.00            100.00         
+------- -------------- -------- --------- ----------------- ---------------
  
-
-**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated" 
 
 #### Barplot 
 
@@ -213,19 +209,18 @@ This variable seems to be a factor.
 #### Base statistics 
 
 
-**forum**     **N**     **pct**   **cum.n**   **cum.pct**  
-------------- --------- --------- ----------- -------------
-never         1120.00   11.28     1120.00     11.28        
-very rarely   1176.00   11.85     2296.00     23.13        
-rarely        1036.00   10.44     3332.00     33.57        
-sometimes     1736.00   17.49     5068.00     51.06        
-often         1568.00   15.80     6636.00     66.85        
-very often    1750.00   17.63     8386.00     84.49        
-always        1540.00   15.51     9926.00     100.00       
-------------- --------- --------- ----------- -------------
+        **forum**     **N**    **pct**   **cumul.count**   **cumul.pct**  
+------- ------------- -------- --------- ----------------- ---------------
+1       never         80.00    11.28     80.00             11.28          
+2       very rarely   84.00    11.85     164.00            23.13          
+3       rarely        74.00    10.44     238.00            33.57          
+4       sometimes     124.00   17.49     362.00            51.06          
+5       often         112.00   15.80     474.00            66.85          
+6       very often    125.00   17.63     599.00            84.49          
+7       always        110.00   15.51     709.00            100.00         
+Total                 709.00   100.00    709.00            100.00         
+------- ------------- -------- --------- ----------------- ---------------
  
-
-**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated" 
 
 #### Barplot 
 
@@ -242,19 +237,18 @@ This variable seems to be a factor.
 #### Base statistics 
 
 
-**socnet**    **N**     **pct**   **cum.n**   **cum.pct**  
-------------- --------- --------- ----------- -------------
-never         2940.00   29.62     2940.00     29.62        
-very rarely   1554.00   15.66     4494.00     45.28        
-rarely        826.00    8.32      5320.00     53.60        
-sometimes     1316.00   13.26     6636.00     66.85        
-often         1148.00   11.57     7784.00     78.42        
-very often    1190.00   11.99     8974.00     90.41        
-always        952.00    9.59      9926.00     100.00       
-------------- --------- --------- ----------- -------------
+        **socnet**    **N**    **pct**   **cumul.count**   **cumul.pct**  
+------- ------------- -------- --------- ----------------- ---------------
+1       never         210.00   29.62     210.00            29.62          
+2       very rarely   111.00   15.66     321.00            45.28          
+3       rarely        59.00    8.32      380.00            53.60          
+4       sometimes     94.00    13.26     474.00            66.85          
+5       often         82.00    11.57     556.00            78.42          
+6       very often    85.00    11.99     641.00            90.41          
+7       always        68.00    9.59      709.00            100.00         
+Total                 709.00   100.00    709.00            100.00         
+------- ------------- -------- --------- ----------------- ---------------
  
-
-**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated" 
 
 #### Barplot 
 
@@ -271,52 +265,22 @@ This variable seems to be a factor.
 #### Base statistics 
 
 
-**xxx**       **N**     **pct**   **cum.n**   **cum.pct**  
-------------- --------- --------- ----------- -------------
-never         4102.00   41.33     4102.00     41.33        
-very rarely   1792.00   18.05     5894.00     59.38        
-rarely        770.00    7.76      6664.00     67.14        
-sometimes     1918.00   19.32     8582.00     86.46        
-often         672.00    6.77      9254.00     93.23        
-very often    406.00    4.09      9660.00     97.32        
-always        266.00    2.68      9926.00     100.00       
-------------- --------- --------- ----------- -------------
+        **xxx**       **N**    **pct**   **cumul.count**   **cumul.pct**  
+------- ------------- -------- --------- ----------------- ---------------
+1       never         293.00   41.33     293.00            41.33          
+2       very rarely   128.00   18.05     421.00            59.38          
+3       rarely        55.00    7.76      476.00            67.14          
+4       sometimes     137.00   19.32     613.00            86.46          
+5       often         48.00    6.77      661.00            93.23          
+6       very often    29.00    4.09      690.00            97.32          
+7       always        19.00    2.68      709.00            100.00         
+Total                 709.00   100.00    709.00            100.00         
+------- ------------- -------- --------- ----------------- ---------------
  
-
-**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated" 
 
 #### Barplot 
 
 ![](053614b5b842759f559adcc0da8cc645.png)
-
-
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1). 
-
-### *long.use* ("How long you've been on the Internet?") 
-
-The dataset has 709 observations with 709 valid values (missing: 0) in *long.use* ("How long you've been on the Internet?").
-This variable seems to be a factor. 
-
-#### Base statistics 
-
-
-**long.use**         **N**     **pct**   **cum.n**   **cum.pct**  
--------------------- --------- --------- ----------- -------------
-less than 6 months   294.00    2.96      294.00      2.96         
-1 years              728.00    7.33      1022.00     10.30        
-2 years              966.00    9.73      1988.00     20.03        
-3 years              1092.00   11.00     3080.00     31.03        
-4 years              1064.00   10.72     4144.00     41.75        
-5 years              1036.00   10.44     5180.00     52.19        
-5 years and more     4746.00   47.81     9926.00     100.00       
--------------------- --------- --------- ----------- -------------
- 
-
-**Warning** in "if (is.numeric(var)) { ;         rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data) ;     } else { ;         rp.freq(rp.name(var), rp.data) ;     }": "invalid factor level, NAs generated + invalid factor level, NAs generated + invalid factor level, NAs generated" 
-
-#### Barplot 
-
-![](ac7f8b3e1fb841eb17beaceee8e09dd1.png)
 
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1). 

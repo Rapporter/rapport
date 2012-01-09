@@ -13,38 +13,55 @@ This variable seems to be a factor.
 .PP
 .TS
 tab(@);
-l l l l l.
+l l l l l l.
 T{
+T}@T{
 \f[B]gender\f[]
 T}@T{
 \f[B]N\f[]
 T}@T{
 \f[B]pct\f[]
 T}@T{
-\f[B]cum.n\f[]
+\f[B]cumul.count\f[]
 T}@T{
-\f[B]cum.pct\f[]
+\f[B]cumul.pct\f[]
 T}
 _
 T{
+1
+T}@T{
 male
 T}@T{
-7344.00
+432.00
 T}@T{
 60.93
 T}@T{
-7344.00
+432.00
 T}@T{
 60.93
 T}
 T{
+2
+T}@T{
 female
 T}@T{
-4709.00
+277.00
 T}@T{
 39.07
 T}@T{
-12053.00
+709.00
+T}@T{
+100.00
+T}
+T{
+Total
+T}@T{
+T}@T{
+709.00
+T}@T{
+100.00
+T}@T{
+709.00
 T}@T{
 100.00
 T}
@@ -72,11 +89,11 @@ l l l l.
 T{
 \f[B]value\f[]
 T}@T{
-\f[B]mean\f[]
+\f[B]mean(age)\f[]
 T}@T{
-\f[B]sd\f[]
+\f[B]sd(age)\f[]
 T}@T{
-\f[B]var\f[]
+\f[B]var(age)\f[]
 T}
 _
 T{
@@ -106,4 +123,4 @@ might be a better option instead of the mean.
 The interquartile range (6) measures the statistics dispersion of the
 variable (similar to standard deviation) based on median.
 .SH AUTHORS
-(Username not set) (E-mail address not set).
+Rapport package team \@ https://github.com/aL3xa/rapport.

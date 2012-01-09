@@ -4,7 +4,10 @@ Returning the Chi-squared test of two given variables with count, percentages an
 
 === Variable description ===
 
-Two variables specified: * &quot;gender&quot; (&quot;Gender&quot;) with 709 and * &quot;dwell&quot; (&quot;Dwelling&quot;) with 709 valid values.
+Two variables specified:
+
+* &quot;gender&quot; (&quot;Gender&quot;) with 709 and
+* &quot;dwell&quot; (&quot;Dwelling&quot;) with 709 valid values.
 
 === Counts ===
 
@@ -167,3 +170,326 @@ It seems that a real association can be pointed out between ''gender'' and ''dwe
 ==== Mosaic chart ====
 
 [[Image:66ba5aa603e08fec150848bb688f0953.png|frame|none]]
+
+== Description ==
+
+Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
+
+=== Variable description ===
+
+Two variables specified:
+
+* &quot;email&quot; (&quot;Email usage&quot;) with 709 and
+* &quot;dwell&quot; (&quot;Dwelling&quot;) with 709 valid values.
+
+=== Counts ===
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''city'''</th>
+<th align="left">'''small town'''</th>
+<th align="left">'''village'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">never</td>
+<td align="left">12</td>
+<td align="left">0</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">very rarely</td>
+<td align="left">34</td>
+<td align="left">1</td>
+<td align="left">3</td>
+</tr>
+<tr class="odd">
+<td align="left">rarely</td>
+<td align="left">46</td>
+<td align="left">3</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">sometimes</td>
+<td align="left">76</td>
+<td align="left">6</td>
+<td align="left">8</td>
+</tr>
+<tr class="odd">
+<td align="left">often</td>
+<td align="left">113</td>
+<td align="left">11</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">very often</td>
+<td align="left">106</td>
+<td align="left">5</td>
+<td align="left">5</td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td align="left">255</td>
+<td align="left">10</td>
+<td align="left">7</td>
+</tr>
+</tbody>
+</table>
+
+=== Percentages ===
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''city'''</th>
+<th align="left">'''small town'''</th>
+<th align="left">'''village'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">never</td>
+<td align="left">0.0169</td>
+<td align="left">0.0000</td>
+<td align="left">0.0014</td>
+</tr>
+<tr class="even">
+<td align="left">very rarely</td>
+<td align="left">0.0480</td>
+<td align="left">0.0014</td>
+<td align="left">0.0042</td>
+</tr>
+<tr class="odd">
+<td align="left">rarely</td>
+<td align="left">0.0649</td>
+<td align="left">0.0042</td>
+<td align="left">0.0028</td>
+</tr>
+<tr class="even">
+<td align="left">sometimes</td>
+<td align="left">0.1072</td>
+<td align="left">0.0085</td>
+<td align="left">0.0113</td>
+</tr>
+<tr class="odd">
+<td align="left">often</td>
+<td align="left">0.1594</td>
+<td align="left">0.0155</td>
+<td align="left">0.0071</td>
+</tr>
+<tr class="even">
+<td align="left">very often</td>
+<td align="left">0.1495</td>
+<td align="left">0.0071</td>
+<td align="left">0.0071</td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td align="left">0.3597</td>
+<td align="left">0.0141</td>
+<td align="left">0.0099</td>
+</tr>
+</tbody>
+</table>
+
+==== Row percentages ====
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''city'''</th>
+<th align="left">'''small town'''</th>
+<th align="left">'''village'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">never</td>
+<td align="left">0.9231</td>
+<td align="left">0.0000</td>
+<td align="left">0.0769</td>
+</tr>
+<tr class="even">
+<td align="left">very rarely</td>
+<td align="left">0.8947</td>
+<td align="left">0.0263</td>
+<td align="left">0.0789</td>
+</tr>
+<tr class="odd">
+<td align="left">rarely</td>
+<td align="left">0.9020</td>
+<td align="left">0.0588</td>
+<td align="left">0.0392</td>
+</tr>
+<tr class="even">
+<td align="left">sometimes</td>
+<td align="left">0.8444</td>
+<td align="left">0.0667</td>
+<td align="left">0.0889</td>
+</tr>
+<tr class="odd">
+<td align="left">often</td>
+<td align="left">0.8760</td>
+<td align="left">0.0853</td>
+<td align="left">0.0388</td>
+</tr>
+<tr class="even">
+<td align="left">very often</td>
+<td align="left">0.9138</td>
+<td align="left">0.0431</td>
+<td align="left">0.0431</td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td align="left">0.9375</td>
+<td align="left">0.0368</td>
+<td align="left">0.0257</td>
+</tr>
+</tbody>
+</table>
+
+==== Column percentages ====
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''city'''</th>
+<th align="left">'''small town'''</th>
+<th align="left">'''village'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">never</td>
+<td align="left">0.0187</td>
+<td align="left">0.0000</td>
+<td align="left">0.0323</td>
+</tr>
+<tr class="even">
+<td align="left">very rarely</td>
+<td align="left">0.0530</td>
+<td align="left">0.0278</td>
+<td align="left">0.0968</td>
+</tr>
+<tr class="odd">
+<td align="left">rarely</td>
+<td align="left">0.0717</td>
+<td align="left">0.0833</td>
+<td align="left">0.0645</td>
+</tr>
+<tr class="even">
+<td align="left">sometimes</td>
+<td align="left">0.1184</td>
+<td align="left">0.1667</td>
+<td align="left">0.2581</td>
+</tr>
+<tr class="odd">
+<td align="left">often</td>
+<td align="left">0.1760</td>
+<td align="left">0.3056</td>
+<td align="left">0.1613</td>
+</tr>
+<tr class="even">
+<td align="left">very often</td>
+<td align="left">0.1651</td>
+<td align="left">0.1389</td>
+<td align="left">0.1613</td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td align="left">0.3972</td>
+<td align="left">0.2778</td>
+<td align="left">0.2258</td>
+</tr>
+</tbody>
+</table>
+
+=== Chi-squared test ===
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''X-squared'''</th>
+<th align="left">'''df'''</th>
+<th align="left">'''p-value'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">X-squared</td>
+<td align="left">14.37</td>
+<td align="left">12.00</td>
+<td align="left">0.28</td>
+</tr>
+</tbody>
+</table>
+
+It seems that no real association can be pointed out between ''email'' and ''dwell'' by the ''Pearson's Chi-squared test'' (χ=14.366 at the degree of freedom being 12) at the significance level of 0.2779. For this end no other statistical tests were performed.
+
+==== Pearson's residuals ====
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''city'''</th>
+<th align="left">'''small town'''</th>
+<th align="left">'''village'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">never</td>
+<td align="left">0.2187</td>
+<td align="left">-0.8417</td>
+<td align="left">0.5908</td>
+</tr>
+<tr class="even">
+<td align="left">very rarely</td>
+<td align="left">-0.2332</td>
+<td align="left">-0.7060</td>
+<td align="left">1.0915</td>
+</tr>
+<tr class="odd">
+<td align="left">rarely</td>
+<td align="left">-0.0897</td>
+<td align="left">0.2717</td>
+<td align="left">-0.1634</td>
+</tr>
+<tr class="even">
+<td align="left">sometimes</td>
+<td align="left">-2.1192</td>
+<td align="left">0.7349</td>
+<td align="left">2.2426</td>
+</tr>
+<tr class="odd">
+<td align="left">often</td>
+<td align="left">-1.2678</td>
+<td align="left">1.9731</td>
+<td align="left">-0.3048</td>
+</tr>
+<tr class="even">
+<td align="left">very often</td>
+<td align="left">0.3338</td>
+<td align="left">-0.4116</td>
+<td align="left">-0.0357</td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td align="left">2.2980</td>
+<td align="left">-1.3407</td>
+<td align="left">-1.8480</td>
+</tr>
+</tbody>
+</table>
+
+==== Mosaic chart ====
+
+[[Image:b26fc463113e2f16bc930c620677e929.png|frame|none]]

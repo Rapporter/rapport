@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Rapport package team @ https://github.com/aL3xa/rapport" />
+  <meta name="date" content="2011-04-26 20:25 CET" />
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">ANOVA Template</h1>
+  <p class="author">
+Rapport package team @ https://github.com/aL3xa/rapport
+  </p>
+  <p class="date">2011-04-26 20:25 CET</p>
+</div>
+<div class="slide">
+<h2 id="description">Description</h2>
+<p>An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.</p>
+<h3 id="brief-info">Brief info</h3>
+<p>Two-Way ANOVA was carried out, with <em>Gender</em> and <em>Student</em> as independent variables, and <em>Internet usage in leisure time (hours per day)</em> as a response variable.</p>
+<h3 id="descriptives">Descriptives</h3>
+<p>The following table displays the descriptive statistics of ANOVA model. You can see the factors on the left-hand side of the table, and summary statistics on the right hand side.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>gender</strong></th>
+<th align="left"><strong>student</strong></th>
+<th align="left"><strong>min(resp)</strong></th>
+<th align="left"><strong>max(resp)</strong></th>
+<th align="left"><strong>mean(resp)</strong></th>
+<th align="left"><strong>SD(resp)</strong></th>
+<th align="left"><strong>median(resp)</strong></th>
+<th align="left"><strong>M.A.D.(resp)</strong></th>
+<th align="left"><strong>skewness(resp)</strong></th>
+<th align="left"><strong>kurtosis(resp)</strong></th>
+<th align="left"><strong>min(Total)</strong></th>
+<th align="left"><strong>max(Total)</strong></th>
+<th align="left"><strong>mean(Total)</strong></th>
+<th align="left"><strong>SD(Total)</strong></th>
+<th align="left"><strong>median(Total)</strong></th>
+<th align="left"><strong>M.A.D.(Total)</strong></th>
+<th align="left"><strong>skewness(Total)</strong></th>
+<th align="left"><strong>kurtosis(Total)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">no</td>
+<td align="left">0.00</td>
+<td align="left">10.00</td>
+<td align="left">3.47</td>
+<td align="left">2.05</td>
+<td align="left">3.00</td>
+<td align="left">1.48</td>
+<td align="left">0.66</td>
+<td align="left">2.81</td>
+<td align="left">0.00</td>
+<td align="left">10.00</td>
+<td align="left">3.47</td>
+<td align="left">2.05</td>
+<td align="left">3.00</td>
+<td align="left">1.48</td>
+<td align="left">0.66</td>
+<td align="left">2.81</td>
+</tr>
+<tr class="even">
+<td align="left">male</td>
+<td align="left">yes</td>
+<td align="left">0.00</td>
+<td align="left">12.00</td>
+<td align="left">3.17</td>
+<td align="left">1.94</td>
+<td align="left">3.00</td>
+<td align="left">1.48</td>
+<td align="left">1.37</td>
+<td align="left">5.88</td>
+<td align="left">0.00</td>
+<td align="left">12.00</td>
+<td align="left">3.17</td>
+<td align="left">1.94</td>
+<td align="left">3.00</td>
+<td align="left">1.48</td>
+<td align="left">1.37</td>
+<td align="left">5.88</td>
+</tr>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">Total</td>
+<td align="left">0.00</td>
+<td align="left">12.00</td>
+<td align="left">3.32</td>
+<td align="left">2.00</td>
+<td align="left">3.00</td>
+<td align="left">1.48</td>
+<td align="left">0.99</td>
+<td align="left">4.07</td>
+<td align="left">0.00</td>
+<td align="left">12.00</td>
+<td align="left">3.32</td>
+<td align="left">2.00</td>
+<td align="left">3.00</td>
+<td align="left">1.48</td>
+<td align="left">0.99</td>
+<td align="left">4.07</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">no</td>
+<td align="left">0.00</td>
+<td align="left">10.00</td>
+<td align="left">3.15</td>
+<td align="left">2.18</td>
+<td align="left">3.00</td>
+<td align="left">1.48</td>
+<td align="left">1.29</td>
+<td align="left">4.59</td>
+<td align="left">0.00</td>
+<td align="left">10.00</td>
+<td align="left">3.15</td>
+<td align="left">2.18</td>
+<td align="left">3.00</td>
+<td align="left">1.48</td>
+<td align="left">1.29</td>
+<td align="left">4.59</td>
+</tr>
+<tr class="odd">
+<td align="left">female</td>
+<td align="left">yes</td>
+<td align="left">0.00</td>
+<td align="left">12.00</td>
+<td align="left">3.01</td>
+<td align="left">2.43</td>
+<td align="left">2.00</td>
+<td align="left">1.48</td>
+<td align="left">1.44</td>
+<td align="left">5.00</td>
+<td align="left">0.00</td>
+<td align="left">12.00</td>
+<td align="left">3.01</td>
+<td align="left">2.43</td>
+<td align="left">2.00</td>
+<td align="left">1.48</td>
+<td align="left">1.44</td>
+<td align="left">5.00</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">Total</td>
+<td align="left">0.00</td>
+<td align="left">12.00</td>
+<td align="left">3.06</td>
+<td align="left">2.34</td>
+<td align="left">2.00</td>
+<td align="left">1.48</td>
+<td align="left">1.39</td>
+<td align="left">4.90</td>
+<td align="left">0.00</td>
+<td align="left">12.00</td>
+<td align="left">3.06</td>
+<td align="left">2.34</td>
+<td align="left">2.00</td>
+<td align="left">1.48</td>
+<td align="left">1.39</td>
+<td align="left">4.90</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">Total</td>
+<td align="left">0.00</td>
+<td align="left">12.00</td>
+<td align="left">3.22</td>
+<td align="left">2.14</td>
+<td align="left">3.00</td>
+<td align="left">1.48</td>
+<td align="left">1.17</td>
+<td align="left">4.51</td>
+<td align="left">0.00</td>
+<td align="left">12.00</td>
+<td align="left">3.22</td>
+<td align="left">2.14</td>
+<td align="left">3.00</td>
+<td align="left">1.48</td>
+<td align="left">1.17</td>
+<td align="left">4.51</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Warning</strong> in &quot;rp.desc(fac, resp, c(min, max, mean, SD = sd, median, <code>M.A.D.</code> = mad, skewness, kurtosis), margins = TRUE)&quot;: &quot;duplicated levels will not be allowed in factors anymore&quot;</p>
+<h3 id="diagnostics">Diagnostics</h3>
+<p>Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's goodness-of-fit.</p>
+<h4 id="diagnostic-tests">Diagnostic tests</h4>
+<h5 id="normality-tests">Normality tests</h5>
+<p>We will use <em>Shapiro-Wilk</em>, <em>Lilliefors</em> and <em>Anderson-Darling</em> tests to screen departures from normalitty.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">0.9385</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="even">
+<td align="left">0.1681</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="left">4.4600</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="even">
+<td align="left">0.8802</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="left">0.1721</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="even">
+<td align="left">3.4441</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="left">0.8872</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="even">
+<td align="left">0.1752</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="left">6.1519</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="even">
+<td align="left">0.8533</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="odd">
+<td align="left">0.1819</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="even">
+<td align="left">7.3685</td>
+<td align="left">0.0000</td>
+</tr>
+</tbody>
+</table>
+<h5 id="homoscedascity-tests">Homoscedascity tests</h5>
+<p>In order to test homoscedascity, <em>Bartlett</em> and <em>Fligner-Kileen</em> are applied.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>B</strong></th>
+<th align="left"><strong>F</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">D</td>
+<td align="left">10.72</td>
+<td align="left">3.40</td>
+</tr>
+<tr class="even">
+<td align="left">p</td>
+<td align="left">0.01</td>
+<td align="left">0.33</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagnostic-plots">Diagnostic plots</h4>
+<p>Here you can see several diagnostic plots for ANOVA model.</p>
+<h3 id="anova-table">ANOVA table</h3>
+<h3 id="off-topic-stuff">Off-topic stuff</h3>
+<p>input name: resp variable name: <em>leisure</em> variable label: <em>Internet usage in leisure time (hours per day)</em> input label: <em>Response variable</em> input description: <em>Dependent (response) variable</em></p>
+<p>input name: fac variable name: <em>gender</em> and <em>student</em> variable label: <em>Gender</em> and <em>Student</em> input label: <em>Factor variables</em> input description: <em>Independent variables (factors)</em></p>
+</div>
+</body>
+</html>

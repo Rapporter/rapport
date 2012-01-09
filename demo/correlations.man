@@ -1,3 +1,4 @@
+.\"t
 .TH Correlations "" "2011\[en]04\[en]26 20:25 CET" 
 .SS Description
 .PP
@@ -7,18 +8,420 @@ variables.
 .PP
 3 variables provided.
 .PP
-The highest correlation coefficient (0.2364) is between \[lq]it.edu\[rq]
-and \[lq]age\[rq] and the lowest (\[en]0.049) is between
-\[lq]it.leisure\[rq] and \[lq]age\[rq].
+The highest correlation coefficient (0.2364) is between \f[I]edu\f[] and
+\f[I]age\f[] and the lowest (\[en]0.049) is between \f[I]leisure\f[] and
+\f[I]age\f[].
 It seems that the strongest association (r=0.2364) is between
-\[lq]it.edu\[rq] and \[lq]age\[rq].
+\f[I]edu\f[] and \f[I]age\f[].
 .PP
 Higly correlated (r < 0.7 or r > 0.7) variables: -
 .PP
-Uncorrelated (\[en]0.2 < r < 0.2) variables: * \[lq]age\[rq] -
-\[lq]it.leisure\[rq] * \[lq]it.edu\[rq] - \[lq]it.leisure\[rq]
+Uncorrelated (\[en]0.2 < r < 0.2) variables:
+.IP \[bu] 2
+\f[I]age\f[] and \f[I]leisure\f[]
+.IP \[bu] 2
+\f[I]edu\f[] and \f[I]leisure\f[]
 .SS Correlation matrix
 .PP
-[IMAGE: image (7abdf648965ac14c778c4d61dddc7023.png)]
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]age\f[]
+T}@T{
+\f[B]edu\f[]
+T}@T{
+\f[B]leisure\f[]
+T}
+_
+T{
+age
+T}@T{
+T}@T{
+0.2364 *** \[en]0.
+T}@T{
+0490
+T}
+T{
+edu
+T}@T{
+0.2364 ***
+T}@T{
+0.1
+T}@T{
+714 ***
+T}
+T{
+leisure
+T}@T{
+\[en]0.0490
+T}@T{
+0.1714 ***
+T}@T{
+T}
+.TE
+.PP
+[IMAGE: image (f4c6c0be648793b84a85d267c1a8ecd3.png)]
+.SS Description
+.PP
+This template will return the correlation matrix of supplied numerical
+variables.
+.SS Variable description
+.PP
+11 variables provided.
+.PP
+The highest correlation coefficient (0.902) is between \f[I]disp\f[] and
+\f[I]cyl\f[] and the lowest (\[en]0.8677) is between \f[I]wt\f[] and
+\f[I]mpg\f[].
+It seems that the strongest association (r=0.902) is between
+\f[I]disp\f[] and \f[I]cyl\f[].
+.PP
+Higly correlated (r < 0.7 or r > 0.7) variables:
+.IP \[bu] 2
+\f[I]mpg\f[] and \f[I]cyl\f[]
+.IP \[bu] 2
+\f[I]mpg\f[] and \f[I]disp\f[]
+.IP \[bu] 2
+\f[I]cyl\f[] and \f[I]disp\f[]
+.IP \[bu] 2
+\f[I]mpg\f[] and \f[I]hp\f[]
+.IP \[bu] 2
+\f[I]cyl\f[] and \f[I]hp\f[]
+.IP \[bu] 2
+\f[I]disp\f[] and \f[I]hp\f[]
+.IP \[bu] 2
+\f[I]disp\f[] and \f[I]drat\f[]
+.IP \[bu] 2
+\f[I]mpg\f[] and \f[I]wt\f[]
+.IP \[bu] 2
+\f[I]cyl\f[] and \f[I]wt\f[]
+.IP \[bu] 2
+\f[I]disp\f[] and \f[I]wt\f[]
+.IP \[bu] 2
+\f[I]drat\f[] and \f[I]wt\f[]
+.IP \[bu] 2
+\f[I]hp\f[] and \f[I]qsec\f[]
+.IP \[bu] 2
+\f[I]cyl\f[] and \f[I]vs\f[]
+.IP \[bu] 2
+\f[I]disp\f[] and \f[I]vs\f[]
+.IP \[bu] 2
+\f[I]hp\f[] and \f[I]vs\f[]
+.IP \[bu] 2
+\f[I]qsec\f[] and \f[I]vs\f[]
+.IP \[bu] 2
+\f[I]drat\f[] and \f[I]am\f[]
+.IP \[bu] 2
+\f[I]am\f[] and \f[I]gear\f[]
+.IP \[bu] 2
+\f[I]hp\f[] and \f[I]carb\f[]
+.PP
+Uncorrelated (\[en]0.2 < r < 0.2) variables:
+.IP \[bu] 2
+\f[I]drat\f[] and \f[I]qsec\f[]
+.IP \[bu] 2
+\f[I]wt\f[] and \f[I]qsec\f[]
+.IP \[bu] 2
+\f[I]vs\f[] and \f[I]am\f[]
+.IP \[bu] 2
+\f[I]hp\f[] and \f[I]gear\f[]
+.IP \[bu] 2
+\f[I]drat\f[] and \f[I]carb\f[]
+.IP \[bu] 2
+\f[I]am\f[] and \f[I]carb\f[]
+.SS Correlation matrix
+.PP
+.TS
+tab(@);
+l l l l l l l l l l l l.
+T{
+T}@T{
+\f[B]mpg\f[]
+T}@T{
+\f[B]cyl\f[]
+T}@T{
+\f[B]disp\f[]
+T}@T{
+\f[B]hp\f[]
+T}@T{
+\f[B]drat\f[]
+T}@T{
+\f[B]wt\f[]
+T}@T{
+\f[B]qsec\f[]
+T}@T{
+\f[B]vs\f[]
+T}@T{
+\f[B]am\f[]
+T}@T{
+\f[B]gear\f[]
+T}@T{
+\f[B]carb\f[]
+T}
+_
+T{
+mpg
+T}@T{
+T}@T{
+\[en]0.8522 *** \[en]0.
+T}@T{
+8476 *** \[en]0.776
+T}@T{
+2 *** 0.6812 *
+T}@T{
+** \[en]0.8677 **
+T}@T{
+* 0.4187 *
+T}@T{
+0.6640 *** 0
+T}@T{
+\&.5998 *** 0.48
+T}@T{
+03 ** \[en]0.550
+T}@T{
+9 **
+T}@T{
+T}
+T{
+cyl
+T}@T{
+\[en]0.8522 ***
+T}@T{
+0.9
+T}@T{
+020 *** 0.8324
+T}@T{
+*** \[en]0.6999 \\
+T}@T{
+*** 0.7825 **\\
+T}@T{
+* \[en]0.5912 ***
+T}@T{
+\[en]0.8108 *** \[en]0.
+T}@T{
+5226 ** \[en]0.49
+T}@T{
+27 ** 0.5270
+T}@T{
+**
+T}@T{
+T}
+T{
+disp
+T}@T{
+\[en]0.8476 *** 0.9
+T}@T{
+020 ***
+T}@T{
+0.7909
+T}@T{
+*** \[en]0.7102 \\
+T}@T{
+*** 0.8880 **\\
+T}@T{
+* \[en]0.4337 *
+T}@T{
+\[en]0.7104 *** -
+T}@T{
+0.5912 *** \[en]0.5
+T}@T{
+556 *** 0.3950
+T}@T{
+*
+T}@T{
+T}
+T{
+hp
+T}@T{
+\[en]0.7762 *** 0.8
+T}@T{
+324 *** 0.7909
+T}@T{
+***
+T}@T{
+\[en]0.4488 \\
+T}@T{
+** 0.6587 **
+T}@T{
+* \[en]0.7082 ***
+T}@T{
+\[en]0.7231 *** \[en]0
+T}@T{
+\&.2432 \[en]0
+T}@T{
+\&.1257 0.
+T}@T{
+7498 ***
+T}@T{
+T}
+T{
+drat
+T}@T{
+0.6812 *** \[en]0.
+T}@T{
+6999 *** \[en]0.710
+T}@T{
+2 *** \[en]0.4488 \\
+T}@T{
+**
+T}@T{
+\[en]0.7124 *\\
+T}@T{
+** 0.0912
+T}@T{
+0.4403 *
+T}@T{
+0.7127 ***
+T}@T{
+0.6996 *** \[en]0.
+T}@T{
+0908
+T}@T{
+T}
+T{
+wt
+T}@T{
+\[en]0.8677 *** 0.7
+T}@T{
+825 *** 0.8880
+T}@T{
+*** 0.6587 *
+T}@T{
+** \[en]0.7124 **
+T}@T{
+*
+T}@T{
+\[en]0.1747
+T}@T{
+\[en]0.5549 ***
+T}@T{
+\[en]0.6925 *** \[en]0.
+T}@T{
+5833 *** 0.4276
+T}@T{
+*
+T}@T{
+T}
+T{
+qsec
+T}@T{
+0.4187 * -
+T}@T{
+0.5912 *** \[en]0.4
+T}@T{
+337 * \[en]0.70
+T}@T{
+82 *** 0.0912
+T}@T{
+\[en]0.1747
+T}@T{
+T}@T{
+0.7445 \\
+T}@T{
+*** \[en]0.2299
+T}@T{
+\[en]0.2127
+T}@T{
+\[en]0.6562 *\\
+T}@T{
+**
+T}
+T{
+vs
+T}@T{
+0.6640 *** \[en]0.
+T}@T{
+8108 *** \[en]0.710
+T}@T{
+4 *** \[en]0.7231 \\
+T}@T{
+*** 0.4403 *
+T}@T{
+\[en]0.5549 **\\
+T}@T{
+* 0.7445 ***
+T}@T{
+0
+T}@T{
+\&.1683 0
+T}@T{
+\&.2060 -
+T}@T{
+0.5696 ***
+T}@T{
+T}
+T{
+am
+T}@T{
+0.5998 *** \[en]0.
+T}@T{
+5226 ** \[en]0.59
+T}@T{
+12 *** \[en]0.2432
+T}@T{
+0.7127 \\
+T}@T{
+*** \[en]0.6925 *\\
+T}@T{
+** \[en]0.2299
+T}@T{
+0.1683
+T}@T{
+T}@T{
+0.7941 ***
+T}@T{
+0.0575
+T}@T{
+T}
+T{
+gear
+T}@T{
+0.4803 ** \[en]0
+T}@T{
+\&.4927 ** \[en]0.5
+T}@T{
+556 *** \[en]0.1257
+T}@T{
+0.6996
+T}@T{
+*** \[en]0.5833 *
+T}@T{
+** \[en]0.2127
+T}@T{
+0.2060
+T}@T{
+0.7941 ***
+T}@T{
+T}@T{
+0.2741
+T}@T{
+T}
+T{
+carb
+T}@T{
+\[en]0.5509 ** 0.
+T}@T{
+5270 ** 0.39
+T}@T{
+50 * 0.749
+T}@T{
+8 *** \[en]0.0908
+T}@T{
+0.4276 \\
+T}@T{
+* \[en]0.6562 \\
+T}@T{
+*** \[en]0.5696 **
+T}@T{
+* 0.0575
+T}@T{
+0.2741
+T}@T{
+T}@T{
+T}
+.TE
+.PP
+[IMAGE: image (ce42e944b62284a3bebf2101155af100.png)]
 .SH AUTHORS
-(Username not set) (E-mail address not set).
+Rapport package team \@ https://github.com/aL3xa/rapport.

@@ -6,8 +6,11 @@ Returning the Chi-squared test of two given variables with count,
 percentages and Pearson's residuals table.
 .SS Variable description
 .PP
-Two variables specified: * \[lq]gender\[rq] (\[lq]Gender\[rq]) with 709
-and * \[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with 709 valid values.
+Two variables specified:
+.IP \[bu] 2
+\[lq]gender\[rq] (\[lq]Gender\[rq]) with 709 and
+.IP \[bu] 2
+\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with 709 valid values.
 .SS Counts
 .PP
 .TS
@@ -210,5 +213,439 @@ T}
 .SS Mosaic chart
 .PP
 [IMAGE: image (66ba5aa603e08fec150848bb688f0953.png)]
+.SS Description
+.PP
+Returning the Chi-squared test of two given variables with count,
+percentages and Pearson's residuals table.
+.SS Variable description
+.PP
+Two variables specified:
+.IP \[bu] 2
+\[lq]email\[rq] (\[lq]Email usage\[rq]) with 709 and
+.IP \[bu] 2
+\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with 709 valid values.
+.SS Counts
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]city\f[]
+T}@T{
+\f[B]small town\f[]
+T}@T{
+\f[B]village\f[]
+T}
+_
+T{
+never
+T}@T{
+12
+T}@T{
+0
+T}@T{
+1
+T}
+T{
+very rarely
+T}@T{
+34
+T}@T{
+1
+T}@T{
+3
+T}
+T{
+rarely
+T}@T{
+46
+T}@T{
+3
+T}@T{
+2
+T}
+T{
+sometimes
+T}@T{
+76
+T}@T{
+6
+T}@T{
+8
+T}
+T{
+often
+T}@T{
+113
+T}@T{
+11
+T}@T{
+5
+T}
+T{
+very often
+T}@T{
+106
+T}@T{
+5
+T}@T{
+5
+T}
+T{
+always
+T}@T{
+255
+T}@T{
+10
+T}@T{
+7
+T}
+.TE
+.SS Percentages
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]city\f[]
+T}@T{
+\f[B]small town\f[]
+T}@T{
+\f[B]village\f[]
+T}
+_
+T{
+never
+T}@T{
+0.0169
+T}@T{
+0.0000
+T}@T{
+0.0014
+T}
+T{
+very rarely
+T}@T{
+0.0480
+T}@T{
+0.0014
+T}@T{
+0.0042
+T}
+T{
+rarely
+T}@T{
+0.0649
+T}@T{
+0.0042
+T}@T{
+0.0028
+T}
+T{
+sometimes
+T}@T{
+0.1072
+T}@T{
+0.0085
+T}@T{
+0.0113
+T}
+T{
+often
+T}@T{
+0.1594
+T}@T{
+0.0155
+T}@T{
+0.0071
+T}
+T{
+very often
+T}@T{
+0.1495
+T}@T{
+0.0071
+T}@T{
+0.0071
+T}
+T{
+always
+T}@T{
+0.3597
+T}@T{
+0.0141
+T}@T{
+0.0099
+T}
+.TE
+.SS Row percentages
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]city\f[]
+T}@T{
+\f[B]small town\f[]
+T}@T{
+\f[B]village\f[]
+T}
+_
+T{
+never
+T}@T{
+0.9231
+T}@T{
+0.0000
+T}@T{
+0.0769
+T}
+T{
+very rarely
+T}@T{
+0.8947
+T}@T{
+0.0263
+T}@T{
+0.0789
+T}
+T{
+rarely
+T}@T{
+0.9020
+T}@T{
+0.0588
+T}@T{
+0.0392
+T}
+T{
+sometimes
+T}@T{
+0.8444
+T}@T{
+0.0667
+T}@T{
+0.0889
+T}
+T{
+often
+T}@T{
+0.8760
+T}@T{
+0.0853
+T}@T{
+0.0388
+T}
+T{
+very often
+T}@T{
+0.9138
+T}@T{
+0.0431
+T}@T{
+0.0431
+T}
+T{
+always
+T}@T{
+0.9375
+T}@T{
+0.0368
+T}@T{
+0.0257
+T}
+.TE
+.SS Column percentages
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]city\f[]
+T}@T{
+\f[B]small town\f[]
+T}@T{
+\f[B]village\f[]
+T}
+_
+T{
+never
+T}@T{
+0.0187
+T}@T{
+0.0000
+T}@T{
+0.0323
+T}
+T{
+very rarely
+T}@T{
+0.0530
+T}@T{
+0.0278
+T}@T{
+0.0968
+T}
+T{
+rarely
+T}@T{
+0.0717
+T}@T{
+0.0833
+T}@T{
+0.0645
+T}
+T{
+sometimes
+T}@T{
+0.1184
+T}@T{
+0.1667
+T}@T{
+0.2581
+T}
+T{
+often
+T}@T{
+0.1760
+T}@T{
+0.3056
+T}@T{
+0.1613
+T}
+T{
+very often
+T}@T{
+0.1651
+T}@T{
+0.1389
+T}@T{
+0.1613
+T}
+T{
+always
+T}@T{
+0.3972
+T}@T{
+0.2778
+T}@T{
+0.2258
+T}
+.TE
+.SS Chi-squared test
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]X-squared\f[]
+T}@T{
+\f[B]df\f[]
+T}@T{
+\f[B]p-value\f[]
+T}
+_
+T{
+X-squared
+T}@T{
+14.37
+T}@T{
+12.00
+T}@T{
+0.28
+T}
+.TE
+.PP
+It seems that no real association can be pointed out between
+\f[I]email\f[] and \f[I]dwell\f[] by the \f[I]Pearson's Chi-squared
+test\f[] (χ=14.366 at the degree of freedom being 12) at the
+significance level of 0.2779.
+For this end no other statistical tests were performed.
+.SS Pearson's residuals
+.PP
+.TS
+tab(@);
+l l l l.
+T{
+T}@T{
+\f[B]city\f[]
+T}@T{
+\f[B]small town\f[]
+T}@T{
+\f[B]village\f[]
+T}
+_
+T{
+never
+T}@T{
+0.2187
+T}@T{
+\[en]0.8417
+T}@T{
+0.5908
+T}
+T{
+very rarely
+T}@T{
+\[en]0.2332
+T}@T{
+\[en]0.7060
+T}@T{
+1.0915
+T}
+T{
+rarely
+T}@T{
+\[en]0.0897
+T}@T{
+0.2717
+T}@T{
+\[en]0.1634
+T}
+T{
+sometimes
+T}@T{
+\[en]2.1192
+T}@T{
+0.7349
+T}@T{
+2.2426
+T}
+T{
+often
+T}@T{
+\[en]1.2678
+T}@T{
+1.9731
+T}@T{
+\[en]0.3048
+T}
+T{
+very often
+T}@T{
+0.3338
+T}@T{
+\[en]0.4116
+T}@T{
+\[en]0.0357
+T}
+T{
+always
+T}@T{
+2.2980
+T}@T{
+\[en]1.3407
+T}@T{
+\[en]1.8480
+T}
+.TE
+.SS Mosaic chart
+.PP
+[IMAGE: image (b26fc463113e2f16bc930c620677e929.png)]
 .SH AUTHORS
-(Username not set) (E-mail address not set).
+Rapport package team \@ https://github.com/aL3xa/rapport.

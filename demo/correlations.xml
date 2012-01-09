@@ -5,8 +5,8 @@
   <articleinfo>
     <title>Correlations</title>
     <author>
-      <firstname>(Username not set) (E-mail address not</firstname>
-      <surname>set)</surname>
+      <firstname>Rapport package team @</firstname>
+      <surname>https://github.com/aL3xa/rapport</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -23,26 +23,730 @@
     </para>
     <para>
       The highest correlation coefficient (0.2364) is between
-      &quot;it.edu&quot; and &quot;age&quot; and the lowest (-0.049) is
-      between &quot;it.leisure&quot; and &quot;age&quot;. It seems that
-      the strongest association (r=0.2364) is between &quot;it.edu&quot;
-      and &quot;age&quot;.
+      <emphasis>edu</emphasis> and <emphasis>age</emphasis> and the
+      lowest (-0.049) is between <emphasis>leisure</emphasis> and
+      <emphasis>age</emphasis>. It seems that the strongest association
+      (r=0.2364) is between <emphasis>edu</emphasis> and
+      <emphasis>age</emphasis>.
     </para>
     <para>
       Higly correlated (r &lt; 0.7 or r &gt; 0.7) variables: -
     </para>
     <para>
-      Uncorrelated (-0.2 &lt; r &lt; 0.2) variables: * &quot;age&quot; -
-      &quot;it.leisure&quot; * &quot;it.edu&quot; -
-      &quot;it.leisure&quot;
+      Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
     </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <emphasis>age</emphasis> and <emphasis>leisure</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>edu</emphasis> and <emphasis>leisure</emphasis>
+        </para>
+      </listitem>
+    </itemizedlist>
     <section id="correlation-matrix">
       <title>Correlation matrix</title>
+      <informaltable>
+        <tgroup cols="4">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">age</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">edu</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">leisure</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                age
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                0.2364 *** -0.
+              </entry>
+              <entry>
+                0490
+              </entry>
+            </row>
+            <row>
+              <entry>
+                edu
+              </entry>
+              <entry>
+                0.2364 ***
+              </entry>
+              <entry>
+                0.1
+              </entry>
+              <entry>
+                714 ***
+              </entry>
+            </row>
+            <row>
+              <entry>
+                leisure
+              </entry>
+              <entry>
+                -0.0490
+              </entry>
+              <entry>
+                0.1714 ***
+              </entry>
+              <entry>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
       <figure>
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="7abdf648965ac14c778c4d61dddc7023.png" />
+            <imagedata fileref="f4c6c0be648793b84a85d267c1a8ecd3.png" />
+          </imageobject>
+          <textobject><phrase></phrase></textobject>
+        </mediaobject>
+      </figure>
+    </section>
+  </section>
+</section>
+<section id="description-1">
+  <title>Description</title>
+  <para>
+    This template will return the correlation matrix of supplied
+    numerical variables.
+  </para>
+  <section id="variable-description-1">
+    <title>Variable description</title>
+    <para>
+      11 variables provided.
+    </para>
+    <para>
+      The highest correlation coefficient (0.902) is between
+      <emphasis>disp</emphasis> and <emphasis>cyl</emphasis> and the
+      lowest (-0.8677) is between <emphasis>wt</emphasis> and
+      <emphasis>mpg</emphasis>. It seems that the strongest association
+      (r=0.902) is between <emphasis>disp</emphasis> and
+      <emphasis>cyl</emphasis>.
+    </para>
+    <para>
+      Higly correlated (r &lt; 0.7 or r &gt; 0.7) variables:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <emphasis>mpg</emphasis> and <emphasis>cyl</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>mpg</emphasis> and <emphasis>disp</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>cyl</emphasis> and <emphasis>disp</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>mpg</emphasis> and <emphasis>hp</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>cyl</emphasis> and <emphasis>hp</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>disp</emphasis> and <emphasis>hp</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>disp</emphasis> and <emphasis>drat</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>mpg</emphasis> and <emphasis>wt</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>cyl</emphasis> and <emphasis>wt</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>disp</emphasis> and <emphasis>wt</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>drat</emphasis> and <emphasis>wt</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>hp</emphasis> and <emphasis>qsec</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>cyl</emphasis> and <emphasis>vs</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>disp</emphasis> and <emphasis>vs</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>hp</emphasis> and <emphasis>vs</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>qsec</emphasis> and <emphasis>vs</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>drat</emphasis> and <emphasis>am</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>am</emphasis> and <emphasis>gear</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>hp</emphasis> and <emphasis>carb</emphasis>
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <emphasis>drat</emphasis> and <emphasis>qsec</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>wt</emphasis> and <emphasis>qsec</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>vs</emphasis> and <emphasis>am</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>hp</emphasis> and <emphasis>gear</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>drat</emphasis> and <emphasis>carb</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>am</emphasis> and <emphasis>carb</emphasis>
+        </para>
+      </listitem>
+    </itemizedlist>
+    <section id="correlation-matrix-1">
+      <title>Correlation matrix</title>
+      <informaltable>
+        <tgroup cols="12">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">mpg</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">cyl</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">disp</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">hp</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">drat</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">wt</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">qsec</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">vs</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">am</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">gear</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">carb</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                mpg
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                -0.8522 *** -0.
+              </entry>
+              <entry>
+                8476 *** -0.776
+              </entry>
+              <entry>
+                2 *** 0.6812 *
+              </entry>
+              <entry>
+                ** -0.8677 **
+              </entry>
+              <entry>
+                * 0.4187 *
+              </entry>
+              <entry>
+                0.6640 *** 0
+              </entry>
+              <entry>
+                .5998 *** 0.48
+              </entry>
+              <entry>
+                03 ** -0.550
+              </entry>
+              <entry>
+                9 **
+              </entry>
+              <entry>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                cyl
+              </entry>
+              <entry>
+                -0.8522 ***
+              </entry>
+              <entry>
+                0.9
+              </entry>
+              <entry>
+                020 *** 0.8324
+              </entry>
+              <entry>
+                *** -0.6999 \
+              </entry>
+              <entry>
+                *** 0.7825 **\
+              </entry>
+              <entry>
+                * -0.5912 ***
+              </entry>
+              <entry>
+                -0.8108 *** -0.
+              </entry>
+              <entry>
+                5226 ** -0.49
+              </entry>
+              <entry>
+                27 ** 0.5270
+              </entry>
+              <entry>
+                **
+              </entry>
+              <entry>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                disp
+              </entry>
+              <entry>
+                -0.8476 *** 0.9
+              </entry>
+              <entry>
+                020 ***
+              </entry>
+              <entry>
+                0.7909
+              </entry>
+              <entry>
+                *** -0.7102 \
+              </entry>
+              <entry>
+                *** 0.8880 **\
+              </entry>
+              <entry>
+                * -0.4337 *
+              </entry>
+              <entry>
+                -0.7104 *** -
+              </entry>
+              <entry>
+                0.5912 *** -0.5
+              </entry>
+              <entry>
+                556 *** 0.3950
+              </entry>
+              <entry>
+                *
+              </entry>
+              <entry>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                hp
+              </entry>
+              <entry>
+                -0.7762 *** 0.8
+              </entry>
+              <entry>
+                324 *** 0.7909
+              </entry>
+              <entry>
+                ***
+              </entry>
+              <entry>
+                -0.4488 \
+              </entry>
+              <entry>
+                ** 0.6587 **
+              </entry>
+              <entry>
+                * -0.7082 ***
+              </entry>
+              <entry>
+                -0.7231 *** -0
+              </entry>
+              <entry>
+                .2432 -0
+              </entry>
+              <entry>
+                .1257 0.
+              </entry>
+              <entry>
+                7498 ***
+              </entry>
+              <entry>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                drat
+              </entry>
+              <entry>
+                0.6812 *** -0.
+              </entry>
+              <entry>
+                6999 *** -0.710
+              </entry>
+              <entry>
+                2 *** -0.4488 \
+              </entry>
+              <entry>
+                **
+              </entry>
+              <entry>
+                -0.7124 *\
+              </entry>
+              <entry>
+                ** 0.0912
+              </entry>
+              <entry>
+                0.4403 *
+              </entry>
+              <entry>
+                0.7127 ***
+              </entry>
+              <entry>
+                0.6996 *** -0.
+              </entry>
+              <entry>
+                0908
+              </entry>
+              <entry>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                wt
+              </entry>
+              <entry>
+                -0.8677 *** 0.7
+              </entry>
+              <entry>
+                825 *** 0.8880
+              </entry>
+              <entry>
+                *** 0.6587 *
+              </entry>
+              <entry>
+                ** -0.7124 **
+              </entry>
+              <entry>
+                *
+              </entry>
+              <entry>
+                -0.1747
+              </entry>
+              <entry>
+                -0.5549 ***
+              </entry>
+              <entry>
+                -0.6925 *** -0.
+              </entry>
+              <entry>
+                5833 *** 0.4276
+              </entry>
+              <entry>
+                *
+              </entry>
+              <entry>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                qsec
+              </entry>
+              <entry>
+                0.4187 * -
+              </entry>
+              <entry>
+                0.5912 *** -0.4
+              </entry>
+              <entry>
+                337 * -0.70
+              </entry>
+              <entry>
+                82 *** 0.0912
+              </entry>
+              <entry>
+                -0.1747
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                0.7445 \
+              </entry>
+              <entry>
+                *** -0.2299
+              </entry>
+              <entry>
+                -0.2127
+              </entry>
+              <entry>
+                -0.6562 *\
+              </entry>
+              <entry>
+                **
+              </entry>
+            </row>
+            <row>
+              <entry>
+                vs
+              </entry>
+              <entry>
+                0.6640 *** -0.
+              </entry>
+              <entry>
+                8108 *** -0.710
+              </entry>
+              <entry>
+                4 *** -0.7231 \
+              </entry>
+              <entry>
+                *** 0.4403 *
+              </entry>
+              <entry>
+                -0.5549 **\
+              </entry>
+              <entry>
+                * 0.7445 ***
+              </entry>
+              <entry>
+                0
+              </entry>
+              <entry>
+                .1683 0
+              </entry>
+              <entry>
+                .2060 -
+              </entry>
+              <entry>
+                0.5696 ***
+              </entry>
+              <entry>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                am
+              </entry>
+              <entry>
+                0.5998 *** -0.
+              </entry>
+              <entry>
+                5226 ** -0.59
+              </entry>
+              <entry>
+                12 *** -0.2432
+              </entry>
+              <entry>
+                0.7127 \
+              </entry>
+              <entry>
+                *** -0.6925 *\
+              </entry>
+              <entry>
+                ** -0.2299
+              </entry>
+              <entry>
+                0.1683
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                0.7941 ***
+              </entry>
+              <entry>
+                0.0575
+              </entry>
+              <entry>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                gear
+              </entry>
+              <entry>
+                0.4803 ** -0
+              </entry>
+              <entry>
+                .4927 ** -0.5
+              </entry>
+              <entry>
+                556 *** -0.1257
+              </entry>
+              <entry>
+                0.6996
+              </entry>
+              <entry>
+                *** -0.5833 *
+              </entry>
+              <entry>
+                ** -0.2127
+              </entry>
+              <entry>
+                0.2060
+              </entry>
+              <entry>
+                0.7941 ***
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                0.2741
+              </entry>
+              <entry>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                carb
+              </entry>
+              <entry>
+                -0.5509 ** 0.
+              </entry>
+              <entry>
+                5270 ** 0.39
+              </entry>
+              <entry>
+                50 * 0.749
+              </entry>
+              <entry>
+                8 *** -0.0908
+              </entry>
+              <entry>
+                0.4276 \
+              </entry>
+              <entry>
+                * -0.6562 \
+              </entry>
+              <entry>
+                *** -0.5696 **
+              </entry>
+              <entry>
+                * 0.0575
+              </entry>
+              <entry>
+                0.2741
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <figure>
+        <title></title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="ce42e944b62284a3bebf2101155af100.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>

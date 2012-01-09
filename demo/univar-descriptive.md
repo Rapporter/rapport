@@ -1,5 +1,5 @@
 % Descriptives
-% (Username not set) (E-mail address not set)
+% Rapport package team @ https://github.com/aL3xa/rapport
 % 2011-04-26 20:25 CET
 
 ## Description
@@ -14,10 +14,11 @@ The dataset has 709 observations with 709 valid values (missing: 0) in
 
 #### Base statistics
 
-  **gender**   **N**     **pct**   **cum.n**   **cum.pct**
-  ------------ --------- --------- ----------- -------------
-  male         7344.00   60.93     7344.00     60.93
-  female       4709.00   39.07     12053.00    100.00
+          **gender**   **N**    **pct**   **cumul.count**   **cumul.pct**
+  ------- ------------ -------- --------- ----------------- ---------------
+  1       male         432.00   60.93     432.00            60.93
+  2       female       277.00   39.07     709.00            100.00
+  Total                709.00   100.00    709.00            100.00
 
 #### Barplot
 
@@ -38,9 +39,9 @@ The dataset has 709 observations with 709 valid values (missing: 0) in
 
 #### Base statistics
 
-  **value**   **mean**   **sd**   **var**
-  ----------- ---------- -------- ---------
-  (all)       24.56      6.84     46.78
+  **value**   **mean(age)**   **sd(age)**   **var(age)**
+  ----------- --------------- ------------- --------------
+  (all)       24.56           6.84          46.78
 
 #### Histogram
 

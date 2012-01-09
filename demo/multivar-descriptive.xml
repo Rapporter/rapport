@@ -5,8 +5,8 @@
   <articleinfo>
     <title>Descriptives</title>
     <author>
-      <firstname>(Username not set) (E-mail address not</firstname>
-      <surname>set)</surname>
+      <firstname>Rapport package team @</firstname>
+      <surname>https://github.com/aL3xa/rapport</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -26,7 +26,8 @@
     <section id="base-statistics">
       <title>Base statistics</title>
       <informaltable>
-        <tgroup cols="5">
+        <tgroup cols="6">
+          <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
@@ -34,6 +35,8 @@
           <colspec align="left" />
           <thead>
             <row>
+              <entry>
+              </entry>
               <entry>
                 <emphasis role="strong">gender</emphasis>
               </entry>
@@ -44,26 +47,29 @@
                 <emphasis role="strong">pct</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.n</emphasis>
+                <emphasis role="strong">cumul.count</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.pct</emphasis>
+                <emphasis role="strong">cumul.pct</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
+                1
+              </entry>
+              <entry>
                 male
               </entry>
               <entry>
-                7344.00
+                432.00
               </entry>
               <entry>
                 60.93
               </entry>
               <entry>
-                7344.00
+                432.00
               </entry>
               <entry>
                 60.93
@@ -71,16 +77,38 @@
             </row>
             <row>
               <entry>
+                2
+              </entry>
+              <entry>
                 female
               </entry>
               <entry>
-                4709.00
+                277.00
               </entry>
               <entry>
                 39.07
               </entry>
               <entry>
-                12053.00
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Total
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+              <entry>
+                709.00
               </entry>
               <entry>
                 100.00
@@ -128,13 +156,13 @@
                 <emphasis role="strong">value</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">mean</emphasis>
+                <emphasis role="strong">mean(age)</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">sd</emphasis>
+                <emphasis role="strong">sd(age)</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">var</emphasis>
+                <emphasis role="strong">var(age)</emphasis>
               </entry>
             </row>
           </thead>
@@ -205,7 +233,8 @@
     <section id="base-statistics-2">
       <title>Base statistics</title>
       <informaltable>
-        <tgroup cols="5">
+        <tgroup cols="6">
+          <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
@@ -213,6 +242,8 @@
           <colspec align="left" />
           <thead>
             <row>
+              <entry>
+              </entry>
               <entry>
                 <emphasis role="strong">chatim</emphasis>
               </entry>
@@ -223,26 +254,29 @@
                 <emphasis role="strong">pct</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.n</emphasis>
+                <emphasis role="strong">cumul.count</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.pct</emphasis>
+                <emphasis role="strong">cumul.pct</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
+                1
+              </entry>
+              <entry>
                 never
               </entry>
               <entry>
-                896.00
+                64.00
               </entry>
               <entry>
                 9.03
               </entry>
               <entry>
-                896.00
+                64.00
               </entry>
               <entry>
                 9.03
@@ -250,16 +284,19 @@
             </row>
             <row>
               <entry>
+                2
+              </entry>
+              <entry>
                 very rarely
               </entry>
               <entry>
-                1092.00
+                78.00
               </entry>
               <entry>
                 11.00
               </entry>
               <entry>
-                1988.00
+                142.00
               </entry>
               <entry>
                 20.03
@@ -267,16 +304,19 @@
             </row>
             <row>
               <entry>
+                3
+              </entry>
+              <entry>
                 rarely
               </entry>
               <entry>
-                910.00
+                65.00
               </entry>
               <entry>
                 9.17
               </entry>
               <entry>
-                2898.00
+                207.00
               </entry>
               <entry>
                 29.20
@@ -284,16 +324,19 @@
             </row>
             <row>
               <entry>
+                4
+              </entry>
+              <entry>
                 sometimes
               </entry>
               <entry>
-                1736.00
+                124.00
               </entry>
               <entry>
                 17.49
               </entry>
               <entry>
-                4634.00
+                331.00
               </entry>
               <entry>
                 46.69
@@ -301,16 +344,19 @@
             </row>
             <row>
               <entry>
+                5
+              </entry>
+              <entry>
                 often
               </entry>
               <entry>
-                1988.00
+                142.00
               </entry>
               <entry>
                 20.03
               </entry>
               <entry>
-                6622.00
+                473.00
               </entry>
               <entry>
                 66.71
@@ -318,16 +364,19 @@
             </row>
             <row>
               <entry>
+                6
+              </entry>
+              <entry>
                 very often
               </entry>
               <entry>
-                1316.00
+                94.00
               </entry>
               <entry>
                 13.26
               </entry>
               <entry>
-                7938.00
+                567.00
               </entry>
               <entry>
                 79.97
@@ -335,16 +384,38 @@
             </row>
             <row>
               <entry>
+                7
+              </entry>
+              <entry>
                 always
               </entry>
               <entry>
-                1988.00
+                142.00
               </entry>
               <entry>
                 20.03
               </entry>
               <entry>
-                9926.00
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Total
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+              <entry>
+                709.00
               </entry>
               <entry>
                 100.00
@@ -353,14 +424,6 @@
           </tbody>
         </tgroup>
       </informaltable>
-      <para>
-        <emphasis role="strong">Warning</emphasis> in &quot;if
-        (is.numeric(var)) { ; rp.desc(NULL, rp.name(var), c('mean',
-        'sd', 'var'), rp.data) ; } else { ; rp.freq(rp.name(var),
-        rp.data) ; }&quot;: &quot;invalid factor level, NAs generated +
-        invalid factor level, NAs generated + invalid factor level, NAs
-        generated&quot;
-      </para>
     </section>
     <section id="barplot-1">
       <title>Barplot</title>
@@ -390,7 +453,8 @@
     <section id="base-statistics-3">
       <title>Base statistics</title>
       <informaltable>
-        <tgroup cols="5">
+        <tgroup cols="6">
+          <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
@@ -398,6 +462,8 @@
           <colspec align="left" />
           <thead>
             <row>
+              <entry>
+              </entry>
               <entry>
                 <emphasis role="strong">game</emphasis>
               </entry>
@@ -408,26 +474,29 @@
                 <emphasis role="strong">pct</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.n</emphasis>
+                <emphasis role="strong">cumul.count</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.pct</emphasis>
+                <emphasis role="strong">cumul.pct</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
+                1
+              </entry>
+              <entry>
                 never
               </entry>
               <entry>
-                5152.00
+                368.00
               </entry>
               <entry>
                 51.90
               </entry>
               <entry>
-                5152.00
+                368.00
               </entry>
               <entry>
                 51.90
@@ -435,16 +504,19 @@
             </row>
             <row>
               <entry>
+                2
+              </entry>
+              <entry>
                 very rarely
               </entry>
               <entry>
-                1848.00
+                132.00
               </entry>
               <entry>
                 18.62
               </entry>
               <entry>
-                7000.00
+                500.00
               </entry>
               <entry>
                 70.52
@@ -452,16 +524,19 @@
             </row>
             <row>
               <entry>
+                3
+              </entry>
+              <entry>
                 rarely
               </entry>
               <entry>
-                490.00
+                35.00
               </entry>
               <entry>
                 4.94
               </entry>
               <entry>
-                7490.00
+                535.00
               </entry>
               <entry>
                 75.46
@@ -469,16 +544,19 @@
             </row>
             <row>
               <entry>
+                4
+              </entry>
+              <entry>
                 sometimes
               </entry>
               <entry>
-                910.00
+                65.00
               </entry>
               <entry>
                 9.17
               </entry>
               <entry>
-                8400.00
+                600.00
               </entry>
               <entry>
                 84.63
@@ -486,16 +564,19 @@
             </row>
             <row>
               <entry>
+                5
+              </entry>
+              <entry>
                 often
               </entry>
               <entry>
-                532.00
+                38.00
               </entry>
               <entry>
                 5.36
               </entry>
               <entry>
-                8932.00
+                638.00
               </entry>
               <entry>
                 89.99
@@ -503,16 +584,19 @@
             </row>
             <row>
               <entry>
+                6
+              </entry>
+              <entry>
                 very often
               </entry>
               <entry>
-                518.00
+                37.00
               </entry>
               <entry>
                 5.22
               </entry>
               <entry>
-                9450.00
+                675.00
               </entry>
               <entry>
                 95.20
@@ -520,16 +604,38 @@
             </row>
             <row>
               <entry>
+                7
+              </entry>
+              <entry>
                 always
               </entry>
               <entry>
-                476.00
+                34.00
               </entry>
               <entry>
                 4.80
               </entry>
               <entry>
-                9926.00
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Total
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+              <entry>
+                709.00
               </entry>
               <entry>
                 100.00
@@ -538,14 +644,6 @@
           </tbody>
         </tgroup>
       </informaltable>
-      <para>
-        <emphasis role="strong">Warning</emphasis> in &quot;if
-        (is.numeric(var)) { ; rp.desc(NULL, rp.name(var), c('mean',
-        'sd', 'var'), rp.data) ; } else { ; rp.freq(rp.name(var),
-        rp.data) ; }&quot;: &quot;invalid factor level, NAs generated +
-        invalid factor level, NAs generated + invalid factor level, NAs
-        generated&quot;
-      </para>
     </section>
     <section id="barplot-2">
       <title>Barplot</title>
@@ -575,7 +673,8 @@
     <section id="base-statistics-4">
       <title>Base statistics</title>
       <informaltable>
-        <tgroup cols="5">
+        <tgroup cols="6">
+          <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
@@ -583,6 +682,8 @@
           <colspec align="left" />
           <thead>
             <row>
+              <entry>
+              </entry>
               <entry>
                 <emphasis role="strong">surf</emphasis>
               </entry>
@@ -593,26 +694,29 @@
                 <emphasis role="strong">pct</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.n</emphasis>
+                <emphasis role="strong">cumul.count</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.pct</emphasis>
+                <emphasis role="strong">cumul.pct</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
+                1
+              </entry>
+              <entry>
                 never
               </entry>
               <entry>
-                238.00
+                17.00
               </entry>
               <entry>
                 2.40
               </entry>
               <entry>
-                238.00
+                17.00
               </entry>
               <entry>
                 2.40
@@ -620,16 +724,19 @@
             </row>
             <row>
               <entry>
+                2
+              </entry>
+              <entry>
                 very rarely
               </entry>
               <entry>
-                364.00
+                26.00
               </entry>
               <entry>
                 3.67
               </entry>
               <entry>
-                602.00
+                43.00
               </entry>
               <entry>
                 6.06
@@ -637,16 +744,19 @@
             </row>
             <row>
               <entry>
+                3
+              </entry>
+              <entry>
                 rarely
               </entry>
               <entry>
-                476.00
+                34.00
               </entry>
               <entry>
                 4.80
               </entry>
               <entry>
-                1078.00
+                77.00
               </entry>
               <entry>
                 10.86
@@ -654,16 +764,19 @@
             </row>
             <row>
               <entry>
+                4
+              </entry>
+              <entry>
                 sometimes
               </entry>
               <entry>
-                1624.00
+                116.00
               </entry>
               <entry>
                 16.36
               </entry>
               <entry>
-                2702.00
+                193.00
               </entry>
               <entry>
                 27.22
@@ -671,16 +784,19 @@
             </row>
             <row>
               <entry>
+                5
+              </entry>
+              <entry>
                 often
               </entry>
               <entry>
-                2296.00
+                164.00
               </entry>
               <entry>
                 23.13
               </entry>
               <entry>
-                4998.00
+                357.00
               </entry>
               <entry>
                 50.35
@@ -688,16 +804,19 @@
             </row>
             <row>
               <entry>
+                6
+              </entry>
+              <entry>
                 very often
               </entry>
               <entry>
-                2114.00
+                151.00
               </entry>
               <entry>
                 21.30
               </entry>
               <entry>
-                7112.00
+                508.00
               </entry>
               <entry>
                 71.65
@@ -705,16 +824,38 @@
             </row>
             <row>
               <entry>
+                7
+              </entry>
+              <entry>
                 always
               </entry>
               <entry>
-                2814.00
+                201.00
               </entry>
               <entry>
                 28.35
               </entry>
               <entry>
-                9926.00
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Total
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+              <entry>
+                709.00
               </entry>
               <entry>
                 100.00
@@ -723,14 +864,6 @@
           </tbody>
         </tgroup>
       </informaltable>
-      <para>
-        <emphasis role="strong">Warning</emphasis> in &quot;if
-        (is.numeric(var)) { ; rp.desc(NULL, rp.name(var), c('mean',
-        'sd', 'var'), rp.data) ; } else { ; rp.freq(rp.name(var),
-        rp.data) ; }&quot;: &quot;invalid factor level, NAs generated +
-        invalid factor level, NAs generated + invalid factor level, NAs
-        generated&quot;
-      </para>
     </section>
     <section id="barplot-3">
       <title>Barplot</title>
@@ -759,7 +892,8 @@
     <section id="base-statistics-5">
       <title>Base statistics</title>
       <informaltable>
-        <tgroup cols="5">
+        <tgroup cols="6">
+          <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
@@ -767,6 +901,8 @@
           <colspec align="left" />
           <thead>
             <row>
+              <entry>
+              </entry>
               <entry>
                 <emphasis role="strong">email</emphasis>
               </entry>
@@ -777,26 +913,29 @@
                 <emphasis role="strong">pct</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.n</emphasis>
+                <emphasis role="strong">cumul.count</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.pct</emphasis>
+                <emphasis role="strong">cumul.pct</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
+                1
+              </entry>
+              <entry>
                 never
               </entry>
               <entry>
-                182.00
+                13.00
               </entry>
               <entry>
                 1.83
               </entry>
               <entry>
-                182.00
+                13.00
               </entry>
               <entry>
                 1.83
@@ -804,16 +943,19 @@
             </row>
             <row>
               <entry>
+                2
+              </entry>
+              <entry>
                 very rarely
               </entry>
               <entry>
-                532.00
+                38.00
               </entry>
               <entry>
                 5.36
               </entry>
               <entry>
-                714.00
+                51.00
               </entry>
               <entry>
                 7.19
@@ -821,16 +963,19 @@
             </row>
             <row>
               <entry>
+                3
+              </entry>
+              <entry>
                 rarely
               </entry>
               <entry>
-                714.00
+                51.00
               </entry>
               <entry>
                 7.19
               </entry>
               <entry>
-                1428.00
+                102.00
               </entry>
               <entry>
                 14.39
@@ -838,16 +983,19 @@
             </row>
             <row>
               <entry>
+                4
+              </entry>
+              <entry>
                 sometimes
               </entry>
               <entry>
-                1260.00
+                90.00
               </entry>
               <entry>
                 12.69
               </entry>
               <entry>
-                2688.00
+                192.00
               </entry>
               <entry>
                 27.08
@@ -855,16 +1003,19 @@
             </row>
             <row>
               <entry>
+                5
+              </entry>
+              <entry>
                 often
               </entry>
               <entry>
-                1806.00
+                129.00
               </entry>
               <entry>
                 18.19
               </entry>
               <entry>
-                4494.00
+                321.00
               </entry>
               <entry>
                 45.28
@@ -872,16 +1023,19 @@
             </row>
             <row>
               <entry>
+                6
+              </entry>
+              <entry>
                 very often
               </entry>
               <entry>
-                1624.00
+                116.00
               </entry>
               <entry>
                 16.36
               </entry>
               <entry>
-                6118.00
+                437.00
               </entry>
               <entry>
                 61.64
@@ -889,16 +1043,38 @@
             </row>
             <row>
               <entry>
+                7
+              </entry>
+              <entry>
                 always
               </entry>
               <entry>
-                3808.00
+                272.00
               </entry>
               <entry>
                 38.36
               </entry>
               <entry>
-                9926.00
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Total
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+              <entry>
+                709.00
               </entry>
               <entry>
                 100.00
@@ -907,14 +1083,6 @@
           </tbody>
         </tgroup>
       </informaltable>
-      <para>
-        <emphasis role="strong">Warning</emphasis> in &quot;if
-        (is.numeric(var)) { ; rp.desc(NULL, rp.name(var), c('mean',
-        'sd', 'var'), rp.data) ; } else { ; rp.freq(rp.name(var),
-        rp.data) ; }&quot;: &quot;invalid factor level, NAs generated +
-        invalid factor level, NAs generated + invalid factor level, NAs
-        generated&quot;
-      </para>
     </section>
     <section id="barplot-4">
       <title>Barplot</title>
@@ -944,7 +1112,8 @@
     <section id="base-statistics-6">
       <title>Base statistics</title>
       <informaltable>
-        <tgroup cols="5">
+        <tgroup cols="6">
+          <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
@@ -952,6 +1121,8 @@
           <colspec align="left" />
           <thead>
             <row>
+              <entry>
+              </entry>
               <entry>
                 <emphasis role="strong">download</emphasis>
               </entry>
@@ -962,26 +1133,29 @@
                 <emphasis role="strong">pct</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.n</emphasis>
+                <emphasis role="strong">cumul.count</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.pct</emphasis>
+                <emphasis role="strong">cumul.pct</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
+                1
+              </entry>
+              <entry>
                 never
               </entry>
               <entry>
-                154.00
+                11.00
               </entry>
               <entry>
                 1.55
               </entry>
               <entry>
-                154.00
+                11.00
               </entry>
               <entry>
                 1.55
@@ -989,16 +1163,19 @@
             </row>
             <row>
               <entry>
+                2
+              </entry>
+              <entry>
                 very rarely
               </entry>
               <entry>
-                406.00
+                29.00
               </entry>
               <entry>
                 4.09
               </entry>
               <entry>
-                560.00
+                40.00
               </entry>
               <entry>
                 5.64
@@ -1006,16 +1183,19 @@
             </row>
             <row>
               <entry>
+                3
+              </entry>
+              <entry>
                 rarely
               </entry>
               <entry>
-                420.00
+                30.00
               </entry>
               <entry>
                 4.23
               </entry>
               <entry>
-                980.00
+                70.00
               </entry>
               <entry>
                 9.87
@@ -1023,16 +1203,19 @@
             </row>
             <row>
               <entry>
+                4
+              </entry>
+              <entry>
                 sometimes
               </entry>
               <entry>
-                1190.00
+                85.00
               </entry>
               <entry>
                 11.99
               </entry>
               <entry>
-                2170.00
+                155.00
               </entry>
               <entry>
                 21.86
@@ -1040,16 +1223,19 @@
             </row>
             <row>
               <entry>
+                5
+              </entry>
+              <entry>
                 often
               </entry>
               <entry>
-                1820.00
+                130.00
               </entry>
               <entry>
                 18.34
               </entry>
               <entry>
-                3990.00
+                285.00
               </entry>
               <entry>
                 40.20
@@ -1057,16 +1243,19 @@
             </row>
             <row>
               <entry>
+                6
+              </entry>
+              <entry>
                 very often
               </entry>
               <entry>
-                2394.00
+                171.00
               </entry>
               <entry>
                 24.12
               </entry>
               <entry>
-                6384.00
+                456.00
               </entry>
               <entry>
                 64.32
@@ -1074,16 +1263,38 @@
             </row>
             <row>
               <entry>
+                7
+              </entry>
+              <entry>
                 always
               </entry>
               <entry>
-                3542.00
+                253.00
               </entry>
               <entry>
                 35.68
               </entry>
               <entry>
-                9926.00
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Total
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+              <entry>
+                709.00
               </entry>
               <entry>
                 100.00
@@ -1092,14 +1303,6 @@
           </tbody>
         </tgroup>
       </informaltable>
-      <para>
-        <emphasis role="strong">Warning</emphasis> in &quot;if
-        (is.numeric(var)) { ; rp.desc(NULL, rp.name(var), c('mean',
-        'sd', 'var'), rp.data) ; } else { ; rp.freq(rp.name(var),
-        rp.data) ; }&quot;: &quot;invalid factor level, NAs generated +
-        invalid factor level, NAs generated + invalid factor level, NAs
-        generated&quot;
-      </para>
     </section>
     <section id="barplot-5">
       <title>Barplot</title>
@@ -1129,7 +1332,8 @@
     <section id="base-statistics-7">
       <title>Base statistics</title>
       <informaltable>
-        <tgroup cols="5">
+        <tgroup cols="6">
+          <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
@@ -1137,6 +1341,8 @@
           <colspec align="left" />
           <thead>
             <row>
+              <entry>
+              </entry>
               <entry>
                 <emphasis role="strong">forum</emphasis>
               </entry>
@@ -1147,26 +1353,29 @@
                 <emphasis role="strong">pct</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.n</emphasis>
+                <emphasis role="strong">cumul.count</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.pct</emphasis>
+                <emphasis role="strong">cumul.pct</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
+                1
+              </entry>
+              <entry>
                 never
               </entry>
               <entry>
-                1120.00
+                80.00
               </entry>
               <entry>
                 11.28
               </entry>
               <entry>
-                1120.00
+                80.00
               </entry>
               <entry>
                 11.28
@@ -1174,16 +1383,19 @@
             </row>
             <row>
               <entry>
+                2
+              </entry>
+              <entry>
                 very rarely
               </entry>
               <entry>
-                1176.00
+                84.00
               </entry>
               <entry>
                 11.85
               </entry>
               <entry>
-                2296.00
+                164.00
               </entry>
               <entry>
                 23.13
@@ -1191,16 +1403,19 @@
             </row>
             <row>
               <entry>
+                3
+              </entry>
+              <entry>
                 rarely
               </entry>
               <entry>
-                1036.00
+                74.00
               </entry>
               <entry>
                 10.44
               </entry>
               <entry>
-                3332.00
+                238.00
               </entry>
               <entry>
                 33.57
@@ -1208,16 +1423,19 @@
             </row>
             <row>
               <entry>
+                4
+              </entry>
+              <entry>
                 sometimes
               </entry>
               <entry>
-                1736.00
+                124.00
               </entry>
               <entry>
                 17.49
               </entry>
               <entry>
-                5068.00
+                362.00
               </entry>
               <entry>
                 51.06
@@ -1225,16 +1443,19 @@
             </row>
             <row>
               <entry>
+                5
+              </entry>
+              <entry>
                 often
               </entry>
               <entry>
-                1568.00
+                112.00
               </entry>
               <entry>
                 15.80
               </entry>
               <entry>
-                6636.00
+                474.00
               </entry>
               <entry>
                 66.85
@@ -1242,16 +1463,19 @@
             </row>
             <row>
               <entry>
+                6
+              </entry>
+              <entry>
                 very often
               </entry>
               <entry>
-                1750.00
+                125.00
               </entry>
               <entry>
                 17.63
               </entry>
               <entry>
-                8386.00
+                599.00
               </entry>
               <entry>
                 84.49
@@ -1259,16 +1483,38 @@
             </row>
             <row>
               <entry>
+                7
+              </entry>
+              <entry>
                 always
               </entry>
               <entry>
-                1540.00
+                110.00
               </entry>
               <entry>
                 15.51
               </entry>
               <entry>
-                9926.00
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Total
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+              <entry>
+                709.00
               </entry>
               <entry>
                 100.00
@@ -1277,14 +1523,6 @@
           </tbody>
         </tgroup>
       </informaltable>
-      <para>
-        <emphasis role="strong">Warning</emphasis> in &quot;if
-        (is.numeric(var)) { ; rp.desc(NULL, rp.name(var), c('mean',
-        'sd', 'var'), rp.data) ; } else { ; rp.freq(rp.name(var),
-        rp.data) ; }&quot;: &quot;invalid factor level, NAs generated +
-        invalid factor level, NAs generated + invalid factor level, NAs
-        generated&quot;
-      </para>
     </section>
     <section id="barplot-6">
       <title>Barplot</title>
@@ -1314,7 +1552,8 @@
     <section id="base-statistics-8">
       <title>Base statistics</title>
       <informaltable>
-        <tgroup cols="5">
+        <tgroup cols="6">
+          <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
@@ -1322,6 +1561,8 @@
           <colspec align="left" />
           <thead>
             <row>
+              <entry>
+              </entry>
               <entry>
                 <emphasis role="strong">socnet</emphasis>
               </entry>
@@ -1332,26 +1573,29 @@
                 <emphasis role="strong">pct</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.n</emphasis>
+                <emphasis role="strong">cumul.count</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.pct</emphasis>
+                <emphasis role="strong">cumul.pct</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
+                1
+              </entry>
+              <entry>
                 never
               </entry>
               <entry>
-                2940.00
+                210.00
               </entry>
               <entry>
                 29.62
               </entry>
               <entry>
-                2940.00
+                210.00
               </entry>
               <entry>
                 29.62
@@ -1359,16 +1603,19 @@
             </row>
             <row>
               <entry>
+                2
+              </entry>
+              <entry>
                 very rarely
               </entry>
               <entry>
-                1554.00
+                111.00
               </entry>
               <entry>
                 15.66
               </entry>
               <entry>
-                4494.00
+                321.00
               </entry>
               <entry>
                 45.28
@@ -1376,16 +1623,19 @@
             </row>
             <row>
               <entry>
+                3
+              </entry>
+              <entry>
                 rarely
               </entry>
               <entry>
-                826.00
+                59.00
               </entry>
               <entry>
                 8.32
               </entry>
               <entry>
-                5320.00
+                380.00
               </entry>
               <entry>
                 53.60
@@ -1393,16 +1643,19 @@
             </row>
             <row>
               <entry>
+                4
+              </entry>
+              <entry>
                 sometimes
               </entry>
               <entry>
-                1316.00
+                94.00
               </entry>
               <entry>
                 13.26
               </entry>
               <entry>
-                6636.00
+                474.00
               </entry>
               <entry>
                 66.85
@@ -1410,16 +1663,19 @@
             </row>
             <row>
               <entry>
+                5
+              </entry>
+              <entry>
                 often
               </entry>
               <entry>
-                1148.00
+                82.00
               </entry>
               <entry>
                 11.57
               </entry>
               <entry>
-                7784.00
+                556.00
               </entry>
               <entry>
                 78.42
@@ -1427,16 +1683,19 @@
             </row>
             <row>
               <entry>
+                6
+              </entry>
+              <entry>
                 very often
               </entry>
               <entry>
-                1190.00
+                85.00
               </entry>
               <entry>
                 11.99
               </entry>
               <entry>
-                8974.00
+                641.00
               </entry>
               <entry>
                 90.41
@@ -1444,16 +1703,38 @@
             </row>
             <row>
               <entry>
+                7
+              </entry>
+              <entry>
                 always
               </entry>
               <entry>
-                952.00
+                68.00
               </entry>
               <entry>
                 9.59
               </entry>
               <entry>
-                9926.00
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Total
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+              <entry>
+                709.00
               </entry>
               <entry>
                 100.00
@@ -1462,14 +1743,6 @@
           </tbody>
         </tgroup>
       </informaltable>
-      <para>
-        <emphasis role="strong">Warning</emphasis> in &quot;if
-        (is.numeric(var)) { ; rp.desc(NULL, rp.name(var), c('mean',
-        'sd', 'var'), rp.data) ; } else { ; rp.freq(rp.name(var),
-        rp.data) ; }&quot;: &quot;invalid factor level, NAs generated +
-        invalid factor level, NAs generated + invalid factor level, NAs
-        generated&quot;
-      </para>
     </section>
     <section id="barplot-7">
       <title>Barplot</title>
@@ -1499,7 +1772,8 @@
     <section id="base-statistics-9">
       <title>Base statistics</title>
       <informaltable>
-        <tgroup cols="5">
+        <tgroup cols="6">
+          <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
@@ -1507,6 +1781,8 @@
           <colspec align="left" />
           <thead>
             <row>
+              <entry>
+              </entry>
               <entry>
                 <emphasis role="strong">xxx</emphasis>
               </entry>
@@ -1517,26 +1793,29 @@
                 <emphasis role="strong">pct</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.n</emphasis>
+                <emphasis role="strong">cumul.count</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">cum.pct</emphasis>
+                <emphasis role="strong">cumul.pct</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
+                1
+              </entry>
+              <entry>
                 never
               </entry>
               <entry>
-                4102.00
+                293.00
               </entry>
               <entry>
                 41.33
               </entry>
               <entry>
-                4102.00
+                293.00
               </entry>
               <entry>
                 41.33
@@ -1544,16 +1823,19 @@
             </row>
             <row>
               <entry>
+                2
+              </entry>
+              <entry>
                 very rarely
               </entry>
               <entry>
-                1792.00
+                128.00
               </entry>
               <entry>
                 18.05
               </entry>
               <entry>
-                5894.00
+                421.00
               </entry>
               <entry>
                 59.38
@@ -1561,16 +1843,19 @@
             </row>
             <row>
               <entry>
+                3
+              </entry>
+              <entry>
                 rarely
               </entry>
               <entry>
-                770.00
+                55.00
               </entry>
               <entry>
                 7.76
               </entry>
               <entry>
-                6664.00
+                476.00
               </entry>
               <entry>
                 67.14
@@ -1578,16 +1863,19 @@
             </row>
             <row>
               <entry>
+                4
+              </entry>
+              <entry>
                 sometimes
               </entry>
               <entry>
-                1918.00
+                137.00
               </entry>
               <entry>
                 19.32
               </entry>
               <entry>
-                8582.00
+                613.00
               </entry>
               <entry>
                 86.46
@@ -1595,16 +1883,19 @@
             </row>
             <row>
               <entry>
+                5
+              </entry>
+              <entry>
                 often
               </entry>
               <entry>
-                672.00
+                48.00
               </entry>
               <entry>
                 6.77
               </entry>
               <entry>
-                9254.00
+                661.00
               </entry>
               <entry>
                 93.23
@@ -1612,16 +1903,19 @@
             </row>
             <row>
               <entry>
+                6
+              </entry>
+              <entry>
                 very often
               </entry>
               <entry>
-                406.00
+                29.00
               </entry>
               <entry>
                 4.09
               </entry>
               <entry>
-                9660.00
+                690.00
               </entry>
               <entry>
                 97.32
@@ -1629,16 +1923,38 @@
             </row>
             <row>
               <entry>
+                7
+              </entry>
+              <entry>
                 always
               </entry>
               <entry>
-                266.00
+                19.00
               </entry>
               <entry>
                 2.68
               </entry>
               <entry>
-                9926.00
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Total
+              </entry>
+              <entry>
+              </entry>
+              <entry>
+                709.00
+              </entry>
+              <entry>
+                100.00
+              </entry>
+              <entry>
+                709.00
               </entry>
               <entry>
                 100.00
@@ -1647,14 +1963,6 @@
           </tbody>
         </tgroup>
       </informaltable>
-      <para>
-        <emphasis role="strong">Warning</emphasis> in &quot;if
-        (is.numeric(var)) { ; rp.desc(NULL, rp.name(var), c('mean',
-        'sd', 'var'), rp.data) ; } else { ; rp.freq(rp.name(var),
-        rp.data) ; }&quot;: &quot;invalid factor level, NAs generated +
-        invalid factor level, NAs generated + invalid factor level, NAs
-        generated&quot;
-      </para>
     </section>
     <section id="barplot-8">
       <title>Barplot</title>
@@ -1663,191 +1971,6 @@
         <mediaobject>
           <imageobject>
             <imagedata fileref="053614b5b842759f559adcc0da8cc645.png" />
-          </imageobject>
-          <textobject><phrase></phrase></textobject>
-        </mediaobject>
-      </figure>
-      <para>
-        It seems that the highest value is 7 which is exactly 7 times
-        higher than the smallest value (1).
-      </para>
-    </section>
-  </section>
-  <section id="long.use-how-long-youve-been-on-the-internet">
-    <title><emphasis>long.use</emphasis> (&quot;How long you've been on
-    the Internet?&quot;)</title>
-    <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>long.use</emphasis> (&quot;How long you've been on
-      the Internet?&quot;). This variable seems to be a factor.
-    </para>
-    <section id="base-statistics-10">
-      <title>Base statistics</title>
-      <informaltable>
-        <tgroup cols="5">
-          <colspec align="left" />
-          <colspec align="left" />
-          <colspec align="left" />
-          <colspec align="left" />
-          <colspec align="left" />
-          <thead>
-            <row>
-              <entry>
-                <emphasis role="strong">long.use</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">N</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">pct</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">cum.n</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">cum.pct</emphasis>
-              </entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>
-                less than 6 months
-              </entry>
-              <entry>
-                294.00
-              </entry>
-              <entry>
-                2.96
-              </entry>
-              <entry>
-                294.00
-              </entry>
-              <entry>
-                2.96
-              </entry>
-            </row>
-            <row>
-              <entry>
-                1 years
-              </entry>
-              <entry>
-                728.00
-              </entry>
-              <entry>
-                7.33
-              </entry>
-              <entry>
-                1022.00
-              </entry>
-              <entry>
-                10.30
-              </entry>
-            </row>
-            <row>
-              <entry>
-                2 years
-              </entry>
-              <entry>
-                966.00
-              </entry>
-              <entry>
-                9.73
-              </entry>
-              <entry>
-                1988.00
-              </entry>
-              <entry>
-                20.03
-              </entry>
-            </row>
-            <row>
-              <entry>
-                3 years
-              </entry>
-              <entry>
-                1092.00
-              </entry>
-              <entry>
-                11.00
-              </entry>
-              <entry>
-                3080.00
-              </entry>
-              <entry>
-                31.03
-              </entry>
-            </row>
-            <row>
-              <entry>
-                4 years
-              </entry>
-              <entry>
-                1064.00
-              </entry>
-              <entry>
-                10.72
-              </entry>
-              <entry>
-                4144.00
-              </entry>
-              <entry>
-                41.75
-              </entry>
-            </row>
-            <row>
-              <entry>
-                5 years
-              </entry>
-              <entry>
-                1036.00
-              </entry>
-              <entry>
-                10.44
-              </entry>
-              <entry>
-                5180.00
-              </entry>
-              <entry>
-                52.19
-              </entry>
-            </row>
-            <row>
-              <entry>
-                5 years and more
-              </entry>
-              <entry>
-                4746.00
-              </entry>
-              <entry>
-                47.81
-              </entry>
-              <entry>
-                9926.00
-              </entry>
-              <entry>
-                100.00
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </informaltable>
-      <para>
-        <emphasis role="strong">Warning</emphasis> in &quot;if
-        (is.numeric(var)) { ; rp.desc(NULL, rp.name(var), c('mean',
-        'sd', 'var'), rp.data) ; } else { ; rp.freq(rp.name(var),
-        rp.data) ; }&quot;: &quot;invalid factor level, NAs generated +
-        invalid factor level, NAs generated + invalid factor level, NAs
-        generated&quot;
-      </para>
-    </section>
-    <section id="barplot-9">
-      <title>Barplot</title>
-      <figure>
-        <title></title>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="ac7f8b3e1fb841eb17beaceee8e09dd1.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
