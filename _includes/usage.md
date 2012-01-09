@@ -147,7 +147,7 @@ Please find the HTML exported versions of the examples of `example.tpl` [here](d
 
 {% highlight r %}
 tpl.export(tpl.example('example', 'all'))
-{% highlight r %}
+{% endhighlight %}
 
 Which will return the above linked HTML with all examples of `example.tpl`. Well, not exactly the same :)
 
@@ -158,7 +158,7 @@ Set your name and e-mail address:
 {% highlight r %}
 options('rp.user'  = 'userR')
 options('rp.email' = 'userR@example.com')
-{% highlight r %}
+{% endhighlight %}
 
 And rerun the following commands to see the changes. For other settings in `tpl.export` please check out the [docs](#functions).
 
