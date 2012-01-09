@@ -153,8 +153,16 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         return(r)
 }
 
-##' Export rapport class (deprecated)
+##' Rapport to HTML
 ##'
-##' This function points to \code{\link{tpl.export}}. Use that insted \code{rp.export}, as this function remained here only for backward compatibily of the package.
-##' @param ... parameters passed to \code{\link{tpl.export}}
-rp.export <- function(...) tpl.export(...)
+##' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
+##' @param ... parameters passed directly to \code{\link{rapport}} 
+##' @export
+rapport.html <- function(...) tpl.export(rapport(...))
+
+##' Rapport to odt
+##'
+##' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
+##' @param ... parameters passed directly to \code{\link{rapport}} 
+##' @export
+rapport.odt <- function(...) tpl.export(rapport(...), format='odt')
