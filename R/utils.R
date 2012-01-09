@@ -31,10 +31,10 @@ alike.integer <- function(x){
 
 ##' Check plot creation
 ##'
-##' This function checks if given expression generates a plot. See original thread for more details (\url{http://stackoverflow.com/a/2744434/457898}). Thanks for this one, Hadley Wickam!
+##' This function checks if given expression generates a plot. See original thread for more details (\url{http://stackoverflow.com/a/2744434/457898}). Special thanks to Hadley Wickam for this one!
 ##' @param cmd an expression that is to be tested
 ##' @return a logical value
-##' @author <a href="http://had.co.nz/">Hadley Wickham</a>
+##' @author Hadley Wickham <h.wickham@@gmail.com>
 ##' @examples \dontrun{
 ##'     makes.plot(plot(rnorm(100))) # returns TRUE
 ##'     makes.plot(sample(10))       # returns FALSE
@@ -83,7 +83,7 @@ trim.space <- function(x, leading = FALSE, trailing = TRUE, re = '[:space:]', ..
 
 ##' Adjacent Values Run Length Encoding
 ##'
-##' Similar to \code{\link{rle}} function, this function detects "runs" of adjacent integers, and displays vector of run lengths and list of corresponding integer sequences. Taken from <a href="http://stackoverflow.com/a/8467446/457898">rle-like function that catches “run” of adjacent integers</a> question on StackOverflow.
+##' Similar to \code{\link{rle}} function, this function detects "runs" of adjacent integers, and displays vector of run lengths and list of corresponding integer sequences. See original thread for more details \url{http://stackoverflow.com/a/8467446/457898}. Special thanks to Gabor Grothendieck for this one!
 ##' @param x a numeric vector with
 ##' @return a list with two elements: vector of run lengths, and another list of values corresponding to generated sequences' lengths.
 ##' @author Gabor Grothendieck <ggrothendieck@@gmail.com>
@@ -109,7 +109,7 @@ catn <- function(...){
 
 ##' Vectorised String Replacement
 ##'
-##' A simple wrapper for \code{\link{gsub}} that replaces all patterns from \code{pattern} argument with ones in \code{replacement} over vector provided in argument \code{x}. Taken from <a href="http://stackoverflow.com/a/6954308/457898">StackOverflow</a>.
+##' A simple wrapper for \code{\link{gsub}} that replaces all patterns from \code{pattern} argument with ones in \code{replacement} over vector provided in argument \code{x}. See original thread for more details \url{http://stackoverflow.com/a/6954308/457898}. Special thanks to user Jean-Robert for this one!
 ##' @param pattern see eponymous argument for \code{\link{gsub}} function
 ##' @param replacement see eponymous argument for \code{\link{gsub}} function
 ##' @param x see eponymous argument for \code{\link{gsub}} function
@@ -168,17 +168,11 @@ tocamel <- function(x, sep = '[^[:alnum:]]', upper = FALSE, ...){
 ##' @return an atomic vector with (hopefully) successfully guessed mode
 ##' @examples \dontrun{
 ##' storage.mode(guess.mode("234"))
-##'
 ##' storage.mode(guess.mode("234.23"))
-##'
 ##' storage.mode(guess.mode("234.23.234"))
-##'
 ##' storage.mode(guess.mode("TRUE"))
-##'
 ##' storage.mode(guess.mode("TRUE         "))
-##'
 ##' storage.mode(guess.mode("     TRUE         ", TRUE))
-##'
 ##' }
 ##' @export
 guess.convert <- function(x, trim.white = FALSE){
@@ -215,4 +209,20 @@ guess.convert <- function(x, trim.white = FALSE){
 wrap <- function(x, wrap = '"'){
     stopifnot(is.variable(x))
     sprintf('%s%s%s', wrap, x, wrap)
+}
+
+
+##' Stop Execution with String Interpolated Messages
+##'
+##' This helper combines \code{stop} function with \code{sprintf} thus allowing string interpolated messages when execution is halted.
+##' @param s a character vector of format strings
+##' @param ... values to be interpolated
+##' @return a string containing message that follows execution termination
+##' @examples \dontrun{
+##' stopf("%.3f is not larger than %d and/or smaller than %d", pi, 10, 40)
+##' }
+
+##' @export
+stopf <- function(s, ...){
+    stop(sprintf(s, ...))
 }

@@ -21,17 +21,11 @@
 \examples{
 \dontrun{
 storage.mode(guess.mode("234"))
-
 storage.mode(guess.mode("234.23"))
-
 storage.mode(guess.mode("234.23.234"))
-
 storage.mode(guess.mode("TRUE"))
-
 storage.mode(guess.mode("TRUE         "))
-
 storage.mode(guess.mode("     TRUE         ", TRUE))
-
 }
 }
 

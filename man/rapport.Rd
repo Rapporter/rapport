@@ -31,7 +31,7 @@
 }
 \examples{
 \dontrun{
-
+rapport("example", ius2008, var="it.leisure", desc=FALSE, hist=T, color="green")
 }
 }
 

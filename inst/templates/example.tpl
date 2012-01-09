@@ -3,10 +3,10 @@ Title:        Example template
 Author:       Gergely Daróczi 
 Description:  This template demonstrates the basic features of rapport. We all hope you will like it!
 Packages:     lattice
-Example:      rapport("example", ius2008, var='it.leisure')
-              rapport("example", ius2008, var='it.leisure', desc=FALSE)
-              rapport("example", ius2008, var='it.leisure', desc=FALSE, hist=T)
-              rapport("example", ius2008, var='it.leisure', desc=FALSE, hist=T, theme='Set2')             
+Example:      rapport("example", ius2008, var='leisure')
+              rapport("example", ius2008, var='leisure', desc=FALSE)
+              rapport("example", ius2008, var='leisure', desc=FALSE, hist=T)
+              rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')             
 var    | numeric   | Variable| A numeric variable.
 desc   | TRUE      | Boolean | Show descriptive statistics of specified variable?
 hist   | FALSE     | Boolean | Show histogram of specified variable?

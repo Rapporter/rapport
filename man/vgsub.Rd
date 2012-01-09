@@ -24,7 +24,8 @@
   A simple wrapper for \code{\link{gsub}} that replaces all
   patterns from \code{pattern} argument with ones in
   \code{replacement} over vector provided in argument
-  \code{x}. Taken from <a
-  href="http://stackoverflow.com/a/6954308/457898">StackOverflow</a>.
+  \code{x}. See original thread for more details
+  \url{http://stackoverflow.com/a/6954308/457898}. Special
+  thanks to user Jean-Robert for this one!
 }
 

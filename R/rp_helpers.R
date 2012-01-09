@@ -234,7 +234,7 @@ get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.op
 
     if (!all(sort(tag.default.names) == sort(tag.current.names))){
         tgs <- paste(setdiff(tag.current.names, tag.default.names), collapse = ", ")
-        stop(sprintf('tag list malformed!\nproblematic tags: %s', tgs))
+        stopf('tag list malformed!\nproblematic tags: %s', tgs)
     }
 
     res <- switch(t.preset,
@@ -253,7 +253,7 @@ get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.op
                       }
                       do.call(switch, c(EXPR = t.type, all = tag.default, tag.default))
                   },
-                  stop(sprintf('unknown preset option "%s"', t.preset))
+                  stopf('unknown preset option "%s"', t.preset)
                   )
 
     return (res)
@@ -332,7 +332,7 @@ table.json <- function(d, name.rows = 'rows', name.cols = 'cols', name.body = 'b
 
     ## check object class
     if (!inherits(d, c('matrix', 'data.frame')))
-        stop(sprintf('object "%s" is not of "matrix" or a "data.frame" class'), deparse(substitute(d)))
+        stopf('object "%s" is not of "matrix" or a "data.frame" class', deparse(substitute(d)))
 
     if (is.matrix(d))
         d <- as.data.frame(d)
@@ -423,7 +423,7 @@ extract.meta <- function(x, title, regex, replacement = '\\1', short = NULL, tri
         res <- val
     } else {
         if (isTRUE(mandatory)){
-            stop(sprintf('"%s"', title), ' metadata field has errors')
+            stopf('"%s" metadata field has errors', title)
         } else {
             res <- sprintf('%s:', title)
             ## throw error only if meta is specified/non-empty, but has incorrect value
@@ -563,7 +563,7 @@ check.type <- function(x){
                     )
     ## 4th option: something went wrong, shit happens, life's a bitch, etc. throw error
     else
-        stop(sprintf('input definition error in: "%s"', x))
+        stopf('input definition error in: "%s"', x)
 
     res
 }
