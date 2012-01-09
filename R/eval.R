@@ -155,7 +155,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
         ## good code survived!
         graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
-        returns <- length(eval) > length(src)
+        returns <- length(eval) > 1
         if (returns) {
             if (is.logical(graph)) returns <- suppressWarnings(eval(parse(text = src), envir = env))
         } else {
