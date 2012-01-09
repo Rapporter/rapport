@@ -1,8 +1,8 @@
-\name{e}
-\alias{e}
+\name{htest.short}
+\alias{htest.short}
 \title{Extract Values from \code{htest} Objects}
 \usage{
-  e(x)
+  htest.short(x)
 }
 \arguments{
   \item{x}{\code{htest}-class object}

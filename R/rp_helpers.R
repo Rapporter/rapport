@@ -76,32 +76,55 @@ rp.name <- function(var){
 
 ##' Get variable label
 ##'
-##' This function returns character value previously stored in variable's \code{label} attribute. If none found, the function fallbacks to object's name.
-##' @param var an atomic vector
-##' @return a character value with variable's label
+##' This function returns character value previously stored in variable's \code{label} attribute. If none found, the function fallbacks to object's name (retrieved by \code{deparse(substitute(x))}).
+##' @param x an R object to extract labels from
+##' @param fallback a logical value indicating if labels should fallback to object name(s)
+##' @return a character vector with variable's label(s)
 ##' @examples \dontrun{
-##' 	rp.label(mtcars$am)
-##'	x <- 1:10; rp.label(x)
+##' x <- rnorm(100)
+##' rp.label(x)         # returns "x"
+##' rp.label(x, FALSE)  # fails with error message
+##'
+##' rp.label(mtcars$hp) <- "Horsepower"
+##' rp.label(mtcars)    # returns "Horsepower" instead of "hp"
+##' rp.label(mtcars, FALSE)  # returns NA where no labels are found
 ##' }
 ##' @export
-rp.label <- function(var){
+rp.label <- function(x, fallback = TRUE){
 
-    if (missing(var))
-        stop('variable not provided')
-
-    if (!is.variable(var))
-        stop('label can only be assigned to a variable')
-
-    lbl <- attr(var, 'label')
-
-    if (is.null(lbl)) {
-        ## return (tail(as.character(substitute(var)), 1)) # return variable name if no label
-        return (deparse(substitute(var)))
+    if (is.atomic(x)){
+        lbl <- attr(x, which = 'label', exact = TRUE)
+        if (is.null(lbl)){
+            if (fallback)
+                lbl <- deparse(substitute(x))
+            else
+                stop('atomic vector has no label')
+        } else {
+            if (length(lbl) > 1){
+                warning('variable label is not a length-one vector, only first element is returned')
+                lbl <- lbl[1]
+            }
+        }
     } else {
-        if (length(lbl) > 1)
-            warning('variable label is not a length-one vector, only the first element is displayed')
-        return (attr(var, 'label'))       # return variable label
+        lbl <- sapply(x, attr, which = 'label', exact = TRUE)
+        lbl.nil <- sapply(lbl, is.null)
+
+        ## no labels found
+        if (all(lbl.nil)){
+            if (fallback)
+                lbl <- names(lbl)
+            else
+                stop('no labels found in recursive object')
+        } else {
+            if (fallback)
+                lbl[lbl.nil] <- names(lbl)[lbl.nil]
+            else
+                lbl[lbl.nil] <- NA
+            lbl <- unlist(lbl)
+        }
     }
+
+    return(lbl)
 }
 
 

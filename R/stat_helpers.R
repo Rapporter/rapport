@@ -59,30 +59,48 @@ lambda.test <- function(table, direction=0) {
 
 ##' Hypothesis Tests
 ##'
-##' This function extracts only the most important information from \code{htest} class objects - statistic and its p-value.
+##' This function uses \code{\link{htest.short}}, to extract statistic and p-value from \code{htest}-classed object. Main advantage of using \code{htest} is that it's vectorised, and can accept multiple methods.
 ##' @param x arguments to be passed to function specified in \code{test}
 ##' @param ... additional arguments for function specified in \code{test}
+##' @param use.labels a logical value indicating whether variable labels should be placed in row names. If set to \code{FALSE}, output of \code{deparse(substitute(x))} will be used.
+##' @return a \code{data.frame} with applied tests in rows, and their results (statistic and p-value) in columns
+##' @examples \dontrun{
+##' library(nortest)
+##' htest(rnorm(100), shapiro.test)
+##' htest(rnorm(100), lillie.test, ad.test, shapiro.test)
+##' htest(mtcars, lillie.test)
+##' htest(mtcars, lillie.test, ad.test, shapiro.test)
+##' }
 ##' @export
-htest <- function(x, ...){
+htest <- function(x, ..., use.labels = TRUE){
 
     test <- list(...)
     test.len <- length(test)
+    test.name <- sapply(substitute(list(...)), deparse)[-1]
 
     if (is.atomic(x)){
-        res <- each(test)(x)
-        if (test.len == 1)
-            e(res)
-        else
-            sapply(res, e)
+        if (test.len == 1){
+            res <- htest.short(each(test[[1]])(x))
+        } else {
+            res <- sapply(each(test)(x), htest.short)
+        }
+        res <- data.frame(t(res))
+        x.nms <- rp.label(x, use.labels)
+        x.len <- 1
+    } else {
+        if (test.len == 1){
+            res <- lapply(lapply(x, test[[1]]), htest.short)
+        } else {
+            res <- lapply(x, function(y) sapply(each(test)(y), htest.short))
+        }
+        res <- t(data.frame(res))
+        ## x.nms <- if (use.labels) sapply(x, rp.label) else names(x)
+        x.nms <- rp.label(x, use.labels)
+        x.len <- length(x)
     }
 
-    if (is.recursive(x)){
-        if (test.len == 1){
-            sapply(x, test)
-        } else {
-            t(data.frame(lapply(x, function(y) sapply(each(test)(y), e))))
-        }
-    }
+    rownames(res) <- sprintf("%s(%s)", rep(test.name, x.len), rep(x.nms, each = test.len))
+    return(res)
 }
 
 
@@ -95,7 +113,7 @@ htest <- function(x, ...){
 ##' e(shapiro.test(rnorm(100))
 ##' }
 ##' @export
-e <- function(x){
+htest.short <- function(x){
     stopifnot(inherits(x, 'htest'))
     c(x$statistic, p = x$p.value)
 }
