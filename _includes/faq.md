@@ -2,6 +2,11 @@
 
 Quite a bunch of stuff! First of all, it's a name of a marvellous<a id="infinite-loop" href="#infinite-loop">R package</a>, means *["the relationship of two or more people who are in sync or on the same wavelength because they feel similar and/or relate well to each other"](http://en.wikipedia.org/wiki/Rapport)* and has some trivial resemblance to *reports*. Just ask a German! BTW in Hungarian *rapport* means interrogation in military language too.
 
+<a id="authors"> </a>
+#### Who is developing this package?
+
+At the moment Aleksandar Blagotić and Gergely Daróczi are working on this project. Feel free to [contribute](#custom) and help [translating](#translate)! :)
+
 #### Why should I use *rapport* instead of [Sweave](http://www.stat.uni-muenchen.de/~leisch/Sweave/), [brew](http://cran.r-project.org/web/packages/brew/index.html), [knitr](https://github.com/yihui/knitr) etc.
 
 Short answer: you should not.
