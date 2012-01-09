@@ -10,6 +10,11 @@
   questionnaire.
 }
 \details{
+  However, this dataset does not contain the original data,
+  as some \code{NA}s were added to dataset afterwards, in
+  order to demonstrate functionality of \emph{rapport}
+  helpers.
+
   Dataset variables can be divided into 3 sets:
   \emph{demographic data}, \emph{Internet usage aspects}
   and \emph{application usage/content preference}.

@@ -655,9 +655,9 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
             assign(sprintf('%s.iname', name), name, env = e)       # input name
             assign(sprintf('%s.ilabel', name), x$label, env = e)   # input label
             assign(sprintf('%s.idesc', name), x$desc, env = e)     # input description
-            if (is.data.frame(var.value)){
-                assign(sprintf('%s.name', name), names(var.value), env = e) # variable name
-                assign(sprintf('%s.label', name), sapply(var.value, rp.label), env = e) # variable label
+            if (is.recursive(var.value)){
+                assign(sprintf('%s.name', name), names(var.value), env = e) # variable names
+                assign(sprintf('%s.label', name), sapply(var.value, rp.label), env = e) # variable labels
             } else {
                 assign(sprintf('%s.name', name), rp.name(var.value), env = e) # variable name
                 assign(sprintf('%s.label', name), rp.label(var.value), env = e) # variable label

@@ -2,6 +2,8 @@
 ##'
 ##' This dataset contains data gathered in a survey of Internet usage in Serbian population in the period from April to May 2008. During 90-day period, there were gathered 709 valid responses via on-line distributed questionnaire.
 ##'
+##' However, this dataset does not contain the original data, as some \code{NA}s were added to dataset afterwards, in order to demonstrate functionality of \emph{rapport} helpers.
+##'
 ##' Dataset variables can be divided into 3 sets: \emph{demographic data}, \emph{Internet usage aspects} and \emph{application usage/content preference}.
 ##'
 ##' \strong{Demographic variables}
