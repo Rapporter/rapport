@@ -655,12 +655,16 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
             assign(sprintf('%s.iname', name), name, env = e)       # input name
             assign(sprintf('%s.ilabel', name), x$label, env = e)   # input label
             assign(sprintf('%s.idesc', name), x$desc, env = e)     # input description
-            if (is.recursive(var.value)){
+            if (is.data.frame(var.value)){
                 assign(sprintf('%s.name', name), names(var.value), env = e) # variable names
                 assign(sprintf('%s.label', name), sapply(var.value, rp.label), env = e) # variable labels
-            } else {
-                assign(sprintf('%s.name', name), rp.name(var.value), env = e) # variable name
+                assign(sprintf('%s.len', name), length(var.value), env = e) # add input length
+            } else if (is.atomic(var.value)) {
+                assign(sprintf('%s.name', name), rp.name(var.value), env = e)   # variable name
                 assign(sprintf('%s.label', name), rp.label(var.value), env = e) # variable label
+                assign(sprintf('%s.len', name), 1, env = e)                     # add input length
+            } else {
+                stopf('"%s" is not a "data.frame" or an atomic vector', name) # you never know...
             }
         })
     }
