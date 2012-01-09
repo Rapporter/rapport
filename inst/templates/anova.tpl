@@ -8,8 +8,9 @@ resp     | numeric     | Response variable | Dependent (response) variable
 fac      | factor[1,2] | Factor variables  | Independent variables (factors)
 head-->
 <%
-f <- as.formula(data.frame(resp, fac))
-fit <- lm(f, data = rp.data)
+d <- data.frame(resp, fac)
+f <- as.formula(d)
+fit <- lm(f, data = d)
 fac.len <- length(fac)
 fac.plu <- switch(fac.len, '', 's')
 %>
