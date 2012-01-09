@@ -3,7 +3,7 @@ Title:        ANOVA Template
 Author:       Aleksandar Blagotić
 Description:  An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.
 Packages:     nortest
-Example:      rapport("anova", ius2008, resp = "it.leisure", fac = c("gender", "student"))
+Example:      rapport("anova", ius2008, resp = "leisure", fac = c("gender", "student"))
 resp     | numeric     | Response variable | Dependent (response) variable
 fac      | factor[1,2] | Factor variables  | Independent variables (factors)
 head-->
@@ -73,7 +73,11 @@ data.frame(anova(fit))
 input name: <% resp.iname %>
 variable name: <% p(resp.name) %>
 variable label: <% p(resp.label) %>
+input label: <% p(resp.ilabel) %>
+input description: <% p(resp.idesc) %>
 
 input name: <% fac.iname %>
 variable name: <% p(fac.name) %>
 variable label: <% p(fac.label) %>
+input label: <% p(fac.ilabel) %>
+input description: <% p(fac.idesc) %>

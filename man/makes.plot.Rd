@@ -13,8 +13,8 @@
 \description{
   This function checks if given expression generates a
   plot. See original thread for more details
-  (\url{http://stackoverflow.com/a/2744434/457898}). Thanks
-  for this one, Hadley Wickam!
+  (\url{http://stackoverflow.com/a/2744434/457898}).
+  Special thanks to Hadley Wickam for this one!
 }
 \examples{
 \dontrun{
@@ -23,6 +23,6 @@
 }
 }
 \author{
-  <a href="http://had.co.nz/">Hadley Wickham</a>
+  Hadley Wickham <h.wickham@gmail.com>
 }
 

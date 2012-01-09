@@ -35,5 +35,6 @@ Collate:
     'stat_helpers.R'
     'utils.R'
     'ius2008.R'
+    'typeDemoData.R'
 LazyLoad: yes
 LazyData: yes

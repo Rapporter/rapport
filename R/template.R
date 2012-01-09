@@ -213,18 +213,18 @@ tpl.inputs <- function(fp, use.header = TRUE){
         ## 1st: check variable name
         ## must begin with a letter, and can continue either with a letter or a digit, separated either by underscore or dot, e.g. 'var.90', or 'v90_alpha'.
         if (!check.name(x[1]))
-            stop(sprintf('invalid input name: "%s"', x[1]))
+            stopf('invalid input name: "%s"', x[1])
 
         ## 2nd: check/get type
         var.type <- check.type(x[2])
 
         ## 3rd: check label
         if (!grepl(re.lbl, x[3]))
-            stop(sprintf('invalid input label: "%s"', x[2]))
+            stopf('invalid input label: "%s"', x[2])
 
         ## 4th: check description
         if (!grepl(re.lbl, x[4]))
-            stop(sprintf('invalid input description: "%s"', x[4]))
+            stopf('invalid input description: "%s"', x[4])
 
         c(name = x[1], label = x[3], var.type, desc = x[4])
     }
@@ -279,11 +279,11 @@ tpl.example <- function(fp, index = NULL) {
 
     old.index <- index
     if (!any(index %in% n.examples))
-        stop(sprintf('Invalid template ID found in: ', paste(setdiff(index, n.examples), collapse = ', ')))
+        stopf('Invalid template ID found in: ', paste(setdiff(index, n.examples), collapse = ', '))
     suppressWarnings(index <- as.integer(index))
 
     if (any(is.na(index)))
-        stop(sprintf('Invalid template ID found in: "%s"', paste(old.index, collapse = ', ')))
+        stopf('Invalid template ID found in: "%s"', paste(old.index, collapse = ', '))
 
     if (length(index) > 1)
         return(lapply(examples[index], function(x) eval(parse(text = x))))
@@ -526,7 +526,7 @@ elem.eval.default <- function(x, tag.open = get.tags('inline.open'), tag.close =
 ##' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 ##' @return a list with \code{rapport} class.
 ##' @examples \dontrun{
-##'
+##' rapport("example", ius2008, var="it.leisure", desc=FALSE, hist=T, color="green")
 ##' }
 ##' @export
 rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
@@ -571,7 +571,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
             stop('"data" not provided, but is required')
 
         if (!inherits(data, c('data.frame', 'rp.data')))
-            stop('"data" should be a data.frame object')
+            stop('"data" should be a "data.frame" object')
 
         data.names <- names(data)          # variable names
         assign('rp.data', data, envir = e) # load data to eval environment
@@ -587,7 +587,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
 
             ## check limits
             if (var.len < limit$min & var.len > limit$max)
-                stop('input length exceeds provided limits') # exceeds is not the most appropriate term for such functionality
+                stopf('%s has length of %d, and should be between %d and %d', name, var.len, limit$min, limit$max)
 
             ## check type
             type.fn <- switch(input.type,
@@ -599,20 +599,20 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
                               logical   = is.logical,
                               numeric   = is.numeric,
                               variable  = is.variable,
-                              stop(sprintf('unknown type: "%s"', input.type))
+                              stopf('unknown type: "%s"', input.type)
                               )
 
             ## no default value (this is the common scenario)
             if (is.null(input.default)){
                 ## see if ALL variable names exist in data
                 if (!all(var.names %in% data.names))
-                    stop(sprintf('provided data.frame does not contain column named "%s"', var.names))
+                    stopf('provided data.frame does not contain column named "%s"', var.names)
 
                 var.value <- e$rp.data[, var.names] # variable value
 
                 ## check if types match
                 if (!all(sapply(var.value, type.fn) == TRUE))
-                    stop(sprintf('error in "%s": variable "%s" should be %s, but %s is provided', name, var.names, input.type, mode(var.value)))
+                    stopf('error in "%s": variable "%s" should be %s, but %s is provided', name, var.names, input.type, mode(var.value))
 
                 ## check labels and assign stuff to envir
                 if (is.data.frame(var.value)) { # multiple variables (data.frame)
@@ -636,13 +636,13 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
                 input.default <- ifelse(is.null(var.names), input.default, var.names)
 
                 if (!do.call(type.fn, list(input.default)))
-                    stop(sprintf('%s is not of %s type', var.names, input.type))
+                    stopf('%s is not of %s type', var.names, input.type)
 
                 ## character value (allow multi match?)
                 if (is.character(input.default)){
                     var.value <- x$default[pmatch(input.default, x$default)]
                     if (is.na(var.value))
-                        stop(sprintf('"%s" cannot be matched with "%s"', var.names, paste(input.default, collapse = ', ')))
+                        stop('"%s" cannot be matched with "%s"', var.names, paste(input.default, collapse = ', '))
                 }
 
                 ## logical value
@@ -650,16 +650,18 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
                     var.value <- input.default
             }
 
-            assign(name, var.value, env = e) # assign input value
-            assign(sprintf('%s.iname', name), name, env = e) # store input name
+            ## template inputs
+            assign(name, var.value, env = e)                 # input value
+            assign(sprintf('%s.iname', name), name, env = e) # input name
+            assign(sprintf('%s.ilabel', x$label, env = e))   # input label
+            assign(sprintf('%s.idesc', x$desc, env = e))     # input description
             if (is.data.frame(var.value)){
-                assign(sprintf('%s.name', name), names(var.value), env = e)
-                assign(sprintf('%s.label', name), sapply(var.value, rp.label), env = e)
+                assign(sprintf('%s.name', name), names(var.value), env = e) # variable name
+                assign(sprintf('%s.label', name), sapply(var.value, rp.label), env = e) # variable label
             } else {
-                assign(sprintf('%s.name', name), rp.name(var.value), env = e)
-                assign(sprintf('%s.label', name), rp.label(var.value), env = e)
+                assign(sprintf('%s.name', name), rp.name(var.value), env = e) # variable name
+                assign(sprintf('%s.label', name), rp.label(var.value), env = e) # variable label
             }
-            ## add .name and .label too?
         })
     }
 
