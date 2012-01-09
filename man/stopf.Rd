@@ -19,6 +19,8 @@
   when execution is halted.
 }
 \examples{
+\dontrun{
 stopf("\%.3f is not larger than \%d and/or smaller than \%d", pi, 10, 40)
+}
 }
 

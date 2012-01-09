@@ -218,8 +218,10 @@ wrap <- function(x, wrap = '"'){
 ##' @param s a character vector of format strings
 ##' @param ... values to be interpolated
 ##' @return a string containing message that follows execution termination
-##' @examples
+##' @examples \dontrun{
 ##' stopf("%.3f is not larger than %d and/or smaller than %d", pi, 10, 40)
+##' }
+
 ##' @export
 stopf <- function(s, ...){
     stop(sprintf(s, ...))
