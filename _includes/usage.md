@@ -169,4 +169,10 @@ There are a bunch of other helper functions in *rapport* to deal with templates.
 tpl.body     tpl.example  tpl.export   tpl.find     tpl.info     tpl.inputs   tpl.list     tpl.meta     tpl.rerun    
 {% endhighlight %}
 
+By this method you might not find all handy functions, for example `rapport.html` and `rapport.odt` which are simple wrappers around `rapport` and `tpl.export`. Just use thse functions you would use `rapport` and get a nifty HTML/odt output directly. For example:
+
+{% highlight r %}
+rapport.html('example', ius2008, var = 'leisure')
+{% endhighlight %}
+
 Do not forget to check out other templates of this package too or even [write](#custom)/[translate](#translate) your own templates! :)
