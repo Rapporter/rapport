@@ -21,5 +21,5 @@ tpl.header('example.tpl')
 
 You can get separate info on package metadata and inputs by using `tpl.meta` and `tpl.inputs` functions, respectively. See official documentation for more details.
 
-For more info on how to use pre-built templates, or even write your own, head over to [Wiki](https://github.com/aL3xa/rapport/wiki) section.
+For more info on how to use pre-built templates, or even write your own, head over to our [homepage](http://rapport-package.info).
 
