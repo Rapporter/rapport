@@ -87,15 +87,15 @@ rp.graph.check <- function(x, facet = NULL, subset = NULL, ...) {
 ##' @export
 ##' @examples \dontrun{
 ##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
-##'	    am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##'	rp.hist(df$hp)
-##'	rp.hist(df$hp, facet=df$am)
-##'	rp.hist(df$hp, df$am)
-##'	rp.label(df$hp) <- 'horsepower'; rp.hist(df$hp)
-##'	rp.hist(df$hp, colorize=TRUE)
-##'	with(df, rp.hist(hp, facet = am))
-##'	rp.hist(hp, data = df)
-##'	rp.hist(hp, am, df)
+##'   am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+##' rp.hist(df$hp)
+##' rp.hist(df$hp, facet=df$am)
+##' rp.hist(df$hp, df$am)
+##' rp.label(df$hp) <- 'horsepower'; rp.hist(df$hp)
+##' rp.hist(df$hp, colorize=TRUE)
+##' with(df, rp.hist(hp, facet = am))
+##' rp.hist(hp, data = df)
+##' rp.hist(hp, am, df)
 ##' }
 rp.hist <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
 	if (!missing(data)) {
@@ -137,7 +137,7 @@ rp.hist <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'
 ##' @export
 ##' @examples \dontrun{
 ##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
-##'     am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+##'   am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
 ##' rp.densityplot(df$hp)
 ##' rp.densityplot(df$hp, facet=df$am)
 ##' rp.densityplot(df$hp, df$am)
@@ -191,17 +191,17 @@ rp.densityplot <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.p
 ##' @export
 ##' @examples \dontrun{
 ##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##'	rp.barplot(df$cyl)
-##'	rp.barplot(df$cyl, horizontal = FALSE)
-##'	rp.barplot(df$cyl, facet=df$am)
-##'	rp.barplot(df$cyl, facet=df$am, horizontal=FALSE)
-##'	rp.barplot(df$cyl, facet=df$am, colorize=TRUE)
-##'	rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
-##'	rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T, horizontal=FALSE)
-##'	rp.label(df$cyl) <- 'Number of cylinders'; rp.barplot(df$cyl)
-##'	with(df, rp.barplot(cyl, facet = am))
-##'	rp.barplot(cyl, data=df)
-##'	rp.barplot(cyl, am, df)
+##' rp.barplot(df$cyl)
+##' rp.barplot(df$cyl, horizontal = FALSE)
+##' rp.barplot(df$cyl, facet=df$am)
+##' rp.barplot(df$cyl, facet=df$am, horizontal=FALSE)
+##' rp.barplot(df$cyl, facet=df$am, colorize=TRUE)
+##' rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
+##' rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T, horizontal=FALSE)
+##' rp.label(df$cyl) <- 'Number of cylinders'; rp.barplot(df$cyl)
+##' with(df, rp.barplot(cyl, facet = am))
+##' rp.barplot(cyl, data=df)
+##' rp.barplot(cyl, am, df)
 ##' }
 rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, horizontal=TRUE,
 		percent = FALSE, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
@@ -272,16 +272,16 @@ rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
 ##' @export
 ##' @examples \dontrun{
 ##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##'	rp.dotplot(df$cyl)
-##'	rp.dotplot(df$cyl, horizontal = FALSE)
-##'	rp.dotplot(df$cyl, facet=df$am)
-##'	rp.dotplot(df$cyl, facet=df$am, horizontal=FALSE)
-##'	rp.dotplot(df$cyl, facet=df$am, colorize=TRUE)
-##'	rp.dotplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
-##'	rp.label(df$cyl) <- 'Number of cylinders'; rp.dotplot(df$cyl)
-##'	with(df, rp.dotplot(cyl, facet = am))
-##'	rp.dotplot(cyl, data=df)
-##'	rp.dotplot(cyl, am, df)
+##' rp.dotplot(df$cyl)
+##' rp.dotplot(df$cyl, horizontal = FALSE)
+##' rp.dotplot(df$cyl, facet=df$am)
+##' rp.dotplot(df$cyl, facet=df$am, horizontal=FALSE)
+##' rp.dotplot(df$cyl, facet=df$am, colorize=TRUE)
+##' rp.dotplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
+##' rp.label(df$cyl) <- 'Number of cylinders'; rp.dotplot(df$cyl)
+##' with(df, rp.dotplot(cyl, facet = am))
+##' rp.dotplot(cyl, data=df)
+##' rp.dotplot(cyl, am, df)
 ##' }
 rp.dotplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, horizontal=TRUE,
 		theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
@@ -340,13 +340,13 @@ rp.dotplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
 ##' @export
 ##' @examples \dontrun{
 ##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##'	rp.scatterplot(df$hp, df$wt)
-##'	rp.scatterplot(df$hp, df$wt, facet=df$cyl)
-##'	rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.scatterplot(df$hp, df$wt)
-##'	rp.scatterplot(df$hp, df$wt, colorize=TRUE)
-##'	with(df, rp.scatterplot(hp, wt, facet = am))
-##'	rp.scatterplot(hp, wt, data=df)
-##'	rp.scatterplot(hp, wt, am, df)
+##' rp.scatterplot(df$hp, df$wt)
+##' rp.scatterplot(df$hp, df$wt, facet=df$cyl)
+##' rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.scatterplot(df$hp, df$wt)
+##' rp.scatterplot(df$hp, df$wt, colorize=TRUE)
+##' with(df, rp.scatterplot(hp, wt, facet = am))
+##' rp.scatterplot(hp, wt, data=df)
+##' rp.scatterplot(hp, wt, am, df)
 ##' }
 rp.scatterplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.color.palette'),
 		colorize=getOption('rp.colorize'), ...) {
@@ -450,13 +450,13 @@ rp.lineplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.color.p
 ##' @examples \dontrun{
 ##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
 ##' rp.boxplot(df$cyl)
-##'	rp.boxplot(df$cyl, df$wt)
-##'	rp.boxplot(df$cyl, df$hp, facet=df$am)
-##'	rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.boxplot(df$cyl, df$wt)
-##'	rp.boxplot(df$cyl, df$wt, colorize=TRUE)
-##'	with(df, rp.scatterplot(hp, wt, facet = am))
-##'	rp.boxplot(cyl, wt, data=df)
-##'	rp.boxplot(cyl, wt, am, df)
+##' rp.boxplot(df$cyl, df$wt)
+##' rp.boxplot(df$cyl, df$hp, facet=df$am)
+##' rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.boxplot(df$cyl, df$wt)
+##' rp.boxplot(df$cyl, df$wt, colorize=TRUE)
+##' with(df, rp.scatterplot(hp, wt, facet = am))
+##' rp.boxplot(cyl, wt, data=df)
+##' rp.boxplot(cyl, wt, am, df)
 ##' }
 rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('rp.color.palette'),
 		colorize=getOption('rp.colorize'), ...) {
@@ -513,7 +513,7 @@ rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('rp.col
 ##' @export
 ##' @examples \dontrun{
 ##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##'	rp.cor.plot(df)
+##' rp.cor.plot(df)
 ##' rp.cor.plot(df, diag.panel='panel.hist')
 ##' }
 rp.cor.plot <- function(x, lower.panel='panel.smooth', upper.panel='panel.cor', data=NULL, theme=getOption('rp.color.palette'),
@@ -558,4 +558,3 @@ rp.cor.plot <- function(x, lower.panel='panel.smooth', upper.panel='panel.cor', 
 		pairs(x, lower.panel=lower.panel, upper.panel=upper.panel, labels=lapply(x, rp.name), ...)
 	}
 }
-

@@ -15,28 +15,28 @@
 ##' @examples \dontrun{
 ##' # parsing line-by-line
 ##' txt <- readLines(textConnection('x <- rnorm(100)
-##' 	runif(10)
-##' 	warning("You should check out rapport package!")
-##' 	plot(1:10)
-##' 	qplot(rating, data=movies, geom="histogram")
-##' 	y <- round(runif(100))
-##' 	cor.test(x, y)
-##' 	crl <- cor.test(runif(10), runif(10))
-##' 	table(mtcars$am, mtcars$cyl)
-##' 	ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))'))
+##'   runif(10)
+##'   warning("You should check out rapport package!")
+##'   plot(1:10)
+##'   qplot(rating, data=movies, geom="histogram")
+##'   y <- round(runif(100))
+##'   cor.test(x, y)
+##'   crl <- cor.test(runif(10), runif(10))
+##'   table(mtcars$am, mtcars$cyl)
+##'   ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))'))
 ##' evals(txt)
 ##'
 ##' ## parsing a list of commnads
 ##' txt <- list('df <- mtcars',
-##'		c('plot(mtcars$hp, pch = 19)','text(mtcars$hp, label = rownames(mtcars), pos = 4)'),
-##'		'ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))')
+##'  c('plot(mtcars$hp, pch = 19)','text(mtcars$hp, label = rownames(mtcars), pos = 4)'),
+##'  'ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))')
 ##' evals(txt)
 ##'
 ##' ## returning only a few classes
 ##' txt <- readLines(textConnection('rnorm(100)
-##' 	list(x = 10:1, y = "Godzilla!")
-##' 	c(1,2,3)
-##' 	matrix(0,3,5)'))
+##'   list(x = 10:1, y = "Godzilla!")
+##'   c(1,2,3)
+##    matrix(0,3,5)'))
 ##' evals(txt, classes='numeric')
 ##' evals(txt, classes=c('numeric', 'list'))
 ##'

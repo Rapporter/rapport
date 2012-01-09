@@ -34,13 +34,13 @@
 \dontrun{
 df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
 rp.boxplot(df$cyl)
-	rp.boxplot(df$cyl, df$wt)
-	rp.boxplot(df$cyl, df$hp, facet=df$am)
-	rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.boxplot(df$cyl, df$wt)
-	rp.boxplot(df$cyl, df$wt, colorize=TRUE)
-	with(df, rp.scatterplot(hp, wt, facet = am))
-	rp.boxplot(cyl, wt, data=df)
-	rp.boxplot(cyl, wt, am, df)
+rp.boxplot(df$cyl, df$wt)
+rp.boxplot(df$cyl, df$hp, facet=df$am)
+rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.boxplot(df$cyl, df$wt)
+rp.boxplot(df$cyl, df$wt, colorize=TRUE)
+with(df, rp.scatterplot(hp, wt, facet = am))
+rp.boxplot(cyl, wt, data=df)
+rp.boxplot(cyl, wt, am, df)
 }
 }
 

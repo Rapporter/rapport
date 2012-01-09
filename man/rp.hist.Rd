@@ -32,15 +32,15 @@
 \examples{
 \dontrun{
 df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
-	    am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-	rp.hist(df$hp)
-	rp.hist(df$hp, facet=df$am)
-	rp.hist(df$hp, df$am)
-	rp.label(df$hp) <- 'horsepower'; rp.hist(df$hp)
-	rp.hist(df$hp, colorize=TRUE)
-	with(df, rp.hist(hp, facet = am))
-	rp.hist(hp, data = df)
-	rp.hist(hp, am, df)
+  am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+rp.hist(df$hp)
+rp.hist(df$hp, facet=df$am)
+rp.hist(df$hp, df$am)
+rp.label(df$hp) <- 'horsepower'; rp.hist(df$hp)
+rp.hist(df$hp, colorize=TRUE)
+with(df, rp.hist(hp, facet = am))
+rp.hist(hp, data = df)
+rp.hist(hp, am, df)
 }
 }
 

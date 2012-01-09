@@ -43,17 +43,17 @@
 \examples{
 \dontrun{
 df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-	rp.barplot(df$cyl)
-	rp.barplot(df$cyl, horizontal = FALSE)
-	rp.barplot(df$cyl, facet=df$am)
-	rp.barplot(df$cyl, facet=df$am, horizontal=FALSE)
-	rp.barplot(df$cyl, facet=df$am, colorize=TRUE)
-	rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
-	rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T, horizontal=FALSE)
-	rp.label(df$cyl) <- 'Number of cylinders'; rp.barplot(df$cyl)
-	with(df, rp.barplot(cyl, facet = am))
-	rp.barplot(cyl, data=df)
-	rp.barplot(cyl, am, df)
+rp.barplot(df$cyl)
+rp.barplot(df$cyl, horizontal = FALSE)
+rp.barplot(df$cyl, facet=df$am)
+rp.barplot(df$cyl, facet=df$am, horizontal=FALSE)
+rp.barplot(df$cyl, facet=df$am, colorize=TRUE)
+rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
+rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T, horizontal=FALSE)
+rp.label(df$cyl) <- 'Number of cylinders'; rp.barplot(df$cyl)
+with(df, rp.barplot(cyl, facet = am))
+rp.barplot(cyl, data=df)
+rp.barplot(cyl, am, df)
 }
 }
 

@@ -15,9 +15,9 @@
 }
 \examples{
 \dontrun{
-		decrypt("loRR7KT72R=!")
-		strsplit(decrypt("MrhKPzRK=tBrK0rK=2g~KT~K8BoPK1BKgMKhog2KPg2A"), " ")[[1]]
-		eval(parse(text=decrypt("rR7~HM~Pg2B40r,KP7Rkp2o=pc")))
+decrypt("loRR7KT72R=!")
+strsplit(decrypt("MrhKPzRK=tBrK0rK=2g~KT~K8BoPK1BKgMKhog2KPg2A"), " ")[[1]]
+eval(parse(text=decrypt("rR7~HM~Pg2B40r,KP7Rkp2o=pc")))
 	}
 }
 \references{
