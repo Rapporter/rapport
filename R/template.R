@@ -252,8 +252,8 @@ tpl.example <- function(fp, index = NULL) {
     examples <- tpl.meta(fp)$example
     n.examples <- 1:length(examples)
 
-    if (is.null(example))
-        stop('Sorry, provided template does not have an example field.')
+    if (is.null(examples))
+        stop('Provided template does not have any examples.')
 
     if (length(examples) > 1){
         if (is.null(index)){

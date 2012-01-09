@@ -16,6 +16,8 @@ is.rapport <- function(x)  inherits(x, 'rapport')
 print.rp.meta <- function(x, type = c('text', 'pandoc')){
 
     ind <- c('title', 'author', 'email', 'desc', 'example')
+    email <- ifelse(is.null(x$email), '', sprintf(' (%s)', x$email)) # show email if any
+    exmpl <- ifelse(is.null(x$example), 'no examples found in template', x$example) # examples
     other.meta <- x[!names(x) %in% ind]
     fn <- function(x){
         titles <- names(x)
@@ -27,10 +29,10 @@ print.rp.meta <- function(x, type = c('text', 'pandoc')){
            text = {
                catn(
                     sprintf('\n`%s`\n\n', x$title),
-                    sprintf('by %s%s\n\n', x$author, ifelse(is.null(x$email), '', sprintf(' (%s)', x$email))),
+                    sprintf('by %s%s\n\n', x$author, email),
                     sprintf('%s\n', x$desc),
                     fn(other.meta),
-                    sprintf('\n %s', c('Examples:', x$example))
+                    sprintf('\n %s', c('Examples:', exmpl))
                     )
            },
            pandoc = {
