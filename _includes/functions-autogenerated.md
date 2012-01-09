@@ -1,3 +1,19 @@
+<a id="#Datasets"> </a>
+#### Datasets
+
+##### ius2008: Internet Usage Survey
+###### Description:
+<p>This dataset contains data gathered in a survey ofInternet usage in Serbian population in the period fromApril to May 2008. During 90-day period, there weregathered 709 valid responses via on-line distributedquestionnaire.</p>
+###### Examples:
+<div class="highlight"><pre><code class="r">rapport(&quot;example&quot;, ius2008, var = &quot;it.leisure&quot;)
+</code></pre>
+</div>
+
+##### typeDemoData: Rapport Input Type Demo Data
+###### Description:
+<p> This dataset contains dummy-data that demonstratesvarious input types supported by <code>rapport</code> .</p>
+
+<a id="#Generic-functions"> </a>
 #### Generic functions
 
 ##### decrypt: Decrypt a string
@@ -32,6 +48,7 @@
 	
 </code></pre>
 </div>
+
 ##### encrypt: Encrypt a string
 ###### Description:
 <p> A simple encryption function which reorders thecharacters in a given string based on a predefined key.As it can be seen: the used encryption is easy to crack,do not use this for sensitive data! The key is set bydefault on library startup. It can be changed bymodifying <code>options(&apos;.encrypt.key&apos;)</code> to any characterstring with same lenght as <code>options(&apos;.encrypt.chars&apos;)</code> . E.g. <code>intToUtf8(sample(c(33, 36:38, 48:57, 64:90, 97:122,  192:246, 248:382), nchar(getOption(&apos;.encrypt.chars&apos;)))))</code> would return a quite complex but readable key.</p>
@@ -63,6 +80,7 @@
 	
 </code></pre>
 </div>
+
 ##### evals: Evals chunk(s) of R code
 ###### Description:
 <p> This function takes either a list of integer indiceswhich point to position of R code in body charactervector, or a list of strings with actual R code, thenevaluates each list element, and returns a list with twoelements: a character value with R code and generatedoutput. The output can be NULL (eg. <code>x &lt;-  runif(100)</code> ), a table (eg. <code>table(mtcars$am,  mtcars$cyl)</code> or any other R object. If a graph is plottedin the given text, the returned object is a stringspecifying the path to the saved png in temporarydirectory (see: <code>tmpfile()</code> ). The function takescare of warnings and errors too, please check the thereturned value below.</p>
@@ -206,47 +224,65 @@ txt &lt;- readLines(textConnection(&apos;x &lt;- rnorm(100)
 	crl &lt;- cor.test(runif(10), runif(10))
 	table(mtcars$am, mtcars$cyl)
 	ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))&apos;))
-evals(txt)n## parsing a list of commnads
+evals(txt)
+## parsing a list of commnads
 txt &lt;- list(&apos;df &lt;- mtcars&apos;,
 		c(&apos;plot(mtcars$hp, pch = 19)&apos;,&apos;text(mtcars$hp, label = rownames(mtcars), pos = 4)&apos;),
 		&apos;ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))&apos;)
-evals(txt)n## returning only a few classes
+evals(txt)
+## returning only a few classes
 txt &lt;- readLines(textConnection(&apos;rnorm(100)
 	list(x = 10:1, y = &quot;Godzilla!&quot;)
 	c(1,2,3)
 	matrix(0,3,5)&apos;))
 evals(txt, classes=&apos;numeric&apos;)
-evals(txt, classes=c(&apos;numeric&apos;, &apos;list&apos;))n## handling warnings
-evals(&apos;chisq.test(mtcars$gear, mtcars$hp)&apos;)n## handling errors
+evals(txt, classes=c(&apos;numeric&apos;, &apos;list&apos;))
+## handling warnings
+evals(&apos;chisq.test(mtcars$gear, mtcars$hp)&apos;)
+## handling errors
 evals(&apos;runiff(20)&apos;)
 evals(&apos;Old MacDonald had a farm\\dots&apos;)
-evals(&apos;## Some comment&apos;)n## hooks
+evals(&apos;## Some comment&apos;)
+## hooks
 hooks &lt;- list(&apos;numeric&apos;=round, &apos;matrix&apos;=ascii)
 evals(txt, hooks=hooks)
 evals(&apos;22/7&apos;, hooks=list(&apos;numeric&apos;=rp.round))
-evals(&apos;matrix(runif(25), 5, 5)&apos;, hooks=list(&apos;matrix&apos;=rp.round))n## using rapport&apos;s default hook
-evals(&apos;22/7&apos;, hooks=TRUE)n## setting default hook
+evals(&apos;matrix(runif(25), 5, 5)&apos;, hooks=list(&apos;matrix&apos;=rp.round))
+## using rapport&apos;s default hook
+evals(&apos;22/7&apos;, hooks=TRUE)
+## setting default hook
 evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks=list(&apos;default&apos;=round))
 ## round all values except for matrices
-evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks=list(matrix=&apos;print&apos;, &apos;default&apos;=round))n# advanced hooks
+evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks=list(matrix=&apos;print&apos;, &apos;default&apos;=round))
+# advanced hooks
 fun &lt;- function(x, asciiformat) paste(capture.output(print(ascii(x), asciiformat)), collapse=&apos;\n&apos;)
 hooks &lt;- list(&apos;numeric&apos;=list(round, 2), &apos;matrix&apos;=list(fun, &quot;rest&quot;))
-evals(txt, hooks=hooks)n# return only returned values
-evals(txt, output=&apos;output&apos;)n# return only messages (for checking syntax errors etc.)
-evals(txt, output=&apos;msg&apos;)n# check the length of returned values
-evals(&apos;runif(10)&apos;, length=5)n# note the following will not be filtered!
-evals(&apos;matrix(1,1,1)&apos;, length=1)n# if you do not want to let such things be evaled in the middle of a string use it with other filters :)
-evals(&apos;matrix(1,1,1)&apos;, length=1, classes=&apos;numeric&apos;)n	# hooks &amp; filtering
-evals(&apos;matrix(5,5,5)&apos;, hooks=list(&apos;matrix&apos;=ascii), output=&apos;output&apos;)n# evaling chunks in given environment
+evals(txt, hooks=hooks)
+# return only returned values
+evals(txt, output=&apos;output&apos;)
+# return only messages (for checking syntax errors etc.)
+evals(txt, output=&apos;msg&apos;)
+# check the length of returned values
+evals(&apos;runif(10)&apos;, length=5)
+# note the following will not be filtered!
+evals(&apos;matrix(1,1,1)&apos;, length=1)
+# if you do not want to let such things be evaled in the middle of a string use it with other filters :)
+evals(&apos;matrix(1,1,1)&apos;, length=1, classes=&apos;numeric&apos;)
+	# hooks &amp; filtering
+evals(&apos;matrix(5,5,5)&apos;, hooks=list(&apos;matrix&apos;=ascii), output=&apos;output&apos;)
+# evaling chunks in given environment
 myenv &lt;- new.env()
 evals(&apos;x &lt;- c(0,10)&apos;, env=myenv)
 evals(&apos;mean(x)&apos;, env=myenv)
 rm(myenv)
 # note: if you had not specified &apos;myenv&apos;, the second &apos;evals&apos; would have failed
 evals(&apos;x &lt;- c(0,10)&apos;)
-evals(&apos;mean(x)&apos;)n</code></pre>
+evals(&apos;mean(x)&apos;)
+</code></pre>
 </div>
 
+
+<a id="#Generic-graph-functions"> </a>
 #### Generic graph functions
 
 ##### rp.barplot: Barplot
@@ -376,8 +412,10 @@ at random</p>
 	rp.label(df$cyl) &lt;- &apos;Number of cylinders&apos;; rp.barplot(df$cyl)
 	with(df, rp.barplot(cyl, facet = am))
 	rp.barplot(cyl, data=df)
-	rp.barplot(cyl, am, df)n</code></pre>
+	rp.barplot(cyl, am, df)
+</code></pre>
 </div>
+
 ##### rp.boxplot: Boxplot
 ###### Description:
 <p> This function is a wrapper around <code>bwplot</code> which operates only on numeric variables with optionalfacet.</p>
@@ -463,8 +501,10 @@ rp.boxplot(df$cyl)
 	rp.boxplot(df$cyl, df$wt, colorize=TRUE)
 	with(df, rp.scatterplot(hp, wt, facet = am))
 	rp.boxplot(cyl, wt, data=df)
-	rp.boxplot(cyl, wt, am, df)n</code></pre>
+	rp.boxplot(cyl, wt, am, df)
+</code></pre>
 </div>
+
 ##### rp.cor.plot: Scatterplot matrices
 ###### Description:
 <p> This function is a wrapper around <code>pairs</code> which operates only on numeric variables. Panel optionsare: <code>c(&apos;panel.cor&apos;, &apos;panel.smooth&apos;, &apos;panel.hist&apos;)</code> .Custom panels may be also added.</p>
@@ -556,8 +596,10 @@ at random</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 	rp.cor.plot(df)
-rp.cor.plot(df, diag.panel=&apos;panel.hist&apos;)n</code></pre>
+rp.cor.plot(df, diag.panel=&apos;panel.hist&apos;)
+</code></pre>
 </div>
+
 ##### rp.densityplot: Density plot
 ###### Description:
 <p> This function is a wrapper around <code>densityplot</code> which operates only on numericvectors with optional facet.</p>
@@ -636,8 +678,10 @@ rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.densityplot(df$hp)
 rp.densityplot(df$hp, colorize=TRUE)
 with(df, rp.densityplot(hp, facet = am))
 rp.densityplot(hp, data = df)
-rp.densityplot(hp, am, df)n</code></pre>
+rp.densityplot(hp, am, df)
+</code></pre>
 </div>
+
 ##### rp.dotplot: Dotplot
 ###### Description:
 <p> This function is a wrapper around <code>dotplot</code> which operates only on factors with optional facet.</p>
@@ -750,8 +794,10 @@ at random</p>
 	rp.label(df$cyl) &lt;- &apos;Number of cylinders&apos;; rp.dotplot(df$cyl)
 	with(df, rp.dotplot(cyl, facet = am))
 	rp.dotplot(cyl, data=df)
-	rp.dotplot(cyl, am, df)n</code></pre>
+	rp.dotplot(cyl, am, df)
+</code></pre>
 </div>
+
 ##### rp.graph.check: Input cheks (internal)
 ###### Description:
 <p> Internal function used by eg. <code>rp.histogram</code> .</p>
@@ -872,8 +918,10 @@ at random</p>
 	rp.hist(df$hp, colorize=TRUE)
 	with(df, rp.hist(hp, facet = am))
 	rp.hist(hp, data = df)
-	rp.hist(hp, am, df)n</code></pre>
+	rp.hist(hp, am, df)
+</code></pre>
 </div>
+
 ##### rp.lineplot: Lineplot
 ###### Description:
 <p> This function is a wrapper around <code>xyplot</code> with custom panel. Only numeric variables are acceptedwith optional facet.</p>
@@ -957,8 +1005,10 @@ rp.lineplot(a$gear, a$wt)
 rp.lineplot(1:length(df$hp), df$hp, facet=df$cyl)
 rp.label(a$wt) &lt;- &apos;weight&apos;; rp.lineplot(a$gear, a$wt)
 rp.lineplot(a$gear, a$wt, colorize=TRUE)
-rp.lineplot(gear, wt, data=a)n</code></pre>
+rp.lineplot(gear, wt, data=a)
+</code></pre>
 </div>
+
 ##### rp.palette: Color palettes
 ###### Description:
 <p> This function returns a given number of color codes fromgiven palette by default falling back to acolor-blind-friendly palette from <a href="http://jfly.iam.u-tokyo.ac.jp/color/">http://jfly.iam.u-tokyo.ac.jp/color/</a> .</p>
@@ -1005,6 +1055,7 @@ rp.palette(5, &apos;Greens&apos;)
 rp.palette(5, &apos;Greens&apos;, colorize = TRUE)
 }</code></pre>
 </div>
+
 ##### rp.scatterplot: Scatterplot
 ###### Description:
 <p> This function is a wrapper around <code>xyplot</code> which operates only on numeric variables with optionalfacet.</p>
@@ -1089,14 +1140,17 @@ at random</p>
 	rp.scatterplot(df$hp, df$wt, colorize=TRUE)
 	with(df, rp.scatterplot(hp, wt, facet = am))
 	rp.scatterplot(hp, wt, data=df)
-	rp.scatterplot(hp, wt, am, df)n</code></pre>
+	rp.scatterplot(hp, wt, am, df)
+</code></pre>
 </div>
 
+
+<a id="#Generic-helper-functions"> </a>
 #### Generic helper functions
 
 ##### adj.rle: Adjacent Values Run Length Encoding
 ###### Description:
-<p> Similar to <code>rle</code> function, this functiondetects &quot;runs&quot; of adjacent integers, and displays vectorof run lengths and list of corresponding integersequences. Taken from &lt;ahref=&quot;http://stackoverflow.com/a/8467446/457898&quot;&gt;rle-likefunction that catches “run” of adjacent integers&lt;/a&gt;question on StackOverflow.</p>
+<p> Similar to <code>rle</code> function, this functiondetects &quot;runs&quot; of adjacent integers, and displays vectorof run lengths and list of corresponding integersequences. See original thread for more details <a href="http://stackoverflow.com/a/8467446/457898">http://stackoverflow.com/a/8467446/457898</a> . Specialthanks to Gabor Grothendieck for this one!</p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">adj.rle(x)</code></pre>
@@ -1192,9 +1246,15 @@ white spaces should be removed before guessing</p>
 <p>an atomic vector with (hopefully) successfully guessed
 mode</p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">storage.mode(guess.mode(&quot;234&quot;))nstorage.mode(guess.mode(&quot;234.23&quot;))nstorage.mode(guess.mode(&quot;234.23.234&quot;))nstorage.mode(guess.mode(&quot;TRUE&quot;))nstorage.mode(guess.mode(&quot;TRUE         &quot;))nstorage.mode(guess.mode(&quot;     TRUE         &quot;, TRUE))n
+<div class="highlight"><pre><code class="r">storage.mode(guess.mode(&quot;234&quot;))
+storage.mode(guess.mode(&quot;234.23&quot;))
+storage.mode(guess.mode(&quot;234.23.234&quot;))
+storage.mode(guess.mode(&quot;TRUE&quot;))
+storage.mode(guess.mode(&quot;TRUE         &quot;))
+storage.mode(guess.mode(&quot;     TRUE         &quot;, TRUE))
 </code></pre>
 </div>
+
 ##### is.string: Strings
 ###### Description:
 <p>Checks if provided object is a string i.e. a length-onecharacter vector.</p>
@@ -1221,9 +1281,10 @@ string</p>
     is.string(1)                 # [1] FALSE
     is.string(c(&quot;foo&quot;, &quot;bar&quot;))   # [1] FALSE</code></pre>
 </div>
+
 ##### makes.plot: Check plot creation
 ###### Description:
-<p>This function checks if given expression generates aplot. See &lt;ahref=&quot;http://stackoverflow.com/a/2744434/457898&quot;&gt;originalthread&lt;/a&gt; for more details.</p>
+<p> This function checks if given expression generates aplot. See original thread for more details( <a href="http://stackoverflow.com/a/2744434/457898">http://stackoverflow.com/a/2744434/457898</a> ).Special thanks to Hadley Wickam for this one!</p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">makes.plot(cmd)</code></pre>
@@ -1243,8 +1304,44 @@ string</p>
 <p>a logical value</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">    makes.plot(plot(rnorm(100))) # returns TRUE
-    makes.plot(sample(10))       # returns FALSEn</code></pre>
+    makes.plot(sample(10))       # returns FALSE
+</code></pre>
 </div>
+
+##### stopf: Stop Execution with String Interpolated Messages
+###### Description:
+<p> This helper combines <code>stop</code> function with <code>sprintf</code> thus allowing string interpolated messageswhen execution is halted.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">stopf(s, ...)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>s</code>
+  </td>
+  <td>
+   <p>a character vector of format strings</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>...</code>
+  </td>
+  <td>
+   <p>values to be interpolated</p>
+  </td>
+ </tr>
+</table>
+###### Returned value:
+<p>a string containing message that follows execution
+termination</p>
+###### Examples:
+<div class="highlight"><pre><code class="r">stopf(&quot;%.3f is not larger than %d and/or smaller than %d&quot;, pi, 10, 40)
+</code></pre>
+</div>
+
 ##### tocamel: CamelCase
 ###### Description:
 <p>Convert character vector to camelcase - capitalise firstletter of each word.</p>
@@ -1301,10 +1398,13 @@ to
 <p>a character vector with strings put in camelcase</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">tocamel(&quot;foo.bar&quot;)
-    ## [1] &quot;fooBar&quot;n    tocamel(&quot;foo.bar&quot;, upper = TRUE)
-    ## [1] &quot;FooBar&quot;n    tocamel(c(&quot;foobar&quot;, &quot;foo.bar&quot;, &quot;camel_case&quot;, &quot;a.b.c.d&quot;))
+    ## [1] &quot;fooBar&quot;
+    tocamel(&quot;foo.bar&quot;, upper = TRUE)
+    ## [1] &quot;FooBar&quot;
+    tocamel(c(&quot;foobar&quot;, &quot;foo.bar&quot;, &quot;camel_case&quot;, &quot;a.b.c.d&quot;))
     ## [1] &quot;foobar&quot;    &quot;fooBar&quot;    &quot;camelCase&quot; &quot;aBCD&quot;</code></pre>
 </div>
+
 ##### trim.space: Trim Spaces
 ###### Description:
 <p> Removes leading and/or trailing space(s) from a charactervector value. By default, it removes only trailingspaces. In order to trim both leading and trailingspaces, pass <code>TRUE</code> to both <code>leading</code> and <code>trailing</code> arguments.</p>
@@ -1375,7 +1475,7 @@ defines a space character</p>
 <p>a character vector with removed spaces</p>
 ##### vgsub: Vectorised String Replacement
 ###### Description:
-<p> A simple wrapper for <code>gsub</code> that replaces allpatterns from <code>pattern</code> argument with ones in <code>replacement</code> over vector provided in argument <code>x</code> . Taken from &lt;ahref=&quot;http://stackoverflow.com/a/6954308/457898&quot;&gt;StackOverflow&lt;/a&gt;.</p>
+<p> A simple wrapper for <code>gsub</code> that replaces allpatterns from <code>pattern</code> argument with ones in <code>replacement</code> over vector provided in argument <code>x</code> . See original thread for more details <a href="http://stackoverflow.com/a/6954308/457898">http://stackoverflow.com/a/6954308/457898</a> . Specialthanks to user Jean-Robert for this one!</p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">vgsub(pattern, replacement, x, ...)</code></pre>
@@ -1466,6 +1566,8 @@ defines a space character</p>
 ## [1] &quot;_fee_&quot; &quot;_fi_&quot;  &quot;_foo_&quot; &quot;_fam_&quot;</code></pre>
 </div>
 
+
+<a id="#Generic-stat-functions"> </a>
 #### Generic stat functions
 
 ##### rp.desc: Descriptive Statistics
@@ -1599,15 +1701,15 @@ aggregating</p>
  with aggregated data
 </p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">rp.
-rp.desc(&quot;cyl&quot;, &quot;am&quot;, c(mean, sd), mtcars, margins = TRUE)</code></pre>
+<div class="highlight"><pre><code class="r">rp.desc(&quot;cyl&quot;, &quot;am&quot;, c(mean, sd), mtcars, margins = TRUE)</code></pre>
 </div>
+
 ##### rp.freq: Frequency Table
 ###### Description:
-<p>Diplay frequency table</p>
+<p>Diplay frequency table.</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.freq(f.vars, data, na.rm = TRUE, include.na = FALSE,    drop.unused.levels = FALSE, count = TRUE, pct = TRUE,    cum.n = TRUE, cum.pct = TRUE)</code></pre>
+	<pre><code class="r">rp.freq(f.vars, data, na.rm = TRUE, include.na = FALSE,    drop.unused.levels = FALSE, count = TRUE, pct = TRUE,    cumul.count = TRUE, cumul.pct = TRUE)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -1649,10 +1751,11 @@ frequency table?</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>drop.levels</code>
+   <code>drop.unused.levels</code>
   </td>
   <td>
-   <p>should unused levels be removed</p>
+   <p>should empty level combinations
+be left out</p>
   </td>
  </tr>
  <tr valign="top">
@@ -1673,7 +1776,7 @@ frequency table?</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>cum.n</code>
+   <code>cumul.count</code>
   </td>
   <td>
    <p>show cumulative frequencies?</p>
@@ -1681,9 +1784,19 @@ frequency table?</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>cum.pct</code>
+   <code>cumul.pct</code>
   </td>
-  <td/>
+  <td>
+   <p>show cumulative percentage?</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>drop.levels</code>
+  </td>
+  <td>
+   <p>should unused levels be removed</p>
+  </td>
  </tr>
 </table>
 ###### Returned value:
@@ -1693,8 +1806,10 @@ frequency table?</p>
  with frequencies
 </p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">rp.freq(c(&quot;am&quot;, &quot;cyl&quot;, &quot;vs&quot;), mtcars)n</code></pre>
+<div class="highlight"><pre><code class="r">rp.freq(c(&quot;am&quot;, &quot;cyl&quot;, &quot;vs&quot;), mtcars)
+</code></pre>
 </div>
+
 ##### rp.iqr: Interquartile Range
 ###### Description:
 <p> Calculates interquartile range of given variable. See <code>rp.univar</code> for details.</p>
@@ -2126,7 +2241,37 @@ elements</p>
 ###### Returned value:
 <p>a numeric value with variable&apos;s variance</p>
 
+<a id="#Generic-stat-helper-functions"> </a>
 #### Generic stat helper functions
+
+##### e:  Extract Values from <code>htest</code> Objects
+###### Description:
+<p> Extract value of statistic and its p-value from <code>htest</code> object.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">e(x)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>
+    <code>htest</code>
+    -class object
+   </p>
+  </td>
+ </tr>
+</table>
+###### Returned value:
+<p>named numeric vector with the value of statistic and its
+p-value</p>
+###### Examples:
+<div class="highlight"><pre><code class="r">e(shapiro.test(rnorm(100))
+</code></pre>
+</div>
 
 ##### htest: Hypothesis Tests
 ###### Description:
@@ -2146,14 +2291,6 @@ elements</p>
     arguments to be passed to function specified in
     <code>test</code>
    </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>test</code>
-  </td>
-  <td>
-   <p>a function to be applied</p>
   </td>
  </tr>
  <tr valign="top">
@@ -2240,9 +2377,12 @@ Outliers in Linear Models&quot;, Technometrics, vol. 17, no.
 ###### Examples:
 <div class="highlight"><pre><code class="r">rp.outlier(mtcars$hp)
 rp.outlier(c(rep(1,100), 200))
-rp.outlier(c(rep(1,100), 200,201))n</code></pre>
+rp.outlier(c(rep(1,100), 200,201))
+</code></pre>
 </div>
 
+
+<a id="#Template-related-functions"> </a>
 #### Template related functions
 
 ##### check.limit: Input Limits
@@ -2282,9 +2422,11 @@ limit
 </p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">rapport:::check.limit(&quot;[1,20]&quot;)
-rapport:::check.limit(&quot;[1]&quot;)n
+rapport:::check.limit(&quot;[1]&quot;)
+
 </code></pre>
 </div>
+
 ##### check.name: Naming Conventions
 ###### Description:
 <p>Checks package-specific naming conventions: variablesshould start by a letter, followed either by a letter ora digit, while the words should be separated with dots orunderscores.</p>
@@ -2349,8 +2491,37 @@ naming conventions</p>
 <div class="highlight"><pre><code class="r">rapport:::check.type(&quot;factor&quot;)
 rapport:::check.type(&quot;character[1,20]&quot;)
 rapport:::check.type(&quot;fee, fi, foo, fam&quot;)
-rapport:::check.type(&quot;FALSE&quot;)n</code></pre>
+rapport:::check.type(&quot;FALSE&quot;)
+</code></pre>
 </div>
+
+##### elem.eval: Evaluate Template Element
+###### Description:
+<p> This is a generic method that evaluates R code found in <code>rapport</code> template elements. Currently there are twotypes of template elements: <code>blocks</code> of R code(similar to chunks in <code>Sweave</code> ) or <code>inline</code> elements.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">elem.eval(x, ...)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>either a list with character vector</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>...</code>
+  </td>
+  <td>
+   <p>additional arguments passed to other
+evaluation methods</p>
+  </td>
+ </tr>
+</table>
 ##### extract.meta: Extract Template Metadata
 ###### Description:
 <p>Check if template metadata field matches provided format,and return matched value in a list.</p>
@@ -2450,13 +2621,16 @@ is not required
 ###### Examples:
 <div class="highlight"><pre><code class="r">    extract.metadata(&quot;Name: John Smith&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
     ## $name
-    ## [1] &quot;John Smith&quot;n    extract.metadata(&quot;Name: John&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
+    ## [1] &quot;John Smith&quot;
+    extract.metadata(&quot;Name: John&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
     ## $name
-    ## [1] &quot;John&quot;n</code></pre>
+    ## [1] &quot;John&quot;
+</code></pre>
 </div>
+
 ##### fml: Create Formula from Strings
 ###### Description:
-<p>Takes left and right-hand side arguments of a formula</p>
+<p>Takes multiple character arguments as left and right-handside arguments of a formula, and concatenates them in asingle string.</p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">fml(left, right, join.left = &quot; + &quot;, join.right = &quot; + &quot;)</code></pre>
@@ -2481,12 +2655,35 @@ argument</p>
 formula arguments</p>
   </td>
  </tr>
+ <tr valign="top">
+  <td>
+   <code>join.left</code>
+  </td>
+  <td>
+   <p>
+    a string to catenate elements of
+character vector specified in
+    <code>left</code>
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>join.right</code>
+  </td>
+  <td>
+   <p>
+    a string to catenate elements of
+character vector specified in
+    <code>right</code>
+   </p>
+  </td>
+ </tr>
 </table>
-###### Returned value:
-<p>a string with formula</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">fml(&quot;hp&quot;, c(&quot;am&quot;, &quot;cyl&quot;))</code></pre>
 </div>
+
 ##### get.tags: Tag Values
 ###### Description:
 <p>Returns report tag vales: either ones that were set byuser, or the default ones.</p>
@@ -2585,8 +2782,10 @@ should be returned (defaults to
     grab.chunks(s, &quot;&lt;%&quot;, &quot;%&gt;&quot;, FALSE)
     ## [1] &quot;pi&quot;  &quot;2^3&quot;
     grab.chunks(s, &quot;&lt;%&quot;, &quot;%&gt;&quot;, FALSE)
-    ## [1] &quot;&lt;%pi%&gt;&quot;  &quot;&lt;%2^3%&gt;&quot;n</code></pre>
+    ## [1] &quot;&lt;%pi%&gt;&quot;  &quot;&lt;%2^3%&gt;&quot;
+</code></pre>
 </div>
+
 ##### has.tags: Tag Existence
 ###### Description:
 <p>Checks if a character value contains specified tags.</p>
@@ -2811,6 +3010,7 @@ elements)</p>
 <div class="highlight"><pre><code class="r">p(c(&quot;fee&quot;, &quot;fi&quot;, &quot;foo&quot;, &quot;fam&quot;))
 ## [1] &quot;_fee_, _fi_, _foo_ and _fam_&quot;</code></pre>
 </div>
+
 ##### print.rapport: Prints rapport
 ###### Description:
 <p>Default print method for &quot;rapport&quot; class objects.</p>
@@ -2858,14 +3058,16 @@ elements)</p>
 print(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;), metadata=T)
 print(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;), metadata=T, inputs=T)
 print(rapport(&apos;example&apos;, data=mtcars, x=&apos;hp&apos;, y=&apos;mpg&apos;), metadata=T, inputs=T)
-print(rapport(&apos;example&apos;, data=mtcars, x=&apos;hp&apos;, y=&apos;mpg&apos;), metadata=T, inputs=T, body=F)n</code></pre>
+print(rapport(&apos;example&apos;, data=mtcars, x=&apos;hp&apos;, y=&apos;mpg&apos;), metadata=T, inputs=T, body=F)
+</code></pre>
 </div>
-##### print.rp.header: Print Template Header
+
+##### print.rp.info: Print Template Header
 ###### Description:
 <p>Prints out the contents of template header (metadata andinputs) in human-readable format, so you can get insightabout template requirements.</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">print.rp.header(x, type = c(&quot;text&quot;, &quot;pandoc&quot;))</code></pre>
+	<pre><code class="r">print.rp.info(x, type = c(&quot;text&quot;, &quot;pandoc&quot;))</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -3056,6 +3258,11 @@ details)
  <code>rapport</code>
  class.
 </p>
+###### Examples:
+<div class="highlight"><pre><code class="r">rapport(&quot;example&quot;, ius2008, var=&quot;it.leisure&quot;, desc=FALSE, hist=T, color=&quot;green&quot;)
+</code></pre>
+</div>
+
 ##### rp.export: Export rapport class (deprecated)
 ###### Description:
 <p> This function points to <code>tpl.export</code> . Usethat insted <code>rp.export</code> , as this function remainedhere only for backward compatibily of the package.</p>
@@ -3099,8 +3306,10 @@ details)
 <p>a character value with variable&apos;s label</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">	rp.label(mtcars$am)
-	x &lt;- 1:10; rp.label(x)n</code></pre>
+	x &lt;- 1:10; rp.label(x)
+</code></pre>
 </div>
+
 ##### rp.label-set: Set variable label
 ###### Description:
 <p> this function sets a label to an <code>atomic</code> vector, by storing a character value to its <code>label</code> attribute.</p>
@@ -3130,8 +3339,10 @@ variable label</p>
 </table>
 ###### Examples:
 <div class="highlight"><pre><code class="r">    rp.label(mtcars$mpg) &lt;- &quot;fuel consumption&quot;
-    x &lt;- rnorm(100); ( rp.label(x) &lt;- &quot;pseudo-random normal variable&quot; )n</code></pre>
+    x &lt;- rnorm(100); ( rp.label(x) &lt;- &quot;pseudo-random normal variable&quot; )
+</code></pre>
 </div>
+
 ##### rp.name: Get variable name
 ###### Description:
 <p> This function returns character value previously storedin variable&apos;s <code>name</code> attribute. If none found, thefunction fallbacks to object&apos;s name.</p>
@@ -3154,8 +3365,10 @@ variable label</p>
 <p>a character value with variable&apos;s label</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">rp.name(mtcars$am)
-x &lt;- 1:10; rp.name(x)n</code></pre>
+x &lt;- 1:10; rp.name(x)
+</code></pre>
 </div>
+
 ##### rp.prettyascii: Return pretty ascii form
 ###### Description:
 <p>Some standard formatting is applied to the value which isreturned as ascii object.</p>
@@ -3180,9 +3393,11 @@ x &lt;- 1:10; rp.name(x)n</code></pre>
 <div class="highlight"><pre><code class="r">rp.prettyascii(&apos;Hallo, World?&apos;)
 rp.prettyascii(22/7)
 rp.prettyascii(matrix(runif(25), 5, 5))
-rp.prettyascii(lm(hp~wt, mtcars))n
+rp.prettyascii(lm(hp~wt, mtcars))
+
 </code></pre>
 </div>
+
 ##### rp.round: Round numeric values
 ###### Description:
 <p> Round numeric values with default number of decimals(see: <code>getOption(&apos;rp.decimal&apos;</code> ) and decimal mark(see: <code>getOption(&apos;rp.decimal&apos;)</code> ).</p>
@@ -3224,6 +3439,7 @@ values correspond to the current default penalty.
 	rp.round(matrix(runif(9),3,3))
 }</code></pre>
 </div>
+
 ##### table.json: Convert table-like structures to JSON object
 ###### Description:
 <p> This function takes either a <code>matrix</code> or a <code>data.frame</code> object to extract column names,row names and the &quot;body&quot; of the table-like object, henceexports them to JSON.</p>
@@ -3286,10 +3502,13 @@ table body</p>
  attributes.
 </p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">    table.json(mtcars)n    set.seed(1)
+<div class="highlight"><pre><code class="r">    table.json(mtcars)
+    set.seed(1)
     m &lt;- matrix(sample(10, 100, TRUE), 10)
-    table.json(m)n</code></pre>
+    table.json(m)
+</code></pre>
 </div>
+
 ##### tags.misplaced: Misplaced Tags
 ###### Description:
 <p>Searches for misplaced tags</p>
@@ -3371,10 +3590,10 @@ character vector with template lines</p>
 <p>a character vector with template body contents</p>
 ##### tpl.elem: Template Elements
 ###### Description:
-<p> Returns a <code>data.frame</code> containing summary ofrelevant template elements: <code>ind</code> - indice ofcurrent element in template&apos;s body, <code>type</code> - astring indicating the type of the content (&quot;heading&quot;,&quot;block&quot; or &quot;chunk&quot;), and <code>chunk</code> - a stringcontaining R expression found in a code chunk.</p>
+<p> Returns a <code>data.frame</code> containing summary ofrelevant template elements: <code>ind</code> - indice ofcurrent element in template&apos;s body, <code>type</code> - astring indicating the type of the content (&quot;heading&quot;,&quot;inline&quot; or &quot;block&quot;), and <code>chunk</code> - a stringcontaining R expression found in a code chunk.</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">tpl.elem(fp,    extract = c(&quot;all&quot;, &quot;heading&quot;, &quot;block&quot;, &quot;chunk&quot;),    use.body = FALSE, skip.blank.lines = TRUE,    skip.r.comments = FALSE, ...)</code></pre>
+	<pre><code class="r">tpl.elem(fp,    extract = c(&quot;all&quot;, &quot;heading&quot;, &quot;inline&quot;, &quot;block&quot;),    use.body = FALSE, skip.blank.lines = TRUE,    skip.r.comments = FALSE, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -3446,9 +3665,12 @@ chunks</p>
 </p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">    fp &lt;- system.file(&quot;templates&quot;, &quot;example.tpl&quot;, package = &quot;rapport&quot;)
-    tpl.elem(fp) # returns all elements (headings, blocks and chunks)n    ## returns only code chunks
-    tpl.elem(fp, extract = &quot;chunk&quot;)n</code></pre>
+    tpl.elem(fp) # returns all elements (headings, inlines and blocks)
+    ## returns only code blocks
+    tpl.elem(fp, extract = &quot;block&quot;)
+</code></pre>
 </div>
+
 ##### tpl.example: Template Examples
 ###### Description:
 <p> Runs the &quot;Example&quot; field found in specified template.Handy to check out what template does and how does itlook like once rendered. If multiple examples areavailable, and <code>index</code> argument is <code>NULL</code> , youwill be prompted for input. Example output can be easilyexported to various formats (HTML, ODT, etc.) - check outdocumentation for <code>tpl.export</code> for more info.</p>
@@ -3488,8 +3710,10 @@ all examples.</p>
 tpl.example(&apos;crosstable&apos;)
 tpl.export(tpl.example(&apos;crosstable&apos;))
 tpl.example(&apos;example&apos;, 1:2)
-tpl.example(&apos;example&apos;, &apos;all&apos;)n</code></pre>
+tpl.example(&apos;example&apos;, &apos;all&apos;)
+</code></pre>
 </div>
+
 ##### tpl.export.backends: tpl.export.backends
 ###### Description:
 <p>List of all available backend formats (from asciipackage).</p>
@@ -3608,11 +3832,13 @@ report. If not set, current time will be set.</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r"> n## eval some template
-x &lt;- rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;hp&quot;)n## try basic parameters
+<div class="highlight"><pre><code class="r">## eval some template
+x &lt;- rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;hp&quot;)
+## try basic parameters
 tpl.export(x)
 tpl.export(x, file=&apos;demo&apos;)
-tpl.export(x, file=&apos;demo&apos;, format=&apos;odt&apos;)n### append reports
+tpl.export(x, file=&apos;demo&apos;, format=&apos;odt&apos;)
+### append reports
 # 1) Create a report object with the first report and do not export (optional)
 report &lt;- tpl.export(x, create=F)
 # 2) Append some other reports without exporting (optional)
@@ -3620,16 +3846,21 @@ report &lt;- tpl.export(x, create=F, append=report)
 # 3) Export it!
 tpl.export(append=report)
 # 4) Export it to other formats too! (optional)
-tpl.export(append=report, format=&apos;rst&apos;)n### exporting multiple reports at once
+tpl.export(append=report, format=&apos;rst&apos;)
+### exporting multiple reports at once
 tpl.export(tpl.example(&apos;example&apos;, &apos;all&apos;))
 tpl.export(tpl.example(&apos;example&apos;, &apos;all&apos;), format=&apos;odt&apos;)
 tpl.export(list(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;hp&quot;),
-    rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;mpg&quot;)))n### Never do this as being dumb:
-tpl.export()n### Adding own custom CSS to exported HTML
+    rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;mpg&quot;)))
+### Never do this as being dumb:
+tpl.export()
+### Adding own custom CSS to exported HTML
 tpl.export(x, options=sprintf(&apos;-c %s&apos;, system.file(&apos;templates/css/default.css&apos;, package=&apos;rapport&apos;)))
 ## For other formats check out backend specific documentation!
-## Eg. pandoc uses &quot;--reference-odt&quot; as styles reference for odt exports.n</code></pre>
+## Eg. pandoc uses &quot;--reference-odt&quot; as styles reference for odt exports.
+</code></pre>
 </div>
+
 ##### tpl.find: Read Template
 ###### Description:
 <p> Reads file either from template name, file path or URL,and splits it into lines for easier handling. &quot;find&quot; in <code>tpl.find</code> is borrowed from Emacs parlance - thisfunction actually reads the template.</p>
@@ -3660,7 +3891,7 @@ with template contents.
 <p>a character vector with template contents</p>
 ##### tpl.header: Template Header
 ###### Description:
-<p>Returns \emrapport template header from provided pathor a character vector. In case you&apos;re refering to atemplate bundled with package, you don&apos;t need to providea template extension.</p>
+<p> Returns <code>rapport</code> template header from provided pathor a character vector. In case you&apos;re refering to atemplate bundled with package, you don&apos;t need to providea template extension.</p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">tpl.header(fp, open.tag = get.tags(&quot;header.open&quot;),    close.tag = get.tags(&quot;header.close&quot;), ...)</code></pre>
@@ -3753,8 +3984,10 @@ character vector with template lines</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">tpl.info(&apos;example&apos;)  # return both metadata and inputs
 tpl.info(&apos;crosstable&apos;, inputs = FALSE)  # return only template metadata
-tpl.info(&apos;correlations&apos;, meta = FALSE)  # return only template inputsn</code></pre>
+tpl.info(&apos;correlations&apos;, meta = FALSE)  # return only template inputs
+</code></pre>
 </div>
+
 ##### tpl.inputs: Template Inputs
 ###### Description:
 <p>Grabs variable definitions from template header.</p>
@@ -3815,8 +4048,10 @@ header section is provided in
 ###### Returned value:
 <p>a character vector with template files</p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">tpl.list()n</code></pre>
+<div class="highlight"><pre><code class="r">tpl.list()
+</code></pre>
 </div>
+
 ##### tpl.meta: Header Metadata
 ###### Description:
 <p>Returns metadata stored in template&apos;s header section,usually template title, nickname of an author, templatedescription and list of required packages.</p>
@@ -3906,6 +4141,8 @@ extraction</p>
 </table>
 ###### Examples:
 <div class="highlight"><pre><code class="r">tmp &lt;- rapport(&quot;example&quot;, mtcars, x = &quot;hp&quot;, y = &quot;mpg&quot;)
-tpl.rerun(tmp)n</code></pre>
+tpl.rerun(tmp)
+</code></pre>
 </div>
+
 
