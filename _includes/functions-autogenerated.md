@@ -1,4 +1,4 @@
-<a id="#Datasets"> </a>
+<a id="Datasets"> </a>
 #### Datasets
 
 ##### ius2008: Internet Usage Survey
@@ -13,7 +13,7 @@
 ###### Description:
 <p> This dataset contains dummy-data that demonstratesvarious input types supported by <code>rapport</code> .</p>
 
-<a id="#Generic-functions"> </a>
+<a id="Generic-functions"> </a>
 #### Generic functions
 
 ##### decrypt: Decrypt a string
@@ -282,7 +282,7 @@ evals(&apos;mean(x)&apos;)
 </div>
 
 
-<a id="#Generic-graph-functions"> </a>
+<a id="Generic-graph-functions"> </a>
 #### Generic graph functions
 
 ##### rp.barplot: Barplot
@@ -1145,7 +1145,7 @@ at random</p>
 </div>
 
 
-<a id="#Generic-helper-functions"> </a>
+<a id="Generic-helper-functions"> </a>
 #### Generic helper functions
 
 ##### adj.rle: Adjacent Values Run Length Encoding
@@ -1567,7 +1567,7 @@ defines a space character</p>
 </div>
 
 
-<a id="#Generic-stat-functions"> </a>
+<a id="Generic-stat-functions"> </a>
 #### Generic stat functions
 
 ##### rp.desc: Descriptive Statistics
@@ -2241,7 +2241,7 @@ elements</p>
 ###### Returned value:
 <p>a numeric value with variable&apos;s variance</p>
 
-<a id="#Generic-stat-helper-functions"> </a>
+<a id="Generic-stat-helper-functions"> </a>
 #### Generic stat helper functions
 
 ##### e:  Extract Values from <code>htest</code> Objects
@@ -2382,7 +2382,7 @@ rp.outlier(c(rep(1,100), 200,201))
 </div>
 
 
-<a id="#Template-related-functions"> </a>
+<a id="Template-related-functions"> </a>
 #### Template related functions
 
 ##### check.limit: Input Limits
