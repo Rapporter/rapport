@@ -20,13 +20,13 @@
   string with same lenght as
   \code{options('.encrypt.chars')}. E.g.
   \code{intToUtf8(sample(c(33, 36:38, 48:57, 64:90, 97:122,
-  192:246, 248:382), nchar(getOption('.encrypt.chars')))))}
+  192:246, 248:382), nchar(getOption('.encrypt.chars'))))}
   would return a quite complex but readable key.
 }
 \examples{
 \dontrun{
-		encrypt("Hello world!")
-		encrypt(paste(names(mtcars), collapse=" "))
+encrypt("Hello world!")
+encrypt(paste(names(mtcars), collapse=" "))
 	}
 }
 \references{

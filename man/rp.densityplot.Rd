@@ -32,7 +32,7 @@
 \examples{
 \dontrun{
 df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
-    am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+  am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
 rp.densityplot(df$hp)
 rp.densityplot(df$hp, facet=df$am)
 rp.densityplot(df$hp, df$am)

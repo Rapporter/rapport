@@ -36,7 +36,7 @@
 \examples{
 \dontrun{
 df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-	rp.cor.plot(df)
+rp.cor.plot(df)
 rp.cor.plot(df, diag.panel='panel.hist')
 }
 }

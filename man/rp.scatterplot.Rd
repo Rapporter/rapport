@@ -33,13 +33,13 @@
 \examples{
 \dontrun{
 df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-	rp.scatterplot(df$hp, df$wt)
-	rp.scatterplot(df$hp, df$wt, facet=df$cyl)
-	rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.scatterplot(df$hp, df$wt)
-	rp.scatterplot(df$hp, df$wt, colorize=TRUE)
-	with(df, rp.scatterplot(hp, wt, facet = am))
-	rp.scatterplot(hp, wt, data=df)
-	rp.scatterplot(hp, wt, am, df)
+rp.scatterplot(df$hp, df$wt)
+rp.scatterplot(df$hp, df$wt, facet=df$cyl)
+rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.scatterplot(df$hp, df$wt)
+rp.scatterplot(df$hp, df$wt, colorize=TRUE)
+with(df, rp.scatterplot(hp, wt, facet = am))
+rp.scatterplot(hp, wt, data=df)
+rp.scatterplot(hp, wt, am, df)
 }
 }
 
