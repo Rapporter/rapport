@@ -1,6 +1,7 @@
 <a id="Datasets"> </a>
 #### Datasets
 
+<a id="ius2008"> </a>
 ##### ius2008: Internet Usage Survey
 ###### Description:
 <p>This dataset contains data gathered in a survey ofInternet usage in Serbian population in the period fromApril to May 2008. During 90-day period, there weregathered 709 valid responses via on-line distributedquestionnaire.</p>
@@ -9,6 +10,7 @@
 </code></pre>
 </div>
 
+<a id="typeDemoData"> </a>
 ##### typeDemoData: Rapport Input Type Demo Data
 ###### Description:
 <p> This dataset contains dummy-data that demonstratesvarious input types supported by <code>rapport</code> .</p>
@@ -16,6 +18,7 @@
 <a id="Generic-functions"> </a>
 #### Generic functions
 
+<a id="decrypt"> </a>
 ##### decrypt: Decrypt a string
 ###### Description:
 <p> Decrypts string encrypted by <code>encrypt</code> .</p>
@@ -42,16 +45,17 @@
  <a href="https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html">https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html</a>
 </p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">		decrypt(&quot;loRR7KT72R=!&quot;)
-		strsplit(decrypt(&quot;MrhKPzRK=tBrK0rK=2g~KT~K8BoPK1BKgMKhog2KPg2A&quot;), &quot; &quot;)[[1]]
-		eval(parse(text=decrypt(&quot;rR7~HM~Pg2B40r,KP7Rkp2o=pc&quot;)))
+<div class="highlight"><pre><code class="r">decrypt(&quot;loRR7KT72R=!&quot;)
+strsplit(decrypt(&quot;MrhKPzRK=tBrK0rK=2g~KT~K8BoPK1BKgMKhog2KPg2A&quot;), &quot; &quot;)[[1]]
+eval(parse(text=decrypt(&quot;rR7~HM~Pg2B40r,KP7Rkp2o=pc&quot;)))
 	
 </code></pre>
 </div>
 
+<a id="encrypt"> </a>
 ##### encrypt: Encrypt a string
 ###### Description:
-<p> A simple encryption function which reorders thecharacters in a given string based on a predefined key.As it can be seen: the used encryption is easy to crack,do not use this for sensitive data! The key is set bydefault on library startup. It can be changed bymodifying <code>options(&apos;.encrypt.key&apos;)</code> to any characterstring with same lenght as <code>options(&apos;.encrypt.chars&apos;)</code> . E.g. <code>intToUtf8(sample(c(33, 36:38, 48:57, 64:90, 97:122,  192:246, 248:382), nchar(getOption(&apos;.encrypt.chars&apos;)))))</code> would return a quite complex but readable key.</p>
+<p> A simple encryption function which reorders thecharacters in a given string based on a predefined key.As it can be seen: the used encryption is easy to crack,do not use this for sensitive data! The key is set bydefault on library startup. It can be changed bymodifying <code>options(&apos;.encrypt.key&apos;)</code> to any characterstring with same lenght as <code>options(&apos;.encrypt.chars&apos;)</code> . E.g. <code>intToUtf8(sample(c(33, 36:38, 48:57, 64:90, 97:122,  192:246, 248:382), nchar(getOption(&apos;.encrypt.chars&apos;))))</code> would return a quite complex but readable key.</p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">encrypt(message)</code></pre>
@@ -75,12 +79,13 @@
  <a href="https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html">https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html</a>
 </p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">		encrypt(&quot;Hello world!&quot;)
-		encrypt(paste(names(mtcars), collapse=&quot; &quot;))
+<div class="highlight"><pre><code class="r">encrypt(&quot;Hello world!&quot;)
+encrypt(paste(names(mtcars), collapse=&quot; &quot;))
 	
 </code></pre>
 </div>
 
+<a id="evals"> </a>
 ##### evals: Evals chunk(s) of R code
 ###### Description:
 <p> This function takes either a list of integer indiceswhich point to position of R code in body charactervector, or a list of strings with actual R code, thenevaluates each list element, and returns a list with twoelements: a character value with R code and generatedoutput. The output can be NULL (eg. <code>x &lt;-  runif(100)</code> ), a table (eg. <code>table(mtcars$am,  mtcars$cyl)</code> or any other R object. If a graph is plottedin the given text, the returned object is a stringspecifying the path to the saved png in temporarydirectory (see: <code>tmpfile()</code> ). The function takescare of warnings and errors too, please check the thereturned value below.</p>
@@ -215,26 +220,25 @@ command run, otherwise set to NULL)</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r"># parsing line-by-line
 txt &lt;- readLines(textConnection(&apos;x &lt;- rnorm(100)
-	runif(10)
-	warning(&quot;You should check out rapport package!&quot;)
-	plot(1:10)
-	qplot(rating, data=movies, geom=&quot;histogram&quot;)
-	y &lt;- round(runif(100))
-	cor.test(x, y)
-	crl &lt;- cor.test(runif(10), runif(10))
-	table(mtcars$am, mtcars$cyl)
-	ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))&apos;))
+  runif(10)
+  warning(&quot;You should check out rapport package!&quot;)
+  plot(1:10)
+  qplot(rating, data=movies, geom=&quot;histogram&quot;)
+  y &lt;- round(runif(100))
+  cor.test(x, y)
+  crl &lt;- cor.test(runif(10), runif(10))
+  table(mtcars$am, mtcars$cyl)
+  ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))&apos;))
 evals(txt)
 ## parsing a list of commnads
 txt &lt;- list(&apos;df &lt;- mtcars&apos;,
-		c(&apos;plot(mtcars$hp, pch = 19)&apos;,&apos;text(mtcars$hp, label = rownames(mtcars), pos = 4)&apos;),
-		&apos;ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))&apos;)
+ c(&apos;plot(mtcars$hp, pch = 19)&apos;,&apos;text(mtcars$hp, label = rownames(mtcars), pos = 4)&apos;),
+ &apos;ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))&apos;)
 evals(txt)
 ## returning only a few classes
 txt &lt;- readLines(textConnection(&apos;rnorm(100)
-	list(x = 10:1, y = &quot;Godzilla!&quot;)
-	c(1,2,3)
-	matrix(0,3,5)&apos;))
+  list(x = 10:1, y = &quot;Godzilla!&quot;)
+  c(1,2,3)
 evals(txt, classes=&apos;numeric&apos;)
 evals(txt, classes=c(&apos;numeric&apos;, &apos;list&apos;))
 ## handling warnings
@@ -285,6 +289,7 @@ evals(&apos;mean(x)&apos;)
 <a id="Generic-graph-functions"> </a>
 #### Generic graph functions
 
+<a id="rp.barplot"> </a>
 ##### rp.barplot: Barplot
 ###### Description:
 <p> This function is a wrapper around <code>barchart</code> which operates only on factors with optional facet.</p>
@@ -402,20 +407,21 @@ at random</p>
 </table>
 ###### Examples:
 <div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-	rp.barplot(df$cyl)
-	rp.barplot(df$cyl, horizontal = FALSE)
-	rp.barplot(df$cyl, facet=df$am)
-	rp.barplot(df$cyl, facet=df$am, horizontal=FALSE)
-	rp.barplot(df$cyl, facet=df$am, colorize=TRUE)
-	rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
-	rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T, horizontal=FALSE)
-	rp.label(df$cyl) &lt;- &apos;Number of cylinders&apos;; rp.barplot(df$cyl)
-	with(df, rp.barplot(cyl, facet = am))
-	rp.barplot(cyl, data=df)
-	rp.barplot(cyl, am, df)
+rp.barplot(df$cyl)
+rp.barplot(df$cyl, horizontal = FALSE)
+rp.barplot(df$cyl, facet=df$am)
+rp.barplot(df$cyl, facet=df$am, horizontal=FALSE)
+rp.barplot(df$cyl, facet=df$am, colorize=TRUE)
+rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
+rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T, horizontal=FALSE)
+rp.label(df$cyl) &lt;- &apos;Number of cylinders&apos;; rp.barplot(df$cyl)
+with(df, rp.barplot(cyl, facet = am))
+rp.barplot(cyl, data=df)
+rp.barplot(cyl, am, df)
 </code></pre>
 </div>
 
+<a id="rp.boxplot"> </a>
 ##### rp.boxplot: Boxplot
 ###### Description:
 <p> This function is a wrapper around <code>bwplot</code> which operates only on numeric variables with optionalfacet.</p>
@@ -495,16 +501,17 @@ at random</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 rp.boxplot(df$cyl)
-	rp.boxplot(df$cyl, df$wt)
-	rp.boxplot(df$cyl, df$hp, facet=df$am)
-	rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.label(df$wt) &lt;- &apos;weight&apos;; rp.boxplot(df$cyl, df$wt)
-	rp.boxplot(df$cyl, df$wt, colorize=TRUE)
-	with(df, rp.scatterplot(hp, wt, facet = am))
-	rp.boxplot(cyl, wt, data=df)
-	rp.boxplot(cyl, wt, am, df)
+rp.boxplot(df$cyl, df$wt)
+rp.boxplot(df$cyl, df$hp, facet=df$am)
+rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.label(df$wt) &lt;- &apos;weight&apos;; rp.boxplot(df$cyl, df$wt)
+rp.boxplot(df$cyl, df$wt, colorize=TRUE)
+with(df, rp.scatterplot(hp, wt, facet = am))
+rp.boxplot(cyl, wt, data=df)
+rp.boxplot(cyl, wt, am, df)
 </code></pre>
 </div>
 
+<a id="rp.cor.plot"> </a>
 ##### rp.cor.plot: Scatterplot matrices
 ###### Description:
 <p> This function is a wrapper around <code>pairs</code> which operates only on numeric variables. Panel optionsare: <code>c(&apos;panel.cor&apos;, &apos;panel.smooth&apos;, &apos;panel.hist&apos;)</code> .Custom panels may be also added.</p>
@@ -595,11 +602,12 @@ at random</p>
 </table>
 ###### Examples:
 <div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-	rp.cor.plot(df)
+rp.cor.plot(df)
 rp.cor.plot(df, diag.panel=&apos;panel.hist&apos;)
 </code></pre>
 </div>
 
+<a id="rp.densityplot"> </a>
 ##### rp.densityplot: Density plot
 ###### Description:
 <p> This function is a wrapper around <code>densityplot</code> which operates only on numericvectors with optional facet.</p>
@@ -670,7 +678,7 @@ at random</p>
 </table>
 ###### Examples:
 <div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)),
-    am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
+  am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
 rp.densityplot(df$hp)
 rp.densityplot(df$hp, facet=df$am)
 rp.densityplot(df$hp, df$am)
@@ -682,6 +690,7 @@ rp.densityplot(hp, am, df)
 </code></pre>
 </div>
 
+<a id="rp.dotplot"> </a>
 ##### rp.dotplot: Dotplot
 ###### Description:
 <p> This function is a wrapper around <code>dotplot</code> which operates only on factors with optional facet.</p>
@@ -785,19 +794,20 @@ at random</p>
 </table>
 ###### Examples:
 <div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-	rp.dotplot(df$cyl)
-	rp.dotplot(df$cyl, horizontal = FALSE)
-	rp.dotplot(df$cyl, facet=df$am)
-	rp.dotplot(df$cyl, facet=df$am, horizontal=FALSE)
-	rp.dotplot(df$cyl, facet=df$am, colorize=TRUE)
-	rp.dotplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
-	rp.label(df$cyl) &lt;- &apos;Number of cylinders&apos;; rp.dotplot(df$cyl)
-	with(df, rp.dotplot(cyl, facet = am))
-	rp.dotplot(cyl, data=df)
-	rp.dotplot(cyl, am, df)
+rp.dotplot(df$cyl)
+rp.dotplot(df$cyl, horizontal = FALSE)
+rp.dotplot(df$cyl, facet=df$am)
+rp.dotplot(df$cyl, facet=df$am, horizontal=FALSE)
+rp.dotplot(df$cyl, facet=df$am, colorize=TRUE)
+rp.dotplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
+rp.label(df$cyl) &lt;- &apos;Number of cylinders&apos;; rp.dotplot(df$cyl)
+with(df, rp.dotplot(cyl, facet = am))
+rp.dotplot(cyl, data=df)
+rp.dotplot(cyl, am, df)
 </code></pre>
 </div>
 
+<a id="rp.graph.check"> </a>
 ##### rp.graph.check: Input cheks (internal)
 ###### Description:
 <p> Internal function used by eg. <code>rp.histogram</code> .</p>
@@ -840,6 +850,7 @@ at random</p>
   </td>
  </tr>
 </table>
+<a id="rp.hist"> </a>
 ##### rp.hist: Histogram
 ###### Description:
 <p> This function is a wrapper around <code>histogram</code> which operates only on numeric vectors with optionalfacet.</p>
@@ -910,18 +921,19 @@ at random</p>
 </table>
 ###### Examples:
 <div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)),
-	    am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-	rp.hist(df$hp)
-	rp.hist(df$hp, facet=df$am)
-	rp.hist(df$hp, df$am)
-	rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.hist(df$hp)
-	rp.hist(df$hp, colorize=TRUE)
-	with(df, rp.hist(hp, facet = am))
-	rp.hist(hp, data = df)
-	rp.hist(hp, am, df)
+  am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
+rp.hist(df$hp)
+rp.hist(df$hp, facet=df$am)
+rp.hist(df$hp, df$am)
+rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.hist(df$hp)
+rp.hist(df$hp, colorize=TRUE)
+with(df, rp.hist(hp, facet = am))
+rp.hist(hp, data = df)
+rp.hist(hp, am, df)
 </code></pre>
 </div>
 
+<a id="rp.lineplot"> </a>
 ##### rp.lineplot: Lineplot
 ###### Description:
 <p> This function is a wrapper around <code>xyplot</code> with custom panel. Only numeric variables are acceptedwith optional facet.</p>
@@ -1009,6 +1021,7 @@ rp.lineplot(gear, wt, data=a)
 </code></pre>
 </div>
 
+<a id="rp.palette"> </a>
 ##### rp.palette: Color palettes
 ###### Description:
 <p> This function returns a given number of color codes fromgiven palette by default falling back to acolor-blind-friendly palette from <a href="http://jfly.iam.u-tokyo.ac.jp/color/">http://jfly.iam.u-tokyo.ac.jp/color/</a> .</p>
@@ -1056,6 +1069,7 @@ rp.palette(5, &apos;Greens&apos;, colorize = TRUE)
 }</code></pre>
 </div>
 
+<a id="rp.scatterplot"> </a>
 ##### rp.scatterplot: Scatterplot
 ###### Description:
 <p> This function is a wrapper around <code>xyplot</code> which operates only on numeric variables with optionalfacet.</p>
@@ -1134,13 +1148,13 @@ at random</p>
 </table>
 ###### Examples:
 <div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-	rp.scatterplot(df$hp, df$wt)
-	rp.scatterplot(df$hp, df$wt, facet=df$cyl)
-	rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.label(df$wt) &lt;- &apos;weight&apos;; rp.scatterplot(df$hp, df$wt)
-	rp.scatterplot(df$hp, df$wt, colorize=TRUE)
-	with(df, rp.scatterplot(hp, wt, facet = am))
-	rp.scatterplot(hp, wt, data=df)
-	rp.scatterplot(hp, wt, am, df)
+rp.scatterplot(df$hp, df$wt)
+rp.scatterplot(df$hp, df$wt, facet=df$cyl)
+rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.label(df$wt) &lt;- &apos;weight&apos;; rp.scatterplot(df$hp, df$wt)
+rp.scatterplot(df$hp, df$wt, colorize=TRUE)
+with(df, rp.scatterplot(hp, wt, facet = am))
+rp.scatterplot(hp, wt, data=df)
+rp.scatterplot(hp, wt, am, df)
 </code></pre>
 </div>
 
@@ -1148,6 +1162,7 @@ at random</p>
 <a id="Generic-helper-functions"> </a>
 #### Generic helper functions
 
+<a id="adj.rle"> </a>
 ##### adj.rle: Adjacent Values Run Length Encoding
 ###### Description:
 <p> Similar to <code>rle</code> function, this functiondetects &quot;runs&quot; of adjacent integers, and displays vectorof run lengths and list of corresponding integersequences. See original thread for more details <a href="http://stackoverflow.com/a/8467446/457898">http://stackoverflow.com/a/8467446/457898</a> . Specialthanks to Gabor Grothendieck for this one!</p>
@@ -1170,6 +1185,7 @@ at random</p>
 <p>a list with two elements: vector of run lengths, and
 another list of values corresponding to generated
 sequences&apos; lengths.</p>
+<a id="alike.integer"> </a>
 ##### alike.integer: Check integers
 ###### Description:
 <p> This function tests if given variable &quot;appears&quot; to be aninteger. To qualify as such, two conditions need to besatisfied: it should be stored as <code>numeric</code> object, and it should pass regular expression test if itconsists only of digits.</p>
@@ -1191,6 +1207,7 @@ sequences&apos; lengths.</p>
 ###### Returned value:
 <p>a logical value that indicates that tested variable
 &quot;looks like&quot; integer</p>
+<a id="catn"> </a>
 ##### catn: Concatenate with newline
 ###### Description:
 <p> A simple wrapper for <code>cat</code> function thatappends newline to output.</p>
@@ -1215,6 +1232,7 @@ sequences&apos; lengths.</p>
 </table>
 ###### Returned value:
 <p>None (invisible ‘NULL’).</p>
+<a id="guess.convert"> </a>
 ##### guess.convert: Guess Mode
 ###### Description:
 <p>&quot;Guesses&quot; a mode of provided character vector andconverts it to appropriate mode.</p>
@@ -1255,6 +1273,7 @@ storage.mode(guess.mode(&quot;     TRUE         &quot;, TRUE))
 </code></pre>
 </div>
 
+<a id="is.string"> </a>
 ##### is.string: Strings
 ###### Description:
 <p>Checks if provided object is a string i.e. a length-onecharacter vector.</p>
@@ -1282,6 +1301,7 @@ string</p>
     is.string(c(&quot;foo&quot;, &quot;bar&quot;))   # [1] FALSE</code></pre>
 </div>
 
+<a id="makes.plot"> </a>
 ##### makes.plot: Check plot creation
 ###### Description:
 <p> This function checks if given expression generates aplot. See original thread for more details( <a href="http://stackoverflow.com/a/2744434/457898">http://stackoverflow.com/a/2744434/457898</a> ).Special thanks to Hadley Wickam for this one!</p>
@@ -1308,6 +1328,7 @@ string</p>
 </code></pre>
 </div>
 
+<a id="stopf"> </a>
 ##### stopf: Stop Execution with String Interpolated Messages
 ###### Description:
 <p> This helper combines <code>stop</code> function with <code>sprintf</code> thus allowing string interpolated messageswhen execution is halted.</p>
@@ -1342,6 +1363,7 @@ termination</p>
 </code></pre>
 </div>
 
+<a id="tocamel"> </a>
 ##### tocamel: CamelCase
 ###### Description:
 <p>Convert character vector to camelcase - capitalise firstletter of each word.</p>
@@ -1405,6 +1427,7 @@ to
     ## [1] &quot;foobar&quot;    &quot;fooBar&quot;    &quot;camelCase&quot; &quot;aBCD&quot;</code></pre>
 </div>
 
+<a id="trim.space"> </a>
 ##### trim.space: Trim Spaces
 ###### Description:
 <p> Removes leading and/or trailing space(s) from a charactervector value. By default, it removes only trailingspaces. In order to trim both leading and trailingspaces, pass <code>TRUE</code> to both <code>leading</code> and <code>trailing</code> arguments.</p>
@@ -1473,6 +1496,7 @@ defines a space character</p>
 </table>
 ###### Returned value:
 <p>a character vector with removed spaces</p>
+<a id="vgsub"> </a>
 ##### vgsub: Vectorised String Replacement
 ###### Description:
 <p> A simple wrapper for <code>gsub</code> that replaces allpatterns from <code>pattern</code> argument with ones in <code>replacement</code> over vector provided in argument <code>x</code> . See original thread for more details <a href="http://stackoverflow.com/a/6954308/457898">http://stackoverflow.com/a/6954308/457898</a> . Specialthanks to user Jean-Robert for this one!</p>
@@ -1533,6 +1557,7 @@ defines a space character</p>
 </table>
 ###### Returned value:
 <p>a character vector with string replacements</p>
+<a id="wrap"> </a>
 ##### wrap: Wrap Vector Elements
 ###### Description:
 <p> Wraps vector elements with string provided in <code>wrap</code> argument.</p>
@@ -1570,6 +1595,7 @@ defines a space character</p>
 <a id="Generic-stat-functions"> </a>
 #### Generic stat functions
 
+<a id="rp.desc"> </a>
 ##### rp.desc: Descriptive Statistics
 ###### Description:
 <p> Aggregate table of descriptives according to functionsprovided in <code>fn</code> argument. This function followsmelt/cast approach used in <code>reshape</code> package.Variable names specified in <code>measure.vars</code> argumentare treated as <code>measure.vars</code> , while the ones in <code>id.vars</code> are treated as <code>id.vars</code> (see <code>melt.data.frame</code> for details).Other its formal arguments match with correspondingarguments for <code>cast</code> function. Somepost-processing is done after reshaping, in order to getpretty row and column labels.</p>
@@ -1704,6 +1730,7 @@ aggregating</p>
 <div class="highlight"><pre><code class="r">rp.desc(&quot;cyl&quot;, &quot;am&quot;, c(mean, sd), mtcars, margins = TRUE)</code></pre>
 </div>
 
+<a id="rp.freq"> </a>
 ##### rp.freq: Frequency Table
 ###### Description:
 <p>Diplay frequency table.</p>
@@ -1810,6 +1837,7 @@ be left out</p>
 </code></pre>
 </div>
 
+<a id="rp.iqr"> </a>
 ##### rp.iqr: Interquartile Range
 ###### Description:
 <p> Calculates interquartile range of given variable. See <code>rp.univar</code> for details.</p>
@@ -1834,6 +1862,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with variable&apos;s interquartile range</p>
+<a id="rp.kurtosis"> </a>
 ##### rp.kurtosis: Kurtosis
 ###### Description:
 <p> Calculates kurtosis of given variable. See <code>rp.univar</code> for details.</p>
@@ -1858,6 +1887,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with variable&apos;s kurtosis</p>
+<a id="rp.max"> </a>
 ##### rp.max: Maximum
 ###### Description:
 <p> Returns the maximum of all values in a vector by passing{codemax as <code>fn</code> argument to <code>rp.univar</code> function.</p>
@@ -1882,6 +1912,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with maximum value</p>
+<a id="rp.mean"> </a>
 ##### rp.mean: Mean
 ###### Description:
 <p> Calculates mean of given variable by passing <code>sum</code> as <code>fn</code> argument to <code>rp.univar</code> function.</p>
@@ -1906,6 +1937,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with variable&apos;s mean</p>
+<a id="rp.median"> </a>
 ##### rp.median: Median
 ###### Description:
 <p> Calculates median of given variable. See <code>rp.univar</code> for details.</p>
@@ -1930,6 +1962,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with variable&apos;s median</p>
+<a id="rp.min"> </a>
 ##### rp.min: Minimum
 ###### Description:
 <p> Returns the minimum of all values in a vector by passing{codemin as <code>fn</code> argument to <code>rp.univar</code> function.</p>
@@ -1954,6 +1987,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with minimum value</p>
+<a id="rp.missing"> </a>
 ##### rp.missing: Missing Cases
 ###### Description:
 <p> Returns a number of missing ( <code>NA</code> ) values in avariable. This is a wrapper around <code>rp.univar</code> function with anonymous functionpassed to count number of <code>NA</code> elements in avariable.</p>
@@ -1978,6 +2012,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with number of missing vector elements</p>
+<a id="rp.n"> </a>
 ##### rp.n: Sample Size
 ###### Description:
 <p> Returns sample size with <code>NA</code> s included. This is awrapper around <code>rp.univar</code> function with <code>length</code> function passed in <code>fn</code> argument. However, it will not account for missing valuesregardless of the value of <code>na.rm</code> argument. Inorder to get a number of valid responses, use <code>rp.valid</code> .</p>
@@ -2002,6 +2037,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value specifying vector length</p>
+<a id="rp.range"> </a>
 ##### rp.range: Range
 ###### Description:
 <p> Calculates difference between the largest and thesmallest value in a vector. See <code>rp.univar</code> for details.</p>
@@ -2026,6 +2062,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with calculated range</p>
+<a id="rp.sd"> </a>
 ##### rp.sd: Standard Deviation
 ###### Description:
 <p> Calculates standard deviation of given variable. See <code>rp.univar</code> for details.</p>
@@ -2050,6 +2087,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with variable&apos;s standard deviation</p>
+<a id="rp.se.mean"> </a>
 ##### rp.se.mean: Standard Error of Mean
 ###### Description:
 <p> Calculates standard error of mean for given variable. See <code>rp.univar</code> for details.</p>
@@ -2074,6 +2112,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with standard error of mean</p>
+<a id="rp.skewness"> </a>
 ##### rp.skewness: Skewness
 ###### Description:
 <p> Calculates skewness of given variable. See <code>rp.univar</code> for details.</p>
@@ -2098,6 +2137,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with variable&apos;s skewness</p>
+<a id="rp.sum"> </a>
 ##### rp.sum: Sum
 ###### Description:
 <p> Returns the sum of variable&apos;s elements, by passing <code>sum</code> as <code>fn</code> argument to <code>rp.univar</code> function.</p>
@@ -2122,6 +2162,7 @@ be left out</p>
 </table>
 ###### Returned value:
 <p>a numeric value with sum of vector elements</p>
+<a id="rp.univar"> </a>
 ##### rp.univar: Descriptive Statistics
 ###### Description:
 <p> This function operates only on vectors or their subsets,by calculating a descriptive statistic specified in <code>fn</code> argument. Yielded result is rounded to 3decimal places by default (which can be changed bypassing an integer to <code>decimals</code> argument).</p>
@@ -2191,6 +2232,7 @@ should be removed (defaults to
 </table>
 ###### Returned value:
 <p>a numeric</p>
+<a id="rp.valid"> </a>
 ##### rp.valid: Valid Cases
 ###### Description:
 <p> Returns a number of valid (non- <code>NA</code> ) values in avariable. This is a wrapper around <code>rp.univar</code> function with <code>length</code> function passed in <code>fn</code> argument, but with missing values previously removed.However, it&apos;s not possible to cancel <code>NA</code> omissionwith this function(doing so will yield error) - use <code>rp.n</code> for those purposes.</p>
@@ -2216,6 +2258,7 @@ should be removed (defaults to
 ###### Returned value:
 <p>a numeric value with number of valid (non-NA) vector
 elements</p>
+<a id="rp.var"> </a>
 ##### rp.var: Variance
 ###### Description:
 <p> Calculates variance of given variable. See <code>rp.univar</code> for details.</p>
@@ -2244,41 +2287,13 @@ elements</p>
 <a id="Generic-stat-helper-functions"> </a>
 #### Generic stat helper functions
 
-##### e:  Extract Values from <code>htest</code> Objects
-###### Description:
-<p> Extract value of statistic and its p-value from <code>htest</code> object.</p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">e(x)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>
-    <code>htest</code>
-    -class object
-   </p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>named numeric vector with the value of statistic and its
-p-value</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">e(shapiro.test(rnorm(100))
-</code></pre>
-</div>
-
+<a id="htest"> </a>
 ##### htest: Hypothesis Tests
 ###### Description:
-<p> This function extracts only the most importantinformation from <code>htest</code> class objects - statisticand its p-value.</p>
+<p> This function uses <code>htest.short</code> , to extractstatistic and p-value from <code>htest</code> -classed object.Main advantage of using <code>htest</code> is that it&apos;svectorised, and can accept multiple methods.</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">htest(x, ...)</code></pre>
+	<pre><code class="r">htest(x, ..., use.labels = TRUE)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -2304,7 +2319,69 @@ p-value</p>
    </p>
   </td>
  </tr>
+ <tr valign="top">
+  <td>
+   <code>use.labels</code>
+  </td>
+  <td>
+   <p>
+    a logical value indicating whether
+variable labels should be placed in row names. If set to
+    <code>FALSE</code>
+    , output of
+    <code>deparse(substitute(x))</code>
+    will be used.
+   </p>
+  </td>
+ </tr>
 </table>
+###### Returned value:
+<p>
+ a
+ <code>data.frame</code>
+ with applied tests in rows, and their
+results (statistic and p-value) in columns
+</p>
+###### Examples:
+<div class="highlight"><pre><code class="r">library(nortest)
+htest(rnorm(100), shapiro.test)
+htest(rnorm(100), lillie.test, ad.test, shapiro.test)
+htest(mtcars, lillie.test)
+htest(mtcars, lillie.test, ad.test, shapiro.test)
+</code></pre>
+</div>
+
+<a id="htest.short"> </a>
+##### htest.short:  Extract Values from <code>htest</code> Objects
+###### Description:
+<p> Extract value of statistic and its p-value from <code>htest</code> object.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">htest.short(x)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>
+    <code>htest</code>
+    -class object
+   </p>
+  </td>
+ </tr>
+</table>
+###### Returned value:
+<p>named numeric vector with the value of statistic and its
+p-value</p>
+###### Examples:
+<div class="highlight"><pre><code class="r">e(shapiro.test(rnorm(100))
+</code></pre>
+</div>
+
+<a id="lambda.test"> </a>
 ##### lambda.test: Goodman and Kruskal&apos;s lambda
 ###### Description:
 <p>Computes Goodman and Kruskal&apos;s lambda for given table.</p>
@@ -2343,6 +2420,7 @@ and 0 for both
 </table>
 ###### Returned value:
 <p>numeric</p>
+<a id="rp.outlier"> </a>
 ##### rp.outlier: Outlier test
 ###### Description:
 <p>A simple test for outliers. This functions returns allextreme values (if any) found in the specified vector.</p>
@@ -2385,6 +2463,7 @@ rp.outlier(c(rep(1,100), 200,201))
 <a id="Template-related-functions"> </a>
 #### Template related functions
 
+<a id="check.limit"> </a>
 ##### check.limit: Input Limits
 ###### Description:
 <p> Checks input limits based on provided string. If providedstring is syntactically correct, a list with integerscontaining limit boundaries (minimum and maximum value)is returned. If provided input limit exceeds valuespecified in <code>max.lim</code> argument, it will be coercedto <code>max.lim</code> and warning will be returned. Defaultupper input limit is 50 (variables).</p>
@@ -2427,6 +2506,7 @@ rapport:::check.limit(&quot;[1]&quot;)
 </code></pre>
 </div>
 
+<a id="check.name"> </a>
 ##### check.name: Naming Conventions
 ###### Description:
 <p>Checks package-specific naming conventions: variablesshould start by a letter, followed either by a letter ora digit, while the words should be separated with dots orunderscores.</p>
@@ -2469,6 +2549,7 @@ length</p>
 ###### Returned value:
 <p>a logical vector indicating which values satisfy the
 naming conventions</p>
+<a id="check.type"> </a>
 ##### check.type: Check Type
 ###### Description:
 <p>Checks type of template input, based on provided sting.If input definition is syntactically correct, a list isreturned, containing input type, size limits, and defaultvalue (for CSV options and boolean types only).</p>
@@ -2495,6 +2576,7 @@ rapport:::check.type(&quot;FALSE&quot;)
 </code></pre>
 </div>
 
+<a id="elem.eval"> </a>
 ##### elem.eval: Evaluate Template Element
 ###### Description:
 <p> This is a generic method that evaluates R code found in <code>rapport</code> template elements. Currently there are twotypes of template elements: <code>blocks</code> of R code(similar to chunks in <code>Sweave</code> ) or <code>inline</code> elements.</p>
@@ -2522,6 +2604,7 @@ evaluation methods</p>
   </td>
  </tr>
 </table>
+<a id="extract.meta"> </a>
 ##### extract.meta: Extract Template Metadata
 ###### Description:
 <p>Check if template metadata field matches provided format,and return matched value in a list.</p>
@@ -2628,6 +2711,7 @@ is not required
 </code></pre>
 </div>
 
+<a id="fml"> </a>
 ##### fml: Create Formula from Strings
 ###### Description:
 <p>Takes multiple character arguments as left and right-handside arguments of a formula, and concatenates them in asingle string.</p>
@@ -2684,6 +2768,7 @@ character vector specified in
 <div class="highlight"><pre><code class="r">fml(&quot;hp&quot;, c(&quot;am&quot;, &quot;cyl&quot;))</code></pre>
 </div>
 
+<a id="get.tags"> </a>
 ##### get.tags: Tag Values
 ###### Description:
 <p>Returns report tag vales: either ones that were set byuser, or the default ones.</p>
@@ -2714,6 +2799,7 @@ to return</p>
 ###### Returned value:
 <p>either a list (default) or a character value with tag
 names</p>
+<a id="grab.chunks"> </a>
 ##### grab.chunks: Inline Chunk Contents
 ###### Description:
 <p>Returns inline code chunks with or without tags that wrapthem.</p>
@@ -2786,6 +2872,7 @@ should be returned (defaults to
 </code></pre>
 </div>
 
+<a id="has.tags"> </a>
 ##### has.tags: Tag Existence
 ###### Description:
 <p>Checks if a character value contains specified tags.</p>
@@ -2823,6 +2910,7 @@ should be returned (defaults to
 ###### Returned value:
 <p>a logical value indicating if the string has passed the
 check</p>
+<a id="is.heading"> </a>
 ##### is.heading: Pandoc Heading
 ###### Description:
 <p>Checks if provided string is a valid ATX-style pandocheading.</p>
@@ -2844,6 +2932,7 @@ check</p>
 ###### Returned value:
 <p>a logical value indicating the string is (not) a pandoc
 heading</p>
+<a id="is.rapport"> </a>
 ##### is.rapport: Rapport
 ###### Description:
 <p>Checks if provided R object is &quot;rapport&quot; class.</p>
@@ -2864,6 +2953,7 @@ heading</p>
 </table>
 ###### Returned value:
 <p>logical</p>
+<a id="is.tabular"> </a>
 ##### is.tabular: Tabular Structure
 ###### Description:
 <p> Checks if object has &quot;tabular&quot; structure - in thisparticular case, that means <code>matrix</code> and <code>data.frame</code> classes only.</p>
@@ -2885,6 +2975,7 @@ heading</p>
 ###### Returned value:
 <p>a logical value indicating that provided object has
 tabular structure</p>
+<a id="is.variable"> </a>
 ##### is.variable: Variables
 ###### Description:
 <p> From our point of view, a <code>variable</code> is anon- <code>NULL</code> atomic vector that has no dimensions.This approach bypasses <code>factor</code> issues with <code>is.vector</code> , and also eliminatesmultidimensional vectors, such as matrices and arrays.</p>
@@ -2906,6 +2997,7 @@ tabular structure</p>
 ###### Returned value:
 <p>a logical value indicating that provided object is a
 &quot;variable&quot;</p>
+<a id="pct"> </a>
 ##### pct: Percent
 ###### Description:
 <p> Appends a percent sign to provided numerical value.Rounding is carried out according to value passed in <code>decimals</code> formal argument (defaults to 2 decimalplaces).</p>
@@ -2946,6 +3038,7 @@ allowed)</p>
 </table>
 ###### Returned value:
 <p>a character value with formatted percent</p>
+<a id="p"> </a>
 ##### p: Inline Printing
 ###### Description:
 <p>Merge atomic vector elements in one string for prettyinline printing.</p>
@@ -3011,6 +3104,7 @@ elements)</p>
 ## [1] &quot;_fee_, _fi_, _foo_ and _fam_&quot;</code></pre>
 </div>
 
+<a id="print.rapport"> </a>
 ##### print.rapport: Prints rapport
 ###### Description:
 <p>Default print method for &quot;rapport&quot; class objects.</p>
@@ -3062,6 +3156,7 @@ print(rapport(&apos;example&apos;, data=mtcars, x=&apos;hp&apos;, y=&apos;mpg&ap
 </code></pre>
 </div>
 
+<a id="print.rp.info"> </a>
 ##### print.rp.info: Print Template Header
 ###### Description:
 <p>Prints out the contents of template header (metadata andinputs) in human-readable format, so you can get insightabout template requirements.</p>
@@ -3095,6 +3190,7 @@ plain text output.</p>
   </td>
  </tr>
 </table>
+<a id="print.rp.inputs"> </a>
 ##### print.rp.inputs: Print Template Inputs
 ###### Description:
 <p>Prints out the contents of template inputs inhuman-readable format.</p>
@@ -3128,6 +3224,7 @@ plain text output.</p>
   </td>
  </tr>
 </table>
+<a id="print.rp.meta"> </a>
 ##### print.rp.meta: Print Template Metadata
 ###### Description:
 <p>Prints out the contents of template metadata inhuman-readable format.</p>
@@ -3161,6 +3258,7 @@ plain text output.</p>
   </td>
  </tr>
 </table>
+<a id="purge.comments"> </a>
 ##### purge.comments: Purge Comments
 ###### Description:
 <p>Remove comments from provided character vector.</p>
@@ -3197,6 +3295,7 @@ plain text output.</p>
 </table>
 ###### Returned value:
 <p>a string with removed pandoc comments</p>
+<a id="rapport"> </a>
 ##### rapport: rapport templating system
 ###### Description:
 <p>Description goes here.</p>
@@ -3263,53 +3362,47 @@ details)
 </code></pre>
 </div>
 
-##### rp.export: Export rapport class (deprecated)
-###### Description:
-<p> This function points to <code>tpl.export</code> . Usethat insted <code>rp.export</code> , as this function remainedhere only for backward compatibily of the package.</p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">rp.export(...)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>...</code>
-  </td>
-  <td>
-   <p>
-    parameters passed to
-    <code>tpl.export</code>
-   </p>
-  </td>
- </tr>
-</table>
+<a id="rp.label"> </a>
 ##### rp.label: Get variable label
 ###### Description:
-<p> This function returns character value previously storedin variable&apos;s <code>label</code> attribute. If none found, thefunction fallbacks to object&apos;s name.</p>
+<p> This function returns character value previously storedin variable&apos;s <code>label</code> attribute. If none found, thefunction fallbacks to object&apos;s name (retrieved by <code>deparse(substitute(x))</code> ).</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.label(var)</code></pre>
+	<pre><code class="r">rp.label(x, fallback = TRUE)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
-   <code>var</code>
+   <code>x</code>
   </td>
   <td>
-   <p>an atomic vector</p>
+   <p>an R object to extract labels from</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>fallback</code>
+  </td>
+  <td>
+   <p>a logical value indicating if labels
+should fallback to object name(s)</p>
   </td>
  </tr>
 </table>
 ###### Returned value:
-<p>a character value with variable&apos;s label</p>
+<p>a character vector with variable&apos;s label(s)</p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">	rp.label(mtcars$am)
-	x &lt;- 1:10; rp.label(x)
+<div class="highlight"><pre><code class="r">x &lt;- rnorm(100)
+rp.label(x)         # returns &quot;x&quot;
+rp.label(x, FALSE)  # fails with error message
+rp.label(mtcars$hp) &lt;- &quot;Horsepower&quot;
+rp.label(mtcars)    # returns &quot;Horsepower&quot; instead of &quot;hp&quot;
+rp.label(mtcars, FALSE)  # returns NA where no labels are found
 </code></pre>
 </div>
 
+<a id="rp.label-set"> </a>
 ##### rp.label-set: Set variable label
 ###### Description:
 <p> this function sets a label to an <code>atomic</code> vector, by storing a character value to its <code>label</code> attribute.</p>
@@ -3343,6 +3436,7 @@ variable label</p>
 </code></pre>
 </div>
 
+<a id="rp.name"> </a>
 ##### rp.name: Get variable name
 ###### Description:
 <p> This function returns character value previously storedin variable&apos;s <code>name</code> attribute. If none found, thefunction fallbacks to object&apos;s name.</p>
@@ -3369,6 +3463,7 @@ x &lt;- 1:10; rp.name(x)
 </code></pre>
 </div>
 
+<a id="rp.prettyascii"> </a>
 ##### rp.prettyascii: Return pretty ascii form
 ###### Description:
 <p>Some standard formatting is applied to the value which isreturned as ascii object.</p>
@@ -3398,6 +3493,7 @@ rp.prettyascii(lm(hp~wt, mtcars))
 </code></pre>
 </div>
 
+<a id="rp.round"> </a>
 ##### rp.round: Round numeric values
 ###### Description:
 <p> Round numeric values with default number of decimals(see: <code>getOption(&apos;rp.decimal&apos;</code> ) and decimal mark(see: <code>getOption(&apos;rp.decimal&apos;)</code> ).</p>
@@ -3440,6 +3536,7 @@ values correspond to the current default penalty.
 }</code></pre>
 </div>
 
+<a id="table.json"> </a>
 ##### table.json: Convert table-like structures to JSON object
 ###### Description:
 <p> This function takes either a <code>matrix</code> or a <code>data.frame</code> object to extract column names,row names and the &quot;body&quot; of the table-like object, henceexports them to JSON.</p>
@@ -3509,6 +3606,7 @@ table body</p>
 </code></pre>
 </div>
 
+<a id="tags.misplaced"> </a>
 ##### tags.misplaced: Misplaced Tags
 ###### Description:
 <p>Searches for misplaced tags</p>
@@ -3547,6 +3645,7 @@ table body</p>
 <p>if no tags, or no mismatches are found, original string
 is returned, otherwise the function will return
 appropriate error</p>
+<a id="tpl.body"> </a>
 ##### tpl.body: Template Body
 ###### Description:
 <p>Returns template body contents from provided path or acharacter vector.</p>
@@ -3588,6 +3687,7 @@ character vector with template lines</p>
 </table>
 ###### Returned value:
 <p>a character vector with template body contents</p>
+<a id="tpl.elem"> </a>
 ##### tpl.elem: Template Elements
 ###### Description:
 <p> Returns a <code>data.frame</code> containing summary ofrelevant template elements: <code>ind</code> - indice ofcurrent element in template&apos;s body, <code>type</code> - astring indicating the type of the content (&quot;heading&quot;,&quot;inline&quot; or &quot;block&quot;), and <code>chunk</code> - a stringcontaining R expression found in a code chunk.</p>
@@ -3671,6 +3771,7 @@ chunks</p>
 </code></pre>
 </div>
 
+<a id="tpl.example"> </a>
 ##### tpl.example: Template Examples
 ###### Description:
 <p> Runs the &quot;Example&quot; field found in specified template.Handy to check out what template does and how does itlook like once rendered. If multiple examples areavailable, and <code>index</code> argument is <code>NULL</code> , youwill be prompted for input. Example output can be easilyexported to various formats (HTML, ODT, etc.) - check outdocumentation for <code>tpl.export</code> for more info.</p>
@@ -3714,6 +3815,7 @@ tpl.example(&apos;example&apos;, &apos;all&apos;)
 </code></pre>
 </div>
 
+<a id="tpl.export.backends"> </a>
 ##### tpl.export.backends: tpl.export.backends
 ###### Description:
 <p>List of all available backend formats (from asciipackage).</p>
@@ -3721,6 +3823,7 @@ tpl.example(&apos;example&apos;, &apos;all&apos;)
 <div class="highlight">
 	<pre><code class="r">tpl.export.backends()</code></pre>
 </div>
+<a id="tpl.export.outputs"> </a>
 ##### tpl.export.outputs: tpl.export.outputs
 ###### Description:
 <p>List of all available output formats (from asciipackage).</p>
@@ -3728,6 +3831,7 @@ tpl.example(&apos;example&apos;, &apos;all&apos;)
 <div class="highlight">
 	<pre><code class="r">tpl.export.outputs()</code></pre>
 </div>
+<a id="tpl.export"> </a>
 ##### tpl.export: Export rapport class
 ###### Description:
 <p> This function exports rapport class objects to variousformats based on ascii package. Note that noerror/warning messages will be shown! By default thisfunction tries to export the report to HTML with pandoc.Some default styles are applied. If you do not need thosedefault settings, use your own <code>options</code> .</p>
@@ -3861,6 +3965,7 @@ tpl.export(x, options=sprintf(&apos;-c %s&apos;, system.file(&apos;templates/css
 </code></pre>
 </div>
 
+<a id="tpl.find"> </a>
 ##### tpl.find: Read Template
 ###### Description:
 <p> Reads file either from template name, file path or URL,and splits it into lines for easier handling. &quot;find&quot; in <code>tpl.find</code> is borrowed from Emacs parlance - thisfunction actually reads the template.</p>
@@ -3889,6 +3994,7 @@ with template contents.
 </table>
 ###### Returned value:
 <p>a character vector with template contents</p>
+<a id="tpl.header"> </a>
 ##### tpl.header: Template Header
 ###### Description:
 <p> Returns <code>rapport</code> template header from provided pathor a character vector. In case you&apos;re refering to atemplate bundled with package, you don&apos;t need to providea template extension.</p>
@@ -3938,6 +4044,7 @@ character vector with template contents</p>
 </table>
 ###### Returned value:
 <p>a character vector with template header contents</p>
+<a id="tpl.info"> </a>
 ##### tpl.info: Template Info
 ###### Description:
 <p>Provides information about template metadata and inputs.</p>
@@ -3988,6 +4095,7 @@ tpl.info(&apos;correlations&apos;, meta = FALSE)  # return only template inputs
 </code></pre>
 </div>
 
+<a id="tpl.inputs"> </a>
 ##### tpl.inputs: Template Inputs
 ###### Description:
 <p>Grabs variable definitions from template header.</p>
@@ -4023,6 +4131,7 @@ header section is provided in
 </table>
 ###### Returned value:
 <p>a list with variable info</p>
+<a id="tpl.list"> </a>
 ##### tpl.list: Package Templates
 ###### Description:
 <p>Lists all templates bundled with current package build.</p>
@@ -4052,6 +4161,7 @@ header section is provided in
 </code></pre>
 </div>
 
+<a id="tpl.meta"> </a>
 ##### tpl.meta: Header Metadata
 ###### Description:
 <p>Returns metadata stored in template&apos;s header section,usually template title, nickname of an author, templatedescription and list of required packages.</p>
@@ -4117,6 +4227,7 @@ extraction</p>
 </table>
 ###### Returned value:
 <p>a list with template metadata</p>
+<a id="tpl.rerun"> </a>
 ##### tpl.rerun: Reproduce Template
 ###### Description:
 <p> Runs template with data and arguments included in <code>rapport</code> object. In order to get reproducibleexample, you have to make sure that <code>reproducible</code> argument is set to <code>TRUE</code> in <code>rapport</code> function.</p>

@@ -17,7 +17,7 @@ The most obvious goal of this package is to easily create some reports of our da
 
 Let us say `'example.tpl'` seems promising, let's check out what is it for demonstrating purposes!
 
-The easiest way of doing a demo is to call a helper function (`tpl.example()`) which runs the example call(s) of a given template. You do not need to specify the `.tpl` extension, although you can if you wish:
+The easiest way of doing a demo is to call a helper function ([`tpl.example()`](#tpl.example)) which runs the example call(s) of a given template. You do not need to specify the `.tpl` extension, although you can if you wish:
 
 {% highlight r %}
 > tpl.example('example')
@@ -57,7 +57,7 @@ The 5 highest values are: _12_, _12_, _10_, _10_ and _10_.
    
 {% endhighlight %}
 
-What was done here? We run a simple analysis on the `leisure` variable found in `ius2008` (package bundled demo) dataset. This simple template only returned some traditional welcome strings, the name and the [label](#Template-related-functions) of the given variable besides a `summary` and the top5 highest values.
+What was done here? We run a simple analysis on the `leisure` variable found in `ius2008` (package bundled demo) dataset. This simple template only returned some traditional welcome strings, the name and the [label](#rp.label) of the given variable besides a `summary` and the top5 highest values.
 
 As you could see in the examples there are some other parameters of this template besides `data` and `var`, for example: `desc`, `hist` and `theme`. To find out what are these, get some info on the template:
 
