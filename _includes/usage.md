@@ -137,11 +137,11 @@ And wow, the mean of *leisure* is 3.1994!
 /tmp/RtmpyEDSZb/file12c8cb13.png
 {% endhighlight %}
 
-Here instead of the known `tpl.example` we used directly `rapport` which takes the above described input parameters. As you can see the descriptive statistics table if gone, instead we got a histogram. Or at least a path to a png - which holds that image. You can find that file on your local machine and check it out, we have attached that [here](demo/3f5075e30419f077ee974a022dd89e33.png).
+Here instead of the known `tpl.example` we used directly `rapport` which takes the above described input parameters. As you can see the descriptive statistics table is gone, instead we got a histogram. Or at least a path to a png - which holds that image. You can find that file after running tha above command with a modified path (based on `tempfile()`) on your local machine and check it out, we have attached that [here](demo/3f5075e30419f077ee974a022dd89e33.png).
 
 Well, this is a quite rough way of checking out plots generated in a template :)
 
-There are a lot easier ways for that, as we can export our reports (`rapport` classes - see: `str()` on any `rapport` returned object) to wide range of formats with `tpl.export`.
+There are a lot easier ways for that, as we can export our reports (to be more technical our `rapport` classes, see `str()` on any `rapport` returned object) to wide range of formats with `tpl.export`.
 
 Please find the HTML exported versions of the examples of `example.tpl` [here](demo/example.html) or run on your machine:
 
