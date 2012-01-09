@@ -10,10 +10,11 @@
   questionnaire.
 }
 \details{
-  Dataset variables can be divided into 3 sets: demographic
-  data, Internet usage aspects and appliaction usage.
+  Dataset variables can be divided into 3 sets:
+  \emph{demographic data}, \emph{Internet usage aspects}
+  and \emph{application usage/content preference}.
 
-  Demographic variables
+  \strong{Demographic variables}
 
   \itemize{ \item \emph{gender} - respondent's gender
   (factor with 2 levels: "male" and "female") \item
@@ -24,7 +25,7 @@
   \emph{partner} - partnership status (factor with 3
   levels: "single", "in a relationship" and "married") }
 
-  Internet usage
+  \strong{Internet usage aspects}
 
   Following variables depict various aspects of Internet
   usage: \itemize{ \item \emph{edu} - time spent on-line in
@@ -40,7 +41,7 @@
   Internet? (ordered factor with 7 levels, ranging from
   "less than 6 months" to "more than 5 years") }
 
-  Application usage
+  \strong{Application usage and on-line content preference}
 
   These variables include data on the use of Internet
   applications and content available on the Internet.

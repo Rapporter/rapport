@@ -653,8 +653,8 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
             ## template inputs
             assign(name, var.value, env = e)                 # input value
             assign(sprintf('%s.iname', name), name, env = e) # input name
-            assign(sprintf('%s.ilabel', x$label, env = e))   # input label
-            assign(sprintf('%s.idesc', x$desc, env = e))     # input description
+            assign(sprintf('%s.ilabel', x$label), env = e)   # input label
+            assign(sprintf('%s.idesc', x$desc), env = e)     # input description
             if (is.data.frame(var.value)){
                 assign(sprintf('%s.name', name), names(var.value), env = e) # variable name
                 assign(sprintf('%s.label', name), sapply(var.value, rp.label), env = e) # variable label
