@@ -554,41 +554,64 @@ check.limit <- function(x, max.lim = 50L){
 ##' rapport:::check.type("character[1,20]")
 ##' rapport:::check.type("fee, fi, foo, fam")
 ##' rapport:::check.type("FALSE")
+##' rapport:::check.type("number[3]=123.456")
 ##' }
 check.type <- function(x){
 
     x <- trim.space(x, TRUE)
 
-    re1 <- '^(character|complex|factor|logical|numeric|variable)(\\[[[:digit:]]+(,[[:digit:]]+)?\\]|)$'
-    re2 <- '^(TRUE|FALSE)$'
-    re3 <- '^[[:alnum:]\\._]+(, ?[[:alnum:]\\._]+){1,}$'
+    re1 <- '^(\\*)?(character|complex|factor|logical|numeric|variable|number|string)(\\[([[:digit:]]+)(,([[:digit:]]+))?\\]|)$'
+    re2 <- '^(\\*)?(TRUE|FALSE)$'
+    re3 <- '^(\\*)?[[:alnum:]\\._]+(, ?[[:alnum:]\\._]+){1,}$'
+    re4 <- '^(\\*)?(string)(\\[([[:digit:]]+)(,([[:digit:]]+))?\\]|)( ?= ?(.+|))?$'
+    re5 <- '^(\\*)?(number)(\\[([[:digit:]]+)(,([[:digit:]]+))?\\]|)( ?= ?(([[:digit:]]+(\\.[[:digit:]]+)?)|))?$'
 
     ## 1st option: logical[TRUE|FALSE]
     if (grepl(re2, x))
         res <- list(
                     type = 'boolean',
                     limit = list(min = 1, max = 1),
-                    default = gsub(re2, '\\1', x) == TRUE
+                    default = gsub(re2, '\\2', x) == TRUE
                     )
-    ## 2nd option: variable[min(, max)]
+    ## 2nd option: string
+    else if (grepl(re4, x))
+        res <- list(
+                    type = 'string',
+                    limit = check.limit(gsub(re4, '\\3', x)),
+                    default = {
+                        if (grepl('^=', gsub(re4, '\\7', x)))
+                            (gsub(re4, '\\8', x))
+                        else
+                            NULL
+                    })
+    ## 3rd option: number
+    else if (grepl(re5, x))
+        res <- list(
+                    type = 'number',
+                    limit = check.limit(gsub(re5, '\\3', x)),
+                    default = as.numeric(gsub(re5, '\\8', x))
+                    )
+    ## 4th option: variable[min(, max)]
     else if (grepl(re1, x))
         res <- list(
-                    type = gsub(re1, '\\1', x),
-                    limit = check.limit(gsub(re1, '\\2', x)),
+                    type = gsub(re1, '\\2', x),
+                    limit = check.limit(gsub(re1, '\\3', x)),
                     default = NULL
                     )
-    ## 3rd option: list, of, comma, separated, values (first one is default)
+    ## 5th option: list, of, comma, separated, values (first one is default)
     else if (grepl(re3, x))
         res <- list(
                     type = 'option',
                     limit = list(min = 1, max = 1),
-                    default = strsplit(x, ', ?')[[1]]
+                    default = strsplit(gsub(re3, '\\2', x), ', ?')[[1]]
                     )
-    ## 4th option: something went wrong, shit happens, life's a bitch, etc. throw error
+    ## 6th option: something went wrong, shit happens, life's a bitch, etc. throw error
     else
         stopf('input definition error in: "%s"', x)
 
-    res
+    res$mandatory <- grepl('^\\*', x)   # set mandatory field
+
+    return(res)
 }
 
 
@@ -648,6 +671,7 @@ rp.prettyascii <- function(x) {
             return(paste(capture.output(ascii(x, include.rownames = FALSE)), collapse='\n'))
     return(paste(capture.output(ascii(x)), collapse='\n'))
 }
+
 
 ##' Inline Printing
 ##'

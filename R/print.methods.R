@@ -46,6 +46,8 @@ print.rp.meta <- function(x, type = c('text', 'pandoc')){
            },
            stop('unknown metadata print type')
            )
+
+    invisible(x)
 }
 
 
@@ -64,7 +66,7 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
                if (length(x) == 0){
                    catn('no inputs required')
                } else {
-                   lapply(x, function(x){
+                   sapply(x, function(x){
 
                        catn(
                             sprintf('`%s` (%s)\n', x$name, x$label),
@@ -77,8 +79,12 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
                                         sprintf('from %s, up to %s variables', x$limit$min, x$limit$max)
                                     }),
                             if (!is.null(x$default)){
-                                sprintf('    - default value:\t%s', paste(x$default, collapse = ', '))
+                                def <- x$default
+                                if (is.character(def))
+                                    def <- p(def, '"')
+                                paste('    - default value:', def, collapse = '\t')
                             },
+                            sprintf('\n     - mandatory:\t%s', ifelse(x$mandatory, 'yes', 'no')),
                             '\n'
                             )
                    })
@@ -90,7 +96,7 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
                if (length(x) == 0){
                    catn('`no inputs required`')
                } else {
-                   lapply(x, function(x){
+                   sapply(x, function(x){
 
                        catn(
                             sprintf('* **%s** (%s)\n', x$name, x$label),
@@ -103,8 +109,12 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
                                         sprintf('from %s, up to %s variables', x$limit$min, x$limit$max)
                                     }),
                             if (!is.null(x$default)){
-                                sprintf('    - _default value:_\t%s', paste(x$default, collapse = ', '))
+                                def <- x$default
+                                if (is.character(def))
+                                    def <- p(def, '"')
+                                paste('    - _default value:_', def, collapse = '\t')
                             },
+                            sprintf('\n     - mandatory:\t%s', ifelse(x$mandatory, 'yes', 'no')),
                             '\n'
                             )
                    })
@@ -112,6 +122,8 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
            },
            stop('unknown input print type')
            )
+
+    invisible(x)
 }
 
 
@@ -127,7 +139,6 @@ print.rp.info <- function(x, type = c('text', 'pandoc')){
 
     sapply(x, function(x){
         print(x, type = tp)
-        invisible(x)
     })
 }
 

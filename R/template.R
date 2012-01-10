@@ -560,12 +560,12 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
         ## inputs required, carry on...
     } else {
         ## check if template input names match the provided input names
-        input.names <- sapply(inputs, function(x) x$name) # inputs required by template
-        input.nodef <- sapply(inputs, function(x) structure(is.null(x$default), .Names = x$name)) # TRUE, stands for: has no default value (input required by the user)
-        input.ok    <- input.names[input.nodef] %in% names(i)
+        input.mandatory <- sapply(inputs, function(x) structure(x$mandatory, .Names = x$name)) # mandatory inputs
+        input.names <- names(input.mandatory)
+        input.ok    <- input.names[input.mandatory] %in% names(i)
         ## take default inputs in an account
         if (!all(input.ok))
-            stop("you haven't provided all inputs required by the template!\n", 'missing inputs: ', paste(input.names[input.nodef], collapse = ', '))
+            stop("you haven't provided all inputs required by the template!\n", 'missing inputs: ', paste(input.names[input.mandatory], collapse = ', '))
 
         if(is.null(data))
             stop('"data" not provided, but is required')
@@ -597,8 +597,10 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
                               factor    = is.factor,
                               boolean   = , # a length-one logical
                               logical   = is.logical,
+                              number    = , # number
                               numeric   = is.numeric,
                               variable  = is.variable,
+                              string    = is.string,
                               stopf('unknown type: "%s"', input.type)
                               )
 
@@ -647,6 +649,9 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
 
                 ## logical value
                 if (is.logical(input.default))
+                    var.value <- input.default
+
+                if (is.numeric(input.default))
                     var.value <- input.default
             }
 
