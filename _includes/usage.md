@@ -17,7 +17,7 @@ The most obvious goal of this package is to easily create some reports of our da
 
 Let us say `'example.tpl'` seems promising, let's check out what is it for demonstrating purposes!
 
-The easiest way of doing a demo is to call a helper function ([`tpl.example()`](#tpl.example)) which runs the example call(s) of a given template. You do not need to specify the `.tpl` extension, although you can if you wish:
+The easiest way of doing a demo is to call a helper function ([`tpl.example`](#tpl.example)) which runs the example call(s) of a given template. You do not need to specify the `.tpl` extension, although you can if you wish:
 
 {% highlight r %}
 > tpl.example('example')
