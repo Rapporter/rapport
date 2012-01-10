@@ -272,7 +272,7 @@ leisure   -0.0338          0.1732 \*\*\*
 --------- ---------------  ---------------  --------------- 
 
 
-/tmp/RtmpJa8zT2/file1136b9d1.png
+/tmp/RtmpJa8zT2/fileee79a87.png
 
 
 ##############################################################################################################################################
@@ -335,7 +335,7 @@ carb   -0.5509 \*\*    0.5270 \*\*     0.3950 \*        0.7498 \*\*\*  -0.0908  
 ------ ----------------  ----------------  ----------------  ----------------  ----------------  ----------------  ----------------  ----------------  ----------------  ----------------  ---------------- 
 
 
-/tmp/RtmpJa8zT2/file202f8de0.png
+/tmp/RtmpJa8zT2/filee3e7394.png
 
 
 {% endhighlight %}
@@ -551,7 +551,7 @@ female   3.0844     -3.4312          -0.7595
 
  === Mosaic chart  
 
-/tmp/RtmpJa8zT2/file23026b07.png
+/tmp/RtmpJa8zT2/file76a649ca.png
 
 
 #################################################################################
@@ -654,7 +654,7 @@ always        2.0982     -1.2561          -1.6443
 
  === Mosaic chart  
 
-/tmp/RtmpJa8zT2/fileee61ec0.png
+/tmp/RtmpJa8zT2/file732cdff0.png
 
 
 {% endhighlight %}
@@ -897,7 +897,7 @@ And wow, the mean of *leisure* is 3.1994!
 
  === Histogram  
 
-/tmp/RtmpJa8zT2/file34e4de95.png
+/tmp/RtmpJa8zT2/file651865c7.png
 
 
 ################################################################################################
@@ -916,7 +916,7 @@ And wow, the mean of *leisure* is 3.1994!
 
  === Histogram  
 
-/tmp/RtmpJa8zT2/file44289c55.png
+/tmp/RtmpJa8zT2/file20879a3a.png
 
 
 {% endhighlight %}
@@ -1069,7 +1069,7 @@ Total                673.00   100.00    673.00            100.00
 
  === Barplot  
 
-/tmp/RtmpJa8zT2/file133aef37.png
+/tmp/RtmpJa8zT2/file5d5d433b.png
 
 It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
 
@@ -1089,7 +1089,7 @@ This variable seems to be numeric.
 
  === Histogram  
 
-/tmp/RtmpJa8zT2/file2be7f393.png
+/tmp/RtmpJa8zT2/file4b9b7dcb.png
 
 It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
 
@@ -1127,7 +1127,7 @@ Total                 669.00   100.00    669.00            100.00
 
  === Barplot  
 
-/tmp/RtmpJa8zT2/file34e6abce.png
+/tmp/RtmpJa8zT2/file55ef5737.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -1154,7 +1154,7 @@ Total                 677.00   100.00    677.00            100.00
 
  === Barplot  
 
-/tmp/RtmpJa8zT2/filefa0406d.png
+/tmp/RtmpJa8zT2/file7a0dfda2.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -1181,7 +1181,7 @@ Total                 678.00   100.00    678.00            100.00
 
  === Barplot  
 
-/tmp/RtmpJa8zT2/file56d9e95a.png
+/tmp/RtmpJa8zT2/file32c8e7ab.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -1208,7 +1208,7 @@ Total                 672.00   100.00    672.00            100.00
 
  === Barplot  
 
-/tmp/RtmpJa8zT2/file1f9a6748.png
+/tmp/RtmpJa8zT2/file5197d24d.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -1235,7 +1235,7 @@ Total                  677.00   100.00    677.00            100.00
 
  === Barplot  
 
-/tmp/RtmpJa8zT2/file33c80279.png
+/tmp/RtmpJa8zT2/file70953941.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -1262,7 +1262,7 @@ Total                 673.00   100.00    673.00            100.00
 
  === Barplot  
 
-/tmp/RtmpJa8zT2/file294a8398.png
+/tmp/RtmpJa8zT2/file5d459b20.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -1289,7 +1289,7 @@ Total                 678.00   100.00    678.00            100.00
 
  === Barplot  
 
-/tmp/RtmpJa8zT2/file7d2d624d.png
+/tmp/RtmpJa8zT2/file60b2fadd.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -1316,7 +1316,7 @@ Total                 674.00   100.00    674.00            100.00
 
  === Barplot  
 
-/tmp/RtmpJa8zT2/file364dd7ac.png
+/tmp/RtmpJa8zT2/file4fe5e705.png
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
@@ -1470,7 +1470,7 @@ rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALS
 
  == Boxplot  
 
-/tmp/RtmpJa8zT2/file5067b87a.png
+/tmp/RtmpJa8zT2/file4d71a586.png
 
  == Lund test  
 
@@ -1515,7 +1515,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
  == Boxplot  
 
-/tmp/RtmpJa8zT2/file3c605a5.png
+/tmp/RtmpJa8zT2/fileaa0273b.png
 
  == Lund test  
 
@@ -1560,7 +1560,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
  == Boxplot  
 
-/tmp/RtmpJa8zT2/file36ad532d.png
+/tmp/RtmpJa8zT2/file4452c650.png
 
  == Lund test  
 
@@ -1911,7 +1911,7 @@ Total                673.00   100.00    673.00            100.00
 
  === Barplot  
 
-/tmp/RtmpJa8zT2/file542d0a60.png
+/tmp/RtmpJa8zT2/file7de86a72.png
 
 It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
 
@@ -1936,7 +1936,7 @@ This variable seems to be numeric.
 
  === Histogram  
 
-/tmp/RtmpJa8zT2/file6e42d1a3.png
+/tmp/RtmpJa8zT2/file702afa8c.png
 
 It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
 
