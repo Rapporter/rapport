@@ -519,11 +519,9 @@ rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('rp.col
 rp.cor.plot <- function(x, lower.panel='panel.smooth', upper.panel='panel.cor', data=NULL, theme=getOption('rp.color.palette'),
 		colorize=getOption('rp.colorize'), ...) {
 	if (!missing(data)) {
-			rp.qqplot(x=eval(match.call()$x, data), lower.panel=NULL, upper.panel=NULL,
+			rp.cor.plot(x=eval(match.call()$x, data), lower.panel=NULL, upper.panel=NULL,
 					theme=theme, colorize=colorize, ...)
 	} else {
-		#rp.graph.check(x, ...)
-		if (!existsFunction(deparse(substitute(dist)))) stop('Invalid distribution function provided.')
 		## generating color from given palette
 		col <- rp.palette(1, theme, colorize)
         ## panels
@@ -557,4 +555,63 @@ rp.cor.plot <- function(x, lower.panel='panel.smooth', upper.panel='panel.cor', 
 		## plot
 		pairs(x, lower.panel=lower.panel, upper.panel=upper.panel, labels=lapply(x, rp.name), ...)
 	}
+}
+
+##' Q-Q plot with Theoretical Distribution
+##'
+##' This function is a wrapper around \code{\link{qqmath}} which operates only on a numeric variable
+##' with optional facet.
+##'
+##' @param x a numeric variable
+##' @param dist a theoretical distribution
+##' @param facet an optional categorical variable to make facets by
+##' @param data an optional data frame from which the variables should be taken
+##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
+##' @param colorize if set the color is chosen from palette at random
+##' @param ... additional parameters to \code{\link{qqmath}}
+##' @export
+##' @examples \dontrun{
+##'     df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+##'     rp.qqplot(df$hp)
+##'     rp.qqplot(df$hp, qunif)
+##'     rp.label(df$hp) <- 'horsepower'; rp.qqplot(df$hp)
+##'     rp.qqplot(df$hp, colorize=TRUE)
+##'     rp.qqplot(df$hp, qunif, facet=df$am)
+##'     with(df, rp.qqplot(hp))
+##'     rp.qqplot(hp, data=df)
+##'     rp.qqplot(hp, facet=am, data=df)
+##'     rp.qqplot(hp, qunif, am, df)
+##' }
+rp.qqplot <- function(x, dist=qnorm, facet=NULL, data=NULL, theme=getOption('rp.color.palette'),
+        colorize=getOption('rp.colorize'), ...) {
+    if (!missing(data)) {
+        if (missing(facet)) {
+            #TODO: `dist` is unevaulated (!)
+            rp.qqplot(x=eval(match.call()$x, data), dist=dist,
+                    theme=theme, colorize=colorize, ...)
+        } else {
+            rp.qqplot(x=eval(match.call()$x, data), dist=dist,
+                    facet=eval(match.call()$facet, data), theme=theme, colorize=colorize, ...)
+        }
+    } else {
+        rp.graph.check(x, ...)
+        if (!existsFunction(deparse(substitute(dist)))) stop('Invalid distribution function provided.')
+        # generating color from given palette
+        col <- rp.palette(1, theme, colorize)
+        # getting labs
+        ylab <- rp.label(x)
+        if (ylab=='x') ylab <- tail(as.character(substitute(x)), 1)
+        # ylab is defined by used function's title (like: "The Normal Distribution", "The Unifomr Distribution")
+        target <- gsub("^.+/library/(.+)/help.+$", "\\1", utils:::index.search(deparse(substitute(dist)), find.package()))
+        doc.txt <- pkg_topic(target, deparse(substitute(dist)))
+        dist.name <- doc.txt[[1]][[1]][1]
+        # if facet set
+        if (is.null(facet)) {
+            text <- 'x'
+        } else {
+            text='~x|facet'
+        }
+        # plot
+        qqmath(eval(parse(text=text)), distribution=dist, col=col, xlab=dist.name, ylab=ylab, ...)
+    }
 }
