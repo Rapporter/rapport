@@ -57,9 +57,9 @@ The 5 highest values are: _12_, _12_, _10_, _10_ and _10_.
    
 {% endhighlight %}
 
-What was done here? We run a simple analysis on the `leisure` variable found in `ius2008` (package bundled demo) dataset. This simple template only returned some traditional welcome strings, the name and the [label](#rp.label) of the given variable besides a `summary` and the top5 highest values.
+What was done here? We run a simple analysis on the `leisure` variable found in [`ius2008`](#ius2008) (package bundled demo) dataset. This simple template only returned some traditional welcome strings, the name and the [label](#rp.label) of the given variable besides a `summary` and the top5 highest values.
 
-As you could see in the examples there are some other parameters of this template besides `data` and `var`, for example: `desc`, `hist` and `theme`. To find out what are these, get some info on the template:
+As you could see in the examples there are some other parameters of this template besides `data` and `var`, for example: `desc`, `hist` and `theme`. To find out what are these, [get some info](#tpl.info) on the template:
 
 {% highlight r %}
 > tpl.info('example')
@@ -113,7 +113,7 @@ Okay, we have seen the examples before, but new information appears now too:
  * required packages to run the template and
  * some input parameters.
 
-These latter shows exactly what we were looking for which can be returned by `tpl.info('example', meta=F)` command too without meta informations.
+These latter shows exactly what we were looking for which can be returned by [`tpl.info('example', meta=F)`](#tpl.info) command too without meta informations.
 
 There we can see that four parameters can be provided. `var` is the name of the variable we want to analyze, we can set `desc` to `FALSE` instead of the default value `TRUE` not to print descriptive statistics and we can instruct the template to return a histogram too (see: `hist` parameter) with given color `theme`.
 
@@ -137,11 +137,11 @@ And wow, the mean of *leisure* is 3.1994!
 /tmp/RtmpyEDSZb/file12c8cb13.png
 {% endhighlight %}
 
-Here instead of the known `tpl.example` we used directly `rapport` which takes the above described input parameters. As you can see the descriptive statistics table is gone, instead we got a histogram. Or at least a path to a png - which holds that image. You can find that file after running tha above command with a modified path (based on `tempfile()`) on your local machine and check it out, we have attached that [here](demo/3f5075e30419f077ee974a022dd89e33.png).
+Here instead of the known [`tpl.example`](#tpl.example) we used directly [`rapport`](#rapport) which takes the above described input parameters. As you can see the descriptive statistics table is gone, instead we got a histogram. Or at least a path to a png - which holds that image. You can find that file after running tha above command with a modified path (based on `tempfile()`) on your local machine and check it out, we have attached that [here](demo/3f5075e30419f077ee974a022dd89e33.png).
 
 Well, this is a quite rough way of checking out plots generated in a template :)
 
-There are a lot easier ways for that, as we can export our reports (to be more technical our `rapport` classes, see `str()` on any `rapport` returned object) to wide range of formats with `tpl.export`.
+There are a lot easier ways for that, as we can export our reports (to be more technical our `rapport` classes, see `str()` on any [`rapport`](#rapport) returned object) to wide range of formats with [`tpl.export`](#tpl.expport).
 
 Please find the HTML exported versions of the examples of `example.tpl` [here](demo/example.html) or run on your machine:
 
@@ -160,16 +160,16 @@ options('rp.user'  = 'userR')
 options('rp.email' = 'userR@example.com')
 {% endhighlight %}
 
-And rerun the following commands to see the changes. For other settings in `tpl.export` please check out the [docs](#functions).
+And rerun the following commands to see the changes. For other settings in [`tpl.export`](#tpl.export) please check out the [docs](#tpl.export).
 
-There are a bunch of other helper functions in *rapport* to deal with templates. As most starts with `tpl` prefix (except for the main `rapport` function), we can easily list them by typing `tpl.` and pressing `TAB` twice:
+There are a bunch of other helper functions in *rapport* to deal with templates. As most starts with `tpl` prefix (except for the main [`rapport`](#rapport) function), we can easily list them by typing `tpl.` and pressing `TAB` twice:
 
 {% highlight r %}
 > tpl.
 tpl.body     tpl.example  tpl.export   tpl.find     tpl.info     tpl.inputs   tpl.list     tpl.meta     tpl.rerun    
 {% endhighlight %}
 
-By this method you might not find all handy functions, for example `rapport.html` and `rapport.odt` which are simple wrappers around `rapport` and `tpl.export`. Just use thse functions you would use `rapport` and get a nifty HTML/odt output directly. For example:
+By this method you might not find all handy functions, for example `rapport.html` and `rapport.odt` which are simple wrappers around [`rapport`](#rapport) and [`tpl.export`](#tpl.export). Just use thse functions you would use [`rapport`](#rapport) and get a nifty HTML/odt output directly. For example:
 
 {% highlight r %}
 rapport.html('example', ius2008, var = 'leisure')
