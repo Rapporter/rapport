@@ -47,6 +47,7 @@
 ##' evals('runiff(20)')
 ##' evals('Old MacDonald had a farm\\dots')
 ##' evals('## Some comment')
+##' evals(list(c('runiff(20)', 'Old MacDonald had a farm?')))
 ##'
 ##' ## hooks
 ##' hooks <- list('numeric'=round, 'matrix'=ascii)
@@ -139,7 +140,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                     msg = list(
                             messages = NULL,
                             warnings = NULL,
-                            errors   = sprintf('**Error** in "%s": "%s"', paste(src, collapse=' ; '), ifelse(error==1, gsub('Error in parse.(text) = string, src = src) : <text>:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(eval[[error]]$message, collapse=' ; '))))
+                            errors   = sprintf('**Error** in "%s": "%s"', paste(src, collapse=' + '), ifelse(class(eval)=='try-error', gsub('Error in parse.(text) = string, src = src) : <text>:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
             )
             return(res[output])
         }
@@ -155,7 +156,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
         ## good code survived!
         graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
-        returns <- length(eval) > 1
+        returns <- sum(sapply(eval, function(x) is.null(names(x)))) > 0
         if (returns) {
             if (is.logical(graph)) returns <- suppressWarnings(eval(parse(text = src), envir = env))
         } else {

@@ -106,6 +106,7 @@ evals('chisq.test(mtcars$gear, mtcars$hp)')
 evals('runiff(20)')
 evals('Old MacDonald had a farm\\\\dots')
 evals('## Some comment')
+evals(list(c('runiff(20)', 'Old MacDonald had a farm?')))
 
 ## hooks
 hooks <- list('numeric'=round, 'matrix'=ascii)
