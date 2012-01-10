@@ -5,7 +5,7 @@
 ##### ius2008: Internet Usage Survey
 ###### Description:
 <p>This dataset contains data gathered in a survey ofInternet usage in Serbian population in the period fromApril to May 2008. During 90-day period, there weregathered 709 valid responses via on-line distributedquestionnaire.</p>
- ###### Details:
+###### Details:
 <p> However, this dataset does not contain the original data,as some <code>NA</code> s were added to dataset afterwards, inorder to demonstrate functionality of <em>rapport</em> helpers.</p>
 <p> Dataset variables can be divided into 3 sets: <em>demographic data</em> , <em>Internet usage aspects</em> and <em>application usage/content preference</em> .</p>
 <p> <strong>Demographic variables</strong></p>
