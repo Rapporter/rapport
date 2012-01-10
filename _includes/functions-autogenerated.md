@@ -5,6 +5,8 @@
 ##### ius2008: Internet Usage Survey
 ###### Description:
 <p>This dataset contains data gathered in a survey ofInternet usage in Serbian population in the period fromApril to May 2008. During 90-day period, there weregathered 709 valid responses via on-line distributedquestionnaire.</p>
+###### Details:
+<p> However, this dataset does not contain the original data,as some <code>NA</code> s were added to dataset afterwards, inorder to demonstrate functionality of <em>rapport</em> helpers.</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">rapport(&quot;example&quot;, ius2008, var = &quot;it.leisure&quot;)
 </code></pre>
@@ -247,6 +249,7 @@ evals(&apos;chisq.test(mtcars$gear, mtcars$hp)&apos;)
 evals(&apos;runiff(20)&apos;)
 evals(&apos;Old MacDonald had a farm\\dots&apos;)
 evals(&apos;## Some comment&apos;)
+evals(list(c(&apos;runiff(20)&apos;, &apos;Old MacDonald had a farm?&apos;)))
 ## hooks
 hooks &lt;- list(&apos;numeric&apos;=round, &apos;matrix&apos;=ascii)
 evals(txt, hooks=hooks)
