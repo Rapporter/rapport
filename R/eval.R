@@ -115,9 +115,12 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         output <- c('src', 'output', 'type', 'msg')
 
     if (!any(is.list(hooks), is.null(hooks))) stop('Wrong list of hooks provided!')
-
+    
+    ## env for running all lines of code -> eval()
     if (is.null(env)) env <- new.env()
     if (!is.environment(env)) stop('Wrong env paramater (not an environment) provided!')
+    ## env for checking output before truly eval-ing -> evaluate()
+    env.evaluate <- env
 
     lapply(txt, function(src) {
 
@@ -127,7 +130,11 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         file <- tempfile(fileext = '.png', ...)
         png(file)
 
-        eval <- suppressWarnings(try(evaluate(src, envir = env), silent=TRUE))
+        ## temporary environment for potentially running partial stuff later
+        env.temp <- env.evaluate
+        
+        ## running evalute for checking outputs and grabbing warnings/errors
+        eval <- suppressWarnings(try(evaluate(src, envir = env.evaluate), silent=TRUE))
 
         ## error handling
         error <- grep('error', lapply(eval, function(x) class(x)))
@@ -139,7 +146,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                     type         = 'error',
                     msg = list(
                             messages = NULL,
-                            warnings = NULL,
+                            warnings = NULL,    #TODO: might just return the source of the element that caused the error (?)
                             errors   = sprintf('**Error** in "%s": "%s"', paste(src, collapse=' + '), ifelse(class(eval)=='try-error', gsub('Error in parse.(text) = string, src = src) : <text>:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
             )
             return(res[output])
@@ -149,16 +156,49 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         warnings <- grep('warning', lapply(eval, function(x) class(x)))
         if (length(warnings) == 0) {
             warnings <- NULL
-        } else {
-            ##warnings <- sprintf('**Warning** in "%s": "%s"', paste(src, collapse=' ; '), names(warnings()[1]))
+        } else      #TODO: might just return the source of the element that caused the warning (?)
             warnings <- sprintf('**Warning** in "%s": "%s"', paste(src, collapse=' ; '), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
-        }
 
-        ## good code survived!
+        ### good code survived here!
+
+        ### checking out wich element produced the output               ## outRageous coding starts here
+        ## removing messages/errors
+        eval.no.msg <- eval[sapply(eval, function(x) {if (is.list(x)) all(names(x) == 'src') else TRUE})]
+        ## which elements are the sources?
+        eval.sources.n <- which(sapply(eval.no.msg, function(x) {if (!is.null(names(x))) (all(names(x) == 'src')) else FALSE}))
+        ## the sources
+        eval.sources <- eval.no.msg[eval.sources.n]
+        ## which sources do output?
+        eval.sources.outputs <- eval.sources.n[which(sapply(eval.sources.n, function(x) {
+                                    if (x+1 > length(eval.no.msg))
+                                        FALSE
+                                    else
+                                        class(eval.no.msg[[x+1]]) == "character"
+                                }))]
+        ## which is the last element that produces output?              ## Rage /off
+        if (length(eval.sources.outputs) > 0)
+            eval.sources.last.outputs <- tail(eval.sources.outputs, 1)
+
+        ## graph was produced?
         graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
-        returns <- sum(sapply(eval, function(x) is.null(names(x)))) > 0
-        if (returns) {
-            if (is.logical(graph)) returns <- suppressWarnings(eval(parse(text = src), envir = env))
+        ## any returned value?
+        if (length(eval.sources.outputs) > 0) {
+            if (is.logical(graph)) {
+                ## last element returns value (happily)
+                if (eval.sources.last.outputs == tail(eval.sources.n, 1)) {
+                    returns <- suppressWarnings(eval(parse(text = src), envir = env))
+                } else {
+                    ## eval in temp environment all elements before last element that really do output
+                    if (eval.sources.last.outputs != 1)
+                        lapply(1:(which(eval.sources.last.outputs == eval.sources.n)-1), function(i) {
+                            suppressWarnings(eval(parse(text = eval.sources[[i]]$src), envir = env.temp))
+                        })
+                    ## grab output at last
+                    returns <- suppressWarnings(eval(parse(text = eval.sources[[eval.sources.last.outputs]]$src), envir = env.temp))
+                    ## and run all stuff in main environment for consistency
+                    suppressWarnings(eval(parse(text = src), envir = env))
+                }
+            }
         } else {
             returns <- NULL
         }
@@ -196,7 +236,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                     returns <- do.call(fn, params)
                 }
             }
-
+      
         ## return list at last
         res <- list(src      = src,
                     output   = returns,
