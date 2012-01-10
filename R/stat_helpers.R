@@ -94,7 +94,6 @@ htest <- function(x, ..., use.labels = TRUE){
             res <- lapply(x, function(y) sapply(each(test)(y), htest.short))
         }
         res <- t(data.frame(res))
-        ## x.nms <- if (use.labels) sapply(x, rp.label) else names(x)
         x.nms <- rp.label(x, use.labels)
         x.len <- length(x)
     }
