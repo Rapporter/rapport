@@ -8,10 +8,10 @@ variables.
 .PP
 3 variables provided.
 .PP
-The highest correlation coefficient (0.2364) is between \f[I]edu\f[] and
-\f[I]age\f[] and the lowest (\[en]0.049) is between \f[I]leisure\f[] and
-\f[I]age\f[].
-It seems that the strongest association (r=0.2364) is between
+The highest correlation coefficient (0.2273) is between \f[I]edu\f[] and
+\f[I]age\f[] and the lowest (\[en]0.0338) is between \f[I]leisure\f[]
+and \f[I]age\f[].
+It seems that the strongest association (r=0.2273) is between
 \f[I]edu\f[] and \f[I]age\f[].
 .PP
 Higly correlated (r < 0.7 or r > 0.7) variables: -
@@ -39,30 +39,30 @@ T{
 age
 T}@T{
 T}@T{
-0.2364 *** \[en]0.
+0.2273 *** \[en]0.
 T}@T{
-0490
+0338
 T}
 T{
 edu
 T}@T{
-0.2364 ***
+0.2273 ***
 T}@T{
 0.1
 T}@T{
-714 ***
+732 ***
 T}
 T{
 leisure
 T}@T{
-\[en]0.0490
+\[en]0.0338
 T}@T{
-0.1714 ***
+0.1732 ***
 T}@T{
 T}
 .TE
 .PP
-[IMAGE: image (f4c6c0be648793b84a85d267c1a8ecd3.png)]
+[IMAGE: image (fc8b6edbaddadbdf0c5014f99fda88d6.png)]
 .SS Description
 .PP
 This template will return the correlation matrix of supplied numerical

@@ -6,7 +6,7 @@ h3. Variable description
 
 3 variables provided.
 
-The highest correlation coefficient (0.2364) is between _edu_ and _age_ and the lowest (-0.049) is between _leisure_ and _age_. It seems that the strongest association (r=0.2364) is between _edu_ and _age_.
+The highest correlation coefficient (0.2273) is between _edu_ and _age_ and the lowest (-0.0338) is between _leisure_ and _age_. It seems that the strongest association (r=0.2273) is between _edu_ and _age_.
 
 Higly correlated (r &lt; 0.7 or r &gt; 0.7) variables: -
 
@@ -18,12 +18,12 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 h4. Correlation matrix
 
 |_. |_. *age*|_. *edu*|_. *leisure*|
-|age||0.2364 &#42;&#42;&#42; -0.|0490|
-|edu|0.2364 &#42;&#42;&#42;|0.1|714 &#42;&#42;&#42;|
-|leisure|-0.0490|0.1714 &#42;&#42;&#42;||
+|age||0.2273 &#42;&#42;&#42; -0.|0338|
+|edu|0.2273 &#42;&#42;&#42;|0.1|732 &#42;&#42;&#42;|
+|leisure|-0.0338|0.1732 &#42;&#42;&#42;||
 
 
-!f4c6c0be648793b84a85d267c1a8ecd3.png!
+!fc8b6edbaddadbdf0c5014f99fda88d6.png!
 
 
 h2. Description

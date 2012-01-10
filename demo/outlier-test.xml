@@ -21,7 +21,7 @@
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="7e4826ae32ce6332453510e91fb95335.png" />
+          <imagedata fileref="d24b3eb41da4d1de21d4bce0e30d2e1b.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>
@@ -30,9 +30,9 @@
   <section id="lund-test">
     <title>Lund test</title>
     <para>
-      It seems that 5 extreme values can be found in &quot;Internet
+      It seems that 4 extreme values can be found in &quot;Internet
       usage for educational purposes (hours per day)&quot;. These are:
-      10, 10, 12, 12, 12.
+      10, 0.5, 1.5, 0.5.
     </para>
     <section id="explanation">
       <title>Explanation</title>
@@ -71,13 +71,13 @@
                 (Intercept)
               </entry>
               <entry>
-                2.06
+                2.05
               </entry>
               <entry>
                 0.08
               </entry>
               <entry>
-                26.92
+                26.27
               </entry>
               <entry>
                 0.00
@@ -111,7 +111,7 @@
     <title>Grubb's test</title>
     <para>
       Grubbs test for one outlier shows that highest value 12 is an
-      outlier (p=0.0003).
+      outlier (p=0.0002).
     </para>
     <section id="references-1">
       <title>References</title>
@@ -155,7 +155,7 @@
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="7e4826ae32ce6332453510e91fb95335.png" />
+          <imagedata fileref="d24b3eb41da4d1de21d4bce0e30d2e1b.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>
@@ -164,9 +164,9 @@
   <section id="lund-test-1">
     <title>Lund test</title>
     <para>
-      It seems that 5 extreme values can be found in &quot;Internet
+      It seems that 4 extreme values can be found in &quot;Internet
       usage for educational purposes (hours per day)&quot;. These are:
-      10, 10, 12, 12, 12.
+      10, 0.5, 1.5, 0.5.
     </para>
     <section id="explanation-1">
       <title>Explanation</title>
@@ -205,13 +205,13 @@
                 (Intercept)
               </entry>
               <entry>
-                2.06
+                2.05
               </entry>
               <entry>
                 0.08
               </entry>
               <entry>
-                26.92
+                26.27
               </entry>
               <entry>
                 0.00
@@ -245,7 +245,7 @@
     <title>Grubb's test</title>
     <para>
       Grubbs test for one outlier shows that highest value 12 is an
-      outlier (p=0.0003).
+      outlier (p=0.0002).
     </para>
     <section id="references-4">
       <title>References</title>
@@ -289,7 +289,7 @@
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="7e4826ae32ce6332453510e91fb95335.png" />
+          <imagedata fileref="d24b3eb41da4d1de21d4bce0e30d2e1b.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>
@@ -298,9 +298,9 @@
   <section id="lund-test-2">
     <title>Lund test</title>
     <para>
-      It seems that 5 extreme values can be found in &quot;Internet
+      It seems that 4 extreme values can be found in &quot;Internet
       usage for educational purposes (hours per day)&quot;. These are:
-      10, 10, 12, 12, 12.
+      10, 0.5, 1.5, 0.5.
     </para>
     <section id="explanation-2">
       <title>Explanation</title>
@@ -339,13 +339,13 @@
                 (Intercept)
               </entry>
               <entry>
-                2.06
+                2.05
               </entry>
               <entry>
                 0.08
               </entry>
               <entry>
-                26.92
+                26.27
               </entry>
               <entry>
                 0.00

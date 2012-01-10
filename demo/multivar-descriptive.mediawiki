@@ -4,7 +4,7 @@ This template will return descriptive statistics of numerical, or frequency tabl
 
 === ''gender'' (&quot;Gender&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''gender'' (&quot;Gender&quot;). This variable seems to be a factor.
+The dataset has 709 observations with 673 valid values (missing: 36) in ''gender'' (&quot;Gender&quot;). This variable seems to be a factor.
 
 ==== Base statistics ====
 
@@ -23,25 +23,25 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''gender'
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">male</td>
-<td align="left">432.00</td>
-<td align="left">60.93</td>
-<td align="left">432.00</td>
-<td align="left">60.93</td>
+<td align="left">410.00</td>
+<td align="left">60.92</td>
+<td align="left">410.00</td>
+<td align="left">60.92</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">female</td>
-<td align="left">277.00</td>
-<td align="left">39.07</td>
-<td align="left">709.00</td>
+<td align="left">263.00</td>
+<td align="left">39.08</td>
+<td align="left">673.00</td>
 <td align="left">100.00</td>
 </tr>
 <tr class="odd">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">709.00</td>
+<td align="left">673.00</td>
 <td align="left">100.00</td>
-<td align="left">709.00</td>
+<td align="left">673.00</td>
 <td align="left">100.00</td>
 </tr>
 </tbody>
@@ -49,13 +49,13 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''gender'
 
 ==== Barplot ====
 
-[[Image:2a42fb1eb44bf1361b44216c6b0c16ee.png|frame|none]]
+[[Image:3ed92ab3ffc6e875335e7e8c774c35a8.png|frame|none]]
 
 It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
 
 === ''age'' (&quot;Age&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''age'' (&quot;Age&quot;). This variable seems to be numeric.
+The dataset has 709 observations with 677 valid values (missing: 32) in ''age'' (&quot;Age&quot;). This variable seems to be numeric.
 
 ==== Base statistics ====
 
@@ -71,22 +71,22 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''age'' (
 <tbody>
 <tr class="odd">
 <td align="left">(all)</td>
-<td align="left">24.56</td>
-<td align="left">6.84</td>
-<td align="left">46.78</td>
+<td align="left">24.57</td>
+<td align="left">6.85</td>
+<td align="left">46.91</td>
 </tr>
 </tbody>
 </table>
 
 ==== Histogram ====
 
-[[Image:76fc57f9d2387aff730be60323f25624.png|frame|none]]
+[[Image:ac5d789145bdef09b10219ef16429f53.png|frame|none]]
 
 It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
 
-The standard deviation is 6.8399 (variance: 46.784). The expected value is around 24.557, somewhere between 24.054 and 25.061 (SE: 0.2569).
+The standard deviation is 6.8491 (variance: 46.911). The expected value is around 24.573, somewhere between 24.057 and 25.089 (SE: 0.2632).
 
-If we suppose that ''Age'' is not near to a normal distribution (test: , skewness: 1.9568, kurtosis: 7.6428), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+If we suppose that ''Age'' is not near to a normal distribution (test: , skewness: 1.9296, kurtosis: 7.4851), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
 
 == Description ==
 
@@ -94,7 +94,7 @@ This template will return descriptive statistics of numerical, or frequency tabl
 
 === ''chatim'' (&quot;Chat &amp; IM usage&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''chatim'' (&quot;Chat &amp; IM usage&quot;). This variable seems to be a factor.
+The dataset has 709 observations with 669 valid values (missing: 40) in ''chatim'' (&quot;Chat &amp; IM usage&quot;). This variable seems to be a factor.
 
 ==== Base statistics ====
 
@@ -113,65 +113,65 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''chatim'
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">64.00</td>
-<td align="left">9.03</td>
-<td align="left">64.00</td>
-<td align="left">9.03</td>
+<td align="left">60.00</td>
+<td align="left">8.97</td>
+<td align="left">60.00</td>
+<td align="left">8.97</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">78.00</td>
-<td align="left">11.00</td>
-<td align="left">142.00</td>
-<td align="left">20.03</td>
+<td align="left">73.00</td>
+<td align="left">10.91</td>
+<td align="left">133.00</td>
+<td align="left">19.88</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">65.00</td>
-<td align="left">9.17</td>
-<td align="left">207.00</td>
-<td align="left">29.20</td>
+<td align="left">58.00</td>
+<td align="left">8.67</td>
+<td align="left">191.00</td>
+<td align="left">28.55</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">124.00</td>
-<td align="left">17.49</td>
-<td align="left">331.00</td>
-<td align="left">46.69</td>
+<td align="left">113.00</td>
+<td align="left">16.89</td>
+<td align="left">304.00</td>
+<td align="left">45.44</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">142.00</td>
-<td align="left">20.03</td>
-<td align="left">473.00</td>
-<td align="left">66.71</td>
+<td align="left">136.00</td>
+<td align="left">20.33</td>
+<td align="left">440.00</td>
+<td align="left">65.77</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">94.00</td>
-<td align="left">13.26</td>
-<td align="left">567.00</td>
-<td align="left">79.97</td>
+<td align="left">88.00</td>
+<td align="left">13.15</td>
+<td align="left">528.00</td>
+<td align="left">78.92</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">142.00</td>
-<td align="left">20.03</td>
-<td align="left">709.00</td>
+<td align="left">141.00</td>
+<td align="left">21.08</td>
+<td align="left">669.00</td>
 <td align="left">100.00</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">709.00</td>
+<td align="left">669.00</td>
 <td align="left">100.00</td>
-<td align="left">709.00</td>
+<td align="left">669.00</td>
 <td align="left">100.00</td>
 </tr>
 </tbody>
@@ -179,13 +179,13 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''chatim'
 
 ==== Barplot ====
 
-[[Image:18ee2d4410677e2bbc343a9a4889cc97.png|frame|none]]
+[[Image:5a00abbe4c793ceedbbf10939665b5cf.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
 === ''game'' (&quot;On-line games usage&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''game'' (&quot;On-line games usage&quot;). This variable seems to be a factor.
+The dataset has 709 observations with 677 valid values (missing: 32) in ''game'' (&quot;On-line games usage&quot;). This variable seems to be a factor.
 
 ==== Base statistics ====
 
@@ -204,65 +204,65 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''game'' 
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">368.00</td>
-<td align="left">51.90</td>
-<td align="left">368.00</td>
-<td align="left">51.90</td>
+<td align="left">352.00</td>
+<td align="left">51.99</td>
+<td align="left">352.00</td>
+<td align="left">51.99</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">132.00</td>
-<td align="left">18.62</td>
-<td align="left">500.00</td>
-<td align="left">70.52</td>
+<td align="left">128.00</td>
+<td align="left">18.91</td>
+<td align="left">480.00</td>
+<td align="left">70.90</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">35.00</td>
-<td align="left">4.94</td>
-<td align="left">535.00</td>
-<td align="left">75.46</td>
+<td align="left">32.00</td>
+<td align="left">4.73</td>
+<td align="left">512.00</td>
+<td align="left">75.63</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">65.00</td>
-<td align="left">9.17</td>
-<td align="left">600.00</td>
-<td align="left">84.63</td>
+<td align="left">60.00</td>
+<td align="left">8.86</td>
+<td align="left">572.00</td>
+<td align="left">84.49</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">38.00</td>
-<td align="left">5.36</td>
-<td align="left">638.00</td>
-<td align="left">89.99</td>
+<td align="left">37.00</td>
+<td align="left">5.47</td>
+<td align="left">609.00</td>
+<td align="left">89.96</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">37.00</td>
-<td align="left">5.22</td>
-<td align="left">675.00</td>
-<td align="left">95.20</td>
+<td align="left">35.00</td>
+<td align="left">5.17</td>
+<td align="left">644.00</td>
+<td align="left">95.13</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">34.00</td>
-<td align="left">4.80</td>
-<td align="left">709.00</td>
+<td align="left">33.00</td>
+<td align="left">4.87</td>
+<td align="left">677.00</td>
 <td align="left">100.00</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">709.00</td>
+<td align="left">677.00</td>
 <td align="left">100.00</td>
-<td align="left">709.00</td>
+<td align="left">677.00</td>
 <td align="left">100.00</td>
 </tr>
 </tbody>
@@ -270,13 +270,13 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''game'' 
 
 ==== Barplot ====
 
-[[Image:db92f166fe1966dbd5c6f0b909c181b2.png|frame|none]]
+[[Image:e53046a09491443064e085131e547971.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
 === ''surf'' (&quot;Web surfing usage&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''surf'' (&quot;Web surfing usage&quot;). This variable seems to be a factor.
+The dataset has 709 observations with 678 valid values (missing: 31) in ''surf'' (&quot;Web surfing usage&quot;). This variable seems to be a factor.
 
 ==== Base statistics ====
 
@@ -296,64 +296,64 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''surf'' 
 <td align="left">1</td>
 <td align="left">never</td>
 <td align="left">17.00</td>
-<td align="left">2.40</td>
+<td align="left">2.51</td>
 <td align="left">17.00</td>
-<td align="left">2.40</td>
+<td align="left">2.51</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
 <td align="left">26.00</td>
-<td align="left">3.67</td>
+<td align="left">3.83</td>
 <td align="left">43.00</td>
-<td align="left">6.06</td>
+<td align="left">6.34</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">34.00</td>
-<td align="left">4.80</td>
-<td align="left">77.00</td>
-<td align="left">10.86</td>
+<td align="left">33.00</td>
+<td align="left">4.87</td>
+<td align="left">76.00</td>
+<td align="left">11.21</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">116.00</td>
-<td align="left">16.36</td>
-<td align="left">193.00</td>
-<td align="left">27.22</td>
+<td align="left">107.00</td>
+<td align="left">15.78</td>
+<td align="left">183.00</td>
+<td align="left">26.99</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">164.00</td>
-<td align="left">23.13</td>
-<td align="left">357.00</td>
-<td align="left">50.35</td>
+<td align="left">158.00</td>
+<td align="left">23.30</td>
+<td align="left">341.00</td>
+<td align="left">50.29</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">151.00</td>
-<td align="left">21.30</td>
-<td align="left">508.00</td>
-<td align="left">71.65</td>
+<td align="left">142.00</td>
+<td align="left">20.94</td>
+<td align="left">483.00</td>
+<td align="left">71.24</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">201.00</td>
-<td align="left">28.35</td>
-<td align="left">709.00</td>
+<td align="left">195.00</td>
+<td align="left">28.76</td>
+<td align="left">678.00</td>
 <td align="left">100.00</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">709.00</td>
+<td align="left">678.00</td>
 <td align="left">100.00</td>
-<td align="left">709.00</td>
+<td align="left">678.00</td>
 <td align="left">100.00</td>
 </tr>
 </tbody>
@@ -361,13 +361,13 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''surf'' 
 
 ==== Barplot ====
 
-[[Image:42a485477f7c7e629c55f3f106b2f482.png|frame|none]]
+[[Image:0166a8b5df2f3db871e8736bfee8af6e.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
 === ''email'' (&quot;Email usage&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''email'' (&quot;Email usage&quot;). This variable seems to be a factor.
+The dataset has 709 observations with 672 valid values (missing: 37) in ''email'' (&quot;Email usage&quot;). This variable seems to be a factor.
 
 ==== Base statistics ====
 
@@ -387,64 +387,64 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''email''
 <td align="left">1</td>
 <td align="left">never</td>
 <td align="left">13.00</td>
-<td align="left">1.83</td>
+<td align="left">1.93</td>
 <td align="left">13.00</td>
-<td align="left">1.83</td>
+<td align="left">1.93</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">38.00</td>
+<td align="left">36.00</td>
 <td align="left">5.36</td>
-<td align="left">51.00</td>
-<td align="left">7.19</td>
+<td align="left">49.00</td>
+<td align="left">7.29</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">51.00</td>
-<td align="left">7.19</td>
-<td align="left">102.00</td>
-<td align="left">14.39</td>
+<td align="left">46.00</td>
+<td align="left">6.85</td>
+<td align="left">95.00</td>
+<td align="left">14.14</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">90.00</td>
-<td align="left">12.69</td>
-<td align="left">192.00</td>
+<td align="left">87.00</td>
+<td align="left">12.95</td>
+<td align="left">182.00</td>
 <td align="left">27.08</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">129.00</td>
-<td align="left">18.19</td>
-<td align="left">321.00</td>
-<td align="left">45.28</td>
+<td align="left">123.00</td>
+<td align="left">18.30</td>
+<td align="left">305.00</td>
+<td align="left">45.39</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">116.00</td>
-<td align="left">16.36</td>
-<td align="left">437.00</td>
-<td align="left">61.64</td>
+<td align="left">108.00</td>
+<td align="left">16.07</td>
+<td align="left">413.00</td>
+<td align="left">61.46</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">272.00</td>
-<td align="left">38.36</td>
-<td align="left">709.00</td>
+<td align="left">259.00</td>
+<td align="left">38.54</td>
+<td align="left">672.00</td>
 <td align="left">100.00</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">709.00</td>
+<td align="left">672.00</td>
 <td align="left">100.00</td>
-<td align="left">709.00</td>
+<td align="left">672.00</td>
 <td align="left">100.00</td>
 </tr>
 </tbody>
@@ -452,13 +452,13 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''email''
 
 ==== Barplot ====
 
-[[Image:4271956be974e19ffa2034d316fd201c.png|frame|none]]
+[[Image:895cde198b269bf65b01e1e067a515c8.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
 === ''download'' (&quot;Download usage&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''download'' (&quot;Download usage&quot;). This variable seems to be a factor.
+The dataset has 709 observations with 677 valid values (missing: 32) in ''download'' (&quot;Download usage&quot;). This variable seems to be a factor.
 
 ==== Base statistics ====
 
@@ -478,64 +478,64 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''downloa
 <td align="left">1</td>
 <td align="left">never</td>
 <td align="left">11.00</td>
-<td align="left">1.55</td>
+<td align="left">1.62</td>
 <td align="left">11.00</td>
-<td align="left">1.55</td>
+<td align="left">1.62</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">29.00</td>
-<td align="left">4.09</td>
-<td align="left">40.00</td>
-<td align="left">5.64</td>
+<td align="left">28.00</td>
+<td align="left">4.14</td>
+<td align="left">39.00</td>
+<td align="left">5.76</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">30.00</td>
-<td align="left">4.23</td>
-<td align="left">70.00</td>
-<td align="left">9.87</td>
+<td align="left">29.00</td>
+<td align="left">4.28</td>
+<td align="left">68.00</td>
+<td align="left">10.04</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">85.00</td>
-<td align="left">11.99</td>
-<td align="left">155.00</td>
+<td align="left">80.00</td>
+<td align="left">11.82</td>
+<td align="left">148.00</td>
 <td align="left">21.86</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">130.00</td>
-<td align="left">18.34</td>
-<td align="left">285.00</td>
-<td align="left">40.20</td>
+<td align="left">124.00</td>
+<td align="left">18.32</td>
+<td align="left">272.00</td>
+<td align="left">40.18</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">171.00</td>
-<td align="left">24.12</td>
-<td align="left">456.00</td>
-<td align="left">64.32</td>
+<td align="left">160.00</td>
+<td align="left">23.63</td>
+<td align="left">432.00</td>
+<td align="left">63.81</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">253.00</td>
-<td align="left">35.68</td>
-<td align="left">709.00</td>
+<td align="left">245.00</td>
+<td align="left">36.19</td>
+<td align="left">677.00</td>
 <td align="left">100.00</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">709.00</td>
+<td align="left">677.00</td>
 <td align="left">100.00</td>
-<td align="left">709.00</td>
+<td align="left">677.00</td>
 <td align="left">100.00</td>
 </tr>
 </tbody>
@@ -543,13 +543,13 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''downloa
 
 ==== Barplot ====
 
-[[Image:ec8a2289e719ec679a4abc2f1b3a62ec.png|frame|none]]
+[[Image:dde181184885b8777d0248b3f421289a.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
 === ''forum'' (&quot;Web forums usage&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''forum'' (&quot;Web forums usage&quot;). This variable seems to be a factor.
+The dataset has 709 observations with 673 valid values (missing: 36) in ''forum'' (&quot;Web forums usage&quot;). This variable seems to be a factor.
 
 ==== Base statistics ====
 
@@ -568,65 +568,65 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''forum''
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">80.00</td>
-<td align="left">11.28</td>
-<td align="left">80.00</td>
-<td align="left">11.28</td>
+<td align="left">76.00</td>
+<td align="left">11.29</td>
+<td align="left">76.00</td>
+<td align="left">11.29</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">84.00</td>
-<td align="left">11.85</td>
-<td align="left">164.00</td>
-<td align="left">23.13</td>
+<td align="left">80.00</td>
+<td align="left">11.89</td>
+<td align="left">156.00</td>
+<td align="left">23.18</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">74.00</td>
-<td align="left">10.44</td>
-<td align="left">238.00</td>
-<td align="left">33.57</td>
+<td align="left">72.00</td>
+<td align="left">10.70</td>
+<td align="left">228.00</td>
+<td align="left">33.88</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">124.00</td>
-<td align="left">17.49</td>
-<td align="left">362.00</td>
-<td align="left">51.06</td>
+<td align="left">111.00</td>
+<td align="left">16.49</td>
+<td align="left">339.00</td>
+<td align="left">50.37</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">112.00</td>
-<td align="left">15.80</td>
-<td align="left">474.00</td>
-<td align="left">66.85</td>
+<td align="left">109.00</td>
+<td align="left">16.20</td>
+<td align="left">448.00</td>
+<td align="left">66.57</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">125.00</td>
-<td align="left">17.63</td>
-<td align="left">599.00</td>
-<td align="left">84.49</td>
+<td align="left">119.00</td>
+<td align="left">17.68</td>
+<td align="left">567.00</td>
+<td align="left">84.25</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">110.00</td>
-<td align="left">15.51</td>
-<td align="left">709.00</td>
+<td align="left">106.00</td>
+<td align="left">15.75</td>
+<td align="left">673.00</td>
 <td align="left">100.00</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">709.00</td>
+<td align="left">673.00</td>
 <td align="left">100.00</td>
-<td align="left">709.00</td>
+<td align="left">673.00</td>
 <td align="left">100.00</td>
 </tr>
 </tbody>
@@ -634,13 +634,13 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''forum''
 
 ==== Barplot ====
 
-[[Image:3f14c76d2ae5a41c21a771f3fd794ca3.png|frame|none]]
+[[Image:ac419134b2f4695e544d8886ba12e0c2.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
 === ''socnet'' (&quot;Social networks usage&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''socnet'' (&quot;Social networks usage&quot;). This variable seems to be a factor.
+The dataset has 709 observations with 678 valid values (missing: 31) in ''socnet'' (&quot;Social networks usage&quot;). This variable seems to be a factor.
 
 ==== Base statistics ====
 
@@ -659,65 +659,65 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''socnet'
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">210.00</td>
-<td align="left">29.62</td>
-<td align="left">210.00</td>
-<td align="left">29.62</td>
+<td align="left">208.00</td>
+<td align="left">30.68</td>
+<td align="left">208.00</td>
+<td align="left">30.68</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">111.00</td>
-<td align="left">15.66</td>
-<td align="left">321.00</td>
-<td align="left">45.28</td>
+<td align="left">102.00</td>
+<td align="left">15.04</td>
+<td align="left">310.00</td>
+<td align="left">45.72</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">59.00</td>
-<td align="left">8.32</td>
-<td align="left">380.00</td>
-<td align="left">53.60</td>
+<td align="left">57.00</td>
+<td align="left">8.41</td>
+<td align="left">367.00</td>
+<td align="left">54.13</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">94.00</td>
-<td align="left">13.26</td>
-<td align="left">474.00</td>
-<td align="left">66.85</td>
+<td align="left">87.00</td>
+<td align="left">12.83</td>
+<td align="left">454.00</td>
+<td align="left">66.96</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">82.00</td>
-<td align="left">11.57</td>
-<td align="left">556.00</td>
-<td align="left">78.42</td>
+<td align="left">79.00</td>
+<td align="left">11.65</td>
+<td align="left">533.00</td>
+<td align="left">78.61</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">85.00</td>
-<td align="left">11.99</td>
-<td align="left">641.00</td>
+<td align="left">80.00</td>
+<td align="left">11.80</td>
+<td align="left">613.00</td>
 <td align="left">90.41</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">68.00</td>
+<td align="left">65.00</td>
 <td align="left">9.59</td>
-<td align="left">709.00</td>
+<td align="left">678.00</td>
 <td align="left">100.00</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">709.00</td>
+<td align="left">678.00</td>
 <td align="left">100.00</td>
-<td align="left">709.00</td>
+<td align="left">678.00</td>
 <td align="left">100.00</td>
 </tr>
 </tbody>
@@ -725,13 +725,13 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''socnet'
 
 ==== Barplot ====
 
-[[Image:c1a552be1b3a4299ff06e272129d8096.png|frame|none]]
+[[Image:8475d98870c1cdd2436a3abdb0d69a66.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
 
 === ''xxx'' (&quot;Adult sites usage&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''xxx'' (&quot;Adult sites usage&quot;). This variable seems to be a factor.
+The dataset has 709 observations with 674 valid values (missing: 35) in ''xxx'' (&quot;Adult sites usage&quot;). This variable seems to be a factor.
 
 ==== Base statistics ====
 
@@ -750,65 +750,65 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''xxx'' (
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">293.00</td>
-<td align="left">41.33</td>
-<td align="left">293.00</td>
-<td align="left">41.33</td>
+<td align="left">274.00</td>
+<td align="left">40.65</td>
+<td align="left">274.00</td>
+<td align="left">40.65</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">128.00</td>
-<td align="left">18.05</td>
-<td align="left">421.00</td>
-<td align="left">59.38</td>
+<td align="left">124.00</td>
+<td align="left">18.40</td>
+<td align="left">398.00</td>
+<td align="left">59.05</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">55.00</td>
-<td align="left">7.76</td>
-<td align="left">476.00</td>
-<td align="left">67.14</td>
+<td align="left">52.00</td>
+<td align="left">7.72</td>
+<td align="left">450.00</td>
+<td align="left">66.77</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">137.00</td>
-<td align="left">19.32</td>
-<td align="left">613.00</td>
-<td align="left">86.46</td>
+<td align="left">131.00</td>
+<td align="left">19.44</td>
+<td align="left">581.00</td>
+<td align="left">86.20</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">48.00</td>
-<td align="left">6.77</td>
-<td align="left">661.00</td>
-<td align="left">93.23</td>
+<td align="left">46.00</td>
+<td align="left">6.82</td>
+<td align="left">627.00</td>
+<td align="left">93.03</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">29.00</td>
-<td align="left">4.09</td>
-<td align="left">690.00</td>
-<td align="left">97.32</td>
+<td align="left">28.00</td>
+<td align="left">4.15</td>
+<td align="left">655.00</td>
+<td align="left">97.18</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
 <td align="left">19.00</td>
-<td align="left">2.68</td>
-<td align="left">709.00</td>
+<td align="left">2.82</td>
+<td align="left">674.00</td>
 <td align="left">100.00</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">709.00</td>
+<td align="left">674.00</td>
 <td align="left">100.00</td>
-<td align="left">709.00</td>
+<td align="left">674.00</td>
 <td align="left">100.00</td>
 </tr>
 </tbody>
@@ -816,6 +816,6 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''xxx'' (
 
 ==== Barplot ====
 
-[[Image:053614b5b842759f559adcc0da8cc645.png|frame|none]]
+[[Image:4fda8cf992e8de93624c45ef3c72a0c5.png|frame|none]]
 
 It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).

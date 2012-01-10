@@ -13,12 +13,12 @@ I have just specified a \f[I]Variable\f[] in this template named to
 The label of this variable is \[lq]Internet usage in leisure time (hours
 per day)\[rq].
 .PP
-And wow, the mean of \f[I]leisure\f[] is 3.2221!
+And wow, the mean of \f[I]leisure\f[] is 3.1994!
 .SS Descriptive statistics
 .PP
 .TS
 tab(@);
-l l l l l l l.
+l l l l l l l l.
 T{
 T}@T{
 \f[B]Min.\f[]
@@ -32,22 +32,26 @@ T}@T{
 \f[B]3rd Qu.\f[]
 T}@T{
 \f[B]Max.\f[]
+T}@T{
+\f[B]NA's\f[]
 T}
 _
 T{
 1
 T}@T{
-0.00
+0.0
 T}@T{
-2.00
+2.0
 T}@T{
-3.00
+3.0
 T}@T{
-3.22
+3.2
 T}@T{
-4.00
+4.0
 T}@T{
-12.00
+12.0
+T}@T{
+37.0
 T}
 .TE
 .PP
@@ -66,7 +70,7 @@ I have just specified a \f[I]Variable\f[] in this template named to
 The label of this variable is \[lq]Internet usage in leisure time (hours
 per day)\[rq].
 .PP
-And wow, the mean of \f[I]leisure\f[] is 3.2221!
+And wow, the mean of \f[I]leisure\f[] is 3.1994!
 .PP
 \f[B]For more detailed statistics, you should have set
 \f[C]desc=TRUE\f[]!\f[]
@@ -83,13 +87,13 @@ I have just specified a \f[I]Variable\f[] in this template named to
 The label of this variable is \[lq]Internet usage in leisure time (hours
 per day)\[rq].
 .PP
-And wow, the mean of \f[I]leisure\f[] is 3.2221!
+And wow, the mean of \f[I]leisure\f[] is 3.1994!
 .PP
 \f[B]For more detailed statistics, you should have set
 \f[C]desc=TRUE\f[]!\f[]
 .SS Histogram
 .PP
-[IMAGE: image (fe9021434b8db586fac253cd0fedbfc2.png)]
+[IMAGE: image (9542b7929dcd934208ee4f18bde6ff31.png)]
 .SS Description
 .PP
 This template demonstrates the basic features of rapport.
@@ -103,12 +107,12 @@ I have just specified a \f[I]Variable\f[] in this template named to
 The label of this variable is \[lq]Internet usage in leisure time (hours
 per day)\[rq].
 .PP
-And wow, the mean of \f[I]leisure\f[] is 3.2221!
+And wow, the mean of \f[I]leisure\f[] is 3.1994!
 .PP
 \f[B]For more detailed statistics, you should have set
 \f[C]desc=TRUE\f[]!\f[]
 .SS Histogram
 .PP
-[IMAGE: image (3f5075e30419f077ee974a022dd89e33.png)]
+[IMAGE: image (f72d3b7413bcb88fce740c2ab229411a.png)]
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

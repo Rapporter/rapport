@@ -19,8 +19,8 @@
   <section id="gender-gender">
     <title><emphasis>gender</emphasis> (&quot;Gender&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>gender</emphasis> (&quot;Gender&quot;). This
+      The dataset has 709 observations with 673 valid values (missing:
+      36) in <emphasis>gender</emphasis> (&quot;Gender&quot;). This
       variable seems to be a factor.
     </para>
     <section id="base-statistics">
@@ -63,16 +63,16 @@
                 male
               </entry>
               <entry>
-                432.00
+                410.00
               </entry>
               <entry>
-                60.93
+                60.92
               </entry>
               <entry>
-                432.00
+                410.00
               </entry>
               <entry>
-                60.93
+                60.92
               </entry>
             </row>
             <row>
@@ -83,13 +83,13 @@
                 female
               </entry>
               <entry>
-                277.00
+                263.00
               </entry>
               <entry>
-                39.07
+                39.08
               </entry>
               <entry>
-                709.00
+                673.00
               </entry>
               <entry>
                 100.00
@@ -102,13 +102,13 @@
               <entry>
               </entry>
               <entry>
-                709.00
+                673.00
               </entry>
               <entry>
                 100.00
               </entry>
               <entry>
-                709.00
+                673.00
               </entry>
               <entry>
                 100.00
@@ -124,7 +124,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="2a42fb1eb44bf1361b44216c6b0c16ee.png" />
+            <imagedata fileref="3ed92ab3ffc6e875335e7e8c774c35a8.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -138,8 +138,8 @@
   <section id="age-age">
     <title><emphasis>age</emphasis> (&quot;Age&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>age</emphasis> (&quot;Age&quot;). This variable
+      The dataset has 709 observations with 677 valid values (missing:
+      32) in <emphasis>age</emphasis> (&quot;Age&quot;). This variable
       seems to be numeric.
     </para>
     <section id="base-statistics-1">
@@ -172,13 +172,13 @@
                 (all)
               </entry>
               <entry>
-                24.56
+                24.57
               </entry>
               <entry>
-                6.84
+                6.85
               </entry>
               <entry>
-                46.78
+                46.91
               </entry>
             </row>
           </tbody>
@@ -191,7 +191,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="76fc57f9d2387aff730be60323f25624.png" />
+            <imagedata fileref="ac5d789145bdef09b10219ef16429f53.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -201,14 +201,14 @@
         times higher than the smallest value (16).
       </para>
       <para>
-        The standard deviation is 6.8399 (variance: 46.784). The
-        expected value is around 24.557, somewhere between 24.054 and
-        25.061 (SE: 0.2569).
+        The standard deviation is 6.8491 (variance: 46.911). The
+        expected value is around 24.573, somewhere between 24.057 and
+        25.089 (SE: 0.2632).
       </para>
       <para>
         If we suppose that <emphasis>Age</emphasis> is not near to a
-        normal distribution (test: , skewness: 1.9568, kurtosis:
-        7.6428), checking the median (23) might be a better option
+        normal distribution (test: , skewness: 1.9296, kurtosis:
+        7.4851), checking the median (23) might be a better option
         instead of the mean. The interquartile range (6) measures the
         statistics dispersion of the variable (similar to standard
         deviation) based on median.
@@ -226,8 +226,8 @@
     <title><emphasis>chatim</emphasis> (&quot;Chat &amp; IM
     usage&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>chatim</emphasis> (&quot;Chat &amp; IM
+      The dataset has 709 observations with 669 valid values (missing:
+      40) in <emphasis>chatim</emphasis> (&quot;Chat &amp; IM
       usage&quot;). This variable seems to be a factor.
     </para>
     <section id="base-statistics-2">
@@ -270,16 +270,16 @@
                 never
               </entry>
               <entry>
-                64.00
+                60.00
               </entry>
               <entry>
-                9.03
+                8.97
               </entry>
               <entry>
-                64.00
+                60.00
               </entry>
               <entry>
-                9.03
+                8.97
               </entry>
             </row>
             <row>
@@ -290,16 +290,16 @@
                 very rarely
               </entry>
               <entry>
-                78.00
+                73.00
               </entry>
               <entry>
-                11.00
+                10.91
               </entry>
               <entry>
-                142.00
+                133.00
               </entry>
               <entry>
-                20.03
+                19.88
               </entry>
             </row>
             <row>
@@ -310,16 +310,16 @@
                 rarely
               </entry>
               <entry>
-                65.00
+                58.00
               </entry>
               <entry>
-                9.17
+                8.67
               </entry>
               <entry>
-                207.00
+                191.00
               </entry>
               <entry>
-                29.20
+                28.55
               </entry>
             </row>
             <row>
@@ -330,16 +330,16 @@
                 sometimes
               </entry>
               <entry>
-                124.00
+                113.00
               </entry>
               <entry>
-                17.49
+                16.89
               </entry>
               <entry>
-                331.00
+                304.00
               </entry>
               <entry>
-                46.69
+                45.44
               </entry>
             </row>
             <row>
@@ -350,16 +350,16 @@
                 often
               </entry>
               <entry>
-                142.00
+                136.00
               </entry>
               <entry>
-                20.03
+                20.33
               </entry>
               <entry>
-                473.00
+                440.00
               </entry>
               <entry>
-                66.71
+                65.77
               </entry>
             </row>
             <row>
@@ -370,16 +370,16 @@
                 very often
               </entry>
               <entry>
-                94.00
+                88.00
               </entry>
               <entry>
-                13.26
+                13.15
               </entry>
               <entry>
-                567.00
+                528.00
               </entry>
               <entry>
-                79.97
+                78.92
               </entry>
             </row>
             <row>
@@ -390,13 +390,13 @@
                 always
               </entry>
               <entry>
-                142.00
+                141.00
               </entry>
               <entry>
-                20.03
+                21.08
               </entry>
               <entry>
-                709.00
+                669.00
               </entry>
               <entry>
                 100.00
@@ -409,13 +409,13 @@
               <entry>
               </entry>
               <entry>
-                709.00
+                669.00
               </entry>
               <entry>
                 100.00
               </entry>
               <entry>
-                709.00
+                669.00
               </entry>
               <entry>
                 100.00
@@ -431,7 +431,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="18ee2d4410677e2bbc343a9a4889cc97.png" />
+            <imagedata fileref="5a00abbe4c793ceedbbf10939665b5cf.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -446,9 +446,9 @@
     <title><emphasis>game</emphasis> (&quot;On-line games
     usage&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>game</emphasis> (&quot;On-line games usage&quot;).
-      This variable seems to be a factor.
+      The dataset has 709 observations with 677 valid values (missing:
+      32) in <emphasis>game</emphasis> (&quot;On-line games
+      usage&quot;). This variable seems to be a factor.
     </para>
     <section id="base-statistics-3">
       <title>Base statistics</title>
@@ -490,16 +490,16 @@
                 never
               </entry>
               <entry>
-                368.00
+                352.00
               </entry>
               <entry>
-                51.90
+                51.99
               </entry>
               <entry>
-                368.00
+                352.00
               </entry>
               <entry>
-                51.90
+                51.99
               </entry>
             </row>
             <row>
@@ -510,16 +510,16 @@
                 very rarely
               </entry>
               <entry>
-                132.00
+                128.00
               </entry>
               <entry>
-                18.62
+                18.91
               </entry>
               <entry>
-                500.00
+                480.00
               </entry>
               <entry>
-                70.52
+                70.90
               </entry>
             </row>
             <row>
@@ -530,16 +530,16 @@
                 rarely
               </entry>
               <entry>
-                35.00
+                32.00
               </entry>
               <entry>
-                4.94
+                4.73
               </entry>
               <entry>
-                535.00
+                512.00
               </entry>
               <entry>
-                75.46
+                75.63
               </entry>
             </row>
             <row>
@@ -550,16 +550,16 @@
                 sometimes
               </entry>
               <entry>
-                65.00
+                60.00
               </entry>
               <entry>
-                9.17
+                8.86
               </entry>
               <entry>
-                600.00
+                572.00
               </entry>
               <entry>
-                84.63
+                84.49
               </entry>
             </row>
             <row>
@@ -570,16 +570,16 @@
                 often
               </entry>
               <entry>
-                38.00
+                37.00
               </entry>
               <entry>
-                5.36
+                5.47
               </entry>
               <entry>
-                638.00
+                609.00
               </entry>
               <entry>
-                89.99
+                89.96
               </entry>
             </row>
             <row>
@@ -590,16 +590,16 @@
                 very often
               </entry>
               <entry>
-                37.00
+                35.00
               </entry>
               <entry>
-                5.22
+                5.17
               </entry>
               <entry>
-                675.00
+                644.00
               </entry>
               <entry>
-                95.20
+                95.13
               </entry>
             </row>
             <row>
@@ -610,13 +610,13 @@
                 always
               </entry>
               <entry>
-                34.00
+                33.00
               </entry>
               <entry>
-                4.80
+                4.87
               </entry>
               <entry>
-                709.00
+                677.00
               </entry>
               <entry>
                 100.00
@@ -629,13 +629,13 @@
               <entry>
               </entry>
               <entry>
-                709.00
+                677.00
               </entry>
               <entry>
                 100.00
               </entry>
               <entry>
-                709.00
+                677.00
               </entry>
               <entry>
                 100.00
@@ -651,7 +651,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="db92f166fe1966dbd5c6f0b909c181b2.png" />
+            <imagedata fileref="e53046a09491443064e085131e547971.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -666,8 +666,8 @@
     <title><emphasis>surf</emphasis> (&quot;Web surfing
     usage&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>surf</emphasis> (&quot;Web surfing usage&quot;).
+      The dataset has 709 observations with 678 valid values (missing:
+      31) in <emphasis>surf</emphasis> (&quot;Web surfing usage&quot;).
       This variable seems to be a factor.
     </para>
     <section id="base-statistics-4">
@@ -713,13 +713,13 @@
                 17.00
               </entry>
               <entry>
-                2.40
+                2.51
               </entry>
               <entry>
                 17.00
               </entry>
               <entry>
-                2.40
+                2.51
               </entry>
             </row>
             <row>
@@ -733,13 +733,13 @@
                 26.00
               </entry>
               <entry>
-                3.67
+                3.83
               </entry>
               <entry>
                 43.00
               </entry>
               <entry>
-                6.06
+                6.34
               </entry>
             </row>
             <row>
@@ -750,16 +750,16 @@
                 rarely
               </entry>
               <entry>
-                34.00
+                33.00
               </entry>
               <entry>
-                4.80
+                4.87
               </entry>
               <entry>
-                77.00
+                76.00
               </entry>
               <entry>
-                10.86
+                11.21
               </entry>
             </row>
             <row>
@@ -770,16 +770,16 @@
                 sometimes
               </entry>
               <entry>
-                116.00
+                107.00
               </entry>
               <entry>
-                16.36
+                15.78
               </entry>
               <entry>
-                193.00
+                183.00
               </entry>
               <entry>
-                27.22
+                26.99
               </entry>
             </row>
             <row>
@@ -790,16 +790,16 @@
                 often
               </entry>
               <entry>
-                164.00
+                158.00
               </entry>
               <entry>
-                23.13
+                23.30
               </entry>
               <entry>
-                357.00
+                341.00
               </entry>
               <entry>
-                50.35
+                50.29
               </entry>
             </row>
             <row>
@@ -810,16 +810,16 @@
                 very often
               </entry>
               <entry>
-                151.00
+                142.00
               </entry>
               <entry>
-                21.30
+                20.94
               </entry>
               <entry>
-                508.00
+                483.00
               </entry>
               <entry>
-                71.65
+                71.24
               </entry>
             </row>
             <row>
@@ -830,13 +830,13 @@
                 always
               </entry>
               <entry>
-                201.00
+                195.00
               </entry>
               <entry>
-                28.35
+                28.76
               </entry>
               <entry>
-                709.00
+                678.00
               </entry>
               <entry>
                 100.00
@@ -849,13 +849,13 @@
               <entry>
               </entry>
               <entry>
-                709.00
+                678.00
               </entry>
               <entry>
                 100.00
               </entry>
               <entry>
-                709.00
+                678.00
               </entry>
               <entry>
                 100.00
@@ -871,7 +871,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="42a485477f7c7e629c55f3f106b2f482.png" />
+            <imagedata fileref="0166a8b5df2f3db871e8736bfee8af6e.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -885,8 +885,8 @@
   <section id="email-email-usage">
     <title><emphasis>email</emphasis> (&quot;Email usage&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>email</emphasis> (&quot;Email usage&quot;). This
+      The dataset has 709 observations with 672 valid values (missing:
+      37) in <emphasis>email</emphasis> (&quot;Email usage&quot;). This
       variable seems to be a factor.
     </para>
     <section id="base-statistics-5">
@@ -932,13 +932,13 @@
                 13.00
               </entry>
               <entry>
-                1.83
+                1.93
               </entry>
               <entry>
                 13.00
               </entry>
               <entry>
-                1.83
+                1.93
               </entry>
             </row>
             <row>
@@ -949,16 +949,16 @@
                 very rarely
               </entry>
               <entry>
-                38.00
+                36.00
               </entry>
               <entry>
                 5.36
               </entry>
               <entry>
-                51.00
+                49.00
               </entry>
               <entry>
-                7.19
+                7.29
               </entry>
             </row>
             <row>
@@ -969,16 +969,16 @@
                 rarely
               </entry>
               <entry>
-                51.00
+                46.00
               </entry>
               <entry>
-                7.19
+                6.85
               </entry>
               <entry>
-                102.00
+                95.00
               </entry>
               <entry>
-                14.39
+                14.14
               </entry>
             </row>
             <row>
@@ -989,13 +989,13 @@
                 sometimes
               </entry>
               <entry>
-                90.00
+                87.00
               </entry>
               <entry>
-                12.69
+                12.95
               </entry>
               <entry>
-                192.00
+                182.00
               </entry>
               <entry>
                 27.08
@@ -1009,16 +1009,16 @@
                 often
               </entry>
               <entry>
-                129.00
+                123.00
               </entry>
               <entry>
-                18.19
+                18.30
               </entry>
               <entry>
-                321.00
+                305.00
               </entry>
               <entry>
-                45.28
+                45.39
               </entry>
             </row>
             <row>
@@ -1029,16 +1029,16 @@
                 very often
               </entry>
               <entry>
-                116.00
+                108.00
               </entry>
               <entry>
-                16.36
+                16.07
               </entry>
               <entry>
-                437.00
+                413.00
               </entry>
               <entry>
-                61.64
+                61.46
               </entry>
             </row>
             <row>
@@ -1049,13 +1049,13 @@
                 always
               </entry>
               <entry>
-                272.00
+                259.00
               </entry>
               <entry>
-                38.36
+                38.54
               </entry>
               <entry>
-                709.00
+                672.00
               </entry>
               <entry>
                 100.00
@@ -1068,13 +1068,13 @@
               <entry>
               </entry>
               <entry>
-                709.00
+                672.00
               </entry>
               <entry>
                 100.00
               </entry>
               <entry>
-                709.00
+                672.00
               </entry>
               <entry>
                 100.00
@@ -1090,7 +1090,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="4271956be974e19ffa2034d316fd201c.png" />
+            <imagedata fileref="895cde198b269bf65b01e1e067a515c8.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -1105,8 +1105,8 @@
     <title><emphasis>download</emphasis> (&quot;Download
     usage&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>download</emphasis> (&quot;Download usage&quot;).
+      The dataset has 709 observations with 677 valid values (missing:
+      32) in <emphasis>download</emphasis> (&quot;Download usage&quot;).
       This variable seems to be a factor.
     </para>
     <section id="base-statistics-6">
@@ -1152,13 +1152,13 @@
                 11.00
               </entry>
               <entry>
-                1.55
+                1.62
               </entry>
               <entry>
                 11.00
               </entry>
               <entry>
-                1.55
+                1.62
               </entry>
             </row>
             <row>
@@ -1169,16 +1169,16 @@
                 very rarely
               </entry>
               <entry>
-                29.00
+                28.00
               </entry>
               <entry>
-                4.09
+                4.14
               </entry>
               <entry>
-                40.00
+                39.00
               </entry>
               <entry>
-                5.64
+                5.76
               </entry>
             </row>
             <row>
@@ -1189,16 +1189,16 @@
                 rarely
               </entry>
               <entry>
-                30.00
+                29.00
               </entry>
               <entry>
-                4.23
+                4.28
               </entry>
               <entry>
-                70.00
+                68.00
               </entry>
               <entry>
-                9.87
+                10.04
               </entry>
             </row>
             <row>
@@ -1209,13 +1209,13 @@
                 sometimes
               </entry>
               <entry>
-                85.00
+                80.00
               </entry>
               <entry>
-                11.99
+                11.82
               </entry>
               <entry>
-                155.00
+                148.00
               </entry>
               <entry>
                 21.86
@@ -1229,16 +1229,16 @@
                 often
               </entry>
               <entry>
-                130.00
+                124.00
               </entry>
               <entry>
-                18.34
+                18.32
               </entry>
               <entry>
-                285.00
+                272.00
               </entry>
               <entry>
-                40.20
+                40.18
               </entry>
             </row>
             <row>
@@ -1249,16 +1249,16 @@
                 very often
               </entry>
               <entry>
-                171.00
+                160.00
               </entry>
               <entry>
-                24.12
+                23.63
               </entry>
               <entry>
-                456.00
+                432.00
               </entry>
               <entry>
-                64.32
+                63.81
               </entry>
             </row>
             <row>
@@ -1269,13 +1269,13 @@
                 always
               </entry>
               <entry>
-                253.00
+                245.00
               </entry>
               <entry>
-                35.68
+                36.19
               </entry>
               <entry>
-                709.00
+                677.00
               </entry>
               <entry>
                 100.00
@@ -1288,13 +1288,13 @@
               <entry>
               </entry>
               <entry>
-                709.00
+                677.00
               </entry>
               <entry>
                 100.00
               </entry>
               <entry>
-                709.00
+                677.00
               </entry>
               <entry>
                 100.00
@@ -1310,7 +1310,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="ec8a2289e719ec679a4abc2f1b3a62ec.png" />
+            <imagedata fileref="dde181184885b8777d0248b3f421289a.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -1325,8 +1325,8 @@
     <title><emphasis>forum</emphasis> (&quot;Web forums
     usage&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>forum</emphasis> (&quot;Web forums usage&quot;).
+      The dataset has 709 observations with 673 valid values (missing:
+      36) in <emphasis>forum</emphasis> (&quot;Web forums usage&quot;).
       This variable seems to be a factor.
     </para>
     <section id="base-statistics-7">
@@ -1369,16 +1369,16 @@
                 never
               </entry>
               <entry>
-                80.00
+                76.00
               </entry>
               <entry>
-                11.28
+                11.29
               </entry>
               <entry>
-                80.00
+                76.00
               </entry>
               <entry>
-                11.28
+                11.29
               </entry>
             </row>
             <row>
@@ -1389,16 +1389,16 @@
                 very rarely
               </entry>
               <entry>
-                84.00
+                80.00
               </entry>
               <entry>
-                11.85
+                11.89
               </entry>
               <entry>
-                164.00
+                156.00
               </entry>
               <entry>
-                23.13
+                23.18
               </entry>
             </row>
             <row>
@@ -1409,16 +1409,16 @@
                 rarely
               </entry>
               <entry>
-                74.00
+                72.00
               </entry>
               <entry>
-                10.44
+                10.70
               </entry>
               <entry>
-                238.00
+                228.00
               </entry>
               <entry>
-                33.57
+                33.88
               </entry>
             </row>
             <row>
@@ -1429,16 +1429,16 @@
                 sometimes
               </entry>
               <entry>
-                124.00
+                111.00
               </entry>
               <entry>
-                17.49
+                16.49
               </entry>
               <entry>
-                362.00
+                339.00
               </entry>
               <entry>
-                51.06
+                50.37
               </entry>
             </row>
             <row>
@@ -1449,16 +1449,16 @@
                 often
               </entry>
               <entry>
-                112.00
+                109.00
               </entry>
               <entry>
-                15.80
+                16.20
               </entry>
               <entry>
-                474.00
+                448.00
               </entry>
               <entry>
-                66.85
+                66.57
               </entry>
             </row>
             <row>
@@ -1469,16 +1469,16 @@
                 very often
               </entry>
               <entry>
-                125.00
+                119.00
               </entry>
               <entry>
-                17.63
+                17.68
               </entry>
               <entry>
-                599.00
+                567.00
               </entry>
               <entry>
-                84.49
+                84.25
               </entry>
             </row>
             <row>
@@ -1489,13 +1489,13 @@
                 always
               </entry>
               <entry>
-                110.00
+                106.00
               </entry>
               <entry>
-                15.51
+                15.75
               </entry>
               <entry>
-                709.00
+                673.00
               </entry>
               <entry>
                 100.00
@@ -1508,13 +1508,13 @@
               <entry>
               </entry>
               <entry>
-                709.00
+                673.00
               </entry>
               <entry>
                 100.00
               </entry>
               <entry>
-                709.00
+                673.00
               </entry>
               <entry>
                 100.00
@@ -1530,7 +1530,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="3f14c76d2ae5a41c21a771f3fd794ca3.png" />
+            <imagedata fileref="ac419134b2f4695e544d8886ba12e0c2.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -1545,8 +1545,8 @@
     <title><emphasis>socnet</emphasis> (&quot;Social networks
     usage&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>socnet</emphasis> (&quot;Social networks
+      The dataset has 709 observations with 678 valid values (missing:
+      31) in <emphasis>socnet</emphasis> (&quot;Social networks
       usage&quot;). This variable seems to be a factor.
     </para>
     <section id="base-statistics-8">
@@ -1589,16 +1589,16 @@
                 never
               </entry>
               <entry>
-                210.00
+                208.00
               </entry>
               <entry>
-                29.62
+                30.68
               </entry>
               <entry>
-                210.00
+                208.00
               </entry>
               <entry>
-                29.62
+                30.68
               </entry>
             </row>
             <row>
@@ -1609,16 +1609,16 @@
                 very rarely
               </entry>
               <entry>
-                111.00
+                102.00
               </entry>
               <entry>
-                15.66
+                15.04
               </entry>
               <entry>
-                321.00
+                310.00
               </entry>
               <entry>
-                45.28
+                45.72
               </entry>
             </row>
             <row>
@@ -1629,16 +1629,16 @@
                 rarely
               </entry>
               <entry>
-                59.00
+                57.00
               </entry>
               <entry>
-                8.32
+                8.41
               </entry>
               <entry>
-                380.00
+                367.00
               </entry>
               <entry>
-                53.60
+                54.13
               </entry>
             </row>
             <row>
@@ -1649,16 +1649,16 @@
                 sometimes
               </entry>
               <entry>
-                94.00
+                87.00
               </entry>
               <entry>
-                13.26
+                12.83
               </entry>
               <entry>
-                474.00
+                454.00
               </entry>
               <entry>
-                66.85
+                66.96
               </entry>
             </row>
             <row>
@@ -1669,16 +1669,16 @@
                 often
               </entry>
               <entry>
-                82.00
+                79.00
               </entry>
               <entry>
-                11.57
+                11.65
               </entry>
               <entry>
-                556.00
+                533.00
               </entry>
               <entry>
-                78.42
+                78.61
               </entry>
             </row>
             <row>
@@ -1689,13 +1689,13 @@
                 very often
               </entry>
               <entry>
-                85.00
+                80.00
               </entry>
               <entry>
-                11.99
+                11.80
               </entry>
               <entry>
-                641.00
+                613.00
               </entry>
               <entry>
                 90.41
@@ -1709,13 +1709,13 @@
                 always
               </entry>
               <entry>
-                68.00
+                65.00
               </entry>
               <entry>
                 9.59
               </entry>
               <entry>
-                709.00
+                678.00
               </entry>
               <entry>
                 100.00
@@ -1728,13 +1728,13 @@
               <entry>
               </entry>
               <entry>
-                709.00
+                678.00
               </entry>
               <entry>
                 100.00
               </entry>
               <entry>
-                709.00
+                678.00
               </entry>
               <entry>
                 100.00
@@ -1750,7 +1750,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="c1a552be1b3a4299ff06e272129d8096.png" />
+            <imagedata fileref="8475d98870c1cdd2436a3abdb0d69a66.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -1765,8 +1765,8 @@
     <title><emphasis>xxx</emphasis> (&quot;Adult sites
     usage&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>xxx</emphasis> (&quot;Adult sites usage&quot;).
+      The dataset has 709 observations with 674 valid values (missing:
+      35) in <emphasis>xxx</emphasis> (&quot;Adult sites usage&quot;).
       This variable seems to be a factor.
     </para>
     <section id="base-statistics-9">
@@ -1809,16 +1809,16 @@
                 never
               </entry>
               <entry>
-                293.00
+                274.00
               </entry>
               <entry>
-                41.33
+                40.65
               </entry>
               <entry>
-                293.00
+                274.00
               </entry>
               <entry>
-                41.33
+                40.65
               </entry>
             </row>
             <row>
@@ -1829,16 +1829,16 @@
                 very rarely
               </entry>
               <entry>
-                128.00
+                124.00
               </entry>
               <entry>
-                18.05
+                18.40
               </entry>
               <entry>
-                421.00
+                398.00
               </entry>
               <entry>
-                59.38
+                59.05
               </entry>
             </row>
             <row>
@@ -1849,16 +1849,16 @@
                 rarely
               </entry>
               <entry>
-                55.00
+                52.00
               </entry>
               <entry>
-                7.76
+                7.72
               </entry>
               <entry>
-                476.00
+                450.00
               </entry>
               <entry>
-                67.14
+                66.77
               </entry>
             </row>
             <row>
@@ -1869,16 +1869,16 @@
                 sometimes
               </entry>
               <entry>
-                137.00
+                131.00
               </entry>
               <entry>
-                19.32
+                19.44
               </entry>
               <entry>
-                613.00
+                581.00
               </entry>
               <entry>
-                86.46
+                86.20
               </entry>
             </row>
             <row>
@@ -1889,16 +1889,16 @@
                 often
               </entry>
               <entry>
-                48.00
+                46.00
               </entry>
               <entry>
-                6.77
+                6.82
               </entry>
               <entry>
-                661.00
+                627.00
               </entry>
               <entry>
-                93.23
+                93.03
               </entry>
             </row>
             <row>
@@ -1909,16 +1909,16 @@
                 very often
               </entry>
               <entry>
-                29.00
+                28.00
               </entry>
               <entry>
-                4.09
+                4.15
               </entry>
               <entry>
-                690.00
+                655.00
               </entry>
               <entry>
-                97.32
+                97.18
               </entry>
             </row>
             <row>
@@ -1932,10 +1932,10 @@
                 19.00
               </entry>
               <entry>
-                2.68
+                2.82
               </entry>
               <entry>
-                709.00
+                674.00
               </entry>
               <entry>
                 100.00
@@ -1948,13 +1948,13 @@
               <entry>
               </entry>
               <entry>
-                709.00
+                674.00
               </entry>
               <entry>
                 100.00
               </entry>
               <entry>
-                709.00
+                674.00
               </entry>
               <entry>
                 100.00
@@ -1970,7 +1970,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="053614b5b842759f559adcc0da8cc645.png" />
+            <imagedata fileref="4fda8cf992e8de93624c45ef3c72a0c5.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>

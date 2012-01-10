@@ -8,9 +8,9 @@ percentages and Pearson's residuals table.
 .PP
 Two variables specified:
 .IP \[bu] 2
-\[lq]gender\[rq] (\[lq]Gender\[rq]) with 709 and
+\[lq]gender\[rq] (\[lq]Gender\[rq]) with 673 and
 .IP \[bu] 2
-\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with 709 valid values.
+\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with 662 valid values.
 .SS Counts
 .PP
 .TS
@@ -28,18 +28,18 @@ _
 T{
 male
 T}@T{
-380
+338
 T}@T{
-30
+28
 T}@T{
-22
+19
 T}
 T{
 female
 T}@T{
-262
+234
 T}@T{
-6
+3
 T}@T{
 9
 T}
@@ -61,20 +61,20 @@ _
 T{
 male
 T}@T{
-0.5360
+0.5357
 T}@T{
-0.0423
+0.0444
 T}@T{
-0.0310
+0.0301
 T}
 T{
 female
 T}@T{
-0.3695
+0.3708
 T}@T{
-0.0085
+0.0048
 T}@T{
-0.0127
+0.0143
 T}
 .TE
 .SS Row percentages
@@ -94,20 +94,20 @@ _
 T{
 male
 T}@T{
-0.8796
+0.8779
 T}@T{
-0.0694
+0.0727
 T}@T{
-0.0509
+0.0494
 T}
 T{
 female
 T}@T{
-0.9458
+0.9512
 T}@T{
-0.0217
+0.0122
 T}@T{
-0.0325
+0.0366
 T}
 .TE
 .SS Column percentages
@@ -127,20 +127,20 @@ _
 T{
 male
 T}@T{
-0.5919
+0.5909
 T}@T{
-0.8333
+0.9032
 T}@T{
-0.7097
+0.6786
 T}
 T{
 female
 T}@T{
-0.4081
+0.4091
 T}@T{
-0.1667
+0.0968
 T}@T{
-0.2903
+0.3214
 T}
 .TE
 .SS Chi-squared test
@@ -160,23 +160,23 @@ _
 T{
 X-squared
 T}@T{
-9.72
+12.64
 T}@T{
 2.00
 T}@T{
-0.01
+0.00
 T}
 .TE
 .PP
 It seems that a real association can be pointed out between
 \f[I]gender\f[] and \f[I]dwell\f[] by the \f[I]Pearson's Chi-squared
-test\f[] (χ=9.7188 at the degree of freedom being 2) at the significance
-level of 0.0078.
+test\f[] (χ=12.635 at the degree of freedom being 2) at the significance
+level of 0.0018.
 Based on Goodman and Kruskal's lambda it seems that \f[I]dwell\f[]
-(λ=0.7581) has an effect on \f[I]gender\f[] (λ=0) if we assume both
+(λ=0.7602) has an effect on \f[I]gender\f[] (λ=0) if we assume both
 variables to be nominal.
 The association between the two variables seems to be weak based on
-Cramer's V (0.0828).
+Cramer's V (0.1001).
 .SS Pearson's residuals
 .PP
 .TS
@@ -194,25 +194,25 @@ _
 T{
 male
 T}@T{
-\[en]2.9409
+\[en]3.0844
 T}@T{
-2.8277
+3.4312
 T}@T{
-1.1713
+0.7595
 T}
 T{
 female
 T}@T{
-2.9409
+3.0844
 T}@T{
-\[en]2.8277
+\[en]3.4312
 T}@T{
-\[en]1.1713
+\[en]0.7595
 T}
 .TE
 .SS Mosaic chart
 .PP
-[IMAGE: image (66ba5aa603e08fec150848bb688f0953.png)]
+[IMAGE: image (089332282780d32b96117afe8dba0470.png)]
 .SS Description
 .PP
 Returning the Chi-squared test of two given variables with count,
@@ -221,9 +221,9 @@ percentages and Pearson's residuals table.
 .PP
 Two variables specified:
 .IP \[bu] 2
-\[lq]email\[rq] (\[lq]Email usage\[rq]) with 709 and
+\[lq]email\[rq] (\[lq]Email usage\[rq]) with 672 and
 .IP \[bu] 2
-\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with 709 valid values.
+\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with 662 valid values.
 .SS Counts
 .PP
 .TS
@@ -245,12 +245,12 @@ T}@T{
 T}@T{
 0
 T}@T{
-1
+0
 T}
 T{
 very rarely
 T}@T{
-34
+30
 T}@T{
 1
 T}@T{
@@ -259,34 +259,34 @@ T}
 T{
 rarely
 T}@T{
-46
+41
 T}@T{
 3
 T}@T{
-2
+1
 T}
 T{
 sometimes
 T}@T{
-76
+67
 T}@T{
-6
+4
 T}@T{
 8
 T}
 T{
 often
 T}@T{
-113
+101
 T}@T{
-11
+10
 T}@T{
 5
 T}
 T{
 very often
 T}@T{
-106
+88
 T}@T{
 5
 T}@T{
@@ -295,9 +295,9 @@ T}
 T{
 always
 T}@T{
-255
+226
 T}@T{
-10
+9
 T}@T{
 7
 T}
@@ -319,65 +319,65 @@ _
 T{
 never
 T}@T{
-0.0169
+0.0192
 T}@T{
 0.0000
 T}@T{
-0.0014
+0.0000
 T}
 T{
 very rarely
 T}@T{
-0.0480
+0.0479
 T}@T{
-0.0014
+0.0016
 T}@T{
-0.0042
+0.0048
 T}
 T{
 rarely
 T}@T{
-0.0649
+0.0655
 T}@T{
-0.0042
+0.0048
 T}@T{
-0.0028
+0.0016
 T}
 T{
 sometimes
 T}@T{
-0.1072
+0.1070
 T}@T{
-0.0085
+0.0064
 T}@T{
-0.0113
+0.0128
 T}
 T{
 often
 T}@T{
-0.1594
+0.1613
 T}@T{
-0.0155
+0.0160
 T}@T{
-0.0071
+0.0080
 T}
 T{
 very often
 T}@T{
-0.1495
+0.1406
 T}@T{
-0.0071
+0.0080
 T}@T{
-0.0071
+0.0080
 T}
 T{
 always
 T}@T{
-0.3597
+0.3610
 T}@T{
-0.0141
+0.0144
 T}@T{
-0.0099
+0.0112
 T}
 .TE
 .SS Row percentages
@@ -397,65 +397,65 @@ _
 T{
 never
 T}@T{
-0.9231
+1.0000
 T}@T{
 0.0000
 T}@T{
-0.0769
+0.0000
 T}
 T{
 very rarely
 T}@T{
-0.8947
+0.8824
 T}@T{
-0.0263
+0.0294
 T}@T{
-0.0789
+0.0882
 T}
 T{
 rarely
 T}@T{
-0.9020
+0.9111
 T}@T{
-0.0588
+0.0667
 T}@T{
-0.0392
+0.0222
 T}
 T{
 sometimes
 T}@T{
-0.8444
+0.8481
 T}@T{
-0.0667
+0.0506
 T}@T{
-0.0889
+0.1013
 T}
 T{
 often
 T}@T{
-0.8760
+0.8707
 T}@T{
-0.0853
+0.0862
 T}@T{
-0.0388
+0.0431
 T}
 T{
 very often
 T}@T{
-0.9138
+0.8980
 T}@T{
-0.0431
+0.0510
 T}@T{
-0.0431
+0.0510
 T}
 T{
 always
 T}@T{
-0.9375
+0.9339
 T}@T{
-0.0368
+0.0372
 T}@T{
-0.0257
+0.0289
 T}
 .TE
 .SS Column percentages
@@ -475,65 +475,65 @@ _
 T{
 never
 T}@T{
-0.0187
+0.0212
 T}@T{
 0.0000
 T}@T{
-0.0323
+0.0000
 T}
 T{
 very rarely
 T}@T{
-0.0530
+0.0531
 T}@T{
-0.0278
+0.0312
 T}@T{
-0.0968
+0.1034
 T}
 T{
 rarely
 T}@T{
-0.0717
+0.0726
 T}@T{
-0.0833
+0.0938
 T}@T{
-0.0645
+0.0345
 T}
 T{
 sometimes
 T}@T{
-0.1184
+0.1186
 T}@T{
-0.1667
+0.1250
 T}@T{
-0.2581
+0.2759
 T}
 T{
 often
 T}@T{
-0.1760
+0.1788
 T}@T{
-0.3056
+0.3125
 T}@T{
-0.1613
+0.1724
 T}
 T{
 very often
 T}@T{
-0.1651
+0.1558
 T}@T{
-0.1389
+0.1562
 T}@T{
-0.1613
+0.1724
 T}
 T{
 always
 T}@T{
-0.3972
+0.4000
 T}@T{
-0.2778
+0.2812
 T}@T{
-0.2258
+0.2414
 T}
 .TE
 .SS Chi-squared test
@@ -553,18 +553,18 @@ _
 T{
 X-squared
 T}@T{
-14.37
+14.86
 T}@T{
 12.00
 T}@T{
-0.28
+0.25
 T}
 .TE
 .PP
 It seems that no real association can be pointed out between
 \f[I]email\f[] and \f[I]dwell\f[] by the \f[I]Pearson's Chi-squared
-test\f[] (χ=14.366 at the degree of freedom being 12) at the
-significance level of 0.2779.
+test\f[] (χ=14.864 at the degree of freedom being 12) at the
+significance level of 0.249.
 For this end no other statistical tests were performed.
 .SS Pearson's residuals
 .PP
@@ -583,69 +583,69 @@ _
 T{
 never
 T}@T{
-0.2187
+1.1493
 T}@T{
-\[en]0.8417
+\[en]0.8118
 T}@T{
-0.5908
+\[en]0.7709
 T}
 T{
 very rarely
 T}@T{
-\[en]0.2332
+\[en]0.4085
 T}@T{
-\[en]0.7060
+\[en]0.5910
 T}@T{
-1.0915
+1.1955
 T}
 T{
 rarely
 T}@T{
-\[en]0.0897
+0.2009
 T}@T{
-0.2717
+0.4916
 T}@T{
-\[en]0.1634
+\[en]0.7985
 T}
 T{
 sometimes
 T}@T{
-\[en]2.1192
+\[en]1.7459
 T}@T{
-0.7349
+\[en]0.0210
 T}@T{
-2.2426
+2.4853
 T}
 T{
 often
 T}@T{
-\[en]1.2678
+\[en]1.2822
 T}@T{
-1.9731
+1.9011
 T}@T{
-\[en]0.3048
+\[en]0.1829
 T}
 T{
 very often
 T}@T{
-0.3338
+\[en]0.1671
 T}@T{
-\[en]0.4116
+\[en]0.0048
 T}@T{
-\[en]0.0357
+0.2407
 T}
 T{
 always
 T}@T{
-2.2980
+2.0982
 T}@T{
-\[en]1.3407
+\[en]1.2561
 T}@T{
-\[en]1.8480
+\[en]1.6443
 T}
 .TE
 .SS Mosaic chart
 .PP
-[IMAGE: image (b26fc463113e2f16bc930c620677e929.png)]
+[IMAGE: image (b945f6de1aad4225593b3e9c0eb6d7dc.png)]
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

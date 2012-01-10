@@ -22,11 +22,11 @@
       3 variables provided.
     </para>
     <para>
-      The highest correlation coefficient (0.2364) is between
+      The highest correlation coefficient (0.2273) is between
       <emphasis>edu</emphasis> and <emphasis>age</emphasis> and the
-      lowest (-0.049) is between <emphasis>leisure</emphasis> and
+      lowest (-0.0338) is between <emphasis>leisure</emphasis> and
       <emphasis>age</emphasis>. It seems that the strongest association
-      (r=0.2364) is between <emphasis>edu</emphasis> and
+      (r=0.2273) is between <emphasis>edu</emphasis> and
       <emphasis>age</emphasis>.
     </para>
     <para>
@@ -78,10 +78,10 @@
               <entry>
               </entry>
               <entry>
-                0.2364 *** -0.
+                0.2273 *** -0.
               </entry>
               <entry>
-                0490
+                0338
               </entry>
             </row>
             <row>
@@ -89,13 +89,13 @@
                 edu
               </entry>
               <entry>
-                0.2364 ***
+                0.2273 ***
               </entry>
               <entry>
                 0.1
               </entry>
               <entry>
-                714 ***
+                732 ***
               </entry>
             </row>
             <row>
@@ -103,10 +103,10 @@
                 leisure
               </entry>
               <entry>
-                -0.0490
+                -0.0338
               </entry>
               <entry>
-                0.1714 ***
+                0.1732 ***
               </entry>
               <entry>
               </entry>
@@ -118,7 +118,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="f4c6c0be648793b84a85d267c1a8ecd3.png" />
+            <imagedata fileref="fc8b6edbaddadbdf0c5014f99fda88d6.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>

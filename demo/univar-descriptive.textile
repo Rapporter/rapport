@@ -4,19 +4,19 @@ This template will return descriptive statistics of a numerical, or a frequency 
 
 h3. _gender_ (&quot;Gender&quot;)
 
-The dataset has 709 observations with 709 valid values (missing: 0) in _gender_ (&quot;Gender&quot;). This variable seems to be a factor.
+The dataset has 709 observations with 673 valid values (missing: 36) in _gender_ (&quot;Gender&quot;). This variable seems to be a factor.
 
 h4. Base statistics
 
 |_. |_. *gender*|_. *N*|_. *pct*|_. *cumul.count*|_. *cumul.pct*|
-|1|male|432.00|60.93|432.00|60.93|
-|2|female|277.00|39.07|709.00|100.00|
-|Total||709.00|100.00|709.00|100.00|
+|1|male|410.00|60.92|410.00|60.92|
+|2|female|263.00|39.08|673.00|100.00|
+|Total||673.00|100.00|673.00|100.00|
 
 
 h4. Barplot
 
-!2a42fb1eb44bf1361b44216c6b0c16ee.png!
+!3ed92ab3ffc6e875335e7e8c774c35a8.png!
 
 
 It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
@@ -27,21 +27,21 @@ This template will return descriptive statistics of a numerical, or a frequency 
 
 h3. _age_ (&quot;Age&quot;)
 
-The dataset has 709 observations with 709 valid values (missing: 0) in _age_ (&quot;Age&quot;). This variable seems to be numeric.
+The dataset has 709 observations with 677 valid values (missing: 32) in _age_ (&quot;Age&quot;). This variable seems to be numeric.
 
 h4. Base statistics
 
 |_. *value*|_. *mean(age)*|_. *sd(age)*|_. *var(age)*|
-|(all)|24.56|6.84|46.78|
+|(all)|24.57|6.85|46.91|
 
 
 h4. Histogram
 
-!76fc57f9d2387aff730be60323f25624.png!
+!ac5d789145bdef09b10219ef16429f53.png!
 
 
 It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
 
-The standard deviation is 6.8399 (variance: 46.784). The expected value is around 24.557, somewhere between 24.054 and 25.061 (SE: 0.2569).
+The standard deviation is 6.8491 (variance: 46.911). The expected value is around 24.573, somewhere between 24.057 and 25.089 (SE: 0.2632).
 
-If we suppose that _Age_ is not near to a normal distribution (test: , skewness: 1.9568, kurtosis: 7.6428), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+If we suppose that _Age_ is not near to a normal distribution (test: , skewness: 1.9296, kurtosis: 7.4851), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.

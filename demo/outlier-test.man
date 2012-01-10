@@ -5,12 +5,12 @@
 This template will check if provided variable has any outliers.
 .SS Boxplot
 .PP
-[IMAGE: image (7e4826ae32ce6332453510e91fb95335.png)]
+[IMAGE: image (d24b3eb41da4d1de21d4bce0e30d2e1b.png)]
 .SS Lund test
 .PP
-It seems that 5 extreme values can be found in \[lq]Internet usage for
+It seems that 4 extreme values can be found in \[lq]Internet usage for
 educational purposes (hours per day)\[rq].
-These are: 10, 10, 12, 12, 12.
+These are: 10, 0.5, 1.5, 0.5.
 .SS Explanation
 .PP
 The above test for outliers was based on \f[I]lm(1 ~ edu)\f[]:
@@ -32,11 +32,11 @@ _
 T{
 (Intercept)
 T}@T{
-2.06
+2.05
 T}@T{
 0.08
 T}@T{
-26.92
+26.27
 T}@T{
 0.00
 T}
@@ -56,7 +56,7 @@ Technometrics, vol.\ 17, no.
 .SS Grubb's test
 .PP
 Grubbs test for one outlier shows that highest value 12 is an outlier
-(p=0.0003).
+(p=0.0002).
 .SS References
 .IP \[bu] 2
 Grubbs, F.E.
@@ -84,12 +84,12 @@ Stat.
 This template will check if provided variable has any outliers.
 .SS Boxplot
 .PP
-[IMAGE: image (7e4826ae32ce6332453510e91fb95335.png)]
+[IMAGE: image (d24b3eb41da4d1de21d4bce0e30d2e1b.png)]
 .SS Lund test
 .PP
-It seems that 5 extreme values can be found in \[lq]Internet usage for
+It seems that 4 extreme values can be found in \[lq]Internet usage for
 educational purposes (hours per day)\[rq].
-These are: 10, 10, 12, 12, 12.
+These are: 10, 0.5, 1.5, 0.5.
 .SS Explanation
 .PP
 The above test for outliers was based on \f[I]lm(1 ~ edu)\f[]:
@@ -111,11 +111,11 @@ _
 T{
 (Intercept)
 T}@T{
-2.06
+2.05
 T}@T{
 0.08
 T}@T{
-26.92
+26.27
 T}@T{
 0.00
 T}
@@ -135,7 +135,7 @@ Technometrics, vol.\ 17, no.
 .SS Grubb's test
 .PP
 Grubbs test for one outlier shows that highest value 12 is an outlier
-(p=0.0003).
+(p=0.0002).
 .SS References
 .IP \[bu] 2
 Grubbs, F.E.
@@ -163,12 +163,12 @@ Stat.
 This template will check if provided variable has any outliers.
 .SS Boxplot
 .PP
-[IMAGE: image (7e4826ae32ce6332453510e91fb95335.png)]
+[IMAGE: image (d24b3eb41da4d1de21d4bce0e30d2e1b.png)]
 .SS Lund test
 .PP
-It seems that 5 extreme values can be found in \[lq]Internet usage for
+It seems that 4 extreme values can be found in \[lq]Internet usage for
 educational purposes (hours per day)\[rq].
-These are: 10, 10, 12, 12, 12.
+These are: 10, 0.5, 1.5, 0.5.
 .SS Explanation
 .PP
 The above test for outliers was based on \f[I]lm(1 ~ edu)\f[]:
@@ -190,11 +190,11 @@ _
 T{
 (Intercept)
 T}@T{
-2.06
+2.05
 T}@T{
 0.08
 T}@T{
-26.92
+26.27
 T}@T{
 0.00
 T}

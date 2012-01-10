@@ -4,7 +4,7 @@ This template will return descriptive statistics of a numerical, or a frequency 
 
 === ''gender'' (&quot;Gender&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''gender'' (&quot;Gender&quot;). This variable seems to be a factor.
+The dataset has 709 observations with 673 valid values (missing: 36) in ''gender'' (&quot;Gender&quot;). This variable seems to be a factor.
 
 ==== Base statistics ====
 
@@ -23,25 +23,25 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''gender'
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">male</td>
-<td align="left">432.00</td>
-<td align="left">60.93</td>
-<td align="left">432.00</td>
-<td align="left">60.93</td>
+<td align="left">410.00</td>
+<td align="left">60.92</td>
+<td align="left">410.00</td>
+<td align="left">60.92</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">female</td>
-<td align="left">277.00</td>
-<td align="left">39.07</td>
-<td align="left">709.00</td>
+<td align="left">263.00</td>
+<td align="left">39.08</td>
+<td align="left">673.00</td>
 <td align="left">100.00</td>
 </tr>
 <tr class="odd">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">709.00</td>
+<td align="left">673.00</td>
 <td align="left">100.00</td>
-<td align="left">709.00</td>
+<td align="left">673.00</td>
 <td align="left">100.00</td>
 </tr>
 </tbody>
@@ -49,7 +49,7 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''gender'
 
 ==== Barplot ====
 
-[[Image:2a42fb1eb44bf1361b44216c6b0c16ee.png|frame|none]]
+[[Image:3ed92ab3ffc6e875335e7e8c774c35a8.png|frame|none]]
 
 It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
 
@@ -59,7 +59,7 @@ This template will return descriptive statistics of a numerical, or a frequency 
 
 === ''age'' (&quot;Age&quot;) ===
 
-The dataset has 709 observations with 709 valid values (missing: 0) in ''age'' (&quot;Age&quot;). This variable seems to be numeric.
+The dataset has 709 observations with 677 valid values (missing: 32) in ''age'' (&quot;Age&quot;). This variable seems to be numeric.
 
 ==== Base statistics ====
 
@@ -75,19 +75,19 @@ The dataset has 709 observations with 709 valid values (missing: 0) in ''age'' (
 <tbody>
 <tr class="odd">
 <td align="left">(all)</td>
-<td align="left">24.56</td>
-<td align="left">6.84</td>
-<td align="left">46.78</td>
+<td align="left">24.57</td>
+<td align="left">6.85</td>
+<td align="left">46.91</td>
 </tr>
 </tbody>
 </table>
 
 ==== Histogram ====
 
-[[Image:76fc57f9d2387aff730be60323f25624.png|frame|none]]
+[[Image:ac5d789145bdef09b10219ef16429f53.png|frame|none]]
 
 It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
 
-The standard deviation is 6.8399 (variance: 46.784). The expected value is around 24.557, somewhere between 24.054 and 25.061 (SE: 0.2569).
+The standard deviation is 6.8491 (variance: 46.911). The expected value is around 24.573, somewhere between 24.057 and 25.089 (SE: 0.2632).
 
-If we suppose that ''Age'' is not near to a normal distribution (test: , skewness: 1.9568, kurtosis: 7.6428), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+If we suppose that ''Age'' is not near to a normal distribution (test: , skewness: 1.9296, kurtosis: 7.4851), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.

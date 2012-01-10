@@ -19,8 +19,8 @@
   <section id="gender-gender">
     <title><emphasis>gender</emphasis> (&quot;Gender&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>gender</emphasis> (&quot;Gender&quot;). This
+      The dataset has 709 observations with 673 valid values (missing:
+      36) in <emphasis>gender</emphasis> (&quot;Gender&quot;). This
       variable seems to be a factor.
     </para>
     <section id="base-statistics">
@@ -63,16 +63,16 @@
                 male
               </entry>
               <entry>
-                432.00
+                410.00
               </entry>
               <entry>
-                60.93
+                60.92
               </entry>
               <entry>
-                432.00
+                410.00
               </entry>
               <entry>
-                60.93
+                60.92
               </entry>
             </row>
             <row>
@@ -83,13 +83,13 @@
                 female
               </entry>
               <entry>
-                277.00
+                263.00
               </entry>
               <entry>
-                39.07
+                39.08
               </entry>
               <entry>
-                709.00
+                673.00
               </entry>
               <entry>
                 100.00
@@ -102,13 +102,13 @@
               <entry>
               </entry>
               <entry>
-                709.00
+                673.00
               </entry>
               <entry>
                 100.00
               </entry>
               <entry>
-                709.00
+                673.00
               </entry>
               <entry>
                 100.00
@@ -124,7 +124,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="2a42fb1eb44bf1361b44216c6b0c16ee.png" />
+            <imagedata fileref="3ed92ab3ffc6e875335e7e8c774c35a8.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -145,8 +145,8 @@
   <section id="age-age">
     <title><emphasis>age</emphasis> (&quot;Age&quot;)</title>
     <para>
-      The dataset has 709 observations with 709 valid values (missing:
-      0) in <emphasis>age</emphasis> (&quot;Age&quot;). This variable
+      The dataset has 709 observations with 677 valid values (missing:
+      32) in <emphasis>age</emphasis> (&quot;Age&quot;). This variable
       seems to be numeric.
     </para>
     <section id="base-statistics-1">
@@ -179,13 +179,13 @@
                 (all)
               </entry>
               <entry>
-                24.56
+                24.57
               </entry>
               <entry>
-                6.84
+                6.85
               </entry>
               <entry>
-                46.78
+                46.91
               </entry>
             </row>
           </tbody>
@@ -198,7 +198,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="76fc57f9d2387aff730be60323f25624.png" />
+            <imagedata fileref="ac5d789145bdef09b10219ef16429f53.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -208,14 +208,14 @@
         times higher than the smallest value (16).
       </para>
       <para>
-        The standard deviation is 6.8399 (variance: 46.784). The
-        expected value is around 24.557, somewhere between 24.054 and
-        25.061 (SE: 0.2569).
+        The standard deviation is 6.8491 (variance: 46.911). The
+        expected value is around 24.573, somewhere between 24.057 and
+        25.089 (SE: 0.2632).
       </para>
       <para>
         If we suppose that <emphasis>Age</emphasis> is not near to a
-        normal distribution (test: , skewness: 1.9568, kurtosis:
-        7.6428), checking the median (23) might be a better option
+        normal distribution (test: , skewness: 1.9296, kurtosis:
+        7.4851), checking the median (23) might be a better option
         instead of the mean. The interquartile range (6) measures the
         statistics dispersion of the variable (similar to standard
         deviation) based on median.

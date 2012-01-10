@@ -8,12 +8,12 @@ This template will check if provided variable has any outliers.
 
 ### Boxplot
 
-![image](7e4826ae32ce6332453510e91fb95335.png)
+![image](d24b3eb41da4d1de21d4bce0e30d2e1b.png)
 
 ### Lund test
 
-It seems that 5 extreme values can be found in "Internet usage for
-educational purposes (hours per day)". These are: 10, 10, 12, 12, 12.
+It seems that 4 extreme values can be found in "Internet usage for
+educational purposes (hours per day)". These are: 10, 0.5, 1.5, 0.5.
 
 #### Explanation
 
@@ -21,7 +21,7 @@ The above test for outliers was based on *lm(1 \~ edu)*:
 
                 **Estimate**   **Std. Error**   **t value**   **Pr(\>|t|)**
   ------------- -------------- ---------------- ------------- ---------------
-  (Intercept)   2.06           0.08             26.92         0.00
+  (Intercept)   2.05           0.08             26.27         0.00
 
 #### References
 
@@ -33,7 +33,7 @@ The above test for outliers was based on *lm(1 \~ edu)*:
 ### Grubb's test
 
 Grubbs test for one outlier shows that highest value 12 is an outlier
-(p=0.0003).
+(p=0.0002).
 
 #### References
 
@@ -56,12 +56,12 @@ This template will check if provided variable has any outliers.
 
 ### Boxplot
 
-![image](7e4826ae32ce6332453510e91fb95335.png)
+![image](d24b3eb41da4d1de21d4bce0e30d2e1b.png)
 
 ### Lund test
 
-It seems that 5 extreme values can be found in "Internet usage for
-educational purposes (hours per day)". These are: 10, 10, 12, 12, 12.
+It seems that 4 extreme values can be found in "Internet usage for
+educational purposes (hours per day)". These are: 10, 0.5, 1.5, 0.5.
 
 #### Explanation
 
@@ -69,7 +69,7 @@ The above test for outliers was based on *lm(1 \~ edu)*:
 
                 **Estimate**   **Std. Error**   **t value**   **Pr(\>|t|)**
   ------------- -------------- ---------------- ------------- ---------------
-  (Intercept)   2.06           0.08             26.92         0.00
+  (Intercept)   2.05           0.08             26.27         0.00
 
 #### References
 
@@ -81,7 +81,7 @@ The above test for outliers was based on *lm(1 \~ edu)*:
 ### Grubb's test
 
 Grubbs test for one outlier shows that highest value 12 is an outlier
-(p=0.0003).
+(p=0.0002).
 
 #### References
 
@@ -104,12 +104,12 @@ This template will check if provided variable has any outliers.
 
 ### Boxplot
 
-![image](7e4826ae32ce6332453510e91fb95335.png)
+![image](d24b3eb41da4d1de21d4bce0e30d2e1b.png)
 
 ### Lund test
 
-It seems that 5 extreme values can be found in "Internet usage for
-educational purposes (hours per day)". These are: 10, 10, 12, 12, 12.
+It seems that 4 extreme values can be found in "Internet usage for
+educational purposes (hours per day)". These are: 10, 0.5, 1.5, 0.5.
 
 #### Explanation
 
@@ -117,5 +117,5 @@ The above test for outliers was based on *lm(1 \~ edu)*:
 
                 **Estimate**   **Std. Error**   **t value**   **Pr(\>|t|)**
   ------------- -------------- ---------------- ------------- ---------------
-  (Intercept)   2.06           0.08             26.92         0.00
+  (Intercept)   2.05           0.08             26.27         0.00
 

@@ -8,7 +8,7 @@ Hello, world!
 
 I have just specified a ''Variable'' in this template named to '''leisure'''. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of ''leisure'' is 3.2221!
+And wow, the mean of ''leisure'' is 3.1994!
 
 ==== Descriptive statistics ====
 
@@ -22,17 +22,19 @@ And wow, the mean of ''leisure'' is 3.2221!
 <th align="left">'''Mean'''</th>
 <th align="left">'''3rd Qu.'''</th>
 <th align="left">'''Max.'''</th>
+<th align="left">'''NA's'''</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">0.00</td>
-<td align="left">2.00</td>
-<td align="left">3.00</td>
-<td align="left">3.22</td>
-<td align="left">4.00</td>
-<td align="left">12.00</td>
+<td align="left">0.0</td>
+<td align="left">2.0</td>
+<td align="left">3.0</td>
+<td align="left">3.2</td>
+<td align="left">4.0</td>
+<td align="left">12.0</td>
+<td align="left">37.0</td>
 </tr>
 </tbody>
 </table>
@@ -49,7 +51,7 @@ Hello, world!
 
 I have just specified a ''Variable'' in this template named to '''leisure'''. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of ''leisure'' is 3.2221!
+And wow, the mean of ''leisure'' is 3.1994!
 
 '''For more detailed statistics, you should have set <tt>desc=TRUE</tt>!'''
 
@@ -63,13 +65,13 @@ Hello, world!
 
 I have just specified a ''Variable'' in this template named to '''leisure'''. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of ''leisure'' is 3.2221!
+And wow, the mean of ''leisure'' is 3.1994!
 
 '''For more detailed statistics, you should have set <tt>desc=TRUE</tt>!'''
 
 ==== Histogram ====
 
-[[Image:fe9021434b8db586fac253cd0fedbfc2.png|frame|none]]
+[[Image:9542b7929dcd934208ee4f18bde6ff31.png|frame|none]]
 
 == Description ==
 
@@ -81,10 +83,10 @@ Hello, world!
 
 I have just specified a ''Variable'' in this template named to '''leisure'''. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of ''leisure'' is 3.2221!
+And wow, the mean of ''leisure'' is 3.1994!
 
 '''For more detailed statistics, you should have set <tt>desc=TRUE</tt>!'''
 
 ==== Histogram ====
 
-[[Image:3f5075e30419f077ee974a022dd89e33.png|frame|none]]
+[[Image:f72d3b7413bcb88fce740c2ab229411a.png|frame|none]]

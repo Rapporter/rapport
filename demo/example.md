@@ -15,13 +15,13 @@ I have just specified a *Variable* in this template named to
 **leisure**. The label of this variable is "Internet usage in leisure
 time (hours per day)".
 
-And wow, the mean of *leisure* is 3.2221!
+And wow, the mean of *leisure* is 3.1994!
 
 #### Descriptive statistics
 
-      **Min.**   **1st Qu.**   **Median**   **Mean**   **3rd Qu.**   **Max.**
-  --- ---------- ------------- ------------ ---------- ------------- ----------
-  1   0.00       2.00          3.00         3.22       4.00          12.00
+      **Min.**   **1st Qu.**   **Median**   **Mean**   **3rd Qu.**   **Max.**   **NA's**
+  --- ---------- ------------- ------------ ---------- ------------- ---------- ----------
+  1   0.0        2.0           3.0          3.2        4.0           12.0       37.0
 
 The 5 highest values are: *12*, *12*, *10*, *10* and *10*.
 
@@ -38,7 +38,7 @@ I have just specified a *Variable* in this template named to
 **leisure**. The label of this variable is "Internet usage in leisure
 time (hours per day)".
 
-And wow, the mean of *leisure* is 3.2221!
+And wow, the mean of *leisure* is 3.1994!
 
 **For more detailed statistics, you should have set `desc=TRUE`!**
 
@@ -55,13 +55,13 @@ I have just specified a *Variable* in this template named to
 **leisure**. The label of this variable is "Internet usage in leisure
 time (hours per day)".
 
-And wow, the mean of *leisure* is 3.2221!
+And wow, the mean of *leisure* is 3.1994!
 
 **For more detailed statistics, you should have set `desc=TRUE`!**
 
 #### Histogram
 
-![image](fe9021434b8db586fac253cd0fedbfc2.png)
+![image](9542b7929dcd934208ee4f18bde6ff31.png)
 
 ## Description
 
@@ -76,10 +76,10 @@ I have just specified a *Variable* in this template named to
 **leisure**. The label of this variable is "Internet usage in leisure
 time (hours per day)".
 
-And wow, the mean of *leisure* is 3.2221!
+And wow, the mean of *leisure* is 3.1994!
 
 **For more detailed statistics, you should have set `desc=TRUE`!**
 
 #### Histogram
 
-![image](3f5075e30419f077ee974a022dd89e33.png)
+![image](f72d3b7413bcb88fce740c2ab229411a.png)

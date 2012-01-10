@@ -12,9 +12,9 @@ variables.
 
 3 variables provided.
 
-The highest correlation coefficient (0.2364) is between /edu/ and /age/
-and the lowest (-0.049) is between /leisure/ and /age/. It seems that
-the strongest association (r=0.2364) is between /edu/ and /age/.
+The highest correlation coefficient (0.2273) is between /edu/ and /age/
+and the lowest (-0.0338) is between /leisure/ and /age/. It seems that
+the strongest association (r=0.2273) is between /edu/ and /age/.
 
 Higly correlated (r < 0.7 or r > 0.7) variables: -
 
@@ -27,13 +27,13 @@ Uncorrelated (-0.2 < r < 0.2) variables:
 
 |           | *age*        | *edu*            | *leisure*   |
 |-----------+--------------+------------------+-------------|
-| age       |              | 0.2364 *** -0.   | 0490        |
-| edu       | 0.2364 ***   | 0.1              | 714 ***     |
-| leisure   | -0.0490      | 0.1714 ***       |             |
+| age       |              | 0.2273 *** -0.   | 0338        |
+| edu       | 0.2273 ***   | 0.1              | 732 ***     |
+| leisure   | -0.0338      | 0.1732 ***       |             |
 
 #+CAPTION: 
 
-[[f4c6c0be648793b84a85d267c1a8ecd3.png]]
+[[fc8b6edbaddadbdf0c5014f99fda88d6.png]]
 ** Description
 
 This template will return the correlation matrix of supplied numerical

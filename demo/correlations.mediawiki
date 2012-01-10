@@ -6,7 +6,7 @@ This template will return the correlation matrix of supplied numerical variables
 
 3 variables provided.
 
-The highest correlation coefficient (0.2364) is between ''edu'' and ''age'' and the lowest (-0.049) is between ''leisure'' and ''age''. It seems that the strongest association (r=0.2364) is between ''edu'' and ''age''.
+The highest correlation coefficient (0.2273) is between ''edu'' and ''age'' and the lowest (-0.0338) is between ''leisure'' and ''age''. It seems that the strongest association (r=0.2273) is between ''edu'' and ''age''.
 
 Higly correlated (r &lt; 0.7 or r &gt; 0.7) variables: -
 
@@ -30,25 +30,25 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 <tr class="odd">
 <td align="left">age</td>
 <td align="left"></td>
-<td align="left">0.2364 *** -0.</td>
-<td align="left">0490</td>
+<td align="left">0.2273 *** -0.</td>
+<td align="left">0338</td>
 </tr>
 <tr class="even">
 <td align="left">edu</td>
-<td align="left">0.2364 ***</td>
+<td align="left">0.2273 ***</td>
 <td align="left">0.1</td>
-<td align="left">714 ***</td>
+<td align="left">732 ***</td>
 </tr>
 <tr class="odd">
 <td align="left">leisure</td>
-<td align="left">-0.0490</td>
-<td align="left">0.1714 ***</td>
+<td align="left">-0.0338</td>
+<td align="left">0.1732 ***</td>
 <td align="left"></td>
 </tr>
 </tbody>
 </table>
 
-[[Image:f4c6c0be648793b84a85d267c1a8ecd3.png|frame|none]]
+[[Image:fc8b6edbaddadbdf0c5014f99fda88d6.png|frame|none]]
 
 == Description ==
 

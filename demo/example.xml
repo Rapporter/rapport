@@ -28,12 +28,13 @@
       (hours per day)&quot;.
     </para>
     <para>
-      And wow, the mean of <emphasis>leisure</emphasis> is 3.2221!
+      And wow, the mean of <emphasis>leisure</emphasis> is 3.1994!
     </para>
     <section id="descriptive-statistics">
       <title>Descriptive statistics</title>
       <informaltable>
-        <tgroup cols="7">
+        <tgroup cols="8">
+          <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
           <colspec align="left" />
@@ -63,6 +64,9 @@
               <entry>
                 <emphasis role="strong">Max.</emphasis>
               </entry>
+              <entry>
+                <emphasis role="strong">NA's</emphasis>
+              </entry>
             </row>
           </thead>
           <tbody>
@@ -71,22 +75,25 @@
                 1
               </entry>
               <entry>
-                0.00
+                0.0
               </entry>
               <entry>
-                2.00
+                2.0
               </entry>
               <entry>
-                3.00
+                3.0
               </entry>
               <entry>
-                3.22
+                3.2
               </entry>
               <entry>
-                4.00
+                4.0
               </entry>
               <entry>
-                12.00
+                12.0
+              </entry>
+              <entry>
+                37.0
               </entry>
             </row>
           </tbody>
@@ -118,7 +125,7 @@
       (hours per day)&quot;.
     </para>
     <para>
-      And wow, the mean of <emphasis>leisure</emphasis> is 3.2221!
+      And wow, the mean of <emphasis>leisure</emphasis> is 3.1994!
     </para>
     <para>
       <emphasis role="strong">For more detailed statistics, you should
@@ -144,7 +151,7 @@
       (hours per day)&quot;.
     </para>
     <para>
-      And wow, the mean of <emphasis>leisure</emphasis> is 3.2221!
+      And wow, the mean of <emphasis>leisure</emphasis> is 3.1994!
     </para>
     <para>
       <emphasis role="strong">For more detailed statistics, you should
@@ -156,7 +163,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="fe9021434b8db586fac253cd0fedbfc2.png" />
+            <imagedata fileref="9542b7929dcd934208ee4f18bde6ff31.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -182,7 +189,7 @@
       (hours per day)&quot;.
     </para>
     <para>
-      And wow, the mean of <emphasis>leisure</emphasis> is 3.2221!
+      And wow, the mean of <emphasis>leisure</emphasis> is 3.1994!
     </para>
     <para>
       <emphasis role="strong">For more detailed statistics, you should
@@ -194,7 +201,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="3f5075e30419f077ee974a022dd89e33.png" />
+            <imagedata fileref="f72d3b7413bcb88fce740c2ab229411a.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
