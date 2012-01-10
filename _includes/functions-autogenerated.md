@@ -5,9 +5,17 @@
 ##### ius2008: Internet Usage Survey
 ###### Description:
 <p>This dataset contains data gathered in a survey ofInternet usage in Serbian population in the period fromApril to May 2008. During 90-day period, there weregathered 709 valid responses via on-line distributedquestionnaire.</p>
-###### Details:
+ ###### Details:
 <p> However, this dataset does not contain the original data,as some <code>NA</code> s were added to dataset afterwards, inorder to demonstrate functionality of <em>rapport</em> helpers.</p>
-###### Examples:
+<p> Dataset variables can be divided into 3 sets: <em>demographic data</em> , <em>Internet usage aspects</em> and <em>application usage/content preference</em> .</p>
+<p> <strong>Demographic variables</strong></p>
+<ul> <li>  <p>   <em>gender</em>   - respondent&apos;s gender(factor with 2 levels: &quot;male&quot; and &quot;female&quot;)  </p> </li> <li>  <p>   <em>age</em>   - respondent&apos;s age  </p> </li> <li>  <p>   <em>dwell</em>   -dwelling (factor with 3 levels: &quot;village&quot;, &quot;small town&quot;and &quot;city&quot;)  </p> </li> <li>  <p>   <em>student</em>   - is respondent astudent? (factor with 2 levels: &quot;no&quot; and &quot;yes&quot;)  </p> </li> <li>  <p>   <em>partner</em>   - partnership status (factor with 3levels: &quot;single&quot;, &quot;in a relationship&quot; and &quot;married&quot;)  </p> </li></ul>
+<p> <strong>Internet usage aspects</strong></p>
+<p>Following variables depict various aspects of Internetusage:</p>
+<ul> <li>  <p>   <em>edu</em>   - time spent on-line ineducational purposes (expressed in hours)  </p> </li> <li>  <p>   <em>leisure</em>   - time spent on-line in leisure time(expressed in hours)  </p> </li> <li>  <p>   <em>net.required</em>   - isInternet access required for your proffesion? (factorwith 5 levels: &quot;never&quot;, &quot;rarely&quot;, &quot;sometimes&quot;, &quot;often&quot;and &quot;always&quot;)  </p> </li> <li>  <p>   <em>net.pay</em>   - who pays forInternet access? (factor with 5 levels: &quot;parents&quot;,&quot;school/faculty&quot;, &quot;employer&quot;, &quot;self-funded&quot; and &quot;other&quot;)  </p> </li> <li>  <p>   <em>net.use</em>   - how long is respondent usingInternet? (ordered factor with 7 levels, ranging from&quot;less than 6 months&quot; to &quot;more than 5 years&quot;)  </p> </li></ul>
+<p> <strong>Application usage and on-line content preference</strong></p>
+<p>These variables include data on the use of Internetapplications and content available on the Internet.Practically, they contain responses from a set of 8questions on a five-point Likert scale.</p>
+<ul> <li>  <p>   <em>chatim</em>   - usage of chat and/or instant messagingapplications  </p> </li> <li>  <p>   <em>game</em>   - usage of on-line games  </p> </li> <li>  <p>   <em>surf</em>   - frequency of web-surfing  </p> </li> <li>  <p>   <em>email</em>   - usage of e-mail applications  </p> </li> <li>  <p>   <em>download</em>   - frequency of file downloading  </p> </li> <li>  <p>   <em>forum</em>   - attendance at web-forums  </p> </li> <li>  <p>   <em>socnet</em>   - usage of social networking services  </p> </li> <li>  <p>   <em>xxx</em>   - traffic to pornographic websites  </p> </li></ul>###### Examples:
 <div class="highlight"><pre><code class="r">rapport(&quot;example&quot;, ius2008, var = &quot;it.leisure&quot;)
 </code></pre>
 </div>
