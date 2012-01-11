@@ -130,9 +130,6 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         file <- tempfile(fileext = '.png', ...)
         png(file)
 
-        ## temporary environment for potentially running partial stuff later
-        env.temp <- env.evaluate
-        
         ## running evalute for checking outputs and grabbing warnings/errors
         eval <- suppressWarnings(try(evaluate(src, envir = env.evaluate), silent=TRUE))
 
@@ -146,8 +143,8 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                     type         = 'error',
                     msg = list(
                             messages = NULL,
-                            warnings = NULL,    #TODO: might just return the source of the element that caused the error (?)
-                            errors   = sprintf('**Error** in "%s": "%s"', paste(src, collapse=' + '), ifelse(class(eval)=='try-error', gsub('Error in parse.(text) = string, src = src) : <text>:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
+                            warnings = NULL,
+                            errors   = sprintf('**Error** in "%s": "%s"',  ifelse(paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')=='', paste(src, collapse=' + '), paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')), ifelse(class(eval)=='try-error', gsub('Error in parse.(text) = string, src = src) : <text>:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
             )
             return(res[output])
         }
@@ -156,8 +153,8 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         warnings <- grep('warning', lapply(eval, function(x) class(x)))
         if (length(warnings) == 0) {
             warnings <- NULL
-        } else      #TODO: might just return the source of the element that caused the warning (?)
-            warnings <- sprintf('**Warning** in "%s": "%s"', paste(src, collapse=' ; '), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
+        } else
+            warnings <- sprintf('**Warning** in "%s": "%s"', paste(sapply(eval[warnings], function(x) x$call), collapse = " + "), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
 
         ### good code survived here!
 
@@ -184,16 +181,18 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         ## any returned value?
         if (length(eval.sources.outputs) > 0) {
             if (is.logical(graph)) {
-                ## last element returns value (happily)
+                ## if last element returns value (happily)
                 if (eval.sources.last.outputs == tail(eval.sources.n, 1)) {
                     returns <- suppressWarnings(eval(parse(text = src), envir = env))
-                } else {
+                } else {    # if not the last element returns the value (lame)
                     ## eval in temp environment all elements before last element that really do output
+                    env.temp <- env
+                    ## run commands before the last element which does output something
                     if (eval.sources.last.outputs != 1)
                         lapply(1:(which(eval.sources.last.outputs == eval.sources.n)-1), function(i) {
                             suppressWarnings(eval(parse(text = eval.sources[[i]]$src), envir = env.temp))
                         })
-                    ## grab output at last
+                    ## grab output at last with last element with output
                     returns <- suppressWarnings(eval(parse(text = eval.sources[[eval.sources.last.outputs]]$src), envir = env.temp))
                     ## and run all stuff in main environment for consistency
                     suppressWarnings(eval(parse(text = src), envir = env))

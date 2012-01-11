@@ -19,6 +19,7 @@ rapport:::check.type("factor")
 rapport:::check.type("character[1,20]")
 rapport:::check.type("fee, fi, foo, fam")
 rapport:::check.type("FALSE")
+rapport:::check.type("number[3]=123.456")
 }
 }
 
