@@ -1,3 +1,6 @@
+## this is really outdated!
+## and should be renamed to start with "test" after rewrite
+
 context('Parser gets a right header')
 
 test_that('All newline, no whitespace on the left', {
