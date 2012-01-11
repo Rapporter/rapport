@@ -51,25 +51,66 @@
 \value{
   a list of parsed elements each containg: src (the command
   run), output (what the command returns, NULL if nothing
-  returned), type (class of returned object if any) and
-  messages: warnings (if any returned by the command run,
-  otherwise set to NULL) and errors (if any returned by the
-  command run, otherwise set to NULL)
+  returned, path to image file if a plot was genereted),
+  type (class of returned object if any) and messages:
+  warnings (if any returned by the command run, otherwise
+  set to NULL) and errors (if any returned by the command
+  run, otherwise set to NULL). See Details above.
 }
 \description{
   This function takes either a list of integer indices
-  which point to position of R code in body character
-  vector, or a list of strings with actual R code, then
-  evaluates each list element, and returns a list with two
-  elements: a character value with R code and generated
-  output. The output can be NULL (eg. \code{x <-
-  runif(100)}), a table (eg. \code{table(mtcars$am,
-  mtcars$cyl)} or any other R object. If a graph is plotted
-  in the given text, the returned object is a string
-  specifying the path to the saved png in temporary
-  directory (see: \code{tmpfile()}). The function takes
-  care of warnings and errors too, please check the the
-  returned value below.
+  which point to position of R code in \code{body}
+  character vector, or a vector/list of strings with actual
+  R code, then evaluates each list element, and returns a
+  list with four elements: a character value with R code,
+  generated output, class of generated output and possible
+  error/warning messages. If a graph is plotted in the
+  given text, the returned object is a string specifying
+  the path to the saved png in temporary directory. Please
+  see Details below.
+}
+\details{
+  If input strings are given as vector or not nested list
+  (or even only one string), the returned list's length
+  equals to the length of the input - as each string is
+  evalued as separate R code in the same environment. If a
+  nested list is provided like \code{list(c('runif(1)',
+  'runif(1)'))} then all strings found in a list element is
+  evaled at one run so the length of returned list equals
+  to the length of parent list. See examples below.
+
+  As \code{\link{evals}} tries to grab the plots
+  internally, pleas do not run commands that set graphic
+  device or \code{\link{dev.off()}} if you want to use
+  \code{\link{evals}} to save the images and return the
+  path of generated png(s). Eg. running
+  \code{evals(c('png("/tmp/x.png")', 'plot(1:10)',
+  'dev.off()'))} would fail.
+
+  Returned result values: list with the following elements
+  \itemize{ \item \emph{src} - a character value with
+  specified R code.  \item \emph{output} - generated
+  output. NULL if nothing is returned. If any string
+  returned an R object while evaling then the \emph{last} R
+  object will be returned as a raw R object. If a graph is
+  plotted in the given text, the returned object is a
+  string specifying the path to the saved png in temporary
+  directory (see: \code{tmpfile()}). If multiple plots was
+  run in the same run (see: nested lists as inputs above)
+  then the last plot is saved. If graphic device was
+  touched, then no other R objects will be returned.  \item
+  \emph{type} - class of generated output. "NULL" if
+  nothing is returned, "image" if the graphic device was
+  touched, "error" if some error occured.  \item \emph{msg}
+  - possible messages grabbed while evaling specified R
+  code with the following structure: \itemize{ \item
+  \emph{messages} - string of possible diagnostic
+  message(s) \item \emph{warnings} - string of possible
+  warning message(s) \item \emph{errors} - string of
+  possible error message(s) } }
+
+  Please check the examples carefully below to get a
+  detailed overview of \code{\link{evals}}.
 }
 \examples{
 \dontrun{
@@ -101,12 +142,20 @@ evals(txt, classes=c('numeric', 'list'))
 
 ## handling warnings
 evals('chisq.test(mtcars$gear, mtcars$hp)')
+evals(list(c('chisq.test(mtcars$gear, mtcars$am)', 'pi', 'chisq.test(mtcars$gear, mtcars$hp)')))
+evals(c('chisq.test(mtcars$gear, mtcars$am)', 'pi', 'chisq.test(mtcars$gear, mtcars$hp)'))
 
 ## handling errors
 evals('runiff(20)')
 evals('Old MacDonald had a farm\\\\dots')
 evals('## Some comment')
 evals(list(c('runiff(20)', 'Old MacDonald had a farm?')))
+evals(c('mean(1:10)', 'no.R.function()'))
+evals(list(c('mean(1:10)', 'no.R.function()')))
+evals(c('no.R.object', 'no.R.function()', 'very.mixed.up(stuff)'))
+evals(list(c('no.R.object', 'no.R.function()', 'very.mixed.up(stuff)')))
+evals(c('no.R.object', 'Old MacDonald had a farm\\\\dots', 'pi'))
+evals(list(c('no.R.object', 'Old MacDonald had a farm\\\\dots', 'pi')))
 
 ## hooks
 hooks <- list('numeric'=round, 'matrix'=ascii)
