@@ -4,8 +4,9 @@ Author:       Aleksandar Blagotić
 Description:  Overview of several normality tests and diagnostic plots that can screen departures from normality.
 Packages:     nortest
 
-var       | numeric   | Test variables     | Variables to test for normality
+var       | *numeric  | Test variables     | Variables to test for normality
 nc.plot   | TRUE      | Normal curve plot  | Plot normal curve?
+qq.line   | TRUE      | Q-Q plot line      | Add line to Q-Q plot?
 head-->
 
 # Introduction
@@ -38,8 +39,8 @@ Various hypothesis tests can be applied in order to test if the distribution of 
 
 <br />
 <%
-p <- .05
 (h <- htest(var, shapiro.test, lillie.test, ad.test, pearson.test))
+p <- .05
 %>
 <br />
 
@@ -67,7 +68,14 @@ rp.hist(var)
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
 <%
-rp.qqplot(var)
+if (qq.line){
+   qqmath(var, panel=function(x){
+               panel.qqmath(x)
+               panel.qqmathline(x, distribution = qnorm)
+   }, xlab = "Theoretical Quantiles", ylab = "Empirical Quantiles")
+} else {
+   rp.qqplot(var)
+}
 %>
 
 ## Kernel Density Plot

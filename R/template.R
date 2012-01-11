@@ -565,7 +565,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
         input.ok    <- input.names[input.mandatory] %in% names(i)
         ## take default inputs in an account
         if (!all(input.ok))
-            stop("you haven't provided all inputs required by the template!\n", 'missing inputs: ', paste(input.names[input.mandatory], collapse = ', '))
+            stop("you haven't provided all inputs required by the template!\n", 'missing inputs: ', p(input.names[input.mandatory], ''))
 
         if(is.null(data))
             stop('"data" not provided, but is required')
