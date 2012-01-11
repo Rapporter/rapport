@@ -6,9 +6,11 @@ Description: This template will return descriptive statistics of numerical, or f
 Packages: 
 Example:    rapport('multivar-descriptive', data=ius2008, vars=c("gender", 'age'))
             rapport('multivar-descriptive', data=ius2008, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx"))
-vars          | variable[1,10] | Variables        | Categorical or numerical variables. The template will determine the measurement level of the given variable and will return detailed frequency tables or appropriate descriptive statistics for numerics. 
+            rapport('multivar-descriptive', data=mtcars, vars=c('hp','wt'))
+vars        | variable[1,10]| Variables         | Categorical or numerical variables. The template will determine the measurement level of the given variable and will return detailed frequency tables or appropriate descriptive statistics for numerics.
+nortest     | TRUE          | Normality tests   | Should normality tests be performed on numerical variables?  
 head-->
 
 <%
-lapply(lapply(vars, rp.name), function(x) rapport('univar-descriptive', data=rp.data, var=x))
+lapply(lapply(vars, rp.name), function(x) rapport('univar-descriptive', data=rp.data, var=x, nortest=nortest))
 %>
