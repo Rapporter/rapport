@@ -253,7 +253,7 @@ tpl.inputs <- function(fp, use.header = TRUE){
 ##' tpl.example('example', 1:2)
 ##' tpl.example('example', 'all')
 ##' }
-tpl.example <- function(fp, index = NULL) {
+tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 
     examples <- tpl.meta(fp)$example
     n.examples <- 1:length(examples)
@@ -292,9 +292,9 @@ tpl.example <- function(fp, index = NULL) {
         stopf('Invalid template ID found in: "%s"', paste(old.index, collapse = ', '))
 
     if (length(index) > 1)
-        return(lapply(examples[index], function(x) eval(parse(text = x))))
+        return(lapply(examples[index], function(x) eval(parse(text = x), envir = env)))
     else
-        eval(parse(text = examples[index]))
+        eval(parse(text = examples[index]), envir = env)
 }
 
 
@@ -739,7 +739,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
     }), recursive = FALSE)
 
     res <- list(
-                metadata = meta,
+                meta     = meta,
                 inputs   = inputs,
                 report   = report,
                 call     = match.call()

@@ -168,49 +168,37 @@ print.rp.info <- function(x, type = c('text', 'pandoc')){
 ##' print(rapport('example', data=mtcars, x='hp', y='mpg'), metadata=T, inputs=T, body=F)
 ##' }
 ##' @export
-print.rapport <- function(x, metadata=FALSE, inputs=FALSE, body=TRUE) {
+print.rapport <- function(x, metadata = FALSE, inputs = FALSE, body = TRUE) {
 
     if (!is.rapport(x)) stop('Wrong type of argument (!rapport) supplied!')
-    ## (is this really necessary?)
 
-    ## print metadata
-    if (metadata) {
-        header <- paste('\n    ', x$metadata$title, ' (by ', x$metadata$author, ')\n', sep='')
-        cat(header)
-        cat('    ', rep('=', nchar(header)-6), '\n', sep='')
-        cat('   ', x$metadata$desc, '\n')
-    }
-
-    ## print vars and inputs (specified)
-    if (inputs) {
-        cat('\n    Supplied inputs\n    ', rep('=', 15), '\n', sep='')
-        llply(x$inputs, function(x) {
-            cat('     * `', x$name, '` is at least ',x$limit$min, ' but no more than ', x$limit$max, ' ', x$type, ' variable(s): ', x$desc, '\n', sep='')
-        })
-        cat('\n')
-    }
+    if (metadata)  x$meta               # print metadata
+    if (inputs)    x$inputs             # print inputs
 
     ## print report body
-    if (body) {
-        for (part in x$report) {
-            cat('\n')
+    if (body){
+        for (part in x$report){
+            robj  <- part$robjects[[1]]
+            rout  <- robj$output
+            rwarn <- robj$msg$warnings
+
+            catn()
             switch(part$type,
                    'block' = {
-                       ## if (part$robjects[[1]]$type == 'error')   ## error handling done in \code{rapport}
-                       ##    cat(part$robjects[[1]]$msg$errors)     ##
-                       if (!is.null(part$robjects[[1]]$output)) {
-                           if (any(part$robjects[[1]]$type == 'image'))
-                               cat(as.character(part$robjects[[1]]$output))
+                       if (!is.null(rout)){
+                           if (any(robj$type == 'image'))
+                               cat(as.character(rout))
                            else
-                               cat(rp.prettyascii(part$robjects[[1]]$output))
+                               cat(rp.prettyascii(rout))
                        }
-                       if (!is.null(part$robjects[[1]]$msg$warnings))  # warnings
-                           cat('\n'); cat(part$robjects[[1]]$msg$warnings)
+
+                       if (!is.null(rwarn))
+                           cat('\n', rwarn)
                    },
                    'heading' = cat(capture.output(section(part$text$eval, part$level))),
                    cat(rp.prettyascii(as.character(part$text$eval)))
                    )
-            cat('\n')
+            catn()
         }
     }
 }
