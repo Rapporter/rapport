@@ -585,10 +585,10 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
 
         lapply(inputs, function(x){
 
-            name    <- x$name                      # input name
+            name          <- x$name                # input name
             input.value   <- i[[name]]             # input value (supplied by user)
             input.len     <- length(input.value)   # input length (not to confuse with limit)
-            limit   <- x$limit                     # input limits
+            limit         <- x$limit               # input limits
             input.type    <- x$type                # input type
             input.default <- x$default             # default value (if any)
 
