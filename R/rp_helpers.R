@@ -560,18 +560,25 @@ check.type <- function(x){
 
     x <- trim.space(x, TRUE)
 
-    re1 <- '^(\\*)?(character|complex|factor|logical|numeric|variable|number|string)(\\[([[:digit:]]+)(,([[:digit:]]+))?\\]|)$'
-    re2 <- '^(\\*)?(TRUE|FALSE)$'
-    re3 <- '^(\\*)?[[:alnum:]\\._]+(, ?[[:alnum:]\\._]+){1,}$'
-    re4 <- '^(\\*)?(string)(\\[([[:digit:]]+)(,([[:digit:]]+))?\\]|)( ?= ?(.+|))?$'
-    re5 <- '^(\\*)?(number)(\\[([[:digit:]]+)(,([[:digit:]]+))?\\]|)( ?= ?(([[:digit:]]+(\\.[[:digit:]]+)?)|))?$'
+    if (x == '')
+        stop('empty input type definition')
 
-    ## 1st option: logical[TRUE|FALSE]
+    ## regexes
+    re.lim <- '(\\[([[:digit:]]+)(,([[:digit:]]+))?\\]|)' # limits
+    fmt <- '^(\\*)?%s%s%s$'
+    re1 <- sprintf(fmt, '(character|complex|factor|logical|numeric|variable|number|string)', re.lim, '') # variable regex
+    re2 <- '^(TRUE|FALSE)$'             # boolean regex
+    re3 <- '^([[:alnum:]\\._]+(, ?[[:alnum:]\\._]+){1,})$' # CSV regex
+    re4 <- sprintf(fmt, '(string)', re.lim, '( ?= ?(.+|))?') # string regex
+    re5 <- sprintf(fmt, '(number)', re.lim, '( ?= ?(([[:digit:]]+(\\.[[:digit:]]+)?)|))?') # number regex
+
+    ## 1st option: TRUE|FALSE
     if (grepl(re2, x))
         res <- list(
                     type = 'boolean',
                     limit = list(min = 1, max = 1),
-                    default = gsub(re2, '\\2', x) == TRUE
+                    default = gsub(re2, '\\1', x) == TRUE,
+                    mandatory = FALSE
                     )
     ## 2nd option: string
     else if (grepl(re4, x))
@@ -580,36 +587,44 @@ check.type <- function(x){
                     limit = check.limit(gsub(re4, '\\3', x)),
                     default = {
                         if (grepl('^=', gsub(re4, '\\7', x)))
-                            (gsub(re4, '\\8', x))
+                            gsub(re4, '\\8', x)
                         else
-                            NULL
-                    })
+                            NA_character_
+                    },
+                    mandatory = grepl('^\\*', x)
+                    )
     ## 3rd option: number
     else if (grepl(re5, x))
         res <- list(
                     type = 'number',
                     limit = check.limit(gsub(re5, '\\3', x)),
-                    default = as.numeric(gsub(re5, '\\8', x))
+                    default = {
+                        if (grepl('^=', gsub(re5, '\\7', x)))
+                            as.numeric(gsub(re5, '\\8', x))
+                        else
+                            NA_real_
+                    },
+                    mandatory = grepl('^\\*.+', x)
                     )
     ## 4th option: variable[min(, max)]
     else if (grepl(re1, x))
         res <- list(
                     type = gsub(re1, '\\2', x),
                     limit = check.limit(gsub(re1, '\\3', x)),
-                    default = NULL
+                    default = NULL,
+                    mandatory = grepl('^\\*', x)
                     )
     ## 5th option: list, of, comma, separated, values (first one is default)
     else if (grepl(re3, x))
         res <- list(
                     type = 'option',
                     limit = list(min = 1, max = 1),
-                    default = strsplit(gsub(re3, '\\2', x), ', ?')[[1]]
+                    default = strsplit(gsub(re3, '\\1', x), ', ?')[[1]],
+                    mandatory = FALSE
                     )
-    ## 6th option: something went wrong, shit happens, life's a bitch, etc. throw error
+    ## 6th option: something went wrong
     else
-        stopf('input definition error in: "%s"', x)
-
-    res$mandatory <- grepl('^\\*', x)   # set mandatory field
+        stopf('input type definition error in: "%s"', x)
 
     return(res)
 }

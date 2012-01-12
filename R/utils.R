@@ -14,6 +14,23 @@ is.string <- function(x){
 }
 
 
+##' Numbers
+##'
+##' Checks if provided object is a number, i.e. a length-one numeric vector.
+##' @param x an object to check
+##' @return a logical value indicating whether provided object is a string
+##' @examples
+##' is.number(3)              # [1] TRUE
+##' is.number(3:4)            # [1] FALSE
+##' is.number("3")            # [1] FALSE
+##' is.number(NaN)            # [1] TRUE
+##' is.number(NA_integer_)    # [1] TRUE
+##' @export
+is.number <- function(x){
+    is.numeric(x) && length(x) == 1
+}
+
+
 ##' Check integers
 ##'
 ##' This function tests if given variable "appears" to be an integer. To qualify as such, two conditions need to be satisfied: it should be stored as \code{\link{numeric}} object, and it should pass regular expression test if it consists only of digits.

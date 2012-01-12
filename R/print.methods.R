@@ -16,12 +16,13 @@ is.rapport <- function(x)  inherits(x, 'rapport')
 print.rp.meta <- function(x, type = c('text', 'pandoc')){
 
     ind <- c('title', 'author', 'email', 'desc', 'example')
-    email <- ifelse(is.null(x$email), '', sprintf(' (%s)', x$email)) # show email if any
-    exmpl <- ifelse(is.null(x$example), 'no examples found in template', x$example) # examples
+    email <- if (is.null(x$email)) '' else sprintf(' (%s)', x$email) # show email if any
+    exmpl <- if (is.null(x$example)) 'no examples found in template' else x$example # examples
     other.meta <- x[!names(x) %in% ind]
+
     fn <- function(x){
         titles <- names(x)
-        content <- sapply(x, function(y) sprintf('%s', ifelse(is.null(y), 'NA', y)))
+        content <- sapply(x, function(y) sprintf('%s', if (is.null(y)) 'NA' else y))
         res <- c('\n', sprintf('%s:\t%s\n', titles, content))
     }
 
@@ -38,14 +39,15 @@ print.rp.meta <- function(x, type = c('text', 'pandoc')){
            pandoc = {
                catn(
                     sprintf('\n# %s\n\n', x$title),
-                    sprintf('by `@%s`\n\n', x$author, ifelse(is.null(x$email), '', sprintf(' (%s)', x$email))),
+                    sprintf('by `@%s`\n\n', x$author, email),
                     sprintf('_%s_\n', x$desc),
                     fn(other.meta),
-                    sprintf('\n%s', c('Examples:', x$example))
+                    sprintf('\n %s', c('Examples:', exmpl))
                     )
            },
            stop('unknown metadata print type')
            )
+    catn()
 
     invisible(x)
 }
@@ -61,33 +63,37 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
 
     switch(match.arg(type),
            text = {
-               catn('\nInput parameters\n')
+               catn('\nInput parameters')
 
                if (length(x) == 0){
                    catn('no inputs required')
                } else {
                    sapply(x, function(x){
 
-                       catn(
-                            sprintf('`%s` (%s)\n', x$name, x$label),
-                            sprintf('  %s\n', x$desc),
-                            sprintf('    - type:\t%s\n', x$type),
-                            sprintf('    - limits:\t%s\n',
-                                    if (diff(unlist(x$limit)) == 0){
-                                        sprintf('exactly %s variable%s', x$limit$min, ifelse(x$limit$min > 1, 's', ''))
-                                    } else {
-                                        sprintf('from %s, up to %s variables', x$limit$min, x$limit$max)
-                                    }),
-                            if (!is.null(x$default)){
-                                def <- x$default
-                                if (is.character(def))
-                                    def <- p(def, '"')
-                                paste('    - default value:', def, collapse = '\t')
-                            },
-                            sprintf('\n     - mandatory:\t%s', ifelse(x$mandatory, 'yes', 'no')),
-                            '\n'
-                            )
+                       mand <- if (is.null(x$mandatory))
+                           ''
+                       else
+                           ifelse(x$mandatory, ' - required!', '')
+
+                       cat(
+                           '\n',
+                           sprintf('`%s` (%s)%s\n', x$name, x$label, mand),
+                           sprintf('  %s\n', x$desc),
+                           sprintf('    - type:\t%s\n', x$type),
+                           sprintf('    - limits:\t%s\n',
+                                   if (diff(unlist(x$limit)) == 0){
+                                       sprintf('exactly %s variable%s', x$limit$min, ifelse(x$limit$min > 1, 's', ''))
+                                   } else {
+                                       sprintf('from %s, up to %s variables', x$limit$min, x$limit$max)
+                                   }),
+                           if (!is.null(x$default)){
+                               def <- x$default
+                               if (is.character(def))
+                                   def <- p(def, '"', copula = 'or')
+                               sprintf('    - default value:\t%s\n', def)
+                           })
                    })
+                   catn()
                }
            },
            pandoc = {
@@ -97,6 +103,11 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
                    catn('`no inputs required`')
                } else {
                    sapply(x, function(x){
+
+                       mand <- if (is.null(x$mandatory))
+                           ''
+                       else
+                           ifelse(x$mandatory, ' - **required!**', '')
 
                        catn(
                             sprintf('* **%s** (%s)\n', x$name, x$label),
@@ -111,13 +122,11 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
                             if (!is.null(x$default)){
                                 def <- x$default
                                 if (is.character(def))
-                                    def <- p(def, '"')
-                                paste('    - _default value:_', def, collapse = '\t')
-                            },
-                            sprintf('\n     - mandatory:\t%s', ifelse(x$mandatory, 'yes', 'no')),
-                            '\n'
-                            )
+                                    def <- p(def, '"', copula = 'or')
+                                sprintf('    - _default value:_\t%s\n', def)
+                            })
                    })
+                   catn()
                }
            },
            stop('unknown input print type')

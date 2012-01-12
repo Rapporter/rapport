@@ -3,6 +3,9 @@ Title:        Normality Tests
 Author:       Aleksandar Blagotić
 Description:  Overview of several normality tests and diagnostic plots that can screen departures from normality.
 Packages:     nortest
+Example:      rapport("nortest", ius2008, var = "leisure")
+              rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
+              rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
 
 var       | *numeric  | Test variables     | Variables to test for normality
 nc.plot   | TRUE      | Normal curve plot  | Plot normal curve?
@@ -37,12 +40,13 @@ Various hypothesis tests can be applied in order to test if the distribution of 
  - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
  - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
 
-<br />
+
+
 <%
 (h <- htest(var, shapiro.test, lillie.test, ad.test, pearson.test))
 p <- .05
 %>
-<br />
+
 
 So, let's draw some conclusions based on applied normality test:
 

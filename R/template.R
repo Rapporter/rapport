@@ -559,13 +559,16 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
         }
         ## inputs required, carry on...
     } else {
-        ## check if template input names match the provided input names
-        input.mandatory <- sapply(inputs, function(x) structure(x$mandatory, .Names = x$name)) # mandatory inputs
+        ## check mandatory inputs
+        input.mandatory <- sapply(inputs, function(x){
+            mand <- if (is.null(x$mandatory)) FALSE else x$mandatory
+            structure(mand, .Names = x$name) # mandatory inputs
+        })
         input.names <- names(input.mandatory)
         input.ok    <- input.names[input.mandatory] %in% names(i)
-        ## take default inputs in an account
+        ## take default inputs into account
         if (!all(input.ok))
-            stop("you haven't provided all inputs required by the template!\n", 'missing inputs: ', p(input.names[input.mandatory], ''))
+            stopf("you haven't provided a value for %s", p(input.names[input.mandatory], '"'))
 
         if(is.null(data))
             stop('"data" not provided, but is required')
@@ -579,8 +582,8 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
         lapply(inputs, function(x){
 
             name          <- x$name                # input name
-            var.names     <- i[[name]]             # variable names, d'uh! O_o
-            var.len       <- length(var.names)     # number of variables
+            var.value     <- i[[name]]             # variable value
+            var.len       <- length(var.value)     # variable length
             limit         <- x$limit               # input limits
             input.type    <- x$type                # input type
             input.default <- x$default             # default value (if any)
@@ -597,65 +600,61 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
                               factor    = is.factor,
                               boolean   = , # a length-one logical
                               logical   = is.logical,
-                              number    = , # number
                               numeric   = is.numeric,
                               variable  = is.variable,
-                              string    = is.string,
+                              string    = is.string, # string input
+                              number    = is.number, # number input
                               stopf('unknown type: "%s"', input.type)
                               )
 
-            ## no default value (this is the common scenario)
-            if (is.null(input.default)){
-                ## see if ALL variable names exist in data
-                if (!all(var.names %in% data.names))
-                    stopf('provided data.frame does not contain column named "%s"', var.names)
+            ## if any of our "custom" input types
+            ## values are not extracted from data.frame in this case
+            ## for custom types, default value is always assigned!!!
+            if (input.type %in% c('number', 'string', 'option', 'boolean')){
 
-                var.value <- e$rp.data[, var.names] # variable value
+                ## the ones specified in the template should take precedance
+                var.value <- if (is.null(var.value)) input.default[1] else var.value
 
-                ## check if types match
+                ## check types
+                if (!do.call(type.fn, list(var.value)))
+                    stopf('%s is not of %s type', var.value, input.type)
+
+                ## CSV input (allow multi match?)
+                if (input.type == 'option')
+                    var.value <- match.arg(var.value, input.default)
+
+            } else {
+                ## ain't a "custom" input type, so it should be extracted from data.frame
+
+                ## check if ALL variable names exist in data
+                if (!all(var.value %in% data.names))
+                    stopf('provided data.frame does not contain column named "%s"', var.value)
+
+                var.value <- e$rp.data[, var.value] # variable value
+
+                ## check types
                 if (!all(sapply(var.value, type.fn) == TRUE))
-                    stopf('error in "%s": variable "%s" should be %s, but %s is provided', name, var.names, input.type, mode(var.value))
+                    stopf('error in "%s": variable "%s" should be %s, but %s is provided', name, var.value, input.type, mode(var.value))
 
-                ## check labels and assign stuff to envir
-                if (is.data.frame(var.value)) { # multiple variables (data.frame)
-                    for (t in names(var.value)) {
+                ## check labels
+                ## multiple variables supplied (probably data.frame, but recursive is OK)
+                if (is.recursive(var.value)){
+                    for (t in names(var.value)){
                         if (rp.label(var.value[, t]) == 't')
                             var.value[, t] <- structure(var.value[, t], label = t, name = t)
                         else
                             var.value[, t] <- structure(var.value[, t], name = t)
                     }
-
-                } else {                # one variable
+                } else {
+                    ## one variable
                     if (rp.label(var.value) == 'var.value')
-                        var.value <- structure(var.value, label = var.names, name = var.names)
+                        var.value <- structure(var.value, label = var.value, name = var.value)
                     else
-                        var.value <- structure(var.value, name = var.names)
+                        var.value <- structure(var.value, name = var.value)
                 }
-
-            } else {
-                ## default value present (either a logical or an option)
-                ## the ones specified in the template should take precedance
-                input.default <- ifelse(is.null(var.names), input.default, var.names)
-
-                if (!do.call(type.fn, list(input.default)))
-                    stopf('%s is not of %s type', var.names, input.type)
-
-                ## character value (allow multi match?)
-                if (is.character(input.default)){
-                    var.value <- x$default[pmatch(input.default, x$default)]
-                    if (is.na(var.value))
-                        stop('"%s" cannot be matched with "%s"', var.names, paste(input.default, collapse = ', '))
-                }
-
-                ## logical value
-                if (is.logical(input.default))
-                    var.value <- input.default
-
-                if (is.numeric(input.default))
-                    var.value <- input.default
             }
 
-            ## template inputs
+            ## assign stuff
             assign(name, var.value, env = e)                       # input value
             assign(sprintf('%s.iname', name), name, env = e)       # input name
             assign(sprintf('%s.ilabel', name), x$label, env = e)   # input label
