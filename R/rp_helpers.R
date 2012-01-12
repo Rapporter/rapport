@@ -665,6 +665,12 @@ rp.round <- function(x, scientific=FALSE) {
 ##' rp.prettyascii(22/7)
 ##' rp.prettyascii(matrix(runif(25), 5, 5))
 ##' rp.prettyascii(lm(hp~wt, mtcars))
+##' rp.prettyascii(summary(mtcars$hp))
+##' rp.prettyascii(htest(rnorm(100), shapiro.test))
+##' rp.prettyascii(table(mtcars$am,mtcars$gear))
+##' rp.prettyascii(data.frame(x=1:2, y=3:4))
+##' rp.prettyascii(mtcars)
+##' rp.prettyascii(table(mtcars$am))
 ##' }
 ##' @export
 rp.prettyascii <- function(x) {
@@ -688,10 +694,15 @@ rp.prettyascii <- function(x) {
 
     if (is.data.frame(x) | is.table(x)){
         rownms <- rownames(x)
-        if (!is.null(rownms))
-            return(paste(capture.output(ascii(x, include.rownames = !all(rownms == 1:nrow(x)))), collapse='\n'))
-        else
-            return(paste('<!-- endlist -->\n', paste(capture.output(ascii(x, !is.null(rownms))), collapse='\n'), sep=''))
+        include.rownames <- !is.null(rownms)
+        if (!include.rownames) 
+            pre.txt <- ''
+        else {
+            include.rownames <- !all(rownms == 1:nrow(x))
+            ## not so neat hack to close all possible lists before exporting a table with missing first column header
+            pre.txt <- ifelse(include.rownames, '<!-- endlist -->\n', '')
+        }
+        return(paste(pre.txt, paste(capture.output(ascii(x, include.rownames = include.rownames)), collapse='\n'), sep=''))
     }
 
     return(paste(capture.output(ascii(x)), collapse='\n'))
