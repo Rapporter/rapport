@@ -1,0 +1,16 @@
+## test_file('test-rp.prettyascii.R')
+context('rp.prettyasccii: should no throw error')
+
+test_that('running examples', {
+    expect_is(rp.prettyascii('Hallo, World?'), 'character')
+    expect_is(rp.prettyascii(22/7), 'character')
+    expect_is(rp.prettyascii(matrix(runif(25), 5, 5)), 'character')
+    expect_is(rp.prettyascii(lm(hp~wt, mtcars)), 'character')
+    expect_is(rp.prettyascii(summary(mtcars$hp)), 'character')
+    expect_is(rp.prettyascii(htest(rnorm(100), shapiro.test)), 'character')
+    expect_is(rp.prettyascii(table(mtcars$am,mtcars$gear)), 'character')
+    expect_is(rp.prettyascii(data.frame(x=1:2, y=3:4)), 'character')
+    expect_is(rp.prettyascii(mtcars), 'character')
+    expect_is(rp.prettyascii(table(mtcars$am)), 'character')
+    expect_is(rp.prettyascii(1:30), 'character')
+})
