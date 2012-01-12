@@ -81,7 +81,7 @@
 
   As \code{\link{evals}} tries to grab the plots
   internally, pleas do not run commands that set graphic
-  device or \code{\link{dev.off()}} if you want to use
+  device or \code{\link{dev.off}} if you want to use
   \code{\link{evals}} to save the images and return the
   path of generated png(s). Eg. running
   \code{evals(c('png("/tmp/x.png")', 'plot(1:10)',

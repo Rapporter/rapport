@@ -78,14 +78,14 @@ htest <- function(x, ..., use.labels = TRUE){
     test.len <- length(test)
     test.name <- sapply(substitute(list(...)), deparse)[-1]
 
-    if (is.atomic(x)){
+    if (is.atomic(x) || is.formula(x)){
         if (test.len == 1){
             res <- htest.short(each(test[[1]])(x))
         } else {
             res <- sapply(each(test)(x), htest.short)
         }
         res <- data.frame(t(res))
-        x.nms <- rp.label(x, use.labels)
+        x.nms <- if (is.formula(x)) deparse(substitute(x)) else rp.label(x, use.labels)
         x.len <- 1
     } else {
         if (test.len == 1){

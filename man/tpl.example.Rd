@@ -2,7 +2,7 @@
 \alias{tpl.example}
 \title{Template Examples}
 \usage{
-  tpl.example(fp, index = NULL)
+  tpl.example(fp, index = NULL, env = .GlobalEnv)
 }
 \arguments{
   \item{fp}{a character vector containing template name
@@ -16,6 +16,9 @@
   numbers are provided, the examples are returned in a
   list. Using 'all' (character string) as index will return
   all examples.}
+
+  \item{env}{an environment where example will be evaluated
+  (defaults to \code{.GlobalEnv})}
 }
 \description{
   Runs the "Example" field found in specified template.

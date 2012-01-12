@@ -81,7 +81,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         if (append != 'FALSE') stop('Wrong append parameter!')
         if (is.null(rp)) stop('There is no sense in exporting a blank report :)')
         r <- Report$new()
-        r$title <- as.character(rp$metadata['title'])
+        r$title <- as.character(rp$meta['title'])
         r$author <- as.character(getOption('rp.user'))
         r$email <- as.character(getOption('rp.email'))
     }
@@ -93,7 +93,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
     ## exporting multiple rapport classes at once
     if (class(rp) == 'list') {
         if (all(lapply(rp, class) == 'rapport')) {
-            r$title <- as.character(rp[[1]]$metadata['title'])
+            r$title <- as.character(rp[[1]]$meta['title'])
             for (i in 1:length(rp)) {
             	r <- tpl.export(rp[[i]], file=file, append=r, create=FALSE, open=FALSE, date=date)
             }
@@ -109,7 +109,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         if(class(rp) == 'rapport') {
             if (desc) {
                 r$addSection('Description', 2)
-                r$add(paragraph(as.character(rp$metadata['desc'])))
+                r$add(paragraph(as.character(rp$meta['desc'])))
             }
 
             ## body
@@ -156,13 +156,13 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
 ##' Rapport to HTML
 ##'
 ##' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
-##' @param ... parameters passed directly to \code{\link{rapport}} 
+##' @param ... parameters passed directly to \code{\link{rapport}}
 ##' @export
 rapport.html <- function(...) tpl.export(rapport(...))
 
 ##' Rapport to odt
 ##'
 ##' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
-##' @param ... parameters passed directly to \code{\link{rapport}} 
+##' @param ... parameters passed directly to \code{\link{rapport}}
 ##' @export
 rapport.odt <- function(...) tpl.export(rapport(...), format='odt')

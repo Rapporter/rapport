@@ -665,28 +665,35 @@ rp.round <- function(x, scientific=FALSE) {
 ##' rp.prettyascii(22/7)
 ##' rp.prettyascii(matrix(runif(25), 5, 5))
 ##' rp.prettyascii(lm(hp~wt, mtcars))
-##'
 ##' }
 ##' @export
 rp.prettyascii <- function(x) {
+
     if (is.rapport(x))
         return(x)
+
     if (is.list(x))
         if (all(lapply(x, class) == 'rapport'))
             return(l_ply(x, print))
+
     if (is.numeric(x)) {
-        class <- class(x); x <- rp.round(x);
+        class <- class(x)
+        x <- rp.round(x)
         if (length(x) != 1)
             class(x) <- class
     }
+
     if (is.vector(x))
         return(paste(x, collapse=', '))
-    if (is.data.frame(x) | is.table(x))
-        if (all(row.names(x) == 1:nrow(x))) {
-            return(paste(capture.output(ascii(x, include.rownames = FALSE)), collapse='\n'))
-        } else {    ## not so neat hack to close all possible lists before exporting a table with missing first column header
-            return(paste('<!-- endlist -->\n', paste(capture.output(ascii(x)), collapse='\n'), sep=''))
-        }
+
+    if (is.data.frame(x) | is.table(x)){
+        rownms <- rownames(x)
+        if (!is.null(rownms))
+            return(paste(capture.output(ascii(x, include.rownames = !all(rownms == 1:nrow(x)))), collapse='\n'))
+        else
+            return(paste('<!-- endlist -->\n', paste(capture.output(ascii(x, !is.null(rownms))), collapse='\n'), sep=''))
+    }
+
     return(paste(capture.output(ascii(x)), collapse='\n'))
 }
 
