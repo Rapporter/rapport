@@ -681,9 +681,12 @@ rp.prettyascii <- function(x) {
     }
     if (is.vector(x))
         return(paste(x, collapse=', '))
-    if (is.data.frame(x))
-        if (all(row.names(x) == 1:nrow(x)))
+    if (is.data.frame(x) | is.table(x))
+        if (all(row.names(x) == 1:nrow(x))) {
             return(paste(capture.output(ascii(x, include.rownames = FALSE)), collapse='\n'))
+        } else {    ## not so neat hack to close all possible lists before exporting a table with missing first column header
+            return(paste('<!-- endlist -->\n', paste(capture.output(ascii(x)), collapse='\n'), sep=''))
+        }
     return(paste(capture.output(ascii(x)), collapse='\n'))
 }
 
