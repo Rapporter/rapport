@@ -47,32 +47,45 @@ is.heading <- function(x){
 ##' Get variable name
 ##'
 ##' This function returns character value previously stored in variable's \code{name} attribute. If none found, the function fallbacks to object's name.
-##' @param var an atomic vector
+##' @param x an R (atomic or data.frame/list) object to extract names from
 ##' @return a character value with variable's label
 ##' @examples \dontrun{
 ##' rp.name(mtcars$am)
 ##' x <- 1:10; rp.name(x)
 ##' }
 ##' @export
-rp.name <- function(var){
+rp.name <- function(x){
 
-    if (missing(var))
+    if (missing(x))
         stop('variable not provided')
 
-    if (!is.variable(var))
-        stop('name can only be assigned to a variable')
-
-    lbl <- attr(var, 'name')
-
-    if (is.null(lbl)) {
-        return (tail(as.character(substitute(var)), 1)) # return variable name if no label
-    } else {
-        if (length(lbl) > 1)
-            warning('variable name is not a length-one vector, only the first element is displayed')
-        return (attr(var, 'name'))       # return variable label
+    if (is.atomic(x)){
+        n <- attr(x, which = 'name', exact = TRUE)
+        if (is.null(n)) {
+            return (tail(as.character(substitute(x)), 1)) # return variable name if no label
+        } else {
+            if (length(n) > 1)
+                warning('variable name is not a length-one vector, only the first element is displayed')
+            return(attr(x, 'name'))                       # return variable label
+        }
     }
-}
+    
+    if (is.recursive(x)){
+        n <- sapply(x, attr, which = 'name', exact = TRUE)
+        n.nil <- sapply(n, is.null)
+        
+        ## no labels found
+        if (all(n.nil)){
+            n <- names(n)
+        } else
+            n[n.nil] <- names(n)[n.nil]
 
+        return(n)
+    }
+    
+    stop('Wrong R object type provided!')
+}
+            
 
 ##' Get variable label
 ##'
@@ -92,11 +105,14 @@ rp.name <- function(var){
 ##' @export
 rp.label <- function(x, fallback = TRUE){
 
+    if (missing(x))
+        stop('variable not provided')
+
     if (is.atomic(x)){
         lbl <- attr(x, which = 'label', exact = TRUE)
         if (is.null(lbl)){
             if (fallback)
-                lbl <- deparse(substitute(x))
+                lbl <- tail(as.character(substitute(var)), 1)
             else
                 stop('atomic vector has no label')
         } else {
