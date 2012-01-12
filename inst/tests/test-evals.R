@@ -1,4 +1,4 @@
-## test_file('evals.R')
+## test_file('test-evals.R')
 context('evals: no output generated')
 
 test_that('Variable assignement', {
