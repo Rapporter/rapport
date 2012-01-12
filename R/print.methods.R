@@ -78,7 +78,7 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
                        cat(
                            '\n',
                            sprintf('`%s` (%s)%s\n', x$name, x$label, mand),
-                           sprintf('  %s\n', x$desc),
+                           sprintf(' %s\n', x$desc),
                            sprintf('    - type:\t%s\n', x$type),
                            sprintf('    - limits:\t%s\n',
                                    if (diff(unlist(x$limit)) == 0){

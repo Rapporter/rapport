@@ -167,6 +167,11 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         do.call(extract.meta, x)
     })
 
+    ## store only packages that arent' listed in dependencies
+    pkg.dep <- strsplit(packageDescription("rapport")$Depends, "[,[:space:]]+")[[1]]
+    l$packages <- lapply(strsplit(l$packages, ','), trim.space, leading = TRUE, trailing = TRUE)[[1]]
+    l$packages <- setdiff(l$packages, pkg.dep)
+
     if (!is.null(l$example)){
         ## select all "untagged" lines after Example: that contain rapport(<smth>) string
         ## but it will not check if they're syntactically correct
@@ -175,6 +180,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         ind <- ind[!ind %in% ind.start]
         l$example <- c(l$example, header[ind])
     }
+
 
     structure(l, class = 'rp.meta')
 }
@@ -543,10 +549,8 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
     pkgs   <- meta$packages                                # required packages
 
     ## load required packages (if any)
-    if (!is.null(pkgs)){
-        packs <- lapply(strsplit(pkgs, ','), trim.space, leading = TRUE, trailing = TRUE)[[1]]
-        suppressMessages(lapply(packs, require, character.only = TRUE))
-    }
+    if (!is.null(pkgs))
+        suppressMessages(lapply(pkgs, require, character.only = TRUE))
 
     ## no inputs provided
     if (length(inputs) == 0){
@@ -581,16 +585,16 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
 
         lapply(inputs, function(x){
 
-            name          <- x$name                # input name
-            var.value     <- i[[name]]             # variable value
-            var.len       <- length(var.value)     # variable length
-            limit         <- x$limit               # input limits
+            name    <- x$name                      # input name
+            input.value   <- i[[name]]             # input value (supplied by user)
+            input.len     <- length(input.value)   # input length (not to confuse with limit)
+            limit   <- x$limit                     # input limits
             input.type    <- x$type                # input type
             input.default <- x$default             # default value (if any)
 
             ## check limits
-            if (var.len < limit$min & var.len > limit$max)
-                stopf('%s has length of %d, and should be between %d and %d', name, var.len, limit$min, limit$max)
+            if (input.len < limit$min & input.len > limit$max)
+                stopf('%s has length of %d, and should be between %d and %d', name, input.len, limit$min, limit$max)
 
             ## check type
             type.fn <- switch(input.type,
@@ -613,59 +617,72 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
             if (input.type %in% c('number', 'string', 'option', 'boolean')){
 
                 ## the ones specified in the template should take precedance
-                var.value <- if (is.null(var.value)) input.default[1] else var.value
+                val <- if (is.null(input.value)) input.default[1] else input.value
 
                 ## check types
-                if (!do.call(type.fn, list(var.value)))
-                    stopf('%s is not of %s type', var.value, input.type)
+                if (!do.call(type.fn, list(val)))
+                    stopf('%s is not of %s type', val, input.type)
 
                 ## CSV input (allow multi match?)
                 if (input.type == 'option')
-                    var.value <- match.arg(var.value, input.default)
+                    val <- match.arg(input.value, input.default)
 
             } else {
                 ## ain't a "custom" input type, so it should be extracted from data.frame
 
                 ## check if ALL variable names exist in data
-                if (!all(var.value %in% data.names))
-                    stopf('provided data.frame does not contain column named "%s"', var.value)
+                if (!all(input.value %in% data.names))
+                    stopf('provided data.frame does not contain column named "%s"', input.value)
 
-                var.value <- e$rp.data[, var.value] # variable value
+                val <- e$rp.data[, input.value] # variable value
 
-                ## check types
-                if (!all(sapply(var.value, type.fn) == TRUE))
-                    stopf('error in "%s": variable "%s" should be %s, but %s is provided', name, var.value, input.type, mode(var.value))
-
-                ## check labels
                 ## multiple variables supplied (probably data.frame, but recursive is OK)
-                if (is.recursive(var.value)){
-                    for (t in names(var.value)){
-                        if (rp.label(var.value[, t]) == 't')
-                            var.value[, t] <- structure(var.value[, t], label = t, name = t)
+                if (is.recursive(val)){
+
+                    stopifnot(is.data.frame(val)) # yepp... data.frame only
+
+                    ## check types
+                    val.types <- sapply(val, type.fn)
+                    val.modes <- sapply(val, mode)
+                    if (!all(val.types == TRUE))
+                        stopf('error in "%s": %s should be %s! (provided: %s)', name, p(input.value[!val.types], '"'), input.type, p(val.modes[!val.types], '"'))
+
+                    ## check labels
+                    for (t in names(val)){
+                        if (rp.label(val[, t]) == 't')
+                            val[, t] <- structure(val[, t], label = t, name = t)
                         else
-                            var.value[, t] <- structure(var.value[, t], name = t)
+                            val[, t] <- structure(val[, t], name = t)
                     }
                 } else {
-                    ## one variable
-                    if (rp.label(var.value) == 'var.value')
-                        var.value <- structure(var.value, label = var.value, name = var.value)
+                    ## one variable extracted from data.frame
+
+                    ## check type
+                    val.types <- do.call(type.fn, list(val))
+                    val.modes <- mode(val)
+                    if (!val.types)
+                        stopf('error in "%s": "%s" should be %s! (provided: %s)', name, input.value, input.type, val.modes)
+
+                    ## check label
+                    if (rp.label(val) == 'val')
+                        val <- structure(val, label = input.value, name = input.value)
                     else
-                        var.value <- structure(var.value, name = var.value)
+                        val <- structure(val, name = input.value)
                 }
             }
 
             ## assign stuff
-            assign(name, var.value, env = e)                       # input value
+            assign(name, val, env = e)                     # input value
             assign(sprintf('%s.iname', name), name, env = e)       # input name
             assign(sprintf('%s.ilabel', name), x$label, env = e)   # input label
             assign(sprintf('%s.idesc', name), x$desc, env = e)     # input description
-            if (is.data.frame(var.value)){
-                assign(sprintf('%s.name', name), names(var.value), env = e) # variable names
-                assign(sprintf('%s.label', name), sapply(var.value, rp.label), env = e) # variable labels
-                assign(sprintf('%s.len', name), length(var.value), env = e) # add input length
-            } else if (is.atomic(var.value)) {
-                assign(sprintf('%s.name', name), rp.name(var.value), env = e)   # variable name
-                assign(sprintf('%s.label', name), rp.label(var.value), env = e) # variable label
+            if (is.data.frame(input.value)){
+                assign(sprintf('%s.name', name), names(val), env = e) # variable names
+                assign(sprintf('%s.label', name), sapply(val, rp.label), env = e) # variable labels
+                assign(sprintf('%s.len', name), length(input.value), env = e) # add input length
+            } else if (is.atomic(input.value)) {
+                assign(sprintf('%s.name', name), rp.name(name), env = e)   # variable name
+                assign(sprintf('%s.label', name), rp.label(val), env = e) # variable label
                 assign(sprintf('%s.len', name), 1, env = e)                     # add input length
             } else {
                 stopf('"%s" is not a "data.frame" or an atomic vector', name) # you never know...
@@ -715,7 +732,6 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
             if (all(is.list(rout)))
                 if (all(sapply(rout, class) == 'rapport'))
                     return(unlist(lapply(rout, function(x) x$report), recursive = FALSE))
-
         }
 
         return(list(x))
