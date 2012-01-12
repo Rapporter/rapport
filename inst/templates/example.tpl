@@ -7,7 +7,7 @@ Example:      rapport("example", ius2008, var='leisure')
               rapport("example", ius2008, var='leisure', desc=FALSE)
               rapport("example", ius2008, var='leisure', desc=FALSE, hist=T)
               rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')             
-var    | numeric   | Variable| A numeric variable.
+var    | *numeric   | Variable| A numeric variable.
 desc   | TRUE      | Boolean | Show descriptive statistics of specified variable?
 hist   | FALSE     | Boolean | Show histogram of specified variable?
 theme  | Set1, Set2, Set3   | Color theme  | Color theme of the diagram
