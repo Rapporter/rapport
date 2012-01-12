@@ -4,7 +4,7 @@
 ##'
 ##' If input strings are given as vector or not nested list (or even only one string), the returned list's length equals to the length of the input - as each string is evalued as separate R code in the same environment. If a nested list is provided like \code{list(c('runif(1)', 'runif(1)'))} then all strings found in a list element is evaled at one run so the length of returned list equals to the length of parent list. See examples below.
 ##'
-##' As \code{\link{evals}} tries to grab the plots internally, pleas do not run commands that set graphic device or \code{\link{dev.off()}} if you want to use \code{\link{evals}} to save the images and return the path of generated png(s). Eg. running \code{evals(c('png("/tmp/x.png")', 'plot(1:10)', 'dev.off()'))} would fail.
+##' As \code{\link{evals}} tries to grab the plots internally, pleas do not run commands that set graphic device or \code{\link{dev.off}} if you want to use \code{\link{evals}} to save the images and return the path of generated png(s). Eg. running \code{evals(c('png("/tmp/x.png")', 'plot(1:10)', 'dev.off()'))} would fail.
 ##'
 ##' Returned result values: list with the following elements
 ##' \itemize{
@@ -142,7 +142,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         output <- c('src', 'output', 'type', 'msg')
 
     if (!any(is.list(hooks), is.null(hooks))) stop('Wrong list of hooks provided!')
-    
+
     ## env for running all lines of code -> eval()
     if (is.null(env)) env <- new.env()
     if (!is.environment(env)) stop('Wrong env paramater (not an environment) provided!')
@@ -262,7 +262,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                     returns <- do.call(fn, params)
                 }
             }
-      
+
         ## return list at last
         res <- list(src      = src,
                     output   = returns,
