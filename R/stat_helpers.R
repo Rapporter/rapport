@@ -63,6 +63,8 @@ lambda.test <- function(table, direction=0) {
 ##' @param x arguments to be passed to function specified in \code{test}
 ##' @param ... additional arguments for function specified in \code{test}
 ##' @param use.labels a logical value indicating whether variable labels should be placed in row names. If set to \code{FALSE}, output of \code{deparse(substitute(x))} will be used.
+##' @param colnames a character string containing column names
+##' @param rownames a character string containing row names
 ##' @return a \code{data.frame} with applied tests in rows, and their results (statistic and p-value) in columns
 ##' @examples \dontrun{
 ##' library(nortest)
@@ -72,7 +74,7 @@ lambda.test <- function(table, direction=0) {
 ##' htest(mtcars, lillie.test, ad.test, shapiro.test)
 ##' }
 ##' @export
-htest <- function(x, ..., use.labels = TRUE){
+htest <- function(x, ..., use.labels = TRUE, colnames = NULL, rownames = NULL){
 
     test <- list(...)
     test.len <- length(test)
@@ -98,7 +100,17 @@ htest <- function(x, ..., use.labels = TRUE){
         x.len <- length(x)
     }
 
-    rownames(res) <- sprintf("%s(%s)", rep(test.name, x.len), rep(x.nms, each = test.len))
+    if (is.null(colnames))
+        colnames(res) <- c("H", "p")
+
+    if (is.null(rownames)){
+        if (nrow(res) == length(test.name))
+            rn <- test.name
+        else
+            rn <- sprintf("%s(%s)", rep(test.name, x.len), rep(x.nms, each = test.len))
+        rownames(res) <- rn
+    }
+
     return(res)
 }
 
