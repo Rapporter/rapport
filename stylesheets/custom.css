@@ -3,6 +3,10 @@ td {
     padding-right: 5px;
 }
 
+header, h1, h2, h3, h4, h5, h6 {
+    font-family: 'YanoneKaffeesatzRegular';
+}
+
 h6 {
     font-size: 16px;
     margin-bottom: 5px;
