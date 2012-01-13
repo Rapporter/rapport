@@ -18,8 +18,7 @@ A BibTeX entry for LaTeX users is:
     year = {2012},
     note = {R package version 1.0},
     url = {http://cran.r-project.org/package=rapport}
-  }
-  
+  }  
 {% endhighlight %}
 
 #### Special thanks to:
