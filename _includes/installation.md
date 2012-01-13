@@ -1,4 +1,4 @@
-Currently, this package is hosted only on GitHub, but it will be submitted to CRAN once in reaches v. 0.2 ([very soon, we hope]((https://github.com/aL3xa/rapport/issues?milestone=1&state=open))). Until then, you can install it via nifty function from `devtools` package:
+Currently, this package is hosted only on GitHub, but it will be submitted to [CRAN](cran.r-project.org) once in reaches v. 0.2 ([very soon, we hope]((https://github.com/aL3xa/rapport/issues?milestone=1&state=open))). Until then, you can install it via nifty function from `devtools` package:
 
 {% highlight r %}
 library(devtools)

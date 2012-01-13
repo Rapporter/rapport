@@ -15,10 +15,26 @@ Long answer:  you should not do that in most cases. As a matter of fact *rapport
 
 *Rapport* holds some [predefined](#templates)/[custom](#custom) templates, which can be easily run against any data set and variables with a one-liner. The returned reports can be exported to various formats. By this you could say: *rapport* is for child**R**en. We would rather say: *rapport* is for those who regularly runs similar analysis and has to show up some documentation/reports AND basic use**R**s. Just do not forget: you can set up [any (complex) template](#custom)! :) 
 
-#### Why do you write such complex templates? Why not including those in helpers like `rp.anova`?
+#### Okay, how can I use this package?
 
-TODO
+See below for [detailed instructions for novice users](#usage], or head below for [advanced, customized usage](#translate)!
 
-#### Other questions:
+#### WTF? I get an error message while trying to export a template?
 
-TODO
+```
+... : error running command
+```
+
+Yup, that is the normal behavior if you do not have a backend installed. Please read the [manual](#install)!  
+
+#### I have found a bug, what should I do?
+
+Please [file an issue on Github](https://github.com/aL3xa/rapport/issues) tagged as `bug`!
+
+#### I have a really cool idea about this package. Are you interested?
+
+Of course! Please [file an issue about your idea on Github](https://github.com/aL3xa/rapport/issues) tagged as `feature`, we will be really interested to check it out.
+
+#### Can I use this package for academic/commercial/any other purpose?
+
+Of course, with some limitations: [license terms](#license) applies.
