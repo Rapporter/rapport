@@ -2,21 +2,25 @@ This package is released under the [*Affero General Public License* (ver. 3)](ht
 
 Feel free to use our package or its source code - with the above, quite narrow limitations.
 
-To cite *rapport* in publications, please use `citation('rapport')` which returns:
+To cite *rapport* in publications, please use:
 
- * Blagotić, A. and Daróczi, G. (2012). Rapport: a report templating system. R package version 1.0. URL http://cran.r-project.org/package=rapport
+{% highlight plain %}
+> citation('rapport')
 
+  Blagotić, A. and Daróczi, G. (2012). Rapport: a report templating system. R package version 1.0
+  URL http://cran.r-project.org/package=rapport
+  
 A BibTeX entry for LaTeX users is:
 
-```
   @Manual{
     title = {Rapport: a report templating system},
     author = {Aleksandar Blagotić and Gergely Daróczi},
-    year = {2011},
-    note = {R package version 0.1},
+    year = {2012},
+    note = {R package version 1.0},
     url = {http://cran.r-project.org/package=rapport}
   }
-```
+  
+{% endhighlight %}
 
 #### Special thanks to:
 
