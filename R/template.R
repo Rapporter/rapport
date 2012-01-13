@@ -168,9 +168,11 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
     })
 
     ## store only packages that arent' listed in dependencies
-    pkg.dep <- strsplit(packageDescription("rapport")$Depends, "[,[:space:]]+")[[1]]
-    l$packages <- lapply(strsplit(l$packages, ','), trim.space, leading = TRUE, trailing = TRUE)[[1]]
-    l$packages <- setdiff(l$packages, pkg.dep)
+    if (!is.null(l$packages)){
+        pkg.dep <- strsplit(packageDescription("rapport")$Depends, "[,[:space:]]+")[[1]]
+        l$packages <- lapply(strsplit(l$packages, ','), trim.space, leading = TRUE, trailing = TRUE)[[1]]
+        l$packages <- setdiff(l$packages, pkg.dep)
+    }
 
     if (!is.null(l$example)){
         ## select all "untagged" lines after Example: that contain rapport(<smth>) string
@@ -673,18 +675,18 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
             }
 
             ## assign stuff
-            assign(name, val, env = e)                     # input value
+            assign(name, val, env = e)                             # input value
             assign(sprintf('%s.iname', name), name, env = e)       # input name
             assign(sprintf('%s.ilabel', name), x$label, env = e)   # input label
             assign(sprintf('%s.idesc', name), x$desc, env = e)     # input description
             if (is.data.frame(input.value)){
-                assign(sprintf('%s.name', name), names(val), env = e) # variable names
+                assign(sprintf('%s.name', name), input.names, env = e)            # variable names
                 assign(sprintf('%s.label', name), sapply(val, rp.label), env = e) # variable labels
-                assign(sprintf('%s.len', name), length(input.value), env = e) # add input length
+                assign(sprintf('%s.len', name), length(input.value), env = e)     # add input length
             } else if (is.atomic(input.value)) {
-                assign(sprintf('%s.name', name), rp.name(name), env = e)   # variable name
+                assign(sprintf('%s.name', name), name, env = e)           # variable name
                 assign(sprintf('%s.label', name), rp.label(val), env = e) # variable label
-                assign(sprintf('%s.len', name), 1, env = e)                     # add input length
+                assign(sprintf('%s.len', name), 1, env = e)               # add input length
             } else {
                 stopf('"%s" is not a "data.frame" or an atomic vector', name) # you never know...
             }
@@ -740,10 +742,10 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
     }), recursive = FALSE)
 
     res <- list(
-                meta     = meta,
-                inputs   = inputs,
-                report   = report,
-                call     = match.call()
+                meta   = meta,
+                inputs = inputs,
+                report = report,
+                call   = match.call()
                 )
 
     if (isTRUE(reproducible)){
