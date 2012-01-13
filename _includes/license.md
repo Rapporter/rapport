@@ -2,7 +2,7 @@ This package is released under the [*Affero General Public License* (ver. 3)](ht
 
 Feel free to use our package or its source code - with the above, quite narrow limitations.
 
-To cite *'rapport'* in publications, please use:
+To cite *rapport* in publications, please use:
 
 ```
 > citation('rapport')
@@ -12,12 +12,12 @@ To cite *'rapport'* in publications, please use:
 
 A BibTeX entry for LaTeX users is
 
-  @Manual{,
+  @Manual{
     title = {Rapport: a report templating system},
     author = {Aleksandar Blagotić and Gergely Daróczi},
     year = {2012},
     note = {R package version 1.0},
-    url = {http://cran.r-project.org/package=rapport},
+    url = {http://cran.r-project.org/package=rapport}
   }
 ```
 
