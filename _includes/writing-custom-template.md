@@ -27,3 +27,4 @@ It is based on the theory of *rapport*: you can define a function at any part of
 
 We are open to happily check out your idea, please [file an issue about your idea on Github](https://github.com/aL3xa/rapport/issues) tagged as `feature`. Or write your own package submitted to [CRAN](cran.r-project.org) and please attract our attention to add that package to our [required or suggested package list](https://github.com/aL3xa/rapport/blob/master/DESCRIPTION).
  
+#### I wrote a handy template...
