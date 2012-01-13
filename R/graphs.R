@@ -388,6 +388,7 @@ rp.scatterplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.colo
 ##' @param x a numeric variable
 ##' @param y a numeric variable
 ##' @param facet an optional categorical variable to make facets by
+##' @param groups an optional categorical grouping variable
 ##' @param data an optional data frame from which the variables should be taken
 ##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
 ##' @param colorize if set the color is chosen from palette at random
@@ -401,23 +402,35 @@ rp.scatterplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.colo
 ##' rp.label(a$wt) <- 'weight'; rp.lineplot(a$gear, a$wt)
 ##' rp.lineplot(a$gear, a$wt, colorize=TRUE)
 ##' rp.lineplot(gear, wt, data=a)
+##'
+##' # advanced usage
+##' rp.lineplot(partner, age, data=rp.desc('partner', 'age', fn='mean', data=ius2008))
+##' rp.lineplot(partner, age, gender, data=rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008))
+##' rp.lineplot(partner, age, groups=gender, data=rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008))
 ##' }
-rp.lineplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.color.palette'),
+
+rp.lineplot <- function(x, y, facet=NULL, data=NULL, groups=NULL, theme=getOption('rp.color.palette'),
         colorize=getOption('rp.colorize'), ...) {
     if (!missing(data)) {
         if (missing(facet)) {
-            rp.lineplot(x=eval(match.call()$x, data), y=eval(match.call()$y, data),
-                    theme=theme, colorize=colorize, ...)
+            if (missing(groups))
+                rp.lineplot(x=eval(match.call()$x, data), y=eval(match.call()$y, data), theme=theme, colorize=colorize, ...)
+            else
+                rp.lineplot(x=eval(match.call()$x, data), y=eval(match.call()$y, data), groups=eval(match.call()$groups, data), theme=theme, colorize=colorize, ...)
         } else {
-            rp.lineplot(x=eval(match.call()$x, data), y=eval(match.call()$y, data),
-                    facet=eval(match.call()$facet, data), theme=theme, colorize=colorize, ...)
+            if (missing(groups))
+                rp.lineplot(x=eval(match.call()$x, data), y=eval(match.call()$y, data), facet=eval(match.call()$facet, data), theme=theme, colorize=colorize, ...)
+            else
+                rp.lineplot(x=eval(match.call()$x, data), y=eval(match.call()$y, data), facet=eval(match.call()$facet, data), groups=eval(match.call()$groups, data), theme=theme, colorize=colorize, ...)
         }
     } else {
         rp.graph.check(x, ...)
         if (missing(y)) stop('Variable was not specified.')
         if (!is.variable(y)) stop('Wrong type of varible (!atomic) provided.')
+        if (!missing(groups))
+            if (!is.variable(groups)) stop('Wrong type of varible (!atomic) provided.')
         # generating color from given palette
-        col <- rp.palette(1, theme, colorize)
+        col <- rp.palette(ifelse(missing(groups), 1, length(levels(groups))), theme, colorize)
         # getting labs
         xlab <- rp.label(x)
         if (xlab=='x') xlab <- tail(as.character(substitute(x)), 1)
@@ -430,7 +443,11 @@ rp.lineplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.color.p
             text='y~x|facet'
         }
         # plot
-        xyplot(eval(parse(text=text)), panel = function(x, y, ...) llines(x, y, col.line = col), xlab=xlab, ylab=ylab, ...)
+        if (missing(groups))
+            xyplot(eval(parse(text=text)), type="l", xlab=xlab, ylab=ylab, ...)
+        else
+            xyplot(eval(parse(text=text)), groups=groups, type="l", xlab=xlab, ylab=ylab, auto.key=T, ...)
+            #xyplot(eval(parse(text=text)), groups=groups, col=col, panel = function(x, y, groups, ..., subscripts) {color <- c('green', 'red'); panel.lines(x, y, col.line=color)}, xlab=xlab, ylab=ylab, auto.key=T, ...)
     }
 }
 
