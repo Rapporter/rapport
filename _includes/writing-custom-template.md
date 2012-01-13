@@ -6,7 +6,7 @@ First, let us check out the source code of [`example.tpl`](#exampletpl):
 
  * check out in [R](http://www.r-project.org/) console with [`tpl.find`](#tpl.find): `tpl.find('example')`
  * search in installed package directory: `system.file("templates", 'example.tpl', package = "rapport")`
- * take a look at [sources on Github](https://github.com/aL3xa/rapport/) #TODO: find exact URL
+ * take a look at [sources on Github](https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl)
  * see the sources tab of [`example.tpl`](#exampletpl) below
 
 
@@ -25,5 +25,5 @@ It is based on the theory of *rapport*: you can define a function at any part of
 
 #### Okay, I understand, but I have a really handy function which should be added to *rapport*!
 
-We are open to happily check out your idea, please [file an issue about your idea on Github](https://github.com/aL3xa/rapport/issues) tagged as `feature`. Or write your own package submitted to [CRAN](cran.r-project.org) and please attract our attention to add that package to our [required or suggested package list](https://github.com/aL3xa/rapport/blob/master/R/DESCRIPTION).
+We are open to happily check out your idea, please [file an issue about your idea on Github](https://github.com/aL3xa/rapport/issues) tagged as `feature`. Or write your own package submitted to [CRAN](cran.r-project.org) and please attract our attention to add that package to our [required or suggested package list](https://github.com/aL3xa/rapport/blob/master/DESCRIPTION).
  
