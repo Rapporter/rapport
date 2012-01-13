@@ -40,13 +40,12 @@ Various hypothesis tests can be applied in order to test if the distribution of 
  - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
  - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
 
-
+Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
 
 <%
 (h <- htest(var, shapiro.test, lillie.test, ad.test, pearson.test))
 p <- .05
 %>
-
 
 So, let's draw some conclusions based on applied normality test:
 

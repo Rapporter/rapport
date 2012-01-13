@@ -2,10 +2,11 @@
 \alias{rp.name}
 \title{Get variable name}
 \usage{
-  rp.name(var)
+  rp.name(x)
 }
 \arguments{
-  \item{var}{an atomic vector}
+  \item{x}{an R (atomic or data.frame/list) object to
+  extract names from}
 }
 \value{
   a character value with variable's label
