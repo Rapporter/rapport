@@ -74,6 +74,7 @@ ul.tabs li {
 #logo {
     width: 160px;
     text-align: center;
+    margin-left: 20px;
 }
 #logo a:link {text-decoration:none;}
 #logo a:visited {text-decoration:none;}
