@@ -16,7 +16,7 @@
 }
 \examples{
 \dontrun{
-tmp <- rapport("example", mtcars, x = "hp", y = "mpg")
+tmp <- rapport("example", mtcars, x = "hp", y = "mpg", reproducible = TRUE)
 tpl.rerun(tmp)
 }
 }

@@ -160,7 +160,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
                        )
 
     l <- sapply(fields, function(x){
-        m <- grep(sprintf('^%s:[\t ]+(%s)$', x$title, x$regex), header)
+        m   <- grep(sprintf('^%s:[\t ]+(%s)$', x$title, x$regex), header)
         if (length(m) > 1)
             stop('duplicate metadata entries: ', paste(sprintf('"%s"', header[m]), collapse = ', '))
         x$x <- header[m]
@@ -169,7 +169,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 
     ## store only packages that arent' listed in dependencies
     if (!is.null(l$packages)){
-        pkg.dep <- strsplit(packageDescription("rapport")$Depends, "[,[:space:]]+")[[1]]
+        pkg.dep    <- strsplit(packageDescription("rapport")$Depends, "[,[:space:]]+")[[1]]
         l$packages <- lapply(strsplit(l$packages, ','), trim.space, leading = TRUE, trailing = TRUE)[[1]]
         l$packages <- setdiff(l$packages, pkg.dep)
     }
@@ -178,8 +178,8 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         ## select all "untagged" lines after Example: that contain rapport(<smth>) string
         ## but it will not check if they're syntactically correct
         ind.start <- grep('^Example:', header)
-        ind <- adj.rle(grep("^.*(rapport::)?rapport\\(.+)\\.*$", header))$values[[1]]
-        ind <- ind[!ind %in% ind.start]
+        ind       <- adj.rle(grep("^.*(rapport::)?rapport\\(.+)\\.*$", header))$values[[1]]
+        ind       <- ind[!ind %in% ind.start]
         l$example <- c(l$example, header[ind])
     }
 
@@ -258,7 +258,7 @@ tpl.inputs <- function(fp, use.header = TRUE){
 ##' }
 tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 
-    examples <- tpl.meta(fp)$example
+    examples   <- tpl.meta(fp)$example
     n.examples <- 1:length(examples)
 
     if (is.null(examples))
@@ -266,11 +266,11 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 
     if (length(examples) > 1){
         if (is.null(index)){
-            opts <- c(n.examples, 'all')
+            opts  <- c(n.examples, 'all')
             catn('Enter example ID from the list below:')
             catn(sprintf('\n(%s)\t%s', opts, c(examples, 'Run all examples')))
             cat('\nTemplate ID> ')
-            con <- file('stdin')
+            con   <- file('stdin')
             index <- unique(strsplit(readLines(con, 1), ' ?, ?')[[1]])
             close(con)
         }
@@ -306,7 +306,7 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 ##' Runs template with data and arguments included in \code{rapport} object. In order to get reproducible example, you have to make sure that \code{reproducible} argument is set to \code{TRUE} in \code{rapport} function.
 ##' @param tpl a \code{rapport} object
 ##' @examples \dontrun{
-##' tmp <- rapport("example", mtcars, x = "hp", y = "mpg")
+##' tmp <- rapport("example", mtcars, x = "hp", y = "mpg", reproducible = TRUE)
 ##' tpl.rerun(tmp)
 ##' }
 ##' @export
@@ -405,12 +405,12 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
     ind <- switch(ext,
                   all = list(
                       heading = lapply(h, structure, type = "heading"),
-                      inline = lapply(block, structure, type = "inline"),
-                      block = lapply(chunk.lst, structure, type = "block")
+                      inline  = lapply(block, structure, type = "inline"),
+                      block   = lapply(chunk.lst, structure, type = "block")
                       ),
                   heading = lapply(h, structure, type = "heading"),
-                  inline = lapply(block, structure, type = "inline"),
-                  block = lapply(chunk.lst, structure, type = "block"),
+                  inline  = lapply(block, structure, type = "inline"),
+                  block   = lapply(chunk.lst, structure, type = "block"),
                   stop('unknown indices type')
                   )
 
@@ -423,8 +423,8 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
         bx <- b[x]
         switch(tx,
                heading = structure(bx, class = 'rp.heading'),
-               inline = structure(paste(bx, collapse = '\n'), class = 'rp.inline'),
-               block = structure(list(bx), class = 'rp.block'),
+               inline  = structure(paste(bx, collapse = '\n'), class = 'rp.inline'),
+               block   = structure(list(bx), class = 'rp.block'),
                stop('unknown element class')
                )
     })
@@ -721,8 +721,9 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
 
     ## tidy up (remove header etc.) nested templates
     report <- unlist(lapply(report, function(x){
-        robj <- x$robjects[[1]]
-        rout <- robj$output
+
+        robj  <- x$robjects[[1]]
+        rout  <- robj$output
         xtype <- x$type
 
         ## chunk holding a rapport class

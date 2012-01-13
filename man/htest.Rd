@@ -2,7 +2,8 @@
 \alias{htest}
 \title{Hypothesis Tests}
 \usage{
-  htest(x, ..., use.labels = TRUE)
+  htest(x, ..., use.labels = TRUE, colnames = NULL,
+    rownames = NULL)
 }
 \arguments{
   \item{x}{arguments to be passed to function specified in
@@ -15,6 +16,11 @@
   variable labels should be placed in row names. If set to
   \code{FALSE}, output of \code{deparse(substitute(x))}
   will be used.}
+
+  \item{colnames}{a character string containing column
+  names}
+
+  \item{rownames}{a character string containing row names}
 }
 \value{
   a \code{data.frame} with applied tests in rows, and their

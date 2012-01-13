@@ -33,12 +33,16 @@ if (nc.plot){
 
 # Normality Tests
 
+## Overview
+
 Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
 
  - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
  - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
  - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
  - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
+
+## Results
 
 Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
 
@@ -54,7 +58,7 @@ So, let's draw some conclusions based on applied normality test:
  - _Anderson-Darling test_ confirms <% ifelse(h[3, 2] < p, "violation of", "") %> normality assumption
  - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as <% ifelse(h[4, 2], "non-normal", "normal") %>
 
-# Diagnostic plots
+# Diagnostic Plots
 
 There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
 
