@@ -697,8 +697,6 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
     report <- lapply(elem, elem.eval, env = e) # render template body
     options(opts.bak)                          # resetting options
 
-    stop()
-
     ## error handling in chunks
     report <- lapply(report, function(x){
         ## * shoot warning() and return '<ERROR>' inline
