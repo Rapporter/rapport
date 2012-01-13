@@ -4,7 +4,7 @@ Feel free to use our package or its source code - with the above, quite narrow l
 
 To cite *rapport* in publications, please use:
 
-{% highlight plain %}
+{% highlight r %}
 > citation('rapport')
 
   Blagotić, A. and Daróczi, G. (2012). Rapport: a report templating system. R package version 1.0
