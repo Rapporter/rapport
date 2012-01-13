@@ -15,7 +15,7 @@ The most obvious goal of this package is to easily create some reports of our da
 [7] "type_demo.tpl"            "univar-descriptive.tpl"  
 {% endhighlight %}
 
-Let us say `'example.tpl'` seems promising, let's check out what is it for demonstrating purposes!
+Let us say '[`example.tpl`](#exampletpl)' seems promising, let's check out what is it for demonstrating purposes!
 
 The easiest way of doing a demo is to call a helper function ([`tpl.example`](#tpl.example)) which runs the example call(s) of a given template. You do not need to specify the `.tpl` extension, although you can if you wish:
 
@@ -143,7 +143,7 @@ Well, this is a quite rough way of checking out plots generated in a template :)
 
 There are a lot easier ways for that, as we can export our reports (to be more technical our `rapport` classes, see `str()` on any [`rapport`](#rapport) returned object) to wide range of formats with [`tpl.export`](#tpl.expport).
 
-Please find the HTML exported versions of the examples of `example.tpl` [here](demo/example.html) or run on your machine:
+Please find the HTML exported versions of the examples of [`example.tpl`](#exampletpl) [here](demo/example.html) or run on your machine:
 
 {% highlight r %}
 tpl.export(tpl.example('example', 'all'))
