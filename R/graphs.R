@@ -403,10 +403,21 @@ rp.scatterplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.colo
 ##' rp.lineplot(a$gear, a$wt, colorize=TRUE)
 ##' rp.lineplot(gear, wt, data=a)
 ##'
-##' # advanced usage
+##' ## advanced usage
 ##' rp.lineplot(partner, age, data=rp.desc('partner', 'age', fn='mean', data=ius2008))
 ##' rp.lineplot(partner, age, gender, data=rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008))
 ##' rp.lineplot(partner, age, groups=gender, data=rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008))
+##'
+##' ## Did you noticed the nasty axis titles? Why not correct those? :)
+##' df <- rp.desc('partner', 'age', fn='mean', data=ius2008)
+##' lapply(names(df), function(x) rp.label(df[, x]) <<- x)   # nasty solution!
+##' rp.lineplot(partner, age, data=df)
+##' df <- rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008)
+##' lapply(names(df), function(x) rp.label(df[, x]) <<- x)  # nasty solution!
+##' rp.lineplot(partner, age, gender, data=df)
+##' df <- rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008)
+##' lapply(names(df), function(x) rp.label(df[, x]) <<- x)  # nasty solution!
+##' rp.lineplot(partner, age, groups=gender, data=df)
 ##' }
 
 rp.lineplot <- function(x, y, facet=NULL, data=NULL, groups=NULL, theme=getOption('rp.color.palette'),
@@ -444,10 +455,12 @@ rp.lineplot <- function(x, y, facet=NULL, data=NULL, groups=NULL, theme=getOptio
         }
         # plot
         if (missing(groups))
-            xyplot(eval(parse(text=text)), type="l", xlab=xlab, ylab=ylab, ...)
-        else
-            xyplot(eval(parse(text=text)), groups=groups, type="l", xlab=xlab, ylab=ylab, auto.key=T, ...)
-            #xyplot(eval(parse(text=text)), groups=groups, col=col, panel = function(x, y, groups, ..., subscripts) {color <- c('green', 'red'); panel.lines(x, y, col.line=color)}, xlab=xlab, ylab=ylab, auto.key=T, ...)
+            xyplot(eval(parse(text=text)), type="l", col.line=col, xlab=xlab, ylab=ylab, ...)
+        else {
+            # auto.keys
+            auto.key <- list(col=col, points=F)
+            xyplot(eval(parse(text=text)), groups=groups, type="l", col.line=col, col=col, xlab=xlab, ylab=ylab, auto.key=auto.key, ...)
+        }
     }
 }
 
