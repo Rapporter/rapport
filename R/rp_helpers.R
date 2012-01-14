@@ -148,7 +148,7 @@ rp.label <- function(x, fallback = TRUE){
         lbl <- attr(x, which = 'label', exact = TRUE)
         if (is.null(lbl)){
             if (fallback)
-                lbl <- tail(as.character(substitute(var)), 1)
+                lbl <- tail(as.character(substitute(x)), 1)
             else
                 stop('atomic vector has no label')
         } else {
