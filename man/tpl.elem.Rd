@@ -46,4 +46,5 @@
     tpl.elem(fp, extract = "block")
 }
 }
+\keyword{internal}
 

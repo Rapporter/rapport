@@ -1,12 +1,3 @@
-##' Rapport
-##'
-##' Checks if provided R object is "rapport" class.
-##' @param x any R object to check
-##' @return logical
-##' @export
-is.rapport <- function(x)  inherits(x, 'rapport')
-
-
 ##' Print Template Metadata
 ##'
 ##' Prints out the contents of template metadata in human-readable format.

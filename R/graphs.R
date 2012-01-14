@@ -3,28 +3,28 @@
 ## and what about ggplot? think about the design consistency, at least from webapp's POV
 
 ####################################################################################################
-#<------------------------------------------------------------------------------------------------>#
+                                        #<------------------------------------------------------------------------------------------------>#
 ####################################################################################################
 #####                                       ToDo list                                         ######
 ####################################################################################################
-# FIX IT:
+                                        # FIX IT:
 #########
-# Hurray, nothing now!
+                                        # Hurray, nothing now!
 ####################################################################################################
-# DO IT:
+                                        # DO IT:
 ########
-#TODO: update examples to use ius2009
-#TODO: add option to most plots to include a text (values) layer
-#TODO: pie chart
-#TODO: error bar
-#TODO: pareto
-#TODO: line plot
-#TODO: polygon/area plot
-#TODO: a few special ones:
-#	- means plot (for t-test and one-way ANOVA)
-#	- interaction plot (for two-way ANOVA)
+                                        #TODO: update examples to use ius2009
+                                        #TODO: add option to most plots to include a text (values) layer
+                                        #TODO: pie chart
+                                        #TODO: error bar
+                                        #TODO: pareto
+                                        #TODO: line plot
+                                        #TODO: polygon/area plot
+                                        #TODO: a few special ones:
+                                        #	- means plot (for t-test and one-way ANOVA)
+                                        #	- interaction plot (for two-way ANOVA)
 ####################################################################################################
-#<------------------------------------------------------------------------------------------------>#
+                                        #<------------------------------------------------------------------------------------------------>#
 ####################################################################################################
 
 
@@ -43,10 +43,10 @@
 ##' rp.palette(5, 'Greens', colorize = TRUE)
 ##' }
 rp.palette <- function(num, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize')) {
-	if (any(!is.numeric(num), (length(num)>1))) stop('Wrong number of colors provided.')
-	if (theme=='default') {
-		if (num > 8) stop('Maximum number of colors (8) with choosen palette is lower then provided.')
-		cols <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+    if (any(!is.numeric(num), (length(num)>1))) stop('Wrong number of colors provided.')
+    if (theme=='default') {
+        if (num > 8) stop('Maximum number of colors (8) with choosen palette is lower then provided.')
+        cols <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 	} else {
 		if (!(theme %in% row.names(brewer.pal.info))) stop('Wrong theme provided.')
 		if (num > brewer.pal.info[theme,'maxcolors']) stop(paste('Maximum number of colors (', brewer.pal.info[theme, "maxcolors"], ') with choosen palette is lower then provided (', num, ').', sep=''))
@@ -489,7 +489,7 @@ rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('rp.col
 		rp.graph.check(x, ...)
 		##if (missing(y)) stop('Variable was not specified.')
 		##if (!is.variable(y)) stop('Wrong type of varible (!atomic) provided.')
-        
+
 		# generating color from given palette
 		if (colorize) {		#TODO: colorize box and lines (?)
 			col <- rp.palette(1, theme, colorize)
@@ -542,23 +542,23 @@ rp.cor.plot <- function(x, lower.panel='panel.smooth', upper.panel='panel.cor', 
 		## generating color from given palette
 		col <- rp.palette(1, theme, colorize)
         ## panels
-        panel.cor <- function(x, y, digits=2, prefix="", cex.cor) 
+        panel.cor <- function(x, y, digits=2, prefix="", cex.cor)
         {
-            usr <- par("usr"); on.exit(par(usr)) 
-            par(usr = c(0, 1, 0, 1)) 
-            r <- cor(x, y) 
-            txt <- format(c(r, 0.123456789), digits=digits)[1] 
-            txt <- paste(prefix, txt, sep="") 
-            if(missing(cex.cor)) cex <- 0.8/strwidth(txt) 
-            
-            test <- cor.test(x,y) 
+            usr <- par("usr"); on.exit(par(usr))
+            par(usr = c(0, 1, 0, 1))
+            r <- cor(x, y)
+            txt <- format(c(r, 0.123456789), digits=digits)[1]
+            txt <- paste(prefix, txt, sep="")
+            if(missing(cex.cor)) cex <- 0.8/strwidth(txt)
+
+            test <- cor.test(x,y)
             # borrowed from printCoefmat
-            Signif <- symnum(test$p.value, corr = FALSE, na = FALSE, 
+            Signif <- symnum(test$p.value, corr = FALSE, na = FALSE,
                     cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
-                    symbols = c("***", "**", "*", ".", " ")) 
-            
+                    symbols = c("***", "**", "*", ".", " "))
+
             text(0.5, 0.5, txt, cex = cex * abs(r) * 1.2)
-            text(.8, .8, Signif, cex=cex, col=2) 
+            text(.8, .8, Signif, cex=cex, col=2)
         }
         panel.hist <- function(x, ...)
         {

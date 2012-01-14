@@ -178,8 +178,8 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         ## select all "untagged" lines after Example: that contain rapport(<smth>) string
         ## but it will not check if they're syntactically correct
         ind.start <- grep('^Example:', header)
-        ind       <- adj.rle(grep("^.*(rapport::)?rapport\\(.+)\\.*$", header))$values[[1]]
-        ind       <- ind[!ind %in% ind.start]
+        ind       <- adj.rle(grep("^[\t ]*rapport\\(.+\\)([\t ]*#*[[:print:]]*)?$", header))$values[[1]]
+            ind       <- ind[!ind %in% ind.start]
         l$example <- c(l$example, header[ind])
     }
 
@@ -248,7 +248,6 @@ tpl.inputs <- function(fp, use.header = TRUE){
 ##' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
 ##' @param index a numeric vector indicating the example index. Meaningful only while running templates with multiple examples specified, otherwise omitted. In most cases this should be a single numeric value. If multiple numbers are provided, the examples are returned in a list. Using 'all' (character string) as index will return all examples.
 ##' @param env an environment where example will be evaluated (defaults to \code{.GlobalEnv})
-##' @export
 ##' @examples \dontrun{
 ##' tpl.example('example')
 ##' tpl.example('crosstable')
@@ -256,6 +255,7 @@ tpl.inputs <- function(fp, use.header = TRUE){
 ##' tpl.example('example', 1:2)
 ##' tpl.example('example', 'all')
 ##' }
+##' @export
 tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 
     examples   <- tpl.meta(fp)$example
@@ -344,6 +344,7 @@ tpl.rerun <- function(tpl){
 ##'     ## returns only code blocks
 ##'     tpl.elem(fp, extract = "block")
 ##' }
+##' @keywords internal
 tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.body = FALSE, skip.blank.lines = TRUE, skip.r.comments = FALSE, ...){
 
     txt <- tpl.find(fp)
@@ -675,21 +676,19 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
             }
 
             ## assign stuff
-            assign(name, val, env = e)                             # input value
-            assign(sprintf('%s.iname', name), name, env = e)       # input name
+            assign(name, val, env = e)                             # value
+            assign(sprintf('%s.iname', name), name, env = e)       # input name (the stuff)
+            assign(sprintf('%s.ilen', name), input.len, env = e)   # input length
             assign(sprintf('%s.ilabel', name), x$label, env = e)   # input label
             assign(sprintf('%s.idesc', name), x$desc, env = e)     # input description
-            if (is.data.frame(input.value)){
-                assign(sprintf('%s.name', name), input.names, env = e)            # variable names
+            assign(sprintf('%s.name', name), input.value, env = e) # variable name(s)
+            assign(sprintf('%s.len', name), length(val), env = e)  # variable length
+            if (is.data.frame(val))
                 assign(sprintf('%s.label', name), sapply(val, rp.label), env = e) # variable labels
-                assign(sprintf('%s.len', name), length(input.value), env = e)     # add input length
-            } else if (is.atomic(input.value)) {
-                assign(sprintf('%s.name', name), name, env = e)           # variable name
+            else if (is.atomic(val))
                 assign(sprintf('%s.label', name), rp.label(val), env = e) # variable label
-                assign(sprintf('%s.len', name), 1, env = e)               # add input length
-            } else {
+            else
                 stopf('"%s" is not a "data.frame" or an atomic vector', name) # you never know...
-            }
         })
     }
 

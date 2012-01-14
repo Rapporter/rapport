@@ -1,3 +1,39 @@
+##' Rapport Object
+##'
+##' Checks if provided R object is of "rapport" class.
+##' @param x any R object to check
+##' @return a logical value
+##' @export
+is.rapport <- function(x)  inherits(x, 'rapport')
+
+
+##' Rapport Block Element
+##'
+##' Checks if provided R object is a \code{rapport} block element.
+##' @param x any R object to check
+##' @return a logical value
+##' @export
+is.rp.block <- function(x)  (inherits(x, 'rp.block'))
+
+
+##' Rapport Inline Element
+##'
+##' Checks if provided R object is a \code{rapport} inline element.
+##' @param x any R object to check
+##' @return a logical value
+##' @export
+is.rp.inline <- function(x)  (inherits(x, 'rp.inline'))
+
+
+##' Rapport Heading Element
+##'
+##' Checks if provided R object is a \code{rapport} inline element.
+##' @param x any R object to check
+##' @return a logical value
+##' @export
+is.rp.heading <- function(x)  (inherits(x, 'rp.heading'))
+
+
 ##' Variables
 ##'
 ##' From our point of view, a \code{variable} is a non-\code{NULL} atomic vector that has no dimensions. This approach bypasses \code{factor} issues with \code{\link{is.vector}}, and also eliminates multidimensional vectors, such as matrices and arrays.
@@ -69,11 +105,11 @@ rp.name <- function(x){
             return(attr(x, 'name'))                       # return variable label
         }
     }
-    
+
     if (is.recursive(x)){
         n <- sapply(x, attr, which = 'name', exact = TRUE)
         n.nil <- sapply(n, is.null)
-        
+
         ## no labels found
         if (all(n.nil)){
             n <- names(n)
@@ -82,10 +118,10 @@ rp.name <- function(x){
 
         return(n)
     }
-    
+
     stop('Wrong R object type provided!')
 }
-            
+
 
 ##' Get variable label
 ##'
@@ -711,7 +747,7 @@ rp.prettyascii <- function(x) {
     if (is.data.frame(x) | is.table(x)){
         rownms <- rownames(x)
         include.rownames <- !is.null(rownms)
-        if (!include.rownames) 
+        if (!include.rownames)
             pre.txt <- ''
         else {
             include.rownames <- !all(rownms == 1:nrow(x))
