@@ -3,113 +3,106 @@ Title:        ANOVA Template
 Author:       Aleksandar Blagotić
 Description:  An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.
 Packages:     nortest
-resp     | numeric     | Response variable | Dependent (response) variable
-fac      | factor[1,2] | Factor variables  | Independent variables (factors)
+Example:      rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way
+              rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way
+
+resp     | numeric     | Response variable  | Dependent (response) variable
+fac      | factor[1,2] | Factor variables   | Independent variables (factors)
+fac.intr | TRUE        | Factor interaction | Include factor interaction
 head-->
 <%
-d <- data.frame(resp, fac)
-f <- as.formula(d)
-fit <- lm(f, data = d)
-fac.len <- length(fac)
-fac.plu <- switch(fac.len, '', 's')
+d <- structure(data.frame(resp, fac), .Names = c(resp.iname, fac.name))
+f.int <- fml(resp.iname, fac.name, join.right = "*")
+f.nonint <- fml(resp.iname, fac.name, join.right = "+")
+fit <- lm(ifelse(fac.intr, f.int, f.nonint), data = d)
+fac.plu <- switch(fac.ilen, '', 's')
 %>
 
-# Brief info
+# Introduction
 
-<% switch(fac.len, 'One', 'Two') %>-Way ANOVA was carried out, with <% p(fac.label) %> as independent variable<% fac.plu %>, and <% p(resp.label) %> as a response variable.
+**Analysis of Variance** or **ANOVA** is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921. by famous English statistician Sir Ronald Aylmer Fisher.
+
+# Model Overview
+
+<% switch(fac.ilen, 'One', 'Two') %>-Way ANOVA was carried out, with <% p(fac.label) %> as independent variable<% fac.plu %>, and <% p(resp.label) %> as a response variable. Factor interaction was<% ifelse(fac.intr, "", "n't")%> taken into account.
 
 # Descriptives
 
-The following table displays the descriptive statistics of ANOVA model. You can see the factors on the left-hand side of the table, and summary statistics on the right hand side.
+In order to get more insight on the model data, a table of frequencies for ANOVA factors is displayed, as well as a table of descriptives.
+
+## Frequency Table
+
+Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.
 
 <%
-rp.desc(fac, resp, c(min, max, mean, SD = sd, median, `M.A.D.` = mad, skewness, kurtosis), margins = TRUE)
+(freq <- rp.freq(fac.name, rp.data))
+%>
+
+## Descriptive Statistics
+
+The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.
+
+<%
+(desc <- rp.desc(fac, resp, c(min, max, mean, SD = sd, median, IQR, skewness, kurtosis)))
 %>
 
 # Diagnostics
 
-Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's goodness-of-fit.
+Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.
 
-## Diagnostic tests
+## Diagnostics
 
-### Normality tests
+### Univariate Normality
 
-We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normalitty.
-
-<%
-htest(split(resp, fac), shapiro.test, lillie.test, ad.test)
-%>
-
-### Homoscedascity tests
-
-In order to test homoscedascity, _Bartlett_ and _Fligner-Kileen_ are applied.
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<% p(resp.label) %>). 
 
 <%
-# we need to take different approach here until I come up with nifty helper
-data.frame(
-        B = e(bartlett.test(split(resp, fac))),
-        F = e(fligner.test(split(resp, fac))),
-        row.names = c('D', 'p')
-)
+(ntest <- htest(resp, shapiro.test, lillie.test, ad.test, colnames = c("N", "p")))
 %>
 
-## Diagnostic plots
 
-Here you can see several diagnostic plots for ANOVA model.
+As you can see, applied tests <% ifelse(all(ntest$p < .05), "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.") %>.
+
+### Homoscedascity
+
+In order to test homoscedascity, _Bartlett_ and _Fligner-Kileen_ tests are applied.
+
+<%
+hsced <- with(d, htest(as.formula(f.nonint), fligner.test, bartlett.test))
+hp <- hsced$p
+hcons <- all(hp < .05) | all(hp > .05)
+hp.all <- all(hp < .05)
+hsced
+%>
+
+
+When it comes to equality of variances, applied tests yield <% ifelse(hcons, "consistent", "inconsistent") %> results. <% if (hcons) sprintf("Homoscedascity assumption is %s.", ifelse(hp.all, "rejected", "confirmed")) else sprintf("While _Fligner-Kileen test_ %s the hypotheses of homoscedascity, _Bartlett's test_ %s it.", ifelse(hp[1] < .05, "rejected", "confirmed"), ifelse(hp[2] < .05, "rejected", "confirmed")) %>
+
+## Diagnostic Plots
+
+Here you can see several diagnostic plots for ANOVA model:
+
+ - residuals against fitted values
+ - scale-location plot of square root of residuals against fitted values
+ - normal Q-Q plot
+ - residuals against leverages
 
 <%
 par(mfrow = c(2, 2))
 plot(fit)
 %>
 
-# ANOVA table
+# ANOVA Summary
+
+## ANOVA Table
 
 <%
-data.frame(anova(fit))
+a <- anova(fit)
+a.f <- a$F
+a.p <- a$Pr
+a.fp <- a.p < .05
+data.frame(a)
 %>
 
-# Off-topic stuff
+_F-test_ for <% p(fac.label[1]) %> is <% ifelse(a.fp[1], "", "not") %> statistically significant, which implies that there is <% ifelse(a.fp[1], "an", "no") %> <% fac.label[1] %> effect on response variable. <% if (fac.ilen == 2) sprintf("Effect of %s on response variable is %s significant. ", p(fac.label[2]), ifelse(a.fp[2], "", "not")) else "" %><% if (fac.ilen == 2 & fac.intr) sprintf("Interaction between levels of %s %s found significant (p = %.3f).", p(fac.label), ifelse(a.fp[3], "was", "wasn't"), a.p[3]) else "" %>
 
-This should show: WORKS
-
-<%
-if (TRUE)
-   "WORKS"
-%>
-
-This should show: SHOULD WORK TOO
-
-<%
-if (TRUE){
-   "SHOULD WORK TOO"
-}
-%>
-
-This should show nothing
-
-<%
-if (TRUE)
-   x <- "WORKS"
-%>
-
-This should show nothing
-
-<%
-if (TRUE){
-   x <- "WORKS"
-}
-%>
-
-input name: <% resp.iname %>
-variable name: <% p(resp.name) %>
-variable label: <% p(resp.label) %>
-input label: <% p(resp.ilabel) %>
-input description: <% p(resp.idesc) %>
-input length: <% resp.len %>
-
-input name: <% fac.iname %>
-variable name: <% p(fac.name) %>
-variable label: <% p(fac.label) %>
-input label: <% p(fac.ilabel) %>
-input description: <% p(fac.idesc) %>
-input length: <% fac.len %>
