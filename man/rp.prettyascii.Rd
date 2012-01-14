@@ -26,6 +26,9 @@ rp.prettyascii(table(mtcars$am,mtcars$gear))
 rp.prettyascii(data.frame(x=1:2, y=3:4))
 rp.prettyascii(mtcars)
 rp.prettyascii(table(mtcars$am))
+
+## it is better to \\code{cat} the output
+cat(rp.prettyascii(rp.freq("gender", data = ius2008)))
 }
 }
 

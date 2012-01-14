@@ -723,6 +723,9 @@ rp.round <- function(x, scientific=FALSE) {
 ##' rp.prettyascii(data.frame(x=1:2, y=3:4))
 ##' rp.prettyascii(mtcars)
 ##' rp.prettyascii(table(mtcars$am))
+##'
+##' ## it is better to \code{cat} the output
+##' cat(rp.prettyascii(rp.freq("gender", data = ius2008)))
 ##' }
 ##' @export
 rp.prettyascii <- function(x) {
@@ -741,10 +744,12 @@ rp.prettyascii <- function(x) {
             class(x) <- class
     }
 
-    if (is.vector(x))
-        return(paste(x, collapse=', '))
-
     if (is.data.frame(x) | is.table(x)){
+        ## rounding till \code{ascii} bug fixed: https://github.com/eusebe/ascii/issues/12 
+        numerics <- which(sapply(x, is.numeric))
+        for (numeric in names(numerics)) {
+        	x[, numeric] <- rp.round(x[, numeric])
+        }
         rownms <- rownames(x)
         include.rownames <- !is.null(rownms)
         if (!include.rownames)
@@ -754,7 +759,7 @@ rp.prettyascii <- function(x) {
             ## not so neat hack to close all possible lists before exporting a table with missing first column header
             pre.txt <- ifelse(include.rownames, '<!-- endlist -->\n', '')
         }
-        return(paste(pre.txt, paste(capture.output(ascii(tocharac(x, format='nice', digits=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark')), include.rownames = include.rownames)), collapse='\n'), sep=''))
+        return(paste(pre.txt, paste(capture.output(ascii(x, include.rownames = include.rownames)), collapse='\n'), sep=''))
     }
 
     return(paste(capture.output(ascii(x, format='nice', digits=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'))), collapse='\n'))
