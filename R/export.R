@@ -22,6 +22,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 ##' @param format format of the wanted report, see: \code{ascii:::asciiOpts(".outputs")}
 ##' @param backend backend for the format conversions, see: \code{scii:::asciiOpts(".backends")}
 ##' @param options command line options passed to backend
+##' @param logo add rapport logo
 ##' @examples \dontrun{
 ##'
 ##' ## eval some template
@@ -57,7 +58,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 ##' ## Eg. pandoc uses "--reference-odt" as styles reference for odt exports.
 ##'}
 ##' @export
-tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), getOption('rp.date.format')), desc=TRUE, format='html', backend='pandoc', options=NULL) {
+tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), getOption('rp.date.format')), desc=TRUE, format='html', backend='pandoc', options=NULL, logo=TRUE) {
 
     ## dummy checks and config parameters set
     if (!(format %in% tpl.export.outputs()))
@@ -86,9 +87,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         r$email <- as.character(getOption('rp.email'))
     }
     if (!is.logical(create)) stop('Wrong create (!=TRUE|FALSE) parameter!')
-
-    ## a == NULL
-    #if (is.null(rp)) return(r$create(file=file))  #############################################BUG
+    if (!is.logical(logo)) stop('Wrong logo (!=TRUE|FALSE) parameter!')
 
     ## exporting multiple rapport classes at once
     if (class(rp) == 'list') {
@@ -104,7 +103,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
     r$backend <- backend
     r$format <- format
 
-    ## header stuff #############################################BUG
+    ## header stuff
     if (!is.null(rp))
         if(class(rp) == 'rapport') {
             if (desc) {
@@ -147,6 +146,13 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
             if (!file.exists(sprintf('%s%s', tempdir(), '/rapport-header.html')))
                 cat(gsub('"templates/', sprintf('"%s/templates/', system.file(package='rapport')), readLines(system.file('templates/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
             options <- sprintf('-H %s -A %s', sprintf('%s%s', tempdir(), '/rapport-header.html'), system.file('templates/html/footer.html', package='rapport'))
+            if (logo)
+                r$addFig(system.file('templates/images/rapport.png', package='rapport'))
+        } else {
+            if (logo) {
+                r$add(paragraph('-------\nThis report was generated with [rapport](http://rapport-package.info/).'))
+                r$addFig(system.file('templates/images/rapport.png', package='rapport'))
+            }
         }
         r$create(file=file, open=open, options=options, date=date)
     } else

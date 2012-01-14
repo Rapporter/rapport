@@ -6,7 +6,7 @@
     create = TRUE, open = TRUE,
     date = format(Sys.time(), getOption("rp.date.format")),
     desc = TRUE, format = "html", backend = "pandoc",
-    options = NULL)
+    options = NULL, logo = TRUE)
 }
 \arguments{
   \item{rp}{a rapport class object or list of rapport class
@@ -37,6 +37,8 @@
   \code{scii:::asciiOpts(".backends")}}
 
   \item{options}{command line options passed to backend}
+
+  \item{logo}{add rapport logo}
 }
 \description{
   This function exports rapport class objects to various
