@@ -754,10 +754,10 @@ rp.prettyascii <- function(x) {
             ## not so neat hack to close all possible lists before exporting a table with missing first column header
             pre.txt <- ifelse(include.rownames, '<!-- endlist -->\n', '')
         }
-        return(paste(pre.txt, paste(capture.output(ascii(x, include.rownames = include.rownames)), collapse='\n'), sep=''))
+        return(paste(pre.txt, paste(capture.output(ascii(tocharac(x, format='nice', digits=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark')), include.rownames = include.rownames)), collapse='\n'), sep=''))
     }
 
-    return(paste(capture.output(ascii(x)), collapse='\n'))
+    return(paste(capture.output(ascii(x, format='nice', digits=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'))), collapse='\n'))
 }
 
 
