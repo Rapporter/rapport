@@ -2,8 +2,8 @@
 \alias{print.rapport}
 \title{Prints rapport}
 \usage{
-  print.rapport(x, metadata = FALSE, inputs = FALSE,
-    body = TRUE)
+  \method{print}{rapport} (x, metadata = FALSE,
+    inputs = FALSE, body = TRUE)
 }
 \arguments{
   \item{x}{any "rapport" class object}

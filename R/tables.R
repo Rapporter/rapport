@@ -102,7 +102,6 @@ rp.desc <- function(id.vars, measure.vars, fn, data = NULL, na.rm = TRUE, margin
 ##' @param pct show percentage?
 ##' @param cumul.count show cumulative frequencies?
 ##' @param cumul.pct show cumulative percentage?
-##' @param drop.levels should unused levels be removed
 ##' @return a \code{data.frame} with frequencies
 ##' @examples \dontrun{
 ##' rp.freq(c("am", "cyl", "vs"), mtcars)

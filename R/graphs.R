@@ -535,7 +535,7 @@ rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('rp.col
 ##'
 ##' @param x numeric variables
 ##' @param lower.panel see: \code{\link{pairs}} parameter. Default set to \code{'panel.smooth'}.
-##' @param upper.panelsee: \code{\link{pairs}} parameter. Default set to \code{'panel.cor'}.
+##' @param upper.panel see: \code{\link{pairs}} parameter. Default set to \code{'panel.cor'}.
 ##' @param data an optional data frame from which the variables should be taken
 ##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
 ##' @param colorize if set the color is chosen from palette at random

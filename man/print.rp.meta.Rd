@@ -2,7 +2,7 @@
 \alias{print.rp.meta}
 \title{Print Template Metadata}
 \usage{
-  print.rp.meta(x, type = c("text", "pandoc"))
+  \method{print}{rp.meta} (x, type = c("text", "pandoc"))
 }
 \arguments{
   \item{x}{object of class \code{rp.meta}. See

@@ -13,7 +13,7 @@
   \item{lower.panel}{see: \code{\link{pairs}} parameter.
   Default set to \code{'panel.smooth'}.}
 
-  \item{upper.panelsee:}{\code{\link{pairs}} parameter.
+  \item{upper.panel}{see: \code{\link{pairs}} parameter.
   Default set to \code{'panel.cor'}.}
 
   \item{data}{an optional data frame from which the

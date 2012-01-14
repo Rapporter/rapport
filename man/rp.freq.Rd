@@ -26,8 +26,6 @@
   \item{cumul.count}{show cumulative frequencies?}
 
   \item{cumul.pct}{show cumulative percentage?}
-
-  \item{drop.levels}{should unused levels be removed}
 }
 \value{
   a \code{data.frame} with frequencies

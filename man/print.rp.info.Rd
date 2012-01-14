@@ -2,7 +2,7 @@
 \alias{print.rp.info}
 \title{Print Template Header}
 \usage{
-  print.rp.info(x, type = c("text", "pandoc"))
+  \method{print}{rp.info} (x, type = c("text", "pandoc"))
 }
 \arguments{
   \item{x}{object of class \code{rp.header}. See

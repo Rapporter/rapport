@@ -2,7 +2,7 @@
 \alias{print.rp.inputs}
 \title{Print Template Inputs}
 \usage{
-  print.rp.inputs(x, type = c("text", "pandoc"))
+  \method{print}{rp.inputs} (x, type = c("text", "pandoc"))
 }
 \arguments{
   \item{x}{object of class \code{rp.inputs}. See
