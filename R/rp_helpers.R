@@ -686,7 +686,6 @@ check.type <- function(x){
 ##'
 ##' Round numeric values with default number of decimals (see: \code{getOption('rp.decimal'}) and decimal mark (see: \code{getOption('rp.decimal')}).
 ##' @param x numeric value(s)
-##' @param scientific see \code{format}'s manual: Either a logical specifying whether elements of a real or complex vector should be encoded in scientific format, or an integer penalty (see ‘options("scipen")’).  Missing values correspond to the current default penalty.
 ##' @return character vector of rounded value(s)
 ##' @note This function is a simple demo for \code{\link{evals}}'s hooks.
 ##' @examples {
@@ -701,9 +700,9 @@ check.type <- function(x){
 ##'	rp.round(matrix(runif(9),3,3))
 ##' }
 ##' @export
-rp.round <- function(x, scientific=FALSE) {
+rp.round <- function(x) {
     if (!is.numeric(x)) stop('Wrong variable type (!numeric) provided.')
-    format(round(x, getOption('rp.decimal')), decimal.mark = getOption('rp.decimal.mark'), scientific = scientific)
+    as.vector(tocharac(x, digit=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'), format='nice'))
 }
 
 

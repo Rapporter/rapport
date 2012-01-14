@@ -2,16 +2,10 @@
 \alias{rp.round}
 \title{Round numeric values}
 \usage{
-  rp.round(x, scientific = FALSE)
+  rp.round(x)
 }
 \arguments{
   \item{x}{numeric value(s)}
-
-  \item{scientific}{see \code{format}'s manual: Either a
-  logical specifying whether elements of a real or complex
-  vector should be encoded in scientific format, or an
-  integer penalty (see ‘options("scipen")’).  Missing
-  values correspond to the current default penalty.}
 }
 \value{
   character vector of rounded value(s)
