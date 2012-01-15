@@ -4,6 +4,7 @@
 ##' @param x object of class \code{rp.meta}. See \code{\link{tpl.meta}} for details.
 ##' @param type a string with output format. Defaults to plain text output.
 ##' @method print rp.meta
+##' @S3method print rp.meta
 print.rp.meta <- function(x, type = c('text', 'pandoc')){
 
     ind <- c('title', 'author', 'email', 'desc', 'example')
@@ -50,6 +51,7 @@ print.rp.meta <- function(x, type = c('text', 'pandoc')){
 ##' @param x object of class \code{rp.inputs}. See \code{\link{tpl.inputs}} for details.
 ##' @param type a string with output format. Defaults to plain text output.
 ##' @method print rp.inputs
+##' @S3method print rp.inputs
 print.rp.inputs <- function(x, type = c('text', 'pandoc')){
 
     switch(match.arg(type),
@@ -133,6 +135,7 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
 ##' @param x object of class \code{rp.header}. See \code{\link{tpl.header}} for details.
 ##' @param type a string with output format. Defaults to plain text output.
 ##' @method print rp.info
+##' @S3method print rp.info
 print.rp.info <- function(x, type = c('text', 'pandoc')){
 
     tp <- match.arg(type)
@@ -159,6 +162,7 @@ print.rp.info <- function(x, type = c('text', 'pandoc')){
 ##' print(rapport('example', data=mtcars, x='hp', y='mpg'), metadata=T, inputs=T, body=F)
 ##' }
 ##' @method print rapport
+##' @S3method print rapport
 print.rapport <- function(x, metadata = FALSE, inputs = FALSE, body = TRUE) {
 
     if (!is.rapport(x)) stop('Wrong type of argument (!rapport) supplied!')
