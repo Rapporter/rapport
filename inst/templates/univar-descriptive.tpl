@@ -50,5 +50,5 @@ if (is.numeric(var))
 ## <%if (nortest & is.numeric(var)) 'Normality tests'%>
 
 <%
-if (nortest & is.numeric(var)) rapport('nortest', data=rp.data, var=rp.name(var))
+if (nortest & is.numeric(var)) rapport('nortest', data=rp.data, var=rp.name(var), nested.levels.offset=2)
 %>
