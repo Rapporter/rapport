@@ -2,7 +2,7 @@
 \alias{extract.meta}
 \title{Extract Template Metadata}
 \usage{
-  extract.meta(x, title, regex, replacement = "\\1",
+  extract.meta(x, title, regex, replacement = "\\\\1",
     short = NULL, trim.white = TRUE, mandatory = TRUE, ...)
 }
 \arguments{

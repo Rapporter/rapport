@@ -180,17 +180,17 @@ rp.label <- function(x, fallback = TRUE){
 }
 
 
-#' Set variable label
-#'
-#' this function sets a label to an \code{\link{atomic}} vector, by storing a character value to its \code{label} attribute.
-#' @param var an atomic vector
-#' @param value a character value that is to be set as variable label
-#' @seealso \code{rp.label}
-#' @examples \dontrun{
-#' rp.label(mtcars$mpg) <- "fuel consumption"
-#' x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
-#' }
-#' @export
+# Set variable label
+#
+# this function sets a label to an \code{\link{atomic}} vector, by storing a character value to its \code{label} attribute.
+# @param var an atomic vector
+# @param value a character value that is to be set as variable label
+# @seealso \code{rp.label}
+# @examples \dontrun{
+# rp.label(mtcars$mpg) <- "fuel consumption"
+# x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
+# }
+# @export
 `rp.label<-` <- function(var, value){
 
     if (missing(var) | missing(value))
@@ -457,27 +457,27 @@ pct <- function(x, decimals = 2, type = c('percent', '%', 'proportion')){
 }
 
 
-#' Extract Template Metadata
-#'
-#' Check if template metadata field matches provided format, and return matched value in a list.
-#' @param x a string containing template metadata
-#' @param title a string containint metadata field title (can be regex-powered)
-#' @param regex a string with regular expression to match field value
-#' @param replacement a string containing a backreference to matched string (defaults to first match \code{\\1})
-#' @param short a string with a short name for given metadata field
-#' @param trim.white a logical value indicating whether trailing and leading whitespaces of the given string should be removed before extraction
-#' @param mandatory a logical value indicating required field
-#' @param ... additional parameters for \code{grepl} function
-#' @return a list with matched content, or \code{NULL} if the field is not required
-#' @examples \dontrun{
-#'     extract.metadata("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
-#'     ## $name
-#'     ## [1] "John Smith"
-#'
-#'     extract.metadata("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
-#'     ## $name
-#'     ## [1] "John"
-#' }
+# Extract Template Metadata
+#
+# Check if template metadata field matches provided format, and return matched value in a list.
+# @param x a string containing template metadata
+# @param title a string containint metadata field title (can be regex-powered)
+# @param regex a string with regular expression to match field value
+# @param replacement a string containing a backreference to matched string (defaults to first match \code{\\1})
+# @param short a string with a short name for given metadata field
+# @param trim.white a logical value indicating whether trailing and leading whitespaces of the given string should be removed before extraction
+# @param mandatory a logical value indicating required field
+# @param ... additional parameters for \code{grepl} function
+# @return a list with matched content, or \code{NULL} if the field is not required
+# @examples \dontrun{
+#     extract.metadata("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#     ## $name
+#     ## [1] "John Smith"
+#
+#     extract.metadata("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#     ## $name
+#     ## [1] "John"
+# }
 #' @export
 extract.meta <- function(x, title, regex, replacement = '\\1', short = NULL, trim.white = TRUE, mandatory = TRUE, ...){
 
