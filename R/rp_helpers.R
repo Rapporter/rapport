@@ -144,6 +144,9 @@ rp.label <- function(x, fallback = TRUE){
     if (missing(x))
         stop('variable not provided')
 
+    if (is.null(x))
+        return (NULL)
+
     if (is.atomic(x)){
         lbl <- attr(x, which = 'label', exact = TRUE)
         if (is.null(lbl)){
@@ -750,9 +753,9 @@ rp.prettyascii <- function(x) {
 
     if (is.vector(x))
         return(p(x))
-    
+
     if (is.data.frame(x) | is.table(x)){
-        ## rounding till \code{ascii} bug fixed: https://github.com/eusebe/ascii/issues/12 
+        ## rounding till \code{ascii} bug fixed: https://github.com/eusebe/ascii/issues/12
         numerics <- which(sapply(x, is.numeric))
         for (numeric in names(numerics)) {
         	x[, numeric] <- rp.round(x[, numeric])

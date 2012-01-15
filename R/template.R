@@ -637,42 +637,48 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, nested.levels.of
 
                 ## check if ALL variable names exist in data
                 if (!all(input.value %in% data.names))
-                    stopf('provided data.frame does not contain column named "%s"', input.value)
+                    stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(input.value, data.names), '"'))
 
-                val <- e$rp.data[, input.value] # variable value
-
-                ## multiple variables supplied (probably data.frame, but recursive is OK)
-                if (is.recursive(val)){
-
-                    stopifnot(is.data.frame(val)) # yepp... data.frame only
-
-                    ## check types
-                    val.types <- sapply(val, type.fn)
-                    val.modes <- sapply(val, mode)
-                    if (!all(val.types == TRUE))
-                        stopf('error in "%s": %s should be %s! (provided: %s)', name, p(input.value[!val.types], '"'), input.type, p(val.modes[!val.types], '"'))
-
-                    ## check labels
-                    for (t in names(val)){
-                        if (rp.label(val[, t]) == 't')
-                            val[, t] <- structure(val[, t], label = t, name = t)
-                        else
-                            val[, t] <- structure(val[, t], name = t)
-                    }
+                if (is.null(input.value)){
+                    val <- NULL
                 } else {
-                    ## one variable extracted from data.frame
 
-                    ## check type
-                    val.types <- do.call(type.fn, list(val))
-                    val.modes <- mode(val)
-                    if (!val.types)
-                        stopf('error in "%s": "%s" should be %s! (provided: %s)', name, input.value, input.type, val.modes)
+                    val <- e$rp.data[, input.value] # variable value
 
-                    ## check label
-                    if (rp.label(val) == 'val')
-                        val <- structure(val, label = input.value, name = input.value)
-                    else
-                        val <- structure(val, name = input.value)
+
+                    ## multiple variables supplied
+                    if (is.data.frame(val)){
+
+                        ## check types
+                        val.types <- sapply(val, type.fn)
+                        val.modes <- sapply(val, mode)
+                        if (!all(val.types == TRUE))
+                            stopf('error in "%s": %s should be %s! (provided: %s)', name, p(input.value[!val.types], '"'), input.type, p(val.modes[!val.types], '"'))
+
+                        ## check labels
+                        for (t in names(val)){
+                            if (rp.label(val[, t]) == 't')
+                                val[, t] <- structure(val[, t], label = t, name = t)
+                            else
+                                val[, t] <- structure(val[, t], name = t)
+                        }
+                    } else if (is.atomic(val)){
+                        ## only one variable extracted from data.frame
+
+                        ## check type
+                        val.types <- do.call(type.fn, list(val))
+                        val.modes <- mode(val)
+                        if (!val.types)
+                            stopf('error in "%s": "%s" should be %s! (provided: %s)', name, input.value, input.type, val.modes)
+
+                        ## check label
+                        if (rp.label(val) == 'val')
+                            val <- structure(val, label = input.value, name = input.value)
+                        else
+                            val <- structure(val, name = input.value)
+                    } else {
+                        stop('data extraction error') # you never know...
+                    }
                 }
             }
 
