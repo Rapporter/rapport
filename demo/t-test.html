@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Rapport package team @ https://github.com/aL3xa/rapport" />
+  <meta name="date" content="2011-04-26 20:25 CET" />
+  <title>t-test Template</title>
+  <!--<link rel="stylesheet" type="text/css" href="css/default.css">
+  <script type="text/javascript" src="js/default.js"></script>-->
+  
+  	<!--[if lt IE 9]>
+  		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  
+  	<link rel="stylesheet" href="stylesheets/base.css">
+  	<link rel="stylesheet" href="stylesheets/skeleton.css">
+  	<link rel="stylesheet" href="stylesheets/layout.css">
+  	<link rel="stylesheet" href="stylesheets/fonts.css">
+  	<link rel="stylesheet" href="stylesheets/custom.css">
+  
+  	<link rel="shortcut icon" href="images/favicon.ico">
+  	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+  	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  
+  	<script type="text/javascript" src="javascripts/jquery-1.7.1.min.js"></script>
+  	<script type="text/javascript" src="javascripts/nav.js"></script>
+  	<script type="text/javascript" src="javascripts/tabs.js"></script>
+  	<script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+              tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+          });
+      </script>
+  	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">t-test Template</h1>
+<h3 class="author">Rapport package team @ https://github.com/aL3xa/rapport</h3>
+<h4 class="date">2011-04-26 20:25 CET</h4>
+</div>
+<h2 id="description">Description</h2>
+<p>A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.</p>
+<h1 id="introduction">Introduction</h1>
+<p>In a nutshell, <em>t-test</em> is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><em>t-distribution</em></a> can be considered a <em>t-test</em>. The most common usage of <em>t-test</em> is to:</p>
+<ul>
+<li>compare the mean of a variable with given test mean value - <strong>one-sample <em>t-test</em></strong></li>
+<li>compare means of two variables from independent samples - <strong>independent samples <em>t-test</em></strong></li>
+<li>compare means of two variables from dependent samples - <strong>paired-samples <em>t-test</em></strong></li>
+</ul>
+<h1 id="overview">Overview</h1>
+<p>Independent samples <em>t-test</em> is carried out with <em>Internet usage in leisure time (hours per day)</em> as dependent variable, and <em>Gender</em> as independent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.</p>
+<h1 id="descriptives">Descriptives</h1>
+<p>In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>y</strong></th>
+<th align="left"><strong>min(x)</strong></th>
+<th align="left"><strong>max(x)</strong></th>
+<th align="left"><strong>mean(x)</strong></th>
+<th align="left"><strong>sd(x)</strong></th>
+<th align="left"><strong>var(x)</strong></th>
+<th align="left"><strong>median(x)</strong></th>
+<th align="left"><strong>IQR(x)</strong></th>
+<th align="left"><strong>skewness(x)</strong></th>
+<th align="left"><strong>kurtosis(x)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">0</td>
+<td align="left">12</td>
+<td align="left">3.2699</td>
+<td align="left">1.9535</td>
+<td align="left">3.8161</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">0.9479</td>
+<td align="left">4.0064</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">0</td>
+<td align="left">12</td>
+<td align="left">3.0643</td>
+<td align="left">2.3546</td>
+<td align="left">5.5442</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">1.4064</td>
+<td align="left">4.9089</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left">10</td>
+<td align="left">3.3824</td>
+<td align="left">2.5822</td>
+<td align="left">6.6676</td>
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">1.2197</td>
+<td align="left">3.8058</td>
+</tr>
+</tbody>
+</table>
+<h1 id="diagnostics">Diagnostics</h1>
+<p>Since <em>t-test</em> is a parametric technique, it sets some basic assumptions on distribution shape: it has to be <em>normal</em> (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.</p>
+<h2 id="normality-tests">Normality Tests</h2>
+<p>We will use <em>Shapiro-Wilk</em>, <em>Lilliefors</em> and <em>Anderson-Darling</em> tests to screen departures from normality in the response variable (<em>Internet usage in leisure time (hours per day)</em>).</p>
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>W</strong></th>
+<th align="left"><strong>p</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">shapiro.test</td>
+<td align="left">0.9001</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">lillie.test</td>
+<td align="left">0.168</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">ad.test</td>
+<td align="left">18.753</td>
+<td align="left">0</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, applied tests confirm departures from normality.</p>
+<h1 id="results">Results</h1>
+<p>Welch Two Sample t-test was applied, and significant differences were found.</p>
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>statistic</strong></th>
+<th align="left"><strong>df</strong></th>
+<th align="left"><strong>p</strong></th>
+<th align="left"><strong>CI(lower)</strong></th>
+<th align="left"><strong>CI(upper)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">t</td>
+<td align="left">1.1483</td>
+<td align="left">457.8625</td>
+<td align="left">0.2514</td>
+<td align="left">-0.1463</td>
+<td align="left">0.5576</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description-1">Description</h2>
+<p>A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.</p>
+<h1 id="introduction-1">Introduction</h1>
+<p>In a nutshell, <em>t-test</em> is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><em>t-distribution</em></a> can be considered a <em>t-test</em>. The most common usage of <em>t-test</em> is to:</p>
+<ul>
+<li>compare the mean of a variable with given test mean value - <strong>one-sample <em>t-test</em></strong></li>
+<li>compare means of two variables from independent samples - <strong>independent samples <em>t-test</em></strong></li>
+<li>compare means of two variables from dependent samples - <strong>paired-samples <em>t-test</em></strong></li>
+</ul>
+<h1 id="overview-1">Overview</h1>
+<p>One-sample <em>t-test</em> is carried out with <em>Internet usage in leisure time (hours per day)</em> as dependent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.</p>
+<h1 id="descriptives-1">Descriptives</h1>
+<p>In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.</p>
+<h1 id="diagnostics-1">Diagnostics</h1>
+<p>Since <em>t-test</em> is a parametric technique, it sets some basic assumptions on distribution shape: it has to be <em>normal</em> (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.</p>
+<h2 id="normality-tests-1">Normality Tests</h2>
+<p>We will use <em>Shapiro-Wilk</em>, <em>Lilliefors</em> and <em>Anderson-Darling</em> tests to screen departures from normality in the response variable (<em>Internet usage in leisure time (hours per day)</em>).</p>
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>W</strong></th>
+<th align="left"><strong>p</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">shapiro.test</td>
+<td align="left">0.9001</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">lillie.test</td>
+<td align="left">0.168</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">ad.test</td>
+<td align="left">18.753</td>
+<td align="left">0</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, applied tests confirm departures from normality.</p>
+<h1 id="results-1">Results</h1>
+<p>One Sample t-test was applied, and significant differences were found.</p>
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>statistic</strong></th>
+<th align="left"><strong>df</strong></th>
+<th align="left"><strong>p</strong></th>
+<th align="left"><strong>CI(lower)</strong></th>
+<th align="left"><strong>CI(upper)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">t</td>
+<td align="left">-0.0072</td>
+<td align="left">671</td>
+<td align="left">0.9943</td>
+<td align="left">3.037</td>
+<td align="left">3.3618</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="images/rapport.png" /><p class="caption"></p>
+</div>
+<hr>
+<p align="center">This report was generated in <a href="http://www.r-project.org/">R</a> with <a href="http://al3xa.github.com/rapport/">Rapport</a>. Feel free to create <a href="http://al3xa.github.com/rapport/#custom">your own reporting templates</a>!</p>
+</body>
+</html>

@@ -2,18 +2,18 @@ h2. Description
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-h3. Début
+h1. Début
 
 Hello, world!
 
 I have just specified a _Variable_ in this template named to *leisure*. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of _leisure_ is 3.1994!
+And wow, the mean of _leisure_ is _3.1994_!
 
-h4. Descriptive statistics
+h2. Descriptive statistics
 
-|_. |_. *Min.*|_. *1st Qu.*|_. *Median*|_. *Mean*|_. *3rd Qu.*|_. *Max.*|_. *NA's*|
-|1|0.0|2.0|3.0|3.2|4.0|12.0|37.0|
+|_. *Min.*|_. *1st Qu.*|_. *Median*|_. *Mean*|_. *3rd Qu.*|_. *Max.*|_. *NA's*|
+|0.0|2.0|3.0|3.2|4.0|12.0|37.0|
 
 
 The 5 highest values are: _12_, _12_, _10_, _10_ and _10_.
@@ -22,13 +22,13 @@ h2. Description
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-h3. Début
+h1. Début
 
 Hello, world!
 
 I have just specified a _Variable_ in this template named to *leisure*. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of _leisure_ is 3.1994!
+And wow, the mean of _leisure_ is _3.1994_!
 
 *For more detailed statistics, you should have set @desc=TRUE@!*
 
@@ -36,17 +36,17 @@ h2. Description
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-h3. Début
+h1. Début
 
 Hello, world!
 
 I have just specified a _Variable_ in this template named to *leisure*. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of _leisure_ is 3.1994!
+And wow, the mean of _leisure_ is _3.1994_!
 
 *For more detailed statistics, you should have set @desc=TRUE@!*
 
-h4. Histogram
+h2. Histogram
 
 !9542b7929dcd934208ee4f18bde6ff31.png!
 
@@ -55,17 +55,24 @@ h2. Description
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-h3. Début
+h1. Début
 
 Hello, world!
 
 I have just specified a _Variable_ in this template named to *leisure*. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of _leisure_ is 3.1994!
+And wow, the mean of _leisure_ is _3.1994_!
 
 *For more detailed statistics, you should have set @desc=TRUE@!*
 
-h4. Histogram
+h2. Histogram
 
 !f72d3b7413bcb88fce740c2ab229411a.png!
+
+
+<hr />
+
+This report was generated with "rapport":http://rapport-package.info/.
+
+!images/rapport.png!
 

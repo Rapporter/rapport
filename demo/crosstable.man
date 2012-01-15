@@ -4,14 +4,14 @@
 .PP
 Returning the Chi-squared test of two given variables with count,
 percentages and Pearson's residuals table.
-.SS Variable description
+.SH Variable description
 .PP
 Two variables specified:
 .IP \[bu] 2
-\[lq]gender\[rq] (\[lq]Gender\[rq]) with 673 and
+\[lq]gender\[rq] (\[lq]Gender\[rq]) with \f[I]673\f[] and
 .IP \[bu] 2
-\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with 662 valid values.
-.SS Counts
+\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with \f[I]662\f[] valid values.
+.SH Counts
 .PP
 .TS
 tab(@);
@@ -44,7 +44,7 @@ T}@T{
 9
 T}
 .TE
-.SS Percentages
+.SH Percentages
 .PP
 .TS
 tab(@);
@@ -143,7 +143,7 @@ T}@T{
 0.3214
 T}
 .TE
-.SS Chi-squared test
+.SH Chi-squared test
 .PP
 .TS
 tab(@);
@@ -160,18 +160,18 @@ _
 T{
 X-squared
 T}@T{
-12.64
+12.6353
 T}@T{
-2.00
+2
 T}@T{
-0.00
+0.0018
 T}
 .TE
 .PP
 It seems that a real association can be pointed out between
 \f[I]gender\f[] and \f[I]dwell\f[] by the \f[I]Pearson's Chi-squared
-test\f[] (χ=12.635 at the degree of freedom being 2) at the significance
-level of 0.0018.
+test\f[] (χ=12.6353 at the degree of freedom being 2) at the
+significance level of 0.0018.
 Based on Goodman and Kruskal's lambda it seems that \f[I]dwell\f[]
 (λ=0.7602) has an effect on \f[I]gender\f[] (λ=0) if we assume both
 variables to be nominal.
@@ -217,14 +217,14 @@ T}
 .PP
 Returning the Chi-squared test of two given variables with count,
 percentages and Pearson's residuals table.
-.SS Variable description
+.SH Variable description
 .PP
 Two variables specified:
 .IP \[bu] 2
-\[lq]email\[rq] (\[lq]Email usage\[rq]) with 672 and
+\[lq]email\[rq] (\[lq]Email usage\[rq]) with \f[I]672\f[] and
 .IP \[bu] 2
-\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with 662 valid values.
-.SS Counts
+\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with \f[I]662\f[] valid values.
+.SH Counts
 .PP
 .TS
 tab(@);
@@ -302,7 +302,7 @@ T}@T{
 7
 T}
 .TE
-.SS Percentages
+.SH Percentages
 .PP
 .TS
 tab(@);
@@ -536,7 +536,7 @@ T}@T{
 0.2414
 T}
 .TE
-.SS Chi-squared test
+.SH Chi-squared test
 .PP
 .TS
 tab(@);
@@ -553,11 +553,11 @@ _
 T{
 X-squared
 T}@T{
-14.86
+14.864
 T}@T{
-12.00
+12
 T}@T{
-0.25
+0.249
 T}
 .TE
 .PP
@@ -647,5 +647,11 @@ T}
 .SS Mosaic chart
 .PP
 [IMAGE: image (b945f6de1aad4225593b3e9c0eb6d7dc.png)]
+.PP
+   *   *   *   *   *
+.PP
+This report was generated with rapport (http://rapport-package.info/).
+.PP
+[IMAGE: image (images/rapport.png)]
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

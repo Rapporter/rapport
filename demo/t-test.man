@@ -1,0 +1,327 @@
+.\"t
+.TH t-test "" "2011\[en]04\[en]26 20:25 CET" "Template"
+.SS Description
+.PP
+A t-test report with table of descriptives, diagnostic tests and t-test
+specific statistics.
+.SH Introduction
+.PP
+In a nutshell, \f[I]t-test\f[] is a statistical test that assesses
+hypothesis of equality of two means.
+But in theory, any hypothesis test that yields statistic which follows
+\f[I]t-distribution\f[] (https://en.wikipedia.org/wiki/Student%27s_t-distribution)
+can be considered a \f[I]t-test\f[].
+The most common usage of \f[I]t-test\f[] is to:
+.IP \[bu] 2
+compare the mean of a variable with given test mean value -
+\f[B]one-sample \f[I]t-test\f[]\f[]
+.IP \[bu] 2
+compare means of two variables from independent samples -
+\f[B]independent samples \f[I]t-test\f[]\f[]
+.IP \[bu] 2
+compare means of two variables from dependent samples -
+\f[B]paired-samples \f[I]t-test\f[]\f[]
+.SH Overview
+.PP
+Independent samples \f[I]t-test\f[] is carried out with \f[I]Internet
+usage in leisure time (hours per day)\f[] as dependent variable, and
+\f[I]Gender\f[] as independent variable.
+Confidence interval is set to 95%.
+Equality of variances wasn't assumed.
+.SH Descriptives
+.PP
+In order to get more insight on the underlying data, a table of basic
+descriptive statistics is displayed below.
+.PP
+.TS
+tab(@);
+l l l l l l l l l l.
+T{
+\f[B]y\f[]
+T}@T{
+\f[B]min(x)\f[]
+T}@T{
+\f[B]max(x)\f[]
+T}@T{
+\f[B]mean(x)\f[]
+T}@T{
+\f[B]sd(x)\f[]
+T}@T{
+\f[B]var(x)\f[]
+T}@T{
+\f[B]median(x)\f[]
+T}@T{
+\f[B]IQR(x)\f[]
+T}@T{
+\f[B]skewness(x)\f[]
+T}@T{
+\f[B]kurtosis(x)\f[]
+T}
+_
+T{
+male
+T}@T{
+0
+T}@T{
+12
+T}@T{
+3.2699
+T}@T{
+1.9535
+T}@T{
+3.8161
+T}@T{
+3
+T}@T{
+3
+T}@T{
+0.9479
+T}@T{
+4.0064
+T}
+T{
+female
+T}@T{
+0
+T}@T{
+12
+T}@T{
+3.0643
+T}@T{
+2.3546
+T}@T{
+5.5442
+T}@T{
+2
+T}@T{
+3
+T}@T{
+1.4064
+T}@T{
+4.9089
+T}
+T{
+T}@T{
+0
+T}@T{
+10
+T}@T{
+3.3824
+T}@T{
+2.5822
+T}@T{
+6.6676
+T}@T{
+3
+T}@T{
+2
+T}@T{
+1.2197
+T}@T{
+3.8058
+T}
+.TE
+.SH Diagnostics
+.PP
+Since \f[I]t-test\f[] is a parametric technique, it sets some basic
+assumptions on distribution shape: it has to be \f[I]normal\f[] (or
+appoximately normal).
+A few normality test are to be applied, in order to screen possible
+departures from normality.
+.SS Normality Tests
+.PP
+We will use \f[I]Shapiro-Wilk\f[], \f[I]Lilliefors\f[] and
+\f[I]Anderson-Darling\f[] tests to screen departures from normality in
+the response variable (\f[I]Internet usage in leisure time (hours per
+day)\f[]).
+.PP
+.TS
+tab(@);
+l l l.
+T{
+T}@T{
+\f[B]W\f[]
+T}@T{
+\f[B]p\f[]
+T}
+_
+T{
+shapiro.test
+T}@T{
+0.9001
+T}@T{
+0
+T}
+T{
+lillie.test
+T}@T{
+0.168
+T}@T{
+0
+T}
+T{
+ad.test
+T}@T{
+18.753
+T}@T{
+0
+T}
+.TE
+.PP
+As you can see, applied tests confirm departures from normality.
+.SH Results
+.PP
+Welch Two Sample t-test was applied, and significant differences were
+found.
+.PP
+.TS
+tab(@);
+l l l l l l.
+T{
+T}@T{
+\f[B]statistic\f[]
+T}@T{
+\f[B]df\f[]
+T}@T{
+\f[B]p\f[]
+T}@T{
+\f[B]CI(lower)\f[]
+T}@T{
+\f[B]CI(upper)\f[]
+T}
+_
+T{
+t
+T}@T{
+1.1483
+T}@T{
+457.8625
+T}@T{
+0.2514
+T}@T{
+\[en]0.1463
+T}@T{
+0.5576
+T}
+.TE
+.SS Description
+.PP
+A t-test report with table of descriptives, diagnostic tests and t-test
+specific statistics.
+.SH Introduction
+.PP
+In a nutshell, \f[I]t-test\f[] is a statistical test that assesses
+hypothesis of equality of two means.
+But in theory, any hypothesis test that yields statistic which follows
+\f[I]t-distribution\f[] (https://en.wikipedia.org/wiki/Student%27s_t-distribution)
+can be considered a \f[I]t-test\f[].
+The most common usage of \f[I]t-test\f[] is to:
+.IP \[bu] 2
+compare the mean of a variable with given test mean value -
+\f[B]one-sample \f[I]t-test\f[]\f[]
+.IP \[bu] 2
+compare means of two variables from independent samples -
+\f[B]independent samples \f[I]t-test\f[]\f[]
+.IP \[bu] 2
+compare means of two variables from dependent samples -
+\f[B]paired-samples \f[I]t-test\f[]\f[]
+.SH Overview
+.PP
+One-sample \f[I]t-test\f[] is carried out with \f[I]Internet usage in
+leisure time (hours per day)\f[] as dependent variable.
+Confidence interval is set to 95%.
+Equality of variances wasn't assumed.
+.SH Descriptives
+.PP
+In order to get more insight on the underlying data, a table of basic
+descriptive statistics is displayed below.
+.SH Diagnostics
+.PP
+Since \f[I]t-test\f[] is a parametric technique, it sets some basic
+assumptions on distribution shape: it has to be \f[I]normal\f[] (or
+appoximately normal).
+A few normality test are to be applied, in order to screen possible
+departures from normality.
+.SS Normality Tests
+.PP
+We will use \f[I]Shapiro-Wilk\f[], \f[I]Lilliefors\f[] and
+\f[I]Anderson-Darling\f[] tests to screen departures from normality in
+the response variable (\f[I]Internet usage in leisure time (hours per
+day)\f[]).
+.PP
+.TS
+tab(@);
+l l l.
+T{
+T}@T{
+\f[B]W\f[]
+T}@T{
+\f[B]p\f[]
+T}
+_
+T{
+shapiro.test
+T}@T{
+0.9001
+T}@T{
+0
+T}
+T{
+lillie.test
+T}@T{
+0.168
+T}@T{
+0
+T}
+T{
+ad.test
+T}@T{
+18.753
+T}@T{
+0
+T}
+.TE
+.PP
+As you can see, applied tests confirm departures from normality.
+.SH Results
+.PP
+One Sample t-test was applied, and significant differences were found.
+.PP
+.TS
+tab(@);
+l l l l l l.
+T{
+T}@T{
+\f[B]statistic\f[]
+T}@T{
+\f[B]df\f[]
+T}@T{
+\f[B]p\f[]
+T}@T{
+\f[B]CI(lower)\f[]
+T}@T{
+\f[B]CI(upper)\f[]
+T}
+_
+T{
+t
+T}@T{
+\[en]0.0072
+T}@T{
+671
+T}@T{
+0.9943
+T}@T{
+3.037
+T}@T{
+3.3618
+T}
+.TE
+.PP
+   *   *   *   *   *
+.PP
+This report was generated with rapport (http://rapport-package.info/).
+.PP
+[IMAGE: image (images/rapport.png)]
+.SH AUTHORS
+Rapport package team \@ https://github.com/aL3xa/rapport.

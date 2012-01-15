@@ -1,13 +1,13 @@
 .\"t
-.TH Descriptives "" "2011\[en]04\[en]26 20:25 CET" 
+.TH Descriptive "" "2011\[en]04\[en]26 20:25 CET" "statistics"
 .SS Description
 .PP
 This template will return descriptive statistics of a numerical, or a
 frequency table of a categorical variable.
-.SS \f[I]gender\f[] (\[lq]Gender\[rq])
+.SH \f[I]gender\f[] (\[lq]Gender\[rq])
 .PP
-The dataset has 709 observations with 673 valid values (missing: 36) in
-\f[I]gender\f[] (\[lq]Gender\[rq]).
+The dataset has \f[I]709\f[] observations with \f[I]673\f[] valid values
+(missing: \f[I]36\f[]) in \f[I]gender\f[] (\[lq]Gender\[rq]).
 This variable seems to be a factor.
 .SS Base statistics
 .PP
@@ -32,54 +32,54 @@ T{
 T}@T{
 male
 T}@T{
-410.00
+410
 T}@T{
-60.92
+60.9212
 T}@T{
-410.00
+410
 T}@T{
-60.92
+60.9212
 T}
 T{
 2
 T}@T{
 female
 T}@T{
-263.00
+263
 T}@T{
-39.08
+39.0788
 T}@T{
-673.00
+673
 T}@T{
-100.00
+100
 T}
 T{
 Total
 T}@T{
 T}@T{
-673.00
+673
 T}@T{
-100.00
+100
 T}@T{
-673.00
+673
 T}@T{
-100.00
+100
 T}
 .TE
 .SS Barplot
 .PP
 [IMAGE: image (3ed92ab3ffc6e875335e7e8c774c35a8.png)]
 .PP
-It seems that the highest value is 2 which is exactly 2 times higher
-than the smallest value (1).
+It seems that the highest value is \f[I]2\f[] which is exactly 2 times
+higher than the smallest value (\f[I]1\f[]).
 .SS Description
 .PP
 This template will return descriptive statistics of a numerical, or a
 frequency table of a categorical variable.
-.SS \f[I]age\f[] (\[lq]Age\[rq])
+.SH \f[I]age\f[] (\[lq]Age\[rq])
 .PP
-The dataset has 709 observations with 677 valid values (missing: 32) in
-\f[I]age\f[] (\[lq]Age\[rq]).
+The dataset has \f[I]709\f[] observations with \f[I]677\f[] valid values
+(missing: \f[I]32\f[]) in \f[I]age\f[] (\[lq]Age\[rq]).
 This variable seems to be numeric.
 .SS Base statistics
 .PP
@@ -99,28 +99,180 @@ _
 T{
 (all)
 T}@T{
-24.57
+24.5731
 T}@T{
-6.85
+6.8491
 T}@T{
-46.91
+46.9107
 T}
 .TE
 .SS Histogram
 .PP
 [IMAGE: image (ac5d789145bdef09b10219ef16429f53.png)]
 .PP
-It seems that the highest value is 58 which is exactly 3.625 times
-higher than the smallest value (16).
+It seems that the highest value is \f[I]58\f[] which is exactly 3.625
+times higher than the smallest value (\f[I]16\f[]).
 .PP
-The standard deviation is 6.8491 (variance: 46.911).
-The expected value is around 24.573, somewhere between 24.057 and 25.089
-(SE: 0.2632).
+The standard deviation is 6.8491 (variance: 46.9107).
+The expected value is around 24.5731, somewhere between 24.0572 and
+25.0891 (SE: 0.2632).
 .PP
 If we suppose that \f[I]Age\f[] is not near to a normal distribution
-(test: , skewness: 1.9296, kurtosis: 7.4851), checking the median (23)
-might be a better option instead of the mean.
+(test: see below, skewness: 1.9296, kurtosis: 7.4851), checking the
+median (23) might be a better option instead of the mean.
 The interquartile range (6) measures the statistics dispersion of the
 variable (similar to standard deviation) based on median.
+.SS Normality tests
+.SS Introduction
+.PP
+In statistics, \f[I]normality\f[] refers to an assumption that the
+distribution of a random variable follows \f[I]normal\f[]
+(\f[I]Gaussian\f[]) distribution.
+Because of its bell-like shape, it's also known as the \f[I]\[lq]bell
+curve\[rq]\f[].
+The formula for \f[I]normal distribution\f[] is:
+.PP
+.RS
+$f(x) = \\frac{1}{\\sqrt{2\\pi{}\\sigma{}^2}} e^{-\\frac{(x-\\mu{})^2}{2\\sigma{}^2}}$
+.RE
+.PP
+\f[I]Normal distribution\f[] belongs to a \f[I]location-scale family\f[]
+of distributions, as it's defined two parameters:
+.IP \[bu] 2
+\f[I]μ\f[] - \f[I]mean\f[] or \f[I]expectation\f[] (location parameter)
+.IP \[bu] 2
+\f[I]σ^2^\f[] - \f[I]variance\f[] (scale parameter)
+.PP
+[IMAGE: image (2f8c434e103f36ec70966b372838d448.png)]
+.SS Normality Tests
+.SS Overview
+.PP
+Various hypothesis tests can be applied in order to test if the
+distribution of given random variable violates normality assumption.
+These procedures test the H~0~ that provided variable's distribution is
+\f[I]normal\f[].
+At this point only few such tests will be covered: the ones that are
+available in \f[C]stats\f[] package (which comes bundled with default R
+installation) and \f[C]nortest\f[] package that is
+available (http://cran.r-project.org/web/packages/nortest/index.html) on
+CRAN.
+.IP \[bu] 2
+\f[B]Shapiro-Wilk test\f[] is a powerful normality test appropriate for
+small samples.
+In R, it's implemented in \f[C]shapiro.test\f[] function available in
+\f[C]stats\f[] package.
+.IP \[bu] 2
+\f[B]Lilliefors test\f[] is a modification of \f[I]Kolmogorov-Smirnov
+test\f[] appropriate for testing normality when parameters or normal
+distribution (\f[I]μ\f[], \f[I]σ^2^\f[]) are not known.
+\f[C]lillie.test\f[] function is located in \f[C]nortest\f[] package.
+.IP \[bu] 2
+\f[B]Anderson-Darling test\f[] is one of the most powerful normality
+tests as it will detect the most of departures from normality.
+You can find \f[C]ad.test\f[] function in \f[C]nortest\f[] package.
+.IP \[bu] 2
+\f[B]Pearson Χ^2^ test\f[] is another normality test which takes more
+\[lq]traditional\[rq] approach in normality testing.
+\f[C]pearson.test\f[] is located in \f[C]nortest\f[] package.
+.SS Results
+.PP
+Here you can see the results of applied normality tests
+(\f[I]p-values\f[] less than 0.05 indicate significant discrepancies):
+.PP
+.TS
+tab(@);
+l l l.
+T{
+T}@T{
+\f[B]H\f[]
+T}@T{
+\f[B]p\f[]
+T}
+_
+T{
+shapiro.test
+T}@T{
+0.8216
+T}@T{
+0
+T}
+T{
+lillie.test
+T}@T{
+0.17
+T}@T{
+0
+T}
+T{
+ad.test
+T}@T{
+32.1645
+T}@T{
+0
+T}
+T{
+pearson.test
+T}@T{
+625.8479
+T}@T{
+0
+T}
+.TE
+.PP
+So, let's draw some conclusions based on applied normality test:
+.IP \[bu] 2
+according to \f[I]Shapiro-Wilk test\f[], the distribution of
+\f[I]Age\f[] is not normal.
+.IP \[bu] 2
+based on \f[I]Lilliefors test\f[], distribution of \f[I]Age\f[] is not
+normal
+.IP \[bu] 2
+\f[I]Anderson-Darling test\f[] confirms violation of normality
+assumption
+.IP \[bu] 2
+\f[I]Pearson's Χ^2^ test\f[] classifies the underlying distribution as
+non-normal
+.SS Diagnostic Plots
+.PP
+There are various plots that can help you decide about the normality of
+the distribution.
+Only a few most commonly used plots will be shown: \f[I]histogram\f[],
+\f[I]Q-Q plot\f[] and \f[I]kernel density plot\f[].
+.SS Histogram
+.PP
+\f[I]Histogram\f[] was first introduced by \f[I]Karl Pearson\f[] and
+it's probably the most popular plot for depicting the probability
+distribution of a random variable.
+However, the decision depends on number of bins, so it can sometimes be
+misleading.
+If the variable distribution is normal, bins should resemble the
+\[lq]bell-like\[rq] shape.
+.PP
+[IMAGE: image (ac5d789145bdef09b10219ef16429f53.png)]
+.SS Q-Q Plot
+.PP
+\[lq]Q\[rq] in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this
+plot compares empirical and theoretical distribution (in this case,
+\f[I]normal\f[] distribution) by plotting their quantiles against each
+other.
+For normal distribution, plotted dots should approximate a
+\[lq]straight\[rq], \f[C]x\ =\ y\f[] line.
+.PP
+[IMAGE: image (cbbba756d844aa053998959b73b9feff.png)]
+.SS Kernel Density Plot
+.PP
+\f[I]Kernel density plot\f[] is a plot of smoothed \f[I]empirical
+distribution function\f[].
+As such, it provides good insight about the shape of the distribution.
+For normal distributions, it should resemble the well known \[lq]bell
+shape\[rq].
+.PP
+[IMAGE: image (2684e7da9f9797bfd75863b18d9d29e9.png)]
+.PP
+   *   *   *   *   *
+.PP
+This report was generated with rapport (http://rapport-package.info/).
+.PP
+[IMAGE: image (images/rapport.png)]
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

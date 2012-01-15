@@ -2,20 +2,19 @@
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-=== Début ===
+= Début =
 
 Hello, world!
 
 I have just specified a ''Variable'' in this template named to '''leisure'''. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of ''leisure'' is 3.1994!
+And wow, the mean of ''leisure'' is ''3.1994''!
 
-==== Descriptive statistics ====
+== Descriptive statistics ==
 
 <table>
 <thead>
 <tr class="header">
-<th align="left"></th>
 <th align="left">'''Min.'''</th>
 <th align="left">'''1st Qu.'''</th>
 <th align="left">'''Median'''</th>
@@ -27,7 +26,6 @@ And wow, the mean of ''leisure'' is 3.1994!
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">1</td>
 <td align="left">0.0</td>
 <td align="left">2.0</td>
 <td align="left">3.0</td>
@@ -45,13 +43,13 @@ The 5 highest values are: ''12'', ''12'', ''10'', ''10'' and ''10''.
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-=== Début ===
+= Début =
 
 Hello, world!
 
 I have just specified a ''Variable'' in this template named to '''leisure'''. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of ''leisure'' is 3.1994!
+And wow, the mean of ''leisure'' is ''3.1994''!
 
 '''For more detailed statistics, you should have set <tt>desc=TRUE</tt>!'''
 
@@ -59,17 +57,17 @@ And wow, the mean of ''leisure'' is 3.1994!
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-=== Début ===
+= Début =
 
 Hello, world!
 
 I have just specified a ''Variable'' in this template named to '''leisure'''. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of ''leisure'' is 3.1994!
+And wow, the mean of ''leisure'' is ''3.1994''!
 
 '''For more detailed statistics, you should have set <tt>desc=TRUE</tt>!'''
 
-==== Histogram ====
+== Histogram ==
 
 [[Image:9542b7929dcd934208ee4f18bde6ff31.png|frame|none]]
 
@@ -77,16 +75,23 @@ And wow, the mean of ''leisure'' is 3.1994!
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-=== Début ===
+= Début =
 
 Hello, world!
 
 I have just specified a ''Variable'' in this template named to '''leisure'''. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
 
-And wow, the mean of ''leisure'' is 3.1994!
+And wow, the mean of ''leisure'' is ''3.1994''!
 
 '''For more detailed statistics, you should have set <tt>desc=TRUE</tt>!'''
 
-==== Histogram ====
+== Histogram ==
 
 [[Image:f72d3b7413bcb88fce740c2ab229411a.png|frame|none]]
+
+
+-----
+
+This report was generated with [http://rapport-package.info/ rapport].
+
+[[Image:images/rapport.png|frame|none]]

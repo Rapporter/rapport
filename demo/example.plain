@@ -9,6 +9,7 @@ This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
 Début
+=====
 
 Hello, world!
 
@@ -19,10 +20,11 @@ day)".
 And wow, the mean of leisure is 3.1994!
 
 Descriptive statistics
+----------------------
 
-      Min.   1st Qu.   Median   Mean   3rd Qu.   Max.   NA's
-  --- ------ --------- -------- ------ --------- ------ ------
-  1   0.0    2.0       3.0      3.2    4.0       12.0   37.0
+  Min.   1st Qu.   Median   Mean   3rd Qu.   Max.   NA's
+  ------ --------- -------- ------ --------- ------ ------
+  0.0    2.0       3.0      3.2    4.0       12.0   37.0
 
 The 5 highest values are: 12, 12, 10, 10 and 10.
 
@@ -33,6 +35,7 @@ This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
 Début
+=====
 
 Hello, world!
 
@@ -51,6 +54,7 @@ This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
 Début
+=====
 
 Hello, world!
 
@@ -63,6 +67,7 @@ And wow, the mean of leisure is 3.1994!
 For more detailed statistics, you should have set desc=TRUE!
 
 Histogram
+---------
 
 []
 
@@ -73,6 +78,7 @@ This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
 Début
+=====
 
 Hello, world!
 
@@ -85,5 +91,12 @@ And wow, the mean of leisure is 3.1994!
 For more detailed statistics, you should have set desc=TRUE!
 
 Histogram
+---------
+
+[]
+
+* * * * *
+
+This report was generated with rapport.
 
 []

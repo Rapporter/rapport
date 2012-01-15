@@ -8,9 +8,16 @@ $(document).ready(function() {
         nav=nav + '<li style="padding-left: ' + (parseInt((this).nodeName.replace('H', ''))* 10)  + 'px;"><a href="#' + 'header' + (index+1) + '">' + $(this).text() + '</a></li>';
         return ( 'header' + (index+1));
     }
-    var nav=nav + '</ul><div id="influads_block" class="influads_block"> </div> </nav></div>';
+    nav=nav + '</ul><div id="influads_block" class="influads_block"> </div> </nav></div>';
     $('body').prepend(nav);
     $('body').children().not('#content').not('#nav').appendTo("#content");
     $('body').prepend('<div id="container" class="container"></div>');
     $('body').children().not('#container').appendTo("#container");
+
+    // if logo added: move to top (navbar)
+    var logo=$("img[src$='images/rapport.png']").attr('src');
+    if (logo != null) {
+        $("img[src$='images/rapport.png']").remove();
+        $('nav').prepend('<a href="http://rapport-package.info/"><img src="http://rapport-package.info/rapport.png" alt="rapport"></a>');
+    }
 });

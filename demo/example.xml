@@ -16,197 +16,208 @@
     This template demonstrates the basic features of rapport. We all
     hope you will like it!
   </para>
-  <section id="début">
-    <title>Début</title>
-    <para>
-      Hello, world!
-    </para>
-    <para>
-      I have just specified a <emphasis>Variable</emphasis> in this
-      template named to <emphasis role="strong">leisure</emphasis>. The
-      label of this variable is &quot;Internet usage in leisure time
-      (hours per day)&quot;.
-    </para>
-    <para>
-      And wow, the mean of <emphasis>leisure</emphasis> is 3.1994!
-    </para>
-    <section id="descriptive-statistics">
-      <title>Descriptive statistics</title>
-      <informaltable>
-        <tgroup cols="8">
-          <colspec align="left" />
-          <colspec align="left" />
-          <colspec align="left" />
-          <colspec align="left" />
-          <colspec align="left" />
-          <colspec align="left" />
-          <colspec align="left" />
-          <colspec align="left" />
-          <thead>
-            <row>
-              <entry>
-              </entry>
-              <entry>
-                <emphasis role="strong">Min.</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">1st Qu.</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">Median</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">Mean</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">3rd Qu.</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">Max.</emphasis>
-              </entry>
-              <entry>
-                <emphasis role="strong">NA's</emphasis>
-              </entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>
-                1
-              </entry>
-              <entry>
-                0.0
-              </entry>
-              <entry>
-                2.0
-              </entry>
-              <entry>
-                3.0
-              </entry>
-              <entry>
-                3.2
-              </entry>
-              <entry>
-                4.0
-              </entry>
-              <entry>
-                12.0
-              </entry>
-              <entry>
-                37.0
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </informaltable>
-      <para>
-        The 5 highest values are: <emphasis>12</emphasis>,
-        <emphasis>12</emphasis>, <emphasis>10</emphasis>,
-        <emphasis>10</emphasis> and <emphasis>10</emphasis>.
-      </para>
-    </section>
-  </section>
 </section>
-<section id="description-1">
-  <title>Description</title>
+<section id="début">
+  <title>Début</title>
   <para>
-    This template demonstrates the basic features of rapport. We all
-    hope you will like it!
+    Hello, world!
   </para>
-  <section id="début-1">
-    <title>Début</title>
+  <para>
+    I have just specified a <emphasis>Variable</emphasis> in this
+    template named to <emphasis role="strong">leisure</emphasis>. The
+    label of this variable is &quot;Internet usage in leisure time
+    (hours per day)&quot;.
+  </para>
+  <para>
+    And wow, the mean of <emphasis>leisure</emphasis> is
+    <emphasis>3.1994</emphasis>!
+  </para>
+  <section id="descriptive-statistics">
+    <title>Descriptive statistics</title>
+    <informaltable>
+      <tgroup cols="7">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              <emphasis role="strong">Min.</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">1st Qu.</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Median</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Mean</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">3rd Qu.</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Max.</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">NA's</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              0.0
+            </entry>
+            <entry>
+              2.0
+            </entry>
+            <entry>
+              3.0
+            </entry>
+            <entry>
+              3.2
+            </entry>
+            <entry>
+              4.0
+            </entry>
+            <entry>
+              12.0
+            </entry>
+            <entry>
+              37.0
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
     <para>
-      Hello, world!
+      The 5 highest values are: <emphasis>12</emphasis>,
+      <emphasis>12</emphasis>, <emphasis>10</emphasis>,
+      <emphasis>10</emphasis> and <emphasis>10</emphasis>.
     </para>
+  </section>
+  <section id="description-1">
+    <title>Description</title>
     <para>
-      I have just specified a <emphasis>Variable</emphasis> in this
-      template named to <emphasis role="strong">leisure</emphasis>. The
-      label of this variable is &quot;Internet usage in leisure time
-      (hours per day)&quot;.
-    </para>
-    <para>
-      And wow, the mean of <emphasis>leisure</emphasis> is 3.1994!
-    </para>
-    <para>
-      <emphasis role="strong">For more detailed statistics, you should
-      have set <literal>desc=TRUE</literal>!</emphasis>
+      This template demonstrates the basic features of rapport. We all
+      hope you will like it!
     </para>
   </section>
 </section>
-<section id="description-2">
-  <title>Description</title>
+<section id="début-1">
+  <title>Début</title>
   <para>
-    This template demonstrates the basic features of rapport. We all
-    hope you will like it!
+    Hello, world!
   </para>
-  <section id="début-2">
-    <title>Début</title>
+  <para>
+    I have just specified a <emphasis>Variable</emphasis> in this
+    template named to <emphasis role="strong">leisure</emphasis>. The
+    label of this variable is &quot;Internet usage in leisure time
+    (hours per day)&quot;.
+  </para>
+  <para>
+    And wow, the mean of <emphasis>leisure</emphasis> is
+    <emphasis>3.1994</emphasis>!
+  </para>
+  <para>
+    <emphasis role="strong">For more detailed statistics, you should
+    have set <literal>desc=TRUE</literal>!</emphasis>
+  </para>
+  <section id="description-2">
+    <title>Description</title>
     <para>
-      Hello, world!
+      This template demonstrates the basic features of rapport. We all
+      hope you will like it!
     </para>
-    <para>
-      I have just specified a <emphasis>Variable</emphasis> in this
-      template named to <emphasis role="strong">leisure</emphasis>. The
-      label of this variable is &quot;Internet usage in leisure time
-      (hours per day)&quot;.
-    </para>
-    <para>
-      And wow, the mean of <emphasis>leisure</emphasis> is 3.1994!
-    </para>
-    <para>
-      <emphasis role="strong">For more detailed statistics, you should
-      have set <literal>desc=TRUE</literal>!</emphasis>
-    </para>
-    <section id="histogram">
-      <title>Histogram</title>
-      <figure>
-        <title></title>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="9542b7929dcd934208ee4f18bde6ff31.png" />
-          </imageobject>
-          <textobject><phrase></phrase></textobject>
-        </mediaobject>
-      </figure>
-    </section>
   </section>
 </section>
-<section id="description-3">
-  <title>Description</title>
+<section id="début-2">
+  <title>Début</title>
   <para>
-    This template demonstrates the basic features of rapport. We all
-    hope you will like it!
+    Hello, world!
   </para>
-  <section id="début-3">
-    <title>Début</title>
+  <para>
+    I have just specified a <emphasis>Variable</emphasis> in this
+    template named to <emphasis role="strong">leisure</emphasis>. The
+    label of this variable is &quot;Internet usage in leisure time
+    (hours per day)&quot;.
+  </para>
+  <para>
+    And wow, the mean of <emphasis>leisure</emphasis> is
+    <emphasis>3.1994</emphasis>!
+  </para>
+  <para>
+    <emphasis role="strong">For more detailed statistics, you should
+    have set <literal>desc=TRUE</literal>!</emphasis>
+  </para>
+  <section id="histogram">
+    <title>Histogram</title>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="9542b7929dcd934208ee4f18bde6ff31.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
+  </section>
+  <section id="description-3">
+    <title>Description</title>
     <para>
-      Hello, world!
+      This template demonstrates the basic features of rapport. We all
+      hope you will like it!
     </para>
+  </section>
+</section>
+<section id="début-3">
+  <title>Début</title>
+  <para>
+    Hello, world!
+  </para>
+  <para>
+    I have just specified a <emphasis>Variable</emphasis> in this
+    template named to <emphasis role="strong">leisure</emphasis>. The
+    label of this variable is &quot;Internet usage in leisure time
+    (hours per day)&quot;.
+  </para>
+  <para>
+    And wow, the mean of <emphasis>leisure</emphasis> is
+    <emphasis>3.1994</emphasis>!
+  </para>
+  <para>
+    <emphasis role="strong">For more detailed statistics, you should
+    have set <literal>desc=TRUE</literal>!</emphasis>
+  </para>
+  <section id="histogram-1">
+    <title>Histogram</title>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="f72d3b7413bcb88fce740c2ab229411a.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
     <para>
-      I have just specified a <emphasis>Variable</emphasis> in this
-      template named to <emphasis role="strong">leisure</emphasis>. The
-      label of this variable is &quot;Internet usage in leisure time
-      (hours per day)&quot;.
+      This report was generated with
+      <ulink url="http://rapport-package.info/">rapport</ulink>.
     </para>
-    <para>
-      And wow, the mean of <emphasis>leisure</emphasis> is 3.1994!
-    </para>
-    <para>
-      <emphasis role="strong">For more detailed statistics, you should
-      have set <literal>desc=TRUE</literal>!</emphasis>
-    </para>
-    <section id="histogram-1">
-      <title>Histogram</title>
-      <figure>
-        <title></title>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="f72d3b7413bcb88fce740c2ab229411a.png" />
-          </imageobject>
-          <textobject><phrase></phrase></textobject>
-        </mediaobject>
-      </figure>
-    </section>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/rapport.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
   </section>
 </section>
 </article>

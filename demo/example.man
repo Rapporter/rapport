@@ -4,7 +4,7 @@
 .PP
 This template demonstrates the basic features of rapport.
 We all hope you will like it!
-.SS Début
+.SH Début
 .PP
 Hello, world!
 .PP
@@ -13,14 +13,13 @@ I have just specified a \f[I]Variable\f[] in this template named to
 The label of this variable is \[lq]Internet usage in leisure time (hours
 per day)\[rq].
 .PP
-And wow, the mean of \f[I]leisure\f[] is 3.1994!
+And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 .SS Descriptive statistics
 .PP
 .TS
 tab(@);
-l l l l l l l l.
+l l l l l l l.
 T{
-T}@T{
 \f[B]Min.\f[]
 T}@T{
 \f[B]1st Qu.\f[]
@@ -37,8 +36,6 @@ T}@T{
 T}
 _
 T{
-1
-T}@T{
 0.0
 T}@T{
 2.0
@@ -61,7 +58,7 @@ The 5 highest values are: \f[I]12\f[], \f[I]12\f[], \f[I]10\f[],
 .PP
 This template demonstrates the basic features of rapport.
 We all hope you will like it!
-.SS Début
+.SH Début
 .PP
 Hello, world!
 .PP
@@ -70,7 +67,7 @@ I have just specified a \f[I]Variable\f[] in this template named to
 The label of this variable is \[lq]Internet usage in leisure time (hours
 per day)\[rq].
 .PP
-And wow, the mean of \f[I]leisure\f[] is 3.1994!
+And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 .PP
 \f[B]For more detailed statistics, you should have set
 \f[C]desc=TRUE\f[]!\f[]
@@ -78,7 +75,7 @@ And wow, the mean of \f[I]leisure\f[] is 3.1994!
 .PP
 This template demonstrates the basic features of rapport.
 We all hope you will like it!
-.SS Début
+.SH Début
 .PP
 Hello, world!
 .PP
@@ -87,7 +84,7 @@ I have just specified a \f[I]Variable\f[] in this template named to
 The label of this variable is \[lq]Internet usage in leisure time (hours
 per day)\[rq].
 .PP
-And wow, the mean of \f[I]leisure\f[] is 3.1994!
+And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 .PP
 \f[B]For more detailed statistics, you should have set
 \f[C]desc=TRUE\f[]!\f[]
@@ -98,7 +95,7 @@ And wow, the mean of \f[I]leisure\f[] is 3.1994!
 .PP
 This template demonstrates the basic features of rapport.
 We all hope you will like it!
-.SS Début
+.SH Début
 .PP
 Hello, world!
 .PP
@@ -107,12 +104,18 @@ I have just specified a \f[I]Variable\f[] in this template named to
 The label of this variable is \[lq]Internet usage in leisure time (hours
 per day)\[rq].
 .PP
-And wow, the mean of \f[I]leisure\f[] is 3.1994!
+And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 .PP
 \f[B]For more detailed statistics, you should have set
 \f[C]desc=TRUE\f[]!\f[]
 .SS Histogram
 .PP
 [IMAGE: image (f72d3b7413bcb88fce740c2ab229411a.png)]
+.PP
+   *   *   *   *   *
+.PP
+This report was generated with rapport (http://rapport-package.info/).
+.PP
+[IMAGE: image (images/rapport.png)]
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

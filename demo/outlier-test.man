@@ -1,15 +1,15 @@
 .\"t
-.TH Outlier "" "2011\[en]04\[en]26 20:25 CET" "test"
+.TH Outlier "" "2011\[en]04\[en]26 20:25 CET" "tests"
 .SS Description
 .PP
 This template will check if provided variable has any outliers.
-.SS Boxplot
+.SH Boxplot
 .PP
 [IMAGE: image (d24b3eb41da4d1de21d4bce0e30d2e1b.png)]
-.SS Lund test
+.SH Lund test
 .PP
-It seems that 4 extreme values can be found in \[lq]Internet usage for
-educational purposes (hours per day)\[rq].
+It seems that \f[I]4\f[] extreme values can be found in \[lq]Internet
+usage for educational purposes (hours per day)\[rq].
 These are: 10, 0.5, 1.5, 0.5.
 .SS Explanation
 .PP
@@ -32,13 +32,13 @@ _
 T{
 (Intercept)
 T}@T{
-2.05
+2.0481
 T}@T{
-0.08
+0.078
 T}@T{
-26.27
+26.2677
 T}@T{
-0.00
+0
 T}
 .TE
 .SS References
@@ -53,7 +53,7 @@ Prescott, P.
 1975, \[lq]An Approximate Test for Outliers in Linear Models\[rq],
 Technometrics, vol.\ 17, no.
 1, pp.\ 129\[en]132.
-.SS Grubb's test
+.SH Grubb's test
 .PP
 Grubbs test for one outlier shows that highest value 12 is an outlier
 (p=0.0002).
@@ -66,7 +66,7 @@ Ann.
 Math.
 Stat.
 21, 1, 27\[en]58.
-.SS Dixon's test
+.SH Dixon's test
 .PP
 chi-squared test for outlier shows that highest value 12 is an outlier
 (p=0).
@@ -82,13 +82,13 @@ Stat.
 .SS Description
 .PP
 This template will check if provided variable has any outliers.
-.SS Boxplot
+.SH Boxplot
 .PP
 [IMAGE: image (d24b3eb41da4d1de21d4bce0e30d2e1b.png)]
-.SS Lund test
+.SH Lund test
 .PP
-It seems that 4 extreme values can be found in \[lq]Internet usage for
-educational purposes (hours per day)\[rq].
+It seems that \f[I]4\f[] extreme values can be found in \[lq]Internet
+usage for educational purposes (hours per day)\[rq].
 These are: 10, 0.5, 1.5, 0.5.
 .SS Explanation
 .PP
@@ -111,13 +111,13 @@ _
 T{
 (Intercept)
 T}@T{
-2.05
+2.0481
 T}@T{
-0.08
+0.078
 T}@T{
-26.27
+26.2677
 T}@T{
-0.00
+0
 T}
 .TE
 .SS References
@@ -132,7 +132,7 @@ Prescott, P.
 1975, \[lq]An Approximate Test for Outliers in Linear Models\[rq],
 Technometrics, vol.\ 17, no.
 1, pp.\ 129\[en]132.
-.SS Grubb's test
+.SH Grubb's test
 .PP
 Grubbs test for one outlier shows that highest value 12 is an outlier
 (p=0.0002).
@@ -145,7 +145,7 @@ Ann.
 Math.
 Stat.
 21, 1, 27\[en]58.
-.SS Dixon's test
+.SH Dixon's test
 .PP
 chi-squared test for outlier shows that highest value 12 is an outlier
 (p=0).
@@ -161,13 +161,13 @@ Stat.
 .SS Description
 .PP
 This template will check if provided variable has any outliers.
-.SS Boxplot
+.SH Boxplot
 .PP
 [IMAGE: image (d24b3eb41da4d1de21d4bce0e30d2e1b.png)]
-.SS Lund test
+.SH Lund test
 .PP
-It seems that 4 extreme values can be found in \[lq]Internet usage for
-educational purposes (hours per day)\[rq].
+It seems that \f[I]4\f[] extreme values can be found in \[lq]Internet
+usage for educational purposes (hours per day)\[rq].
 These are: 10, 0.5, 1.5, 0.5.
 .SS Explanation
 .PP
@@ -190,14 +190,20 @@ _
 T{
 (Intercept)
 T}@T{
-2.05
+2.0481
 T}@T{
-0.08
+0.078
 T}@T{
-26.27
+26.2677
 T}@T{
-0.00
+0
 T}
 .TE
+.PP
+   *   *   *   *   *
+.PP
+This report was generated with rapport (http://rapport-package.info/).
+.PP
+[IMAGE: image (images/rapport.png)]
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

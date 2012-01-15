@@ -1,0 +1,1536 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<article>
+  <articleinfo>
+    <title>ANOVA Template</title>
+    <author>
+      <firstname>Rapport package team @</firstname>
+      <surname>https://github.com/aL3xa/rapport</surname>
+    </author>
+    <date>2011-04-26 20:25 CET</date>
+  </articleinfo>
+<section id="description">
+  <title>Description</title>
+  <para>
+    An ANOVA report with table of descriptives, diagnostic tests and
+    ANOVA-specific statistics.
+  </para>
+</section>
+<section id="introduction">
+  <title>Introduction</title>
+  <para>
+    <emphasis role="strong">Analysis of Variance</emphasis> or
+    <emphasis role="strong">ANOVA</emphasis> is a statistical procedure
+    that tests equality of means for several samples. It was first
+    introduced in 1921. by famous English statistician Sir Ronald Aylmer
+    Fisher.
+  </para>
+</section>
+<section id="model-overview">
+  <title>Model Overview</title>
+  <para>
+    One-Way ANOVA was carried out, with <emphasis>Gender</emphasis> as
+    independent variable, and <emphasis>Internet usage in leisure time
+    (hours per day)</emphasis> as a response variable. Factor
+    interaction was taken into account.
+  </para>
+</section>
+<section id="descriptives">
+  <title>Descriptives</title>
+  <para>
+    In order to get more insight on the model data, a table of
+    frequencies for ANOVA factors is displayed, as well as a table of
+    descriptives.
+  </para>
+  <section id="frequency-table">
+    <title>Frequency Table</title>
+    <para>
+      Below lies a frequency table for factors in ANOVA model. Note that
+      the missing values are removed from the summary.
+    </para>
+    <!-- endlist -->
+    <informaltable>
+      <tgroup cols="6">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">gender</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">N</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">pct</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">cumul.count</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">cumul.pct</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              1
+            </entry>
+            <entry>
+              male
+            </entry>
+            <entry>
+              410
+            </entry>
+            <entry>
+              60.9212
+            </entry>
+            <entry>
+              410
+            </entry>
+            <entry>
+              60.9212
+            </entry>
+          </row>
+          <row>
+            <entry>
+              2
+            </entry>
+            <entry>
+              female
+            </entry>
+            <entry>
+              263
+            </entry>
+            <entry>
+              39.0788
+            </entry>
+            <entry>
+              673
+            </entry>
+            <entry>
+              100
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Total
+            </entry>
+            <entry>
+            </entry>
+            <entry>
+              673
+            </entry>
+            <entry>
+              100
+            </entry>
+            <entry>
+              673
+            </entry>
+            <entry>
+              100
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+  <section id="descriptive-statistics">
+    <title>Descriptive Statistics</title>
+    <para>
+      The following table displays the descriptive statistics of ANOVA
+      model. Factor levels and/or their combinations lie on the left
+      hand side, while the corresponding statistics for response
+      variable are given on the right-hand side.
+    </para>
+    <informaltable>
+      <tgroup cols="9">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              <emphasis role="strong">fac</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">min(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">max(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">mean(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">SD(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">median(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">IQR(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">skewness(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">kurtosis(resp)</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              male
+            </entry>
+            <entry>
+              0
+            </entry>
+            <entry>
+              12
+            </entry>
+            <entry>
+              3.2699
+            </entry>
+            <entry>
+              1.9535
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              0.9479
+            </entry>
+            <entry>
+              4.0064
+            </entry>
+          </row>
+          <row>
+            <entry>
+              female
+            </entry>
+            <entry>
+              0
+            </entry>
+            <entry>
+              12
+            </entry>
+            <entry>
+              3.0643
+            </entry>
+            <entry>
+              2.3546
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              1.4064
+            </entry>
+            <entry>
+              4.9089
+            </entry>
+          </row>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              0
+            </entry>
+            <entry>
+              10
+            </entry>
+            <entry>
+              3.3824
+            </entry>
+            <entry>
+              2.5822
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              1.2197
+            </entry>
+            <entry>
+              3.8058
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+</section>
+<section id="diagnostics">
+  <title>Diagnostics</title>
+  <para>
+    Before we carry out ANOVA, we'd like to check some basic
+    assumptions. For those purposes, normality and homoscedascity tests
+    are carried out alongside several graphs that may help you with your
+    decision on model's main assumptions.
+  </para>
+  <section id="diagnostics-1">
+    <title>Diagnostics</title>
+    <section id="univariate-normality">
+      <title>Univariate Normality</title>
+      <para>
+        We will use <emphasis>Shapiro-Wilk</emphasis>,
+        <emphasis>Lilliefors</emphasis> and
+        <emphasis>Anderson-Darling</emphasis> tests to screen departures
+        from normality in the response variable (<emphasis>Internet
+        usage in leisure time (hours per day)</emphasis>).
+      </para>
+      <!-- endlist -->
+      <informaltable>
+        <tgroup cols="3">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">W</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">p</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                shapiro.test
+              </entry>
+              <entry>
+                0.9001
+              </entry>
+              <entry>
+                0
+              </entry>
+            </row>
+            <row>
+              <entry>
+                lillie.test
+              </entry>
+              <entry>
+                0.168
+              </entry>
+              <entry>
+                0
+              </entry>
+            </row>
+            <row>
+              <entry>
+                ad.test
+              </entry>
+              <entry>
+                18.753
+              </entry>
+              <entry>
+                0
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        As you can see, applied tests confirm departures from normality.
+      </para>
+    </section>
+    <section id="homoscedascity">
+      <title>Homoscedascity</title>
+      <para>
+        In order to test homoscedascity, <emphasis>Bartlett</emphasis>
+        and <emphasis>Fligner-Kileen</emphasis> tests are applied.
+      </para>
+      <!-- endlist -->
+      <informaltable>
+        <tgroup cols="3">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">H</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">p</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                fligner.test
+              </entry>
+              <entry>
+                0.4629
+              </entry>
+              <entry>
+                0.4963
+              </entry>
+            </row>
+            <row>
+              <entry>
+                bartlett.test
+              </entry>
+              <entry>
+                10.7698
+              </entry>
+              <entry>
+                0.001
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        When it comes to equality of variances, applied tests yield
+        inconsistent results. While <emphasis>Fligner-Kileen
+        test</emphasis> confirmed the hypotheses of homoscedascity,
+        <emphasis>Bartlett's test</emphasis> rejected it.
+      </para>
+    </section>
+  </section>
+  <section id="diagnostic-plots">
+    <title>Diagnostic Plots</title>
+    <para>
+      Here you can see several diagnostic plots for ANOVA model:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          residuals against fitted values
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          scale-location plot of square root of residuals against fitted
+          values
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          normal Q-Q plot
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          residuals against leverages
+        </para>
+      </listitem>
+    </itemizedlist>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="1c63b6fad7856cf59a751b0f80339918.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
+  </section>
+</section>
+<section id="anova-summary">
+  <title>ANOVA Summary</title>
+  <section id="anova-table">
+    <title>ANOVA Table</title>
+    <!-- endlist -->
+    <informaltable>
+      <tgroup cols="6">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">Df</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Sum.Sq</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Mean.Sq</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">F.value</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Pr..F.</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              gender
+            </entry>
+            <entry>
+              1
+            </entry>
+            <entry>
+              6.4217
+            </entry>
+            <entry>
+              6.4217
+            </entry>
+            <entry>
+              1.4302
+            </entry>
+            <entry>
+              0.2322
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Residuals
+            </entry>
+            <entry>
+              636
+            </entry>
+            <entry>
+              2855.63
+            </entry>
+            <entry>
+              4.49
+            </entry>
+            <entry>
+            </entry>
+            <entry>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <para>
+      <emphasis>F-test</emphasis> for <emphasis>Gender</emphasis> is not
+      statistically significant, which implies that there is no Gender
+      effect on response variable.
+    </para>
+  </section>
+  <section id="description-1">
+    <title>Description</title>
+    <para>
+      An ANOVA report with table of descriptives, diagnostic tests and
+      ANOVA-specific statistics.
+    </para>
+  </section>
+</section>
+<section id="introduction-1">
+  <title>Introduction</title>
+  <para>
+    <emphasis role="strong">Analysis of Variance</emphasis> or
+    <emphasis role="strong">ANOVA</emphasis> is a statistical procedure
+    that tests equality of means for several samples. It was first
+    introduced in 1921. by famous English statistician Sir Ronald Aylmer
+    Fisher.
+  </para>
+</section>
+<section id="model-overview-1">
+  <title>Model Overview</title>
+  <para>
+    Two-Way ANOVA was carried out, with <emphasis>Gender</emphasis> and
+    <emphasis>Relationship status</emphasis> as independent variables,
+    and <emphasis>Internet usage in leisure time (hours per
+    day)</emphasis> as a response variable. Factor interaction was taken
+    into account.
+  </para>
+</section>
+<section id="descriptives-1">
+  <title>Descriptives</title>
+  <para>
+    In order to get more insight on the model data, a table of
+    frequencies for ANOVA factors is displayed, as well as a table of
+    descriptives.
+  </para>
+  <section id="frequency-table-1">
+    <title>Frequency Table</title>
+    <para>
+      Below lies a frequency table for factors in ANOVA model. Note that
+      the missing values are removed from the summary.
+    </para>
+    <!-- endlist -->
+    <informaltable>
+      <tgroup cols="7">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">gender</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">partner</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">N</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">pct</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">cumul.count</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">cumul.pct</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              1
+            </entry>
+            <entry>
+              male
+            </entry>
+            <entry>
+              in a relationship
+            </entry>
+            <entry>
+              150
+            </entry>
+            <entry>
+              23.6967
+            </entry>
+            <entry>
+              150
+            </entry>
+            <entry>
+              23.6967
+            </entry>
+          </row>
+          <row>
+            <entry>
+              2
+            </entry>
+            <entry>
+              female
+            </entry>
+            <entry>
+              in a relationship
+            </entry>
+            <entry>
+              120
+            </entry>
+            <entry>
+              18.9573
+            </entry>
+            <entry>
+              270
+            </entry>
+            <entry>
+              42.654
+            </entry>
+          </row>
+          <row>
+            <entry>
+              3
+            </entry>
+            <entry>
+              male
+            </entry>
+            <entry>
+              married
+            </entry>
+            <entry>
+              33
+            </entry>
+            <entry>
+              5.2133
+            </entry>
+            <entry>
+              303
+            </entry>
+            <entry>
+              47.8673
+            </entry>
+          </row>
+          <row>
+            <entry>
+              4
+            </entry>
+            <entry>
+              female
+            </entry>
+            <entry>
+              married
+            </entry>
+            <entry>
+              29
+            </entry>
+            <entry>
+              4.5814
+            </entry>
+            <entry>
+              332
+            </entry>
+            <entry>
+              52.4487
+            </entry>
+          </row>
+          <row>
+            <entry>
+              5
+            </entry>
+            <entry>
+              male
+            </entry>
+            <entry>
+              single
+            </entry>
+            <entry>
+              204
+            </entry>
+            <entry>
+              32.2275
+            </entry>
+            <entry>
+              536
+            </entry>
+            <entry>
+              84.6761
+            </entry>
+          </row>
+          <row>
+            <entry>
+              6
+            </entry>
+            <entry>
+              female
+            </entry>
+            <entry>
+              single
+            </entry>
+            <entry>
+              97
+            </entry>
+            <entry>
+              15.3239
+            </entry>
+            <entry>
+              633
+            </entry>
+            <entry>
+              100
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Total
+            </entry>
+            <entry>
+            </entry>
+            <entry>
+            </entry>
+            <entry>
+              633
+            </entry>
+            <entry>
+              100
+            </entry>
+            <entry>
+              633
+            </entry>
+            <entry>
+              100
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+  <section id="descriptive-statistics-1">
+    <title>Descriptive Statistics</title>
+    <para>
+      The following table displays the descriptive statistics of ANOVA
+      model. Factor levels and/or their combinations lie on the left
+      hand side, while the corresponding statistics for response
+      variable are given on the right-hand side.
+    </para>
+    <informaltable>
+      <tgroup cols="10">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              <emphasis role="strong">gender</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">partner</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">min(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">max(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">mean(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">SD(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">median(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">IQR(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">skewness(resp)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">kurtosis(resp)</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              male
+            </entry>
+            <entry>
+              in a relationship
+            </entry>
+            <entry>
+              0.5
+            </entry>
+            <entry>
+              12
+            </entry>
+            <entry>
+              3.0582
+            </entry>
+            <entry>
+              1.9692
+            </entry>
+            <entry>
+              2.5
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              1.3376
+            </entry>
+            <entry>
+              5.727
+            </entry>
+          </row>
+          <row>
+            <entry>
+              male
+            </entry>
+            <entry>
+              married
+            </entry>
+            <entry>
+              0
+            </entry>
+            <entry>
+              8
+            </entry>
+            <entry>
+              2.9848
+            </entry>
+            <entry>
+              2.029
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              0.9027
+            </entry>
+            <entry>
+              3.351
+            </entry>
+          </row>
+          <row>
+            <entry>
+              male
+            </entry>
+            <entry>
+              single
+            </entry>
+            <entry>
+              0
+            </entry>
+            <entry>
+              10
+            </entry>
+            <entry>
+              3.5027
+            </entry>
+            <entry>
+              1.9361
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              0.7636
+            </entry>
+            <entry>
+              3.1208
+            </entry>
+          </row>
+          <row>
+            <entry>
+              male
+            </entry>
+            <entry>
+            </entry>
+            <entry>
+              0.5
+            </entry>
+            <entry>
+              6.5
+            </entry>
+            <entry>
+              3.1304
+            </entry>
+            <entry>
+              1.7788
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              2.75
+            </entry>
+            <entry>
+              0.0719
+            </entry>
+            <entry>
+              1.9965
+            </entry>
+          </row>
+          <row>
+            <entry>
+              female
+            </entry>
+            <entry>
+              in a relationship
+            </entry>
+            <entry>
+              0.5
+            </entry>
+            <entry>
+              10
+            </entry>
+            <entry>
+              3.0439
+            </entry>
+            <entry>
+              2.2158
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              1.4017
+            </entry>
+            <entry>
+              4.9165
+            </entry>
+          </row>
+          <row>
+            <entry>
+              female
+            </entry>
+            <entry>
+              married
+            </entry>
+            <entry>
+              0
+            </entry>
+            <entry>
+              10
+            </entry>
+            <entry>
+              2.4808
+            </entry>
+            <entry>
+              1.9671
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              1.75
+            </entry>
+            <entry>
+              2.1875
+            </entry>
+            <entry>
+              9.2864
+            </entry>
+          </row>
+          <row>
+            <entry>
+              female
+            </entry>
+            <entry>
+              single
+            </entry>
+            <entry>
+              0
+            </entry>
+            <entry>
+              12
+            </entry>
+            <entry>
+              3.3226
+            </entry>
+            <entry>
+              2.6791
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              3.5
+            </entry>
+            <entry>
+              1.2045
+            </entry>
+            <entry>
+              4.0139
+            </entry>
+          </row>
+          <row>
+            <entry>
+              female
+            </entry>
+            <entry>
+            </entry>
+            <entry>
+              0.5
+            </entry>
+            <entry>
+              6
+            </entry>
+            <entry>
+              2.6562
+            </entry>
+            <entry>
+              1.739
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              0.6914
+            </entry>
+            <entry>
+              2.4285
+            </entry>
+          </row>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              in a relationship
+            </entry>
+            <entry>
+              0
+            </entry>
+            <entry>
+              8
+            </entry>
+            <entry>
+              3.3333
+            </entry>
+            <entry>
+              2.4398
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              2.5
+            </entry>
+            <entry>
+              0.7897
+            </entry>
+            <entry>
+              2.5973
+            </entry>
+          </row>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              married
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              7
+            </entry>
+            <entry>
+              3.8
+            </entry>
+            <entry>
+              1.9235
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              1
+            </entry>
+            <entry>
+              1.018
+            </entry>
+            <entry>
+              2.6519
+            </entry>
+          </row>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              single
+            </entry>
+            <entry>
+              0
+            </entry>
+            <entry>
+              10
+            </entry>
+            <entry>
+              3.5833
+            </entry>
+            <entry>
+              3.2039
+            </entry>
+            <entry>
+              3
+            </entry>
+            <entry>
+              1.5
+            </entry>
+            <entry>
+              1.279
+            </entry>
+            <entry>
+              3.4365
+            </entry>
+          </row>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+            </entry>
+            <entry>
+              1
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              1.5
+            </entry>
+            <entry>
+              0.7071
+            </entry>
+            <entry>
+              1.5
+            </entry>
+            <entry>
+              0.5
+            </entry>
+            <entry>
+              0
+            </entry>
+            <entry>
+              1
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+</section>
+<section id="diagnostics-2">
+  <title>Diagnostics</title>
+  <para>
+    Before we carry out ANOVA, we'd like to check some basic
+    assumptions. For those purposes, normality and homoscedascity tests
+    are carried out alongside several graphs that may help you with your
+    decision on model's main assumptions.
+  </para>
+  <section id="diagnostics-3">
+    <title>Diagnostics</title>
+    <section id="univariate-normality-1">
+      <title>Univariate Normality</title>
+      <para>
+        We will use <emphasis>Shapiro-Wilk</emphasis>,
+        <emphasis>Lilliefors</emphasis> and
+        <emphasis>Anderson-Darling</emphasis> tests to screen departures
+        from normality in the response variable (<emphasis>Internet
+        usage in leisure time (hours per day)</emphasis>).
+      </para>
+      <!-- endlist -->
+      <informaltable>
+        <tgroup cols="3">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">W</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">p</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                shapiro.test
+              </entry>
+              <entry>
+                0.9001
+              </entry>
+              <entry>
+                0
+              </entry>
+            </row>
+            <row>
+              <entry>
+                lillie.test
+              </entry>
+              <entry>
+                0.168
+              </entry>
+              <entry>
+                0
+              </entry>
+            </row>
+            <row>
+              <entry>
+                ad.test
+              </entry>
+              <entry>
+                18.753
+              </entry>
+              <entry>
+                0
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        As you can see, applied tests confirm departures from normality.
+      </para>
+    </section>
+    <section id="homoscedascity-1">
+      <title>Homoscedascity</title>
+      <para>
+        In order to test homoscedascity, <emphasis>Bartlett</emphasis>
+        and <emphasis>Fligner-Kileen</emphasis> tests are applied.
+      </para>
+      <!-- endlist -->
+      <informaltable>
+        <tgroup cols="3">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+              </entry>
+              <entry>
+                <emphasis role="strong">H</emphasis>
+              </entry>
+              <entry>
+                <emphasis role="strong">p</emphasis>
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                fligner.test
+              </entry>
+              <entry>
+                1.1234
+              </entry>
+              <entry>
+                0.2892
+              </entry>
+            </row>
+            <row>
+              <entry>
+                bartlett.test
+              </entry>
+              <entry>
+                11.1267
+              </entry>
+              <entry>
+                0.0009
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        When it comes to equality of variances, applied tests yield
+        inconsistent results. While <emphasis>Fligner-Kileen
+        test</emphasis> confirmed the hypotheses of homoscedascity,
+        <emphasis>Bartlett's test</emphasis> rejected it.
+      </para>
+    </section>
+  </section>
+  <section id="diagnostic-plots-1">
+    <title>Diagnostic Plots</title>
+    <para>
+      Here you can see several diagnostic plots for ANOVA model:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          residuals against fitted values
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          scale-location plot of square root of residuals against fitted
+          values
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          normal Q-Q plot
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          residuals against leverages
+        </para>
+      </listitem>
+    </itemizedlist>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="efd197b02ca1541c48611907a3c42576.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
+  </section>
+</section>
+<section id="anova-summary-1">
+  <title>ANOVA Summary</title>
+  <section id="anova-table-1">
+    <title>ANOVA Table</title>
+    <!-- endlist -->
+    <informaltable>
+      <tgroup cols="6">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">Df</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Sum.Sq</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Mean.Sq</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">F.value</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Pr..F.</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              gender
+            </entry>
+            <entry>
+              1
+            </entry>
+            <entry>
+              4.9473
+            </entry>
+            <entry>
+              4.9473
+            </entry>
+            <entry>
+              1.0853
+            </entry>
+            <entry>
+              0.2979
+            </entry>
+          </row>
+          <row>
+            <entry>
+              partner
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              31.2124
+            </entry>
+            <entry>
+              15.6062
+            </entry>
+            <entry>
+              3.4237
+            </entry>
+            <entry>
+              0.0332
+            </entry>
+          </row>
+          <row>
+            <entry>
+              gender:partner
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              3.0375
+            </entry>
+            <entry>
+              1.5188
+            </entry>
+            <entry>
+              0.3332
+            </entry>
+            <entry>
+              0.7168
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Residuals
+            </entry>
+            <entry>
+              593
+            </entry>
+            <entry>
+              2703.0899
+            </entry>
+            <entry>
+              4.5583
+            </entry>
+            <entry>
+            </entry>
+            <entry>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <para>
+      <emphasis>F-test</emphasis> for <emphasis>Gender</emphasis> is not
+      statistically significant, which implies that there is no Gender
+      effect on response variable. Effect of <emphasis>Relationship
+      status</emphasis> on response variable is significant. Interaction
+      between levels of <emphasis>Gender</emphasis> and
+      <emphasis>Relationship status</emphasis> wasn't found significant
+      (p = 0.717).
+    </para>
+    <para>
+      This report was generated with
+      <ulink url="http://rapport-package.info/">rapport</ulink>.
+    </para>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/rapport.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
+  </section>
+</section>
+</article>

@@ -1,0 +1,918 @@
+.\"t
+.TH ANOVA "" "2011\[en]04\[en]26 20:25 CET" "Template"
+.SS Description
+.PP
+An ANOVA report with table of descriptives, diagnostic tests and
+ANOVA-specific statistics.
+.SH Introduction
+.PP
+\f[B]Analysis of Variance\f[] or \f[B]ANOVA\f[] is a statistical
+procedure that tests equality of means for several samples.
+It was first introduced in 1921.
+by famous English statistician Sir Ronald Aylmer Fisher.
+.SH Model Overview
+.PP
+One-Way ANOVA was carried out, with \f[I]Gender\f[] as independent
+variable, and \f[I]Internet usage in leisure time (hours per day)\f[] as
+a response variable.
+Factor interaction was taken into account.
+.SH Descriptives
+.PP
+In order to get more insight on the model data, a table of frequencies
+for ANOVA factors is displayed, as well as a table of descriptives.
+.SS Frequency Table
+.PP
+Below lies a frequency table for factors in ANOVA model.
+Note that the missing values are removed from the summary.
+.PP
+.TS
+tab(@);
+l l l l l l.
+T{
+T}@T{
+\f[B]gender\f[]
+T}@T{
+\f[B]N\f[]
+T}@T{
+\f[B]pct\f[]
+T}@T{
+\f[B]cumul.count\f[]
+T}@T{
+\f[B]cumul.pct\f[]
+T}
+_
+T{
+1
+T}@T{
+male
+T}@T{
+410
+T}@T{
+60.9212
+T}@T{
+410
+T}@T{
+60.9212
+T}
+T{
+2
+T}@T{
+female
+T}@T{
+263
+T}@T{
+39.0788
+T}@T{
+673
+T}@T{
+100
+T}
+T{
+Total
+T}@T{
+T}@T{
+673
+T}@T{
+100
+T}@T{
+673
+T}@T{
+100
+T}
+.TE
+.SS Descriptive Statistics
+.PP
+The following table displays the descriptive statistics of ANOVA model.
+Factor levels and/or their combinations lie on the left hand side, while
+the corresponding statistics for response variable are given on the
+right-hand side.
+.PP
+.TS
+tab(@);
+l l l l l l l l l.
+T{
+\f[B]fac\f[]
+T}@T{
+\f[B]min(resp)\f[]
+T}@T{
+\f[B]max(resp)\f[]
+T}@T{
+\f[B]mean(resp)\f[]
+T}@T{
+\f[B]SD(resp)\f[]
+T}@T{
+\f[B]median(resp)\f[]
+T}@T{
+\f[B]IQR(resp)\f[]
+T}@T{
+\f[B]skewness(resp)\f[]
+T}@T{
+\f[B]kurtosis(resp)\f[]
+T}
+_
+T{
+male
+T}@T{
+0
+T}@T{
+12
+T}@T{
+3.2699
+T}@T{
+1.9535
+T}@T{
+3
+T}@T{
+3
+T}@T{
+0.9479
+T}@T{
+4.0064
+T}
+T{
+female
+T}@T{
+0
+T}@T{
+12
+T}@T{
+3.0643
+T}@T{
+2.3546
+T}@T{
+2
+T}@T{
+3
+T}@T{
+1.4064
+T}@T{
+4.9089
+T}
+T{
+T}@T{
+0
+T}@T{
+10
+T}@T{
+3.3824
+T}@T{
+2.5822
+T}@T{
+3
+T}@T{
+2
+T}@T{
+1.2197
+T}@T{
+3.8058
+T}
+.TE
+.SH Diagnostics
+.PP
+Before we carry out ANOVA, we'd like to check some basic assumptions.
+For those purposes, normality and homoscedascity tests are carried out
+alongside several graphs that may help you with your decision on model's
+main assumptions.
+.SS Diagnostics
+.SS Univariate Normality
+.PP
+We will use \f[I]Shapiro-Wilk\f[], \f[I]Lilliefors\f[] and
+\f[I]Anderson-Darling\f[] tests to screen departures from normality in
+the response variable (\f[I]Internet usage in leisure time (hours per
+day)\f[]).
+.PP
+.TS
+tab(@);
+l l l.
+T{
+T}@T{
+\f[B]W\f[]
+T}@T{
+\f[B]p\f[]
+T}
+_
+T{
+shapiro.test
+T}@T{
+0.9001
+T}@T{
+0
+T}
+T{
+lillie.test
+T}@T{
+0.168
+T}@T{
+0
+T}
+T{
+ad.test
+T}@T{
+18.753
+T}@T{
+0
+T}
+.TE
+.PP
+As you can see, applied tests confirm departures from normality.
+.SS Homoscedascity
+.PP
+In order to test homoscedascity, \f[I]Bartlett\f[] and
+\f[I]Fligner-Kileen\f[] tests are applied.
+.PP
+.TS
+tab(@);
+l l l.
+T{
+T}@T{
+\f[B]H\f[]
+T}@T{
+\f[B]p\f[]
+T}
+_
+T{
+fligner.test
+T}@T{
+0.4629
+T}@T{
+0.4963
+T}
+T{
+bartlett.test
+T}@T{
+10.7698
+T}@T{
+0.001
+T}
+.TE
+.PP
+When it comes to equality of variances, applied tests yield inconsistent
+results.
+While \f[I]Fligner-Kileen test\f[] confirmed the hypotheses of
+homoscedascity, \f[I]Bartlett's test\f[] rejected it.
+.SS Diagnostic Plots
+.PP
+Here you can see several diagnostic plots for ANOVA model:
+.IP \[bu] 2
+residuals against fitted values
+.IP \[bu] 2
+scale-location plot of square root of residuals against fitted values
+.IP \[bu] 2
+normal Q-Q plot
+.IP \[bu] 2
+residuals against leverages
+.PP
+[IMAGE: image (1c63b6fad7856cf59a751b0f80339918.png)]
+.SH ANOVA Summary
+.SS ANOVA Table
+.PP
+.TS
+tab(@);
+l l l l l l.
+T{
+T}@T{
+\f[B]Df\f[]
+T}@T{
+\f[B]Sum.Sq\f[]
+T}@T{
+\f[B]Mean.Sq\f[]
+T}@T{
+\f[B]F.value\f[]
+T}@T{
+\f[B]Pr..F.\f[]
+T}
+_
+T{
+gender
+T}@T{
+1
+T}@T{
+6.4217
+T}@T{
+6.4217
+T}@T{
+1.4302
+T}@T{
+0.2322
+T}
+T{
+Residuals
+T}@T{
+636
+T}@T{
+2855.63
+T}@T{
+4.49
+T}@T{
+T}@T{
+T}
+.TE
+.PP
+\f[I]F-test\f[] for \f[I]Gender\f[] is not statistically significant,
+which implies that there is no Gender effect on response variable.
+.SS Description
+.PP
+An ANOVA report with table of descriptives, diagnostic tests and
+ANOVA-specific statistics.
+.SH Introduction
+.PP
+\f[B]Analysis of Variance\f[] or \f[B]ANOVA\f[] is a statistical
+procedure that tests equality of means for several samples.
+It was first introduced in 1921.
+by famous English statistician Sir Ronald Aylmer Fisher.
+.SH Model Overview
+.PP
+Two-Way ANOVA was carried out, with \f[I]Gender\f[] and
+\f[I]Relationship status\f[] as independent variables, and \f[I]Internet
+usage in leisure time (hours per day)\f[] as a response variable.
+Factor interaction was taken into account.
+.SH Descriptives
+.PP
+In order to get more insight on the model data, a table of frequencies
+for ANOVA factors is displayed, as well as a table of descriptives.
+.SS Frequency Table
+.PP
+Below lies a frequency table for factors in ANOVA model.
+Note that the missing values are removed from the summary.
+.PP
+.TS
+tab(@);
+l l l l l l l.
+T{
+T}@T{
+\f[B]gender\f[]
+T}@T{
+\f[B]partner\f[]
+T}@T{
+\f[B]N\f[]
+T}@T{
+\f[B]pct\f[]
+T}@T{
+\f[B]cumul.count\f[]
+T}@T{
+\f[B]cumul.pct\f[]
+T}
+_
+T{
+1
+T}@T{
+male
+T}@T{
+in a relationship
+T}@T{
+150
+T}@T{
+23.6967
+T}@T{
+150
+T}@T{
+23.6967
+T}
+T{
+2
+T}@T{
+female
+T}@T{
+in a relationship
+T}@T{
+120
+T}@T{
+18.9573
+T}@T{
+270
+T}@T{
+42.654
+T}
+T{
+3
+T}@T{
+male
+T}@T{
+married
+T}@T{
+33
+T}@T{
+5.2133
+T}@T{
+303
+T}@T{
+47.8673
+T}
+T{
+4
+T}@T{
+female
+T}@T{
+married
+T}@T{
+29
+T}@T{
+4.5814
+T}@T{
+332
+T}@T{
+52.4487
+T}
+T{
+5
+T}@T{
+male
+T}@T{
+single
+T}@T{
+204
+T}@T{
+32.2275
+T}@T{
+536
+T}@T{
+84.6761
+T}
+T{
+6
+T}@T{
+female
+T}@T{
+single
+T}@T{
+97
+T}@T{
+15.3239
+T}@T{
+633
+T}@T{
+100
+T}
+T{
+Total
+T}@T{
+T}@T{
+T}@T{
+633
+T}@T{
+100
+T}@T{
+633
+T}@T{
+100
+T}
+.TE
+.SS Descriptive Statistics
+.PP
+The following table displays the descriptive statistics of ANOVA model.
+Factor levels and/or their combinations lie on the left hand side, while
+the corresponding statistics for response variable are given on the
+right-hand side.
+.PP
+.TS
+tab(@);
+l l l l l l l l l l.
+T{
+\f[B]gender\f[]
+T}@T{
+\f[B]partner\f[]
+T}@T{
+\f[B]min(resp)\f[]
+T}@T{
+\f[B]max(resp)\f[]
+T}@T{
+\f[B]mean(resp)\f[]
+T}@T{
+\f[B]SD(resp)\f[]
+T}@T{
+\f[B]median(resp)\f[]
+T}@T{
+\f[B]IQR(resp)\f[]
+T}@T{
+\f[B]skewness(resp)\f[]
+T}@T{
+\f[B]kurtosis(resp)\f[]
+T}
+_
+T{
+male
+T}@T{
+in a relationship
+T}@T{
+0.5
+T}@T{
+12
+T}@T{
+3.0582
+T}@T{
+1.9692
+T}@T{
+2.5
+T}@T{
+2
+T}@T{
+1.3376
+T}@T{
+5.727
+T}
+T{
+male
+T}@T{
+married
+T}@T{
+0
+T}@T{
+8
+T}@T{
+2.9848
+T}@T{
+2.029
+T}@T{
+3
+T}@T{
+2
+T}@T{
+0.9027
+T}@T{
+3.351
+T}
+T{
+male
+T}@T{
+single
+T}@T{
+0
+T}@T{
+10
+T}@T{
+3.5027
+T}@T{
+1.9361
+T}@T{
+3
+T}@T{
+3
+T}@T{
+0.7636
+T}@T{
+3.1208
+T}
+T{
+male
+T}@T{
+T}@T{
+0.5
+T}@T{
+6.5
+T}@T{
+3.1304
+T}@T{
+1.7788
+T}@T{
+3
+T}@T{
+2.75
+T}@T{
+0.0719
+T}@T{
+1.9965
+T}
+T{
+female
+T}@T{
+in a relationship
+T}@T{
+0.5
+T}@T{
+10
+T}@T{
+3.0439
+T}@T{
+2.2158
+T}@T{
+3
+T}@T{
+3
+T}@T{
+1.4017
+T}@T{
+4.9165
+T}
+T{
+female
+T}@T{
+married
+T}@T{
+0
+T}@T{
+10
+T}@T{
+2.4808
+T}@T{
+1.9671
+T}@T{
+2
+T}@T{
+1.75
+T}@T{
+2.1875
+T}@T{
+9.2864
+T}
+T{
+female
+T}@T{
+single
+T}@T{
+0
+T}@T{
+12
+T}@T{
+3.3226
+T}@T{
+2.6791
+T}@T{
+3
+T}@T{
+3.5
+T}@T{
+1.2045
+T}@T{
+4.0139
+T}
+T{
+female
+T}@T{
+T}@T{
+0.5
+T}@T{
+6
+T}@T{
+2.6562
+T}@T{
+1.739
+T}@T{
+2
+T}@T{
+3
+T}@T{
+0.6914
+T}@T{
+2.4285
+T}
+T{
+T}@T{
+in a relationship
+T}@T{
+0
+T}@T{
+8
+T}@T{
+3.3333
+T}@T{
+2.4398
+T}@T{
+3
+T}@T{
+2.5
+T}@T{
+0.7897
+T}@T{
+2.5973
+T}
+T{
+T}@T{
+married
+T}@T{
+2
+T}@T{
+7
+T}@T{
+3.8
+T}@T{
+1.9235
+T}@T{
+3
+T}@T{
+1
+T}@T{
+1.018
+T}@T{
+2.6519
+T}
+T{
+T}@T{
+single
+T}@T{
+0
+T}@T{
+10
+T}@T{
+3.5833
+T}@T{
+3.2039
+T}@T{
+3
+T}@T{
+1.5
+T}@T{
+1.279
+T}@T{
+3.4365
+T}
+T{
+T}@T{
+T}@T{
+1
+T}@T{
+2
+T}@T{
+1.5
+T}@T{
+0.7071
+T}@T{
+1.5
+T}@T{
+0.5
+T}@T{
+0
+T}@T{
+1
+T}
+.TE
+.SH Diagnostics
+.PP
+Before we carry out ANOVA, we'd like to check some basic assumptions.
+For those purposes, normality and homoscedascity tests are carried out
+alongside several graphs that may help you with your decision on model's
+main assumptions.
+.SS Diagnostics
+.SS Univariate Normality
+.PP
+We will use \f[I]Shapiro-Wilk\f[], \f[I]Lilliefors\f[] and
+\f[I]Anderson-Darling\f[] tests to screen departures from normality in
+the response variable (\f[I]Internet usage in leisure time (hours per
+day)\f[]).
+.PP
+.TS
+tab(@);
+l l l.
+T{
+T}@T{
+\f[B]W\f[]
+T}@T{
+\f[B]p\f[]
+T}
+_
+T{
+shapiro.test
+T}@T{
+0.9001
+T}@T{
+0
+T}
+T{
+lillie.test
+T}@T{
+0.168
+T}@T{
+0
+T}
+T{
+ad.test
+T}@T{
+18.753
+T}@T{
+0
+T}
+.TE
+.PP
+As you can see, applied tests confirm departures from normality.
+.SS Homoscedascity
+.PP
+In order to test homoscedascity, \f[I]Bartlett\f[] and
+\f[I]Fligner-Kileen\f[] tests are applied.
+.PP
+.TS
+tab(@);
+l l l.
+T{
+T}@T{
+\f[B]H\f[]
+T}@T{
+\f[B]p\f[]
+T}
+_
+T{
+fligner.test
+T}@T{
+1.1234
+T}@T{
+0.2892
+T}
+T{
+bartlett.test
+T}@T{
+11.1267
+T}@T{
+0.0009
+T}
+.TE
+.PP
+When it comes to equality of variances, applied tests yield inconsistent
+results.
+While \f[I]Fligner-Kileen test\f[] confirmed the hypotheses of
+homoscedascity, \f[I]Bartlett's test\f[] rejected it.
+.SS Diagnostic Plots
+.PP
+Here you can see several diagnostic plots for ANOVA model:
+.IP \[bu] 2
+residuals against fitted values
+.IP \[bu] 2
+scale-location plot of square root of residuals against fitted values
+.IP \[bu] 2
+normal Q-Q plot
+.IP \[bu] 2
+residuals against leverages
+.PP
+[IMAGE: image (efd197b02ca1541c48611907a3c42576.png)]
+.SH ANOVA Summary
+.SS ANOVA Table
+.PP
+.TS
+tab(@);
+l l l l l l.
+T{
+T}@T{
+\f[B]Df\f[]
+T}@T{
+\f[B]Sum.Sq\f[]
+T}@T{
+\f[B]Mean.Sq\f[]
+T}@T{
+\f[B]F.value\f[]
+T}@T{
+\f[B]Pr..F.\f[]
+T}
+_
+T{
+gender
+T}@T{
+1
+T}@T{
+4.9473
+T}@T{
+4.9473
+T}@T{
+1.0853
+T}@T{
+0.2979
+T}
+T{
+partner
+T}@T{
+2
+T}@T{
+31.2124
+T}@T{
+15.6062
+T}@T{
+3.4237
+T}@T{
+0.0332
+T}
+T{
+gender:partner
+T}@T{
+2
+T}@T{
+3.0375
+T}@T{
+1.5188
+T}@T{
+0.3332
+T}@T{
+0.7168
+T}
+T{
+Residuals
+T}@T{
+593
+T}@T{
+2703.0899
+T}@T{
+4.5583
+T}@T{
+T}@T{
+T}
+.TE
+.PP
+\f[I]F-test\f[] for \f[I]Gender\f[] is not statistically significant,
+which implies that there is no Gender effect on response variable.
+Effect of \f[I]Relationship status\f[] on response variable is
+significant.
+Interaction between levels of \f[I]Gender\f[] and \f[I]Relationship
+status\f[] wasn't found significant (p = 0.717).
+.PP
+   *   *   *   *   *
+.PP
+This report was generated with rapport (http://rapport-package.info/).
+.PP
+[IMAGE: image (images/rapport.png)]
+.SH AUTHORS
+Rapport package team \@ https://github.com/aL3xa/rapport.

@@ -1,12 +1,14 @@
 == Description ==
 
-This template will return descriptive statistics of numerical, or frequency tables of categorical variables.
+This template will return descriptive statistics of numerical or frequency tables of categorical variables.
 
-=== ''gender'' (&quot;Gender&quot;) ===
+== ''gender'' (&quot;Gender&quot;) ==
 
-The dataset has 709 observations with 673 valid values (missing: 36) in ''gender'' (&quot;Gender&quot;). This variable seems to be a factor.
+The dataset has ''709'' observations with ''673'' valid values (missing: ''36'') in ''gender'' (&quot;Gender&quot;). This variable seems to be a factor.
 
-==== Base statistics ====
+=== Base statistics ===
+
+<!-- endlist -->
 
 <table>
 <thead>
@@ -23,41 +25,41 @@ The dataset has 709 observations with 673 valid values (missing: 36) in ''gender
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">male</td>
-<td align="left">410.00</td>
-<td align="left">60.92</td>
-<td align="left">410.00</td>
-<td align="left">60.92</td>
+<td align="left">410</td>
+<td align="left">60.9212</td>
+<td align="left">410</td>
+<td align="left">60.9212</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">female</td>
-<td align="left">263.00</td>
-<td align="left">39.08</td>
-<td align="left">673.00</td>
-<td align="left">100.00</td>
+<td align="left">263</td>
+<td align="left">39.0788</td>
+<td align="left">673</td>
+<td align="left">100</td>
 </tr>
 <tr class="odd">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">673.00</td>
-<td align="left">100.00</td>
-<td align="left">673.00</td>
-<td align="left">100.00</td>
+<td align="left">673</td>
+<td align="left">100</td>
+<td align="left">673</td>
+<td align="left">100</td>
 </tr>
 </tbody>
 </table>
 
-==== Barplot ====
+=== Barplot ===
 
 [[Image:3ed92ab3ffc6e875335e7e8c774c35a8.png|frame|none]]
 
-It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).
+It seems that the highest value is ''2'' which is exactly 2 times higher than the smallest value (''1'').
 
-=== ''age'' (&quot;Age&quot;) ===
+== ''age'' (&quot;Age&quot;) ==
 
-The dataset has 709 observations with 677 valid values (missing: 32) in ''age'' (&quot;Age&quot;). This variable seems to be numeric.
+The dataset has ''709'' observations with ''677'' valid values (missing: ''32'') in ''age'' (&quot;Age&quot;). This variable seems to be numeric.
 
-==== Base statistics ====
+=== Base statistics ===
 
 <table>
 <thead>
@@ -71,32 +73,127 @@ The dataset has 709 observations with 677 valid values (missing: 32) in ''age'' 
 <tbody>
 <tr class="odd">
 <td align="left">(all)</td>
-<td align="left">24.57</td>
-<td align="left">6.85</td>
-<td align="left">46.91</td>
+<td align="left">24.5731</td>
+<td align="left">6.8491</td>
+<td align="left">46.9107</td>
 </tr>
 </tbody>
 </table>
 
-==== Histogram ====
+=== Histogram ===
 
 [[Image:ac5d789145bdef09b10219ef16429f53.png|frame|none]]
 
-It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).
+It seems that the highest value is ''58'' which is exactly 3.625 times higher than the smallest value (''16'').
 
-The standard deviation is 6.8491 (variance: 46.911). The expected value is around 24.573, somewhere between 24.057 and 25.089 (SE: 0.2632).
+The standard deviation is 6.8491 (variance: 46.9107). The expected value is around 24.5731, somewhere between 24.0572 and 25.0891 (SE: 0.2632).
 
-If we suppose that ''Age'' is not near to a normal distribution (test: , skewness: 1.9296, kurtosis: 7.4851), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+If we suppose that ''Age'' is not near to a normal distribution (test: see below, skewness: 1.9296, kurtosis: 7.4851), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+=== Normality tests ===
+
+== Introduction ==
+
+In statistics, ''normality'' refers to an assumption that the distribution of a random variable follows ''normal'' (''Gaussian'') distribution. Because of its bell-like shape, it's also known as the ''&quot;bell curve&quot;''. The formula for ''normal distribution'' is:
+
+<math>f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}</math>
+
+''Normal distribution'' belongs to a ''location-scale family'' of distributions, as it's defined two parameters:
+
+* ''μ'' - ''mean'' or ''expectation'' (location parameter)
+* ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
+
+[[Image:2f8c434e103f36ec70966b372838d448.png|frame|none]]
+
+== Normality Tests ==
+
+=== Overview ===
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is ''normal''. At this point only few such tests will be covered: the ones that are available in <tt>stats</tt> package (which comes bundled with default R installation) and <tt>nortest</tt> package that is [http://cran.r-project.org/web/packages/nortest/index.html available] on CRAN.
+
+* '''Shapiro-Wilk test''' is a powerful normality test appropriate for small samples. In R, it's implemented in <tt>shapiro.test</tt> function available in <tt>stats</tt> package.
+* '''Lilliefors test''' is a modification of ''Kolmogorov-Smirnov test'' appropriate for testing normality when parameters or normal distribution (''μ'', ''σ<sup>2</sup>'') are not known. <tt>lillie.test</tt> function is located in <tt>nortest</tt> package.
+* '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <tt>ad.test</tt> function in <tt>nortest</tt> package.
+* '''Pearson Χ<sup>2</sup> test''' is another normality test which takes more &quot;traditional&quot; approach in normality testing. <tt>pearson.test</tt> is located in <tt>nortest</tt> package.
+
+=== Results ===
+
+Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
+
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''H'''</th>
+<th align="left">'''p'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">shapiro.test</td>
+<td align="left">0.8216</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">lillie.test</td>
+<td align="left">0.17</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">ad.test</td>
+<td align="left">32.1645</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">pearson.test</td>
+<td align="left">625.8479</td>
+<td align="left">0</td>
+</tr>
+</tbody>
+</table>
+
+So, let's draw some conclusions based on applied normality test:
+
+* according to ''Shapiro-Wilk test'', the distribution of ''Age'' is not normal.
+* based on ''Lilliefors test'', distribution of ''Age'' is not normal
+* ''Anderson-Darling test'' confirms violation of normality assumption
+* ''Pearson's Χ<sup>2</sup> test'' classifies the underlying distribution as non-normal
+
+== Diagnostic Plots ==
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: ''histogram'', ''Q-Q plot'' and ''kernel density plot''.
+
+=== Histogram ===
+
+''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
+
+[[Image:ac5d789145bdef09b10219ef16429f53.png|frame|none]]
+
+=== Q-Q Plot ===
+
+&quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
+
+[[Image:cbbba756d844aa053998959b73b9feff.png|frame|none]]
+
+=== Kernel Density Plot ===
+
+''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
+
+[[Image:6fd0494eea748495baa80653752f194f.png|frame|none]]
 
 == Description ==
 
-This template will return descriptive statistics of numerical, or frequency tables of categorical variables.
+This template will return descriptive statistics of numerical or frequency tables of categorical variables.
 
-=== ''chatim'' (&quot;Chat &amp; IM usage&quot;) ===
+== ''chatim'' (&quot;Chat &amp; IM usage&quot;) ==
 
-The dataset has 709 observations with 669 valid values (missing: 40) in ''chatim'' (&quot;Chat &amp; IM usage&quot;). This variable seems to be a factor.
+The dataset has ''709'' observations with ''669'' valid values (missing: ''40'') in ''chatim'' (&quot;Chat &amp; IM usage&quot;). This variable seems to be a factor.
 
-==== Base statistics ====
+=== Base statistics ===
+
+<!-- endlist -->
 
 <table>
 <thead>
@@ -113,81 +210,83 @@ The dataset has 709 observations with 669 valid values (missing: 40) in ''chatim
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">60.00</td>
-<td align="left">8.97</td>
-<td align="left">60.00</td>
-<td align="left">8.97</td>
+<td align="left">60</td>
+<td align="left">8.9686</td>
+<td align="left">60</td>
+<td align="left">8.9686</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">73.00</td>
-<td align="left">10.91</td>
-<td align="left">133.00</td>
-<td align="left">19.88</td>
+<td align="left">73</td>
+<td align="left">10.9118</td>
+<td align="left">133</td>
+<td align="left">19.8804</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">58.00</td>
-<td align="left">8.67</td>
-<td align="left">191.00</td>
-<td align="left">28.55</td>
+<td align="left">58</td>
+<td align="left">8.6697</td>
+<td align="left">191</td>
+<td align="left">28.5501</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">113.00</td>
-<td align="left">16.89</td>
-<td align="left">304.00</td>
-<td align="left">45.44</td>
+<td align="left">113</td>
+<td align="left">16.8909</td>
+<td align="left">304</td>
+<td align="left">45.441</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">136.00</td>
-<td align="left">20.33</td>
-<td align="left">440.00</td>
-<td align="left">65.77</td>
+<td align="left">136</td>
+<td align="left">20.3288</td>
+<td align="left">440</td>
+<td align="left">65.7698</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">88.00</td>
-<td align="left">13.15</td>
-<td align="left">528.00</td>
-<td align="left">78.92</td>
+<td align="left">88</td>
+<td align="left">13.154</td>
+<td align="left">528</td>
+<td align="left">78.9238</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">141.00</td>
-<td align="left">21.08</td>
-<td align="left">669.00</td>
-<td align="left">100.00</td>
+<td align="left">141</td>
+<td align="left">21.0762</td>
+<td align="left">669</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">669.00</td>
-<td align="left">100.00</td>
-<td align="left">669.00</td>
-<td align="left">100.00</td>
+<td align="left">669</td>
+<td align="left">100</td>
+<td align="left">669</td>
+<td align="left">100</td>
 </tr>
 </tbody>
 </table>
 
-==== Barplot ====
+=== Barplot ===
 
 [[Image:5a00abbe4c793ceedbbf10939665b5cf.png|frame|none]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
-=== ''game'' (&quot;On-line games usage&quot;) ===
+== ''game'' (&quot;On-line games usage&quot;) ==
 
-The dataset has 709 observations with 677 valid values (missing: 32) in ''game'' (&quot;On-line games usage&quot;). This variable seems to be a factor.
+The dataset has ''709'' observations with ''677'' valid values (missing: ''32'') in ''game'' (&quot;On-line games usage&quot;). This variable seems to be a factor.
 
-==== Base statistics ====
+=== Base statistics ===
+
+<!-- endlist -->
 
 <table>
 <thead>
@@ -204,81 +303,83 @@ The dataset has 709 observations with 677 valid values (missing: 32) in ''game''
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">352.00</td>
-<td align="left">51.99</td>
-<td align="left">352.00</td>
-<td align="left">51.99</td>
+<td align="left">352</td>
+<td align="left">51.9941</td>
+<td align="left">352</td>
+<td align="left">51.9941</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">128.00</td>
-<td align="left">18.91</td>
-<td align="left">480.00</td>
-<td align="left">70.90</td>
+<td align="left">128</td>
+<td align="left">18.9069</td>
+<td align="left">480</td>
+<td align="left">70.901</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">32.00</td>
-<td align="left">4.73</td>
-<td align="left">512.00</td>
-<td align="left">75.63</td>
+<td align="left">32</td>
+<td align="left">4.7267</td>
+<td align="left">512</td>
+<td align="left">75.6278</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">60.00</td>
-<td align="left">8.86</td>
-<td align="left">572.00</td>
-<td align="left">84.49</td>
+<td align="left">60</td>
+<td align="left">8.8626</td>
+<td align="left">572</td>
+<td align="left">84.4904</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">37.00</td>
-<td align="left">5.47</td>
-<td align="left">609.00</td>
-<td align="left">89.96</td>
+<td align="left">37</td>
+<td align="left">5.4653</td>
+<td align="left">609</td>
+<td align="left">89.9557</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">35.00</td>
-<td align="left">5.17</td>
-<td align="left">644.00</td>
-<td align="left">95.13</td>
+<td align="left">35</td>
+<td align="left">5.1699</td>
+<td align="left">644</td>
+<td align="left">95.1256</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">33.00</td>
-<td align="left">4.87</td>
-<td align="left">677.00</td>
-<td align="left">100.00</td>
+<td align="left">33</td>
+<td align="left">4.8744</td>
+<td align="left">677</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">677.00</td>
-<td align="left">100.00</td>
-<td align="left">677.00</td>
-<td align="left">100.00</td>
+<td align="left">677</td>
+<td align="left">100</td>
+<td align="left">677</td>
+<td align="left">100</td>
 </tr>
 </tbody>
 </table>
 
-==== Barplot ====
+=== Barplot ===
 
 [[Image:e53046a09491443064e085131e547971.png|frame|none]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
-=== ''surf'' (&quot;Web surfing usage&quot;) ===
+== ''surf'' (&quot;Web surfing usage&quot;) ==
 
-The dataset has 709 observations with 678 valid values (missing: 31) in ''surf'' (&quot;Web surfing usage&quot;). This variable seems to be a factor.
+The dataset has ''709'' observations with ''678'' valid values (missing: ''31'') in ''surf'' (&quot;Web surfing usage&quot;). This variable seems to be a factor.
 
-==== Base statistics ====
+=== Base statistics ===
+
+<!-- endlist -->
 
 <table>
 <thead>
@@ -295,81 +396,83 @@ The dataset has 709 observations with 678 valid values (missing: 31) in ''surf''
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">17.00</td>
-<td align="left">2.51</td>
-<td align="left">17.00</td>
-<td align="left">2.51</td>
+<td align="left">17</td>
+<td align="left">2.5074</td>
+<td align="left">17</td>
+<td align="left">2.5074</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">26.00</td>
-<td align="left">3.83</td>
-<td align="left">43.00</td>
-<td align="left">6.34</td>
+<td align="left">26</td>
+<td align="left">3.8348</td>
+<td align="left">43</td>
+<td align="left">6.3422</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">33.00</td>
-<td align="left">4.87</td>
-<td align="left">76.00</td>
-<td align="left">11.21</td>
+<td align="left">33</td>
+<td align="left">4.8673</td>
+<td align="left">76</td>
+<td align="left">11.2094</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">107.00</td>
-<td align="left">15.78</td>
-<td align="left">183.00</td>
-<td align="left">26.99</td>
+<td align="left">107</td>
+<td align="left">15.7817</td>
+<td align="left">183</td>
+<td align="left">26.9912</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">158.00</td>
-<td align="left">23.30</td>
-<td align="left">341.00</td>
-<td align="left">50.29</td>
+<td align="left">158</td>
+<td align="left">23.3038</td>
+<td align="left">341</td>
+<td align="left">50.295</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">142.00</td>
-<td align="left">20.94</td>
-<td align="left">483.00</td>
-<td align="left">71.24</td>
+<td align="left">142</td>
+<td align="left">20.944</td>
+<td align="left">483</td>
+<td align="left">71.2389</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">195.00</td>
-<td align="left">28.76</td>
-<td align="left">678.00</td>
-<td align="left">100.00</td>
+<td align="left">195</td>
+<td align="left">28.7611</td>
+<td align="left">678</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">678.00</td>
-<td align="left">100.00</td>
-<td align="left">678.00</td>
-<td align="left">100.00</td>
+<td align="left">678</td>
+<td align="left">100</td>
+<td align="left">678</td>
+<td align="left">100</td>
 </tr>
 </tbody>
 </table>
 
-==== Barplot ====
+=== Barplot ===
 
 [[Image:0166a8b5df2f3db871e8736bfee8af6e.png|frame|none]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
-=== ''email'' (&quot;Email usage&quot;) ===
+== ''email'' (&quot;Email usage&quot;) ==
 
-The dataset has 709 observations with 672 valid values (missing: 37) in ''email'' (&quot;Email usage&quot;). This variable seems to be a factor.
+The dataset has ''709'' observations with ''672'' valid values (missing: ''37'') in ''email'' (&quot;Email usage&quot;). This variable seems to be a factor.
 
-==== Base statistics ====
+=== Base statistics ===
+
+<!-- endlist -->
 
 <table>
 <thead>
@@ -386,81 +489,83 @@ The dataset has 709 observations with 672 valid values (missing: 37) in ''email'
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">13.00</td>
-<td align="left">1.93</td>
-<td align="left">13.00</td>
-<td align="left">1.93</td>
+<td align="left">13</td>
+<td align="left">1.9345</td>
+<td align="left">13</td>
+<td align="left">1.9345</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">36.00</td>
-<td align="left">5.36</td>
-<td align="left">49.00</td>
-<td align="left">7.29</td>
+<td align="left">36</td>
+<td align="left">5.3571</td>
+<td align="left">49</td>
+<td align="left">7.2917</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">46.00</td>
-<td align="left">6.85</td>
-<td align="left">95.00</td>
-<td align="left">14.14</td>
+<td align="left">46</td>
+<td align="left">6.8452</td>
+<td align="left">95</td>
+<td align="left">14.1369</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">87.00</td>
-<td align="left">12.95</td>
-<td align="left">182.00</td>
-<td align="left">27.08</td>
+<td align="left">87</td>
+<td align="left">12.9464</td>
+<td align="left">182</td>
+<td align="left">27.0833</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">123.00</td>
-<td align="left">18.30</td>
-<td align="left">305.00</td>
-<td align="left">45.39</td>
+<td align="left">123</td>
+<td align="left">18.3036</td>
+<td align="left">305</td>
+<td align="left">45.3869</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">108.00</td>
-<td align="left">16.07</td>
-<td align="left">413.00</td>
-<td align="left">61.46</td>
+<td align="left">108</td>
+<td align="left">16.0714</td>
+<td align="left">413</td>
+<td align="left">61.4583</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">259.00</td>
-<td align="left">38.54</td>
-<td align="left">672.00</td>
-<td align="left">100.00</td>
+<td align="left">259</td>
+<td align="left">38.5417</td>
+<td align="left">672</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">672.00</td>
-<td align="left">100.00</td>
-<td align="left">672.00</td>
-<td align="left">100.00</td>
+<td align="left">672</td>
+<td align="left">100</td>
+<td align="left">672</td>
+<td align="left">100</td>
 </tr>
 </tbody>
 </table>
 
-==== Barplot ====
+=== Barplot ===
 
 [[Image:895cde198b269bf65b01e1e067a515c8.png|frame|none]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
-=== ''download'' (&quot;Download usage&quot;) ===
+== ''download'' (&quot;Download usage&quot;) ==
 
-The dataset has 709 observations with 677 valid values (missing: 32) in ''download'' (&quot;Download usage&quot;). This variable seems to be a factor.
+The dataset has ''709'' observations with ''677'' valid values (missing: ''32'') in ''download'' (&quot;Download usage&quot;). This variable seems to be a factor.
 
-==== Base statistics ====
+=== Base statistics ===
+
+<!-- endlist -->
 
 <table>
 <thead>
@@ -477,81 +582,83 @@ The dataset has 709 observations with 677 valid values (missing: 32) in ''downlo
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">11.00</td>
-<td align="left">1.62</td>
-<td align="left">11.00</td>
-<td align="left">1.62</td>
+<td align="left">11</td>
+<td align="left">1.6248</td>
+<td align="left">11</td>
+<td align="left">1.6248</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">28.00</td>
-<td align="left">4.14</td>
-<td align="left">39.00</td>
-<td align="left">5.76</td>
+<td align="left">28</td>
+<td align="left">4.1359</td>
+<td align="left">39</td>
+<td align="left">5.7607</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">29.00</td>
-<td align="left">4.28</td>
-<td align="left">68.00</td>
-<td align="left">10.04</td>
+<td align="left">29</td>
+<td align="left">4.2836</td>
+<td align="left">68</td>
+<td align="left">10.0443</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">80.00</td>
-<td align="left">11.82</td>
-<td align="left">148.00</td>
-<td align="left">21.86</td>
+<td align="left">80</td>
+<td align="left">11.8168</td>
+<td align="left">148</td>
+<td align="left">21.8612</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">124.00</td>
-<td align="left">18.32</td>
-<td align="left">272.00</td>
-<td align="left">40.18</td>
+<td align="left">124</td>
+<td align="left">18.3161</td>
+<td align="left">272</td>
+<td align="left">40.1773</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">160.00</td>
-<td align="left">23.63</td>
-<td align="left">432.00</td>
-<td align="left">63.81</td>
+<td align="left">160</td>
+<td align="left">23.6337</td>
+<td align="left">432</td>
+<td align="left">63.8109</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">245.00</td>
-<td align="left">36.19</td>
-<td align="left">677.00</td>
-<td align="left">100.00</td>
+<td align="left">245</td>
+<td align="left">36.1891</td>
+<td align="left">677</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">677.00</td>
-<td align="left">100.00</td>
-<td align="left">677.00</td>
-<td align="left">100.00</td>
+<td align="left">677</td>
+<td align="left">100</td>
+<td align="left">677</td>
+<td align="left">100</td>
 </tr>
 </tbody>
 </table>
 
-==== Barplot ====
+=== Barplot ===
 
 [[Image:dde181184885b8777d0248b3f421289a.png|frame|none]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
-=== ''forum'' (&quot;Web forums usage&quot;) ===
+== ''forum'' (&quot;Web forums usage&quot;) ==
 
-The dataset has 709 observations with 673 valid values (missing: 36) in ''forum'' (&quot;Web forums usage&quot;). This variable seems to be a factor.
+The dataset has ''709'' observations with ''673'' valid values (missing: ''36'') in ''forum'' (&quot;Web forums usage&quot;). This variable seems to be a factor.
 
-==== Base statistics ====
+=== Base statistics ===
+
+<!-- endlist -->
 
 <table>
 <thead>
@@ -568,81 +675,83 @@ The dataset has 709 observations with 673 valid values (missing: 36) in ''forum'
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">76.00</td>
-<td align="left">11.29</td>
-<td align="left">76.00</td>
-<td align="left">11.29</td>
+<td align="left">76</td>
+<td align="left">11.2927</td>
+<td align="left">76</td>
+<td align="left">11.2927</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">80.00</td>
-<td align="left">11.89</td>
-<td align="left">156.00</td>
-<td align="left">23.18</td>
+<td align="left">80</td>
+<td align="left">11.8871</td>
+<td align="left">156</td>
+<td align="left">23.1798</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">72.00</td>
-<td align="left">10.70</td>
-<td align="left">228.00</td>
-<td align="left">33.88</td>
+<td align="left">72</td>
+<td align="left">10.6984</td>
+<td align="left">228</td>
+<td align="left">33.8782</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">111.00</td>
-<td align="left">16.49</td>
-<td align="left">339.00</td>
-<td align="left">50.37</td>
+<td align="left">111</td>
+<td align="left">16.4933</td>
+<td align="left">339</td>
+<td align="left">50.3715</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">109.00</td>
-<td align="left">16.20</td>
-<td align="left">448.00</td>
-<td align="left">66.57</td>
+<td align="left">109</td>
+<td align="left">16.1961</td>
+<td align="left">448</td>
+<td align="left">66.5676</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">119.00</td>
-<td align="left">17.68</td>
-<td align="left">567.00</td>
-<td align="left">84.25</td>
+<td align="left">119</td>
+<td align="left">17.682</td>
+<td align="left">567</td>
+<td align="left">84.2496</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">106.00</td>
-<td align="left">15.75</td>
-<td align="left">673.00</td>
-<td align="left">100.00</td>
+<td align="left">106</td>
+<td align="left">15.7504</td>
+<td align="left">673</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">673.00</td>
-<td align="left">100.00</td>
-<td align="left">673.00</td>
-<td align="left">100.00</td>
+<td align="left">673</td>
+<td align="left">100</td>
+<td align="left">673</td>
+<td align="left">100</td>
 </tr>
 </tbody>
 </table>
 
-==== Barplot ====
+=== Barplot ===
 
 [[Image:ac419134b2f4695e544d8886ba12e0c2.png|frame|none]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
-=== ''socnet'' (&quot;Social networks usage&quot;) ===
+== ''socnet'' (&quot;Social networks usage&quot;) ==
 
-The dataset has 709 observations with 678 valid values (missing: 31) in ''socnet'' (&quot;Social networks usage&quot;). This variable seems to be a factor.
+The dataset has ''709'' observations with ''678'' valid values (missing: ''31'') in ''socnet'' (&quot;Social networks usage&quot;). This variable seems to be a factor.
 
-==== Base statistics ====
+=== Base statistics ===
+
+<!-- endlist -->
 
 <table>
 <thead>
@@ -659,81 +768,83 @@ The dataset has 709 observations with 678 valid values (missing: 31) in ''socnet
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">208.00</td>
-<td align="left">30.68</td>
-<td align="left">208.00</td>
-<td align="left">30.68</td>
+<td align="left">208</td>
+<td align="left">30.6785</td>
+<td align="left">208</td>
+<td align="left">30.6785</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">102.00</td>
-<td align="left">15.04</td>
-<td align="left">310.00</td>
-<td align="left">45.72</td>
+<td align="left">102</td>
+<td align="left">15.0442</td>
+<td align="left">310</td>
+<td align="left">45.7227</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">57.00</td>
-<td align="left">8.41</td>
-<td align="left">367.00</td>
-<td align="left">54.13</td>
+<td align="left">57</td>
+<td align="left">8.4071</td>
+<td align="left">367</td>
+<td align="left">54.1298</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">87.00</td>
-<td align="left">12.83</td>
-<td align="left">454.00</td>
-<td align="left">66.96</td>
+<td align="left">87</td>
+<td align="left">12.8319</td>
+<td align="left">454</td>
+<td align="left">66.9617</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">79.00</td>
-<td align="left">11.65</td>
-<td align="left">533.00</td>
-<td align="left">78.61</td>
+<td align="left">79</td>
+<td align="left">11.6519</td>
+<td align="left">533</td>
+<td align="left">78.6136</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">80.00</td>
-<td align="left">11.80</td>
-<td align="left">613.00</td>
-<td align="left">90.41</td>
+<td align="left">80</td>
+<td align="left">11.7994</td>
+<td align="left">613</td>
+<td align="left">90.413</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">65.00</td>
-<td align="left">9.59</td>
-<td align="left">678.00</td>
-<td align="left">100.00</td>
+<td align="left">65</td>
+<td align="left">9.587</td>
+<td align="left">678</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">678.00</td>
-<td align="left">100.00</td>
-<td align="left">678.00</td>
-<td align="left">100.00</td>
+<td align="left">678</td>
+<td align="left">100</td>
+<td align="left">678</td>
+<td align="left">100</td>
 </tr>
 </tbody>
 </table>
 
-==== Barplot ====
+=== Barplot ===
 
 [[Image:8475d98870c1cdd2436a3abdb0d69a66.png|frame|none]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
-=== ''xxx'' (&quot;Adult sites usage&quot;) ===
+== ''xxx'' (&quot;Adult sites usage&quot;) ==
 
-The dataset has 709 observations with 674 valid values (missing: 35) in ''xxx'' (&quot;Adult sites usage&quot;). This variable seems to be a factor.
+The dataset has ''709'' observations with ''674'' valid values (missing: ''35'') in ''xxx'' (&quot;Adult sites usage&quot;). This variable seems to be a factor.
 
-==== Base statistics ====
+=== Base statistics ===
+
+<!-- endlist -->
 
 <table>
 <thead>
@@ -750,72 +861,339 @@ The dataset has 709 observations with 674 valid values (missing: 35) in ''xxx'' 
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">never</td>
-<td align="left">274.00</td>
-<td align="left">40.65</td>
-<td align="left">274.00</td>
-<td align="left">40.65</td>
+<td align="left">274</td>
+<td align="left">40.6528</td>
+<td align="left">274</td>
+<td align="left">40.6528</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">very rarely</td>
-<td align="left">124.00</td>
-<td align="left">18.40</td>
-<td align="left">398.00</td>
-<td align="left">59.05</td>
+<td align="left">124</td>
+<td align="left">18.3976</td>
+<td align="left">398</td>
+<td align="left">59.0504</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">rarely</td>
-<td align="left">52.00</td>
-<td align="left">7.72</td>
-<td align="left">450.00</td>
-<td align="left">66.77</td>
+<td align="left">52</td>
+<td align="left">7.7151</td>
+<td align="left">450</td>
+<td align="left">66.7656</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
 <td align="left">sometimes</td>
-<td align="left">131.00</td>
-<td align="left">19.44</td>
-<td align="left">581.00</td>
-<td align="left">86.20</td>
+<td align="left">131</td>
+<td align="left">19.4362</td>
+<td align="left">581</td>
+<td align="left">86.2018</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
 <td align="left">often</td>
-<td align="left">46.00</td>
-<td align="left">6.82</td>
-<td align="left">627.00</td>
-<td align="left">93.03</td>
+<td align="left">46</td>
+<td align="left">6.8249</td>
+<td align="left">627</td>
+<td align="left">93.0267</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
 <td align="left">very often</td>
-<td align="left">28.00</td>
-<td align="left">4.15</td>
-<td align="left">655.00</td>
-<td align="left">97.18</td>
+<td align="left">28</td>
+<td align="left">4.1543</td>
+<td align="left">655</td>
+<td align="left">97.181</td>
 </tr>
 <tr class="odd">
 <td align="left">7</td>
 <td align="left">always</td>
-<td align="left">19.00</td>
-<td align="left">2.82</td>
-<td align="left">674.00</td>
-<td align="left">100.00</td>
+<td align="left">19</td>
+<td align="left">2.819</td>
+<td align="left">674</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">674.00</td>
-<td align="left">100.00</td>
-<td align="left">674.00</td>
-<td align="left">100.00</td>
+<td align="left">674</td>
+<td align="left">100</td>
+<td align="left">674</td>
+<td align="left">100</td>
 </tr>
 </tbody>
 </table>
 
-==== Barplot ====
+=== Barplot ===
 
 [[Image:4fda8cf992e8de93624c45ef3c72a0c5.png|frame|none]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1).
+It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
+
+== Description ==
+
+This template will return descriptive statistics of numerical or frequency tables of categorical variables.
+
+== ''hp'' ==
+
+The dataset has ''32'' observations with ''32'' valid values (missing: ''0'') in ''hp''. This variable seems to be numeric.
+
+=== Base statistics ===
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">'''value'''</th>
+<th align="left">'''mean(hp)'''</th>
+<th align="left">'''sd(hp)'''</th>
+<th align="left">'''var(hp)'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(all)</td>
+<td align="left">146.6875</td>
+<td align="left">68.5629</td>
+<td align="left">4700.8669</td>
+</tr>
+</tbody>
+</table>
+
+=== Histogram ===
+
+[[Image:d90ec4a0af55fabeae7988710a062ce0.png|frame|none]]
+
+It seems that the highest value is ''335'' which is exactly 6.4423 times higher than the smallest value (''52'').
+
+The standard deviation is 68.5629 (variance: 4700.8669). The expected value is around 146.6875, somewhere between 122.9317 and 170.4433 (SE: 12.1203).
+
+If we suppose that ''hp'' is not near to a normal distribution (test: see below, skewness: 0.7614, kurtosis: 3.0522), checking the median (123) might be a better option instead of the mean. The interquartile range (83.5) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+=== Normality tests ===
+
+== Introduction ==
+
+In statistics, ''normality'' refers to an assumption that the distribution of a random variable follows ''normal'' (''Gaussian'') distribution. Because of its bell-like shape, it's also known as the ''&quot;bell curve&quot;''. The formula for ''normal distribution'' is:
+
+<math>f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}</math>
+
+''Normal distribution'' belongs to a ''location-scale family'' of distributions, as it's defined two parameters:
+
+* ''μ'' - ''mean'' or ''expectation'' (location parameter)
+* ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
+
+[[Image:2f8c434e103f36ec70966b372838d448.png|frame|none]]
+
+== Normality Tests ==
+
+=== Overview ===
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is ''normal''. At this point only few such tests will be covered: the ones that are available in <tt>stats</tt> package (which comes bundled with default R installation) and <tt>nortest</tt> package that is [http://cran.r-project.org/web/packages/nortest/index.html available] on CRAN.
+
+* '''Shapiro-Wilk test''' is a powerful normality test appropriate for small samples. In R, it's implemented in <tt>shapiro.test</tt> function available in <tt>stats</tt> package.
+* '''Lilliefors test''' is a modification of ''Kolmogorov-Smirnov test'' appropriate for testing normality when parameters or normal distribution (''μ'', ''σ<sup>2</sup>'') are not known. <tt>lillie.test</tt> function is located in <tt>nortest</tt> package.
+* '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <tt>ad.test</tt> function in <tt>nortest</tt> package.
+* '''Pearson Χ<sup>2</sup> test''' is another normality test which takes more &quot;traditional&quot; approach in normality testing. <tt>pearson.test</tt> is located in <tt>nortest</tt> package.
+
+=== Results ===
+
+Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
+
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''H'''</th>
+<th align="left">'''p'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">shapiro.test</td>
+<td align="left">0.9334</td>
+<td align="left">0.0488</td>
+</tr>
+<tr class="even">
+<td align="left">lillie.test</td>
+<td align="left">0.1664</td>
+<td align="left">0.0245</td>
+</tr>
+<tr class="odd">
+<td align="left">ad.test</td>
+<td align="left">0.7077</td>
+<td align="left">0.0584</td>
+</tr>
+<tr class="even">
+<td align="left">pearson.test</td>
+<td align="left">11.5</td>
+<td align="left">0.0423</td>
+</tr>
+</tbody>
+</table>
+
+So, let's draw some conclusions based on applied normality test:
+
+* according to ''Shapiro-Wilk test'', the distribution of ''hp'' is not normal.
+* based on ''Lilliefors test'', distribution of ''hp'' is not normal
+* ''Anderson-Darling test'' confirms normality assumption
+* ''Pearson's Χ<sup>2</sup> test'' classifies the underlying distribution as non-normal
+
+== Diagnostic Plots ==
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: ''histogram'', ''Q-Q plot'' and ''kernel density plot''.
+
+=== Histogram ===
+
+''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
+
+[[Image:d90ec4a0af55fabeae7988710a062ce0.png|frame|none]]
+
+=== Q-Q Plot ===
+
+&quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
+
+[[Image:17e5c77b83c6e3e636487406decc14c7.png|frame|none]]
+
+=== Kernel Density Plot ===
+
+''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
+
+[[Image:135de2b4d3cb1b1a3ece741c584c0a59.png|frame|none]]
+
+== ''wt'' ==
+
+The dataset has ''32'' observations with ''32'' valid values (missing: ''0'') in ''wt''. This variable seems to be numeric.
+
+=== Base statistics ===
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">'''value'''</th>
+<th align="left">'''mean(wt)'''</th>
+<th align="left">'''sd(wt)'''</th>
+<th align="left">'''var(wt)'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(all)</td>
+<td align="left">3.2172</td>
+<td align="left">0.9785</td>
+<td align="left">0.9574</td>
+</tr>
+</tbody>
+</table>
+
+=== Histogram ===
+
+[[Image:10caa8222b28328a6d8fd28917cbfb45.png|frame|none]]
+
+It seems that the highest value is ''5.424'' which is exactly 3.5849 times higher than the smallest value (''1.513'').
+
+The standard deviation is 0.9785 (variance: 0.9574). The expected value is around 3.2172, somewhere between 2.8782 and 3.5563 (SE: 0.173).
+
+If we suppose that ''wt'' is not near to a normal distribution (test: see below, skewness: 0.4438, kurtosis: 3.1725), checking the median (3.325) might be a better option instead of the mean. The interquartile range (1.0288) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+=== Normality tests ===
+
+== Introduction ==
+
+In statistics, ''normality'' refers to an assumption that the distribution of a random variable follows ''normal'' (''Gaussian'') distribution. Because of its bell-like shape, it's also known as the ''&quot;bell curve&quot;''. The formula for ''normal distribution'' is:
+
+<math>f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}</math>
+
+''Normal distribution'' belongs to a ''location-scale family'' of distributions, as it's defined two parameters:
+
+* ''μ'' - ''mean'' or ''expectation'' (location parameter)
+* ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
+
+[[Image:2f8c434e103f36ec70966b372838d448.png|frame|none]]
+
+== Normality Tests ==
+
+=== Overview ===
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is ''normal''. At this point only few such tests will be covered: the ones that are available in <tt>stats</tt> package (which comes bundled with default R installation) and <tt>nortest</tt> package that is [http://cran.r-project.org/web/packages/nortest/index.html available] on CRAN.
+
+* '''Shapiro-Wilk test''' is a powerful normality test appropriate for small samples. In R, it's implemented in <tt>shapiro.test</tt> function available in <tt>stats</tt> package.
+* '''Lilliefors test''' is a modification of ''Kolmogorov-Smirnov test'' appropriate for testing normality when parameters or normal distribution (''μ'', ''σ<sup>2</sup>'') are not known. <tt>lillie.test</tt> function is located in <tt>nortest</tt> package.
+* '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <tt>ad.test</tt> function in <tt>nortest</tt> package.
+* '''Pearson Χ<sup>2</sup> test''' is another normality test which takes more &quot;traditional&quot; approach in normality testing. <tt>pearson.test</tt> is located in <tt>nortest</tt> package.
+
+=== Results ===
+
+Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
+
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''H'''</th>
+<th align="left">'''p'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">shapiro.test</td>
+<td align="left">0.9433</td>
+<td align="left">0.0927</td>
+</tr>
+<tr class="even">
+<td align="left">lillie.test</td>
+<td align="left">0.1356</td>
+<td align="left">0.1412</td>
+</tr>
+<tr class="odd">
+<td align="left">ad.test</td>
+<td align="left">0.6091</td>
+<td align="left">0.1038</td>
+</tr>
+<tr class="even">
+<td align="left">pearson.test</td>
+<td align="left">4.5</td>
+<td align="left">0.4799</td>
+</tr>
+</tbody>
+</table>
+
+So, let's draw some conclusions based on applied normality test:
+
+* according to ''Shapiro-Wilk test'', the distribution of ''wt'' is normal.
+* based on ''Lilliefors test'', distribution of ''wt'' is not normal
+* ''Anderson-Darling test'' confirms normality assumption
+* ''Pearson's Χ<sup>2</sup> test'' classifies the underlying distribution as non-normal
+
+== Diagnostic Plots ==
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: ''histogram'', ''Q-Q plot'' and ''kernel density plot''.
+
+=== Histogram ===
+
+''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
+
+[[Image:10caa8222b28328a6d8fd28917cbfb45.png|frame|none]]
+
+=== Q-Q Plot ===
+
+&quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
+
+[[Image:ff471a5bcb80aaf91b4c053ab038d69a.png|frame|none]]
+
+=== Kernel Density Plot ===
+
+''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
+
+[[Image:16a7d5cf96ceceffd6db59f9a2514dce.png|frame|none]]
+
+
+-----
+
+This report was generated with [http://rapport-package.info/ rapport].
+
+[[Image:images/rapport.png|frame|none]]

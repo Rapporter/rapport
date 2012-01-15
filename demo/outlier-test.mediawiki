@@ -2,15 +2,15 @@
 
 This template will check if provided variable has any outliers.
 
-=== Boxplot ===
+= Boxplot =
 
 [[Image:d24b3eb41da4d1de21d4bce0e30d2e1b.png|frame|none]]
 
-=== Lund test ===
+= Lund test =
 
-It seems that 4 extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.
+It seems that ''4'' extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.
 
-==== Explanation ====
+== Explanation ==
 
 The above test for outliers was based on ''lm(1 ~ edu)'':
 
@@ -27,32 +27,32 @@ The above test for outliers was based on ''lm(1 ~ edu)'':
 <tbody>
 <tr class="odd">
 <td align="left">(Intercept)</td>
-<td align="left">2.05</td>
-<td align="left">0.08</td>
-<td align="left">26.27</td>
-<td align="left">0.00</td>
+<td align="left">2.0481</td>
+<td align="left">0.078</td>
+<td align="left">26.2677</td>
+<td align="left">0</td>
 </tr>
 </tbody>
 </table>
 
-==== References ====
+== References ==
 
 * Lund, R. E. 1975, &quot;Tables for An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 4, pp. 473-476.
 * Prescott, P. 1975, &quot;An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 1, pp. 129-132.
 
-=== Grubb's test ===
+= Grubb's test =
 
 Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.0002).
 
-==== References ====
+== References ==
 
 * Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.
 
-=== Dixon's test ===
+= Dixon's test =
 
 chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
-==== References ====
+== References ==
 
 * Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.
 
@@ -60,15 +60,15 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
 This template will check if provided variable has any outliers.
 
-=== Boxplot ===
+= Boxplot =
 
 [[Image:d24b3eb41da4d1de21d4bce0e30d2e1b.png|frame|none]]
 
-=== Lund test ===
+= Lund test =
 
-It seems that 4 extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.
+It seems that ''4'' extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.
 
-==== Explanation ====
+== Explanation ==
 
 The above test for outliers was based on ''lm(1 ~ edu)'':
 
@@ -85,32 +85,32 @@ The above test for outliers was based on ''lm(1 ~ edu)'':
 <tbody>
 <tr class="odd">
 <td align="left">(Intercept)</td>
-<td align="left">2.05</td>
-<td align="left">0.08</td>
-<td align="left">26.27</td>
-<td align="left">0.00</td>
+<td align="left">2.0481</td>
+<td align="left">0.078</td>
+<td align="left">26.2677</td>
+<td align="left">0</td>
 </tr>
 </tbody>
 </table>
 
-==== References ====
+== References ==
 
 * Lund, R. E. 1975, &quot;Tables for An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 4, pp. 473-476.
 * Prescott, P. 1975, &quot;An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 1, pp. 129-132.
 
-=== Grubb's test ===
+= Grubb's test =
 
 Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.0002).
 
-==== References ====
+== References ==
 
 * Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.
 
-=== Dixon's test ===
+= Dixon's test =
 
 chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
-==== References ====
+== References ==
 
 * Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.
 
@@ -118,15 +118,15 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
 This template will check if provided variable has any outliers.
 
-=== Boxplot ===
+= Boxplot =
 
 [[Image:d24b3eb41da4d1de21d4bce0e30d2e1b.png|frame|none]]
 
-=== Lund test ===
+= Lund test =
 
-It seems that 4 extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.
+It seems that ''4'' extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.
 
-==== Explanation ====
+== Explanation ==
 
 The above test for outliers was based on ''lm(1 ~ edu)'':
 
@@ -143,10 +143,17 @@ The above test for outliers was based on ''lm(1 ~ edu)'':
 <tbody>
 <tr class="odd">
 <td align="left">(Intercept)</td>
-<td align="left">2.05</td>
-<td align="left">0.08</td>
-<td align="left">26.27</td>
-<td align="left">0.00</td>
+<td align="left">2.0481</td>
+<td align="left">0.078</td>
+<td align="left">26.2677</td>
+<td align="left">0</td>
 </tr>
 </tbody>
 </table>
+
+
+-----
+
+This report was generated with [http://rapport-package.info/ rapport].
+
+[[Image:images/rapport.png|frame|none]]

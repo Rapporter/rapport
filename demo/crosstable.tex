@@ -49,17 +49,17 @@
 Returning the Chi-squared test of two given variables with count,
 percentages and Pearson's residuals table.
 
-\subsubsection{Variable description}
+\section{Variable description}
 
 Two variables specified:
 
 \begin{itemize}
 \item
-  ``gender'' (``Gender'') with 673 and
+  ``gender'' (``Gender'') with \emph{673} and
 \item
-  ``dwell'' (``Dwelling'') with 662 valid values.
+  ``dwell'' (``Dwelling'') with \emph{662} valid values.
 \end{itemize}
-\subsubsection{Counts}
+\section{Counts}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -74,7 +74,7 @@ female & 234 & 3 & 9
 \LL
 }
 
-\subsubsection{Percentages}
+\section{Percentages}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -89,7 +89,7 @@ female & 0.3708 & 0.0048 & 0.0143
 \LL
 }
 
-\paragraph{Row percentages}
+\subsection{Row percentages}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -104,7 +104,7 @@ female & 0.9512 & 0.0122 & 0.0366
 \LL
 }
 
-\paragraph{Column percentages}
+\subsection{Column percentages}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -119,7 +119,7 @@ female & 0.4091 & 0.0968 & 0.3214
 \LL
 }
 
-\subsubsection{Chi-squared test}
+\section{Chi-squared test}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -128,19 +128,19 @@ female & 0.4091 & 0.0968 & 0.3214
 \FL
  & \textbf{X-squared} & \textbf{df} & \textbf{p-value}
 \ML
-X-squared & 12.64 & 2.00 & 0.00
+X-squared & 12.6353 & 2 & 0.0018
 \LL
 }
 
 It seems that a real association can be pointed out between
 \emph{gender} and \emph{dwell} by the \emph{Pearson's Chi-squared test}
-(χ=12.635 at the degree of freedom being 2) at the significance level of
-0.0018. Based on Goodman and Kruskal's lambda it seems that \emph{dwell}
-(λ=0.7602) has an effect on \emph{gender} (λ=0) if we assume both
-variables to be nominal. The association between the two variables seems
-to be weak based on Cramer's V (0.1001).
+(χ=12.6353 at the degree of freedom being 2) at the significance level
+of 0.0018. Based on Goodman and Kruskal's lambda it seems that
+\emph{dwell} (λ=0.7602) has an effect on \emph{gender} (λ=0) if we
+assume both variables to be nominal. The association between the two
+variables seems to be weak based on Cramer's V (0.1001).
 
-\paragraph{Pearson's residuals}
+\subsection{Pearson's residuals}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -155,7 +155,7 @@ female & 3.0844 & --3.4312 & --0.7595
 \LL
 }
 
-\paragraph{Mosaic chart}
+\subsection{Mosaic chart}
 
 \begin{figure}[htbp]
 \centering
@@ -168,17 +168,17 @@ female & 3.0844 & --3.4312 & --0.7595
 Returning the Chi-squared test of two given variables with count,
 percentages and Pearson's residuals table.
 
-\subsubsection{Variable description}
+\section{Variable description}
 
 Two variables specified:
 
 \begin{itemize}
 \item
-  ``email'' (``Email usage'') with 672 and
+  ``email'' (``Email usage'') with \emph{672} and
 \item
-  ``dwell'' (``Dwelling'') with 662 valid values.
+  ``dwell'' (``Dwelling'') with \emph{662} valid values.
 \end{itemize}
-\subsubsection{Counts}
+\section{Counts}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -203,7 +203,7 @@ always & 226 & 9 & 7
 \LL
 }
 
-\subsubsection{Percentages}
+\section{Percentages}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -228,7 +228,7 @@ always & 0.3610 & 0.0144 & 0.0112
 \LL
 }
 
-\paragraph{Row percentages}
+\subsection{Row percentages}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -253,7 +253,7 @@ always & 0.9339 & 0.0372 & 0.0289
 \LL
 }
 
-\paragraph{Column percentages}
+\subsection{Column percentages}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -278,7 +278,7 @@ always & 0.4000 & 0.2812 & 0.2414
 \LL
 }
 
-\subsubsection{Chi-squared test}
+\section{Chi-squared test}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -287,7 +287,7 @@ always & 0.4000 & 0.2812 & 0.2414
 \FL
  & \textbf{X-squared} & \textbf{df} & \textbf{p-value}
 \ML
-X-squared & 14.86 & 12.00 & 0.25
+X-squared & 14.864 & 12 & 0.249
 \LL
 }
 
@@ -296,7 +296,7 @@ It seems that no real association can be pointed out between
 (χ=14.864 at the degree of freedom being 12) at the significance level
 of 0.249. For this end no other statistical tests were performed.
 
-\paragraph{Pearson's residuals}
+\subsection{Pearson's residuals}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -321,11 +321,22 @@ always & 2.0982 & --1.2561 & --1.6443
 \LL
 }
 
-\paragraph{Mosaic chart}
+\subsection{Mosaic chart}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics{b945f6de1aad4225593b3e9c0eb6d7dc.png}
+\caption{}
+\end{figure}
+
+\begin{center}\rule{3in}{0.4pt}\end{center}
+
+This report was generated with
+\href{http://rapport-package.info/}{rapport}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{images/rapport.png}
 \caption{}
 \end{figure}
 

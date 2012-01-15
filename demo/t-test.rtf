@@ -1,0 +1,345 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \qc \f0 \sa180 \li0 \fi0 \b \fs36 t-test Template\par}
+{\pard \qc \f0 \sa180 \li0 \fi0  Rapport package team @ https://github.com/aL3xa/rapport\par}
+{\pard \qc \f0 \sa180 \li0 \fi0  2011-04-26 20:25 CET\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Description\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Introduction\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 In a nutshell, {\i t-test} is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows {\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Student%27s_t-distribution"}}{\fldrslt{\ul
+{\i t-distribution}
+}}}
+ can be considered a {\i t-test}. The most common usage of {\i t-test} is to:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab compare the mean of a variable with given test mean value - {\b one-sample {\i t-test}}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab compare means of two variables from independent samples - {\b independent samples {\i t-test}}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab compare means of two variables from dependent samples - {\b paired-samples {\i t-test}}\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Overview\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Independent samples {\i t-test} is carried out with {\i Internet usage in leisure time (hours per day)} as dependent variable, and {\i Gender} as independent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Descriptives\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx864\clbrdrb\brdrs\cellx1728\clbrdrb\brdrs\cellx2592\clbrdrb\brdrs\cellx3456\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx5184\clbrdrb\brdrs\cellx6048\clbrdrb\brdrs\cellx6912\clbrdrb\brdrs\cellx7776\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b y}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b min(x)}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b max(x)}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b mean(x)}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b sd(x)}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b var(x)}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b median(x)}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b IQR(x)}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b skewness(x)}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b kurtosis(x)}\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx864\cellx1728\cellx2592\cellx3456\cellx4320\cellx5184\cellx6048\cellx6912\cellx7776\cellx8640
+\trkeep\intbl
+{
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 male\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 12\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 3.2699\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 1.9535\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 3.8161\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 3\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 3\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0.9479\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 4.0064\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx864\cellx1728\cellx2592\cellx3456\cellx4320\cellx5184\cellx6048\cellx6912\cellx7776\cellx8640
+\trkeep\intbl
+{
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 female\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 12\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 3.0643\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 2.3546\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 5.5442\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 2\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 3\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 1.4064\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 4.9089\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx864\cellx1728\cellx2592\cellx3456\cellx4320\cellx5184\cellx6048\cellx6912\cellx7776\cellx8640
+\trkeep\intbl
+{
+{\intbl \cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 10\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 3.3824\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 2.5822\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 6.6676\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 3\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 2\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 1.2197\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 3.8058\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Diagnostics\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Since {\i t-test} is a parametric technique, it sets some basic assumptions on distribution shape: it has to be {\i normal} (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Normality Tests\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 We will use {\i Shapiro-Wilk}, {\i Lilliefors} and {\i Anderson-Darling} tests to screen departures from normality in the response variable ({\i Internet usage in leisure time (hours per day)}).\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2880\clbrdrb\brdrs\cellx5760\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{\intbl \cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b W}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b p}\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 shapiro.test\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0.9001\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 lillie.test\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0.168\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 ad.test\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 18.753\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 As you can see, applied tests confirm departures from normality.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Results\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Welch Two Sample t-test was applied, and significant differences were found.\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx1440\clbrdrb\brdrs\cellx2880\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx5760\clbrdrb\brdrs\cellx7200\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{\intbl \cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b statistic}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b df}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b p}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b CI(lower)}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b CI(upper)}\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1440\cellx2880\cellx4320\cellx5760\cellx7200\cellx8640
+\trkeep\intbl
+{
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 t\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 1.1483\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 457.8625\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0.2514\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 -0.1463\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0.5576\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Description\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Introduction\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 In a nutshell, {\i t-test} is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows {\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Student%27s_t-distribution"}}{\fldrslt{\ul
+{\i t-distribution}
+}}}
+ can be considered a {\i t-test}. The most common usage of {\i t-test} is to:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab compare the mean of a variable with given test mean value - {\b one-sample {\i t-test}}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab compare means of two variables from independent samples - {\b independent samples {\i t-test}}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab compare means of two variables from dependent samples - {\b paired-samples {\i t-test}}\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Overview\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 One-sample {\i t-test} is carried out with {\i Internet usage in leisure time (hours per day)} as dependent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Descriptives\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Diagnostics\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Since {\i t-test} is a parametric technique, it sets some basic assumptions on distribution shape: it has to be {\i normal} (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Normality Tests\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 We will use {\i Shapiro-Wilk}, {\i Lilliefors} and {\i Anderson-Darling} tests to screen departures from normality in the response variable ({\i Internet usage in leisure time (hours per day)}).\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2880\clbrdrb\brdrs\cellx5760\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{\intbl \cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b W}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b p}\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 shapiro.test\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0.9001\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 lillie.test\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0.168\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 ad.test\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 18.753\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 As you can see, applied tests confirm departures from normality.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Results\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 One Sample t-test was applied, and significant differences were found.\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx1440\clbrdrb\brdrs\cellx2880\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx5760\clbrdrb\brdrs\cellx7200\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{\intbl \cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b statistic}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b df}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b p}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b CI(lower)}\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 {\b CI(upper)}\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1440\cellx2880\cellx4320\cellx5760\cellx7200\cellx8640
+\trkeep\intbl
+{
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 t\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 -0.0072\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 671\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 0.9943\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 3.037\par}
+\cell}
+{\intbl {\pard \ql \f0 \sa0 \li0 \fi0 3.3618\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \qc \f0 \sa180 \li0 \fi0 \emdash\emdash\emdash\emdash\emdash\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This report was generated with {\field{\*\fldinst{HYPERLINK "http://rapport-package.info/"}}{\fldrslt{\ul
+rapport
+}}}
+.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\pict\pngblip 89504e470d0a1a0a0000000d4948445200000078000000a00806000000c709a8900000000473424954080808087c086488000000097048597300000b4100000b4101c9510a320000001974455874536f667477617265007777772e696e6b73636170652e6f72679bee3c1a00000d9149444154789ced9d798c1bd51d80bf676fee040890900b1a600f488b0ad4d4b50a2d37a1400809f9a32d55d392f56ea822159556b4859272145a89a24a28c97a1794bf5a556dc54d4312d885d21ab796b854927516292a39b90a0d6c76bdb15fffb0bd389b393d339ef1f87dd26a6dcf9bdffcecefbd99376f2e21a5a499109b774f259fffa14cb63fe0772ef520e27702f5446cde3d95d1b1c7412ef53b977ad13482c7e50a7995dfb9d493a610dcac72015afc4ec06b4adbdcd12710e24abf73f18350b7e071b934a75c08b16025b7442857d162f3eea98ce59f047185dfb9f84de85af0b85c49d3cb85900956728f45d81dc912bd83f740649247f918532cee925d1d8f684d120fed99c6cce1272cca7d07217eef7276da44227df2e63387eab22c0dec0b4ee5468029dea463c81091c825724deb9e63727a68cf34660c3f095cee435e66ec251abdd82fc98db28a6e54b9000b29140644cf8e363f16de08821b596e85858868bf1f92832ed84cee53045f6e85858868dd5b7290055b917b990f79396101223a207a77b6d76b8141151c46b915162023fdf5921c44c161965b6101323220360e7678bda0a00936963b7df8691a5f6e85f94445bfd7928324585f6e6aff74a60f3f8de0523f12f390f944c58048e5cef26a015e1e6cd8037c60ada8fc8848f4264db9201087ee014e025e773543f79906d8ddb6ce03fa452a77894cb6ef743b21ef46b2a4582bbbda36d59857432240d03bb80129ba6b98fd001171a95cd3b6c3cd9c82b48a6e7824483a3b6e41c85a2af63c8ab25ff4ed3adbcd9c9460977128f914b7252bc11ee08ae49ea1256ee4a2047bc4b864644f0db39f8228ba225909f610099264c7da1a25cf4514fb45efd0e79de4a0047b8c63c9b2f88213c94a701df84c32a91a669f8b2cf68b4d3bbe50cbb295e03a5192dcde4d6d92e71089be508b6425b88eb82279c3dba7da994909ae33e39225bd35cc3e87c8d899766650827d4082a4abbdab46c9b650827da25e9295601fa9876425d867c625439f17f195e00050ee7825f140b2121c10bc92ac04078871c902cdebaf6a2150d707a752a9e387274f167ee7510b0b67cc38b46ad5aa82d33812a4e86cefa43707929b9dc60b94e0021c9c92cffb71619b63de1b1b3b0f78cd8d586e4a56abe880523a9edcdee97475ad040700b1e9edb9223574fec4cfc725231ead35b6121c08c6a683dcae2b39d9b6a656c94a706090b3416e177d3bbf74cc14079295e0402167538c6e33941c99fcaa9d884a70e090b32946b68b9ec1d8315340cae4191fdb89a60407931310629b9664bb28c1c1a524b93777819320811ae8284a796554ca86ac74b258f4e22e3a2720d92a7a7357cacef67fd5122050827fd0d5f592df39049013906c139b7257caeef67fda9db9215b4b13723c11b68a4db92fdb9d51096e1c4a9253bbe2766652821b8be341da92ac04371ec781dc2afa86be62a5b012dc981c47b1f89c15c94a70e35292dc3394302aa4043736c7218c25076a3f78436fef6d1129039593658ac547bbbbbbdff561c9b310c5e744efcea5b2f3ac7f4c9cd8022036be399b96a99fb318d0b373a68494f74a7fee45ed18198d6e01fc100c300b19d9a225b9d45aa2278f523cf460086f34d64c94246f1abc5a7677fcbdf261044026e70f333cfd5ae079dfd253b8c12c22628bd834f8d5ca07e39d2c79eba2c37c3afd3a94e446672611b145a47217c2844e96bc75d161f1d09eeb1ae42eeacd8910d73169d2cba6e5a2ff1b038d5e7459f2322539a0140a9fc8ceb68fac16d7dc0f2eafae9721d8e65e660a3fd01de890b72e3acca4c94a72836338a820572f1e119b772fabe3431e0769d0fde0162947fcce410bd351a3b2e4ebebf180e5b5c9e417bd8cdf8c581a8b96ab178f3065d272a478ceeb8414ee62f960c3b864d8e2613e0a97b1753449ae5e3cc26844496e206c1f2e94eb5a47cb92ffea413e0a97a9e9787059f20d28c981a7e603fee39205cfba9990c25d1c9dd121d7b58e321259013ce3523e0a97717cca8e5cd73acaec234a7240b17d7a8ce81b5a34f1015672d592bcf8d35b2bf8b0e52f08aead35998da9d4eb34e848561496279349d71f6ce514fbe73f158bdbc5a69d4b65f759bbab3f2e4b5ee95072070d2af8881053fdce418b5a56d18b89881745dfe0e91327c8554bf29c786425c8a75cc84de102356e83c56914c58b62e3ae33264e91ab96e4995db89188f89bd3e414ce71d2c93a95a81c10a9a163ee402e572dc9cbced67f3b88ad7009a7bde853a138201e79bbd5956c14aee3c6950d8b281494e480e2d6a52b0b29140644cf8e3697e2295cc2cd6b931622a203a277a7dd07242b3cc4edeb801620230362e3e025726dc7a0dd9905dc260376bd94550a2d2d7bfdce410b2f7eccd273e97b767c4d769dbdcbce8cddc9e4c31ee4d3d47875f9e83c68b9cca3d80a1ba8eb83438e121c7294e090a304871c2538e428c12147090e394a70c85182438e121c7294e090a304871c2538e428c121c7c383ebf25b223578ae77f17d6794427ebd5c7bce7fb5268ad4ae24148f7916a1261131cbd5ccaaf04eb0e02210177916df5ff2c8c88dfa7273b703f77b78df56cb34e4e9313e9347889532d9fab4d644d19bfb29f0ab3ae7a48bda06dba324b7b34d5b6e2af7336470e482126c873c8815fa7277fd1cb8afce3999a2045b6314c40a996cd3bc06ba2457de5befa4aca0049b338a445f6ecfae3b822a175427cb8c510437c864bbe6cd66446af04e84b8bbde49d941b5607d4a723b75e4f6e67e01c1960b4ab01ea348b95c576e2a7717925fd63ba95ab0bf8a16bc8494933dc8c563c462c0ca93654690f206d9d5a179373fd1bbf32a44f46264f1451793b34e346af966e000424ae9552a8142a472eb81bb4c8a8d208acb65e759a1b9e9aa5a457f46e8e482ea45571881c8f5b2b37dabdf89b88d6ac1308214cb64b235747241093e8c14cb64575b689f4bd1ccabe8c308b14c26dbb6fb9d8897346b0b2ec9ed0cb75c684ec187915cd70c72a1f90497e476b537cdf3199b681b2c3e2552bc56aee978c1ef4cea49f3089e3df63bb96a49deef34ea4dd30c55362bcdb60d6e3a94e090a304871c2538e428c12147090e39cdb31f1c3212b1f81ae00a4a174055fe22c0703a9bb9a9524e096e5cae0656687c7ed41d7ed52aba7199aff3f9feea372d008958fc54e0db0e17f8301005bee930ce1f81c3c06a8771fe0c7c0cdcec30ce63e96ce66022164fe2ac413c9bce66fe9388c57f044c7210e7997436f326b04067fa498958fcc740111813524a12b1f872e031070b05980a9c0bbce230ce7ce078c0e963e24e0724b0db619cb329b50a5ba7ab6a90005ea354799d707d3a9b7932118b8f60fe94b803951aa9571bacf2413a9b19457fb5619502f0ae0b71a024254871f6e1fc7706d89788c54fc4da2300f755043bfd0295e71538fd0207d2d94cd18538950ae734ce703a9bf9d885381238803b15652fd6f3d9eb96e07d218d53e9b0388df37e3a9bc9bb10a7001cb411675f653749af46bc036ca87a7f37da1d04b316fc3ef060d5fb9f00b3b5123289330aacaf7abf4ea7ac599c027047d5fbb5c0691ae52a828d5acc9dc091f2ebef015a8f1532cb074abf6d65fbfc1d6089469903e96ca69888c58d04ff9ad2ef5d045ea908d69be18d7436f3004022169f06dcaf53ceacc5e42a71cab16e3789a3f743ec9d10e7961ae31c9c10e7fb2671f4bed7703a9b19bf3638118b6bed975a893306ac4f6733b21ce71a93384615e5be743673a8f2c6ac93b5afeaf53c83a0660b1edf374bc4e25329f5928dca99eee3256271619093e53816cb59f97d8cca99c53950915b6691c9f2f4f2fda45a2e404b22166f014ed699a1fa614f9301bdeb76de305970f50f718a4e99ea72a6158552ce7afb93762adc2c60a6491c2b152e82fe77338b33f1a15a6f005a0f16ab9c4f66e5f7014a031da7a0bf033f2e269dcd0c024b75ca51ae2873cce2606d4d60a5a218ada6dc8a63a705cf417fe8d7acc21db526486733d71be404d6be1750126be587b2c23cf4effc555db30c5bb0498baa8e63d4d1d89788c5270327398d6352c6ad38767e67abf90025c14689d9791e9fd58a62d682adc6312b371ffd0a67b9052762f1e380194ef349c4e253801375a6db7deea12f2dd8a8a254d72c3dc16394baf756e3e895b332a8501dc74a45319aee761c4312b1f809c034ab715a0c163c06bc6775c1187fc16f2462f10bcbaf2fd629b33f9dcdc8442c6ed6a2e601cb814b75cabc97ce66c62cc49903ac042ed7293392ce663e4ac4e2e719c4899737290057e99429521a9cb8c0208e9d166c5451ce49c4e2dde5d76fa5b399975a30e8914de8ba3b59f0af2dcc6f65f4691f7011b0d18538e7bb10679dc1b40aefa6b399232615cece9ad228ce77cb7f00bf015e32da06dbddf05b191f7d1578db6479baa358e96ce6430bcb318b5369516671ac8c6259c16a85b38ad561ca0360dcc9726bc35f613bf07560bace74abfbae4e05bf9bce660a36e2783d2efe69f9808655ac56b8fd60dcc972b305ff01b80618a1f6c100bb829dc671bb05bbf53bdb6ac12dc06fcbff231c7d0297ddfb40a5d01e82fc00e82b77a06602f7e8cc5fb94786590bde46e920881e959b9799c5e9c7b813d95ffeff38f03a9fed72d9fdff72f9ffd3408ea34f9013c01e831cb4789ed2264668fc51f57a0704f0e2b3442c7e08ed818e87d3d98c954e4d25ce7b680fc1f6a5b399ce5af36b340275d29d8d512cb3385647b1424fa004e3eea08b9551acd01334c156479fea15a7e1099a602b4776ea19a7e109da950d73813cc75e8e21b0b76a752b4ec3f37fb6f4a2f51d4dceaa0000000049454e44ae426082}\par}
+}

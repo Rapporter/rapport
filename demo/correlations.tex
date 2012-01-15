@@ -49,9 +49,9 @@
 This template will return the correlation matrix of supplied numerical
 variables.
 
-\subsubsection{Variable description}
+\section{Variable description}
 
-3 variables provided.
+\emph{3} variables provided.
 
 The highest correlation coefficient (0.2273) is between \emph{edu} and
 \emph{age} and the lowest (--0.0338) is between \emph{leisure} and
@@ -69,7 +69,7 @@ Uncorrelated (--0.2 \textless{} r \textless{} 0.2) variables:
 \item
   \emph{edu} and \emph{leisure}
 \end{itemize}
-\paragraph{Correlation matrix}
+\subsection{Correlation matrix}
 
 \ctable[pos = H, center, botcap]{llll}
 {% notes
@@ -78,11 +78,11 @@ Uncorrelated (--0.2 \textless{} r \textless{} 0.2) variables:
 \FL
  & \textbf{age} & \textbf{edu} & \textbf{leisure}
 \ML
-age &  & 0.2273 *** --0. & 0338
+age &  & 0.2273 * * * & --0.0338
 \\\noalign{\medskip}
-edu & 0.2273 *** & 0.1 & 732 ***
+edu & 0.2273 * * * &  & 0.1732 * * *
 \\\noalign{\medskip}
-leisure & --0.0338 & 0.1732 *** & 
+leisure & --0.0338 & 0.1732 * * * & 
 \LL
 }
 
@@ -97,9 +97,9 @@ leisure & --0.0338 & 0.1732 *** &
 This template will return the correlation matrix of supplied numerical
 variables.
 
-\subsubsection{Variable description}
+\section{Variable description}
 
-11 variables provided.
+\emph{11} variables provided.
 
 The highest correlation coefficient (0.902) is between \emph{disp} and
 \emph{cyl} and the lowest (--0.8677) is between \emph{wt} and
@@ -164,7 +164,7 @@ Uncorrelated (--0.2 \textless{} r \textless{} 0.2) variables:
 \item
   \emph{am} and \emph{carb}
 \end{itemize}
-\paragraph{Correlation matrix}
+\subsection{Correlation matrix}
 
 \ctable[pos = H, center, botcap]{llllllllllll}
 {% notes
@@ -173,54 +173,64 @@ Uncorrelated (--0.2 \textless{} r \textless{} 0.2) variables:
 \FL
  & \textbf{mpg} & \textbf{cyl} & \textbf{disp} & \textbf{hp} & \textbf{drat} & \textbf{wt} & \textbf{qsec} & \textbf{vs} & \textbf{am} & \textbf{gear} & \textbf{carb}
 \ML
-mpg &  & --0.8522 *** --0. & 8476 *** --0.776 & 2 *** 0.6812 * & **
---0.8677 ** & * 0.4187 * & 0.6640 *** 0 & .5998 *** 0.48 & 03 **
---0.550 & 9 ** & 
+mpg &  & --0.8522 * * * & --0.8476 * * * & --0.7762 * * * & 0.6812 * *
+* & --0.8677 * * * & 0.4187 * & 0.6640 * * * & 0.5998 * * * & 0.4803 *
+* & --0.5509 * *
 \\\noalign{\medskip}
-cyl & --0.8522 *** & 0.9 & 020 *** 0.8324 & *** --0.6999
-\textbackslash{} & *** 0.7825 **\textbackslash{} & * --0.5912
-*** & --0.8108 *** --0. & 5226 ** --0.49 & 27 ** 0.5270 & ** & 
+cyl & --0.8522 * * * &  & 0.9020 * * * & 0.8324 * * * & --0.6999 * *
+* & 0.7825 * * * & --0.5912 * * * & --0.8108 * * * & --0.5226 *
+* & --0.4927 * * & 0.5270 * *
 \\\noalign{\medskip}
-disp & --0.8476 *** 0.9 & 020 *** & 0.7909 & *** --0.7102
-\textbackslash{} & *** 0.8880 **\textbackslash{} & * --0.4337
-* & --0.7104 *** - & 0.5912 *** --0.5 & 556 *** 0.3950 & * & 
+disp & --0.8476 * * * & 0.9020 * * * &  & 0.7909 * * * & --0.7102 * *
+* & 0.8880 * * * & --0.4337 * & --0.7104 * * * & --0.5912 * *
+* & --0.5556 * * * & 0.3950 *
 \\\noalign{\medskip}
-hp & --0.7762 *** 0.8 & 324 *** 0.7909 & *** & --0.4488
-\textbackslash{} & ** 0.6587 ** & * --0.7082 *** & --0.7231 ***
---0 & .2432 --0 & .1257 0. & 7498 *** & 
+hp & --0.7762 * * * & 0.8324 * * * & 0.7909 * * * &  & --0.4488 *
+* & 0.6587 * * * & --0.7082 * * * & --0.7231 * *
+* & --0.2432 & --0.1257 & 0.7498 * * *
 \\\noalign{\medskip}
-drat & 0.6812 *** --0. & 6999 *** --0.710 & 2 *** --0.4488
-\textbackslash{} & ** & --0.7124 *\textbackslash{} & ** 0.0912 & 0.4403
-* & 0.7127 *** & 0.6996 *** --0. & 0908 & 
+drat & 0.6812 * * * & --0.6999 * * * & --0.7102 * * * & --0.4488 *
+* &  & --0.7124 * * * & 0.0912 & 0.4403 * & 0.7127 * * * & 0.6996 * *
+* & --0.0908
 \\\noalign{\medskip}
-wt & --0.8677 *** 0.7 & 825 *** 0.8880 & *** 0.6587 * & ** --0.7124
-** & * & --0.1747 & --0.5549 *** & --0.6925 *** --0. & 5833 ***
-0.4276 & * & 
+wt & --0.8677 * * * & 0.7825 * * * & 0.8880 * * * & 0.6587 * *
+* & --0.7124 * * * &  & --0.1747 & --0.5549 * * * & --0.6925 * *
+* & --0.5833 * * * & 0.4276 *
 \\\noalign{\medskip}
-qsec & 0.4187 * - & 0.5912 *** --0.4 & 337 * --0.70 & 82 ***
-0.0912 & --0.1747 &  & 0.7445 \textbackslash{} & ***
---0.2299 & --0.2127 & --0.6562 *\textbackslash{} & **
+qsec & 0.4187 * & --0.5912 * * * & --0.4337 * & --0.7082 * *
+* & 0.0912 & --0.1747 &  & 0.7445 * * * & --0.2299 & --0.2127 & --0.6562
+* * *
 \\\noalign{\medskip}
-vs & 0.6640 *** --0. & 8108 *** --0.710 & 4 *** --0.7231
-\textbackslash{} & *** 0.4403 * & --0.5549 **\textbackslash{} & * 0.7445
-*** & 0 & .1683 0 & .2060 - & 0.5696 *** & 
+vs & 0.6640 * * * & --0.8108 * * * & --0.7104 * * * & --0.7231 * *
+* & 0.4403 * & --0.5549 * * * & 0.7445 * *
+* &  & 0.1683 & 0.2060 & --0.5696 * * *
 \\\noalign{\medskip}
-am & 0.5998 *** --0. & 5226 ** --0.59 & 12 *** --0.2432 & 0.7127
-\textbackslash{} & *** --0.6925 *\textbackslash{} & **
---0.2299 & 0.1683 &  & 0.7941 *** & 0.0575 & 
+am & 0.5998 * * * & --0.5226 * * & --0.5912 * * * & --0.2432 & 0.7127 *
+* * & --0.6925 * * * & --0.2299 & 0.1683 &  & 0.7941 * * * & 0.0575
 \\\noalign{\medskip}
-gear & 0.4803 ** --0 & .4927 ** --0.5 & 556 *** --0.1257 & 0.6996 & ***
---0.5833 * & ** --0.2127 & 0.2060 & 0.7941 *** &  & 0.2741 & 
+gear & 0.4803 * * & --0.4927 * * & --0.5556 * * * & --0.1257 & 0.6996 *
+* * & --0.5833 * * * & --0.2127 & 0.2060 & 0.7941 * * * &  & 0.2741
 \\\noalign{\medskip}
-carb & --0.5509 ** 0. & 5270 ** 0.39 & 50 * 0.749 & 8 ***
---0.0908 & 0.4276 \textbackslash{} & * --0.6562 \textbackslash{} & ***
---0.5696 ** & * 0.0575 & 0.2741 &  & 
+carb & --0.5509 * * & 0.5270 * * & 0.3950 * & 0.7498 * *
+* & --0.0908 & 0.4276 * & --0.6562 * * * & --0.5696 * *
+* & 0.0575 & 0.2741 & 
 \LL
 }
 
 \begin{figure}[htbp]
 \centering
 \includegraphics{ce42e944b62284a3bebf2101155af100.png}
+\caption{}
+\end{figure}
+
+\begin{center}\rule{3in}{0.4pt}\end{center}
+
+This report was generated with
+\href{http://rapport-package.info/}{rapport}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{images/rapport.png}
 \caption{}
 \end{figure}
 

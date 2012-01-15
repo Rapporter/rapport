@@ -7,63 +7,73 @@
 Returning the Chi-squared test of two given variables with count,
 percentages and Pearson's residuals table.
 
-### Variable description
+# Variable description
 
 Two variables specified:
 
--   "gender" ("Gender") with 673 and
--   "dwell" ("Dwelling") with 662 valid values.
+-   "gender" ("Gender") with *673* and
+-   "dwell" ("Dwelling") with *662* valid values.
 
-### Counts
+# Counts
+
+<!-- endlist -->
 
            **city**   **small town**   **village**
   -------- ---------- ---------------- -------------
   male     338        28               19
   female   234        3                9
 
-### Percentages
+# Percentages
+
+<!-- endlist -->
 
            **city**   **small town**   **village**
   -------- ---------- ---------------- -------------
   male     0.5357     0.0444           0.0301
   female   0.3708     0.0048           0.0143
 
-#### Row percentages
+## Row percentages
+
+<!-- endlist -->
 
            **city**   **small town**   **village**
   -------- ---------- ---------------- -------------
   male     0.8779     0.0727           0.0494
   female   0.9512     0.0122           0.0366
 
-#### Column percentages
+## Column percentages
+
+<!-- endlist -->
 
            **city**   **small town**   **village**
   -------- ---------- ---------------- -------------
   male     0.5909     0.9032           0.6786
   female   0.4091     0.0968           0.3214
 
-### Chi-squared test
+# Chi-squared test
 
               **X-squared**   **df**   **p-value**
   ----------- --------------- -------- -------------
-  X-squared   12.64           2.00     0.00
+  X-squared   12.6353         2        0.0018
 
 It seems that a real association can be pointed out between *gender* and
-*dwell* by the *Pearson's Chi-squared test* (χ=12.635 at the degree of
+*dwell* by the *Pearson's Chi-squared test* (χ=12.6353 at the degree of
 freedom being 2) at the significance level of 0.0018. Based on Goodman
 and Kruskal's lambda it seems that *dwell* (λ=0.7602) has an effect on
 *gender* (λ=0) if we assume both variables to be nominal. The
 association between the two variables seems to be weak based on Cramer's
 V (0.1001).
 
-#### Pearson's residuals
+## Pearson's residuals
+
+<!-- endlist -->
 
            **city**   **small town**   **village**
   -------- ---------- ---------------- -------------
   male     -3.0844    3.4312           0.7595
   female   3.0844     -3.4312          -0.7595
 
-#### Mosaic chart
+## Mosaic chart
 
 ![image](089332282780d32b96117afe8dba0470.png)
 
@@ -72,14 +82,16 @@ V (0.1001).
 Returning the Chi-squared test of two given variables with count,
 percentages and Pearson's residuals table.
 
-### Variable description
+# Variable description
 
 Two variables specified:
 
--   "email" ("Email usage") with 672 and
--   "dwell" ("Dwelling") with 662 valid values.
+-   "email" ("Email usage") with *672* and
+-   "dwell" ("Dwelling") with *662* valid values.
 
-### Counts
+# Counts
+
+<!-- endlist -->
 
                 **city**   **small town**   **village**
   ------------- ---------- ---------------- -------------
@@ -91,7 +103,9 @@ Two variables specified:
   very often    88         5                5
   always        226        9                7
 
-### Percentages
+# Percentages
+
+<!-- endlist -->
 
                 **city**   **small town**   **village**
   ------------- ---------- ---------------- -------------
@@ -103,7 +117,9 @@ Two variables specified:
   very often    0.1406     0.0080           0.0080
   always        0.3610     0.0144           0.0112
 
-#### Row percentages
+## Row percentages
+
+<!-- endlist -->
 
                 **city**   **small town**   **village**
   ------------- ---------- ---------------- -------------
@@ -115,7 +131,9 @@ Two variables specified:
   very often    0.8980     0.0510           0.0510
   always        0.9339     0.0372           0.0289
 
-#### Column percentages
+## Column percentages
+
+<!-- endlist -->
 
                 **city**   **small town**   **village**
   ------------- ---------- ---------------- -------------
@@ -127,18 +145,20 @@ Two variables specified:
   very often    0.1558     0.1562           0.1724
   always        0.4000     0.2812           0.2414
 
-### Chi-squared test
+# Chi-squared test
 
               **X-squared**   **df**   **p-value**
   ----------- --------------- -------- -------------
-  X-squared   14.86           12.00    0.25
+  X-squared   14.864          12       0.249
 
 It seems that no real association can be pointed out between *email* and
 *dwell* by the *Pearson's Chi-squared test* (χ=14.864 at the degree of
 freedom being 12) at the significance level of 0.249. For this end no
 other statistical tests were performed.
 
-#### Pearson's residuals
+## Pearson's residuals
+
+<!-- endlist -->
 
                 **city**   **small town**   **village**
   ------------- ---------- ---------------- -------------
@@ -150,6 +170,12 @@ other statistical tests were performed.
   very often    -0.1671    -0.0048          0.2407
   always        2.0982     -1.2561          -1.6443
 
-#### Mosaic chart
+## Mosaic chart
 
 ![image](b945f6de1aad4225593b3e9c0eb6d7dc.png)
+
+* * * * *
+
+This report was generated with [rapport](http://rapport-package.info/).
+
+![image](images/rapport.png)

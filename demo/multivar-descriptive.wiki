@@ -1,4 +1,4 @@
-'''Descriptives'''
+'''Descriptive statistics'''
 
 Rapport package team
 
@@ -7,253 +7,531 @@ Rapport package team
 
 === Description ===
 
-This template will return descriptive statistics of numerical, or frequency tables of categorical variables. 
+This template will return descriptive statistics of numerical or frequency tables of categorical variables. 
 
-==== *gender* ("Gender") ====
+=== *gender* ("Gender") ===
 
-The dataset has 709 observations with 673 valid values (missing: 36) in *gender* ("Gender").
+The dataset has _709_ observations with _673_ valid values (missing: _36_) in *gender* ("Gender").
 This variable seems to be a factor. 
 
-===== Base statistics =====
+==== Base statistics ====
 
-        '''gender'''   '''N'''    '''pct'''   '''cumul.count'''   '''cumul.pct'''  
-<s>---</s> <s>--------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
-1       male         410.00   60.92     410.00            60.92          
-2       female       263.00   39.08     673.00            100.00         
-Total                673.00   100.00    673.00            100.00         
-<s>---</s> <s>--------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+<!-- endlist -->
 
-===== Barplot =====
+        '''gender'''   '''N'''   '''pct'''   '''cumul.count'''   '''cumul.pct'''  
+<s>---</s> <s>--------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+1       male         410     60.9212   410               60.9212        
+2       female       263     39.0788   673               100            
+Total                673     100       673               100            
+<s>---</s> <s>--------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+
+==== Barplot ====
 
 [[Image:3ed92ab3ffc6e875335e7e8c774c35a8.png|center]]
 
-It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1). 
+It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_). 
 
-==== *age* ("Age") ====
+=== *age* ("Age") ===
 
-The dataset has 709 observations with 677 valid values (missing: 32) in *age* ("Age").
+The dataset has _709_ observations with _677_ valid values (missing: _32_) in *age* ("Age").
 This variable seems to be numeric. 
 
-===== Base statistics =====
+==== Base statistics ====
 
 '''value'''   '''mean(age)'''   '''sd(age)'''   '''var(age)'''  
 <s>-------</s> <s>-----------</s> <s>---------</s> <s>----------</s>
-(all)       24.57           6.85          46.91         
+(all)       24.5731         6.8491        46.9107       
 <s>-------</s> <s>-----------</s> <s>---------</s> <s>----------</s>
 
-===== Histogram =====
+==== Histogram ====
 
 [[Image:ac5d789145bdef09b10219ef16429f53.png|center]]
 
-It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16). 
+It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_). 
 
-The standard deviation is 6.8491 (variance: 46.911). The expected value is around 24.573, somewhere between 24.057 and 25.089 (SE: 0.2632). 
+The standard deviation is 6.8491 (variance: 46.9107). The expected value is around 24.5731, somewhere between 24.0572 and 25.0891 (SE: 0.2632). 
 
-If we suppose that *Age* is not near to a normal distribution (test: , skewness: 1.9296, kurtosis: 7.4851), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median. 
+If we suppose that *Age* is not near to a normal distribution (test: see below, skewness: 1.9296, kurtosis: 7.4851), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median. 
+
+==== Normality tests ====
+
+=== Introduction ===
+
+In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is: 
+
+$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$ 
+
+_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters: 
+
+* *&mu;* - _mean_ or _expectation_ (location parameter)
+* *&sigma;^2^* - _variance_ (scale parameter) 
+
+[[Image:2f8c434e103f36ec70966b372838d448.png|center]]
+
+=== Normality Tests ===
+
+==== Overview ====
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available]([http://cran.r-project.org/web/packages/nortest/index.html]) on CRAN. 
+
+* '''Shapiro-Wilk test''' is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
+* '''Lilliefors test''' is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
+* '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
+* '''Pearson &Chi;^2^ test''' is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package. 
+
+=== Results ===
+
+Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies): 
+
+<!-- endlist -->
+
+               '''H'''      '''p'''  
+<s>----------</s> <s>------</s> <s>---</s>
+shapiro.test   0.8216     0      
+lillie.test    0.17       0      
+ad.test        32.1645    0      
+pearson.test   625.8479   0      
+<s>----------</s> <s>------</s> <s>---</s>
+
+So, let's draw some conclusions based on applied normality test: 
+
+* according to _Shapiro-Wilk test_, the distribution of _Age_ is not normal.
+* based on _Lilliefors test_, distribution of _Age_ is not normal
+* _Anderson-Darling test_ confirms violation of normality assumption
+* _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal 
+
+== Diagnostic Plots ==
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_. 
+
+==== Histogram ====
+
+_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape. 
+
+[[Image:ac5d789145bdef09b10219ef16429f53.png|center]]
+
+==== Q-Q Plot ====
+
+"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line. 
+
+[[Image:cbbba756d844aa053998959b73b9feff.png|center]]
+
+==== Kernel Density Plot ====
+
+_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape". 
+
+[[Image:6fd0494eea748495baa80653752f194f.png|center]]
 
 === Description ===
 
-This template will return descriptive statistics of numerical, or frequency tables of categorical variables. 
+This template will return descriptive statistics of numerical or frequency tables of categorical variables. 
 
-==== *chatim* ("Chat & IM usage") ====
+=== *chatim* ("Chat & IM usage") ===
 
-The dataset has 709 observations with 669 valid values (missing: 40) in *chatim* ("Chat & IM usage").
+The dataset has _709_ observations with _669_ valid values (missing: _40_) in *chatim* ("Chat & IM usage").
 This variable seems to be a factor. 
 
-===== Base statistics =====
+==== Base statistics ====
 
-        '''chatim'''    '''N'''    '''pct'''   '''cumul.count'''   '''cumul.pct'''  
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
-1       never         60.00    8.97      60.00             8.97           
-2       very rarely   73.00    10.91     133.00            19.88          
-3       rarely        58.00    8.67      191.00            28.55          
-4       sometimes     113.00   16.89     304.00            45.44          
-5       often         136.00   20.33     440.00            65.77          
-6       very often    88.00    13.15     528.00            78.92          
-7       always        141.00   21.08     669.00            100.00         
-Total                 669.00   100.00    669.00            100.00         
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+<!-- endlist -->
 
-===== Barplot =====
+        '''chatim'''    '''N'''   '''pct'''   '''cumul.count'''   '''cumul.pct'''  
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+1       never         60      8.9686    60                8.9686         
+2       very rarely   73      10.9118   133               19.8804        
+3       rarely        58      8.6697    191               28.5501        
+4       sometimes     113     16.8909   304               45.441         
+5       often         136     20.3288   440               65.7698        
+6       very often    88      13.154    528               78.9238        
+7       always        141     21.0762   669               100            
+Total                 669     100       669               100            
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+
+==== Barplot ====
 
 [[Image:5a00abbe4c793ceedbbf10939665b5cf.png|center]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1). 
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_). 
 
-==== *game* ("On-line games usage") ====
+=== *game* ("On-line games usage") ===
 
-The dataset has 709 observations with 677 valid values (missing: 32) in *game* ("On-line games usage").
+The dataset has _709_ observations with _677_ valid values (missing: _32_) in *game* ("On-line games usage").
 This variable seems to be a factor. 
 
-===== Base statistics =====
+==== Base statistics ====
 
-        '''game'''      '''N'''    '''pct'''   '''cumul.count'''   '''cumul.pct'''  
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
-1       never         352.00   51.99     352.00            51.99          
-2       very rarely   128.00   18.91     480.00            70.90          
-3       rarely        32.00    4.73      512.00            75.63          
-4       sometimes     60.00    8.86      572.00            84.49          
-5       often         37.00    5.47      609.00            89.96          
-6       very often    35.00    5.17      644.00            95.13          
-7       always        33.00    4.87      677.00            100.00         
-Total                 677.00   100.00    677.00            100.00         
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+<!-- endlist -->
 
-===== Barplot =====
+        '''game'''      '''N'''   '''pct'''   '''cumul.count'''   '''cumul.pct'''  
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+1       never         352     51.9941   352               51.9941        
+2       very rarely   128     18.9069   480               70.901         
+3       rarely        32      4.7267    512               75.6278        
+4       sometimes     60      8.8626    572               84.4904        
+5       often         37      5.4653    609               89.9557        
+6       very often    35      5.1699    644               95.1256        
+7       always        33      4.8744    677               100            
+Total                 677     100       677               100            
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+
+==== Barplot ====
 
 [[Image:e53046a09491443064e085131e547971.png|center]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1). 
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_). 
 
-==== *surf* ("Web surfing usage") ====
+=== *surf* ("Web surfing usage") ===
 
-The dataset has 709 observations with 678 valid values (missing: 31) in *surf* ("Web surfing usage").
+The dataset has _709_ observations with _678_ valid values (missing: _31_) in *surf* ("Web surfing usage").
 This variable seems to be a factor. 
 
-===== Base statistics =====
+==== Base statistics ====
 
-        '''surf'''      '''N'''    '''pct'''   '''cumul.count'''   '''cumul.pct'''  
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
-1       never         17.00    2.51      17.00             2.51           
-2       very rarely   26.00    3.83      43.00             6.34           
-3       rarely        33.00    4.87      76.00             11.21          
-4       sometimes     107.00   15.78     183.00            26.99          
-5       often         158.00   23.30     341.00            50.29          
-6       very often    142.00   20.94     483.00            71.24          
-7       always        195.00   28.76     678.00            100.00         
-Total                 678.00   100.00    678.00            100.00         
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+<!-- endlist -->
 
-===== Barplot =====
+        '''surf'''      '''N'''   '''pct'''   '''cumul.count'''   '''cumul.pct'''  
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+1       never         17      2.5074    17                2.5074         
+2       very rarely   26      3.8348    43                6.3422         
+3       rarely        33      4.8673    76                11.2094        
+4       sometimes     107     15.7817   183               26.9912        
+5       often         158     23.3038   341               50.295         
+6       very often    142     20.944    483               71.2389        
+7       always        195     28.7611   678               100            
+Total                 678     100       678               100            
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+
+==== Barplot ====
 
 [[Image:0166a8b5df2f3db871e8736bfee8af6e.png|center]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1). 
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_). 
 
-==== *email* ("Email usage") ====
+=== *email* ("Email usage") ===
 
-The dataset has 709 observations with 672 valid values (missing: 37) in *email* ("Email usage").
+The dataset has _709_ observations with _672_ valid values (missing: _37_) in *email* ("Email usage").
 This variable seems to be a factor. 
 
-===== Base statistics =====
+==== Base statistics ====
 
-        '''email'''     '''N'''    '''pct'''   '''cumul.count'''   '''cumul.pct'''  
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
-1       never         13.00    1.93      13.00             1.93           
-2       very rarely   36.00    5.36      49.00             7.29           
-3       rarely        46.00    6.85      95.00             14.14          
-4       sometimes     87.00    12.95     182.00            27.08          
-5       often         123.00   18.30     305.00            45.39          
-6       very often    108.00   16.07     413.00            61.46          
-7       always        259.00   38.54     672.00            100.00         
-Total                 672.00   100.00    672.00            100.00         
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+<!-- endlist -->
 
-===== Barplot =====
+        '''email'''     '''N'''   '''pct'''   '''cumul.count'''   '''cumul.pct'''  
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+1       never         13      1.9345    13                1.9345         
+2       very rarely   36      5.3571    49                7.2917         
+3       rarely        46      6.8452    95                14.1369        
+4       sometimes     87      12.9464   182               27.0833        
+5       often         123     18.3036   305               45.3869        
+6       very often    108     16.0714   413               61.4583        
+7       always        259     38.5417   672               100            
+Total                 672     100       672               100            
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+
+==== Barplot ====
 
 [[Image:895cde198b269bf65b01e1e067a515c8.png|center]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1). 
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_). 
 
-==== *download* ("Download usage") ====
+=== *download* ("Download usage") ===
 
-The dataset has 709 observations with 677 valid values (missing: 32) in *download* ("Download usage").
+The dataset has _709_ observations with _677_ valid values (missing: _32_) in *download* ("Download usage").
 This variable seems to be a factor. 
 
-===== Base statistics =====
+==== Base statistics ====
 
-        '''download'''   '''N'''    '''pct'''   '''cumul.count'''   '''cumul.pct'''  
-<s>---</s> <s>----------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
-1       never          11.00    1.62      11.00             1.62           
-2       very rarely    28.00    4.14      39.00             5.76           
-3       rarely         29.00    4.28      68.00             10.04          
-4       sometimes      80.00    11.82     148.00            21.86          
-5       often          124.00   18.32     272.00            40.18          
-6       very often     160.00   23.63     432.00            63.81          
-7       always         245.00   36.19     677.00            100.00         
-Total                  677.00   100.00    677.00            100.00         
-<s>---</s> <s>----------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+<!-- endlist -->
 
-===== Barplot =====
+        '''download'''   '''N'''   '''pct'''   '''cumul.count'''   '''cumul.pct'''  
+<s>---</s> <s>----------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+1       never          11      1.6248    11                1.6248         
+2       very rarely    28      4.1359    39                5.7607         
+3       rarely         29      4.2836    68                10.0443        
+4       sometimes      80      11.8168   148               21.8612        
+5       often          124     18.3161   272               40.1773        
+6       very often     160     23.6337   432               63.8109        
+7       always         245     36.1891   677               100            
+Total                  677     100       677               100            
+<s>---</s> <s>----------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+
+==== Barplot ====
 
 [[Image:dde181184885b8777d0248b3f421289a.png|center]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1). 
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_). 
 
-==== *forum* ("Web forums usage") ====
+=== *forum* ("Web forums usage") ===
 
-The dataset has 709 observations with 673 valid values (missing: 36) in *forum* ("Web forums usage").
+The dataset has _709_ observations with _673_ valid values (missing: _36_) in *forum* ("Web forums usage").
 This variable seems to be a factor. 
 
-===== Base statistics =====
+==== Base statistics ====
 
-        '''forum'''     '''N'''    '''pct'''   '''cumul.count'''   '''cumul.pct'''  
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
-1       never         76.00    11.29     76.00             11.29          
-2       very rarely   80.00    11.89     156.00            23.18          
-3       rarely        72.00    10.70     228.00            33.88          
-4       sometimes     111.00   16.49     339.00            50.37          
-5       often         109.00   16.20     448.00            66.57          
-6       very often    119.00   17.68     567.00            84.25          
-7       always        106.00   15.75     673.00            100.00         
-Total                 673.00   100.00    673.00            100.00         
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+<!-- endlist -->
 
-===== Barplot =====
+        '''forum'''     '''N'''   '''pct'''   '''cumul.count'''   '''cumul.pct'''  
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+1       never         76      11.2927   76                11.2927        
+2       very rarely   80      11.8871   156               23.1798        
+3       rarely        72      10.6984   228               33.8782        
+4       sometimes     111     16.4933   339               50.3715        
+5       often         109     16.1961   448               66.5676        
+6       very often    119     17.682    567               84.2496        
+7       always        106     15.7504   673               100            
+Total                 673     100       673               100            
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+
+==== Barplot ====
 
 [[Image:ac419134b2f4695e544d8886ba12e0c2.png|center]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1). 
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_). 
 
-==== *socnet* ("Social networks usage") ====
+=== *socnet* ("Social networks usage") ===
 
-The dataset has 709 observations with 678 valid values (missing: 31) in *socnet* ("Social networks usage").
+The dataset has _709_ observations with _678_ valid values (missing: _31_) in *socnet* ("Social networks usage").
 This variable seems to be a factor. 
 
-===== Base statistics =====
+==== Base statistics ====
 
-        '''socnet'''    '''N'''    '''pct'''   '''cumul.count'''   '''cumul.pct'''  
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
-1       never         208.00   30.68     208.00            30.68          
-2       very rarely   102.00   15.04     310.00            45.72          
-3       rarely        57.00    8.41      367.00            54.13          
-4       sometimes     87.00    12.83     454.00            66.96          
-5       often         79.00    11.65     533.00            78.61          
-6       very often    80.00    11.80     613.00            90.41          
-7       always        65.00    9.59      678.00            100.00         
-Total                 678.00   100.00    678.00            100.00         
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+<!-- endlist -->
 
-===== Barplot =====
+        '''socnet'''    '''N'''   '''pct'''   '''cumul.count'''   '''cumul.pct'''  
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+1       never         208     30.6785   208               30.6785        
+2       very rarely   102     15.0442   310               45.7227        
+3       rarely        57      8.4071    367               54.1298        
+4       sometimes     87      12.8319   454               66.9617        
+5       often         79      11.6519   533               78.6136        
+6       very often    80      11.7994   613               90.413         
+7       always        65      9.587     678               100            
+Total                 678     100       678               100            
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+
+==== Barplot ====
 
 [[Image:8475d98870c1cdd2436a3abdb0d69a66.png|center]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1). 
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_). 
 
-==== *xxx* ("Adult sites usage") ====
+=== *xxx* ("Adult sites usage") ===
 
-The dataset has 709 observations with 674 valid values (missing: 35) in *xxx* ("Adult sites usage").
+The dataset has _709_ observations with _674_ valid values (missing: _35_) in *xxx* ("Adult sites usage").
 This variable seems to be a factor. 
 
-===== Base statistics =====
+==== Base statistics ====
 
-        '''xxx'''       '''N'''    '''pct'''   '''cumul.count'''   '''cumul.pct'''  
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
-1       never         274.00   40.65     274.00            40.65          
-2       very rarely   124.00   18.40     398.00            59.05          
-3       rarely        52.00    7.72      450.00            66.77          
-4       sometimes     131.00   19.44     581.00            86.20          
-5       often         46.00    6.82      627.00            93.03          
-6       very often    28.00    4.15      655.00            97.18          
-7       always        19.00    2.82      674.00            100.00         
-Total                 674.00   100.00    674.00            100.00         
-<s>---</s> <s>---------</s> <s>----</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+<!-- endlist -->
 
-===== Barplot =====
+        '''xxx'''       '''N'''   '''pct'''   '''cumul.count'''   '''cumul.pct'''  
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+1       never         274     40.6528   274               40.6528        
+2       very rarely   124     18.3976   398               59.0504        
+3       rarely        52      7.7151    450               66.7656        
+4       sometimes     131     19.4362   581               86.2018        
+5       often         46      6.8249    627               93.0267        
+6       very often    28      4.1543    655               97.181         
+7       always        19      2.819     674               100            
+Total                 674     100       674               100            
+<s>---</s> <s>---------</s> <s>---</s> <s>-----</s> <s>-------------</s> <s>-----------</s>
+
+==== Barplot ====
 
 [[Image:4fda8cf992e8de93624c45ef3c72a0c5.png|center]]
 
-It seems that the highest value is 7 which is exactly 7 times higher than the smallest value (1). 
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_). 
+
+=== Description ===
+
+This template will return descriptive statistics of numerical or frequency tables of categorical variables. 
+
+=== *hp* ===
+
+The dataset has _32_ observations with _32_ valid values (missing: _0_) in *hp*.
+This variable seems to be numeric. 
+
+==== Base statistics ====
+
+'''value'''   '''mean(hp)'''   '''sd(hp)'''   '''var(hp)'''  
+<s>-------</s> <s>----------</s> <s>--------</s> <s>---------</s>
+(all)       146.6875       68.5629      4700.8669    
+<s>-------</s> <s>----------</s> <s>--------</s> <s>---------</s>
+
+==== Histogram ====
+
+[[Image:d90ec4a0af55fabeae7988710a062ce0.png|center]]
+
+It seems that the highest value is _335_ which is exactly 6.4423 times higher than the smallest value (_52_). 
+
+The standard deviation is 68.5629 (variance: 4700.8669). The expected value is around 146.6875, somewhere between 122.9317 and 170.4433 (SE: 12.1203). 
+
+If we suppose that *hp* is not near to a normal distribution (test: see below, skewness: 0.7614, kurtosis: 3.0522), checking the median (123) might be a better option instead of the mean. The interquartile range (83.5) measures the statistics dispersion of the variable (similar to standard deviation) based on median. 
+
+==== Normality tests ====
+
+=== Introduction ===
+
+In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is: 
+
+$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$ 
+
+_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters: 
+
+* *&mu;* - _mean_ or _expectation_ (location parameter)
+* *&sigma;^2^* - _variance_ (scale parameter) 
+
+[[Image:2f8c434e103f36ec70966b372838d448.png|center]]
+
+=== Normality Tests ===
+
+==== Overview ====
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available]([http://cran.r-project.org/web/packages/nortest/index.html]) on CRAN. 
+
+* '''Shapiro-Wilk test''' is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
+* '''Lilliefors test''' is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
+* '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
+* '''Pearson &Chi;^2^ test''' is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package. 
+
+=== Results ===
+
+Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies): 
+
+<!-- endlist -->
+
+               '''H'''    '''p'''   
+<s>----------</s> <s>----</s> <s>----</s>
+shapiro.test   0.9334   0.0488  
+lillie.test    0.1664   0.0245  
+ad.test        0.7077   0.0584  
+pearson.test   11.5     0.0423  
+<s>----------</s> <s>----</s> <s>----</s>
+
+So, let's draw some conclusions based on applied normality test: 
+
+* according to _Shapiro-Wilk test_, the distribution of _hp_ is not normal.
+* based on _Lilliefors test_, distribution of _hp_ is not normal
+* _Anderson-Darling test_ confirms  normality assumption
+* _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal 
+
+== Diagnostic Plots ==
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_. 
+
+==== Histogram ====
+
+_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape. 
+
+[[Image:d90ec4a0af55fabeae7988710a062ce0.png|center]]
+
+==== Q-Q Plot ====
+
+"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line. 
+
+[[Image:17e5c77b83c6e3e636487406decc14c7.png|center]]
+
+==== Kernel Density Plot ====
+
+_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape". 
+
+[[Image:135de2b4d3cb1b1a3ece741c584c0a59.png|center]]
+
+=== *wt* ===
+
+The dataset has _32_ observations with _32_ valid values (missing: _0_) in *wt*.
+This variable seems to be numeric. 
+
+==== Base statistics ====
+
+'''value'''   '''mean(wt)'''   '''sd(wt)'''   '''var(wt)'''  
+<s>-------</s> <s>----------</s> <s>--------</s> <s>---------</s>
+(all)       3.2172         0.9785       0.9574       
+<s>-------</s> <s>----------</s> <s>--------</s> <s>---------</s>
+
+==== Histogram ====
+
+[[Image:10caa8222b28328a6d8fd28917cbfb45.png|center]]
+
+It seems that the highest value is _5.424_ which is exactly 3.5849 times higher than the smallest value (_1.513_). 
+
+The standard deviation is 0.9785 (variance: 0.9574). The expected value is around 3.2172, somewhere between 2.8782 and 3.5563 (SE: 0.173). 
+
+If we suppose that *wt* is not near to a normal distribution (test: see below, skewness: 0.4438, kurtosis: 3.1725), checking the median (3.325) might be a better option instead of the mean. The interquartile range (1.0288) measures the statistics dispersion of the variable (similar to standard deviation) based on median. 
+
+==== Normality tests ====
+
+=== Introduction ===
+
+In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is: 
+
+$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$ 
+
+_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters: 
+
+* *&mu;* - _mean_ or _expectation_ (location parameter)
+* *&sigma;^2^* - _variance_ (scale parameter) 
+
+[[Image:2f8c434e103f36ec70966b372838d448.png|center]]
+
+=== Normality Tests ===
+
+==== Overview ====
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available]([http://cran.r-project.org/web/packages/nortest/index.html]) on CRAN. 
+
+* '''Shapiro-Wilk test''' is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
+* '''Lilliefors test''' is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
+* '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
+* '''Pearson &Chi;^2^ test''' is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package. 
+
+=== Results ===
+
+Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies): 
+
+<!-- endlist -->
+
+               '''H'''    '''p'''   
+<s>----------</s> <s>----</s> <s>----</s>
+shapiro.test   0.9433   0.0927  
+lillie.test    0.1356   0.1412  
+ad.test        0.6091   0.1038  
+pearson.test   4.5      0.4799  
+<s>----------</s> <s>----</s> <s>----</s>
+
+So, let's draw some conclusions based on applied normality test: 
+
+* according to _Shapiro-Wilk test_, the distribution of _wt_ is  normal.
+* based on _Lilliefors test_, distribution of _wt_ is not normal
+* _Anderson-Darling test_ confirms  normality assumption
+* _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal 
+
+== Diagnostic Plots ==
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_. 
+
+==== Histogram ====
+
+_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape. 
+
+[[Image:10caa8222b28328a6d8fd28917cbfb45.png|center]]
+
+==== Q-Q Plot ====
+
+"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line. 
+
+[[Image:ff471a5bcb80aaf91b4c053ab038d69a.png|center]]
+
+==== Kernel Density Plot ====
+
+_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape". 
+
+[[Image:16a7d5cf96ceceffd6db59f9a2514dce.png|center]]
+
+<s>---</s>
+This report was generated with [rapport]([http://rapport-package.info/]). 
+
+[[Image:images/rapport.png|center]]
 
 <!-- wiki code generated by txt2tags 2.6 (http://txt2tags.org) -->
 <!-- cmdline: txt2tags -\-encoding=UTF-8 -t wiki -o demo/multivar-descriptive.wiki demo/multivar-descriptive.txt -->

@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Descriptives</h1>
+  <h1 class="title">Descriptive statistics</h1>
   <p class="author">
 Rapport package team @ https://github.com/aL3xa/rapport
   </p>
@@ -23,9 +23,13 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <div class="slide">
 <h2 id="description">Description</h2>
 <p>This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.</p>
-<h3 id="gender-gender"><em>gender</em> (&quot;Gender&quot;)</h3>
-<p>The dataset has 709 observations with 673 valid values (missing: 36) in <em>gender</em> (&quot;Gender&quot;). This variable seems to be a factor.</p>
-<h4 id="base-statistics">Base statistics</h4>
+</div>
+<div class="slide">
+<h1 id="gender-gender"><em>gender</em> (&quot;Gender&quot;)</h1>
+<p>The dataset has <em>709</em> observations with <em>673</em> valid values (missing: <em>36</em>) in <em>gender</em> (&quot;Gender&quot;). This variable seems to be a factor.</p>
+<h2 id="base-statistics">Base statistics</h2>
+<!-- endlist -->
+
 <table>
 <thead>
 <tr class="header">
@@ -41,39 +45,41 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <tr class="odd">
 <td align="left">1</td>
 <td align="left">male</td>
-<td align="left">410.00</td>
-<td align="left">60.92</td>
-<td align="left">410.00</td>
-<td align="left">60.92</td>
+<td align="left">410</td>
+<td align="left">60.9212</td>
+<td align="left">410</td>
+<td align="left">60.9212</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
 <td align="left">female</td>
-<td align="left">263.00</td>
-<td align="left">39.08</td>
-<td align="left">673.00</td>
-<td align="left">100.00</td>
+<td align="left">263</td>
+<td align="left">39.0788</td>
+<td align="left">673</td>
+<td align="left">100</td>
 </tr>
 <tr class="odd">
 <td align="left">Total</td>
 <td align="left"></td>
-<td align="left">673.00</td>
-<td align="left">100.00</td>
-<td align="left">673.00</td>
-<td align="left">100.00</td>
+<td align="left">673</td>
+<td align="left">100</td>
+<td align="left">673</td>
+<td align="left">100</td>
 </tr>
 </tbody>
 </table>
-<h4 id="barplot">Barplot</h4>
+<h2 id="barplot">Barplot</h2>
 <div class="figure">
 <img src="3ed92ab3ffc6e875335e7e8c774c35a8.png" /><p class="caption"></p>
 </div>
-<p>It seems that the highest value is 2 which is exactly 2 times higher than the smallest value (1).</p>
+<p>It seems that the highest value is <em>2</em> which is exactly 2 times higher than the smallest value (<em>1</em>).</p>
 <h2 id="description-1">Description</h2>
 <p>This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.</p>
-<h3 id="age-age"><em>age</em> (&quot;Age&quot;)</h3>
-<p>The dataset has 709 observations with 677 valid values (missing: 32) in <em>age</em> (&quot;Age&quot;). This variable seems to be numeric.</p>
-<h4 id="base-statistics-1">Base statistics</h4>
+</div>
+<div class="slide">
+<h1 id="age-age"><em>age</em> (&quot;Age&quot;)</h1>
+<p>The dataset has <em>709</em> observations with <em>677</em> valid values (missing: <em>32</em>) in <em>age</em> (&quot;Age&quot;). This variable seems to be numeric.</p>
+<h2 id="base-statistics-1">Base statistics</h2>
 <table>
 <thead>
 <tr class="header">
@@ -86,19 +92,105 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <tbody>
 <tr class="odd">
 <td align="left">(all)</td>
-<td align="left">24.57</td>
-<td align="left">6.85</td>
-<td align="left">46.91</td>
+<td align="left">24.5731</td>
+<td align="left">6.8491</td>
+<td align="left">46.9107</td>
 </tr>
 </tbody>
 </table>
-<h4 id="histogram">Histogram</h4>
+<h2 id="histogram">Histogram</h2>
 <div class="figure">
 <img src="ac5d789145bdef09b10219ef16429f53.png" /><p class="caption"></p>
 </div>
-<p>It seems that the highest value is 58 which is exactly 3.625 times higher than the smallest value (16).</p>
-<p>The standard deviation is 6.8491 (variance: 46.911). The expected value is around 24.573, somewhere between 24.057 and 25.089 (SE: 0.2632).</p>
-<p>If we suppose that <em>Age</em> is not near to a normal distribution (test: , skewness: 1.9296, kurtosis: 7.4851), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
+<p>It seems that the highest value is <em>58</em> which is exactly 3.625 times higher than the smallest value (<em>16</em>).</p>
+<p>The standard deviation is 6.8491 (variance: 46.9107). The expected value is around 24.5731, somewhere between 24.0572 and 25.0891 (SE: 0.2632).</p>
+<p>If we suppose that <em>Age</em> is not near to a normal distribution (test: see below, skewness: 1.9296, kurtosis: 7.4851), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
+<h2 id="normality-tests">Normality tests</h2>
+<h2 id="introduction">Introduction</h2>
+<p>In statistics, <em>normality</em> refers to an assumption that the distribution of a random variable follows <em>normal</em> (<em>Gaussian</em>) distribution. Because of its bell-like shape, it's also known as the <em>&quot;bell curve&quot;</em>. The formula for <em>normal distribution</em> is:</p>
+<p><br /><span class="math">$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$</span><br /></p>
+<p><em>Normal distribution</em> belongs to a <em>location-scale family</em> of distributions, as it's defined two parameters:</p>
+<ul>
+<li><em>μ</em> - <em>mean</em> or <em>expectation</em> (location parameter)</li>
+<li><em>σ<sup>2</sup></em> - <em>variance</em> (scale parameter)</li>
+</ul>
+<div class="figure">
+<img src="2f8c434e103f36ec70966b372838d448.png" /><p class="caption"></p>
+</div>
+<h2 id="normality-tests-1">Normality Tests</h2>
+<h3 id="overview">Overview</h3>
+<p>Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is <em>normal</em>. At this point only few such tests will be covered: the ones that are available in <code>stats</code> package (which comes bundled with default R installation) and <code>nortest</code> package that is <a href="http://cran.r-project.org/web/packages/nortest/index.html">available</a> on CRAN.</p>
+<ul>
+<li><strong>Shapiro-Wilk test</strong> is a powerful normality test appropriate for small samples. In R, it's implemented in <code>shapiro.test</code> function available in <code>stats</code> package.</li>
+<li><strong>Lilliefors test</strong> is a modification of <em>Kolmogorov-Smirnov test</em> appropriate for testing normality when parameters or normal distribution (<em>μ</em>, <em>σ<sup>2</sup></em>) are not known. <code>lillie.test</code> function is located in <code>nortest</code> package.</li>
+<li><strong>Anderson-Darling test</strong> is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <code>ad.test</code> function in <code>nortest</code> package.</li>
+<li><strong>Pearson Χ<sup>2</sup> test</strong> is another normality test which takes more &quot;traditional&quot; approach in normality testing. <code>pearson.test</code> is located in <code>nortest</code> package.</li>
+</ul>
+<h3 id="results">Results</h3>
+<p>Here you can see the results of applied normality tests (<em>p-values</em> less than 0.05 indicate significant discrepancies):</p>
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>H</strong></th>
+<th align="left"><strong>p</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">shapiro.test</td>
+<td align="left">0.8216</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">lillie.test</td>
+<td align="left">0.17</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">ad.test</td>
+<td align="left">32.1645</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">pearson.test</td>
+<td align="left">625.8479</td>
+<td align="left">0</td>
+</tr>
+</tbody>
+</table>
+<p>So, let's draw some conclusions based on applied normality test:</p>
+<ul>
+<li>according to <em>Shapiro-Wilk test</em>, the distribution of <em>Age</em> is not normal.</li>
+<li>based on <em>Lilliefors test</em>, distribution of <em>Age</em> is not normal</li>
+<li><em>Anderson-Darling test</em> confirms violation of normality assumption</li>
+<li><em>Pearson's Χ<sup>2</sup> test</em> classifies the underlying distribution as non-normal</li>
+</ul>
+<h2 id="diagnostic-plots">Diagnostic Plots</h2>
+<p>There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: <em>histogram</em>, <em>Q-Q plot</em> and <em>kernel density plot</em>.</p>
+<h3 id="histogram-1">Histogram</h3>
+<p><em>Histogram</em> was first introduced by <em>Karl Pearson</em> and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.</p>
+<div class="figure">
+<img src="ac5d789145bdef09b10219ef16429f53.png" /><p class="caption"></p>
+</div>
+<h3 id="q-q-plot">Q-Q Plot</h3>
+<p>&quot;Q&quot; in <em>Q-Q plot</em> stands for <em>quantile</em>, as this plot compares empirical and theoretical distribution (in this case, <em>normal</em> distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <code>x = y</code> line.</p>
+<div class="figure">
+<img src="cbbba756d844aa053998959b73b9feff.png" /><p class="caption"></p>
+</div>
+<h3 id="kernel-density-plot">Kernel Density Plot</h3>
+<p><em>Kernel density plot</em> is a plot of smoothed <em>empirical distribution function</em>. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.</p>
+<div class="figure">
+<img src="2684e7da9f9797bfd75863b18d9d29e9.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="slide">
+<p>This report was generated with <a href="http://rapport-package.info/">rapport</a>.</p>
+<div class="figure">
+<img src="images/rapport.png" /><p class="caption"></p>
+</div>
 </div>
 </body>
 </html>

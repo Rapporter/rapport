@@ -1,0 +1,239 @@
+\documentclass{article}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifxetex
+  \usepackage{fontspec,xltxtra,xunicode}
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+\else
+  \ifluatex
+    \usepackage{fontspec}
+    \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \else
+    \usepackage[utf8]{inputenc}
+  \fi
+\fi
+\usepackage{ctable}
+\usepackage{float} % provides the H option for float placement
+\usepackage{graphicx}
+% We will generate all images so they have a width \maxwidth. This means
+% that they will get their normal width if they fit onto the page, but
+% are scaled down if they would overflow the margins.
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+\else\Gin@nat@width\fi}
+\makeatother
+\let\Oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true, pdfborder={0 0 0}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+
+\title{t-test Template}
+\author{Rapport package team @ https://github.com/aL3xa/rapport}
+\date{2011--04--26 20:25 CET}
+
+\begin{document}
+\maketitle
+
+\subsection{Description}
+
+A t-test report with table of descriptives, diagnostic tests and t-test
+specific statistics.
+
+\section{Introduction}
+
+In a nutshell, \emph{t-test} is a statistical test that assesses
+hypothesis of equality of two means. But in theory, any hypothesis test
+that yields statistic which follows
+\href{https://en.wikipedia.org/wiki/Student\%27s\_t-distribution}{\emph{t-distribution}}
+can be considered a \emph{t-test}. The most common usage of
+\emph{t-test} is to:
+
+\begin{itemize}
+\item
+  compare the mean of a variable with given test mean value -
+  \textbf{one-sample \emph{t-test}}
+\item
+  compare means of two variables from independent samples -
+  \textbf{independent samples \emph{t-test}}
+\item
+  compare means of two variables from dependent samples -
+  \textbf{paired-samples \emph{t-test}}
+\end{itemize}
+\section{Overview}
+
+Independent samples \emph{t-test} is carried out with \emph{Internet
+usage in leisure time (hours per day)} as dependent variable, and
+\emph{Gender} as independent variable. Confidence interval is set to
+95\%. Equality of variances wasn't assumed.
+
+\section{Descriptives}
+
+In order to get more insight on the underlying data, a table of basic
+descriptive statistics is displayed below.
+
+\ctable[pos = H, center, botcap]{llllllllll}
+{% notes
+}
+{% rows
+\FL
+\textbf{y} & \textbf{min(x)} & \textbf{max(x)} & \textbf{mean(x)} & \textbf{sd(x)} & \textbf{var(x)} & \textbf{median(x)} & \textbf{IQR(x)} & \textbf{skewness(x)} & \textbf{kurtosis(x)}
+\ML
+male & 0 & 12 & 3.2699 & 1.9535 & 3.8161 & 3 & 3 & 0.9479 & 4.0064
+\\\noalign{\medskip}
+female & 0 & 12 & 3.0643 & 2.3546 & 5.5442 & 2 & 3 & 1.4064 & 4.9089
+\\\noalign{\medskip}
+ & 0 & 10 & 3.3824 & 2.5822 & 6.6676 & 3 & 2 & 1.2197 & 3.8058
+\LL
+}
+
+\section{Diagnostics}
+
+Since \emph{t-test} is a parametric technique, it sets some basic
+assumptions on distribution shape: it has to be \emph{normal} (or
+appoximately normal). A few normality test are to be applied, in order
+to screen possible departures from normality.
+
+\subsection{Normality Tests}
+
+We will use \emph{Shapiro-Wilk}, \emph{Lilliefors} and
+\emph{Anderson-Darling} tests to screen departures from normality in the
+response variable (\emph{Internet usage in leisure time (hours per
+day)}).
+
+\ctable[pos = H, center, botcap]{lll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{W} & \textbf{p}
+\ML
+shapiro.test & 0.9001 & 0
+\\\noalign{\medskip}
+lillie.test & 0.168 & 0
+\\\noalign{\medskip}
+ad.test & 18.753 & 0
+\LL
+}
+
+As you can see, applied tests confirm departures from normality.
+
+\section{Results}
+
+Welch Two Sample t-test was applied, and significant differences were
+found.
+
+\ctable[pos = H, center, botcap]{llllll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{statistic} & \textbf{df} & \textbf{p} & \textbf{CI(lower)} & \textbf{CI(upper)}
+\ML
+t & 1.1483 & 457.8625 & 0.2514 & --0.1463 & 0.5576
+\LL
+}
+
+\subsection{Description}
+
+A t-test report with table of descriptives, diagnostic tests and t-test
+specific statistics.
+
+\section{Introduction}
+
+In a nutshell, \emph{t-test} is a statistical test that assesses
+hypothesis of equality of two means. But in theory, any hypothesis test
+that yields statistic which follows
+\href{https://en.wikipedia.org/wiki/Student\%27s\_t-distribution}{\emph{t-distribution}}
+can be considered a \emph{t-test}. The most common usage of
+\emph{t-test} is to:
+
+\begin{itemize}
+\item
+  compare the mean of a variable with given test mean value -
+  \textbf{one-sample \emph{t-test}}
+\item
+  compare means of two variables from independent samples -
+  \textbf{independent samples \emph{t-test}}
+\item
+  compare means of two variables from dependent samples -
+  \textbf{paired-samples \emph{t-test}}
+\end{itemize}
+\section{Overview}
+
+One-sample \emph{t-test} is carried out with \emph{Internet usage in
+leisure time (hours per day)} as dependent variable. Confidence interval
+is set to 95\%. Equality of variances wasn't assumed.
+
+\section{Descriptives}
+
+In order to get more insight on the underlying data, a table of basic
+descriptive statistics is displayed below.
+
+\section{Diagnostics}
+
+Since \emph{t-test} is a parametric technique, it sets some basic
+assumptions on distribution shape: it has to be \emph{normal} (or
+appoximately normal). A few normality test are to be applied, in order
+to screen possible departures from normality.
+
+\subsection{Normality Tests}
+
+We will use \emph{Shapiro-Wilk}, \emph{Lilliefors} and
+\emph{Anderson-Darling} tests to screen departures from normality in the
+response variable (\emph{Internet usage in leisure time (hours per
+day)}).
+
+\ctable[pos = H, center, botcap]{lll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{W} & \textbf{p}
+\ML
+shapiro.test & 0.9001 & 0
+\\\noalign{\medskip}
+lillie.test & 0.168 & 0
+\\\noalign{\medskip}
+ad.test & 18.753 & 0
+\LL
+}
+
+As you can see, applied tests confirm departures from normality.
+
+\section{Results}
+
+One Sample t-test was applied, and significant differences were found.
+
+\ctable[pos = H, center, botcap]{llllll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{statistic} & \textbf{df} & \textbf{p} & \textbf{CI(lower)} & \textbf{CI(upper)}
+\ML
+t & --0.0072 & 671 & 0.9943 & 3.037 & 3.3618
+\LL
+}
+
+\begin{center}\rule{3in}{0.4pt}\end{center}
+
+This report was generated with
+\href{http://rapport-package.info/}{rapport}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{images/rapport.png}
+\caption{}
+\end{figure}
+
+\end{document}
