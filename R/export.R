@@ -113,7 +113,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
 
             ## body
             lapply(rp$report, function(x) {
-                if (x$type=='heading') r$addSection(x$text$eval, 2+x$level)
+                if (x$type=='heading') r$addSection(x$text$eval, x$level)
                 if (x$type=='inline')
                     r$add(paragraph(ifelse(is.null(unlist(x$chunks$raw)),
                                            unlist(x$text$raw),
