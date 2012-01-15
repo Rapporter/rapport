@@ -1,5 +1,5 @@
 <!--head
-Title: Descriptives
+Title: Descriptive statistics
 Author: Gergely Daróczi 
 Email: gergely@snowl.net
 Description: This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable. 

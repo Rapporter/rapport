@@ -1,5 +1,5 @@
 <!--head
-Title:          Outlier test
+Title:          Outlier tests
 Author:         Gergely Daróczi 
 Email:          gergely@snowl.net
 Description:    This template will check if provided variable has any outliers. 
@@ -7,7 +7,7 @@ Packages:       outliers
 Example:        rapport('outlier-test', data=ius2008, var='edu')
                 rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE)
                 rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALSE, grubb=FALSE, dixon=FALSE)
-var             | numeric | Variable        | Numerical variable
+var             | *numeric | Variable        | Numerical variable
 lund.res        | FALSE   | Residuals       | Return Lund's residuals?
 references      | TRUE    | References      | Print references?
 grubb           | TRUE    | Grubb's test    | Show Grubb's test?
