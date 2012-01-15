@@ -17,8 +17,8 @@
 }
 \examples{
 \dontrun{
-    rp.label(mtcars$mpg) <- "fuel consumption"
-    x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
+rp.label(mtcars$mpg) <- "fuel consumption"
+x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
 }
 }
 \seealso{

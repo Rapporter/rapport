@@ -1,45 +1,45 @@
-##' Rapport Object
-##'
-##' Checks if provided R object is of "rapport" class.
-##' @param x any R object to check
-##' @return a logical value
-##' @export
+#' Rapport Object
+#'
+#' Checks if provided R object is of "rapport" class.
+#' @param x any R object to check
+#' @return a logical value
+#' @export
 is.rapport <- function(x)  inherits(x, 'rapport')
 
 
-##' Rapport Block Element
-##'
-##' Checks if provided R object is a \code{rapport} block element.
-##' @param x any R object to check
-##' @return a logical value
-##' @export
+#' Rapport Block Element
+#'
+#' Checks if provided R object is a \code{rapport} block element.
+#' @param x any R object to check
+#' @return a logical value
+#' @export
 is.rp.block <- function(x)  (inherits(x, 'rp.block'))
 
 
-##' Rapport Inline Element
-##'
-##' Checks if provided R object is a \code{rapport} inline element.
-##' @param x any R object to check
-##' @return a logical value
-##' @export
+#' Rapport Inline Element
+#'
+#' Checks if provided R object is a \code{rapport} inline element.
+#' @param x any R object to check
+#' @return a logical value
+#' @export
 is.rp.inline <- function(x)  (inherits(x, 'rp.inline'))
 
 
-##' Rapport Heading Element
-##'
-##' Checks if provided R object is a \code{rapport} inline element.
-##' @param x any R object to check
-##' @return a logical value
-##' @export
+#' Rapport Heading Element
+#'
+#' Checks if provided R object is a \code{rapport} inline element.
+#' @param x any R object to check
+#' @return a logical value
+#' @export
 is.rp.heading <- function(x)  (inherits(x, 'rp.heading'))
 
 
-##' Variables
-##'
-##' From our point of view, a \code{variable} is a non-\code{NULL} atomic vector that has no dimensions. This approach bypasses \code{factor} issues with \code{\link{is.vector}}, and also eliminates multidimensional vectors, such as matrices and arrays.
-##' @param x an object to be checked for "variable" format
-##' @return a logical value indicating that provided object is a "variable"
-##' @export
+#' Variables
+#'
+#' From our point of view, a \code{variable} is a non-\code{NULL} atomic vector that has no dimensions. This approach bypasses \code{factor} issues with \code{\link{is.vector}}, and also eliminates multidimensional vectors, such as matrices and arrays.
+#' @param x an object to be checked for "variable" format
+#' @return a logical value indicating that provided object is a "variable"
+#' @export
 is.variable <- function(x){
 
     if (missing(x))
@@ -49,12 +49,12 @@ is.variable <- function(x){
 }
 
 
-##' Tabular Structure
-##'
-##' Checks if object has "tabular" structure - in this particular case, that means \code{\link{matrix}} and \code{\link{data.frame}} classes only.
-##' @param x an object to be checked for "tabular" format
-##' @return a logical value indicating that provided object has tabular structure
-##' @export
+#' Tabular Structure
+#'
+#' Checks if object has "tabular" structure - in this particular case, that means \code{\link{matrix}} and \code{\link{data.frame}} classes only.
+#' @param x an object to be checked for "tabular" format
+#' @return a logical value indicating that provided object has tabular structure
+#' @export
 is.tabular <- function(x){
 
     if (missing(x))
@@ -64,12 +64,12 @@ is.tabular <- function(x){
 }
 
 
-##' Pandoc Heading
-##'
-##' Checks if provided string is a valid ATX-style pandoc heading.
-##' @param x a string to test for pandoc heading format
-##' @return a logical value indicating the string is (not) a pandoc heading
-##' @export
+#' Pandoc Heading
+#'
+#' Checks if provided string is a valid ATX-style pandoc heading.
+#' @param x a string to test for pandoc heading format
+#' @return a logical value indicating the string is (not) a pandoc heading
+#' @export
 is.heading <- function(x){
 
     if (missing(x))
@@ -80,16 +80,16 @@ is.heading <- function(x){
 }
 
 
-##' Get variable name
-##'
-##' This function returns character value previously stored in variable's \code{name} attribute. If none found, the function fallbacks to object's name.
-##' @param x an R (atomic or data.frame/list) object to extract names from
-##' @return a character value with variable's label
-##' @examples \dontrun{
-##' rp.name(mtcars$am)
-##' x <- 1:10; rp.name(x)
-##' }
-##' @export
+#' Get variable name
+#'
+#' This function returns character value previously stored in variable's \code{name} attribute. If none found, the function fallbacks to object's name.
+#' @param x an R (atomic or data.frame/list) object to extract names from
+#' @return a character value with variable's label
+#' @examples \dontrun{
+#' rp.name(mtcars$am)
+#' x <- 1:10; rp.name(x)
+#' }
+#' @export
 rp.name <- function(x){
 
     if (missing(x))
@@ -123,22 +123,22 @@ rp.name <- function(x){
 }
 
 
-##' Get variable label
-##'
-##' This function returns character value previously stored in variable's \code{label} attribute. If none found, the function fallbacks to object's name (retrieved by \code{deparse(substitute(x))}).
-##' @param x an R object to extract labels from
-##' @param fallback a logical value indicating if labels should fallback to object name(s)
-##' @return a character vector with variable's label(s)
-##' @examples \dontrun{
-##' x <- rnorm(100)
-##' rp.label(x)         # returns "x"
-##' rp.label(x, FALSE)  # fails with error message
-##'
-##' rp.label(mtcars$hp) <- "Horsepower"
-##' rp.label(mtcars)    # returns "Horsepower" instead of "hp"
-##' rp.label(mtcars, FALSE)  # returns NA where no labels are found
-##' }
-##' @export
+#' Get variable label
+#'
+#' This function returns character value previously stored in variable's \code{label} attribute. If none found, the function fallbacks to object's name (retrieved by \code{deparse(substitute(x))}).
+#' @param x an R object to extract labels from
+#' @param fallback a logical value indicating if labels should fallback to object name(s)
+#' @return a character vector with variable's label(s)
+#' @examples \dontrun{
+#' x <- rnorm(100)
+#' rp.label(x)         # returns "x"
+#' rp.label(x, FALSE)  # fails with error message
+#'
+#' rp.label(mtcars$hp) <- "Horsepower"
+#' rp.label(mtcars)    # returns "Horsepower" instead of "hp"
+#' rp.label(mtcars, FALSE)  # returns NA where no labels are found
+#' }
+#' @export
 rp.label <- function(x, fallback = TRUE){
 
     if (missing(x))
@@ -180,17 +180,17 @@ rp.label <- function(x, fallback = TRUE){
 }
 
 
-##' Set variable label
-##'
-##' this function sets a label to an \code{\link{atomic}} vector, by storing a character value to its \code{label} attribute.
-##' @param var an atomic vector
-##' @param value a character value that is to be set as variable label
-##' @seealso \code{rp.label}
-##' @examples \dontrun{
-##'     rp.label(mtcars$mpg) <- "fuel consumption"
-##'     x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
-##' }
-##' @export
+#' Set variable label
+#'
+#' this function sets a label to an \code{\link{atomic}} vector, by storing a character value to its \code{label} attribute.
+#' @param var an atomic vector
+#' @param value a character value that is to be set as variable label
+#' @seealso \code{rp.label}
+#' @examples \dontrun{
+#' rp.label(mtcars$mpg) <- "fuel consumption"
+#' x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
+#' }
+#' @export
 `rp.label<-` <- function(var, value){
 
     if (missing(var) | missing(value))
@@ -208,13 +208,13 @@ rp.label <- function(x, fallback = TRUE){
 }
 
 
-##' Tag Existence
-##'
-##' Checks if a character value contains specified tags.
-##' @param x a character value to check for \code{brew} strings
-##' @param ... additional arguments for \code{\link{grepl}} function
-##' @return a logical value indicating if the string has passed the check
-##' @export
+#' Tag Existence
+#'
+#' Checks if a character value contains specified tags.
+#' @param x a character value to check for \code{brew} strings
+#' @param ... additional arguments for \code{\link{grepl}} function
+#' @return a logical value indicating if the string has passed the check
+#' @export
 has.tags <- function(x, ...){
 
     if (missing(x))
@@ -238,23 +238,23 @@ has.tags <- function(x, ...){
 }
 
 
-##' Inline Chunk Contents
-##'
-##' Returns inline code chunks with or without tags that wrap them.
-##' @param x a character vector
-##' @param tag.open a character value with opening tag regular expression
-##' @param tag.close a character value with closing tag regular expression
-##' @param include a logical value indicating wheter chunks should be returned (defaults to \code{FALSE})
-##' @param ... additional arguments for \code{\link{gregexpr}} function
-##' @return a character vector with code chunks
-##' @export
-##' @examples \dontrun{
-##'     s <- c("As you know, pi equals <%pi%>",  "2 raised to the power of 3 is <%2^3%>")
-##'     grab.chunks(s, "<%", "%>", FALSE)
-##'     ## [1] "pi"  "2^3"
-##'     grab.chunks(s, "<%", "%>", FALSE)
-##'     ## [1] "<%pi%>"  "<%2^3%>"
-##' }
+#' Inline Chunk Contents
+#'
+#' Returns inline code chunks with or without tags that wrap them.
+#' @param x a character vector
+#' @param tag.open a character value with opening tag regular expression
+#' @param tag.close a character value with closing tag regular expression
+#' @param include a logical value indicating wheter chunks should be returned (defaults to \code{FALSE})
+#' @param ... additional arguments for \code{\link{gregexpr}} function
+#' @return a character vector with code chunks
+#' @export
+#' @examples \dontrun{
+#'     s <- c("As you know, pi equals <%pi%>",  "2 raised to the power of 3 is <%2^3%>")
+#'     grab.chunks(s, "<%", "%>", FALSE)
+#'     ## [1] "pi"  "2^3"
+#'     grab.chunks(s, "<%", "%>", FALSE)
+#'     ## [1] "<%pi%>"  "<%2^3%>"
+#' }
 grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), include = FALSE, ...){
 
     co <- gregexpr(tag.open, x, ...)
@@ -272,13 +272,13 @@ grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.t
 }
 
 
-##' Tag Values
-##'
-##' Returns report tag vales: either ones that were set by user, or the default ones.
-##' @param tag.type a character value with tag value name
-##' @param preset a character value specifying which preset to return
-##' @return either a list (default) or a character value with tag names
-##' @export
+#' Tag Values
+#'
+#' Returns report tag vales: either ones that were set by user, or the default ones.
+#' @param tag.type a character value with tag value name
+#' @param preset a character value specifying which preset to return
+#' @return either a list (default) or a character value with tag names
+#' @export
 get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.open', 'inline.close', 'header.open', 'header.close', 'comment.open', 'comment.close'), preset = c('user', 'default')){
 
     t.type <- match.arg(tag.type)       # tag type
@@ -335,14 +335,14 @@ get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.op
 }
 
 
-##' Misplaced Tags
-##'
-##' Searches for misplaced tags
-##' @param x a string to check for misplaced tags
-##' @param tag.open a string containing opening tag
-##' @param tag.close a string containing closing tag
-##' @return if no tags, or no mismatches are found, original string is returned, otherwise the function will return appropriate error
-##' @export
+#' Misplaced Tags
+#'
+#' Searches for misplaced tags
+#' @param x a string to check for misplaced tags
+#' @param tag.open a string containing opening tag
+#' @param tag.close a string containing closing tag
+#' @return if no tags, or no mismatches are found, original string is returned, otherwise the function will return appropriate error
+#' @export
 tags.misplaced <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close')){
 
     stopifnot(is.string(x))             # strings only!
@@ -368,14 +368,14 @@ tags.misplaced <- function(x, tag.open = get.tags('inline.open'), tag.close = ge
 }
 
 
-##' Purge Comments
-##'
-##' Remove comments from provided character vector.
-##' @param x a character string to remove comments from
-##' @param comment.open a string containing opening tag
-##' @param comment.close a string containing closing tag
-##' @return a string with removed pandoc comments
-##' @export
+#' Purge Comments
+#'
+#' Remove comments from provided character vector.
+#' @param x a character string to remove comments from
+#' @param comment.open a string containing opening tag
+#' @param comment.close a string containing closing tag
+#' @return a string with removed pandoc comments
+#' @export
 purge.comments <- function(x, comment.open = get.tags('comment.open'), comment.close = get.tags('comment.close')){
 
     stopifnot(is.string(x))
@@ -384,22 +384,22 @@ purge.comments <- function(x, comment.open = get.tags('comment.open'), comment.c
 }
 
 
-##' Convert table-like structures to JSON object
-##'
-##' This function takes either a \code{\link{matrix}} or a \code{\link{data.frame}} object to extract column names, row names and the "body" of the table-like object, hence exports them to JSON.
-##' @param d either a \code{matrix} or a \code{data.frame} object
-##' @param name.rows a string naming object that contains row names
-##' @param name.cols a string naming object that contains columns names
-##' @param name.body a string naming object that contains table body
-##' @return string with JSON object containing \code{rows}, \code{cols} and \code{body} attributes.
-##' @examples \dontrun{
-##'     table.json(mtcars)
-##'
-##'     set.seed(1)
-##'     m <- matrix(sample(10, 100, TRUE), 10)
-##'     table.json(m)
-##' }
-##' @export
+#' Convert table-like structures to JSON object
+#'
+#' This function takes either a \code{\link{matrix}} or a \code{\link{data.frame}} object to extract column names, row names and the "body" of the table-like object, hence exports them to JSON.
+#' @param d either a \code{matrix} or a \code{data.frame} object
+#' @param name.rows a string naming object that contains row names
+#' @param name.cols a string naming object that contains columns names
+#' @param name.body a string naming object that contains table body
+#' @return string with JSON object containing \code{rows}, \code{cols} and \code{body} attributes.
+#' @examples \dontrun{
+#'     table.json(mtcars)
+#'
+#'     set.seed(1)
+#'     m <- matrix(sample(10, 100, TRUE), 10)
+#'     table.json(m)
+#' }
+#' @export
 table.json <- function(d, name.rows = 'rows', name.cols = 'cols', name.body = 'body'){
 
     if (missing(d))
@@ -424,14 +424,14 @@ table.json <- function(d, name.rows = 'rows', name.cols = 'cols', name.body = 'b
 }
 
 
-##' Percent
-##'
-##' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to 2 decimal places).
-##' @param x a numeric value that is to be rendered to percent
-##' @param decimals an integer value indicating number of decimal places
-##' @param type a character value indicating whether percent or proportion value was provided (partial match is allowed)
-##' @return a character value with formatted percent
-##' @export
+#' Percent
+#'
+#' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to 2 decimal places).
+#' @param x a numeric value that is to be rendered to percent
+#' @param decimals an integer value indicating number of decimal places
+#' @param type a character value indicating whether percent or proportion value was provided (partial match is allowed)
+#' @return a character value with formatted percent
+#' @export
 pct <- function(x, decimals = 2, type = c('percent', '%', 'proportion')){
 
     if (missing(x))
@@ -457,28 +457,28 @@ pct <- function(x, decimals = 2, type = c('percent', '%', 'proportion')){
 }
 
 
-##' Extract Template Metadata
-##'
-##' Check if template metadata field matches provided format, and return matched value in a list.
-##' @param x a string containing template metadata
-##' @param title a string containint metadata field title (can be regex-powered)
-##' @param regex a string with regular expression to match field value
-##' @param replacement a string containing a backreference to matched string (defaults to first match \code{\\1})
-##' @param short a string with a short name for given metadata field
-##' @param trim.white a logical value indicating whether trailing and leading whitespaces of the given string should be removed before extraction
-##' @param mandatory a logical value indicating required field
-##' @param ... additional parameters for \code{grepl} function
-##' @return a list with matched content, or \code{NULL} if the field is not required
-##' @examples \dontrun{
-##'     extract.metadata("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
-##'     ## $name
-##'     ## [1] "John Smith"
-##'
-##'     extract.metadata("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
-##'     ## $name
-##'     ## [1] "John"
-##' }
-##' @export
+#' Extract Template Metadata
+#'
+#' Check if template metadata field matches provided format, and return matched value in a list.
+#' @param x a string containing template metadata
+#' @param title a string containint metadata field title (can be regex-powered)
+#' @param regex a string with regular expression to match field value
+#' @param replacement a string containing a backreference to matched string (defaults to first match \code{\\1})
+#' @param short a string with a short name for given metadata field
+#' @param trim.white a logical value indicating whether trailing and leading whitespaces of the given string should be removed before extraction
+#' @param mandatory a logical value indicating required field
+#' @param ... additional parameters for \code{grepl} function
+#' @return a list with matched content, or \code{NULL} if the field is not required
+#' @examples \dontrun{
+#'     extract.metadata("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#'     ## $name
+#'     ## [1] "John Smith"
+#'
+#'     extract.metadata("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#'     ## $name
+#'     ## [1] "John"
+#' }
+#' @export
 extract.meta <- function(x, title, regex, replacement = '\\1', short = NULL, trim.white = TRUE, mandatory = TRUE, ...){
 
     if (!any(sapply(list(x, title, regex), is.string)))
@@ -512,14 +512,14 @@ extract.meta <- function(x, title, regex, replacement = '\\1', short = NULL, tri
 }
 
 
-##' Naming Conventions
-##'
-##' Checks package-specific naming conventions: variables should start by a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.
-##' @param x a character vector to test names
-##' @param size an integer value that indicates maximum name length
-##' @param ... additional arguments to be passed to \code{\link{grepl}} function
-##' @return a logical vector indicating which values satisfy the naming conventions
-##' @export
+#' Naming Conventions
+#'
+#' Checks package-specific naming conventions: variables should start by a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.
+#' @param x a character vector to test names
+#' @param size an integer value that indicates maximum name length
+#' @param ... additional arguments to be passed to \code{\link{grepl}} function
+#' @return a logical vector indicating which values satisfy the naming conventions
+#' @export
 check.name <- function(x, size = 30L, ...){
 
     if (missing(x))
@@ -535,31 +535,31 @@ check.name <- function(x, size = 30L, ...){
 }
 
 
-##' Package Templates
-##'
-##' Lists all templates bundled with current package build.
-##' @return a character vector with template files
-##' @examples \dontrun{
-##' tpl.list()
-##' }
-##' @export
-##' @param ... additional parameters for \code{\link{dir}} function
+#' Package Templates
+#'
+#' Lists all templates bundled with current package build.
+#' @return a character vector with template files
+#' @examples \dontrun{
+#' tpl.list()
+#' }
+#' @export
+#' @param ... additional parameters for \code{\link{dir}} function
 tpl.list <- function(...){
     dir(system.file('templates', package = 'rapport'), pattern = '^.+\\.tpl$', ...)
 }
 
 
-##' Input Limits
-##'
-##' Checks input limits based on provided string. If provided string is syntactically correct, a list with integers containing limit boundaries (minimum and maximum value) is returned. If provided input limit exceeds value specified in \code{max.lim} argument, it will be coerced to \code{max.lim} and warning will be returned. Default upper input limit is 50 (variables).
-##' @param x a character string containing limit substring
-##' @param max.lim an integer containing upper input limit
-##' @return a named list with \code{min}imal and \code{max}imal input limit
-##' @examples \dontrun{
-##' rapport:::check.limit("[1,20]")
-##' rapport:::check.limit("[1]")
-##'
-##' }
+#' Input Limits
+#'
+#' Checks input limits based on provided string. If provided string is syntactically correct, a list with integers containing limit boundaries (minimum and maximum value) is returned. If provided input limit exceeds value specified in \code{max.lim} argument, it will be coerced to \code{max.lim} and warning will be returned. Default upper input limit is 50 (variables).
+#' @param x a character string containing limit substring
+#' @param max.lim an integer containing upper input limit
+#' @return a named list with \code{min}imal and \code{max}imal input limit
+#' @examples \dontrun{
+#' rapport:::check.limit("[1,20]")
+#' rapport:::check.limit("[1]")
+#'
+#' }
 check.limit <- function(x, max.lim = 50L){
 
     re <- "^(\\[[[:digit:]]+(,[[:digit:]]+)?\\]|)$"
@@ -597,17 +597,17 @@ check.limit <- function(x, max.lim = 50L){
 }
 
 
-##' Check Type
-##'
-##' Checks type of template input, based on provided sting. If input definition is syntactically correct, a list is returned, containing input type, size limits, and default value (for CSV options and boolean types only).
-##' @param x a character string containing input definition
-##' @examples \dontrun{
-##' rapport:::check.type("factor")
-##' rapport:::check.type("character[1,20]")
-##' rapport:::check.type("fee, fi, foo, fam")
-##' rapport:::check.type("FALSE")
-##' rapport:::check.type("number[3]=123.456")
-##' }
+#' Check Type
+#'
+#' Checks type of template input, based on provided sting. If input definition is syntactically correct, a list is returned, containing input type, size limits, and default value (for CSV options and boolean types only).
+#' @param x a character string containing input definition
+#' @examples \dontrun{
+#' rapport:::check.type("factor")
+#' rapport:::check.type("character[1,20]")
+#' rapport:::check.type("fee, fi, foo, fam")
+#' rapport:::check.type("FALSE")
+#' rapport:::check.type("number[3]=123.456")
+#' }
 check.type <- function(x){
 
     x <- trim.space(x, TRUE)
@@ -682,24 +682,24 @@ check.type <- function(x){
 }
 
 
-##' Round numeric values
-##'
-##' Round numeric values with default number of decimals (see: \code{getOption('rp.decimal'}) and decimal mark (see: \code{getOption('rp.decimal')}).
-##' @param x numeric value(s)
-##' @return character vector of rounded value(s)
-##' @note This function is a simple demo for \code{\link{evals}}'s hooks.
-##' @examples {
-##'	rp.round(22/7)
-##'	rp.round(matrix(runif(9),3,3))
-##' }
-##' @examples \dontrun{
-##' # alter options
-##' options('rp.decimal'       = 2)
-##' options('rp.decimal.mark'  = ',')
-##'	rp.round(22/7)
-##'	rp.round(matrix(runif(9),3,3))
-##' }
-##' @export
+#' Round numeric values
+#'
+#' Round numeric values with default number of decimals (see: \code{getOption('rp.decimal'}) and decimal mark (see: \code{getOption('rp.decimal')}).
+#' @param x numeric value(s)
+#' @return character vector of rounded value(s)
+#' @note This function is a simple demo for \code{\link{evals}}'s hooks.
+#' @examples {
+#'	rp.round(22/7)
+#'	rp.round(matrix(runif(9),3,3))
+#' }
+#' @examples \dontrun{
+#' # alter options
+#' options('rp.decimal'       = 2)
+#' options('rp.decimal.mark'  = ',')
+#'	rp.round(22/7)
+#'	rp.round(matrix(runif(9),3,3))
+#' }
+#' @export
 rp.round <- function(x) {
     if (!is.numeric(x)) stop('Wrong variable type (!numeric) provided.')
     if (!is.table(x))
@@ -709,27 +709,27 @@ rp.round <- function(x) {
 }
 
 
-##' Return pretty ascii form
-##'
-##' Some standard formatting is applied to the value which is returned as ascii object.
-##' @param x R object
-##' @return ascii
-##' @examples \dontrun{
-##' rp.prettyascii('Hallo, World?')
-##' rp.prettyascii(22/7)
-##' rp.prettyascii(matrix(runif(25), 5, 5))
-##' rp.prettyascii(lm(hp~wt, mtcars))
-##' rp.prettyascii(summary(mtcars$hp))
-##' rp.prettyascii(htest(rnorm(100), shapiro.test))
-##' rp.prettyascii(table(mtcars$am,mtcars$gear))
-##' rp.prettyascii(data.frame(x=1:2, y=3:4))
-##' rp.prettyascii(mtcars)
-##' rp.prettyascii(table(mtcars$am))
-##'
-##' ## it is better to \code{cat} the output
-##' cat(rp.prettyascii(rp.freq("gender", data = ius2008)))
-##' }
-##' @export
+#' Return pretty ascii form
+#'
+#' Some standard formatting is applied to the value which is returned as ascii object.
+#' @param x R object
+#' @return ascii
+#' @examples \dontrun{
+#' rp.prettyascii('Hallo, World?')
+#' rp.prettyascii(22/7)
+#' rp.prettyascii(matrix(runif(25), 5, 5))
+#' rp.prettyascii(lm(hp~wt, mtcars))
+#' rp.prettyascii(summary(mtcars$hp))
+#' rp.prettyascii(htest(rnorm(100), shapiro.test))
+#' rp.prettyascii(table(mtcars$am,mtcars$gear))
+#' rp.prettyascii(data.frame(x=1:2, y=3:4))
+#' rp.prettyascii(mtcars)
+#' rp.prettyascii(table(mtcars$am))
+#'
+#' ## it is better to \code{cat} the output
+#' cat(rp.prettyascii(rp.freq("gender", data = ius2008)))
+#' }
+#' @export
 rp.prettyascii <- function(x) {
 
     if (is.rapport(x) | is.character(x))
@@ -773,19 +773,19 @@ rp.prettyascii <- function(x) {
 }
 
 
-##' Inline Printing
-##'
-##' Merge atomic vector elements in one string for pretty inline printing.
-##' @param x an atomic vector to get merged for inline printing
-##' @param wrap string to wrap vector elements (defaults to \code{_}, i.e. underline in pandoc)
-##' @param sep a string with main separator (separates all vector elements but the last one)
-##' @param copula a string with last separator (usually a copula like "and")
-##' @param limit maximum character length (defaults to 20 elements)
-##' @return a string with catenated vector contents
-##' @examples
-##' p(c("fee", "fi", "foo", "fam"))
-##' ## [1] "_fee_, _fi_, _foo_ and _fam_"
-##' @export
+#' Inline Printing
+#'
+#' Merge atomic vector elements in one string for pretty inline printing.
+#' @param x an atomic vector to get merged for inline printing
+#' @param wrap string to wrap vector elements (defaults to \code{_}, i.e. underline in pandoc)
+#' @param sep a string with main separator (separates all vector elements but the last one)
+#' @param copula a string with last separator (usually a copula like "and")
+#' @param limit maximum character length (defaults to 20 elements)
+#' @return a string with catenated vector contents
+#' @examples
+#' p(c("fee", "fi", "foo", "fam"))
+#' ## [1] "_fee_, _fi_, _foo_ and _fam_"
+#' @export
 p <- function(x, wrap = getOption('p.wrap'), sep = getOption('p.sep'), copula = getOption('p.copula'), limit = 20L){
 
     stopifnot(is.atomic(x))           # check for atomic vector
@@ -802,16 +802,16 @@ p <- function(x, wrap = getOption('p.wrap'), sep = getOption('p.sep'), copula = 
 }
 
 
-##' Create Formula from Strings
-##'
-##' Takes multiple character arguments as left and right-hand side arguments of a formula, and concatenates them in a single string.
-##' @param left a string with left-hand side formula argument
-##' @param right a character vector with right-hand side formula arguments
-##' @param join.left a string to catenate elements of character vector specified in \code{left}
-##' @param join.right a string to catenate elements of character vector specified in \code{right}
-##' @examples
-##' fml("hp", c("am", "cyl"))
-##' @export
+#' Create Formula from Strings
+#'
+#' Takes multiple character arguments as left and right-hand side arguments of a formula, and concatenates them in a single string.
+#' @param left a string with left-hand side formula argument
+#' @param right a character vector with right-hand side formula arguments
+#' @param join.left a string to catenate elements of character vector specified in \code{left}
+#' @param join.right a string to catenate elements of character vector specified in \code{right}
+#' @examples
+#' fml("hp", c("am", "cyl"))
+#' @export
 fml <- function(left, right, join.left = ' + ', join.right = ' + '){
     sprintf('%s ~ %s', paste(left, collapse = join.left), paste(right, collapse = join.right))
 }

@@ -2,28 +2,21 @@
 \alias{print.rapport}
 \title{Prints rapport}
 \usage{
-  \method{print}{rapport} (x, metadata = FALSE,
-    inputs = FALSE, body = TRUE)
+  \method{print}{rapport} (x, ...)
 }
 \arguments{
   \item{x}{any "rapport" class object}
 
-  \item{metadata}{logical: print metadata?}
-
-  \item{inputs}{logical: print input parameters?}
-
-  \item{body}{logical: print body?}
+  \item{...}{ignored}
 }
 \description{
-  Default print method for "rapport" class objects.
+  Default print method for "rapport" class objects which
+  show the report body.
 }
 \examples{
 \dontrun{
 rapport('univar-descriptive', data=mtcars, var='hp')
-print(rapport('univar-descriptive', data=mtcars, var='hp'), metadata=T)
-print(rapport('univar-descriptive', data=mtcars, var='hp'), metadata=T, inputs=T)
-print(rapport('example', data=mtcars, x='hp', y='mpg'), metadata=T, inputs=T)
-print(rapport('example', data=mtcars, x='hp', y='mpg'), metadata=T, inputs=T, body=F)
+print(rapport('univar-descriptive', data=mtcars, var='hp'))
 }
 }
 

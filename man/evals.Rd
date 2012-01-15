@@ -191,7 +191,7 @@ evals('matrix(1,1,1)', length=1)
 # if you do not want to let such things be evaled in the middle of a string use it with other filters :)
 evals('matrix(1,1,1)', length=1, classes='numeric')
 
-	# hooks & filtering
+# hooks & filtering
 evals('matrix(5,5,5)', hooks=list('matrix'=ascii), output='output')
 
 # evaling chunks in given environment

@@ -1,9 +1,9 @@
-##' Read Template
-##'
-##' Reads file either from template name, file path or URL, and splits it into lines for easier handling. "find" in \code{tpl.find} is borrowed from Emacs parlance - this function actually reads the template.
-##' @param fp a character string containing a template path, a template name (for package-bundled templates only, and ".tpl" extension is optional), or template contents separated by newline (\code{\\n}), or a character vector with template contents.
-##' @return a character vector with template contents
-##' @export
+#' Read Template
+#'
+#' Reads file either from template name, file path or URL, and splits it into lines for easier handling. "find" in \code{tpl.find} is borrowed from Emacs parlance - this function actually reads the template.
+#' @param fp a character string containing a template path, a template name (for package-bundled templates only, and ".tpl" extension is optional), or template contents separated by newline (\code{\\n}), or a character vector with template contents.
+#' @return a character vector with template contents
+#' @export
 tpl.find <- function(fp){
 
     if (missing(fp))
@@ -41,14 +41,14 @@ tpl.find <- function(fp){
 }
 
 
-##' Template Header
-##'
-##' Returns \code{rapport} template header from provided path or a character vector. In case you're refering to a template bundled with package, you don't need to provide a template extension.
-##' @param fp a string containing template path, or a character vector with template contents
-##' @param open.tag a string with opening tag
-##' @param close.tag a string with closing tag
-##' @param ... additional arguments to be passed to \code{\link{grep}} function
-##' @return a character vector with template header contents
+#' Template Header
+#'
+#' Returns \code{rapport} template header from provided path or a character vector. In case you're refering to a template bundled with package, you don't need to provide a template extension.
+#' @param fp a string containing template path, or a character vector with template contents
+#' @param open.tag a string with opening tag
+#' @param close.tag a string with closing tag
+#' @param ... additional arguments to be passed to \code{\link{grep}} function
+#' @return a character vector with template header contents
 tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
 
     txt <- tpl.find(fp)                 # split by newlines
@@ -80,14 +80,14 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 }
 
 
-##' Template Body
-##'
-##' Returns template body contents from provided path or a character vector.
-##' @param fp a string containing a path to template, or a character vector with template lines
-##' @param htag a string with closing body tag
-##' @param ... additional arguments to be passed to \code{\link{grep}} function
-##' @return a character vector with template body contents
-##' @export
+#' Template Body
+#'
+#' Returns template body contents from provided path or a character vector.
+#' @param fp a string containing a path to template, or a character vector with template lines
+#' @param htag a string with closing body tag
+#' @param ... additional arguments to be passed to \code{\link{grep}} function
+#' @return a character vector with template body contents
+#' @export
 tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 
     txt   <- tpl.find(fp)
@@ -96,18 +96,18 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 }
 
 
-##' Template Info
-##'
-##' Provides information about template metadata and inputs.
-##' @param fp a string containing a path to template, or a character vector with template lines
-##' @param meta return template metadata? (defaults to \code{TRUE})
-##' @param inputs return template inputs? (defaults to \code{TRUE})
-##' @examples \dontrun{
-##' tpl.info('example')  # return both metadata and inputs
-##' tpl.info('crosstable', inputs = FALSE)  # return only template metadata
-##' tpl.info('correlations', meta = FALSE)  # return only template inputs
-##' }
-##' @export
+#' Template Info
+#'
+#' Provides information about template metadata and inputs.
+#' @param fp a string containing a path to template, or a character vector with template lines
+#' @param meta return template metadata? (defaults to \code{TRUE})
+#' @param inputs return template inputs? (defaults to \code{TRUE})
+#' @examples \dontrun{
+#' tpl.info('example')  # return both metadata and inputs
+#' tpl.info('crosstable', inputs = FALSE)  # return only template metadata
+#' tpl.info('correlations', meta = FALSE)  # return only template inputs
+#' }
+#' @export
 tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 
     h <- tpl.header(fp)                 # get header
@@ -128,15 +128,15 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 }
 
 
-##' Header Metadata
-##'
-##' Returns metadata stored in template's header section, usually template title, nickname of an author, template description and list of required packages.
-##' @param fp a character vector containing template name (".tpl" extension is optional), file path or character vector with template/header contents (depending on value of \code{use.header} argument)
-##' @param fields a list of named lists containing key-value pairs that are to be passed to \code{\link{extract.meta}} function via \code{\link{do.call}}
-##' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains header data
-##' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
-##' @return a list with template metadata
-##' @export
+#' Header Metadata
+#'
+#' Returns metadata stored in template's header section, usually template title, nickname of an author, template description and list of required packages.
+#' @param fp a character vector containing template name (".tpl" extension is optional), file path or character vector with template/header contents (depending on value of \code{use.header} argument)
+#' @param fields a list of named lists containing key-value pairs that are to be passed to \code{\link{extract.meta}} function via \code{\link{do.call}}
+#' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains header data
+#' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
+#' @return a list with template metadata
+#' @export
 tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 
     header <- tpl.find(fp)
@@ -188,13 +188,13 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 }
 
 
-##' Template Inputs
-##'
-##' Grabs variable definitions from template header.
-##' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
-##' @param use.header a logical value indicating wether the header section is provided in \code{h} argument
-##' @return a list with variable info
-##' @export
+#' Template Inputs
+#'
+#' Grabs variable definitions from template header.
+#' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
+#' @param use.header a logical value indicating wether the header section is provided in \code{h} argument
+#' @return a list with variable info
+#' @export
 tpl.inputs <- function(fp, use.header = TRUE){
 
     header <- tpl.find(fp)
@@ -242,20 +242,20 @@ tpl.inputs <- function(fp, use.header = TRUE){
 }
 
 
-##' Template Examples
-##'
-##' Runs the "Example" field found in specified template. Handy to check out what template does and how does it look like once rendered. If multiple examples are available, and \code{index} argument is \code{NULL}, you will be prompted for input. Example output can be easily exported to various formats (HTML, ODT, etc.) - check out documentation for \code{tpl.export} for more info.
-##' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
-##' @param index a numeric vector indicating the example index. Meaningful only while running templates with multiple examples specified, otherwise omitted. In most cases this should be a single numeric value. If multiple numbers are provided, the examples are returned in a list. Using 'all' (character string) as index will return all examples.
-##' @param env an environment where example will be evaluated (defaults to \code{.GlobalEnv})
-##' @examples \dontrun{
-##' tpl.example('example')
-##' tpl.example('crosstable')
-##' tpl.export(tpl.example('crosstable'))
-##' tpl.example('example', 1:2)
-##' tpl.example('example', 'all')
-##' }
-##' @export
+#' Template Examples
+#'
+#' Runs the "Example" field found in specified template. Handy to check out what template does and how does it look like once rendered. If multiple examples are available, and \code{index} argument is \code{NULL}, you will be prompted for input. Example output can be easily exported to various formats (HTML, ODT, etc.) - check out documentation for \code{tpl.export} for more info.
+#' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
+#' @param index a numeric vector indicating the example index. Meaningful only while running templates with multiple examples specified, otherwise omitted. In most cases this should be a single numeric value. If multiple numbers are provided, the examples are returned in a list. Using 'all' (character string) as index will return all examples.
+#' @param env an environment where example will be evaluated (defaults to \code{.GlobalEnv})
+#' @examples \dontrun{
+#' tpl.example('example')
+#' tpl.example('crosstable')
+#' tpl.export(tpl.example('crosstable'))
+#' tpl.example('example', 1:2)
+#' tpl.example('example', 'all')
+#' }
+#' @export
 tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 
     examples   <- tpl.meta(fp)$example
@@ -301,15 +301,15 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 }
 
 
-##' Reproduce Template
-##'
-##' Runs template with data and arguments included in \code{rapport} object. In order to get reproducible example, you have to make sure that \code{reproducible} argument is set to \code{TRUE} in \code{rapport} function.
-##' @param tpl a \code{rapport} object
-##' @examples \dontrun{
-##' tmp <- rapport("example", mtcars, x = "hp", y = "mpg", reproducible = TRUE)
-##' tpl.rerun(tmp)
-##' }
-##' @export
+#' Reproduce Template
+#'
+#' Runs template with data and arguments included in \code{rapport} object. In order to get reproducible example, you have to make sure that \code{reproducible} argument is set to \code{TRUE} in \code{rapport} function.
+#' @param tpl a \code{rapport} object
+#' @examples \dontrun{
+#' tmp <- rapport("example", mtcars, x = "hp", y = "mpg", reproducible = TRUE)
+#' tpl.rerun(tmp)
+#' }
+#' @export
 tpl.rerun <- function(tpl){
 
     if (!inherits(tpl, 'rapport'))
@@ -327,24 +327,24 @@ tpl.rerun <- function(tpl){
 }
 
 
-##' Template Elements
-##'
-##' Returns a \code{data.frame} containing summary of relevant template elements: \code{ind} - indice of current element in template's body, \code{type} - a string indicating the type of the content ("heading", "inline" or "block"), and \code{chunk} - a string containing R expression found in a code chunk.
-##' @param fp a string containing a path to template, or a character vector with template lines
-##' @param extract a string indicating which elements should be extracted from the template: headings, blocks, or code chunks (by default it returns all of the above)
-##' @param use.body a logical value indicating whether the whole template should be used, or just its body
-##' @param skip.blank.lines remove blank lines within R chunks
-##' @param skip.r.comments remove comments withing R chunks
-##' @param ... additional arguments to be passed to \code{\link{grep}} and \code{\link{get.tags}} functions
-##' @return a \code{data.frame} with 3 columns:
-##' @examples \dontrun{
-##'     fp <- system.file("templates", "example.tpl", package = "rapport")
-##'     tpl.elem(fp) # returns all elements (headings, inlines and blocks)
-##'
-##'     ## returns only code blocks
-##'     tpl.elem(fp, extract = "block")
-##' }
-##' @keywords internal
+#' Template Elements
+#'
+#' Returns a \code{data.frame} containing summary of relevant template elements: \code{ind} - indice of current element in template's body, \code{type} - a string indicating the type of the content ("heading", "inline" or "block"), and \code{chunk} - a string containing R expression found in a code chunk.
+#' @param fp a string containing a path to template, or a character vector with template lines
+#' @param extract a string indicating which elements should be extracted from the template: headings, blocks, or code chunks (by default it returns all of the above)
+#' @param use.body a logical value indicating whether the whole template should be used, or just its body
+#' @param skip.blank.lines remove blank lines within R chunks
+#' @param skip.r.comments remove comments withing R chunks
+#' @param ... additional arguments to be passed to \code{\link{grep}} and \code{\link{get.tags}} functions
+#' @return a \code{data.frame} with 3 columns:
+#' @examples \dontrun{
+#'     fp <- system.file("templates", "example.tpl", package = "rapport")
+#'     tpl.elem(fp) # returns all elements (headings, inlines and blocks)
+#'
+#'     ## returns only code blocks
+#'     tpl.elem(fp, extract = "block")
+#' }
+#' @keywords internal
 tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.body = FALSE, skip.blank.lines = TRUE, skip.r.comments = FALSE, ...){
 
     txt <- tpl.find(fp)
@@ -432,16 +432,16 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
 }
 
 
-##' Evaluate Template Element
-##'
-##' This is a generic method that evaluates R code found in \code{rapport} template elements. Currently there are two types of template elements: \code{blocks} of R code (similar to chunks in \code{Sweave}) or \code{inline} elements.
-##' @param x either a list with character vector
-##' @param ... additional arguments passed to other evaluation methods
-##' @export
+#' Evaluate Template Element
+#'
+#' This is a generic method that evaluates R code found in \code{rapport} template elements. Currently there are two types of template elements: \code{blocks} of R code (similar to chunks in \code{Sweave}) or \code{inline} elements.
+#' @param x either a list with character vector
+#' @param ... additional arguments passed to other evaluation methods
+#' @export
 elem.eval <- function(x, ...)  UseMethod('elem.eval')
 
 
-##' @export
+#' @export
 elem.eval.rp.block <- function(x, ...){
 
     list(
@@ -451,7 +451,7 @@ elem.eval.rp.block <- function(x, ...){
 }
 
 
-##' @export
+#' @export
 elem.eval.default <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, ...){
 
     stopifnot(is.string(x))
@@ -527,18 +527,18 @@ elem.eval.default <- function(x, tag.open = get.tags('inline.open'), tag.close =
 }
 
 
-##' Evaluate Template
-##'
-##' Evaluates template file and returns a list with \code{rapport} class.
-##' @param fp a string containing a template name/path or a character vector with template contents
-##' @param data a \code{data.frame} to be used in template
-##' @param ... matches template inputs in format 'key = "value"'
-##' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
-##' @return a list with \code{rapport} class.
-##' @examples \dontrun{
-##' rapport("example", ius2008, var="it.leisure", desc=FALSE, hist=T, color="green")
-##' }
-##' @export
+#' Evaluate Template
+#'
+#' Evaluates template file and returns a list with \code{rapport} class.
+#' @param fp a string containing a template name/path or a character vector with template contents
+#' @param data a \code{data.frame} to be used in template
+#' @param ... matches template inputs in format 'key = "value"'
+#' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
+#' @return a list with \code{rapport} class.
+#' @examples \dontrun{
+#' rapport("example", ius2008, var="it.leisure", desc=FALSE, hist=T, color="green")
+#' }
+#' @export
 rapport <- function(fp, data = NULL, ..., reproducible = FALSE){
 
     txt    <- tpl.find(fp)                      # split file to text

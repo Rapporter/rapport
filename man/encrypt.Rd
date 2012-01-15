@@ -27,7 +27,7 @@
 \dontrun{
 encrypt("Hello world!")
 encrypt(paste(names(mtcars), collapse=" "))
-	}
+}
 }
 \references{
   Credits goes to Barry Rowlingson and Hadley Wickham:

@@ -3,45 +3,45 @@
 ## and what about ggplot? think about the design consistency, at least from webapp's POV
 
 ####################################################################################################
-                                        #<------------------------------------------------------------------------------------------------>#
+#<------------------------------------------------------------------------------------------------>#
 ####################################################################################################
 #####                                       ToDo list                                         ######
 ####################################################################################################
-                                        # FIX IT:
+# FIX IT:
 #########
-                                        # Hurray, nothing now!
+# Hurray, nothing now!
 ####################################################################################################
-                                        # DO IT:
+# DO IT:
 ########
-                                        #TODO: update examples to use ius2009
-                                        #TODO: add option to most plots to include a text (values) layer
-                                        #TODO: pie chart
-                                        #TODO: error bar
-                                        #TODO: pareto
-                                        #TODO: line plot
-                                        #TODO: polygon/area plot
-                                        #TODO: a few special ones:
-                                        #	- means plot (for t-test and one-way ANOVA)
-                                        #	- interaction plot (for two-way ANOVA)
+#TODO: update examples to use ius2009
+#TODO: add option to most plots to include a text (values) layer
+#TODO: pie chart
+#TODO: error bar
+#TODO: pareto
+#TODO: line plot
+#TODO: polygon/area plot
+#TODO: a few special ones:
+#	- means plot (for t-test and one-way ANOVA)
+#	- interaction plot (for two-way ANOVA)
 ####################################################################################################
-                                        #<------------------------------------------------------------------------------------------------>#
+#<------------------------------------------------------------------------------------------------>#
 ####################################################################################################
 
 
-##' Color palettes
-##'
-##' This function returns a given number of color codes from given palette by default falling back to a
-##' color-blind-friendly palette from \url{http://jfly.iam.u-tokyo.ac.jp/color/}.
-##' @param num number of colors to return
-##' @param theme a palette name from \code{\link{RColorBrewer}} or 'default'
-##' @param colorize if set colors are chosen from palette at random order
-##' @export
-##' @examples {
-##' rp.palette(1)
-##' rp.palette(1, colorize = TRUE)
-##' rp.palette(5, 'Greens')
-##' rp.palette(5, 'Greens', colorize = TRUE)
-##' }
+#' Color palettes
+#'
+#' This function returns a given number of color codes from given palette by default falling back to a
+#' color-blind-friendly palette from \url{http://jfly.iam.u-tokyo.ac.jp/color/}.
+#' @param num number of colors to return
+#' @param theme a palette name from \code{\link{RColorBrewer}} or 'default'
+#' @param colorize if set colors are chosen from palette at random order
+#' @export
+#' @examples {
+#' rp.palette(1)
+#' rp.palette(1, colorize = TRUE)
+#' rp.palette(5, 'Greens')
+#' rp.palette(5, 'Greens', colorize = TRUE)
+#' }
 rp.palette <- function(num, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize')) {
     if (any(!is.numeric(num), (length(num)>1))) stop('Wrong number of colors provided.')
     if (theme=='default') {
@@ -58,45 +58,45 @@ rp.palette <- function(num, theme=getOption('rp.color.palette'), colorize=getOpt
 	return(cols[1:num])
 }
 
-##' Input cheks (internal)
-##'
-##' Internal function used by eg. \code{rp.histogram}.
-##' @param x a variable
-##' @param facet if facet set
-##' @param subset if subset set
-##' @param ... other parameters
-##' @export
-##' @keywords internal
+#' Input cheks (internal)
+#'
+#' Internal function used by eg. \code{rp.histogram}.
+#' @param x a variable
+#' @param facet if facet set
+#' @param subset if subset set
+#' @param ... other parameters
+#' @export
+#' @keywords internal
 rp.graph.check <- function(x, facet = NULL, subset = NULL, ...) {
 	if (missing(x)) stop('Variable was not specified.')
 	if (!missing(facet) & !is.factor(facet)) stop('Wrong variable type (!factor) given as facet.')
 	if (!is.variable(x)) stop('Wrong type of varible (!atomic) provided.')
 }
 
-##' Histogram
-##'
-##' This function is a wrapper around \code{\link{histogram}} which operates only on numeric vectors
-##' with optional facet.
-##'
-##' @param x a numeric variable
-##' @param facet an optional categorical variable to make facets by
-##' @param data an optional data frame from which the variables should be taken
-##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
-##' @param colorize if set the color is chosen from palette at random
-##' @param ... additional parameters to \code{\link{histogram}}
-##' @export
-##' @examples \dontrun{
-##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
-##'   am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##' rp.hist(df$hp)
-##' rp.hist(df$hp, facet=df$am)
-##' rp.hist(df$hp, df$am)
-##' rp.label(df$hp) <- 'horsepower'; rp.hist(df$hp)
-##' rp.hist(df$hp, colorize=TRUE)
-##' with(df, rp.hist(hp, facet = am))
-##' rp.hist(hp, data = df)
-##' rp.hist(hp, am, df)
-##' }
+#' Histogram
+#'
+#' This function is a wrapper around \code{\link{histogram}} which operates only on numeric vectors
+#' with optional facet.
+#'
+#' @param x a numeric variable
+#' @param facet an optional categorical variable to make facets by
+#' @param data an optional data frame from which the variables should be taken
+#' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
+#' @param colorize if set the color is chosen from palette at random
+#' @param ... additional parameters to \code{\link{histogram}}
+#' @export
+#' @examples \dontrun{
+#' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
+#'   am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+#' rp.hist(df$hp)
+#' rp.hist(df$hp, facet=df$am)
+#' rp.hist(df$hp, df$am)
+#' rp.label(df$hp) <- 'horsepower'; rp.hist(df$hp)
+#' rp.hist(df$hp, colorize=TRUE)
+#' with(df, rp.hist(hp, facet = am))
+#' rp.hist(hp, data = df)
+#' rp.hist(hp, am, df)
+#' }
 rp.hist <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
 	if (!missing(data)) {
 		if (missing(facet)) {
@@ -123,30 +123,30 @@ rp.hist <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'
 	}
 }
 
-##' Density plot
-##'
-##' This function is a wrapper around \code{\link{densityplot}} which operates only on numeric vectors
-##' with optional facet.
-##'
-##' @param x a numeric variable
-##' @param facet an optional categorical variable to make facets by
-##' @param data an optional data frame from which the variables should be taken
-##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
-##' @param colorize if set the color is chosen from palette at random
-##' @param ... additional parameters to \code{\link{densityplot}}
-##' @export
-##' @examples \dontrun{
-##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
-##'   am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##' rp.densityplot(df$hp)
-##' rp.densityplot(df$hp, facet=df$am)
-##' rp.densityplot(df$hp, df$am)
-##' rp.label(df$hp) <- 'horsepower'; rp.densityplot(df$hp)
-##' rp.densityplot(df$hp, colorize=TRUE)
-##' with(df, rp.densityplot(hp, facet = am))
-##' rp.densityplot(hp, data = df)
-##' rp.densityplot(hp, am, df)
-##' }
+#' Density plot
+#'
+#' This function is a wrapper around \code{\link{densityplot}} which operates only on numeric vectors
+#' with optional facet.
+#'
+#' @param x a numeric variable
+#' @param facet an optional categorical variable to make facets by
+#' @param data an optional data frame from which the variables should be taken
+#' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
+#' @param colorize if set the color is chosen from palette at random
+#' @param ... additional parameters to \code{\link{densityplot}}
+#' @export
+#' @examples \dontrun{
+#' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
+#'   am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+#' rp.densityplot(df$hp)
+#' rp.densityplot(df$hp, facet=df$am)
+#' rp.densityplot(df$hp, df$am)
+#' rp.label(df$hp) <- 'horsepower'; rp.densityplot(df$hp)
+#' rp.densityplot(df$hp, colorize=TRUE)
+#' with(df, rp.densityplot(hp, facet = am))
+#' rp.densityplot(hp, data = df)
+#' rp.densityplot(hp, am, df)
+#' }
 rp.densityplot <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
     if (!missing(data)) {
         if (missing(facet)) {
@@ -173,36 +173,36 @@ rp.densityplot <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.p
     }
 }
 
-##' Barplot
-##'
-##' This function is a wrapper around \code{\link{barchart}} which operates only on factors
-##' with optional facet.
-##'
-##' @param x a numeric variable
-##' @param facet an optional categorical variable to make facets by
-##' @param data an optional data frame from which the variables should be taken
-##' @param horizontal see \code{\link{xyplot}}
-##' @param groups see \code{\link{xyplot}}
-##' @param percent an option to show percentages (100% for a category) instead of number of cases. Handy with \code{groups=TRUE}. Default value: FALSE without groups, TRUE with groups.
-##' @param auto.key see \code{\link{xyplot}}
-##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
-##' @param colorize if set the color is chosen from palette at random
-##' @param ... additional parameters to \code{\link{barchart}}
-##' @export
-##' @examples \dontrun{
-##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##' rp.barplot(df$cyl)
-##' rp.barplot(df$cyl, horizontal = FALSE)
-##' rp.barplot(df$cyl, facet=df$am)
-##' rp.barplot(df$cyl, facet=df$am, horizontal=FALSE)
-##' rp.barplot(df$cyl, facet=df$am, colorize=TRUE)
-##' rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
-##' rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T, horizontal=FALSE)
-##' rp.label(df$cyl) <- 'Number of cylinders'; rp.barplot(df$cyl)
-##' with(df, rp.barplot(cyl, facet = am))
-##' rp.barplot(cyl, data=df)
-##' rp.barplot(cyl, am, df)
-##' }
+#' Barplot
+#'
+#' This function is a wrapper around \code{\link{barchart}} which operates only on factors
+#' with optional facet.
+#'
+#' @param x a numeric variable
+#' @param facet an optional categorical variable to make facets by
+#' @param data an optional data frame from which the variables should be taken
+#' @param horizontal see \code{\link{xyplot}}
+#' @param groups see \code{\link{xyplot}}
+#' @param percent an option to show percentages (100% for a category) instead of number of cases. Handy with \code{groups=TRUE}. Default value: FALSE without groups, TRUE with groups.
+#' @param auto.key see \code{\link{xyplot}}
+#' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
+#' @param colorize if set the color is chosen from palette at random
+#' @param ... additional parameters to \code{\link{barchart}}
+#' @export
+#' @examples \dontrun{
+#' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+#' rp.barplot(df$cyl)
+#' rp.barplot(df$cyl, horizontal = FALSE)
+#' rp.barplot(df$cyl, facet=df$am)
+#' rp.barplot(df$cyl, facet=df$am, horizontal=FALSE)
+#' rp.barplot(df$cyl, facet=df$am, colorize=TRUE)
+#' rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
+#' rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T, horizontal=FALSE)
+#' rp.label(df$cyl) <- 'Number of cylinders'; rp.barplot(df$cyl)
+#' with(df, rp.barplot(cyl, facet = am))
+#' rp.barplot(cyl, data=df)
+#' rp.barplot(cyl, am, df)
+#' }
 rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, horizontal=TRUE,
 		percent = FALSE, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
 	if (!missing(data)) {
@@ -255,34 +255,34 @@ rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
 	}
 }
 
-##' Dotplot
-##'
-##' This function is a wrapper around \code{\link{dotplot}} which operates only on factors
-##' with optional facet.
-##'
-##' @param x a factor variable
-##' @param facet an optional categorical variable to make facets by
-##' @param data an optional data frame from which the variables should be taken
-##' @param horizontal see \code{\link{xyplot}}
-##' @param groups see \code{\link{xyplot}}
-##' @param auto.key see \code{\link{xyplot}}
-##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
-##' @param colorize if set the color is chosen from palette at random
-##' @param ... additional parameters to \code{\link{dotplot}}
-##' @export
-##' @examples \dontrun{
-##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##' rp.dotplot(df$cyl)
-##' rp.dotplot(df$cyl, horizontal = FALSE)
-##' rp.dotplot(df$cyl, facet=df$am)
-##' rp.dotplot(df$cyl, facet=df$am, horizontal=FALSE)
-##' rp.dotplot(df$cyl, facet=df$am, colorize=TRUE)
-##' rp.dotplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
-##' rp.label(df$cyl) <- 'Number of cylinders'; rp.dotplot(df$cyl)
-##' with(df, rp.dotplot(cyl, facet = am))
-##' rp.dotplot(cyl, data=df)
-##' rp.dotplot(cyl, am, df)
-##' }
+#' Dotplot
+#'
+#' This function is a wrapper around \code{\link{dotplot}} which operates only on factors
+#' with optional facet.
+#'
+#' @param x a factor variable
+#' @param facet an optional categorical variable to make facets by
+#' @param data an optional data frame from which the variables should be taken
+#' @param horizontal see \code{\link{xyplot}}
+#' @param groups see \code{\link{xyplot}}
+#' @param auto.key see \code{\link{xyplot}}
+#' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
+#' @param colorize if set the color is chosen from palette at random
+#' @param ... additional parameters to \code{\link{dotplot}}
+#' @export
+#' @examples \dontrun{
+#' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+#' rp.dotplot(df$cyl)
+#' rp.dotplot(df$cyl, horizontal = FALSE)
+#' rp.dotplot(df$cyl, facet=df$am)
+#' rp.dotplot(df$cyl, facet=df$am, horizontal=FALSE)
+#' rp.dotplot(df$cyl, facet=df$am, colorize=TRUE)
+#' rp.dotplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
+#' rp.label(df$cyl) <- 'Number of cylinders'; rp.dotplot(df$cyl)
+#' with(df, rp.dotplot(cyl, facet = am))
+#' rp.dotplot(cyl, data=df)
+#' rp.dotplot(cyl, am, df)
+#' }
 rp.dotplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, horizontal=TRUE,
 		theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
 	if (!missing(data)) {
@@ -325,29 +325,29 @@ rp.dotplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
 	}
 }
 
-##' Scatterplot
-##'
-##' This function is a wrapper around \code{\link{xyplot}} which operates only on numeric variables
-##' with optional facet.
-##'
-##' @param x a numeric variable
-##' @param y a numeric variable
-##' @param facet an optional categorical variable to make facets by
-##' @param data an optional data frame from which the variables should be taken
-##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
-##' @param colorize if set the color is chosen from palette at random
-##' @param ... additional parameters to \code{\link{xyplot}}
-##' @export
-##' @examples \dontrun{
-##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##' rp.scatterplot(df$hp, df$wt)
-##' rp.scatterplot(df$hp, df$wt, facet=df$cyl)
-##' rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.scatterplot(df$hp, df$wt)
-##' rp.scatterplot(df$hp, df$wt, colorize=TRUE)
-##' with(df, rp.scatterplot(hp, wt, facet = am))
-##' rp.scatterplot(hp, wt, data=df)
-##' rp.scatterplot(hp, wt, am, df)
-##' }
+#' Scatterplot
+#'
+#' This function is a wrapper around \code{\link{xyplot}} which operates only on numeric variables
+#' with optional facet.
+#'
+#' @param x a numeric variable
+#' @param y a numeric variable
+#' @param facet an optional categorical variable to make facets by
+#' @param data an optional data frame from which the variables should be taken
+#' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
+#' @param colorize if set the color is chosen from palette at random
+#' @param ... additional parameters to \code{\link{xyplot}}
+#' @export
+#' @examples \dontrun{
+#' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+#' rp.scatterplot(df$hp, df$wt)
+#' rp.scatterplot(df$hp, df$wt, facet=df$cyl)
+#' rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.scatterplot(df$hp, df$wt)
+#' rp.scatterplot(df$hp, df$wt, colorize=TRUE)
+#' with(df, rp.scatterplot(hp, wt, facet = am))
+#' rp.scatterplot(hp, wt, data=df)
+#' rp.scatterplot(hp, wt, am, df)
+#' }
 rp.scatterplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.color.palette'),
 		colorize=getOption('rp.colorize'), ...) {
 	if (!missing(data)) {
@@ -380,45 +380,45 @@ rp.scatterplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.colo
 	}
 }
 
-##' Lineplot
-##'
-##' This function is a wrapper around \code{\link{xyplot}} with custom panel. Only numeric variables are accepted
-##' with optional facet.
-##'
-##' @param x a numeric variable
-##' @param y a numeric variable
-##' @param facet an optional categorical variable to make facets by
-##' @param groups an optional categorical grouping variable
-##' @param data an optional data frame from which the variables should be taken
-##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
-##' @param colorize if set the color is chosen from palette at random
-##' @param ... additional parameters to \code{\link{xyplot}}
-##' @export
-##' @examples \dontrun{
-##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##' a <- aggregate(wt~gear, df, mean)
-##' rp.lineplot(a$gear, a$wt)
-##' rp.lineplot(1:length(df$hp), df$hp, facet=df$cyl)
-##' rp.label(a$wt) <- 'weight'; rp.lineplot(a$gear, a$wt)
-##' rp.lineplot(a$gear, a$wt, colorize=TRUE)
-##' rp.lineplot(gear, wt, data=a)
-##'
-##' ## advanced usage
-##' rp.lineplot(partner, age, data=rp.desc('partner', 'age', fn='mean', data=ius2008))
-##' rp.lineplot(partner, age, gender, data=rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008))
-##' rp.lineplot(partner, age, groups=gender, data=rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008))
-##'
-##' ## Did you noticed the nasty axis titles? Why not correct those? :)
-##' df <- rp.desc('partner', 'age', fn='mean', data=ius2008)
-##' lapply(names(df), function(x) rp.label(df[, x]) <<- x)   # nasty solution!
-##' rp.lineplot(partner, age, data=df)
-##' df <- rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008)
-##' lapply(names(df), function(x) rp.label(df[, x]) <<- x)  # nasty solution!
-##' rp.lineplot(partner, age, gender, data=df)
-##' df <- rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008)
-##' lapply(names(df), function(x) rp.label(df[, x]) <<- x)  # nasty solution!
-##' rp.lineplot(partner, age, groups=gender, data=df)
-##' }
+#' Lineplot
+#'
+#' This function is a wrapper around \code{\link{xyplot}} with custom panel. Only numeric variables are accepted
+#' with optional facet.
+#'
+#' @param x a numeric variable
+#' @param y a numeric variable
+#' @param facet an optional categorical variable to make facets by
+#' @param groups an optional categorical grouping variable
+#' @param data an optional data frame from which the variables should be taken
+#' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
+#' @param colorize if set the color is chosen from palette at random
+#' @param ... additional parameters to \code{\link{xyplot}}
+#' @export
+#' @examples \dontrun{
+#' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+#' a <- aggregate(wt~gear, df, mean)
+#' rp.lineplot(a$gear, a$wt)
+#' rp.lineplot(1:length(df$hp), df$hp, facet=df$cyl)
+#' rp.label(a$wt) <- 'weight'; rp.lineplot(a$gear, a$wt)
+#' rp.lineplot(a$gear, a$wt, colorize=TRUE)
+#' rp.lineplot(gear, wt, data=a)
+#'
+#' ## advanced usage
+#' rp.lineplot(partner, age, data=rp.desc('partner', 'age', fn='mean', data=ius2008))
+#' rp.lineplot(partner, age, gender, data=rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008))
+#' rp.lineplot(partner, age, groups=gender, data=rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008))
+#'
+#' ## Did you noticed the nasty axis titles? Why not correct those? :)
+#' df <- rp.desc('partner', 'age', fn='mean', data=ius2008)
+#' lapply(names(df), function(x) rp.label(df[, x]) <<- x)   # nasty solution!
+#' rp.lineplot(partner, age, data=df)
+#' df <- rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008)
+#' lapply(names(df), function(x) rp.label(df[, x]) <<- x)  # nasty solution!
+#' rp.lineplot(partner, age, gender, data=df)
+#' df <- rp.desc(c('gender', 'partner'), 'age', fn='mean', data=ius2008)
+#' lapply(names(df), function(x) rp.label(df[, x]) <<- x)  # nasty solution!
+#' rp.lineplot(partner, age, groups=gender, data=df)
+#' }
 
 rp.lineplot <- function(x, y, facet=NULL, data=NULL, groups=NULL, theme=getOption('rp.color.palette'),
         colorize=getOption('rp.colorize'), ...) {
@@ -464,30 +464,30 @@ rp.lineplot <- function(x, y, facet=NULL, data=NULL, groups=NULL, theme=getOptio
     }
 }
 
-##' Boxplot
-##'
-##' This function is a wrapper around \code{\link{bwplot}} which operates only on numeric variables
-##' with optional facet.
-##'
-##' @param x a factor variable
-##' @param y a numeric variable
-##' @param facet an optional categorical variable to make facets by
-##' @param data an optional data frame from which the variables should be taken
-##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
-##' @param colorize if set the color is chosen from palette at random
-##' @param ... additional parameters to \code{\link{bwplot}}
-##' @export
-##' @examples \dontrun{
-##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##' rp.boxplot(df$cyl)
-##' rp.boxplot(df$cyl, df$wt)
-##' rp.boxplot(df$cyl, df$hp, facet=df$am)
-##' rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.boxplot(df$cyl, df$wt)
-##' rp.boxplot(df$cyl, df$wt, colorize=TRUE)
-##' with(df, rp.scatterplot(hp, wt, facet = am))
-##' rp.boxplot(cyl, wt, data=df)
-##' rp.boxplot(cyl, wt, am, df)
-##' }
+#' Boxplot
+#'
+#' This function is a wrapper around \code{\link{bwplot}} which operates only on numeric variables
+#' with optional facet.
+#'
+#' @param x a factor variable
+#' @param y a numeric variable
+#' @param facet an optional categorical variable to make facets by
+#' @param data an optional data frame from which the variables should be taken
+#' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
+#' @param colorize if set the color is chosen from palette at random
+#' @param ... additional parameters to \code{\link{bwplot}}
+#' @export
+#' @examples \dontrun{
+#' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+#' rp.boxplot(df$cyl)
+#' rp.boxplot(df$cyl, df$wt)
+#' rp.boxplot(df$cyl, df$hp, facet=df$am)
+#' rp.label(df$hp) <- 'horsepower'; rp.label(df$wt) <- 'weight'; rp.boxplot(df$cyl, df$wt)
+#' rp.boxplot(df$cyl, df$wt, colorize=TRUE)
+#' with(df, rp.scatterplot(hp, wt, facet = am))
+#' rp.boxplot(cyl, wt, data=df)
+#' rp.boxplot(cyl, wt, am, df)
+#' }
 rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('rp.color.palette'),
 		colorize=getOption('rp.colorize'), ...) {
 	if (!missing(data)) {
@@ -528,24 +528,24 @@ rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('rp.col
 	}
 }
 
-##' Scatterplot matrices
-##'
-##' This function is a wrapper around \code{\link{pairs}} which operates only on numeric variables.
-##' Panel options are: \code{c('panel.cor', 'panel.smooth', 'panel.hist')}. Custom panels may be also added.
-##'
-##' @param x numeric variables
-##' @param lower.panel see: \code{\link{pairs}} parameter. Default set to \code{'panel.smooth'}.
-##' @param upper.panel see: \code{\link{pairs}} parameter. Default set to \code{'panel.cor'}.
-##' @param data an optional data frame from which the variables should be taken
-##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
-##' @param colorize if set the color is chosen from palette at random
-##' @param ... additional parameters to \code{\link{pairs}}
-##' @export
-##' @examples \dontrun{
-##' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##' rp.cor.plot(df)
-##' rp.cor.plot(df, diag.panel='panel.hist')
-##' }
+#' Scatterplot matrices
+#'
+#' This function is a wrapper around \code{\link{pairs}} which operates only on numeric variables.
+#' Panel options are: \code{c('panel.cor', 'panel.smooth', 'panel.hist')}. Custom panels may be also added.
+#'
+#' @param x numeric variables
+#' @param lower.panel see: \code{\link{pairs}} parameter. Default set to \code{'panel.smooth'}.
+#' @param upper.panel see: \code{\link{pairs}} parameter. Default set to \code{'panel.cor'}.
+#' @param data an optional data frame from which the variables should be taken
+#' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
+#' @param colorize if set the color is chosen from palette at random
+#' @param ... additional parameters to \code{\link{pairs}}
+#' @export
+#' @examples \dontrun{
+#' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+#' rp.cor.plot(df)
+#' rp.cor.plot(df, diag.panel='panel.hist')
+#' }
 rp.cor.plot <- function(x, lower.panel='panel.smooth', upper.panel='panel.cor', data=NULL, theme=getOption('rp.color.palette'),
 		colorize=getOption('rp.colorize'), ...) {
 	if (!missing(data)) {
@@ -587,31 +587,31 @@ rp.cor.plot <- function(x, lower.panel='panel.smooth', upper.panel='panel.cor', 
 	}
 }
 
-##' Q-Q plot with Theoretical Distribution
-##'
-##' This function is a wrapper around \code{\link{qqmath}} which operates only on a numeric variable
-##' with optional facet.
-##'
-##' @param x a numeric variable
-##' @param dist a theoretical distribution
-##' @param facet an optional categorical variable to make facets by
-##' @param data an optional data frame from which the variables should be taken
-##' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
-##' @param colorize if set the color is chosen from palette at random
-##' @param ... additional parameters to \code{\link{qqmath}}
-##' @export
-##' @examples \dontrun{
-##'     df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-##'     rp.qqplot(df$hp)
-##'     rp.qqplot(df$hp, qunif)
-##'     rp.label(df$hp) <- 'horsepower'; rp.qqplot(df$hp)
-##'     rp.qqplot(df$hp, colorize=TRUE)
-##'     rp.qqplot(df$hp, qunif, facet=df$am)
-##'     with(df, rp.qqplot(hp))
-##'     rp.qqplot(hp, data=df)
-##'     rp.qqplot(hp, facet=am, data=df)
-##'     rp.qqplot(hp, qunif, am, df)
-##' }
+#' Q-Q plot with Theoretical Distribution
+#'
+#' This function is a wrapper around \code{\link{qqmath}} which operates only on a numeric variable
+#' with optional facet.
+#'
+#' @param x a numeric variable
+#' @param dist a theoretical distribution
+#' @param facet an optional categorical variable to make facets by
+#' @param data an optional data frame from which the variables should be taken
+#' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
+#' @param colorize if set the color is chosen from palette at random
+#' @param ... additional parameters to \code{\link{qqmath}}
+#' @export
+#' @examples \dontrun{
+#'     df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
+#'     rp.qqplot(df$hp)
+#'     rp.qqplot(df$hp, qunif)
+#'     rp.label(df$hp) <- 'horsepower'; rp.qqplot(df$hp)
+#'     rp.qqplot(df$hp, colorize=TRUE)
+#'     rp.qqplot(df$hp, qunif, facet=df$am)
+#'     with(df, rp.qqplot(hp))
+#'     rp.qqplot(hp, data=df)
+#'     rp.qqplot(hp, facet=am, data=df)
+#'     rp.qqplot(hp, qunif, am, df)
+#' }
 rp.qqplot <- function(x, dist=qnorm, facet=NULL, data=NULL, theme=getOption('rp.color.palette'),
         colorize=getOption('rp.colorize'), ...) {
     if (!missing(data)) {

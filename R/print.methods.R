@@ -1,10 +1,10 @@
-##' Print Template Metadata
-##'
-##' Prints out the contents of template metadata in human-readable format.
-##' @param x object of class \code{rp.meta}. See \code{\link{tpl.meta}} for details.
-##' @param type a string with output format. Defaults to plain text output.
-##' @method print rp.meta
-##' @S3method print rp.meta
+#' Print Template Metadata
+#'
+#' Prints out the contents of template metadata in human-readable format.
+#' @param x object of class \code{rp.meta}. See \code{\link{tpl.meta}} for details.
+#' @param type a string with output format. Defaults to plain text output.
+#' @method print rp.meta
+#' @S3method print rp.meta
 print.rp.meta <- function(x, type = c('text', 'pandoc')){
 
     ind <- c('title', 'author', 'email', 'desc', 'example')
@@ -45,13 +45,13 @@ print.rp.meta <- function(x, type = c('text', 'pandoc')){
 }
 
 
-##' Print Template Inputs
-##'
-##' Prints out the contents of template inputs in human-readable format.
-##' @param x object of class \code{rp.inputs}. See \code{\link{tpl.inputs}} for details.
-##' @param type a string with output format. Defaults to plain text output.
-##' @method print rp.inputs
-##' @S3method print rp.inputs
+#' Print Template Inputs
+#'
+#' Prints out the contents of template inputs in human-readable format.
+#' @param x object of class \code{rp.inputs}. See \code{\link{tpl.inputs}} for details.
+#' @param type a string with output format. Defaults to plain text output.
+#' @method print rp.inputs
+#' @S3method print rp.inputs
 print.rp.inputs <- function(x, type = c('text', 'pandoc')){
 
     switch(match.arg(type),
@@ -129,13 +129,13 @@ print.rp.inputs <- function(x, type = c('text', 'pandoc')){
 }
 
 
-##' Print Template Header
-##'
-##' Prints out the contents of template header (metadata and inputs) in human-readable format, so you can get insight about template requirements.
-##' @param x object of class \code{rp.header}. See \code{\link{tpl.header}} for details.
-##' @param type a string with output format. Defaults to plain text output.
-##' @method print rp.info
-##' @S3method print rp.info
+#' Print Template Header
+#'
+#' Prints out the contents of template header (metadata and inputs) in human-readable format, so you can get insight about template requirements.
+#' @param x object of class \code{rp.header}. See \code{\link{tpl.header}} for details.
+#' @param type a string with output format. Defaults to plain text output.
+#' @method print rp.info
+#' @S3method print rp.info
 print.rp.info <- function(x, type = c('text', 'pandoc')){
 
     tp <- match.arg(type)
@@ -146,54 +146,44 @@ print.rp.info <- function(x, type = c('text', 'pandoc')){
 }
 
 
-##' Prints rapport
-##'
-##' Default print method for "rapport" class objects.
-##'
-##' @param x any "rapport" class object
-##' @param metadata logical: print metadata?
-##' @param inputs logical: print input parameters?
-##' @param body logical: print body?
-##' @examples \dontrun{
-##' rapport('univar-descriptive', data=mtcars, var='hp')
-##' print(rapport('univar-descriptive', data=mtcars, var='hp'), metadata=T)
-##' print(rapport('univar-descriptive', data=mtcars, var='hp'), metadata=T, inputs=T)
-##' print(rapport('example', data=mtcars, x='hp', y='mpg'), metadata=T, inputs=T)
-##' print(rapport('example', data=mtcars, x='hp', y='mpg'), metadata=T, inputs=T, body=F)
-##' }
-##' @method print rapport
-##' @S3method print rapport
-print.rapport <- function(x, metadata = FALSE, inputs = FALSE, body = TRUE) {
+#' Prints rapport
+#'
+#' Default print method for "rapport" class objects which show the report body.
+#'
+#' @param x any "rapport" class object
+#' @param ... ignored
+#' @examples \dontrun{
+#' rapport('univar-descriptive', data=mtcars, var='hp')
+#' print(rapport('univar-descriptive', data=mtcars, var='hp'))
+#' }
+#' @method print rapport
+#' @S3method print rapport
+print.rapport <- function(x, ...) {
 
     if (!is.rapport(x)) stop('Wrong type of argument (!rapport) supplied!')
-
-    if (metadata)  x$meta               # print metadata
-    if (inputs)    x$inputs             # print inputs
-
+    
     ## print report body
-    if (body){
-        for (part in x$report){
-            robj  <- part$robjects[[1]]
-            rout  <- robj$output
-            rwarn <- robj$msg$warnings
+    for (part in x$report){
+        robj  <- part$robjects[[1]]
+        rout  <- robj$output
+        rwarn <- robj$msg$warnings
 
-            catn()
-            switch(part$type,
-                   'block' = {
-                       if (!is.null(rout)){
-                           if (any(robj$type == 'image'))
-                               cat(as.character(rout))
-                           else
-                               cat(rp.prettyascii(rout))
-                       }
+        catn()
+        switch(part$type,
+               'block' = {
+                   if (!is.null(rout)){
+                       if (any(robj$type == 'image'))
+                           cat(as.character(rout))
+                       else
+                           cat(rp.prettyascii(rout))
+                   }
 
-                       if (!is.null(rwarn))
-                           cat('\n', rwarn)
-                   },
-                   'heading' = cat(capture.output(section(part$text$eval, part$level))),
-                   cat(rp.prettyascii(as.character(part$text$eval)))
-                   )
-            catn()
-        }
+                   if (!is.null(rwarn))
+                       cat('\n', rwarn)
+               },
+               'heading' = cat(capture.output(section(part$text$eval, part$level))),
+               cat(rp.prettyascii(as.character(part$text$eval)))
+               )
+        catn()
     }
 }

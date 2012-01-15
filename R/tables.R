@@ -1,20 +1,20 @@
-##' Descriptive Statistics
-##'
-##' Aggregate table of descriptives according to functions provided in \code{fn} argument. This function follows melt/cast approach used in \code{reshape} package. Variable names specified in \code{measure.vars} argument are treated as \code{measure.vars}, while the ones in \code{id.vars} are treated as \code{id.vars} (see \code{\link[reshape]{melt.data.frame}} for details). Other its formal arguments match with corresponding arguments for \code{\link[reshape]{cast}} function. Some post-processing is done after reshaping, in order to get pretty row and column labels.
-##' @param id.vars either a character vector with variable names from \code{data}, a numeric vector, or a \code{data.frame}
-##' @param measure.vars same as \code{id.vars}
-##' @param fn a list with functions or a character vector with function names
-##' @param data a \code{data.frame} holding variables specified in \code{id.vars} and \code{measure.vars}
-##' @param na.rm a logical value indicating whether \code{NA} values should be removed
-##' @param margins should margins be included? (see documentation for eponymous argument in \code{\link[reshape]{melt.data.frame}})
-##' @param subset a logical vector to subset the data before aggregating
-##' @param fill value to replace missing level combinations (see documentation for eponymous argument in \code{\link[reshape]{melt.data.frame}})
-##' @param add.missing show missing level combinations
-##' @param total.name a character string with name for "grand" margin (defaults to "Total")
-##' @return a \code{data.frame} with aggregated data
-##' @examples
-##' rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)
-##' @export
+#' Descriptive Statistics
+#'
+#' Aggregate table of descriptives according to functions provided in \code{fn} argument. This function follows melt/cast approach used in \code{reshape} package. Variable names specified in \code{measure.vars} argument are treated as \code{measure.vars}, while the ones in \code{id.vars} are treated as \code{id.vars} (see \code{\link[reshape]{melt.data.frame}} for details). Other its formal arguments match with corresponding arguments for \code{\link[reshape]{cast}} function. Some post-processing is done after reshaping, in order to get pretty row and column labels.
+#' @param id.vars either a character vector with variable names from \code{data}, a numeric vector, or a \code{data.frame}
+#' @param measure.vars same as \code{id.vars}
+#' @param fn a list with functions or a character vector with function names
+#' @param data a \code{data.frame} holding variables specified in \code{id.vars} and \code{measure.vars}
+#' @param na.rm a logical value indicating whether \code{NA} values should be removed
+#' @param margins should margins be included? (see documentation for eponymous argument in \code{\link[reshape]{melt.data.frame}})
+#' @param subset a logical vector to subset the data before aggregating
+#' @param fill value to replace missing level combinations (see documentation for eponymous argument in \code{\link[reshape]{melt.data.frame}})
+#' @param add.missing show missing level combinations
+#' @param total.name a character string with name for "grand" margin (defaults to "Total")
+#' @return a \code{data.frame} with aggregated data
+#' @examples
+#' rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)
+#' @export
 rp.desc <- function(id.vars, measure.vars, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total') {
 
     if (!is.character(id.vars) && !is.character(measure.vars)){
@@ -90,23 +90,23 @@ rp.desc <- function(id.vars, measure.vars, fn, data = NULL, na.rm = TRUE, margin
 }
 
 
-##' Frequency Table
-##'
-##' Diplay frequency table.
-##' @param f.vars a character vector with variable names
-##' @param data a \code{data.frame}
-##' @param na.rm should missing values be removed?
-##' @param include.na should missing values be included in frequency table?
-##' @param drop.unused.levels should empty level combinations be left out
-##' @param count show frequencies?
-##' @param pct show percentage?
-##' @param cumul.count show cumulative frequencies?
-##' @param cumul.pct show cumulative percentage?
-##' @return a \code{data.frame} with frequencies
-##' @examples \dontrun{
-##' rp.freq(c("am", "cyl", "vs"), mtcars)
-##' }
-##' @export
+#' Frequency Table
+#'
+#' Diplay frequency table.
+#' @param f.vars a character vector with variable names
+#' @param data a \code{data.frame}
+#' @param na.rm should missing values be removed?
+#' @param include.na should missing values be included in frequency table?
+#' @param drop.unused.levels should empty level combinations be left out
+#' @param count show frequencies?
+#' @param pct show percentage?
+#' @param cumul.count show cumulative frequencies?
+#' @param cumul.pct show cumulative percentage?
+#' @return a \code{data.frame} with frequencies
+#' @examples \dontrun{
+#' rp.freq(c("am", "cyl", "vs"), mtcars)
+#' }
+#' @export
 rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.levels = FALSE, count = TRUE, pct = TRUE, cumul.count = TRUE, cumul.pct = TRUE){
 
     ## TODO: subset

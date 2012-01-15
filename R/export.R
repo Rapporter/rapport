@@ -1,63 +1,63 @@
-##' tpl.export.outputs
-##'
-##' List of all available output formats (from ascii package).
+#' tpl.export.outputs
+#'
+#' List of all available output formats (from ascii package).
 tpl.export.outputs <- function() setdiff(sort(unique(unlist(ascii:::asciiOpts(".outputs")))), "")
-##' tpl.export.backends
-##'
-##' List of all available backend formats (from ascii package).
+#' tpl.export.backends
+#'
+#' List of all available backend formats (from ascii package).
 tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 
-##' Export rapport class
-##'
-##' This function exports rapport class objects to various formats based on ascii package.
-##' Note that no error/warning messages will be shown!
-##' By default this function tries to export the report to HTML with pandoc. Some default styles are applied. If you do not need those default settings, use your own \code{options}.
-##' @param rp a rapport class object or list of rapport class objects
-##' @param file filename (NULL returns a tempfile)
-##' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added
-##' @param create should export really happen? It might be handy if you want to append several reports.
-##' @param open open the exported document? Default set to TRUE.
-##' @param date character string as the date field of the report. If not set, current time will be set.
-##' @param desc add Description of the rapport class (template)? Default set to TRUE.
-##' @param format format of the wanted report, see: \code{ascii:::asciiOpts(".outputs")}
-##' @param backend backend for the format conversions, see: \code{scii:::asciiOpts(".backends")}
-##' @param options command line options passed to backend
-##' @param logo add rapport logo
-##' @examples \dontrun{
-##'
-##' ## eval some template
-##' x <- rapport('univar-descriptive', data=mtcars, var="hp")
-##'
-##' ## try basic parameters
-##' tpl.export(x)
-##' tpl.export(x, file='demo')
-##' tpl.export(x, file='demo', format='odt')
-##'
-##' ### append reports
-##' # 1) Create a report object with the first report and do not export (optional)
-##' report <- tpl.export(x, create=F)
-##' # 2) Append some other reports without exporting (optional)
-##' report <- tpl.export(x, create=F, append=report)
-##' # 3) Export it!
-##' tpl.export(append=report)
-##' # 4) Export it to other formats too! (optional)
-##' tpl.export(append=report, format='rst')
-##'
-##' ### exporting multiple reports at once
-##' tpl.export(tpl.example('example', 'all'))
-##' tpl.export(tpl.example('example', 'all'), format='odt')
-##' tpl.export(list(rapport('univar-descriptive', data=mtcars, var="hp"),
-##'     rapport('univar-descriptive', data=mtcars, var="mpg")))
-##'
-##' ### Never do this as being dumb:
-##' tpl.export()
-##'
-##' ### Adding own custom CSS to exported HTML
-##' tpl.export(x, options=sprintf('-c %s', system.file('templates/css/default.css', package='rapport')))
-##' ## For other formats check out backend specific documentation!
-##' ## Eg. pandoc uses "--reference-odt" as styles reference for odt exports.
-##'}
-##' @export
+#' Export rapport class
+#'
+#' This function exports rapport class objects to various formats based on ascii package.
+#' Note that no error/warning messages will be shown!
+#' By default this function tries to export the report to HTML with pandoc. Some default styles are applied. If you do not need those default settings, use your own \code{options}.
+#' @param rp a rapport class object or list of rapport class objects
+#' @param file filename (NULL returns a tempfile)
+#' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added
+#' @param create should export really happen? It might be handy if you want to append several reports.
+#' @param open open the exported document? Default set to TRUE.
+#' @param date character string as the date field of the report. If not set, current time will be set.
+#' @param desc add Description of the rapport class (template)? Default set to TRUE.
+#' @param format format of the wanted report, see: \code{ascii:::asciiOpts(".outputs")}
+#' @param backend backend for the format conversions, see: \code{scii:::asciiOpts(".backends")}
+#' @param options command line options passed to backend
+#' @param logo add rapport logo
+#' @examples \dontrun{
+#'
+#' ## eval some template
+#' x <- rapport('univar-descriptive', data=mtcars, var="hp")
+#'
+#' ## try basic parameters
+#' tpl.export(x)
+#' tpl.export(x, file='demo')
+#' tpl.export(x, file='demo', format='odt')
+#'
+#' ### append reports
+#' # 1) Create a report object with the first report and do not export (optional)
+#' report <- tpl.export(x, create=F)
+#' # 2) Append some other reports without exporting (optional)
+#' report <- tpl.export(x, create=F, append=report)
+#' # 3) Export it!
+#' tpl.export(append=report)
+#' # 4) Export it to other formats too! (optional)
+#' tpl.export(append=report, format='rst')
+#'
+#' ### exporting multiple reports at once
+#' tpl.export(tpl.example('example', 'all'))
+#' tpl.export(tpl.example('example', 'all'), format='odt')
+#' tpl.export(list(rapport('univar-descriptive', data=mtcars, var="hp"),
+#'     rapport('univar-descriptive', data=mtcars, var="mpg")))
+#'
+#' ### Never do this as being dumb:
+#' tpl.export()
+#'
+#' ### Adding own custom CSS to exported HTML
+#' tpl.export(x, options=sprintf('-c %s', system.file('templates/css/default.css', package='rapport')))
+#' ## For other formats check out backend specific documentation!
+#' ## Eg. pandoc uses "--reference-odt" as styles reference for odt exports.
+#'}
+#' @export
 tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), getOption('rp.date.format')), desc=TRUE, format='html', backend='pandoc', options=NULL, logo=TRUE) {
 
     ## dummy checks and config parameters set
@@ -159,16 +159,16 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         return(r)
 }
 
-##' Rapport to HTML
-##'
-##' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
-##' @param ... parameters passed directly to \code{\link{rapport}}
-##' @export
+#' Rapport to HTML
+#'
+#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
+#' @param ... parameters passed directly to \code{\link{rapport}}
+#' @export
 rapport.html <- function(...) tpl.export(rapport(...))
 
-##' Rapport to odt
-##'
-##' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
-##' @param ... parameters passed directly to \code{\link{rapport}}
-##' @export
+#' Rapport to odt
+#'
+#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
+#' @param ... parameters passed directly to \code{\link{rapport}}
+#' @export
 rapport.odt <- function(...) tpl.export(rapport(...), format='odt')

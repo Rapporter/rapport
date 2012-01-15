@@ -1,20 +1,20 @@
-##' Outlier test
-##'
-##' A simple test for outliers. This functions returns all extreme values (if any) found in the specified vector.
-##'
-##' @param x a numeric vector of values
-##' @return vecotor of outlier values
-##' @examples \dontrun{
-##' rp.outlier(mtcars$hp)
-##' rp.outlier(c(rep(1,100), 200))
-##' rp.outlier(c(rep(1,100), 200,201))
-##' }
-##' @references {
-##' Credit goes to PaulHurleyuk: \url{http://stackoverflow.com/a/1444548/564164}
-##' Lund, R. E. 1975, "Tables for An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 4, pp. 473-476.
-##' Prescott, P. 1975, "An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 1, pp. 129-132.
-##' }
-##' @export
+#' Outlier test
+#'
+#' A simple test for outliers. This functions returns all extreme values (if any) found in the specified vector.
+#'
+#' @param x a numeric vector of values
+#' @return vecotor of outlier values
+#' @examples \dontrun{
+#' rp.outlier(mtcars$hp)
+#' rp.outlier(c(rep(1,100), 200))
+#' rp.outlier(c(rep(1,100), 200,201))
+#' }
+#' @references {
+#' Credit goes to PaulHurleyuk: \url{http://stackoverflow.com/a/1444548/564164}
+#' Lund, R. E. 1975, "Tables for An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 4, pp. 473-476.
+#' Prescott, P. 1975, "An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 1, pp. 129-132.
+#' }
+#' @export
 rp.outlier <- function(x) {
     if (!is.numeric(x)) stop('Wrong variable type (!numeric) provided.')
 
@@ -41,13 +41,13 @@ rp.outlier <- function(x) {
 }
 
 
-##' Goodman and Kruskal's lambda
-##'
-##' Computes Goodman and Kruskal's lambda for given table.
-##' @param table a \code{table} of two variables
-##' @param direction numeric value of \code{c(0,1,2)} where 1 means the lambda value computed for row, 2 for columns and 0 for both
-##' @return numeric
-##' @export
+#' Goodman and Kruskal's lambda
+#'
+#' Computes Goodman and Kruskal's lambda for given table.
+#' @param table a \code{table} of two variables
+#' @param direction numeric value of \code{c(0,1,2)} where 1 means the lambda value computed for row, 2 for columns and 0 for both
+#' @return numeric
+#' @export
 lambda.test <- function(table, direction=0) {
     if (direction != 0) {
         return(as.numeric(sum(apply(table, direction, max)) - max(rowSums(table))) / (sum(table)-max(rowSums(table))))
@@ -57,23 +57,23 @@ lambda.test <- function(table, direction=0) {
 }
 
 
-##' Hypothesis Tests
-##'
-##' This function uses \code{\link{htest.short}}, to extract statistic and p-value from \code{htest}-classed object. Main advantage of using \code{htest} is that it's vectorised, and can accept multiple methods.
-##' @param x arguments to be passed to function specified in \code{test}
-##' @param ... additional arguments for function specified in \code{test}
-##' @param use.labels a logical value indicating whether variable labels should be placed in row names. If set to \code{FALSE}, output of \code{deparse(substitute(x))} will be used.
-##' @param colnames a character string containing column names
-##' @param rownames a character string containing row names
-##' @return a \code{data.frame} with applied tests in rows, and their results (statistic and p-value) in columns
-##' @examples \dontrun{
-##' library(nortest)
-##' htest(rnorm(100), shapiro.test)
-##' htest(rnorm(100), lillie.test, ad.test, shapiro.test)
-##' htest(mtcars, lillie.test)
-##' htest(mtcars, lillie.test, ad.test, shapiro.test)
-##' }
-##' @export
+#' Hypothesis Tests
+#'
+#' This function uses \code{\link{htest.short}}, to extract statistic and p-value from \code{htest}-classed object. Main advantage of using \code{htest} is that it's vectorised, and can accept multiple methods.
+#' @param x arguments to be passed to function specified in \code{test}
+#' @param ... additional arguments for function specified in \code{test}
+#' @param use.labels a logical value indicating whether variable labels should be placed in row names. If set to \code{FALSE}, output of \code{deparse(substitute(x))} will be used.
+#' @param colnames a character string containing column names
+#' @param rownames a character string containing row names
+#' @return a \code{data.frame} with applied tests in rows, and their results (statistic and p-value) in columns
+#' @examples \dontrun{
+#' library(nortest)
+#' htest(rnorm(100), shapiro.test)
+#' htest(rnorm(100), lillie.test, ad.test, shapiro.test)
+#' htest(mtcars, lillie.test)
+#' htest(mtcars, lillie.test, ad.test, shapiro.test)
+#' }
+#' @export
 htest <- function(x, ..., use.labels = TRUE, colnames = NULL, rownames = NULL){
 
     test <- list(...)
@@ -115,15 +115,15 @@ htest <- function(x, ..., use.labels = TRUE, colnames = NULL, rownames = NULL){
 }
 
 
-##' Extract Values from \code{htest} Objects
-##'
-##' Extract value of statistic and its p-value from \code{htest} object.
-##' @param x \code{htest}-class object
-##' @return named numeric vector with the value of statistic and its p-value
-##' @examples \dontrun{
-##' e(shapiro.test(rnorm(100))
-##' }
-##' @export
+#' Extract Values from \code{htest} Objects
+#'
+#' Extract value of statistic and its p-value from \code{htest} object.
+#' @param x \code{htest}-class object
+#' @return named numeric vector with the value of statistic and its p-value
+#' @examples \dontrun{
+#' e(shapiro.test(rnorm(100))
+#' }
+#' @export
 htest.short <- function(x){
     stopifnot(inherits(x, 'htest'))
     c(x$statistic, p = x$p.value)
