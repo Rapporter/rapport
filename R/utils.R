@@ -177,6 +177,26 @@ tocamel <- function(x, sep = '[^[:alnum:]]', upper = FALSE, ...){
 }
 
 
+#' Capitalise String
+#'
+#' Capitalises strings in provided character vector
+#' @param x a character vector to capitalise
+#' @return character vector with capitalised string elements
+#' @examples
+#' capitalise(c("foo", "bar") # [1] "Foo" "Bar"
+#' @export
+capitalise <- function(x){
+
+    stopifnot(is.character(x))
+
+    s <- strsplit(x, '', '')
+
+    sapply(s, function(x){
+        paste(toupper(x[1]), paste(x[2:length(x)], collapse = ''), collapse = '', sep = '')
+    })
+}
+
+
 #' Guess Mode
 #'
 #' "Guesses" a mode of provided character vector and converts it to appropriate mode.

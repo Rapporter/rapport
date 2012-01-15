@@ -1,5 +1,6 @@
 export(adj.rle)
 export(alike.integer)
+export(capitalise)
 export(catn)
 export(check.name)
 export(decrypt)
