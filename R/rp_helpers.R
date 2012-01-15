@@ -702,7 +702,10 @@ check.type <- function(x){
 ##' @export
 rp.round <- function(x) {
     if (!is.numeric(x)) stop('Wrong variable type (!numeric) provided.')
-    as.vector(tocharac(x, digit=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'), format='nice'))
+    if (!is.table(x))
+        as.vector(tocharac(x, digit=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'), format='nice'))
+    else
+        format(round(x, getOption('rp.decimal')), decimal.mark = getOption('rp.decimal.mark'))
 }
 
 
@@ -729,7 +732,7 @@ rp.round <- function(x) {
 ##' @export
 rp.prettyascii <- function(x) {
 
-    if (is.rapport(x))
+    if (is.rapport(x) | is.character(x))
         return(x)
 
     if (is.list(x))
@@ -737,12 +740,17 @@ rp.prettyascii <- function(x) {
             return(l_ply(x, print))
 
     if (is.numeric(x)) {
-        class <- class(x)
+        classes <- class(x)
+        dims <- dim(x)
         x <- rp.round(x)
+        dim(x) <- dims
         if (length(x) != 1)
-            class(x) <- class
+            class(x) <- classes
     }
 
+    if (is.vector(x))
+        return(p(x))
+    
     if (is.data.frame(x) | is.table(x)){
         ## rounding till \code{ascii} bug fixed: https://github.com/eusebe/ascii/issues/12 
         numerics <- which(sapply(x, is.numeric))
@@ -751,9 +759,9 @@ rp.prettyascii <- function(x) {
         }
         rownms <- rownames(x)
         include.rownames <- !is.null(rownms)
-        if (!include.rownames)
+        if (!include.rownames) {
             pre.txt <- ''
-        else {
+        } else {
             include.rownames <- !all(rownms == 1:nrow(x))
             ## not so neat hack to close all possible lists before exporting a table with missing first column header
             pre.txt <- ifelse(include.rownames, '<!-- endlist -->\n', '')
