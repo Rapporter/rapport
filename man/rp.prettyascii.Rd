@@ -24,6 +24,7 @@ rp.prettyascii(summary(mtcars$hp))
 rp.prettyascii(htest(rnorm(100), shapiro.test))
 rp.prettyascii(table(mtcars$am,mtcars$gear))
 rp.prettyascii(data.frame(x=1:2, y=3:4))
+rp.prettyascii(data.frame(x=1:2, y=3:4, z=c(22/7, pi)))
 rp.prettyascii(mtcars)
 rp.prettyascii(table(mtcars$am))
 

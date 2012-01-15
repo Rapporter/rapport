@@ -705,10 +705,9 @@ check.type <- function(x){
 #' @export
 rp.round <- function(x) {
     if (!is.numeric(x)) stop('Wrong variable type (!numeric) provided.')
-    if (!is.table(x))
-        as.vector(tocharac(x, digit=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'), format='nice'))
-    else
-        format(round(x, getOption('rp.decimal')), decimal.mark = getOption('rp.decimal.mark'))
+    if (is.vector(x))
+        return(as.vector(tocharac(x, digit=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'), format='nice')))
+    return(format(round(x, getOption('rp.decimal')), decimal.mark = getOption('rp.decimal.mark')))
 }
 
 
@@ -726,6 +725,7 @@ rp.round <- function(x) {
 #' rp.prettyascii(htest(rnorm(100), shapiro.test))
 #' rp.prettyascii(table(mtcars$am,mtcars$gear))
 #' rp.prettyascii(data.frame(x=1:2, y=3:4))
+#' rp.prettyascii(data.frame(x=1:2, y=3:4, z=c(22/7, pi)))
 #' rp.prettyascii(mtcars)
 #' rp.prettyascii(table(mtcars$am))
 #'
@@ -744,9 +744,9 @@ rp.prettyascii <- function(x) {
 
     if (is.numeric(x)) {
         classes <- class(x)
-        dims <- dim(x)
+        ## dims <- dim(x)
         x <- rp.round(x)
-        dim(x) <- dims
+        ## dim(x) <- dims
         if (length(x) != 1)
             class(x) <- classes
     }
