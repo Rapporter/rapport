@@ -697,7 +697,7 @@ check.type <- function(x){
 #' @examples {
 #' rp.round(22/7)
 #' rp.round(22/7, short = TRUE)
-#' rp.round(22/7, T)
+#' rp.round(22/7, TRUE)
 #' rp.round(22/7, digits = 10)
 #' rp.round(matrix(runif(9), 3, 3))
 #' }
