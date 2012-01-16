@@ -7,6 +7,8 @@
 \arguments{
   \item{x}{object of class \code{rp.header}. See
   \code{\link{tpl.header}} for details.}
+
+  \item{...}{ignored}
 }
 \description{
   Prints out the contents of template header (metadata and

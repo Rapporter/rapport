@@ -467,23 +467,21 @@ pct <- function(x, decimals = 2, type = c('percent', '%', 'proportion')){
 # @param x a string containing template metadata
 # @param title a string containint metadata field title (can be regex-powered)
 # @param regex a string with regular expression to match field value
-# @param replacement a string containing a backreference to matched string (defaults to first match \code{\\1})
 # @param short a string with a short name for given metadata field
 # @param trim.white a logical value indicating whether trailing and leading whitespaces of the given string should be removed before extraction
 # @param mandatory a logical value indicating required field
 # @param ... additional parameters for \code{grepl} function
 # @return a list with matched content, or \code{NULL} if the field is not required
 # @examples \dontrun{
-#     extract.metadata("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#     extract_meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
 #     ## $name
 #     ## [1] "John Smith"
 #
-#     extract.metadata("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#     extract_meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
 #     ## $name
 #     ## [1] "John"
 # }
-#' @export
-extract.meta <- function(x, title, regex, replacement = '\\1', short = NULL, trim.white = TRUE, mandatory = TRUE, ...){
+extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, mandatory = TRUE, ...){
 
     if (!any(sapply(list(x, title, regex), is.string)))
         stop('"x", "title" and "regex" need to be strings')
@@ -496,7 +494,7 @@ extract.meta <- function(x, title, regex, replacement = '\\1', short = NULL, tri
         x <- trim.space(x, leading = TRUE, trailing = TRUE)
 
     re <- sprintf('^%s:[\t ]+(%s)$', title, regex)
-    val <- gsub(re, replacement, x, ...) # return matched value
+    val <- gsub(re, '\\1', x, ...) # return matched value
 
     if (isTRUE(grepl(re, x, ...))){
         res <- val
@@ -713,7 +711,7 @@ rp.round <- function(x, short = FALSE, digits = NULL) {
     if (!is.numeric(x)) stop('Wrong variable type (!numeric) provided.')
     decimal.mark <- getOption('rp.decimal.mark')
     if (missing(digits))
-        digits <- ifelse(short, getOption('rp.decimal.short'), getOption('rp.decimal')) 
+        digits <- ifelse(short, getOption('rp.decimal.short'), getOption('rp.decimal'))
     if (is.vector(x))
         return(as.vector(tocharac(x, digit=digits, decimal.mark = decimal.mark, format='nice')))
     return(format(round(x, digits), decimal.mark = decimal.mark))
