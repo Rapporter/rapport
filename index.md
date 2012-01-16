@@ -44,6 +44,11 @@ layout: default
 
 {% include functions.md %}
 
+<a id="discuss"> </a>
+### Discussion
+
+{% include discuss.md %}
+
 <a id="license"> </a>
 ### License and credits
 
