@@ -101,7 +101,8 @@ ul.tabs li {
 		position: fixed;
 		width: 160px; 
         overflow: auto;
-        height: 85%;}
+        height: 85%;
+        overflow-x: hidden;}
 	#logo {
 		margin-bottom: 20px;
 		# font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
