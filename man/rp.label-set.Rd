@@ -11,9 +11,9 @@
   variable label}
 }
 \description{
-  This function sets a label to an
-  \code{\link{atomic}} vector, by storing a character value
-  to its \code{label} attribute.
+  this function sets a label to an \code{\link{atomic}}
+  vector, by storing a character value to its \code{label}
+  attribute.
 }
 \examples{
 \dontrun{

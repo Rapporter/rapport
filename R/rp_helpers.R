@@ -183,16 +183,17 @@ rp.label <- function(x, fallback = TRUE){
 }
 
 
-# Set variable label
-#
-# this function sets a label to an \code{\link{atomic}} vector, by storing a character value to its \code{label} attribute.
-# @param var an atomic vector
-# @param value a character value that is to be set as variable label
-# @seealso \code{rp.label}
-# @examples \dontrun{
-# rp.label(mtcars$mpg) <- "fuel consumption"
-# x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
-# }
+#' Set variable label
+#'
+#' this function sets a label to an \code{\link{atomic}} vector, by storing a character value to its \code{label} attribute.
+#' @param var an atomic vector
+#' @param value a character value that is to be set as variable label
+#' @usage rp.label(var) <- value
+#' @seealso \code{rp.label}
+#' @examples \dontrun{
+#' rp.label(mtcars$mpg) <- "fuel consumption"
+#' x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
+#' }
 # @export
 `rp.label<-` <- function(var, value){
 
