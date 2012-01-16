@@ -68,7 +68,7 @@ In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equali
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
 <%
-rp.desc(y, x, c(min, max, mean, sd, var, median, IQR, skewness, kurtosis))
+rp.desc(x, y, c(min, max, mean, sd, var, median, IQR, skewness, kurtosis))
 %>
 
 # Diagnostics

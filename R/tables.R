@@ -1,8 +1,8 @@
 #' Descriptive Statistics
 #'
 #' Aggregate table of descriptives according to functions provided in \code{fn} argument. This function follows melt/cast approach used in \code{reshape} package. Variable names specified in \code{measure.vars} argument are treated as \code{measure.vars}, while the ones in \code{id.vars} are treated as \code{id.vars} (see \code{\link[reshape]{melt.data.frame}} for details). Other its formal arguments match with corresponding arguments for \code{\link[reshape]{cast}} function. Some post-processing is done after reshaping, in order to get pretty row and column labels.
-#' @param id.vars either a character vector with variable names from \code{data}, a numeric vector, or a \code{data.frame}
-#' @param measure.vars same as \code{id.vars}
+#' @param measure.vars either a character vector with variable names from \code{data}, a numeric vector, or a \code{data.frame}
+#' @param id.vars same rules apply as in \code{measure.vars}, but defaults to \code{NULL}
 #' @param fn a list with functions or a character vector with function names
 #' @param data a \code{data.frame} holding variables specified in \code{id.vars} and \code{measure.vars}
 #' @param na.rm a logical value indicating whether \code{NA} values should be removed
@@ -15,7 +15,7 @@
 #' @examples
 #' rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)
 #' @export
-rp.desc <- function(id.vars, measure.vars, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total') {
+rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total') {
 
     if (!is.character(id.vars) && !is.character(measure.vars)){
         data <- data.frame(id.vars, measure.vars)
@@ -34,8 +34,8 @@ rp.desc <- function(id.vars, measure.vars, fn, data = NULL, na.rm = TRUE, margin
         if (is.list(fn)){
 
             fn.subs <- sapply(substitute(fn), deparse)[-1] # get function names
-            fn.nms <- names(fn)             # get names of function list
-            fn.ind <- names(fn.subs) == ''  # get indices of non-named elems
+            fn.nms  <- names(fn)             # get names of function list
+            fn.ind  <- names(fn.subs) == ''  # get indices of non-named elems
 
             ## fun list has no named elements, use deparsed/substituted ones
             if (!length(fn.nms)){
@@ -56,32 +56,29 @@ rp.desc <- function(id.vars, measure.vars, fn, data = NULL, na.rm = TRUE, margin
     res <- cast(m, fml, fun.aggregate = each(fn), margins = margins, subset = subset, fill = fill, add.missing = add.missing)
 
     ## remove nasty (all)
-    nms.res <- names(res)       # column names
     ## (all) occurs only if margins is not NULL or FALSE
-    if (!is.null(margins)){
-        if (margins != FALSE){
-            ## fix column names
-            names(res) <- gsub('(all)', total.name, nms.res, fixed = TRUE)
-
-            ## fix factor levels
-            fac.ind <- sapply(res, is.factor)
-            fac.all <- '(all)' == res[fac.ind]
-            if (any(fac.all)){
-                res[fac.ind] <- lapply(res[fac.ind], function(y){
-                    ly <- levels(y)
-                    levels(y) <- gsub('(all)', total.name, ly, fixed = TRUE)
-                    y
-                })
-            }
-        }
+    ## + and when length-one vector is provided in measure.vars
+    nms.res <- names(res)                                          # column names
+    names(res) <- gsub('(all)', total.name, nms.res, fixed = TRUE) # fix column names
+    ## fix factor levels (and hope that somebody doesn't have "(all)" as factor level)
+    id.ind <- 1:ifelse(is.null(id.vars), 1, length(id.vars)) # indices of id.vars
+    all.ind <- '(all)' == res[id.ind]
+    if (any(all.ind, na.rm = TRUE)){
+        res[id.ind] <- lapply(res[id.ind], function(x){
+            ## x <- gsub('(all)', total.name, as.character(x), fixed = TRUE)
+            ## factor(x)
+            as.character(x)
+        })
     }
 
     ## fix underscores in colnames
-    nms.res <- names(res)       # column names, again
-    if (length(res.ind <- grep('_', nms.res))){
-        names(res)[res.ind] <- sapply(strsplit(nms.res[res.ind], '_'), function(x){
-            lx <- length(x)
-            sprintf('%s(%s)', x[lx], paste(x[-lx], collapse = '_'))
+    ## this should be a bit smarter
+    ## don't you have a helper for that anyway?
+    nms.res <- names(res)               # column names, again
+    unds.ind <- grep('_', nms.res)      # underscore of indices
+    if (length(unds.ind)){
+        names(res)[unds.ind] <- lapply(strsplit(nms.res[unds.ind], '_'), function(x){
+            sprintf('%s(%s)', tail(x, 1), paste(head(x, -1), collapse = '_'))
         })
     }
 
@@ -102,12 +99,13 @@ rp.desc <- function(id.vars, measure.vars, fn, data = NULL, na.rm = TRUE, margin
 #' @param pct show percentage?
 #' @param cumul.count show cumulative frequencies?
 #' @param cumul.pct show cumulative percentage?
+#' @param total.name a sting containing footer label (defaults to "Total")
 #' @return a \code{data.frame} with frequencies
 #' @examples \dontrun{
 #' rp.freq(c("am", "cyl", "vs"), mtcars)
 #' }
 #' @export
-rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.levels = FALSE, count = TRUE, pct = TRUE, cumul.count = TRUE, cumul.pct = TRUE){
+rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.levels = FALSE, count = TRUE, pct = TRUE, cumul.count = TRUE, cumul.pct = TRUE, total.name = 'Total'){
 
     ## TODO: subset
     ## TODO: add variables/data.frames instead of names
@@ -121,8 +119,8 @@ rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.
     if (drop.unused.levels)  tbl <- tbl[tbl$N != 0, ] # remove 0-count levels
 
     ## calculate freqs
-    tbl <- transform(tbl, pct = N / sum(N) * 100) # add percentage
-    tbl <- transform(tbl, cumul.count = cumsum(N), cumul.pct = cumsum(pct)) # add cumulatives
+    tbl <- transform(tbl, `%` = N / sum(N) * 100, check.names = FALSE) # add percentage
+    tbl <- transform(tbl, `Cumul. N` = cumsum(N), `Cumul. %` = cumsum(`%`), check.names = FALSE) # add cumulatives
 
     ## NAs not removed
     if (na.rm == FALSE){
@@ -134,19 +132,19 @@ rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.
     }
 
     ## calculate total
-    freqs <- colSums(tbl[c("N", "pct")])            # frequency totals
-    cumuls <- tail(as.numeric(tbl[nrow(tbl), ]), 2) # cumulative totals
-    total <- c(rep(NA, nfac), freqs, cumuls)        # grand total
-
-    rownames(tbl) <- NULL               # reset row names
-    tbl <- rbind(tbl, Total = total)    # update table contents
+    freqs  <- colSums(tbl[, nfac + 1:2])              # frequency and percent totals
+    cumuls <- tail(as.numeric(tail(tbl, 1)), 2)       # cumulative totals
+    total  <- c(rep(total.name, nfac), freqs, cumuls) # grand total
+    rownames(tbl) <- NULL                             # reset row names (important for ascii/HTML export)
+    tbl[1:nfac] <- lapply(tbl[1:nfac], as.character)  # "fix" factors
+    tbl <- rbind(tbl, total)                          # update table contents
 
     ## summary stats
     keep <- sapply(list(count, pct, cumul.count, cumul.pct), isTRUE)
     if (all(keep == FALSE))  stop('no summary to show') # no summary selected
-    keep <- c(rep(TRUE, length(f.vars)), keep)
-    tbl <- tbl[keep]                    # choose desired stats
+    keep <- c(rep(TRUE, length(f.vars)), keep)          # which columns to keep?
+    tbl <- tbl[keep]
 
-    class(tbl) <- c('data.frame', 'rp.table')
+    class(tbl) <- c('rp.table', 'data.frame')
     return(tbl)
 }

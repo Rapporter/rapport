@@ -2,16 +2,17 @@
 \alias{rp.desc}
 \title{Descriptive Statistics}
 \usage{
-  rp.desc(id.vars, measure.vars, fn, data = NULL,
+  rp.desc(measure.vars, id.vars = NULL, fn, data = NULL,
     na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA,
     add.missing = FALSE, total.name = "Total")
 }
 \arguments{
-  \item{id.vars}{either a character vector with variable
-  names from \code{data}, a numeric vector, or a
+  \item{measure.vars}{either a character vector with
+  variable names from \code{data}, a numeric vector, or a
   \code{data.frame}}
 
-  \item{measure.vars}{same as \code{id.vars}}
+  \item{id.vars}{same rules apply as in
+  \code{measure.vars}, but defaults to \code{NULL}}
 
   \item{fn}{a list with functions or a character vector
   with function names}

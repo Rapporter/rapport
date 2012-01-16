@@ -26,8 +26,6 @@
 \description{
   This function operates only on vectors or their subsets,
   by calculating a descriptive statistic specified in
-  \code{fn} argument. Yielded result is rounded to 3
-  decimal places by default (which can be changed by
-  passing an integer to \code{decimals} argument).
+  \code{fn} argument.
 }
 

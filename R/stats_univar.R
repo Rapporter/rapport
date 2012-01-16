@@ -1,6 +1,6 @@
 #' Descriptive Statistics
 #'
-#' This function operates only on vectors or their subsets, by calculating a descriptive statistic specified in \code{fn} argument. Yielded result is rounded to 3 decimal places by default (which can be changed by passing an integer to \code{decimals} argument).
+#' This function operates only on vectors or their subsets, by calculating a descriptive statistic specified in \code{fn} argument.
 #' @param x a numeric variable to be summarised
 #' @param subset an expression that evaluates to logical vector (defaults to \code{NULL}, in which case the function specified in \code{fun} is applied on a vector)
 #' @param fn a function or a function name to be applied on a variable or it's subset

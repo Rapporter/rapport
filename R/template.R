@@ -357,6 +357,10 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
     else
         b <- tpl.body(txt)
 
+    ## check for empty body
+    if (all(grepl('^[:space:]*$', b)))
+        stop('template body is empty')
+
     ## bunch of regexes
     re.blank     <- '^([[:blank:]]+|)$'              # blank line
     re.head      <- '^#{1,6}([ |\t]+)?[[:print:]]+$' # heading

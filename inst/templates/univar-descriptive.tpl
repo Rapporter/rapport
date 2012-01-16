@@ -19,7 +19,7 @@ This variable seems to be <%=ifelse(is.numeric(var), 'numeric', 'a factor')%>.
 
 <%
 if (is.numeric(var)) {
-        rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data)
+        rp.desc(rp.name(var), NULL, c('mean', 'sd', 'var'), rp.data)
     } else {
         rp.freq(rp.name(var), rp.data)
     }

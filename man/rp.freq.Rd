@@ -4,7 +4,8 @@
 \usage{
   rp.freq(f.vars, data, na.rm = TRUE, include.na = FALSE,
     drop.unused.levels = FALSE, count = TRUE, pct = TRUE,
-    cumul.count = TRUE, cumul.pct = TRUE)
+    cumul.count = TRUE, cumul.pct = TRUE,
+    total.name = "Total")
 }
 \arguments{
   \item{f.vars}{a character vector with variable names}
@@ -26,6 +27,9 @@
   \item{cumul.count}{show cumulative frequencies?}
 
   \item{cumul.pct}{show cumulative percentage?}
+
+  \item{total.name}{a sting containing footer label
+  (defaults to "Total")}
 }
 \value{
   a \code{data.frame} with frequencies
