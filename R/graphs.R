@@ -2,31 +2,12 @@
 ## maybe these should be wrapped up in a custom object, so the command that generated the graph can be saved as an object attribute
 ## and what about ggplot? think about the design consistency, at least from webapp's POV
 
-####################################################################################################
-#<------------------------------------------------------------------------------------------------>#
-####################################################################################################
-#####                                       ToDo list                                         ######
-####################################################################################################
-# FIX IT:
-#########
-# Hurray, nothing now!
-####################################################################################################
-# DO IT:
-########
-#TODO: update examples to use ius2009
-#TODO: add option to most plots to include a text (values) layer
-#TODO: pie chart
-#TODO: error bar
-#TODO: pareto
-#TODO: line plot
-#TODO: polygon/area plot
-#TODO: a few special ones:
-#	- means plot (for t-test and one-way ANOVA)
-#	- interaction plot (for two-way ANOVA)
-####################################################################################################
-#<------------------------------------------------------------------------------------------------>#
-####################################################################################################
-
+## Further rp.graphs under consideration:
+#########################################
+## TODO: pie chart
+## TODO: error bar
+## TODO: pareto
+## TODO: polygon/area plot
 
 #' Color palettes
 #'
@@ -50,7 +31,7 @@ rp.palette <- function(num, theme=getOption('rp.color.palette'), colorize=getOpt
 	} else {
 		if (!(theme %in% row.names(brewer.pal.info))) stop('Wrong theme provided.')
 		if (num > brewer.pal.info[theme,'maxcolors']) stop(paste('Maximum number of colors (', brewer.pal.info[theme, "maxcolors"], ') with choosen palette is lower then provided (', num, ').', sep=''))
-		##if (num <3) stop('Minimum number (3) of colors with choosen palette is higher then provided.')
+		## ugly hack to be able to return colors from palettes with higher minimum 'n' requirement
         if (num < 3) n <- 3
 		cols <- brewer.pal(brewer.pal.info[theme,'maxcolors'], theme)
 	}
@@ -108,18 +89,18 @@ rp.hist <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'
         }
     } else {
         rp.graph.check(x, ...)
-        # generating color from given palette
+        ##  generating color from given palette
         col <- rp.palette(1, theme, colorize)
-        # getting xlab
+        ##  getting xlab
         xlab <- rp.label(x)
         if (xlab=='x') xlab <- tail(as.character(substitute(x)), 1)
-        # if facet set
+        ##  if facet set
         if (is.null(facet)) {
             text <- 'x'
         } else {
             text='~x|facet'
         }
-        # plot
+        ##  plot
         histogram(x=eval(parse(text=text)), col=col, ylab='%', xlab=xlab, ...)
     }
 }
@@ -159,18 +140,18 @@ rp.densityplot <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.p
         }
     } else {
         rp.graph.check(x, ...)
-        # generating color from given palette
+        ##  generating color from given palette
         col <- rp.palette(1, theme, colorize)
-        # getting xlab
+        ## getting xlab
         xlab <- rp.label(x)
         if (xlab=='x') xlab <- tail(as.character(substitute(x)), 1)
-        # if facet set
+        ## if facet set
         if (is.null(facet)) {
             text <- 'x'
         } else {
             text='~x|facet'
         }
-        # plot
+        ## plot
         densityplot(x=eval(parse(text=text)), col=col, ylab=NULL, xlab=xlab, ...)
     }
 }
@@ -219,20 +200,20 @@ rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
         }
     } else {
         rp.graph.check(x, ...)
-        # generating color from given palette
+        ## generating color from given palette
         if (colorize) {
             col <- rp.palette(length(levels(as.factor(x))), theme, colorize)
         } else {
             col <- rp.palette(1, theme, colorize)
         }
-        # auto.keys
+        ## auto.keys
         if (missing(auto.key) & (groups == TRUE)) auto.key <- TRUE
         if (auto.key == TRUE) {
             auto.key <- list(col=col, rectangles=F)
         }
-        # grouping
+        ## grouping
         if (missing(percent) & (groups == TRUE)) percent <- TRUE
-        # getting labs
+        ## getting labs
         ylab <- rp.label(x)
         if (ylab=='x') ylab <- tail(as.character(substitute(x)), 1)
         if (horizontal == FALSE) {
@@ -241,7 +222,7 @@ rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
         } else {
             xlab <- 'N'
         }
-        # if facet set
+        ## if facet set
         if (!is.null(facet)) {
             x <- table(x, facet)
             if (percent == TRUE) {
@@ -253,7 +234,7 @@ rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
                 }
             }
         }
-        # plot
+        ## plot
         barchart(x, col=col, xlab=xlab, ylab=ylab, groups = groups, horizontal = horizontal, auto.key = auto.key, ...)
     }
 }
@@ -299,18 +280,18 @@ rp.dotplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
         }
     } else {
         rp.graph.check(x, ...)
-        # generating color from given palette
+        ## generating color from given palette
         if (colorize) {
             col <- rp.palette(length(levels(as.factor(x))), theme, colorize)
         } else {
             col <- rp.palette(1, theme, colorize)
         }
-        # auto.keys
+        ## auto.keys
         if (missing(auto.key) & (groups == TRUE)) auto.key <- TRUE
         if (auto.key == TRUE) {
             auto.key <- list(col=col, points=F)
         }
-        # getting labs
+        ## getting labs
         xlab <- rp.label(x)
         if (xlab=='x') xlab <- tail(as.character(substitute(x)), 1)
         if (horizontal == FALSE) {
@@ -319,11 +300,11 @@ rp.dotplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
         } else {
             ylab <- 'N'
         }
-        # if facet set
+        ## if facet set
         if (!is.null(facet)) {
             x <- table(x, facet)
         }
-        # plot
+        ## plot
         dotplot(x, col=col, ylab=xlab, xlab='N', groups = groups, horizontal = horizontal, auto.key = auto.key, ...)
     }
 }
@@ -365,20 +346,20 @@ rp.scatterplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.colo
         rp.graph.check(x, ...)
         if (missing(y)) stop('Variable was not specified.')
         if (!is.variable(y)) stop('Wrong type of varible (!atomic) provided.')
-        # generating color from given palette
+        ## generating color from given palette
         col <- rp.palette(1, theme, colorize)
-        # getting labs
+        ## getting labs
         xlab <- rp.label(x)
         if (xlab=='x') xlab <- tail(as.character(substitute(x)), 1)
         ylab <- rp.label(y)
         if (ylab=='y') ylab <- tail(as.character(substitute(y)), 1)
-        # if facet set
+        ## if facet set
         if (is.null(facet)) {
             text <- 'y~x'
         } else {
             text='y~x|facet'
         }
-        # plot
+        ## plot
         xyplot(eval(parse(text=text)), col=col, xlab=xlab, ylab=ylab, ...)
     }
 }
@@ -443,24 +424,24 @@ rp.lineplot <- function(x, y, facet=NULL, data=NULL, groups=NULL, theme=getOptio
         if (!is.variable(y)) stop('Wrong type of varible (!atomic) provided.')
         if (!missing(groups))
             if (!is.variable(groups)) stop('Wrong type of varible (!atomic) provided.')
-        # generating color from given palette
+        ## generating color from given palette
         col <- rp.palette(ifelse(missing(groups), 1, length(levels(groups))), theme, colorize)
-        # getting labs
+        ## getting labs
         xlab <- rp.label(x)
         if (xlab=='x') xlab <- tail(as.character(substitute(x)), 1)
         ylab <- rp.label(y)
         if (ylab=='y') ylab <- tail(as.character(substitute(y)), 1)
-        # if facet set
+        ## if facet set
         if (is.null(facet)) {
             text <- 'y~x'
         } else {
             text='y~x|facet'
         }
-        # plot
+        ## plot
         if (missing(groups))
             xyplot(eval(parse(text=text)), type="l", col.line=col, xlab=xlab, ylab=ylab, ...)
         else {
-            # auto.keys
+            ## auto.keys
             auto.key <- list(col=col, points=F)
             xyplot(eval(parse(text=text)), groups=groups, type="l", col.line=col, col=col, xlab=xlab, ylab=ylab, auto.key=auto.key, ...)
         }
@@ -503,21 +484,19 @@ rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('rp.col
         }
     } else {
         rp.graph.check(x, ...)
-        ##if (missing(y)) stop('Variable was not specified.')
-        ##if (!is.variable(y)) stop('Wrong type of varible (!atomic) provided.')
-
-        # generating color from given palette
+ 
+        ## generating color from given palette
         if (colorize) {		#TODO: colorize box and lines (?)
             col <- rp.palette(1, theme, colorize)
         } else {
             col <- 'white'
         }
-        # getting labs
+        ## getting labs
         xlab <- rp.label(x)
         if (xlab=='x') xlab <- tail(as.character(substitute(x)), 1)
         if (!is.null(y))
             ylab <- rp.label(y)
-        # if facet set
+        ## if facet set
         if (is.null(facet)) {
             text <- 'y~x'
         } else {
@@ -526,7 +505,7 @@ rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('rp.col
         if (is.null(y))
             text <- 'x'; ylab <- ''
         if (ylab=='y') ylab <- tail(as.character(substitute(y)), 1)
-        # plot
+        ## plot
         bwplot(eval(parse(text=text)), fill=col, xlab=xlab, ylab=ylab, ...)
     }
 }
@@ -619,7 +598,6 @@ rp.qqplot <- function(x, dist=qnorm, facet=NULL, data=NULL, theme=getOption('rp.
     mc <- match.call()
     if (!missing(data)) {
         if (missing(facet)) {
-            #TODO: `dist` is unevaulated (!)
             rp.qqplot(x=eval(mc$x, data), dist=dist,
                       theme=theme, colorize=colorize, ...)
         } else {
@@ -629,22 +607,22 @@ rp.qqplot <- function(x, dist=qnorm, facet=NULL, data=NULL, theme=getOption('rp.
     } else {
         rp.graph.check(x, ...)
         if (!existsFunction(deparse(substitute(dist)))) stop('Invalid distribution function provided.')
-        # generating color from given palette
+        ## generating color from given palette
         col <- rp.palette(1, theme, colorize)
-        # getting labs
+        ## getting labs
         ylab <- rp.label(x)
         if (ylab=='x') ylab <- tail(as.character(substitute(x)), 1)
-        # ylab is defined by used function's title (like: "The Normal Distribution", "The Unifomr Distribution")
+        ## ylab is defined by used function's title (like: "The Normal Distribution", "The Unifomr Distribution")
         target <- gsub("^.+/library/(.+)/help.+$", "\\1", utils:::index.search(deparse(substitute(dist)), find.package()))
         doc.txt <- pkg_topic(target, deparse(substitute(dist)))
         dist.name <- doc.txt[[1]][[1]][1]
-        # if facet set
+        ## if facet set
         if (is.null(facet)) {
             text <- 'x'
         } else {
             text='~x|facet'
         }
-        # plot
+        ## plot
         qqmath(eval(parse(text=text)), distribution=dist, col=col, xlab=dist.name, ylab=ylab, ...)
     }
 }
