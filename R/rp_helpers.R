@@ -689,25 +689,33 @@ check.type <- function(x){
 #'
 #' Round numeric values with default number of decimals (see: \code{getOption('rp.decimal'}) and decimal mark (see: \code{getOption('rp.decimal')}).
 #' @param x numeric value(s)
+#' @param short if \code{getOption('rp.decimal.short'} should be used instead of \code{getOption('rp.decimal'}. Can be overwritten by \code{digits} parameter, see below.
+#' @param digits (optional) number of decimals
 #' @return character vector of rounded value(s)
 #' @note This function is a simple demo for \code{\link{evals}}'s hooks.
 #' @examples {
-#'	rp.round(22/7)
-#'	rp.round(matrix(runif(9),3,3))
+#' rp.round(22/7)
+#' rp.round(22/7, short = TRUE)
+#' rp.round(22/7, T)
+#' rp.round(22/7, digits = 10)
+#' rp.round(matrix(runif(9), 3, 3))
 #' }
 #' @examples \dontrun{
 #' # alter options
 #' options('rp.decimal'       = 2)
 #' options('rp.decimal.mark'  = ',')
-#'	rp.round(22/7)
-#'	rp.round(matrix(runif(9),3,3))
+#' rp.round(22/7)
+#' rp.round(matrix(runif(9), 3, 3))
 #' }
 #' @export
-rp.round <- function(x) {
+rp.round <- function(x, short = FALSE, digits = NULL) {
     if (!is.numeric(x)) stop('Wrong variable type (!numeric) provided.')
+    decimal.mark <- getOption('rp.decimal.mark')
+    if (missing(digits))
+        digits <- ifelse(short, getOption('rp.decimal.short'), getOption('rp.decimal')) 
     if (is.vector(x))
-        return(as.vector(tocharac(x, digit=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'), format='nice')))
-    return(format(round(x, getOption('rp.decimal')), decimal.mark = getOption('rp.decimal.mark')))
+        return(as.vector(tocharac(x, digit=digits, decimal.mark = decimal.mark, format='nice')))
+    return(format(round(x, digits), decimal.mark = decimal.mark))
 }
 
 
@@ -752,7 +760,7 @@ rp.prettyascii <- function(x) {
     }
 
     if (is.vector(x))
-        return(p(x))
+        return(p(x, limit = Inf))
 
     if (is.data.frame(x) | is.table(x)){
         ## rounding till \code{ascii} bug fixed: https://github.com/eusebe/ascii/issues/12

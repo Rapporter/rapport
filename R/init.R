@@ -5,6 +5,7 @@
 
     options('rp.date.format'   = "%Y/%m/%d %X")
     options('rp.decimal'       = 4)
+    options('rp.decimal.short' = 2)
     options('rp.decimal.mark'  = '.')
     options('rp.color.palette' = 'default')
     options('rp.colorize'      = FALSE)

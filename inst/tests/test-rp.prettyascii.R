@@ -1,7 +1,7 @@
 ## test_file('test-rp.prettyascii.R')
-context('rp.prettyasccii: should no throw error')
+context('rp.prettyasccii')
 
-test_that('running examples', {
+test_that('running examples: should not throw error', {
     expect_is(rp.prettyascii('Hallo, World?'), 'character')
     expect_is(rp.prettyascii(22/7), 'character')
     expect_is(rp.prettyascii(matrix(runif(25), 5, 5)), 'character')
