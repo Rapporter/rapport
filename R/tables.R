@@ -18,8 +18,8 @@
 rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total') {
 
     if (!is.character(id.vars) && !is.character(measure.vars)){
-        data <- data.frame(id.vars, measure.vars)
-        id.vars <- if (is.atomic(id.vars)) deparse(substitute(id.vars)) else names(id.vars)
+        data <- if (is.null(id.vars)) data.frame(measure.vars) else data.frame(id.vars, measure.vars)
+        id.vars <- if (is.atomic(id.vars) & !is.null(id.vars)) deparse(substitute(id.vars)) else names(id.vars)
         measure.vars <- if (is.atomic(measure.vars)) deparse(substitute(measure.vars)) else names(measure.vars)
         names(data) <- c(id.vars, measure.vars)
     }
