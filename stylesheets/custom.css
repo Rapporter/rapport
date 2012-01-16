@@ -99,7 +99,9 @@ ul.tabs li {
 	/* Doc nav */
 	nav {
 		position: fixed;
-		width: 160px; }
+		width: 160px; 
+        overflow: auto;
+        height: 85%;}
 	#logo {
 		margin-bottom: 20px;
 		# font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
