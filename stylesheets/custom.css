@@ -73,7 +73,7 @@ ul.tabs li {
 
 #logo {
     width: 160px;
-    #text-align: center;
+    text-align: center;
     margin-left: 10px;
 }
 #logo a:link {text-decoration:none;}
@@ -99,7 +99,7 @@ ul.tabs li {
 	/* Doc nav */
 	nav {
 		position: fixed;
-		width: 160px; 
+		width: 220px; 
         overflow: auto;
         height: 85%;
         overflow-x: hidden;}
