@@ -14,6 +14,6 @@
   Capitalises strings in provided character vector
 }
 \examples{
-capitalise(c("foo", "bar") # [1] "Foo" "Bar"
+capitalise(c("foo", "bar")) # [1] "Foo" "Bar"
 }
 

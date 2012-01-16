@@ -183,7 +183,7 @@ tocamel <- function(x, sep = '[^[:alnum:]]', upper = FALSE, ...){
 #' @param x a character vector to capitalise
 #' @return character vector with capitalised string elements
 #' @examples
-#' capitalise(c("foo", "bar") # [1] "Foo" "Bar"
+#' capitalise(c("foo", "bar")) # [1] "Foo" "Bar"
 #' @export
 capitalise <- function(x){
 
