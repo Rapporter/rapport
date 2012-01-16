@@ -2,14 +2,11 @@
 \alias{print.rp.info}
 \title{Print Template Header}
 \usage{
-  \method{print}{rp.info} (x, type = c("text", "pandoc"))
+  \method{print}{rp.info} (x, ...)
 }
 \arguments{
   \item{x}{object of class \code{rp.header}. See
   \code{\link{tpl.header}} for details.}
-
-  \item{type}{a string with output format. Defaults to
-  plain text output.}
 }
 \description{
   Prints out the contents of template header (metadata and
