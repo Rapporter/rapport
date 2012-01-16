@@ -7,6 +7,8 @@
 \arguments{
   \item{x}{object of class \code{rp.inputs}. See
   \code{\link{tpl.inputs}} for details.}
+
+  \item{...}{ignored}
 }
 \description{
   Prints out the contents of template inputs in

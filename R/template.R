@@ -132,7 +132,7 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 #'
 #' Returns metadata stored in template's header section, usually template title, nickname of an author, template description and list of required packages.
 #' @param fp a character vector containing template name (".tpl" extension is optional), file path or character vector with template/header contents (depending on value of \code{use.header} argument)
-#' @param fields a list of named lists containing key-value pairs that are to be passed to \code{\link{extract.meta}} function via \code{\link{do.call}}
+#' @param fields a list of named lists containing key-value pairs of field titles and corresponding regexes
 #' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains header data
 #' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
 #' @return a list with template metadata
@@ -164,7 +164,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         if (length(m) > 1)
             stop('duplicate metadata entries: ', paste(sprintf('"%s"', header[m]), collapse = ', '))
         x$x <- header[m]
-        do.call(extract.meta, x)
+        do.call(extract_meta, x)
     })
 
     ## store only packages that arent' listed in dependencies
@@ -436,96 +436,101 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
 }
 
 
-#' Evaluate Template Element
+#' Evaluate Template Elements
 #'
-#' This is a generic method that evaluates R code found in \code{rapport} template elements. Currently there are two types of template elements: \code{blocks} of R code (similar to chunks in \code{Sweave}) or \code{inline} elements.
-#' @param x either a list with character vector
-#' @param ... additional arguments passed to other evaluation methods
-#' @export
-elem.eval <- function(x, ...)  UseMethod('elem.eval')
+#' This function grabs template elements from \code{\link{tpl.elem}} and evaluates them. For \code{rp.block}-classed elements just a vanilla \code{\link{evals}} call is carried out, while \code{rp.inline} and \code{rp.heading} classes have some additional post-evaluation proccesing (heading level is stored, as well as "raw" and evaluated chunk contents).
+#' @param x template file pointer
+#' @param tag.open a string containing opening tag
+#' @param tag.close a string containing closing tag
+#' @param remove.comments should comments be omitted on evaluation?
+#' @param ... additional params for \code{grep}-like functions
+#' @keywords internal
+elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, ...){
 
+    if (inherits(x, 'rp.block')){
 
-#' @export
-elem.eval.rp.block <- function(x, ...){
-
-    list(
-         type = 'block',
-         robjects = evals(x, ...)
-         )
-}
-
-
-#' @export
-elem.eval.default <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, ...){
-
-    stopifnot(is.string(x))
-
-    if (!inherits(x, c('rp.heading', 'rp.inline')))
-        stop('invalid element class, either a heading or a block should be provided')
-
-    if (isTRUE(remove.comments))
-        x <- purge.comments(x)          # purge comments
-
-    head  <- is.heading(x)               # is it a heading
-    x     <- tags.misplaced(x, tag.open, tag.close) # check for misplaced tags
-    ntags <- sum(has.tags(x, tag.open, tag.close)) # number of tags
-    ## only for heading
-    if (isTRUE(head)){
-        lvl   <- nchar(gsub('^(#{1,6}).+$', '\\1', x)) # get heading level
-        x     <- gsub('^#{1,6}[[:space:]]', '', x) # remove heading markup
-    }
-
-    ## both tags found
-    if (ntags == 2){
-        c.yes <- grab.chunks(x, tag.open, tag.close, TRUE) # chunks with tags
-        c.no  <- grab.chunks(x, tag.open, tag.close, FALSE) # chunks sans tags
-        resp  <- evals(c.no, ...)
-        out   <- sapply(resp, function(x){
-            ## OK, this is lame, we should allow users to define tables in blocks,
-            ## but not in headings, assuming that we find an easy way to add
-            ## something like anchor to the generated graph
-            if (x$type == 'image')
-                stop("it's not allowed to create graphs within inline chunks")
-            if (is.tabular(x$output))
-                stop('tabular structures are not allowed within inline chunks')
-            if (length(x$output) > 1)
-                stop('output exceeds allowed length for an inline chunk (', x$src, ')')
-            ## return info on errors, don't just bleed to death! (bug spotted & fixed by Gergely)
-            err <- x$msg$errors
-            if (!is.null(err)) {        ## error handling in blocks:
-                warning(err, call.=F)   ##  * shoot warning()
-                return('<ERROR>')       ##  * returning '<ERROR>' inline
-            }
-            if (!is.null(x$output))
-                return(rp.prettyascii(x$output))    # get output
-        })
-        ## check chunk for tables an graphs!
-
-        rpl   <- vgsub(c.yes, out, x, fixed = TRUE) # replace evaled chunk
-    }
-
-    ## no tags found, carry on
-    if (ntags == 0) {
-        rpl   <- x
-        c.yes <- NULL
-        out   <- NULL
-    }
-
-    lst <- list(
-                text = list(
-                    raw  = x,
-                    eval = rpl
-                    ),
-                chunks = list(
-                    raw  = c.yes,
-                    eval = out
+        ## template blocks
+        res <- list(
+                    type = 'block',
+                    robjects = evals(x, ...)
                     )
-                )
 
-    if (isTRUE(head))
-        res <- c(type = 'heading', level = lvl, lst)        # this is heading
-    else
-        res <- c(type = 'inline', lst)   # this is block
+    } else if (inherits(x, c('rp.inline', 'rp.heading'))) {
+
+        ## inline/heading elements
+
+        stopifnot(is.string(x))
+
+        if (!inherits(x, c('rp.heading', 'rp.inline')))
+            stop('invalid element class, either a heading or a block should be provided')
+
+        if (isTRUE(remove.comments))
+            x <- purge.comments(x)          # purge comments
+
+        head  <- is.heading(x)               # is it a heading
+        x     <- tags.misplaced(x, tag.open, tag.close) # check for misplaced tags
+        ntags <- sum(has.tags(x, tag.open, tag.close)) # number of tags
+        ## only for heading
+        if (isTRUE(head)){
+            lvl   <- nchar(gsub('^(#{1,6}).+$', '\\1', x)) # get heading level
+            x     <- gsub('^#{1,6}[[:space:]]', '', x) # remove heading markup
+        }
+
+        ## both tags found
+        if (ntags == 2){
+            c.yes <- grab.chunks(x, tag.open, tag.close, TRUE) # chunks with tags
+            c.no  <- grab.chunks(x, tag.open, tag.close, FALSE) # chunks sans tags
+            resp  <- evals(c.no, ...)
+            out   <- sapply(resp, function(x){
+                ## OK, this is lame, we should allow users to define tables in blocks,
+                ## but not in headings, assuming that we find an easy way to add
+                ## something like anchor to the generated graph
+                if (x$type == 'image')
+                    stop("it's not allowed to create graphs within inline chunks")
+                if (is.tabular(x$output))
+                    stop('tabular structures are not allowed within inline chunks')
+                if (length(x$output) > 1)
+                    stop('output exceeds allowed length for an inline chunk (', x$src, ')')
+                ## return info on errors, don't just bleed to death! (bug spotted & fixed by Gergely)
+                err <- x$msg$errors
+                if (!is.null(err)) {        ## error handling in blocks:
+                    warning(err, call.=F)   ##  * shoot warning()
+                    return('<ERROR>')       ##  * returning '<ERROR>' inline
+                }
+                if (!is.null(x$output))
+                    return(rp.prettyascii(x$output))    # get output
+            })
+            ## check chunk for tables an graphs!
+
+            rpl   <- vgsub(c.yes, out, x, fixed = TRUE) # replace evaled chunk
+        }
+
+        ## no tags found, carry on
+        if (ntags == 0) {
+            rpl   <- x
+            c.yes <- NULL
+            out   <- NULL
+        }
+
+        lst <- list(
+                    text = list(
+                        raw  = x,
+                        eval = rpl
+                        ),
+                    chunks = list(
+                        raw  = c.yes,
+                        eval = out
+                        )
+                    )
+
+        if (isTRUE(head))
+            res <- c(type = 'heading', level = lvl, lst)        # this is heading
+        else
+            res <- c(type = 'inline', lst)   # this is block
+
+    } else {
+        stop ('invalid "rapport" template element type')
+    }
 
     return (res)
 }

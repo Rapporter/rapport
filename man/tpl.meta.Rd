@@ -12,8 +12,7 @@
   of \code{use.header} argument)}
 
   \item{fields}{a list of named lists containing key-value
-  pairs that are to be passed to \code{\link{extract.meta}}
-  function via \code{\link{do.call}}}
+  pairs of field titles and corresponding regexes}
 
   \item{use.header}{a logical value indicating if the
   character vector provided in \code{fp} argument contains
