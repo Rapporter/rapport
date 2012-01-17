@@ -134,14 +134,16 @@ rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.
     ## calculate total
     freqs  <- colSums(tbl[, nfac + 1:2])              # frequency and percent totals
     cumuls <- tail(as.numeric(tail(tbl, 1)), 2)       # cumulative totals
-    total  <- c(rep(total.name, nfac), freqs, cumuls) # grand total
+    total  <- c(rep(NA, nfac), freqs, cumuls) # grand total
     rownames(tbl) <- NULL                             # reset row names (important for ascii/HTML export)
     tbl[1:nfac] <- lapply(tbl[1:nfac], as.character)  # "fix" factors
     tbl <- rbind(tbl, total)                          # update table contents
+    tbl[nrow(tbl), 1:nfac] <- rep(total.name, nfac)   # add total names
 
     ## summary stats
     keep <- sapply(list(count, pct, cumul.count, cumul.pct), isTRUE)
-    if (all(keep == FALSE))  stop('no summary to show') # no summary selected
+    if (all(keep == FALSE))
+        stop('no summary to show') # no summary selected
     keep <- c(rep(TRUE, length(f.vars)), keep)          # which columns to keep?
     tbl <- tbl[keep]
 
