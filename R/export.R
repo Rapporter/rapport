@@ -113,7 +113,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
 
             ## body
             lapply(rp$report, function(x) {
-                if (x$type=='heading') r$addSection(x$text$eval, x$level)
+                if (x$type=='heading') r$addSection(x$text$eval, x$level+1)
                 if (x$type=='inline')
                     r$add(paragraph(ifelse(is.null(unlist(x$chunks$raw)),
                                            unlist(x$text$raw),
@@ -121,16 +121,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                                     )
                           )
                 if (x$type=='block' & !is.null(x$robjects[[1]]$type)) {
-                    ## if (any(x$robjects[[1]]$type == 'error'))        # error handling is done in rapport
-                    ##     r$add(paragraph(as.character(x$robjects[[1]]$msg$errors)))
                     if (any(x$robjects[[1]]$type == 'image')) r$addFig(file=x$robjects[[1]]$output)    # no nested rapport classes (halleluja)
-                    #if (is.list(x$robjects[[1]]$output)) {
-                    #    if (all(lapply(x$robjects[[1]]$output, class) == 'rapport')) {
-                    #        for (i in 1:length(x$robjects[[1]]$output)) {
-                    #            r <- tpl.export(x$robjects[[1]]$output[[i]], file=file, append=r, create=FALSE, open=FALSE, date=date, desc=FALSE)
-                    #        }
-                    #   }
-                    #}
                     if (all(x$robjects[[1]]$type != c('image', 'error')))
                         r$add(paragraph(rp.prettyascii(x$robjects[[1]]$output)))
                     if (!is.null(x$robjects[[1]]$msg$warnings))
