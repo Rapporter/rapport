@@ -19,7 +19,6 @@
   \code{\link{length}} function passed in \code{fn}
   argument, but with missing values previously removed.
   However, it's not possible to cancel \code{NA} omission
-  with this function(doing so will yield error) - use
-  \code{\link{rp.n}} for those purposes.
+  with this function (doing so will yield error).
 }
 
