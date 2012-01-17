@@ -5,7 +5,7 @@
 \title{rapport templating system}
 \usage{
   rapport(fp, data = NULL, ..., reproducible = FALSE,
-    nested.levels.offset = 1)
+    header.levels.offset = 0)
 }
 \arguments{
   \item{fp}{a string containing a template name/path or a
@@ -21,8 +21,8 @@
   making it reproducible (see \code{\link{tpl.rerun}} for
   details)}
 
-  \item{nested.levels.offset}{number added to nested
-  templates' header level}
+  \item{header.levels.offset}{number added to header levels
+  (handy when using nested templates)}
 }
 \value{
   a list with \code{rapport} class.

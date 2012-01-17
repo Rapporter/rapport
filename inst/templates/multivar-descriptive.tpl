@@ -13,6 +13,6 @@ head-->
 
 <%
 lapply(lapply(vars, rp.name), function(x){
-    rapport('univar-descriptive', data=rp.data, var=x, nortest=nortest)
+    rapport('univar-descriptive.tpl', data=rp.data, var=x, nortest=nortest)
 })
 %>

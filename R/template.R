@@ -543,13 +543,13 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' @param data a \code{data.frame} to be used in template
 #' @param ... matches template inputs in format 'key = "value"'
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
-#' @param nested.levels.offset number added to nested templates' header level
+#' @param header.levels.offset number added to header levels (handy when using nested templates)
 #' @return a list with \code{rapport} class.
 #' @examples \dontrun{
 #' rapport("example", ius2008, var="it.leisure", desc=FALSE, hist=T, color="green")
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., reproducible = FALSE, nested.levels.offset = 1){
+rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0){
 
     txt    <- tpl.find(fp)                      # split file to text
     h      <- suppressMessages(tpl.info(txt))   # template header
@@ -734,7 +734,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, nested.levels.of
     })
     report <- report[ind.nullblank]     # update template body contents
 
-    ## tidy up (removing metadata/input fields, incrementing heading levels etc.) nested templates
+    ## tidy up (removing metadata, inputs from) nested templates
     report <- unlist(lapply(report, function(x){
 
         robj  <- x$robjects[[1]]
@@ -745,31 +745,26 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, nested.levels.of
         if (xtype == 'block'){
 
             if (any(robj$type == 'rapport'))
-                return(lapply(rout$report, function(x) {
-                    if (x$type == "heading") {
-                        x$level <- x$level + nested.levels.offset
-                        return(x)
-                    } else
-                        return(x)
-                }))
+                return(rout$report)
 
             ## chunk holding a list of rapport class
             if (all(is.list(rout)))
                 if (all(sapply(rout, class) == 'rapport'))
-                    return(unlist(lapply(rout, function(x) {
-                        lapply(x$report, function(x) {
-                            if (x$type == "heading") {
-                                x$level <- x$level + nested.levels.offset
-                                return(x)
-                            } else
-                                return(x)
-                        })
-                    }), recursive = FALSE))
+                    return(unlist(lapply(rout, function(x) x$report), recursive = FALSE))
         }
 
         return(list(x))
 
     }), recursive = FALSE)
+
+    ## header levels offset
+    report <- lapply(report, function(x) {
+        if (x$type == "heading") {
+            x$level <- x$level + header.levels.offset
+            return(x)
+        } else
+            return(x)
+    })
 
     res <- list(
                 meta   = meta,
