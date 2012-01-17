@@ -13,8 +13,8 @@ rp.univar <- function(x, subset = NULL, fn, na.rm = TRUE, ...){
     if (missing(x))
         stop('variable not specified')
 
-    if (!(is.variable(x) & is.numeric(x)))
-        stop('descriptives can be calculated only for numeric variables')
+    if (!(is.variable(x)))
+        stop('descriptives can be calculated only for variables')
 
     ## subset the data
     if (!is.null(subset)){
@@ -35,19 +35,9 @@ rp.univar <- function(x, subset = NULL, fn, na.rm = TRUE, ...){
 }
 
 
-#' Sample Size
-#'
-#' Returns sample size with \code{NA}s included. This is a wrapper around \code{\link{rp.univar}} function with \code{\link{length}} function passed in \code{fn} argument. However, it will not account for missing values regardless of the value of \code{na.rm} argument. In order to get a number of valid responses, use \code{\link{rp.valid}}.
-#' @param ... arguments to be passed to \code{rp.univar} function
-#' @return a numeric value specifying vector length
-#' @export
-rp.n <- function(...)
-    rp.univar(..., fn = function(...) length(..1))
-
-
 #' Valid Cases
 #'
-#' Returns a number of valid (non-\code{NA}) values in a variable. This is a wrapper around \code{\link{rp.univar}} function with \code{\link{length}} function passed in \code{fn} argument, but with missing values previously removed. However, it's not possible to cancel \code{NA} omission with this function(doing so will yield error) - use \code{\link{rp.n}} for those purposes.
+#' Returns a number of valid (non-\code{NA}) values in a variable. This is a wrapper around \code{\link{rp.univar}} function with \code{\link{length}} function passed in \code{fn} argument, but with missing values previously removed. However, it's not possible to cancel \code{NA} omission with this function (doing so will yield error).
 #' @param ... parameters to be passed to \code{rp.univar} function
 #' @return a numeric value with number of valid (non-NA) vector elements
 #' @export
@@ -63,6 +53,35 @@ rp.valid <- function(...)
 #' @export
 rp.missing <- function(...)
     rp.univar(..., fn = function(...) sum(is.na(..1)))
+
+
+
+#' Percent
+#'
+#' Calculates percentage of cases for provided variable and criteria specified in \code{subset} argument. Function accepts numeric, factor and logical variables for \code{x} parameter. If numeric and/or factor is provided, subsetting can be achieved via \code{subset} argument. Depending on value of \code{na.rm} argument, either valid (\code{na.rm = TRUE}) or all cases (\code{na.rm = FALSE}) are taken into account. By passing logical variable to \code{x}, a sum of (\code{TRUE}) elements is calculated instead, and valid percents are used (\code{NA} are excluded).
+#' @param x a numeric variable to be summarised
+#' @param subset an expression that evaluates to logical vector (defaults to \code{NULL})
+#' @param na.rm should missing values be
+#' @param pct print percent string too?
+#' @param ... additional arguments for \code{\link{pct}} function
+#' @return a numeric or string depending on the value of \code{pct}
+#' @examples \dontrun{
+#' set.seed(0)
+#' x <- sample(5, 100, replace = TRUE)
+#' rp.percent(x > 2)
+#' }
+#' @export
+rp.percent <- function(x, subset = NULL, na.rm = TRUE, pct = FALSE, ...){
+    if (is.logical(x)){
+        res <- sum(x, na.rm = na.rm) / ifelse(na.rm, rp.valid(x), length(x)) * 100
+    } else {
+        if (na.rm)
+            res <- rp.valid(x, subset) / rp.valid(x) * 100
+        else
+            res <- rp.valid(x, subset) / length(x) * 100
+    }
+    return (ifelse(pct, pct(res, ...), res))
+}
 
 
 #' Minimum

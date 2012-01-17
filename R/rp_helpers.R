@@ -114,7 +114,7 @@ rp.name <- function(x){
         if (all(n.nil)){
             n <- names(n)
         } else
-            n[n.nil] <- names(n)[n.nil]
+        n[n.nil] <- names(n)[n.nil]
 
         return(n)
     }
@@ -430,31 +430,34 @@ table.json <- function(d, name.rows = 'rows', name.cols = 'cols', name.body = 'b
 
 #' Percent
 #'
-#' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to 2 decimal places).
+#' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to value specified in \code{rp.decimal.short} option).
 #' @param x a numeric value that is to be rendered to percent
-#' @param decimals an integer value indicating number of decimal places
+#' @param digits an integer value indicating number of decimal places
 #' @param type a character value indicating whether percent or proportion value was provided (partial match is allowed)
+#' @param check.value perform a sanity check to see if provided numeric value is correct
 #' @return a character value with formatted percent
 #' @export
-pct <- function(x, decimals = 2, type = c('percent', '%', 'proportion')){
+pct <- function(x, digits = getOption('rp.decimal.short'), type = c('percent', '%', 'proportion'), check.value = TRUE){
 
-    if (missing(x))
-        stop('no numeric value to generate percent')
-
-    if (!(is.numeric(x) & is.variable(x) & length(x) == 1))
+    if (!is.numeric(x))
         stop('only numeric values should be provided')
 
-    if (!alike.integer(decimals))
-        stop('"decimal" argument should be "alike" integer')
-
     val <- switch(match.arg(type),
-                  proportion = x * 100,
+                  proportion = {
+                      if (check.value)
+                          stopifnot(all(x >= 0 & x <= 1))
+                      x * 100
+                  },
                   '%'=,
-                  percent = x,
+                  percent = {
+                      if (check.value)
+                          stopifnot(all(x >= 0 & x <= 100))
+                      x
+                  },
                   stop('unsupported number format')
                   )
 
-    dec <- ifelse(is.null(decimals), 0, decimals)
+    dec <- ifelse(is.null(digits), 0, digits)
     fmt <- paste('%.', dec, 'f%%', sep = '')
 
     sprintf(fmt, val)
@@ -765,7 +768,7 @@ rp.prettyascii <- function(x) {
         ## rounding till \code{ascii} bug fixed: https://github.com/eusebe/ascii/issues/12
         numerics <- which(sapply(x, is.numeric))
         for (numeric in names(numerics)) {
-        	x[, numeric] <- rp.round(x[, numeric])
+            x[, numeric] <- rp.round(x[, numeric])
         }
         rownms <- rownames(x)
         include.rownames <- !is.null(rownms)
@@ -835,7 +838,7 @@ fml <- function(left, right, join.left = ' + ', join.right = ' + '){
 
 ## http://stackoverflow.com/questions/8379570/get-functions-title-from-documentation
 pkg_topic <- function(package, topic, file = NULL) {
-                                        # Find "file" name given topic name/alias
+    # Find "file" name given topic name/alias
     if (is.null(file)) {
         topics <- pkg_topics_index(package)
         topic_page <- subset(topics, alias == topic, select = file)$file
