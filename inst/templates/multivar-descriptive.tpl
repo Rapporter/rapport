@@ -12,5 +12,7 @@ nortest     | TRUE          | Normality tests   | Should normality tests be perf
 head-->
 
 <%
-lapply(lapply(vars, rp.name), function(x) rapport('univar-descriptive', data=rp.data, var=x, nortest=nortest, nested.levels.offset=0))
+lapply(lapply(vars, rp.name), function(x){
+    rapport('univar-descriptive', data=rp.data, var=x, nortest=nortest)
+})
 %>
