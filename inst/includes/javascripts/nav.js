@@ -15,9 +15,9 @@ $(document).ready(function() {
     $('body').children().not('#container').appendTo("#container");
 
     // if logo added: move to top (navbar)
-    var logo=$("img[src$='templates/images/rapport.png']").attr('src');
+    var logo=$("img[src$='includes/images/rapport.png']").attr('src');
     if (logo != null) {
-        $("img[src$='templates/images/rapport.png']").remove();
+        $("img[src$='includes/images/rapport.png']").remove();
         $('nav').prepend('<a href="http://rapport-package.info/"><img src="http://rapport-package.info/rapport.png" alt="rapport"></a>');
     }
 });

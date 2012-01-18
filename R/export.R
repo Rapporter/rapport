@@ -135,14 +135,16 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         ## if pandoc is converting to HTML then apply default styles
         if (is.null(options) & format == 'html' & backend == 'pandoc') {
             if (!file.exists(sprintf('%s%s', tempdir(), '/rapport-header.html')))
-                cat(gsub('"templates/', sprintf('"%s/templates/', system.file(package='rapport')), readLines(system.file('templates/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
-            options <- sprintf('-H %s -A %s', sprintf('%s%s', tempdir(), '/rapport-header.html'), system.file('templates/html/footer.html', package='rapport'))
+                cat(gsub('"includes/', sprintf('"%s/includes/', system.file(package='rapport')), readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
+            options <- sprintf('-H %s -A %s', sprintf('%s%s', tempdir(), '/rapport-header.html'), system.file('includes/html/footer.html', package='rapport'))
             if (logo)
-                r$addFig(system.file('templates/images/rapport.png', package='rapport'))
+                r$addFig(system.file('includes/images/rapport.png', package='rapport'))
         } else {
             if (logo) {
                 r$add(paragraph('-------\nThis report was generated with [rapport](http://rapport-package.info/).'))
-                r$addFig(system.file('templates/images/rapport.png', package='rapport'))
+                r$addFig(system.file('includes/images/rapport.png', package='rapport'))
+                # Error: object 'r' not found
+
             }
         }
         r$create(file=file, open=open, options=options, date=date)
