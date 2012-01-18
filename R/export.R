@@ -83,8 +83,8 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         if (is.null(rp)) stop('There is no sense in exporting a blank report :)')
         r <- Report$new()
         r$title <- as.character(rp$meta['title'])
-        r$author <- as.character(getOption('rp.user'))
-        r$email <- as.character(getOption('rp.email'))
+        r$author <- as.character(getOption('tpl.user'))
+        r$email <- as.character(getOption('tpl.email'))
     }
     if (!is.logical(create)) stop('Wrong create (!=TRUE|FALSE) parameter!')
     if (!is.logical(logo)) stop('Wrong logo (!=TRUE|FALSE) parameter!')
