@@ -11,8 +11,14 @@ vars        | *variable[1]| Variables         | Categorical or numerical variabl
 nortest     | TRUE          | Normality tests   | Should normality tests be performed on numerical variables?  
 head-->
 
+<%vars.ilen%>
+
 <%
-lapply(lapply(vars, rp.name), function(x){
-    rapport('descriptives-univar', data=rp.data, var=x, nortest=nortest)
-})
+if (vars.ilen == 1) {
+    rapport('descriptives-univar', data=rp.data, var=rp.name(vars), nortest=nortest)
+} else {
+    lapply(lapply(vars, rp.name), function(x){
+        rapport('descriptives-univar', data=rp.data, var=x, nortest=nortest)
+    })
+}
 %>
