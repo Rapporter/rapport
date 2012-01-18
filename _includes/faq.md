@@ -41,6 +41,6 @@ Of course, with some limitations: [license terms](#license) applies.
 
 #### How can I use my custom templates without always specifying the full path and name of the templates?
 
-Check out [`tpl.path`](#tpl.path) and [`tpl.path.add`](#tpl.path.add). If you add the paths of the diretories holding your custom templates, [`rapport`](#rapport) and any related function would easily find it just like you would use a [package bundled template](#templates). So if you have eg. `mytemplate.tpl` in `/tmp`, adding that to the list of custom paths like `tpl.path.add('/tmp')`, you can easily call `rapport('mytemplate', ...)`. There you do not evenm have to inlcude the exetension of the file (if it ends in `tpl` at least).
+Check out [`tpl.path`](#tpl.path) and [`tpl.path.add`](#tpl.path.add). If you add the paths of the diretories holding your custom templates, [`rapport`](#rapport) and any related function would easily find it just like you would use a [package bundled template](#templates). So if you have eg. `mytemplate.tpl` in `/tmp`, adding that to the list of custom paths like `tpl.path.add('/tmp')`, you can easily call `rapport('mytemplate', ...)`. There you do not even have to inlcude the extension of the file (if it ends in `tpl` at least).
 
 It would be a good practice to add a call to [`tpl.paths.add(...)`](#tpl.paths.add) to your [`.Rprofile`](http://www.statmethods.net/interface/customizing.html), which would be fired on all [R](http://www.r-project.org/) startup.
