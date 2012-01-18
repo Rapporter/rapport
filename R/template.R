@@ -21,11 +21,17 @@ tpl.find <- function(fp){
                 stop('remote file not found')
             file <- tmp.fp
         } else {
-            ## is it local file?
-            if (!file.exists(fp))
-                fp <- system.file('templates', ifelse(grepl('.+\\.tpl$', fp, ignore.case = TRUE), fp, sprintf('%s.tpl', fp)), package = 'rapport')
-            if (!file.exists(fp))
+            ## is it local file found in working, package or custom \code{getOption('tpl.paths')} directory?
+            if (!grepl('.+\\.tpl$', fp, ignore.case = TRUE))
+                fp <- c(fp, sprintf('%s.tpl', fp))
+            fp <- c(fp, unlist(lapply(fp, function(file) file.path(getOption('tpl.paths'), file))), system.file('templates', fp, package = 'rapport'))
+            fp <- fp[file.exists(fp)]
+            if (length(fp) == 0)
                 stop('File not found!')
+            if (length(fp) > 1) {
+                fp <- fp[1]
+                warning(sprintf('Multiple templates found with given name, using: %s', fp))
+            }
         }
         txt <- readLines(fp, warn = FALSE) # load template from file path
     } else if (l > 1){

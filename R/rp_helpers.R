@@ -550,9 +550,74 @@ check.name <- function(x, size = 30L, ...){
 #' @export
 #' @param ... additional parameters for \code{\link{dir}} function
 tpl.list <- function(...){
-    dir(system.file('templates', package = 'rapport'), pattern = '^.+\\.tpl$', ...)
+    dir(c('./', getOption('tpl.paths'), system.file('templates', package = 'rapport')), pattern = '^.+\\.tpl$', ...)
 }
 
+#' Template paths
+#'
+#' List all custom paths where rapport will look for templates.
+#' @return a character vector with paths
+#' @examples \dontrun{
+#' tpl.paths()
+#' }
+tpl.paths <- function()
+    getOption('tpl.paths')
+
+#' Reset template paths
+#'
+#' Resets to default (NULL) all custom paths where rapport will look for templates.
+#' @examples \dontrun{
+#' tpl.paths.reset()
+#' }
+tpl.paths.reset <- function()
+    options('tpl.paths' = NULL)
+
+#' Add template path
+#'
+#' Adds a new element to custom paths' list where rapport will look for templates.
+#' @param ... character vector of paths
+#' @return TRUE on success (invisibly)
+#' @examples \dontrun{
+#' tpl.paths.add('/tmp')
+#' tpl.list()
+#' 
+#' ## might trigger an error:
+#' tpl.paths.add('/home', '/rapport')
+#' }
+tpl.paths.add <- function(...) {
+    paths <- as.character(substitute(list(...)))[-1L]
+    if (!all(sapply(paths, is.character)))
+        stop('Wrong arguments (not characters) supplied!')
+    if (!all(file.exists(paths)))
+        stop('Specified paths do not exists on filesystem!')
+    options('tpl.paths' = union(tpl.paths(), paths))
+    invisible(TRUE)
+}
+
+#' Remove template path
+#'
+#' removes an element from custom paths' list where rapport will look for templates.
+#' @param ... character vector of paths
+#' @return TRUE on success (invisibly)
+#' @examples \dontrun{
+#' tpl.paths()
+#' tpl.paths.add('/tmp')
+#' tpl.paths()
+#' tpl.paths.remove('/tmp')
+#' tpl.paths()
+#' 
+#' ## might trigger an error:
+#' tpl.paths.remove('/root')
+#' }
+tpl.paths.remove <- function(...) {
+    paths <- as.character(substitute(list(...)))[-1L]
+    if (!all(sapply(paths, is.character)))
+        stop('Wrong arguments (not characters) supplied!')
+    if (!all(paths %in% tpl.paths()))
+        warning('Specified paths were not added to custom paths list before!')
+    options('tpl.paths' = setdiff(tpl.paths(), paths))
+    invisible(TRUE)
+}
 
 #' Input Limits
 #'
