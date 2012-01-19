@@ -1,4 +1,68 @@
-#' Evals chunk(s) of R code
+#' Eval with messages
+#'
+#' This function takes text(s) of R code, evaluates all at one run then returns a list with four elements:
+#' 
+#' \itemize{
+#'     \item \emph{src} - a character value with specified R code.
+#'     \item \emph{output} - generated output. NULL if nothing is returned. If any string returned an R object while evaling then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{tmpfile()}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
+#'     \item \emph{type} - class of generated output. "NULL" if nothing is returned, "image" if the graphic device was touched, "error" if some error occured.
+#'     \item \emph{msg} - possible messages grabbed while evaling specified R code with the following structure:
+#'     \itemize{
+#'         \item \emph{messages} - string of possible diagnostic message(s)
+#'         \item \emph{warnings} - string of possible warning message(s)
+#'         \item \emph{errors} - string of possible error message(s)
+#'     }
+#' }
+#' 
+#' Note, that \code{ggplot2} and \code{lattice} graphs should be printed in \code{evals.msg} to show the plot. 
+#' @param src character values containing R code
+#' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
+#' @return  a list of parsed elements each containg: src (the command run), output (what the command returns, NULL if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to NULL) and errors (if any returned by the command run, otherwise set to NULL). See Details above.
+#' @export
+#' @examples {
+#' eval.msgs('1:5')
+#' eval.msgs(c('1:3', 'runiff(23)'))
+#' eval.msgs(c('1:5', '3:5'))
+#' eval.msgs(c('pi', '1:10', 'NULL'))
+#' eval.msgs('pi')
+#' eval.msgs('1:2')
+#' identical(evals('pi')[[1]], eval.msgs('pi'))
+#' }
+eval.msgs <- function(src, env = NULL) { 
+    
+    if (is.null(env)) env <- new.env()
+    
+    warnings <- NULL 
+    warning.handler <- function(w) { 
+        warnings <<- w 
+        invokeRestart("muffleWarning") 
+    }
+    
+    returns <- withCallingHandlers(tryCatch(eval(parse(text=src), envir = env), error = function(e) e), warning = warning.handler)
+    error <- grep('error', lapply(returns, function(x) class(x)))
+    error <- c(error, grep('error', class(returns)))
+    
+    ## error handling
+    if (length(error) > 0) {
+        error <- returns$message
+        returns <- NULL
+    } else
+        error <- NULL    
+    
+    ## warnings
+    warnings <- warnings$message    # only last warning is returned!
+    
+    list(src    = src,
+            output = returns,
+            type   = class(returns),
+            msg    = list(
+                    messages = NULL,
+                    warnings = warnings,
+                    errors   = error))
+}
+
+
+#' Evals and checks
 #'
 #' This function takes either a list of integer indices which point to position of R code in \code{body} character vector, or a vector/list of strings with actual R code, then evaluates each list element, and returns a list with four elements: a character value with R code, generated output, class of generated output and possible error/warning messages. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory. Please see Details below.
 #'
@@ -18,7 +82,16 @@
 #'         \item \emph{errors} - string of possible error message(s)
 #'     }
 #' }
+#' 
+#' With \code{check.output} options set to \code{FALSE}, \code{evals} will not check each line of passed R code for outputs to speed up runtime. This way the user is required to pass only reliable and well structured/formatted text to \code{evals}. A list to check before running code in \code{evals}:
 #'
+#' \itemize{
+#'     \item the code should return on the last line of the passed code (if it returns before that, it would not be grabbed),
+#'     \item the code should always return something on the last line (if you do not want to return anything, add \code{NULL} as the last line),
+#'     \item ggplot and lattice graphs should be always printed (of course on the last line),
+#'     \item the code should be checked before live run with \code{check.output} option set to \code{TRUE} just to be sure if everything goes OK. 
+#' }
+#' 
 #' Please check the examples carefully below to get a detailed overview of \code{\link{evals}}.
 #' @param txt a list with character values containing R code
 #' @param ind a list with numeric indices pointing to R code in \code{body}
@@ -28,6 +101,7 @@
 #' @param length R object exceeding the specified length will not be returned. The default value (\code{Inf}) does not have any restrictions.
 #' @param output a character vector of required returned values. See below.
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
+#' @param check.output to check each line of \code{txt} for outputs. If set to \code{TRUE} you would result in some overhead as all commands have to be run twice (first to check if any output was generated and if so in which part(s), later the R objects are to be grabbed). With \code{FALSE} settings \code{evals} runs much faster, but as now checks are made, some requirements apply, see Details.
 #' @param ... optional parameters passed to \code{png(...)}
 #' @return a list of parsed elements each containg: src (the command run), output (what the command returns, NULL if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned	by the command run, otherwise set to NULL) and errors (if any returned by the command run, otherwise set to NULL). See Details above.
 #' @author Gergely Daróczi
@@ -55,7 +129,7 @@
 #' txt <- readLines(textConnection('rnorm(100)
 #'   list(x = 10:1, y = "Godzilla!")
 #'   c(1,2,3)
-##    matrix(0,3,5)'))
+#'    matrix(0,3,5)'))
 #' evals(txt, classes='numeric')
 #' evals(txt, classes=c('numeric', 'list'))
 #'
@@ -123,7 +197,7 @@
 #' evals('mean(x)')
 #' }
 #' @export
-evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, ...){
+evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, ...){
 
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
@@ -147,7 +221,8 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
     if (is.null(env)) env <- new.env()
     if (!is.environment(env)) stop('Wrong env paramater (not an environment) provided!')
     ## env for checking output before truly eval-ing -> evaluate()
-    env.evaluate <- env
+    if (check.output)
+        env.evaluate <- env
 
     lapply(txt, function(src) {
 
@@ -157,77 +232,88 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         file <- tempfile(fileext = '.png', ...)
         png(file)
 
-        ## running evalute for checking outputs and grabbing warnings/errors
-        eval <- suppressWarnings(try(evaluate(src, envir = env.evaluate), silent=TRUE))
+        if (check.output) {
+            ## running evalute for checking outputs and grabbing warnings/errors
+            eval <- suppressWarnings(try(evaluate(src, envir = env.evaluate), silent=TRUE))
+ 
+            ## error handling
+            error <- grep('error', lapply(eval, function(x) class(x)))
+            error <- c(error, grep('error', class(eval)))
+            if (length(error) != 0) {
+                ## TODO: evals('histogram(mtcars$hp') # lame error msg...
+    
+                res <- list(src          = src,
+                        output       = NULL,
+                        type         = 'error',
+                        msg = list(
+                                messages = NULL,
+                                warnings = NULL,
+                                errors   = sprintf('**Error** in "%s": "%s"',  ifelse(paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')=='', paste(src, collapse=' + '), paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')), ifelse(class(eval)=='try-error', gsub('Error in parse.(text) = string, src = src) : <text>:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
+                )
+                return(res[output])
+            }
 
-        ## error handling
-        error <- grep('error', lapply(eval, function(x) class(x)))
-        error <- c(error, grep('error', class(eval)))
-        if (length(error) != 0) {
+            ## warnings
+            warnings <- grep('warning', lapply(eval, function(x) class(x)))
+            if (length(warnings) == 0) {
+                warnings <- NULL
+            } else
+                warnings <- sprintf('**Warning** in "%s": "%s"', paste(sapply(eval[warnings], function(x) x$call), collapse = " + "), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
+    
+            ### good code survived here!
+    
+            ### checking out wich element produced the output               ## outRageous coding starts here
+            ## removing messages/errors
+            eval.no.msg <- eval[sapply(eval, function(x) {if (is.list(x)) all(names(x) == 'src') else TRUE})]
+            ## which elements are the sources?
+            eval.sources.n <- which(sapply(eval.no.msg, function(x) {if (!is.null(names(x))) (all(names(x) == 'src')) else FALSE}))
+            ## the sources
+            eval.sources <- eval.no.msg[eval.sources.n]
+            ## which sources do output?
+            eval.sources.outputs <- eval.sources.n[which(sapply(eval.sources.n, function(x) {
+                if (x+1 > length(eval.no.msg))
+                    FALSE
+                else
+                    class(eval.no.msg[[x+1]]) == "character"
+            }))]
+            ## which is the last element that produces output?              ## Rage /off
+            if (length(eval.sources.outputs) > 0)
+                eval.sources.last.outputs <- tail(eval.sources.outputs, 1)
 
-            res <- list(src          = src,
-                    output       = NULL,
-                    type         = 'error',
-                    msg = list(
-                            messages = NULL,
-                            warnings = NULL,
-                            errors   = sprintf('**Error** in "%s": "%s"',  ifelse(paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')=='', paste(src, collapse=' + '), paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')), ifelse(class(eval)=='try-error', gsub('Error in parse.(text) = string, src = src) : <text>:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
-            )
-            return(res[output])
-        }
-
-        ## warnings
-        warnings <- grep('warning', lapply(eval, function(x) class(x)))
-        if (length(warnings) == 0) {
-            warnings <- NULL
-        } else
-            warnings <- sprintf('**Warning** in "%s": "%s"', paste(sapply(eval[warnings], function(x) x$call), collapse = " + "), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
-
-        ### good code survived here!
-
-        ### checking out wich element produced the output               ## outRageous coding starts here
-        ## removing messages/errors
-        eval.no.msg <- eval[sapply(eval, function(x) {if (is.list(x)) all(names(x) == 'src') else TRUE})]
-        ## which elements are the sources?
-        eval.sources.n <- which(sapply(eval.no.msg, function(x) {if (!is.null(names(x))) (all(names(x) == 'src')) else FALSE}))
-        ## the sources
-        eval.sources <- eval.no.msg[eval.sources.n]
-        ## which sources do output?
-        eval.sources.outputs <- eval.sources.n[which(sapply(eval.sources.n, function(x) {
-                                    if (x+1 > length(eval.no.msg))
-                                        FALSE
-                                    else
-                                        class(eval.no.msg[[x+1]]) == "character"
-                                }))]
-        ## which is the last element that produces output?              ## Rage /off
-        if (length(eval.sources.outputs) > 0)
-            eval.sources.last.outputs <- tail(eval.sources.outputs, 1)
-
-        ## graph was produced?
-        graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
-        ## any returned value?
-        if (length(eval.sources.outputs) > 0) {
-            if (is.logical(graph)) {
-                ## if last element returns value (happily)
-                if (eval.sources.last.outputs == tail(eval.sources.n, 1)) {
-                    returns <- suppressWarnings(eval(parse(text = src), envir = env))
-                } else {    # if not the last element returns the value (lame)
-                    ## eval in temp environment all elements before last element that really do output
-                    env.temp <- env
-                    ## run commands before the last element which does output something
-                    if (eval.sources.last.outputs != 1)
-                        lapply(1:(which(eval.sources.last.outputs == eval.sources.n)-1), function(i) {
-                            suppressWarnings(eval(parse(text = eval.sources[[i]]$src), envir = env.temp))
-                        })
-                    ## grab output at last with last element with output
-                    returns <- suppressWarnings(eval(parse(text = eval.sources[[eval.sources.last.outputs]]$src), envir = env.temp))
-                    ## and run all stuff in main environment for consistency
-                    suppressWarnings(eval(parse(text = src), envir = env))
+            ## graph was produced?
+            graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
+            ## any returned value?
+            if (length(eval.sources.outputs) > 0) {
+                if (is.logical(graph)) {
+                    ## if last element returns value (happily)
+                    if (eval.sources.last.outputs == tail(eval.sources.n, 1)) {
+                        returns <- suppressWarnings(eval(parse(text = src), envir = env))
+                    } else {    # if not the last element returns the value (lame)
+                        ## eval in temp environment all elements before last element that really do output
+                        env.temp <- env
+                        ## run commands before the last element which does output something
+                        if (eval.sources.last.outputs != 1)
+                            lapply(1:(which(eval.sources.last.outputs == eval.sources.n)-1), function(i) {
+                                suppressWarnings(eval(parse(text = eval.sources[[i]]$src), envir = env.temp))
+                            })
+                        ## grab output at last with last element with output
+                        returns <- suppressWarnings(eval(parse(text = eval.sources[[eval.sources.last.outputs]]$src), envir = env.temp))
+                        ## and run all stuff in main environment for consistency
+                        suppressWarnings(eval(parse(text = src), envir = env))
+                    }
                 }
+            } else {
+                returns <- NULL
             }
         } else {
-            returns <- NULL
+            res <- eval.msgs(src, env = env)
+            if (!is.null(res$msg$errors))
+                return(res)
+            returns <- res$output
+            warnings <- res$msg$warnings
+            graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
         }
+        
         if (is.character(graph)) {
             returns <- graph
             class(returns) <- "image"

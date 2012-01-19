@@ -1,11 +1,11 @@
 \name{evals}
 \alias{evals}
-\title{Evals chunk(s) of R code}
+\title{Evals and checks}
 \usage{
   evals(txt = NULL, ind = NULL, body = NULL,
     classes = NULL, hooks = NULL, length = Inf,
     output = c("all", "src", "output", "type", "msg"),
-    env = NULL, ...)
+    env = NULL, check.output = TRUE, ...)
 }
 \arguments{
   \item{txt}{a list with character values containing R
@@ -45,6 +45,15 @@
   \item{env}{environment where evaluation takes place. If
   not set (by default), a new temporary environment is
   created.}
+
+  \item{check.output}{to check each line of \code{txt} for
+  outputs. If set to \code{TRUE} you would result in some
+  overhead as all commands have to be run twice (first to
+  check if any output was generated and if so in which
+  part(s), later the R objects are to be grabbed). With
+  \code{FALSE} settings \code{evals} runs much faster, but
+  as now checks are made, some requirements apply, see
+  Details.}
 
   \item{...}{optional parameters passed to \code{png(...)}}
 }
@@ -109,6 +118,23 @@
   warning message(s) \item \emph{errors} - string of
   possible error message(s) } }
 
+  With \code{check.output} options set to \code{FALSE},
+  \code{evals} will not check each line of passed R code
+  for outputs to speed up runtime. This way the user is
+  required to pass only reliable and well
+  structured/formatted text to \code{evals}. A list to
+  check before running code in \code{evals}:
+
+  \itemize{ \item the code should return on the last line
+  of the passed code (if it returns before that, it would
+  not be grabbed), \item the code should always return
+  something on the last line (if you do not want to return
+  anything, add \code{NULL} as the last line), \item ggplot
+  and lattice graphs should be always printed (of course on
+  the last line), \item the code should be checked before
+  live run with \code{check.output} option set to
+  \code{TRUE} just to be sure if everything goes OK. }
+
   Please check the examples carefully below to get a
   detailed overview of \code{\link{evals}}.
 }
@@ -137,6 +163,7 @@ evals(txt)
 txt <- readLines(textConnection('rnorm(100)
   list(x = 10:1, y = "Godzilla!")
   c(1,2,3)
+   matrix(0,3,5)'))
 evals(txt, classes='numeric')
 evals(txt, classes=c('numeric', 'list'))
 

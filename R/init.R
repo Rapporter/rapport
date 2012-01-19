@@ -1,5 +1,8 @@
 .onLoad <- function(libname, pkgname)
 {
+    ## rapport settings
+    options('rapport.mode'  = 'normal')
+
     ## encrypt/decrypt key generation settings
     options('.encrypt.chars'   = paste(c(LETTERS, letters, 0:9, ' ', '(', ')', '=', '~', '.', '+', '"', "'",'$', '#'), collapse = ""))
     set.seed(1956)

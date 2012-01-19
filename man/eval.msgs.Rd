@@ -1,0 +1,63 @@
+\name{eval.msgs}
+\alias{eval.msgs}
+\title{Eval with messages}
+\usage{
+  eval.msgs(src, env = NULL)
+}
+\arguments{
+  \item{src}{character values containing R code}
+
+  \item{env}{environment where evaluation takes place. If
+  not set (by default), a new temporary environment is
+  created.}
+}
+\value{
+  a list of parsed elements each containg: src (the command
+  run), output (what the command returns, NULL if nothing
+  returned, path to image file if a plot was genereted),
+  type (class of returned object if any) and messages:
+  warnings (if any returned by the command run, otherwise
+  set to NULL) and errors (if any returned by the command
+  run, otherwise set to NULL). See Details above.
+}
+\description{
+  This function takes text(s) of R code, evaluates all at
+  one run then returns a list with four elements:
+}
+\details{
+  \itemize{ \item \emph{src} - a character value with
+  specified R code.  \item \emph{output} - generated
+  output. NULL if nothing is returned. If any string
+  returned an R object while evaling then the \emph{last} R
+  object will be returned as a raw R object. If a graph is
+  plotted in the given text, the returned object is a
+  string specifying the path to the saved png in temporary
+  directory (see: \code{tmpfile()}). If multiple plots was
+  run in the same run (see: nested lists as inputs above)
+  then the last plot is saved. If graphic device was
+  touched, then no other R objects will be returned.  \item
+  \emph{type} - class of generated output. "NULL" if
+  nothing is returned, "image" if the graphic device was
+  touched, "error" if some error occured.  \item \emph{msg}
+  - possible messages grabbed while evaling specified R
+  code with the following structure: \itemize{ \item
+  \emph{messages} - string of possible diagnostic
+  message(s) \item \emph{warnings} - string of possible
+  warning message(s) \item \emph{errors} - string of
+  possible error message(s) } }
+
+  Note, that \code{ggplot2} and \code{lattice} graphs
+  should be printed in \code{evals.msg} to show the plot.
+}
+\examples{
+{
+eval.msgs('1:5')
+eval.msgs(c('1:3', 'runiff(23)'))
+eval.msgs(c('1:5', '3:5'))
+eval.msgs(c('pi', '1:10', 'NULL'))
+eval.msgs('pi')
+eval.msgs('1:2')
+identical(evals('pi')[[1]], eval.msgs('pi'))
+}
+}
+
