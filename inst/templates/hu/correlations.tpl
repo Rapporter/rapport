@@ -4,9 +4,9 @@ Author: Daróczi Gergely
 Email: gergely@snowl.net
 Description: Folytonos változók közötti lineáris összefüggések vizsgálata.
 Packages: ascii
-Example: rapport('hu/correlations', data=ius2009, vars=c('age', 'edu', 'leisure'))
+Example: rapport('hu/correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
          rapport('hu/correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
-vars        | numeric[1,10] | Változók              | Folytonos változók
+vars        | *numeric[1,10] | Változók              | Folytonos változók
 cor.matrix  | TRUE          | Korrelációs mátrix    | Korrelációs mátrix hozzáadása
 cor.plot    | TRUE          | Pontdiagram           | Pontdiagram hozzáadása
 head-->
@@ -33,12 +33,12 @@ Korrelálatlan (-0.2 < r < 0.2) változók: <%l <- row.names(cm)[which((cm < 0.2
 
 <%
 if (cor.matrix) {
-    cm <- rp.round(cor(vars))
+    cm <- rp.round(cor(vars, use = 'complete.obs'))
     d <- attributes(cm)
     for (row in attr(cm, 'dimnames')[[1]])
         for (col in attr(cm, 'dimnames')[[2]]) {
             test.p <- cor.test(vars[, row], vars[, col])$p.value 
-            cm[row, col] <- paste(cm[row, col], ' ', ifelse(test.p > 0.05, '', ifelse(test.p > 0.01, '\\*', ifelse(test.p > 0.001, '\\*\\*', '\\*\\*\\*'))), sep='')
+            cm[row, col] <- paste(cm[row, col], ' ', ifelse(test.p > 0.05, '', ifelse(test.p > 0.01, ' *', ifelse(test.p > 0.001, ' * *', ' * * *'))), sep='')
         }
     diag(cm) <- ''
     as.data.frame(cm)
