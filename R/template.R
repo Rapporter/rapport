@@ -450,9 +450,10 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
 #' @param tag.open a string containing opening tag
 #' @param tag.close a string containing closing tag
 #' @param remove.comments should comments be omitted on evaluation?
+#' @param rapport.mode see: \code{?rapport}
 #' @param ... additional params for \code{grep}-like functions
 #' @keywords internal
-elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, ...){
+elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, rapport.mode = 'normal', ...){
 
     if (inherits(x, 'rp.block')){
 
@@ -500,9 +501,13 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
                     stop('output exceeds allowed length for an inline chunk (', x$src, ')')
                 ## return info on errors, don't just bleed to death! (bug spotted & fixed by Gergely)
                 err <- x$msg$errors
-                if (!is.null(err)) {        ## error handling in blocks:
-                    warning(err, call.=F)   ##  * shoot warning()
-                    return('<ERROR>')       ##  * returning '<ERROR>' inline
+                if (!is.null(err)) {                ## error handling in blocks:
+                    if (rapport.mode == 'debug') {  ##   * in debug mode: halt
+                        cat(sprintf('Malformed command: %s', x$src), '\n')
+                        stop(err, call. = FALSE)
+                    }                               ##   * otherwise:
+                    warning(err, call.=F)           ##       * shoot warning()
+                    return('<ERROR>')               ##       * returning '<ERROR>' inline
                 }
                 if (!is.null(x$output))
                     return(rp.prettyascii(x$output))    # get output
@@ -551,12 +556,15 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' @param ... matches template inputs in format 'key = "value"'
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
+#' @param mode forcing rapport to run in \code{performance} or \code{debug} mode instead of normal behaviour. Only change this if you really know what you do! In \code{performance} mode \code{rapport} will assume all templates to be \code{strict} (see: \code{evals(..., check.output = FALSE)}), in \code{debug} mode \code{rapport} will halt on first error. 
 #' @return a list with \code{rapport} class.
 #' @examples \dontrun{
-#' rapport("example", ius2008, var="it.leisure", desc=FALSE, hist=T, color="green")
+#' rapport("example", ius2008, var="leisure")
+#' rapport("example", ius2008, var="leisure", desc=FALSE, hist=T, themer="Set1")
+#' rapport("example", ius2008, var="leisure", mode='debug')
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0){
+rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, mode = getOption('rapport.mode')){
 
     txt    <- tpl.find(fp)                      # split file to text
     h      <- suppressMessages(tpl.info(txt))   # template header
@@ -716,7 +724,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
     }
 
     opts.bak <- options()                      # backup options
-    report <- lapply(elem, elem.eval, env = e, check.output = !as.logical(meta$strict)) # render template body
+    report <- lapply(elem, elem.eval, env = e, check.output = !as.logical(meta$strict), rapport.mode = mode) # render template body
     options(opts.bak)                          # resetting options
 
     ## error handling in chunks
@@ -725,6 +733,10 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
         if (x$type == 'block'){
             rerr <- x$robjects[[1]]$msg$errors
             if (!is.null(rerr)){
+                if (mode == 'debug') {      ## halt in debug mode
+                        cat(sprintf('Malformed command(s):\n%s', paste(x$robjects[[1]]$src, collapse='\n')), '\n')
+                        stop(rerr, call. = FALSE)
+                    }
                 warning(rerr, call. = FALSE)
                 x$robjects[[1]]$output <- '<ERROR>'
             }

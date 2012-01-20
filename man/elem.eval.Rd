@@ -4,7 +4,7 @@
 \usage{
   elem.eval(x, tag.open = get.tags("inline.open"),
     tag.close = get.tags("inline.close"),
-    remove.comments = TRUE, ...)
+    remove.comments = TRUE, rapport.mode = "normal", ...)
 }
 \arguments{
   \item{x}{template file pointer}
@@ -15,6 +15,8 @@
 
   \item{remove.comments}{should comments be omitted on
   evaluation?}
+
+  \item{rapport.mode}{see: \code{?rapport}}
 
   \item{...}{additional params for \code{grep}-like
   functions}
