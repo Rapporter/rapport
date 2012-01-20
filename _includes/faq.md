@@ -2,7 +2,7 @@
 
 Actually a lot of stuff:
 
-- first of all, it's a name of absolutely marvellous<a id="infinite-loop" href="#infinite-loop">R package</a> created by two humble developers (add link to contact)
+- first of all, it's a name of absolutely marvellous <a id="infinite-loop" href="#infinite-loop">R package</a> created by two humble developers <!-- add link to contacts -->
 - initially, _rapport_ was just a pun (and a very lame attempt to get an available domain name)
 - it also refers to *["the relationship of two or more people who are in sync or on the same wavelength because they feel similar and/or relate well to each other"](http://en.wikipedia.org/wiki/Rapport)*
 - in psychotherapy, _rapport_ reflects mutual empathy and understanding between a therapist and client
@@ -12,7 +12,7 @@ Actually a lot of stuff:
 <a id="authors"> </a>
 #### Who is developing this package?
 
-At the moment Aleksandar Blagotić and Gergely Daróczi (add links to contact) are painstakingly procrastinating to the utmost limits of endurance on this project. Feel free to [contribute](#custom) and help [translating](#translate) it!
+At the moment Aleksandar Blagotić and Gergely Daróczi <!-- add links to contact --> are painstakingly procrastinating to the utmost limits of endurance on this project. Feel free to [contribute](#custom) and help [translating](#translate) it! <!-- were you serious with this one?! -->
 
 #### Why should I use *rapport* instead of [Sweave](http://www.stat.uni-muenchen.de/~leisch/Sweave/), [brew](http://cran.r-project.org/web/packages/brew/index.html), [knitr](https://github.com/yihui/knitr) etc.
 
@@ -20,7 +20,7 @@ At the moment Aleksandar Blagotić and Gergely Daróczi (add links to contact) a
 
 **Long answer:**  you should not... oftentimes... especially if you already have an efficient development workflow. But as the matter of fact, *rapport* is a bit different from the other popular dynamical report frameworks in R: [Sweave](http://www.stat.uni-muenchen.de/~leisch/Sweave/), [brew](http://cran.r-project.org/web/packages/brew/index.html), or even [knitr](https://github.com/yihui/knitr). With those nifty tools you can easily embed [R](http://www.r-project.org/) code and [R](http://www.r-project.org/) output in _TeX_, _PDF_, _HTML_ and other formats, which is a common practice in advanced R users. You can easily write custom reports in pure [R](http://www.r-project.org/) and, if needed, export them to various formats with nice formatting.
 
-On the other hand, _rapport_ holds some [predefined](#templates)/[custom](#custom) templates, which can be easily ran with custom dataset and input specifications (add link to inputs section) with a simple one-liner. The returned nicely formatted reports can be exported to various formats. By this you could say: *rapport* is for child**R**en. We would rather say: *rapport* is for those who regularly runs similar analysis and has to show up some documentation/reports AND also for basic use**R**s. Just do not forget: you can set up [any (complex) template](#custom) on your own easily, even localized ones in several languages - which is a quite unique feature! <!-- continue form here -->
+On the other hand, _rapport_ holds some [predefined](#templates)/[custom](#custom) templates, which can be easily ran with custom dataset and input specifications <!-- add links to inputs section --> with a simple one-liner. The returned nicely formatted reports can be exported to various formats. By this you could say: *rapport* is for child**R**en. We would rather say: *rapport* is for those who regularly runs similar analysis and has to show up some documentation/reports AND also for basic use**R**s. Just do not forget: you can set up [any (complex) template](#custom) on your own easily, even localized ones in several languages - which is a quite unique feature! <!-- continue form here -->
 
 #### Okay, how can I use this package?
 
