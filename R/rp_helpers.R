@@ -12,7 +12,6 @@ is.rapport <- function(x)  inherits(x, 'rapport')
 #' Checks if provided R object is a \code{rapport} block element.
 #' @param x any R object to check
 #' @return a logical value
-#' @export
 is.rp.block <- function(x)  (inherits(x, 'rp.block'))
 
 
@@ -21,7 +20,6 @@ is.rp.block <- function(x)  (inherits(x, 'rp.block'))
 #' Checks if provided R object is a \code{rapport} inline element.
 #' @param x any R object to check
 #' @return a logical value
-#' @export
 is.rp.inline <- function(x)  (inherits(x, 'rp.inline'))
 
 
@@ -30,7 +28,6 @@ is.rp.inline <- function(x)  (inherits(x, 'rp.inline'))
 #' Checks if provided R object is a \code{rapport} inline element.
 #' @param x any R object to check
 #' @return a logical value
-#' @export
 is.rp.heading <- function(x)  (inherits(x, 'rp.heading'))
 
 
@@ -39,6 +36,13 @@ is.rp.heading <- function(x)  (inherits(x, 'rp.heading'))
 #' From our point of view, a \code{variable} is a non-\code{NULL} atomic vector that has no dimensions. This approach bypasses \code{factor} issues with \code{\link{is.vector}}, and also eliminates multidimensional vectors, such as matrices and arrays.
 #' @param x an object to be checked for "variable" format
 #' @return a logical value indicating that provided object is a "variable"
+#' @examples
+#' is.variable(rnorm(100))  # [1] TRUE
+#' is.variable(LETTERS)     # [1] TRUE
+#' is.variable(NULL)        # [1] FALSE
+#' is.variable(mtcars)      # [1] FALSE
+#' is.variable(HairEyeColor[, , 1])  # [1] FALSE
+#' is.variable(list())      # [1] FALSE
 #' @export
 is.variable <- function(x){
 
@@ -51,16 +55,23 @@ is.variable <- function(x){
 
 #' Tabular Structure
 #'
-#' Checks if object has "tabular" structure - in this particular case, that means \code{\link{matrix}} and \code{\link{data.frame}} classes only.
+#' Checks if object has "tabular" structure (not to confuse with \code{\link{table}}) - in this particular case, that means \code{\link{matrix}} and \code{\link{data.frame}} objects only.
 #' @param x an object to be checked for "tabular" format
 #' @return a logical value indicating that provided object has tabular structure
+#' @examples
+#' is.tabular(HairEyeColor[, , 1])  # [1] TRUE
+#' is.tabular(mtcars)               # [1] TRUE
+#' is.tabular(table(mtcars$cyl))    # [1] FALSE
+#' is.tabular(rnorm(100))           # [1] FALSE
+#' is.tabular(LETTERS)              # [1] FALSE
+#' is.tabular(pi)                   # [1] FALSE
 #' @export
 is.tabular <- function(x){
 
     if (missing(x))
         stop('no object to test table')
 
-    inherits(x, c('matrix', 'data.frame'))
+    inherits(x, c('matrix', 'data.frame')) && length(dim(x)) == 2
 }
 
 
@@ -80,7 +91,7 @@ is.heading <- function(x){
 }
 
 
-#' Get variable name
+#' Variable Name
 #'
 #' This function returns character value previously stored in variable's \code{name} attribute. If none found, the function fallbacks to object's name.
 #' @param x an R (atomic or data.frame/list) object to extract names from
@@ -123,7 +134,7 @@ rp.name <- function(x){
 }
 
 
-#' Get variable label
+#' Get Variable Label
 #'
 #' This function returns character value previously stored in variable's \code{label} attribute. If none found, the function fallbacks to object's name (retrieved by \code{deparse(substitute(x))}).
 #' @param x an R object to extract labels from
@@ -135,7 +146,7 @@ rp.name <- function(x){
 #' rp.label(x, FALSE)  # fails with error message
 #'
 #' rp.label(mtcars$hp) <- "Horsepower"
-#' rp.label(mtcars)    # returns "Horsepower" instead of "hp"
+#' rp.label(mtcars)         # returns "Horsepower" instead of "hp"
 #' rp.label(mtcars, FALSE)  # returns NA where no labels are found
 #' }
 #' @export
@@ -183,10 +194,10 @@ rp.label <- function(x, fallback = TRUE){
 }
 
 
-#' Set variable label
+#' Set Variable Label
 #'
-#' this function sets a label to an \code{\link{atomic}} vector, by storing a character value to its \code{label} attribute.
-#' @param var an atomic vector
+#' This function sets a label to a variable, by storing a character string to its \code{label} attribute.
+#' @param var a variable (see \code{\link{is.variable}} for details)
 #' @param value a character value that is to be set as variable label
 #' @usage rp.label(var) <- value
 #' @seealso \code{rp.label}
@@ -203,8 +214,8 @@ rp.label <- function(x, fallback = TRUE){
     if (!is.variable(var))
         stop('label can only be assigned to a variable')
 
-    if (!(is.character(value) & length(value) == 1))
-        stop('only a character value can be assigned to a variable label')
+    if (!is.string(value))
+        stop('only a character string can be assigned to a variable label')
 
     attr(var, 'label') <- value
 
@@ -214,10 +225,14 @@ rp.label <- function(x, fallback = TRUE){
 
 #' Tag Existence
 #'
-#' Checks if a character value contains specified tags.
-#' @param x a character value to check for \code{brew} strings
-#' @param ... additional arguments for \code{\link{grepl}} function
+#' Checks if a character vector elements contain specified tags. Note that this helper does not parse R code within tags, but just checks for tag existence in provided string!
+#' @param x a character value to check for tag strings
+#' @param ... an argument list with tags to check
 #' @return a logical value indicating if the string has passed the check
+#' @examples
+#' has.tags("<% pi %>", "<%")
+#' has.tags("<% pi %>", "<%", "%>", "<!--", "-->")
+#' has.tags(c("<% pi %>", "<!-- foobar -->"), "<%", "%>", "<!--", "-->")
 #' @export
 has.tags <- function(x, ...){
 
@@ -251,14 +266,14 @@ has.tags <- function(x, ...){
 #' @param include a logical value indicating wheter chunks should be returned (defaults to \code{FALSE})
 #' @param ... additional arguments for \code{\link{gregexpr}} function
 #' @return a character vector with code chunks
-#' @export
 #' @examples \dontrun{
-#'     s <- c("As you know, pi equals <%pi%>",  "2 raised to the power of 3 is <%2^3%>")
-#'     grab.chunks(s, "<%", "%>", FALSE)
-#'     ## [1] "pi"  "2^3"
-#'     grab.chunks(s, "<%", "%>", FALSE)
-#'     ## [1] "<%pi%>"  "<%2^3%>"
+#' s <- c("As you know, pi equals <%pi%>",  "2 raised to the power of 3 is <%2^3%>")
+#' grab.chunks(s, "<%", "%>", FALSE)
+#' ## [1] "pi"  "2^3"
+#' grab.chunks(s, "<%", "%>", FALSE)
+#' ## [1] "<%pi%>"  "<%2^3%>"
 #' }
+#' @export
 grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), include = FALSE, ...){
 
     co <- gregexpr(tag.open, x, ...)
@@ -278,10 +293,13 @@ grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.t
 
 #' Tag Values
 #'
-#' Returns report tag vales: either ones that were set by user, or the default ones.
+#' Returns report tag vales (usually regexes): either user-defined, or the default ones.
 #' @param tag.type a character value with tag value name
 #' @param preset a character value specifying which preset to return
-#' @return either a list (default) or a character value with tag names
+#' @return either a list (default) or a character value with tag regexes
+#' @examples
+#' get.tags()        # same as 'get.tags("all")'
+#' get.tags("chunk.open")
 #' @export
 get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.open', 'inline.close', 'header.open', 'header.close', 'comment.open', 'comment.close'), preset = c('user', 'default')){
 
@@ -346,7 +364,6 @@ get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.op
 #' @param tag.open a string containing opening tag
 #' @param tag.close a string containing closing tag
 #' @return if no tags, or no mismatches are found, original string is returned, otherwise the function will return appropriate error
-#' @export
 tags.misplaced <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close')){
 
     stopifnot(is.string(x))             # strings only!
@@ -525,6 +542,15 @@ extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
 #' @param size an integer value that indicates maximum name length
 #' @param ... additional arguments to be passed to \code{\link{grepl}} function
 #' @return a logical vector indicating which values satisfy the naming conventions
+#' @examples
+#' check.name("foo")               # [1] TRUE
+#' check.name("foo.bar")           # [1] TRUE
+#' check.name("foo_bar")           # [1] TRUE
+#' check.name("foo.bar.234")       # [1] TRUE
+#' check.name("foo.bar.234_asdf")  # [1] TRUE
+#' check.name("234.asdf")          # [1] FALSE
+#' check.name("_asdf")             # [1] FALSE
+#' check.name(".foo")              # [1] FALSE
 #' @export
 check.name <- function(x, size = 30L, ...){
 
@@ -544,17 +570,15 @@ check.name <- function(x, size = 30L, ...){
 #' Package Templates
 #'
 #' Lists all templates bundled with current package build.
-#' @return a character vector with template files
-#' @examples \dontrun{
-#' tpl.list()
-#' }
-#' @export
 #' @param ... additional parameters for \code{\link{dir}} function
+#' @return a character vector with template files
+#' @export
 tpl.list <- function(...){
     dir(c('./', getOption('tpl.paths'), system.file('templates', package = 'rapport')), pattern = '^.+\\.tpl$', ...)
 }
 
-#' Template paths
+
+#' Template Paths
 #'
 #' List all custom paths where rapport will look for templates.
 #' @return a character vector with paths
@@ -564,7 +588,8 @@ tpl.list <- function(...){
 tpl.paths <- function()
     getOption('tpl.paths')
 
-#' Reset template paths
+
+#' Reset Template Paths
 #'
 #' Resets to default (NULL) all custom paths where rapport will look for templates.
 #' @examples \dontrun{
@@ -573,7 +598,8 @@ tpl.paths <- function()
 tpl.paths.reset <- function()
     options('tpl.paths' = NULL)
 
-#' Add template path
+
+#' Add Template Path
 #'
 #' Adds a new element to custom paths' list where rapport will look for templates.
 #' @param ... character vector of paths
@@ -595,9 +621,10 @@ tpl.paths.add <- function(...) {
     invisible(TRUE)
 }
 
-#' Remove template path
+
+#' Remove Template Path
 #'
-#' removes an element from custom paths' list where rapport will look for templates.
+#' Removes an element from custom paths' list where rapport will look for templates.
 #' @param ... character vector of paths
 #' @return TRUE on success (invisibly)
 #' @examples \dontrun{
@@ -620,6 +647,7 @@ tpl.paths.remove <- function(...) {
     invisible(TRUE)
 }
 
+
 #' Input Limits
 #'
 #' Checks input limits based on provided string. If provided string is syntactically correct, a list with integers containing limit boundaries (minimum and maximum value) is returned. If provided input limit exceeds value specified in \code{max.lim} argument, it will be coerced to \code{max.lim} and warning will be returned. Default upper input limit is 50 (variables).
@@ -629,7 +657,7 @@ tpl.paths.remove <- function(...) {
 #' @examples \dontrun{
 #' rapport:::check.limit("[1,20]")
 #' rapport:::check.limit("[1]")
-#'
+#' rapport:::check.limit("[1, 0]")
 #' }
 check.limit <- function(x, max.lim = 50L){
 

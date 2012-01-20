@@ -30,11 +30,11 @@
 }
 \examples{
 \dontrun{
-    s <- c("As you know, pi equals <\%pi\%>",  "2 raised to the power of 3 is <\%2^3\%>")
-    grab.chunks(s, "<\%", "\%>", FALSE)
-    ## [1] "pi"  "2^3"
-    grab.chunks(s, "<\%", "\%>", FALSE)
-    ## [1] "<\%pi\%>"  "<\%2^3\%>"
+s <- c("As you know, pi equals <\%pi\%>",  "2 raised to the power of 3 is <\%2^3\%>")
+grab.chunks(s, "<\%", "\%>", FALSE)
+## [1] "pi"  "2^3"
+grab.chunks(s, "<\%", "\%>", FALSE)
+## [1] "<\%pi\%>"  "<\%2^3\%>"
 }
 }
 

@@ -14,9 +14,4 @@
 \description{
   Lists all templates bundled with current package build.
 }
-\examples{
-\dontrun{
-tpl.list()
-}
-}
 

@@ -12,8 +12,17 @@
   tabular structure
 }
 \description{
-  Checks if object has "tabular" structure - in this
-  particular case, that means \code{\link{matrix}} and
-  \code{\link{data.frame}} classes only.
+  Checks if object has "tabular" structure (not to confuse
+  with \code{\link{table}}) - in this particular case, that
+  means \code{\link{matrix}} and \code{\link{data.frame}}
+  objects only.
+}
+\examples{
+is.tabular(HairEyeColor[, , 1])  # [1] TRUE
+is.tabular(mtcars)               # [1] TRUE
+is.tabular(table(mtcars$cyl))    # [1] FALSE
+is.tabular(rnorm(100))           # [1] FALSE
+is.tabular(LETTERS)              # [1] FALSE
+is.tabular(pi)                   # [1] FALSE
 }
 

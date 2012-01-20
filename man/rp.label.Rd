@@ -1,6 +1,6 @@
 \name{rp.label}
 \alias{rp.label}
-\title{Get variable label}
+\title{Get Variable Label}
 \usage{
   rp.label(x, fallback = TRUE)
 }
@@ -26,7 +26,7 @@ rp.label(x)         # returns "x"
 rp.label(x, FALSE)  # fails with error message
 
 rp.label(mtcars$hp) <- "Horsepower"
-rp.label(mtcars)    # returns "Horsepower" instead of "hp"
+rp.label(mtcars)         # returns "Horsepower" instead of "hp"
 rp.label(mtcars, FALSE)  # returns NA where no labels are found
 }
 }

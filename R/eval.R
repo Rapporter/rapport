@@ -1,7 +1,7 @@
 #' Eval with messages
 #'
 #' This function takes text(s) of R code, evaluates all at one run then returns a list with four elements:
-#' 
+#'
 #' \itemize{
 #'     \item \emph{src} - a character value with specified R code.
 #'     \item \emph{output} - generated output. NULL if nothing is returned. If any string returned an R object while evaling then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{tmpfile()}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
@@ -13,13 +13,13 @@
 #'         \item \emph{errors} - string of possible error message(s)
 #'     }
 #' }
-#' 
-#' Note, that \code{ggplot2} and \code{lattice} graphs should be printed in \code{evals.msg} to show the plot. 
+#'
+#' Note, that \code{ggplot2} and \code{lattice} graphs should be printed in \code{evals.msg} to show the plot.
 #' @param src character values containing R code
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @return  a list of parsed elements each containg: src (the command run), output (what the command returns, NULL if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to NULL) and errors (if any returned by the command run, otherwise set to NULL). See Details above.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' eval.msgs('1:5')
 #' eval.msgs(c('1:3', 'runiff(23)'))
 #' eval.msgs(c('1:5', '3:5'))
@@ -28,30 +28,30 @@
 #' eval.msgs('1:2')
 #' identical(evals('pi')[[1]], eval.msgs('pi'))
 #' }
-eval.msgs <- function(src, env = NULL) { 
-    
+eval.msgs <- function(src, env = NULL) {
+
     if (is.null(env)) env <- new.env()
-    
-    warnings <- NULL 
-    warning.handler <- function(w) { 
-        warnings <<- w 
-        invokeRestart("muffleWarning") 
+
+    warnings <- NULL
+    warning.handler <- function(w) {
+        warnings <<- w
+        invokeRestart("muffleWarning")
     }
-    
+
     returns <- withCallingHandlers(tryCatch(eval(parse(text=src), envir = env), error = function(e) e), warning = warning.handler)
     error <- grep('error', lapply(returns, function(x) class(x)))
     error <- c(error, grep('error', class(returns)))
-    
+
     ## error handling
     if (length(error) > 0) {
         error <- returns$message
         returns <- NULL
     } else
-        error <- NULL    
-    
+        error <- NULL
+
     ## warnings
     warnings <- warnings$message    # only last warning is returned!
-    
+
     list(src    = src,
             output = returns,
             type   = class(returns),
@@ -82,16 +82,16 @@ eval.msgs <- function(src, env = NULL) {
 #'         \item \emph{errors} - string of possible error message(s)
 #'     }
 #' }
-#' 
+#'
 #' With \code{check.output} options set to \code{FALSE}, \code{evals} will not check each line of passed R code for outputs to speed up runtime. This way the user is required to pass only reliable and well structured/formatted text to \code{evals}. A list to check before running code in \code{evals}:
 #'
 #' \itemize{
 #'     \item the code should return on the last line of the passed code (if it returns before that, it would not be grabbed),
 #'     \item the code should always return something on the last line (if you do not want to return anything, add \code{NULL} as the last line),
 #'     \item ggplot and lattice graphs should be always printed (of course on the last line),
-#'     \item the code should be checked before live run with \code{check.output} option set to \code{TRUE} just to be sure if everything goes OK. 
+#'     \item the code should be checked before live run with \code{check.output} option set to \code{TRUE} just to be sure if everything goes OK.
 #' }
-#' 
+#'
 #' Please check the examples carefully below to get a detailed overview of \code{\link{evals}}.
 #' @param txt a list with character values containing R code
 #' @param ind a list with numeric indices pointing to R code in \code{body}
@@ -235,13 +235,13 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         if (check.output) {
             ## running evalute for checking outputs and grabbing warnings/errors
             eval <- suppressWarnings(try(evaluate(src, envir = env.evaluate), silent=TRUE))
- 
+
             ## error handling
             error <- grep('error', lapply(eval, function(x) class(x)))
             error <- c(error, grep('error', class(eval)))
             if (length(error) != 0) {
                 ## TODO: evals('histogram(mtcars$hp') # lame error msg...
-    
+
                 res <- list(src          = src,
                         output       = NULL,
                         type         = 'error',
@@ -259,9 +259,9 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                 warnings <- NULL
             } else
                 warnings <- sprintf('**Warning** in "%s": "%s"', paste(sapply(eval[warnings], function(x) x$call), collapse = " + "), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
-    
+
             ### good code survived here!
-    
+
             ### checking out wich element produced the output               ## outRageous coding starts here
             ## removing messages/errors
             eval.no.msg <- eval[sapply(eval, function(x) {if (is.list(x)) all(names(x) == 'src') else TRUE})]
@@ -313,7 +313,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             warnings <- res$msg$warnings
             graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
         }
-        
+
         if (is.character(graph)) {
             returns <- graph
             class(returns) <- "image"

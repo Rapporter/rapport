@@ -1,6 +1,6 @@
 \name{tpl.paths}
 \alias{tpl.paths}
-\title{Template paths}
+\title{Template Paths}
 \usage{
   tpl.paths()
 }

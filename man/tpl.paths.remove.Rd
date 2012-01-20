@@ -1,6 +1,6 @@
 \name{tpl.paths.remove}
 \alias{tpl.paths.remove}
-\title{Remove template path}
+\title{Remove Template Path}
 \usage{
   tpl.paths.remove(...)
 }
@@ -11,7 +11,7 @@
   TRUE on success (invisibly)
 }
 \description{
-  removes an element from custom paths' list where rapport
+  Removes an element from custom paths' list where rapport
   will look for templates.
 }
 \examples{

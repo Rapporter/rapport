@@ -1,6 +1,6 @@
 \name{rp.name}
 \alias{rp.name}
-\title{Get variable name}
+\title{Variable Name}
 \usage{
   rp.name(x)
 }

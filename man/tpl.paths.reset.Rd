@@ -1,6 +1,6 @@
 \name{tpl.paths.reset}
 \alias{tpl.paths.reset}
-\title{Reset template paths}
+\title{Reset Template Paths}
 \usage{
   tpl.paths.reset()
 }

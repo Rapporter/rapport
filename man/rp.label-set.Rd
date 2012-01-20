@@ -1,19 +1,19 @@
 \name{rp.label<-}
 \alias{rp.label<-}
-\title{Set variable label}
+\title{Set Variable Label}
 \usage{
   rp.label(var) <- value
 }
 \arguments{
-  \item{var}{an atomic vector}
+  \item{var}{a variable (see \code{\link{is.variable}} for
+  details)}
 
   \item{value}{a character value that is to be set as
   variable label}
 }
 \description{
-  this function sets a label to an \code{\link{atomic}}
-  vector, by storing a character value to its \code{label}
-  attribute.
+  This function sets a label to a variable, by storing a
+  character string to its \code{label} attribute.
 }
 \examples{
 \dontrun{

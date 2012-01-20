@@ -1,6 +1,6 @@
 \name{tpl.paths.add}
 \alias{tpl.paths.add}
-\title{Add template path}
+\title{Add Template Path}
 \usage{
   tpl.paths.add(...)
 }

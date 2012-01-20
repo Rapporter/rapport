@@ -13,10 +13,14 @@
 }
 \value{
   either a list (default) or a character value with tag
-  names
+  regexes
 }
 \description{
-  Returns report tag vales: either ones that were set by
-  user, or the default ones.
+  Returns report tag vales (usually regexes): either
+  user-defined, or the default ones.
+}
+\examples{
+get.tags()        # same as 'get.tags("all")'
+get.tags("chunk.open")
 }
 
