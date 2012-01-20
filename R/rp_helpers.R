@@ -554,9 +554,6 @@ extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
 #' @export
 check.name <- function(x, size = 30L, ...){
 
-    if (missing(x))
-        stop('no character value to check naming conventions')
-
     re.name <- '^[[:alpha:]]+(([[:digit:]]+)?((\\.|_)?[[:alnum:]])+)?$'
     len <- nchar(x) < size
 
@@ -574,6 +571,7 @@ check.name <- function(x, size = 30L, ...){
 #' @return a character vector with template files
 #' @export
 tpl.list <- function(...){
+
     dir(c('./', getOption('tpl.paths'), system.file('templates', package = 'rapport')), pattern = '^.+\\.tpl$', ...)
 }
 
