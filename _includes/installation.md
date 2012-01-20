@@ -1,4 +1,4 @@
-Currently, this package is hosted only on GitHub, but it will be submitted to [CRAN](cran.r-project.org) once in reaches v. 0.2 ([very soon, we hope]((https://github.com/aL3xa/rapport/issues?milestone=1&state=open))). Until then, you can install it via nifty function from `devtools` package:
+Currently, this package is hosted only on [GitHub](https://github.com/aL3xa/rapport/), but it will be submitted to [CRAN](cran.r-project.org) once in reaches v. 0.2 (hopefully soon, meanwhile you can check [our progress](https://github.com/aL3xa/rapport/issues?milestone=1&state=open)). Until then, you can install it via nifty function from `devtools` package:
 
 {% highlight r %}
 library(devtools)
@@ -12,7 +12,13 @@ R CMD build rapport
 R CMD INSTALL rapport_0.1.tar.gz
 {% endhighlight %}
 
-The [source code](https://github.com/aL3xa/rapport) is hosted on Github, feel free to read/use/fork the code (see: [Licence](#license) for details).
+If you're running R on Windows, you need to install [Rtools](http://cran.stat.ucla.edu/bin/windows/Rtools/ ). Once you have installed `Rtools`, issue following command in command prompt:
+
+```
+R CMD build --binary <path to .tar.gz file>
+R CMD INSTALL <path to .zip file>
+```
+The source code is available on [Github](https://github.com/aL3xa/rapport), so feel free to read/use/fork the code (see: [Licence](#license) for details).
 
 *Rapport* heavily uses the following [R](http://www.r-project.org/) packages\*:
  * [ascii](http://cran.r-project.org/web/packages/ascii/index.html) by David Hajage, 
@@ -25,9 +31,9 @@ The [source code](https://github.com/aL3xa/rapport) is hosted on Github, feel fr
 
 \* The list was sorted in strict alphabetical order.
 
-If you would like to use HTML/odt/pdf export, please install pandoc or other backend for [ascii](http://eusebe.github.com/ascii/).
+If you would like to use _HTML_, _ODT_, or _PDF_ export, please [install pandoc](http://johnmacfarlane.net/pandoc/installing.html ) or other backend for [ascii](http://eusebe.github.com/ascii/) processing.
 
-[ascii](http://eusebe.github.com/ascii/) supports the following engines:
+[ascii](http://eusebe.github.com/ascii/) package supports following engines:
  * [asciidoc](http://www.methods.co.nz/asciidoc/),
  * [pandoc](http://johnmacfarlane.net/pandoc/),
  * [a2x](http://www.methods.co.nz/asciidoc/a2x.1.html),

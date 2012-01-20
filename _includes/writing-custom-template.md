@@ -1,15 +1,14 @@
-Writing a custom template or cloning/modifying an existing `tpl` file is not trickier then writing a statistical report of given database with some minimal [R](http://www.r-project.org/) skills. Of course sophisticated and complex reports would require more depth of knowledge in [R](http://www.r-project.org/).
+Writing a custom template or modifying an existing one is not trickier than writing an ordinary statistical repor. It requires some basic [R](http://www.r-project.org/) skills, and a brief introduction to _rapport_ input specifications. Of course, sophisticated reports would require more proficiency in [R](http://www.r-project.org/).
 
-In our opinion the easiest way learning how to write a template is checking out [existing code](#custom) - just like in formal languages. Here, for demonstrating purposes, we will go through the source of [`example.tpl`](#exampletpl) for which usage and return see the ["Usage"](#usage) section above.
+In our opinion the easiest way to learn how to write a template is by checking out an [existing code](#custom). For demonstration purposes, we will go through the source of [`example.tpl`](#exampletpl) (see the ["Usage"](#usage) section for more info).
 
 First, let us check out the source code of [`example.tpl`](#exampletpl):
 
+<!-- continue from here -->
  * check out in [R](http://www.r-project.org/) console with [`tpl.find`](#tpl.find): `tpl.find('example')`
  * search in installed package directory: `system.file("templates", 'example.tpl', package = "rapport")`
  * take a look at [sources on Github](https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl)
  * see the sources tab of [`example.tpl`](#exampletpl) below
-
-
 
 Contribute!
 

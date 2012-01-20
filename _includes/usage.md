@@ -4,9 +4,9 @@ After [installing](#install), load the package:
 library(rapport)
 {% endhighlight %}
 
-The most obvious goal of this package is to easily create some reports of our data.
+The most obvious goal of this package is to easily create some reports by providing custom data.
 
-*Rapport* has some predefined templates distributed with the package. These files can be found in the *templates* directory of the package with `tpl` extension. Listing all templates is easy: 
+*rapport* has some predefined templates distributed with the package. These files can be found in *templates* directory of the package with `tpl` extension. Getting a list of all available templates is easy:
 
 {% highlight r %}
 > tpl.list()
@@ -15,9 +15,7 @@ The most obvious goal of this package is to easily create some reports of our da
 [7] "type_demo.tpl"            "univar-descriptive.tpl"  
 {% endhighlight %}
 
-Let us say '[`example.tpl`](#exampletpl)' seems promising, let's check out what is it for demonstrating purposes!
-
-The easiest way of doing a demo is to call a helper function ([`tpl.example`](#tpl.example)) which runs the example call(s) of a given template. You do not need to specify the `.tpl` extension, although you can if you wish:
+If you, find, say '[`example.tpl`](#exampletpl)' promising, you can check it out by calling [`tpl.example`](#tpl.example) function which prints out examples specified in the template, prompting you to choose one from the list:
 
 {% highlight r %}
 > tpl.example('example')
@@ -32,7 +30,7 @@ Enter example ID from the list below:
 Template ID>  
 {% endhighlight %}
 
-There you chose and ID of the given examples and press `ENTER`. For example running the first example returns:
+After you choose the template ID, press `ENTER` key to see it in action. For example, running the first example of `example` template returns:
 
 {% highlight r %}
 
@@ -57,9 +55,11 @@ The 5 highest values are: _12_, _12_, _10_, _10_ and _10_.
    
 {% endhighlight %}
 
-What was done here? We run a simple analysis on the `leisure` variable found in [`ius2008`](#ius2008) (package bundled demo) dataset. This simple template only returned some traditional welcome strings, the name and the [label](#rp.label) of the given variable besides a `summary` and the top5 highest values.
+What was done here? We have executed a simple analysis on the `leisure` variable found in [`ius2008`](#ius2008) (package bundled) dataset. This simple template only returned a local greeting, the name and the [label](#rp.label) of the given variable, alongside a variable's `summary` and 5 highest values.
 
-As you could see in the examples there are some other parameters of this template besides `data` and `var`, for example: `desc`, `hist` and `theme`. To find out what are these, [get some info](#tpl.info) on the template:
+As you could see in the examples there are some other parameters of this template besides `data` and `var`, for example: `desc`, `hist` and `theme`. In order to, [get some info](#tpl.info) on the template, issue following command:
+
+<!-- continue from here -->
 
 {% highlight r %}
 > tpl.info('example')
