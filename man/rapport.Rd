@@ -47,6 +47,8 @@
 rapport("example", ius2008, var="leisure")
 rapport("example", ius2008, var="leisure", desc=FALSE, hist=T, themer="Set1")
 rapport("example", ius2008, var="leisure", mode='debug')
+rapport("example", ius2008, var="leisure", mode='performance')
+## Or set \\code{'rapport.mode'} option to \\code{debug}, \\code{performance} or back to \\code{normal}.
 }
 }
 

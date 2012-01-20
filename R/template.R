@@ -562,6 +562,8 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' rapport("example", ius2008, var="leisure")
 #' rapport("example", ius2008, var="leisure", desc=FALSE, hist=T, themer="Set1")
 #' rapport("example", ius2008, var="leisure", mode='debug')
+#' rapport("example", ius2008, var="leisure", mode='performance')
+#' ## Or set \code{'rapport.mode'} option to \code{debug}, \code{performance} or back to \code{normal}. 
 #' }
 #' @export
 rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, mode = getOption('rapport.mode')){
@@ -724,7 +726,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
     }
 
     opts.bak <- options()                      # backup options
-    report <- lapply(elem, elem.eval, env = e, check.output = !as.logical(meta$strict), rapport.mode = mode) # render template body
+    report <- lapply(elem, elem.eval, env = e, check.output = !(as.logical(meta$strict) | (mode == 'performance')), rapport.mode = mode) # render template body
     options(opts.bak)                          # resetting options
 
     ## error handling in chunks
