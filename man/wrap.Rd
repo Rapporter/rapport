@@ -17,7 +17,9 @@
   argument.
 }
 \examples{
+\dontrun{
+wrap("foobar")
 wrap(c("fee", "fi", "foo", "fam"), "_")
-## [1] "_fee_" "_fi_"  "_foo_" "_fam_"
+}
 }
 

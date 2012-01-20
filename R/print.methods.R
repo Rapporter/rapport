@@ -7,14 +7,17 @@
 #' @S3method print rp.meta
 print.rp.meta <- function(x, ...){
 
+    .x <- x                             # backup object
+    mc <- match.call()
     ind <- c('title', 'author', 'email', 'desc', 'example')
     email <- if (is.null(x$email)) '' else sprintf(' (%s)', x$email) # show email if any
     exmpl <- if (is.null(x$example)) 'no examples found in template' else x$example # examples
+    x$strict <- sprintf('%s\t(see ?tpl.check for details)', x$strict)
     other.meta <- x[!names(x) %in% ind]
 
     fn <- function(x){
         titles <- names(x)
-        content <- sapply(x, function(y) sprintf('%s', if (is.null(y)) 'NA' else y))
+        content <- sapply(x, function(y) sprintf('%s', if (is.null(y) || length(y) == 0) 'NA' else y))
         res <- c('\n', sprintf('%s:\t%s\n', titles, content))
     }
 
@@ -28,7 +31,7 @@ print.rp.meta <- function(x, ...){
 
     catn()
 
-    invisible(x)
+    invisible(.x)
 }
 
 

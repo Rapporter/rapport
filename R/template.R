@@ -161,8 +161,9 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
                        list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
                        list(title = 'Description'   , regex = '[[:print:]]+', short = 'desc'),
                        list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
-                       list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE),
-                       list(title = 'Example'       , regex = '.+', mandatory = FALSE)
+                       list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
+                       list(title = 'Example'       , regex = '.+', mandatory = FALSE),
+                       list(title = 'Strict'        , regex = 'TRUE', mandatory = FALSE, default.value = FALSE)
                        )
 
     l <- sapply(fields, function(x){

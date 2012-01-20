@@ -239,9 +239,10 @@ guess.convert <- function(x, trim.white = FALSE){
 #' @param x a vector to wrap
 #' @param wrap a string to wrap around vector elements
 #' @return a string with wrapped elements
-#' @examples
+#' @examples \dontrun{
+#' wrap("foobar")
 #' wrap(c("fee", "fi", "foo", "fam"), "_")
-#' ## [1] "_fee_" "_fi_"  "_foo_" "_fam_"
+#' }
 #' @export
 wrap <- function(x, wrap = '"'){
     stopifnot(is.variable(x))
@@ -258,7 +259,6 @@ wrap <- function(x, wrap = '"'){
 #' @examples \dontrun{
 #' stopf("%.3f is not larger than %d and/or smaller than %d", pi, 10, 40)
 #' }
-
 #' @export
 stopf <- function(s, ...){
     stop(sprintf(s, ...))

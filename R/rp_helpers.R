@@ -464,27 +464,28 @@ pct <- function(x, digits = getOption('rp.decimal.short'), type = c('percent', '
 }
 
 
-# Extract Template Metadata
-#
-# Check if template metadata field matches provided format, and return matched value in a list.
-# @param x a string containing template metadata
-# @param title a string containint metadata field title (can be regex-powered)
-# @param regex a string with regular expression to match field value
-# @param short a string with a short name for given metadata field
-# @param trim.white a logical value indicating whether trailing and leading whitespaces of the given string should be removed before extraction
-# @param mandatory a logical value indicating required field
-# @param ... additional parameters for \code{grepl} function
-# @return a list with matched content, or \code{NULL} if the field is not required
-# @examples \dontrun{
-#     extract_meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
-#     ## $name
-#     ## [1] "John Smith"
-#
-#     extract_meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
-#     ## $name
-#     ## [1] "John"
-# }
-extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, mandatory = TRUE, ...){
+#' Extract Template Metadata
+#'
+#' Check if template metadata field matches provided format, and return matched value in a list.
+#' @param x a string containing template metadata
+#' @param title a string containint metadata field title (can be regex-powered)
+#' @param regex a string with regular expression to match field value
+#' @param short a string with a short name for given metadata field
+#' @param trim.white a logical value indicating whether trailing and leading whitespaces of the given string should be removed before extraction
+#' @param mandatory a logical value indicating required field
+#' @param default.value fallback to this value if non-mandatory field is not found/malformed
+#' @param ... additional parameters for \code{grepl} function
+#' @return a list with matched content, or \code{NULL} if the field is not required
+#' @examples \dontrun{
+#'     extract_meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#'     ## $name
+#'     ## [1] "John Smith"
+#'
+#'     extract_meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#'     ## $name
+#'     ## [1] "John"
+#' }
+extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, mandatory = TRUE, default.value = NULL, ...){
 
     if (!any(sapply(list(x, title, regex), is.string)))
         stop('"x", "title" and "regex" need to be strings')
@@ -509,7 +510,7 @@ extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
             ## throw error only if meta is specified/non-empty, but has incorrect value
             if (!(res == val || length(x) == 0))
                 warning(sprintf('found errors in a non-mandatory field "%s"', title))
-            res <- NULL
+            res <- default.value
         }
     }
 
@@ -580,7 +581,7 @@ tpl.paths.reset <- function()
 #' @examples \dontrun{
 #' tpl.paths.add('/tmp')
 #' tpl.list()
-#' 
+#'
 #' ## might trigger an error:
 #' tpl.paths.add('/home', '/rapport')
 #' }
@@ -605,7 +606,7 @@ tpl.paths.add <- function(...) {
 #' tpl.paths()
 #' tpl.paths.remove('/tmp')
 #' tpl.paths()
-#' 
+#'
 #' ## might trigger an error:
 #' tpl.paths.remove('/root')
 #' }
