@@ -50,7 +50,7 @@
   should be printed in \code{evals.msg} to show the plot.
 }
 \examples{
-{
+\dontrun{
 eval.msgs('1:5')
 eval.msgs(c('1:3', 'runiff(23)'))
 eval.msgs(c('1:5', '3:5'))

@@ -19,7 +19,7 @@
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @return  a list of parsed elements each containg: src (the command run), output (what the command returns, NULL if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to NULL) and errors (if any returned by the command run, otherwise set to NULL). See Details above.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' eval.msgs('1:5')
 #' eval.msgs(c('1:3', 'runiff(23)'))
 #' eval.msgs(c('1:5', '3:5'))
