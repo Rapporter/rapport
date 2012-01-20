@@ -583,6 +583,7 @@ tpl.list <- function(...){
 #' @examples \dontrun{
 #' tpl.paths()
 #' }
+#' @export
 tpl.paths <- function()
     getOption('tpl.paths')
 
@@ -593,6 +594,7 @@ tpl.paths <- function()
 #' @examples \dontrun{
 #' tpl.paths.reset()
 #' }
+#' @export
 tpl.paths.reset <- function()
     options('tpl.paths' = NULL)
 
@@ -609,6 +611,7 @@ tpl.paths.reset <- function()
 #' ## might trigger an error:
 #' tpl.paths.add('/home', '/rapport')
 #' }
+#' @export
 tpl.paths.add <- function(...) {
     paths <- as.character(substitute(list(...)))[-1L]
     if (!all(sapply(paths, is.character)))
@@ -635,6 +638,7 @@ tpl.paths.add <- function(...) {
 #' ## might trigger an error:
 #' tpl.paths.remove('/root')
 #' }
+#' @export
 tpl.paths.remove <- function(...) {
     paths <- as.character(substitute(list(...)))[-1L]
     if (!all(sapply(paths, is.character)))
