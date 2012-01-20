@@ -6,6 +6,5 @@
 .Rhistory
 .Rprofile
 .RData
-.Rbuildignore
 rapport-Ex.R
 inst/templates/test.tpl

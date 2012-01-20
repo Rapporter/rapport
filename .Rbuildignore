@@ -1,0 +1,8 @@
+\.git.*
+README.*
+.*~$
+inst/templates/test.tpl
+\.Rprofile$
+\.Rhistory$
+\.Rpackages$
+.+/rapport-Ex.R
