@@ -716,7 +716,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
     }
 
     opts.bak <- options()                      # backup options
-    report <- lapply(elem, elem.eval, env = e) # render template body
+    report <- lapply(elem, elem.eval, env = e, check.output = !as.logical(meta$strict)) # render template body
     options(opts.bak)                          # resetting options
 
     ## error handling in chunks
