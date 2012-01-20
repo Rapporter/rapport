@@ -1,8 +1,8 @@
-*rapport* is an [R](http://www.r-project.org/) package giving birth to a templating system that facilitates automated, mass and easy creation of statistical reports in [R](http://www.r-project.org/) with the option to export reports (to markdown/HTML/pdf/odt etc. formats) besides various tools and helpers to use in templates. Template syntax is practically a pandoc markdown syntax with some extra features, such as dynamic expressions, input definition, etc.
+_rapport_ is an [R](http://r-project.org ) package that facilitates creation of reproducible statistical report templates. Once created, _rapport_ templates can be exported to various external formats (_HTML_, _LaTeX_, _PDF_, _ODT_, etc.) to suite one's individual preference. Apart from _R_, all you need to know to start writing your own templates is [pandoc markup](http://johnmacfarlane.net/pandoc/index.html ), and some _rapport_ conventions that allow the reproducibility of the template.
 
-The package holds some [predefined, package shipped templates](#templates) but [custom templates](#custom) can be also created and run.
- 
-For a really short introduction run:
+Several [predefined templates](#templates ) come bundled with default _rapport_ installation, and their number will increase in future releases. Of course, we strongly encourage you to [write your own templates](#custom), and/or customise the ones that are shipped with default package installation.
+
+For a brief introcution to _rapport_ functionality, run:
 
 {% highlight r %}
 demo(rapport)
