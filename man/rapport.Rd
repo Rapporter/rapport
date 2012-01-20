@@ -6,7 +6,7 @@
 \usage{
   rapport(fp, data = NULL, ..., reproducible = FALSE,
     header.levels.offset = 0,
-    mode = getOption("rapport.mode"))
+    rapport.mode = getOption("rapport.mode"))
 }
 \arguments{
   \item{fp}{a string containing a template name/path or a
@@ -25,11 +25,11 @@
   \item{header.levels.offset}{number added to header levels
   (handy when using nested templates)}
 
-  \item{mode}{forcing rapport to run in \code{performance}
-  or \code{debug} mode instead of normal behaviour. Only
-  change this if you really know what you do! In
-  \code{performance} mode \code{rapport} will assume all
-  templates to be \code{strict} (see: \code{evals(...,
+  \item{rapport.mode}{forcing rapport to run in
+  \code{performance} or \code{debug} mode instead of normal
+  behaviour. Only change this if you really know what you
+  do! In \code{performance} mode \code{rapport} will assume
+  all templates to be \code{strict} (see: \code{evals(...,
   check.output = FALSE)}), in \code{debug} mode
   \code{rapport} will halt on first error.}
 }
@@ -46,8 +46,8 @@
 \dontrun{
 rapport("example", ius2008, var="leisure")
 rapport("example", ius2008, var="leisure", desc=FALSE, hist=T, themer="Set1")
-rapport("example", ius2008, var="leisure", mode='debug')
-rapport("example", ius2008, var="leisure", mode='performance')
+rapport("example", ius2008, var="leisure", rapport.mode='debug')
+rapport("example", ius2008, var="leisure", rapport.mode='performance')
 ## Or set \\code{'rapport.mode'} option to \\code{debug}, \\code{performance} or back to \\code{normal}.
 }
 }

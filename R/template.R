@@ -556,17 +556,17 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' @param ... matches template inputs in format 'key = "value"'
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
-#' @param mode forcing rapport to run in \code{performance} or \code{debug} mode instead of normal behaviour. Only change this if you really know what you do! In \code{performance} mode \code{rapport} will assume all templates to be \code{strict} (see: \code{evals(..., check.output = FALSE)}), in \code{debug} mode \code{rapport} will halt on first error. 
+#' @param rapport.mode forcing rapport to run in \code{performance} or \code{debug} mode instead of normal behaviour. Only change this if you really know what you do! In \code{performance} mode \code{rapport} will assume all templates to be \code{strict} (see: \code{evals(..., check.output = FALSE)}), in \code{debug} mode \code{rapport} will halt on first error. 
 #' @return a list with \code{rapport} class.
 #' @examples \dontrun{
 #' rapport("example", ius2008, var="leisure")
 #' rapport("example", ius2008, var="leisure", desc=FALSE, hist=T, themer="Set1")
-#' rapport("example", ius2008, var="leisure", mode='debug')
-#' rapport("example", ius2008, var="leisure", mode='performance')
+#' rapport("example", ius2008, var="leisure", rapport.mode='debug')
+#' rapport("example", ius2008, var="leisure", rapport.mode='performance')
 #' ## Or set \code{'rapport.mode'} option to \code{debug}, \code{performance} or back to \code{normal}. 
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, mode = getOption('rapport.mode')){
+rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode')){
 
     txt    <- tpl.find(fp)                      # split file to text
     h      <- suppressMessages(tpl.info(txt))   # template header
@@ -726,7 +726,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
     }
 
     opts.bak <- options()                      # backup options
-    report <- lapply(elem, elem.eval, env = e, check.output = !(as.logical(meta$strict) | (mode == 'performance')), rapport.mode = mode) # render template body
+    report <- lapply(elem, elem.eval, env = e, check.output = !(as.logical(meta$strict) | (rapport.mode == 'performance')), rapport.mode = rapport.mode) # render template body
     options(opts.bak)                          # resetting options
 
     ## error handling in chunks
@@ -735,7 +735,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
         if (x$type == 'block'){
             rerr <- x$robjects[[1]]$msg$errors
             if (!is.null(rerr)){
-                if (mode == 'debug') {      ## halt in debug mode
+                if (rapport.mode == 'debug') {      ## halt in debug mode
                         cat(sprintf('Malformed command(s):\n%s', paste(x$robjects[[1]]$src, collapse='\n')), '\n')
                         stop(rerr, call. = FALSE)
                     }
