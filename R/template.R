@@ -153,20 +153,27 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
     if (isTRUE(trim.white))
         header <- trim.space(header, TRUE)
 
-    if (is.null(fields))
-        ## list of required tags
-        fields <- list(
-                       list(title = 'Title'         , regex = '[[:print:]]+'),
-                       list(title = 'Author'        , regex = '.+'),
-                       list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
-                       list(title = 'Description'   , regex = '[[:print:]]+', short = 'desc'),
-                       list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
-                       list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
-                       list(title = 'Example'       , regex = '.+', mandatory = FALSE),
-                       list(title = 'Strict'        , regex = 'TRUE', mandatory = FALSE, default.value = FALSE)
-                       )
+    ## required fields
+    fld.req <- list(
+                    list(title = 'Title'       , regex = '[[:print:]]+'),
+                    list(title = 'Author'      , regex = '.+'),
+                    list(title = 'Description' , regex = '[[:print:]]+', short = 'desc')
+                    )
 
-    l <- sapply(fields, function(x){
+    ## no fields specified, load default fields
+    if (is.null(fields)){
+        fld.default <- list(
+                            list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
+                            list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
+                            list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
+                            list(title = 'Example'       , regex = '.+', mandatory = FALSE),
+                            list(title = 'Strict'        , regex = 'TRUE', mandatory = FALSE, default.value = FALSE)
+                            )
+    }
+
+    fld <- c(fld.req, fld.default) # merge required fields with default/specified ones
+
+    l <- sapply(fld, function(x){
         m   <- grep(sprintf('^%s:[\t ]+(%s)$', x$title, x$regex), header)
         if (length(m) > 1)
             stop('duplicate metadata entries: ', paste(sprintf('"%s"', header[m]), collapse = ', '))
@@ -556,14 +563,14 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' @param ... matches template inputs in format 'key = "value"'
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
-#' @param rapport.mode forcing rapport to run in \code{performance} or \code{debug} mode instead of normal behaviour. Only change this if you really know what you do! In \code{performance} mode \code{rapport} will assume all templates to be \code{strict} (see: \code{evals(..., check.output = FALSE)}), in \code{debug} mode \code{rapport} will halt on first error. 
+#' @param rapport.mode forcing rapport to run in \code{performance} or \code{debug} mode instead of normal behaviour. Only change this if you really know what you do! In \code{performance} mode \code{rapport} will assume all templates to be \code{strict} (see: \code{evals(..., check.output = FALSE)}), in \code{debug} mode \code{rapport} will halt on first error.
 #' @return a list with \code{rapport} class.
 #' @examples \dontrun{
 #' rapport("example", ius2008, var="leisure")
 #' rapport("example", ius2008, var="leisure", desc=FALSE, hist=T, themer="Set1")
 #' rapport("example", ius2008, var="leisure", rapport.mode='debug')
 #' rapport("example", ius2008, var="leisure", rapport.mode='performance')
-#' ## Or set \code{'rapport.mode'} option to \code{debug}, \code{performance} or back to \code{normal}. 
+#' ## Or set \code{'rapport.mode'} option to \code{debug}, \code{performance} or back to \code{normal}.
 #' }
 #' @export
 rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode')){
