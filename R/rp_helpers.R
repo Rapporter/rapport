@@ -491,6 +491,7 @@ pct <- function(x, digits = getOption('rp.decimal.short'), type = c('percent', '
 #' @param trim.white a logical value indicating whether trailing and leading whitespaces of the given string should be removed before extraction
 #' @param mandatory a logical value indicating required field
 #' @param default.value fallback to this value if non-mandatory field is not found/malformed
+#' @param field.length maximum number of field characters (defaults to 1000)
 #' @param ... additional parameters for \code{grepl} function
 #' @return a list with matched content, or \code{NULL} if the field is not required
 #' @examples \dontrun{
@@ -502,7 +503,7 @@ pct <- function(x, digits = getOption('rp.decimal.short'), type = c('percent', '
 #'     ## $name
 #'     ## [1] "John"
 #' }
-extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, mandatory = TRUE, default.value = NULL, ...){
+extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, mandatory = TRUE, default.value = NULL, field.length = 1e3, ...){
 
     if (!any(sapply(list(x, title, regex), is.string)))
         stop('"x", "title" and "regex" need to be strings')
@@ -513,6 +514,10 @@ extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
 
     if (isTRUE(trim.white))
         x <- trim.space(x, leading = TRUE, trailing = TRUE)
+
+    fl <- if (length(x) == 0) 0 else nchar(x)
+    if (fl > field.length)
+        stopf('"%s" field exceeds maximal length (%d, while %d is allowed)', title, fl, field.length)
 
     re <- sprintf('^%s:[\t ]+(%s)$', title, regex)
     val <- gsub(re, '\\1', x, ...) # return matched value

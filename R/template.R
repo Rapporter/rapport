@@ -155,8 +155,8 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 
     ## required fields
     fld.req <- list(
-                    list(title = 'Title'       , regex = '[[:print:]]+'),
-                    list(title = 'Author'      , regex = '.+'),
+                    list(title = 'Title'       , regex = '[[:print:]]+', field.length = 500),
+                    list(title = 'Author'      , regex = '.+', field.length = 100),
                     list(title = 'Description' , regex = '[[:print:]]+', short = 'desc')
                     )
 
@@ -196,7 +196,6 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
             ind       <- ind[!ind %in% ind.start]
         l$example <- c(l$example, header[ind])
     }
-
 
     structure(l, class = 'rp.meta')
 }
@@ -612,14 +611,18 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
         if (!all(input.ok))
             stopf("you haven't provided a value for %s", p(input.names[input.mandatory], '"'))
 
-        if(is.null(data))
-            stop('"data" not provided, but is required')
+        ## data required
+        if (data.required){
 
-        if (!inherits(data, c('data.frame', 'rp.data')))
-            stop('"data" should be a "data.frame" object')
+            if(is.null(data))
+                stop('"data" not provided, but is required')
 
-        data.names <- names(data)          # variable names
-        assign('rp.data', data, envir = e) # load data to eval environment
+            if (!inherits(data, c('data.frame', 'rp.data')))
+                stop('"data" should be a "data.frame" object')
+
+            data.names <- names(data)          # variable names
+            assign('rp.data', data, envir = e) # load data to eval environment
+        }
 
         lapply(inputs, function(x){
 
