@@ -360,19 +360,16 @@ tpl.rerun <- function(tpl){
 #' @keywords internal
 tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.body = FALSE, skip.blank.lines = TRUE, skip.r.comments = FALSE, ...){
 
-    txt <- tpl.find(fp)
-    ext <- match.arg(extract)
-
-    ## "isTRUE" will evaluate some crazy inputs such as "letters" or even "mtcars" to FALSE
-    ## is it smart? I guess not, but hey... it works! and it skips my notorious sanity checks!
     if (isTRUE(use.body))
-        b <- txt
+        b <- fp
     else
-        b <- tpl.body(txt)
+        b <- tpl.body(tpl.find(fp))
 
     ## check for empty body
     if (all(grepl('^[:space:]*$', b)))
         stop('template body is empty')
+
+    ext <- match.arg(extract)           # what should be extracted?
 
     ## bunch of regexes
     re.blank     <- '^([[:blank:]]+|)$'              # blank line
@@ -575,7 +572,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode')){
 
     txt    <- tpl.find(fp)                      # split file to text
-    h      <- suppressMessages(tpl.info(txt))   # template header
+    h      <- tpl.info(txt)                     # template header
     meta   <- h$meta                            # header metadata
     inputs <- h$inputs                          # header inputs
     b      <- tpl.body(txt)                     # template body
@@ -633,22 +630,27 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
             input.type    <- x$type                # input type
             input.default <- x$default             # default value (if any)
 
-            ## check limits
-            if (input.len < limit$min & input.len > limit$max)
-                stopf('%s has length of %d, and should be between %d and %d', name, input.len, limit$min, limit$max)
+            if (x$mandatory){
+                ## check limits
+                if (input.len < limit$min || input.len > limit$max){
+                    len.diff <- diff(c(limit$min, limit$max))
+                    len.msg  <- if (len.diff == 0) 1 else sprintf('between %d and %d', limit$min, limit$max)
+                    stopf('input "%s" has length of %d, and should be %s', name, input.len, len.msg)
+                }
+            }
 
             ## check type
             type.fn <- switch(input.type,
                               option    = , # CSV list of strings
+                              string    = , # string input
                               character = is.character,
                               complex   = is.complex,
                               factor    = is.factor,
                               boolean   = , # a length-one logical
                               logical   = is.logical,
+                              number    = , # number input
                               numeric   = is.numeric,
                               variable  = is.variable,
-                              string    = is.string, # string input
-                              number    = is.number, # number input
                               stopf('unknown type: "%s"', input.type)
                               )
 

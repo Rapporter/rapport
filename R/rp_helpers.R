@@ -664,7 +664,7 @@ tpl.paths.remove <- function(...) {
 #' @examples \dontrun{
 #' rapport:::check.limit("[1,20]")
 #' rapport:::check.limit("[1]")
-#' rapport:::check.limit("[1, 0]")
+#' rapport:::check.limit("[1, 0]")  # will throw error
 #' }
 check.limit <- function(x, max.lim = 50L){
 
