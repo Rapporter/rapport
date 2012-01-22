@@ -630,7 +630,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
             input.type    <- x$type                # input type
             input.default <- x$default             # default value (if any)
 
-            if (x$mandatory){
+            if (!is.null(x)){
                 ## check limits
                 if (input.len < limit$min || input.len > limit$max){
                     len.diff <- diff(c(limit$min, limit$max))
