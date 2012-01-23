@@ -1,6 +1,6 @@
 \name{evals}
 \alias{evals}
-\title{Evals and checks}
+\title{Evaluate and Check R Code}
 \usage{
   evals(txt = NULL, ind = NULL, body = NULL,
     classes = NULL, hooks = NULL, length = Inf,
@@ -18,8 +18,8 @@
   body}
 
   \item{classes}{a vector or list of classes which should
-  be returned. If set to NULL (by default) all R objects
-  will be returned.}
+  be returned. If set to \code{NULL} (by default) all R
+  objects will be returned.}
 
   \item{hooks}{list of hooks to bo run for given classes in
   the form of \code{list(class=fn)}. If you would also
@@ -59,12 +59,13 @@
 }
 \value{
   a list of parsed elements each containg: src (the command
-  run), output (what the command returns, NULL if nothing
-  returned, path to image file if a plot was genereted),
-  type (class of returned object if any) and messages:
-  warnings (if any returned by the command run, otherwise
-  set to NULL) and errors (if any returned by the command
-  run, otherwise set to NULL). See Details above.
+  run), output (what the command returns, \code{NULL} if
+  nothing returned, path to image file if a plot was
+  genereted), type (class of returned object if any) and
+  messages: warnings (if any returned by the command run,
+  otherwise set to \code{NULL}) and errors (if any returned
+  by the command run, otherwise set to \code{NULL}). See
+  Details above.
 }
 \description{
   This function takes either a list of integer indices
@@ -99,7 +100,7 @@
   Returned result values: list with the following elements
   \itemize{ \item \emph{src} - a character value with
   specified R code.  \item \emph{output} - generated
-  output. NULL if nothing is returned. If any string
+  output. \code{NULL} if nothing is returned. If any string
   returned an R object while evaling then the \emph{last} R
   object will be returned as a raw R object. If a graph is
   plotted in the given text, the returned object is a

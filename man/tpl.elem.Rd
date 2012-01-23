@@ -8,8 +8,8 @@
     skip.r.comments = FALSE, ...)
 }
 \arguments{
-  \item{fp}{a string containing a path to template, or a
-  character vector with template lines}
+  \item{fp}{a template file pointer (see
+  \code{\link{tpl.find}} for details)}
 
   \item{extract}{a string indicating which elements should
   be extracted from the template: headings, blocks, or code
@@ -46,5 +46,4 @@
     tpl.elem(fp, extract = "block")
 }
 }
-\keyword{internal}
 

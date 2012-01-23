@@ -1,9 +1,8 @@
 #' Read Template
 #'
-#' Reads file either from template name, file path or URL, and splits it into lines for easier handling. "find" in \code{tpl.find} is borrowed from Emacs parlance - this function actually reads the template.
-#' @param fp a character string containing a template path, a template name (for package-bundled templates only, and ".tpl" extension is optional), or template contents separated by newline (\code{\\n}), or a character vector with template contents.
+#' Reads file either from template name in system folder, file path or remote URL, and splits it into lines for easier handling by \emph{rapport} internal parser. "find" in \code{tpl.find} is borrowed from Emacs parlance - this function actually reads the template.
+#' @param fp a character string containing a template path, a template name (for package-bundled templates only), template contents separated by newline (\code{\\n}), or a character vector with template contents.
 #' @return a character vector with template contents
-#' @export
 tpl.find <- function(fp){
 
     if (missing(fp))
@@ -49,10 +48,10 @@ tpl.find <- function(fp){
 
 #' Template Header
 #'
-#' Returns \code{rapport} template header from provided path or a character vector. In case you're refering to a template bundled with package, you don't need to provide a template extension.
-#' @param fp a string containing template path, or a character vector with template contents
-#' @param open.tag a string with opening tag
-#' @param close.tag a string with closing tag
+#' Returns \code{rapport} template header from provided path or a character vector.
+#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param open.tag a string with opening tag (defaults to value of user-defined \code{"header.open"} tag)
+#' @param close.tag a string with closing tag (defaults to value of user-defined \code{"header.close"} tag)
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template header contents
 tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
@@ -88,12 +87,11 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 
 #' Template Body
 #'
-#' Returns template body contents from provided path or a character vector.
-#' @param fp a string containing a path to template, or a character vector with template lines
+#' Returns contents of template body.
+#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param htag a string with closing body tag
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template body contents
-#' @export
 tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 
     txt   <- tpl.find(fp)
@@ -104,8 +102,8 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 
 #' Template Info
 #'
-#' Provides information about template metadata and inputs.
-#' @param fp a string containing a path to template, or a character vector with template lines
+#' Provides information about template metadata and/or inputs.
+#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param meta return template metadata? (defaults to \code{TRUE})
 #' @param inputs return template inputs? (defaults to \code{TRUE})
 #' @examples \dontrun{
@@ -136,8 +134,32 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 
 #' Header Metadata
 #'
-#' Returns metadata stored in template's header section, usually template title, nickname of an author, template description and list of required packages.
-#' @param fp a character vector containing template name (".tpl" extension is optional), file path or character vector with template/header contents (depending on value of \code{use.header} argument)
+#' Displays summary of template metadata stored in a header section. This part of template header consists of several \emph{key: value} pairs, which define some basic template info, such as \emph{Title}, \emph{Example}, \emph{Strict}, etc. If you're familiar with package development in R, you'll probably find this approach very similar to \code{DESCRIPTION} file.
+#'
+#' \strong{Mandatory Fields}
+#'
+#' The following fields must be specified in the template header and their size limits must be taken into account:
+#'
+#' \itemize{
+#'     \item \emph{Title} - a template title (at most 500 characters)
+#'     \item \emph{Author} - author's (nick)name (at most 100 characters)
+#'     \item \emph{Description} - template description (at most 5000 characters)
+#' }
+#'
+#' \strong{Optional Fields}
+#'
+#' Some fields are not required by the template. However, you should reconsider including them in the template, so that the other users could get a better impression of what your template does. These are currently supported fields:
+#'
+#' \itemize{
+#'     \item \emph{Email} - author's email address (defaults to \code{NULL})
+#'     \item \emph{Packages} - a comma-separated list of packages required by the template (defaults to \code{NA})
+#'     \item \emph{Data required} - is dataset required by a template? Field accepts \code{TRUE} or \code{FALSE}, and defaults to \code{FALSE}.
+#'     \item \emph{Example} - newline-separated example calls to \code{rapport} function, including template data and inputs (defaults to \code{NULL})
+#'     \item \emph{Strict} - "strict mode" returns only the last warning from a chunk. Field accepts \code{TRUE} or \code{FALSE}, and defaults to \code{FALSE}.
+#' }
+#'
+#' Upon successful execution, \code{rp.meta}-class object is returned invisibly.
+#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param fields a list of named lists containing key-value pairs of field titles and corresponding regexes
 #' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains header data
 #' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
@@ -203,8 +225,56 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 
 #' Template Inputs
 #'
-#' Grabs variable definitions from template header.
-#' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
+#' Displays summary of template inputs from header section. \code{rp.inputs}-class object is returned invisibly.
+#'
+#' \strong{Input Specifications}
+#'
+#' Apart from _template metadata_, header also requires specification for template \emph{inputs}. In most cases, \emph{inputs} refer to variable names in provided dataset, but some inputs have special meaning inside \code{rapport}, and some of them don't have anything to do with provided dataset whatsoever. Most inputs can contain limit specification, and some inputs can also have a default value. At first we'll explain input specifications on the fly, and in following sections we'll discuss each part in thorough details. Let's start with a single dummy input specification:
+#'
+#' \code{*foo.bar | numeric[1,6] | Numeric variable | A set of up to 6 numeric variables}
+#'
+#' \strong{Required Inputs}
+#'
+#' Asterisk sign (`*`) in front of an input name indicates a mandatory input. So it is possible to omit input (unless it's required, of course), but you may want to use this feature carefully, as you may end up with ugly output. If an input isn't mandatory, NULL is assigned to provided input name, and the object is stored in transient evaluation environment.
+#'
+#' \strong{Input Name}
+#'
+#' \emph{rapport} has its own naming conventions which are compatible, but different from traditional \strong{R} naming conventions. Input name ("foo.bar" in previous example) must start with an alphabet letter, followed either by other alphabet letters or numbers, separated with `_` or `.`. For example, valid names are: `foo.bar`, `f00_bar`, or `Fo0_bar.input`. Input name length is limited on 30 characters by default. At any time you can check your desired input name with `check.name` function. Note that input names are case-sensitive, just like \code{symbol}s in \strong{R}.
+#'
+#' \strong{Input Type}
+#'
+#' _Input type_ is specified in the second input block. It is the most (read: "only") complex field in an input specification. It consists of _type specification_, _limit specification_ and sometimes a _default value specification_. Most input types are compatible with eponymous \strong{R} modes: \emph{character}, \emph{complex}, \emph{logical}, \emph{numeric}, or \strong{R} classes like \emph{factor}. Some are used as "wildcards", like \emph{variable}, and some do not refer to dataset variables at all: \emph{boolean}, \emph{number}, \emph{string} and \emph{option}. Here we'll discuss each input type thoroughly. We will use term \emph{variable} to denote a vector taken from a dataset (for more details see documentation for `is.variable`). All inputs can be divided into two groups, depending on whether they require a dataset or not:
+#'
+#' \itemize{
+#'     \item \strong{dataset inputs}: \itemize{
+#'         \item \emph{character} - matches a character variable
+#'         \item \emph{complex} - matches a character variable
+#'         \item \emph{numeric} - matches a numeric variable
+#'         \item \emph{factor} - matches a factor variable (i.e. R object of \code{factor} class)
+#'         \item \emph{variable} - matches any variable of previously defined types
+#'     }
+#'     \item \strong{standalone inputs}: \itemize{
+#'         \item \emph{string} - accepts an atomic character vector
+#'         \item \emph{number} - accepts an atomic numeric vector
+#'         \item \emph{boolean} - accepts a logical value
+#'         \item \emph{option} - accepts a comma-separated list of values, that are to be matched with \code{\link{match.arg}}. The first value in a list is a default one.
+#'     }
+#' }
+#'
+#' Now we'll make a little digression and talk about \strong{input limits}. You may have noticed some additional stuff in type specification, e.g. `numeric[1,6]`. All dataset inputs, as well as *string* and *numeric standalone inputs* can contain _limit specifications_. If you want to bundle several variables from dataset or provide a vector with several string/numeric values, you can apply some rules within square brackets in `[a,b]` format, where `[a,b]` stands for "from \code{a} to \code{b} inputs", e.g. `[1,6]` means "from 1 to 6 inputs". Limit specifications can be left out, but even in that case implicit limit rules are applied, with \code{a} and \code{b} being set to 1.
+
+#' \strong{Dataset inputs} will match one or more variables from a dataset (d'uh), and check its mode and/or class. \code{variable} type is a bit different, since it matches any kind of variable (not to confuse with \code{Any} type), but it still refers to variable(s) from a provided dataset. Dataset inputs cannot have default value, but can be optional (just leave out `*` sign in front of input name). Note that if you provide more than one variable name in \code{rapport} function call, that input will be stored as a `data.frame`, otherwise, it will be stored as a \emph{variable} (atomic vector).
+
+#' \strong{Standalone inputs} are a bit different since they do not refer to any varible from a dataset. However, they are more complex than *dataset inputs*, especially because they can contain default values.
+
+#' - \strong{number} and \strong{string} inputs are defined with \code{number} and \code{string} declaration, respectively. They can also contain limit specifications, e.g. `number[1,6]` accepts numeric vector with at least 1 and at most 6 elements. Of course, you can pass the same specification to string inputs: `string[1,6]`. In this case, you're setting length limits to a character vector. \emph{number} and \emph{string} inputs can have \emph{default value}, which can be defined by placing `=` after type/limit specification followed by default value. For instance, `number[1,6]=3.14` sets value `3.14` as default. Same stands for string inputs: default value can be defined in the same manner: `string=foo` sets "foo" as default string value (note that you don't have to specify quotes unless they are the part of the default string).
+#' - \strong{boolean} inputs can contain either \code{TRUE} or \code{FALSE} values. The specified value is the default one. They cannot contain limit specification.
+#' - \strong{option} inputs are nothing more than a comma-separated list of strings. Even if you specify numbers in a list, they will be coerced to strings once the list is parsed. Values in \emph{option} list will be placed in a character vector, and matched with `match.arg` function. That means that you could only choose one value from a list. Partial matches are allowed, and the first value in \emph{option} list is the defalt one.
+#'
+#' \strong{Input Label and Description}
+#'
+#' Third block in input definition is an input label. While \emph{variable} can have its own label (see `rp.label`), you may want to use the one defined in input specifications. At last, fourth block contains input description, which should be a lengthy description of current input. Just to remind you - all fields in input specification are mandatory. You can cheat, though, by providing `.` or something like that as input label and/or description, but please don't do that unless you're testing the template. Labels and descriptions are meant to be informative.
+#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param use.header a logical value indicating wether the header section is provided in \code{h} argument
 #' @return a list with variable info
 #' @export
@@ -257,9 +327,9 @@ tpl.inputs <- function(fp, use.header = TRUE){
 
 #' Template Examples
 #'
-#' Runs the "Example" field found in specified template. Handy to check out what template does and how does it look like once rendered. If multiple examples are available, and \code{index} argument is \code{NULL}, you will be prompted for input. Example output can be easily exported to various formats (HTML, ODT, etc.) - check out documentation for \code{tpl.export} for more info.
-#' @param fp a character vector containing template name (".tpl" extension is optional), file path or a text to be split by lines
-#' @param index a numeric vector indicating the example index. Meaningful only while running templates with multiple examples specified, otherwise omitted. In most cases this should be a single numeric value. If multiple numbers are provided, the examples are returned in a list. Using 'all' (character string) as index will return all examples.
+#' Displays template examples defined in \code{Example} section. Handy to check out what template does and how does it look like once it's rendered. If multiple examples are available, and \code{index} argument is \code{NULL}, you will be prompted for input. In case when only one example is available in the header, user is not prompted for input action, and given template is evaluated automatically. At any time you can provide an integer vector with example indices to \code{index} argument, and specified examples will be evaluated without prompting the user, thus returning a list of \code{rapport} objects. Example output can be easily exported to various formats (HTML, ODT, etc.) - check out documentation for \code{tpl.export} for more info.
+#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param index a numeric vector indicating the example index - meaningful only for templates with multiple examples. Accepts vector of integers to match IDs of template example. Using 'all' (character string) as index will return all examples.
 #' @param env an environment where example will be evaluated (defaults to \code{.GlobalEnv})
 #' @examples \dontrun{
 #' tpl.example('example')
@@ -273,11 +343,15 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 
     examples   <- tpl.meta(fp)$example
     n.examples <- 1:length(examples)
+    examples.len <- length(examples)
 
-    if (is.null(examples))
-        stop('Provided template does not have any examples.')
+    ## return NULL invisibly if no templates are found in the template
+    if (is.null(examples)){
+        message('Provided template does not have any examples.')
+        invisible(NULL)
+    }
 
-    if (length(examples) > 1){
+    if (examples.len > 1){
         if (is.null(index)){
             opts  <- c(n.examples, 'all')
             catn('Enter example ID from the list below:')
@@ -343,7 +417,7 @@ tpl.rerun <- function(tpl){
 #' Template Elements
 #'
 #' Returns a \code{data.frame} containing summary of relevant template elements: \code{ind} - indice of current element in template's body, \code{type} - a string indicating the type of the content ("heading", "inline" or "block"), and \code{chunk} - a string containing R expression found in a code chunk.
-#' @param fp a string containing a path to template, or a character vector with template lines
+#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param extract a string indicating which elements should be extracted from the template: headings, blocks, or code chunks (by default it returns all of the above)
 #' @param use.body a logical value indicating whether the whole template should be used, or just its body
 #' @param skip.blank.lines remove blank lines within R chunks
@@ -357,7 +431,6 @@ tpl.rerun <- function(tpl){
 #'     ## returns only code blocks
 #'     tpl.elem(fp, extract = "block")
 #' }
-#' @keywords internal
 tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.body = FALSE, skip.blank.lines = TRUE, skip.r.comments = FALSE, ...){
 
     if (isTRUE(use.body))
@@ -449,7 +522,7 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
 #' Evaluate Template Elements
 #'
 #' This function grabs template elements from \code{\link{tpl.elem}} and evaluates them. For \code{rp.block}-classed elements just a vanilla \code{\link{evals}} call is carried out, while \code{rp.inline} and \code{rp.heading} classes have some additional post-evaluation proccesing (heading level is stored, as well as "raw" and evaluated chunk contents).
-#' @param x template file pointer
+#' @param x a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param tag.open a string containing opening tag
 #' @param tag.close a string containing closing tag
 #' @param remove.comments should comments be omitted on evaluation?
@@ -553,13 +626,13 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 
 #' Evaluate Template
 #'
-#' Evaluates template file and returns a list with \code{rapport} class.
-#' @param fp a string containing a template name/path or a character vector with template contents
+#' This is the central function in the \code{rapport} package, and hence eponymous. In following lines we'll use \code{rapport} to denote the function, not the package. \code{rapport} requires a template file, while dataset (\code{data} argument) can be optional, depending on the value of \code{Data required} field in template header. Template inputs are matched with \code{...} argument, and should be provided in \code{x = value} format, where \code{x} matches input name and \code{value}, wait for it... input value! See \code{\link{tpl.inputs}} for more details on template inputs.
+#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param data a \code{data.frame} to be used in template
 #' @param ... matches template inputs in format 'key = "value"'
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
-#' @param rapport.mode forcing rapport to run in \code{performance} or \code{debug} mode instead of normal behaviour. Only change this if you really know what you do! In \code{performance} mode \code{rapport} will assume all templates to be \code{strict} (see: \code{evals(..., check.output = FALSE)}), in \code{debug} mode \code{rapport} will halt on first error.
+#' @param rapport.mode forces \code{rapport} to run in \emph{performance} or \emph{debug} mode instead of normal behaviour. Change this only if you really know what are you doing! In \code{performance} mode \code{rapport} will evaluate all templates in \code{strict} mode (see: \code{evals(..., check.output = FALSE)}), while in \code{debug} mode \code{rapport} will halt on first error.
 #' @return a list with \code{rapport} class.
 #' @examples \dontrun{
 #' rapport("example", ius2008, var="leisure")
@@ -664,7 +737,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
 
                 ## check types
                 if (!do.call(type.fn, list(val)))
-                    stopf('%s is not of %s type', val, input.type)
+                    stopf('"%s" is not of "%s" type', val, input.type)
 
                 ## CSV input (allow multi match?)
                 if (input.type == 'option')

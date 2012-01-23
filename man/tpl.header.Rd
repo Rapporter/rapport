@@ -6,12 +6,14 @@
     close.tag = get.tags("header.close"), ...)
 }
 \arguments{
-  \item{fp}{a string containing template path, or a
-  character vector with template contents}
+  \item{fp}{a template file pointer (see
+  \code{\link{tpl.find}} for details)}
 
-  \item{open.tag}{a string with opening tag}
+  \item{open.tag}{a string with opening tag (defaults to
+  value of user-defined \code{"header.open"} tag)}
 
-  \item{close.tag}{a string with closing tag}
+  \item{close.tag}{a string with closing tag (defaults to
+  value of user-defined \code{"header.close"} tag)}
 
   \item{...}{additional arguments to be passed to
   \code{\link{grep}} function}
@@ -21,8 +23,6 @@
 }
 \description{
   Returns \code{rapport} template header from provided path
-  or a character vector. In case you're refering to a
-  template bundled with package, you don't need to provide
-  a template extension.
+  or a character vector.
 }
 

@@ -13,12 +13,13 @@
 }
 \value{
   a list of parsed elements each containg: src (the command
-  run), output (what the command returns, NULL if nothing
-  returned, path to image file if a plot was genereted),
-  type (class of returned object if any) and messages:
-  warnings (if any returned by the command run, otherwise
-  set to NULL) and errors (if any returned by the command
-  run, otherwise set to NULL). See Details above.
+  run), output (what the command returns, \code{NULL} if
+  nothing returned, path to image file if a plot was
+  genereted), type (class of returned object if any) and
+  messages: warnings (if any returned by the command run,
+  otherwise set to \code{NULL}) and errors (if any returned
+  by the command run, otherwise set to \code{NULL}). See
+  Details above.
 }
 \description{
   This function takes text(s) of R code, evaluates all at
@@ -27,7 +28,7 @@
 \details{
   \itemize{ \item \emph{src} - a character value with
   specified R code.  \item \emph{output} - generated
-  output. NULL if nothing is returned. If any string
+  output. \code{NULL} if nothing is returned. If any string
   returned an R object while evaling then the \emph{last} R
   object will be returned as a raw R object. If a graph is
   plotted in the given text, the returned object is a

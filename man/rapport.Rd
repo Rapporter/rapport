@@ -2,15 +2,15 @@
 \name{rapport}
 \alias{rapport}
 \alias{rapport-package}
-\title{rapport templating system}
+\title{rapport: An R engine for reproducible template generation}
 \usage{
   rapport(fp, data = NULL, ..., reproducible = FALSE,
     header.levels.offset = 0,
     rapport.mode = getOption("rapport.mode"))
 }
 \arguments{
-  \item{fp}{a string containing a template name/path or a
-  character vector with template contents}
+  \item{fp}{a template file pointer (see
+  \code{\link{tpl.find}} for details)}
 
   \item{data}{a \code{data.frame} to be used in template}
 
@@ -25,22 +25,49 @@
   \item{header.levels.offset}{number added to header levels
   (handy when using nested templates)}
 
-  \item{rapport.mode}{forcing rapport to run in
-  \code{performance} or \code{debug} mode instead of normal
-  behaviour. Only change this if you really know what you
-  do! In \code{performance} mode \code{rapport} will assume
-  all templates to be \code{strict} (see: \code{evals(...,
-  check.output = FALSE)}), in \code{debug} mode
-  \code{rapport} will halt on first error.}
+  \item{rapport.mode}{forces \code{rapport} to run in
+  \emph{performance} or \emph{debug} mode instead of normal
+  behaviour. Change this only if you really know what are
+  you doing! In \code{performance} mode \code{rapport} will
+  evaluate all templates in \code{strict} mode (see:
+  \code{evals(..., check.output = FALSE)}), while in
+  \code{debug} mode \code{rapport} will halt on first
+  error.}
 }
 \value{
   a list with \code{rapport} class.
 }
 \description{
-  Description goes here.
+  \emph{rapport} is an R package that facilitates creation
+  of reproducible statistical report templates. Once
+  created, \emph{rapport} templates can be exported to
+  various external formats: \emph{HTML}, \emph{LaTeX},
+  \emph{PDF}, \emph{ODT}, etc. Apart from R, all you need
+  to know to start writing your own templates is
+  \emph{pandoc} markup syntax, and several
+  \emph{rapport}-specific conventions that allow the
+  reproducibility of the template. \emph{rapport} uses
+  \emph{brew}-like tags to support dynamic inline and/or
+  block evaluation of R code. Unlike many other
+  report-writing conventions in R (\emph{Sweave},
+  \emph{brew}), \emph{rapport} converts generated output in
+  a convenient form via \emph{acii} function.
+  \emph{rapport} also comes with support for plots: images
+  are automatically saved to temporary file, and image path
+  is returned.
 
-  Evaluates template file and returns a list with
-  \code{rapport} class.
+  This is the central function in the \code{rapport}
+  package, and hence eponymous. In following lines we'll
+  use \code{rapport} to denote the function, not the
+  package. \code{rapport} requires a template file, while
+  dataset (\code{data} argument) can be optional, depending
+  on the value of \code{Data required} field in template
+  header. Template inputs are matched with \code{...}
+  argument, and should be provided in \code{x = value}
+  format, where \code{x} matches input name and
+  \code{value}, wait for it... input value! See
+  \code{\link{tpl.inputs}} for more details on template
+  inputs.
 }
 \examples{
 \dontrun{
