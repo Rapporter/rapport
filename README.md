@@ -15,17 +15,17 @@ demo(rapport)
 
 Currently, this package is hosted only on [GitHub](https://github.com/aL3xa/rapport/), but it will be submitted to [CRAN](cran.r-project.org) once in reaches v. 0.2 (hopefully soon, meanwhile you can check [our progress](https://github.com/aL3xa/rapport/issues?milestone=1&state=open)). Until then, you can install it via nifty function from `devtools` package:
 
-{% highlight r %}
+```
 library(devtools)
 install_github('rapport', 'aL3xa')
-{% endhighlight %}
+```
 
 Or download the [sources in a zip file](https://github.com/aL3xa/rapport/zipball/master) and build manually. To do so, please unzip the file to an empty dir and run the following commands there:
 
-{% highlight r %}
+```
 R CMD build rapport
 R CMD INSTALL rapport_0.1.tar.gz
-{% endhighlight %}
+```
 
 If you're running R on Windows, you need to install [Rtools](http://cran.stat.ucla.edu/bin/windows/Rtools/ ). Once you have installed `Rtools`, issue following command in command prompt:
 
@@ -38,9 +38,9 @@ R CMD INSTALL <path to .zip file>
 
 After [installing](#install) `rapport`, please try out the package demo:
 
-{% highlight r %}
+```
 library(rapport)
-{% endhighlight %}
+```
 
 ## Pages
 
