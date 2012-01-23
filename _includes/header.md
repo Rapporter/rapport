@@ -55,8 +55,8 @@ _Input type_ is specified in the second input block. It is the most (read: "only
   - **factor** - matches a factor variable (i.e. R object of *factor* class)
   - **variable** - matches any variable of previously defined types
 - **standalone inputs**:
-  - **string** - accepts a character vector
-  - **number** - accepts a numeric vector
+  - **string** - accepts an atomic character vector
+  - **number** - accepts an atomic numeric vector
   - **boolean** - accepts a logical value
   - **option** - accepts a comma-separated list of values, that are to be matched with `match.arg`. The first value in a list is a default one.
 
