@@ -1,25 +1,47 @@
 # rapport
 
-_rapport_ is an engine for easily creating automated, mass statistical reports in R  with the option to export those (to markdown format/HTML/pdf/odt etc.). Template syntax is practically a pandoc markdown syntax with some extra features, such as dynamic expressions, input definition, etc.
+_rapport_ is an [R](http://r-project.org ) package that facilitates creation of reproducible statistical report templates. Once created, _rapport_ templates can be exported to various external formats: _HTML_, _LaTeX_, _PDF_, _ODT_, etc. Apart from _R_, all you need to know to start writing your own templates is [pandoc](http://johnmacfarlane.net/pandoc/index.html ) markup syntax, and some _rapport_ conventions that allow the reproducibility of the template.
+
+Several [predefined templates](#templates ) come bundled with default _rapport_ installation, and their number will increase in future releases. Of course, we strongly encourage you to [write your own templates](#custom), and/or customise the ones that are shipped with default package installation.
+
+For a brief introcution to _rapport_ functionality, run:
+
+{% highlight r %}
+demo(rapport)
+{% endhighlight %}
+
 
 ## Installation
 
-Currently, this package is hosted only on GitHub, but it will be submitted to CRAN once in reaches v. 0.2 (very soon, we hope). Until then, you can install it via nifty function from `devtools` package: `install_github('rapport', 'aL3xa')`.
+Currently, this package is hosted only on [GitHub](https://github.com/aL3xa/rapport/), but it will be submitted to [CRAN](cran.r-project.org) once in reaches v. 0.2 (hopefully soon, meanwhile you can check [our progress](https://github.com/aL3xa/rapport/issues?milestone=1&state=open)). Until then, you can install it via nifty function from `devtools` package:
+
+{% highlight r %}
+library(devtools)
+install_github('rapport', 'aL3xa')
+{% endhighlight %}
+
+Or download the [sources in a zip file](https://github.com/aL3xa/rapport/zipball/master) and build manually. To do so, please unzip the file to an empty dir and run the following commands there:
+
+{% highlight r %}
+R CMD build rapport
+R CMD INSTALL rapport_0.1.tar.gz
+{% endhighlight %}
+
+If you're running R on Windows, you need to install [Rtools](http://cran.stat.ucla.edu/bin/windows/Rtools/ ). Once you have installed `Rtools`, issue following command in command prompt:
+
+```
+R CMD build --binary <path to .tar.gz file>
+R CMD INSTALL <path to .zip file>
+```
 
 ## Usage
 
-_rapport_ comes bundled with several report templates, and we hope that their number will increase in succeeding releases. To list all available templates, issue following command: `tpl.list()`. Each template has two key elements:
+After [installing](#install) `rapport`, please try out the package demo:
 
- - *data* that will be used with template (a `data.frame` in R parlance), and if data is provided,
- - *inputs* that usually correspond to column names in provided dataset, but with some additional functionality (boolean types and CSV inputs).
+{% highlight r %}
+library(rapport)
+{% endhighlight %}
 
-In order to see a template description alongside input requirements you can use `tpl.info()` function. You need to provide either a full path to the template file (usually ending in `.tpl`), a file name, or a file name sans extension (if the template is located in system directory).
+## Pages
 
-```
-tpl.header('example.tpl')
-```
-
-You can get separate info on package metadata and inputs by using `tpl.meta` and `tpl.inputs` functions, respectively. See official documentation for more details.
-
-For more info on how to use pre-built templates, or even write your own, head over to our [homepage](http://rapport-package.info).
-
+For more info head over to [package homepage](http://rapport-package.info).
