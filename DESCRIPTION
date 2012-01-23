@@ -36,6 +36,5 @@ Collate:
     'stats_univar.R'
     'tables.R'
     'template.R'
-    'typeDemoData.R'
     'utils.R'
     'tpl-check.R'

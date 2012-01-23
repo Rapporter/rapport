@@ -4,5 +4,5 @@
 #'
 #' @docType package
 #' @name rapport
-#' @aliases rapport rapport-package
+#' @aliases rapport-package
 NULL
