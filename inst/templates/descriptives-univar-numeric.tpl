@@ -2,7 +2,8 @@
 Title: Descriptive statistics
 Author: Gergely Daróczi 
 Email: gergely@snowl.net
-Description: This template will return descriptive statistics of a numerical variable. 
+Description: This template will return descriptive statistics of a numerical variable.
+Data required:  TRUE 
 Example:    rapport('descriptives-univar-numeric', data=ius2008, var='age')
 var         | numeric   | Variable          | A numerical variable
 nortest     | TRUE      | Normality test    | If normality tests should be performed 

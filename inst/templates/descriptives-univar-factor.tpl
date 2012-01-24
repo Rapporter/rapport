@@ -2,7 +2,8 @@
 Title: Descriptive statistics
 Author: Gergely Daróczi 
 Email: gergely@snowl.net
-Description: This template will return descriptive statistics and frequency table of a categorical variable. 
+Description: This template will return descriptive statistics and frequency table of a categorical variable.
+Data required:  TRUE 
 Example:    rapport('descriptives-univar-factor', data=ius2008, var='gender')
             rapport('descriptives-univar-factor', data=ius2008, var='dwell')
 var         | factor    | Variable          | A categorical variable
