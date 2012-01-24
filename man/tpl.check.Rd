@@ -21,7 +21,7 @@
   Strict mode is a huge performance gain (principally with
   nested templates where the overhead of extra checks lead
   to exponential slowdown with every level of nested
-  hierarchy) based on \vode{evals}' \code{check.output}
+  hierarchy) based on \code{evals}' \code{check.output}
   parameter: no checks would be performed on template body
   about outputs. Thanks to this, strict mode templates
   should be written considering the following requirements:
