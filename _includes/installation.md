@@ -28,3 +28,4 @@ In order to export _rapport_ templates to  _HTML_, _ODT_, or _PDF_ export, pleas
  * [txt2tags](http://txt2tags.org/) and
  * [markdown2pdf](http://johnmacfarlane.net/pandoc/README.html#markdown2pdf).
  
+We recommend using [pandoc](http://johnmacfarlane.net/pandoc/), especially the [devel version](https://github.com/jgm/pandoc/wiki/Installing-the-development-version-of-pandoc-1.9), as it has some really neat updates (docx writer, odt image size fix etc.)! 
