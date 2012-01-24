@@ -6,7 +6,7 @@
 #' 
 #' Checks if the examples of given template can be run without any error and if the same output would be returned by calling the template in "strict" mode.
 #' 
-#' Strict mode is a huge performance gain (principally with nested templates where the overhead of extra checks lead to exponential slowdown with every level of nested hierarchy) based on \vode{evals}' \code{check.output} parameter: no checks would be performed on template body about outputs. Thanks to this, strict mode templates should be written considering the following requirements:
+#' Strict mode is a huge performance gain (principally with nested templates where the overhead of extra checks lead to exponential slowdown with every level of nested hierarchy) based on \code{evals}' \code{check.output} parameter: no checks would be performed on template body about outputs. Thanks to this, strict mode templates should be written considering the following requirements:
 #' 
 #' \itemize{
 #'     \item each block should return on the last line of the code,

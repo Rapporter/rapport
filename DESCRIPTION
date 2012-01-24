@@ -1,16 +1,16 @@
 Package: rapport
 Maintainer: Gergely Daróczi <gergely@snowl.net>
 License: AGPL-3
-Title: Rapport - a report templating system
+Title: rapport - a report templating system
 LazyData: yes
 Type: Package
 LazyLoad: yes
-Author: Aleksandar Blagotić <aca.blagotic@gmail.com> and Gergely
-    Daróczi <gergely@snowl.net>
-Description: Package contains templating system that facilitates
-    automated, mass and easy creation of statistical reports in R with
-    the option to export reports (to markdown format/HTML/pdf/odt etc.)
-    besides various tools and helpers to use in templates.
+Author: Aleksandar Blagotić <aca.blagotic@gmail.com> and Gergely Daróczi
+    <gergely@snowl.net>
+Description: A package that facilitates creation of reproducible statistical
+    report templates. Once created, rapport templates can be exported to
+    various external formats (HTML, LaTeX, PDF, ODT, etc.) with pandoc
+    converter as a backend.
 Version: 0.1
 Date: 2011-11-26
 Depends:
@@ -36,6 +36,5 @@ Collate:
     'stats_univar.R'
     'tables.R'
     'template.R'
-    'typeDemoData.R'
     'utils.R'
     'tpl-check.R'

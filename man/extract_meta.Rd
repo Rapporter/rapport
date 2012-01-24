@@ -4,7 +4,7 @@
 \usage{
   extract_meta(x, title, regex, short = NULL,
     trim.white = TRUE, mandatory = TRUE,
-    default.value = NULL, ...)
+    default.value = NULL, field.length = 1000, ...)
 }
 \arguments{
   \item{x}{a string containing template metadata}
@@ -27,6 +27,9 @@
 
   \item{default.value}{fallback to this value if
   non-mandatory field is not found/malformed}
+
+  \item{field.length}{maximum number of field characters
+  (defaults to 1000)}
 
   \item{...}{additional parameters for \code{grepl}
   function}

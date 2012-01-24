@@ -5,8 +5,8 @@
   tpl.body(fp, htag = get.tags("header.close"), ...)
 }
 \arguments{
-  \item{fp}{a string containing a path to template, or a
-  character vector with template lines}
+  \item{fp}{a template file pointer (see
+  \code{\link{tpl.find}} for details)}
 
   \item{htag}{a string with closing body tag}
 
@@ -17,7 +17,6 @@
   a character vector with template body contents
 }
 \description{
-  Returns template body contents from provided path or a
-  character vector.
+  Returns contents of template body.
 }
 

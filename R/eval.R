@@ -4,7 +4,7 @@
 #'
 #' \itemize{
 #'     \item \emph{src} - a character value with specified R code.
-#'     \item \emph{output} - generated output. NULL if nothing is returned. If any string returned an R object while evaling then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{tmpfile()}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
+#'     \item \emph{output} - generated output. \code{NULL} if nothing is returned. If any string returned an R object while evaling then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{tmpfile()}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
 #'     \item \emph{type} - class of generated output. "NULL" if nothing is returned, "image" if the graphic device was touched, "error" if some error occured.
 #'     \item \emph{msg} - possible messages grabbed while evaling specified R code with the following structure:
 #'     \itemize{
@@ -17,7 +17,7 @@
 #' Note, that \code{ggplot2} and \code{lattice} graphs should be printed in \code{evals.msg} to show the plot.
 #' @param src character values containing R code
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
-#' @return  a list of parsed elements each containg: src (the command run), output (what the command returns, NULL if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to NULL) and errors (if any returned by the command run, otherwise set to NULL). See Details above.
+#' @return  a list of parsed elements each containg: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
 #' @export
 #' @examples \dontrun{
 #' eval.msgs('1:5')
@@ -47,22 +47,22 @@ eval.msgs <- function(src, env = NULL) {
         error <- returns$message
         returns <- NULL
     } else
-        error <- NULL
+    error <- NULL
 
     ## warnings
     warnings <- warnings$message    # only last warning is returned!
 
     list(src    = src,
-            output = returns,
-            type   = class(returns),
-            msg    = list(
-                    messages = NULL,
-                    warnings = warnings,
-                    errors   = error))
+         output = returns,
+         type   = class(returns),
+         msg    = list(
+             messages = NULL,
+             warnings = warnings,
+             errors   = error))
 }
 
 
-#' Evals and checks
+#' Evaluate and Check R Code
 #'
 #' This function takes either a list of integer indices which point to position of R code in \code{body} character vector, or a vector/list of strings with actual R code, then evaluates each list element, and returns a list with four elements: a character value with R code, generated output, class of generated output and possible error/warning messages. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory. Please see Details below.
 #'
@@ -73,7 +73,7 @@ eval.msgs <- function(src, env = NULL) {
 #' Returned result values: list with the following elements
 #' \itemize{
 #'     \item \emph{src} - a character value with specified R code.
-#'     \item \emph{output} - generated output. NULL if nothing is returned. If any string returned an R object while evaling then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{tmpfile()}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
+#'     \item \emph{output} - generated output. \code{NULL} if nothing is returned. If any string returned an R object while evaling then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{tmpfile()}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
 #'     \item \emph{type} - class of generated output. "NULL" if nothing is returned, "image" if the graphic device was touched, "error" if some error occured.
 #'     \item \emph{msg} - possible messages grabbed while evaling specified R code with the following structure:
 #'     \itemize{
@@ -96,14 +96,14 @@ eval.msgs <- function(src, env = NULL) {
 #' @param txt a list with character values containing R code
 #' @param ind a list with numeric indices pointing to R code in \code{body}
 #' @param body a character vector that contains template body
-#' @param classes a vector or list of classes which should be returned. If set to NULL (by default) all R objects will be returned.
+#' @param classes a vector or list of classes which should be returned. If set to \code{NULL} (by default) all R objects will be returned.
 #' @param hooks list of hooks to bo run for given classes in the form of \code{list(class=fn)}. If you	would also specify some parameters of the function, a list should be provided in the form of \code{list(fn, param1, param2=NULL)} etc. So the hooks would become \code{list(class1=list(fn, param1, param2=NULL), ...)}. See example below. A default hook can be specified too by setting the class to \code{'default'}. This can be handy if you do not want to define separate methods/functions to each possible class, but automatically apply the default hook to all classes not mentioned in the list. You may also specify only one element in the list like: \code{hooks=list('default'=ascii)}.
 #' @param length R object exceeding the specified length will not be returned. The default value (\code{Inf}) does not have any restrictions.
 #' @param output a character vector of required returned values. See below.
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @param check.output to check each line of \code{txt} for outputs. If set to \code{TRUE} you would result in some overhead as all commands have to be run twice (first to check if any output was generated and if so in which part(s), later the R objects are to be grabbed). With \code{FALSE} settings \code{evals} runs much faster, but as now checks are made, some requirements apply, see Details.
 #' @param ... optional parameters passed to \code{png(...)}
-#' @return a list of parsed elements each containg: src (the command run), output (what the command returns, NULL if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned	by the command run, otherwise set to NULL) and errors (if any returned by the command run, otherwise set to NULL). See Details above.
+#' @return a list of parsed elements each containg: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
 #' @author Gergely Daróczi
 #' @examples \dontrun{
 #' # parsing line-by-line
@@ -242,14 +242,14 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             if (length(error) != 0) {
                 ## TODO: evals('histogram(mtcars$hp') # lame error msg...
 
-                res <- list(src          = src,
-                        output       = NULL,
-                        type         = 'error',
-                        msg = list(
+                res <- list(src = src,
+                            output = NULL,
+                            type   = 'error',
+                            msg    = list(
                                 messages = NULL,
                                 warnings = NULL,
                                 errors   = sprintf('**Error** in "%s": "%s"',  ifelse(paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')=='', paste(src, collapse=' + '), paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')), ifelse(class(eval)=='try-error', gsub('Error in parse.(text) = string, src = src) : <text>:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
-                )
+                            )
                 return(res[output])
             }
 
@@ -258,7 +258,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             if (length(warnings) == 0) {
                 warnings <- NULL
             } else
-                warnings <- sprintf('**Warning** in "%s": "%s"', paste(sapply(eval[warnings], function(x) x$call), collapse = " + "), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
+            warnings <- sprintf('**Warning** in "%s": "%s"', paste(sapply(eval[warnings], function(x) x$call), collapse = " + "), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
 
             ### good code survived here!
 

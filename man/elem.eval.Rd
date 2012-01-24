@@ -7,7 +7,8 @@
     remove.comments = TRUE, rapport.mode = "normal", ...)
 }
 \arguments{
-  \item{x}{template file pointer}
+  \item{x}{a template file pointer (see
+  \code{\link{tpl.find}} for details)}
 
   \item{tag.open}{a string containing opening tag}
 
