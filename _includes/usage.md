@@ -4,7 +4,7 @@ After [installing](#install), load the package:
 library(rapport)
 {% endhighlight %}
 
-The most obvious goal of this package is to easily create some reports by providing custom data.
+The most obvious goal of this package is to easily reproduce a report by providing a custom dataset.
 
 *rapport* has some predefined templates distributed with the package. These files can be found in *templates* directory of the package with `tpl` extension. Getting a list of all available templates is easy:
 
@@ -15,7 +15,7 @@ The most obvious goal of this package is to easily create some reports by provid
 [7] "type_demo.tpl"            "univar-descriptive.tpl"  
 {% endhighlight %}
 
-If you, find, say '[`example.tpl`](#exampletpl)' promising, you can check it out by calling [`tpl.example`](#tpl.example) function which prints out examples specified in the template, prompting you to choose one from the list:
+If you, find, say [`example.tpl`](/functions#exampletpl) promising, you can check it out by calling [`tpl.example`](/functions#tpl.example) function which prints out the examples specified in the template, prompting you to choose one from the list:
 
 {% highlight r %}
 > tpl.example('example')
@@ -55,9 +55,9 @@ The 5 highest values are: _12_, _12_, _10_, _10_ and _10_.
    
 {% endhighlight %}
 
-What was done here? We have executed a simple analysis on the `leisure` variable found in [`ius2008`](#ius2008) (package bundled) dataset. This simple template only returned a local greeting, the name and the [label](#rp.label) of the given variable, alongside a variable's `summary` and 5 highest values.
+What was done here? We have executed a simple analysis on the `leisure` variable found in [`ius2008`](/functions#ius2008) (package bundled) dataset. This simple template only returned a local greeting, the name and the [label](/functions#rp.label) of the given variable, alongside a variable's `summary` and 5 highest values.
 
-As you could see in the examples there are some other parameters of this template besides `data` and `var`, for example: `desc`, `hist` and `theme`. In order to, [get some info](#tpl.info) on the template, issue following command:
+As you could see in the examples there are some other parameters of this template besides `data` and `var`, for example: `desc`, `hist` and `theme`. In order to, [get some info](/functions#tpl.info) on the template, issue following command:
 
 <!-- continue from here -->
 
@@ -113,11 +113,11 @@ Okay, we have seen the examples before, but new information appears now too:
  * required packages to run the template and
  * some input parameters.
 
-These latter shows exactly what we were looking for which can be returned by [`tpl.info('example', meta=F)`](#tpl.info) command too without meta informations.
+These latter shows exactly what we were looking for which can be returned by [`tpl.info`](/functions#tpl.info)`('example', meta=F)` command too without meta informations.
 
 There we can see that four parameters can be provided. `var` is the name of the variable we want to analyze, we can set `desc` to `FALSE` instead of the default value `TRUE` not to print descriptive statistics and we can instruct the template to return a histogram too (see: `hist` parameter) with given color `theme`.
 
-Let's run the forth example where we do exactly this!
+Let's run the forth example:
 
 {% highlight r %}
 > rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')

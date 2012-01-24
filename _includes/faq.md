@@ -14,7 +14,7 @@ Actually a lot of stuff:
 <a id="authors"> </a>
 #### Who is developing this package?
 
-At the moment Aleksandar Blagotić and Gergely Daróczi are painstakingly procrastinating with this project, to the utmost limits of endurance. Feel free to [contribute](#custom) and help [translating](#translate) it!
+Members of the [_rapport_ development team](#contact) are painstakingly procrastinating on this project, to the utmost limits of endurance. Feel free to [contribute](#custom) and help us [localising](#translate) it!
 
 #### Why should I prefer *rapport* over [Sweave](http://www.stat.uni-muenchen.de/~leisch/Sweave/), [brew](http://cran.r-project.org/web/packages/brew/index.html), [knitr](https://github.com/yihui/knitr) and the like?
 

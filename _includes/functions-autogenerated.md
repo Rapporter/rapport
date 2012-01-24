@@ -20,11 +20,6 @@
 </code></pre>
 </div>
 
-<a id="typeDemoData"> </a>
-##### typeDemoData: Rapport Input Type Demo Data
-###### Description:
-<p> This dataset contains dummy-data that demonstratesvarious input types supported by <code>rapport</code> .</p>
-
 <a id="Generic-functions"> </a>
 #### Generic functions
 
