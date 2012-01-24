@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: index
 ---
 
 <a id="intro"> </a>
@@ -38,11 +38,6 @@ layout: default
 ### Writing templates
 
 {% include writing-custom-template.md %}
-
-<a id="functions"> </a>
-### Package functions
-
-{% include functions.md %}
 
 <a id="discuss"> </a>
 ### Discussion
