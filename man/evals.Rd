@@ -5,7 +5,8 @@
   evals(txt = NULL, ind = NULL, body = NULL,
     classes = NULL, hooks = NULL, length = Inf,
     output = c("all", "src", "output", "type", "msg"),
-    env = NULL, check.output = TRUE, ...)
+    env = NULL, check.output = TRUE, graph.output = "png",
+    ...)
 }
 \arguments{
   \item{txt}{a list with character values containing R
@@ -55,7 +56,11 @@
   as now checks are made, some requirements apply, see
   Details.}
 
-  \item{...}{optional parameters passed to \code{png(...)}}
+  \item{graph.output}{set the required file format of saved
+  plots}
+
+  \item{...}{optional parameters passed to graphics device
+  (eg. \code{width}, \code{height} etc.)}
 }
 \value{
   a list of parsed elements each containg: src (the command
