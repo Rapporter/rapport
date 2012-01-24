@@ -30,7 +30,7 @@ layout: default
                 <a href="#custom">Custom templates</a>
             </li>
             <li>
-                <a href="/functions">Package docs</a>
+                <a href="/functions" target="functions">Package docs</a>
             </li>
             <li>
                 <a href="#discuss">Discussion</a>
