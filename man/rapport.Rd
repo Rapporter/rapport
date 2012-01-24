@@ -6,7 +6,8 @@
 \usage{
   rapport(fp, data = NULL, ..., reproducible = FALSE,
     header.levels.offset = 0,
-    rapport.mode = getOption("rapport.mode"))
+    rapport.mode = getOption("rapport.mode"),
+    graph.output = "png")
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -33,6 +34,9 @@
   \code{evals(..., check.output = FALSE)}), while in
   \code{debug} mode \code{rapport} will halt on first
   error.}
+
+  \item{graph.output}{set the required file format of saved
+  plots}
 }
 \value{
   a list with \code{rapport} class.
