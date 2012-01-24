@@ -1,6 +1,6 @@
 #### Gergely Daróczi
 
-Currently a Ph.D. student at [BCE, Hungary](http://www.uni-corvinus.hu/index.php?id=p1000290) and also lecturer at [PPKE BTK, Hungary](http://btk.ppke.hu/english).
+Currently a Ph.D. student at [BCE, Hungary](http://www.uni-corvinus.hu/index.php?id=p1000290) and also a lecturer at [PPKE BTK, Hungary](http://btk.ppke.hu/english).
 
  - [StackOverflow](http://stackoverflow.com/users/564164/daroczig)
  - [GitHub](https://github.com/daroczig)
