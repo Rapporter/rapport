@@ -129,7 +129,7 @@ print.rapport <- function(x, ...) {
                    if (!is.null(rwarn))
                        cat('\n', rwarn)
                },
-               'heading' = cat(capture.output(section(part$text$eval, part$level))),
+               'heading' = cat(paste(paste(rep('#', part$level), collapse=''), part$text$eval)),
                cat(rp.prettyascii(as.character(part$text$eval)))
                )
         catn()
