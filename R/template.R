@@ -196,7 +196,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
     fld <- c(fld.req, fld.default) # merge required fields with default/specified ones
 
     l <- sapply(fld, function(x){
-        m   <- grep(sprintf('^%s:[\t ]+(%s)$', x$title, x$regex), header)
+        m   <- grep(sprintf('^%s:[\t ]*(%s)$', x$title, x$regex), header)
         if (length(m) > 1)
             stop('duplicate metadata entries: ', paste(sprintf('"%s"', header[m]), collapse = ', '))
         x$x <- header[m]
