@@ -151,7 +151,7 @@ tpl.export(tpl.example('example', 'all'))
 
 Which will return the above linked HTML with all examples of `example.tpl`. Well, not exactly the same :)
 
-Were you aware of the change in the second line which holds the name and e-mail address of the use*R*? This is set to `Rapport package team @ https://github.com/aL3xa/rapport` in our deploying system and set to `undefined` by default. It might be a good idea to set this to custom strings on all users' machine, which are hold in `options()`.
+Were you aware of the change in the second line which holds the name and e-mail address of the use*R*? This is set to `rapport package team @ https://github.com/aL3xa/rapport` in our deploying system and set to `undefined` by default. It might be a good idea to set this to custom strings on all users' machine, which are hold in `options()`.
 
 Set your name and e-mail address:
 

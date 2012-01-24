@@ -1,3 +1,3 @@
-Any feature request and bug report should land on GitHub. Please [file an issue](https://github.com/aL3xa/rapport/issues) or comment the [code](https://github.com/aL3xa/rapport)! Feel free to [watch](https://github.com/aL3xa/rapport/toggle_watch) and/or [fork](https://github.com/aL3xa/rapport/fork_select) our project :)
+Please request a feature or file a bug report on [issues page](https://github.com/aL3xa/rapport/issues) on GitHub. Feel free to [watch](https://github.com/aL3xa/rapport/toggle_watch) and/or [fork](https://github.com/aL3xa/rapport/fork_select) our project!
 
-Our mail list/forum is open to all kind of general discussion (installation, configuration issues, questions, new templates, translation etc.), please [join our group on Google](https://groups.google.com/group/rapport-package). 
+You can also [join the discussion](https://groups.google.com/group/rapport-package) on various topics related to _rapport_ (installation, configuration issues, questions, new templates, translation, etc.).
