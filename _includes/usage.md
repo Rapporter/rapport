@@ -137,11 +137,11 @@ And wow, the mean of *leisure* is 3.1994!
 /tmp/RtmpyEDSZb/file12c8cb13.png
 {% endhighlight %}
 
-Here instead of the known [`tpl.example`](#tpl.example) we used directly [`rapport`](#rapport) which takes the above described input parameters. As you can see the descriptive statistics table is gone, instead we got a histogram. Or at least a path to a png - which holds that image. You can find that file after running tha above command with a modified path (based on `tempfile()`) on your local machine and check it out, we have attached that [here](demo/3f5075e30419f077ee974a022dd89e33.png).
+Here instead of the known [`tpl.example`](/functions#tpl.example) we used directly [`rapport`](/functions#rapport) which takes the above described input parameters. As you can see the descriptive statistics table is gone, instead we got a histogram. Or at least a path to a png - which holds that image. You can find that file after running tha above command with a modified path (based on `tempfile()`) on your local machine and check it out, we have attached that [here](demo/3f5075e30419f077ee974a022dd89e33.png).
 
 Well, this is a quite rough way of checking out plots generated in a template :)
 
-There are a lot easier ways for that, as we can export our reports (to be more technical our `rapport` classes, see `str()` on any [`rapport`](#rapport) returned object) to wide range of formats with [`tpl.export`](#tpl.expport).
+There are a lot easier ways for that, as we can export our reports (to be more technical our `rapport` classes, see `str()` on any [`rapport`](/functions#rapport) returned object) to wide range of formats with [`tpl.export`](/functions#tpl.expport).
 
 Please find the HTML exported versions of the examples of [`example.tpl`](#exampletpl) [here](demo/example.html) or run on your machine:
 
@@ -160,16 +160,16 @@ options('rp.user'  = 'userR')
 options('rp.email' = 'userR@example.com')
 {% endhighlight %}
 
-And rerun the following commands to see the changes. For other settings in [`tpl.export`](#tpl.export) please check out the [docs](#tpl.export).
+And rerun the following commands to see the changes. For other settings in [`tpl.export`](/functions#tpl.export) please check out the [docs](/functions#tpl.export).
 
-There are a bunch of other helper functions in *rapport* to deal with templates. As most starts with `tpl` prefix (except for the main [`rapport`](#rapport) function), we can easily list them by typing `tpl.` and pressing `TAB` twice:
+There are a bunch of other helper functions in *rapport* to deal with templates. As most starts with `tpl` prefix (except for the main [`rapport`](/functions#rapport) function), we can easily list them by typing `tpl.` and pressing `TAB` twice:
 
 {% highlight r %}
 > tpl.
 tpl.body     tpl.example  tpl.export   tpl.find     tpl.info     tpl.inputs   tpl.list     tpl.meta     tpl.rerun    
 {% endhighlight %}
 
-By this method you might not find all handy functions, for example [`rapport.html`](#rapport.html) and [`rapport.odt`](#rapport.odt) which are simple wrappers around [`rapport`](#rapport) and [`tpl.export`](#tpl.export). Just use these functions you would use [`rapport`](#rapport) and get a nifty HTML/odt output directly. For example:
+By this method you might not find all handy functions, for example [`rapport.html`](/functions#rapport.html) and [`rapport.odt`](/functions#rapport.odt) which are simple wrappers around [`rapport`](/functions#rapport) and [`tpl.export`](/functions#tpl.export). Just use these functions you would use [`rapport`](/functions#rapport) and get a nifty HTML/odt output directly. For example:
 
 {% highlight r %}
 rapport.html('example', ius2008, var = 'leisure')
