@@ -846,7 +846,7 @@ rp.round <- function(x, short = FALSE, digits = NULL) {
 #' @export
 rp.prettyascii <- function(x) {
 
-    if (is.rapport(x) | is.character(x))
+    if ((length(x) == 1) & (is.rapport(x) | is.character(x)))
         return(x)
 
     if (is.list(x))
