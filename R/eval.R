@@ -198,7 +198,7 @@ eval.msgs <- function(src, env = NULL) {
 #' }
 #' @export
 evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, ...){
-
+    ## TODO: add option for jpg, pdf etc.
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
 

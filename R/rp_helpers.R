@@ -877,7 +877,11 @@ rp.prettyascii <- function(x) {
         }
         return(paste(pre.txt, paste(capture.output(ascii(x, include.rownames = include.rownames)), collapse='\n'), sep=''))
     }
-
+    
+    x.class <- class(x)
+    if (x.class == 'trellis' | x.class == 'ggplot')
+        stop('ggplot2 and trellis objects must be printed in strict mode!')
+    
     return(paste(capture.output(ascii(x, format='nice', digits=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'))), collapse='\n'))
 }
 
