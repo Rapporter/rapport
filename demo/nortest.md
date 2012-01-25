@@ -1,13 +1,15 @@
 % Normality Tests
-% Rapport package team @ https://github.com/aL3xa/rapport
+% (Username not set) (E-mail address not set)
 % 2011-04-26 20:25 CET
 
-## Description
+Description
+-----------
 
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
 
-# Introduction
+Introduction
+------------
 
 In statistics, *normality* refers to an assumption that the distribution
 of a random variable follows *normal* (*Gaussian*) distribution. Because
@@ -24,9 +26,10 @@ distributions, as it's defined two parameters:
 
 ![image](2f8c434e103f36ec70966b372838d448.png)
 
-# Normality Tests
+Normality Tests
+---------------
 
-## Overview
+### Overview
 
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
@@ -51,19 +54,12 @@ on CRAN.
     "traditional" approach in normality testing. `pearson.test` is
     located in `nortest` package.
 
-## Results
+### Results
 
 Here you can see the results of applied normality tests (*p-values* less
 than 0.05 indicate significant discrepancies):
 
-<!-- endlist -->
-
-                 **H**     **p**
-  -------------- --------- -------
-  shapiro.test   0.9001    0
-  lillie.test    0.168     0
-  ad.test        18.753    0
-  pearson.test   1791.25   0
+*0.05*
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -75,13 +71,14 @@ So, let's draw some conclusions based on applied normality test:
 -   *Pearson's Χ^2^ test* classifies the underlying distribution as
     normal
 
-# Diagnostic Plots
+Diagnostic Plots
+----------------
 
 There are various plots that can help you decide about the normality of
 the distribution. Only a few most commonly used plots will be shown:
 *histogram*, *Q-Q plot* and *kernel density plot*.
 
-## Histogram
+### Histogram
 
 *Histogram* was first introduced by *Karl Pearson* and it's probably the
 most popular plot for depicting the probability distribution of a random
@@ -91,7 +88,7 @@ should resemble the "bell-like" shape.
 
 ![image](12bea9ba14449f76d79a9d5792bf29f9.png)
 
-## Q-Q Plot
+### Q-Q Plot
 
 "Q" in *Q-Q plot* stands for *quantile*, as this plot compares empirical
 and theoretical distribution (in this case, *normal* distribution) by
@@ -100,21 +97,23 @@ plotted dots should approximate a "straight", `x = y` line.
 
 ![image](fff2bb7b8b095f881f85302d0128bae7.png)
 
-## Kernel Density Plot
+### Kernel Density Plot
 
 *Kernel density plot* is a plot of smoothed *empirical distribution
 function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](01692a50f2fba07dd3c1b2084e49e8d5.png)
+![image](07657b36ddf71c363ca51d844405b99a.png)
 
-## Description
+Description
+-----------
 
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
 
-# Introduction
+Introduction
+------------
 
 In statistics, *normality* refers to an assumption that the distribution
 of a random variable follows *normal* (*Gaussian*) distribution. Because
@@ -129,9 +128,10 @@ distributions, as it's defined two parameters:
 -   *μ* - *mean* or *expectation* (location parameter)
 -   *σ^2^* - *variance* (scale parameter)
 
-# Normality Tests
+Normality Tests
+---------------
 
-## Overview
+### Overview
 
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
@@ -156,19 +156,12 @@ on CRAN.
     "traditional" approach in normality testing. `pearson.test` is
     located in `nortest` package.
 
-## Results
+### Results
 
 Here you can see the results of applied normality tests (*p-values* less
 than 0.05 indicate significant discrepancies):
 
-<!-- endlist -->
-
-                 **H**     **p**
-  -------------- --------- -------
-  shapiro.test   0.9001    0
-  lillie.test    0.168     0
-  ad.test        18.753    0
-  pearson.test   1791.25   0
+*0.05*
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -180,13 +173,14 @@ So, let's draw some conclusions based on applied normality test:
 -   *Pearson's Χ^2^ test* classifies the underlying distribution as
     normal
 
-# Diagnostic Plots
+Diagnostic Plots
+----------------
 
 There are various plots that can help you decide about the normality of
 the distribution. Only a few most commonly used plots will be shown:
 *histogram*, *Q-Q plot* and *kernel density plot*.
 
-## Histogram
+### Histogram
 
 *Histogram* was first introduced by *Karl Pearson* and it's probably the
 most popular plot for depicting the probability distribution of a random
@@ -196,7 +190,7 @@ should resemble the "bell-like" shape.
 
 ![image](12bea9ba14449f76d79a9d5792bf29f9.png)
 
-## Q-Q Plot
+### Q-Q Plot
 
 "Q" in *Q-Q plot* stands for *quantile*, as this plot compares empirical
 and theoretical distribution (in this case, *normal* distribution) by
@@ -205,21 +199,23 @@ plotted dots should approximate a "straight", `x = y` line.
 
 ![image](fff2bb7b8b095f881f85302d0128bae7.png)
 
-## Kernel Density Plot
+### Kernel Density Plot
 
 *Kernel density plot* is a plot of smoothed *empirical distribution
 function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](b26afbd74d3686d7e73ec55f3f088e0f.png)
+![image](2566e535c6619ca87dce39c72a1bd2e1.png)
 
-## Description
+Description
+-----------
 
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
 
-# Introduction
+Introduction
+------------
 
 In statistics, *normality* refers to an assumption that the distribution
 of a random variable follows *normal* (*Gaussian*) distribution. Because
@@ -236,9 +232,10 @@ distributions, as it's defined two parameters:
 
 ![image](2f8c434e103f36ec70966b372838d448.png)
 
-# Normality Tests
+Normality Tests
+---------------
 
-## Overview
+### Overview
 
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
@@ -263,19 +260,12 @@ on CRAN.
     "traditional" approach in normality testing. `pearson.test` is
     located in `nortest` package.
 
-## Results
+### Results
 
 Here you can see the results of applied normality tests (*p-values* less
 than 0.05 indicate significant discrepancies):
 
-<!-- endlist -->
-
-                 **H**     **p**
-  -------------- --------- -------
-  shapiro.test   0.9001    0
-  lillie.test    0.168     0
-  ad.test        18.753    0
-  pearson.test   1791.25   0
+*0.05*
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -287,13 +277,14 @@ So, let's draw some conclusions based on applied normality test:
 -   *Pearson's Χ^2^ test* classifies the underlying distribution as
     normal
 
-# Diagnostic Plots
+Diagnostic Plots
+----------------
 
 There are various plots that can help you decide about the normality of
 the distribution. Only a few most commonly used plots will be shown:
 *histogram*, *Q-Q plot* and *kernel density plot*.
 
-## Histogram
+### Histogram
 
 *Histogram* was first introduced by *Karl Pearson* and it's probably the
 most popular plot for depicting the probability distribution of a random
@@ -303,7 +294,7 @@ should resemble the "bell-like" shape.
 
 ![image](12bea9ba14449f76d79a9d5792bf29f9.png)
 
-## Q-Q Plot
+### Q-Q Plot
 
 "Q" in *Q-Q plot* stands for *quantile*, as this plot compares empirical
 and theoretical distribution (in this case, *normal* distribution) by
@@ -312,14 +303,14 @@ plotted dots should approximate a "straight", `x = y` line.
 
 ![image](90c36448209c0d19b8b44a89277b29a3.png)
 
-## Kernel Density Plot
+### Kernel Density Plot
 
 *Kernel density plot* is a plot of smoothed *empirical distribution
 function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](5be0d211ffad27ed23f51e5f964b99cc.png)
+![image](d60f6bc4a500f7965efdd22587e4ed81.png)
 
 * * * * *
 

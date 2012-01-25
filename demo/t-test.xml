@@ -5,8 +5,8 @@
   <articleinfo>
     <title>t-test Template</title>
     <author>
-      <firstname>Rapport package team @</firstname>
-      <surname>https://github.com/aL3xa/rapport</surname>
+      <firstname>(Username not set) (E-mail address not</firstname>
+      <surname>set)</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -351,13 +351,13 @@
       </tbody>
     </tgroup>
   </informaltable>
-  <section id="description-1">
-    <title>Description</title>
-    <para>
-      A t-test report with table of descriptives, diagnostic tests and
-      t-test specific statistics.
-    </para>
-  </section>
+</section>
+<section id="description-1">
+  <title>Description</title>
+  <para>
+    A t-test report with table of descriptives, diagnostic tests and
+    t-test specific statistics.
+  </para>
 </section>
 <section id="introduction-1">
   <title>Introduction</title>
@@ -408,6 +408,88 @@
     In order to get more insight on the underlying data, a table of
     basic descriptive statistics is displayed below.
   </para>
+  <informaltable>
+    <tgroup cols="10">
+      <colspec align="left" />
+      <colspec align="left" />
+      <colspec align="left" />
+      <colspec align="left" />
+      <colspec align="left" />
+      <colspec align="left" />
+      <colspec align="left" />
+      <colspec align="left" />
+      <colspec align="left" />
+      <colspec align="left" />
+      <thead>
+        <row>
+          <entry>
+            <emphasis role="strong">value</emphasis>
+          </entry>
+          <entry>
+            <emphasis role="strong">min(x)</emphasis>
+          </entry>
+          <entry>
+            <emphasis role="strong">max(x)</emphasis>
+          </entry>
+          <entry>
+            <emphasis role="strong">mean(x)</emphasis>
+          </entry>
+          <entry>
+            <emphasis role="strong">sd(x)</emphasis>
+          </entry>
+          <entry>
+            <emphasis role="strong">var(x)</emphasis>
+          </entry>
+          <entry>
+            <emphasis role="strong">median(x)</emphasis>
+          </entry>
+          <entry>
+            <emphasis role="strong">IQR(x)</emphasis>
+          </entry>
+          <entry>
+            <emphasis role="strong">skewness(x)</emphasis>
+          </entry>
+          <entry>
+            <emphasis role="strong">kurtosis(x)</emphasis>
+          </entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>
+            (all)
+          </entry>
+          <entry>
+            0
+          </entry>
+          <entry>
+            12
+          </entry>
+          <entry>
+            3.1994
+          </entry>
+          <entry>
+            2.1436
+          </entry>
+          <entry>
+            4.5951
+          </entry>
+          <entry>
+            3
+          </entry>
+          <entry>
+            2
+          </entry>
+          <entry>
+            1.1873
+          </entry>
+          <entry>
+            4.547
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </informaltable>
 </section>
 <section id="diagnostics-1">
   <title>Diagnostics</title>

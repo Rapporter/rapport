@@ -1,5 +1,5 @@
 Example template
-Rapport package team @ https://github.com/aL3xa/rapport
+(Username not set) (E-mail address not set)
 2011-04-26 20:25 CET
 
 Description
@@ -9,7 +9,7 @@ This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
 Début
-=====
+-----
 
 Hello, world!
 
@@ -20,11 +20,10 @@ day)".
 And wow, the mean of leisure is 3.1994!
 
 Descriptive statistics
-----------------------
 
-  Min.   1st Qu.   Median   Mean   3rd Qu.   Max.   NA's
-  ------ --------- -------- ------ --------- ------ ------
-  0.0    2.0       3.0      3.2    4.0       12.0   37.0
+  Min.    1st Qu.   Median   Mean    3rd Qu.   Max.     NA's
+  ------- --------- -------- ------- --------- -------- --------
+  0.000   2.000     3.000    3.199   4.000     12.000   37.000
 
 The 5 highest values are: 12, 12, 10, 10 and 10.
 
@@ -35,7 +34,7 @@ This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
 Début
-=====
+-----
 
 Hello, world!
 
@@ -54,7 +53,7 @@ This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
 Début
-=====
+-----
 
 Hello, world!
 
@@ -67,7 +66,6 @@ And wow, the mean of leisure is 3.1994!
 For more detailed statistics, you should have set desc=TRUE!
 
 Histogram
----------
 
 []
 
@@ -78,7 +76,7 @@ This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
 Début
-=====
+-----
 
 Hello, world!
 
@@ -91,7 +89,6 @@ And wow, the mean of leisure is 3.1994!
 For more detailed statistics, you should have set desc=TRUE!
 
 Histogram
----------
 
 []
 

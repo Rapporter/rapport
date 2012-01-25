@@ -2,13 +2,14 @@
  	<li><a href="#anova">anova.tpl</a></li>
  	<li><a href="#correlations">correlations.tpl</a></li>
  	<li><a href="#crosstable">crosstable.tpl</a></li>
+ 	<li><a href="#descriptives-multivar">descriptives-multivar.tpl</a></li>
+ 	<li><a href="#descriptives-univar-factor">descriptives-univar-factor.tpl</a></li>
+ 	<li><a href="#descriptives-univar-numeric">descriptives-univar-numeric.tpl</a></li>
+ 	<li><a href="#descriptives-univar">descriptives-univar.tpl</a></li>
  	<li><a href="#example">example.tpl</a></li>
- 	<li><a href="#multivar-descriptive">multivar-descriptive.tpl</a></li>
  	<li><a href="#nortest">nortest.tpl</a></li>
  	<li><a href="#outlier-test">outlier-test.tpl</a></li>
  	<li><a href="#t-test">t-test.tpl</a></li>
- 	<li><a href="#type_demo">type_demo.tpl</a></li>
- 	<li><a href="#univar-descriptive">univar-descriptive.tpl</a></li>
  </ul>
 
 Please find below a detailed description about each with sample outputs of those in R console, HTML, odt and pdf too.
@@ -80,33 +81,34 @@ rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-
 ##	 Running: rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way
 ##########################################################################################
 
- == Introduction  
+
+
+# Introduction
 
 **Analysis of Variance** or **ANOVA** is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921. by famous English statistician Sir Ronald Aylmer Fisher.
 
- == Model Overview  
+# Model Overview
 
 One-Way ANOVA was carried out, with _Gender_ as independent variable, and _Internet usage in leisure time (hours per day)_ as a response variable. Factor interaction was taken into account.
 
- == Descriptives  
+# Descriptives
 
 In order to get more insight on the model data, a table of frequencies for ANOVA factors is displayed, as well as a table of descriptives.
 
- === Frequency Table  
+## Frequency Table
 
 Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.
 
-<!-- endlist -->
 
-        **gender**   **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- ------------ ------- --------- ----------------- ---------------
-1       male         410     60.9212   410               60.9212        
-2       female       263     39.0788   673               100            
-Total                673     100       673               100            
-------- ------------ ------- --------- ----------------- ---------------
+**gender**   **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------ ------- --------- -------------- --------------
+male         410     60.9212   410            60.9212       
+female       263     39.0788   673            100           
+Total        673     100       673            100           
+------------ ------- --------- -------------- --------------
 
 
- === Descriptive Statistics  
+## Descriptive Statistics
 
 The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
@@ -119,13 +121,13 @@ female    0               12              3.0643           2.3546         2     
 --------- --------------- --------------- ---------------- -------------- ------------------ --------------- -------------------- --------------------
 
 
- == Diagnostics  
+# Diagnostics
 
 Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.
 
- === Diagnostics  
+## Diagnostics
 
- ==== Univariate Normality  
+### Univariate Normality
 
 We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_). 
 
@@ -141,7 +143,7 @@ ad.test        18.753   0
 
 As you can see, applied tests confirm departures from normality.
 
- ==== Homoscedascity  
+### Homoscedascity
 
 In order to test homoscedascity, _Bartlett_ and _Fligner-Kileen_ tests are applied.
 
@@ -156,7 +158,7 @@ bartlett.test   10.7698   0.001
 
 When it comes to equality of variances, applied tests yield inconsistent results. While _Fligner-Kileen test_ confirmed the hypotheses of homoscedascity, _Bartlett's test_ rejected it.
 
- === Diagnostic Plots  
+## Diagnostic Plots
 
 Here you can see several diagnostic plots for ANOVA model:
 
@@ -165,11 +167,11 @@ Here you can see several diagnostic plots for ANOVA model:
  - normal Q-Q plot
  - residuals against leverages
 
-/tmp/RtmpPer367/file1c44d631.png
+/tmp/RtmpwIuUZk/filef30d5c8.png
 
- == ANOVA Summary  
+# ANOVA Summary
 
- === ANOVA Table  
+## ANOVA Table
 
 <!-- endlist -->
 
@@ -187,37 +189,38 @@ _F-test_ for _Gender_ is not statistically significant, which implies that there
 ##	 Running: rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way
 #######################################################################################################
 
- == Introduction  
+s
+
+# Introduction
 
 **Analysis of Variance** or **ANOVA** is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921. by famous English statistician Sir Ronald Aylmer Fisher.
 
- == Model Overview  
+# Model Overview
 
 Two-Way ANOVA was carried out, with _Gender_ and _Relationship status_ as independent variables, and _Internet usage in leisure time (hours per day)_ as a response variable. Factor interaction was taken into account.
 
- == Descriptives  
+# Descriptives
 
 In order to get more insight on the model data, a table of frequencies for ANOVA factors is displayed, as well as a table of descriptives.
 
- === Frequency Table  
+## Frequency Table
 
 Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.
 
-<!-- endlist -->
 
-        **gender**   **partner**         **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- ------------ ------------------- ------- --------- ----------------- ---------------
-1       male         in a relationship   150     23.6967   150               23.6967        
-2       female       in a relationship   120     18.9573   270               42.654         
-3       male         married             33      5.2133    303               47.8673        
-4       female       married             29      4.5814    332               52.4487        
-5       male         single              204     32.2275   536               84.6761        
-6       female       single              97      15.3239   633               100            
-Total                                    633     100       633               100            
-------- ------------ ------------------- ------- --------- ----------------- ---------------
+**gender**   **partner**         **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------ ------------------- ------- --------- -------------- --------------
+male         in a relationship   150     23.6967   150            23.6967       
+female       in a relationship   120     18.9573   270            42.654        
+male         married             33      5.2133    303            47.8673       
+female       married             29      4.5814    332            52.4487       
+male         single              204     32.2275   536            84.6761       
+female       single              97      15.3239   633            100           
+Total        Total               633     100       633            100           
+------------ ------------------- ------- --------- -------------- --------------
 
 
- === Descriptive Statistics  
+## Descriptive Statistics
 
 The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
@@ -239,13 +242,13 @@ female                           0.5             6               2.6562         
 ------------ ------------------- --------------- --------------- ---------------- -------------- ------------------ --------------- -------------------- --------------------
 
 
- == Diagnostics  
+# Diagnostics
 
 Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.
 
- === Diagnostics  
+## Diagnostics
 
- ==== Univariate Normality  
+### Univariate Normality
 
 We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_). 
 
@@ -261,7 +264,7 @@ ad.test        18.753   0
 
 As you can see, applied tests confirm departures from normality.
 
- ==== Homoscedascity  
+### Homoscedascity
 
 In order to test homoscedascity, _Bartlett_ and _Fligner-Kileen_ tests are applied.
 
@@ -276,7 +279,7 @@ bartlett.test   11.1267   0.0009
 
 When it comes to equality of variances, applied tests yield inconsistent results. While _Fligner-Kileen test_ confirmed the hypotheses of homoscedascity, _Bartlett's test_ rejected it.
 
- === Diagnostic Plots  
+## Diagnostic Plots
 
 Here you can see several diagnostic plots for ANOVA model:
 
@@ -285,11 +288,11 @@ Here you can see several diagnostic plots for ANOVA model:
  - normal Q-Q plot
  - residuals against leverages
 
-/tmp/RtmpPer367/file7938e69b.png
+/tmp/RtmpwIuUZk/file734b0955.png
 
- == ANOVA Summary  
+# ANOVA Summary
 
- === ANOVA Table  
+## ANOVA Table
 
 <!-- endlist -->
 
@@ -346,6 +349,8 @@ Title:        ANOVA Template
 Author:       Aleksandar Blagotić
 Description:  An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.
 Packages:     nortest
+Data required: TRUE
+Strict:        TRUE
 Example:      rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way
               rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way
 
@@ -386,7 +391,7 @@ Below lies a frequency table for factors in ANOVA model. Note that the missing v
 The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
 <%
-(desc <- rp.desc(fac, resp, c(min, max, mean, SD = sd, median, IQR, skewness, kurtosis)))
+(desc <- rp.desc(resp, fac, c(min, max, mean, SD = sd, median, IQR, skewness, kurtosis)))
 %>
 
 # Diagnostics
@@ -470,7 +475,7 @@ _F-test_ for <% p(fac.label[1]) %> is <% ifelse(a.fp[1], "", "not") %> statistic
 <br><br>
  This template will return the correlation matrix of supplied numerical variables.
 <br><br>
-<em>Required packages:</em> NA
+<em>Required packages:</em> 
 <br>
 <em>Example:</em> 
 {% highlight text %}
@@ -484,7 +489,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 
 </div>
     <em>Type:</em>	numeric
 <br>
-    <em>Limits:</em>	from 1, up to 10 variables
+    <em>Limits:</em>	from 1, up to 50 variables
 <br>
 
 </div>
@@ -532,7 +537,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 
 ##	 Running: rapport('correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
 ##########################################################################################
 
- == Variable description  
+# Variable description
 
 _3_ variables provided.
 
@@ -546,7 +551,7 @@ Uncorrelated (-0.2 < r < 0.2) variables:
  * _age_ and _leisure_
  * _edu_ and _leisure_
 
- === Correlation matrix  
+## Correlation matrix
 
 <!-- endlist -->
 
@@ -558,14 +563,14 @@ leisure   -0.0338         0.1732  * * *
 --------- --------------- --------------- ---------------
 
 
-/tmp/RtmpPer367/file5bb1de78.png
+/tmp/RtmpwIuUZk/file133f4a51.png
 
 
 ##############################################################################################################################################
 ##	 Running: rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
 ##############################################################################################################################################
 
- == Variable description  
+# Variable description
 
 _11_ variables provided.
 
@@ -602,7 +607,7 @@ Uncorrelated (-0.2 < r < 0.2) variables:
  * _drat_ and _carb_
  * _am_ and _carb_
 
- === Correlation matrix  
+## Correlation matrix
 
 <!-- endlist -->
 
@@ -622,7 +627,7 @@ carb   -0.5509  * *     0.5270  * *      0.3950  *        0.7498  * * *    -0.09
 ------ ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ----------------
 
 
-/tmp/RtmpPer367/file471a07f9.png
+/tmp/RtmpwIuUZk/file4ca48e70.png
 
 
 {% endhighlight %}
@@ -662,17 +667,19 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 
 {% highlight text %}
 
 <!--head
-Title: Correlations
-Author: Daróczi Gergely 
-Email: gergely@snowl.net
-Description: This template will return the correlation matrix of supplied numerical variables. 
-Packages: ascii
-Example: rapport('correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
-         rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
-vars        | *numeric[1,10]| Variable              | Numerical variables
-info        | TRUE          | Stat. theory          | Show information about background theory?
-cor.matrix  | TRUE          | Correlation matrix    | Show correlation matrix (numbers)?
-cor.plot    | TRUE          | Scatterplot matrix    | Show scatterplot matrix (image)?
+Title:          Correlations
+Author:         Daróczi Gergely 
+Email:          gergely@snowl.net
+Description:    This template will return the correlation matrix of supplied numerical variables. 
+Data required:  TRUE
+Strict:         TRUE
+Example:        rapport('correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
+                rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
+
+vars            | *numeric[1,50]| Variable              | Numerical variables
+info            | TRUE          | Stat. theory          | Show information about background theory?
+cor.matrix      | TRUE          | Correlation matrix    | Show correlation matrix (numbers)?
+cor.plot        | TRUE          | Scatterplot matrix    | Show scatterplot matrix (image)?
 head-->
 
 # Variable description
@@ -767,14 +774,14 @@ rapport('crosstable', data=ius2008, row='email', col='dwell')
 ##	 Running: rapport('crosstable', data=ius2008, row='gender', col='dwell')
 ##################################################################################
 
- == Variable description  
+# Variable description
 
 Two variables specified:
 
  * "gender" ("Gender") with _673_ and
  * "dwell" ("Dwelling") with _662_ valid values.
 
- == Counts  
+# Counts
 
 <!-- endlist -->
 
@@ -785,7 +792,7 @@ female   234        3                9
 -------- ---------- ---------------- -------------
 
 
- == Percentages  
+# Percentages
 
 <!-- endlist -->
 
@@ -796,7 +803,7 @@ female   0.3708     0.0048           0.0143
 -------- ---------- ---------------- -------------
 
 
- === Row percentages  
+## Row percentages
 
 <!-- endlist -->
 
@@ -807,7 +814,7 @@ female   0.9512     0.0122           0.0366
 -------- ---------- ---------------- -------------
 
 
- === Column percentages  
+## Column percentages
 
 <!-- endlist -->
 
@@ -818,7 +825,7 @@ female   0.4091     0.0968           0.3214
 -------- ---------- ---------------- -------------
 
 
- == Chi-squared test  
+# Chi-squared test
 
 
             **X-squared**   **df**   **p-value**  
@@ -831,7 +838,7 @@ It seems that a real association can be pointed out between *gender* and *dwell*
 Based on Goodman and Kruskal's lambda it seems that *dwell* (λ=0.7602) has an effect on *gender* (λ=0) if we assume both variables to be nominal.
 The association between the two variables seems to be weak based on Cramer's V (0.1001).
 
- === Pearson's residuals  
+## Pearson's residuals
 
 <!-- endlist -->
 
@@ -842,23 +849,23 @@ female   3.0844     -3.4312          -0.7595
 -------- ---------- ---------------- -------------
 
 
- === Mosaic chart  
+## Mosaic chart
 
-/tmp/RtmpPer367/file15ed3c4d.png
+/tmp/RtmpwIuUZk/file5d84a5d0.png
 
 
 #################################################################################
 ##	 Running: rapport('crosstable', data=ius2008, row='email', col='dwell')
 #################################################################################
 
- == Variable description  
+# Variable description
 
 Two variables specified:
 
  * "email" ("Email usage") with _672_ and
  * "dwell" ("Dwelling") with _662_ valid values.
 
- == Counts  
+# Counts
 
 <!-- endlist -->
 
@@ -874,7 +881,7 @@ always        226        9                7
 ------------- ---------- ---------------- -------------
 
 
- == Percentages  
+# Percentages
 
 <!-- endlist -->
 
@@ -890,7 +897,7 @@ always        0.3610     0.0144           0.0112
 ------------- ---------- ---------------- -------------
 
 
- === Row percentages  
+## Row percentages
 
 <!-- endlist -->
 
@@ -906,7 +913,7 @@ always        0.9339     0.0372           0.0289
 ------------- ---------- ---------------- -------------
 
 
- === Column percentages  
+## Column percentages
 
 <!-- endlist -->
 
@@ -922,7 +929,7 @@ always        0.4000     0.2812           0.2414
 ------------- ---------- ---------------- -------------
 
 
- == Chi-squared test  
+# Chi-squared test
 
 
             **X-squared**   **df**   **p-value**  
@@ -934,7 +941,7 @@ X-squared   14.864          12       0.249
 It seems that no real association can be pointed out between *email* and *dwell* by the *Pearson's Chi-squared test* (χ=14.864 at the degree of freedom being 12) at the significance level of 0.249.
 For this end no other statistical tests were performed.
 
- === Pearson's residuals  
+## Pearson's residuals
 
 <!-- endlist -->
 
@@ -950,9 +957,9 @@ always        2.0982     -1.2561          -1.6443
 ------------- ---------- ---------------- -------------
 
 
- === Mosaic chart  
+## Mosaic chart
 
-/tmp/RtmpPer367/file5c97e1b5.png
+/tmp/RtmpwIuUZk/file1a1a28df.png
 
 
 {% endhighlight %}
@@ -992,15 +999,18 @@ rapport('crosstable', data=ius2008, row='email', col='dwell')
 {% highlight text %}
 
 <!--head
-Title:        Crosstable
-Author:       Gergely Daróczi 
-Email:        gergely@snowl.net
-Description:  Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table. 
-Packages:     descr
-Example:      rapport('crosstable', data=ius2008, row='gender', col='dwell')
-              rapport('crosstable', data=ius2008, row='email', col='dwell')
-row           | *factor | Row variable        | A categorical variable.
-col           | *factor | Column variable     | A categorical variable. 
+Title:          Crosstable
+Author:         Gergely Daróczi 
+Email:          gergely@snowl.net
+Description:    Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table. 
+Packages:       descr
+Data required:  TRUE
+Strict:         TRUE
+Example:        rapport('crosstable', data=ius2008, row='gender', col='dwell')
+                rapport('crosstable', data=ius2008, row='email', col='dwell')
+
+row             | *factor | Row variable        | A categorical variable.
+col             | *factor | Column variable     | A categorical variable. 
 head-->
 
 # Variable description
@@ -1058,6 +1068,1309 @@ suppressWarnings(CrossTable(table))$chisq$stdres
 
 <%
 mosaicplot(table, shade=T, main=NULL)
+%>
+
+{% endhighlight %}
+</div></li>
+</ul>
+
+<a id="descriptives-multivar"> </a>
+#### descriptives-multivar.tpl
+
+ <ul class="tabs">
+	<li><a class="active" href="#info-descriptives-multivar">Description</a></li>
+	<li><a href="#inputs-descriptives-multivar">Inputs</a></li>
+	<li><a href="#example-descriptives-multivar">Example</a></li>
+	<li><a href="#export-descriptives-multivar">Export</a></li>
+	<li><a href="#source-descriptives-multivar">Source</a></li>
+</ul>
+
+ <ul class="tabs-content">
+	<li class="active" id="info-descriptives-multivar"><div><h5>Descriptive statistics</h5> by <em>Gergely Daróczi</em>
+<br><br>
+ This template will return descriptive statistics of numerical or frequency tables of categorical variables.
+<br><br>
+<em>Required packages:</em> 
+<br>
+<em>Example:</em> 
+{% highlight text %}
+rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
+rapport('descriptives-multivar', data=ius2008, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx"))
+rapport('descriptives-multivar', data=mtcars, vars=c('hp','wt'))
+{% endhighlight %}
+</div></li>
+	<li id="inputs-descriptives-multivar"><div><h5>Input parameters</h5><em>descriptives-multivar.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
+	<li><h6>vars: <small><em>Variables</em></small></h6>
+<div class="options">    <div class="options-desc">Categorical or numerical variables. The template will determine the measurement level of the given variable and will return detailed frequency tables or appropriate descriptive statistics for numerics.
+</div>
+    <em>Type:</em>	variable
+<br>
+    <em>Limits:</em>	from 1, up to 50 variables
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>nortest: <small><em>Normality tests</em></small></h6>
+<div class="options">    <div class="options-desc">Should normality tests be performed on numerical variables?
+</div>
+    <em>Type:</em>	boolean
+<br>
+    <em>Limits:</em>	exactly 1 variable
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+</ul></div></li>
+	<li id="example-descriptives-multivar">
+{% highlight text %}
+
+
+###########################################################################################
+##	 Running: rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
+###########################################################################################
+
+_2_
+
+# *gender* ("Gender")
+
+The dataset has _709_ observations with _673_ valid values (missing: _36_) in *gender* ("Gender"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**gender**   **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------ ------- --------- -------------- --------------
+male         410     60.9212   410            60.9212       
+female       263     39.0788   673            100           
+Total        673     100       673            100           
+------------ ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file60415eee.png
+
+It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
+
+The most frequent value is *male*.
+
+
+
+# *age* ("Age")
+
+The dataset has _709_ observations with _677_ valid values (missing: _32_) in *age* ("Age"), which seems to be a quantitative variable.
+
+## Base statistics
+
+
+**value**   **mean(age)**   **sd(age)**   **var(age)**  
+----------- --------------- ------------- --------------
+(all)       24.5731         6.8491        46.9107       
+----------- --------------- ------------- --------------
+
+
+## Histogram
+
+/tmp/RtmpwIuUZk/file32a6df83.png
+
+It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
+
+The standard deviation is _6.8491_ (variance: _46.9107_). The expected value is around _24.5731_, somewhere between _24.0572_ and _25.0891_ with the standard error of _0.2632_.
+
+If we suppose that *Age* is not near to a normal distribution (test: see below, skewness: _1.9296_, kurtosis: _7.4851_), checking the median (_23_) might be a better option instead of the mean. The interquartile range (_6_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+## Normality tests
+
+### Introduction
+
+In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
+
+$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$
+
+_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters:
+
+ - *&mu;* - _mean_ or _expectation_ (location parameter)
+ - *&sigma;^2^* - _variance_ (scale parameter)
+
+/tmp/RtmpwIuUZk/file6eeddc59.png
+
+### Normality Tests
+
+#### Overview
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
+
+ - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
+ - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
+ - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
+ - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
+
+#### Results
+
+Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
+
+_0.05_
+
+So, let's draw some conclusions based on applied normality test:
+
+ - according to _Shapiro-Wilk test_, the distribution of _Age_ is not normal.
+ - based on _Lilliefors test_, distribution of _Age_ is not normal
+ - _Anderson-Darling test_ confirms violation of normality assumption
+ - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal
+
+### Diagnostic Plots
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
+
+#### Histogram
+
+_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
+
+/tmp/RtmpwIuUZk/file584ccc0a.png
+
+#### Q-Q Plot
+
+"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
+
+/tmp/RtmpwIuUZk/file715ab947.png
+
+#### Kernel Density Plot
+
+_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
+
+/tmp/RtmpwIuUZk/file77aa23d1.png
+
+
+
+
+###################################################################################################################################################
+##	 Running: rapport('descriptives-multivar', data=ius2008, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx"))
+###################################################################################################################################################
+
+_8_
+
+# *chatim* ("Chat & IM usage")
+
+The dataset has _709_ observations with _669_ valid values (missing: _40_) in *chatim* ("Chat & IM usage"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**chatim**    **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------- ------- --------- -------------- --------------
+never         60      8.9686    60             8.9686        
+very rarely   73      10.9118   133            19.8804       
+rarely        58      8.6697    191            28.5501       
+sometimes     113     16.8909   304            45.441        
+often         136     20.3288   440            65.7698       
+very often    88      13.154    528            78.9238       
+always        141     21.0762   669            100           
+Total         669     100       669            100           
+------------- ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file1eac42c0.png
+
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
+
+The most frequent value is *always*.
+
+
+
+# *game* ("On-line games usage")
+
+The dataset has _709_ observations with _677_ valid values (missing: _32_) in *game* ("On-line games usage"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**game**      **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------- ------- --------- -------------- --------------
+never         352     51.9941   352            51.9941       
+very rarely   128     18.9069   480            70.901        
+rarely        32      4.7267    512            75.6278       
+sometimes     60      8.8626    572            84.4904       
+often         37      5.4653    609            89.9557       
+very often    35      5.1699    644            95.1256       
+always        33      4.8744    677            100           
+Total         677     100       677            100           
+------------- ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file67cd6eae.png
+
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
+
+The most frequent value is *never*.
+
+
+
+# *surf* ("Web surfing usage")
+
+The dataset has _709_ observations with _678_ valid values (missing: _31_) in *surf* ("Web surfing usage"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**surf**      **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------- ------- --------- -------------- --------------
+never         17      2.5074    17             2.5074        
+very rarely   26      3.8348    43             6.3422        
+rarely        33      4.8673    76             11.2094       
+sometimes     107     15.7817   183            26.9912       
+often         158     23.3038   341            50.295        
+very often    142     20.944    483            71.2389       
+always        195     28.7611   678            100           
+Total         678     100       678            100           
+------------- ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file1c3c8ee1.png
+
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
+
+The most frequent value is *always*.
+
+
+
+# *email* ("Email usage")
+
+The dataset has _709_ observations with _672_ valid values (missing: _37_) in *email* ("Email usage"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**email**     **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------- ------- --------- -------------- --------------
+never         13      1.9345    13             1.9345        
+very rarely   36      5.3571    49             7.2917        
+rarely        46      6.8452    95             14.1369       
+sometimes     87      12.9464   182            27.0833       
+often         123     18.3036   305            45.3869       
+very often    108     16.0714   413            61.4583       
+always        259     38.5417   672            100           
+Total         672     100       672            100           
+------------- ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file139ba9c6.png
+
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
+
+The most frequent value is *always*.
+
+
+
+# *download* ("Download usage")
+
+The dataset has _709_ observations with _677_ valid values (missing: _32_) in *download* ("Download usage"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**download**   **N**   **%**     **Cumul. N**   **Cumul. %**  
+-------------- ------- --------- -------------- --------------
+never          11      1.6248    11             1.6248        
+very rarely    28      4.1359    39             5.7607        
+rarely         29      4.2836    68             10.0443       
+sometimes      80      11.8168   148            21.8612       
+often          124     18.3161   272            40.1773       
+very often     160     23.6337   432            63.8109       
+always         245     36.1891   677            100           
+Total          677     100       677            100           
+-------------- ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file25617fae.png
+
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
+
+The most frequent value is *always*.
+
+
+
+# *forum* ("Web forums usage")
+
+The dataset has _709_ observations with _673_ valid values (missing: _36_) in *forum* ("Web forums usage"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**forum**     **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------- ------- --------- -------------- --------------
+never         76      11.2927   76             11.2927       
+very rarely   80      11.8871   156            23.1798       
+rarely        72      10.6984   228            33.8782       
+sometimes     111     16.4933   339            50.3715       
+often         109     16.1961   448            66.5676       
+very often    119     17.682    567            84.2496       
+always        106     15.7504   673            100           
+Total         673     100       673            100           
+------------- ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file4c8d8e2.png
+
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
+
+The most frequent value is *very often*.
+
+
+
+# *socnet* ("Social networks usage")
+
+The dataset has _709_ observations with _678_ valid values (missing: _31_) in *socnet* ("Social networks usage"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**socnet**    **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------- ------- --------- -------------- --------------
+never         208     30.6785   208            30.6785       
+very rarely   102     15.0442   310            45.7227       
+rarely        57      8.4071    367            54.1298       
+sometimes     87      12.8319   454            66.9617       
+often         79      11.6519   533            78.6136       
+very often    80      11.7994   613            90.413        
+always        65      9.587     678            100           
+Total         678     100       678            100           
+------------- ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file75cc9459.png
+
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
+
+The most frequent value is *never*.
+
+
+
+# *xxx* ("Adult sites usage")
+
+The dataset has _709_ observations with _674_ valid values (missing: _35_) in *xxx* ("Adult sites usage"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**xxx**       **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------- ------- --------- -------------- --------------
+never         274     40.6528   274            40.6528       
+very rarely   124     18.3976   398            59.0504       
+rarely        52      7.7151    450            66.7656       
+sometimes     131     19.4362   581            86.2018       
+often         46      6.8249    627            93.0267       
+very often    28      4.1543    655            97.181        
+always        19      2.819     674            100           
+Total         674     100       674            100           
+------------- ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file57651ad9.png
+
+It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
+
+The most frequent value is *never*.
+
+
+
+
+####################################################################################
+##	 Running: rapport('descriptives-multivar', data=mtcars, vars=c('hp','wt'))
+####################################################################################
+
+_2_
+
+# *hp*
+
+The dataset has _32_ observations with _32_ valid values (missing: _0_) in *hp*, which seems to be a quantitative variable.
+
+## Base statistics
+
+
+**value**   **mean(hp)**   **sd(hp)**   **var(hp)**  
+----------- -------------- ------------ -------------
+(all)       146.6875       68.5629      4700.8669    
+----------- -------------- ------------ -------------
+
+
+## Histogram
+
+/tmp/RtmpwIuUZk/file63916415.png
+
+It seems that the highest value is _335_ which is exactly 6.4423 times higher than the smallest value (_52_).
+
+The standard deviation is _68.5629_ (variance: _4700.8669_). The expected value is around _146.6875_, somewhere between _122.9317_ and _170.4433_ with the standard error of _12.1203_.
+
+If we suppose that *hp* is not near to a normal distribution (test: see below, skewness: _0.7614_, kurtosis: _3.0522_), checking the median (_123_) might be a better option instead of the mean. The interquartile range (_83.5_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+## Normality tests
+
+### Introduction
+
+In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
+
+$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$
+
+_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters:
+
+ - *&mu;* - _mean_ or _expectation_ (location parameter)
+ - *&sigma;^2^* - _variance_ (scale parameter)
+
+/tmp/RtmpwIuUZk/filea7708b4.png
+
+### Normality Tests
+
+#### Overview
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
+
+ - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
+ - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
+ - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
+ - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
+
+#### Results
+
+Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
+
+_0.05_
+
+So, let's draw some conclusions based on applied normality test:
+
+ - according to _Shapiro-Wilk test_, the distribution of _hp_ is not normal.
+ - based on _Lilliefors test_, distribution of _hp_ is not normal
+ - _Anderson-Darling test_ confirms  normality assumption
+ - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal
+
+### Diagnostic Plots
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
+
+#### Histogram
+
+_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
+
+/tmp/RtmpwIuUZk/file36d3e429.png
+
+#### Q-Q Plot
+
+"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
+
+/tmp/RtmpwIuUZk/file5f1a9066.png
+
+#### Kernel Density Plot
+
+_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
+
+/tmp/RtmpwIuUZk/file3a45d303.png
+
+
+
+# *wt*
+
+The dataset has _32_ observations with _32_ valid values (missing: _0_) in *wt*, which seems to be a quantitative variable.
+
+## Base statistics
+
+
+**value**   **mean(wt)**   **sd(wt)**   **var(wt)**  
+----------- -------------- ------------ -------------
+(all)       3.2172         0.9785       0.9574       
+----------- -------------- ------------ -------------
+
+
+## Histogram
+
+/tmp/RtmpwIuUZk/file46ce309d.png
+
+It seems that the highest value is _5.424_ which is exactly 3.5849 times higher than the smallest value (_1.513_).
+
+The standard deviation is _0.9785_ (variance: _0.9574_). The expected value is around _3.2172_, somewhere between _2.8782_ and _3.5563_ with the standard error of _0.173_.
+
+If we suppose that *wt* is not near to a normal distribution (test: see below, skewness: _0.4438_, kurtosis: _3.1725_), checking the median (_3.325_) might be a better option instead of the mean. The interquartile range (_1.0288_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+## Normality tests
+
+### Introduction
+
+In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
+
+$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$
+
+_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters:
+
+ - *&mu;* - _mean_ or _expectation_ (location parameter)
+ - *&sigma;^2^* - _variance_ (scale parameter)
+
+/tmp/RtmpwIuUZk/file66119b7.png
+
+### Normality Tests
+
+#### Overview
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
+
+ - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
+ - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
+ - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
+ - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
+
+#### Results
+
+Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
+
+_0.05_
+
+So, let's draw some conclusions based on applied normality test:
+
+ - according to _Shapiro-Wilk test_, the distribution of _wt_ is  normal.
+ - based on _Lilliefors test_, distribution of _wt_ is not normal
+ - _Anderson-Darling test_ confirms  normality assumption
+ - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal
+
+### Diagnostic Plots
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
+
+#### Histogram
+
+_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
+
+/tmp/RtmpwIuUZk/file4903e0b.png
+
+#### Q-Q Plot
+
+"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
+
+/tmp/RtmpwIuUZk/file590f4654.png
+
+#### Kernel Density Plot
+
+_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
+
+/tmp/RtmpwIuUZk/file4776a768.png
+
+
+
+
+{% endhighlight %}
+</li>
+	<li id="export-descriptives-multivar"><div>
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
+{% highlight text %}
+
+rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
+rapport('descriptives-multivar', data=ius2008, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx"))
+rapport('descriptives-multivar', data=mtcars, vars=c('hp','wt'))
+
+{% endhighlight %}
+<h6>Popular formats:</h6>
+<ul>
+	<li><a href="demo/descriptives-multivar.html" target="_blank">HTML</a></li>
+	<li><a href="demo/descriptives-multivar.odt">odt (MS Word compatibile)</a></li>
+	<li><a href="demo/descriptives-multivar.rtf">rtf (MS Word compatibile)</a></li>
+	<li><a href="demo/descriptives-multivar.epub">epub</a></li>
+	<li><a href="demo/descriptives-multivar.tex" target="_blank">latex</a></li>
+	<li><a href="demo/descriptives-multivar-slidy.html" target="_blank">HTML slidy</a></li>
+</ul>
+<h6>Other morkdown formats</h6>
+<ul>
+	<li><a href="demo/descriptives-multivar.plain" target="_blank">plain text</a></li>
+	<li><a href="demo/descriptives-multivar.textile" target="_blank">textile</a></li>
+	<li><a href="demo/descriptives-multivar.xml" target="_blank">docbook</a></li>
+	<li><a href="demo/descriptives-multivar.man" target="_blank">man</a></li>
+	<li><a href="demo/descriptives-multivar.md" target="_blank">markdown</a></li>
+	<li><a href="demo/descriptives-multivar.mediawiki" target="_blank">mediawiki</a></li>
+	<li><a href="demo/descriptives-multivar.wiki" target="_blank">wiki</a></li>
+	<li><a href="demo/descriptives-multivar.org" target="_blank">org</a></li>
+	<li><a href="demo/descriptives-multivar.pandoc" target="_blank">pandoc</a></li>
+</ul>
+</div></li>
+	<li id="source-descriptives-multivar"><div>
+<h5>Source of `descriptives-multivar.tpl`</h5>
+{% highlight text %}
+
+<!--head
+Title:          Descriptive statistics
+Author:         Gergely Daróczi 
+Email:          gergely@snowl.net
+Description:    This template will return descriptive statistics of numerical or frequency tables of categorical variables. 
+Data required:  TRUE
+Strict:         TRUE
+Example:        rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
+                rapport('descriptives-multivar', data=ius2008, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx"))
+                rapport('descriptives-multivar', data=mtcars, vars=c('hp','wt'))
+
+vars            | *variable[1,50]| Variables         | Categorical or numerical variables. The template will determine the measurement level of the given variable and will return detailed frequency tables or appropriate descriptive statistics for numerics.
+nortest         | TRUE          | Normality tests   | Should normality tests be performed on numerical variables?  
+head-->
+
+<%vars.ilen%>
+
+<%
+if (vars.ilen == 1) {
+    rapport('descriptives-univar', data=rp.data, var=rp.name(vars), nortest=nortest)
+} else {
+    lapply(lapply(vars, rp.name), function(x){
+        rapport('descriptives-univar', data=rp.data, var=x, nortest=nortest)
+    })
+}
+%>
+
+{% endhighlight %}
+</div></li>
+</ul>
+
+<a id="descriptives-univar-factor"> </a>
+#### descriptives-univar-factor.tpl
+
+ <ul class="tabs">
+	<li><a class="active" href="#info-descriptives-univar-factor">Description</a></li>
+	<li><a href="#inputs-descriptives-univar-factor">Inputs</a></li>
+	<li><a href="#example-descriptives-univar-factor">Example</a></li>
+	<li><a href="#export-descriptives-univar-factor">Export</a></li>
+	<li><a href="#source-descriptives-univar-factor">Source</a></li>
+</ul>
+
+ <ul class="tabs-content">
+	<li class="active" id="info-descriptives-univar-factor"><div><h5>Descriptive statistics</h5> by <em>Gergely Daróczi</em>
+<br><br>
+ This template will return descriptive statistics and frequency table of a categorical variable.
+<br><br>
+<em>Required packages:</em> 
+<br>
+<em>Example:</em> 
+{% highlight text %}
+rapport('descriptives-univar-factor', data=ius2008, var='gender')
+rapport('descriptives-univar-factor', data=ius2008, var='dwell')
+{% endhighlight %}
+</div></li>
+	<li id="inputs-descriptives-univar-factor"><div><h5>Input parameters</h5><em>descriptives-univar-factor.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
+	<li><h6>var: <small><em>Variable</em></small></h6>
+<div class="options">    <div class="options-desc">A categorical variable
+</div>
+    <em>Type:</em>	factor
+<br>
+    <em>Limits:</em>	exactly 1 variable
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>nortest: <small><em>Normality test</em></small></h6>
+<div class="options">    <div class="options-desc">If normality tests should be performed
+</div>
+    <em>Type:</em>	boolean
+<br>
+    <em>Limits:</em>	exactly 1 variable
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+</ul></div></li>
+	<li id="example-descriptives-univar-factor">
+{% highlight text %}
+
+
+#####################################################################################
+##	 Running: rapport('descriptives-univar-factor', data=ius2008, var='gender')
+#####################################################################################
+
+# *gender* ("Gender")
+
+The dataset has _709_ observations with _673_ valid values (missing: _36_) in *gender* ("Gender"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**gender**   **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------ ------- --------- -------------- --------------
+male         410     60.9212   410            60.9212       
+female       263     39.0788   673            100           
+Total        673     100       673            100           
+------------ ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file4fee1dc6.png
+
+It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
+
+The most frequent value is *male*.
+
+
+####################################################################################
+##	 Running: rapport('descriptives-univar-factor', data=ius2008, var='dwell')
+####################################################################################
+
+# *dwell* ("Dwelling")
+
+The dataset has _709_ observations with _662_ valid values (missing: _47_) in *dwell* ("Dwelling"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**dwell**    **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------ ------- --------- -------------- --------------
+city         599     90.4834   599            90.4834       
+small town   33      4.9849    632            95.4683       
+village      30      4.5317    662            100           
+Total        662     100       662            100           
+------------ ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file741cf4be.png
+
+It seems that the highest value is _3_ which is exactly 3 times higher than the smallest value (_1_).
+
+The most frequent value is *city*.
+
+
+{% endhighlight %}
+</li>
+	<li id="export-descriptives-univar-factor"><div>
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
+{% highlight text %}
+
+rapport('descriptives-univar-factor', data=ius2008, var='gender')
+rapport('descriptives-univar-factor', data=ius2008, var='dwell')
+
+{% endhighlight %}
+<h6>Popular formats:</h6>
+<ul>
+	<li><a href="demo/descriptives-univar-factor.html" target="_blank">HTML</a></li>
+	<li><a href="demo/descriptives-univar-factor.odt">odt (MS Word compatibile)</a></li>
+	<li><a href="demo/descriptives-univar-factor.rtf">rtf (MS Word compatibile)</a></li>
+	<li><a href="demo/descriptives-univar-factor.epub">epub</a></li>
+	<li><a href="demo/descriptives-univar-factor.tex" target="_blank">latex</a></li>
+	<li><a href="demo/descriptives-univar-factor-slidy.html" target="_blank">HTML slidy</a></li>
+</ul>
+<h6>Other morkdown formats</h6>
+<ul>
+	<li><a href="demo/descriptives-univar-factor.plain" target="_blank">plain text</a></li>
+	<li><a href="demo/descriptives-univar-factor.textile" target="_blank">textile</a></li>
+	<li><a href="demo/descriptives-univar-factor.xml" target="_blank">docbook</a></li>
+	<li><a href="demo/descriptives-univar-factor.man" target="_blank">man</a></li>
+	<li><a href="demo/descriptives-univar-factor.md" target="_blank">markdown</a></li>
+	<li><a href="demo/descriptives-univar-factor.mediawiki" target="_blank">mediawiki</a></li>
+	<li><a href="demo/descriptives-univar-factor.wiki" target="_blank">wiki</a></li>
+	<li><a href="demo/descriptives-univar-factor.org" target="_blank">org</a></li>
+	<li><a href="demo/descriptives-univar-factor.pandoc" target="_blank">pandoc</a></li>
+</ul>
+</div></li>
+	<li id="source-descriptives-univar-factor"><div>
+<h5>Source of `descriptives-univar-factor.tpl`</h5>
+{% highlight text %}
+
+<!--head
+Title:          Descriptive statistics
+Author:         Gergely Daróczi 
+Email:          gergely@snowl.net
+Description:    This template will return descriptive statistics and frequency table of a categorical variable.
+Data required:  TRUE
+Strict:         TRUE
+Example:        rapport('descriptives-univar-factor', data=ius2008, var='gender')
+                rapport('descriptives-univar-factor', data=ius2008, var='dwell')
+
+var             | factor    | Variable          | A categorical variable
+nortest         | TRUE      | Normality test    | If normality tests should be performed 
+head-->
+
+# *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>
+
+The dataset has <%nvar<-as.numeric(var); length(nvar)%> observations with <%=rp.valid(nvar)%> valid values (missing: <%=rp.missing(nvar)%>) in *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>, which seems to be a qualitative variable.
+
+## Base statistics
+
+<%
+rp.freq(rp.name(var), rp.data)
+%>
+
+## Barplot
+
+<%
+print(rp.barplot(var))
+%>
+
+It seems that the highest value is <%=rp.max(nvar)%> which is exactly <%=rp.round(rp.max(nvar)/rp.min(nvar))%> times higher than the smallest value (<%rp.min(nvar)%>).
+
+The most frequent value is *<%t <- table(var); names(t[t==max(t)])%>*.
+
+{% endhighlight %}
+</div></li>
+</ul>
+
+<a id="descriptives-univar-numeric"> </a>
+#### descriptives-univar-numeric.tpl
+
+ <ul class="tabs">
+	<li><a class="active" href="#info-descriptives-univar-numeric">Description</a></li>
+	<li><a href="#inputs-descriptives-univar-numeric">Inputs</a></li>
+	<li><a href="#example-descriptives-univar-numeric">Example</a></li>
+	<li><a href="#export-descriptives-univar-numeric">Export</a></li>
+	<li><a href="#source-descriptives-univar-numeric">Source</a></li>
+</ul>
+
+ <ul class="tabs-content">
+	<li class="active" id="info-descriptives-univar-numeric"><div><h5>Descriptive statistics</h5> by <em>Gergely Daróczi</em>
+<br><br>
+ This template will return descriptive statistics of a numerical variable.
+<br><br>
+<em>Required packages:</em> 
+<br>
+<em>Example:</em> 
+{% highlight text %}
+rapport('descriptives-univar-numeric', data=ius2008, var='age')
+{% endhighlight %}
+</div></li>
+	<li id="inputs-descriptives-univar-numeric"><div><h5>Input parameters</h5><em>descriptives-univar-numeric.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
+	<li><h6>var: <small><em>Variable</em></small></h6>
+<div class="options">    <div class="options-desc">A numerical variable
+</div>
+    <em>Type:</em>	numeric
+<br>
+    <em>Limits:</em>	exactly 1 variable
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>nortest: <small><em>Normality test</em></small></h6>
+<div class="options">    <div class="options-desc">If normality tests should be performed
+</div>
+    <em>Type:</em>	boolean
+<br>
+    <em>Limits:</em>	exactly 1 variable
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+</ul></div></li>
+	<li id="example-descriptives-univar-numeric">
+{% highlight text %}
+
+
+###################################################################################
+##	 Running: rapport('descriptives-univar-numeric', data=ius2008, var='age')
+###################################################################################
+
+# *age* ("Age")
+
+The dataset has _709_ observations with _677_ valid values (missing: _32_) in *age* ("Age"), which seems to be a quantitative variable.
+
+## Base statistics
+
+
+**value**   **mean(age)**   **sd(age)**   **var(age)**  
+----------- --------------- ------------- --------------
+(all)       24.5731         6.8491        46.9107       
+----------- --------------- ------------- --------------
+
+
+## Histogram
+
+/tmp/RtmpwIuUZk/filec81922.png
+
+It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
+
+The standard deviation is _6.8491_ (variance: _46.9107_). The expected value is around _24.5731_, somewhere between _24.0572_ and _25.0891_ with the standard error of _0.2632_.
+
+If we suppose that *Age* is not near to a normal distribution (test: see below, skewness: _1.9296_, kurtosis: _7.4851_), checking the median (_23_) might be a better option instead of the mean. The interquartile range (_6_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+## Normality tests
+
+### Introduction
+
+In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
+
+$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$
+
+_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters:
+
+ - *&mu;* - _mean_ or _expectation_ (location parameter)
+ - *&sigma;^2^* - _variance_ (scale parameter)
+
+/tmp/RtmpwIuUZk/file1775f1f8.png
+
+### Normality Tests
+
+#### Overview
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
+
+ - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
+ - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
+ - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
+ - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
+
+#### Results
+
+Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
+
+_0.05_
+
+So, let's draw some conclusions based on applied normality test:
+
+ - according to _Shapiro-Wilk test_, the distribution of _Age_ is not normal.
+ - based on _Lilliefors test_, distribution of _Age_ is not normal
+ - _Anderson-Darling test_ confirms violation of normality assumption
+ - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal
+
+### Diagnostic Plots
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
+
+#### Histogram
+
+_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
+
+/tmp/RtmpwIuUZk/file407470c0.png
+
+#### Q-Q Plot
+
+"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
+
+/tmp/RtmpwIuUZk/file76b345ab.png
+
+#### Kernel Density Plot
+
+_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
+
+/tmp/RtmpwIuUZk/file41e58f33.png
+
+
+{% endhighlight %}
+</li>
+	<li id="export-descriptives-univar-numeric"><div>
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
+{% highlight text %}
+
+rapport('descriptives-univar-numeric', data=ius2008, var='age')
+
+{% endhighlight %}
+<h6>Popular formats:</h6>
+<ul>
+	<li><a href="demo/descriptives-univar-numeric.html" target="_blank">HTML</a></li>
+	<li><a href="demo/descriptives-univar-numeric.odt">odt (MS Word compatibile)</a></li>
+	<li><a href="demo/descriptives-univar-numeric.rtf">rtf (MS Word compatibile)</a></li>
+	<li><a href="demo/descriptives-univar-numeric.epub">epub</a></li>
+	<li><a href="demo/descriptives-univar-numeric.tex" target="_blank">latex</a></li>
+	<li><a href="demo/descriptives-univar-numeric-slidy.html" target="_blank">HTML slidy</a></li>
+</ul>
+<h6>Other morkdown formats</h6>
+<ul>
+	<li><a href="demo/descriptives-univar-numeric.plain" target="_blank">plain text</a></li>
+	<li><a href="demo/descriptives-univar-numeric.textile" target="_blank">textile</a></li>
+	<li><a href="demo/descriptives-univar-numeric.xml" target="_blank">docbook</a></li>
+	<li><a href="demo/descriptives-univar-numeric.man" target="_blank">man</a></li>
+	<li><a href="demo/descriptives-univar-numeric.md" target="_blank">markdown</a></li>
+	<li><a href="demo/descriptives-univar-numeric.mediawiki" target="_blank">mediawiki</a></li>
+	<li><a href="demo/descriptives-univar-numeric.wiki" target="_blank">wiki</a></li>
+	<li><a href="demo/descriptives-univar-numeric.org" target="_blank">org</a></li>
+	<li><a href="demo/descriptives-univar-numeric.pandoc" target="_blank">pandoc</a></li>
+</ul>
+</div></li>
+	<li id="source-descriptives-univar-numeric"><div>
+<h5>Source of `descriptives-univar-numeric.tpl`</h5>
+{% highlight text %}
+
+<!--head
+Title:          Descriptive statistics
+Author:         Gergely Daróczi 
+Email:          gergely@snowl.net
+Description:    This template will return descriptive statistics of a numerical variable.
+Data required:  TRUE
+Strict:         TRUE
+Example:        rapport('descriptives-univar-numeric', data=ius2008, var='age')
+
+var             | numeric   | Variable          | A numerical variable
+nortest         | TRUE      | Normality test    | If normality tests should be performed 
+head-->
+
+# *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>
+
+The dataset has <%length(var)%> observations with <%=rp.valid(var)%> valid values (missing: <%=rp.missing(var)%>) in *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>, which seems to be a quantitative variable.
+
+## Base statistics
+
+<%
+rp.desc(rp.name(var), NULL, c('mean', 'sd', 'var'), rp.data)
+%>
+
+## Histogram
+
+<%
+print(rp.hist(var))
+%>
+
+It seems that the highest value is <%=rp.max(var)%> which is exactly <%=rp.round(rp.max(var)/rp.min(var))%> times higher than the smallest value (<%rp.min(var)%>).
+
+The standard deviation is <%rp.sd(var)%> (variance: <%rp.var(var)%>). The expected value is around <%rp.mean(var)%>, somewhere between <%rp.mean(var)-1.96*rp.se.mean(var)%> and <%rp.mean(var)+1.96*rp.se.mean(var)%> with the standard error of <%rp.se.mean(var)%>.
+
+If we suppose that *<%rp.label(var)%>* is not near to a normal distribution (test: <%ifelse(nortest & is.numeric(var), 'see below', 'not run')%>, skewness: <%rp.skewness(var)%>, kurtosis: <%rp.kurtosis(var)%>), checking the median (<%rp.median(var)%>) might be a better option instead of the mean. The interquartile range (<%rp.iqr(var)%>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+## <%if (nortest) 'Normality tests'%>
+
+<%
+if (nortest) rapport('nortest', data=rp.data, var=rp.name(var), header.levels.offset = 2)
+%>
+
+{% endhighlight %}
+</div></li>
+</ul>
+
+<a id="descriptives-univar"> </a>
+#### descriptives-univar.tpl
+
+ <ul class="tabs">
+	<li><a class="active" href="#info-descriptives-univar">Description</a></li>
+	<li><a href="#inputs-descriptives-univar">Inputs</a></li>
+	<li><a href="#example-descriptives-univar">Example</a></li>
+	<li><a href="#export-descriptives-univar">Export</a></li>
+	<li><a href="#source-descriptives-univar">Source</a></li>
+</ul>
+
+ <ul class="tabs-content">
+	<li class="active" id="info-descriptives-univar"><div><h5>Descriptive statistics</h5> by <em>Gergely Daróczi</em>
+<br><br>
+ This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.
+<br><br>
+<em>Required packages:</em> 
+<br>
+<em>Example:</em> 
+{% highlight text %}
+rapport('descriptives-univar', data=ius2008, var='gender')
+rapport('descriptives-univar', data=ius2008, var='age')
+{% endhighlight %}
+</div></li>
+	<li id="inputs-descriptives-univar"><div><h5>Input parameters</h5><em>descriptives-univar.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
+	<li><h6>var: <small><em>Variable</em></small></h6>
+<div class="options">    <div class="options-desc">A categorical or numerical variable. The template will determine the measurement level of the given variable and will return a detailed frequency table or appropriate descriptive statistics for numerics.
+</div>
+    <em>Type:</em>	variable
+<br>
+    <em>Limits:</em>	exactly 1 variable
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>nortest: <small><em>Normality test</em></small></h6>
+<div class="options">    <div class="options-desc">If normality tests should be performed fot numerical variable
+</div>
+    <em>Type:</em>	boolean
+<br>
+    <em>Limits:</em>	exactly 1 variable
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+</ul></div></li>
+	<li id="example-descriptives-univar">
+{% highlight text %}
+
+
+##############################################################################
+##	 Running: rapport('descriptives-univar', data=ius2008, var='gender')
+##############################################################################
+
+# *gender* ("Gender")
+
+The dataset has _709_ observations with _673_ valid values (missing: _36_) in *gender* ("Gender"), which seems to be a qualitative variable.
+
+## Base statistics
+
+
+**gender**   **N**   **%**     **Cumul. N**   **Cumul. %**  
+------------ ------- --------- -------------- --------------
+male         410     60.9212   410            60.9212       
+female       263     39.0788   673            100           
+Total        673     100       673            100           
+------------ ------- --------- -------------- --------------
+
+
+## Barplot
+
+/tmp/RtmpwIuUZk/file4a35967b.png
+
+It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
+
+The most frequent value is *male*.
+
+
+
+
+###########################################################################
+##	 Running: rapport('descriptives-univar', data=ius2008, var='age')
+###########################################################################
+
+# *age* ("Age")
+
+The dataset has _709_ observations with _677_ valid values (missing: _32_) in *age* ("Age"), which seems to be a quantitative variable.
+
+## Base statistics
+
+
+**value**   **mean(age)**   **sd(age)**   **var(age)**  
+----------- --------------- ------------- --------------
+(all)       24.5731         6.8491        46.9107       
+----------- --------------- ------------- --------------
+
+
+## Histogram
+
+/tmp/RtmpwIuUZk/file742be097.png
+
+It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
+
+The standard deviation is _6.8491_ (variance: _46.9107_). The expected value is around _24.5731_, somewhere between _24.0572_ and _25.0891_ with the standard error of _0.2632_.
+
+If we suppose that *Age* is not near to a normal distribution (test: see below, skewness: _1.9296_, kurtosis: _7.4851_), checking the median (_23_) might be a better option instead of the mean. The interquartile range (_6_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+## Normality tests
+
+### Introduction
+
+In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
+
+$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$
+
+_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters:
+
+ - *&mu;* - _mean_ or _expectation_ (location parameter)
+ - *&sigma;^2^* - _variance_ (scale parameter)
+
+/tmp/RtmpwIuUZk/file4b77ba4a.png
+
+### Normality Tests
+
+#### Overview
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
+
+ - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
+ - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
+ - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
+ - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
+
+#### Results
+
+Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
+
+_0.05_
+
+So, let's draw some conclusions based on applied normality test:
+
+ - according to _Shapiro-Wilk test_, the distribution of _Age_ is not normal.
+ - based on _Lilliefors test_, distribution of _Age_ is not normal
+ - _Anderson-Darling test_ confirms violation of normality assumption
+ - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal
+
+### Diagnostic Plots
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
+
+#### Histogram
+
+_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
+
+/tmp/RtmpwIuUZk/file1d86c5b7.png
+
+#### Q-Q Plot
+
+"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
+
+/tmp/RtmpwIuUZk/file113b5316.png
+
+#### Kernel Density Plot
+
+_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
+
+/tmp/RtmpwIuUZk/filefccfed5.png
+
+
+
+
+{% endhighlight %}
+</li>
+	<li id="export-descriptives-univar"><div>
+<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
+{% highlight text %}
+
+rapport('descriptives-univar', data=ius2008, var='gender')
+rapport('descriptives-univar', data=ius2008, var='age')
+
+{% endhighlight %}
+<h6>Popular formats:</h6>
+<ul>
+	<li><a href="demo/descriptives-univar.html" target="_blank">HTML</a></li>
+	<li><a href="demo/descriptives-univar.odt">odt (MS Word compatibile)</a></li>
+	<li><a href="demo/descriptives-univar.rtf">rtf (MS Word compatibile)</a></li>
+	<li><a href="demo/descriptives-univar.epub">epub</a></li>
+	<li><a href="demo/descriptives-univar.tex" target="_blank">latex</a></li>
+	<li><a href="demo/descriptives-univar-slidy.html" target="_blank">HTML slidy</a></li>
+</ul>
+<h6>Other morkdown formats</h6>
+<ul>
+	<li><a href="demo/descriptives-univar.plain" target="_blank">plain text</a></li>
+	<li><a href="demo/descriptives-univar.textile" target="_blank">textile</a></li>
+	<li><a href="demo/descriptives-univar.xml" target="_blank">docbook</a></li>
+	<li><a href="demo/descriptives-univar.man" target="_blank">man</a></li>
+	<li><a href="demo/descriptives-univar.md" target="_blank">markdown</a></li>
+	<li><a href="demo/descriptives-univar.mediawiki" target="_blank">mediawiki</a></li>
+	<li><a href="demo/descriptives-univar.wiki" target="_blank">wiki</a></li>
+	<li><a href="demo/descriptives-univar.org" target="_blank">org</a></li>
+	<li><a href="demo/descriptives-univar.pandoc" target="_blank">pandoc</a></li>
+</ul>
+</div></li>
+	<li id="source-descriptives-univar"><div>
+<h5>Source of `descriptives-univar.tpl`</h5>
+{% highlight text %}
+
+<!--head
+Title:          Descriptive statistics
+Author:         Gergely Daróczi 
+Email:          gergely@snowl.net
+Description:    This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.
+Data required:  TRUE
+Strict:         TRUE
+Example:        rapport('descriptives-univar', data=ius2008, var='gender')
+                rapport('descriptives-univar', data=ius2008, var='age')
+
+var             | variable  | Variable          | A categorical or numerical variable. The template will determine the measurement level of the given variable and will return a detailed frequency table or appropriate descriptive statistics for numerics.
+nortest         | TRUE      | Normality test    | If normality tests should be performed fot numerical variable
+head-->
+
+<%
+if (is.numeric(var)) {
+        rapport('descriptives-univar-numeric', data=rp.data, var=rp.name(var))
+    } else {
+        rapport('descriptives-univar-factor', data=rp.data, var=rp.name(var))
+    }
 %>
 
 {% endhighlight %}
@@ -1144,7 +2457,7 @@ rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')
 ##	 Running: rapport("example", ius2008, var='leisure')
 ##############################################################
 
- == Début  
+# Début
 
 Hello, world!
 
@@ -1152,12 +2465,12 @@ I have just specified a *Variable* in this template named to **leisure**. The la
 
 And wow, the mean of *leisure* is _3.1994_!
 
- === Descriptive statistics  
+## Descriptive statistics
 
 
 **Min.**   **1st Qu.**   **Median**   **Mean**   **3rd Qu.**   **Max.**   **NA's**  
 ---------- ------------- ------------ ---------- ------------- ---------- ----------
-0.0        2.0           3.0          3.2        4.0           12.0       37.0      
+0.000      2.000         3.000        3.199      4.000         12.000     37.000    
 ---------- ------------- ------------ ---------- ------------- ---------- ----------
 
 
@@ -1168,7 +2481,7 @@ The 5 highest values are: _12_, _12_, _10_, _10_ and _10_.
 ##	 Running: rapport("example", ius2008, var='leisure', desc=FALSE)
 ##########################################################################
 
- == Début  
+# Début
 
 Hello, world!
 
@@ -1183,7 +2496,7 @@ And wow, the mean of *leisure* is _3.1994_!
 ##	 Running: rapport("example", ius2008, var='leisure', desc=FALSE, hist=T)
 ##################################################################################
 
- == Début  
+# Début
 
 Hello, world!
 
@@ -1193,16 +2506,16 @@ And wow, the mean of *leisure* is _3.1994_!
 
 **For more detailed statistics, you should have set `desc=TRUE`!**
 
- === Histogram  
+## Histogram
 
-/tmp/RtmpPer367/file2ca179f1.png
+/tmp/RtmpwIuUZk/filefe4cc66.png
 
 
 ################################################################################################
 ##	 Running: rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')
 ################################################################################################
 
- == Début  
+# Début
 
 Hello, world!
 
@@ -1212,9 +2525,9 @@ And wow, the mean of *leisure* is _3.1994_!
 
 **For more detailed statistics, you should have set `desc=TRUE`!**
 
- === Histogram  
+## Histogram
 
-/tmp/RtmpPer367/file72228e8b.png
+/tmp/RtmpwIuUZk/file36dab2f7.png
 
 
 {% endhighlight %}
@@ -1256,14 +2569,17 @@ rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')
 {% highlight text %}
 
 <!--head
-Title:        Example template
-Author:       Gergely Daróczi 
-Description:  This template demonstrates the basic features of rapport. We all hope you will like it!
-Packages:     lattice
-Example:      rapport("example", ius2008, var='leisure')
-              rapport("example", ius2008, var='leisure', desc=FALSE)
-              rapport("example", ius2008, var='leisure', desc=FALSE, hist=T)
-              rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')             
+Title:          Example template
+Author:         Gergely Daróczi 
+Description:    This template demonstrates the basic features of rapport. We all hope you will like it!
+Packages:       lattice
+Data required:  TRUE
+Strict:         TRUE
+Example:        rapport("example", ius2008, var='leisure')
+                rapport("example", ius2008, var='leisure', desc=FALSE)
+                rapport("example", ius2008, var='leisure', desc=FALSE, hist=T)
+                rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')
+
 var    | *numeric   | Variable| A numeric variable.
 desc   | TRUE      | Boolean | Show descriptive statistics of specified variable?
 hist   | FALSE     | Boolean | Show histogram of specified variable?
@@ -1297,668 +2613,7 @@ if (desc) sprintf('The 5 highest values are: %s.', p(sort(var, decreasing = TRUE
 
 <%
 if (hist)
-    rp.hist(var, theme=theme)
-%>
-
-{% endhighlight %}
-</div></li>
-</ul>
-
-<a id="multivar-descriptive"> </a>
-#### multivar-descriptive.tpl
-
- <ul class="tabs">
-	<li><a class="active" href="#info-multivar-descriptive">Description</a></li>
-	<li><a href="#inputs-multivar-descriptive">Inputs</a></li>
-	<li><a href="#example-multivar-descriptive">Example</a></li>
-	<li><a href="#export-multivar-descriptive">Export</a></li>
-	<li><a href="#source-multivar-descriptive">Source</a></li>
-</ul>
-
- <ul class="tabs-content">
-	<li class="active" id="info-multivar-descriptive"><div><h5>Descriptive statistics</h5> by <em>Gergely Daróczi</em>
-<br><br>
- This template will return descriptive statistics of numerical or frequency tables of categorical variables.
-<br><br>
-<em>Required packages:</em> 
-<br>
-<em>Example:</em> 
-{% highlight text %}
-rapport('multivar-descriptive', data=ius2008, vars=c("gender", 'age'))
-rapport('multivar-descriptive', data=ius2008, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx"))
-rapport('multivar-descriptive', data=mtcars, vars=c('hp','wt'))
-{% endhighlight %}
-</div></li>
-	<li id="inputs-multivar-descriptive"><div><h5>Input parameters</h5><em>multivar-descriptive.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	<li><h6>vars: <small><em>Variables</em></small></h6>
-<div class="options">    <div class="options-desc">Categorical or numerical variables. The template will determine the measurement level of the given variable and will return detailed frequency tables or appropriate descriptive statistics for numerics.
-</div>
-    <em>Type:</em>	variable
-<br>
-    <em>Limits:</em>	exactly 1 variable
-<br>
-
-</div>
-</li>
-<br>
-<li><h6>nortest: <small><em>Normality tests</em></small></h6>
-<div class="options">    <div class="options-desc">Should normality tests be performed on numerical variables?
-</div>
-    <em>Type:</em>	boolean
-<br>
-    <em>Limits:</em>	exactly 1 variable
-<br>
-    <em>Default value:</em>	TRUE
-</div>
-</li>
-<br>
-</ul></div></li>
-	<li id="example-multivar-descriptive">
-{% highlight text %}
-
-
-##########################################################################################
-##	 Running: rapport('multivar-descriptive', data=ius2008, vars=c("gender", 'age'))
-##########################################################################################
-
- === *gender* ("Gender")  
-
-The dataset has _709_ observations with _673_ valid values (missing: _36_) in *gender* ("Gender").
-This variable seems to be a factor.
-
- ==== Base statistics  
-
-<!-- endlist -->
-
-        **gender**   **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- ------------ ------- --------- ----------------- ---------------
-1       male         410     60.9212   410               60.9212        
-2       female       263     39.0788   673               100            
-Total                673     100       673               100            
-------- ------------ ------- --------- ----------------- ---------------
-
-
- ==== Barplot  
-
-/tmp/RtmpPer367/file3c24160d.png
-
-It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
-
- === *age* ("Age")  
-
-The dataset has _709_ observations with _677_ valid values (missing: _32_) in *age* ("Age").
-This variable seems to be numeric.
-
- ==== Base statistics  
-
-
-**value**   **mean(age)**   **sd(age)**   **var(age)**  
------------ --------------- ------------- --------------
-(all)       24.5731         6.8491        46.9107       
------------ --------------- ------------- --------------
-
-
- ==== Histogram  
-
-/tmp/RtmpPer367/file60c8829.png
-
-It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
-
-The standard deviation is 6.8491 (variance: 46.9107). The expected value is around 24.5731, somewhere between 24.0572 and 25.0891 (SE: 0.2632).
-
-If we suppose that *Age* is not near to a normal distribution (test: see below, skewness: 1.9296, kurtosis: 7.4851), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
-
- ==== Normality tests  
-
- === Introduction  
-
-In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
-
-$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$
-
-_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters:
-
- - *&mu;* - _mean_ or _expectation_ (location parameter)
- - *&sigma;^2^* - _variance_ (scale parameter)
-
-/tmp/RtmpPer367/file2db4a51.png
-
- === Normality Tests  
-
- ==== Overview  
-
-Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
-
- - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
- - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
- - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
- - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
-
- ==== Results  
-
-Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
-
-<!-- endlist -->
-
-               **H**      **p**  
--------------- ---------- -------
-shapiro.test   0.8216     0      
-lillie.test    0.17       0      
-ad.test        32.1645    0      
-pearson.test   625.8479   0      
--------------- ---------- -------
-
-
-So, let's draw some conclusions based on applied normality test:
-
- - according to _Shapiro-Wilk test_, the distribution of _Age_ is not normal.
- - based on _Lilliefors test_, distribution of _Age_ is not normal
- - _Anderson-Darling test_ confirms violation of normality assumption
- - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal
-
- === Diagnostic Plots  
-
-There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
-
- ==== Histogram  
-
-_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
-
-/tmp/RtmpPer367/file6bf43218.png
-
- ==== Q-Q Plot  
-
-"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
-
-/tmp/RtmpPer367/file70e5fa84.png
-
- ==== Kernel Density Plot  
-
-_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
-
-/tmp/RtmpPer367/file1021b270.png
-
-
-
-
-##################################################################################################################################################
-##	 Running: rapport('multivar-descriptive', data=ius2008, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx"))
-##################################################################################################################################################
-
- === *chatim* ("Chat & IM usage")  
-
-The dataset has _709_ observations with _669_ valid values (missing: _40_) in *chatim* ("Chat & IM usage").
-This variable seems to be a factor.
-
- ==== Base statistics  
-
-<!-- endlist -->
-
-        **chatim**    **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- ------------- ------- --------- ----------------- ---------------
-1       never         60      8.9686    60                8.9686         
-2       very rarely   73      10.9118   133               19.8804        
-3       rarely        58      8.6697    191               28.5501        
-4       sometimes     113     16.8909   304               45.441         
-5       often         136     20.3288   440               65.7698        
-6       very often    88      13.154    528               78.9238        
-7       always        141     21.0762   669               100            
-Total                 669     100       669               100            
-------- ------------- ------- --------- ----------------- ---------------
-
-
- ==== Barplot  
-
-/tmp/RtmpPer367/file6dea4c8.png
-
-It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
-
- === *game* ("On-line games usage")  
-
-The dataset has _709_ observations with _677_ valid values (missing: _32_) in *game* ("On-line games usage").
-This variable seems to be a factor.
-
- ==== Base statistics  
-
-<!-- endlist -->
-
-        **game**      **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- ------------- ------- --------- ----------------- ---------------
-1       never         352     51.9941   352               51.9941        
-2       very rarely   128     18.9069   480               70.901         
-3       rarely        32      4.7267    512               75.6278        
-4       sometimes     60      8.8626    572               84.4904        
-5       often         37      5.4653    609               89.9557        
-6       very often    35      5.1699    644               95.1256        
-7       always        33      4.8744    677               100            
-Total                 677     100       677               100            
-------- ------------- ------- --------- ----------------- ---------------
-
-
- ==== Barplot  
-
-/tmp/RtmpPer367/filef7d2066.png
-
-It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
-
- === *surf* ("Web surfing usage")  
-
-The dataset has _709_ observations with _678_ valid values (missing: _31_) in *surf* ("Web surfing usage").
-This variable seems to be a factor.
-
- ==== Base statistics  
-
-<!-- endlist -->
-
-        **surf**      **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- ------------- ------- --------- ----------------- ---------------
-1       never         17      2.5074    17                2.5074         
-2       very rarely   26      3.8348    43                6.3422         
-3       rarely        33      4.8673    76                11.2094        
-4       sometimes     107     15.7817   183               26.9912        
-5       often         158     23.3038   341               50.295         
-6       very often    142     20.944    483               71.2389        
-7       always        195     28.7611   678               100            
-Total                 678     100       678               100            
-------- ------------- ------- --------- ----------------- ---------------
-
-
- ==== Barplot  
-
-/tmp/RtmpPer367/file3536201e.png
-
-It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
-
- === *email* ("Email usage")  
-
-The dataset has _709_ observations with _672_ valid values (missing: _37_) in *email* ("Email usage").
-This variable seems to be a factor.
-
- ==== Base statistics  
-
-<!-- endlist -->
-
-        **email**     **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- ------------- ------- --------- ----------------- ---------------
-1       never         13      1.9345    13                1.9345         
-2       very rarely   36      5.3571    49                7.2917         
-3       rarely        46      6.8452    95                14.1369        
-4       sometimes     87      12.9464   182               27.0833        
-5       often         123     18.3036   305               45.3869        
-6       very often    108     16.0714   413               61.4583        
-7       always        259     38.5417   672               100            
-Total                 672     100       672               100            
-------- ------------- ------- --------- ----------------- ---------------
-
-
- ==== Barplot  
-
-/tmp/RtmpPer367/file3a5ed51c.png
-
-It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
-
- === *download* ("Download usage")  
-
-The dataset has _709_ observations with _677_ valid values (missing: _32_) in *download* ("Download usage").
-This variable seems to be a factor.
-
- ==== Base statistics  
-
-<!-- endlist -->
-
-        **download**   **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- -------------- ------- --------- ----------------- ---------------
-1       never          11      1.6248    11                1.6248         
-2       very rarely    28      4.1359    39                5.7607         
-3       rarely         29      4.2836    68                10.0443        
-4       sometimes      80      11.8168   148               21.8612        
-5       often          124     18.3161   272               40.1773        
-6       very often     160     23.6337   432               63.8109        
-7       always         245     36.1891   677               100            
-Total                  677     100       677               100            
-------- -------------- ------- --------- ----------------- ---------------
-
-
- ==== Barplot  
-
-/tmp/RtmpPer367/file33e954ab.png
-
-It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
-
- === *forum* ("Web forums usage")  
-
-The dataset has _709_ observations with _673_ valid values (missing: _36_) in *forum* ("Web forums usage").
-This variable seems to be a factor.
-
- ==== Base statistics  
-
-<!-- endlist -->
-
-        **forum**     **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- ------------- ------- --------- ----------------- ---------------
-1       never         76      11.2927   76                11.2927        
-2       very rarely   80      11.8871   156               23.1798        
-3       rarely        72      10.6984   228               33.8782        
-4       sometimes     111     16.4933   339               50.3715        
-5       often         109     16.1961   448               66.5676        
-6       very often    119     17.682    567               84.2496        
-7       always        106     15.7504   673               100            
-Total                 673     100       673               100            
-------- ------------- ------- --------- ----------------- ---------------
-
-
- ==== Barplot  
-
-/tmp/RtmpPer367/file4db088a7.png
-
-It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
-
- === *socnet* ("Social networks usage")  
-
-The dataset has _709_ observations with _678_ valid values (missing: _31_) in *socnet* ("Social networks usage").
-This variable seems to be a factor.
-
- ==== Base statistics  
-
-<!-- endlist -->
-
-        **socnet**    **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- ------------- ------- --------- ----------------- ---------------
-1       never         208     30.6785   208               30.6785        
-2       very rarely   102     15.0442   310               45.7227        
-3       rarely        57      8.4071    367               54.1298        
-4       sometimes     87      12.8319   454               66.9617        
-5       often         79      11.6519   533               78.6136        
-6       very often    80      11.7994   613               90.413         
-7       always        65      9.587     678               100            
-Total                 678     100       678               100            
-------- ------------- ------- --------- ----------------- ---------------
-
-
- ==== Barplot  
-
-/tmp/RtmpPer367/file7b3180a9.png
-
-It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
-
- === *xxx* ("Adult sites usage")  
-
-The dataset has _709_ observations with _674_ valid values (missing: _35_) in *xxx* ("Adult sites usage").
-This variable seems to be a factor.
-
- ==== Base statistics  
-
-<!-- endlist -->
-
-        **xxx**       **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- ------------- ------- --------- ----------------- ---------------
-1       never         274     40.6528   274               40.6528        
-2       very rarely   124     18.3976   398               59.0504        
-3       rarely        52      7.7151    450               66.7656        
-4       sometimes     131     19.4362   581               86.2018        
-5       often         46      6.8249    627               93.0267        
-6       very often    28      4.1543    655               97.181         
-7       always        19      2.819     674               100            
-Total                 674     100       674               100            
-------- ------------- ------- --------- ----------------- ---------------
-
-
- ==== Barplot  
-
-/tmp/RtmpPer367/file4c336dab.png
-
-It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
-
-
-
-
-###################################################################################
-##	 Running: rapport('multivar-descriptive', data=mtcars, vars=c('hp','wt'))
-###################################################################################
-
- === *hp*  
-
-The dataset has _32_ observations with _32_ valid values (missing: _0_) in *hp*.
-This variable seems to be numeric.
-
- ==== Base statistics  
-
-
-**value**   **mean(hp)**   **sd(hp)**   **var(hp)**  
------------ -------------- ------------ -------------
-(all)       146.6875       68.5629      4700.8669    
------------ -------------- ------------ -------------
-
-
- ==== Histogram  
-
-/tmp/RtmpPer367/file549a9077.png
-
-It seems that the highest value is _335_ which is exactly 6.4423 times higher than the smallest value (_52_).
-
-The standard deviation is 68.5629 (variance: 4700.8669). The expected value is around 146.6875, somewhere between 122.9317 and 170.4433 (SE: 12.1203).
-
-If we suppose that *hp* is not near to a normal distribution (test: see below, skewness: 0.7614, kurtosis: 3.0522), checking the median (123) might be a better option instead of the mean. The interquartile range (83.5) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
-
- ==== Normality tests  
-
- === Introduction  
-
-In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
-
-$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$
-
-_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters:
-
- - *&mu;* - _mean_ or _expectation_ (location parameter)
- - *&sigma;^2^* - _variance_ (scale parameter)
-
-/tmp/RtmpPer367/file6f2027e.png
-
- === Normality Tests  
-
- ==== Overview  
-
-Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
-
- - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
- - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
- - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
- - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
-
- ==== Results  
-
-Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
-
-<!-- endlist -->
-
-               **H**    **p**   
--------------- -------- --------
-shapiro.test   0.9334   0.0488  
-lillie.test    0.1664   0.0245  
-ad.test        0.7077   0.0584  
-pearson.test   11.5     0.0423  
--------------- -------- --------
-
-
-So, let's draw some conclusions based on applied normality test:
-
- - according to _Shapiro-Wilk test_, the distribution of _hp_ is not normal.
- - based on _Lilliefors test_, distribution of _hp_ is not normal
- - _Anderson-Darling test_ confirms  normality assumption
- - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal
-
- === Diagnostic Plots  
-
-There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
-
- ==== Histogram  
-
-_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
-
-/tmp/RtmpPer367/file65ceb908.png
-
- ==== Q-Q Plot  
-
-"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
-
-/tmp/RtmpPer367/file33b65a54.png
-
- ==== Kernel Density Plot  
-
-_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
-
-/tmp/RtmpPer367/file56d28cf9.png
-
- === *wt*  
-
-The dataset has _32_ observations with _32_ valid values (missing: _0_) in *wt*.
-This variable seems to be numeric.
-
- ==== Base statistics  
-
-
-**value**   **mean(wt)**   **sd(wt)**   **var(wt)**  
------------ -------------- ------------ -------------
-(all)       3.2172         0.9785       0.9574       
------------ -------------- ------------ -------------
-
-
- ==== Histogram  
-
-/tmp/RtmpPer367/file736622b5.png
-
-It seems that the highest value is _5.424_ which is exactly 3.5849 times higher than the smallest value (_1.513_).
-
-The standard deviation is 0.9785 (variance: 0.9574). The expected value is around 3.2172, somewhere between 2.8782 and 3.5563 (SE: 0.173).
-
-If we suppose that *wt* is not near to a normal distribution (test: see below, skewness: 0.4438, kurtosis: 3.1725), checking the median (3.325) might be a better option instead of the mean. The interquartile range (1.0288) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
-
- ==== Normality tests  
-
- === Introduction  
-
-In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
-
-$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$
-
-_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters:
-
- - *&mu;* - _mean_ or _expectation_ (location parameter)
- - *&sigma;^2^* - _variance_ (scale parameter)
-
-/tmp/RtmpPer367/file180e8801.png
-
- === Normality Tests  
-
- ==== Overview  
-
-Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
-
- - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
- - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
- - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
- - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
-
- ==== Results  
-
-Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
-
-<!-- endlist -->
-
-               **H**    **p**   
--------------- -------- --------
-shapiro.test   0.9433   0.0927  
-lillie.test    0.1356   0.1412  
-ad.test        0.6091   0.1038  
-pearson.test   4.5      0.4799  
--------------- -------- --------
-
-
-So, let's draw some conclusions based on applied normality test:
-
- - according to _Shapiro-Wilk test_, the distribution of _wt_ is  normal.
- - based on _Lilliefors test_, distribution of _wt_ is not normal
- - _Anderson-Darling test_ confirms  normality assumption
- - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal
-
- === Diagnostic Plots  
-
-There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
-
- ==== Histogram  
-
-_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
-
-/tmp/RtmpPer367/file72a05107.png
-
- ==== Q-Q Plot  
-
-"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
-
-/tmp/RtmpPer367/filec752775.png
-
- ==== Kernel Density Plot  
-
-_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
-
-/tmp/RtmpPer367/file2ab85fbe.png
-
-
-
-
-{% endhighlight %}
-</li>
-	<li id="export-multivar-descriptive"><div>
-<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
-{% highlight text %}
-
-rapport('multivar-descriptive', data=ius2008, vars=c("gender", 'age'))
-rapport('multivar-descriptive', data=ius2008, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx"))
-rapport('multivar-descriptive', data=mtcars, vars=c('hp','wt'))
-
-{% endhighlight %}
-<h6>Popular formats:</h6>
-<ul>
-	<li><a href="demo/multivar-descriptive.html" target="_blank">HTML</a></li>
-	<li><a href="demo/multivar-descriptive.odt">odt (MS Word compatibile)</a></li>
-	<li><a href="demo/multivar-descriptive.rtf">rtf (MS Word compatibile)</a></li>
-	<li><a href="demo/multivar-descriptive.epub">epub</a></li>
-	<li><a href="demo/multivar-descriptive.tex" target="_blank">latex</a></li>
-	<li><a href="demo/multivar-descriptive-slidy.html" target="_blank">HTML slidy</a></li>
-</ul>
-<h6>Other morkdown formats</h6>
-<ul>
-	<li><a href="demo/multivar-descriptive.plain" target="_blank">plain text</a></li>
-	<li><a href="demo/multivar-descriptive.textile" target="_blank">textile</a></li>
-	<li><a href="demo/multivar-descriptive.xml" target="_blank">docbook</a></li>
-	<li><a href="demo/multivar-descriptive.man" target="_blank">man</a></li>
-	<li><a href="demo/multivar-descriptive.md" target="_blank">markdown</a></li>
-	<li><a href="demo/multivar-descriptive.mediawiki" target="_blank">mediawiki</a></li>
-	<li><a href="demo/multivar-descriptive.wiki" target="_blank">wiki</a></li>
-	<li><a href="demo/multivar-descriptive.org" target="_blank">org</a></li>
-	<li><a href="demo/multivar-descriptive.pandoc" target="_blank">pandoc</a></li>
-</ul>
-</div></li>
-	<li id="source-multivar-descriptive"><div>
-<h5>Source of `multivar-descriptive.tpl`</h5>
-{% highlight text %}
-
-<!--head
-Title: Descriptive statistics
-Author: Gergely Daróczi 
-Email: gergely@snowl.net
-Description: This template will return descriptive statistics of numerical or frequency tables of categorical variables. 
-Packages: 
-Example:    rapport('multivar-descriptive', data=ius2008, vars=c("gender", 'age'))
-            rapport('multivar-descriptive', data=ius2008, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx"))
-            rapport('multivar-descriptive', data=mtcars, vars=c('hp','wt'))
-vars        | *variable[1]| Variables         | Categorical or numerical variables. The template will determine the measurement level of the given variable and will return detailed frequency tables or appropriate descriptive statistics for numerics.
-nortest     | TRUE          | Normality tests   | Should normality tests be performed on numerical variables?  
-head-->
-
-<%
-lapply(lapply(vars, rp.name), function(x) rapport('univar-descriptive', data=rp.data, var=x, nortest=nortest, nested.levels.offset=0))
+    print(rp.hist(var, theme=theme))
 %>
 
 {% endhighlight %}
@@ -2033,7 +2688,7 @@ rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
 ##	 Running: rapport("nortest", ius2008, var = "leisure")
 ################################################################
 
- == Introduction  
+# Introduction
 
 In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
 
@@ -2044,11 +2699,11 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpPer367/file147c5aeb.png
+/tmp/RtmpwIuUZk/file4905fabd.png
 
- == Normality Tests  
+# Normality Tests
 
- === Overview  
+## Overview
 
 Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
 
@@ -2057,20 +2712,11 @@ Various hypothesis tests can be applied in order to test if the distribution of 
  - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
  - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
 
- === Results  
+## Results
 
 Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
 
-<!-- endlist -->
-
-               **H**     **p**  
--------------- --------- -------
-shapiro.test   0.9001    0      
-lillie.test    0.168     0      
-ad.test        18.753    0      
-pearson.test   1791.25   0      
--------------- --------- -------
-
+_0.05_
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -2079,34 +2725,34 @@ So, let's draw some conclusions based on applied normality test:
  - _Anderson-Darling test_ confirms violation of normality assumption
  - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as normal
 
- == Diagnostic Plots  
+# Diagnostic Plots
 
 There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
 
- === Histogram  
+## Histogram
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpPer367/file57dfeb3f.png
+/tmp/RtmpwIuUZk/filed1c8974.png
 
- === Q-Q Plot  
+## Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpPer367/file39e76d1c.png
+/tmp/RtmpwIuUZk/file1aeb7bac.png
 
- === Kernel Density Plot  
+## Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpPer367/file31abd8c5.png
+/tmp/RtmpwIuUZk/file26f87f6a.png
 
 
 #################################################################################
 ##	 Running: rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
 #################################################################################
 
- == Introduction  
+# Introduction
 
 In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
 
@@ -2117,9 +2763,9 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
- == Normality Tests  
+# Normality Tests
 
- === Overview  
+## Overview
 
 Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
 
@@ -2128,20 +2774,11 @@ Various hypothesis tests can be applied in order to test if the distribution of 
  - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
  - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
 
- === Results  
+## Results
 
 Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
 
-<!-- endlist -->
-
-               **H**     **p**  
--------------- --------- -------
-shapiro.test   0.9001    0      
-lillie.test    0.168     0      
-ad.test        18.753    0      
-pearson.test   1791.25   0      
--------------- --------- -------
-
+_0.05_
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -2150,34 +2787,34 @@ So, let's draw some conclusions based on applied normality test:
  - _Anderson-Darling test_ confirms violation of normality assumption
  - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as normal
 
- == Diagnostic Plots  
+# Diagnostic Plots
 
 There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
 
- === Histogram  
+## Histogram
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpPer367/file5c1824e1.png
+/tmp/RtmpwIuUZk/file6e49d10d.png
 
- === Q-Q Plot  
+## Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpPer367/file3fe131bc.png
+/tmp/RtmpwIuUZk/file67b72380.png
 
- === Kernel Density Plot  
+## Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpPer367/file21ed03f0.png
+/tmp/RtmpwIuUZk/file378dded1.png
 
 
 #################################################################################
 ##	 Running: rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
 #################################################################################
 
- == Introduction  
+# Introduction
 
 In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
 
@@ -2188,11 +2825,11 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpPer367/file1a566a90.png
+/tmp/RtmpwIuUZk/file536de95b.png
 
- == Normality Tests  
+# Normality Tests
 
- === Overview  
+## Overview
 
 Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
 
@@ -2201,20 +2838,11 @@ Various hypothesis tests can be applied in order to test if the distribution of 
  - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
  - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
 
- === Results  
+## Results
 
 Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
 
-<!-- endlist -->
-
-               **H**     **p**  
--------------- --------- -------
-shapiro.test   0.9001    0      
-lillie.test    0.168     0      
-ad.test        18.753    0      
-pearson.test   1791.25   0      
--------------- --------- -------
-
+_0.05_
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -2223,27 +2851,27 @@ So, let's draw some conclusions based on applied normality test:
  - _Anderson-Darling test_ confirms violation of normality assumption
  - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as normal
 
- == Diagnostic Plots  
+# Diagnostic Plots
 
 There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
 
- === Histogram  
+## Histogram
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpPer367/file2e9eecda.png
+/tmp/RtmpwIuUZk/file67895293.png
 
- === Q-Q Plot  
+## Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpPer367/file79debf17.png
+/tmp/RtmpwIuUZk/file4b32a80d.png
 
- === Kernel Density Plot  
+## Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpPer367/file7db513db.png
+/tmp/RtmpwIuUZk/file4ac8022f.png
 
 
 {% endhighlight %}
@@ -2284,13 +2912,15 @@ rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
 {% highlight text %}
 
 <!--head
-Title:        Normality Tests
-Author:       Aleksandar Blagotić
-Description:  Overview of several normality tests and diagnostic plots that can screen departures from normality.
-Packages:     nortest
-Example:      rapport("nortest", ius2008, var = "leisure")
-              rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
-              rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
+Title:          Normality Tests
+Author:         Aleksandar Blagotić
+Description:    Overview of several normality tests and diagnostic plots that can screen departures from normality.
+Packages:       nortest
+Data required:  TRUE
+Strict:         TRUE
+Example:        rapport("nortest", ius2008, var = "leisure")
+                rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
+                rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
 
 var       | *numeric  | Test variables     | Variables to test for normality
 nc.plot   | TRUE      | Normal curve plot  | Plot normal curve?
@@ -2352,7 +2982,7 @@ There are various plots that can help you decide about the normality of the dist
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
  
 <%
-rp.hist(var)
+print(rp.hist(var))
 %>
 
 ## Q-Q Plot
@@ -2361,12 +2991,12 @@ rp.hist(var)
 
 <%
 if (qq.line){
-   qqmath(var, panel=function(x){
+   print(qqmath(var, panel=function(x){
                panel.qqmath(x)
                panel.qqmathline(x, distribution = qnorm)
-   }, xlab = "Theoretical Quantiles", ylab = "Empirical Quantiles")
+   }, xlab = "Theoretical Quantiles", ylab = "Empirical Quantiles"))
 } else {
-   rp.qqplot(var)
+   print(rp.qqplot(var))
 }
 %>
 
@@ -2375,7 +3005,7 @@ if (qq.line){
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
 <%
-rp.densityplot(var)
+print(rp.densityplot(var))
 %>
 
 {% endhighlight %}
@@ -2472,15 +3102,15 @@ rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALS
 ##	 Running: rapport('outlier-test', data=ius2008, var='edu')
 ####################################################################
 
- == Boxplot  
+# Boxplot
 
-/tmp/RtmpPer367/file255a9914.png
+/tmp/RtmpwIuUZk/file7db5b277.png
 
- == Lund test  
+# Lund test
 
 It seems that _4_ extreme values can be found in "Internet usage for educational purposes (hours per day)". These are: 10, 0.5, 1.5, 0.5.
 
- === Explanation  
+## Explanation
 
 The above test for outliers was based on *lm(1 ~ edu)*:
 
@@ -2491,24 +3121,24 @@ The above test for outliers was based on *lm(1 ~ edu)*:
 ------------- -------------- ---------------- ------------- --------------
 
 
- === References  
+## References
 
  * Lund, R. E. 1975, "Tables for An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 4, pp. 473-476.
  * Prescott, P. 1975, "An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 1, pp. 129-132.
 
- == Grubb's test  
+# Grubb's test
 
 Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.0002).
 
- === References  
+## References
 
  * Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.
 
- == Dixon's test  
+# Dixon's test
 
 chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
- === References  
+## References
 
  * Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.
 
@@ -2517,15 +3147,15 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 ##	 Running: rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE)
 ####################################################################################
 
- == Boxplot  
+# Boxplot
 
-/tmp/RtmpPer367/file5f1ab4d8.png
+/tmp/RtmpwIuUZk/file9356182.png
 
- == Lund test  
+# Lund test
 
 It seems that _4_ extreme values can be found in "Internet usage for educational purposes (hours per day)". These are: 10, 0.5, 1.5, 0.5.
 
- === Explanation  
+## Explanation
 
 The above test for outliers was based on *lm(1 ~ edu)*:
 
@@ -2536,24 +3166,24 @@ The above test for outliers was based on *lm(1 ~ edu)*:
 ------------- -------------- ---------------- ------------- --------------
 
 
- === References  
+## References
 
  * Lund, R. E. 1975, "Tables for An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 4, pp. 473-476.
  * Prescott, P. 1975, "An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 1, pp. 129-132.
 
- == Grubb's test  
+# Grubb's test
 
 Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.0002).
 
- === References  
+## References
 
  * Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.
 
- == Dixon's test  
+# Dixon's test
 
 chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
- === References  
+## References
 
  * Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.
 
@@ -2562,15 +3192,15 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 ##	 Running: rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALSE, grubb=FALSE, dixon=FALSE)
 ################################################################################################################################
 
- == Boxplot  
+# Boxplot
 
-/tmp/RtmpPer367/file2b41a1b3.png
+/tmp/RtmpwIuUZk/file20b2c3ec.png
 
- == Lund test  
+# Lund test
 
 It seems that _4_ extreme values can be found in "Internet usage for educational purposes (hours per day)". These are: 10, 0.5, 1.5, 0.5.
 
- === Explanation  
+## Explanation
 
 The above test for outliers was based on *lm(1 ~ edu)*:
 
@@ -2625,9 +3255,12 @@ Author:         Gergely Daróczi
 Email:          gergely@snowl.net
 Description:    This template will check if provided variable has any outliers. 
 Packages:       outliers
+Data required:  TRUE
+Strict:         TRUE
 Example:        rapport('outlier-test', data=ius2008, var='edu')
                 rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE)
                 rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALSE, grubb=FALSE, dixon=FALSE)
+
 var             | *numeric | Variable        | Numerical variable
 lund.res        | FALSE   | Residuals       | Return Lund's residuals?
 references      | TRUE    | References      | Print references?
@@ -2638,7 +3271,7 @@ head-->
 # Boxplot
 
 <%
-rp.boxplot(var)
+print(rp.boxplot(var))
 %>
 
 # Lund test
@@ -2811,7 +3444,7 @@ rapport("t-test", ius2008, x = "leisure", mu = 3.2)
 ##	 Running: rapport("t-test", ius2008, x = "leisure", y = "gender")
 ###########################################################################
 
- == Introduction  
+# Introduction
 
 In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows [_t-distribution_](https://en.wikipedia.org/wiki/Student%27s_t-distribution) can be considered a _t-test_. The most common usage of _t-test_ is to:
 
@@ -2819,11 +3452,11 @@ In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equali
  - compare means of two variables from independent samples - **independent samples _t-test_**
  - compare means of two variables from dependent samples - **paired-samples _t-test_**
 
- == Overview  
+# Overview
 
 Independent samples _t-test_ is carried out with _Internet usage in leisure time (hours per day)_ as dependent variable, and _Gender_ as independent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.
 
- == Descriptives  
+# Descriptives
 
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
@@ -2836,11 +3469,11 @@ female   0            12           3.0643        2.3546      5.5442       2     
 -------- ------------ ------------ ------------- ----------- ------------ --------------- ------------ ----------------- -----------------
 
 
- == Diagnostics  
+# Diagnostics
 
 Since _t-test_ is a parametric technique, it sets some basic assumptions on distribution shape: it has to be _normal_ (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality. 
 
- === Normality Tests  
+## Normality Tests
 
 We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_). 
 
@@ -2856,7 +3489,7 @@ ad.test        18.753   0
 
 As you can see, applied tests confirm departures from normality.
 
- == Results  
+# Results
 
 Welch Two Sample t-test was applied, and significant differences were found.
 
@@ -2873,7 +3506,7 @@ t   1.1483          457.8625   0.2514   -0.1463         0.5576
 ##	 Running: rapport("t-test", ius2008, x = "leisure", mu = 3.2)
 #######################################################################
 
- == Introduction  
+# Introduction
 
 In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows [_t-distribution_](https://en.wikipedia.org/wiki/Student%27s_t-distribution) can be considered a _t-test_. The most common usage of _t-test_ is to:
 
@@ -2881,21 +3514,26 @@ In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equali
  - compare means of two variables from independent samples - **independent samples _t-test_**
  - compare means of two variables from dependent samples - **paired-samples _t-test_**
 
- == Overview  
+# Overview
 
 One-sample _t-test_ is carried out with _Internet usage in leisure time (hours per day)_ as dependent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.
 
- == Descriptives  
+# Descriptives
 
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
-<ERROR>
 
- == Diagnostics  
+**value**   **min(x)**   **max(x)**   **mean(x)**   **sd(x)**   **var(x)**   **median(x)**   **IQR(x)**   **skewness(x)**   **kurtosis(x)**  
+----------- ------------ ------------ ------------- ----------- ------------ --------------- ------------ ----------------- -----------------
+(all)       0            12           3.1994        2.1436      4.5951       3               2            1.1873            4.547            
+----------- ------------ ------------ ------------- ----------- ------------ --------------- ------------ ----------------- -----------------
+
+
+# Diagnostics
 
 Since _t-test_ is a parametric technique, it sets some basic assumptions on distribution shape: it has to be _normal_ (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality. 
 
- === Normality Tests  
+## Normality Tests
 
 We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_). 
 
@@ -2911,7 +3549,7 @@ ad.test        18.753   0
 
 As you can see, applied tests confirm departures from normality.
 
- == Results  
+# Results
 
 One Sample t-test was applied, and significant differences were found.
 
@@ -2961,12 +3599,13 @@ rapport("t-test", ius2008, x = "leisure", mu = 3.2)
 {% highlight text %}
 
 <!--head
-Title:        t-test Template
-Author:       Aleksandar Blagotić
-Description:  A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
-Packages:     nortest
-Example:      rapport("t-test", ius2008, x = "leisure", y = "gender")
-              rapport("t-test", ius2008, x = "leisure", mu = 3.2)
+Title:          t-test Template
+Author:         Aleksandar Blagotić
+Description:    A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
+Packages:       nortest
+Data required:  TRUE
+Example:        rapport("t-test", ius2008, x = "leisure", y = "gender")
+                rapport("t-test", ius2008, x = "leisure", mu = 3.2)
 
 x         | *numeric    | X variable          | Dependent (response) variable
 y         | variable    | Y variable          | Independent variable (factor, or another numeric)
@@ -3030,7 +3669,7 @@ In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equali
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
 <%
-rp.desc(y, x, c(min, max, mean, sd, var, median, IQR, skewness, kurtosis))
+rp.desc(x, y, c(min, max, mean, sd, var, median, IQR, skewness, kurtosis))
 %>
 
 # Diagnostics
@@ -3054,432 +3693,6 @@ As you can see, applied tests <% ifelse(all(ntest$p < .05), "confirm departures 
 
 <%
 with(tt, data.frame(statistic, df = parameter, p = p.value, `CI(lower)` = conf.int[1], `CI(upper)` = conf.int[2], check.names = FALSE))
-%>
-
-{% endhighlight %}
-</div></li>
-</ul>
-
-<a id="type_demo"> </a>
-#### type_demo.tpl
-
- <ul class="tabs">
-	<li><a class="active" href="#info-type_demo">Description</a></li>
-	<li><a href="#inputs-type_demo">Inputs</a></li>
-	<li><a href="#example-type_demo">Example</a></li>
-	<li><a href="#export-type_demo">Export</a></li>
-	<li><a href="#source-type_demo">Source</a></li>
-</ul>
-
- <ul class="tabs-content">
-	<li class="active" id="info-type_demo"><div><h5>Rapport types demo</h5> by <em>Aleksandar Blagotić</em>
-<br><br>
- A sample template that describes the basic rapport types
-<br><br>
-<em>Required packages:</em> wordcloud
-<br>
-<em>Example:</em> </div></li>
-	<li id="inputs-type_demo"><div><h5>Input parameters</h5><em>type_demo.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	<li><h6>a: <small><em>variable A</em></small></h6>
-<div class="options">    <div class="options-desc">var A - from 1 up to 6 character variables
-</div>
-    <em>Type:</em>	character
-<br>
-    <em>Limits:</em>	from 1, up to 6 variables
-<br>
-
-</div>
-</li>
-<br>
-<li><h6>b: <small><em>variable B</em></small></h6>
-<div class="options">    <div class="options-desc">var B - length-one complex
-</div>
-    <em>Type:</em>	complex
-<br>
-    <em>Limits:</em>	exactly 1 variable
-<br>
-
-</div>
-</li>
-<br>
-<li><h6>c: <small><em>variable C</em></small></h6>
-<div class="options">    <div class="options-desc">var C - length-one factor
-</div>
-    <em>Type:</em>	factor
-<br>
-    <em>Limits:</em>	exactly 1 variable
-<br>
-
-</div>
-</li>
-<br>
-<li><h6>d: <small><em>variable D</em></small></h6>
-<div class="options">    <div class="options-desc">var D - length-one logical, defaults to FALSE
-</div>
-    <em>Type:</em>	logical
-<br>
-    <em>Limits:</em>	exactly 1 variable
-<br>
-
-</div>
-</li>
-<br>
-<li><h6>e: <small><em>variable E</em></small></h6>
-<div class="options">    <div class="options-desc">var E - 2-10 numeric vectors
-</div>
-    <em>Type:</em>	numeric
-<br>
-    <em>Limits:</em>	from 2, up to 10 variables
-<br>
-
-</div>
-</li>
-<br>
-<li><h6>f: <small><em>variable F</em></small></h6>
-<div class="options">    <div class="options-desc">var F - a variable (atomic vector of any type)
-</div>
-    <em>Type:</em>	variable
-<br>
-    <em>Limits:</em>	exactly 1 variable
-<br>
-
-</div>
-</li>
-<br>
-<li><h6>g: <small><em>variable G</em></small></h6>
-<div class="options">    <div class="options-desc">var G - it's an option list
-</div>
-    <em>Type:</em>	option
-<br>
-    <em>Limits:</em>	exactly 1 variable
-<br>
-    <em>Default value:</em>	foo, bar, blah
-</div>
-</li>
-<br>
-<li><h6>h: <small><em>variable H</em></small></h6>
-<div class="options">    <div class="options-desc">var H - a boolean var
-</div>
-    <em>Type:</em>	boolean
-<br>
-    <em>Limits:</em>	exactly 1 variable
-<br>
-    <em>Default value:</em>	TRUE
-</div>
-</li>
-<br>
-</ul></div></li>
-	<li id="example-type_demo">No examples provided with template, sorry.</li>
-	<li id="export-type_demo">No examples provided with template, sorry.</li>
-	<li id="source-type_demo"><div>
-<h5>Source of `type_demo.tpl`</h5>
-{% highlight text %}
-
-<!--head
-Title:        Rapport types demo
-Author:       Aleksandar Blagotić
-Description:  A sample template that describes the basic rapport types
-Packages:     wordcloud
-a    | character[1,6]  | variable A | var A - from 1 up to 6 character variables
-b    | complex         | variable B | var B - length-one complex
-c    | factor          | variable C | var C - length-one factor
-d    | logical         | variable D | var D - length-one logical, defaults to FALSE
-e    | numeric[2,10]   | variable E | var E - 2-10 numeric vectors
-f    | variable        | variable F | var F - a variable (atomic vector of any type)
-g    | foo, bar, blah  | variable G | var G - it's an option list
-h    | TRUE            | variable H | var H - a boolean var
-head-->
-
-# Input types
-
-## Character
-
-Now I need to do something useful with character vectors.
-
-## Complex
-
-## Factor
-
-## Logical
-
-## Numeric
-
-## Variable
-
-## CSV list
-
-{% endhighlight %}
-</div></li>
-</ul>
-
-<a id="univar-descriptive"> </a>
-#### univar-descriptive.tpl
-
- <ul class="tabs">
-	<li><a class="active" href="#info-univar-descriptive">Description</a></li>
-	<li><a href="#inputs-univar-descriptive">Inputs</a></li>
-	<li><a href="#example-univar-descriptive">Example</a></li>
-	<li><a href="#export-univar-descriptive">Export</a></li>
-	<li><a href="#source-univar-descriptive">Source</a></li>
-</ul>
-
- <ul class="tabs-content">
-	<li class="active" id="info-univar-descriptive"><div><h5>Descriptive statistics</h5> by <em>Gergely Daróczi</em>
-<br><br>
- This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.
-<br><br>
-<em>Required packages:</em> 
-<br>
-<em>Example:</em> 
-{% highlight text %}
-rapport('univar-descriptive', data=ius2008, var='gender')
-rapport('univar-descriptive', data=ius2008, var='age')
-{% endhighlight %}
-</div></li>
-	<li id="inputs-univar-descriptive"><div><h5>Input parameters</h5><em>univar-descriptive.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	<li><h6>var: <small><em>Variable</em></small></h6>
-<div class="options">    <div class="options-desc">A categorical or numerical variable. The template will determine the measurement level of the given variable and will return a detailed frequency table or appropriate descriptive statistics for numerics.
-</div>
-    <em>Type:</em>	variable
-<br>
-    <em>Limits:</em>	exactly 1 variable
-<br>
-
-</div>
-</li>
-<br>
-<li><h6>nortest: <small><em>Normality test</em></small></h6>
-<div class="options">    <div class="options-desc">If normality tests should be performed
-</div>
-    <em>Type:</em>	boolean
-<br>
-    <em>Limits:</em>	exactly 1 variable
-<br>
-    <em>Default value:</em>	TRUE
-</div>
-</li>
-<br>
-</ul></div></li>
-	<li id="example-univar-descriptive">
-{% highlight text %}
-
-
-#############################################################################
-##	 Running: rapport('univar-descriptive', data=ius2008, var='gender')
-#############################################################################
-
- == *gender* ("Gender")  
-
-The dataset has _709_ observations with _673_ valid values (missing: _36_) in *gender* ("Gender").
-This variable seems to be a factor.
-
- === Base statistics  
-
-<!-- endlist -->
-
-        **gender**   **N**   **pct**   **cumul.count**   **cumul.pct**  
-------- ------------ ------- --------- ----------------- ---------------
-1       male         410     60.9212   410               60.9212        
-2       female       263     39.0788   673               100            
-Total                673     100       673               100            
-------- ------------ ------- --------- ----------------- ---------------
-
-
- === Barplot  
-
-/tmp/RtmpPer367/file2885aeca.png
-
-It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
-
-
-##########################################################################
-##	 Running: rapport('univar-descriptive', data=ius2008, var='age')
-##########################################################################
-
- == *age* ("Age")  
-
-The dataset has _709_ observations with _677_ valid values (missing: _32_) in *age* ("Age").
-This variable seems to be numeric.
-
- === Base statistics  
-
-
-**value**   **mean(age)**   **sd(age)**   **var(age)**  
------------ --------------- ------------- --------------
-(all)       24.5731         6.8491        46.9107       
------------ --------------- ------------- --------------
-
-
- === Histogram  
-
-/tmp/RtmpPer367/file7aff8757.png
-
-It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
-
-The standard deviation is 6.8491 (variance: 46.9107). The expected value is around 24.5731, somewhere between 24.0572 and 25.0891 (SE: 0.2632).
-
-If we suppose that *Age* is not near to a normal distribution (test: see below, skewness: 1.9296, kurtosis: 7.4851), checking the median (23) might be a better option instead of the mean. The interquartile range (6) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
-
- === Normality tests  
-
- === Introduction  
-
-In statistics, _normality_ refers to an assumption that the distribution of a random variable follows _normal_ (_Gaussian_) distribution. Because of its bell-like shape, it's also known as the _"bell curve"_. The formula for _normal distribution_ is:
-
-$$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$
-
-_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters:
-
- - *&mu;* - _mean_ or _expectation_ (location parameter)
- - *&sigma;^2^* - _variance_ (scale parameter)
-
-/tmp/RtmpPer367/file472a371b.png
-
- === Normality Tests  
-
- ==== Overview  
-
-Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
-
- - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
- - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
- - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
- - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
-
- ==== Results  
-
-Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
-
-<!-- endlist -->
-
-               **H**      **p**  
--------------- ---------- -------
-shapiro.test   0.8216     0      
-lillie.test    0.17       0      
-ad.test        32.1645    0      
-pearson.test   625.8479   0      
--------------- ---------- -------
-
-
-So, let's draw some conclusions based on applied normality test:
-
- - according to _Shapiro-Wilk test_, the distribution of _Age_ is not normal.
- - based on _Lilliefors test_, distribution of _Age_ is not normal
- - _Anderson-Darling test_ confirms violation of normality assumption
- - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as non-normal
-
- === Diagnostic Plots  
-
-There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: _histogram_, _Q-Q plot_ and _kernel density plot_.
-
- ==== Histogram  
-
-_Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
-
-/tmp/RtmpPer367/file2101f2cf.png
-
- ==== Q-Q Plot  
-
-"Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
-
-/tmp/RtmpPer367/file61c3b908.png
-
- ==== Kernel Density Plot  
-
-_Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
-
-/tmp/RtmpPer367/file78fcf0cc.png
-
-
-{% endhighlight %}
-</li>
-	<li id="export-univar-descriptive"><div>
-<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
-{% highlight text %}
-
-rapport('univar-descriptive', data=ius2008, var='gender')
-rapport('univar-descriptive', data=ius2008, var='age')
-
-{% endhighlight %}
-<h6>Popular formats:</h6>
-<ul>
-	<li><a href="demo/univar-descriptive.html" target="_blank">HTML</a></li>
-	<li><a href="demo/univar-descriptive.odt">odt (MS Word compatibile)</a></li>
-	<li><a href="demo/univar-descriptive.rtf">rtf (MS Word compatibile)</a></li>
-	<li><a href="demo/univar-descriptive.epub">epub</a></li>
-	<li><a href="demo/univar-descriptive.tex" target="_blank">latex</a></li>
-	<li><a href="demo/univar-descriptive-slidy.html" target="_blank">HTML slidy</a></li>
-</ul>
-<h6>Other morkdown formats</h6>
-<ul>
-	<li><a href="demo/univar-descriptive.plain" target="_blank">plain text</a></li>
-	<li><a href="demo/univar-descriptive.textile" target="_blank">textile</a></li>
-	<li><a href="demo/univar-descriptive.xml" target="_blank">docbook</a></li>
-	<li><a href="demo/univar-descriptive.man" target="_blank">man</a></li>
-	<li><a href="demo/univar-descriptive.md" target="_blank">markdown</a></li>
-	<li><a href="demo/univar-descriptive.mediawiki" target="_blank">mediawiki</a></li>
-	<li><a href="demo/univar-descriptive.wiki" target="_blank">wiki</a></li>
-	<li><a href="demo/univar-descriptive.org" target="_blank">org</a></li>
-	<li><a href="demo/univar-descriptive.pandoc" target="_blank">pandoc</a></li>
-</ul>
-</div></li>
-	<li id="source-univar-descriptive"><div>
-<h5>Source of `univar-descriptive.tpl`</h5>
-{% highlight text %}
-
-<!--head
-Title: Descriptive statistics
-Author: Gergely Daróczi 
-Email: gergely@snowl.net
-Description: This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable. 
-Packages: 
-Example:    rapport('univar-descriptive', data=ius2008, var='gender')
-            rapport('univar-descriptive', data=ius2008, var='age')
-var         | variable  | Variable          | A categorical or numerical variable. The template will determine the measurement level of the given variable and will return a detailed frequency table or appropriate descriptive statistics for numerics.
-nortest     | TRUE      | Normality test    | If normality tests should be performed 
-head-->
-
-# *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>
-
-The dataset has <%nvar<-as.numeric(var);rp.n(nvar)%> observations with <%=rp.valid(nvar)%> valid values (missing: <%=rp.missing(nvar)%>) in *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>.
-This variable seems to be <%=ifelse(is.numeric(var), 'numeric', 'a factor')%>.
-
-## Base statistics
-
-<%
-if (is.numeric(var)) {
-        rp.desc(NULL, rp.name(var), c('mean', 'sd', 'var'), rp.data)
-    } else {
-        rp.freq(rp.name(var), rp.data)
-    }
-%>
-
-## <%ifelse(is.numeric(var), 'Histogram', 'Barplot')%>
-
-<%
-if (is.numeric(var)) {
-        rp.hist(var)
-    } else {
-        rp.barplot(var)
-    }
-%>
-
-It seems that the highest value is <%=rp.max(nvar)%> which is exactly <%=rp.round(rp.max(nvar)/rp.min(nvar))%> times higher than the smallest value (<%rp.min(nvar)%>).
-
-<%
-if (is.numeric(var))
-    sprintf('The standard deviation is %s (variance: %s). The expected value is around %s, somewhere between %s and %s (SE: %s).', rp.round(rp.sd(var)), rp.round(rp.var(var)), rp.round(rp.mean(var)), rp.round(rp.mean(var)-1.96*rp.se.mean(var)), rp.round(rp.mean(var)+1.96*rp.se.mean(var)), rp.round(rp.se.mean(var)))
-%>
-
-<%
-if (is.numeric(var))
-    sprintf('If we suppose that *%s* is not near to a normal distribution (test: %s, skewness: %s, kurtosis: %s), checking the median (%s) might be a better option instead of the mean. The interquartile range (%s) measures the statistics dispersion of the variable (similar to standard deviation) based on median.', rp.label(var), ifelse(nortest & is.numeric(var), 'see below', 'not run'), rp.round(rp.skewness(var)), rp.round(rp.kurtosis(var)), rp.round(rp.median(var)), rp.round(rp.iqr(var)))
-%>
-
-## <%if (nortest & is.numeric(var)) 'Normality tests'%>
-
-<%
-if (nortest & is.numeric(var)) rapport('nortest', data=rp.data, var=rp.name(var), nested.levels.offset=2)
 %>
 
 {% endhighlight %}

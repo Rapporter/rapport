@@ -1,6 +1,6 @@
 '''Correlations'''
 
-Rapport package team
+(Username not set)
 
 ''2011-04-26 20:25 CET''
 
@@ -9,7 +9,7 @@ Rapport package team
 
 This template will return the correlation matrix of supplied numerical variables. 
 
-== Variable description ==
+=== Variable description ===
 
 _3_ variables provided. 
 
@@ -22,7 +22,7 @@ Uncorrelated (-0.2 < r < 0.2) variables:
  * _age_ and _leisure_
  * _edu_ and _leisure_ 
 
-=== Correlation matrix ===
+==== Correlation matrix ====
 
 <!-- endlist -->
 
@@ -39,7 +39,7 @@ leisure   -0.0338         0.1732  * * *
 
 This template will return the correlation matrix of supplied numerical variables. 
 
-== Variable description ==
+=== Variable description ===
 
 _11_ variables provided. 
 
@@ -76,7 +76,7 @@ Uncorrelated (-0.2 < r < 0.2) variables:
  * _drat_ and _carb_
  * _am_ and _carb_ 
 
-=== Correlation matrix ===
+==== Correlation matrix ====
 
 <!-- endlist -->
 

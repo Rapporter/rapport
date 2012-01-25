@@ -1,16 +1,15 @@
-.\"t
-.TH Normality "" "2011\[en]04\[en]26 20:25 CET" "Tests"
+.TH Normality "" "2011-04-26 20:25 CET" "Tests"
 .SS Description
 .PP
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
-.SH Introduction
+.SS Introduction
 .PP
 In statistics, \f[I]normality\f[] refers to an assumption that the
 distribution of a random variable follows \f[I]normal\f[]
 (\f[I]Gaussian\f[]) distribution.
-Because of its bell-like shape, it's also known as the \f[I]\[lq]bell
-curve\[rq]\f[].
+Because of its bell-like shape, it\[aq]s also known as the \f[I]"bell
+curve"\f[].
 The formula for \f[I]normal distribution\f[] is:
 .PP
 .RS
@@ -18,20 +17,20 @@ $f(x) = \\frac{1}{\\sqrt{2\\pi{}\\sigma{}^2}} e^{-\\frac{(x-\\mu{})^2}{2\\sigma{
 .RE
 .PP
 \f[I]Normal distribution\f[] belongs to a \f[I]location-scale family\f[]
-of distributions, as it's defined two parameters:
+of distributions, as it\[aq]s defined two parameters:
 .IP \[bu] 2
 \f[I]μ\f[] - \f[I]mean\f[] or \f[I]expectation\f[] (location parameter)
 .IP \[bu] 2
 \f[I]σ^2^\f[] - \f[I]variance\f[] (scale parameter)
 .PP
 [IMAGE: image (2f8c434e103f36ec70966b372838d448.png)]
-.SH Normality Tests
+.SS Normality Tests
 .SS Overview
 .PP
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
-These procedures test the H~0~ that provided variable's distribution is
-\f[I]normal\f[].
+These procedures test the H~0~ that provided variable\[aq]s distribution
+is \f[I]normal\f[].
 At this point only few such tests will be covered: the ones that are
 available in \f[C]stats\f[] package (which comes bundled with default R
 installation) and \f[C]nortest\f[] package that is
@@ -40,8 +39,8 @@ CRAN.
 .IP \[bu] 2
 \f[B]Shapiro-Wilk test\f[] is a powerful normality test appropriate for
 small samples.
-In R, it's implemented in \f[C]shapiro.test\f[] function available in
-\f[C]stats\f[] package.
+In R, it\[aq]s implemented in \f[C]shapiro.test\f[] function available
+in \f[C]stats\f[] package.
 .IP \[bu] 2
 \f[B]Lilliefors test\f[] is a modification of \f[I]Kolmogorov-Smirnov
 test\f[] appropriate for testing normality when parameters or normal
@@ -53,54 +52,16 @@ tests as it will detect the most of departures from normality.
 You can find \f[C]ad.test\f[] function in \f[C]nortest\f[] package.
 .IP \[bu] 2
 \f[B]Pearson Χ^2^ test\f[] is another normality test which takes more
-\[lq]traditional\[rq] approach in normality testing.
+"traditional" approach in normality testing.
 \f[C]pearson.test\f[] is located in \f[C]nortest\f[] package.
 .SS Results
 .PP
 Here you can see the results of applied normality tests
 (\f[I]p-values\f[] less than 0.05 indicate significant discrepancies):
 .PP
-.TS
-tab(@);
-l l l.
-T{
-T}@T{
-\f[B]H\f[]
-T}@T{
-\f[B]p\f[]
-T}
-_
-T{
-shapiro.test
-T}@T{
-0.9001
-T}@T{
-0
-T}
-T{
-lillie.test
-T}@T{
-0.168
-T}@T{
-0
-T}
-T{
-ad.test
-T}@T{
-18.753
-T}@T{
-0
-T}
-T{
-pearson.test
-T}@T{
-1791.25
-T}@T{
-0
-T}
-.TE
+\f[I]0.05\f[]
 .PP
-So, let's draw some conclusions based on applied normality test:
+So, let\[aq]s draw some conclusions based on applied normality test:
 .IP \[bu] 2
 according to \f[I]Shapiro-Wilk test\f[], the distribution of
 \f[I]Internet usage in leisure time (hours per day)\f[] is not normal.
@@ -111,9 +72,9 @@ in leisure time (hours per day)\f[] is not normal
 \f[I]Anderson-Darling test\f[] confirms violation of normality
 assumption
 .IP \[bu] 2
-\f[I]Pearson's Χ^2^ test\f[] classifies the underlying distribution as
-normal
-.SH Diagnostic Plots
+\f[I]Pearson\[aq]s Χ^2^ test\f[] classifies the underlying distribution
+as normal
+.SS Diagnostic Plots
 .PP
 There are various plots that can help you decide about the normality of
 the distribution.
@@ -122,22 +83,22 @@ Only a few most commonly used plots will be shown: \f[I]histogram\f[],
 .SS Histogram
 .PP
 \f[I]Histogram\f[] was first introduced by \f[I]Karl Pearson\f[] and
-it's probably the most popular plot for depicting the probability
+it\[aq]s probably the most popular plot for depicting the probability
 distribution of a random variable.
 However, the decision depends on number of bins, so it can sometimes be
 misleading.
 If the variable distribution is normal, bins should resemble the
-\[lq]bell-like\[rq] shape.
+"bell-like" shape.
 .PP
 [IMAGE: image (12bea9ba14449f76d79a9d5792bf29f9.png)]
 .SS Q-Q Plot
 .PP
-\[lq]Q\[rq] in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this
-plot compares empirical and theoretical distribution (in this case,
+"Q" in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this plot
+compares empirical and theoretical distribution (in this case,
 \f[I]normal\f[] distribution) by plotting their quantiles against each
 other.
-For normal distribution, plotted dots should approximate a
-\[lq]straight\[rq], \f[C]x\ =\ y\f[] line.
+For normal distribution, plotted dots should approximate a "straight",
+\f[C]x\ =\ y\f[] line.
 .PP
 [IMAGE: image (fff2bb7b8b095f881f85302d0128bae7.png)]
 .SS Kernel Density Plot
@@ -145,21 +106,21 @@ For normal distribution, plotted dots should approximate a
 \f[I]Kernel density plot\f[] is a plot of smoothed \f[I]empirical
 distribution function\f[].
 As such, it provides good insight about the shape of the distribution.
-For normal distributions, it should resemble the well known \[lq]bell
-shape\[rq].
+For normal distributions, it should resemble the well known "bell
+shape".
 .PP
-[IMAGE: image (01692a50f2fba07dd3c1b2084e49e8d5.png)]
+[IMAGE: image (07657b36ddf71c363ca51d844405b99a.png)]
 .SS Description
 .PP
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
-.SH Introduction
+.SS Introduction
 .PP
 In statistics, \f[I]normality\f[] refers to an assumption that the
 distribution of a random variable follows \f[I]normal\f[]
 (\f[I]Gaussian\f[]) distribution.
-Because of its bell-like shape, it's also known as the \f[I]\[lq]bell
-curve\[rq]\f[].
+Because of its bell-like shape, it\[aq]s also known as the \f[I]"bell
+curve"\f[].
 The formula for \f[I]normal distribution\f[] is:
 .PP
 .RS
@@ -167,18 +128,18 @@ $f(x) = \\frac{1}{\\sqrt{2\\pi{}\\sigma{}^2}} e^{-\\frac{(x-\\mu{})^2}{2\\sigma{
 .RE
 .PP
 \f[I]Normal distribution\f[] belongs to a \f[I]location-scale family\f[]
-of distributions, as it's defined two parameters:
+of distributions, as it\[aq]s defined two parameters:
 .IP \[bu] 2
 \f[I]μ\f[] - \f[I]mean\f[] or \f[I]expectation\f[] (location parameter)
 .IP \[bu] 2
 \f[I]σ^2^\f[] - \f[I]variance\f[] (scale parameter)
-.SH Normality Tests
+.SS Normality Tests
 .SS Overview
 .PP
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
-These procedures test the H~0~ that provided variable's distribution is
-\f[I]normal\f[].
+These procedures test the H~0~ that provided variable\[aq]s distribution
+is \f[I]normal\f[].
 At this point only few such tests will be covered: the ones that are
 available in \f[C]stats\f[] package (which comes bundled with default R
 installation) and \f[C]nortest\f[] package that is
@@ -187,8 +148,8 @@ CRAN.
 .IP \[bu] 2
 \f[B]Shapiro-Wilk test\f[] is a powerful normality test appropriate for
 small samples.
-In R, it's implemented in \f[C]shapiro.test\f[] function available in
-\f[C]stats\f[] package.
+In R, it\[aq]s implemented in \f[C]shapiro.test\f[] function available
+in \f[C]stats\f[] package.
 .IP \[bu] 2
 \f[B]Lilliefors test\f[] is a modification of \f[I]Kolmogorov-Smirnov
 test\f[] appropriate for testing normality when parameters or normal
@@ -200,54 +161,16 @@ tests as it will detect the most of departures from normality.
 You can find \f[C]ad.test\f[] function in \f[C]nortest\f[] package.
 .IP \[bu] 2
 \f[B]Pearson Χ^2^ test\f[] is another normality test which takes more
-\[lq]traditional\[rq] approach in normality testing.
+"traditional" approach in normality testing.
 \f[C]pearson.test\f[] is located in \f[C]nortest\f[] package.
 .SS Results
 .PP
 Here you can see the results of applied normality tests
 (\f[I]p-values\f[] less than 0.05 indicate significant discrepancies):
 .PP
-.TS
-tab(@);
-l l l.
-T{
-T}@T{
-\f[B]H\f[]
-T}@T{
-\f[B]p\f[]
-T}
-_
-T{
-shapiro.test
-T}@T{
-0.9001
-T}@T{
-0
-T}
-T{
-lillie.test
-T}@T{
-0.168
-T}@T{
-0
-T}
-T{
-ad.test
-T}@T{
-18.753
-T}@T{
-0
-T}
-T{
-pearson.test
-T}@T{
-1791.25
-T}@T{
-0
-T}
-.TE
+\f[I]0.05\f[]
 .PP
-So, let's draw some conclusions based on applied normality test:
+So, let\[aq]s draw some conclusions based on applied normality test:
 .IP \[bu] 2
 according to \f[I]Shapiro-Wilk test\f[], the distribution of
 \f[I]Internet usage in leisure time (hours per day)\f[] is not normal.
@@ -258,9 +181,9 @@ in leisure time (hours per day)\f[] is not normal
 \f[I]Anderson-Darling test\f[] confirms violation of normality
 assumption
 .IP \[bu] 2
-\f[I]Pearson's Χ^2^ test\f[] classifies the underlying distribution as
-normal
-.SH Diagnostic Plots
+\f[I]Pearson\[aq]s Χ^2^ test\f[] classifies the underlying distribution
+as normal
+.SS Diagnostic Plots
 .PP
 There are various plots that can help you decide about the normality of
 the distribution.
@@ -269,22 +192,22 @@ Only a few most commonly used plots will be shown: \f[I]histogram\f[],
 .SS Histogram
 .PP
 \f[I]Histogram\f[] was first introduced by \f[I]Karl Pearson\f[] and
-it's probably the most popular plot for depicting the probability
+it\[aq]s probably the most popular plot for depicting the probability
 distribution of a random variable.
 However, the decision depends on number of bins, so it can sometimes be
 misleading.
 If the variable distribution is normal, bins should resemble the
-\[lq]bell-like\[rq] shape.
+"bell-like" shape.
 .PP
 [IMAGE: image (12bea9ba14449f76d79a9d5792bf29f9.png)]
 .SS Q-Q Plot
 .PP
-\[lq]Q\[rq] in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this
-plot compares empirical and theoretical distribution (in this case,
+"Q" in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this plot
+compares empirical and theoretical distribution (in this case,
 \f[I]normal\f[] distribution) by plotting their quantiles against each
 other.
-For normal distribution, plotted dots should approximate a
-\[lq]straight\[rq], \f[C]x\ =\ y\f[] line.
+For normal distribution, plotted dots should approximate a "straight",
+\f[C]x\ =\ y\f[] line.
 .PP
 [IMAGE: image (fff2bb7b8b095f881f85302d0128bae7.png)]
 .SS Kernel Density Plot
@@ -292,21 +215,21 @@ For normal distribution, plotted dots should approximate a
 \f[I]Kernel density plot\f[] is a plot of smoothed \f[I]empirical
 distribution function\f[].
 As such, it provides good insight about the shape of the distribution.
-For normal distributions, it should resemble the well known \[lq]bell
-shape\[rq].
+For normal distributions, it should resemble the well known "bell
+shape".
 .PP
-[IMAGE: image (b26afbd74d3686d7e73ec55f3f088e0f.png)]
+[IMAGE: image (2566e535c6619ca87dce39c72a1bd2e1.png)]
 .SS Description
 .PP
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
-.SH Introduction
+.SS Introduction
 .PP
 In statistics, \f[I]normality\f[] refers to an assumption that the
 distribution of a random variable follows \f[I]normal\f[]
 (\f[I]Gaussian\f[]) distribution.
-Because of its bell-like shape, it's also known as the \f[I]\[lq]bell
-curve\[rq]\f[].
+Because of its bell-like shape, it\[aq]s also known as the \f[I]"bell
+curve"\f[].
 The formula for \f[I]normal distribution\f[] is:
 .PP
 .RS
@@ -314,20 +237,20 @@ $f(x) = \\frac{1}{\\sqrt{2\\pi{}\\sigma{}^2}} e^{-\\frac{(x-\\mu{})^2}{2\\sigma{
 .RE
 .PP
 \f[I]Normal distribution\f[] belongs to a \f[I]location-scale family\f[]
-of distributions, as it's defined two parameters:
+of distributions, as it\[aq]s defined two parameters:
 .IP \[bu] 2
 \f[I]μ\f[] - \f[I]mean\f[] or \f[I]expectation\f[] (location parameter)
 .IP \[bu] 2
 \f[I]σ^2^\f[] - \f[I]variance\f[] (scale parameter)
 .PP
 [IMAGE: image (2f8c434e103f36ec70966b372838d448.png)]
-.SH Normality Tests
+.SS Normality Tests
 .SS Overview
 .PP
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
-These procedures test the H~0~ that provided variable's distribution is
-\f[I]normal\f[].
+These procedures test the H~0~ that provided variable\[aq]s distribution
+is \f[I]normal\f[].
 At this point only few such tests will be covered: the ones that are
 available in \f[C]stats\f[] package (which comes bundled with default R
 installation) and \f[C]nortest\f[] package that is
@@ -336,8 +259,8 @@ CRAN.
 .IP \[bu] 2
 \f[B]Shapiro-Wilk test\f[] is a powerful normality test appropriate for
 small samples.
-In R, it's implemented in \f[C]shapiro.test\f[] function available in
-\f[C]stats\f[] package.
+In R, it\[aq]s implemented in \f[C]shapiro.test\f[] function available
+in \f[C]stats\f[] package.
 .IP \[bu] 2
 \f[B]Lilliefors test\f[] is a modification of \f[I]Kolmogorov-Smirnov
 test\f[] appropriate for testing normality when parameters or normal
@@ -349,54 +272,16 @@ tests as it will detect the most of departures from normality.
 You can find \f[C]ad.test\f[] function in \f[C]nortest\f[] package.
 .IP \[bu] 2
 \f[B]Pearson Χ^2^ test\f[] is another normality test which takes more
-\[lq]traditional\[rq] approach in normality testing.
+"traditional" approach in normality testing.
 \f[C]pearson.test\f[] is located in \f[C]nortest\f[] package.
 .SS Results
 .PP
 Here you can see the results of applied normality tests
 (\f[I]p-values\f[] less than 0.05 indicate significant discrepancies):
 .PP
-.TS
-tab(@);
-l l l.
-T{
-T}@T{
-\f[B]H\f[]
-T}@T{
-\f[B]p\f[]
-T}
-_
-T{
-shapiro.test
-T}@T{
-0.9001
-T}@T{
-0
-T}
-T{
-lillie.test
-T}@T{
-0.168
-T}@T{
-0
-T}
-T{
-ad.test
-T}@T{
-18.753
-T}@T{
-0
-T}
-T{
-pearson.test
-T}@T{
-1791.25
-T}@T{
-0
-T}
-.TE
+\f[I]0.05\f[]
 .PP
-So, let's draw some conclusions based on applied normality test:
+So, let\[aq]s draw some conclusions based on applied normality test:
 .IP \[bu] 2
 according to \f[I]Shapiro-Wilk test\f[], the distribution of
 \f[I]Internet usage in leisure time (hours per day)\f[] is not normal.
@@ -407,9 +292,9 @@ in leisure time (hours per day)\f[] is not normal
 \f[I]Anderson-Darling test\f[] confirms violation of normality
 assumption
 .IP \[bu] 2
-\f[I]Pearson's Χ^2^ test\f[] classifies the underlying distribution as
-normal
-.SH Diagnostic Plots
+\f[I]Pearson\[aq]s Χ^2^ test\f[] classifies the underlying distribution
+as normal
+.SS Diagnostic Plots
 .PP
 There are various plots that can help you decide about the normality of
 the distribution.
@@ -418,22 +303,22 @@ Only a few most commonly used plots will be shown: \f[I]histogram\f[],
 .SS Histogram
 .PP
 \f[I]Histogram\f[] was first introduced by \f[I]Karl Pearson\f[] and
-it's probably the most popular plot for depicting the probability
+it\[aq]s probably the most popular plot for depicting the probability
 distribution of a random variable.
 However, the decision depends on number of bins, so it can sometimes be
 misleading.
 If the variable distribution is normal, bins should resemble the
-\[lq]bell-like\[rq] shape.
+"bell-like" shape.
 .PP
 [IMAGE: image (12bea9ba14449f76d79a9d5792bf29f9.png)]
 .SS Q-Q Plot
 .PP
-\[lq]Q\[rq] in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this
-plot compares empirical and theoretical distribution (in this case,
+"Q" in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this plot
+compares empirical and theoretical distribution (in this case,
 \f[I]normal\f[] distribution) by plotting their quantiles against each
 other.
-For normal distribution, plotted dots should approximate a
-\[lq]straight\[rq], \f[C]x\ =\ y\f[] line.
+For normal distribution, plotted dots should approximate a "straight",
+\f[C]x\ =\ y\f[] line.
 .PP
 [IMAGE: image (90c36448209c0d19b8b44a89277b29a3.png)]
 .SS Kernel Density Plot
@@ -441,10 +326,10 @@ For normal distribution, plotted dots should approximate a
 \f[I]Kernel density plot\f[] is a plot of smoothed \f[I]empirical
 distribution function\f[].
 As such, it provides good insight about the shape of the distribution.
-For normal distributions, it should resemble the well known \[lq]bell
-shape\[rq].
+For normal distributions, it should resemble the well known "bell
+shape".
 .PP
-[IMAGE: image (5be0d211ffad27ed23f51e5f964b99cc.png)]
+[IMAGE: image (d60f6bc4a500f7965efdd22587e4ed81.png)]
 .PP
    *   *   *   *   *
 .PP
@@ -452,4 +337,4 @@ This report was generated with rapport (http://rapport-package.info/).
 .PP
 [IMAGE: image (images/rapport.png)]
 .SH AUTHORS
-Rapport package team \@ https://github.com/aL3xa/rapport.
+(Username not set) (E-mail address not set).

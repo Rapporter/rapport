@@ -1,13 +1,15 @@
 % Example template
-% Rapport package team @ https://github.com/aL3xa/rapport
+% (Username not set) (E-mail address not set)
 % 2011-04-26 20:25 CET
 
-## Description
+Description
+-----------
 
 This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
-# Début
+Début
+-----
 
 Hello, world!
 
@@ -17,20 +19,22 @@ time (hours per day)".
 
 And wow, the mean of *leisure* is *3.1994*!
 
-## Descriptive statistics
+### Descriptive statistics
 
   **Min.**   **1st Qu.**   **Median**   **Mean**   **3rd Qu.**   **Max.**   **NA's**
   ---------- ------------- ------------ ---------- ------------- ---------- ----------
-  0.0        2.0           3.0          3.2        4.0           12.0       37.0
+  0.000      2.000         3.000        3.199      4.000         12.000     37.000
 
 The 5 highest values are: *12*, *12*, *10*, *10* and *10*.
 
-## Description
+Description
+-----------
 
 This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
-# Début
+Début
+-----
 
 Hello, world!
 
@@ -42,12 +46,14 @@ And wow, the mean of *leisure* is *3.1994*!
 
 **For more detailed statistics, you should have set `desc=TRUE`!**
 
-## Description
+Description
+-----------
 
 This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
-# Début
+Début
+-----
 
 Hello, world!
 
@@ -59,16 +65,18 @@ And wow, the mean of *leisure* is *3.1994*!
 
 **For more detailed statistics, you should have set `desc=TRUE`!**
 
-## Histogram
+### Histogram
 
 ![image](9542b7929dcd934208ee4f18bde6ff31.png)
 
-## Description
+Description
+-----------
 
 This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
-# Début
+Début
+-----
 
 Hello, world!
 
@@ -80,7 +88,7 @@ And wow, the mean of *leisure* is *3.1994*!
 
 **For more detailed statistics, you should have set `desc=TRUE`!**
 
-## Histogram
+### Histogram
 
 ![image](f72d3b7413bcb88fce740c2ab229411a.png)
 

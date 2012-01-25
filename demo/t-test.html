@@ -2,13 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Rapport package team @ https://github.com/aL3xa/rapport" />
+  <meta name="author" content="(Username not set) (E-mail address not set)" />
   <meta name="date" content="2011-04-26 20:25 CET" />
   <title>t-test Template</title>
-  <!--<link rel="stylesheet" type="text/css" href="css/default.css">
-  <script type="text/javascript" src="js/default.js"></script>-->
-  
   	<!--[if lt IE 9]>
   		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   	<![endif]-->
@@ -37,10 +35,10 @@
 <body>
 <div id="header">
 <h1 class="title">t-test Template</h1>
-<h3 class="author">Rapport package team @ https://github.com/aL3xa/rapport</h3>
-<h4 class="date">2011-04-26 20:25 CET</h4>
+<h2 class="author">(Username not set) (E-mail address not set)</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
 </div>
-<h2 id="description">Description</h2>
+<h1 id="description">Description</h1>
 <p>A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.</p>
 <h1 id="introduction">Introduction</h1>
 <p>In a nutshell, <em>t-test</em> is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><em>t-distribution</em></a> can be considered a <em>t-test</em>. The most common usage of <em>t-test</em> is to:</p>
@@ -109,7 +107,7 @@
 </table>
 <h1 id="diagnostics">Diagnostics</h1>
 <p>Since <em>t-test</em> is a parametric technique, it sets some basic assumptions on distribution shape: it has to be <em>normal</em> (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.</p>
-<h2 id="normality-tests">Normality Tests</h2>
+<h1 id="normality-tests">Normality Tests</h1>
 <p>We will use <em>Shapiro-Wilk</em>, <em>Lilliefors</em> and <em>Anderson-Darling</em> tests to screen departures from normality in the response variable (<em>Internet usage in leisure time (hours per day)</em>).</p>
 <!-- endlist -->
 
@@ -166,7 +164,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="description-1">Description</h2>
+<h1 id="description-1">Description</h1>
 <p>A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.</p>
 <h1 id="introduction-1">Introduction</h1>
 <p>In a nutshell, <em>t-test</em> is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><em>t-distribution</em></a> can be considered a <em>t-test</em>. The most common usage of <em>t-test</em> is to:</p>
@@ -179,9 +177,39 @@
 <p>One-sample <em>t-test</em> is carried out with <em>Internet usage in leisure time (hours per day)</em> as dependent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.</p>
 <h1 id="descriptives-1">Descriptives</h1>
 <p>In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>value</strong></th>
+<th align="left"><strong>min(x)</strong></th>
+<th align="left"><strong>max(x)</strong></th>
+<th align="left"><strong>mean(x)</strong></th>
+<th align="left"><strong>sd(x)</strong></th>
+<th align="left"><strong>var(x)</strong></th>
+<th align="left"><strong>median(x)</strong></th>
+<th align="left"><strong>IQR(x)</strong></th>
+<th align="left"><strong>skewness(x)</strong></th>
+<th align="left"><strong>kurtosis(x)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(all)</td>
+<td align="left">0</td>
+<td align="left">12</td>
+<td align="left">3.1994</td>
+<td align="left">2.1436</td>
+<td align="left">4.5951</td>
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">1.1873</td>
+<td align="left">4.547</td>
+</tr>
+</tbody>
+</table>
 <h1 id="diagnostics-1">Diagnostics</h1>
 <p>Since <em>t-test</em> is a parametric technique, it sets some basic assumptions on distribution shape: it has to be <em>normal</em> (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.</p>
-<h2 id="normality-tests-1">Normality Tests</h2>
+<h1 id="normality-tests-1">Normality Tests</h1>
 <p>We will use <em>Shapiro-Wilk</em>, <em>Lilliefors</em> and <em>Anderson-Darling</em> tests to screen departures from normality in the response variable (<em>Internet usage in leisure time (hours per day)</em>).</p>
 <!-- endlist -->
 

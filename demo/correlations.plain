@@ -1,5 +1,5 @@
 Correlations
-Rapport package team @ https://github.com/aL3xa/rapport
+(Username not set) (E-mail address not set)
 2011-04-26 20:25 CET
 
 Description
@@ -9,7 +9,7 @@ This template will return the correlation matrix of supplied numerical
 variables.
 
 Variable description
-====================
+--------------------
 
 3 variables provided.
 
@@ -25,7 +25,6 @@ Uncorrelated (-0.2 < r < 0.2) variables:
 -   edu and leisure
 
 Correlation matrix
-------------------
 
             age            edu            leisure
   --------- -------------- -------------- --------------
@@ -42,7 +41,7 @@ This template will return the correlation matrix of supplied numerical
 variables.
 
 Variable description
-====================
+--------------------
 
 11 variables provided.
 
@@ -82,7 +81,6 @@ Uncorrelated (-0.2 < r < 0.2) variables:
 -   am and carb
 
 Correlation matrix
-------------------
 
          mpg             cyl             disp            hp              drat            wt              qsec            vs              am              gear            carb
   ------ --------------- --------------- --------------- --------------- --------------- --------------- --------------- --------------- --------------- --------------- ---------------

@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[]{article}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifxetex
@@ -27,9 +27,13 @@
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
+              xetex,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \else
-  \usepackage[unicode=true]{hyperref}
+  \usepackage[unicode=true,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \fi
 \hypersetup{breaklinks=true, pdfborder={0 0 0}}
 \setlength{\parindent}{0pt}
@@ -38,8 +42,8 @@
 \setcounter{secnumdepth}{0}
 
 \title{ANOVA Template}
-\author{Rapport package team @ https://github.com/aL3xa/rapport}
-\date{2011--04--26 20:25 CET}
+\author{(Username not set) (E-mail address not set)}
+\date{2011-04-26 20:25 CET}
 
 \begin{document}
 \maketitle
@@ -49,45 +53,46 @@
 An ANOVA report with table of descriptives, diagnostic tests and
 ANOVA-specific statistics.
 
-\section{Introduction}
+\subsection{Introduction}
 
 \textbf{Analysis of Variance} or \textbf{ANOVA} is a statistical
 procedure that tests equality of means for several samples. It was first
 introduced in 1921. by famous English statistician Sir Ronald Aylmer
 Fisher.
 
-\section{Model Overview}
+\subsection{Model Overview}
 
 One-Way ANOVA was carried out, with \emph{Gender} as independent
 variable, and \emph{Internet usage in leisure time (hours per day)} as a
 response variable. Factor interaction was taken into account.
 
-\section{Descriptives}
+\subsection{Descriptives}
 
 In order to get more insight on the model data, a table of frequencies
 for ANOVA factors is displayed, as well as a table of descriptives.
 
-\subsection{Frequency Table}
+\subsubsection{Frequency Table}
 
 Below lies a frequency table for factors in ANOVA model. Note that the
 missing values are removed from the summary.
 
-\ctable[pos = H, center, botcap]{llllll}
+\ctable[pos = H, center, botcap]{lllll}
 {% notes
 }
 {% rows
 \FL
- & \textbf{gender} & \textbf{N} & \textbf{pct} & \textbf{cumul.count} & \textbf{cumul.pct}
+\textbf{gender} & \textbf{N} & \textbf{\%} & \textbf{Cumul.
+N} & \textbf{Cumul. \%}
 \ML
-1 & male & 410 & 60.9212 & 410 & 60.9212
+male & 410 & 60.9212 & 410 & 60.9212
 \\\noalign{\medskip}
-2 & female & 263 & 39.0788 & 673 & 100
+female & 263 & 39.0788 & 673 & 100
 \\\noalign{\medskip}
-Total &  & 673 & 100 & 673 & 100
+Total & 673 & 100 & 673 & 100
 \LL
 }
 
-\subsection{Descriptive Statistics}
+\subsubsection{Descriptive Statistics}
 
 The following table displays the descriptive statistics of ANOVA model.
 Factor levels and/or their combinations lie on the left hand side, while
@@ -109,16 +114,16 @@ female & 0 & 12 & 3.0643 & 2.3546 & 2 & 3 & 1.4064 & 4.9089
 \LL
 }
 
-\section{Diagnostics}
+\subsection{Diagnostics}
 
 Before we carry out ANOVA, we'd like to check some basic assumptions.
 For those purposes, normality and homoscedascity tests are carried out
 alongside several graphs that may help you with your decision on model's
 main assumptions.
 
-\subsection{Diagnostics}
+\subsubsection{Diagnostics}
 
-\subsubsection{Univariate Normality}
+\paragraph{Univariate Normality}
 
 We will use \emph{Shapiro-Wilk}, \emph{Lilliefors} and
 \emph{Anderson-Darling} tests to screen departures from normality in the
@@ -142,7 +147,7 @@ ad.test & 18.753 & 0
 
 As you can see, applied tests confirm departures from normality.
 
-\subsubsection{Homoscedascity}
+\paragraph{Homoscedascity}
 
 In order to test homoscedascity, \emph{Bartlett} and
 \emph{Fligner-Kileen} tests are applied.
@@ -164,7 +169,7 @@ When it comes to equality of variances, applied tests yield inconsistent
 results. While \emph{Fligner-Kileen test} confirmed the hypotheses of
 homoscedascity, \emph{Bartlett's test} rejected it.
 
-\subsection{Diagnostic Plots}
+\subsubsection{Diagnostic Plots}
 
 Here you can see several diagnostic plots for ANOVA model:
 
@@ -184,9 +189,9 @@ Here you can see several diagnostic plots for ANOVA model:
 \caption{}
 \end{figure}
 
-\section{ANOVA Summary}
+\subsection{ANOVA Summary}
 
-\subsection{ANOVA Table}
+\subsubsection{ANOVA Table}
 
 \ctable[pos = H, center, botcap]{llllll}
 {% notes
@@ -209,54 +214,57 @@ implies that there is no Gender effect on response variable.
 An ANOVA report with table of descriptives, diagnostic tests and
 ANOVA-specific statistics.
 
-\section{Introduction}
+s
+
+\subsection{Introduction}
 
 \textbf{Analysis of Variance} or \textbf{ANOVA} is a statistical
 procedure that tests equality of means for several samples. It was first
 introduced in 1921. by famous English statistician Sir Ronald Aylmer
 Fisher.
 
-\section{Model Overview}
+\subsection{Model Overview}
 
 Two-Way ANOVA was carried out, with \emph{Gender} and \emph{Relationship
 status} as independent variables, and \emph{Internet usage in leisure
 time (hours per day)} as a response variable. Factor interaction was
 taken into account.
 
-\section{Descriptives}
+\subsection{Descriptives}
 
 In order to get more insight on the model data, a table of frequencies
 for ANOVA factors is displayed, as well as a table of descriptives.
 
-\subsection{Frequency Table}
+\subsubsection{Frequency Table}
 
 Below lies a frequency table for factors in ANOVA model. Note that the
 missing values are removed from the summary.
 
-\ctable[pos = H, center, botcap]{lllllll}
+\ctable[pos = H, center, botcap]{llllll}
 {% notes
 }
 {% rows
 \FL
- & \textbf{gender} & \textbf{partner} & \textbf{N} & \textbf{pct} & \textbf{cumul.count} & \textbf{cumul.pct}
+\textbf{gender} & \textbf{partner} & \textbf{N} & \textbf{\%} & \textbf{Cumul.
+N} & \textbf{Cumul. \%}
 \ML
-1 & male & in a relationship & 150 & 23.6967 & 150 & 23.6967
+male & in a relationship & 150 & 23.6967 & 150 & 23.6967
 \\\noalign{\medskip}
-2 & female & in a relationship & 120 & 18.9573 & 270 & 42.654
+female & in a relationship & 120 & 18.9573 & 270 & 42.654
 \\\noalign{\medskip}
-3 & male & married & 33 & 5.2133 & 303 & 47.8673
+male & married & 33 & 5.2133 & 303 & 47.8673
 \\\noalign{\medskip}
-4 & female & married & 29 & 4.5814 & 332 & 52.4487
+female & married & 29 & 4.5814 & 332 & 52.4487
 \\\noalign{\medskip}
-5 & male & single & 204 & 32.2275 & 536 & 84.6761
+male & single & 204 & 32.2275 & 536 & 84.6761
 \\\noalign{\medskip}
-6 & female & single & 97 & 15.3239 & 633 & 100
+female & single & 97 & 15.3239 & 633 & 100
 \\\noalign{\medskip}
-Total &  &  & 633 & 100 & 633 & 100
+Total & Total & 633 & 100 & 633 & 100
 \LL
 }
 
-\subsection{Descriptive Statistics}
+\subsubsection{Descriptive Statistics}
 
 The following table displays the descriptive statistics of ANOVA model.
 Factor levels and/or their combinations lie on the left hand side, while
@@ -299,16 +307,16 @@ relationship & 0 & 8 & 3.3333 & 2.4398 & 3 & 2.5 & 0.7897 & 2.5973
 \LL
 }
 
-\section{Diagnostics}
+\subsection{Diagnostics}
 
 Before we carry out ANOVA, we'd like to check some basic assumptions.
 For those purposes, normality and homoscedascity tests are carried out
 alongside several graphs that may help you with your decision on model's
 main assumptions.
 
-\subsection{Diagnostics}
+\subsubsection{Diagnostics}
 
-\subsubsection{Univariate Normality}
+\paragraph{Univariate Normality}
 
 We will use \emph{Shapiro-Wilk}, \emph{Lilliefors} and
 \emph{Anderson-Darling} tests to screen departures from normality in the
@@ -332,7 +340,7 @@ ad.test & 18.753 & 0
 
 As you can see, applied tests confirm departures from normality.
 
-\subsubsection{Homoscedascity}
+\paragraph{Homoscedascity}
 
 In order to test homoscedascity, \emph{Bartlett} and
 \emph{Fligner-Kileen} tests are applied.
@@ -354,7 +362,7 @@ When it comes to equality of variances, applied tests yield inconsistent
 results. While \emph{Fligner-Kileen test} confirmed the hypotheses of
 homoscedascity, \emph{Bartlett's test} rejected it.
 
-\subsection{Diagnostic Plots}
+\subsubsection{Diagnostic Plots}
 
 Here you can see several diagnostic plots for ANOVA model:
 
@@ -374,9 +382,9 @@ Here you can see several diagnostic plots for ANOVA model:
 \caption{}
 \end{figure}
 
-\section{ANOVA Summary}
+\subsection{ANOVA Summary}
 
-\subsection{ANOVA Table}
+\subsubsection{ANOVA Table}
 
 \ctable[pos = H, center, botcap]{llllll}
 {% notes

@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[]{article}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifxetex
@@ -27,9 +27,13 @@
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
+              xetex,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \else
-  \usepackage[unicode=true]{hyperref}
+  \usepackage[unicode=true,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \fi
 \hypersetup{breaklinks=true, pdfborder={0 0 0}}
 \setlength{\parindent}{0pt}
@@ -38,8 +42,8 @@
 \setcounter{secnumdepth}{0}
 
 \title{t-test Template}
-\author{Rapport package team @ https://github.com/aL3xa/rapport}
-\date{2011--04--26 20:25 CET}
+\author{(Username not set) (E-mail address not set)}
+\date{2011-04-26 20:25 CET}
 
 \begin{document}
 \maketitle
@@ -49,7 +53,7 @@
 A t-test report with table of descriptives, diagnostic tests and t-test
 specific statistics.
 
-\section{Introduction}
+\subsection{Introduction}
 
 In a nutshell, \emph{t-test} is a statistical test that assesses
 hypothesis of equality of two means. But in theory, any hypothesis test
@@ -69,14 +73,14 @@ can be considered a \emph{t-test}. The most common usage of
   compare means of two variables from dependent samples -
   \textbf{paired-samples \emph{t-test}}
 \end{itemize}
-\section{Overview}
+\subsection{Overview}
 
 Independent samples \emph{t-test} is carried out with \emph{Internet
 usage in leisure time (hours per day)} as dependent variable, and
 \emph{Gender} as independent variable. Confidence interval is set to
 95\%. Equality of variances wasn't assumed.
 
-\section{Descriptives}
+\subsection{Descriptives}
 
 In order to get more insight on the underlying data, a table of basic
 descriptive statistics is displayed below.
@@ -96,14 +100,14 @@ female & 0 & 12 & 3.0643 & 2.3546 & 5.5442 & 2 & 3 & 1.4064 & 4.9089
 \LL
 }
 
-\section{Diagnostics}
+\subsection{Diagnostics}
 
 Since \emph{t-test} is a parametric technique, it sets some basic
 assumptions on distribution shape: it has to be \emph{normal} (or
 appoximately normal). A few normality test are to be applied, in order
 to screen possible departures from normality.
 
-\subsection{Normality Tests}
+\subsubsection{Normality Tests}
 
 We will use \emph{Shapiro-Wilk}, \emph{Lilliefors} and
 \emph{Anderson-Darling} tests to screen departures from normality in the
@@ -127,7 +131,7 @@ ad.test & 18.753 & 0
 
 As you can see, applied tests confirm departures from normality.
 
-\section{Results}
+\subsection{Results}
 
 Welch Two Sample t-test was applied, and significant differences were
 found.
@@ -139,7 +143,7 @@ found.
 \FL
  & \textbf{statistic} & \textbf{df} & \textbf{p} & \textbf{CI(lower)} & \textbf{CI(upper)}
 \ML
-t & 1.1483 & 457.8625 & 0.2514 & --0.1463 & 0.5576
+t & 1.1483 & 457.8625 & 0.2514 & -0.1463 & 0.5576
 \LL
 }
 
@@ -148,7 +152,7 @@ t & 1.1483 & 457.8625 & 0.2514 & --0.1463 & 0.5576
 A t-test report with table of descriptives, diagnostic tests and t-test
 specific statistics.
 
-\section{Introduction}
+\subsection{Introduction}
 
 In a nutshell, \emph{t-test} is a statistical test that assesses
 hypothesis of equality of two means. But in theory, any hypothesis test
@@ -168,25 +172,36 @@ can be considered a \emph{t-test}. The most common usage of
   compare means of two variables from dependent samples -
   \textbf{paired-samples \emph{t-test}}
 \end{itemize}
-\section{Overview}
+\subsection{Overview}
 
 One-sample \emph{t-test} is carried out with \emph{Internet usage in
 leisure time (hours per day)} as dependent variable. Confidence interval
 is set to 95\%. Equality of variances wasn't assumed.
 
-\section{Descriptives}
+\subsection{Descriptives}
 
 In order to get more insight on the underlying data, a table of basic
 descriptive statistics is displayed below.
 
-\section{Diagnostics}
+\ctable[pos = H, center, botcap]{llllllllll}
+{% notes
+}
+{% rows
+\FL
+\textbf{value} & \textbf{min(x)} & \textbf{max(x)} & \textbf{mean(x)} & \textbf{sd(x)} & \textbf{var(x)} & \textbf{median(x)} & \textbf{IQR(x)} & \textbf{skewness(x)} & \textbf{kurtosis(x)}
+\ML
+(all) & 0 & 12 & 3.1994 & 2.1436 & 4.5951 & 3 & 2 & 1.1873 & 4.547
+\LL
+}
+
+\subsection{Diagnostics}
 
 Since \emph{t-test} is a parametric technique, it sets some basic
 assumptions on distribution shape: it has to be \emph{normal} (or
 appoximately normal). A few normality test are to be applied, in order
 to screen possible departures from normality.
 
-\subsection{Normality Tests}
+\subsubsection{Normality Tests}
 
 We will use \emph{Shapiro-Wilk}, \emph{Lilliefors} and
 \emph{Anderson-Darling} tests to screen departures from normality in the
@@ -210,7 +225,7 @@ ad.test & 18.753 & 0
 
 As you can see, applied tests confirm departures from normality.
 
-\section{Results}
+\subsection{Results}
 
 One Sample t-test was applied, and significant differences were found.
 
@@ -221,7 +236,7 @@ One Sample t-test was applied, and significant differences were found.
 \FL
  & \textbf{statistic} & \textbf{df} & \textbf{p} & \textbf{CI(lower)} & \textbf{CI(upper)}
 \ML
-t & --0.0072 & 671 & 0.9943 & 3.037 & 3.3618
+t & -0.0072 & 671 & 0.9943 & 3.037 & 3.3618
 \LL
 }
 

@@ -1,5 +1,5 @@
 Crosstable
-Rapport package team @ https://github.com/aL3xa/rapport
+(Username not set) (E-mail address not set)
 2011-04-26 20:25 CET
 
 Description
@@ -9,7 +9,7 @@ Returning the Chi-squared test of two given variables with count,
 percentages and Pearson's residuals table.
 
 Variable description
-====================
+--------------------
 
 Two variables specified:
 
@@ -17,7 +17,7 @@ Two variables specified:
 -   "dwell" ("Dwelling") with 662 valid values.
 
 Counts
-======
+------
 
            city   small town   village
   -------- ------ ------------ ---------
@@ -25,7 +25,7 @@ Counts
   female   234    3            9
 
 Percentages
-===========
+-----------
 
            city     small town   village
   -------- -------- ------------ ---------
@@ -33,7 +33,6 @@ Percentages
   female   0.3708   0.0048       0.0143
 
 Row percentages
----------------
 
            city     small town   village
   -------- -------- ------------ ---------
@@ -41,7 +40,6 @@ Row percentages
   female   0.9512   0.0122       0.0366
 
 Column percentages
-------------------
 
            city     small town   village
   -------- -------- ------------ ---------
@@ -49,7 +47,7 @@ Column percentages
   female   0.4091   0.0968       0.3214
 
 Chi-squared test
-================
+----------------
 
               X-squared   df   p-value
   ----------- ----------- ---- ---------
@@ -63,7 +61,6 @@ gender (λ=0) if we assume both variables to be nominal. The association
 between the two variables seems to be weak based on Cramer's V (0.1001).
 
 Pearson's residuals
--------------------
 
            city      small town   village
   -------- --------- ------------ ---------
@@ -71,7 +68,6 @@ Pearson's residuals
   female   3.0844    -3.4312      -0.7595
 
 Mosaic chart
-------------
 
 []
 
@@ -82,7 +78,7 @@ Returning the Chi-squared test of two given variables with count,
 percentages and Pearson's residuals table.
 
 Variable description
-====================
+--------------------
 
 Two variables specified:
 
@@ -90,7 +86,7 @@ Two variables specified:
 -   "dwell" ("Dwelling") with 662 valid values.
 
 Counts
-======
+------
 
                 city   small town   village
   ------------- ------ ------------ ---------
@@ -103,7 +99,7 @@ Counts
   always        226    9            7
 
 Percentages
-===========
+-----------
 
                 city     small town   village
   ------------- -------- ------------ ---------
@@ -116,7 +112,6 @@ Percentages
   always        0.3610   0.0144       0.0112
 
 Row percentages
----------------
 
                 city     small town   village
   ------------- -------- ------------ ---------
@@ -129,7 +124,6 @@ Row percentages
   always        0.9339   0.0372       0.0289
 
 Column percentages
-------------------
 
                 city     small town   village
   ------------- -------- ------------ ---------
@@ -142,7 +136,7 @@ Column percentages
   always        0.4000   0.2812       0.2414
 
 Chi-squared test
-================
+----------------
 
               X-squared   df   p-value
   ----------- ----------- ---- ---------
@@ -154,7 +148,6 @@ freedom being 12) at the significance level of 0.249. For this end no
 other statistical tests were performed.
 
 Pearson's residuals
--------------------
 
                 city      small town   village
   ------------- --------- ------------ ---------
@@ -167,7 +160,6 @@ Pearson's residuals
   always        2.0982    -1.2561      -1.6443
 
 Mosaic chart
-------------
 
 []
 

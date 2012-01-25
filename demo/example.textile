@@ -2,7 +2,7 @@ h2. Description
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-h1. Début
+h2. Début
 
 Hello, world!
 
@@ -10,10 +10,10 @@ I have just specified a _Variable_ in this template named to *leisure*. The labe
 
 And wow, the mean of _leisure_ is _3.1994_!
 
-h2. Descriptive statistics
+h3. Descriptive statistics
 
 |_. *Min.*|_. *1st Qu.*|_. *Median*|_. *Mean*|_. *3rd Qu.*|_. *Max.*|_. *NA's*|
-|0.0|2.0|3.0|3.2|4.0|12.0|37.0|
+|0.000|2.000|3.000|3.199|4.000|12.000|37.000|
 
 
 The 5 highest values are: _12_, _12_, _10_, _10_ and _10_.
@@ -22,7 +22,7 @@ h2. Description
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-h1. Début
+h2. Début
 
 Hello, world!
 
@@ -36,7 +36,7 @@ h2. Description
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-h1. Début
+h2. Début
 
 Hello, world!
 
@@ -46,7 +46,7 @@ And wow, the mean of _leisure_ is _3.1994_!
 
 *For more detailed statistics, you should have set @desc=TRUE@!*
 
-h2. Histogram
+h3. Histogram
 
 !9542b7929dcd934208ee4f18bde6ff31.png!
 
@@ -55,7 +55,7 @@ h2. Description
 
 This template demonstrates the basic features of rapport. We all hope you will like it!
 
-h1. Début
+h2. Début
 
 Hello, world!
 
@@ -65,7 +65,7 @@ And wow, the mean of _leisure_ is _3.1994_!
 
 *For more detailed statistics, you should have set @desc=TRUE@!*
 
-h2. Histogram
+h3. Histogram
 
 !f72d3b7413bcb88fce740c2ab229411a.png!
 

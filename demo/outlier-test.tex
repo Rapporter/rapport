@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[]{article}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifxetex
@@ -27,9 +27,13 @@
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
+              xetex,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \else
-  \usepackage[unicode=true]{hyperref}
+  \usepackage[unicode=true,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \fi
 \hypersetup{breaklinks=true, pdfborder={0 0 0}}
 \setlength{\parindent}{0pt}
@@ -38,8 +42,8 @@
 \setcounter{secnumdepth}{0}
 
 \title{Outlier tests}
-\author{Rapport package team @ https://github.com/aL3xa/rapport}
-\date{2011--04--26 20:25 CET}
+\author{(Username not set) (E-mail address not set)}
+\date{2011-04-26 20:25 CET}
 
 \begin{document}
 \maketitle
@@ -48,7 +52,7 @@
 
 This template will check if provided variable has any outliers.
 
-\section{Boxplot}
+\subsection{Boxplot}
 
 \begin{figure}[htbp]
 \centering
@@ -56,13 +60,13 @@ This template will check if provided variable has any outliers.
 \caption{}
 \end{figure}
 
-\section{Lund test}
+\subsection{Lund test}
 
 It seems that \emph{4} extreme values can be found in ``Internet usage
 for educational purposes (hours per day)''. These are: 10, 0.5, 1.5,
 0.5.
 
-\subsection{Explanation}
+\subsubsection{Explanation}
 
 The above test for outliers was based on \emph{lm(1 \ensuremath{\sim}
 edu)}:
@@ -79,45 +83,45 @@ value} & \textbf{Pr(\textgreater{}\textbar{}t\textbar{})}
 \LL
 }
 
-\subsection{References}
+\subsubsection{References}
 
 \begin{itemize}
 \item
   Lund, R. E. 1975, ``Tables for An Approximate Test for Outliers in
-  Linear Models'', Technometrics, vol.~17, no. 4, pp.~473--476.
+  Linear Models'', Technometrics, vol.~17, no. 4, pp.~473-476.
 \item
   Prescott, P. 1975, ``An Approximate Test for Outliers in Linear
-  Models'', Technometrics, vol.~17, no. 1, pp.~129--132.
+  Models'', Technometrics, vol.~17, no. 1, pp.~129-132.
 \end{itemize}
-\section{Grubb's test}
+\subsection{Grubb's test}
 
 Grubbs test for one outlier shows that highest value 12 is an outlier
 (p=0.0002).
 
-\subsection{References}
+\subsubsection{References}
 
 \begin{itemize}
 \item
   Grubbs, F.E. (1950). Sample Criteria for testing outlying
-  observations. Ann. Math. Stat. 21, 1, 27--58.
+  observations. Ann. Math. Stat. 21, 1, 27-58.
 \end{itemize}
-\section{Dixon's test}
+\subsection{Dixon's test}
 
 chi-squared test for outlier shows that highest value 12 is an outlier
 (p=0).
 
-\subsection{References}
+\subsubsection{References}
 
 \begin{itemize}
 \item
   Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21,
-  4, 488--506.
+  4, 488-506.
 \end{itemize}
 \subsection{Description}
 
 This template will check if provided variable has any outliers.
 
-\section{Boxplot}
+\subsection{Boxplot}
 
 \begin{figure}[htbp]
 \centering
@@ -125,13 +129,13 @@ This template will check if provided variable has any outliers.
 \caption{}
 \end{figure}
 
-\section{Lund test}
+\subsection{Lund test}
 
 It seems that \emph{4} extreme values can be found in ``Internet usage
 for educational purposes (hours per day)''. These are: 10, 0.5, 1.5,
 0.5.
 
-\subsection{Explanation}
+\subsubsection{Explanation}
 
 The above test for outliers was based on \emph{lm(1 \ensuremath{\sim}
 edu)}:
@@ -148,45 +152,45 @@ value} & \textbf{Pr(\textgreater{}\textbar{}t\textbar{})}
 \LL
 }
 
-\subsection{References}
+\subsubsection{References}
 
 \begin{itemize}
 \item
   Lund, R. E. 1975, ``Tables for An Approximate Test for Outliers in
-  Linear Models'', Technometrics, vol.~17, no. 4, pp.~473--476.
+  Linear Models'', Technometrics, vol.~17, no. 4, pp.~473-476.
 \item
   Prescott, P. 1975, ``An Approximate Test for Outliers in Linear
-  Models'', Technometrics, vol.~17, no. 1, pp.~129--132.
+  Models'', Technometrics, vol.~17, no. 1, pp.~129-132.
 \end{itemize}
-\section{Grubb's test}
+\subsection{Grubb's test}
 
 Grubbs test for one outlier shows that highest value 12 is an outlier
 (p=0.0002).
 
-\subsection{References}
+\subsubsection{References}
 
 \begin{itemize}
 \item
   Grubbs, F.E. (1950). Sample Criteria for testing outlying
-  observations. Ann. Math. Stat. 21, 1, 27--58.
+  observations. Ann. Math. Stat. 21, 1, 27-58.
 \end{itemize}
-\section{Dixon's test}
+\subsection{Dixon's test}
 
 chi-squared test for outlier shows that highest value 12 is an outlier
 (p=0).
 
-\subsection{References}
+\subsubsection{References}
 
 \begin{itemize}
 \item
   Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21,
-  4, 488--506.
+  4, 488-506.
 \end{itemize}
 \subsection{Description}
 
 This template will check if provided variable has any outliers.
 
-\section{Boxplot}
+\subsection{Boxplot}
 
 \begin{figure}[htbp]
 \centering
@@ -194,13 +198,13 @@ This template will check if provided variable has any outliers.
 \caption{}
 \end{figure}
 
-\section{Lund test}
+\subsection{Lund test}
 
 It seems that \emph{4} extreme values can be found in ``Internet usage
 for educational purposes (hours per day)''. These are: 10, 0.5, 1.5,
 0.5.
 
-\subsection{Explanation}
+\subsubsection{Explanation}
 
 The above test for outliers was based on \emph{lm(1 \ensuremath{\sim}
 edu)}:

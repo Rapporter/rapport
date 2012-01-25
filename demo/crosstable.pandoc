@@ -1,5 +1,5 @@
 % Crosstable
-% Rapport package team @ https://github.com/aL3xa/rapport
+% (Username not set) (E-mail address not set)
 % 2011-04-26 20:25 CET
 
 
@@ -7,14 +7,14 @@
 
 Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table. 
 
-# Variable description 
+## Variable description 
 
 Two variables specified: 
 
  * "gender" ("Gender") with _673_ and
  * "dwell" ("Dwelling") with _662_ valid values. 
 
-# Counts 
+## Counts 
 
 <!-- endlist -->
 
@@ -25,7 +25,7 @@ female   234        3                9
 -------- ---------- ---------------- -------------
  
 
-# Percentages 
+## Percentages 
 
 <!-- endlist -->
 
@@ -36,7 +36,7 @@ female   0.3708     0.0048           0.0143
 -------- ---------- ---------------- -------------
  
 
-## Row percentages 
+### Row percentages 
 
 <!-- endlist -->
 
@@ -47,7 +47,7 @@ female   0.9512     0.0122           0.0366
 -------- ---------- ---------------- -------------
  
 
-## Column percentages 
+### Column percentages 
 
 <!-- endlist -->
 
@@ -58,7 +58,7 @@ female   0.4091     0.0968           0.3214
 -------- ---------- ---------------- -------------
  
 
-# Chi-squared test 
+## Chi-squared test 
 
 
             **X-squared**   **df**   **p-value**  
@@ -71,7 +71,7 @@ It seems that a real association can be pointed out between *gender* and *dwell*
 Based on Goodman and Kruskal's lambda it seems that *dwell* (λ=0.7602) has an effect on *gender* (λ=0) if we assume both variables to be nominal.
 The association between the two variables seems to be weak based on Cramer's V (0.1001). 
 
-## Pearson's residuals 
+### Pearson's residuals 
 
 <!-- endlist -->
 
@@ -82,7 +82,7 @@ female   3.0844     -3.4312          -0.7595
 -------- ---------- ---------------- -------------
  
 
-## Mosaic chart 
+### Mosaic chart 
 
 ![](089332282780d32b96117afe8dba0470.png)
 
@@ -91,14 +91,14 @@ female   3.0844     -3.4312          -0.7595
 
 Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table. 
 
-# Variable description 
+## Variable description 
 
 Two variables specified: 
 
  * "email" ("Email usage") with _672_ and
  * "dwell" ("Dwelling") with _662_ valid values. 
 
-# Counts 
+## Counts 
 
 <!-- endlist -->
 
@@ -114,7 +114,7 @@ always        226        9                7
 ------------- ---------- ---------------- -------------
  
 
-# Percentages 
+## Percentages 
 
 <!-- endlist -->
 
@@ -130,7 +130,7 @@ always        0.3610     0.0144           0.0112
 ------------- ---------- ---------------- -------------
  
 
-## Row percentages 
+### Row percentages 
 
 <!-- endlist -->
 
@@ -146,7 +146,7 @@ always        0.9339     0.0372           0.0289
 ------------- ---------- ---------------- -------------
  
 
-## Column percentages 
+### Column percentages 
 
 <!-- endlist -->
 
@@ -162,7 +162,7 @@ always        0.4000     0.2812           0.2414
 ------------- ---------- ---------------- -------------
  
 
-# Chi-squared test 
+## Chi-squared test 
 
 
             **X-squared**   **df**   **p-value**  
@@ -174,7 +174,7 @@ X-squared   14.864          12       0.249
 It seems that no real association can be pointed out between *email* and *dwell* by the *Pearson's Chi-squared test* (χ=14.864 at the degree of freedom being 12) at the significance level of 0.249.
 For this end no other statistical tests were performed. 
 
-## Pearson's residuals 
+### Pearson's residuals 
 
 <!-- endlist -->
 
@@ -190,7 +190,7 @@ always        2.0982     -1.2561          -1.6443
 ------------- ---------- ---------------- -------------
  
 
-## Mosaic chart 
+### Mosaic chart 
 
 ![](b945f6de1aad4225593b3e9c0eb6d7dc.png)
 

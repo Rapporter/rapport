@@ -1,13 +1,15 @@
 % Correlations
-% Rapport package team @ https://github.com/aL3xa/rapport
+% (Username not set) (E-mail address not set)
 % 2011-04-26 20:25 CET
 
-## Description
+Description
+-----------
 
 This template will return the correlation matrix of supplied numerical
 variables.
 
-# Variable description
+Variable description
+--------------------
 
 *3* variables provided.
 
@@ -22,7 +24,7 @@ Uncorrelated (-0.2 < r < 0.2) variables:
 -   *age* and *leisure*
 -   *edu* and *leisure*
 
-## Correlation matrix
+### Correlation matrix
 
 <!-- endlist -->
 
@@ -34,12 +36,14 @@ Uncorrelated (-0.2 < r < 0.2) variables:
 
 ![image](fc8b6edbaddadbdf0c5014f99fda88d6.png)
 
-## Description
+Description
+-----------
 
 This template will return the correlation matrix of supplied numerical
 variables.
 
-# Variable description
+Variable description
+--------------------
 
 *11* variables provided.
 
@@ -78,7 +82,7 @@ Uncorrelated (-0.2 < r < 0.2) variables:
 -   *drat* and *carb*
 -   *am* and *carb*
 
-## Correlation matrix
+### Correlation matrix
 
 <!-- endlist -->
 

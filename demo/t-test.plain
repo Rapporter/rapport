@@ -1,5 +1,5 @@
 t-test Template
-Rapport package team @ https://github.com/aL3xa/rapport
+(Username not set) (E-mail address not set)
 2011-04-26 20:25 CET
 
 Description
@@ -9,7 +9,7 @@ A t-test report with table of descriptives, diagnostic tests and t-test
 specific statistics.
 
 Introduction
-============
+------------
 
 In a nutshell, t-test is a statistical test that assesses hypothesis of
 equality of two means. But in theory, any hypothesis test that yields
@@ -24,7 +24,7 @@ most common usage of t-test is to:
     paired-samples t-test
 
 Overview
-========
+--------
 
 Independent samples t-test is carried out with Internet usage in leisure
 time (hours per day) as dependent variable, and Gender as independent
@@ -32,7 +32,7 @@ variable. Confidence interval is set to 95%. Equality of variances
 wasn't assumed.
 
 Descriptives
-============
+------------
 
 In order to get more insight on the underlying data, a table of basic
 descriptive statistics is displayed below.
@@ -44,7 +44,7 @@ descriptive statistics is displayed below.
            0        10       3.3824    2.5822   6.6676   3           2        1.2197        3.8058
 
 Diagnostics
-===========
+-----------
 
 Since t-test is a parametric technique, it sets some basic assumptions
 on distribution shape: it has to be normal (or appoximately normal). A
@@ -52,7 +52,6 @@ few normality test are to be applied, in order to screen possible
 departures from normality.
 
 Normality Tests
----------------
 
 We will use Shapiro-Wilk, Lilliefors and Anderson-Darling tests to
 screen departures from normality in the response variable (Internet
@@ -67,7 +66,7 @@ usage in leisure time (hours per day)).
 As you can see, applied tests confirm departures from normality.
 
 Results
-=======
+-------
 
 Welch Two Sample t-test was applied, and significant differences were
 found.
@@ -83,7 +82,7 @@ A t-test report with table of descriptives, diagnostic tests and t-test
 specific statistics.
 
 Introduction
-============
+------------
 
 In a nutshell, t-test is a statistical test that assesses hypothesis of
 equality of two means. But in theory, any hypothesis test that yields
@@ -98,20 +97,24 @@ most common usage of t-test is to:
     paired-samples t-test
 
 Overview
-========
+--------
 
 One-sample t-test is carried out with Internet usage in leisure time
 (hours per day) as dependent variable. Confidence interval is set to
 95%. Equality of variances wasn't assumed.
 
 Descriptives
-============
+------------
 
 In order to get more insight on the underlying data, a table of basic
 descriptive statistics is displayed below.
 
+  value   min(x)   max(x)   mean(x)   sd(x)    var(x)   median(x)   IQR(x)   skewness(x)   kurtosis(x)
+  ------- -------- -------- --------- -------- -------- ----------- -------- ------------- -------------
+  (all)   0        12       3.1994    2.1436   4.5951   3           2        1.1873        4.547
+
 Diagnostics
-===========
+-----------
 
 Since t-test is a parametric technique, it sets some basic assumptions
 on distribution shape: it has to be normal (or appoximately normal). A
@@ -119,7 +122,6 @@ few normality test are to be applied, in order to screen possible
 departures from normality.
 
 Normality Tests
----------------
 
 We will use Shapiro-Wilk, Lilliefors and Anderson-Darling tests to
 screen departures from normality in the response variable (Internet
@@ -134,7 +136,7 @@ usage in leisure time (hours per day)).
 As you can see, applied tests confirm departures from normality.
 
 Results
-=======
+-------
 
 One Sample t-test was applied, and significant differences were found.
 

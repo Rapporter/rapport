@@ -2,14 +2,14 @@ h2. Description
 
 Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
 
-h1. Variable description
+h2. Variable description
 
 Two variables specified:
 
 * &quot;gender&quot; (&quot;Gender&quot;) with _673_ and
 * &quot;dwell&quot; (&quot;Dwelling&quot;) with _662_ valid values.
 
-h1. Counts
+h2. Counts
 
 <!-- endlist -->
 
@@ -18,7 +18,7 @@ h1. Counts
 |female|234|3|9|
 
 
-h1. Percentages
+h2. Percentages
 
 <!-- endlist -->
 
@@ -27,7 +27,7 @@ h1. Percentages
 |female|0.3708|0.0048|0.0143|
 
 
-h2. Row percentages
+h3. Row percentages
 
 <!-- endlist -->
 
@@ -36,7 +36,7 @@ h2. Row percentages
 |female|0.9512|0.0122|0.0366|
 
 
-h2. Column percentages
+h3. Column percentages
 
 <!-- endlist -->
 
@@ -45,7 +45,7 @@ h2. Column percentages
 |female|0.4091|0.0968|0.3214|
 
 
-h1. Chi-squared test
+h2. Chi-squared test
 
 |_. |_. *X-squared*|_. *df*|_. *p-value*|
 |X-squared|12.6353|2|0.0018|
@@ -53,7 +53,7 @@ h1. Chi-squared test
 
 It seems that a real association can be pointed out between _gender_ and _dwell_ by the _Pearson's Chi-squared test_ (χ=12.6353 at the degree of freedom being 2) at the significance level of 0.0018. Based on Goodman and Kruskal's lambda it seems that _dwell_ (λ=0.7602) has an effect on _gender_ (λ=0) if we assume both variables to be nominal. The association between the two variables seems to be weak based on Cramer's V (0.1001).
 
-h2. Pearson's residuals
+h3. Pearson's residuals
 
 <!-- endlist -->
 
@@ -62,7 +62,7 @@ h2. Pearson's residuals
 |female|3.0844|-3.4312|-0.7595|
 
 
-h2. Mosaic chart
+h3. Mosaic chart
 
 !089332282780d32b96117afe8dba0470.png!
 
@@ -71,14 +71,14 @@ h2. Description
 
 Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
 
-h1. Variable description
+h2. Variable description
 
 Two variables specified:
 
 * &quot;email&quot; (&quot;Email usage&quot;) with _672_ and
 * &quot;dwell&quot; (&quot;Dwelling&quot;) with _662_ valid values.
 
-h1. Counts
+h2. Counts
 
 <!-- endlist -->
 
@@ -92,7 +92,7 @@ h1. Counts
 |always|226|9|7|
 
 
-h1. Percentages
+h2. Percentages
 
 <!-- endlist -->
 
@@ -106,7 +106,7 @@ h1. Percentages
 |always|0.3610|0.0144|0.0112|
 
 
-h2. Row percentages
+h3. Row percentages
 
 <!-- endlist -->
 
@@ -120,7 +120,7 @@ h2. Row percentages
 |always|0.9339|0.0372|0.0289|
 
 
-h2. Column percentages
+h3. Column percentages
 
 <!-- endlist -->
 
@@ -134,7 +134,7 @@ h2. Column percentages
 |always|0.4000|0.2812|0.2414|
 
 
-h1. Chi-squared test
+h2. Chi-squared test
 
 |_. |_. *X-squared*|_. *df*|_. *p-value*|
 |X-squared|14.864|12|0.249|
@@ -142,7 +142,7 @@ h1. Chi-squared test
 
 It seems that no real association can be pointed out between _email_ and _dwell_ by the _Pearson's Chi-squared test_ (χ=14.864 at the degree of freedom being 12) at the significance level of 0.249. For this end no other statistical tests were performed.
 
-h2. Pearson's residuals
+h3. Pearson's residuals
 
 <!-- endlist -->
 
@@ -156,7 +156,7 @@ h2. Pearson's residuals
 |always|2.0982|-1.2561|-1.6443|
 
 
-h2. Mosaic chart
+h3. Mosaic chart
 
 !b945f6de1aad4225593b3e9c0eb6d7dc.png!
 

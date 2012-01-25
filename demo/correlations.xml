@@ -5,8 +5,8 @@
   <articleinfo>
     <title>Correlations</title>
     <author>
-      <firstname>Rapport package team @</firstname>
-      <surname>https://github.com/aL3xa/rapport</surname>
+      <firstname>(Username not set) (E-mail address not</firstname>
+      <surname>set)</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -125,13 +125,13 @@
       </mediaobject>
     </figure>
   </section>
-  <section id="description-1">
-    <title>Description</title>
-    <para>
-      This template will return the correlation matrix of supplied
-      numerical variables.
-    </para>
-  </section>
+</section>
+<section id="description-1">
+  <title>Description</title>
+  <para>
+    This template will return the correlation matrix of supplied
+    numerical variables.
+  </para>
 </section>
 <section id="variable-description-1">
   <title>Variable description</title>

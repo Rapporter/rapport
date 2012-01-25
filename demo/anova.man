@@ -1,22 +1,22 @@
 .\"t
-.TH ANOVA "" "2011\[en]04\[en]26 20:25 CET" "Template"
+.TH ANOVA "" "2011-04-26 20:25 CET" "Template"
 .SS Description
 .PP
 An ANOVA report with table of descriptives, diagnostic tests and
 ANOVA-specific statistics.
-.SH Introduction
+.SS Introduction
 .PP
 \f[B]Analysis of Variance\f[] or \f[B]ANOVA\f[] is a statistical
 procedure that tests equality of means for several samples.
 It was first introduced in 1921.
 by famous English statistician Sir Ronald Aylmer Fisher.
-.SH Model Overview
+.SS Model Overview
 .PP
 One-Way ANOVA was carried out, with \f[I]Gender\f[] as independent
 variable, and \f[I]Internet usage in leisure time (hours per day)\f[] as
 a response variable.
 Factor interaction was taken into account.
-.SH Descriptives
+.SS Descriptives
 .PP
 In order to get more insight on the model data, a table of frequencies
 for ANOVA factors is displayed, as well as a table of descriptives.
@@ -27,23 +27,20 @@ Note that the missing values are removed from the summary.
 .PP
 .TS
 tab(@);
-l l l l l l.
+l l l l l.
 T{
-T}@T{
 \f[B]gender\f[]
 T}@T{
 \f[B]N\f[]
 T}@T{
-\f[B]pct\f[]
+\f[B]%\f[]
 T}@T{
-\f[B]cumul.count\f[]
+\f[B]Cumul. N\f[]
 T}@T{
-\f[B]cumul.pct\f[]
+\f[B]Cumul. %\f[]
 T}
 _
 T{
-1
-T}@T{
 male
 T}@T{
 410
@@ -55,8 +52,6 @@ T}@T{
 60.9212
 T}
 T{
-2
-T}@T{
 female
 T}@T{
 263
@@ -69,7 +64,6 @@ T}@T{
 T}
 T{
 Total
-T}@T{
 T}@T{
 673
 T}@T{
@@ -167,12 +161,13 @@ T}@T{
 3.8058
 T}
 .TE
-.SH Diagnostics
+.SS Diagnostics
 .PP
-Before we carry out ANOVA, we'd like to check some basic assumptions.
+Before we carry out ANOVA, we\[aq]d like to check some basic
+assumptions.
 For those purposes, normality and homoscedascity tests are carried out
-alongside several graphs that may help you with your decision on model's
-main assumptions.
+alongside several graphs that may help you with your decision on
+model\[aq]s main assumptions.
 .SS Diagnostics
 .SS Univariate Normality
 .PP
@@ -249,7 +244,7 @@ T}
 When it comes to equality of variances, applied tests yield inconsistent
 results.
 While \f[I]Fligner-Kileen test\f[] confirmed the hypotheses of
-homoscedascity, \f[I]Bartlett's test\f[] rejected it.
+homoscedascity, \f[I]Bartlett\[aq]s test\f[] rejected it.
 .SS Diagnostic Plots
 .PP
 Here you can see several diagnostic plots for ANOVA model:
@@ -263,7 +258,7 @@ normal Q-Q plot
 residuals against leverages
 .PP
 [IMAGE: image (1c63b6fad7856cf59a751b0f80339918.png)]
-.SH ANOVA Summary
+.SS ANOVA Summary
 .SS ANOVA Table
 .PP
 .TS
@@ -314,19 +309,21 @@ which implies that there is no Gender effect on response variable.
 .PP
 An ANOVA report with table of descriptives, diagnostic tests and
 ANOVA-specific statistics.
-.SH Introduction
+.PP
+s
+.SS Introduction
 .PP
 \f[B]Analysis of Variance\f[] or \f[B]ANOVA\f[] is a statistical
 procedure that tests equality of means for several samples.
 It was first introduced in 1921.
 by famous English statistician Sir Ronald Aylmer Fisher.
-.SH Model Overview
+.SS Model Overview
 .PP
 Two-Way ANOVA was carried out, with \f[I]Gender\f[] and
 \f[I]Relationship status\f[] as independent variables, and \f[I]Internet
 usage in leisure time (hours per day)\f[] as a response variable.
 Factor interaction was taken into account.
-.SH Descriptives
+.SS Descriptives
 .PP
 In order to get more insight on the model data, a table of frequencies
 for ANOVA factors is displayed, as well as a table of descriptives.
@@ -337,25 +334,22 @@ Note that the missing values are removed from the summary.
 .PP
 .TS
 tab(@);
-l l l l l l l.
+l l l l l l.
 T{
-T}@T{
 \f[B]gender\f[]
 T}@T{
 \f[B]partner\f[]
 T}@T{
 \f[B]N\f[]
 T}@T{
-\f[B]pct\f[]
+\f[B]%\f[]
 T}@T{
-\f[B]cumul.count\f[]
+\f[B]Cumul. N\f[]
 T}@T{
-\f[B]cumul.pct\f[]
+\f[B]Cumul. %\f[]
 T}
 _
 T{
-1
-T}@T{
 male
 T}@T{
 in a relationship
@@ -369,8 +363,6 @@ T}@T{
 23.6967
 T}
 T{
-2
-T}@T{
 female
 T}@T{
 in a relationship
@@ -384,8 +376,6 @@ T}@T{
 42.654
 T}
 T{
-3
-T}@T{
 male
 T}@T{
 married
@@ -399,8 +389,6 @@ T}@T{
 47.8673
 T}
 T{
-4
-T}@T{
 female
 T}@T{
 married
@@ -414,8 +402,6 @@ T}@T{
 52.4487
 T}
 T{
-5
-T}@T{
 male
 T}@T{
 single
@@ -429,8 +415,6 @@ T}@T{
 84.6761
 T}
 T{
-6
-T}@T{
 female
 T}@T{
 single
@@ -446,7 +430,7 @@ T}
 T{
 Total
 T}@T{
-T}@T{
+Total
 T}@T{
 633
 T}@T{
@@ -735,12 +719,13 @@ T}@T{
 1
 T}
 .TE
-.SH Diagnostics
+.SS Diagnostics
 .PP
-Before we carry out ANOVA, we'd like to check some basic assumptions.
+Before we carry out ANOVA, we\[aq]d like to check some basic
+assumptions.
 For those purposes, normality and homoscedascity tests are carried out
-alongside several graphs that may help you with your decision on model's
-main assumptions.
+alongside several graphs that may help you with your decision on
+model\[aq]s main assumptions.
 .SS Diagnostics
 .SS Univariate Normality
 .PP
@@ -817,7 +802,7 @@ T}
 When it comes to equality of variances, applied tests yield inconsistent
 results.
 While \f[I]Fligner-Kileen test\f[] confirmed the hypotheses of
-homoscedascity, \f[I]Bartlett's test\f[] rejected it.
+homoscedascity, \f[I]Bartlett\[aq]s test\f[] rejected it.
 .SS Diagnostic Plots
 .PP
 Here you can see several diagnostic plots for ANOVA model:
@@ -831,7 +816,7 @@ normal Q-Q plot
 residuals against leverages
 .PP
 [IMAGE: image (efd197b02ca1541c48611907a3c42576.png)]
-.SH ANOVA Summary
+.SS ANOVA Summary
 .SS ANOVA Table
 .PP
 .TS
@@ -907,7 +892,7 @@ which implies that there is no Gender effect on response variable.
 Effect of \f[I]Relationship status\f[] on response variable is
 significant.
 Interaction between levels of \f[I]Gender\f[] and \f[I]Relationship
-status\f[] wasn't found significant (p = 0.717).
+status\f[] wasn\[aq]t found significant (p = 0.717).
 .PP
    *   *   *   *   *
 .PP
@@ -915,4 +900,4 @@ This report was generated with rapport (http://rapport-package.info/).
 .PP
 [IMAGE: image (images/rapport.png)]
 .SH AUTHORS
-Rapport package team \@ https://github.com/aL3xa/rapport.
+(Username not set) (E-mail address not set).
