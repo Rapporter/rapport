@@ -1,11 +1,12 @@
 <!--head
-Title:        t-test Template
-Author:       Aleksandar Blagotić
-Description:  A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
-Packages:     nortest
+Title:          t-test Template
+Author:         Aleksandar Blagotić
+Description:    A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
+Packages:       nortest
 Data required:  TRUE
-Example:      rapport("t-test", ius2008, x = "leisure", y = "gender")
-              rapport("t-test", ius2008, x = "leisure", mu = 3.2)
+Strict:         TRUE
+Example:        rapport("t-test", ius2008, x = "leisure", y = "gender")
+                rapport("t-test", ius2008, x = "leisure", mu = 3.2)
 
 x         | *numeric    | X variable          | Dependent (response) variable
 y         | variable    | Y variable          | Independent variable (factor, or another numeric)

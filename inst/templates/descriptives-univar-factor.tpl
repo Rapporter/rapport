@@ -1,13 +1,15 @@
 <!--head
-Title: Descriptive statistics
-Author: Gergely Daróczi 
-Email: gergely@snowl.net
-Description: This template will return descriptive statistics and frequency table of a categorical variable.
-Data required:  TRUE 
-Example:    rapport('descriptives-univar-factor', data=ius2008, var='gender')
-            rapport('descriptives-univar-factor', data=ius2008, var='dwell')
-var         | factor    | Variable          | A categorical variable
-nortest     | TRUE      | Normality test    | If normality tests should be performed 
+Title:          Descriptive statistics
+Author:         Gergely Daróczi 
+Email:          gergely@snowl.net
+Description:    This template will return descriptive statistics and frequency table of a categorical variable.
+Data required:  TRUE
+Strict:         TRUE
+Example:        rapport('descriptives-univar-factor', data=ius2008, var='gender')
+                rapport('descriptives-univar-factor', data=ius2008, var='dwell')
+
+var             | factor    | Variable          | A categorical variable
+nortest         | TRUE      | Normality test    | If normality tests should be performed 
 head-->
 
 # *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>
@@ -23,7 +25,7 @@ rp.freq(rp.name(var), rp.data)
 ## Barplot
 
 <%
-rp.barplot(var)
+print(rp.barplot(var))
 %>
 
 It seems that the highest value is <%=rp.max(nvar)%> which is exactly <%=rp.round(rp.max(nvar)/rp.min(nvar))%> times higher than the smallest value (<%rp.min(nvar)%>).

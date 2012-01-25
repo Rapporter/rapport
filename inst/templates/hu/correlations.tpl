@@ -1,11 +1,13 @@
 <!--head
-Title: Korrelációs együtthatók
-Author: Daróczi Gergely 
-Email: gergely@snowl.net
-Description: Folytonos változók közötti lineáris összefüggések vizsgálata.
+Title:          Korrelációs együtthatók
+Author:         Daróczi Gergely 
+Email:          gergely@snowl.net
+Description:    Folytonos változók közötti lineáris összefüggések vizsgálata.
 Data required:  TRUE
-Example: rapport('hu/correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
-         rapport('hu/correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
+Strict:         TRUE
+Example:        rapport('hu/correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
+                rapport('hu/correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
+
 vars        | *numeric[1,10] | Változók              | Folytonos változók
 cor.matrix  | TRUE          | Korrelációs mátrix    | Korrelációs mátrix hozzáadása
 cor.plot    | TRUE          | Pontdiagram           | Pontdiagram hozzáadása

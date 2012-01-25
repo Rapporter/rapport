@@ -1,12 +1,13 @@
 <!--head
-Title:        Normality Tests
-Author:       Aleksandar Blagotić
-Description:  Overview of several normality tests and diagnostic plots that can screen departures from normality.
-Packages:     nortest
+Title:          Normality Tests
+Author:         Aleksandar Blagotić
+Description:    Overview of several normality tests and diagnostic plots that can screen departures from normality.
+Packages:       nortest
 Data required:  TRUE
-Example:      rapport("nortest", ius2008, var = "leisure")
-              rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
-              rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
+Strict:         TRUE
+Example:        rapport("nortest", ius2008, var = "leisure")
+                rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
+                rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
 
 var       | *numeric  | Test variables     | Variables to test for normality
 nc.plot   | TRUE      | Normal curve plot  | Plot normal curve?
@@ -68,7 +69,7 @@ There are various plots that can help you decide about the normality of the dist
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
  
 <%
-rp.hist(var)
+print(rp.hist(var))
 %>
 
 ## Q-Q Plot
@@ -77,12 +78,12 @@ rp.hist(var)
 
 <%
 if (qq.line){
-   qqmath(var, panel=function(x){
+   print(qqmath(var, panel=function(x){
                panel.qqmath(x)
                panel.qqmathline(x, distribution = qnorm)
-   }, xlab = "Theoretical Quantiles", ylab = "Empirical Quantiles")
+   }, xlab = "Theoretical Quantiles", ylab = "Empirical Quantiles"))
 } else {
-   rp.qqplot(var)
+   print(rp.qqplot(var))
 }
 %>
 
@@ -91,5 +92,5 @@ if (qq.line){
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
 <%
-rp.densityplot(var)
+print(rp.densityplot(var))
 %>

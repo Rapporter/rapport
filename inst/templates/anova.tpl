@@ -3,7 +3,8 @@ Title:        ANOVA Template
 Author:       Aleksandar Blagotić
 Description:  An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.
 Packages:     nortest
-Data required:  TRUE
+Data required: TRUE
+Strict:        TRUE
 Example:      rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way
               rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way
 

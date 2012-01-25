@@ -5,9 +5,11 @@ Email:          gergely@snowl.net
 Description:    This template will check if provided variable has any outliers. 
 Packages:       outliers
 Data required:  TRUE
+Strict:         TRUE
 Example:        rapport('outlier-test', data=ius2008, var='edu')
                 rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE)
                 rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALSE, grubb=FALSE, dixon=FALSE)
+
 var             | *numeric | Variable        | Numerical variable
 lund.res        | FALSE   | Residuals       | Return Lund's residuals?
 references      | TRUE    | References      | Print references?
@@ -18,7 +20,7 @@ head-->
 # Boxplot
 
 <%
-rp.boxplot(var)
+print(rp.boxplot(var))
 %>
 
 # Lund test

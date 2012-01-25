@@ -1,13 +1,15 @@
 <!--head
-Title:        Example template
-Author:       Gergely Daróczi 
-Description:  This template demonstrates the basic features of rapport. We all hope you will like it!
-Packages:     lattice
+Title:          Example template
+Author:         Gergely Daróczi 
+Description:    This template demonstrates the basic features of rapport. We all hope you will like it!
+Packages:       lattice
 Data required:  TRUE
-Example:      rapport("example", ius2008, var='leisure')
-              rapport("example", ius2008, var='leisure', desc=FALSE)
-              rapport("example", ius2008, var='leisure', desc=FALSE, hist=T)
-              rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')             
+Strict:         TRUE
+Example:        rapport("example", ius2008, var='leisure')
+                rapport("example", ius2008, var='leisure', desc=FALSE)
+                rapport("example", ius2008, var='leisure', desc=FALSE, hist=T)
+                rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')
+
 var    | *numeric   | Variable| A numeric variable.
 desc   | TRUE      | Boolean | Show descriptive statistics of specified variable?
 hist   | FALSE     | Boolean | Show histogram of specified variable?
@@ -41,5 +43,5 @@ if (desc) sprintf('The 5 highest values are: %s.', p(sort(var, decreasing = TRUE
 
 <%
 if (hist)
-    rp.hist(var, theme=theme)
+    print(rp.hist(var, theme=theme))
 %>

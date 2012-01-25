@@ -1,12 +1,14 @@
 <!--head
-Title: Descriptive statistics
-Author: Gergely Daróczi 
-Email: gergely@snowl.net
-Description: This template will return descriptive statistics of a numerical variable.
-Data required:  TRUE 
-Example:    rapport('descriptives-univar-numeric', data=ius2008, var='age')
-var         | numeric   | Variable          | A numerical variable
-nortest     | TRUE      | Normality test    | If normality tests should be performed 
+Title:          Descriptive statistics
+Author:         Gergely Daróczi 
+Email:          gergely@snowl.net
+Description:    This template will return descriptive statistics of a numerical variable.
+Data required:  TRUE
+Strict:         TRUE
+Example:        rapport('descriptives-univar-numeric', data=ius2008, var='age')
+
+var             | numeric   | Variable          | A numerical variable
+nortest         | TRUE      | Normality test    | If normality tests should be performed 
 head-->
 
 # *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>
@@ -22,7 +24,7 @@ rp.desc(rp.name(var), NULL, c('mean', 'sd', 'var'), rp.data)
 ## Histogram
 
 <%
-rp.hist(var)
+print(rp.hist(var))
 %>
 
 It seems that the highest value is <%=rp.max(var)%> which is exactly <%=rp.round(rp.max(var)/rp.min(var))%> times higher than the smallest value (<%rp.min(var)%>).
