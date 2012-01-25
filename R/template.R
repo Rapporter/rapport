@@ -573,8 +573,6 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
                     stop("it's not allowed to create graphs within inline chunks")
                 if (is.tabular(x$output))
                     stop('tabular structures are not allowed within inline chunks')
-                if (length(x$output) > 1)
-                    stop('output exceeds allowed length for an inline chunk (', x$src, ')')
                 ## return info on errors, don't just bleed to death! (bug spotted & fixed by Gergely)
                 err <- x$msg$errors
                 if (!is.null(err)) {                ## error handling in blocks:
