@@ -7,7 +7,7 @@ Data required:  TRUE
 Example:    rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
             rapport('descriptives-multivar', data=ius2008, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx"))
             rapport('descriptives-multivar', data=mtcars, vars=c('hp','wt'))
-vars        | *variable[1]| Variables         | Categorical or numerical variables. The template will determine the measurement level of the given variable and will return detailed frequency tables or appropriate descriptive statistics for numerics.
+vars        | *variable[1,50]| Variables         | Categorical or numerical variables. The template will determine the measurement level of the given variable and will return detailed frequency tables or appropriate descriptive statistics for numerics.
 nortest     | TRUE          | Normality tests   | Should normality tests be performed on numerical variables?  
 head-->
 

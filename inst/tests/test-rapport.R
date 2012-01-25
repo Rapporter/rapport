@@ -1,12 +1,13 @@
 ## test_file('test-rapport.R')
 
+templates <- tpl.list()
+
 context('rapport')
 
-require(rapport)
-templates <- tpl.list()
+# run all examples (in strict mode if possible)
 for (template in templates) {
     test_that(template, {
-        for (example in tpl.info('example')$meta$example) {
+        for (example in tpl.info(template)$meta$example) {
             expect_that(eval(parse(text=example)), is_a('rapport'))
         }
     })    

@@ -7,7 +7,7 @@ Packages: ascii
 Data required:  TRUE
 Example: rapport('correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
          rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
-vars        | *numeric[1,10]| Variable              | Numerical variables
+vars        | *numeric[1,50]| Variable              | Numerical variables
 info        | TRUE          | Stat. theory          | Show information about background theory?
 cor.matrix  | TRUE          | Correlation matrix    | Show correlation matrix (numbers)?
 cor.plot    | TRUE          | Scatterplot matrix    | Show scatterplot matrix (image)?
