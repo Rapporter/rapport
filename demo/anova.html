@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="(Username not set) (E-mail address not set)" />
   <meta name="date" content="2011-04-26 20:25 CET" />
@@ -35,18 +34,18 @@
 <body>
 <div id="header">
 <h1 class="title">ANOVA Template</h1>
-<h2 class="author">(Username not set) (E-mail address not set)</h2>
-<h3 class="date">2011-04-26 20:25 CET</h3>
+<h3 class="author">(Username not set) (E-mail address not set)</h3>
+<h4 class="date">2011-04-26 20:25 CET</h4>
 </div>
-<h1 id="description">Description</h1>
+<h2 id="description">Description</h2>
 <p>An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.</p>
-<h1 id="introduction">Introduction</h1>
+<h2 id="introduction">Introduction</h2>
 <p><strong>Analysis of Variance</strong> or <strong>ANOVA</strong> is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921. by famous English statistician Sir Ronald Aylmer Fisher.</p>
-<h1 id="model-overview">Model Overview</h1>
+<h2 id="model-overview">Model Overview</h2>
 <p>One-Way ANOVA was carried out, with <em>Gender</em> as independent variable, and <em>Internet usage in leisure time (hours per day)</em> as a response variable. Factor interaction was taken into account.</p>
-<h1 id="descriptives">Descriptives</h1>
+<h2 id="descriptives">Descriptives</h2>
 <p>In order to get more insight on the model data, a table of frequencies for ANOVA factors is displayed, as well as a table of descriptives.</p>
-<h1 id="frequency-table">Frequency Table</h1>
+<h3 id="frequency-table">Frequency Table</h3>
 <p>Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.</p>
 <table>
 <thead>
@@ -82,7 +81,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="descriptive-statistics">Descriptive Statistics</h1>
+<h3 id="descriptive-statistics">Descriptive Statistics</h3>
 <p>The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.</p>
 <table>
 <thead>
@@ -134,10 +133,10 @@
 </tr>
 </tbody>
 </table>
-<h1 id="diagnostics">Diagnostics</h1>
+<h2 id="diagnostics">Diagnostics</h2>
 <p>Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.</p>
-<h1 id="diagnostics-1">Diagnostics</h1>
-<h1 id="univariate-normality">Univariate Normality</h1>
+<h3 id="diagnostics-1">Diagnostics</h3>
+<h4 id="univariate-normality">Univariate Normality</h4>
 <p>We will use <em>Shapiro-Wilk</em>, <em>Lilliefors</em> and <em>Anderson-Darling</em> tests to screen departures from normality in the response variable (<em>Internet usage in leisure time (hours per day)</em>).</p>
 <!-- endlist -->
 
@@ -168,7 +167,7 @@
 </tbody>
 </table>
 <p>As you can see, applied tests confirm departures from normality.</p>
-<h1 id="homoscedascity">Homoscedascity</h1>
+<h4 id="homoscedascity">Homoscedascity</h4>
 <p>In order to test homoscedascity, <em>Bartlett</em> and <em>Fligner-Kileen</em> tests are applied.</p>
 <!-- endlist -->
 
@@ -194,7 +193,7 @@
 </tbody>
 </table>
 <p>When it comes to equality of variances, applied tests yield inconsistent results. While <em>Fligner-Kileen test</em> confirmed the hypotheses of homoscedascity, <em>Bartlett's test</em> rejected it.</p>
-<h1 id="diagnostic-plots">Diagnostic Plots</h1>
+<h3 id="diagnostic-plots">Diagnostic Plots</h3>
 <p>Here you can see several diagnostic plots for ANOVA model:</p>
 <ul>
 <li>residuals against fitted values</li>
@@ -205,8 +204,8 @@
 <div class="figure">
 <img src="1c63b6fad7856cf59a751b0f80339918.png" /><p class="caption"></p>
 </div>
-<h1 id="anova-summary">ANOVA Summary</h1>
-<h1 id="anova-table">ANOVA Table</h1>
+<h2 id="anova-summary">ANOVA Summary</h2>
+<h3 id="anova-table">ANOVA Table</h3>
 <!-- endlist -->
 
 <table>
@@ -240,16 +239,16 @@
 </tbody>
 </table>
 <p><em>F-test</em> for <em>Gender</em> is not statistically significant, which implies that there is no Gender effect on response variable.</p>
-<h1 id="description-1">Description</h1>
+<h2 id="description-1">Description</h2>
 <p>An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.</p>
 <p>s</p>
-<h1 id="introduction-1">Introduction</h1>
+<h2 id="introduction-1">Introduction</h2>
 <p><strong>Analysis of Variance</strong> or <strong>ANOVA</strong> is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921. by famous English statistician Sir Ronald Aylmer Fisher.</p>
-<h1 id="model-overview-1">Model Overview</h1>
+<h2 id="model-overview-1">Model Overview</h2>
 <p>Two-Way ANOVA was carried out, with <em>Gender</em> and <em>Relationship status</em> as independent variables, and <em>Internet usage in leisure time (hours per day)</em> as a response variable. Factor interaction was taken into account.</p>
-<h1 id="descriptives-1">Descriptives</h1>
+<h2 id="descriptives-1">Descriptives</h2>
 <p>In order to get more insight on the model data, a table of frequencies for ANOVA factors is displayed, as well as a table of descriptives.</p>
-<h1 id="frequency-table-1">Frequency Table</h1>
+<h3 id="frequency-table-1">Frequency Table</h3>
 <p>Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.</p>
 <table>
 <thead>
@@ -321,7 +320,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="descriptive-statistics-1">Descriptive Statistics</h1>
+<h3 id="descriptive-statistics-1">Descriptive Statistics</h3>
 <p>The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.</p>
 <table>
 <thead>
@@ -485,10 +484,10 @@
 </tr>
 </tbody>
 </table>
-<h1 id="diagnostics-2">Diagnostics</h1>
+<h2 id="diagnostics-2">Diagnostics</h2>
 <p>Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.</p>
-<h1 id="diagnostics-3">Diagnostics</h1>
-<h1 id="univariate-normality-1">Univariate Normality</h1>
+<h3 id="diagnostics-3">Diagnostics</h3>
+<h4 id="univariate-normality-1">Univariate Normality</h4>
 <p>We will use <em>Shapiro-Wilk</em>, <em>Lilliefors</em> and <em>Anderson-Darling</em> tests to screen departures from normality in the response variable (<em>Internet usage in leisure time (hours per day)</em>).</p>
 <!-- endlist -->
 
@@ -519,7 +518,7 @@
 </tbody>
 </table>
 <p>As you can see, applied tests confirm departures from normality.</p>
-<h1 id="homoscedascity-1">Homoscedascity</h1>
+<h4 id="homoscedascity-1">Homoscedascity</h4>
 <p>In order to test homoscedascity, <em>Bartlett</em> and <em>Fligner-Kileen</em> tests are applied.</p>
 <!-- endlist -->
 
@@ -545,7 +544,7 @@
 </tbody>
 </table>
 <p>When it comes to equality of variances, applied tests yield inconsistent results. While <em>Fligner-Kileen test</em> confirmed the hypotheses of homoscedascity, <em>Bartlett's test</em> rejected it.</p>
-<h1 id="diagnostic-plots-1">Diagnostic Plots</h1>
+<h3 id="diagnostic-plots-1">Diagnostic Plots</h3>
 <p>Here you can see several diagnostic plots for ANOVA model:</p>
 <ul>
 <li>residuals against fitted values</li>
@@ -556,8 +555,8 @@
 <div class="figure">
 <img src="efd197b02ca1541c48611907a3c42576.png" /><p class="caption"></p>
 </div>
-<h1 id="anova-summary-1">ANOVA Summary</h1>
-<h1 id="anova-table-1">ANOVA Table</h1>
+<h2 id="anova-summary-1">ANOVA Summary</h2>
+<h3 id="anova-table-1">ANOVA Table</h3>
 <!-- endlist -->
 
 <table>
