@@ -643,6 +643,9 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' @export
 rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = 'png'){
 
+    ## start timer
+    timer <- proc.time()
+
     txt    <- tpl.find(fp)                      # split file to text
     h      <- tpl.info(txt)                     # template header
     meta   <- h$meta                            # header metadata
@@ -875,7 +878,8 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
                 meta   = meta,
                 inputs = inputs,
                 report = report,
-                call   = match.call()
+                call   = match.call(),
+                time   = as.numeric(proc.time() - timer)[3]
                 )
 
     if (isTRUE(reproducible)){
