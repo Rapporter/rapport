@@ -68,16 +68,14 @@ rp.graph.check <- function(x, facet = NULL, subset = NULL, ...) {
 #' @param ... additional parameters to \code{\link{histogram}}
 #' @export
 #' @examples \dontrun{
-#' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
-#'   am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-#' rp.hist(df$hp)
-#' rp.hist(df$hp, facet=df$am)
-#' rp.hist(df$hp, df$am)
-#' rp.label(df$hp) <- 'horsepower'; rp.hist(df$hp)
-#' rp.hist(df$hp, colorize=TRUE)
-#' with(df, rp.hist(hp, facet = am))
-#' rp.hist(hp, data = df)
-#' rp.hist(hp, am, df)
+#' rp.hist(ius2008$edu)
+#' rp.hist(ius2008$edu, facet=ius2008$gender)
+#' rp.hist(ius2008$edu, ius2008$dwell)
+#' rp.hist(ius2008$edu, colorize=TRUE)
+#' rp.hist(ius2008$edu, colorize=TRUE, kernel.smooth=TRUE)
+#' with(ius2008, rp.hist(edu, facet = gender))
+#' rp.hist(edu, data = ius2008)
+#' rp.hist(edu, gender, ius2008)
 #' }
 rp.hist <- function(x, facet=NULL, data=NULL, kernel.smooth = FALSE, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
     mc <- match.call()
@@ -104,16 +102,18 @@ rp.hist <- function(x, facet=NULL, data=NULL, kernel.smooth = FALSE, theme=getOp
         ## panel
         if (!kernel.smooth) {
             panel <- function(x, ...) {
+                panel.grid(h=-1, v=-1)
                 panel.histogram(x, ...)
             }
         } else {
             panel <- function(x, ...) {
+                panel.grid(h=-1, v=-1)
                 panel.histogram(x, ...)
-                panel.densityplot(x, ...)
+                panel.densityplot(x, darg=list(na.rm=TRUE), ...)
             }
         }
         ##  plot
-        histogram(x=eval(parse(text=text)), type = "density", panel = panel, col = col[1], col.line=col[2], ylab='', xlab=xlab, ...)
+        histogram(x=eval(parse(text=text)), type = "density", panel = panel, col = col[1], col.line=col[2], lwd=2, ylab='', xlab=xlab, ...)
     }
 }
 
