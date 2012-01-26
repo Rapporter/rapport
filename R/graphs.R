@@ -62,6 +62,7 @@ rp.graph.check <- function(x, facet = NULL, subset = NULL, ...) {
 #' @param x a numeric variable
 #' @param facet an optional categorical variable to make facets by
 #' @param data an optional data frame from which the variables should be taken
+#' @param kernel.smooth add kernel density plot?
 #' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
 #' @param colorize if set the color is chosen from palette at random
 #' @param ... additional parameters to \code{\link{histogram}}
@@ -78,7 +79,7 @@ rp.graph.check <- function(x, facet = NULL, subset = NULL, ...) {
 #' rp.hist(hp, data = df)
 #' rp.hist(hp, am, df)
 #' }
-rp.hist <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
+rp.hist <- function(x, facet=NULL, data=NULL, kernel.smooth = FALSE, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
     mc <- match.call()
     if (!missing(data)) {
         if (missing(facet)) {
@@ -90,7 +91,7 @@ rp.hist <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'
     } else {
         rp.graph.check(x, ...)
         ##  generating color from given palette
-        col <- rp.palette(1, theme, colorize)
+        col <- rp.palette(2, theme, colorize)
         ##  getting xlab
         xlab <- rp.label(x)
         if (xlab=='x') xlab <- tail(as.character(substitute(x)), 1)
@@ -100,8 +101,19 @@ rp.hist <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'
         } else {
             text='~x|facet'
         }
+        ## panel
+        if (!kernel.smooth) {
+            panel <- function(x, ...) {
+                panel.histogram(x, ...)
+            }
+        } else {
+            panel <- function(x, ...) {
+                panel.histogram(x, ...)
+                panel.densityplot(x, ...)
+            }
+        }
         ##  plot
-        histogram(x=eval(parse(text=text)), col=col, ylab='%', xlab=xlab, ...)
+        histogram(x=eval(parse(text=text)), type = "density", panel = panel, col = col[1], col.line=col[2], ylab='', xlab=xlab, ...)
     }
 }
 
