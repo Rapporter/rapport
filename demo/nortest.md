@@ -1,5 +1,5 @@
 % Normality Tests
-% (Username not set) (E-mail address not set)
+% Rapport package team @ https://github.com/aL3xa/rapport
 % 2011-04-26 20:25 CET
 
 Description
@@ -104,7 +104,7 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](07657b36ddf71c363ca51d844405b99a.png)
+![image](d6e712fea18fd4ee7d4e10dfdf62f2c5.png)
 
 Description
 -----------
@@ -206,7 +206,7 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](2566e535c6619ca87dce39c72a1bd2e1.png)
+![image](17a0ceb36b1aa86ef5d6aec6d641ad0b.png)
 
 Description
 -----------
@@ -310,10 +310,13 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](d60f6bc4a500f7965efdd22587e4ed81.png)
+![image](cf85f7da760795cb0d5f7370b623a2a9.png)
 
 * * * * *
 
-This report was generated with [rapport](http://rapport-package.info/).
+This report was generated in [R](http://www.r-project.org/) with
+[Rapport](http://al3xa.github.com/rapport/) in 1.245 sec. Feel free to
+create [your own reporting
+templates](http://al3xa.github.com/rapport/#custom)!
 
 ![image](images/rapport.png)

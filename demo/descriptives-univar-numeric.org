@@ -1,6 +1,6 @@
 #+TITLE: Descriptive statistics
 
-#+AUTHOR: (Username not set) (E-mail address not set)
+#+AUTHOR: Rapport package team @ https://github.com/aL3xa/rapport
 #+DATE: 2011-04-26 20:25 CET
 
 ** Description
@@ -136,12 +136,14 @@ known "bell shape".
 
 #+CAPTION: 
 
-[[796d6407dadfc323f89723f20d199ac4.png]]
+[[168d92f4cf90d2c563e5a0166a64150c.png]]
 
 --------------
 
-This report was generated with
-[[http://rapport-package.info/][rapport]].
+This report was generated in [[http://www.r-project.org/][R]] with
+[[http://al3xa.github.com/rapport/][Rapport]] in 0.625 sec. Feel free to
+create [[http://al3xa.github.com/rapport/#custom][your own reporting
+templates]]!
 
 #+CAPTION: 
 

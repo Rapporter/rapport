@@ -1,6 +1,6 @@
 '''Descriptive statistics'''
 
-(Username not set)
+Rapport package team
 
 ''2011-04-26 20:25 CET''
 
@@ -114,10 +114,10 @@ _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most po
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape". 
 
-[[Image:a57b3f7264716e2a7e1261210f25375f.png|center]]
+[[Image:4599005cf6ab3467d8da53b77f40ff98.png|center]]
 
 <s>---</s>
-This report was generated with [rapport]([http://rapport-package.info/]). 
+This report was generated in [R]([http://www.r-project.org/]) with [Rapport]([http://al3xa.github.com/rapport/]) in 0.76 sec. Feel free to create [templates your own reporting]([http://al3xa.github.com/rapport/#custom])! 
 
 [[Image:images/rapport.png|center]]
 

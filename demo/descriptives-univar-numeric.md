@@ -1,5 +1,5 @@
 % Descriptive statistics
-% (Username not set) (E-mail address not set)
+% Rapport package team @ https://github.com/aL3xa/rapport
 % 2011-04-26 20:25 CET
 
 Description
@@ -131,10 +131,13 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](796d6407dadfc323f89723f20d199ac4.png)
+![image](168d92f4cf90d2c563e5a0166a64150c.png)
 
 * * * * *
 
-This report was generated with [rapport](http://rapport-package.info/).
+This report was generated in [R](http://www.r-project.org/) with
+[Rapport](http://al3xa.github.com/rapport/) in 0.625 sec. Feel free to
+create [your own reporting
+templates](http://al3xa.github.com/rapport/#custom)!
 
 ![image](images/rapport.png)

@@ -59,7 +59,7 @@ There are various plots that can help you decide about the normality of the dist
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[Image:07657b36ddf71c363ca51d844405b99a.png|frame|none]]
+[[Image:d6e712fea18fd4ee7d4e10dfdf62f2c5.png|frame|none]]
 
 == Description ==
 
@@ -120,7 +120,7 @@ There are various plots that can help you decide about the normality of the dist
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[Image:2566e535c6619ca87dce39c72a1bd2e1.png|frame|none]]
+[[Image:17a0ceb36b1aa86ef5d6aec6d641ad0b.png|frame|none]]
 
 == Description ==
 
@@ -183,11 +183,11 @@ There are various plots that can help you decide about the normality of the dist
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[Image:d60f6bc4a500f7965efdd22587e4ed81.png|frame|none]]
+[[Image:cf85f7da760795cb0d5f7370b623a2a9.png|frame|none]]
 
 
 -----
 
-This report was generated with [http://rapport-package.info/ rapport].
+This report was generated in [http://www.r-project.org/ R] with [http://al3xa.github.com/rapport/ Rapport] in 1.245 sec. Feel free to create [http://al3xa.github.com/rapport/#custom your own reporting templates]!
 
 [[Image:images/rapport.png|frame|none]]

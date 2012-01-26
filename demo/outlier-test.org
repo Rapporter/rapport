@@ -1,6 +1,6 @@
 #+TITLE: Outlier tests
 
-#+AUTHOR: (Username not set) (E-mail address not set)
+#+AUTHOR: Rapport package team @ https://github.com/aL3xa/rapport
 #+DATE: 2011-04-26 20:25 CET
 
 ** Description
@@ -125,8 +125,10 @@ The above test for outliers was based on /lm(1 ~ edu)/:
 
 --------------
 
-This report was generated with
-[[http://rapport-package.info/][rapport]].
+This report was generated in [[http://www.r-project.org/][R]] with
+[[http://al3xa.github.com/rapport/][Rapport]] in 0.638 sec. Feel free to
+create [[http://al3xa.github.com/rapport/#custom][your own reporting
+templates]]!
 
 #+CAPTION: 
 

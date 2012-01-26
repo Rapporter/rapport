@@ -1,5 +1,5 @@
 Correlations
-(Username not set) (E-mail address not set)
+Rapport package team @ https://github.com/aL3xa/rapport
 2011-04-26 20:25 CET
 
 Description
@@ -100,6 +100,7 @@ Correlation matrix
 
 * * * * *
 
-This report was generated with rapport.
+This report was generated in R with Rapport in 0.596 sec. Feel free to
+create your own reporting templates!
 
 []

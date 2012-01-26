@@ -92,6 +92,6 @@ And wow, the mean of ''leisure'' is ''3.1994''!
 
 -----
 
-This report was generated with [http://rapport-package.info/ rapport].
+This report was generated in [http://www.r-project.org/ R] with [http://al3xa.github.com/rapport/ Rapport] in 0.357 sec. Feel free to create [http://al3xa.github.com/rapport/#custom your own reporting templates]!
 
 [[Image:images/rapport.png|frame|none]]

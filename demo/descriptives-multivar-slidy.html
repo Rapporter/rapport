@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="(Username not set) (E-mail address not set)" />
+  <meta name="author" content="Rapport package team @ https://github.com/aL3xa/rapport" />
   <meta name="date" content="2011-04-26 20:25 CET" />
   <title>Descriptive statistics</title>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
@@ -18,7 +18,7 @@
 <div class="slide titlepage">
   <h1 class="title">Descriptive statistics</h1>
   <p class="author">
-(Username not set) (E-mail address not set)
+Rapport package team @ https://github.com/aL3xa/rapport
   </p>
   <p class="date">2011-04-26 20:25 CET</p>
 </div>
@@ -30,7 +30,7 @@
 <div class="section slide level2" id="gender-gender">
 <h1 id="gender-gender"><em>gender</em> (&quot;Gender&quot;)</h1>
 <p>The dataset has <em>709</em> observations with <em>673</em> valid values (missing: <em>36</em>) in <em>gender</em> (&quot;Gender&quot;), which seems to be a qualitative variable.</p>
-<h1 id="base-statistics">Base statistics</h1>
+<h3 id="base-statistics">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -65,7 +65,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="barplot">Barplot</h1>
+<h3 id="barplot">Barplot</h3>
 <div class="figure">
 <img src="3ed92ab3ffc6e875335e7e8c774c35a8.png" /><p class="caption"></p>
 </div>
@@ -75,7 +75,7 @@
 <div class="section slide level2" id="age-age">
 <h1 id="age-age"><em>age</em> (&quot;Age&quot;)</h1>
 <p>The dataset has <em>709</em> observations with <em>677</em> valid values (missing: <em>32</em>) in <em>age</em> (&quot;Age&quot;), which seems to be a quantitative variable.</p>
-<h1 id="base-statistics-1">Base statistics</h1>
+<h3 id="base-statistics-1">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -94,15 +94,15 @@
 </tr>
 </tbody>
 </table>
-<h1 id="histogram">Histogram</h1>
+<h3 id="histogram">Histogram</h3>
 <div class="figure">
 <img src="ac5d789145bdef09b10219ef16429f53.png" /><p class="caption"></p>
 </div>
 <p>It seems that the highest value is <em>58</em> which is exactly 3.625 times higher than the smallest value (<em>16</em>).</p>
 <p>The standard deviation is <em>6.8491</em> (variance: <em>46.9107</em>). The expected value is around <em>24.5731</em>, somewhere between <em>24.0572</em> and <em>25.0891</em> with the standard error of <em>0.2632</em>.</p>
 <p>If we suppose that <em>Age</em> is not near to a normal distribution (test: see below, skewness: <em>1.9296</em>, kurtosis: <em>7.4851</em>), checking the median (<em>23</em>) might be a better option instead of the mean. The interquartile range (<em>6</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
-<h1 id="normality-tests">Normality tests</h1>
-<h1 id="introduction">Introduction</h1>
+<h3 id="normality-tests">Normality tests</h3>
+<h4 id="introduction">Introduction</h4>
 <p>In statistics, <em>normality</em> refers to an assumption that the distribution of a random variable follows <em>normal</em> (<em>Gaussian</em>) distribution. Because of its bell-like shape, it's also known as the <em>&quot;bell curve&quot;</em>. The formula for <em>normal distribution</em> is:</p>
 <p><br /><span class="math">$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$</span><br /></p>
 <p><em>Normal distribution</em> belongs to a <em>location-scale family</em> of distributions, as it's defined two parameters:</p>
@@ -113,8 +113,8 @@
 <div class="figure">
 <img src="2f8c434e103f36ec70966b372838d448.png" /><p class="caption"></p>
 </div>
-<h1 id="normality-tests-1">Normality Tests</h1>
-<h1 id="overview">Overview</h1>
+<h4 id="normality-tests-1">Normality Tests</h4>
+<h5 id="overview">Overview</h5>
 <p>Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is <em>normal</em>. At this point only few such tests will be covered: the ones that are available in <code>stats</code> package (which comes bundled with default R installation) and <code>nortest</code> package that is <a href="http://cran.r-project.org/web/packages/nortest/index.html">available</a> on CRAN.</p>
 <ul>
 <li><strong>Shapiro-Wilk test</strong> is a powerful normality test appropriate for small samples. In R, it's implemented in <code>shapiro.test</code> function available in <code>stats</code> package.</li>
@@ -122,7 +122,7 @@
 <li><strong>Anderson-Darling test</strong> is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <code>ad.test</code> function in <code>nortest</code> package.</li>
 <li><strong>Pearson Χ<sup>2</sup> test</strong> is another normality test which takes more &quot;traditional&quot; approach in normality testing. <code>pearson.test</code> is located in <code>nortest</code> package.</li>
 </ul>
-<h1 id="results">Results</h1>
+<h5 id="results">Results</h5>
 <p>Here you can see the results of applied normality tests (<em>p-values</em> less than 0.05 indicate significant discrepancies):</p>
 <p><em>0.05</em></p>
 <p>So, let's draw some conclusions based on applied normality test:</p>
@@ -132,22 +132,22 @@
 <li><em>Anderson-Darling test</em> confirms violation of normality assumption</li>
 <li><em>Pearson's Χ<sup>2</sup> test</em> classifies the underlying distribution as non-normal</li>
 </ul>
-<h1 id="diagnostic-plots">Diagnostic Plots</h1>
+<h4 id="diagnostic-plots">Diagnostic Plots</h4>
 <p>There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: <em>histogram</em>, <em>Q-Q plot</em> and <em>kernel density plot</em>.</p>
-<h1 id="histogram-1">Histogram</h1>
+<h5 id="histogram-1">Histogram</h5>
 <p><em>Histogram</em> was first introduced by <em>Karl Pearson</em> and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.</p>
 <div class="figure">
 <img src="ac5d789145bdef09b10219ef16429f53.png" /><p class="caption"></p>
 </div>
-<h1 id="q-q-plot">Q-Q Plot</h1>
+<h5 id="q-q-plot">Q-Q Plot</h5>
 <p>&quot;Q&quot; in <em>Q-Q plot</em> stands for <em>quantile</em>, as this plot compares empirical and theoretical distribution (in this case, <em>normal</em> distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <code>x = y</code> line.</p>
 <div class="figure">
 <img src="cbbba756d844aa053998959b73b9feff.png" /><p class="caption"></p>
 </div>
-<h1 id="kernel-density-plot">Kernel Density Plot</h1>
+<h5 id="kernel-density-plot">Kernel Density Plot</h5>
 <p><em>Kernel density plot</em> is a plot of smoothed <em>empirical distribution function</em>. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.</p>
 <div class="figure">
-<img src="4192d6bda3c1f1c8f268b9344e9786ee.png" /><p class="caption"></p>
+<img src="bde5b5e4ca06fa103953fc17e5273291.png" /><p class="caption"></p>
 </div>
 </div>
 <div class="section slide level2" id="description-1">
@@ -158,7 +158,7 @@
 <div class="section slide level2" id="chatim-chat-im-usage">
 <h1 id="chatim-chat-im-usage"><em>chatim</em> (&quot;Chat &amp; IM usage&quot;)</h1>
 <p>The dataset has <em>709</em> observations with <em>669</em> valid values (missing: <em>40</em>) in <em>chatim</em> (&quot;Chat &amp; IM usage&quot;), which seems to be a qualitative variable.</p>
-<h1 id="base-statistics-2">Base statistics</h1>
+<h3 id="base-statistics-2">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -228,7 +228,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="barplot-1">Barplot</h1>
+<h3 id="barplot-1">Barplot</h3>
 <div class="figure">
 <img src="5a00abbe4c793ceedbbf10939665b5cf.png" /><p class="caption"></p>
 </div>
@@ -238,7 +238,7 @@
 <div class="section slide level2" id="game-on-line-games-usage">
 <h1 id="game-on-line-games-usage"><em>game</em> (&quot;On-line games usage&quot;)</h1>
 <p>The dataset has <em>709</em> observations with <em>677</em> valid values (missing: <em>32</em>) in <em>game</em> (&quot;On-line games usage&quot;), which seems to be a qualitative variable.</p>
-<h1 id="base-statistics-3">Base statistics</h1>
+<h3 id="base-statistics-3">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -308,7 +308,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="barplot-2">Barplot</h1>
+<h3 id="barplot-2">Barplot</h3>
 <div class="figure">
 <img src="e53046a09491443064e085131e547971.png" /><p class="caption"></p>
 </div>
@@ -318,7 +318,7 @@
 <div class="section slide level2" id="surf-web-surfing-usage">
 <h1 id="surf-web-surfing-usage"><em>surf</em> (&quot;Web surfing usage&quot;)</h1>
 <p>The dataset has <em>709</em> observations with <em>678</em> valid values (missing: <em>31</em>) in <em>surf</em> (&quot;Web surfing usage&quot;), which seems to be a qualitative variable.</p>
-<h1 id="base-statistics-4">Base statistics</h1>
+<h3 id="base-statistics-4">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -388,7 +388,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="barplot-3">Barplot</h1>
+<h3 id="barplot-3">Barplot</h3>
 <div class="figure">
 <img src="0166a8b5df2f3db871e8736bfee8af6e.png" /><p class="caption"></p>
 </div>
@@ -398,7 +398,7 @@
 <div class="section slide level2" id="email-email-usage">
 <h1 id="email-email-usage"><em>email</em> (&quot;Email usage&quot;)</h1>
 <p>The dataset has <em>709</em> observations with <em>672</em> valid values (missing: <em>37</em>) in <em>email</em> (&quot;Email usage&quot;), which seems to be a qualitative variable.</p>
-<h1 id="base-statistics-5">Base statistics</h1>
+<h3 id="base-statistics-5">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -468,7 +468,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="barplot-4">Barplot</h1>
+<h3 id="barplot-4">Barplot</h3>
 <div class="figure">
 <img src="895cde198b269bf65b01e1e067a515c8.png" /><p class="caption"></p>
 </div>
@@ -478,7 +478,7 @@
 <div class="section slide level2" id="download-download-usage">
 <h1 id="download-download-usage"><em>download</em> (&quot;Download usage&quot;)</h1>
 <p>The dataset has <em>709</em> observations with <em>677</em> valid values (missing: <em>32</em>) in <em>download</em> (&quot;Download usage&quot;), which seems to be a qualitative variable.</p>
-<h1 id="base-statistics-6">Base statistics</h1>
+<h3 id="base-statistics-6">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -548,7 +548,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="barplot-5">Barplot</h1>
+<h3 id="barplot-5">Barplot</h3>
 <div class="figure">
 <img src="dde181184885b8777d0248b3f421289a.png" /><p class="caption"></p>
 </div>
@@ -558,7 +558,7 @@
 <div class="section slide level2" id="forum-web-forums-usage">
 <h1 id="forum-web-forums-usage"><em>forum</em> (&quot;Web forums usage&quot;)</h1>
 <p>The dataset has <em>709</em> observations with <em>673</em> valid values (missing: <em>36</em>) in <em>forum</em> (&quot;Web forums usage&quot;), which seems to be a qualitative variable.</p>
-<h1 id="base-statistics-7">Base statistics</h1>
+<h3 id="base-statistics-7">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -628,7 +628,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="barplot-6">Barplot</h1>
+<h3 id="barplot-6">Barplot</h3>
 <div class="figure">
 <img src="ac419134b2f4695e544d8886ba12e0c2.png" /><p class="caption"></p>
 </div>
@@ -638,7 +638,7 @@
 <div class="section slide level2" id="socnet-social-networks-usage">
 <h1 id="socnet-social-networks-usage"><em>socnet</em> (&quot;Social networks usage&quot;)</h1>
 <p>The dataset has <em>709</em> observations with <em>678</em> valid values (missing: <em>31</em>) in <em>socnet</em> (&quot;Social networks usage&quot;), which seems to be a qualitative variable.</p>
-<h1 id="base-statistics-8">Base statistics</h1>
+<h3 id="base-statistics-8">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -708,7 +708,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="barplot-7">Barplot</h1>
+<h3 id="barplot-7">Barplot</h3>
 <div class="figure">
 <img src="8475d98870c1cdd2436a3abdb0d69a66.png" /><p class="caption"></p>
 </div>
@@ -718,7 +718,7 @@
 <div class="section slide level2" id="xxx-adult-sites-usage">
 <h1 id="xxx-adult-sites-usage"><em>xxx</em> (&quot;Adult sites usage&quot;)</h1>
 <p>The dataset has <em>709</em> observations with <em>674</em> valid values (missing: <em>35</em>) in <em>xxx</em> (&quot;Adult sites usage&quot;), which seems to be a qualitative variable.</p>
-<h1 id="base-statistics-9">Base statistics</h1>
+<h3 id="base-statistics-9">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -788,7 +788,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="barplot-8">Barplot</h1>
+<h3 id="barplot-8">Barplot</h3>
 <div class="figure">
 <img src="4fda8cf992e8de93624c45ef3c72a0c5.png" /><p class="caption"></p>
 </div>
@@ -803,7 +803,7 @@
 <div class="section slide level2" id="hp">
 <h1 id="hp"><em>hp</em></h1>
 <p>The dataset has <em>32</em> observations with <em>32</em> valid values (missing: <em>0</em>) in <em>hp</em>, which seems to be a quantitative variable.</p>
-<h1 id="base-statistics-10">Base statistics</h1>
+<h3 id="base-statistics-10">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -822,15 +822,15 @@
 </tr>
 </tbody>
 </table>
-<h1 id="histogram-2">Histogram</h1>
+<h3 id="histogram-2">Histogram</h3>
 <div class="figure">
 <img src="d90ec4a0af55fabeae7988710a062ce0.png" /><p class="caption"></p>
 </div>
 <p>It seems that the highest value is <em>335</em> which is exactly 6.4423 times higher than the smallest value (<em>52</em>).</p>
 <p>The standard deviation is <em>68.5629</em> (variance: <em>4700.8669</em>). The expected value is around <em>146.6875</em>, somewhere between <em>122.9317</em> and <em>170.4433</em> with the standard error of <em>12.1203</em>.</p>
 <p>If we suppose that <em>hp</em> is not near to a normal distribution (test: see below, skewness: <em>0.7614</em>, kurtosis: <em>3.0522</em>), checking the median (<em>123</em>) might be a better option instead of the mean. The interquartile range (<em>83.5</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
-<h1 id="normality-tests-2">Normality tests</h1>
-<h1 id="introduction-1">Introduction</h1>
+<h3 id="normality-tests-2">Normality tests</h3>
+<h4 id="introduction-1">Introduction</h4>
 <p>In statistics, <em>normality</em> refers to an assumption that the distribution of a random variable follows <em>normal</em> (<em>Gaussian</em>) distribution. Because of its bell-like shape, it's also known as the <em>&quot;bell curve&quot;</em>. The formula for <em>normal distribution</em> is:</p>
 <p><br /><span class="math">$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$</span><br /></p>
 <p><em>Normal distribution</em> belongs to a <em>location-scale family</em> of distributions, as it's defined two parameters:</p>
@@ -841,8 +841,8 @@
 <div class="figure">
 <img src="2f8c434e103f36ec70966b372838d448.png" /><p class="caption"></p>
 </div>
-<h1 id="normality-tests-3">Normality Tests</h1>
-<h1 id="overview-1">Overview</h1>
+<h4 id="normality-tests-3">Normality Tests</h4>
+<h5 id="overview-1">Overview</h5>
 <p>Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is <em>normal</em>. At this point only few such tests will be covered: the ones that are available in <code>stats</code> package (which comes bundled with default R installation) and <code>nortest</code> package that is <a href="http://cran.r-project.org/web/packages/nortest/index.html">available</a> on CRAN.</p>
 <ul>
 <li><strong>Shapiro-Wilk test</strong> is a powerful normality test appropriate for small samples. In R, it's implemented in <code>shapiro.test</code> function available in <code>stats</code> package.</li>
@@ -850,7 +850,7 @@
 <li><strong>Anderson-Darling test</strong> is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <code>ad.test</code> function in <code>nortest</code> package.</li>
 <li><strong>Pearson Χ<sup>2</sup> test</strong> is another normality test which takes more &quot;traditional&quot; approach in normality testing. <code>pearson.test</code> is located in <code>nortest</code> package.</li>
 </ul>
-<h1 id="results-1">Results</h1>
+<h5 id="results-1">Results</h5>
 <p>Here you can see the results of applied normality tests (<em>p-values</em> less than 0.05 indicate significant discrepancies):</p>
 <p><em>0.05</em></p>
 <p>So, let's draw some conclusions based on applied normality test:</p>
@@ -860,28 +860,28 @@
 <li><em>Anderson-Darling test</em> confirms normality assumption</li>
 <li><em>Pearson's Χ<sup>2</sup> test</em> classifies the underlying distribution as non-normal</li>
 </ul>
-<h1 id="diagnostic-plots-1">Diagnostic Plots</h1>
+<h4 id="diagnostic-plots-1">Diagnostic Plots</h4>
 <p>There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: <em>histogram</em>, <em>Q-Q plot</em> and <em>kernel density plot</em>.</p>
-<h1 id="histogram-3">Histogram</h1>
+<h5 id="histogram-3">Histogram</h5>
 <p><em>Histogram</em> was first introduced by <em>Karl Pearson</em> and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.</p>
 <div class="figure">
 <img src="d90ec4a0af55fabeae7988710a062ce0.png" /><p class="caption"></p>
 </div>
-<h1 id="q-q-plot-1">Q-Q Plot</h1>
+<h5 id="q-q-plot-1">Q-Q Plot</h5>
 <p>&quot;Q&quot; in <em>Q-Q plot</em> stands for <em>quantile</em>, as this plot compares empirical and theoretical distribution (in this case, <em>normal</em> distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <code>x = y</code> line.</p>
 <div class="figure">
 <img src="17e5c77b83c6e3e636487406decc14c7.png" /><p class="caption"></p>
 </div>
-<h1 id="kernel-density-plot-1">Kernel Density Plot</h1>
+<h5 id="kernel-density-plot-1">Kernel Density Plot</h5>
 <p><em>Kernel density plot</em> is a plot of smoothed <em>empirical distribution function</em>. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.</p>
 <div class="figure">
-<img src="c1ac92e4f5aa993da03a59fbb3394fb0.png" /><p class="caption"></p>
+<img src="e63199776da0ad4146eff538e5ef7af7.png" /><p class="caption"></p>
 </div>
 </div>
 <div class="section slide level2" id="wt">
 <h1 id="wt"><em>wt</em></h1>
 <p>The dataset has <em>32</em> observations with <em>32</em> valid values (missing: <em>0</em>) in <em>wt</em>, which seems to be a quantitative variable.</p>
-<h1 id="base-statistics-11">Base statistics</h1>
+<h3 id="base-statistics-11">Base statistics</h3>
 <table>
 <thead>
 <tr class="header">
@@ -900,15 +900,15 @@
 </tr>
 </tbody>
 </table>
-<h1 id="histogram-4">Histogram</h1>
+<h3 id="histogram-4">Histogram</h3>
 <div class="figure">
 <img src="10caa8222b28328a6d8fd28917cbfb45.png" /><p class="caption"></p>
 </div>
 <p>It seems that the highest value is <em>5.424</em> which is exactly 3.5849 times higher than the smallest value (<em>1.513</em>).</p>
 <p>The standard deviation is <em>0.9785</em> (variance: <em>0.9574</em>). The expected value is around <em>3.2172</em>, somewhere between <em>2.8782</em> and <em>3.5563</em> with the standard error of <em>0.173</em>.</p>
 <p>If we suppose that <em>wt</em> is not near to a normal distribution (test: see below, skewness: <em>0.4438</em>, kurtosis: <em>3.1725</em>), checking the median (<em>3.325</em>) might be a better option instead of the mean. The interquartile range (<em>1.0288</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
-<h1 id="normality-tests-4">Normality tests</h1>
-<h1 id="introduction-2">Introduction</h1>
+<h3 id="normality-tests-4">Normality tests</h3>
+<h4 id="introduction-2">Introduction</h4>
 <p>In statistics, <em>normality</em> refers to an assumption that the distribution of a random variable follows <em>normal</em> (<em>Gaussian</em>) distribution. Because of its bell-like shape, it's also known as the <em>&quot;bell curve&quot;</em>. The formula for <em>normal distribution</em> is:</p>
 <p><br /><span class="math">$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$</span><br /></p>
 <p><em>Normal distribution</em> belongs to a <em>location-scale family</em> of distributions, as it's defined two parameters:</p>
@@ -919,8 +919,8 @@
 <div class="figure">
 <img src="2f8c434e103f36ec70966b372838d448.png" /><p class="caption"></p>
 </div>
-<h1 id="normality-tests-5">Normality Tests</h1>
-<h1 id="overview-2">Overview</h1>
+<h4 id="normality-tests-5">Normality Tests</h4>
+<h5 id="overview-2">Overview</h5>
 <p>Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is <em>normal</em>. At this point only few such tests will be covered: the ones that are available in <code>stats</code> package (which comes bundled with default R installation) and <code>nortest</code> package that is <a href="http://cran.r-project.org/web/packages/nortest/index.html">available</a> on CRAN.</p>
 <ul>
 <li><strong>Shapiro-Wilk test</strong> is a powerful normality test appropriate for small samples. In R, it's implemented in <code>shapiro.test</code> function available in <code>stats</code> package.</li>
@@ -928,7 +928,7 @@
 <li><strong>Anderson-Darling test</strong> is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <code>ad.test</code> function in <code>nortest</code> package.</li>
 <li><strong>Pearson Χ<sup>2</sup> test</strong> is another normality test which takes more &quot;traditional&quot; approach in normality testing. <code>pearson.test</code> is located in <code>nortest</code> package.</li>
 </ul>
-<h1 id="results-2">Results</h1>
+<h5 id="results-2">Results</h5>
 <p>Here you can see the results of applied normality tests (<em>p-values</em> less than 0.05 indicate significant discrepancies):</p>
 <p><em>0.05</em></p>
 <p>So, let's draw some conclusions based on applied normality test:</p>
@@ -938,27 +938,27 @@
 <li><em>Anderson-Darling test</em> confirms normality assumption</li>
 <li><em>Pearson's Χ<sup>2</sup> test</em> classifies the underlying distribution as non-normal</li>
 </ul>
-<h1 id="diagnostic-plots-2">Diagnostic Plots</h1>
+<h4 id="diagnostic-plots-2">Diagnostic Plots</h4>
 <p>There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: <em>histogram</em>, <em>Q-Q plot</em> and <em>kernel density plot</em>.</p>
-<h1 id="histogram-5">Histogram</h1>
+<h5 id="histogram-5">Histogram</h5>
 <p><em>Histogram</em> was first introduced by <em>Karl Pearson</em> and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.</p>
 <div class="figure">
 <img src="10caa8222b28328a6d8fd28917cbfb45.png" /><p class="caption"></p>
 </div>
-<h1 id="q-q-plot-2">Q-Q Plot</h1>
+<h5 id="q-q-plot-2">Q-Q Plot</h5>
 <p>&quot;Q&quot; in <em>Q-Q plot</em> stands for <em>quantile</em>, as this plot compares empirical and theoretical distribution (in this case, <em>normal</em> distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <code>x = y</code> line.</p>
 <div class="figure">
 <img src="ff471a5bcb80aaf91b4c053ab038d69a.png" /><p class="caption"></p>
 </div>
-<h1 id="kernel-density-plot-2">Kernel Density Plot</h1>
+<h5 id="kernel-density-plot-2">Kernel Density Plot</h5>
 <p><em>Kernel density plot</em> is a plot of smoothed <em>empirical distribution function</em>. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.</p>
 <div class="figure">
-<img src="af2319216ad60bc78730e69af4e62023.png" /><p class="caption"></p>
+<img src="c3769779837adedcb4198ec881cc946b.png" /><p class="caption"></p>
 </div>
 </div>
 <div class="section slide level2" id="section">
 <h1 id="section"></h1>
-<p>This report was generated with <a href="http://rapport-package.info/">rapport</a>.</p>
+<p>This report was generated in <a href="http://www.r-project.org/">R</a> with <a href="http://al3xa.github.com/rapport/">Rapport</a> in 3.061 sec. Feel free to create <a href="http://al3xa.github.com/rapport/#custom">your own reporting templates</a>!</p>
 <div class="figure">
 <img src="images/rapport.png" /><p class="caption"></p>
 </div>

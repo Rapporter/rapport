@@ -5,8 +5,8 @@
   <articleinfo>
     <title>Normality Tests</title>
     <author>
-      <firstname>(Username not set) (E-mail address not</firstname>
-      <surname>set)</surname>
+      <firstname>Rapport package team @</firstname>
+      <surname>https://github.com/aL3xa/rapport</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -221,7 +221,7 @@
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="07657b36ddf71c363ca51d844405b99a.png" />
+          <imagedata fileref="d6e712fea18fd4ee7d4e10dfdf62f2c5.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>
@@ -430,7 +430,7 @@
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="2566e535c6619ca87dce39c72a1bd2e1.png" />
+          <imagedata fileref="17a0ceb36b1aa86ef5d6aec6d641ad0b.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>
@@ -648,14 +648,18 @@
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="d60f6bc4a500f7965efdd22587e4ed81.png" />
+          <imagedata fileref="cf85f7da760795cb0d5f7370b623a2a9.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>
     </figure>
     <para>
-      This report was generated with
-      <ulink url="http://rapport-package.info/">rapport</ulink>.
+      This report was generated in
+      <ulink url="http://www.r-project.org/">R</ulink> with
+      <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink> in
+      1.245 sec. Feel free to create
+      <ulink url="http://al3xa.github.com/rapport/#custom">your own
+      reporting templates</ulink>!
     </para>
     <figure>
       <title></title>
