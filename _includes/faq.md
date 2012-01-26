@@ -9,7 +9,7 @@ Actually a lot of stuff:
 - if you're a German (oder Sie sprechen fließend Deutsch), then it's just a synonim for "report" (BTW, in Hungarian *rapport* denotes interrogation in military parlance)
 - if you're a Kwakiutl Indian or a Khalkha Mongol, _rapport_ probably means nothing in your language, but you should give [R](http://www.r-project.org ) a try, it's bonkers!
 
-\* taken from [Wikipedia page](http://en.wikipedia.org/wiki/Rapport )
+\* Stewart, Dorothy (1998). Gower handbook of management skills. Gower Publishing. p. 282. ISBN 0566078899
 
 <a id="authors"> </a>
 #### Who is developing this package?
@@ -28,15 +28,15 @@ _rapport_ relies on some [predefined](#templates)/[custom](#custom) templates, w
 
 #### Okay, you got me. How can I use this package?
 
-See [usage](#usage) or [translate](#translate) section.
+Read sections on [usage](#usage) and/or [writing custom templates](#custom).
 
 #### I get an error message while trying to export a template. What went wrong?
 
-```
+{% highlight r %}
 ... : error running command
-```
+{% endhighlight %}
 
-Yup, that is the normal behaviour if you do not have a [pandoc](http://johnmacfarlane.net/pandoc/index.html) backend installed. Please read the [manual](#install)!  
+Yup, that is the normal behaviour if you do not have a [pandoc](http://johnmacfarlane.net/pandoc/index.html) backend installed. Please read the [manual](#install)!
 
 #### I found a bug. What should I do?
 
@@ -67,5 +67,5 @@ It is based on the theory of *rapport*: you can define a function at any part of
 #### Okay, I understand, but I have a really handy function which should be added to *rapport*!
 
 We are open to happily check out your idea, please [file an issue about your idea on Github](https://github.com/aL3xa/rapport/issues) tagged as `feature`. Or write your own package submitted to [CRAN](cran.r-project.org) and please attract our attention to add that package to our [required or suggested package list](https://github.com/aL3xa/rapport/blob/master/DESCRIPTION).
- 
+
 <!-- #### I wrote a handy template... -->

@@ -1,15 +1,11 @@
 ---
-layout: functions
+layout: default
 ---
 
 <a id="functions"> </a>
 ### Package functions
 
-*rapport* is shipped with a bunch of (hopefully) handy functions to help you with writing templates. For a short introduction check out the following help files in [R](http://www.r-project.org/) interactive session:
-
-{% highlight r %}
-??rapport::rp.
-{% endhighlight %}
+*rapport* is shipped with a bunch of (hopefully) handy functions to help you with writing templates. For a short introduction check out the following help files in [R](http://www.r-project.org/) interactive session: `??rapport::rp.`
 
 A detailed documentation based on up-to-date `Rd` files is also available below. Of course, you could check out the manual of the stable package in _PDF_ format @ [CRAN](http://cran.r-project.org/web/packages/rapport) too.
 

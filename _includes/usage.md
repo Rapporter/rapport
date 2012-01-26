@@ -10,31 +10,31 @@ The most obvious goal of this package is to easily reproduce a report by providi
 
 {% highlight r %}
 > tpl.list()
-[1] "anova.tpl"                "correlations.tpl"         "crosstable.tpl"          
-[4] "example.tpl"              "multivar-descriptive.tpl" "outlier-test.tpl"        
-[7] "type_demo.tpl"            "univar-descriptive.tpl"  
+[1] "anova.tpl"                "correlations.tpl"         "crosstable.tpl"
+[4] "example.tpl"              "multivar-descriptive.tpl" "outlier-test.tpl"
+[7] "type_demo.tpl"            "univar-descriptive.tpl"
 {% endhighlight %}
 
 If you, find, say [`example.tpl`](/functions#exampletpl) promising, you can check it out by calling [`tpl.example`](/functions#tpl.example) function which prints out the examples specified in the template, prompting you to choose one from the list:
 
 {% highlight r %}
 > tpl.example('example')
-Enter example ID from the list below: 
+Enter example ID from the list below:
 
-(1) rapport("example", ius2009, var='leisure') 
-(2) rapport("example", ius2009, var='leisure', desc=FALSE) 
-(3) rapport("example", ius2009, var='leisure', desc=FALSE, hist=T) 
-(4) rapport("example", ius2009, var='leisure', desc=FALSE, hist=T, theme='Set2') 
-(all)   Run all examples 
+(1) rapport("example", ius2009, var='leisure')
+(2) rapport("example", ius2009, var='leisure', desc=FALSE)
+(3) rapport("example", ius2009, var='leisure', desc=FALSE, hist=T)
+(4) rapport("example", ius2009, var='leisure', desc=FALSE, hist=T, theme='Set2')
+(all)   Run all examples
 
-Template ID>  
+Template ID>
 {% endhighlight %}
 
 After you choose the template ID, press `ENTER` key to see it in action. For example, running the first example of `example` template returns:
 
 {% highlight r %}
 
- == Début  
+ == Début
 
 Hello, world!
 
@@ -42,24 +42,22 @@ I have just specified a *Variable* in this template named to **leisure**. The la
 
 And wow, the mean of *leisure* is 3.1994!
 
- === Descriptive statistics  
+ === Descriptive statistics
 
 
-    **Min.**   **1st Qu.**   **Median**   **Mean**   **3rd Qu.**   **Max.**   **NA's**  
+    **Min.**   **1st Qu.**   **Median**   **Mean**   **3rd Qu.**   **Max.**   **NA's**
 --- ---------- ------------- ------------ ---------- ------------- ---------- ----------
-1   0.0        2.0           3.0          3.2        4.0           12.0       37.0      
+1   0.0        2.0           3.0          3.2        4.0           12.0       37.0
 --- ---------- ------------- ------------ ---------- ------------- ---------- ----------
 
 
 The 5 highest values are: _12_, _12_, _10_, _10_ and _10_.
-   
+
 {% endhighlight %}
 
 What was done here? We have executed a simple analysis on the `leisure` variable found in [`ius2008`](/functions#ius2008) (package bundled) dataset. This simple template only returned a local greeting, the name and the [label](/functions#rp.label) of the given variable, alongside a variable's `summary` and 5 highest values.
 
 As you could see in the examples there are some other parameters of this template besides `data` and `var`, for example: `desc`, `hist` and `theme`. In order to, [get some info](/functions#tpl.info) on the template, issue following command:
-
-<!-- continue from here -->
 
 {% highlight r %}
 > tpl.info('example')
@@ -69,41 +67,41 @@ As you could see in the examples there are some other parameters of this templat
  by Gergely Daróczi
 
  This template demonstrates the basic features of rapport. We all hope you will like it!
- 
+
  packages:  lattice
  dataRequired:  NA
- 
- Examples: 
- rapport("example", ius2008, var='leisure') 
- rapport("example", ius2008, var='leisure', desc=FALSE) 
- rapport("example", ius2008, var='leisure', desc=FALSE, hist=T) 
- rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2') 
+
+ Examples:
+ rapport("example", ius2008, var='leisure')
+ rapport("example", ius2008, var='leisure', desc=FALSE)
+ rapport("example", ius2008, var='leisure', desc=FALSE, hist=T)
+ rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')
 
 Input parameters
- 
+
 `var` (Variable)
    A numeric variable.
      - type:    numeric
      - limits:  exactly 1 variable
- 
- 
+
+
 `desc` (Boolean)
    Show descriptive statistics of specified variable?
      - type:    boolean
      - limits:  exactly 1 variable
-     - default value:   TRUE 
- 
+     - default value:   TRUE
+
 `hist` (Boolean)
    Show histogram of specified variable?
      - type:    boolean
      - limits:  exactly 1 variable
-     - default value:   FALSE 
- 
+     - default value:   FALSE
+
 `theme` (Color theme)
    Color theme of the diagram
      - type:    option
      - limits:  exactly 1 variable
-     - default value:   Set1, Set2, Set3 
+     - default value:   Set1, Set2, Set3
 {% endhighlight %}
 
 Okay, we have seen the examples before, but new information appears now too:
@@ -122,7 +120,7 @@ Let's run the forth example:
 {% highlight r %}
 > rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')
 
- == Début  
+ == Début
 
 Hello, world!
 
@@ -132,7 +130,7 @@ And wow, the mean of *leisure* is 3.1994!
 
 **For more detailed statistics, you should have set `desc=TRUE`!**
 
- === Histogram  
+ === Histogram
 
 /tmp/RtmpyEDSZb/file12c8cb13.png
 {% endhighlight %}
@@ -166,7 +164,7 @@ There are a bunch of other helper functions in *rapport* to deal with templates.
 
 {% highlight r %}
 > tpl.
-tpl.body     tpl.example  tpl.export   tpl.find     tpl.info     tpl.inputs   tpl.list     tpl.meta     tpl.rerun    
+tpl.body     tpl.example  tpl.export   tpl.find     tpl.info     tpl.inputs   tpl.list     tpl.meta     tpl.rerun
 {% endhighlight %}
 
 By this method you might not find all handy functions, for example [`rapport.html`](/functions#rapport.html) and [`rapport.odt`](/functions#rapport.odt) which are simple wrappers around [`rapport`](/functions#rapport) and [`tpl.export`](/functions#tpl.export). Just use these functions you would use [`rapport`](/functions#rapport) and get a nifty HTML/odt output directly. For example:

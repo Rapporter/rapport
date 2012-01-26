@@ -2,7 +2,7 @@ _rapport_ is an [R](http://r-project.org ) package that facilitates creation of 
 
 Several [predefined templates](#templates ) come bundled with default _rapport_ installation, and their number will increase in future releases. Of course, we strongly encourage you to [write your own templates](#custom), and/or customise the ones that are shipped with default package installation.
 
-For a brief introcution to _rapport_ functionality, run:
+For a brief introduction to _rapport_, run:
 
 {% highlight r %}
 demo(rapport)

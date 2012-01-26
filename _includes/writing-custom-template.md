@@ -30,9 +30,9 @@ Some fields are not required by the template. However, you should reconsider inc
 
 Apart from _template metadata_, header also requires specification for template _inputs_. In most cases, _inputs_ refer to variable names in provided dataset, but some inputs have special meaning inside `rapport`, and some of them don't have anything to do with provided dataset whatsoever. Most inputs can contain limit specification, and some inputs can also have a default value. At first we'll explain input specifications on the fly, and in following sections we'll discuss each part in thorough details. Let's start with a single dummy input specification:
 
-```
+{% highlight r %}
 *foo.bar | numeric[1,6] | Numeric variable | A set of up to 6 numeric variables
-```
+{% endhighlight %}
 
 As you can see, it contains four distinct blocks delimited with `|` (pipe) character. Parser first trims all whitespaces from both ends, and extracts the value from a given block. The first block is reserved for input name (`*` indicates a required input), second block holds input type specification (in this case, with input limits), while third and fourth block contain label and description, respectively.
 
@@ -80,7 +80,6 @@ Third block in input definition is an input label. While _variable_ can have its
 
 <!-- First, let us check out the source code of [`example.tpl`](#exampletpl): -->
 
-<!-- <\!-- continue from here -\-> -->
 <!--  * check out in [R](http://www.r-project.org/) console with [`tpl.find`](#tpl.find): `tpl.find('example')` -->
 <!--  * search in installed package directory: `system.file("templates", 'example.tpl', package = "rapport")` -->
 <!--  * take a look at [sources on Github](https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl) -->

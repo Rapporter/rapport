@@ -1,44 +1,71 @@
-body, p, table {
+body {
     font-family: 'DroidSansRegular', sans-serif;
 }
 
-header, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Asap-Bold', sans-serif;
+h1, h2, h3, h4, h5, h6, .subtitle {
+    color: #383336;
+    font-family: 'DroidSansBold', sans-serif;
 }
 
-a {
-    color: #383336;
+.subtitle {
+    font-size: 21pt;
+}
+
+.content a {
+    color: #0099D9;
     text-decoration: none;
 }
 
-a:hover{
-    color: #0099D9;
+.content a:hover {
+    text-decoration: underline;
 }
 
-code {
-    font-family: 'Inconsolata', monospace;
-    background-color: whiteSmoke;
-    padding-left: 2px;
-    padding-right: 2px;
+.highlight, code {
+    font-family: 'DroidSansMono', monospace;
+    background-color: #F5F5F5;
     border: solid 1px #DDD;
+}
+
+.highlight code {
+    border: none;
 }
 
 .highlight {
-    background-color: whiteSmoke;
-    margin: 5px 5px 5px 20px;
-    padding: 5px;
-    border: solid 1px #DDD;
+    margin: 0 0 20px;
+    padding: 10px;
     overflow: auto;
-    font-family: "Inconsolata", monospace;
+}
+
+code {
+    padding: 0 5px;
 }
 
 nav {
     position: fixed;
 }
 
+nav a {
+    color: #383336;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #0099D9;
+}
 
 #logo {
-    margin: 0 0 30px;
+    margin: 10px 0 30px;
+}
+
+ul.tabs li {
+    margin-left: 2px;
+}
+
+ul.tabs li a.active {
+    color: #383336;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .content li {
@@ -46,19 +73,9 @@ nav {
     margin-left: 60px;
 }
 
-.options {
-    margin-left: 20px;
-}
-
-.options-desc {
-    padding-bottom: 2px;
-}
-
-ul.tabs li {
-    margin-left: 0px;
-}
-
-td {
-    padding-left: 5px;
-    padding-right: 5px;
+.contact {
+    color: #383336;
+    font-family: DroidSans;
+    font-size: 1.5em;
+    font-weight: bold;
 }

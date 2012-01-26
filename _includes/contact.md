@@ -1,4 +1,4 @@
-#### Gergely Daróczi
+<p class="contact">Gergely Daróczi</p>
 
 Currently a Ph.D. student at [BCE, Hungary](http://www.uni-corvinus.hu/index.php?id=p1000290) and also a lecturer at [PPKE BTK, Hungary](http://btk.ppke.hu/english).
 
@@ -8,7 +8,7 @@ Currently a Ph.D. student at [BCE, Hungary](http://www.uni-corvinus.hu/index.php
  - [Google+](https://plus.google.com/104026536443441875944/about)
  - [twitter](https://twitter.com/daroczig)
 
-#### Aleksandar Blagotić
+<p class="contact">Aleksandar Blagotić</p>
 
 Since the beginning of time, a psychology student at [Faculty of philosophy, Niš, Serbia](http://www.filfak.ni.ac.rs/).
 
