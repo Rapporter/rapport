@@ -85,6 +85,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         r$title <- as.character(rp$meta['title'])
         r$author <- as.character(getOption('tpl.user'))
         r$email <- as.character(getOption('tpl.email'))
+        r$time <- 0
     }
     if (!is.logical(create)) stop('Wrong create (!=TRUE|FALSE) parameter!')
     if (!is.logical(logo)) stop('Wrong logo (!=TRUE|FALSE) parameter!')
@@ -102,6 +103,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
 
     r$backend <- backend
     r$format <- format
+    r$time <- r$time + rp$time
 
     ## header stuff
     if (!is.null(rp))
@@ -137,15 +139,10 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
             if (!file.exists(sprintf('%s%s', tempdir(), '/rapport-header.html')))
                 cat(gsub('"includes/', sprintf('"%s/includes/', system.file(package='rapport')), readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
             options <- sprintf('-H %s -A %s', sprintf('%s%s', tempdir(), '/rapport-header.html'), system.file('includes/html/footer.html', package='rapport'))
-            if (logo)
-                r$addFig(system.file('includes/images/rapport.png', package='rapport'))
-        } else {
-            if (logo) {
-                r$add(paragraph('-------\nThis report was generated with [rapport](http://rapport-package.info/).'))
-                r$addFig(system.file('includes/images/rapport.png', package='rapport'))
-                # Error: object 'r' not found
-
-            }
+        }
+        if (logo) {
+            r$add(paragraph(sprintf('-------\nThis report was generated in [R](http://www.r-project.org/) with [Rapport](http://al3xa.github.com/rapport/) in %s sec. Feel free to create [your own reporting templates](http://al3xa.github.com/rapport/#custom)!', rp.round(r$time))))
+            r$addFig(system.file('includes/images/rapport.png', package='rapport'))
         }
         r$create(file=file, open=open, options=options, date=date)
     } else
