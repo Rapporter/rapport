@@ -99,11 +99,12 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
             }
         } else
             stop('Wrong rp parameter!')
+    } else {
+        r$time <- r$time + rp$time
     }
 
     r$backend <- backend
     r$format <- format
-    r$time <- r$time + rp$time
 
     ## header stuff
     if (!is.null(rp))
