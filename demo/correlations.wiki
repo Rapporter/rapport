@@ -1,6 +1,6 @@
 '''Correlations'''
 
-(Username not set)
+Rapport package team
 
 ''2011-04-26 20:25 CET''
 
@@ -98,7 +98,7 @@ carb   -0.5509  * *     0.5270  * *      0.3950  *        0.7498  * * *    -0.09
 [[Image:ce42e944b62284a3bebf2101155af100.png|center]]
 
 <s>---</s>
-This report was generated with [rapport]([http://rapport-package.info/]). 
+This report was generated in [R]([http://www.r-project.org/]) with [Rapport]([http://al3xa.github.com/rapport/]) in 0.596 sec. Feel free to create [templates your own reporting]([http://al3xa.github.com/rapport/#custom])! 
 
 [[Image:images/rapport.png|center]]
 

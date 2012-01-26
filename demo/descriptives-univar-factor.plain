@@ -1,5 +1,5 @@
 Descriptive statistics
-(Username not set) (E-mail address not set)
+Rapport package team @ https://github.com/aL3xa/rapport
 2011-04-26 20:25 CET
 
 Description
@@ -63,6 +63,7 @@ The most frequent value is city.
 
 * * * * *
 
-This report was generated with rapport.
+This report was generated in R with Rapport in 0.269 sec. Feel free to
+create your own reporting templates!
 
 []

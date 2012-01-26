@@ -225,7 +225,7 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (4192d6bda3c1f1c8f268b9344e9786ee.png)]
+[IMAGE: image (bde5b5e4ca06fa103953fc17e5273291.png)]
 .SS Description
 .PP
 This template will return descriptive statistics of numerical or
@@ -1346,7 +1346,7 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (c1ac92e4f5aa993da03a59fbb3394fb0.png)]
+[IMAGE: image (e63199776da0ad4146eff538e5ef7af7.png)]
 .SS \f[I]wt\f[]
 .PP
 The dataset has \f[I]32\f[] observations with \f[I]32\f[] valid values
@@ -1502,12 +1502,15 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (af2319216ad60bc78730e69af4e62023.png)]
+[IMAGE: image (c3769779837adedcb4198ec881cc946b.png)]
 .PP
    *   *   *   *   *
 .PP
-This report was generated with rapport (http://rapport-package.info/).
+This report was generated in R (http://www.r-project.org/) with
+Rapport (http://al3xa.github.com/rapport/) in 3.061 sec.
+Feel free to create your own reporting
+templates (http://al3xa.github.com/rapport/#custom)!
 .PP
 [IMAGE: image (images/rapport.png)]
 .SH AUTHORS
-(Username not set) (E-mail address not set).
+Rapport package team \@ https://github.com/aL3xa/rapport.

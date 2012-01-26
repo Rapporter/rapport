@@ -62,7 +62,7 @@ h3. Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-!07657b36ddf71c363ca51d844405b99a.png!
+!d6e712fea18fd4ee7d4e10dfdf62f2c5.png!
 
 
 h2. Description
@@ -126,7 +126,7 @@ h3. Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-!2566e535c6619ca87dce39c72a1bd2e1.png!
+!17a0ceb36b1aa86ef5d6aec6d641ad0b.png!
 
 
 h2. Description
@@ -193,12 +193,12 @@ h3. Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-!d60f6bc4a500f7965efdd22587e4ed81.png!
+!cf85f7da760795cb0d5f7370b623a2a9.png!
 
 
 <hr />
 
-This report was generated with "rapport":http://rapport-package.info/.
+This report was generated in "R":http://www.r-project.org/ with "Rapport":http://al3xa.github.com/rapport/ in 1.245 sec. Feel free to create "your own reporting templates":http://al3xa.github.com/rapport/#custom!
 
 !images/rapport.png!
 

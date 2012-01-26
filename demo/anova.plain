@@ -1,5 +1,5 @@
 ANOVA Template
-(Username not set) (E-mail address not set)
+Rapport package team @ https://github.com/aL3xa/rapport
 2011-04-26 20:25 CET
 
 Description
@@ -249,6 +249,7 @@ of Gender and Relationship status wasn't found significant (p = 0.717).
 
 * * * * *
 
-This report was generated with rapport.
+This report was generated in R with Rapport in 0.617 sec. Feel free to
+create your own reporting templates!
 
 []

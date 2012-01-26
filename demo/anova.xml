@@ -5,8 +5,8 @@
   <articleinfo>
     <title>ANOVA Template</title>
     <author>
-      <firstname>(Username not set) (E-mail address not</firstname>
-      <surname>set)</surname>
+      <firstname>Rapport package team @</firstname>
+      <surname>https://github.com/aL3xa/rapport</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -1487,8 +1487,12 @@
       (p = 0.717).
     </para>
     <para>
-      This report was generated with
-      <ulink url="http://rapport-package.info/">rapport</ulink>.
+      This report was generated in
+      <ulink url="http://www.r-project.org/">R</ulink> with
+      <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink> in
+      0.617 sec. Feel free to create
+      <ulink url="http://al3xa.github.com/rapport/#custom">your own
+      reporting templates</ulink>!
     </para>
     <figure>
       <title></title>

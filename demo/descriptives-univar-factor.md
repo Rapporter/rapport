@@ -1,5 +1,5 @@
 % Descriptive statistics
-% (Username not set) (E-mail address not set)
+% Rapport package team @ https://github.com/aL3xa/rapport
 % 2011-04-26 20:25 CET
 
 Description
@@ -63,6 +63,9 @@ The most frequent value is *city*.
 
 * * * * *
 
-This report was generated with [rapport](http://rapport-package.info/).
+This report was generated in [R](http://www.r-project.org/) with
+[Rapport](http://al3xa.github.com/rapport/) in 0.269 sec. Feel free to
+create [your own reporting
+templates](http://al3xa.github.com/rapport/#custom)!
 
 ![image](images/rapport.png)

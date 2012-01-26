@@ -1,6 +1,6 @@
 #+TITLE: Descriptive statistics
 
-#+AUTHOR: (Username not set) (E-mail address not set)
+#+AUTHOR: Rapport package team @ https://github.com/aL3xa/rapport
 #+DATE: 2011-04-26 20:25 CET
 
 ** Description
@@ -161,7 +161,7 @@ known "bell shape".
 
 #+CAPTION: 
 
-[[4192d6bda3c1f1c8f268b9344e9786ee.png]]
+[[bde5b5e4ca06fa103953fc17e5273291.png]]
 ** Description
 
 This template will return descriptive statistics of numerical or
@@ -536,7 +536,7 @@ known "bell shape".
 
 #+CAPTION: 
 
-[[c1ac92e4f5aa993da03a59fbb3394fb0.png]]
+[[e63199776da0ad4146eff538e5ef7af7.png]]
 ** /wt/
 
 The dataset has /32/ observations with /32/ valid values (missing: /0/)
@@ -664,12 +664,14 @@ known "bell shape".
 
 #+CAPTION: 
 
-[[af2319216ad60bc78730e69af4e62023.png]]
+[[c3769779837adedcb4198ec881cc946b.png]]
 
 --------------
 
-This report was generated with
-[[http://rapport-package.info/][rapport]].
+This report was generated in [[http://www.r-project.org/][R]] with
+[[http://al3xa.github.com/rapport/][Rapport]] in 3.061 sec. Feel free to
+create [[http://al3xa.github.com/rapport/#custom][your own reporting
+templates]]!
 
 #+CAPTION: 
 
