@@ -28,13 +28,22 @@ code {
     font-family: "Inconsolata", monospace;
 }
 
+nav {
+    position: fixed;
+}
+
+nav a {
+    color: #383336;
+    text-decoration: none;
+}
+
+nav a:hover{
+    color: #0099D9;
+}
+
 .content li {
     list-style-type:circle;
     margin-left: 60px;
-}
-
-li.active {
-    margin-left: 20px;
 }
 
 .options {
