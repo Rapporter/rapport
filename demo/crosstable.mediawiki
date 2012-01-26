@@ -2,14 +2,14 @@
 
 Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
 
-= Variable description =
+== Variable description ==
 
 Two variables specified:
 
 * &quot;gender&quot; (&quot;Gender&quot;) with ''673'' and
 * &quot;dwell&quot; (&quot;Dwelling&quot;) with ''662'' valid values.
 
-= Counts =
+== Counts ==
 
 <!-- endlist -->
 
@@ -38,7 +38,7 @@ Two variables specified:
 </tbody>
 </table>
 
-= Percentages =
+== Percentages ==
 
 <!-- endlist -->
 
@@ -67,7 +67,7 @@ Two variables specified:
 </tbody>
 </table>
 
-== Row percentages ==
+=== Row percentages ===
 
 <!-- endlist -->
 
@@ -96,7 +96,7 @@ Two variables specified:
 </tbody>
 </table>
 
-== Column percentages ==
+=== Column percentages ===
 
 <!-- endlist -->
 
@@ -125,7 +125,7 @@ Two variables specified:
 </tbody>
 </table>
 
-= Chi-squared test =
+== Chi-squared test ==
 
 <table>
 <thead>
@@ -148,7 +148,7 @@ Two variables specified:
 
 It seems that a real association can be pointed out between ''gender'' and ''dwell'' by the ''Pearson's Chi-squared test'' (χ=12.6353 at the degree of freedom being 2) at the significance level of 0.0018. Based on Goodman and Kruskal's lambda it seems that ''dwell'' (λ=0.7602) has an effect on ''gender'' (λ=0) if we assume both variables to be nominal. The association between the two variables seems to be weak based on Cramer's V (0.1001).
 
-== Pearson's residuals ==
+=== Pearson's residuals ===
 
 <!-- endlist -->
 
@@ -177,7 +177,7 @@ It seems that a real association can be pointed out between ''gender'' and ''dwe
 </tbody>
 </table>
 
-== Mosaic chart ==
+=== Mosaic chart ===
 
 [[Image:089332282780d32b96117afe8dba0470.png|frame|none]]
 
@@ -185,14 +185,14 @@ It seems that a real association can be pointed out between ''gender'' and ''dwe
 
 Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
 
-= Variable description =
+== Variable description ==
 
 Two variables specified:
 
 * &quot;email&quot; (&quot;Email usage&quot;) with ''672'' and
 * &quot;dwell&quot; (&quot;Dwelling&quot;) with ''662'' valid values.
 
-= Counts =
+== Counts ==
 
 <!-- endlist -->
 
@@ -251,7 +251,7 @@ Two variables specified:
 </tbody>
 </table>
 
-= Percentages =
+== Percentages ==
 
 <!-- endlist -->
 
@@ -310,7 +310,7 @@ Two variables specified:
 </tbody>
 </table>
 
-== Row percentages ==
+=== Row percentages ===
 
 <!-- endlist -->
 
@@ -369,7 +369,7 @@ Two variables specified:
 </tbody>
 </table>
 
-== Column percentages ==
+=== Column percentages ===
 
 <!-- endlist -->
 
@@ -428,7 +428,7 @@ Two variables specified:
 </tbody>
 </table>
 
-= Chi-squared test =
+== Chi-squared test ==
 
 <table>
 <thead>
@@ -451,7 +451,7 @@ Two variables specified:
 
 It seems that no real association can be pointed out between ''email'' and ''dwell'' by the ''Pearson's Chi-squared test'' (χ=14.864 at the degree of freedom being 12) at the significance level of 0.249. For this end no other statistical tests were performed.
 
-== Pearson's residuals ==
+=== Pearson's residuals ===
 
 <!-- endlist -->
 
@@ -510,7 +510,7 @@ It seems that no real association can be pointed out between ''email'' and ''dwe
 </tbody>
 </table>
 
-== Mosaic chart ==
+=== Mosaic chart ===
 
 [[Image:b945f6de1aad4225593b3e9c0eb6d7dc.png|frame|none]]
 

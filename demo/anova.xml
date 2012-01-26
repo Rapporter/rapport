@@ -5,8 +5,8 @@
   <articleinfo>
     <title>ANOVA Template</title>
     <author>
-      <firstname>Rapport package team @</firstname>
-      <surname>https://github.com/aL3xa/rapport</surname>
+      <firstname>(Username not set) (E-mail address not</firstname>
+      <surname>set)</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -49,10 +49,8 @@
       Below lies a frequency table for factors in ANOVA model. Note that
       the missing values are removed from the summary.
     </para>
-    <!-- endlist -->
     <informaltable>
-      <tgroup cols="6">
-        <colspec align="left" />
+      <tgroup cols="5">
         <colspec align="left" />
         <colspec align="left" />
         <colspec align="left" />
@@ -61,29 +59,24 @@
         <thead>
           <row>
             <entry>
-            </entry>
-            <entry>
               <emphasis role="strong">gender</emphasis>
             </entry>
             <entry>
               <emphasis role="strong">N</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">pct</emphasis>
+              <emphasis role="strong">%</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">cumul.count</emphasis>
+              <emphasis role="strong">Cumul. N</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">cumul.pct</emphasis>
+              <emphasis role="strong">Cumul. %</emphasis>
             </entry>
           </row>
         </thead>
         <tbody>
           <row>
-            <entry>
-              1
-            </entry>
             <entry>
               male
             </entry>
@@ -101,9 +94,6 @@
             </entry>
           </row>
           <row>
-            <entry>
-              2
-            </entry>
             <entry>
               female
             </entry>
@@ -123,8 +113,6 @@
           <row>
             <entry>
               Total
-            </entry>
-            <entry>
             </entry>
             <entry>
               673
@@ -542,13 +530,16 @@
       effect on response variable.
     </para>
   </section>
-  <section id="description-1">
-    <title>Description</title>
-    <para>
-      An ANOVA report with table of descriptives, diagnostic tests and
-      ANOVA-specific statistics.
-    </para>
-  </section>
+</section>
+<section id="description-1">
+  <title>Description</title>
+  <para>
+    An ANOVA report with table of descriptives, diagnostic tests and
+    ANOVA-specific statistics.
+  </para>
+  <para>
+    s
+  </para>
 </section>
 <section id="introduction-1">
   <title>Introduction</title>
@@ -583,10 +574,8 @@
       Below lies a frequency table for factors in ANOVA model. Note that
       the missing values are removed from the summary.
     </para>
-    <!-- endlist -->
     <informaltable>
-      <tgroup cols="7">
-        <colspec align="left" />
+      <tgroup cols="6">
         <colspec align="left" />
         <colspec align="left" />
         <colspec align="left" />
@@ -595,8 +584,6 @@
         <colspec align="left" />
         <thead>
           <row>
-            <entry>
-            </entry>
             <entry>
               <emphasis role="strong">gender</emphasis>
             </entry>
@@ -607,21 +594,18 @@
               <emphasis role="strong">N</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">pct</emphasis>
+              <emphasis role="strong">%</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">cumul.count</emphasis>
+              <emphasis role="strong">Cumul. N</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">cumul.pct</emphasis>
+              <emphasis role="strong">Cumul. %</emphasis>
             </entry>
           </row>
         </thead>
         <tbody>
           <row>
-            <entry>
-              1
-            </entry>
             <entry>
               male
             </entry>
@@ -642,9 +626,6 @@
             </entry>
           </row>
           <row>
-            <entry>
-              2
-            </entry>
             <entry>
               female
             </entry>
@@ -666,9 +647,6 @@
           </row>
           <row>
             <entry>
-              3
-            </entry>
-            <entry>
               male
             </entry>
             <entry>
@@ -688,9 +666,6 @@
             </entry>
           </row>
           <row>
-            <entry>
-              4
-            </entry>
             <entry>
               female
             </entry>
@@ -712,9 +687,6 @@
           </row>
           <row>
             <entry>
-              5
-            </entry>
-            <entry>
               male
             </entry>
             <entry>
@@ -734,9 +706,6 @@
             </entry>
           </row>
           <row>
-            <entry>
-              6
-            </entry>
             <entry>
               female
             </entry>
@@ -761,8 +730,7 @@
               Total
             </entry>
             <entry>
-            </entry>
-            <entry>
+              Total
             </entry>
             <entry>
               633

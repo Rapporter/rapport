@@ -2,7 +2,7 @@
 
 This template will return the correlation matrix of supplied numerical variables.
 
-= Variable description =
+== Variable description ==
 
 ''3'' variables provided.
 
@@ -15,7 +15,7 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 * ''age'' and ''leisure''
 * ''edu'' and ''leisure''
 
-== Correlation matrix ==
+=== Correlation matrix ===
 
 <!-- endlist -->
 
@@ -56,7 +56,7 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 
 This template will return the correlation matrix of supplied numerical variables.
 
-= Variable description =
+== Variable description ==
 
 ''11'' variables provided.
 
@@ -93,7 +93,7 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 * ''drat'' and ''carb''
 * ''am'' and ''carb''
 
-== Correlation matrix ==
+=== Correlation matrix ===
 
 <!-- endlist -->
 

@@ -1,0 +1,106 @@
+== Description ==
+
+This template will return descriptive statistics of a numerical variable.
+
+== ''age'' (&quot;Age&quot;) ==
+
+The dataset has ''709'' observations with ''677'' valid values (missing: ''32'') in ''age'' (&quot;Age&quot;), which seems to be a quantitative variable.
+
+=== Base statistics ===
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">'''value'''</th>
+<th align="left">'''mean(age)'''</th>
+<th align="left">'''sd(age)'''</th>
+<th align="left">'''var(age)'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(all)</td>
+<td align="left">24.5731</td>
+<td align="left">6.8491</td>
+<td align="left">46.9107</td>
+</tr>
+</tbody>
+</table>
+
+=== Histogram ===
+
+[[Image:ac5d789145bdef09b10219ef16429f53.png|frame|none]]
+
+It seems that the highest value is ''58'' which is exactly 3.625 times higher than the smallest value (''16'').
+
+The standard deviation is ''6.8491'' (variance: ''46.9107''). The expected value is around ''24.5731'', somewhere between ''24.0572'' and ''25.0891'' with the standard error of ''0.2632''.
+
+If we suppose that ''Age'' is not near to a normal distribution (test: see below, skewness: ''1.9296'', kurtosis: ''7.4851''), checking the median (''23'') might be a better option instead of the mean. The interquartile range (''6'') measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+=== Normality tests ===
+
+==== Introduction ====
+
+In statistics, ''normality'' refers to an assumption that the distribution of a random variable follows ''normal'' (''Gaussian'') distribution. Because of its bell-like shape, it's also known as the ''&quot;bell curve&quot;''. The formula for ''normal distribution'' is:
+
+<math>f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}</math>
+
+''Normal distribution'' belongs to a ''location-scale family'' of distributions, as it's defined two parameters:
+
+* ''μ'' - ''mean'' or ''expectation'' (location parameter)
+* ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
+
+[[Image:2f8c434e103f36ec70966b372838d448.png|frame|none]]
+
+==== Normality Tests ====
+
+===== Overview =====
+
+Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is ''normal''. At this point only few such tests will be covered: the ones that are available in <tt>stats</tt> package (which comes bundled with default R installation) and <tt>nortest</tt> package that is [http://cran.r-project.org/web/packages/nortest/index.html available] on CRAN.
+
+* '''Shapiro-Wilk test''' is a powerful normality test appropriate for small samples. In R, it's implemented in <tt>shapiro.test</tt> function available in <tt>stats</tt> package.
+* '''Lilliefors test''' is a modification of ''Kolmogorov-Smirnov test'' appropriate for testing normality when parameters or normal distribution (''μ'', ''σ<sup>2</sup>'') are not known. <tt>lillie.test</tt> function is located in <tt>nortest</tt> package.
+* '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <tt>ad.test</tt> function in <tt>nortest</tt> package.
+* '''Pearson Χ<sup>2</sup> test''' is another normality test which takes more &quot;traditional&quot; approach in normality testing. <tt>pearson.test</tt> is located in <tt>nortest</tt> package.
+
+===== Results =====
+
+Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
+
+''0.05''
+
+So, let's draw some conclusions based on applied normality test:
+
+* according to ''Shapiro-Wilk test'', the distribution of ''Age'' is not normal.
+* based on ''Lilliefors test'', distribution of ''Age'' is not normal
+* ''Anderson-Darling test'' confirms violation of normality assumption
+* ''Pearson's Χ<sup>2</sup> test'' classifies the underlying distribution as non-normal
+
+==== Diagnostic Plots ====
+
+There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: ''histogram'', ''Q-Q plot'' and ''kernel density plot''.
+
+===== Histogram =====
+
+''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
+
+[[Image:ac5d789145bdef09b10219ef16429f53.png|frame|none]]
+
+===== Q-Q Plot =====
+
+&quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
+
+[[Image:cbbba756d844aa053998959b73b9feff.png|frame|none]]
+
+===== Kernel Density Plot =====
+
+''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
+
+[[Image:796d6407dadfc323f89723f20d199ac4.png|frame|none]]
+
+
+-----
+
+This report was generated with [http://rapport-package.info/ rapport].
+
+[[Image:images/rapport.png|frame|none]]

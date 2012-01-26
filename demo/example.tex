@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[]{article}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifxetex
@@ -27,9 +27,13 @@
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
+              xetex,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \else
-  \usepackage[unicode=true]{hyperref}
+  \usepackage[unicode=true,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \fi
 \hypersetup{breaklinks=true, pdfborder={0 0 0}}
 \setlength{\parindent}{0pt}
@@ -38,8 +42,8 @@
 \setcounter{secnumdepth}{0}
 
 \title{Example template}
-\author{Rapport package team @ https://github.com/aL3xa/rapport}
-\date{2011--04--26 20:25 CET}
+\author{(Username not set) (E-mail address not set)}
+\date{2011-04-26 20:25 CET}
 
 \begin{document}
 \maketitle
@@ -49,7 +53,7 @@
 This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
-\section{Début}
+\subsection{Début}
 
 Hello, world!
 
@@ -59,7 +63,7 @@ leisure time (hours per day)''.
 
 And wow, the mean of \emph{leisure} is \emph{3.1994}!
 
-\subsection{Descriptive statistics}
+\subsubsection{Descriptive statistics}
 
 \ctable[pos = H, center, botcap]{lllllll}
 {% notes
@@ -70,7 +74,7 @@ And wow, the mean of \emph{leisure} is \emph{3.1994}!
 Qu.} & \textbf{Median} & \textbf{Mean} & \textbf{3rd
 Qu.} & \textbf{Max.} & \textbf{NA's}
 \ML
-0.0 & 2.0 & 3.0 & 3.2 & 4.0 & 12.0 & 37.0
+0.000 & 2.000 & 3.000 & 3.199 & 4.000 & 12.000 & 37.000
 \LL
 }
 
@@ -82,7 +86,7 @@ The 5 highest values are: \emph{12}, \emph{12}, \emph{10}, \emph{10} and
 This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
-\section{Début}
+\subsection{Début}
 
 Hello, world!
 
@@ -100,7 +104,7 @@ And wow, the mean of \emph{leisure} is \emph{3.1994}!
 This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
-\section{Début}
+\subsection{Début}
 
 Hello, world!
 
@@ -113,7 +117,7 @@ And wow, the mean of \emph{leisure} is \emph{3.1994}!
 \textbf{For more detailed statistics, you should have set
 \texttt{desc=TRUE}!}
 
-\subsection{Histogram}
+\subsubsection{Histogram}
 
 \begin{figure}[htbp]
 \centering
@@ -126,7 +130,7 @@ And wow, the mean of \emph{leisure} is \emph{3.1994}!
 This template demonstrates the basic features of rapport. We all hope
 you will like it!
 
-\section{Début}
+\subsection{Début}
 
 Hello, world!
 
@@ -139,7 +143,7 @@ And wow, the mean of \emph{leisure} is \emph{3.1994}!
 \textbf{For more detailed statistics, you should have set
 \texttt{desc=TRUE}!}
 
-\subsection{Histogram}
+\subsubsection{Histogram}
 
 \begin{figure}[htbp]
 \centering

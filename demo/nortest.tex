@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[]{article}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifxetex
@@ -12,8 +12,6 @@
     \usepackage[utf8]{inputenc}
   \fi
 \fi
-\usepackage{ctable}
-\usepackage{float} % provides the H option for float placement
 \usepackage{graphicx}
 % We will generate all images so they have a width \maxwidth. This means
 % that they will get their normal width if they fit onto the page, but
@@ -27,9 +25,13 @@
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
+              xetex,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \else
-  \usepackage[unicode=true]{hyperref}
+  \usepackage[unicode=true,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \fi
 \hypersetup{breaklinks=true, pdfborder={0 0 0}}
 \newcommand{\textsubscr}[1]{\ensuremath{_{\scriptsize\textrm{#1}}}}
@@ -39,8 +41,8 @@
 \setcounter{secnumdepth}{0}
 
 \title{Normality Tests}
-\author{Rapport package team @ https://github.com/aL3xa/rapport}
-\date{2011--04--26 20:25 CET}
+\author{(Username not set) (E-mail address not set)}
+\date{2011-04-26 20:25 CET}
 
 \begin{document}
 \maketitle
@@ -50,7 +52,7 @@
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
 
-\section{Introduction}
+\subsection{Introduction}
 
 In statistics, \emph{normality} refers to an assumption that the
 distribution of a random variable follows \emph{normal}
@@ -75,9 +77,9 @@ distributions, as it's defined two parameters:
 \caption{}
 \end{figure}
 
-\section{Normality Tests}
+\subsection{Normality Tests}
 
-\subsection{Overview}
+\subsubsection{Overview}
 
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
@@ -108,27 +110,12 @@ on CRAN.
   which takes more ``traditional'' approach in normality testing.
   \texttt{pearson.test} is located in \texttt{nortest} package.
 \end{itemize}
-\subsection{Results}
+\subsubsection{Results}
 
 Here you can see the results of applied normality tests (\emph{p-values}
 less than 0.05 indicate significant discrepancies):
 
-\ctable[pos = H, center, botcap]{lll}
-{% notes
-}
-{% rows
-\FL
- & \textbf{H} & \textbf{p}
-\ML
-shapiro.test & 0.9001 & 0
-\\\noalign{\medskip}
-lillie.test & 0.168 & 0
-\\\noalign{\medskip}
-ad.test & 18.753 & 0
-\\\noalign{\medskip}
-pearson.test & 1791.25 & 0
-\LL
-}
+\emph{0.05}
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -146,13 +133,13 @@ So, let's draw some conclusions based on applied normality test:
   \emph{Pearson's Χ\textsuperscript{2} test} classifies the underlying
   distribution as normal
 \end{itemize}
-\section{Diagnostic Plots}
+\subsection{Diagnostic Plots}
 
 There are various plots that can help you decide about the normality of
 the distribution. Only a few most commonly used plots will be shown:
 \emph{histogram}, \emph{Q-Q plot} and \emph{kernel density plot}.
 
-\subsection{Histogram}
+\subsubsection{Histogram}
 
 \emph{Histogram} was first introduced by \emph{Karl Pearson} and it's
 probably the most popular plot for depicting the probability
@@ -166,7 +153,7 @@ distribution is normal, bins should resemble the ``bell-like'' shape.
 \caption{}
 \end{figure}
 
-\subsection{Q-Q Plot}
+\subsubsection{Q-Q Plot}
 
 ``Q'' in \emph{Q-Q plot} stands for \emph{quantile}, as this plot
 compares empirical and theoretical distribution (in this case,
@@ -180,7 +167,7 @@ other. For normal distribution, plotted dots should approximate a
 \caption{}
 \end{figure}
 
-\subsection{Kernel Density Plot}
+\subsubsection{Kernel Density Plot}
 
 \emph{Kernel density plot} is a plot of smoothed \emph{empirical
 distribution function}. As such, it provides good insight about the
@@ -189,7 +176,7 @@ the well known ``bell shape''.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{01692a50f2fba07dd3c1b2084e49e8d5.png}
+\includegraphics{07657b36ddf71c363ca51d844405b99a.png}
 \caption{}
 \end{figure}
 
@@ -198,7 +185,7 @@ the well known ``bell shape''.
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
 
-\section{Introduction}
+\subsection{Introduction}
 
 In statistics, \emph{normality} refers to an assumption that the
 distribution of a random variable follows \emph{normal}
@@ -217,9 +204,9 @@ distributions, as it's defined two parameters:
 \item
   \emph{σ\textsuperscript{2}} - \emph{variance} (scale parameter)
 \end{itemize}
-\section{Normality Tests}
+\subsection{Normality Tests}
 
-\subsection{Overview}
+\subsubsection{Overview}
 
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
@@ -250,27 +237,12 @@ on CRAN.
   which takes more ``traditional'' approach in normality testing.
   \texttt{pearson.test} is located in \texttt{nortest} package.
 \end{itemize}
-\subsection{Results}
+\subsubsection{Results}
 
 Here you can see the results of applied normality tests (\emph{p-values}
 less than 0.05 indicate significant discrepancies):
 
-\ctable[pos = H, center, botcap]{lll}
-{% notes
-}
-{% rows
-\FL
- & \textbf{H} & \textbf{p}
-\ML
-shapiro.test & 0.9001 & 0
-\\\noalign{\medskip}
-lillie.test & 0.168 & 0
-\\\noalign{\medskip}
-ad.test & 18.753 & 0
-\\\noalign{\medskip}
-pearson.test & 1791.25 & 0
-\LL
-}
+\emph{0.05}
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -288,13 +260,13 @@ So, let's draw some conclusions based on applied normality test:
   \emph{Pearson's Χ\textsuperscript{2} test} classifies the underlying
   distribution as normal
 \end{itemize}
-\section{Diagnostic Plots}
+\subsection{Diagnostic Plots}
 
 There are various plots that can help you decide about the normality of
 the distribution. Only a few most commonly used plots will be shown:
 \emph{histogram}, \emph{Q-Q plot} and \emph{kernel density plot}.
 
-\subsection{Histogram}
+\subsubsection{Histogram}
 
 \emph{Histogram} was first introduced by \emph{Karl Pearson} and it's
 probably the most popular plot for depicting the probability
@@ -308,7 +280,7 @@ distribution is normal, bins should resemble the ``bell-like'' shape.
 \caption{}
 \end{figure}
 
-\subsection{Q-Q Plot}
+\subsubsection{Q-Q Plot}
 
 ``Q'' in \emph{Q-Q plot} stands for \emph{quantile}, as this plot
 compares empirical and theoretical distribution (in this case,
@@ -322,7 +294,7 @@ other. For normal distribution, plotted dots should approximate a
 \caption{}
 \end{figure}
 
-\subsection{Kernel Density Plot}
+\subsubsection{Kernel Density Plot}
 
 \emph{Kernel density plot} is a plot of smoothed \emph{empirical
 distribution function}. As such, it provides good insight about the
@@ -331,7 +303,7 @@ the well known ``bell shape''.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{b26afbd74d3686d7e73ec55f3f088e0f.png}
+\includegraphics{2566e535c6619ca87dce39c72a1bd2e1.png}
 \caption{}
 \end{figure}
 
@@ -340,7 +312,7 @@ the well known ``bell shape''.
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
 
-\section{Introduction}
+\subsection{Introduction}
 
 In statistics, \emph{normality} refers to an assumption that the
 distribution of a random variable follows \emph{normal}
@@ -365,9 +337,9 @@ distributions, as it's defined two parameters:
 \caption{}
 \end{figure}
 
-\section{Normality Tests}
+\subsection{Normality Tests}
 
-\subsection{Overview}
+\subsubsection{Overview}
 
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
@@ -398,27 +370,12 @@ on CRAN.
   which takes more ``traditional'' approach in normality testing.
   \texttt{pearson.test} is located in \texttt{nortest} package.
 \end{itemize}
-\subsection{Results}
+\subsubsection{Results}
 
 Here you can see the results of applied normality tests (\emph{p-values}
 less than 0.05 indicate significant discrepancies):
 
-\ctable[pos = H, center, botcap]{lll}
-{% notes
-}
-{% rows
-\FL
- & \textbf{H} & \textbf{p}
-\ML
-shapiro.test & 0.9001 & 0
-\\\noalign{\medskip}
-lillie.test & 0.168 & 0
-\\\noalign{\medskip}
-ad.test & 18.753 & 0
-\\\noalign{\medskip}
-pearson.test & 1791.25 & 0
-\LL
-}
+\emph{0.05}
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -436,13 +393,13 @@ So, let's draw some conclusions based on applied normality test:
   \emph{Pearson's Χ\textsuperscript{2} test} classifies the underlying
   distribution as normal
 \end{itemize}
-\section{Diagnostic Plots}
+\subsection{Diagnostic Plots}
 
 There are various plots that can help you decide about the normality of
 the distribution. Only a few most commonly used plots will be shown:
 \emph{histogram}, \emph{Q-Q plot} and \emph{kernel density plot}.
 
-\subsection{Histogram}
+\subsubsection{Histogram}
 
 \emph{Histogram} was first introduced by \emph{Karl Pearson} and it's
 probably the most popular plot for depicting the probability
@@ -456,7 +413,7 @@ distribution is normal, bins should resemble the ``bell-like'' shape.
 \caption{}
 \end{figure}
 
-\subsection{Q-Q Plot}
+\subsubsection{Q-Q Plot}
 
 ``Q'' in \emph{Q-Q plot} stands for \emph{quantile}, as this plot
 compares empirical and theoretical distribution (in this case,
@@ -470,7 +427,7 @@ other. For normal distribution, plotted dots should approximate a
 \caption{}
 \end{figure}
 
-\subsection{Kernel Density Plot}
+\subsubsection{Kernel Density Plot}
 
 \emph{Kernel density plot} is a plot of smoothed \emph{empirical
 distribution function}. As such, it provides good insight about the
@@ -479,7 +436,7 @@ the well known ``bell shape''.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{5be0d211ffad27ed23f51e5f964b99cc.png}
+\includegraphics{d60f6bc4a500f7965efdd22587e4ed81.png}
 \caption{}
 \end{figure}
 

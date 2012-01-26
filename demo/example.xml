@@ -5,8 +5,8 @@
   <articleinfo>
     <title>Example template</title>
     <author>
-      <firstname>Rapport package team @</firstname>
-      <surname>https://github.com/aL3xa/rapport</surname>
+      <firstname>(Username not set) (E-mail address not</firstname>
+      <surname>set)</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -71,25 +71,25 @@
         <tbody>
           <row>
             <entry>
-              0.0
+              0.000
             </entry>
             <entry>
-              2.0
+              2.000
             </entry>
             <entry>
-              3.0
+              3.000
             </entry>
             <entry>
-              3.2
+              3.199
             </entry>
             <entry>
-              4.0
+              4.000
             </entry>
             <entry>
-              12.0
+              12.000
             </entry>
             <entry>
-              37.0
+              37.000
             </entry>
           </row>
         </tbody>
@@ -101,13 +101,13 @@
       <emphasis>10</emphasis> and <emphasis>10</emphasis>.
     </para>
   </section>
-  <section id="description-1">
-    <title>Description</title>
-    <para>
-      This template demonstrates the basic features of rapport. We all
-      hope you will like it!
-    </para>
-  </section>
+</section>
+<section id="description-1">
+  <title>Description</title>
+  <para>
+    This template demonstrates the basic features of rapport. We all
+    hope you will like it!
+  </para>
 </section>
 <section id="début-1">
   <title>Début</title>
@@ -128,13 +128,13 @@
     <emphasis role="strong">For more detailed statistics, you should
     have set <literal>desc=TRUE</literal>!</emphasis>
   </para>
-  <section id="description-2">
-    <title>Description</title>
-    <para>
-      This template demonstrates the basic features of rapport. We all
-      hope you will like it!
-    </para>
-  </section>
+</section>
+<section id="description-2">
+  <title>Description</title>
+  <para>
+    This template demonstrates the basic features of rapport. We all
+    hope you will like it!
+  </para>
 </section>
 <section id="début-2">
   <title>Début</title>
@@ -167,13 +167,13 @@
       </mediaobject>
     </figure>
   </section>
-  <section id="description-3">
-    <title>Description</title>
-    <para>
-      This template demonstrates the basic features of rapport. We all
-      hope you will like it!
-    </para>
-  </section>
+</section>
+<section id="description-3">
+  <title>Description</title>
+  <para>
+    This template demonstrates the basic features of rapport. We all
+    hope you will like it!
+  </para>
 </section>
 <section id="début-3">
   <title>Début</title>

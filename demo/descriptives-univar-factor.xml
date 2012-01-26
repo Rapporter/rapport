@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<article>
+  <articleinfo>
+    <title>Descriptive statistics</title>
+    <author>
+      <firstname>(Username not set) (E-mail address not</firstname>
+      <surname>set)</surname>
+    </author>
+    <date>2011-04-26 20:25 CET</date>
+  </articleinfo>
+<section id="description">
+  <title>Description</title>
+  <para>
+    This template will return descriptive statistics and frequency table
+    of a categorical variable.
+  </para>
+</section>
+<section id="gender-gender">
+  <title><emphasis>gender</emphasis> (&quot;Gender&quot;)</title>
+  <para>
+    The dataset has <emphasis>709</emphasis> observations with
+    <emphasis>673</emphasis> valid values (missing:
+    <emphasis>36</emphasis>) in <emphasis>gender</emphasis>
+    (&quot;Gender&quot;), which seems to be a qualitative variable.
+  </para>
+  <section id="base-statistics">
+    <title>Base statistics</title>
+    <informaltable>
+      <tgroup cols="5">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              <emphasis role="strong">gender</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">N</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">%</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Cumul. N</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Cumul. %</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              male
+            </entry>
+            <entry>
+              410
+            </entry>
+            <entry>
+              60.9212
+            </entry>
+            <entry>
+              410
+            </entry>
+            <entry>
+              60.9212
+            </entry>
+          </row>
+          <row>
+            <entry>
+              female
+            </entry>
+            <entry>
+              263
+            </entry>
+            <entry>
+              39.0788
+            </entry>
+            <entry>
+              673
+            </entry>
+            <entry>
+              100
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Total
+            </entry>
+            <entry>
+              673
+            </entry>
+            <entry>
+              100
+            </entry>
+            <entry>
+              673
+            </entry>
+            <entry>
+              100
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+  <section id="barplot">
+    <title>Barplot</title>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="3ed92ab3ffc6e875335e7e8c774c35a8.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
+    <para>
+      It seems that the highest value is <emphasis>2</emphasis> which is
+      exactly 2 times higher than the smallest value
+      (<emphasis>1</emphasis>).
+    </para>
+    <para>
+      The most frequent value is <emphasis>male</emphasis>.
+    </para>
+  </section>
+</section>
+<section id="description-1">
+  <title>Description</title>
+  <para>
+    This template will return descriptive statistics and frequency table
+    of a categorical variable.
+  </para>
+</section>
+<section id="dwell-dwelling">
+  <title><emphasis>dwell</emphasis> (&quot;Dwelling&quot;)</title>
+  <para>
+    The dataset has <emphasis>709</emphasis> observations with
+    <emphasis>662</emphasis> valid values (missing:
+    <emphasis>47</emphasis>) in <emphasis>dwell</emphasis>
+    (&quot;Dwelling&quot;), which seems to be a qualitative variable.
+  </para>
+  <section id="base-statistics-1">
+    <title>Base statistics</title>
+    <informaltable>
+      <tgroup cols="5">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              <emphasis role="strong">dwell</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">N</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">%</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Cumul. N</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Cumul. %</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              city
+            </entry>
+            <entry>
+              599
+            </entry>
+            <entry>
+              90.4834
+            </entry>
+            <entry>
+              599
+            </entry>
+            <entry>
+              90.4834
+            </entry>
+          </row>
+          <row>
+            <entry>
+              small town
+            </entry>
+            <entry>
+              33
+            </entry>
+            <entry>
+              4.9849
+            </entry>
+            <entry>
+              632
+            </entry>
+            <entry>
+              95.4683
+            </entry>
+          </row>
+          <row>
+            <entry>
+              village
+            </entry>
+            <entry>
+              30
+            </entry>
+            <entry>
+              4.5317
+            </entry>
+            <entry>
+              662
+            </entry>
+            <entry>
+              100
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Total
+            </entry>
+            <entry>
+              662
+            </entry>
+            <entry>
+              100
+            </entry>
+            <entry>
+              662
+            </entry>
+            <entry>
+              100
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+  <section id="barplot-1">
+    <title>Barplot</title>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="56568b0b0cecf2de13fbe0316f43f8fc.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
+    <para>
+      It seems that the highest value is <emphasis>3</emphasis> which is
+      exactly 3 times higher than the smallest value
+      (<emphasis>1</emphasis>).
+    </para>
+    <para>
+      The most frequent value is <emphasis>city</emphasis>.
+    </para>
+    <para>
+      This report was generated with
+      <ulink url="http://rapport-package.info/">rapport</ulink>.
+    </para>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/rapport.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
+  </section>
+</section>
+</article>

@@ -1,6 +1,6 @@
 '''Example template'''
 
-Rapport package team
+(Username not set)
 
 ''2011-04-26 20:25 CET''
 
@@ -9,7 +9,7 @@ Rapport package team
 
 This template demonstrates the basic features of rapport. We all hope you will like it! 
 
-== Début ==
+=== Début ===
 
 Hello, world! 
 
@@ -17,11 +17,11 @@ I have just specified a *Variable* in this template named to '''leisure'''. The 
 
 And wow, the mean of *leisure* is _3.1994_! 
 
-=== Descriptive statistics ===
+==== Descriptive statistics ====
 
 '''Min.'''   '''1st Qu.'''   '''Median'''   '''Mean'''   '''3rd Qu.'''   '''Max.'''   '''NA's'''  
 <s>------</s> <s>---------</s> <s>--------</s> <s>------</s> <s>---------</s> <s>------</s> <s>------</s>
-0.0        2.0           3.0          3.2        4.0           12.0       37.0      
+0.000      2.000         3.000        3.199      4.000         12.000     37.000    
 <s>------</s> <s>---------</s> <s>--------</s> <s>------</s> <s>---------</s> <s>------</s> <s>------</s>
 
 The 5 highest values are: _12_, _12_, _10_, _10_ and _10_. 
@@ -30,7 +30,7 @@ The 5 highest values are: _12_, _12_, _10_, _10_ and _10_.
 
 This template demonstrates the basic features of rapport. We all hope you will like it! 
 
-== Début ==
+=== Début ===
 
 Hello, world! 
 
@@ -44,7 +44,7 @@ And wow, the mean of *leisure* is _3.1994_!
 
 This template demonstrates the basic features of rapport. We all hope you will like it! 
 
-== Début ==
+=== Début ===
 
 Hello, world! 
 
@@ -54,7 +54,7 @@ And wow, the mean of *leisure* is _3.1994_!
 
 '''For more detailed statistics, you should have set `desc=TRUE`!''' 
 
-=== Histogram ===
+==== Histogram ====
 
 [[Image:9542b7929dcd934208ee4f18bde6ff31.png|center]]
 
@@ -62,7 +62,7 @@ And wow, the mean of *leisure* is _3.1994_!
 
 This template demonstrates the basic features of rapport. We all hope you will like it! 
 
-== Début ==
+=== Début ===
 
 Hello, world! 
 
@@ -72,7 +72,7 @@ And wow, the mean of *leisure* is _3.1994_!
 
 '''For more detailed statistics, you should have set `desc=TRUE`!''' 
 
-=== Histogram ===
+==== Histogram ====
 
 [[Image:f72d3b7413bcb88fce740c2ab229411a.png|center]]
 

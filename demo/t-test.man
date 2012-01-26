@@ -1,10 +1,10 @@
 .\"t
-.TH t-test "" "2011\[en]04\[en]26 20:25 CET" "Template"
+.TH t-test "" "2011-04-26 20:25 CET" "Template"
 .SS Description
 .PP
 A t-test report with table of descriptives, diagnostic tests and t-test
 specific statistics.
-.SH Introduction
+.SS Introduction
 .PP
 In a nutshell, \f[I]t-test\f[] is a statistical test that assesses
 hypothesis of equality of two means.
@@ -21,14 +21,14 @@ compare means of two variables from independent samples -
 .IP \[bu] 2
 compare means of two variables from dependent samples -
 \f[B]paired-samples \f[I]t-test\f[]\f[]
-.SH Overview
+.SS Overview
 .PP
 Independent samples \f[I]t-test\f[] is carried out with \f[I]Internet
 usage in leisure time (hours per day)\f[] as dependent variable, and
 \f[I]Gender\f[] as independent variable.
 Confidence interval is set to 95%.
-Equality of variances wasn't assumed.
-.SH Descriptives
+Equality of variances wasn\[aq]t assumed.
+.SS Descriptives
 .PP
 In order to get more insight on the underlying data, a table of basic
 descriptive statistics is displayed below.
@@ -121,7 +121,7 @@ T}@T{
 3.8058
 T}
 .TE
-.SH Diagnostics
+.SS Diagnostics
 .PP
 Since \f[I]t-test\f[] is a parametric technique, it sets some basic
 assumptions on distribution shape: it has to be \f[I]normal\f[] (or
@@ -169,7 +169,7 @@ T}
 .TE
 .PP
 As you can see, applied tests confirm departures from normality.
-.SH Results
+.SS Results
 .PP
 Welch Two Sample t-test was applied, and significant differences were
 found.
@@ -199,7 +199,7 @@ T}@T{
 T}@T{
 0.2514
 T}@T{
-\[en]0.1463
+-0.1463
 T}@T{
 0.5576
 T}
@@ -208,7 +208,7 @@ T}
 .PP
 A t-test report with table of descriptives, diagnostic tests and t-test
 specific statistics.
-.SH Introduction
+.SS Introduction
 .PP
 In a nutshell, \f[I]t-test\f[] is a statistical test that assesses
 hypothesis of equality of two means.
@@ -225,17 +225,65 @@ compare means of two variables from independent samples -
 .IP \[bu] 2
 compare means of two variables from dependent samples -
 \f[B]paired-samples \f[I]t-test\f[]\f[]
-.SH Overview
+.SS Overview
 .PP
 One-sample \f[I]t-test\f[] is carried out with \f[I]Internet usage in
 leisure time (hours per day)\f[] as dependent variable.
 Confidence interval is set to 95%.
-Equality of variances wasn't assumed.
-.SH Descriptives
+Equality of variances wasn\[aq]t assumed.
+.SS Descriptives
 .PP
 In order to get more insight on the underlying data, a table of basic
 descriptive statistics is displayed below.
-.SH Diagnostics
+.PP
+.TS
+tab(@);
+l l l l l l l l l l.
+T{
+\f[B]value\f[]
+T}@T{
+\f[B]min(x)\f[]
+T}@T{
+\f[B]max(x)\f[]
+T}@T{
+\f[B]mean(x)\f[]
+T}@T{
+\f[B]sd(x)\f[]
+T}@T{
+\f[B]var(x)\f[]
+T}@T{
+\f[B]median(x)\f[]
+T}@T{
+\f[B]IQR(x)\f[]
+T}@T{
+\f[B]skewness(x)\f[]
+T}@T{
+\f[B]kurtosis(x)\f[]
+T}
+_
+T{
+(all)
+T}@T{
+0
+T}@T{
+12
+T}@T{
+3.1994
+T}@T{
+2.1436
+T}@T{
+4.5951
+T}@T{
+3
+T}@T{
+2
+T}@T{
+1.1873
+T}@T{
+4.547
+T}
+.TE
+.SS Diagnostics
 .PP
 Since \f[I]t-test\f[] is a parametric technique, it sets some basic
 assumptions on distribution shape: it has to be \f[I]normal\f[] (or
@@ -283,7 +331,7 @@ T}
 .TE
 .PP
 As you can see, applied tests confirm departures from normality.
-.SH Results
+.SS Results
 .PP
 One Sample t-test was applied, and significant differences were found.
 .PP
@@ -306,7 +354,7 @@ _
 T{
 t
 T}@T{
-\[en]0.0072
+-0.0072
 T}@T{
 671
 T}@T{
@@ -324,4 +372,4 @@ This report was generated with rapport (http://rapport-package.info/).
 .PP
 [IMAGE: image (images/rapport.png)]
 .SH AUTHORS
-Rapport package team \@ https://github.com/aL3xa/rapport.
+(Username not set) (E-mail address not set).

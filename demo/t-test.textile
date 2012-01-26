@@ -2,7 +2,7 @@ h2. Description
 
 A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
 
-h1. Introduction
+h2. Introduction
 
 In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows "_t-distribution_":https://en.wikipedia.org/wiki/Student%27s_t-distribution can be considered a _t-test_. The most common usage of _t-test_ is to:
 
@@ -10,11 +10,11 @@ In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equali
 * compare means of two variables from independent samples - *independent samples _t-test_*
 * compare means of two variables from dependent samples - *paired-samples _t-test_*
 
-h1. Overview
+h2. Overview
 
 Independent samples _t-test_ is carried out with _Internet usage in leisure time (hours per day)_ as dependent variable, and _Gender_ as independent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.
 
-h1. Descriptives
+h2. Descriptives
 
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
@@ -24,11 +24,11 @@ In order to get more insight on the underlying data, a table of basic descriptiv
 ||0|10|3.3824|2.5822|6.6676|3|2|1.2197|3.8058|
 
 
-h1. Diagnostics
+h2. Diagnostics
 
 Since _t-test_ is a parametric technique, it sets some basic assumptions on distribution shape: it has to be _normal_ (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.
 
-h2. Normality Tests
+h3. Normality Tests
 
 We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_).
 
@@ -42,7 +42,7 @@ We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen 
 
 As you can see, applied tests confirm departures from normality.
 
-h1. Results
+h2. Results
 
 Welch Two Sample t-test was applied, and significant differences were found.
 
@@ -56,7 +56,7 @@ h2. Description
 
 A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
 
-h1. Introduction
+h2. Introduction
 
 In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows "_t-distribution_":https://en.wikipedia.org/wiki/Student%27s_t-distribution can be considered a _t-test_. The most common usage of _t-test_ is to:
 
@@ -64,19 +64,23 @@ In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equali
 * compare means of two variables from independent samples - *independent samples _t-test_*
 * compare means of two variables from dependent samples - *paired-samples _t-test_*
 
-h1. Overview
+h2. Overview
 
 One-sample _t-test_ is carried out with _Internet usage in leisure time (hours per day)_ as dependent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.
 
-h1. Descriptives
+h2. Descriptives
 
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
-h1. Diagnostics
+|_. *value*|_. *min(x)*|_. *max(x)*|_. *mean(x)*|_. *sd(x)*|_. *var(x)*|_. *median(x)*|_. *IQR(x)*|_. *skewness(x)*|_. *kurtosis(x)*|
+|(all)|0|12|3.1994|2.1436|4.5951|3|2|1.1873|4.547|
+
+
+h2. Diagnostics
 
 Since _t-test_ is a parametric technique, it sets some basic assumptions on distribution shape: it has to be _normal_ (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.
 
-h2. Normality Tests
+h3. Normality Tests
 
 We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_).
 
@@ -90,7 +94,7 @@ We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen 
 
 As you can see, applied tests confirm departures from normality.
 
-h1. Results
+h2. Results
 
 One Sample t-test was applied, and significant differences were found.
 

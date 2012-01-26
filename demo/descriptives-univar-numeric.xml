@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<article>
+  <articleinfo>
+    <title>Descriptive statistics</title>
+    <author>
+      <firstname>(Username not set) (E-mail address not</firstname>
+      <surname>set)</surname>
+    </author>
+    <date>2011-04-26 20:25 CET</date>
+  </articleinfo>
+<section id="description">
+  <title>Description</title>
+  <para>
+    This template will return descriptive statistics of a numerical
+    variable.
+  </para>
+</section>
+<section id="age-age">
+  <title><emphasis>age</emphasis> (&quot;Age&quot;)</title>
+  <para>
+    The dataset has <emphasis>709</emphasis> observations with
+    <emphasis>677</emphasis> valid values (missing:
+    <emphasis>32</emphasis>) in <emphasis>age</emphasis>
+    (&quot;Age&quot;), which seems to be a quantitative variable.
+  </para>
+  <section id="base-statistics">
+    <title>Base statistics</title>
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              <emphasis role="strong">value</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">mean(age)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">sd(age)</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">var(age)</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              (all)
+            </entry>
+            <entry>
+              24.5731
+            </entry>
+            <entry>
+              6.8491
+            </entry>
+            <entry>
+              46.9107
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+  <section id="histogram">
+    <title>Histogram</title>
+    <figure>
+      <title></title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="ac5d789145bdef09b10219ef16429f53.png" />
+        </imageobject>
+        <textobject><phrase></phrase></textobject>
+      </mediaobject>
+    </figure>
+    <para>
+      It seems that the highest value is <emphasis>58</emphasis> which
+      is exactly 3.625 times higher than the smallest value
+      (<emphasis>16</emphasis>).
+    </para>
+    <para>
+      The standard deviation is <emphasis>6.8491</emphasis> (variance:
+      <emphasis>46.9107</emphasis>). The expected value is around
+      <emphasis>24.5731</emphasis>, somewhere between
+      <emphasis>24.0572</emphasis> and <emphasis>25.0891</emphasis> with
+      the standard error of <emphasis>0.2632</emphasis>.
+    </para>
+    <para>
+      If we suppose that <emphasis>Age</emphasis> is not near to a
+      normal distribution (test: see below, skewness:
+      <emphasis>1.9296</emphasis>, kurtosis:
+      <emphasis>7.4851</emphasis>), checking the median
+      (<emphasis>23</emphasis>) might be a better option instead of the
+      mean. The interquartile range (<emphasis>6</emphasis>) measures
+      the statistics dispersion of the variable (similar to standard
+      deviation) based on median.
+    </para>
+  </section>
+  <section id="normality-tests">
+    <title>Normality tests</title>
+    <section id="introduction">
+      <title>Introduction</title>
+      <para>
+        In statistics, <emphasis>normality</emphasis> refers to an
+        assumption that the distribution of a random variable follows
+        <emphasis>normal</emphasis> (<emphasis>Gaussian</emphasis>)
+        distribution. Because of its bell-like shape, it's also known as
+        the <emphasis>&quot;bell curve&quot;</emphasis>. The formula for
+        <emphasis>normal distribution</emphasis> is:
+      </para>
+      <para>
+        $f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$
+      </para>
+      <para>
+        <emphasis>Normal distribution</emphasis> belongs to a
+        <emphasis>location-scale family</emphasis> of distributions, as
+        it's defined two parameters:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <emphasis>μ</emphasis> - <emphasis>mean</emphasis> or
+            <emphasis>expectation</emphasis> (location parameter)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis>σ<superscript>2</superscript></emphasis> -
+            <emphasis>variance</emphasis> (scale parameter)
+          </para>
+        </listitem>
+      </itemizedlist>
+      <figure>
+        <title></title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="2f8c434e103f36ec70966b372838d448.png" />
+          </imageobject>
+          <textobject><phrase></phrase></textobject>
+        </mediaobject>
+      </figure>
+    </section>
+    <section id="normality-tests-1">
+      <title>Normality Tests</title>
+      <section id="overview">
+        <title>Overview</title>
+        <para>
+          Various hypothesis tests can be applied in order to test if
+          the distribution of given random variable violates normality
+          assumption. These procedures test the
+          H<subscript>0</subscript> that provided variable's
+          distribution is <emphasis>normal</emphasis>. At this point
+          only few such tests will be covered: the ones that are
+          available in <literal>stats</literal> package (which comes
+          bundled with default R installation) and
+          <literal>nortest</literal> package that is
+          <ulink url="http://cran.r-project.org/web/packages/nortest/index.html">available</ulink>
+          on CRAN.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis role="strong">Shapiro-Wilk test</emphasis> is a
+              powerful normality test appropriate for small samples. In
+              R, it's implemented in <literal>shapiro.test</literal>
+              function available in <literal>stats</literal> package.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Lilliefors test</emphasis> is a
+              modification of <emphasis>Kolmogorov-Smirnov
+              test</emphasis> appropriate for testing normality when
+              parameters or normal distribution (<emphasis>μ</emphasis>,
+              <emphasis>σ<superscript>2</superscript></emphasis>) are
+              not known. <literal>lillie.test</literal> function is
+              located in <literal>nortest</literal> package.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Anderson-Darling test</emphasis>
+              is one of the most powerful normality tests as it will
+              detect the most of departures from normality. You can find
+              <literal>ad.test</literal> function in
+              <literal>nortest</literal> package.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Pearson
+              Χ<superscript>2</superscript> test</emphasis> is another
+              normality test which takes more &quot;traditional&quot;
+              approach in normality testing.
+              <literal>pearson.test</literal> is located in
+              <literal>nortest</literal> package.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section id="results">
+        <title>Results</title>
+        <para>
+          Here you can see the results of applied normality tests
+          (<emphasis>p-values</emphasis> less than 0.05 indicate
+          significant discrepancies):
+        </para>
+        <para>
+          <emphasis>0.05</emphasis>
+        </para>
+        <para>
+          So, let's draw some conclusions based on applied normality
+          test:
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              according to <emphasis>Shapiro-Wilk test</emphasis>, the
+              distribution of <emphasis>Age</emphasis> is not normal.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              based on <emphasis>Lilliefors test</emphasis>,
+              distribution of <emphasis>Age</emphasis> is not normal
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Anderson-Darling test</emphasis> confirms
+              violation of normality assumption
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Pearson's Χ<superscript>2</superscript>
+              test</emphasis> classifies the underlying distribution as
+              non-normal
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+    <section id="diagnostic-plots">
+      <title>Diagnostic Plots</title>
+      <para>
+        There are various plots that can help you decide about the
+        normality of the distribution. Only a few most commonly used
+        plots will be shown: <emphasis>histogram</emphasis>,
+        <emphasis>Q-Q plot</emphasis> and <emphasis>kernel density
+        plot</emphasis>.
+      </para>
+      <section id="histogram-1">
+        <title>Histogram</title>
+        <para>
+          <emphasis>Histogram</emphasis> was first introduced by
+          <emphasis>Karl Pearson</emphasis> and it's probably the most
+          popular plot for depicting the probability distribution of a
+          random variable. However, the decision depends on number of
+          bins, so it can sometimes be misleading. If the variable
+          distribution is normal, bins should resemble the
+          &quot;bell-like&quot; shape.
+        </para>
+        <figure>
+          <title></title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="ac5d789145bdef09b10219ef16429f53.png" />
+            </imageobject>
+            <textobject><phrase></phrase></textobject>
+          </mediaobject>
+        </figure>
+      </section>
+      <section id="q-q-plot">
+        <title>Q-Q Plot</title>
+        <para>
+          &quot;Q&quot; in <emphasis>Q-Q plot</emphasis> stands for
+          <emphasis>quantile</emphasis>, as this plot compares empirical
+          and theoretical distribution (in this case,
+          <emphasis>normal</emphasis> distribution) by plotting their
+          quantiles against each other. For normal distribution, plotted
+          dots should approximate a &quot;straight&quot;,
+          <literal>x = y</literal> line.
+        </para>
+        <figure>
+          <title></title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="cbbba756d844aa053998959b73b9feff.png" />
+            </imageobject>
+            <textobject><phrase></phrase></textobject>
+          </mediaobject>
+        </figure>
+      </section>
+      <section id="kernel-density-plot">
+        <title>Kernel Density Plot</title>
+        <para>
+          <emphasis>Kernel density plot</emphasis> is a plot of smoothed
+          <emphasis>empirical distribution function</emphasis>. As such,
+          it provides good insight about the shape of the distribution.
+          For normal distributions, it should resemble the well known
+          &quot;bell shape&quot;.
+        </para>
+        <figure>
+          <title></title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="796d6407dadfc323f89723f20d199ac4.png" />
+            </imageobject>
+            <textobject><phrase></phrase></textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          This report was generated with
+          <ulink url="http://rapport-package.info/">rapport</ulink>.
+        </para>
+        <figure>
+          <title></title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/rapport.png" />
+            </imageobject>
+            <textobject><phrase></phrase></textobject>
+          </mediaobject>
+        </figure>
+      </section>
+    </section>
+  </section>
+</section>
+</article>

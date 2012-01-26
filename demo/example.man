@@ -1,17 +1,17 @@
 .\"t
-.TH Example "" "2011\[en]04\[en]26 20:25 CET" "template"
+.TH Example "" "2011-04-26 20:25 CET" "template"
 .SS Description
 .PP
 This template demonstrates the basic features of rapport.
 We all hope you will like it!
-.SH Début
+.SS Début
 .PP
 Hello, world!
 .PP
 I have just specified a \f[I]Variable\f[] in this template named to
 \f[B]leisure\f[].
-The label of this variable is \[lq]Internet usage in leisure time (hours
-per day)\[rq].
+The label of this variable is "Internet usage in leisure time (hours per
+day)".
 .PP
 And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 .SS Descriptive statistics
@@ -32,23 +32,23 @@ T}@T{
 T}@T{
 \f[B]Max.\f[]
 T}@T{
-\f[B]NA's\f[]
+\f[B]NA\[aq]s\f[]
 T}
 _
 T{
-0.0
+0.000
 T}@T{
-2.0
+2.000
 T}@T{
-3.0
+3.000
 T}@T{
-3.2
+3.199
 T}@T{
-4.0
+4.000
 T}@T{
-12.0
+12.000
 T}@T{
-37.0
+37.000
 T}
 .TE
 .PP
@@ -58,14 +58,14 @@ The 5 highest values are: \f[I]12\f[], \f[I]12\f[], \f[I]10\f[],
 .PP
 This template demonstrates the basic features of rapport.
 We all hope you will like it!
-.SH Début
+.SS Début
 .PP
 Hello, world!
 .PP
 I have just specified a \f[I]Variable\f[] in this template named to
 \f[B]leisure\f[].
-The label of this variable is \[lq]Internet usage in leisure time (hours
-per day)\[rq].
+The label of this variable is "Internet usage in leisure time (hours per
+day)".
 .PP
 And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 .PP
@@ -75,14 +75,14 @@ And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 .PP
 This template demonstrates the basic features of rapport.
 We all hope you will like it!
-.SH Début
+.SS Début
 .PP
 Hello, world!
 .PP
 I have just specified a \f[I]Variable\f[] in this template named to
 \f[B]leisure\f[].
-The label of this variable is \[lq]Internet usage in leisure time (hours
-per day)\[rq].
+The label of this variable is "Internet usage in leisure time (hours per
+day)".
 .PP
 And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 .PP
@@ -95,14 +95,14 @@ And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 .PP
 This template demonstrates the basic features of rapport.
 We all hope you will like it!
-.SH Début
+.SS Début
 .PP
 Hello, world!
 .PP
 I have just specified a \f[I]Variable\f[] in this template named to
 \f[B]leisure\f[].
-The label of this variable is \[lq]Internet usage in leisure time (hours
-per day)\[rq].
+The label of this variable is "Internet usage in leisure time (hours per
+day)".
 .PP
 And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 .PP
@@ -118,4 +118,4 @@ This report was generated with rapport (http://rapport-package.info/).
 .PP
 [IMAGE: image (images/rapport.png)]
 .SH AUTHORS
-Rapport package team \@ https://github.com/aL3xa/rapport.
+(Username not set) (E-mail address not set).

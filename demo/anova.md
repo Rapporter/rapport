@@ -1,43 +1,45 @@
 % ANOVA Template
-% Rapport package team @ https://github.com/aL3xa/rapport
+% (Username not set) (E-mail address not set)
 % 2011-04-26 20:25 CET
 
-## Description
+Description
+-----------
 
 An ANOVA report with table of descriptives, diagnostic tests and
 ANOVA-specific statistics.
 
-# Introduction
+Introduction
+------------
 
 **Analysis of Variance** or **ANOVA** is a statistical procedure that
 tests equality of means for several samples. It was first introduced in
 1921. by famous English statistician Sir Ronald Aylmer Fisher.
 
-# Model Overview
+Model Overview
+--------------
 
 One-Way ANOVA was carried out, with *Gender* as independent variable,
 and *Internet usage in leisure time (hours per day)* as a response
 variable. Factor interaction was taken into account.
 
-# Descriptives
+Descriptives
+------------
 
 In order to get more insight on the model data, a table of frequencies
 for ANOVA factors is displayed, as well as a table of descriptives.
 
-## Frequency Table
+### Frequency Table
 
 Below lies a frequency table for factors in ANOVA model. Note that the
 missing values are removed from the summary.
 
-<!-- endlist -->
+  **gender**   **N**   **%**     **Cumul. N**   **Cumul. %**
+  ------------ ------- --------- -------------- --------------
+  male         410     60.9212   410            60.9212
+  female       263     39.0788   673            100
+  Total        673     100       673            100
 
-          **gender**   **N**   **pct**   **cumul.count**   **cumul.pct**
-  ------- ------------ ------- --------- ----------------- ---------------
-  1       male         410     60.9212   410               60.9212
-  2       female       263     39.0788   673               100
-  Total                673     100       673               100
-
-## Descriptive Statistics
+### Descriptive Statistics
 
 The following table displays the descriptive statistics of ANOVA model.
 Factor levels and/or their combinations lie on the left hand side, while
@@ -50,16 +52,17 @@ right-hand side.
   female    0               12              3.0643           2.3546         2                  3               1.4064               4.9089
             0               10              3.3824           2.5822         3                  2               1.2197               3.8058
 
-# Diagnostics
+Diagnostics
+-----------
 
 Before we carry out ANOVA, we'd like to check some basic assumptions.
 For those purposes, normality and homoscedascity tests are carried out
 alongside several graphs that may help you with your decision on model's
 main assumptions.
 
-## Diagnostics
+### Diagnostics
 
-### Univariate Normality
+#### Univariate Normality
 
 We will use *Shapiro-Wilk*, *Lilliefors* and *Anderson-Darling* tests to
 screen departures from normality in the response variable (*Internet
@@ -75,7 +78,7 @@ usage in leisure time (hours per day)*).
 
 As you can see, applied tests confirm departures from normality.
 
-### Homoscedascity
+#### Homoscedascity
 
 In order to test homoscedascity, *Bartlett* and *Fligner-Kileen* tests
 are applied.
@@ -91,7 +94,7 @@ When it comes to equality of variances, applied tests yield inconsistent
 results. While *Fligner-Kileen test* confirmed the hypotheses of
 homoscedascity, *Bartlett's test* rejected it.
 
-## Diagnostic Plots
+### Diagnostic Plots
 
 Here you can see several diagnostic plots for ANOVA model:
 
@@ -103,9 +106,10 @@ Here you can see several diagnostic plots for ANOVA model:
 
 ![image](1c63b6fad7856cf59a751b0f80339918.png)
 
-# ANOVA Summary
+ANOVA Summary
+-------------
 
-## ANOVA Table
+### ANOVA Table
 
 <!-- endlist -->
 
@@ -117,46 +121,50 @@ Here you can see several diagnostic plots for ANOVA model:
 *F-test* for *Gender* is not statistically significant, which implies
 that there is no Gender effect on response variable.
 
-## Description
+Description
+-----------
 
 An ANOVA report with table of descriptives, diagnostic tests and
 ANOVA-specific statistics.
 
-# Introduction
+s
+
+Introduction
+------------
 
 **Analysis of Variance** or **ANOVA** is a statistical procedure that
 tests equality of means for several samples. It was first introduced in
 1921. by famous English statistician Sir Ronald Aylmer Fisher.
 
-# Model Overview
+Model Overview
+--------------
 
 Two-Way ANOVA was carried out, with *Gender* and *Relationship status*
 as independent variables, and *Internet usage in leisure time (hours per
 day)* as a response variable. Factor interaction was taken into account.
 
-# Descriptives
+Descriptives
+------------
 
 In order to get more insight on the model data, a table of frequencies
 for ANOVA factors is displayed, as well as a table of descriptives.
 
-## Frequency Table
+### Frequency Table
 
 Below lies a frequency table for factors in ANOVA model. Note that the
 missing values are removed from the summary.
 
-<!-- endlist -->
+  **gender**   **partner**         **N**   **%**     **Cumul. N**   **Cumul. %**
+  ------------ ------------------- ------- --------- -------------- --------------
+  male         in a relationship   150     23.6967   150            23.6967
+  female       in a relationship   120     18.9573   270            42.654
+  male         married             33      5.2133    303            47.8673
+  female       married             29      4.5814    332            52.4487
+  male         single              204     32.2275   536            84.6761
+  female       single              97      15.3239   633            100
+  Total        Total               633     100       633            100
 
-          **gender**   **partner**         **N**   **pct**   **cumul.count**   **cumul.pct**
-  ------- ------------ ------------------- ------- --------- ----------------- ---------------
-  1       male         in a relationship   150     23.6967   150               23.6967
-  2       female       in a relationship   120     18.9573   270               42.654
-  3       male         married             33      5.2133    303               47.8673
-  4       female       married             29      4.5814    332               52.4487
-  5       male         single              204     32.2275   536               84.6761
-  6       female       single              97      15.3239   633               100
-  Total                                    633     100       633               100
-
-## Descriptive Statistics
+### Descriptive Statistics
 
 The following table displays the descriptive statistics of ANOVA model.
 Factor levels and/or their combinations lie on the left hand side, while
@@ -178,16 +186,17 @@ right-hand side.
                single              0               10              3.5833           3.2039         3                  1.5             1.279                3.4365
                                    1               2               1.5              0.7071         1.5                0.5             0                    1
 
-# Diagnostics
+Diagnostics
+-----------
 
 Before we carry out ANOVA, we'd like to check some basic assumptions.
 For those purposes, normality and homoscedascity tests are carried out
 alongside several graphs that may help you with your decision on model's
 main assumptions.
 
-## Diagnostics
+### Diagnostics
 
-### Univariate Normality
+#### Univariate Normality
 
 We will use *Shapiro-Wilk*, *Lilliefors* and *Anderson-Darling* tests to
 screen departures from normality in the response variable (*Internet
@@ -203,7 +212,7 @@ usage in leisure time (hours per day)*).
 
 As you can see, applied tests confirm departures from normality.
 
-### Homoscedascity
+#### Homoscedascity
 
 In order to test homoscedascity, *Bartlett* and *Fligner-Kileen* tests
 are applied.
@@ -219,7 +228,7 @@ When it comes to equality of variances, applied tests yield inconsistent
 results. While *Fligner-Kileen test* confirmed the hypotheses of
 homoscedascity, *Bartlett's test* rejected it.
 
-## Diagnostic Plots
+### Diagnostic Plots
 
 Here you can see several diagnostic plots for ANOVA model:
 
@@ -231,9 +240,10 @@ Here you can see several diagnostic plots for ANOVA model:
 
 ![image](efd197b02ca1541c48611907a3c42576.png)
 
-# ANOVA Summary
+ANOVA Summary
+-------------
 
-## ANOVA Table
+### ANOVA Table
 
 <!-- endlist -->
 

@@ -4,9 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Rapport package team @ https://github.com/aL3xa/rapport" />
+  <meta name="author" content="(Username not set) (E-mail address not set)" />
   <meta name="date" content="2011-04-26 20:25 CET" />
+  <title>ANOVA Template</title>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
   <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
@@ -16,43 +18,39 @@
 <div class="slide titlepage">
   <h1 class="title">ANOVA Template</h1>
   <p class="author">
-Rapport package team @ https://github.com/aL3xa/rapport
+(Username not set) (E-mail address not set)
   </p>
   <p class="date">2011-04-26 20:25 CET</p>
 </div>
-<div class="slide">
-<h2 id="description">Description</h2>
+<div class="section slide level2" id="description">
+<h1 id="description">Description</h1>
 <p>An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.</p>
 </div>
-<div class="slide">
+<div class="section slide level2" id="introduction">
 <h1 id="introduction">Introduction</h1>
 <p><strong>Analysis of Variance</strong> or <strong>ANOVA</strong> is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921. by famous English statistician Sir Ronald Aylmer Fisher.</p>
 </div>
-<div class="slide">
+<div class="section slide level2" id="model-overview">
 <h1 id="model-overview">Model Overview</h1>
 <p>One-Way ANOVA was carried out, with <em>Gender</em> as independent variable, and <em>Internet usage in leisure time (hours per day)</em> as a response variable. Factor interaction was taken into account.</p>
 </div>
-<div class="slide">
+<div class="section slide level2" id="descriptives">
 <h1 id="descriptives">Descriptives</h1>
 <p>In order to get more insight on the model data, a table of frequencies for ANOVA factors is displayed, as well as a table of descriptives.</p>
-<h2 id="frequency-table">Frequency Table</h2>
+<h1 id="frequency-table">Frequency Table</h1>
 <p>Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.</p>
-<!-- endlist -->
-
 <table>
 <thead>
 <tr class="header">
-<th align="left"></th>
 <th align="left"><strong>gender</strong></th>
 <th align="left"><strong>N</strong></th>
-<th align="left"><strong>pct</strong></th>
-<th align="left"><strong>cumul.count</strong></th>
-<th align="left"><strong>cumul.pct</strong></th>
+<th align="left"><strong>%</strong></th>
+<th align="left"><strong>Cumul. N</strong></th>
+<th align="left"><strong>Cumul. %</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">1</td>
 <td align="left">male</td>
 <td align="left">410</td>
 <td align="left">60.9212</td>
@@ -60,7 +58,6 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">60.9212</td>
 </tr>
 <tr class="even">
-<td align="left">2</td>
 <td align="left">female</td>
 <td align="left">263</td>
 <td align="left">39.0788</td>
@@ -69,7 +66,6 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </tr>
 <tr class="odd">
 <td align="left">Total</td>
-<td align="left"></td>
 <td align="left">673</td>
 <td align="left">100</td>
 <td align="left">673</td>
@@ -77,7 +73,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </tr>
 </tbody>
 </table>
-<h2 id="descriptive-statistics">Descriptive Statistics</h2>
+<h1 id="descriptive-statistics">Descriptive Statistics</h1>
 <p>The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.</p>
 <table>
 <thead>
@@ -130,11 +126,11 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </tbody>
 </table>
 </div>
-<div class="slide">
+<div class="section slide level2" id="diagnostics">
 <h1 id="diagnostics">Diagnostics</h1>
 <p>Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.</p>
-<h2 id="diagnostics-1">Diagnostics</h2>
-<h3 id="univariate-normality">Univariate Normality</h3>
+<h1 id="diagnostics-1">Diagnostics</h1>
+<h1 id="univariate-normality">Univariate Normality</h1>
 <p>We will use <em>Shapiro-Wilk</em>, <em>Lilliefors</em> and <em>Anderson-Darling</em> tests to screen departures from normality in the response variable (<em>Internet usage in leisure time (hours per day)</em>).</p>
 <!-- endlist -->
 
@@ -165,7 +161,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </tbody>
 </table>
 <p>As you can see, applied tests confirm departures from normality.</p>
-<h3 id="homoscedascity">Homoscedascity</h3>
+<h1 id="homoscedascity">Homoscedascity</h1>
 <p>In order to test homoscedascity, <em>Bartlett</em> and <em>Fligner-Kileen</em> tests are applied.</p>
 <!-- endlist -->
 
@@ -191,7 +187,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </tbody>
 </table>
 <p>When it comes to equality of variances, applied tests yield inconsistent results. While <em>Fligner-Kileen test</em> confirmed the hypotheses of homoscedascity, <em>Bartlett's test</em> rejected it.</p>
-<h2 id="diagnostic-plots">Diagnostic Plots</h2>
+<h1 id="diagnostic-plots">Diagnostic Plots</h1>
 <p>Here you can see several diagnostic plots for ANOVA model:</p>
 <ul>
 <li>residuals against fitted values</li>
@@ -203,9 +199,9 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <img src="1c63b6fad7856cf59a751b0f80339918.png" /><p class="caption"></p>
 </div>
 </div>
-<div class="slide">
+<div class="section slide level2" id="anova-summary">
 <h1 id="anova-summary">ANOVA Summary</h1>
-<h2 id="anova-table">ANOVA Table</h2>
+<h1 id="anova-table">ANOVA Table</h1>
 <!-- endlist -->
 
 <table>
@@ -239,39 +235,38 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </tbody>
 </table>
 <p><em>F-test</em> for <em>Gender</em> is not statistically significant, which implies that there is no Gender effect on response variable.</p>
-<h2 id="description-1">Description</h2>
-<p>An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.</p>
 </div>
-<div class="slide">
+<div class="section slide level2" id="description-1">
+<h1 id="description-1">Description</h1>
+<p>An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.</p>
+<p>s</p>
+</div>
+<div class="section slide level2" id="introduction-1">
 <h1 id="introduction-1">Introduction</h1>
 <p><strong>Analysis of Variance</strong> or <strong>ANOVA</strong> is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921. by famous English statistician Sir Ronald Aylmer Fisher.</p>
 </div>
-<div class="slide">
+<div class="section slide level2" id="model-overview-1">
 <h1 id="model-overview-1">Model Overview</h1>
 <p>Two-Way ANOVA was carried out, with <em>Gender</em> and <em>Relationship status</em> as independent variables, and <em>Internet usage in leisure time (hours per day)</em> as a response variable. Factor interaction was taken into account.</p>
 </div>
-<div class="slide">
+<div class="section slide level2" id="descriptives-1">
 <h1 id="descriptives-1">Descriptives</h1>
 <p>In order to get more insight on the model data, a table of frequencies for ANOVA factors is displayed, as well as a table of descriptives.</p>
-<h2 id="frequency-table-1">Frequency Table</h2>
+<h1 id="frequency-table-1">Frequency Table</h1>
 <p>Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.</p>
-<!-- endlist -->
-
 <table>
 <thead>
 <tr class="header">
-<th align="left"></th>
 <th align="left"><strong>gender</strong></th>
 <th align="left"><strong>partner</strong></th>
 <th align="left"><strong>N</strong></th>
-<th align="left"><strong>pct</strong></th>
-<th align="left"><strong>cumul.count</strong></th>
-<th align="left"><strong>cumul.pct</strong></th>
+<th align="left"><strong>%</strong></th>
+<th align="left"><strong>Cumul. N</strong></th>
+<th align="left"><strong>Cumul. %</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">1</td>
 <td align="left">male</td>
 <td align="left">in a relationship</td>
 <td align="left">150</td>
@@ -280,7 +275,6 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">23.6967</td>
 </tr>
 <tr class="even">
-<td align="left">2</td>
 <td align="left">female</td>
 <td align="left">in a relationship</td>
 <td align="left">120</td>
@@ -289,7 +283,6 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">42.654</td>
 </tr>
 <tr class="odd">
-<td align="left">3</td>
 <td align="left">male</td>
 <td align="left">married</td>
 <td align="left">33</td>
@@ -298,7 +291,6 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">47.8673</td>
 </tr>
 <tr class="even">
-<td align="left">4</td>
 <td align="left">female</td>
 <td align="left">married</td>
 <td align="left">29</td>
@@ -307,7 +299,6 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">52.4487</td>
 </tr>
 <tr class="odd">
-<td align="left">5</td>
 <td align="left">male</td>
 <td align="left">single</td>
 <td align="left">204</td>
@@ -316,7 +307,6 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">84.6761</td>
 </tr>
 <tr class="even">
-<td align="left">6</td>
 <td align="left">female</td>
 <td align="left">single</td>
 <td align="left">97</td>
@@ -326,8 +316,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </tr>
 <tr class="odd">
 <td align="left">Total</td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left">Total</td>
 <td align="left">633</td>
 <td align="left">100</td>
 <td align="left">633</td>
@@ -335,7 +324,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </tr>
 </tbody>
 </table>
-<h2 id="descriptive-statistics-1">Descriptive Statistics</h2>
+<h1 id="descriptive-statistics-1">Descriptive Statistics</h1>
 <p>The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.</p>
 <table>
 <thead>
@@ -500,11 +489,11 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </tbody>
 </table>
 </div>
-<div class="slide">
+<div class="section slide level2" id="diagnostics-2">
 <h1 id="diagnostics-2">Diagnostics</h1>
 <p>Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.</p>
-<h2 id="diagnostics-3">Diagnostics</h2>
-<h3 id="univariate-normality-1">Univariate Normality</h3>
+<h1 id="diagnostics-3">Diagnostics</h1>
+<h1 id="univariate-normality-1">Univariate Normality</h1>
 <p>We will use <em>Shapiro-Wilk</em>, <em>Lilliefors</em> and <em>Anderson-Darling</em> tests to screen departures from normality in the response variable (<em>Internet usage in leisure time (hours per day)</em>).</p>
 <!-- endlist -->
 
@@ -535,7 +524,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </tbody>
 </table>
 <p>As you can see, applied tests confirm departures from normality.</p>
-<h3 id="homoscedascity-1">Homoscedascity</h3>
+<h1 id="homoscedascity-1">Homoscedascity</h1>
 <p>In order to test homoscedascity, <em>Bartlett</em> and <em>Fligner-Kileen</em> tests are applied.</p>
 <!-- endlist -->
 
@@ -561,7 +550,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </tbody>
 </table>
 <p>When it comes to equality of variances, applied tests yield inconsistent results. While <em>Fligner-Kileen test</em> confirmed the hypotheses of homoscedascity, <em>Bartlett's test</em> rejected it.</p>
-<h2 id="diagnostic-plots-1">Diagnostic Plots</h2>
+<h1 id="diagnostic-plots-1">Diagnostic Plots</h1>
 <p>Here you can see several diagnostic plots for ANOVA model:</p>
 <ul>
 <li>residuals against fitted values</li>
@@ -573,9 +562,9 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <img src="efd197b02ca1541c48611907a3c42576.png" /><p class="caption"></p>
 </div>
 </div>
-<div class="slide">
+<div class="section slide level2" id="anova-summary-1">
 <h1 id="anova-summary-1">ANOVA Summary</h1>
-<h2 id="anova-table-1">ANOVA Table</h2>
+<h1 id="anova-table-1">ANOVA Table</h1>
 <!-- endlist -->
 
 <table>
@@ -626,7 +615,8 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </table>
 <p><em>F-test</em> for <em>Gender</em> is not statistically significant, which implies that there is no Gender effect on response variable. Effect of <em>Relationship status</em> on response variable is significant. Interaction between levels of <em>Gender</em> and <em>Relationship status</em> wasn't found significant (p = 0.717).</p>
 </div>
-<div class="slide">
+<div class="section slide level2" id="section">
+<h1 id="section"></h1>
 <p>This report was generated with <a href="http://rapport-package.info/">rapport</a>.</p>
 <div class="figure">
 <img src="images/rapport.png" /><p class="caption"></p>

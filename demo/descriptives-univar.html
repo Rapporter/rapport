@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="(Username not set) (E-mail address not set)" />
+  <meta name="date" content="2011-04-26 20:25 CET" />
+  <title>Descriptive statistics</title>
+  	<!--[if lt IE 9]>
+  		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  
+  	<link rel="stylesheet" href="stylesheets/base.css">
+  	<link rel="stylesheet" href="stylesheets/skeleton.css">
+  	<link rel="stylesheet" href="stylesheets/layout.css">
+  	<link rel="stylesheet" href="stylesheets/fonts.css">
+  	<link rel="stylesheet" href="stylesheets/custom.css">
+  
+  	<link rel="shortcut icon" href="images/favicon.ico">
+  	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+  	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  
+  	<script type="text/javascript" src="javascripts/jquery-1.7.1.min.js"></script>
+  	<script type="text/javascript" src="javascripts/nav.js"></script>
+  	<script type="text/javascript" src="javascripts/tabs.js"></script>
+  	<script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+              tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+          });
+      </script>
+  	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Descriptive statistics</h1>
+<h3 class="author">(Username not set) (E-mail address not set)</h3>
+<h4 class="date">2011-04-26 20:25 CET</h4>
+</div>
+<h2 id="description">Description</h2>
+<p>This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.</p>
+<h2 id="gender-gender"><em>gender</em> (&quot;Gender&quot;)</h2>
+<p>The dataset has <em>709</em> observations with <em>673</em> valid values (missing: <em>36</em>) in <em>gender</em> (&quot;Gender&quot;), which seems to be a qualitative variable.</p>
+<h3 id="base-statistics">Base statistics</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>gender</strong></th>
+<th align="left"><strong>N</strong></th>
+<th align="left"><strong>%</strong></th>
+<th align="left"><strong>Cumul. N</strong></th>
+<th align="left"><strong>Cumul. %</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">410</td>
+<td align="left">60.9212</td>
+<td align="left">410</td>
+<td align="left">60.9212</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">263</td>
+<td align="left">39.0788</td>
+<td align="left">673</td>
+<td align="left">100</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">673</td>
+<td align="left">100</td>
+<td align="left">673</td>
+<td align="left">100</td>
+</tr>
+</tbody>
+</table>
+<h3 id="barplot">Barplot</h3>
+<div class="figure">
+<img src="3ed92ab3ffc6e875335e7e8c774c35a8.png" /><p class="caption"></p>
+</div>
+<p>It seems that the highest value is <em>2</em> which is exactly 2 times higher than the smallest value (<em>1</em>).</p>
+<p>The most frequent value is <em>male</em>.</p>
+<h2 id="description-1">Description</h2>
+<p>This template will return descriptive statistics of a numerical, or a frequency table of a categorical variable.</p>
+<h2 id="age-age"><em>age</em> (&quot;Age&quot;)</h2>
+<p>The dataset has <em>709</em> observations with <em>677</em> valid values (missing: <em>32</em>) in <em>age</em> (&quot;Age&quot;), which seems to be a quantitative variable.</p>
+<h3 id="base-statistics-1">Base statistics</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>value</strong></th>
+<th align="left"><strong>mean(age)</strong></th>
+<th align="left"><strong>sd(age)</strong></th>
+<th align="left"><strong>var(age)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(all)</td>
+<td align="left">24.5731</td>
+<td align="left">6.8491</td>
+<td align="left">46.9107</td>
+</tr>
+</tbody>
+</table>
+<h3 id="histogram">Histogram</h3>
+<div class="figure">
+<img src="ac5d789145bdef09b10219ef16429f53.png" /><p class="caption"></p>
+</div>
+<p>It seems that the highest value is <em>58</em> which is exactly 3.625 times higher than the smallest value (<em>16</em>).</p>
+<p>The standard deviation is <em>6.8491</em> (variance: <em>46.9107</em>). The expected value is around <em>24.5731</em>, somewhere between <em>24.0572</em> and <em>25.0891</em> with the standard error of <em>0.2632</em>.</p>
+<p>If we suppose that <em>Age</em> is not near to a normal distribution (test: see below, skewness: <em>1.9296</em>, kurtosis: <em>7.4851</em>), checking the median (<em>23</em>) might be a better option instead of the mean. The interquartile range (<em>6</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
+<h3 id="normality-tests">Normality tests</h3>
+<h4 id="introduction">Introduction</h4>
+<p>In statistics, <em>normality</em> refers to an assumption that the distribution of a random variable follows <em>normal</em> (<em>Gaussian</em>) distribution. Because of its bell-like shape, it's also known as the <em>&quot;bell curve&quot;</em>. The formula for <em>normal distribution</em> is:</p>
+<p><br /><span class="math">$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$</span><br /></p>
+<p><em>Normal distribution</em> belongs to a <em>location-scale family</em> of distributions, as it's defined two parameters:</p>
+<ul>
+<li><em>μ</em> - <em>mean</em> or <em>expectation</em> (location parameter)</li>
+<li><em>σ<sup>2</sup></em> - <em>variance</em> (scale parameter)</li>
+</ul>
+<div class="figure">
+<img src="2f8c434e103f36ec70966b372838d448.png" /><p class="caption"></p>
+</div>
+<h4 id="normality-tests-1">Normality Tests</h4>
+<h5 id="overview">Overview</h5>
+<p>Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is <em>normal</em>. At this point only few such tests will be covered: the ones that are available in <code>stats</code> package (which comes bundled with default R installation) and <code>nortest</code> package that is <a href="http://cran.r-project.org/web/packages/nortest/index.html">available</a> on CRAN.</p>
+<ul>
+<li><strong>Shapiro-Wilk test</strong> is a powerful normality test appropriate for small samples. In R, it's implemented in <code>shapiro.test</code> function available in <code>stats</code> package.</li>
+<li><strong>Lilliefors test</strong> is a modification of <em>Kolmogorov-Smirnov test</em> appropriate for testing normality when parameters or normal distribution (<em>μ</em>, <em>σ<sup>2</sup></em>) are not known. <code>lillie.test</code> function is located in <code>nortest</code> package.</li>
+<li><strong>Anderson-Darling test</strong> is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <code>ad.test</code> function in <code>nortest</code> package.</li>
+<li><strong>Pearson Χ<sup>2</sup> test</strong> is another normality test which takes more &quot;traditional&quot; approach in normality testing. <code>pearson.test</code> is located in <code>nortest</code> package.</li>
+</ul>
+<h5 id="results">Results</h5>
+<p>Here you can see the results of applied normality tests (<em>p-values</em> less than 0.05 indicate significant discrepancies):</p>
+<p><em>0.05</em></p>
+<p>So, let's draw some conclusions based on applied normality test:</p>
+<ul>
+<li>according to <em>Shapiro-Wilk test</em>, the distribution of <em>Age</em> is not normal.</li>
+<li>based on <em>Lilliefors test</em>, distribution of <em>Age</em> is not normal</li>
+<li><em>Anderson-Darling test</em> confirms violation of normality assumption</li>
+<li><em>Pearson's Χ<sup>2</sup> test</em> classifies the underlying distribution as non-normal</li>
+</ul>
+<h4 id="diagnostic-plots">Diagnostic Plots</h4>
+<p>There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: <em>histogram</em>, <em>Q-Q plot</em> and <em>kernel density plot</em>.</p>
+<h5 id="histogram-1">Histogram</h5>
+<p><em>Histogram</em> was first introduced by <em>Karl Pearson</em> and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.</p>
+<div class="figure">
+<img src="ac5d789145bdef09b10219ef16429f53.png" /><p class="caption"></p>
+</div>
+<h5 id="q-q-plot">Q-Q Plot</h5>
+<p>&quot;Q&quot; in <em>Q-Q plot</em> stands for <em>quantile</em>, as this plot compares empirical and theoretical distribution (in this case, <em>normal</em> distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <code>x = y</code> line.</p>
+<div class="figure">
+<img src="cbbba756d844aa053998959b73b9feff.png" /><p class="caption"></p>
+</div>
+<h5 id="kernel-density-plot">Kernel Density Plot</h5>
+<p><em>Kernel density plot</em> is a plot of smoothed <em>empirical distribution function</em>. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.</p>
+<div class="figure">
+<img src="0e3b775c2c945a92fe7d3e3168c72164.png" /><p class="caption"></p>
+</div>
+<div class="figure">
+<img src="images/rapport.png" /><p class="caption"></p>
+</div>
+<hr>
+<p align="center">This report was generated in <a href="http://www.r-project.org/">R</a> with <a href="http://al3xa.github.com/rapport/">Rapport</a>. Feel free to create <a href="http://al3xa.github.com/rapport/#custom">your own reporting templates</a>!</p>
+</body>
+</html>

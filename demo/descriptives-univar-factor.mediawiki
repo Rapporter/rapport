@@ -1,0 +1,119 @@
+== Description ==
+
+This template will return descriptive statistics and frequency table of a categorical variable.
+
+== ''gender'' (&quot;Gender&quot;) ==
+
+The dataset has ''709'' observations with ''673'' valid values (missing: ''36'') in ''gender'' (&quot;Gender&quot;), which seems to be a qualitative variable.
+
+=== Base statistics ===
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">'''gender'''</th>
+<th align="left">'''N'''</th>
+<th align="left">'''%'''</th>
+<th align="left">'''Cumul. N'''</th>
+<th align="left">'''Cumul. %'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">410</td>
+<td align="left">60.9212</td>
+<td align="left">410</td>
+<td align="left">60.9212</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">263</td>
+<td align="left">39.0788</td>
+<td align="left">673</td>
+<td align="left">100</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">673</td>
+<td align="left">100</td>
+<td align="left">673</td>
+<td align="left">100</td>
+</tr>
+</tbody>
+</table>
+
+=== Barplot ===
+
+[[Image:3ed92ab3ffc6e875335e7e8c774c35a8.png|frame|none]]
+
+It seems that the highest value is ''2'' which is exactly 2 times higher than the smallest value (''1'').
+
+The most frequent value is ''male''.
+
+== Description ==
+
+This template will return descriptive statistics and frequency table of a categorical variable.
+
+== ''dwell'' (&quot;Dwelling&quot;) ==
+
+The dataset has ''709'' observations with ''662'' valid values (missing: ''47'') in ''dwell'' (&quot;Dwelling&quot;), which seems to be a qualitative variable.
+
+=== Base statistics ===
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">'''dwell'''</th>
+<th align="left">'''N'''</th>
+<th align="left">'''%'''</th>
+<th align="left">'''Cumul. N'''</th>
+<th align="left">'''Cumul. %'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">city</td>
+<td align="left">599</td>
+<td align="left">90.4834</td>
+<td align="left">599</td>
+<td align="left">90.4834</td>
+</tr>
+<tr class="even">
+<td align="left">small town</td>
+<td align="left">33</td>
+<td align="left">4.9849</td>
+<td align="left">632</td>
+<td align="left">95.4683</td>
+</tr>
+<tr class="odd">
+<td align="left">village</td>
+<td align="left">30</td>
+<td align="left">4.5317</td>
+<td align="left">662</td>
+<td align="left">100</td>
+</tr>
+<tr class="even">
+<td align="left">Total</td>
+<td align="left">662</td>
+<td align="left">100</td>
+<td align="left">662</td>
+<td align="left">100</td>
+</tr>
+</tbody>
+</table>
+
+=== Barplot ===
+
+[[Image:56568b0b0cecf2de13fbe0316f43f8fc.png|frame|none]]
+
+It seems that the highest value is ''3'' which is exactly 3 times higher than the smallest value (''1'').
+
+The most frequent value is ''city''.
+
+
+-----
+
+This report was generated with [http://rapport-package.info/ rapport].
+
+[[Image:images/rapport.png|frame|none]]

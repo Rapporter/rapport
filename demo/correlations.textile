@@ -2,7 +2,7 @@ h2. Description
 
 This template will return the correlation matrix of supplied numerical variables.
 
-h1. Variable description
+h2. Variable description
 
 _3_ variables provided.
 
@@ -15,7 +15,7 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 * _age_ and _leisure_
 * _edu_ and _leisure_
 
-h2. Correlation matrix
+h3. Correlation matrix
 
 <!-- endlist -->
 
@@ -32,7 +32,7 @@ h2. Description
 
 This template will return the correlation matrix of supplied numerical variables.
 
-h1. Variable description
+h2. Variable description
 
 _11_ variables provided.
 
@@ -69,7 +69,7 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 * _drat_ and _carb_
 * _am_ and _carb_
 
-h2. Correlation matrix
+h3. Correlation matrix
 
 <!-- endlist -->
 

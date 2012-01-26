@@ -2,7 +2,7 @@
 
 A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
 
-= Introduction =
+== Introduction ==
 
 In a nutshell, ''t-test'' is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows [https://en.wikipedia.org/wiki/Student%27s_t-distribution ''t-distribution''] can be considered a ''t-test''. The most common usage of ''t-test'' is to:
 
@@ -10,11 +10,11 @@ In a nutshell, ''t-test'' is a statistical test that assesses hypothesis of equa
 * compare means of two variables from independent samples - '''independent samples ''t-test'''''
 * compare means of two variables from dependent samples - '''paired-samples ''t-test'''''
 
-= Overview =
+== Overview ==
 
 Independent samples ''t-test'' is carried out with ''Internet usage in leisure time (hours per day)'' as dependent variable, and ''Gender'' as independent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.
 
-= Descriptives =
+== Descriptives ==
 
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
@@ -73,11 +73,11 @@ In order to get more insight on the underlying data, a table of basic descriptiv
 </tbody>
 </table>
 
-= Diagnostics =
+== Diagnostics ==
 
 Since ''t-test'' is a parametric technique, it sets some basic assumptions on distribution shape: it has to be ''normal'' (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.
 
-== Normality Tests ==
+=== Normality Tests ===
 
 We will use ''Shapiro-Wilk'', ''Lilliefors'' and ''Anderson-Darling'' tests to screen departures from normality in the response variable (''Internet usage in leisure time (hours per day)'').
 
@@ -112,7 +112,7 @@ We will use ''Shapiro-Wilk'', ''Lilliefors'' and ''Anderson-Darling'' tests to s
 
 As you can see, applied tests confirm departures from normality.
 
-= Results =
+== Results ==
 
 Welch Two Sample t-test was applied, and significant differences were found.
 
@@ -145,7 +145,7 @@ Welch Two Sample t-test was applied, and significant differences were found.
 
 A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
 
-= Introduction =
+== Introduction ==
 
 In a nutshell, ''t-test'' is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows [https://en.wikipedia.org/wiki/Student%27s_t-distribution ''t-distribution''] can be considered a ''t-test''. The most common usage of ''t-test'' is to:
 
@@ -153,19 +153,50 @@ In a nutshell, ''t-test'' is a statistical test that assesses hypothesis of equa
 * compare means of two variables from independent samples - '''independent samples ''t-test'''''
 * compare means of two variables from dependent samples - '''paired-samples ''t-test'''''
 
-= Overview =
+== Overview ==
 
 One-sample ''t-test'' is carried out with ''Internet usage in leisure time (hours per day)'' as dependent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.
 
-= Descriptives =
+== Descriptives ==
 
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
-= Diagnostics =
+<table>
+<thead>
+<tr class="header">
+<th align="left">'''value'''</th>
+<th align="left">'''min(x)'''</th>
+<th align="left">'''max(x)'''</th>
+<th align="left">'''mean(x)'''</th>
+<th align="left">'''sd(x)'''</th>
+<th align="left">'''var(x)'''</th>
+<th align="left">'''median(x)'''</th>
+<th align="left">'''IQR(x)'''</th>
+<th align="left">'''skewness(x)'''</th>
+<th align="left">'''kurtosis(x)'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(all)</td>
+<td align="left">0</td>
+<td align="left">12</td>
+<td align="left">3.1994</td>
+<td align="left">2.1436</td>
+<td align="left">4.5951</td>
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">1.1873</td>
+<td align="left">4.547</td>
+</tr>
+</tbody>
+</table>
+
+== Diagnostics ==
 
 Since ''t-test'' is a parametric technique, it sets some basic assumptions on distribution shape: it has to be ''normal'' (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.
 
-== Normality Tests ==
+=== Normality Tests ===
 
 We will use ''Shapiro-Wilk'', ''Lilliefors'' and ''Anderson-Darling'' tests to screen departures from normality in the response variable (''Internet usage in leisure time (hours per day)'').
 
@@ -200,7 +231,7 @@ We will use ''Shapiro-Wilk'', ''Lilliefors'' and ''Anderson-Darling'' tests to s
 
 As you can see, applied tests confirm departures from normality.
 
-= Results =
+== Results ==
 
 One Sample t-test was applied, and significant differences were found.
 

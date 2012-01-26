@@ -5,8 +5,8 @@
   <articleinfo>
     <title>Crosstable</title>
     <author>
-      <firstname>Rapport package team @</firstname>
-      <surname>https://github.com/aL3xa/rapport</surname>
+      <firstname>(Username not set) (E-mail address not</firstname>
+      <surname>set)</surname>
     </author>
     <date>2011-04-26 20:25 CET</date>
   </articleinfo>
@@ -386,13 +386,13 @@
       </mediaobject>
     </figure>
   </section>
-  <section id="description-1">
-    <title>Description</title>
-    <para>
-      Returning the Chi-squared test of two given variables with count,
-      percentages and Pearson's residuals table.
-    </para>
-  </section>
+</section>
+<section id="description-1">
+  <title>Description</title>
+  <para>
+    Returning the Chi-squared test of two given variables with count,
+    percentages and Pearson's residuals table.
+  </para>
 </section>
 <section id="variable-description-1">
   <title>Variable description</title>

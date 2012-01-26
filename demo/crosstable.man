@@ -1,17 +1,17 @@
 .\"t
-.TH Crosstable "" "2011\[en]04\[en]26 20:25 CET" 
+.TH Crosstable "" "2011-04-26 20:25 CET" 
 .SS Description
 .PP
 Returning the Chi-squared test of two given variables with count,
-percentages and Pearson's residuals table.
-.SH Variable description
+percentages and Pearson\[aq]s residuals table.
+.SS Variable description
 .PP
 Two variables specified:
 .IP \[bu] 2
-\[lq]gender\[rq] (\[lq]Gender\[rq]) with \f[I]673\f[] and
+"gender" ("Gender") with \f[I]673\f[] and
 .IP \[bu] 2
-\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with \f[I]662\f[] valid values.
-.SH Counts
+"dwell" ("Dwelling") with \f[I]662\f[] valid values.
+.SS Counts
 .PP
 .TS
 tab(@);
@@ -44,7 +44,7 @@ T}@T{
 9
 T}
 .TE
-.SH Percentages
+.SS Percentages
 .PP
 .TS
 tab(@);
@@ -143,7 +143,7 @@ T}@T{
 0.3214
 T}
 .TE
-.SH Chi-squared test
+.SS Chi-squared test
 .PP
 .TS
 tab(@);
@@ -169,15 +169,15 @@ T}
 .TE
 .PP
 It seems that a real association can be pointed out between
-\f[I]gender\f[] and \f[I]dwell\f[] by the \f[I]Pearson's Chi-squared
+\f[I]gender\f[] and \f[I]dwell\f[] by the \f[I]Pearson\[aq]s Chi-squared
 test\f[] (χ=12.6353 at the degree of freedom being 2) at the
 significance level of 0.0018.
-Based on Goodman and Kruskal's lambda it seems that \f[I]dwell\f[]
+Based on Goodman and Kruskal\[aq]s lambda it seems that \f[I]dwell\f[]
 (λ=0.7602) has an effect on \f[I]gender\f[] (λ=0) if we assume both
 variables to be nominal.
 The association between the two variables seems to be weak based on
-Cramer's V (0.1001).
-.SS Pearson's residuals
+Cramer\[aq]s V (0.1001).
+.SS Pearson\[aq]s residuals
 .PP
 .TS
 tab(@);
@@ -194,7 +194,7 @@ _
 T{
 male
 T}@T{
-\[en]3.0844
+-3.0844
 T}@T{
 3.4312
 T}@T{
@@ -205,9 +205,9 @@ female
 T}@T{
 3.0844
 T}@T{
-\[en]3.4312
+-3.4312
 T}@T{
-\[en]0.7595
+-0.7595
 T}
 .TE
 .SS Mosaic chart
@@ -216,15 +216,15 @@ T}
 .SS Description
 .PP
 Returning the Chi-squared test of two given variables with count,
-percentages and Pearson's residuals table.
-.SH Variable description
+percentages and Pearson\[aq]s residuals table.
+.SS Variable description
 .PP
 Two variables specified:
 .IP \[bu] 2
-\[lq]email\[rq] (\[lq]Email usage\[rq]) with \f[I]672\f[] and
+"email" ("Email usage") with \f[I]672\f[] and
 .IP \[bu] 2
-\[lq]dwell\[rq] (\[lq]Dwelling\[rq]) with \f[I]662\f[] valid values.
-.SH Counts
+"dwell" ("Dwelling") with \f[I]662\f[] valid values.
+.SS Counts
 .PP
 .TS
 tab(@);
@@ -302,7 +302,7 @@ T}@T{
 7
 T}
 .TE
-.SH Percentages
+.SS Percentages
 .PP
 .TS
 tab(@);
@@ -536,7 +536,7 @@ T}@T{
 0.2414
 T}
 .TE
-.SH Chi-squared test
+.SS Chi-squared test
 .PP
 .TS
 tab(@);
@@ -562,11 +562,11 @@ T}
 .TE
 .PP
 It seems that no real association can be pointed out between
-\f[I]email\f[] and \f[I]dwell\f[] by the \f[I]Pearson's Chi-squared
+\f[I]email\f[] and \f[I]dwell\f[] by the \f[I]Pearson\[aq]s Chi-squared
 test\f[] (χ=14.864 at the degree of freedom being 12) at the
 significance level of 0.249.
 For this end no other statistical tests were performed.
-.SS Pearson's residuals
+.SS Pearson\[aq]s residuals
 .PP
 .TS
 tab(@);
@@ -585,16 +585,16 @@ never
 T}@T{
 1.1493
 T}@T{
-\[en]0.8118
+-0.8118
 T}@T{
-\[en]0.7709
+-0.7709
 T}
 T{
 very rarely
 T}@T{
-\[en]0.4085
+-0.4085
 T}@T{
-\[en]0.5910
+-0.5910
 T}@T{
 1.1955
 T}
@@ -605,32 +605,32 @@ T}@T{
 T}@T{
 0.4916
 T}@T{
-\[en]0.7985
+-0.7985
 T}
 T{
 sometimes
 T}@T{
-\[en]1.7459
+-1.7459
 T}@T{
-\[en]0.0210
+-0.0210
 T}@T{
 2.4853
 T}
 T{
 often
 T}@T{
-\[en]1.2822
+-1.2822
 T}@T{
 1.9011
 T}@T{
-\[en]0.1829
+-0.1829
 T}
 T{
 very often
 T}@T{
-\[en]0.1671
+-0.1671
 T}@T{
-\[en]0.0048
+-0.0048
 T}@T{
 0.2407
 T}
@@ -639,9 +639,9 @@ always
 T}@T{
 2.0982
 T}@T{
-\[en]1.2561
+-1.2561
 T}@T{
-\[en]1.6443
+-1.6443
 T}
 .TE
 .SS Mosaic chart
@@ -654,4 +654,4 @@ This report was generated with rapport (http://rapport-package.info/).
 .PP
 [IMAGE: image (images/rapport.png)]
 .SH AUTHORS
-Rapport package team \@ https://github.com/aL3xa/rapport.
+(Username not set) (E-mail address not set).

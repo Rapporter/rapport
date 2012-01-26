@@ -2,7 +2,7 @@
 
 Overview of several normality tests and diagnostic plots that can screen departures from normality.
 
-= Introduction =
+== Introduction ==
 
 In statistics, ''normality'' refers to an assumption that the distribution of a random variable follows ''normal'' (''Gaussian'') distribution. Because of its bell-like shape, it's also known as the ''&quot;bell curve&quot;''. The formula for ''normal distribution'' is:
 
@@ -15,9 +15,9 @@ In statistics, ''normality'' refers to an assumption that the distribution of a 
 
 [[Image:2f8c434e103f36ec70966b372838d448.png|frame|none]]
 
-= Normality Tests =
+== Normality Tests ==
 
-== Overview ==
+=== Overview ===
 
 Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is ''normal''. At this point only few such tests will be covered: the ones that are available in <tt>stats</tt> package (which comes bundled with default R installation) and <tt>nortest</tt> package that is [http://cran.r-project.org/web/packages/nortest/index.html available] on CRAN.
 
@@ -26,43 +26,11 @@ Various hypothesis tests can be applied in order to test if the distribution of 
 * '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <tt>ad.test</tt> function in <tt>nortest</tt> package.
 * '''Pearson Χ<sup>2</sup> test''' is another normality test which takes more &quot;traditional&quot; approach in normality testing. <tt>pearson.test</tt> is located in <tt>nortest</tt> package.
 
-== Results ==
+=== Results ===
 
 Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
 
-<!-- endlist -->
-
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">'''H'''</th>
-<th align="left">'''p'''</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">shapiro.test</td>
-<td align="left">0.9001</td>
-<td align="left">0</td>
-</tr>
-<tr class="even">
-<td align="left">lillie.test</td>
-<td align="left">0.168</td>
-<td align="left">0</td>
-</tr>
-<tr class="odd">
-<td align="left">ad.test</td>
-<td align="left">18.753</td>
-<td align="left">0</td>
-</tr>
-<tr class="even">
-<td align="left">pearson.test</td>
-<td align="left">1791.25</td>
-<td align="left">0</td>
-</tr>
-</tbody>
-</table>
+''0.05''
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -71,33 +39,33 @@ So, let's draw some conclusions based on applied normality test:
 * ''Anderson-Darling test'' confirms violation of normality assumption
 * ''Pearson's Χ<sup>2</sup> test'' classifies the underlying distribution as normal
 
-= Diagnostic Plots =
+== Diagnostic Plots ==
 
 There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: ''histogram'', ''Q-Q plot'' and ''kernel density plot''.
 
-== Histogram ==
+=== Histogram ===
 
 ''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
 [[Image:12bea9ba14449f76d79a9d5792bf29f9.png|frame|none]]
 
-== Q-Q Plot ==
+=== Q-Q Plot ===
 
 &quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
 
 [[Image:fff2bb7b8b095f881f85302d0128bae7.png|frame|none]]
 
-== Kernel Density Plot ==
+=== Kernel Density Plot ===
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[Image:01692a50f2fba07dd3c1b2084e49e8d5.png|frame|none]]
+[[Image:07657b36ddf71c363ca51d844405b99a.png|frame|none]]
 
 == Description ==
 
 Overview of several normality tests and diagnostic plots that can screen departures from normality.
 
-= Introduction =
+== Introduction ==
 
 In statistics, ''normality'' refers to an assumption that the distribution of a random variable follows ''normal'' (''Gaussian'') distribution. Because of its bell-like shape, it's also known as the ''&quot;bell curve&quot;''. The formula for ''normal distribution'' is:
 
@@ -108,9 +76,9 @@ In statistics, ''normality'' refers to an assumption that the distribution of a 
 * ''μ'' - ''mean'' or ''expectation'' (location parameter)
 * ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
 
-= Normality Tests =
+== Normality Tests ==
 
-== Overview ==
+=== Overview ===
 
 Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is ''normal''. At this point only few such tests will be covered: the ones that are available in <tt>stats</tt> package (which comes bundled with default R installation) and <tt>nortest</tt> package that is [http://cran.r-project.org/web/packages/nortest/index.html available] on CRAN.
 
@@ -119,43 +87,11 @@ Various hypothesis tests can be applied in order to test if the distribution of 
 * '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <tt>ad.test</tt> function in <tt>nortest</tt> package.
 * '''Pearson Χ<sup>2</sup> test''' is another normality test which takes more &quot;traditional&quot; approach in normality testing. <tt>pearson.test</tt> is located in <tt>nortest</tt> package.
 
-== Results ==
+=== Results ===
 
 Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
 
-<!-- endlist -->
-
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">'''H'''</th>
-<th align="left">'''p'''</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">shapiro.test</td>
-<td align="left">0.9001</td>
-<td align="left">0</td>
-</tr>
-<tr class="even">
-<td align="left">lillie.test</td>
-<td align="left">0.168</td>
-<td align="left">0</td>
-</tr>
-<tr class="odd">
-<td align="left">ad.test</td>
-<td align="left">18.753</td>
-<td align="left">0</td>
-</tr>
-<tr class="even">
-<td align="left">pearson.test</td>
-<td align="left">1791.25</td>
-<td align="left">0</td>
-</tr>
-</tbody>
-</table>
+''0.05''
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -164,33 +100,33 @@ So, let's draw some conclusions based on applied normality test:
 * ''Anderson-Darling test'' confirms violation of normality assumption
 * ''Pearson's Χ<sup>2</sup> test'' classifies the underlying distribution as normal
 
-= Diagnostic Plots =
+== Diagnostic Plots ==
 
 There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: ''histogram'', ''Q-Q plot'' and ''kernel density plot''.
 
-== Histogram ==
+=== Histogram ===
 
 ''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
 [[Image:12bea9ba14449f76d79a9d5792bf29f9.png|frame|none]]
 
-== Q-Q Plot ==
+=== Q-Q Plot ===
 
 &quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
 
 [[Image:fff2bb7b8b095f881f85302d0128bae7.png|frame|none]]
 
-== Kernel Density Plot ==
+=== Kernel Density Plot ===
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[Image:b26afbd74d3686d7e73ec55f3f088e0f.png|frame|none]]
+[[Image:2566e535c6619ca87dce39c72a1bd2e1.png|frame|none]]
 
 == Description ==
 
 Overview of several normality tests and diagnostic plots that can screen departures from normality.
 
-= Introduction =
+== Introduction ==
 
 In statistics, ''normality'' refers to an assumption that the distribution of a random variable follows ''normal'' (''Gaussian'') distribution. Because of its bell-like shape, it's also known as the ''&quot;bell curve&quot;''. The formula for ''normal distribution'' is:
 
@@ -203,9 +139,9 @@ In statistics, ''normality'' refers to an assumption that the distribution of a 
 
 [[Image:2f8c434e103f36ec70966b372838d448.png|frame|none]]
 
-= Normality Tests =
+== Normality Tests ==
 
-== Overview ==
+=== Overview ===
 
 Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is ''normal''. At this point only few such tests will be covered: the ones that are available in <tt>stats</tt> package (which comes bundled with default R installation) and <tt>nortest</tt> package that is [http://cran.r-project.org/web/packages/nortest/index.html available] on CRAN.
 
@@ -214,43 +150,11 @@ Various hypothesis tests can be applied in order to test if the distribution of 
 * '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <tt>ad.test</tt> function in <tt>nortest</tt> package.
 * '''Pearson Χ<sup>2</sup> test''' is another normality test which takes more &quot;traditional&quot; approach in normality testing. <tt>pearson.test</tt> is located in <tt>nortest</tt> package.
 
-== Results ==
+=== Results ===
 
 Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
 
-<!-- endlist -->
-
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">'''H'''</th>
-<th align="left">'''p'''</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">shapiro.test</td>
-<td align="left">0.9001</td>
-<td align="left">0</td>
-</tr>
-<tr class="even">
-<td align="left">lillie.test</td>
-<td align="left">0.168</td>
-<td align="left">0</td>
-</tr>
-<tr class="odd">
-<td align="left">ad.test</td>
-<td align="left">18.753</td>
-<td align="left">0</td>
-</tr>
-<tr class="even">
-<td align="left">pearson.test</td>
-<td align="left">1791.25</td>
-<td align="left">0</td>
-</tr>
-</tbody>
-</table>
+''0.05''
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -259,27 +163,27 @@ So, let's draw some conclusions based on applied normality test:
 * ''Anderson-Darling test'' confirms violation of normality assumption
 * ''Pearson's Χ<sup>2</sup> test'' classifies the underlying distribution as normal
 
-= Diagnostic Plots =
+== Diagnostic Plots ==
 
 There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: ''histogram'', ''Q-Q plot'' and ''kernel density plot''.
 
-== Histogram ==
+=== Histogram ===
 
 ''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
 [[Image:12bea9ba14449f76d79a9d5792bf29f9.png|frame|none]]
 
-== Q-Q Plot ==
+=== Q-Q Plot ===
 
 &quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
 
 [[Image:90c36448209c0d19b8b44a89277b29a3.png|frame|none]]
 
-== Kernel Density Plot ==
+=== Kernel Density Plot ===
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[Image:5be0d211ffad27ed23f51e5f964b99cc.png|frame|none]]
+[[Image:d60f6bc4a500f7965efdd22587e4ed81.png|frame|none]]
 
 
 -----
