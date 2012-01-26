@@ -62,7 +62,7 @@ Sure! [`tpl.find`](#tpl.find) (which is called from [`rapport`](/functions#rappo
 
 #### Why do you write such complex templates? Why not including those in [helpers](#functions) like `rp.anova`?
 
-It is based on the theory of *rapport*: you can define a function at any part of your template and use those or just load any library which is installed on your system - even you own, local packages. You might even include a `source` command in your local template, but bear in mind that this template will not be able to run on other computers!
+It is based on a theory behind *rapport*: you can define a function at any part of your template and use it, or just load any library which is installed on your system - even your own, local packages. You might even include a `source` command in your local template, but bear in mind that this template will not be able to run on other computers!
 
 #### Okay, I understand, but I have a really handy function which should be added to *rapport*!
 
