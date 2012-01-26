@@ -26,7 +26,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' @examples \dontrun{
 #'
 #' ## eval some template
-#' x <- rapport('univar-descriptive', data=mtcars, var="hp")
+#' x <- rapport('descriptives-univar', data=mtcars, var="hp")
 #'
 #' ## try basic parameters
 #' tpl.export(x)
@@ -99,8 +99,6 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
             }
         } else
             stop('Wrong rp parameter!')
-    } else {
-        r$time <- r$time + rp$time
     }
 
     r$backend <- backend
@@ -116,21 +114,25 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
 
             ## body
             lapply(rp$report, function(x) {
-                if (x$type=='heading') r$addSection(x$text$eval, x$level+1)
-                if (x$type=='inline')
+                x.type <- x$type
+                if (x.type=='heading') r$addSection(x$text$eval, x$level + 1)
+                if (x.type=='inline')
                     r$add(paragraph(ifelse(is.null(unlist(x$chunks$raw)),
-                                           unlist(x$text$raw),
-                                           unlist(x$text$eval))
-                                    )
-                          )
-                if (x$type=='block' & !is.null(x$robjects[[1]]$type)) {
-                    if (any(x$robjects[[1]]$type == 'image')) r$addFig(file=x$robjects[[1]]$output)    # no nested rapport classes (halleluja)
-                    if (all(x$robjects[[1]]$type != c('image', 'error')))
-                        r$add(paragraph(rp.prettyascii(x$robjects[[1]]$output)))
-                    if (!is.null(x$robjects[[1]]$msg$warnings))
-                        r$add(paragraph(as.character(x$robjects[[1]]$msg$warnings)))
+                        unlist(x$text$raw),
+                        unlist(x$text$eval))
+                        )
+                    )
+                if (x.type=='block' & !is.null(x$robjects[[1]]$type)) {
+                    x.r <- x$robjects[[1]]
+                    if (any(x.r$type == 'image')) r$addFig(file=x.r$output)
+                    if (all(x.r$type != c('image', 'error')))
+                        r$add(paragraph(rp.prettyascii(x.r$output)))
+                    if (!is.null(x.r$msg$warnings))
+                        r$add(paragraph(as.character(x.r$msg$warnings)))
                     }
             })
+    
+            r$time <- r$time + rp$time
         }
 
     ## create report or return the Report class

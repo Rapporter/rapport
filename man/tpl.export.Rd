@@ -52,7 +52,7 @@
 \dontrun{
 
 ## eval some template
-x <- rapport('univar-descriptive', data=mtcars, var="hp")
+x <- rapport('descriptives-univar', data=mtcars, var="hp")
 
 ## try basic parameters
 tpl.export(x)
