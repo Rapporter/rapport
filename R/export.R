@@ -95,7 +95,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         if (all(lapply(rp, class) == 'rapport')) {
             r$title <- as.character(rp[[1]]$meta['title'])
             for (i in 1:length(rp)) {
-            	r <- tpl.export(rp[[i]], file=file, append=r, create=FALSE, open=FALSE, date=date)
+                r <- tpl.export(rp[[i]], file=file, append=r, create=FALSE, open=FALSE, date=date)
             }
         } else
             stop('Wrong rp parameter!')
@@ -143,7 +143,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         }
         if (logo) {
             r$add(paragraph(sprintf('-------\nThis report was generated in [R](http://www.r-project.org/) with [Rapport](http://al3xa.github.com/rapport/) in %s sec. Feel free to create [your own reporting templates](http://al3xa.github.com/rapport/#custom)!', rp.round(r$time))))
-            r$addFig(system.file('includes/images/rapport.png', package='rapport'))
+            r$addFig(system.file('includes/images/logo.png', package='rapport'))
         }
         r$create(file=file, open=open, options=options, date=date)
     } else
