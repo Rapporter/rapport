@@ -4,11 +4,11 @@ td {
 }
 
 body, p, table {
-    font-family: 'DroidSansRegular', Arial, sans-serif;
+    font-family: 'DroidSansRegular', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 header, h1, h2, h3, h4, h5, h6 {
-    font-family: 'YanoneKaffeesatzRegular';
+    font-family: 'YanoneKaffeesatzRegular', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 nav ul ul {
