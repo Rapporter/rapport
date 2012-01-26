@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Home
 ---
 
 <a id="intro"> </a>

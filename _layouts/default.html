@@ -9,7 +9,7 @@
     <!-- Basic Page Needs
          ================================================== -->
     <meta charset="utf-8" />
-    <title>rapport: a report templating system</title>
+    <title>rapport: an R templating system | {{ page.title }}</title>
     <meta name="description" content="" />
     <meta name="author" content="" />
     <!--[if lt IE 9]>
@@ -53,7 +53,11 @@
           <div id="logo">
             <a href="/"><img src="images/logo.png" alt="rapport"></a>
           </div>
-          {% include nav_index.html %}
+          {% if page.title == 'Home' %}
+              {% include nav_index.html %}
+          {% elsif page.title == 'Documentation' %}
+              {% include nav_function.html %}
+          {% endif %}
           <div id="influads_block" class="influads_block"></div>
         </nav>
         &nbsp;

@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Documentation
 ---
 
 <a id="functions"> </a>
