@@ -8,7 +8,7 @@ Strict:         TRUE
 Example:        rapport('hu/correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
                 rapport('hu/correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
 
-vars        | *numeric[1,10] | Változók              | Folytonos változók
+vars        | *numeric[1,50] | Változók              | Folytonos változók
 cor.matrix  | TRUE          | Korrelációs mátrix    | Korrelációs mátrix hozzáadása
 cor.plot    | TRUE          | Pontdiagram           | Pontdiagram hozzáadása
 head-->
@@ -22,7 +22,7 @@ options('p.copula' = 'és'); NULL
 
 <%length(vars)%> változó vizsgálata:
 
-A legmagasabb korrelációs együtthatót (<%cm <- cor(vars);diag(cm) <- NA; rp.round(max(cm, na.rm=T))%>) a(z) <%p(row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2])%>, és a legalacsonyabb értéket (<%rp.round(min(cm, na.rm=T))%>) a(z) <%p(row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2])%> változók között találjuk. Úgy tűnik, hogy a legerősebb kapcsolat (r=<%rp.round(cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1])%>) a(z) <%
+A legmagasabb korrelációs együtthatót (<%cm <- cor(vars, use = 'complete.obs');diag(cm) <- NA; rp.round(max(cm, na.rm=T))%>) a(z) <%p(row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2])%>, és a legalacsonyabb értéket (<%rp.round(min(cm, na.rm=T))%>) a(z) <%p(row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2])%> változók között találjuk. Úgy tűnik, hogy a legerősebb kapcsolat (r=<%rp.round(cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1])%>) a(z) <%
 p(row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2])%> változók között található.
 
 Erős összefüggést mutató (r < 0.7 or r > 0.7) változók: <%cm[lower.tri(cm)] <- NA; l <- row.names(cm)[which((cm > 0.7) | (cm < -0.7), arr.ind=T)]; ifelse(length(l) == 0, '-', '')%>
