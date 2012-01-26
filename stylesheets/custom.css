@@ -3,16 +3,20 @@ body, p, table {
 }
 
 header, h1, h2, h3, h4, h5, h6 {
-    font-family: 'AsapBold', sans-serif;
+    font-family: 'Asap-Bold', sans-serif;
 }
 
-p, table {
-    margin-left: 20px;
-    text-align: justify;
+a {
+    color: #383336;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #0099D9;
 }
 
 code {
-    font-family: Inconsolata, monospace;
+    font-family: 'Inconsolata', monospace;
     background-color: whiteSmoke;
     padding-left: 2px;
     padding-right: 2px;
@@ -32,13 +36,9 @@ nav {
     position: fixed;
 }
 
-nav a {
-    color: #383336;
-    text-decoration: none;
-}
 
-nav a:hover{
-    color: #0099D9;
+#logo {
+    margin: 0 0 30px;
 }
 
 .content li {
