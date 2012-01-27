@@ -66,6 +66,7 @@ rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=g
 #' @param font specified font family
 #' @return list of lattice parameters 
 #' @export
+#' @references Forked from \code{latticeExtra::ggplot2like()} and \code{lattice::standard.theme()}.
 #' @examples \dontrun{
 #' theme.rapport()
 #' theme.rapport(palette='Greens')
@@ -73,31 +74,56 @@ rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=g
 #' }
 theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette'), colorize = getOption('style.colorize'), font = getOption('style.font')) {
     # TODO: append ... parameters
+    # TODO: add font
     color <- rp.palette(1, palette = palette, colorize = colorize)
     colors <- rp.palette(palette = palette, colorize = colorize)
-    # TODO: black&white
     theme <- standard.theme(color = !bw)
     theme <- modifyList(theme, list(
-                    add.text = list(cex = 0.8),
-                    axis.line = list(col = "transparent"), 
-                    axis.text = list(cex = 0.8, lineheight = 0.9, col = "grey50"), 
-                    background = list(col = "white"),
-                    box.dot = list(col = "grey20", pch = "|"),
-                    box.rectangle = list(fill = color, col = "grey20", alpha=0.9, lwd=2),
-                    box.umbrella = list(col = "grey20", lty = 1),
-                    dot.line = list(col = "white"),
-                    dot.symbol = list(col = "black", pch = 19),
-                    panel.background = list(col = "white"),
-                    plot.line = list(col = color, lwd = 2),
-                    plot.polygon = list(col = color, alpha = 0.9, border = "black", lwd = 2), # should border be white?
-                    plot.symbol = list(fill = color, col="black", pch = 21, cex = 0.8),
-                    reference.line = list(col = "grey50", lty = "dashed"), 
-                    strip.background = list(col = c("grey80", "grey70", "grey60")), 
-                    strip.border = list(col = "transparent"),
-                    strip.shingle = list(col = c("grey60", "grey50", "grey40")), 
-                    superpose.polygon = list(col = colors, border = "transparent"), # same as above
-                    superpose.symbol = list(col = colors, pch = 19, cex = 0.6)
+        add.text = list(cex = 0.8),
+        axis.line = list(col = "transparent"), 
+        axis.text = list(cex = 0.8, lineheight = 0.9, col = "grey50"), 
+        background = list(col = "white"),
+        box.dot = list(col = "grey20", pch = "|"),
+        box.rectangle = list(fill = color, col = "transparent", alpha=0.9, lwd=2),
+        box.umbrella = list(col = color, lty = 1),
+        dot.line = list(col = "white"),
+        dot.symbol = list(col = "black", pch = 19),
+        panel.background = list(col = "white"),
+        plot.line = list(col = color, lwd = 2),
+        plot.polygon = list(col = color, alpha = 0.9, border = "white", lwd = 2),
+        plot.symbol = list(fill = color, col="transparent", pch = 21, cex = 0.8),
+        reference.line = list(col = "grey50", lty = "dashed"), 
+        strip.background = list(col = c("grey80", "grey70", "grey60")), 
+        strip.border = list(col = "transparent"),
+        strip.shingle = list(col = c("grey60", "grey50", "grey40")), 
+        superpose.polygon = list(col = colors, border = "white", alpha = 0.9, lwd = 2),
+        superpose.symbol = list(col = colors, pch = 19, cex = 0.6)
             ))
+    if (bw) {
+        colors <- c("#000000", "#999999", "#4C4C4C", "#E6E6E6", 
+            "#F2F2F2", "#B2B2B2", "#000000", "#030303", "#050505", 
+            "#080808", "#0A0A0A", "#0D0D0D", "#0F0F0F", "#121212", 
+            "#151515", "#AAAAAA", "transparent")
+        theme$box.rectangle$col =  colors[1]    
+        theme$box.rectangle$fill =  colors[5]
+        theme$box.umbrella$col =  colors[1]
+        theme$dot.line$col =  colors[4]
+        theme$dot.symbol$col =  colors[1]
+        theme$plot.line$col =  colors[1]
+        theme$plot.polygon$col = colors[5]
+        theme$plot.symbol$col =  colors[1]
+        theme$plot.symbol$fill =  colors[5]
+        theme$regions$col = grey(seq(0.3^2.2, 0.9^2.2, length.out = 100)^(1/2.2))
+        theme$shade.colors$palette=function(irr, ref, height, w = 0.5) grey(w * irr + (1 - w) * (1 - (1 - ref)^0.4))
+        theme$strip.background$col =  colors[rep(5, 7)]
+        theme$strip.shingle$col =  colors[rep(6, 7)]
+        theme$superpose.line$col =  colors[rep(1, 7)]
+        theme$superpose.line$lty = 1:7
+        theme$superpose.polygon$col =  grey((c(6, 12, 7, 11, 8, 10, 9)/15)^0.8)
+        theme$superpose.symbol$cex = rep(0.7, 7)
+        theme$superpose.symbol$col = colors[rep(1, 7)]
+        theme$superpose.symbol$pch = c(1, 3, 6, 0, 5, 16, 17)
+    }
     modifyList(theme, simpleTheme())
 }
 
@@ -121,6 +147,7 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
 #' decorate.lattice(histogram(mtcars$hp))
 #' decorate.lattice(histogram(mtcars$hp), grid='y')
 #' decorate.lattice(histogram(mtcars$hp), grid='both')
+#' decorate.lattice(histogram(mtcars$hp), theme="theme.rapport(bw = TRUE)")
 #' decorate.lattice(histogram(mtcars$hp, type = "density", panel = function(x, ...) {
 #'   panel.histogram(x, ...)
 #'   panel.densityplot(x, darg=list(na.rm=TRUE), ...)
@@ -128,8 +155,10 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
 #' decorate.lattice(bwplot(decrease ~ treatment, OrchardSprays, groups = rowpos), grid='none')
 #' decorate.lattice(bwplot(decrease ~ treatment, OrchardSprays, groups = rowpos), grid='y')
 #' decorate.lattice(bwplot(voice.part ~ height, data = singer), grid='x')
+#' decorate.lattice(bwplot(voice.part ~ height, data = singer), grid='x', theme="theme.rapport(bw = TRUE)")
 #' decorate.lattice(barchart(VADeaths))
-#' decorate.lattice(barchart(VADeaths), theme="theme.rapport(palette='Greens')")
+#' decorate.lattice(barchart(VADeaths), theme="theme.rapport(palette='Greens')", grid='x')
+#' decorate.lattice(barchart(VADeaths), theme="theme.rapport(bw = TRUE)", grid='x')
 #' }
 decorate.lattice <- function(expr, theme = getOption('style.theme'), grid = getOption('style.grid')) {
     switch(grid,
@@ -153,6 +182,7 @@ decorate.lattice <- function(expr, theme = getOption('style.theme'), grid = getO
 #' @param scales 
 #' @param components 
 #' @param line.col 
+#' @references Forked from \code{latticeExtra::axis.grid()}.
 #' @keywords internal
 grid.x <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c("default", "yes", "no"), scales, components, line.col) {
     side <- match.arg(side)
@@ -198,6 +228,7 @@ grid.x <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c("
 #' @param scales 
 #' @param components 
 #' @param line.col 
+#' @references Forked from \code{latticeExtra::axis.grid()}.
 #' @keywords internal
 grid.y <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c("default", "yes", "no"), scales, components, line.col) {
     side <- match.arg(side)
