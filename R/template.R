@@ -176,30 +176,26 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         header <- trim.space(header, TRUE)
 
     ## required fields
-    fld.req <- list(
-                    list(title = 'Title'       , regex = '[[:print:]]+', field.length = 500),
-                    list(title = 'Author'      , regex = '.+', field.length = 100),
-                    list(title = 'Description' , regex = '[[:print:]]+', short = 'desc')
-                    )
+    fld <- list(
+                list(title = 'Title'         , regex = '[[:print:]]+', field.length = 500),
+                list(title = 'Author'        , regex = '.+', field.length = 100),
+                list(title = 'Description'   , regex = '[[:print:]]+', short = 'desc'),
+                list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
+                list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
+                list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
+                list(title = 'Example'       , regex = '.+', mandatory = FALSE),
+                list(title = 'Strict'        , regex = 'TRUE', mandatory = FALSE, default.value = FALSE)
+                )
 
     ## no fields specified, load default fields
-    if (is.null(fields)){
-        fields <- list(
-                       list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
-                       list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
-                       list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
-                       list(title = 'Example'       , regex = '.+', mandatory = FALSE),
-                       list(title = 'Strict'        , regex = 'TRUE', mandatory = FALSE, default.value = FALSE)
-                       )
+    if (!is.null(fields)){
+        fld.title <- sapply(fld, function(x) x$title)
+        fields.title  <- sapply(fields, function(x) x$title)
+        fld <- c(fld, fields) # merge required fields with default/specified ones
+        if (any(fld %in% fields.title)){
+            stopf("Duplicate metadata fields: %s", p(intersect(fld.title, fields.title), "\""))
+        }
     }
-
-    fld.req.title <- sapply(fld.req, function(x) x$title)
-    fields.title  <- sapply(fields, function(x) x$title)
-    if (any(fld.req.title %in% fields.title)){
-        stopf("Duplicate metadata fields: %s", p(intersect(fld.req.title, fields.title), "\""))
-    }
-
-    fld <- c(fld.req, fields) # merge required fields with default/specified ones
 
     inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
     spaces.ind <- grep("^([:space:]+|)$", header)
@@ -224,7 +220,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         ## but it will not check if they're syntactically correct
         ind.start <- grep('^Example:', header)
         ind       <- adj.rle(grep("^[\t ]*rapport\\(.+\\)([\t ]*#*[[:print:]]*)?$", header))$values[[1]]
-        ind       <- ind[!ind %in% ind.start]
+            ind       <- ind[!ind %in% ind.start]
         l$example <- c(l$example, header[ind])
     }
 
