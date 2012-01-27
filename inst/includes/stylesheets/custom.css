@@ -1,3 +1,5 @@
+/* Custom stuff */
+
 body {
     font-family: 'DroidSansRegular', sans-serif;
 }
@@ -32,6 +34,7 @@ h1, h2, h3, h4, h5, h6, .subtitle {
 
 .highlight code {
     border: none;
+    padding: 0;
 }
 
 .highlight {
@@ -45,7 +48,9 @@ code {
 }
 
 nav {
+    height: 85%;
     position: fixed;
+    width: 160px;
 }
 
 nav a {
@@ -59,7 +64,7 @@ nav a:hover {
 }
 
 #logo {
-    margin: 10px 0 30px;
+    margin: 10px 0 20px;
 }
 
 ul.tabs li {
@@ -82,4 +87,66 @@ ul.tabs li a.active {
     font-family: DroidSans;
     font-size: 1.5em;
     font-weight: bold;
+}
+
+
+/* Mobile */
+
+@media only screen and (max-width: 767px) {
+    header h1 { font-size: 34px; line-height: 37px; }
+    nav { position: relative; }
+    nav ul,
+    #influads_block {
+        display: none;
+    }
+    #logo { text-align: left; }
+    #examples .four.columns {
+        padding-top: 30px;
+    }
+}
+
+/* Mobile Landscape */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    nav ul {
+        display: none;
+    }
+}
+
+/* Non 960 */
+@media only screen and (max-width: 959px) {
+    #logo {
+        font-size: 21px;
+        margin-bottom: 15px; }
+    nav .button {
+        padding: 9px 20px 11px; }
+}
+
+/* iPad Portrait/Browser */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    nav {
+        width: 124px; }
+}
+
+/* Mobile/Browser */
+@media only screen and (max-width: 767px) {}
+
+/* Mobile Landscape/Browser */
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* Anything smaller than standard 960 */
+@media only screen and (max-width: 959px) {}
+
+
+/* iPad Portrait Only */
+@media only screen and (min-width: 768px) and (max-width: 959px) and (max-device-width: 1000px) {}
+
+/* Mobile Only */
+@media only screen and (max-width: 767px) and (max-device-width: 1000px) {}
+
+/* Mobile Landscape Only */
+@media only screen and (min-width: 480px) and (max-width: 767px) and (max-device-width: 1000px) {}
+
+/* Anything smaller than standard 960 on a device */
+@media only screen and (max-width: 959px) and (max-device-width: 1000px) {
+    .resize { display: none; }
 }

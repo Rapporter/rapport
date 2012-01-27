@@ -515,24 +515,25 @@ extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
     if (isTRUE(trim.white))
         x <- trim.space(x, leading = TRUE, trailing = TRUE)
 
+
     fl <- if (length(x) == 0) 0 else nchar(x)
     if (fl > field.length)
         stopf('"%s" field exceeds maximal length (%d, while %d is allowed)', title, fl, field.length)
 
-    re <- sprintf('^%s:[\t ]+(%s)$', title, regex)
-    val <- gsub(re, '\\1', x, ...) # return matched value
+    re <- sprintf('^%s:([\t ]+|)(%s)$', title, regex)
+    val <- gsub(re, '\\2', x, ...) # return matched value
 
     if (isTRUE(grepl(re, x, ...))){
         res <- val
     } else {
         if (isTRUE(mandatory)){
-            stopf('"%s" metadata field has errors', title)
+            stopf('"%s" metadata field %s', title, ifelse(fl == 0, 'not found', 'has errors'))
         } else {
-            res <- sprintf('%s:', title)
-            ## throw error only if meta is specified/non-empty, but has incorrect value
-            if (!(res == val || length(x) == 0))
-                warning(sprintf('found errors in a non-mandatory field "%s"', title))
-            res <- default.value
+            ## throw error only if meta is specified/non-empty, and has incorrect value
+            if (fl == 0)
+                res <- default.value
+            else
+                stopf('non-mandatory field "%s" contains errors', title)
         }
     }
 
@@ -882,11 +883,11 @@ rp.prettyascii <- function(x) {
         }
         return(paste(pre.txt, paste(capture.output(ascii(x, include.rownames = include.rownames)), collapse='\n'), sep=''))
     }
-    
+
     x.class <- class(x)
     if (x.class == 'trellis' | x.class == 'ggplot')
         stop('ggplot2 and trellis objects must be printed in strict mode!')
-    
+
     return(paste(capture.output(ascii(x, format='nice', digits=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'))), collapse='\n'))
 }
 

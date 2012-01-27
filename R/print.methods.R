@@ -17,7 +17,7 @@ print.rp.meta <- function(x, ...){
 
     fn <- function(x){
         titles <- names(x)
-        content <- sapply(x, function(y) sprintf('%s', if (is.null(y) || length(y) == 0) 'NA' else y))
+        content <- sapply(x, function(y) sprintf('%s', if (is.null(y) || length(y) == 0) 'NULL' else y))
         res <- c('\n', sprintf('%s:\t%s\n', titles, content))
     }
 
