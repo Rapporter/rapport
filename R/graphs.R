@@ -7,7 +7,7 @@
 ## TODO: pareto
 ## TODO: polygon/area plot
 
-## theme
+## theme functions
 
 #' Color palettes
 #'
@@ -132,7 +132,8 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
         theme$superpose.symbol$pch = c(1, 3, 6, 0, 5, 16, 17)
     }
     if (!missing(custom))
-        modifyList(theme, custom)
+        theme <- modifyList(theme, custom)
+    return(theme)
 }
 
 
@@ -296,6 +297,10 @@ rp.graph.check <- function(x, facet = NULL, subset = NULL, ...) {
 	if (!is.variable(x)) stop('Wrong type of varible (!atomic) provided.')
 }
 
+
+## plot functions
+
+
 #' Histogram
 #'
 #' This function is a wrapper around \code{\link{histogram}} which operates only on numeric vectors
@@ -305,33 +310,27 @@ rp.graph.check <- function(x, facet = NULL, subset = NULL, ...) {
 #' @param facet an optional categorical variable to make facets by
 #' @param data an optional data frame from which the variables should be taken
 #' @param kernel.smooth add kernel density plot?
-#' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
-#' @param colorize if set the color is chosen from palette at random
 #' @param ... additional parameters to \code{\link{histogram}}
 #' @export
 #' @examples \dontrun{
 #' rp.hist(ius2008$edu)
 #' rp.hist(ius2008$edu, facet=ius2008$gender)
 #' rp.hist(ius2008$edu, ius2008$dwell)
-#' rp.hist(ius2008$edu, colorize=TRUE)
-#' rp.hist(ius2008$edu, colorize=TRUE, kernel.smooth=TRUE)
+#' rp.hist(ius2008$edu, kernel.smooth=TRUE)
 #' with(ius2008, rp.hist(edu, facet = gender))
 #' rp.hist(edu, data = ius2008)
 #' rp.hist(edu, gender, ius2008)
 #' }
-rp.hist <- function(x, facet=NULL, data=NULL, kernel.smooth = FALSE, theme=getOption('stlye.color.palette'), colorize=getOption('stlye.colorize'), ...) {
+rp.hist <- function(x, facet=NULL, data=NULL, kernel.smooth = FALSE, ...) {
     mc <- match.call()
     if (!missing(data)) {
         if (missing(facet)) {
-            rp.hist(x=eval(mc$x, data), theme=theme, colorize=colorize, ...)
+            rp.hist(x=eval(mc$x, data), ...)
         } else {
-            rp.hist(x=eval(mc$x, data), facet=eval(mc$facet, data),
-                    theme=theme, colorize=colorize, ...)
+            rp.hist(x=eval(mc$x, data), facet=eval(mc$facet, data), ...)
         }
     } else {
         rp.graph.check(x, ...)
-        ##  generating color from given palette
-        col <- rp.palette(2, theme, colorize)
         ##  getting xlab
         xlab <- rp.label(x)
         if (xlab=='x') xlab <- tail(as.character(substitute(x)), 1)
@@ -343,19 +342,16 @@ rp.hist <- function(x, facet=NULL, data=NULL, kernel.smooth = FALSE, theme=getOp
         }
         ## panel
         if (!kernel.smooth) {
-            panel <- function(x, ...) {
-                panel.grid(h=-1, v=-1)
+            panel <- function(x, ...)
                 panel.histogram(x, ...)
-            }
         } else {
             panel <- function(x, ...) {
-                panel.grid(h=-1, v=-1)
                 panel.histogram(x, ...)
                 panel.densityplot(x, darg=list(na.rm=TRUE), ...)
             }
         }
         ##  plot
-        histogram(x=eval(parse(text=text)), type = "density", panel = panel, col = col[1], col.line=col[2], lwd=2, ylab='', xlab=xlab, ...)
+        histogram(x=eval(parse(text=text)), type = "density", panel = panel, ylab='', xlab=xlab, par.settings = getOption('style.theme'), axis = grid.x, ...)
     }
 }
 
