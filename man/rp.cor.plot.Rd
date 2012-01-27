@@ -4,8 +4,8 @@
 \usage{
   rp.cor.plot(x, lower.panel = "panel.smooth",
     upper.panel = "panel.cor", data = NULL,
-    theme = getOption("rp.color.palette"),
-    colorize = getOption("rp.colorize"), ...)
+    theme = getOption("stlye.color.palette"),
+    colorize = getOption("stlye.colorize"), ...)
 }
 \arguments{
   \item{x}{numeric variables}

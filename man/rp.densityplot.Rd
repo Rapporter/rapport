@@ -3,8 +3,8 @@
 \title{Density plot}
 \usage{
   rp.densityplot(x, facet = NULL, data = NULL,
-    theme = getOption("rp.color.palette"),
-    colorize = getOption("rp.colorize"), ...)
+    theme = getOption("stlye.color.palette"),
+    colorize = getOption("stlye.colorize"), ...)
 }
 \arguments{
   \item{x}{a numeric variable}

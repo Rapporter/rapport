@@ -4,8 +4,8 @@
 \usage{
   rp.barplot(x, facet = NULL, data = NULL, groups = FALSE,
     auto.key = FALSE, horizontal = TRUE, percent = FALSE,
-    theme = getOption("rp.color.palette"),
-    colorize = getOption("rp.colorize"), ...)
+    theme = getOption("stlye.color.palette"),
+    colorize = getOption("stlye.colorize"), ...)
 }
 \arguments{
   \item{x}{a numeric variable}

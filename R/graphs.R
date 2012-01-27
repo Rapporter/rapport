@@ -1,6 +1,4 @@
-## contains functions for easy plotting of data
-## maybe these should be wrapped up in a custom object, so the command that generated the graph can be saved as an object attribute
-## and what about ggplot? think about the design consistency, at least from webapp's POV
+## functions for easy and themed plotting of data
 
 ## Further rp.graphs under consideration:
 #########################################
@@ -9,35 +7,144 @@
 ## TODO: pareto
 ## TODO: polygon/area plot
 
+## theme
+
 #' Color palettes
 #'
-#' This function returns a given number of color codes from given palette by default falling back to a
-#' color-blind-friendly palette from \url{http://jfly.iam.u-tokyo.ac.jp/color/}.
+#' This function returns a given number of color codes from given palette from \code{\link{RColorBrewer}}. Besides those falling back to \code{'default'}: a color-blind-friendly palette from \url{http://jfly.iam.u-tokyo.ac.jp/color/}.
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'style.color.palette',
+#'     \item 'style.colorize'.
+#' }
 #' @param num number of colors to return
-#' @param theme a palette name from \code{\link{RColorBrewer}} or 'default'
+#' @param palette a palette name from \code{\link{RColorBrewer}} or 'default'
 #' @param colorize if set colors are chosen from palette at random order
 #' @export
 #' @examples {
+#' rp.palette()
 #' rp.palette(1)
 #' rp.palette(1, colorize = TRUE)
 #' rp.palette(5, 'Greens')
 #' rp.palette(5, 'Greens', colorize = TRUE)
 #' }
-rp.palette <- function(num, theme=getOption('style.color.palette'), colorize=getOption('style.colorize')) {
+rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=getOption('style.colorize')) {
+    if (!(palette %in% c(row.names(brewer.pal.info), 'default')))
+        stop('Wrong palette provided.')
+    if (missing(num))
+        num <- ifelse(palette == 'default', 8, brewer.pal.info[palette,'maxcolors'])
     if (any(!is.numeric(num), (length(num)>1))) stop('Wrong number of colors provided.')
-    if (theme=='default') {
+    if (palette=='default') {
         if (num > 8) stop('Maximum number of colors (8) with choosen palette is lower then provided.')
         cols <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 	} else {
-		if (!(theme %in% row.names(brewer.pal.info))) stop('Wrong theme provided.')
-		if (num > brewer.pal.info[theme,'maxcolors']) stop(paste('Maximum number of colors (', brewer.pal.info[theme, "maxcolors"], ') with choosen palette is lower then provided (', num, ').', sep=''))
+		if (num > brewer.pal.info[palette,'maxcolors']) stop(paste('Maximum number of colors (', brewer.pal.info[palette, "maxcolors"], ') with choosen palette is lower then provided (', num, ').', sep=''))
 		## ugly hack to be able to return colors from palettes with higher minimum 'n' requirement
         if (num < 3) n <- 3
-		cols <- brewer.pal(brewer.pal.info[theme,'maxcolors'], theme)
+		cols <- brewer.pal(brewer.pal.info[palette,'maxcolors'], palette)
 	}
 	if (colorize == TRUE) cols <- sample(cols)
 	return(cols[1:num])
 }
+
+
+#' Rapport theme
+#' 
+#' Custom minimalistic but colorful lattice/trellis theme used by default in rapport.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'style.color.palette',
+#'     \item 'style.colorize',
+#'     \item 'style.font'.
+#' }
+#' @param bw generating black and white output?
+#' @param palette color palette to use. See: \code{\link{rp.palette}} for details. 
+#' @param colorize adding some random noise instead of using first available color(s) from palette
+#' @param font specified font family
+#' @return list of lattice parameters 
+#' @export
+#' @examples \dontrun{
+#' theme.rapport()
+#' theme.rapport(palette='Greens')
+#' theme.rapport(palette='Greens', colorize = FALSE)
+#' }
+theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette'), colorize = getOption('style.colorize'), font = getOption('style.font')) {
+    # TODO: append ... parameters
+    color <- rp.palette(1, palette = palette, colorize = colorize)
+    colors <- rp.palette(palette = palette, colorize = colorize)
+    # TODO: black&white
+    theme <- standard.theme(color = !bw)
+    theme <- modifyList(theme, list(
+                    add.text = list(cex = 0.8),
+                    axis.line = list(col = "transparent"), 
+                    axis.text = list(cex = 0.8, lineheight = 0.9, col = "grey50"), 
+                    background = list(col = "white"),
+                    box.dot = list(col = "grey20", pch = "|"),
+                    box.rectangle = list(fill = color, col = "grey20", alpha=0.9, lwd=2),
+                    box.umbrella = list(col = "grey20", lty = 1),
+                    dot.line = list(col = "white"),
+                    dot.symbol = list(col = "black", pch = 19),
+                    panel.background = list(col = "white"),
+                    plot.line = list(col = color, lwd = 2),
+                    plot.polygon = list(col = color, alpha = 0.9, border = "black", lwd = 2), # should border be white?
+                    plot.symbol = list(fill = color, col="black", pch = 21, cex = 0.8),
+                    reference.line = list(col = "grey50", lty = "dashed"), 
+                    strip.background = list(col = c("grey80", "grey70", "grey60")), 
+                    strip.border = list(col = "transparent"),
+                    strip.shingle = list(col = c("grey60", "grey50", "grey40")), 
+                    superpose.polygon = list(col = colors, border = "transparent"), # same as above
+                    superpose.symbol = list(col = colors, pch = 19, cex = 0.6)
+            ))
+    modifyList(theme, simpleTheme())
+}
+
+
+#' Decorating lattice plots
+#' 
+#' Apply required theme and grid options to called lattice/trellis plot.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'style.theme',
+#'     \item 'style.grid'.
+#' }
+#' @param expr call to lattice which will be evaluated with added theme options
+#' @param theme name of theme to use. Besides \code{\link{'theme.rapport'}} there are several themes available in other packages too, eg. \code{standard.theme()} from lattice, \code{gplot2like()} and \code{theEconomist.theme()} from latticeExtra and \code{custom.theme.black()} from latticist package. Of course custom theme might be provided also, check out \code{?custom.theme} from latticeExtra package or head directly to: \code{?trellis.par.get()}
+#' @param grid show grid in the background? It is possible to render a grid for \code{'both'}, only for \code{'x'} or solely to \code{'y'} axis. \code{'none'} results in a blank background.
+#' @return lattice/trellis object
+#' @export
+#' @examples \dontrun{
+#' decorate.lattice(histogram(mtcars$hp))
+#' decorate.lattice(histogram(mtcars$hp), grid='y')
+#' decorate.lattice(histogram(mtcars$hp), grid='both')
+#' decorate.lattice(histogram(mtcars$hp, type = "density", panel = function(x, ...) {
+#'   panel.histogram(x, ...)
+#'   panel.densityplot(x, darg=list(na.rm=TRUE), ...)
+#' }))
+#' decorate.lattice(bwplot(decrease ~ treatment, OrchardSprays, groups = rowpos), grid='none')
+#' decorate.lattice(bwplot(decrease ~ treatment, OrchardSprays, groups = rowpos), grid='y')
+#' decorate.lattice(bwplot(voice.part ~ height, data = singer), grid='x')
+#' decorate.lattice(barchart(VADeaths))
+#' decorate.lattice(barchart(VADeaths), theme="theme.rapport(palette='Greens')")
+#' }
+decorate.lattice <- function(expr, theme = getOption('style.theme'), grid = getOption('style.grid')) {
+    switch(grid,
+            'x' = grid <- 'grid.x',
+            'y' = grid <- 'grid.y',
+            'both' = grid <- 'axis.grid',
+            grid <- NULL)
+    if (is.null(grid)) {
+        extra.parameters <- sprintf(', par.settings = %s)', theme)
+    } else {
+        extra.parameters <- sprintf(', par.settings = %s, axis = %s)', theme, grid)
+    }
+    eval(parse(text=sub(')$', extra.parameters, deparse(substitute(expr)))))
+}
+
 
 #' Input cheks (internal)
 #'

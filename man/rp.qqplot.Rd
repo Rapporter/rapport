@@ -3,8 +3,8 @@
 \title{Q-Q plot with Theoretical Distribution}
 \usage{
   rp.qqplot(x, dist = qnorm, facet = NULL, data = NULL,
-    theme = getOption("rp.color.palette"),
-    colorize = getOption("rp.colorize"), ...)
+    theme = getOption("stlye.color.palette"),
+    colorize = getOption("stlye.colorize"), ...)
 }
 \arguments{
   \item{x}{a numeric variable}
