@@ -64,6 +64,7 @@ rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=g
 #' @param palette color palette to use. See: \code{rp.palette} for details. 
 #' @param colorize adding some random noise instead of using first available color(s) from palette
 #' @param font specified font family
+#' @param custom list of custom lattice options to change. Eg. \code{par.main.text = list(lineheight = 2)}
 #' @return list of lattice parameters 
 #' @export
 #' @references Forked from \code{latticeExtra::ggplot2like()} and \code{lattice::standard.theme()}.
@@ -71,10 +72,9 @@ rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=g
 #' theme.rapport()
 #' theme.rapport(palette='Greens')
 #' theme.rapport(palette='Greens', colorize = FALSE)
+#' theme.rapport(custom=list(par.main.text = list(lineheight = 2)))
 #' }
-theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette'), colorize = getOption('style.colorize'), font = getOption('style.font')) {
-    # TODO: append ... parameters
-    # TODO: add font
+theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette'), colorize = getOption('style.colorize'), font = getOption('style.font'), custom) {
     color <- rp.palette(1, palette = palette, colorize = colorize)
     colors <- rp.palette(palette = palette, colorize = colorize)
     theme <- standard.theme(color = !bw)
@@ -131,7 +131,8 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
         theme$superpose.symbol$col = colors[rep(1, 7)]
         theme$superpose.symbol$pch = c(1, 3, 6, 0, 5, 16, 17)
     }
-    modifyList(theme, simpleTheme())
+    if (!missing(custom))
+        modifyList(theme, custom)
 }
 
 
@@ -169,6 +170,7 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
 #' decorate.lattice(barchart(VADeaths), theme="theme.rapport(font = 'Garamond')", grid='x')
 #' decorate.lattice(barchart(VADeaths), theme="ggplot2like", grid='x')
 #' decorate.lattice(barchart(VADeaths), theme="theEconomist.theme", grid='x')
+#' decorate.lattice(barchart(VADeaths, main='TITLE (70-74)'), theme="theme.rapport(custom = list(axis.text = list(fontfamily='Garamond')))", grid='x')
 #' }
 decorate.lattice <- function(expr, theme = getOption('style.theme'), grid = getOption('style.grid')) {
     switch(grid,
