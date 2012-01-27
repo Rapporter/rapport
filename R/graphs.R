@@ -61,7 +61,7 @@ rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=g
 #'     \item 'style.font'.
 #' }
 #' @param bw generating black and white output?
-#' @param palette color palette to use. See: \code{\link{rp.palette}} for details. 
+#' @param palette color palette to use. See: \code{rp.palette} for details. 
 #' @param colorize adding some random noise instead of using first available color(s) from palette
 #' @param font specified font family
 #' @return list of lattice parameters 
@@ -143,6 +143,98 @@ decorate.lattice <- function(expr, theme = getOption('style.theme'), grid = getO
         extra.parameters <- sprintf(', par.settings = %s, axis = %s)', theme, grid)
     }
     eval(parse(text=sub(')$', extra.parameters, deparse(substitute(expr)))))
+}
+
+
+#' Add grid to x axis
+#' @param side 
+#' @param ... 
+#' @param ticks 
+#' @param scales 
+#' @param components 
+#' @param line.col 
+#' @keywords internal
+grid.x <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c("default", "yes", "no"), scales, components, line.col) {
+    side <- match.arg(side)
+    ticks <- match.arg(ticks)
+    scales.tck <- switch(side, left = , bottom = scales$tck[1], 
+            right = , top = scales$tck[2])
+    comps.major <- components
+    mycomps <- components[[side]]
+    if (is.list(mycomps)) {
+        lab <- as.character(mycomps$labels$labels)
+        if (any(lab != "")) {
+            tck <- mycomps$ticks$tck
+            if (any(tck * scales.tck != 0)) {
+                tck <- rep(tck, length = length(lab))
+                comps.major[[side]]$ticks$tck <- ifelse(lab == 
+                                "", NA, tck)
+            }
+        }
+    }
+    else {
+        ticks <- "no"
+    }
+    axis.text <- trellis.par.get("axis.text")
+    axis.default(side, scales = scales, ticks = ticks, components = comps.major, 
+            ..., line.col = axis.text$col)
+    if (side %in% c("top", "left")) 
+        return()
+    if (scales$draw == FALSE) 
+        return()
+    ref.line <- trellis.par.get("reference.line")
+    if (side == "bottom") {
+        tck <- abs(mycomps$ticks$tck)
+        panel.refline(v = mycomps$ticks$at, lwd = ref.line$lwd * 
+                        tck, alpha = ref.line$alpha * tck/max(tck, na.rm = TRUE))
+    }
+}
+
+
+#' Add grid to y axis
+#' @param side 
+#' @param ... 
+#' @param ticks 
+#' @param scales 
+#' @param components 
+#' @param line.col 
+#' @keywords internal
+grid.y <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c("default", "yes", "no"), scales, components, line.col) {
+    side <- match.arg(side)
+    ticks <- match.arg(ticks)
+    scales.tck <- switch(side, left = , bottom = scales$tck[1], 
+            right = , top = scales$tck[2])
+    comps.major <- components
+    mycomps <- components[[side]]
+    if (is.list(mycomps)) {
+        lab <- as.character(mycomps$labels$labels)
+        if (any(lab != "")) {
+            tck <- mycomps$ticks$tck
+            if (any(tck * scales.tck != 0)) {
+                tck <- rep(tck, length = length(lab))
+                comps.major[[side]]$ticks$tck <- ifelse(lab == 
+                                "", NA, tck)
+            }
+        }
+    }
+    else {
+        ticks <- "no"
+    }
+    axis.text <- trellis.par.get("axis.text")
+    axis.default(side, scales = scales, ticks = ticks, components = comps.major, 
+            ..., line.col = axis.text$col)
+    if (side %in% c("top", "left")) 
+        return()
+    if (scales$draw == FALSE) 
+        return()
+    ref.line <- trellis.par.get("reference.line")
+    if (side == "right") {
+        if (!is.list(mycomps)) 
+            mycomps <- components[["left"]]
+        tck <- abs(mycomps$ticks$tck)
+        panel.refline(h = mycomps$ticks$at, lwd = ref.line$lwd * 
+                        tck, alpha = ref.line$alpha * tck/max(tck, na.rm = TRUE))
+    }
 }
 
 
