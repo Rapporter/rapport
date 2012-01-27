@@ -17,6 +17,7 @@ Depends:
     ascii,
     evaluate,
     lattice,
+    latticeExtra,
     moments,
     RColorBrewer,
     reshape,

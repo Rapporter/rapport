@@ -23,7 +23,7 @@
 #' rp.palette(5, 'Greens')
 #' rp.palette(5, 'Greens', colorize = TRUE)
 #' }
-rp.palette <- function(num, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize')) {
+rp.palette <- function(num, theme=getOption('style.color.palette'), colorize=getOption('style.colorize')) {
     if (any(!is.numeric(num), (length(num)>1))) stop('Wrong number of colors provided.')
     if (theme=='default') {
         if (num > 8) stop('Maximum number of colors (8) with choosen palette is lower then provided.')
@@ -77,7 +77,7 @@ rp.graph.check <- function(x, facet = NULL, subset = NULL, ...) {
 #' rp.hist(edu, data = ius2008)
 #' rp.hist(edu, gender, ius2008)
 #' }
-rp.hist <- function(x, facet=NULL, data=NULL, kernel.smooth = FALSE, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
+rp.hist <- function(x, facet=NULL, data=NULL, kernel.smooth = FALSE, theme=getOption('stlye.color.palette'), colorize=getOption('stlye.colorize'), ...) {
     mc <- match.call()
     if (!missing(data)) {
         if (missing(facet)) {
@@ -141,7 +141,7 @@ rp.hist <- function(x, facet=NULL, data=NULL, kernel.smooth = FALSE, theme=getOp
 #' rp.densityplot(hp, data = df)
 #' rp.densityplot(hp, am, df)
 #' }
-rp.densityplot <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
+rp.densityplot <- function(x, facet=NULL, data=NULL, theme=getOption('stlye.color.palette'), colorize=getOption('stlye.colorize'), ...) {
     mc <- match.call()
     if (!missing(data)) {
         if (missing(facet)) {
@@ -199,7 +199,7 @@ rp.densityplot <- function(x, facet=NULL, data=NULL, theme=getOption('rp.color.p
 #' rp.barplot(cyl, am, df)
 #' }
 rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, horizontal=TRUE,
-                       percent = FALSE, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
+                       percent = FALSE, theme=getOption('stlye.color.palette'), colorize=getOption('stlye.colorize'), ...) {
     mc <- match.call()
     if (!missing(data)) {
         if (missing(facet)) {
@@ -279,7 +279,7 @@ rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
 #' rp.dotplot(cyl, data=df)
 #' rp.dotplot(cyl, am, df)
 #' }
-rp.dotplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, horizontal=TRUE, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
+rp.dotplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, horizontal=TRUE, theme=getOption('stlye.color.palette'), colorize=getOption('stlye.colorize'), ...) {
     mc <- match.call()
     if (!missing(data)) {
         if (missing(facet)) {
@@ -344,7 +344,7 @@ rp.dotplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
 #' rp.scatterplot(hp, wt, data=df)
 #' rp.scatterplot(hp, wt, am, df)
 #' }
-rp.scatterplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
+rp.scatterplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('stlye.color.palette'), colorize=getOption('stlye.colorize'), ...) {
     mc <- match.call()
     if (!missing(data)) {
         if (missing(facet)) {
@@ -416,7 +416,7 @@ rp.scatterplot <- function(x, y, facet=NULL, data=NULL, theme=getOption('rp.colo
 #' rp.lineplot(partner, age, groups=gender, data=df)
 #' }
 
-rp.lineplot <- function(x, y, facet=NULL, data=NULL, groups=NULL, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
+rp.lineplot <- function(x, y, facet=NULL, data=NULL, groups=NULL, theme=getOption('stlye.color.palette'), colorize=getOption('stlye.colorize'), ...) {
     mc <- match.call()
     if (!missing(data)) {
         if (missing(facet)) {
@@ -484,7 +484,7 @@ rp.lineplot <- function(x, y, facet=NULL, data=NULL, groups=NULL, theme=getOptio
 #' rp.boxplot(cyl, wt, data=df)
 #' rp.boxplot(cyl, wt, am, df)
 #' }
-rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
+rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('stlye.color.palette'), colorize=getOption('stlye.colorize'), ...) {
     mc <- match.call()
     if (!missing(data)) {
         if (missing(facet)) {
@@ -540,7 +540,7 @@ rp.boxplot <- function(x, y=NULL, facet=NULL, data=NULL, theme=getOption('rp.col
 #' rp.cor.plot(df)
 #' rp.cor.plot(df, diag.panel='panel.hist')
 #' }
-rp.cor.plot <- function(x, lower.panel='panel.smooth', upper.panel='panel.cor', data=NULL, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
+rp.cor.plot <- function(x, lower.panel='panel.smooth', upper.panel='panel.cor', data=NULL, theme=getOption('stlye.color.palette'), colorize=getOption('stlye.colorize'), ...) {
     mc <- match.call()
     if (!missing(data)) {
         rp.cor.plot(x=eval(mc$x, data), lower.panel=NULL, upper.panel=NULL,
@@ -606,7 +606,7 @@ rp.cor.plot <- function(x, lower.panel='panel.smooth', upper.panel='panel.cor', 
 #'     rp.qqplot(hp, facet=am, data=df)
 #'     rp.qqplot(hp, qunif, am, df)
 #' }
-rp.qqplot <- function(x, dist=qnorm, facet=NULL, data=NULL, theme=getOption('rp.color.palette'), colorize=getOption('rp.colorize'), ...) {
+rp.qqplot <- function(x, dist=qnorm, facet=NULL, data=NULL, theme=getOption('stlye.color.palette'), colorize=getOption('stlye.colorize'), ...) {
     mc <- match.call()
     if (!missing(data)) {
         if (missing(facet)) {

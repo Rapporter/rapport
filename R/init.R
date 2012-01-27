@@ -1,7 +1,8 @@
 .onLoad <- function(libname, pkgname)
 {
     ## rapport settings
-    options('rapport.mode'  = 'normal')
+    options('rapport.mode'     = 'normal')
+    options('asciiType'        = 'pandoc')
 
     ## encrypt/decrypt key generation settings
     options('.encrypt.chars'   = paste(c(LETTERS, letters, 0:9, ' ', '(', ')', '=', '~', '.', '+', '"', "'",'$', '#'), collapse = ""))
@@ -18,9 +19,19 @@
     options('rp.decimal'       = 4)
     options('rp.decimal.short' = 2)
     options('rp.decimal.mark'  = '.')
-    options('rp.color.palette' = 'default')
-    options('rp.colorize'      = FALSE)
-    options('asciiType'        = 'pandoc')
+
+    ## style settings
+    options('style.theme'         = 'theme.rapport')
+    ## other theme options:
+    ##  * standard.theme() from lattice (default theme)
+    ##  * ggplot2like() from latticeExtra package
+    ##  * theEconomist.theme() from latticeExtra package
+    ##  * custom.theme.black() from latticist package
+    ##  * set custom theme to an R object, details: ?trellis.par.get()
+    options('style.grid'          = 'both')           # to draw grids for 'x', 'y', 'both' axis or 'none'
+    options('style.font'          = 'Helvetica')
+    options('style.color.palette' = 'default')      # for other palette options, see: ?brewer.pal.info
+    options('style.colorize'      = TRUE)
 
     ## tag regexes
     options('rp.tags' = c(
