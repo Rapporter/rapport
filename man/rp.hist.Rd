@@ -3,6 +3,7 @@
 \title{Histogram}
 \usage{
   rp.hist(x, facet = NULL, data = NULL,
+    kernel.smooth = FALSE,
     theme = getOption("rp.color.palette"),
     colorize = getOption("rp.colorize"), ...)
 }
@@ -14,6 +15,8 @@
 
   \item{data}{an optional data frame from which the
   variables should be taken}
+
+  \item{kernel.smooth}{add kernel density plot?}
 
   \item{theme}{a color palette name from
   \code{\link{RColorBrewer}} or 'default'}
@@ -31,16 +34,14 @@
 }
 \examples{
 \dontrun{
-df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
-  am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-rp.hist(df$hp)
-rp.hist(df$hp, facet=df$am)
-rp.hist(df$hp, df$am)
-rp.label(df$hp) <- 'horsepower'; rp.hist(df$hp)
-rp.hist(df$hp, colorize=TRUE)
-with(df, rp.hist(hp, facet = am))
-rp.hist(hp, data = df)
-rp.hist(hp, am, df)
+rp.hist(ius2008$edu)
+rp.hist(ius2008$edu, facet=ius2008$gender)
+rp.hist(ius2008$edu, ius2008$dwell)
+rp.hist(ius2008$edu, colorize=TRUE)
+rp.hist(ius2008$edu, colorize=TRUE, kernel.smooth=TRUE)
+with(ius2008, rp.hist(edu, facet = gender))
+rp.hist(edu, data = ius2008)
+rp.hist(edu, gender, ius2008)
 }
 }
 
