@@ -99,6 +99,13 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
         superpose.polygon = list(col = colors, border = "white", alpha = 0.9, lwd = 2),
         superpose.symbol = list(col = colors, pch = 19, cex = 0.6)
             ))
+    theme$axis.text$fontfamily <- font
+    theme$add.text$fontfamily <- font
+    theme$par.xlab.text$fontfamily <- font
+    theme$par.ylab.text$fontfamily <- font
+    theme$par.zlab.text$fontfamily <- font
+    theme$par.main.text$fontfamily <- font
+    theme$par.sub.text$fontfamily <- font
     if (bw) {
         colors <- c("#000000", "#999999", "#4C4C4C", "#E6E6E6", 
             "#F2F2F2", "#B2B2B2", "#000000", "#030303", "#050505", 
@@ -159,6 +166,9 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
 #' decorate.lattice(barchart(VADeaths))
 #' decorate.lattice(barchart(VADeaths), theme="theme.rapport(palette='Greens')", grid='x')
 #' decorate.lattice(barchart(VADeaths), theme="theme.rapport(bw = TRUE)", grid='x')
+#' decorate.lattice(barchart(VADeaths), theme="theme.rapport(font = 'Garamond')", grid='x')
+#' decorate.lattice(barchart(VADeaths), theme="ggplot2like", grid='x')
+#' decorate.lattice(barchart(VADeaths), theme="theEconomist.theme", grid='x')
 #' }
 decorate.lattice <- function(expr, theme = getOption('style.theme'), grid = getOption('style.grid')) {
     switch(grid,
