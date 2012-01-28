@@ -11,11 +11,13 @@
 #' @param fill value to replace missing level combinations (see documentation for eponymous argument in \code{\link[reshape]{melt.data.frame}})
 #' @param add.missing show missing level combinations
 #' @param total.name a character string with name for "grand" margin (defaults to "Total")
+#' @param varcol.name character string for column that contains summarised variables (defaults to \code{"Variable"})
+#' @param use.labels use labels for \code{measure.vars}?
 #' @return a \code{data.frame} with aggregated data
 #' @examples
 #' rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)
 #' @export
-rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total') {
+rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total', varcol.name = 'Variable', use.labels = FALSE) {
 
     if (!is.character(id.vars) && !is.character(measure.vars)){
         data <- if (is.null(id.vars)) data.frame(measure.vars) else data.frame(id.vars, measure.vars)
@@ -26,60 +28,71 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
 
     m   <- melt.data.frame(data, id.vars = id.vars, measure.vars = measure.vars, na.rm = na.rm) # melt data
     if (is.null(id.vars))
-        id.vars <- '.'
-    fml <- sprintf('%s ~ variable', paste(id.vars, collapse = ' + ')) # generate cast formula
+        f <- 'variable ~ .'
+    else
+        f <- fml(id.vars, 'variable')
 
-    if (!is.character(fn)){
+    ## get function names
+    if (is.list(fn)){
 
-        if (is.list(fn)){
+        fn.subs <- sapply(substitute(fn), deparse)[-1] # get function names
+        fn.nms  <- names(fn)            # get names of function list
+        fn.ind  <- names(fn.subs) == '' # get indices of non-named elems
 
-            fn.subs <- sapply(substitute(fn), deparse)[-1] # get function names
-            fn.nms  <- names(fn)             # get names of function list
-            fn.ind  <- names(fn.subs) == ''  # get indices of non-named elems
-
-            ## fun list has no named elements, use deparsed/substituted ones
-            if (!length(fn.nms)){
-                names(fn) <- fn.subs
+        ## fun list has no named elements, use deparsed/substituted ones
+        if (!length(fn.nms)){
+            names(fn) <- fn.subs
+        } else {
+            ## some function names found...
+            if (any(fn.ind)){
+                ## ...some missing, replace them with deparsed/substituted ones
+                names(fn.subs)[fn.ind] <- fn.subs[fn.ind]
+                names(fn) <- names(fn.subs)
             } else {
-                ## some function names found...
-                if (any(fn.ind)){
-                    ## ...some missing, replace them with deparsed/substituted ones
-                    names(fn.subs)[fn.ind] <- fn.subs[fn.ind]
-                    names(fn) <- names(fn.subs)
-                } else {
-                    names(fn) <- fn.nms     # ...no missing elems, use names
-                }
+                names(fn) <- fn.nms     # ...no missing elems, use names
             }
         }
     }
 
-    res <- cast(m, fml, fun.aggregate = each(fn), margins = margins, subset = subset, fill = fill, add.missing = add.missing)
+    ## cast the formula (generate descriptives table)
+    res <- cast(m, f, fun.aggregate = each(fn), margins = margins, subset = subset, fill = fill, add.missing = add.missing)
 
-    ## remove nasty (all)
-    ## (all) occurs only if margins is not NULL or FALSE
-    ## + and when length-one vector is provided in measure.vars
-    nms.res <- names(res)                                          # column names
-    names(res) <- gsub('(all)', total.name, nms.res, fixed = TRUE) # fix column names
-    ## fix factor levels (and hope that somebody doesn't have "(all)" as factor level)
-    id.ind <- 1:ifelse(is.null(id.vars), 1, length(id.vars)) # indices of id.vars
-    all.ind <- '(all)' == res[id.ind]
-    if (any(all.ind, na.rm = TRUE)){
-        res[id.ind] <- lapply(res[id.ind], function(x){
-            ## x <- gsub('(all)', total.name, as.character(x), fixed = TRUE)
-            ## factor(x)
-            as.character(x)
-        })
-    }
+    ## a bug in reshape?
+    ## leisure vs. gender + student
+    if (na.rm)
+        res <- na.omit(res)
 
-    ## fix underscores in colnames
-    ## this should be a bit smarter
-    ## don't you have a helper for that anyway?
-    nms.res <- names(res)               # column names, again
-    unds.ind <- grep('_', nms.res)      # underscore of indices
-    if (length(unds.ind)){
-        names(res)[unds.ind] <- lapply(strsplit(nms.res[unds.ind], '_'), function(x){
-            sprintf('%s(%s)', tail(x, 1), paste(head(x, -1), collapse = '_'))
-        })
+    ## deal with column names
+    if (is.null(id.vars)) {
+        names(res) <- c(varcol.name, names(fn))
+        if (use.labels)
+            res[, 1] <- rp.label(data[measure.vars])
+    } else {
+        ## remove nasty (all)
+        ## (all) occurs only if margins is not NULL or FALSE
+        ## + and when length-one vector is provided in measure.vars
+        nms.res <- names(res)           # column names
+        names(res) <- gsub('(all)', total.name, nms.res, fixed = TRUE) # fix column names
+        ## fix factor levels (and hope that somebody doesn't have "(all)" as factor level)
+        id.ind <- 1:ifelse(is.null(id.vars), 1, length(id.vars)) # indices of id.vars
+        all.ind <- '(all)' == res[id.ind]
+        if (any(all.ind, na.rm = TRUE)){
+            res[id.ind] <- lapply(res[id.ind], function(x){
+                ## x <- gsub('(all)', total.name, as.character(x), fixed = TRUE)
+                ## factor(x)
+                as.character(x)
+            })
+        }
+
+        ## fix underscores in colnames
+        nms.res <- names(res)               # column names, again
+        unds.ind <- grep('_', nms.res)      # underscore of indices
+
+        if (length(unds.ind)){
+            names(res)[unds.ind] <- lapply(strsplit(nms.res[unds.ind], '_'), function(x){
+                sprintf('%s(%s)', tail(x, 1), paste(head(x, -1), collapse = '_'))
+            })
+        }
     }
 
     class(res) <- c('rp.table', 'data.frame')
