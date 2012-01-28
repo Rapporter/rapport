@@ -11,13 +11,13 @@ $(document).ready(function() {
 
     // add sidebar
     var $sidebar = $('<div/>', {
-        class: 'four columns sidebar'
-    }).prependTo($container);
+        class: 'three columns sidebar'
+    }).appendTo($container);
 
     // add content div
     var $content = $('<div/>', {
-        class: 'twelve columns content'
-    }).prependTo($container);
+        class: 'twelve columns content offset-by-three content'
+    }).appendTo($container);
 
     // all but container -> goto content div
     $b.children().not($container).appendTo($content);
