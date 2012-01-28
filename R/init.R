@@ -31,7 +31,7 @@
     options('style.grid'          = 'both')           # to draw grids for 'x', 'y', 'both' axis or 'none'
     options('style.font'          = 'Helvetica')
     options('style.color.palette' = 'default')      # for other palette options, see: ?brewer.pal.info
-    options('style.colorize'      = TRUE)
+    options('style.colorize'      = FALSE)
 
     ## tag regexes
     options('rp.tags' = c(

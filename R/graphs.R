@@ -37,7 +37,7 @@ rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=g
     if (any(!is.numeric(num), (length(num)>1))) stop('Wrong number of colors provided.')
     if (palette=='default') {
         if (num > 8) stop('Maximum number of colors (8) with choosen palette is lower then provided.')
-        cols <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+        cols <- c("#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999", "#E69F00")
 	} else {
 		if (num > brewer.pal.info[palette,'maxcolors']) stop(paste('Maximum number of colors (', brewer.pal.info[palette, "maxcolors"], ') with choosen palette is lower then provided (', num, ').', sep=''))
 		## ugly hack to be able to return colors from palettes with higher minimum 'n' requirement
@@ -175,9 +175,9 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
 #' }
 decorate.lattice <- function(expr, theme = getOption('style.theme'), grid = getOption('style.grid')) {
     switch(grid,
-            'x' = grid <- 'grid.x',
-            'y' = grid <- 'grid.y',
-            'both' = grid <- 'axis.grid',
+            'x' = grid <- 'add.grid.x',
+            'y' = grid <- 'add.grid.y',
+            'both' = grid <- 'add.grid',
             grid <- NULL)
     if (is.null(grid)) {
         extra.parameters <- sprintf(', par.settings = %s)', theme)
@@ -197,7 +197,9 @@ decorate.lattice <- function(expr, theme = getOption('style.theme'), grid = getO
 #' @param line.col 
 #' @references Forked from \code{latticeExtra::axis.grid()}.
 #' @keywords internal
-grid.x <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c("default", "yes", "no"), scales, components, line.col) {
+add.grid <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c("default", "yes", "no"), scales, components, line.col, where='both') {
+    if (!where %in% c('both', 'x', 'y'))
+        stop('Wrong "where" argument: it must be "both", "x" or "y"!')
     side <- match.arg(side)
     ticks <- match.arg(ticks)
     scales.tck <- switch(side, left = , bottom = scales$tck[1], 
@@ -226,59 +228,36 @@ grid.x <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c("
     if (scales$draw == FALSE) 
         return()
     ref.line <- trellis.par.get("reference.line")
-    if (side == "bottom") {
-        tck <- abs(mycomps$ticks$tck)
-        panel.refline(v = mycomps$ticks$at, lwd = ref.line$lwd * 
-                        tck, alpha = ref.line$alpha * tck/max(tck, na.rm = TRUE))
-    }
+    if (where %in% c('both', 'x'))
+        if (side == "bottom") {
+            tck <- abs(mycomps$ticks$tck)
+            panel.refline(v = mycomps$ticks$at, lwd = ref.line$lwd * 
+                            tck, alpha = ref.line$alpha * tck/max(tck, na.rm = TRUE))
+        }
+    if (where %in% c('both', 'y'))
+        if (side == "right") {
+            if (!is.list(mycomps)) 
+                mycomps <- components[["left"]]
+            tck <- abs(mycomps$ticks$tck)
+            panel.refline(h = mycomps$ticks$at, lwd = ref.line$lwd * 
+                            tck, alpha = ref.line$alpha * tck/max(tck, na.rm = TRUE))
+        }
 }
 
 
 #' Add grid to y axis
-#' @param side 
-#' @param ... 
-#' @param ticks 
-#' @param scales 
-#' @param components 
-#' @param line.col 
-#' @references Forked from \code{latticeExtra::axis.grid()}.
+#' @param ... passed to \code{add.grid} 
 #' @keywords internal
-grid.y <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c("default", "yes", "no"), scales, components, line.col) {
-    side <- match.arg(side)
-    ticks <- match.arg(ticks)
-    scales.tck <- switch(side, left = , bottom = scales$tck[1], 
-            right = , top = scales$tck[2])
-    comps.major <- components
-    mycomps <- components[[side]]
-    if (is.list(mycomps)) {
-        lab <- as.character(mycomps$labels$labels)
-        if (any(lab != "")) {
-            tck <- mycomps$ticks$tck
-            if (any(tck * scales.tck != 0)) {
-                tck <- rep(tck, length = length(lab))
-                comps.major[[side]]$ticks$tck <- ifelse(lab == 
-                                "", NA, tck)
-            }
-        }
-    }
-    else {
-        ticks <- "no"
-    }
-    axis.text <- trellis.par.get("axis.text")
-    axis.default(side, scales = scales, ticks = ticks, components = comps.major, 
-            ..., line.col = axis.text$col)
-    if (side %in% c("top", "left")) 
-        return()
-    if (scales$draw == FALSE) 
-        return()
-    ref.line <- trellis.par.get("reference.line")
-    if (side == "right") {
-        if (!is.list(mycomps)) 
-            mycomps <- components[["left"]]
-        tck <- abs(mycomps$ticks$tck)
-        panel.refline(h = mycomps$ticks$at, lwd = ref.line$lwd * 
-                        tck, alpha = ref.line$alpha * tck/max(tck, na.rm = TRUE))
-    }
+add.grid.y <- function (...) {
+    add.grid(..., where = 'y')
+}
+
+
+#' Add grid to x axis
+#' @param ... passed to \code{add.grid} 
+#' @keywords internal
+add.grid.x <- function (...) {
+    add.grid(..., where = 'x')
 }
 
 

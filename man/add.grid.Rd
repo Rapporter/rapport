@@ -1,10 +1,10 @@
-\name{grid.x}
-\alias{grid.x}
+\name{add.grid}
+\alias{add.grid}
 \title{Add grid to x axis}
 \usage{
-  grid.x(side = c("top", "bottom", "left", "right"), ...,
+  add.grid(side = c("top", "bottom", "left", "right"), ...,
     ticks = c("default", "yes", "no"), scales, components,
-    line.col)
+    line.col, where = "both")
 }
 \arguments{
   \item{side}{}
