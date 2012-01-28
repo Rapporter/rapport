@@ -1,23 +1,80 @@
 // creating nav bar and restructuring document
-
 $(document).ready(function() {
-    $('body').prepend('<div id="content" class="twelve columns offset-by-three content"></div>');
-    var nav='<div id="nav" class="three columns sidebar"><nav><p>Table of contents</p><ul>';
-    $(":header").not('.titlet').not('.author').not('.date').attr( 'id', setAltText );
-    function setAltText( index, attributeValue ) {
-        nav=nav + '<li style="padding-left: ' + (parseInt((this).nodeName.replace('H', ''))* 10)  + 'px;"><a href="#' + 'header' + (index+1) + '">' + $(this).text() + '</a></li>';
-        return ( 'header' + (index+1));
-    }
-    nav=nav + '</ul><div id="influads_block" class="influads_block"> </div> </nav></div>';
-    $('body').prepend(nav);
-    $('body').children().not('#content').not('#nav').appendTo("#content");
-    $('body').prepend('<div id="container" class="container"></div>');
-    $('body').children().not('#container').appendTo("#container");
 
-    // if logo added: move to top (navbar)
-    var logo=$("img[src$='includes/images/logo.png']").attr('src');
-    if (logo != null) {
-        $("img[src$='includes/images/logo.png']").remove();
-        $('nav').prepend('<a href="http://rapport-package.info/"><img src="http://rapport-package.info/rapport.png" alt="rapport"></a>');
+    console.log("foo");
+
+    var $b = $('body'),
+        $h = $('#header');
+
+    // generate heading
+    function genHeading($el){
+        var text = $el.text(),
+            level = parseInt($el.get(0).nodeName.replace('H', ''), 10);
+
     }
+
+    // add container div
+    var $container = $('<div/>', {
+        class: "container"
+    }).prependTo($b);
+
+    // add sidebar
+    var $sidebar = $('<div/>', {
+        class: 'four columns sidebar'
+    }).prependTo($container);
+
+    // add content div
+    var $content = $('<div/>', {
+        class: 'twelve columns content'
+    }).prependTo($container);
+
+    // all but container -> goto content div
+    $b.children().not($container).appendTo($content);
+
+    var $nav = $('<nav/>').prependTo($sidebar); // add nav to sidebar
+
+    // add logo div
+    var $logo = $('<div/>', {
+        id: 'logo',
+        html: $('<a/>', {
+            href: 'http://rapport-package.info/',
+            target: '_blank'
+        })
+    }).prependTo($nav);
+
+    // move logo image to logo div
+    $('div.figure').last().find('img').appendTo($logo.find('a')); // move logo
+    $('div.figure').last().remove();   // remove element
+
+    // add ul for sidebar menu
+    var $ul = $('<ul/>').appendTo($nav);
+    var $header = $('<header/>').prependTo($content); // add header to content div
+    // move #header contents to header and remove element
+    $h.children().appendTo('header');
+    $h.remove();
+
+    $header.after('<hr class="large" />');
+
+    // get all headings
+    var $head = $content.children().not('header').filter(':header');
+
+    $head.each(function(i, val){
+        
+        var linkId = val.id + "_link",
+            $val = $(val);
+
+        // insert anchor links before headings
+        $('<a/>', {
+            id: linkId
+        }).insertBefore($val);
+
+        // insert navigation items
+        $('<li/>', {
+            class: 'nnav-' + $val.get(0).nodeName.replace('H', ''),
+            html: $('<a>').attr({ href: '#' + linkId}).text($val.text())
+        }).appendTo('nav > ul');
+    });
+
+    console.log($head);
+    
 });
