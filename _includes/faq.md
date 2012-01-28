@@ -68,4 +68,12 @@ It is based on a theory behind *rapport*: you can define a function at any part 
 
 We are open to happily check out your idea, please [file an issue about your idea on Github](https://github.com/aL3xa/rapport/issues) tagged as `feature`. Or write your own package submitted to [CRAN](cran.r-project.org) and please attract our attention to add that package to our [required or suggested package list](https://github.com/aL3xa/rapport/blob/master/DESCRIPTION).
 
-<!-- #### I wrote a handy template... -->
+#### HTML template exports have ugly fonts in Firefox, but not in other browsers. What's the catch?
+
+Actually, it's not a `rapport` bug, rather a *Firefox* feature. Type `about:config` in *Awesome Bar &trade;* and search for following property:
+
+{% highlight text %}
+`security.fileuri.strict_origin_policy`
+{% endhighlight %}
+
+Set it to `false` (by double-clicking on it) and refresh the page (you may want to bypass the browser cache, too: use *Shift* + click on *Refresh* button, or hitting *Ctrl*+*Shift*+*R*). Behold the pretty fonts! See [an answer](http://stackoverflow.com/a/3704578/457898) that solved this strange behaviour.
