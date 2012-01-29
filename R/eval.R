@@ -313,6 +313,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                 eval.sources.last.outputs <- tail(eval.sources.outputs, 1)
 
             ## graph was produced?
+            clear.devs()
             graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
             ## any returned value?
             if (length(eval.sources.outputs) > 0) {
