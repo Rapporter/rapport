@@ -3,9 +3,7 @@
 \title{Dotplot}
 \usage{
   rp.dotplot(x, facet = NULL, data = NULL, groups = FALSE,
-    auto.key = FALSE, horizontal = TRUE,
-    theme = getOption("rp.color.palette"),
-    colorize = getOption("rp.colorize"), ...)
+    auto.key = FALSE, horizontal = TRUE, ...)
 }
 \arguments{
   \item{x}{a factor variable}
@@ -22,12 +20,6 @@
 
   \item{auto.key}{see \code{\link{xyplot}}}
 
-  \item{theme}{a color palette name from
-  \code{\link{RColorBrewer}} or 'default'}
-
-  \item{colorize}{if set the color is chosen from palette
-  at random}
-
   \item{...}{additional parameters to
   \code{\link{dotplot}}}
 }
@@ -38,16 +30,14 @@
 \examples{
 \dontrun{
 df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-rp.dotplot(df$cyl)
-rp.dotplot(df$cyl, horizontal = FALSE)
-rp.dotplot(df$cyl, facet=df$am)
-rp.dotplot(df$cyl, facet=df$am, horizontal=FALSE)
-rp.dotplot(df$cyl, facet=df$am, colorize=TRUE)
-rp.dotplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
-rp.label(df$cyl) <- 'Number of cylinders'; rp.dotplot(df$cyl)
-with(df, rp.dotplot(cyl, facet = am))
-rp.dotplot(cyl, data=df)
-rp.dotplot(cyl, am, df)
+rp.dotplot(ius2008$game)
+rp.dotplot(ius2008$game, horizontal = FALSE)
+rp.dotplot(ius2008$game, facet = ius2008$dwell)
+rp.dotplot(ius2008$dwell, facet = ius2008$gender, horizontal = FALSE)
+rp.dotplot(ius2008$game, facet = ius2008$dwell, groups = TRUE)
+with(ius2008, rp.dotplot(gender, facet = dwell))
+rp.dotplot(game, data = ius2008)
+rp.dotplot(dwell, gender, ius2008)
 }
 }
 

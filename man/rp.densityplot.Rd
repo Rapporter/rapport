@@ -2,9 +2,7 @@
 \alias{rp.densityplot}
 \title{Density plot}
 \usage{
-  rp.densityplot(x, facet = NULL, data = NULL,
-    theme = getOption("rp.color.palette"),
-    colorize = getOption("rp.colorize"), ...)
+  rp.densityplot(x, facet = NULL, data = NULL, ...)
 }
 \arguments{
   \item{x}{a numeric variable}
@@ -14,12 +12,6 @@
 
   \item{data}{an optional data frame from which the
   variables should be taken}
-
-  \item{theme}{a color palette name from
-  \code{\link{RColorBrewer}} or 'default'}
-
-  \item{colorize}{if set the color is chosen from palette
-  at random}
 
   \item{...}{additional parameters to
   \code{\link{densityplot}}}
@@ -31,16 +23,12 @@
 }
 \examples{
 \dontrun{
-df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')),
-  am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-rp.densityplot(df$hp)
-rp.densityplot(df$hp, facet=df$am)
-rp.densityplot(df$hp, df$am)
-rp.label(df$hp) <- 'horsepower'; rp.densityplot(df$hp)
-rp.densityplot(df$hp, colorize=TRUE)
-with(df, rp.densityplot(hp, facet = am))
-rp.densityplot(hp, data = df)
-rp.densityplot(hp, am, df)
+rp.densityplot(ius2008$edu)
+rp.densityplot(ius2008$edu, facet = ius2008$gender)
+rp.densityplot(ius2008$edu, ius2008$dwell)
+with(ius2008, rp.densityplot(edu, facet = gender))
+rp.densityplot(edu, data = ius2008)
+rp.densityplot(edu, gender, ius2008)
 }
 }
 

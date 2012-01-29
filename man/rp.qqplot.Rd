@@ -3,8 +3,7 @@
 \title{Q-Q plot with Theoretical Distribution}
 \usage{
   rp.qqplot(x, dist = qnorm, facet = NULL, data = NULL,
-    theme = getOption("rp.color.palette"),
-    colorize = getOption("rp.colorize"), ...)
+    ...)
 }
 \arguments{
   \item{x}{a numeric variable}
@@ -17,12 +16,6 @@
   \item{data}{an optional data frame from which the
   variables should be taken}
 
-  \item{theme}{a color palette name from
-  \code{\link{RColorBrewer}} or 'default'}
-
-  \item{colorize}{if set the color is chosen from palette
-  at random}
-
   \item{...}{additional parameters to \code{\link{qqmath}}}
 }
 \description{
@@ -32,16 +25,15 @@
 }
 \examples{
 \dontrun{
-    df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-    rp.qqplot(df$hp)
-    rp.qqplot(df$hp, qunif)
-    rp.label(df$hp) <- 'horsepower'; rp.qqplot(df$hp)
-    rp.qqplot(df$hp, colorize=TRUE)
-    rp.qqplot(df$hp, qunif, facet=df$am)
-    with(df, rp.qqplot(hp))
-    rp.qqplot(hp, data=df)
-    rp.qqplot(hp, facet=am, data=df)
-    rp.qqplot(hp, qunif, am, df)
+rp.qqplot(ius2008$age)
+rp.qqplot(ius2008$age, qunif)
+rp.qqplot(ius2008$age, qunif, facet = ius2008$gender)
+
+with(ius2008, rp.qqplot(age))
+rp.qqplot(age, data = ius2008)
+rp.qqplot(age, facet = gender, data = ius2008)
+rp.qqplot(age, qunif, gender, ius2008)
+rp.qqplot(ius2008$age, panel = function(x) {panel.qqmath(x); panel.qqmathline(x, distribution = qnorm)} )
 }
 }
 
