@@ -143,8 +143,8 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                 cat(gsub('"includes/', sprintf('"%s/includes/', system.file(package='rapport')), readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
             options <- sprintf('-H %s -A %s', sprintf('%s%s', tempdir(), '/rapport-header.html'), system.file('includes/html/footer.html', package='rapport'))
         }
-        if (logo) {
-            r$add(paragraph(sprintf('-------\nThis report was generated with [rapport](http://al3xa.github.com/rapport/) in %s sec.', rp.round(r$time))))
+        if (logo) { # TODO: rewrite
+            r$add(paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://al3xa.github.com/rapport/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$time), R.version$platform)))
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
         }
         r$create(file=file, open=open, options=options, date=date)
