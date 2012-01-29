@@ -2,7 +2,7 @@
 
 Actually a lot of stuff:
 
-- first of all, it's a name of absolutely marvellous <a id="infinite-loop" href="#infinite-loop">R package</a> created by [two humble developers](#authors)
+- first of all, it's a name of absolutely marvellous <a id="infinite-loop" href="#infinite-loop">R package</a> created by [two humble developers](#contact)
 - initially, _rapport_ was just a pun (and a very lame attempt to get an available domain name)
 - it also refers to _"the relationship of two or more people who are in sync or on the same wavelength because they feel similar and/or relate well to each other"_\*
 - in psychotherapy, _rapport_ reflects mutual empathy and understanding between a therapist and client
