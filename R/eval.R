@@ -336,12 +336,14 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             class(returns) <- "image"
             if (hi.res) {
                 ## TODO: tiff-hires # dev.off problem
-                ## TODO: vector formats do not need hires... | linux symlink, othervise cp # .Platform$OS.type
-                file <- sprintf('%s-hires.%s', file.name, graph.output)
+                file.hi.res <- sprintf('%s-hires.%s', file.name, graph.output)
                 if (graph.output %in% c('bmp', 'jpeg', 'png', 'tiff')) {
-                    do.call(graph.output, list(file, width = hi.res.width, height = hi.res.height, res = hi.res.res, ...))
+                    do.call(graph.output, list(file.hi.res, width = hi.res.width, height = hi.res.height, res = hi.res.res, ...))
                 } else {
-                    do.call(graph.output, list(file, width = hi.res.width/hi.res.res, height = hi.res.height/hi.res.res, ...)) # TODO: font-family?
+                    if (.Platform$OS.type == 'unix')
+                        file.symlink(file, file.hi.res)
+                    else
+                        do.call(graph.output, list(file.hi.res, width = hi.res.width/hi.res.res, height = hi.res.height/hi.res.res, ...)) # TODO: font-family?
                 }
                 if (check.output)
                     suppressWarnings(eval(parse(text = src), envir = env.hires))
