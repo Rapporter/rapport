@@ -12,6 +12,7 @@
 #'     \item each block should return on the last line of the code,
 #'     \item each block should always return something on the last line (if you do not want to return anything, add \code{NULL} to the last line),
 #'     \item ggplot and lattice graphs should be always printed (of course on the last line),
+#'     \item a block resulting in a plot should not alter variables and data sets,
 #'     \item the template should be checked before live run with \code{tpl.check}.
 #' }
 #' 

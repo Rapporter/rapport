@@ -69,6 +69,8 @@ eval.msgs <- function(src, env = NULL) {
 #' If input strings are given as vector or not nested list (or even only one string), the returned list's length equals to the length of the input - as each string is evalued as separate R code in the same environment. If a nested list is provided like \code{list(c('runif(1)', 'runif(1)'))} then all strings found in a list element is evaled at one run so the length of returned list equals to the length of parent list. See examples below.
 #'
 #' As \code{\link{evals}} tries to grab the plots internally, pleas do not run commands that set graphic device or \code{\link{dev.off}} if you want to use \code{\link{evals}} to save the images and return the path of generated png(s). Eg. running \code{evals(c('png("/tmp/x.png")', 'plot(1:10)', 'dev.off()'))} would fail.
+#' 
+#' The generated image file(s) of the plots can be fine-tuned by some specific options, please check out \code{graph.output}, \code{width}, \code{height}, \code{res}, \code{hi.res}, \code{hi.res.width}, \code{hi.res.height} and \code{hi.res.res}. Most of these options are better not to touch, see details of parameters below.
 #'
 #' Returned result values: list with the following elements
 #' \itemize{
@@ -89,6 +91,7 @@ eval.msgs <- function(src, env = NULL) {
 #'     \item the code should return on the last line of the passed code (if it returns before that, it would not be grabbed),
 #'     \item the code should always return something on the last line (if you do not want to return anything, add \code{NULL} as the last line),
 #'     \item ggplot and lattice graphs should be always printed (of course on the last line),
+#'     \item a code part resulting in a plot should not alter variables and data sets,
 #'     \item the code should be checked before live run with \code{check.output} option set to \code{TRUE} just to be sure if everything goes OK.
 #' }
 #'
@@ -158,6 +161,13 @@ eval.msgs <- function(src, env = NULL) {
 #' evals(c('no.R.object', 'Old MacDonald had a farm\\dots', 'pi'))
 #' evals(list(c('no.R.object', 'Old MacDonald had a farm\\dots', 'pi')))
 #'
+#' ## graph options
+#' evals('plot(1:10)')
+#' evals('plot(1:10)', height=800)
+#' evals('plot(1:10)', height=800, hi.res=T)
+#' evals('plot(1:10)', graph.output = 'pdf', hi.res=T)
+#' evals('plot(1:10)', res=30)
+#' 
 #' ## hooks
 #' hooks <- list('numeric'=round, 'matrix'=ascii)
 #' evals(txt, hooks=hooks)
@@ -206,7 +216,7 @@ eval.msgs <- function(src, env = NULL) {
 #' }
 #' @export
 evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.output = 'png', width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 1280, hi.res.height = 1280*(height/width), hi.res.res = res*(hi.res.width/width), ...){
-    ## TODO: examples
+
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
 
