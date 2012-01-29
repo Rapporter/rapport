@@ -67,8 +67,11 @@ $(document).ready(function() {
     });
     
     // image popups
-    $('.content a > img').slimbox([], function(el) {
-        return [el.parentNode.href];
-    });
+    $('.content a > img').slimbox({
+        counterText: "Plot: {x} of {y}"
+        }, function(el) {
+            return [el.parentNode.href];
+        }
+    );
 
 });
