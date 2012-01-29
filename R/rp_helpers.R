@@ -866,10 +866,10 @@ rp.prettyascii <- function(x) {
     if (is.vector(x))
         return(p(x, limit = Inf))
 
-    if (is.data.frame(x) | is.table(x)){
+    if (is.data.frame(x) | is.table(x)) {
         ## rounding till \code{ascii} bug fixed: https://github.com/eusebe/ascii/issues/12
         numerics <- which(sapply(x, is.numeric))
-        for (numeric in names(numerics)) {
+        for (numeric in as.numeric(numerics)) {
             x[, numeric] <- rp.round(x[, numeric])
         }
         rownms <- rownames(x)
