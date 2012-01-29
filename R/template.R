@@ -651,6 +651,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' 
 #' ## generating high resolution images also
 #' rapport("example", ius2008, var="leisure", hist = TRUE, graph.hi.res = TRUE)
+#' rapport.html("nortest", ius2008, var = "leisure", graph.hi.res=T)
 #' ## generating only high resolution image
 #' rapport("example", ius2008, var="leisure", hist = TRUE, graph.width = 1280, graph.height = 1280)    # might be a good idea to set \code{graph.res} too
 #' }

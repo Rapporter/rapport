@@ -127,12 +127,11 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                     if (any(x.r$type == 'image')) {
                         file.ext <- tail(strsplit(x.r$output, '\\.')[[1]], 1)
                         img.hi.res <- sub(sprintf('.%s$', file.ext), sprintf('-hires.%s', file.ext), x.r$output)
-                        if (file.exists(img.hi.res))
+                        if (file.exists(img.hi.res) & format == 'html' & backend == 'pandoc')
                             r$add(paragraph(sprintf('[![](%s)](%s)', x.r$output, img.hi.res)))
                         else 
                             r$addFig(file=x.r$output)
                     }
-                        #
                     if (all(x.r$type != c('image', 'error')))
                         r$add(paragraph(rp.prettyascii(x.r$output)))
                     if (!is.null(x.r$msg$warnings))
