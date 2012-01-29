@@ -1,4 +1,4 @@
-if(!exists("meta") || is.null(meta)) meta <- packageDescription("anolyzer")
+if(!exists("meta") || is.null(meta)) meta <- packageDescription("rapport")
 citHeader("To cite package 'Rapport' in publications, please use:")
 year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
 vers <- paste("R package version", meta$Version)
