@@ -69,6 +69,8 @@ eval.msgs <- function(src, env = NULL) {
 #' If input strings are given as vector or not nested list (or even only one string), the returned list's length equals to the length of the input - as each string is evalued as separate R code in the same environment. If a nested list is provided like \code{list(c('runif(1)', 'runif(1)'))} then all strings found in a list element is evaled at one run so the length of returned list equals to the length of parent list. See examples below.
 #'
 #' As \code{\link{evals}} tries to grab the plots internally, pleas do not run commands that set graphic device or \code{\link{dev.off}} if you want to use \code{\link{evals}} to save the images and return the path of generated png(s). Eg. running \code{evals(c('png("/tmp/x.png")', 'plot(1:10)', 'dev.off()'))} would fail.
+#' 
+#' The generated image file(s) of the plots can be fine-tuned by some specific options, please check out \code{graph.output}, \code{width}, \code{height}, \code{res}, \code{hi.res}, \code{hi.res.width}, \code{hi.res.height} and \code{hi.res.res}. Most of these options are better not to touch, see details of parameters below.
 #'
 #' Returned result values: list with the following elements
 #' \itemize{
@@ -89,6 +91,7 @@ eval.msgs <- function(src, env = NULL) {
 #'     \item the code should return on the last line of the passed code (if it returns before that, it would not be grabbed),
 #'     \item the code should always return something on the last line (if you do not want to return anything, add \code{NULL} as the last line),
 #'     \item ggplot and lattice graphs should be always printed (of course on the last line),
+#'     \item a code part resulting in a plot should not alter variables and data sets,
 #'     \item the code should be checked before live run with \code{check.output} option set to \code{TRUE} just to be sure if everything goes OK.
 #' }
 #'
@@ -103,6 +106,13 @@ eval.msgs <- function(src, env = NULL) {
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @param check.output to check each line of \code{txt} for outputs. If set to \code{TRUE} you would result in some overhead as all commands have to be run twice (first to check if any output was generated and if so in which part(s), later the R objects are to be grabbed). With \code{FALSE} settings \code{evals} runs much faster, but as now checks are made, some requirements apply, see Details.
 #' @param graph.output set the required file format of saved plots
+#' @param width width of generated plot in pixels for even vector formats (!) 
+#' @param height height of generated plot in pixels for even vector formats (!) 
+#' @param res nominal resolution in ppi. The height and width of vector plots will be calculated based in this.
+#' @param hi.res generate high resolution plots also?
+#' @param hi.res.width  width of generated high resolution plot in pixels for even vector formats (!) 
+#' @param hi.res.height height of generated high resolution plot in pixels for even vector formats (!). This value can be left blank to be automatically calculated to match original plot ascpect ratio.
+#' @param hi.res.res nominal resolution of high resolution plot in ppi. The height and width of vector plots will be calculated based in this. This value can be left blank to be automatically calculated to fit original plot scales.
 #' @param ... optional parameters passed to graphics device (eg. \code{width}, \code{height} etc.)
 #' @return a list of parsed elements each containg: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
 #' @author Gergely Daróczi
@@ -151,6 +161,13 @@ eval.msgs <- function(src, env = NULL) {
 #' evals(c('no.R.object', 'Old MacDonald had a farm\\dots', 'pi'))
 #' evals(list(c('no.R.object', 'Old MacDonald had a farm\\dots', 'pi')))
 #'
+#' ## graph options
+#' evals('plot(1:10)')
+#' evals('plot(1:10)', height=800)
+#' evals('plot(1:10)', height=800, hi.res=T)
+#' evals('plot(1:10)', graph.output = 'pdf', hi.res=T)
+#' evals('plot(1:10)', res=30)
+#' 
 #' ## hooks
 #' hooks <- list('numeric'=round, 'matrix'=ascii)
 #' evals(txt, hooks=hooks)
@@ -198,7 +215,7 @@ eval.msgs <- function(src, env = NULL) {
 #' evals('mean(x)')
 #' }
 #' @export
-evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.output = 'png', ...){
+evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.output = 'png', width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), ...){
 
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
@@ -230,14 +247,23 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
     ## env for checking output before truly eval-ing -> evaluate()
     if (check.output)
         env.evaluate <- env
+    ## env for optional high resolution images while checking outputs
+    if (hi.res & check.output)
+        env.hires <- env
 
     lapply(txt, function(src) {
 
-        clear.devs <- function() while (!is.null(dev.list())) dev.off(as.numeric(dev.list()))
+        clear.devs <- function()
+            while (!is.null(dev.list()))
+                dev.off(as.numeric(dev.list()[1]))
 
         clear.devs()
-        file <- tempfile(fileext = sprintf('.%s', graph.output))
-        do.call(graph.output, list(file, ...))
+        file.name <- tempfile()
+        file <- sprintf('%s.%s', file.name, graph.output)
+        if (graph.output %in% c('bmp', 'jpeg', 'png', 'tiff'))
+            do.call(graph.output, list(file, width = width, height = height, res = res, ...))
+        else
+            do.call(graph.output, list(file, width = width/res, height = height/res, ...)) # TODO: font-family?
 
         if (check.output) {
             ## running evalute for checking outputs and grabbing warnings/errors
@@ -247,7 +273,6 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             error <- grep('error', lapply(eval, function(x) class(x)))
             error <- c(error, grep('error', class(eval)))
             if (length(error) != 0) {
-                ## TODO: evals('histogram(mtcars$hp') # lame error msg...
 
                 res <- list(src = src,
                             output = NULL,
@@ -255,7 +280,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                             msg    = list(
                                 messages = NULL,
                                 warnings = NULL,
-                                errors   = sprintf('**Error** in "%s": "%s"',  ifelse(paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')=='', paste(src, collapse=' + '), paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')), ifelse(class(eval)=='try-error', gsub('Error in parse.(text) = string, src = src) : <text>:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
+                                errors   = sprintf('**Error** in "%s": "%s"',  ifelse(paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')=='', paste(src, collapse=' + '), paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')), ifelse(class(eval)=='try-error', gsub('Error in parse.text = string, src = src) :.*text.:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
                             )
                 return(res[output])
             }
@@ -288,6 +313,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                 eval.sources.last.outputs <- tail(eval.sources.outputs, 1)
 
             ## graph was produced?
+            clear.devs()
             graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
             ## any returned value?
             if (length(eval.sources.outputs) > 0) {
@@ -321,12 +347,35 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
         }
 
+        clear.devs()
         if (is.character(graph)) {
             returns <- graph
             class(returns) <- "image"
+            ## generate high resolution images if needed
+            if (hi.res) {
+                ## FIX: tiff-hires dev.off problem
+                file.hi.res <- sprintf('%s-hires.%s', file.name, graph.output)
+                if (graph.output %in% c('bmp', 'jpeg', 'png', 'tiff')) {
+                    do.call(graph.output, list(file.hi.res, width = hi.res.width, height = hi.res.height, res = hi.res.res, ...))
+                } else {
+                    if (.Platform$OS.type == 'unix')
+                        file.symlink(file, file.hi.res)
+                    else
+                        do.call(graph.output, list(file.hi.res, width = hi.res.width/hi.res.res, height = hi.res.height/hi.res.res, ...)) # TODO: font-family?
+                }
+                if ((graph.output %in% c('bmp', 'jpeg', 'png', 'tiff')) | (.Platform$OS.type != 'unix')) {
+                    if (check.output)
+                        suppressWarnings(eval(parse(text = src), envir = env.hires))
+                    else
+                        suppressWarnings(eval(parse(text = src), envir = env))
+                    clear.devs()
+                }
+            }
+        } else {
+            if (hi.res & check.output)
+                suppressWarnings(eval(parse(text = src), envir = env.hires))
         }
-        clear.devs()
-
+        
         ## check length
         if (length(returns) > length) returns <- NULL
 

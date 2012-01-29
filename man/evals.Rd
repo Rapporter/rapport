@@ -6,7 +6,10 @@
     classes = NULL, hooks = NULL, length = Inf,
     output = c("all", "src", "output", "type", "msg"),
     env = NULL, check.output = TRUE, graph.output = "png",
-    ...)
+    width = 480, height = 480, res = 72, hi.res = FALSE,
+    hi.res.width = 960,
+    hi.res.height = 960 * (height/width),
+    hi.res.res = res * (hi.res.width/width), ...)
 }
 \arguments{
   \item{txt}{a list with character values containing R
@@ -59,6 +62,30 @@
   \item{graph.output}{set the required file format of saved
   plots}
 
+  \item{width}{width of generated plot in pixels for even
+  vector formats (!)}
+
+  \item{height}{height of generated plot in pixels for even
+  vector formats (!)}
+
+  \item{res}{nominal resolution in ppi. The height and
+  width of vector plots will be calculated based in this.}
+
+  \item{hi.res}{generate high resolution plots also?}
+
+  \item{hi.res.width}{width of generated high resolution
+  plot in pixels for even vector formats (!)}
+
+  \item{hi.res.height}{height of generated high resolution
+  plot in pixels for even vector formats (!). This value
+  can be left blank to be automatically calculated to match
+  original plot ascpect ratio.}
+
+  \item{hi.res.res}{nominal resolution of high resolution
+  plot in ppi. The height and width of vector plots will be
+  calculated based in this. This value can be left blank to
+  be automatically calculated to fit original plot scales.}
+
   \item{...}{optional parameters passed to graphics device
   (eg. \code{width}, \code{height} etc.)}
 }
@@ -102,6 +129,14 @@
   \code{evals(c('png("/tmp/x.png")', 'plot(1:10)',
   'dev.off()'))} would fail.
 
+  The generated image file(s) of the plots can be
+  fine-tuned by some specific options, please check out
+  \code{graph.output}, \code{width}, \code{height},
+  \code{res}, \code{hi.res}, \code{hi.res.width},
+  \code{hi.res.height} and \code{hi.res.res}. Most of these
+  options are better not to touch, see details of
+  parameters below.
+
   Returned result values: list with the following elements
   \itemize{ \item \emph{src} - a character value with
   specified R code.  \item \emph{output} - generated
@@ -137,9 +172,11 @@
   something on the last line (if you do not want to return
   anything, add \code{NULL} as the last line), \item ggplot
   and lattice graphs should be always printed (of course on
-  the last line), \item the code should be checked before
-  live run with \code{check.output} option set to
-  \code{TRUE} just to be sure if everything goes OK. }
+  the last line), \item a code part resulting in a plot
+  should not alter variables and data sets, \item the code
+  should be checked before live run with
+  \code{check.output} option set to \code{TRUE} just to be
+  sure if everything goes OK. }
 
   Please check the examples carefully below to get a
   detailed overview of \code{\link{evals}}.
@@ -189,6 +226,13 @@ evals(c('no.R.object', 'no.R.function()', 'very.mixed.up(stuff)'))
 evals(list(c('no.R.object', 'no.R.function()', 'very.mixed.up(stuff)')))
 evals(c('no.R.object', 'Old MacDonald had a farm\\\\dots', 'pi'))
 evals(list(c('no.R.object', 'Old MacDonald had a farm\\\\dots', 'pi')))
+
+## graph options
+evals('plot(1:10)')
+evals('plot(1:10)', height=800)
+evals('plot(1:10)', height=800, hi.res=T)
+evals('plot(1:10)', graph.output = 'pdf', hi.res=T)
+evals('plot(1:10)', res=30)
 
 ## hooks
 hooks <- list('numeric'=round, 'matrix'=ascii)

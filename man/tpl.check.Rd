@@ -31,8 +31,10 @@
   something on the last line (if you do not want to return
   anything, add \code{NULL} to the last line), \item ggplot
   and lattice graphs should be always printed (of course on
-  the last line), \item the template should be checked
-  before live run with \code{tpl.check}. }
+  the last line), \item a block resulting in a plot should
+  not alter variables and data sets, \item the template
+  should be checked before live run with \code{tpl.check}.
+  }
 
   \code{tpl.check} will print on the console some text
   messages about the result of the test (errors etc.), but

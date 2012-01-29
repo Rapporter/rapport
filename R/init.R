@@ -32,6 +32,12 @@
     options('style.font'          = 'Helvetica')
     options('style.color.palette' = 'default')      # for other palette options, see: ?brewer.pal.info
     options('style.colorize'      = FALSE)
+    ## image format settingsű
+    options('graph.format'        = 'png')
+    options('graph.width'         = 480)
+    options('graph.height'        = 480)
+    options('graph.res'           = 72)
+    options('graph.hi.res'        = FALSE)
 
     ## tag regexes
     options('rp.tags' = c(
