@@ -52,6 +52,12 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
                 names(fn) <- fn.nms     # ...no missing elems, use names
             }
         }
+    } else if (is.character(fn)) {
+        fn.nms <- fn
+    } else if (is.function(fn)){
+        fn.nms <- deparse(substitute(fn))
+    } else {
+        stop('unknown function provided in "fn"')
     }
 
     ## cast the formula (generate descriptives table)
@@ -64,9 +70,9 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
 
     ## deal with column names
     if (is.null(id.vars)) {
-        names(res) <- c(varcol.name, names(fn))
+        names(res) <- c(varcol.name, fn.nms)
         if (use.labels)
-            res[, 1] <- rp.label(data[measure.vars])
+            res[, 1] <- c(rp.label(data[measure.vars]))
     } else {
         ## remove nasty (all)
         ## (all) occurs only if margins is not NULL or FALSE
