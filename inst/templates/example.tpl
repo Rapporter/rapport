@@ -42,6 +42,8 @@ if (desc) sprintf('The 5 highest values are: %s.', p(sort(var, decreasing = TRUE
 ## <%if (hist) 'Histogram'%>
 
 <%
-if (hist)
-    print(rp.hist(var, theme=theme))
+if (hist) {
+    options('style.color.palette' = theme) 
+    print(rp.hist(var))
+}
 %>
