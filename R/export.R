@@ -131,7 +131,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                         r$add(paragraph(as.character(x.r$msg$warnings)))
                     }
             })
-    
+
             r$time <- r$time + rp$time
         }
 
@@ -144,7 +144,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
             options <- sprintf('-H %s -A %s', sprintf('%s%s', tempdir(), '/rapport-header.html'), system.file('includes/html/footer.html', package='rapport'))
         }
         if (logo) {
-            r$add(paragraph(sprintf('-------\nThis report was generated in [R](http://www.r-project.org/) with [Rapport](http://al3xa.github.com/rapport/) in %s sec. Feel free to create [your own reporting templates](http://al3xa.github.com/rapport/#custom)!', rp.round(r$time))))
+            r$add(paragraph(sprintf('-------\nThis report was generated with [rapport](http://al3xa.github.com/rapport/) in %s sec.', rp.round(r$time))))
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
         }
         r$create(file=file, open=open, options=options, date=date)

@@ -130,7 +130,7 @@ table {
 
 th {
     text-align: left;
-    padding: 5px 10px;
+    padding: 4px 10px;
 }
 
 th * {
@@ -148,6 +148,7 @@ tbody tr:nth-child(odd) {
 td {
     border: 1px solid #FFFFFF;
     padding: 2px 10px;
+    min-width: 50px;
 }
 
 
