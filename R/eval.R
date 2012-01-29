@@ -103,6 +103,7 @@ eval.msgs <- function(src, env = NULL) {
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @param check.output to check each line of \code{txt} for outputs. If set to \code{TRUE} you would result in some overhead as all commands have to be run twice (first to check if any output was generated and if so in which part(s), later the R objects are to be grabbed). With \code{FALSE} settings \code{evals} runs much faster, but as now checks are made, some requirements apply, see Details.
 #' @param graph.output set the required file format of saved plots
+#' @param hi.res generate high resolution plots also?
 #' @param ... optional parameters passed to graphics device (eg. \code{width}, \code{height} etc.)
 #' @return a list of parsed elements each containg: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
 #' @author Gergely Daróczi
@@ -198,7 +199,8 @@ eval.msgs <- function(src, env = NULL) {
 #' evals('mean(x)')
 #' }
 #' @export
-evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.output = 'png', ...){
+evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.output = 'png', width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 1280, hi.res.height = 1280, hi.res.res = res*(hi.res.width/width), ...){
+    ## TODO: parameters update
 
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
@@ -230,14 +232,21 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
     ## env for checking output before truly eval-ing -> evaluate()
     if (check.output)
         env.evaluate <- env
+    ## env for optional high resolution images while checking outputs
+    if (hi.res & check.output)
+        env.hires <- env
 
     lapply(txt, function(src) {
 
         clear.devs <- function() while (!is.null(dev.list())) dev.off(as.numeric(dev.list()))
 
         clear.devs()
-        file <- tempfile(fileext = sprintf('.%s', graph.output))
-        do.call(graph.output, list(file, ...))
+        file.name <- tempfile()
+        file <- sprintf('%s.%s', file.name, graph.output)
+        if (graph.output %in% c('bmp', 'jpeg', 'png', 'tiff'))
+            do.call(graph.output, list(file, width = width, height = height, res = res, ...))
+        else
+            do.call(graph.output, list(file, width = width/res, height = height/res, ...)) # TODO: font-family?
 
         if (check.output) {
             ## running evalute for checking outputs and grabbing warnings/errors
@@ -321,12 +330,30 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
         }
 
+        clear.devs()
         if (is.character(graph)) {
             returns <- graph
             class(returns) <- "image"
+            if (hi.res) {
+                ## TODO: tiff-hires # dev.off problem
+                ## TODO: vector formats do not need hires... | linux symlink, othervise cp # .Platform$OS.type
+                file <- sprintf('%s-hires.%s', file.name, graph.output)
+                if (graph.output %in% c('bmp', 'jpeg', 'png', 'tiff')) {
+                    do.call(graph.output, list(file, width = hi.res.width, height = hi.res.height, res = hi.res.res, ...))
+                } else {
+                    do.call(graph.output, list(file, width = hi.res.width/hi.res.res, height = hi.res.height/hi.res.res, ...)) # TODO: font-family?
+                }
+                if (check.output)
+                    suppressWarnings(eval(parse(text = src), envir = env.hires))
+                else
+                    suppressWarnings(eval(parse(text = src), envir = env))
+                clear.devs()
+            }
+        } else {
+            if (hi.res & check.output)
+                suppressWarnings(eval(parse(text = src), envir = env.hires))
         }
-        clear.devs()
-
+        
         ## check length
         if (length(returns) > length) returns <- NULL
 
