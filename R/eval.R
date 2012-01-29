@@ -103,7 +103,13 @@ eval.msgs <- function(src, env = NULL) {
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @param check.output to check each line of \code{txt} for outputs. If set to \code{TRUE} you would result in some overhead as all commands have to be run twice (first to check if any output was generated and if so in which part(s), later the R objects are to be grabbed). With \code{FALSE} settings \code{evals} runs much faster, but as now checks are made, some requirements apply, see Details.
 #' @param graph.output set the required file format of saved plots
+#' @param width width of generated plot in pixels for even vector formats (!) 
+#' @param height height of generated plot in pixels for even vector formats (!) 
+#' @param res nominal resolution in ppi. The height and width of vector plots will be calculated based in this.
 #' @param hi.res generate high resolution plots also?
+#' @param hi.res.width  width of generated high resolution plot in pixels for even vector formats (!) 
+#' @param hi.res.height height of generated high resolution plot in pixels for even vector formats (!). This value can be left blank to be automatically calculated to match original plot ascpect ratio.
+#' @param hi.res.res nominal resolution of high resolution plot in ppi. The height and width of vector plots will be calculated based in this. This value can be left blank to be automatically calculated to fit original plot scales.
 #' @param ... optional parameters passed to graphics device (eg. \code{width}, \code{height} etc.)
 #' @return a list of parsed elements each containg: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
 #' @author Gergely Daróczi
@@ -200,8 +206,7 @@ eval.msgs <- function(src, env = NULL) {
 #' }
 #' @export
 evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.output = 'png', width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 1280, hi.res.height = 1280*(height/width), hi.res.res = res*(hi.res.width/width), ...){
-    ## TODO: parameters update
-
+    ## TODO: examples
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
 

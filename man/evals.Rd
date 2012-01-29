@@ -62,7 +62,29 @@
   \item{graph.output}{set the required file format of saved
   plots}
 
+  \item{width}{width of generated plot in pixels for even
+  vector formats (!)}
+
+  \item{height}{height of generated plot in pixels for even
+  vector formats (!)}
+
+  \item{res}{nominal resolution in ppi. The height and
+  width of vector plots will be calculated based in this.}
+
   \item{hi.res}{generate high resolution plots also?}
+
+  \item{hi.res.width}{width of generated high resolution
+  plot in pixels for even vector formats (!)}
+
+  \item{hi.res.height}{height of generated high resolution
+  plot in pixels for even vector formats (!). This value
+  can be left blank to be automatically calculated to match
+  original plot ascpect ratio.}
+
+  \item{hi.res.res}{nominal resolution of high resolution
+  plot in ppi. The height and width of vector plots will be
+  calculated based in this. This value can be left blank to
+  be automatically calculated to fit original plot scales.}
 
   \item{...}{optional parameters passed to graphics device
   (eg. \code{width}, \code{height} etc.)}
