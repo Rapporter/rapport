@@ -263,7 +263,6 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             error <- grep('error', lapply(eval, function(x) class(x)))
             error <- c(error, grep('error', class(eval)))
             if (length(error) != 0) {
-                ## TODO: evals('histogram(mtcars$hp') # lame error msg...
 
                 res <- list(src = src,
                             output = NULL,
@@ -271,7 +270,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                             msg    = list(
                                 messages = NULL,
                                 warnings = NULL,
-                                errors   = sprintf('**Error** in "%s": "%s"',  ifelse(paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')=='', paste(src, collapse=' + '), paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')), ifelse(class(eval)=='try-error', gsub('Error in parse.(text) = string, src = src) : <text>:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
+                                errors   = sprintf('**Error** in "%s": "%s"',  ifelse(paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')=='', paste(src, collapse=' + '), paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')), ifelse(class(eval)=='try-error', gsub('Error in parse.text = string, src = src) :.*text.:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
                             )
                 return(res[output])
             }
