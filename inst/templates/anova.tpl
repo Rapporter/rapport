@@ -45,7 +45,7 @@ Below lies a frequency table for factors in ANOVA model. Note that the missing v
 The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
 <%
-(desc <- rp.desc(resp, fac, c(min, max, mean, SD = sd, median, IQR, skewness, kurtosis)))
+(desc <- rp.desc(resp, fac, c(Min = min, Max = max, Mean = mean, Std.Dev. = sd, Median = median, IQR, Skewness = skewness, Kurtosis = kurtosis)))
 %>
 
 # Diagnostics
@@ -56,7 +56,7 @@ Before we carry out ANOVA, we'd like to check some basic assumptions. For those 
 
 ### Univariate Normality
 
-We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<% p(resp.label) %>). 
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<% p(resp.label) %>).
 
 <%
 (ntest <- htest(resp, shapiro.test, lillie.test, ad.test, colnames = c("N", "p")))
