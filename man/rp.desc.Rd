@@ -4,7 +4,8 @@
 \usage{
   rp.desc(measure.vars, id.vars = NULL, fn, data = NULL,
     na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA,
-    add.missing = FALSE, total.name = "Total")
+    add.missing = FALSE, total.name = "Total",
+    varcol.name = "Variable", use.labels = FALSE)
 }
 \arguments{
   \item{measure.vars}{either a character vector with
@@ -38,6 +39,12 @@
 
   \item{total.name}{a character string with name for
   "grand" margin (defaults to "Total")}
+
+  \item{varcol.name}{character string for column that
+  contains summarised variables (defaults to
+  \code{"Variable"})}
+
+  \item{use.labels}{use labels for \code{measure.vars}?}
 }
 \value{
   a \code{data.frame} with aggregated data

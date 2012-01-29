@@ -63,6 +63,37 @@ nav a:hover {
     color: #0099D9;
 }
 
+/* Nested navigation */
+
+/* this shouldn't happen, but still... */
+.nnav-1 {
+    display: none;              /* a bit radical approach*/
+}
+
+.nnav-2 {
+    padding: 0;
+}
+
+.nnav-3 {
+    margin: -10px 0 12px;
+    padding: 0 0 0 10px;
+}
+
+.nnav-4 {
+    margin: -10px 0 12px;
+    padding: 0 0 0 20px;
+}
+
+.nnav-5 {
+    margin: -10px 0 12px;
+    padding: 0 0 0 30px;
+}
+
+.nnav-6 {
+    margin: -10px 0 12px;
+    padding: 0 0 0 40px;
+}
+
 #logo {
     margin: 10px 0 20px;
 }
