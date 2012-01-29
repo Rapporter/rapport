@@ -199,7 +199,7 @@ eval.msgs <- function(src, env = NULL) {
 #' evals('mean(x)')
 #' }
 #' @export
-evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.output = 'png', width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 1280, hi.res.height = 1280, hi.res.res = res*(hi.res.width/width), ...){
+evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.output = 'png', width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 1280, hi.res.height = 1280*(height/width), hi.res.res = res*(hi.res.width/width), ...){
     ## TODO: parameters update
 
     if (!xor(missing(txt), missing(ind)))
@@ -238,7 +238,9 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
     lapply(txt, function(src) {
 
-        clear.devs <- function() while (!is.null(dev.list())) dev.off(as.numeric(dev.list()))
+        clear.devs <- function()
+            while (!is.null(dev.list()))
+                dev.off(as.numeric(dev.list()[1]))
 
         clear.devs()
         file.name <- tempfile()
@@ -334,8 +336,9 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         if (is.character(graph)) {
             returns <- graph
             class(returns) <- "image"
+            ## generate high resolution images if needed
             if (hi.res) {
-                ## TODO: tiff-hires # dev.off problem
+                ## FIX: tiff-hires dev.off problem
                 file.hi.res <- sprintf('%s-hires.%s', file.name, graph.output)
                 if (graph.output %in% c('bmp', 'jpeg', 'png', 'tiff')) {
                     do.call(graph.output, list(file.hi.res, width = hi.res.width, height = hi.res.height, res = hi.res.res, ...))
@@ -345,11 +348,13 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                     else
                         do.call(graph.output, list(file.hi.res, width = hi.res.width/hi.res.res, height = hi.res.height/hi.res.res, ...)) # TODO: font-family?
                 }
-                if (check.output)
-                    suppressWarnings(eval(parse(text = src), envir = env.hires))
-                else
-                    suppressWarnings(eval(parse(text = src), envir = env))
-                clear.devs()
+                if ((graph.output %in% c('bmp', 'jpeg', 'png', 'tiff')) | (.Platform$OS.type != 'unix')) {
+                    if (check.output)
+                        suppressWarnings(eval(parse(text = src), envir = env.hires))
+                    else
+                        suppressWarnings(eval(parse(text = src), envir = env))
+                    clear.devs()
+                }
             }
         } else {
             if (hi.res & check.output)

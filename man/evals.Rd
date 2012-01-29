@@ -7,7 +7,8 @@
     output = c("all", "src", "output", "type", "msg"),
     env = NULL, check.output = TRUE, graph.output = "png",
     width = 480, height = 480, res = 72, hi.res = FALSE,
-    hi.res.width = 1280, hi.res.height = 1280,
+    hi.res.width = 1280,
+    hi.res.height = 1280 * (height/width),
     hi.res.res = res * (hi.res.width/width), ...)
 }
 \arguments{
