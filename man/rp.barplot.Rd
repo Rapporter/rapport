@@ -4,8 +4,7 @@
 \usage{
   rp.barplot(x, facet = NULL, data = NULL, groups = FALSE,
     auto.key = FALSE, horizontal = TRUE, percent = FALSE,
-    theme = getOption("rp.color.palette"),
-    colorize = getOption("rp.colorize"), ...)
+    ...)
 }
 \arguments{
   \item{x}{a numeric variable}
@@ -27,12 +26,6 @@
 
   \item{auto.key}{see \code{\link{xyplot}}}
 
-  \item{theme}{a color palette name from
-  \code{\link{RColorBrewer}} or 'default'}
-
-  \item{colorize}{if set the color is chosen from palette
-  at random}
-
   \item{...}{additional parameters to
   \code{\link{barchart}}}
 }
@@ -42,18 +35,14 @@
 }
 \examples{
 \dontrun{
-df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-rp.barplot(df$cyl)
-rp.barplot(df$cyl, horizontal = FALSE)
-rp.barplot(df$cyl, facet=df$am)
-rp.barplot(df$cyl, facet=df$am, horizontal=FALSE)
-rp.barplot(df$cyl, facet=df$am, colorize=TRUE)
-rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
-rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T, horizontal=FALSE)
-rp.label(df$cyl) <- 'Number of cylinders'; rp.barplot(df$cyl)
-with(df, rp.barplot(cyl, facet = am))
-rp.barplot(cyl, data=df)
-rp.barplot(cyl, am, df)
+rp.barplot(ius2008$game)
+rp.barplot(ius2008$game, horizontal = FALSE)
+rp.barplot(ius2008$game, facet = ius2008$gender)
+rp.barplot(ius2008$game, facet = ius2008$dwell, horizontal = FALSE, layout = c(1,3))
+rp.barplot(ius2008$game, facet = ius2008$gender, groups = TRUE)
+with(ius2008, rp.barplot(game, facet = gender))
+rp.barplot(gender, data = ius2008)
+rp.barplot(dwell, gender, ius2008)
 }
 }
 

@@ -3,9 +3,7 @@
 \title{Histogram}
 \usage{
   rp.hist(x, facet = NULL, data = NULL,
-    kernel.smooth = FALSE,
-    theme = getOption("rp.color.palette"),
-    colorize = getOption("rp.colorize"), ...)
+    kernel.smooth = FALSE, ...)
 }
 \arguments{
   \item{x}{a numeric variable}
@@ -17,12 +15,6 @@
   variables should be taken}
 
   \item{kernel.smooth}{add kernel density plot?}
-
-  \item{theme}{a color palette name from
-  \code{\link{RColorBrewer}} or 'default'}
-
-  \item{colorize}{if set the color is chosen from palette
-  at random}
 
   \item{...}{additional parameters to
   \code{\link{histogram}}}
@@ -37,8 +29,7 @@
 rp.hist(ius2008$edu)
 rp.hist(ius2008$edu, facet=ius2008$gender)
 rp.hist(ius2008$edu, ius2008$dwell)
-rp.hist(ius2008$edu, colorize=TRUE)
-rp.hist(ius2008$edu, colorize=TRUE, kernel.smooth=TRUE)
+rp.hist(ius2008$edu, kernel.smooth=TRUE)
 with(ius2008, rp.hist(edu, facet = gender))
 rp.hist(edu, data = ius2008)
 rp.hist(edu, gender, ius2008)
