@@ -205,7 +205,7 @@ rp.label <- function(x, fallback = TRUE){
 #' rp.label(mtcars$mpg) <- "fuel consumption"
 #' x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
 #' }
-# @export
+#' @export
 `rp.label<-` <- function(var, value){
 
     if (missing(var) | missing(value))

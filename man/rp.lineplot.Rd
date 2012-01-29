@@ -3,9 +3,7 @@
 \title{Lineplot}
 \usage{
   rp.lineplot(x, y, facet = NULL, data = NULL,
-    groups = NULL,
-    theme = getOption("stlye.color.palette"),
-    colorize = getOption("stlye.colorize"), ...)
+    groups = NULL, ...)
 }
 \arguments{
   \item{x}{a numeric variable}
@@ -35,29 +33,28 @@
 }
 \examples{
 \dontrun{
-df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
-a <- aggregate(wt~gear, df, mean)
+a <- aggregate(wt~gear, mtcars, mean)
 rp.lineplot(a$gear, a$wt)
-rp.lineplot(1:length(df$hp), df$hp, facet=df$cyl)
-rp.label(a$wt) <- 'weight'; rp.lineplot(a$gear, a$wt)
-rp.lineplot(a$gear, a$wt, colorize=TRUE)
 rp.lineplot(gear, wt, data=a)
 
+## lame demo:
+rp.lineplot(1:length(mtcars$hp), mtcars$hp, facet=mtcars$cyl)
+
 ## advanced usage
-rp.lineplot(partner, age, data=rp.desc('age', 'partner', fn='mean', data=ius2008))
-rp.lineplot(partner, age, gender, data=rp.desc('age', c('gender', 'partner'), fn='mean', data=ius2008))
-rp.lineplot(partner, age, groups=gender, data=rp.desc('age', c('gender', 'partner'), fn='mean', data=ius2008))
+rp.lineplot(partner, age, data = rp.desc('age', 'partner', fn = 'mean', data=ius2008))
+rp.lineplot(partner, age, gender, data = rp.desc('age', c('gender', 'partner'), fn = 'mean', data=ius2008))
+rp.lineplot(partner, age, groups = gender, data=rp.desc('age', c('gender', 'partner'), fn = 'mean', data = ius2008))
 
 ## Did you noticed the nasty axis titles? Why not correct those? :)
-df <- rp.desc('age', 'partner', fn='mean', data=ius2008)
+df <- rp.desc('age', 'partner', fn = 'mean', data = ius2008)
 lapply(names(df), function(x) rp.label(df[, x]) <<- x)   # nasty solution!
-rp.lineplot(partner, age, data=df)
-df <- rp.desc('age', c('gender', 'partner'), fn='mean', data=ius2008)
+rp.lineplot(partner, age, data = df)
+df <- rp.desc('age', c('gender', 'partner'), fn = 'mean', data = ius2008)
 lapply(names(df), function(x) rp.label(df[, x]) <<- x)  # nasty solution!
-rp.lineplot(partner, age, gender, data=df)
-df <- rp.desc('age', c('gender', 'partner'), fn='mean', data=ius2008)
+rp.lineplot(partner, age, gender, data = df)
+df <- rp.desc('age', c('gender', 'partner'), fn = 'mean', data = ius2008)
 lapply(names(df), function(x) rp.label(df[, x]) <<- x)  # nasty solution!
-rp.lineplot(partner, age, groups=gender, data=df)
+rp.lineplot(partner, age, groups = gender, data = df)
 }
 }
 
