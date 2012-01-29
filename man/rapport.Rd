@@ -7,7 +7,11 @@
   rapport(fp, data = NULL, ..., reproducible = FALSE,
     header.levels.offset = 0,
     rapport.mode = getOption("rapport.mode"),
-    graph.output = "png")
+    graph.output = getOption("graph.format"),
+    graph.width = getOption("graph.width"),
+    graph.height = getOption("graph.height"),
+    graph.res = getOption("graph.res"),
+    graph.hi.res = getOption("graph.hi.res"))
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -35,8 +39,20 @@
   \code{debug} mode \code{rapport} will halt on first
   error.}
 
-  \item{graph.output}{set the required file format of saved
-  plots}
+  \item{graph.output}{the required file format of saved
+  plots (optional)}
+
+  \item{graph.width}{the required width of saved plots
+  (optional)}
+
+  \item{graph.height}{the required height of saved plots
+  (optional)}
+
+  \item{graph.res}{the required nominal resolution in ppi
+  of saved plots (optional)}
+
+  \item{graph.hi.res}{logical value indicating if high
+  resolution (1280x~1280) images would be also genareted}
 }
 \value{
   a list with \code{rapport} class.
@@ -75,11 +91,16 @@
 }
 \examples{
 \dontrun{
-rapport("example", ius2008, var="leisure")
-rapport("example", ius2008, var="leisure", desc=FALSE, hist=T, themer="Set1")
-rapport("example", ius2008, var="leisure", rapport.mode='debug')
-rapport("example", ius2008, var="leisure", rapport.mode='performance')
+rapport("example", ius2008, var = "leisure")
+rapport("example", ius2008, var = "leisure", desc = FALSE, hist = TRUE, theme = "Set1")
+rapport("example", ius2008, var = "leisure", rapport.mode = 'debug')
+rapport("example", ius2008, var = "leisure", rapport.mode = 'performance')
 ## Or set \\code{'rapport.mode'} option to \\code{debug}, \\code{performance} or back to \\code{normal}.
+
+## generating high resolution images also
+rapport("example", ius2008, var="leisure", hist = TRUE, graph.hi.res = TRUE)
+## generating only high resolution image
+rapport("example", ius2008, var="leisure", hist = TRUE, graph.width = 1280, graph.height = 1280)    # might be a good idea to set \\code{graph.res} too
 }
 }
 
