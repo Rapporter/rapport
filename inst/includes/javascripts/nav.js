@@ -65,5 +65,10 @@ $(document).ready(function() {
             html: $('<a>').attr({ href: '#' + linkId}).text($val.text())
         }).appendTo('nav > ul');
     });
+    
+    // image popups
+    $('.content a > img').slimbox([], function(el) {
+        return [el.parentNode.href];
+    });
 
 });
