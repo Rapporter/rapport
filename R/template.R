@@ -654,6 +654,9 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' rapport.html("nortest", ius2008, var = "leisure", graph.hi.res=T)
 #' ## generating only high resolution image
 #' rapport("example", ius2008, var="leisure", hist = TRUE, graph.width = 1280, graph.height = 1280)    # might be a good idea to set \code{graph.res} too
+#' ## nested templates cannot get custom setting, use custom rapport option:
+#' options('graph.hi.res' = TRUE)
+#' rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
 #' }
 #' @export
 rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res')) {
