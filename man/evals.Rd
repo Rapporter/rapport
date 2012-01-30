@@ -5,7 +5,8 @@
   evals(txt = NULL, ind = NULL, body = NULL,
     classes = NULL, hooks = NULL, length = Inf,
     output = c("all", "src", "output", "type", "msg"),
-    env = NULL, check.output = TRUE, graph.output = "png",
+    env = NULL, check.output = TRUE,
+    graph.name = tempfile(), graph.output = "png",
     width = 480, height = 480, res = 72, hi.res = FALSE,
     hi.res.width = 960,
     hi.res.height = 960 * (height/width),
@@ -58,6 +59,13 @@
   \code{FALSE} settings \code{evals} runs much faster, but
   as now checks are made, some requirements apply, see
   Details.}
+
+  \item{graph.name}{set the file name of saved plots which
+  is a \code{tempfile()} by default. A simple character
+  string (or a function which returns a single character
+  vector) might be provided where \code{\%INDEX} would be
+  replaced by the index of the generating \code{txt}
+  source.}
 
   \item{graph.output}{set the required file format of saved
   plots}
@@ -188,7 +196,7 @@ txt <- readLines(textConnection('x <- rnorm(100)
   runif(10)
   warning("You should check out rapport package!")
   plot(1:10)
-  qplot(rating, data=movies, geom="histogram")
+  qplot(rating, data = movies, geom = "histogram")
   y <- round(runif(100))
   cor.test(x, y)
   crl <- cor.test(runif(10), runif(10))
@@ -207,8 +215,8 @@ txt <- readLines(textConnection('rnorm(100)
   list(x = 10:1, y = "Godzilla!")
   c(1,2,3)
    matrix(0,3,5)'))
-evals(txt, classes='numeric')
-evals(txt, classes=c('numeric', 'list'))
+evals(txt, classes = 'numeric')
+evals(txt, classes = c('numeric', 'list'))
 
 ## handling warnings
 evals('chisq.test(mtcars$gear, mtcars$hp)')
@@ -229,52 +237,55 @@ evals(list(c('no.R.object', 'Old MacDonald had a farm\\\\dots', 'pi')))
 
 ## graph options
 evals('plot(1:10)')
-evals('plot(1:10)', height=800)
-evals('plot(1:10)', height=800, hi.res=T)
-evals('plot(1:10)', graph.output = 'pdf', hi.res=T)
-evals('plot(1:10)', res=30)
+evals('plot(1:10)', graph.output = 'jpg)
+evals('plot(1:10)', height = 800)
+evals('plot(1:10)', height = 800, hi.res = T)
+evals('plot(1:10)', graph.output = 'pdf', hi.res = T)
+evals('plot(1:10)', res = 30)
+evals('plot(1:10)', graph.name = 'myplot')
+evals(list('plot(1:10)', 'plot(2:20)'), graph.name = 'myplots-\%INDEX')
 
 ## hooks
-hooks <- list('numeric'=round, 'matrix'=ascii)
-evals(txt, hooks=hooks)
-evals('22/7', hooks=list('numeric'=rp.round))
-evals('matrix(runif(25), 5, 5)', hooks=list('matrix'=rp.round))
+hooks <- list('numeric' = round, 'matrix' = ascii)
+evals(txt, hooks = hooks)
+evals('22/7', hooks = list('numeric' = rp.round))
+evals('matrix(runif(25), 5, 5)', hooks = list('matrix' = rp.round))
 
 ## using rapport's default hook
-evals('22/7', hooks=TRUE)
+evals('22/7', hooks = TRUE)
 
 ## setting default hook
-evals(c('runif(10)', 'matrix(runif(9), 3, 3)'), hooks=list('default'=round))
+evals(c('runif(10)', 'matrix(runif(9), 3, 3)'), hooks = list('default'=round))
 ## round all values except for matrices
-evals(c('runif(10)', 'matrix(runif(9), 3, 3)'), hooks=list(matrix='print', 'default'=round))
+evals(c('runif(10)', 'matrix(runif(9), 3, 3)'), hooks = list(matrix = 'print', 'default' = round))
 
 # advanced hooks
-fun <- function(x, asciiformat) paste(capture.output(print(ascii(x), asciiformat)), collapse='\\n')
-hooks <- list('numeric'=list(round, 2), 'matrix'=list(fun, "rest"))
-evals(txt, hooks=hooks)
+fun <- function(x, asciiformat) paste(capture.output(print(ascii(x), asciiformat)), collapse = '\\n')
+hooks <- list('numeric' = list(round, 2), 'matrix' = list(fun, "rest"))
+evals(txt, hooks = hooks)
 
 # return only returned values
-evals(txt, output='output')
+evals(txt, output = 'output')
 
 # return only messages (for checking syntax errors etc.)
-evals(txt, output='msg')
+evals(txt, output = 'msg')
 
 # check the length of returned values
-evals('runif(10)', length=5)
+evals('runif(10)', length = 5)
 
 # note the following will not be filtered!
-evals('matrix(1,1,1)', length=1)
+evals('matrix(1,1,1)', length = 1)
 
 # if you do not want to let such things be evaled in the middle of a string use it with other filters :)
-evals('matrix(1,1,1)', length=1, classes='numeric')
+evals('matrix(1,1,1)', length = 1, classes = 'numeric')
 
 # hooks & filtering
-evals('matrix(5,5,5)', hooks=list('matrix'=ascii), output='output')
+evals('matrix(5,5,5)', hooks = list('matrix' = ascii), output = 'output')
 
 # evaling chunks in given environment
 myenv <- new.env()
-evals('x <- c(0,10)', env=myenv)
-evals('mean(x)', env=myenv)
+evals('x <- c(0,10)', env = myenv)
+evals('mean(x)', env = myenv)
 rm(myenv)
 # note: if you had not specified 'myenv', the second 'evals' would have failed
 evals('x <- c(0,10)')
