@@ -239,8 +239,8 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
     if (!any(is.list(hooks), is.null(hooks)))
         stop('Wrong list of hooks provided!')
     
-    graph.name <- match.call()$graph.name
-    stop(as.character(graph.name))
+    if (!missing(graph.name))
+        graph.name <- match.call()$graph.name
     graph.output <- match.arg(graph.output)
     if (graph.output == 'jpg')
         graph.output <- 'jpeg'
