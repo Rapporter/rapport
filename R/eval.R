@@ -373,7 +373,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             }
         } else {
             if (hi.res & check.output)
-                suppressWarnings(eval(parse(text = src), envir = env.hires))
+                env.hires <- env
         }
         
         ## check length
