@@ -263,3 +263,36 @@ wrap <- function(x, wrap = '"'){
 stopf <- function(s, ...){
     stop(sprintf(s, ...))
 }
+
+
+#' Empty Value
+#'
+#' Rails-inspired helper that checks if value is "empty", i.e. if it's of \code{NULL}, \code{NA}, \code{NaN}, \code{FALSE}, empty string or 0.
+#' @param x an object to check
+#' @param trim trim whitespace? (by default removes only trailing spaces)
+#' @param ... additional arguments for \code{\link{trim.space}}
+#' @examples
+#' is.empty(NULL)     # returns [1] TRUE
+#' is.empty(NA)       # returns [1] TRUE
+#' is.empty(NaN)      # returns [1] TRUE
+#' is.empty("")       # returns [1] TRUE
+#' is.empty(0)        # returns [1] TRUE
+#' is.empty(0.00)     # returns [1] TRUE
+#' is.empty("foobar") # returns [1] FALSE
+#' is.empty("    ")   # returns [1] FALSE
+#' @export
+is.empty <- function(x, trim = FALSE, ...){
+
+    if (is.null(x))
+        return (TRUE)
+    else if (is.na(x) || is.nan(x))
+        return (TRUE)
+    else if (is.character(x) && nchar(ifelse(trim, trim.space(x, ...), x)) == 0)
+        return (TRUE)
+    else if (is.logical(x) && !isTRUE(x))
+        return (TRUE)
+    else if (is.numeric(x) && x == 0)
+        return (TRUE)
+    else
+        return (FALSE)
+}

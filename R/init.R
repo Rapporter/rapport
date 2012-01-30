@@ -8,10 +8,24 @@
     options('.encrypt.chars'   = paste(c(LETTERS, letters, 0:9, ' ', '(', ')', '=', '~', '.', '+', '"', "'",'$', '#'), collapse = ""))
     set.seed(1956)
     options('.encrypt.key'     = paste(sample(c(LETTERS, letters, 0:9,'=','|','_','.',',','*','$',':',';','~','-'), nchar(getOption('.encrypt.chars'))), collapse=''))
-    
-    ## "tpl" prefix settings
-    options('tpl.user'  = '(Username not set)')
-    options('tpl.email' = '(E-mail address not set)')
+
+    ## tpl username/email settings
+    ## username
+    options('tpl.user'  = {
+        if (is.empty(getOption('tpl.user'), TRUE, leading = TRUE))
+            'Anonymous'
+        else
+            getOption('tpl.user')
+    })
+    ## email
+    options('tpl.email' = {
+        if (is.empty(getOption('tpl.email'), TRUE, leading = TRUE))
+            ''
+        else
+            getOption('tpl.email')
+    })
+
+    ## paths settings
     options('tpl.paths' = NULL)
 
     ## "rp" prefix settings
@@ -41,15 +55,15 @@
 
     ## tag regexes
     options('rp.tags' = c(
-            chunk.open    = '^<%$',
-            chunk.close   = '^%>$',
-            inline.open   = '<%=?',
-            inline.close  = '-?%>',
-            header.open   = '^<!--head$',
-            header.close  = '^head-->$',
-            comment.open  = '<!--',
-            comment.close = '-->'
-            ))
+                chunk.open    = '^<%$',
+                chunk.close   = '^%>$',
+                inline.open   = '<%=?',
+                inline.close  = '-?%>',
+                header.open   = '^<!--head$',
+                header.close  = '^head-->$',
+                comment.open  = '<!--',
+                comment.close = '-->'
+                ))
 
     ## rp_helpers stuff
     ## p()
