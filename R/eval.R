@@ -219,7 +219,7 @@ eval.msgs <- function(src, env = NULL) {
 #' evals('mean(x)')
 #' }
 #' @export
-evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.name = tempfile(), graph.output = 'png', width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), ...){
+evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.name = tempfile(), graph.output = c('png', 'bmp', 'jpeg', 'jpg', 'tiff', 'svg', 'pdf'), width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), ...){
 
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
@@ -231,8 +231,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         txt <- lapply(ind, function(x) body[x])
     }
 
-    if (!all(output %in% c('all', 'src', 'output', 'type', 'msg')))
-        stop('Wrong output option!')
+    output <- match.arg(output, several.ok = TRUE)
 
     if (sum(grepl('all', output)) > 0)
         output <- c('src', 'output', 'type', 'msg')
@@ -241,9 +240,8 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         stop('Wrong list of hooks provided!')
     
     graph.name <- match.call()$graph.name
-    
-    if (!graph.output %in% c('bmp', 'jpeg', 'jpg', 'png', 'tiff', 'svg', 'pdf'))
-        stop("Wrong graph.output type provided! Available formats: c('bmp', 'jpeg', 'jpg', 'png', 'tiff', 'svg', 'pdf')")
+    stop(as.character(graph.name))
+    graph.output <- match.arg(graph.output)
     if (graph.output == 'jpg')
         graph.output <- 'jpeg'
 
