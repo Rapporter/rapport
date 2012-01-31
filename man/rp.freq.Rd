@@ -32,10 +32,11 @@
   (defaults to "Total")}
 }
 \value{
-  a \code{data.frame} with frequencies
+  a \code{data.frame} with a frequency table
 }
 \description{
-  Diplay frequency table.
+  Diplay frequency table with counts, percentage, and
+  cumulatives.
 }
 \examples{
 \dontrun{

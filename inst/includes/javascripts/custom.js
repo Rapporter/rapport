@@ -66,6 +66,9 @@ $(document).ready(function() {
         }).appendTo('nav > ul');
     });
     
+    // wrap each table in a container div
+    $content.find('table').wrap('<div class="table-container" />');
+
     // image popups
     $('.content a > img').slimbox({
         counterText: "Plot: {x} of {y}"

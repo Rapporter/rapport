@@ -12,12 +12,15 @@
 #' @param add.missing show missing level combinations
 #' @param total.name a character string with name for "grand" margin (defaults to "Total")
 #' @param varcol.name character string for column that contains summarised variables (defaults to \code{"Variable"})
-#' @param use.labels use labels for \code{measure.vars}?
+#' @param use.labels use labels instead of variable names in table header (handle with care, especially if you have lengthy labels). Defaults to value specified in \code{rp.use.labels} option.
+#' @param remove.duplicate should name/label of the variable provided in \code{measure.vars} be removed from each column if only one \code{measure.var} is provided (defaults to \code{TRUE})
 #' @return a \code{data.frame} with aggregated data
 #' @examples
 #' rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)
+#' ## c
+#' rp.desc("age", c("gender", "student"), c("Average" = mean, "Deviation" = sd), ius2008, remove.duplicate = FALSE)
 #' @export
-rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total', varcol.name = 'Variable', use.labels = FALSE) {
+rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total', varcol.name = 'Variable', use.labels = getOption('rp.use.labels'), remove.duplicate = TRUE) {
 
     if (!is.character(id.vars) && !is.character(measure.vars)){
         data <- if (is.null(id.vars)) data.frame(measure.vars) else data.frame(id.vars, measure.vars)
@@ -25,6 +28,10 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
         measure.vars <- if (is.atomic(measure.vars)) deparse(substitute(measure.vars)) else names(measure.vars)
         names(data) <- c(id.vars, measure.vars)
     }
+
+    ## some shorthands
+    n.measure <- length(measure.vars)
+    n.id <- length(id.vars)
 
     m   <- melt.data.frame(data, id.vars = id.vars, measure.vars = measure.vars, na.rm = na.rm) # melt data
     if (is.null(id.vars))
@@ -74,6 +81,10 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
         if (use.labels)
             res[, 1] <- c(rp.label(data[measure.vars]))
     } else {
+        ## use labels for id.vars?
+        if (use.labels)
+            names(res)[1:n.id] <- rp.label(data[id.vars])
+
         ## remove nasty (all)
         ## (all) occurs only if margins is not NULL or FALSE
         ## + and when length-one vector is provided in measure.vars
@@ -84,20 +95,33 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
         all.ind <- '(all)' == res[id.ind]
         if (any(all.ind, na.rm = TRUE)){
             res[id.ind] <- lapply(res[id.ind], function(x){
-                ## x <- gsub('(all)', total.name, as.character(x), fixed = TRUE)
-                ## factor(x)
                 as.character(x)
             })
         }
 
-        ## fix underscores in colnames
-        nms.res <- names(res)               # column names, again
-        unds.ind <- grep('_', nms.res)      # underscore of indices
+        ## remove duplicate measure.vars names
+        ind.measure <- n.measure:ncol(res)
+        nms.measure <- names(res)[ind.measure]           # measure.vars names
 
-        if (length(unds.ind)){
-            names(res)[unds.ind] <- lapply(strsplit(nms.res[unds.ind], '_'), function(x){
-                sprintf('%s(%s)', tail(x, 1), paste(head(x, -1), collapse = '_'))
-            })
+        ## remove duplicate var names
+        if (n.measure == 1 && remove.duplicate) {
+            names(res)[ind.measure] <- vgsub(sprintf('(^%s_)', measure.vars), '', nms.measure)
+        } else {
+
+            ## convert "var_stat" to "stat (var)"
+            nms.res <- names(res)               # column names, again
+            unds.ind <- grep('_', nms.res)      # underscore of indices
+            nms.measure <- names(res)[ind.measure] # measure.vars names, again
+
+            if (length(unds.ind)){
+                names(res)[unds.ind] <- lapply(strsplit(nms.res[unds.ind], '_'), function(x){
+                    sprintf('%s (%s)', tail(x, 1), paste(head(x, -1), collapse = '_'))
+                })
+            }
+
+            ## use labels for measure vars?
+            if (use.labels)
+                names(res)[ind.measure] <- vgsub(measure.vars, rp.label(data[measure.vars]), names(res)[ind.measure])
         }
     }
 
@@ -108,7 +132,7 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
 
 #' Frequency Table
 #'
-#' Diplay frequency table.
+#' Diplay frequency table with counts, percentage, and cumulatives.
 #' @param f.vars a character vector with variable names
 #' @param data a \code{data.frame}
 #' @param na.rm should missing values be removed?
@@ -119,12 +143,12 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
 #' @param cumul.count show cumulative frequencies?
 #' @param cumul.pct show cumulative percentage?
 #' @param total.name a sting containing footer label (defaults to "Total")
-#' @return a \code{data.frame} with frequencies
+#' @return a \code{data.frame} with a frequency table
 #' @examples \dontrun{
 #' rp.freq(c("am", "cyl", "vs"), mtcars)
 #' }
 #' @export
-rp.freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.levels = FALSE, count = TRUE, pct = TRUE, cumul.count = TRUE, cumul.pct = TRUE, total.name = 'Total'){
+rp.freq <- freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.levels = FALSE, count = TRUE, pct = TRUE, cumul.count = TRUE, cumul.pct = TRUE, total.name = 'Total'){
 
     ## TODO: subset
     ## TODO: add variables/data.frames instead of names

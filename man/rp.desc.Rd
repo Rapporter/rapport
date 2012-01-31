@@ -5,7 +5,9 @@
   rp.desc(measure.vars, id.vars = NULL, fn, data = NULL,
     na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA,
     add.missing = FALSE, total.name = "Total",
-    varcol.name = "Variable", use.labels = FALSE)
+    varcol.name = "Variable",
+    use.labels = getOption("rp.use.labels"),
+    remove.duplicate = TRUE)
 }
 \arguments{
   \item{measure.vars}{either a character vector with
@@ -44,7 +46,15 @@
   contains summarised variables (defaults to
   \code{"Variable"})}
 
-  \item{use.labels}{use labels for \code{measure.vars}?}
+  \item{use.labels}{use labels instead of variable names in
+  table header (handle with care, especially if you have
+  lengthy labels). Defaults to value specified in
+  \code{rp.use.labels} option.}
+
+  \item{remove.duplicate}{should name/label of the variable
+  provided in \code{measure.vars} be removed from each
+  column if only one \code{measure.var} is provided
+  (defaults to \code{TRUE})}
 }
 \value{
   a \code{data.frame} with aggregated data
@@ -64,5 +74,7 @@
 }
 \examples{
 rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)
+## c
+rp.desc("age", c("gender", "student"), c("Average" = mean, "Deviation" = sd), ius2008, remove.duplicate = FALSE)
 }
 

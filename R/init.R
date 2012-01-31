@@ -25,6 +25,10 @@
             getOption('tpl.email')
     })
 
+    ## use labels
+    ## IMO, this should be implemented for all functions (sometimes you may not want labels)
+    options('rp.use.labels' = TRUE)
+
     ## paths settings
     options('tpl.paths' = NULL)
 
@@ -46,7 +50,7 @@
     options('style.font'          = 'Helvetica')
     options('style.color.palette' = 'default')      # for other palette options, see: ?brewer.pal.info
     options('style.colorize'      = FALSE)
-    ## image format settingsű
+    ## image format settings
     options('graph.format'        = 'png')
     options('graph.width'         = 480)
     options('graph.height'        = 480)

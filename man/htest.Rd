@@ -2,8 +2,9 @@
 \alias{htest}
 \title{Hypothesis Tests}
 \usage{
-  htest(x, ..., use.labels = TRUE, colnames = NULL,
-    rownames = NULL)
+  htest(x, ..., use.labels = getOption("rp.use.labels"),
+    use.method.names = TRUE,
+    colnames = c("Statistic", "p-value"))
 }
 \arguments{
   \item{x}{arguments to be passed to function specified in
@@ -17,10 +18,11 @@
   \code{FALSE}, output of \code{deparse(substitute(x))}
   will be used.}
 
+  \item{use.method.names}{use the string provided in
+  \code{method} attribute of \code{htest} object}
+
   \item{colnames}{a character string containing column
   names}
-
-  \item{rownames}{a character string containing row names}
 }
 \value{
   a \code{data.frame} with applied tests in rows, and their

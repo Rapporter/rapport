@@ -59,7 +59,7 @@ Before we carry out ANOVA, we'd like to check some basic assumptions. For those 
 We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<% p(resp.label) %>).
 
 <%
-(ntest <- htest(resp, shapiro.test, lillie.test, ad.test, colnames = c("N", "p")))
+(ntest <- htest(resp, shapiro.test, lillie.test, ad.test))
 %>
 
 

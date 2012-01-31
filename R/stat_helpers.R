@@ -63,8 +63,8 @@ lambda.test <- function(table, direction=0) {
 #' @param x arguments to be passed to function specified in \code{test}
 #' @param ... additional arguments for function specified in \code{test}
 #' @param use.labels a logical value indicating whether variable labels should be placed in row names. If set to \code{FALSE}, output of \code{deparse(substitute(x))} will be used.
+#' @param use.method.names use the string provided in \code{method} attribute of \code{htest} object
 #' @param colnames a character string containing column names
-#' @param rownames a character string containing row names
 #' @return a \code{data.frame} with applied tests in rows, and their results (statistic and p-value) in columns
 #' @examples \dontrun{
 #' library(nortest)
@@ -74,7 +74,7 @@ lambda.test <- function(table, direction=0) {
 #' htest(mtcars, lillie.test, ad.test, shapiro.test)
 #' }
 #' @export
-htest <- function(x, ..., use.labels = TRUE, colnames = NULL, rownames = NULL){
+htest <- function(x, ..., use.labels = getOption('rp.use.labels'), use.method.names = TRUE, colnames = c('Statistic', 'p-value')){
 
     test <- list(...)
     test.len <- length(test)
@@ -83,33 +83,38 @@ htest <- function(x, ..., use.labels = TRUE, colnames = NULL, rownames = NULL){
     if (is.atomic(x) || is.formula(x)){
         if (test.len == 1){
             res <- htest.short(each(test[[1]])(x))
+            method.name <- attr(res, 'method')
         } else {
-            res <- sapply(each(test)(x), htest.short)
+            res <- data.frame(lapply(each(test)(x), htest.short))
+            method.name <- sapply(res, attr, which = 'method')
         }
         res <- data.frame(t(res))
         x.nms <- if (is.formula(x)) deparse(substitute(x)) else rp.label(x, use.labels)
         x.len <- 1
     } else {
         if (test.len == 1){
-            res <- lapply(lapply(x, test[[1]]), htest.short)
+            res <- data.frame(lapply(lapply(x, test[[1]]), htest.short))
+            method.name <- sapply(res, attr, which = 'method')
         } else {
-            res <- lapply(x, function(y) sapply(each(test)(y), htest.short))
+            res <- lapply(x, function(y) lapply(each(test)(y), htest.short))
+            method.name <- sapply(foo[[1]], attr, which = "method")
         }
         res <- t(data.frame(res))
         x.nms <- rp.label(x, use.labels)
         x.len <- length(x)
     }
 
-    if (is.null(colnames))
-        colnames(res) <- c("H", "p")
+    colnames(res) <- colnames
 
-    if (is.null(rownames)){
-        if (nrow(res) == length(test.name))
-            rn <- test.name
-        else
-            rn <- sprintf("%s(%s)", rep(test.name, x.len), rep(x.nms, each = test.len))
-        rownames(res) <- rn
-    }
+    if (use.method.names)
+        test.name <- method.name
+
+    if (nrow(res) == length(test.name))
+        rn <- test.name
+    else
+        rn <- sprintf("%s (%s)", rep(test.name, x.len), rep(x.nms, each = test.len))
+
+    rownames(res) <- rn
 
     return(res)
 }
@@ -126,5 +131,5 @@ htest <- function(x, ..., use.labels = TRUE, colnames = NULL, rownames = NULL){
 #' @export
 htest.short <- function(x){
     stopifnot(inherits(x, 'htest'))
-    c(x$statistic, p = x$p.value)
+    structure(c(x$statistic, p = x$p.value), method = x$method)
 }
