@@ -67,7 +67,7 @@ And wow, the mean of *leisure* is *3.1994*!
 
 ### Histogram
 
-[![image](ae1d2677d19224aec6e79aa6edd92e0e.png)](/tmp/RtmpeIwHkw/file4362bdf0-hires.png)
+[![image](ae1d2677d19224aec6e79aa6edd92e0e.png)](ae1d2677d19224aec6e79aa6edd92e0e-hires.png)
 
 Description
 -----------
@@ -90,12 +90,12 @@ And wow, the mean of *leisure* is *3.1994*!
 
 ### Histogram
 
-[![image](7779958734926ffb57756d6c1d01b75b.png)](/tmp/RtmpeIwHkw/file3bc4c25e-hires.png)
+[![image](7779958734926ffb57756d6c1d01b75b.png)](7779958734926ffb57756d6c1d01b75b-hires.png)
 
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.14.0)
-and [rapport](http://al3xa.github.com/rapport/) (0.1) in 0.729 sec on
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 0.724 sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![image](images/logo.png)

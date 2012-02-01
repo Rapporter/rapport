@@ -131,12 +131,12 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](9435c7015dbc7e9f9adb4c53640f9c92.png)
+![image](62fac7e544f80b0d91c86ea9a297ea19.png)
 
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.14.0)
-and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.592 sec on
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.658 sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![image](images/logo.png)

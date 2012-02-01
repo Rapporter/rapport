@@ -23,7 +23,7 @@ distributions, as it's defined two parameters:
 -  /μ/ - /mean/ or /expectation/ (location parameter)
 -  /σ^{2}/ - /variance/ (scale parameter)
 
-[[/tmp/RtmpeIwHkw/file29cf7939-hires.png][[[806ea97c59e1a12d4acae4968957aaa9.png]]]]
+[[806ea97c59e1a12d4acae4968957aaa9-hires.png][[[806ea97c59e1a12d4acae4968957aaa9.png]]]]
 
 ** Normality Tests
 
@@ -83,7 +83,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-[[/tmp/RtmpeIwHkw/file4bd98e0c-hires.png][[[a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
+[[a949c4cf7eda15cd079e9d63b81acdd4-hires.png][[[a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
 
 *** Q-Q Plot
 
@@ -92,7 +92,7 @@ and theoretical distribution (in this case, /normal/ distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", =x = y= line.
 
-[[/tmp/RtmpeIwHkw/file726063db-hires.png][[[eecb9a780afd4dd0de9737991e467a6e.png]]]]
+[[eecb9a780afd4dd0de9737991e467a6e-hires.png][[[eecb9a780afd4dd0de9737991e467a6e.png]]]]
 
 *** Kernel Density Plot
 
@@ -101,7 +101,7 @@ function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[/tmp/RtmpeIwHkw/file16927214-hires.png][[[4e2660e6a8a36e1bcad14531e85bd72e.png]]]]
+[[246f5a087a114ce124304e671fa92f08-hires.png][[[246f5a087a114ce124304e671fa92f08.png]]]]
 
 ** Description
 
@@ -181,7 +181,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-[[/tmp/RtmpeIwHkw/file1b612d0c-hires.png][[[a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
+[[a949c4cf7eda15cd079e9d63b81acdd4-hires.png][[[a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
 
 *** Q-Q Plot
 
@@ -190,7 +190,7 @@ and theoretical distribution (in this case, /normal/ distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", =x = y= line.
 
-[[/tmp/RtmpeIwHkw/file50e9fae2-hires.png][[[eecb9a780afd4dd0de9737991e467a6e.png]]]]
+[[eecb9a780afd4dd0de9737991e467a6e-hires.png][[[eecb9a780afd4dd0de9737991e467a6e.png]]]]
 
 *** Kernel Density Plot
 
@@ -199,7 +199,7 @@ function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[/tmp/RtmpeIwHkw/file425e5640-hires.png][[[fa1b2f4d134ba88d20bd5ad1abc4f050.png]]]]
+[[c65fb254666a1b3ccc51c353cde3368c-hires.png][[[c65fb254666a1b3ccc51c353cde3368c.png]]]]
 
 ** Description
 
@@ -221,7 +221,7 @@ distributions, as it's defined two parameters:
 -  /μ/ - /mean/ or /expectation/ (location parameter)
 -  /σ^{2}/ - /variance/ (scale parameter)
 
-[[/tmp/RtmpeIwHkw/file73238815-hires.png][[[806ea97c59e1a12d4acae4968957aaa9.png]]]]
+[[806ea97c59e1a12d4acae4968957aaa9-hires.png][[[806ea97c59e1a12d4acae4968957aaa9.png]]]]
 
 ** Normality Tests
 
@@ -281,7 +281,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-[[/tmp/RtmpeIwHkw/file56754fe0-hires.png][[[a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
+[[a949c4cf7eda15cd079e9d63b81acdd4-hires.png][[[a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
 
 *** Q-Q Plot
 
@@ -290,7 +290,7 @@ and theoretical distribution (in this case, /normal/ distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", =x = y= line.
 
-[[/tmp/RtmpeIwHkw/file3f8d9eca-hires.png][[[95d42d4d0934008cfa630e1c4523e09a.png]]]]
+[[95d42d4d0934008cfa630e1c4523e09a-hires.png][[[95d42d4d0934008cfa630e1c4523e09a.png]]]]
 
 *** Kernel Density Plot
 
@@ -299,12 +299,12 @@ function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[/tmp/RtmpeIwHkw/file5230f292-hires.png][[[c4329e15f77e779dabbdb967f69129a6.png]]]]
+[[e3667d7af0218f91620f548c42f15931-hires.png][[[e3667d7af0218f91620f548c42f15931.png]]]]
 
 --------------
 
 This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
-and [[http://al3xa.github.com/rapport/][rapport]] (0.1) in 2.765 sec on
+and [[http://al3xa.github.com/rapport/][rapport]] (0.1) in 2.914 sec on
 x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 

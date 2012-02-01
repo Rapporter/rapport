@@ -61,7 +61,7 @@ T}@T{
 T}
 .TE
 .PP
-[IMAGE: image (0e4cca7017b21223d68df3b9e300c895.png)] (/tmp/RtmpeIwHkw/file744ae54d-hires.png)
+[IMAGE: image (0e4cca7017b21223d68df3b9e300c895.png)] (0e4cca7017b21223d68df3b9e300c895-hires.png)
 .SS Description
 .PP
 This template will return the correlation matrix of supplied numerical
@@ -425,12 +425,12 @@ T}@T{
 T}
 .TE
 .PP
-[IMAGE: image (82a0f381195bb4f50da3c943e264add1.png)] (/tmp/RtmpeIwHkw/file30916d08-hires.png)
+[IMAGE: image (82a0f381195bb4f50da3c943e264add1.png)] (82a0f381195bb4f50da3c943e264add1-hires.png)
 .PP
    *   *   *   *   *
 .PP
 This report was generated with R (http://www.r-project.org/) (2.14.0)
-and rapport (http://al3xa.github.com/rapport/) (0.1) in 1.308 sec on
+and rapport (http://al3xa.github.com/rapport/) (0.1) in 1.333 sec on
 x86_64-unknown-linux-gnu platform.
 .PP
 [IMAGE: image (images/logo.png)]

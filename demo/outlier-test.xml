@@ -19,7 +19,7 @@
 <section id="boxplot">
   <title>Boxplot</title>
   <para>
-    <ulink url="/tmp/RtmpeIwHkw/file171523b9-hires.png"><inlinemediaobject>
+    <ulink url="ea1797865a9d9a619be0e9c5d55d5de7-hires.png"><inlinemediaobject>
       <imageobject>
         <imagedata fileref="ea1797865a9d9a619be0e9c5d55d5de7.png" />
       </imageobject>
@@ -151,7 +151,7 @@
 <section id="boxplot-1">
   <title>Boxplot</title>
   <para>
-    <ulink url="/tmp/RtmpeIwHkw/file2c5cc653-hires.png"><inlinemediaobject>
+    <ulink url="ea1797865a9d9a619be0e9c5d55d5de7-hires.png"><inlinemediaobject>
       <imageobject>
         <imagedata fileref="ea1797865a9d9a619be0e9c5d55d5de7.png" />
       </imageobject>
@@ -283,7 +283,7 @@
 <section id="boxplot-2">
   <title>Boxplot</title>
   <para>
-    <ulink url="/tmp/RtmpeIwHkw/file57d6ef9e-hires.png"><inlinemediaobject>
+    <ulink url="ea1797865a9d9a619be0e9c5d55d5de7-hires.png"><inlinemediaobject>
       <imageobject>
         <imagedata fileref="ea1797865a9d9a619be0e9c5d55d5de7.png" />
       </imageobject>
@@ -353,7 +353,7 @@
       This report was generated with
       <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
       <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
-      (0.1) in 1.147 sec on x86_64-unknown-linux-gnu platform.
+      (0.1) in 1.157 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>

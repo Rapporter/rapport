@@ -62,7 +62,7 @@ T}
 .TE
 .SS Barplot
 .PP
-[IMAGE: image (3a46554ee29cd4dfe45dda5016464658.png)] (/tmp/RtmpeIwHkw/file5022119d-hires.png)
+[IMAGE: image (3a46554ee29cd4dfe45dda5016464658.png)] (3a46554ee29cd4dfe45dda5016464658-hires.png)
 .PP
 It seems that the highest value is \f[I]2\f[] which is exactly 2 times
 higher than the smallest value (\f[I]1\f[]).
@@ -141,7 +141,7 @@ T}
 .TE
 .SS Barplot
 .PP
-[IMAGE: image (a370513c6bd94251e700ff5fea9dd33f.png)] (/tmp/RtmpeIwHkw/file33dfbcb6-hires.png)
+[IMAGE: image (a370513c6bd94251e700ff5fea9dd33f.png)] (a370513c6bd94251e700ff5fea9dd33f-hires.png)
 .PP
 It seems that the highest value is \f[I]3\f[] which is exactly 3 times
 higher than the smallest value (\f[I]1\f[]).
@@ -151,7 +151,7 @@ The most frequent value is \f[I]city\f[].
    *   *   *   *   *
 .PP
 This report was generated with R (http://www.r-project.org/) (2.14.0)
-and rapport (http://al3xa.github.com/rapport/) (0.1) in 0.672 sec on
+and rapport (http://al3xa.github.com/rapport/) (0.1) in 0.72 sec on
 x86_64-unknown-linux-gnu platform.
 .PP
 [IMAGE: image (images/logo.png)]

@@ -112,7 +112,7 @@
   <section id="barplot">
     <title>Barplot</title>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file5022119d-hires.png"><inlinemediaobject>
+      <ulink url="3a46554ee29cd4dfe45dda5016464658-hires.png"><inlinemediaobject>
         <imageobject>
           <imagedata fileref="3a46554ee29cd4dfe45dda5016464658.png" />
         </imageobject>
@@ -247,7 +247,7 @@
   <section id="barplot-1">
     <title>Barplot</title>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file33dfbcb6-hires.png"><inlinemediaobject>
+      <ulink url="a370513c6bd94251e700ff5fea9dd33f-hires.png"><inlinemediaobject>
         <imageobject>
           <imagedata fileref="a370513c6bd94251e700ff5fea9dd33f.png" />
         </imageobject>
@@ -265,7 +265,7 @@
       This report was generated with
       <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
       <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
-      (0.1) in 0.672 sec on x86_64-unknown-linux-gnu platform.
+      (0.1) in 0.72 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>

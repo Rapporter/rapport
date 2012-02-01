@@ -410,7 +410,7 @@
       </listitem>
     </itemizedlist>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file2f8d0c35-hires.png"><inlinemediaobject>
+      <ulink url="dd5cdfe79c3741b4373910424cb2824c-hires.png"><inlinemediaobject>
         <imageobject>
           <imagedata fileref="dd5cdfe79c3741b4373910424cb2824c.png" />
         </imageobject>
@@ -1158,7 +1158,7 @@
       </listitem>
     </itemizedlist>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file38c269fb-hires.png"><inlinemediaobject>
+      <ulink url="3e897b547f80202649804e256107f6e0-hires.png"><inlinemediaobject>
         <imageobject>
           <imagedata fileref="3e897b547f80202649804e256107f6e0.png" />
         </imageobject>
@@ -1295,7 +1295,7 @@
       This report was generated with
       <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
       <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
-      (0.1) in 1.188 sec on x86_64-unknown-linux-gnu platform.
+      (0.1) in 0.919 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>

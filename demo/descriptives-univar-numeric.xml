@@ -311,7 +311,7 @@
           <title></title>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="9435c7015dbc7e9f9adb4c53640f9c92.png" />
+              <imagedata fileref="62fac7e544f80b0d91c86ea9a297ea19.png" />
             </imageobject>
             <textobject><phrase></phrase></textobject>
           </mediaobject>
@@ -320,7 +320,7 @@
           This report was generated with
           <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
           <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
-          (0.1) in 1.592 sec on x86_64-unknown-linux-gnu platform.
+          (0.1) in 1.658 sec on x86_64-unknown-linux-gnu platform.
         </para>
         <figure>
           <title></title>

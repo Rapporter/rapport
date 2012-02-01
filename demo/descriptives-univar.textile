@@ -16,7 +16,7 @@ h3. Base statistics
 
 h3. Barplot
 
-"!3a46554ee29cd4dfe45dda5016464658.png!":/tmp/RtmpeIwHkw/file75e80a33-hires.png
+"!3a46554ee29cd4dfe45dda5016464658.png!":3a46554ee29cd4dfe45dda5016464658-hires.png
 
 It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
 
@@ -38,7 +38,7 @@ h3. Base statistics
 
 h3. Histogram
 
-"!4f025d440bf35d40e21208e8b0c58b77.png!":/tmp/RtmpeIwHkw/file5d4e0c0d-hires.png
+"!4f025d440bf35d40e21208e8b0c58b77.png!":4f025d440bf35d40e21208e8b0c58b77-hires.png
 
 It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
 
@@ -59,7 +59,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
 * _μ_ - _mean_ or _expectation_ (location parameter)
 * _σ[^2^]_ - _variance_ (scale parameter)
 
-"!806ea97c59e1a12d4acae4968957aaa9.png!":/tmp/RtmpeIwHkw/file4dd701cc-hires.png
+"!806ea97c59e1a12d4acae4968957aaa9.png!":806ea97c59e1a12d4acae4968957aaa9-hires.png
 
 h4. Normality Tests
 
@@ -93,23 +93,23 @@ h5. Histogram
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-"!4f025d440bf35d40e21208e8b0c58b77.png!":/tmp/RtmpeIwHkw/file6fb71f43-hires.png
+"!4f025d440bf35d40e21208e8b0c58b77.png!":4f025d440bf35d40e21208e8b0c58b77-hires.png
 
 h5. Q-Q Plot
 
 &quot;Q&quot; in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, @x = y@ line.
 
-"!131f20f388f78bd4863828d9fed8c35c.png!":/tmp/RtmpeIwHkw/file35f509a2-hires.png
+"!131f20f388f78bd4863828d9fed8c35c.png!":131f20f388f78bd4863828d9fed8c35c-hires.png
 
 h5. Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-"!6b02f49521f9cdd18ef0206b1dac3583.png!":/tmp/RtmpeIwHkw/file3c06b601-hires.png
+"!0728c7b59307ecf9bff0607f068b191c.png!":0728c7b59307ecf9bff0607f068b191c-hires.png
 
 <hr />
 
-This report was generated with "R":http://www.r-project.org/ (2.14.0) and "rapport":http://al3xa.github.com/rapport/ (0.1) in 1.606 sec on x86&#95;64-unknown-linux-gnu platform.
+This report was generated with "R":http://www.r-project.org/ (2.14.0) and "rapport":http://al3xa.github.com/rapport/ (0.1) in 1.658 sec on x86&#95;64-unknown-linux-gnu platform.
 
 !images/logo.png!
 

@@ -90,7 +90,7 @@ And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 \f[C]desc=TRUE\f[]!\f[]
 .SS Histogram
 .PP
-[IMAGE: image (ae1d2677d19224aec6e79aa6edd92e0e.png)] (/tmp/RtmpeIwHkw/file4362bdf0-hires.png)
+[IMAGE: image (ae1d2677d19224aec6e79aa6edd92e0e.png)] (ae1d2677d19224aec6e79aa6edd92e0e-hires.png)
 .SS Description
 .PP
 This template demonstrates the basic features of rapport.
@@ -110,12 +110,12 @@ And wow, the mean of \f[I]leisure\f[] is \f[I]3.1994\f[]!
 \f[C]desc=TRUE\f[]!\f[]
 .SS Histogram
 .PP
-[IMAGE: image (7779958734926ffb57756d6c1d01b75b.png)] (/tmp/RtmpeIwHkw/file3bc4c25e-hires.png)
+[IMAGE: image (7779958734926ffb57756d6c1d01b75b.png)] (7779958734926ffb57756d6c1d01b75b-hires.png)
 .PP
    *   *   *   *   *
 .PP
 This report was generated with R (http://www.r-project.org/) (2.14.0)
-and rapport (http://al3xa.github.com/rapport/) (0.1) in 0.729 sec on
+and rapport (http://al3xa.github.com/rapport/) (0.1) in 0.724 sec on
 x86_64-unknown-linux-gnu platform.
 .PP
 [IMAGE: image (images/logo.png)]

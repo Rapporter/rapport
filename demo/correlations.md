@@ -34,7 +34,7 @@ Uncorrelated (-0.2 < r < 0.2) variables:
   edu       0.2273 \* \* \*                     0.1732 \* \* \*
   leisure   -0.0338           0.1732 \* \* \*   
 
-[![image](0e4cca7017b21223d68df3b9e300c895.png)](/tmp/RtmpeIwHkw/file744ae54d-hires.png)
+[![image](0e4cca7017b21223d68df3b9e300c895.png)](0e4cca7017b21223d68df3b9e300c895-hires.png)
 
 Description
 -----------
@@ -100,12 +100,12 @@ Uncorrelated (-0.2 < r < 0.2) variables:
   gear   0.4803 \* \*       -0.4927 \* \*      -0.5556 \* \* \*   -0.1257            0.6996 \* \* \*    -0.5833 \* \* \*   -0.2127            0.2060             0.7941 \* \* \*                       0.2741
   carb   -0.5509 \* \*      0.5270 \* \*       0.3950 \*          0.7498 \* \* \*    -0.0908            0.4276 \*          -0.6562 \* \* \*   -0.5696 \* \* \*   0.0575             0.2741             
 
-[![image](82a0f381195bb4f50da3c943e264add1.png)](/tmp/RtmpeIwHkw/file30916d08-hires.png)
+[![image](82a0f381195bb4f50da3c943e264add1.png)](82a0f381195bb4f50da3c943e264add1-hires.png)
 
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.14.0)
-and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.308 sec on
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.333 sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![image](images/logo.png)

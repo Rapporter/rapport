@@ -24,7 +24,7 @@ distributions, as it's defined two parameters:
 -   *μ* - *mean* or *expectation* (location parameter)
 -   *σ^2^* - *variance* (scale parameter)
 
-[![image](806ea97c59e1a12d4acae4968957aaa9.png)](/tmp/RtmpeIwHkw/file29cf7939-hires.png)
+[![image](806ea97c59e1a12d4acae4968957aaa9.png)](806ea97c59e1a12d4acae4968957aaa9-hires.png)
 
 Normality Tests
 ---------------
@@ -86,7 +86,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-[![image](a949c4cf7eda15cd079e9d63b81acdd4.png)](/tmp/RtmpeIwHkw/file4bd98e0c-hires.png)
+[![image](a949c4cf7eda15cd079e9d63b81acdd4.png)](a949c4cf7eda15cd079e9d63b81acdd4-hires.png)
 
 ### Q-Q Plot
 
@@ -95,7 +95,7 @@ and theoretical distribution (in this case, *normal* distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", `x = y` line.
 
-[![image](eecb9a780afd4dd0de9737991e467a6e.png)](/tmp/RtmpeIwHkw/file726063db-hires.png)
+[![image](eecb9a780afd4dd0de9737991e467a6e.png)](eecb9a780afd4dd0de9737991e467a6e-hires.png)
 
 ### Kernel Density Plot
 
@@ -104,7 +104,7 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[![image](4e2660e6a8a36e1bcad14531e85bd72e.png)](/tmp/RtmpeIwHkw/file16927214-hires.png)
+[![image](246f5a087a114ce124304e671fa92f08.png)](246f5a087a114ce124304e671fa92f08-hires.png)
 
 Description
 -----------
@@ -188,7 +188,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-[![image](a949c4cf7eda15cd079e9d63b81acdd4.png)](/tmp/RtmpeIwHkw/file1b612d0c-hires.png)
+[![image](a949c4cf7eda15cd079e9d63b81acdd4.png)](a949c4cf7eda15cd079e9d63b81acdd4-hires.png)
 
 ### Q-Q Plot
 
@@ -197,7 +197,7 @@ and theoretical distribution (in this case, *normal* distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", `x = y` line.
 
-[![image](eecb9a780afd4dd0de9737991e467a6e.png)](/tmp/RtmpeIwHkw/file50e9fae2-hires.png)
+[![image](eecb9a780afd4dd0de9737991e467a6e.png)](eecb9a780afd4dd0de9737991e467a6e-hires.png)
 
 ### Kernel Density Plot
 
@@ -206,7 +206,7 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[![image](fa1b2f4d134ba88d20bd5ad1abc4f050.png)](/tmp/RtmpeIwHkw/file425e5640-hires.png)
+[![image](c65fb254666a1b3ccc51c353cde3368c.png)](c65fb254666a1b3ccc51c353cde3368c-hires.png)
 
 Description
 -----------
@@ -230,7 +230,7 @@ distributions, as it's defined two parameters:
 -   *μ* - *mean* or *expectation* (location parameter)
 -   *σ^2^* - *variance* (scale parameter)
 
-[![image](806ea97c59e1a12d4acae4968957aaa9.png)](/tmp/RtmpeIwHkw/file73238815-hires.png)
+[![image](806ea97c59e1a12d4acae4968957aaa9.png)](806ea97c59e1a12d4acae4968957aaa9-hires.png)
 
 Normality Tests
 ---------------
@@ -292,7 +292,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-[![image](a949c4cf7eda15cd079e9d63b81acdd4.png)](/tmp/RtmpeIwHkw/file56754fe0-hires.png)
+[![image](a949c4cf7eda15cd079e9d63b81acdd4.png)](a949c4cf7eda15cd079e9d63b81acdd4-hires.png)
 
 ### Q-Q Plot
 
@@ -301,7 +301,7 @@ and theoretical distribution (in this case, *normal* distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", `x = y` line.
 
-[![image](95d42d4d0934008cfa630e1c4523e09a.png)](/tmp/RtmpeIwHkw/file3f8d9eca-hires.png)
+[![image](95d42d4d0934008cfa630e1c4523e09a.png)](95d42d4d0934008cfa630e1c4523e09a-hires.png)
 
 ### Kernel Density Plot
 
@@ -310,12 +310,12 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[![image](c4329e15f77e779dabbdb967f69129a6.png)](/tmp/RtmpeIwHkw/file5230f292-hires.png)
+[![image](e3667d7af0218f91620f548c42f15931.png)](e3667d7af0218f91620f548c42f15931-hires.png)
 
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.14.0)
-and [rapport](http://al3xa.github.com/rapport/) (0.1) in 2.765 sec on
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 2.914 sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![image](images/logo.png)

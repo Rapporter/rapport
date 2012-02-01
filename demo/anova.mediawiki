@@ -177,7 +177,7 @@ Here you can see several diagnostic plots for ANOVA model:
 * normal Q-Q plot
 * residuals against leverages
 
-[[tmp/RtmpeIwHkw/file2f8d0c35-hires.png|[[Image:dd5cdfe79c3741b4373910424cb2824c.png]]]]
+[[tmp/RtmpeIwHkw/file385a23bb-hires.png|[[Image:dd5cdfe79c3741b4373910424cb2824c.png]]]]
 
 == ANOVA Summary ==
 
@@ -495,7 +495,7 @@ Here you can see several diagnostic plots for ANOVA model:
 * normal Q-Q plot
 * residuals against leverages
 
-[[tmp/RtmpeIwHkw/file38c269fb-hires.png|[[Image:3e897b547f80202649804e256107f6e0.png]]]]
+[[tmp/RtmpeIwHkw/file3313f054-hires.png|[[Image:3e897b547f80202649804e256107f6e0.png]]]]
 
 == ANOVA Summary ==
 
@@ -555,6 +555,6 @@ Here you can see several diagnostic plots for ANOVA model:
 
 -----
 
-This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.1) in 1.188 sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.1) in 0.919 sec on x86_64-unknown-linux-gnu platform.
 
 [[Image:images/logo.png|frame|none]]

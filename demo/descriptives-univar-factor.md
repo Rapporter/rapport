@@ -24,7 +24,7 @@ The dataset has *709* observations with *673* valid values (missing:
 
 ### Barplot
 
-[![image](3a46554ee29cd4dfe45dda5016464658.png)](/tmp/RtmpeIwHkw/file5022119d-hires.png)
+[![image](3a46554ee29cd4dfe45dda5016464658.png)](3a46554ee29cd4dfe45dda5016464658-hires.png)
 
 It seems that the highest value is *2* which is exactly 2 times higher
 than the smallest value (*1*).
@@ -54,7 +54,7 @@ The dataset has *709* observations with *662* valid values (missing:
 
 ### Barplot
 
-[![image](a370513c6bd94251e700ff5fea9dd33f.png)](/tmp/RtmpeIwHkw/file33dfbcb6-hires.png)
+[![image](a370513c6bd94251e700ff5fea9dd33f.png)](a370513c6bd94251e700ff5fea9dd33f-hires.png)
 
 It seems that the highest value is *3* which is exactly 3 times higher
 than the smallest value (*1*).
@@ -64,7 +64,7 @@ The most frequent value is *city*.
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.14.0)
-and [rapport](http://al3xa.github.com/rapport/) (0.1) in 0.672 sec on
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 0.72 sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![image](images/logo.png)

@@ -16,7 +16,7 @@ h3. Base statistics
 
 h3. Barplot
 
-"!3a46554ee29cd4dfe45dda5016464658.png!":/tmp/RtmpeIwHkw/file62ea0e3d-hires.png
+"!3a46554ee29cd4dfe45dda5016464658.png!":3a46554ee29cd4dfe45dda5016464658-hires.png
 
 It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
 
@@ -34,7 +34,7 @@ h3. Base statistics
 
 h3. Histogram
 
-"!4f025d440bf35d40e21208e8b0c58b77.png!":/tmp/RtmpeIwHkw/file951f5de-hires.png
+"!4f025d440bf35d40e21208e8b0c58b77.png!":4f025d440bf35d40e21208e8b0c58b77-hires.png
 
 It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
 
@@ -55,7 +55,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
 * _μ_ - _mean_ or _expectation_ (location parameter)
 * _σ[^2^]_ - _variance_ (scale parameter)
 
-"!806ea97c59e1a12d4acae4968957aaa9.png!":/tmp/RtmpeIwHkw/file1c2be681-hires.png
+"!806ea97c59e1a12d4acae4968957aaa9.png!":806ea97c59e1a12d4acae4968957aaa9-hires.png
 
 h4. Normality Tests
 
@@ -89,19 +89,19 @@ h5. Histogram
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-"!4f025d440bf35d40e21208e8b0c58b77.png!":/tmp/RtmpeIwHkw/fileb079b29-hires.png
+"!4f025d440bf35d40e21208e8b0c58b77.png!":4f025d440bf35d40e21208e8b0c58b77-hires.png
 
 h5. Q-Q Plot
 
 &quot;Q&quot; in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, @x = y@ line.
 
-"!131f20f388f78bd4863828d9fed8c35c.png!":/tmp/RtmpeIwHkw/file361e8e5f-hires.png
+"!131f20f388f78bd4863828d9fed8c35c.png!":131f20f388f78bd4863828d9fed8c35c-hires.png
 
 h5. Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-"!a7ec6c240344a65f58d22a787409082c.png!":/tmp/RtmpeIwHkw/file4de24319-hires.png
+"!d9ffb95307c560c15d33484c3a2d87f0.png!":d9ffb95307c560c15d33484c3a2d87f0-hires.png
 
 h2. Description
 
@@ -126,7 +126,7 @@ h3. Base statistics
 
 h3. Barplot
 
-"!a3a825d8535e7c9b8a9d23cc8c1293b1.png!":/tmp/RtmpeIwHkw/file3b12acb3-hires.png
+"!a3a825d8535e7c9b8a9d23cc8c1293b1.png!":a3a825d8535e7c9b8a9d23cc8c1293b1-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -151,7 +151,7 @@ h3. Base statistics
 
 h3. Barplot
 
-"!601bf73b7f424e34c795446ca73a1bac.png!":/tmp/RtmpeIwHkw/file55a73940-hires.png
+"!601bf73b7f424e34c795446ca73a1bac.png!":601bf73b7f424e34c795446ca73a1bac-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -176,7 +176,7 @@ h3. Base statistics
 
 h3. Barplot
 
-"!8b8013a5d21daf05463bf12edc7d6bfa.png!":/tmp/RtmpeIwHkw/file294a644e-hires.png
+"!8b8013a5d21daf05463bf12edc7d6bfa.png!":8b8013a5d21daf05463bf12edc7d6bfa-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -201,7 +201,7 @@ h3. Base statistics
 
 h3. Barplot
 
-"!7d530054059115b70f8098f2e3ff6c81.png!":/tmp/RtmpeIwHkw/file6ad9045d-hires.png
+"!7d530054059115b70f8098f2e3ff6c81.png!":7d530054059115b70f8098f2e3ff6c81-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -226,7 +226,7 @@ h3. Base statistics
 
 h3. Barplot
 
-"!c5c68401731dd8623c3bac532d4f93b1.png!":/tmp/RtmpeIwHkw/file620c192a-hires.png
+"!c5c68401731dd8623c3bac532d4f93b1.png!":c5c68401731dd8623c3bac532d4f93b1-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -251,7 +251,7 @@ h3. Base statistics
 
 h3. Barplot
 
-"!e866a67bba62e7f5cbe93b184599019f.png!":/tmp/RtmpeIwHkw/file3ebe4451-hires.png
+"!e866a67bba62e7f5cbe93b184599019f.png!":e866a67bba62e7f5cbe93b184599019f-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -276,7 +276,7 @@ h3. Base statistics
 
 h3. Barplot
 
-"!6619f2daf580503ce53708176cb0d83b.png!":/tmp/RtmpeIwHkw/file51f44bf-hires.png
+"!6619f2daf580503ce53708176cb0d83b.png!":6619f2daf580503ce53708176cb0d83b-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -301,7 +301,7 @@ h3. Base statistics
 
 h3. Barplot
 
-"!cbda2b116fe3f7095f2997068f945424.png!":/tmp/RtmpeIwHkw/file22031a5b-hires.png
+"!cbda2b116fe3f7095f2997068f945424.png!":cbda2b116fe3f7095f2997068f945424-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -323,7 +323,7 @@ h3. Base statistics
 
 h3. Histogram
 
-"!78517cde85fc1ba06a3513dd17e567da.png!":/tmp/RtmpeIwHkw/file3fb31a9-hires.png
+"!78517cde85fc1ba06a3513dd17e567da.png!":78517cde85fc1ba06a3513dd17e567da-hires.png
 
 It seems that the highest value is _335_ which is exactly 6.4423 times higher than the smallest value (_52_).
 
@@ -344,7 +344,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
 * _μ_ - _mean_ or _expectation_ (location parameter)
 * _σ[^2^]_ - _variance_ (scale parameter)
 
-"!806ea97c59e1a12d4acae4968957aaa9.png!":/tmp/RtmpeIwHkw/file17df6234-hires.png
+"!806ea97c59e1a12d4acae4968957aaa9.png!":806ea97c59e1a12d4acae4968957aaa9-hires.png
 
 h4. Normality Tests
 
@@ -378,19 +378,19 @@ h5. Histogram
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-"!78517cde85fc1ba06a3513dd17e567da.png!":/tmp/RtmpeIwHkw/file569da685-hires.png
+"!78517cde85fc1ba06a3513dd17e567da.png!":78517cde85fc1ba06a3513dd17e567da-hires.png
 
 h5. Q-Q Plot
 
 &quot;Q&quot; in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, @x = y@ line.
 
-"!1cefec04e4451a937a5c6aa4dfdcb352.png!":/tmp/RtmpeIwHkw/file584ddd86-hires.png
+"!1cefec04e4451a937a5c6aa4dfdcb352.png!":1cefec04e4451a937a5c6aa4dfdcb352-hires.png
 
 h5. Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-"!9d1aa0141cbe00d3fc38daa10e0ee295.png!":/tmp/RtmpeIwHkw/file38a3f274-hires.png
+"!6fabf9a1622d1251d1e917289ebb984a.png!":6fabf9a1622d1251d1e917289ebb984a-hires.png
 
 h2. _wt_
 
@@ -404,7 +404,7 @@ h3. Base statistics
 
 h3. Histogram
 
-"!bf47295875cfa6d1667455a7d2721b19.png!":/tmp/RtmpeIwHkw/file4293f893-hires.png
+"!bf47295875cfa6d1667455a7d2721b19.png!":bf47295875cfa6d1667455a7d2721b19-hires.png
 
 It seems that the highest value is _5.424_ which is exactly 3.5849 times higher than the smallest value (_1.513_).
 
@@ -425,7 +425,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
 * _μ_ - _mean_ or _expectation_ (location parameter)
 * _σ[^2^]_ - _variance_ (scale parameter)
 
-"!806ea97c59e1a12d4acae4968957aaa9.png!":/tmp/RtmpeIwHkw/file32221e18-hires.png
+"!806ea97c59e1a12d4acae4968957aaa9.png!":806ea97c59e1a12d4acae4968957aaa9-hires.png
 
 h4. Normality Tests
 
@@ -459,23 +459,23 @@ h5. Histogram
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-"!bf47295875cfa6d1667455a7d2721b19.png!":/tmp/RtmpeIwHkw/file222d547b-hires.png
+"!bf47295875cfa6d1667455a7d2721b19.png!":bf47295875cfa6d1667455a7d2721b19-hires.png
 
 h5. Q-Q Plot
 
 &quot;Q&quot; in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, @x = y@ line.
 
-"!975387b3193e28fb08a85f37cb17f87e.png!":/tmp/RtmpeIwHkw/file3e388fb3-hires.png
+"!975387b3193e28fb08a85f37cb17f87e.png!":975387b3193e28fb08a85f37cb17f87e-hires.png
 
 h5. Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-"!80be91ef1e8d4bfbd708bf23dc9b14a8.png!":/tmp/RtmpeIwHkw/file15a36828-hires.png
+"!68d781df2baa06f59e1f194c9b06ddac.png!":68d781df2baa06f59e1f194c9b06ddac-hires.png
 
 <hr />
 
-This report was generated with "R":http://www.r-project.org/ (2.14.0) and "rapport":http://al3xa.github.com/rapport/ (0.1) in 6.111 sec on x86&#95;64-unknown-linux-gnu platform.
+This report was generated with "R":http://www.r-project.org/ (2.14.0) and "rapport":http://al3xa.github.com/rapport/ (0.1) in 6.375 sec on x86&#95;64-unknown-linux-gnu platform.
 
 !images/logo.png!
 

@@ -23,7 +23,7 @@ of distributions, as it\[aq]s defined two parameters:
 .IP \[bu] 2
 \f[I]σ^2^\f[] - \f[I]variance\f[] (scale parameter)
 .PP
-[IMAGE: image (806ea97c59e1a12d4acae4968957aaa9.png)] (/tmp/RtmpeIwHkw/file29cf7939-hires.png)
+[IMAGE: image (806ea97c59e1a12d4acae4968957aaa9.png)] (806ea97c59e1a12d4acae4968957aaa9-hires.png)
 .SS Normality Tests
 .SS Overview
 .PP
@@ -90,7 +90,7 @@ misleading.
 If the variable distribution is normal, bins should resemble the
 "bell-like" shape.
 .PP
-[IMAGE: image (a949c4cf7eda15cd079e9d63b81acdd4.png)] (/tmp/RtmpeIwHkw/file4bd98e0c-hires.png)
+[IMAGE: image (a949c4cf7eda15cd079e9d63b81acdd4.png)] (a949c4cf7eda15cd079e9d63b81acdd4-hires.png)
 .SS Q-Q Plot
 .PP
 "Q" in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this plot
@@ -100,7 +100,7 @@ other.
 For normal distribution, plotted dots should approximate a "straight",
 \f[C]x\ =\ y\f[] line.
 .PP
-[IMAGE: image (eecb9a780afd4dd0de9737991e467a6e.png)] (/tmp/RtmpeIwHkw/file726063db-hires.png)
+[IMAGE: image (eecb9a780afd4dd0de9737991e467a6e.png)] (eecb9a780afd4dd0de9737991e467a6e-hires.png)
 .SS Kernel Density Plot
 .PP
 \f[I]Kernel density plot\f[] is a plot of smoothed \f[I]empirical
@@ -109,7 +109,7 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (4e2660e6a8a36e1bcad14531e85bd72e.png)] (/tmp/RtmpeIwHkw/file16927214-hires.png)
+[IMAGE: image (246f5a087a114ce124304e671fa92f08.png)] (246f5a087a114ce124304e671fa92f08-hires.png)
 .SS Description
 .PP
 Overview of several normality tests and diagnostic plots that can screen
@@ -199,7 +199,7 @@ misleading.
 If the variable distribution is normal, bins should resemble the
 "bell-like" shape.
 .PP
-[IMAGE: image (a949c4cf7eda15cd079e9d63b81acdd4.png)] (/tmp/RtmpeIwHkw/file1b612d0c-hires.png)
+[IMAGE: image (a949c4cf7eda15cd079e9d63b81acdd4.png)] (a949c4cf7eda15cd079e9d63b81acdd4-hires.png)
 .SS Q-Q Plot
 .PP
 "Q" in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this plot
@@ -209,7 +209,7 @@ other.
 For normal distribution, plotted dots should approximate a "straight",
 \f[C]x\ =\ y\f[] line.
 .PP
-[IMAGE: image (eecb9a780afd4dd0de9737991e467a6e.png)] (/tmp/RtmpeIwHkw/file50e9fae2-hires.png)
+[IMAGE: image (eecb9a780afd4dd0de9737991e467a6e.png)] (eecb9a780afd4dd0de9737991e467a6e-hires.png)
 .SS Kernel Density Plot
 .PP
 \f[I]Kernel density plot\f[] is a plot of smoothed \f[I]empirical
@@ -218,7 +218,7 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (fa1b2f4d134ba88d20bd5ad1abc4f050.png)] (/tmp/RtmpeIwHkw/file425e5640-hires.png)
+[IMAGE: image (c65fb254666a1b3ccc51c353cde3368c.png)] (c65fb254666a1b3ccc51c353cde3368c-hires.png)
 .SS Description
 .PP
 Overview of several normality tests and diagnostic plots that can screen
@@ -243,7 +243,7 @@ of distributions, as it\[aq]s defined two parameters:
 .IP \[bu] 2
 \f[I]σ^2^\f[] - \f[I]variance\f[] (scale parameter)
 .PP
-[IMAGE: image (806ea97c59e1a12d4acae4968957aaa9.png)] (/tmp/RtmpeIwHkw/file73238815-hires.png)
+[IMAGE: image (806ea97c59e1a12d4acae4968957aaa9.png)] (806ea97c59e1a12d4acae4968957aaa9-hires.png)
 .SS Normality Tests
 .SS Overview
 .PP
@@ -310,7 +310,7 @@ misleading.
 If the variable distribution is normal, bins should resemble the
 "bell-like" shape.
 .PP
-[IMAGE: image (a949c4cf7eda15cd079e9d63b81acdd4.png)] (/tmp/RtmpeIwHkw/file56754fe0-hires.png)
+[IMAGE: image (a949c4cf7eda15cd079e9d63b81acdd4.png)] (a949c4cf7eda15cd079e9d63b81acdd4-hires.png)
 .SS Q-Q Plot
 .PP
 "Q" in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this plot
@@ -320,7 +320,7 @@ other.
 For normal distribution, plotted dots should approximate a "straight",
 \f[C]x\ =\ y\f[] line.
 .PP
-[IMAGE: image (95d42d4d0934008cfa630e1c4523e09a.png)] (/tmp/RtmpeIwHkw/file3f8d9eca-hires.png)
+[IMAGE: image (95d42d4d0934008cfa630e1c4523e09a.png)] (95d42d4d0934008cfa630e1c4523e09a-hires.png)
 .SS Kernel Density Plot
 .PP
 \f[I]Kernel density plot\f[] is a plot of smoothed \f[I]empirical
@@ -329,12 +329,12 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (c4329e15f77e779dabbdb967f69129a6.png)] (/tmp/RtmpeIwHkw/file5230f292-hires.png)
+[IMAGE: image (e3667d7af0218f91620f548c42f15931.png)] (e3667d7af0218f91620f548c42f15931-hires.png)
 .PP
    *   *   *   *   *
 .PP
 This report was generated with R (http://www.r-project.org/) (2.14.0)
-and rapport (http://al3xa.github.com/rapport/) (0.1) in 2.765 sec on
+and rapport (http://al3xa.github.com/rapport/) (0.1) in 2.914 sec on
 x86_64-unknown-linux-gnu platform.
 .PP
 [IMAGE: image (images/logo.png)]

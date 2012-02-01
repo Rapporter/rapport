@@ -24,7 +24,7 @@ Total        673     100       673            100
 
 ==== Barplot ====
 
-[![](3a46554ee29cd4dfe45dda5016464658.png)](/tmp/RtmpeIwHkw/file5022119d-hires.png) 
+[![](3a46554ee29cd4dfe45dda5016464658.png)](3a46554ee29cd4dfe45dda5016464658-hires.png) 
 
 It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_). 
 
@@ -50,14 +50,14 @@ Total        662     100       662            100
 
 ==== Barplot ====
 
-[![](a370513c6bd94251e700ff5fea9dd33f.png)](/tmp/RtmpeIwHkw/file33dfbcb6-hires.png) 
+[![](a370513c6bd94251e700ff5fea9dd33f.png)](a370513c6bd94251e700ff5fea9dd33f-hires.png) 
 
 It seems that the highest value is _3_ which is exactly 3 times higher than the smallest value (_1_). 
 
 The most frequent value is *city*. 
 
 <s>---</s>
-This report was generated with [R]([http://www.r-project.org/]) (2.14.0) and [rapport]([http://al3xa.github.com/rapport/]) (0.1) in 0.672 sec on x86_64-unknown-linux-gnu platform. 
+This report was generated with [R]([http://www.r-project.org/]) (2.14.0) and [rapport]([http://al3xa.github.com/rapport/]) (0.1) in 0.72 sec on x86_64-unknown-linux-gnu platform. 
 
 [[Image:images/logo.png|center]]
 

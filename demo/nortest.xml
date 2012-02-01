@@ -50,7 +50,7 @@
     </listitem>
   </itemizedlist>
   <para>
-    <ulink url="/tmp/RtmpeIwHkw/file29cf7939-hires.png"><inlinemediaobject>
+    <ulink url="806ea97c59e1a12d4acae4968957aaa9-hires.png"><inlinemediaobject>
       <imageobject>
         <imagedata fileref="806ea97c59e1a12d4acae4968957aaa9.png" />
       </imageobject>
@@ -176,7 +176,7 @@
       normal, bins should resemble the &quot;bell-like&quot; shape.
     </para>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file4bd98e0c-hires.png"><inlinemediaobject>
+      <ulink url="a949c4cf7eda15cd079e9d63b81acdd4-hires.png"><inlinemediaobject>
         <imageobject>
           <imagedata fileref="a949c4cf7eda15cd079e9d63b81acdd4.png" />
         </imageobject>
@@ -195,7 +195,7 @@
       <literal>x = y</literal> line.
     </para>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file726063db-hires.png"><inlinemediaobject>
+      <ulink url="eecb9a780afd4dd0de9737991e467a6e-hires.png"><inlinemediaobject>
         <imageobject>
           <imagedata fileref="eecb9a780afd4dd0de9737991e467a6e.png" />
         </imageobject>
@@ -212,9 +212,9 @@
       shape&quot;.
     </para>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file16927214-hires.png"><inlinemediaobject>
+      <ulink url="246f5a087a114ce124304e671fa92f08-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="4e2660e6a8a36e1bcad14531e85bd72e.png" />
+          <imagedata fileref="246f5a087a114ce124304e671fa92f08.png" />
         </imageobject>
       </inlinemediaobject></ulink>
     </para>
@@ -379,7 +379,7 @@
       normal, bins should resemble the &quot;bell-like&quot; shape.
     </para>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file1b612d0c-hires.png"><inlinemediaobject>
+      <ulink url="a949c4cf7eda15cd079e9d63b81acdd4-hires.png"><inlinemediaobject>
         <imageobject>
           <imagedata fileref="a949c4cf7eda15cd079e9d63b81acdd4.png" />
         </imageobject>
@@ -398,7 +398,7 @@
       <literal>x = y</literal> line.
     </para>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file50e9fae2-hires.png"><inlinemediaobject>
+      <ulink url="eecb9a780afd4dd0de9737991e467a6e-hires.png"><inlinemediaobject>
         <imageobject>
           <imagedata fileref="eecb9a780afd4dd0de9737991e467a6e.png" />
         </imageobject>
@@ -415,9 +415,9 @@
       shape&quot;.
     </para>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file425e5640-hires.png"><inlinemediaobject>
+      <ulink url="c65fb254666a1b3ccc51c353cde3368c-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="fa1b2f4d134ba88d20bd5ad1abc4f050.png" />
+          <imagedata fileref="c65fb254666a1b3ccc51c353cde3368c.png" />
         </imageobject>
       </inlinemediaobject></ulink>
     </para>
@@ -463,7 +463,7 @@
     </listitem>
   </itemizedlist>
   <para>
-    <ulink url="/tmp/RtmpeIwHkw/file73238815-hires.png"><inlinemediaobject>
+    <ulink url="806ea97c59e1a12d4acae4968957aaa9-hires.png"><inlinemediaobject>
       <imageobject>
         <imagedata fileref="806ea97c59e1a12d4acae4968957aaa9.png" />
       </imageobject>
@@ -589,7 +589,7 @@
       normal, bins should resemble the &quot;bell-like&quot; shape.
     </para>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file56754fe0-hires.png"><inlinemediaobject>
+      <ulink url="a949c4cf7eda15cd079e9d63b81acdd4-hires.png"><inlinemediaobject>
         <imageobject>
           <imagedata fileref="a949c4cf7eda15cd079e9d63b81acdd4.png" />
         </imageobject>
@@ -608,7 +608,7 @@
       <literal>x = y</literal> line.
     </para>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file3f8d9eca-hires.png"><inlinemediaobject>
+      <ulink url="95d42d4d0934008cfa630e1c4523e09a-hires.png"><inlinemediaobject>
         <imageobject>
           <imagedata fileref="95d42d4d0934008cfa630e1c4523e09a.png" />
         </imageobject>
@@ -625,9 +625,9 @@
       shape&quot;.
     </para>
     <para>
-      <ulink url="/tmp/RtmpeIwHkw/file5230f292-hires.png"><inlinemediaobject>
+      <ulink url="e3667d7af0218f91620f548c42f15931-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="c4329e15f77e779dabbdb967f69129a6.png" />
+          <imagedata fileref="e3667d7af0218f91620f548c42f15931.png" />
         </imageobject>
       </inlinemediaobject></ulink>
     </para>
@@ -635,7 +635,7 @@
       This report was generated with
       <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
       <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
-      (0.1) in 2.765 sec on x86_64-unknown-linux-gnu platform.
+      (0.1) in 2.914 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>

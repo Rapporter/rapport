@@ -134,7 +134,7 @@ The above test for outliers was based on lm(1 ~ edu):
 
 * * * * *
 
-This report was generated with R (2.14.0) and rapport (0.1) in 1.147 sec
+This report was generated with R (2.14.0) and rapport (0.1) in 1.157 sec
 on x86_64-unknown-linux-gnu platform.
 
 []

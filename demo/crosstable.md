@@ -80,7 +80,7 @@ V (0.1001).
 
 ### Mosaic chart
 
-[![image](e34aca6c7784de0d3c094d3d071f5038.png)](/tmp/RtmpeIwHkw/file6edbb4a8-hires.png)
+[![image](e34aca6c7784de0d3c094d3d071f5038.png)](e34aca6c7784de0d3c094d3d071f5038-hires.png)
 
 Description
 -----------
@@ -182,12 +182,12 @@ other statistical tests were performed.
 
 ### Mosaic chart
 
-[![image](788ce96f4378f09151fe29c0e370c6f9.png)](/tmp/RtmpeIwHkw/file163c9108-hires.png)
+[![image](788ce96f4378f09151fe29c0e370c6f9.png)](788ce96f4378f09151fe29c0e370c6f9-hires.png)
 
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.14.0)
-and [rapport](http://al3xa.github.com/rapport/) (0.1) in 0.382 sec on
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 0.379 sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![image](images/logo.png)

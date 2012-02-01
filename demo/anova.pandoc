@@ -92,7 +92,7 @@ Here you can see several diagnostic plots for ANOVA model:
  - normal Q-Q plot
  - residuals against leverages 
 
-[![](dd5cdfe79c3741b4373910424cb2824c.png)](/tmp/RtmpeIwHkw/file2f8d0c35-hires.png) 
+[![](dd5cdfe79c3741b4373910424cb2824c.png)](dd5cdfe79c3741b4373910424cb2824c-hires.png) 
 
 ## ANOVA Summary 
 
@@ -207,7 +207,7 @@ Here you can see several diagnostic plots for ANOVA model:
  - normal Q-Q plot
  - residuals against leverages 
 
-[![](3e897b547f80202649804e256107f6e0.png)](/tmp/RtmpeIwHkw/file38c269fb-hires.png) 
+[![](3e897b547f80202649804e256107f6e0.png)](3e897b547f80202649804e256107f6e0-hires.png) 
 
 ## ANOVA Summary 
 
@@ -227,7 +227,7 @@ Residuals        593      2703.0899    4.5583
 _F-test_ for _Gender_ is not statistically significant, which implies that there is no Gender effect on response variable. Effect of _Relationship status_ on response variable is  significant. Interaction between levels of _Gender_ and _Relationship status_ wasn't found significant (p = 0.717). 
 
 -------
-This report was generated with [R](http://www.r-project.org/) (2.14.0) and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.188 sec on x86_64-unknown-linux-gnu platform. 
+This report was generated with [R](http://www.r-project.org/) (2.14.0) and [rapport](http://al3xa.github.com/rapport/) (0.1) in 0.919 sec on x86_64-unknown-linux-gnu platform. 
 
 ![](images/logo.png)
 

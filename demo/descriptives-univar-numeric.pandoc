@@ -93,11 +93,11 @@ _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most po
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape". 
 
-![](9435c7015dbc7e9f9adb4c53640f9c92.png)
+![](62fac7e544f80b0d91c86ea9a297ea19.png)
 
 
 -------
-This report was generated with [R](http://www.r-project.org/) (2.14.0) and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.592 sec on x86_64-unknown-linux-gnu platform. 
+This report was generated with [R](http://www.r-project.org/) (2.14.0) and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.658 sec on x86_64-unknown-linux-gnu platform. 
 
 ![](images/logo.png)
 
