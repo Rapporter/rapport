@@ -11,7 +11,8 @@
     width = 480, height = 480, res = 72, hi.res = FALSE,
     hi.res.width = 960,
     hi.res.height = 960 * (height/width),
-    hi.res.res = res * (hi.res.width/width), ...)
+    hi.res.res = res * (hi.res.width/width),
+    graph.env = FALSE, ...)
 }
 \arguments{
   \item{txt}{a list with character values containing R
@@ -94,6 +95,9 @@
   plot in ppi. The height and width of vector plots will be
   calculated based in this. This value can be left blank to
   be automatically calculated to fit original plot scales.}
+
+  \item{graph.env}{save the environments in which plots
+  were generated to distinct files?}
 
   \item{...}{optional parameters passed to graphics device
   (eg. \code{width}, \code{height} etc.)}
@@ -238,13 +242,16 @@ evals(list(c('no.R.object', 'Old MacDonald had a farm\\\\dots', 'pi')))
 
 ## graph options
 evals('plot(1:10)')
-evals('plot(1:10)', graph.output = 'jpg)
+evals('plot(1:10)', graph.output = 'jpg')
 evals('plot(1:10)', height = 800)
 evals('plot(1:10)', height = 800, hi.res = T)
 evals('plot(1:10)', graph.output = 'pdf', hi.res = T)
 evals('plot(1:10)', res = 30)
 evals('plot(1:10)', graph.name = 'myplot')
 evals(list('plot(1:10)', 'plot(2:20)'), graph.name = 'myplots-\%INDEX')
+evals('plot(1:10)', graph.env = TRUE)
+evals(list(c('x <- runif(100)', 'plot(x)')), graph.env = TRUE)
+evals(c('plot(1:10)', 'plot(2:20)'), graph.env = TRUE)
 
 ## hooks
 hooks <- list('numeric' = round, 'matrix' = ascii)

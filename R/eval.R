@@ -114,6 +114,7 @@ eval.msgs <- function(src, env = NULL) {
 #' @param hi.res.width  width of generated high resolution plot in pixels for even vector formats (!) 
 #' @param hi.res.height height of generated high resolution plot in pixels for even vector formats (!). This value can be left blank to be automatically calculated to match original plot ascpect ratio.
 #' @param hi.res.res nominal resolution of high resolution plot in ppi. The height and width of vector plots will be calculated based in this. This value can be left blank to be automatically calculated to fit original plot scales.
+#' @param graph.env save the environments in which plots were generated to distinct files?
 #' @param ... optional parameters passed to graphics device (eg. \code{width}, \code{height} etc.)
 #' @return a list of parsed elements each containg: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
 #' @author Gergely Daróczi
@@ -164,13 +165,16 @@ eval.msgs <- function(src, env = NULL) {
 #'
 #' ## graph options
 #' evals('plot(1:10)')
-#' evals('plot(1:10)', graph.output = 'jpg)
+#' evals('plot(1:10)', graph.output = 'jpg')
 #' evals('plot(1:10)', height = 800)
 #' evals('plot(1:10)', height = 800, hi.res = T)
 #' evals('plot(1:10)', graph.output = 'pdf', hi.res = T)
 #' evals('plot(1:10)', res = 30)
 #' evals('plot(1:10)', graph.name = 'myplot')
 #' evals(list('plot(1:10)', 'plot(2:20)'), graph.name = 'myplots-%INDEX')
+#' evals('plot(1:10)', graph.env = TRUE)
+#' evals(list(c('x <- runif(100)', 'plot(x)')), graph.env = TRUE)
+#' evals(c('plot(1:10)', 'plot(2:20)'), graph.env = TRUE)
 #' 
 #' ## hooks
 #' hooks <- list('numeric' = round, 'matrix' = ascii)
@@ -219,7 +223,7 @@ eval.msgs <- function(src, env = NULL) {
 #' evals('mean(x)')
 #' }
 #' @export
-evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.name = tempfile(), graph.output = c('png', 'bmp', 'jpeg', 'jpg', 'tiff', 'svg', 'pdf'), width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), ...){
+evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.name = tempfile(), graph.output = c('png', 'bmp', 'jpeg', 'jpg', 'tiff', 'svg', 'pdf'), width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), graph.env = FALSE, ...){
 
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
@@ -357,6 +361,10 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         if (is.character(graph)) {
             returns <- graph
             class(returns) <- "image"
+            ## saving environment on demand
+            if (graph.env)
+                save(list = ls(envir = env), file = sprintf('%s.RData', file.name), envir = env)
+            
             ## generate high resolution images if needed
             if (hi.res) {
                 ## FIX: tiff-hires dev.off problem
