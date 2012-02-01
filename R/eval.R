@@ -175,6 +175,7 @@ eval.msgs <- function(src, env = NULL) {
 #' evals('plot(1:10)', graph.env = TRUE)
 #' evals(list(c('x <- runif(100)', 'plot(x)')), graph.env = TRUE)
 #' evals(c('plot(1:10)', 'plot(2:20)'), graph.env = TRUE)
+#' evals(list(c('x <- runif(100)', 'plot(x)'), c('y <- runif(100)', 'plot(y)')), graph.env = TRUE)
 #' 
 #' ## hooks
 #' hooks <- list('numeric' = round, 'matrix' = ascii)
@@ -245,6 +246,8 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
     
     if (!missing(graph.name))
         graph.name <- match.call()$graph.name
+    else
+        graph.name <- substitute(tempfile())
     graph.output <- match.arg(graph.output)
     if (graph.output == 'jpg')
         graph.output <- 'jpeg'

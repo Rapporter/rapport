@@ -252,6 +252,7 @@ evals(list('plot(1:10)', 'plot(2:20)'), graph.name = 'myplots-\%INDEX')
 evals('plot(1:10)', graph.env = TRUE)
 evals(list(c('x <- runif(100)', 'plot(x)')), graph.env = TRUE)
 evals(c('plot(1:10)', 'plot(2:20)'), graph.env = TRUE)
+evals(list(c('x <- runif(100)', 'plot(x)'), c('y <- runif(100)', 'plot(y)')), graph.env = TRUE)
 
 ## hooks
 hooks <- list('numeric' = round, 'matrix' = ascii)
