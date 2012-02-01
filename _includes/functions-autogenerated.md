@@ -155,13 +155,14 @@ identical(evals(&apos;pi&apos;)[[1]], eval.msgs(&apos;pi&apos;))
 ###### Details:
 <p>  If input strings are given as vector or not nested list (or even only one string), the returned list&apos;s length equals to the length of the input - as each string is evalued as separate R code in the same environment. If a nested list is provided like  <code>list(c(&apos;runif(1)&apos;,   &apos;runif(1)&apos;))</code>  then all strings found in a list element is evaled at one run so the length of returned list equals to the length of parent list. See examples below. </p>
 <p>  As  <code>evals</code>  tries to grab the plots internally, pleas do not run commands that set graphic device or  <code>dev.off</code>  if you want to use  <code>evals</code>  to save the images and return the path of generated png(s). Eg. running  <code>evals(c(&apos;png(&quot;/tmp/x.png&quot;)&apos;, &apos;plot(1:10)&apos;,   &apos;dev.off()&apos;))</code>  would fail. </p>
+<p>  The generated image file(s) of the plots can be fine-tuned by some specific options, please check out  <code>graph.output</code>  ,  <code>width</code>  ,  <code>height</code>  ,  <code>res</code>  ,  <code>hi.res</code>  ,  <code>hi.res.width</code>  ,  <code>hi.res.height</code>  and  <code>hi.res.res</code>  . Most of these options are better not to touch, see details of parameters below. </p>
 <p>Returned result values: list with the following elements</p>
 <ul>  <li>   <p>    <em>src</em>    - a character value with specified R code.   </p>  </li>  <li>   <p>    <em>output</em>    - generated output.    <code>NULL</code>    if nothing is returned. If any string returned an R object while evaling then the    <em>last</em>    R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see:    <code>tmpfile()</code>    ). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.   </p>  </li>  <li>   <p>    <em>type</em>    - class of generated output. &quot;NULL&quot; if nothing is returned, &quot;image&quot; if the graphic device was touched, &quot;error&quot; if some error occured.   </p>  </li>  <li>   <p>    <em>msg</em>    - possible messages grabbed while evaling specified R code with the following structure:   </p>   <ul>    <li>     <p>      <em>messages</em>      - string of possible diagnostic message(s)     </p>    </li>    <li>     <p>      <em>warnings</em>      - string of possible warning message(s)     </p>    </li>    <li>     <p>      <em>errors</em>      - string of possible error message(s)     </p>    </li>   </ul>  </li> </ul>
 <p>  With  <code>check.output</code>  options set to  <code>FALSE</code>  ,  <code>evals</code>  will not check each line of passed R code for outputs to speed up runtime. This way the user is required to pass only reliable and well structured/formatted text to  <code>evals</code>  . A list to check before running code in  <code>evals</code>  : </p>
-<ul>  <li>   <p>the code should return on the last line of the passed code (if it returns before that, it would not be grabbed),</p>  </li>  <li>   <p>    the code should always return something on the last line (if you do not want to return anything, add    <code>NULL</code>    as the last line),   </p>  </li>  <li>   <p>ggplot and lattice graphs should be always printed (of course on the last line),</p>  </li>  <li>   <p>    the code should be checked before live run with    <code>check.output</code>    option set to    <code>TRUE</code>    just to be sure if everything goes OK.   </p>  </li> </ul>
+<ul>  <li>   <p>the code should return on the last line of the passed code (if it returns before that, it would not be grabbed),</p>  </li>  <li>   <p>    the code should always return something on the last line (if you do not want to return anything, add    <code>NULL</code>    as the last line),   </p>  </li>  <li>   <p>ggplot and lattice graphs should be always printed (of course on the last line),</p>  </li>  <li>   <p>a code part resulting in a plot should not alter variables and data sets,</p>  </li>  <li>   <p>    the code should be checked before live run with    <code>check.output</code>    option set to    <code>TRUE</code>    just to be sure if everything goes OK.   </p>  </li> </ul>
 <p>  Please check the examples carefully below to get a detailed overview of  <code>evals</code>  . </p>###### Usage:
 <div class="highlight">
-	<pre><code class="r">evals(txt = NULL, ind = NULL, body = NULL,    classes = NULL, hooks = NULL, length = Inf,    output = c(&quot;all&quot;, &quot;src&quot;, &quot;output&quot;, &quot;type&quot;, &quot;msg&quot;),    env = NULL, check.output = TRUE, graph.output = &quot;png&quot;,    ...)</code></pre>
+	<pre><code class="r">evals(txt = NULL, ind = NULL, body = NULL,    classes = NULL, hooks = NULL, length = Inf,    output = c(&quot;all&quot;, &quot;src&quot;, &quot;output&quot;, &quot;type&quot;, &quot;msg&quot;),    env = NULL, check.output = TRUE,    graph.name = tempfile(),    graph.output = c(&quot;png&quot;, &quot;bmp&quot;, &quot;jpeg&quot;, &quot;jpg&quot;, &quot;tiff&quot;, &quot;svg&quot;, &quot;pdf&quot;),    width = 480, height = 480, res = 72, hi.res = FALSE,    hi.res.width = 960,    hi.res.height = 960 * (height/width),    hi.res.res = res * (hi.res.width/width), ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -298,11 +299,97 @@ Details.
  </tr>
  <tr valign="top">
   <td>
+   <code>graph.name</code>
+  </td>
+  <td>
+   <p>
+    set the file name of saved plots which
+is a
+    <code>tempfile()</code>
+    by default. A simple character
+string (or a function which returns a single character
+vector) might be provided where
+    <code>%INDEX</code>
+    would be
+replaced by the index of the generating
+    <code>txt</code>
+    source.
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
    <code>graph.output</code>
   </td>
   <td>
    <p>set the required file format of saved
 plots</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>width</code>
+  </td>
+  <td>
+   <p>width of generated plot in pixels for even
+vector formats (!)</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>height</code>
+  </td>
+  <td>
+   <p>height of generated plot in pixels for even
+vector formats (!)</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>res</code>
+  </td>
+  <td>
+   <p>nominal resolution in ppi. The height and
+width of vector plots will be calculated based in this.</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>hi.res</code>
+  </td>
+  <td>
+   <p>generate high resolution plots also?</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>hi.res.width</code>
+  </td>
+  <td>
+   <p>width of generated high resolution
+plot in pixels for even vector formats (!)</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>hi.res.height</code>
+  </td>
+  <td>
+   <p>height of generated high resolution
+plot in pixels for even vector formats (!). This value
+can be left blank to be automatically calculated to match
+original plot ascpect ratio.</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>hi.res.res</code>
+  </td>
+  <td>
+   <p>nominal resolution of high resolution
+plot in ppi. The height and width of vector plots will be
+calculated based in this. This value can be left blank to
+be automatically calculated to fit original plot scales.</p>
   </td>
  </tr>
  <tr valign="top">
@@ -344,7 +431,7 @@ txt &lt;- readLines(textConnection(&apos;x &lt;- rnorm(100)
   runif(10)
   warning(&quot;You should check out rapport package!&quot;)
   plot(1:10)
-  qplot(rating, data=movies, geom=&quot;histogram&quot;)
+  qplot(rating, data = movies, geom = &quot;histogram&quot;)
   y &lt;- round(runif(100))
   cor.test(x, y)
   crl &lt;- cor.test(runif(10), runif(10))
@@ -361,8 +448,8 @@ txt &lt;- readLines(textConnection(&apos;rnorm(100)
   list(x = 10:1, y = &quot;Godzilla!&quot;)
   c(1,2,3)
    matrix(0,3,5)&apos;))
-evals(txt, classes=&apos;numeric&apos;)
-evals(txt, classes=c(&apos;numeric&apos;, &apos;list&apos;))
+evals(txt, classes = &apos;numeric&apos;)
+evals(txt, classes = c(&apos;numeric&apos;, &apos;list&apos;))
 ## handling warnings
 evals(&apos;chisq.test(mtcars$gear, mtcars$hp)&apos;)
 evals(list(c(&apos;chisq.test(mtcars$gear, mtcars$am)&apos;, &apos;pi&apos;, &apos;chisq.test(mtcars$gear, mtcars$hp)&apos;)))
@@ -378,37 +465,46 @@ evals(c(&apos;no.R.object&apos;, &apos;no.R.function()&apos;, &apos;very.mixed.u
 evals(list(c(&apos;no.R.object&apos;, &apos;no.R.function()&apos;, &apos;very.mixed.up(stuff)&apos;)))
 evals(c(&apos;no.R.object&apos;, &apos;Old MacDonald had a farm\\dots&apos;, &apos;pi&apos;))
 evals(list(c(&apos;no.R.object&apos;, &apos;Old MacDonald had a farm\\dots&apos;, &apos;pi&apos;)))
+## graph options
+evals(&apos;plot(1:10)&apos;)
+evals(&apos;plot(1:10)&apos;, graph.output = &apos;jpg)
+evals(&apos;plot(1:10)&apos;, height = 800)
+evals(&apos;plot(1:10)&apos;, height = 800, hi.res = T)
+evals(&apos;plot(1:10)&apos;, graph.output = &apos;pdf&apos;, hi.res = T)
+evals(&apos;plot(1:10)&apos;, res = 30)
+evals(&apos;plot(1:10)&apos;, graph.name = &apos;myplot&apos;)
+evals(list(&apos;plot(1:10)&apos;, &apos;plot(2:20)&apos;), graph.name = &apos;myplots-%INDEX&apos;)
 ## hooks
-hooks &lt;- list(&apos;numeric&apos;=round, &apos;matrix&apos;=ascii)
-evals(txt, hooks=hooks)
-evals(&apos;22/7&apos;, hooks=list(&apos;numeric&apos;=rp.round))
-evals(&apos;matrix(runif(25), 5, 5)&apos;, hooks=list(&apos;matrix&apos;=rp.round))
+hooks &lt;- list(&apos;numeric&apos; = round, &apos;matrix&apos; = ascii)
+evals(txt, hooks = hooks)
+evals(&apos;22/7&apos;, hooks = list(&apos;numeric&apos; = rp.round))
+evals(&apos;matrix(runif(25), 5, 5)&apos;, hooks = list(&apos;matrix&apos; = rp.round))
 ## using rapport&apos;s default hook
-evals(&apos;22/7&apos;, hooks=TRUE)
+evals(&apos;22/7&apos;, hooks = TRUE)
 ## setting default hook
-evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks=list(&apos;default&apos;=round))
+evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks = list(&apos;default&apos;=round))
 ## round all values except for matrices
-evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks=list(matrix=&apos;print&apos;, &apos;default&apos;=round))
+evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks = list(matrix = &apos;print&apos;, &apos;default&apos; = round))
 # advanced hooks
-fun &lt;- function(x, asciiformat) paste(capture.output(print(ascii(x), asciiformat)), collapse=&apos;\n&apos;)
-hooks &lt;- list(&apos;numeric&apos;=list(round, 2), &apos;matrix&apos;=list(fun, &quot;rest&quot;))
-evals(txt, hooks=hooks)
+fun &lt;- function(x, asciiformat) paste(capture.output(print(ascii(x), asciiformat)), collapse = &apos;\n&apos;)
+hooks &lt;- list(&apos;numeric&apos; = list(round, 2), &apos;matrix&apos; = list(fun, &quot;rest&quot;))
+evals(txt, hooks = hooks)
 # return only returned values
-evals(txt, output=&apos;output&apos;)
+evals(txt, output = &apos;output&apos;)
 # return only messages (for checking syntax errors etc.)
-evals(txt, output=&apos;msg&apos;)
+evals(txt, output = &apos;msg&apos;)
 # check the length of returned values
-evals(&apos;runif(10)&apos;, length=5)
+evals(&apos;runif(10)&apos;, length = 5)
 # note the following will not be filtered!
-evals(&apos;matrix(1,1,1)&apos;, length=1)
+evals(&apos;matrix(1,1,1)&apos;, length = 1)
 # if you do not want to let such things be evaled in the middle of a string use it with other filters :)
-evals(&apos;matrix(1,1,1)&apos;, length=1, classes=&apos;numeric&apos;)
+evals(&apos;matrix(1,1,1)&apos;, length = 1, classes = &apos;numeric&apos;)
 # hooks &amp; filtering
-evals(&apos;matrix(5,5,5)&apos;, hooks=list(&apos;matrix&apos;=ascii), output=&apos;output&apos;)
+evals(&apos;matrix(5,5,5)&apos;, hooks = list(&apos;matrix&apos; = ascii), output = &apos;output&apos;)
 # evaling chunks in given environment
 myenv &lt;- new.env()
-evals(&apos;x &lt;- c(0,10)&apos;, env=myenv)
-evals(&apos;mean(x)&apos;, env=myenv)
+evals(&apos;x &lt;- c(0,10)&apos;, env = myenv)
+evals(&apos;mean(x)&apos;, env = myenv)
 rm(myenv)
 # note: if you had not specified &apos;myenv&apos;, the second &apos;evals&apos; would have failed
 evals(&apos;x &lt;- c(0,10)&apos;)
@@ -420,13 +516,106 @@ evals(&apos;mean(x)&apos;)
 <a id="Generic-graph-functions"> </a>
 #### Generic graph functions
 
+<a id="decorate.lattice"> </a>
+##### decorate.lattice: Decorating lattice plots
+###### Description:
+<p>Apply required theme and grid options to called lattice/trellis plot.</p>
+###### Details:
+<p>  Default parameters are read from  <code>options</code>  : </p>
+<ul>  <li>   <p>&apos;style.theme&apos;,</p>  </li>  <li>   <p>&apos;style.grid&apos;.</p>  </li> </ul>###### Usage:
+<div class="highlight">
+	<pre><code class="r">decorate.lattice(expr, theme = getOption(&quot;style.theme&quot;),    grid = getOption(&quot;style.grid&quot;))</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>expr</code>
+  </td>
+  <td>
+   <p>call to lattice which will be evaluated with
+added theme options</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>theme</code>
+  </td>
+  <td>
+   <p>
+    name of theme to use. Besides
+    <code>&apos;theme.rapport&apos;</code>
+    there are several themes
+available in other packages too, eg.
+    <code>standard.theme()</code>
+    from lattice,
+    <code>gplot2like()</code>
+    and
+    <code>theEconomist.theme()</code>
+    from latticeExtra and
+    <code>custom.theme.black()</code>
+    from latticist package. Of
+course custom theme might be provided also, check out
+    <code>?custom.theme</code>
+    from latticeExtra package or head
+directly to:
+    <code>?trellis.par.get()</code>
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>grid</code>
+  </td>
+  <td>
+   <p>
+    show grid in the background? It is possible
+to render a grid for
+    <code>&apos;both&apos;</code>
+    , only for
+    <code>&apos;x&apos;</code>
+    or solely to
+    <code>&apos;y&apos;</code>
+    axis.
+    <code>&apos;none&apos;</code>
+    results in a
+blank background.
+   </p>
+  </td>
+ </tr>
+</table>
+###### Returned value:
+<p>lattice/trellis object</p>
+###### Examples:
+<div class="highlight"><pre><code class="r">decorate.lattice(histogram(mtcars$hp))
+decorate.lattice(histogram(mtcars$hp), grid=&apos;y&apos;)
+decorate.lattice(histogram(mtcars$hp), grid=&apos;both&apos;)
+decorate.lattice(histogram(mtcars$hp), theme=&quot;theme.rapport(bw = TRUE)&quot;)
+decorate.lattice(histogram(mtcars$hp, type = &quot;density&quot;, panel = function(x, ...) {
+  panel.histogram(x, ...)
+  panel.densityplot(x, darg=list(na.rm=TRUE), ...)
+}))
+decorate.lattice(bwplot(decrease ~ treatment, OrchardSprays, groups = rowpos), grid=&apos;none&apos;)
+decorate.lattice(bwplot(decrease ~ treatment, OrchardSprays, groups = rowpos), grid=&apos;y&apos;)
+decorate.lattice(bwplot(voice.part ~ height, data = singer), grid=&apos;x&apos;)
+decorate.lattice(bwplot(voice.part ~ height, data = singer), grid=&apos;x&apos;, theme=&quot;theme.rapport(bw = TRUE)&quot;)
+decorate.lattice(barchart(VADeaths))
+decorate.lattice(barchart(VADeaths), theme=&quot;theme.rapport(palette=&apos;Greens&apos;)&quot;, grid=&apos;x&apos;)
+decorate.lattice(barchart(VADeaths), theme=&quot;theme.rapport(bw = TRUE)&quot;, grid=&apos;x&apos;)
+decorate.lattice(barchart(VADeaths), theme=&quot;theme.rapport(font = &apos;Garamond&apos;)&quot;, grid=&apos;x&apos;)
+decorate.lattice(barchart(VADeaths), theme=&quot;ggplot2like&quot;, grid=&apos;x&apos;)
+decorate.lattice(barchart(VADeaths), theme=&quot;theEconomist.theme&quot;, grid=&apos;x&apos;)
+decorate.lattice(barchart(VADeaths, main=&apos;TITLE (70-74)&apos;), theme=&quot;theme.rapport(custom = list(axis.text = list(fontfamily=&apos;Garamond&apos;)))&quot;, grid=&apos;x&apos;)
+</code></pre>
+</div>
+
 <a id="rp.barplot"> </a>
 ##### rp.barplot: Barplot
 ###### Description:
 <p>  This function is a wrapper around  <code>barchart</code>  which operates only on factors with optional facet. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.barplot(x, facet = NULL, data = NULL, groups = FALSE,    auto.key = FALSE, horizontal = TRUE, percent = FALSE,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
+	<pre><code class="r">rp.barplot(x, facet = NULL, data = NULL, groups = FALSE,    auto.key = FALSE, horizontal = TRUE, percent = FALSE,    ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -505,27 +694,6 @@ TRUE with groups.
  </tr>
  <tr valign="top">
   <td>
-   <code>theme</code>
-  </td>
-  <td>
-   <p>
-    a color palette name from
-    <code>RColorBrewer</code>
-    or &apos;default&apos;
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>colorize</code>
-  </td>
-  <td>
-   <p>if set the color is chosen from palette
-at random</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
    <code>...</code>
   </td>
   <td>
@@ -537,18 +705,14 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-rp.barplot(df$cyl)
-rp.barplot(df$cyl, horizontal = FALSE)
-rp.barplot(df$cyl, facet=df$am)
-rp.barplot(df$cyl, facet=df$am, horizontal=FALSE)
-rp.barplot(df$cyl, facet=df$am, colorize=TRUE)
-rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
-rp.barplot(df$cyl, facet=df$am, colorize=TRUE, groups=T, horizontal=FALSE)
-rp.label(df$cyl) &lt;- &apos;Number of cylinders&apos;; rp.barplot(df$cyl)
-with(df, rp.barplot(cyl, facet = am))
-rp.barplot(cyl, data=df)
-rp.barplot(cyl, am, df)
+<div class="highlight"><pre><code class="r">rp.barplot(ius2008$game)
+rp.barplot(ius2008$game, horizontal = FALSE)
+rp.barplot(ius2008$game, facet = ius2008$gender)
+rp.barplot(ius2008$game, facet = ius2008$dwell, horizontal = FALSE, layout = c(1,3))
+rp.barplot(ius2008$game, facet = ius2008$gender, groups = TRUE)
+with(ius2008, rp.barplot(game, facet = gender))
+rp.barplot(gender, data = ius2008)
+rp.barplot(dwell, gender, ius2008)
 </code></pre>
 </div>
 
@@ -558,7 +722,7 @@ rp.barplot(cyl, am, df)
 <p>  This function is a wrapper around  <code>bwplot</code>  which operates only on numeric variables with optional facet. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.boxplot(x, y = NULL, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
+	<pre><code class="r">rp.boxplot(x, y = NULL, facet = NULL, data = NULL, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -598,27 +762,6 @@ variables should be taken</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>theme</code>
-  </td>
-  <td>
-   <p>
-    a color palette name from
-    <code>RColorBrewer</code>
-    or &apos;default&apos;
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>colorize</code>
-  </td>
-  <td>
-   <p>if set the color is chosen from palette
-at random</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
    <code>...</code>
   </td>
   <td>
@@ -630,15 +773,12 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-rp.boxplot(df$cyl)
-rp.boxplot(df$cyl, df$wt)
-rp.boxplot(df$cyl, df$hp, facet=df$am)
-rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.label(df$wt) &lt;- &apos;weight&apos;; rp.boxplot(df$cyl, df$wt)
-rp.boxplot(df$cyl, df$wt, colorize=TRUE)
-with(df, rp.scatterplot(hp, wt, facet = am))
-rp.boxplot(cyl, wt, data=df)
-rp.boxplot(cyl, wt, am, df)
+<div class="highlight"><pre><code class="r">rp.boxplot(ius2008$age)
+rp.boxplot(ius2008$age, ius2008$gender)
+rp.boxplot(ius2008$age, ius2008$dwell, facet = ius2008$gender)
+with(ius2008, rp.scatterplot(age, dwell, facet = gender))
+rp.boxplot(age, dwell, data = ius2008)
+rp.boxplot(age, dwell, gender, ius2008)
 </code></pre>
 </div>
 
@@ -648,7 +788,7 @@ rp.boxplot(cyl, wt, am, df)
 <p>  This function is a wrapper around  <code>pairs</code>  which operates only on numeric variables. Panel options are:  <code>c(&apos;panel.cor&apos;, &apos;panel.smooth&apos;, &apos;panel.hist&apos;)</code>  . Custom panels may be also added. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.cor.plot(x, lower.panel = &quot;panel.smooth&quot;,    upper.panel = &quot;panel.cor&quot;, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
+	<pre><code class="r">rp.cor.plot(x, lower.panel = &quot;panel.smooth&quot;,    upper.panel = &quot;panel.cor&quot;, data = NULL, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -701,27 +841,6 @@ variables should be taken</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>theme</code>
-  </td>
-  <td>
-   <p>
-    a color palette name from
-    <code>RColorBrewer</code>
-    or &apos;default&apos;
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>colorize</code>
-  </td>
-  <td>
-   <p>if set the color is chosen from palette
-at random</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
    <code>...</code>
   </td>
   <td>
@@ -733,9 +852,12 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
+<div class="highlight"><pre><code class="r">## setting rp.names first
+df &lt;- mtcars
+for (i in 1:ncol(df))
+  attr(df[, i], &quot;name&quot;) &lt;- names(df)[i]
 rp.cor.plot(df)
-rp.cor.plot(df, diag.panel=&apos;panel.hist&apos;)
+rp.cor.plot(df, diag.panel = &apos;panel.hist&apos;)
 </code></pre>
 </div>
 
@@ -745,7 +867,7 @@ rp.cor.plot(df, diag.panel=&apos;panel.hist&apos;)
 <p>  This function is a wrapper around  <code>densityplot</code>  which operates only on numeric vectors with optional facet. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.densityplot(x, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
+	<pre><code class="r">rp.densityplot(x, facet = NULL, data = NULL, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -777,27 +899,6 @@ variables should be taken</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>theme</code>
-  </td>
-  <td>
-   <p>
-    a color palette name from
-    <code>RColorBrewer</code>
-    or &apos;default&apos;
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>colorize</code>
-  </td>
-  <td>
-   <p>if set the color is chosen from palette
-at random</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
    <code>...</code>
   </td>
   <td>
@@ -809,16 +910,12 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)),
-  am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-rp.densityplot(df$hp)
-rp.densityplot(df$hp, facet=df$am)
-rp.densityplot(df$hp, df$am)
-rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.densityplot(df$hp)
-rp.densityplot(df$hp, colorize=TRUE)
-with(df, rp.densityplot(hp, facet = am))
-rp.densityplot(hp, data = df)
-rp.densityplot(hp, am, df)
+<div class="highlight"><pre><code class="r">rp.densityplot(ius2008$edu)
+rp.densityplot(ius2008$edu, facet = ius2008$gender)
+rp.densityplot(ius2008$edu, ius2008$dwell)
+with(ius2008, rp.densityplot(edu, facet = gender))
+rp.densityplot(edu, data = ius2008)
+rp.densityplot(edu, gender, ius2008)
 </code></pre>
 </div>
 
@@ -828,7 +925,7 @@ rp.densityplot(hp, am, df)
 <p>  This function is a wrapper around  <code>dotplot</code>  which operates only on factors with optional facet. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.dotplot(x, facet = NULL, data = NULL, groups = FALSE,    auto.key = FALSE, horizontal = TRUE,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
+	<pre><code class="r">rp.dotplot(x, facet = NULL, data = NULL, groups = FALSE,    auto.key = FALSE, horizontal = TRUE, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -893,27 +990,6 @@ variables should be taken</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>theme</code>
-  </td>
-  <td>
-   <p>
-    a color palette name from
-    <code>RColorBrewer</code>
-    or &apos;default&apos;
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>colorize</code>
-  </td>
-  <td>
-   <p>if set the color is chosen from palette
-at random</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
    <code>...</code>
   </td>
   <td>
@@ -926,16 +1002,14 @@ at random</p>
 </table>
 ###### Examples:
 <div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-rp.dotplot(df$cyl)
-rp.dotplot(df$cyl, horizontal = FALSE)
-rp.dotplot(df$cyl, facet=df$am)
-rp.dotplot(df$cyl, facet=df$am, horizontal=FALSE)
-rp.dotplot(df$cyl, facet=df$am, colorize=TRUE)
-rp.dotplot(df$cyl, facet=df$am, colorize=TRUE, groups=T)
-rp.label(df$cyl) &lt;- &apos;Number of cylinders&apos;; rp.dotplot(df$cyl)
-with(df, rp.dotplot(cyl, facet = am))
-rp.dotplot(cyl, data=df)
-rp.dotplot(cyl, am, df)
+rp.dotplot(ius2008$game)
+rp.dotplot(ius2008$game, horizontal = FALSE)
+rp.dotplot(ius2008$game, facet = ius2008$dwell)
+rp.dotplot(ius2008$dwell, facet = ius2008$gender, horizontal = FALSE)
+rp.dotplot(ius2008$game, facet = ius2008$dwell, groups = TRUE)
+with(ius2008, rp.dotplot(gender, facet = dwell))
+rp.dotplot(game, data = ius2008)
+rp.dotplot(dwell, gender, ius2008)
 </code></pre>
 </div>
 
@@ -988,7 +1062,7 @@ rp.dotplot(cyl, am, df)
 <p>  This function is a wrapper around  <code>histogram</code>  which operates only on numeric vectors with optional facet. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.hist(x, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
+	<pre><code class="r">rp.hist(x, facet = NULL, data = NULL,    kernel.smooth = FALSE, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -1020,23 +1094,10 @@ variables should be taken</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>theme</code>
+   <code>kernel.smooth</code>
   </td>
   <td>
-   <p>
-    a color palette name from
-    <code>RColorBrewer</code>
-    or &apos;default&apos;
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>colorize</code>
-  </td>
-  <td>
-   <p>if set the color is chosen from palette
-at random</p>
+   <p>add kernel density plot?</p>
   </td>
  </tr>
  <tr valign="top">
@@ -1052,16 +1113,13 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)),
-  am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-rp.hist(df$hp)
-rp.hist(df$hp, facet=df$am)
-rp.hist(df$hp, df$am)
-rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.hist(df$hp)
-rp.hist(df$hp, colorize=TRUE)
-with(df, rp.hist(hp, facet = am))
-rp.hist(hp, data = df)
-rp.hist(hp, am, df)
+<div class="highlight"><pre><code class="r">rp.hist(ius2008$edu)
+rp.hist(ius2008$edu, facet=ius2008$gender)
+rp.hist(ius2008$edu, ius2008$dwell)
+rp.hist(ius2008$edu, kernel.smooth=TRUE)
+with(ius2008, rp.hist(edu, facet = gender))
+rp.hist(edu, data = ius2008)
+rp.hist(edu, gender, ius2008)
 </code></pre>
 </div>
 
@@ -1071,7 +1129,7 @@ rp.hist(hp, am, df)
 <p>  This function is a wrapper around  <code>xyplot</code>  with custom panel. Only numeric variables are accepted with optional facet. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.lineplot(x, y, facet = NULL, data = NULL,    groups = NULL, theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
+	<pre><code class="r">rp.lineplot(x, y, facet = NULL, data = NULL,    groups = NULL, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -1151,37 +1209,36 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-a &lt;- aggregate(wt~gear, df, mean)
+<div class="highlight"><pre><code class="r">a &lt;- aggregate(wt~gear, mtcars, mean)
 rp.lineplot(a$gear, a$wt)
-rp.lineplot(1:length(df$hp), df$hp, facet=df$cyl)
-rp.label(a$wt) &lt;- &apos;weight&apos;; rp.lineplot(a$gear, a$wt)
-rp.lineplot(a$gear, a$wt, colorize=TRUE)
 rp.lineplot(gear, wt, data=a)
+## lame demo:
+rp.lineplot(1:length(mtcars$hp), mtcars$hp, facet=mtcars$cyl)
 ## advanced usage
-rp.lineplot(partner, age, data=rp.desc(&apos;age&apos;, &apos;partner&apos;, fn=&apos;mean&apos;, data=ius2008))
-rp.lineplot(partner, age, gender, data=rp.desc(&apos;age&apos;, c(&apos;gender&apos;, &apos;partner&apos;), fn=&apos;mean&apos;, data=ius2008))
-rp.lineplot(partner, age, groups=gender, data=rp.desc(&apos;age&apos;, c(&apos;gender&apos;, &apos;partner&apos;), fn=&apos;mean&apos;, data=ius2008))
+rp.lineplot(partner, age, data = rp.desc(&apos;age&apos;, &apos;partner&apos;, fn = &apos;mean&apos;, data=ius2008))
+rp.lineplot(partner, age, gender, data = rp.desc(&apos;age&apos;, c(&apos;gender&apos;, &apos;partner&apos;), fn = &apos;mean&apos;, data=ius2008))
+rp.lineplot(partner, age, groups = gender, data=rp.desc(&apos;age&apos;, c(&apos;gender&apos;, &apos;partner&apos;), fn = &apos;mean&apos;, data = ius2008))
 ## Did you noticed the nasty axis titles? Why not correct those? :)
-df &lt;- rp.desc(&apos;age&apos;, &apos;partner&apos;, fn=&apos;mean&apos;, data=ius2008)
+df &lt;- rp.desc(&apos;age&apos;, &apos;partner&apos;, fn = &apos;mean&apos;, data = ius2008)
 lapply(names(df), function(x) rp.label(df[, x]) &lt;&lt;- x)   # nasty solution!
-rp.lineplot(partner, age, data=df)
-df &lt;- rp.desc(&apos;age&apos;, c(&apos;gender&apos;, &apos;partner&apos;), fn=&apos;mean&apos;, data=ius2008)
+rp.lineplot(partner, age, data = df)
+df &lt;- rp.desc(&apos;age&apos;, c(&apos;gender&apos;, &apos;partner&apos;), fn = &apos;mean&apos;, data = ius2008)
 lapply(names(df), function(x) rp.label(df[, x]) &lt;&lt;- x)  # nasty solution!
-rp.lineplot(partner, age, gender, data=df)
-df &lt;- rp.desc(&apos;age&apos;, c(&apos;gender&apos;, &apos;partner&apos;), fn=&apos;mean&apos;, data=ius2008)
+rp.lineplot(partner, age, gender, data = df)
+df &lt;- rp.desc(&apos;age&apos;, c(&apos;gender&apos;, &apos;partner&apos;), fn = &apos;mean&apos;, data = ius2008)
 lapply(names(df), function(x) rp.label(df[, x]) &lt;&lt;- x)  # nasty solution!
-rp.lineplot(partner, age, groups=gender, data=df)
+rp.lineplot(partner, age, groups = gender, data = df)
 </code></pre>
 </div>
 
 <a id="rp.palette"> </a>
 ##### rp.palette: Color palettes
 ###### Description:
-<p>  This function returns a given number of color codes from given palette by default falling back to a color-blind-friendly palette from  <a href="http://jfly.iam.u-tokyo.ac.jp/color/">http://jfly.iam.u-tokyo.ac.jp/color/</a>  . </p>
-###### Usage:
+<p>  This function returns a given number of color codes from given palette from  <code>RColorBrewer</code>  . Besides those falling back to  <code>&apos;default&apos;</code>  : a color-blind-friendly palette from  <a href="http://jfly.iam.u-tokyo.ac.jp/color/">http://jfly.iam.u-tokyo.ac.jp/color/</a>  . Default parameters are read from  <code>options</code>  : </p>
+###### Details:
+<ul>  <li>   <p>&apos;style.color.palette&apos;,</p>  </li>  <li>   <p>&apos;style.colorize&apos;.</p>  </li> </ul>###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.palette(num, theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;))</code></pre>
+	<pre><code class="r">rp.palette(num,    palette = getOption(&quot;style.color.palette&quot;),    colorize = getOption(&quot;style.colorize&quot;))</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -1195,7 +1252,7 @@ rp.lineplot(partner, age, groups=gender, data=df)
  </tr>
  <tr valign="top">
   <td>
-   <code>theme</code>
+   <code>palette</code>
   </td>
   <td>
    <p>
@@ -1216,7 +1273,8 @@ random order</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r">rp.palette(1)
+<div class="highlight"><pre><code class="r">rp.palette()
+rp.palette(1)
 rp.palette(1, colorize = TRUE)
 rp.palette(5, &apos;Greens&apos;)
 rp.palette(5, &apos;Greens&apos;, colorize = TRUE)
@@ -1229,7 +1287,7 @@ rp.palette(5, &apos;Greens&apos;, colorize = TRUE)
 <p>  This function is a wrapper around  <code>qqmath</code>  which operates only on a numeric variable with optional facet. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.qqplot(x, dist = qnorm, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
+	<pre><code class="r">rp.qqplot(x, dist = qnorm, facet = NULL, data = NULL,    ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -1269,27 +1327,6 @@ variables should be taken</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>theme</code>
-  </td>
-  <td>
-   <p>
-    a color palette name from
-    <code>RColorBrewer</code>
-    or &apos;default&apos;
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>colorize</code>
-  </td>
-  <td>
-   <p>if set the color is chosen from palette
-at random</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
    <code>...</code>
   </td>
   <td>
@@ -1301,16 +1338,14 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r">    df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-    rp.qqplot(df$hp)
-    rp.qqplot(df$hp, qunif)
-    rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.qqplot(df$hp)
-    rp.qqplot(df$hp, colorize=TRUE)
-    rp.qqplot(df$hp, qunif, facet=df$am)
-    with(df, rp.qqplot(hp))
-    rp.qqplot(hp, data=df)
-    rp.qqplot(hp, facet=am, data=df)
-    rp.qqplot(hp, qunif, am, df)
+<div class="highlight"><pre><code class="r">rp.qqplot(ius2008$age)
+rp.qqplot(ius2008$age, qunif)
+rp.qqplot(ius2008$age, qunif, facet = ius2008$gender)
+with(ius2008, rp.qqplot(age))
+rp.qqplot(age, data = ius2008)
+rp.qqplot(age, facet = gender, data = ius2008)
+rp.qqplot(age, qunif, gender, ius2008)
+rp.qqplot(ius2008$age, panel = function(x) {panel.qqmath(x); panel.qqmathline(x, distribution = qnorm)} )
 </code></pre>
 </div>
 
@@ -1320,7 +1355,7 @@ at random</p>
 <p>  This function is a wrapper around  <code>xyplot</code>  which operates only on numeric variables with optional facet. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.scatterplot(x, y, facet = NULL, data = NULL,    theme = getOption(&quot;rp.color.palette&quot;),    colorize = getOption(&quot;rp.colorize&quot;), ...)</code></pre>
+	<pre><code class="r">rp.scatterplot(x, y, facet = NULL, data = NULL, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -1360,27 +1395,6 @@ variables should be taken</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>theme</code>
-  </td>
-  <td>
-   <p>
-    a color palette name from
-    <code>RColorBrewer</code>
-    or &apos;default&apos;
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>colorize</code>
-  </td>
-  <td>
-   <p>if set the color is chosen from palette
-at random</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
    <code>...</code>
   </td>
   <td>
@@ -1392,14 +1406,91 @@ at random</p>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r">df &lt;- transform(mtcars, cyl = factor(cyl, labels = c(&apos;4&apos;, &apos;6&apos;, &apos;8&apos;)), am = factor(am, labels = c(&apos;automatic&apos;, &apos;manual&apos;)), vs = factor(vs))
-rp.scatterplot(df$hp, df$wt)
-rp.scatterplot(df$hp, df$wt, facet=df$cyl)
-rp.label(df$hp) &lt;- &apos;horsepower&apos;; rp.label(df$wt) &lt;- &apos;weight&apos;; rp.scatterplot(df$hp, df$wt)
-rp.scatterplot(df$hp, df$wt, colorize=TRUE)
-with(df, rp.scatterplot(hp, wt, facet = am))
-rp.scatterplot(hp, wt, data=df)
-rp.scatterplot(hp, wt, am, df)
+<div class="highlight"><pre><code class="r">rp.scatterplot(ius2008$edu, ius2008$age)
+rp.scatterplot(ius2008$edu, ius2008$age, facet=ius2008$gender)
+with(ius2008, rp.scatterplot(edu, age, facet = gender))
+rp.scatterplot(edu, age, data=ius2008)
+rp.scatterplot(edu, age, gender, ius2008)
+</code></pre>
+</div>
+
+<a id="theme.rapport"> </a>
+##### theme.rapport: Rapport theme
+###### Description:
+<p>Custom minimalistic but colorful lattice/trellis theme used by default in rapport.</p>
+###### Details:
+<p>  Default parameters are read from  <code>options</code>  : </p>
+<ul>  <li>   <p>&apos;style.color.palette&apos;,</p>  </li>  <li>   <p>&apos;style.colorize&apos;,</p>  </li>  <li>   <p>&apos;style.font&apos;.</p>  </li> </ul>###### Usage:
+<div class="highlight">
+	<pre><code class="r">theme.rapport(bw = FALSE,    palette = getOption(&quot;style.color.palette&quot;),    colorize = getOption(&quot;style.colorize&quot;),    font = getOption(&quot;style.font&quot;), custom)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>bw</code>
+  </td>
+  <td>
+   <p>generating black and white output?</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>palette</code>
+  </td>
+  <td>
+   <p>
+    color palette to use. See:
+    <code>rp.palette</code>
+    for details.
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>colorize</code>
+  </td>
+  <td>
+   <p>adding some random noise instead of using
+first available color(s) from palette</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>font</code>
+  </td>
+  <td>
+   <p>specified font family</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>custom</code>
+  </td>
+  <td>
+   <p>
+    list of custom lattice options to change.
+Eg.
+    <code>par.main.text = list(lineheight = 2)</code>
+   </p>
+  </td>
+ </tr>
+</table>
+###### Returned value:
+<p>list of lattice parameters</p>
+###### References:
+<p>
+ Forked from
+ <code>latticeExtra::ggplot2like()</code>
+ and
+ <code>lattice::standard.theme()</code>
+ .
+</p>
+###### Examples:
+<div class="highlight"><pre><code class="r">theme.rapport()
+theme.rapport(palette=&apos;Greens&apos;)
+theme.rapport(palette=&apos;Greens&apos;, colorize = FALSE)
+theme.rapport(custom=list(par.main.text = list(lineheight = 2)))
 </code></pre>
 </div>
 
@@ -1541,6 +1632,56 @@ storage.mode(guess.mode(&quot;TRUE&quot;))
 storage.mode(guess.mode(&quot;TRUE         &quot;))
 storage.mode(guess.mode(&quot;     TRUE         &quot;, TRUE))
 </code></pre>
+</div>
+
+<a id="is.empty"> </a>
+##### is.empty: Empty Value
+###### Description:
+<p>  Rails-inspired helper that checks if value is &quot;empty&quot;, i.e. if it&apos;s of  <code>NULL</code>  ,  <code>NA</code>  ,  <code>NaN</code>  ,  <code>FALSE</code>  , empty string or 0. </p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">is.empty(x, trim = FALSE, ...)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>an object to check</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>trim</code>
+  </td>
+  <td>
+   <p>trim whitespace? (by default removes only
+trailing spaces)</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>...</code>
+  </td>
+  <td>
+   <p>
+    additional arguments for
+    <code>trim.space</code>
+   </p>
+  </td>
+ </tr>
+</table>
+###### Examples:
+<div class="highlight"><pre><code class="r">is.empty(NULL)     # returns [1] TRUE
+is.empty(NA)       # returns [1] TRUE
+is.empty(NaN)      # returns [1] TRUE
+is.empty(&quot;&quot;)       # returns [1] TRUE
+is.empty(0)        # returns [1] TRUE
+is.empty(0.00)     # returns [1] TRUE
+is.empty(&quot;foobar&quot;) # returns [1] FALSE
+is.empty(&quot;    &quot;)   # returns [1] FALSE</code></pre>
 </div>
 
 <a id="is.number"> </a>
@@ -1902,7 +2043,7 @@ wrap(c(&quot;fee&quot;, &quot;fi&quot;, &quot;foo&quot;, &quot;fam&quot;), &quot
 <p>  Aggregate table of descriptives according to functions provided in  <code>fn</code>  argument. This function follows melt/cast approach used in  <code>reshape</code>  package. Variable names specified in  <code>measure.vars</code>  argument are treated as  <code>measure.vars</code>  , while the ones in  <code>id.vars</code>  are treated as  <code>id.vars</code>  (see  <code>melt.data.frame</code>  for details). Other its formal arguments match with corresponding arguments for  <code>cast</code>  function. Some post-processing is done after reshaping, in order to get pretty row and column labels. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.desc(measure.vars, id.vars = NULL, fn, data = NULL,    na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA,    add.missing = FALSE, total.name = &quot;Total&quot;)</code></pre>
+	<pre><code class="r">rp.desc(measure.vars, id.vars = NULL, fn, data = NULL,    na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA,    add.missing = FALSE, total.name = &quot;Total&quot;,    varcol.name = &quot;Variable&quot;,    use.labels = getOption(&quot;rp.use.labels&quot;),    remove.duplicate = TRUE)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -2022,6 +2163,52 @@ aggregating</p>
 &quot;grand&quot; margin (defaults to &quot;Total&quot;)</p>
   </td>
  </tr>
+ <tr valign="top">
+  <td>
+   <code>varcol.name</code>
+  </td>
+  <td>
+   <p>
+    character string for column that
+contains summarised variables (defaults to
+    <code>&quot;Variable&quot;</code>
+    )
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>use.labels</code>
+  </td>
+  <td>
+   <p>
+    use labels instead of variable names in
+table header (handle with care, especially if you have
+lengthy labels). Defaults to value specified in
+    <code>rp.use.labels</code>
+    option.
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>remove.duplicate</code>
+  </td>
+  <td>
+   <p>
+    should name/label of the variable
+provided in
+    <code>measure.vars</code>
+    be removed from each
+column if only one
+    <code>measure.var</code>
+    is provided
+(defaults to
+    <code>TRUE</code>
+    )
+   </p>
+  </td>
+ </tr>
 </table>
 ###### Returned value:
 <p>
@@ -2030,13 +2217,15 @@ aggregating</p>
  with aggregated data
 </p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">rp.desc(&quot;cyl&quot;, &quot;am&quot;, c(mean, sd), mtcars, margins = TRUE)</code></pre>
+<div class="highlight"><pre><code class="r">rp.desc(&quot;cyl&quot;, &quot;am&quot;, c(mean, sd), mtcars, margins = TRUE)
+## c
+rp.desc(&quot;age&quot;, c(&quot;gender&quot;, &quot;student&quot;), c(&quot;Average&quot; = mean, &quot;Deviation&quot; = sd), ius2008, remove.duplicate = FALSE)</code></pre>
 </div>
 
 <a id="rp.freq"> </a>
 ##### rp.freq: Frequency Table
 ###### Description:
-<p>Diplay frequency table.</p>
+<p>Diplay frequency table with counts, percentage, and cumulatives.</p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">rp.freq(f.vars, data, na.rm = TRUE, include.na = FALSE,    drop.unused.levels = FALSE, count = TRUE, pct = TRUE,    cumul.count = TRUE, cumul.pct = TRUE,    total.name = &quot;Total&quot;)</code></pre>
@@ -2134,7 +2323,7 @@ be left out</p>
 <p>
  a
  <code>data.frame</code>
- with frequencies
+ with a frequency table
 </p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">rp.freq(c(&quot;am&quot;, &quot;cyl&quot;, &quot;vs&quot;), mtcars)
@@ -2644,7 +2833,7 @@ elements</p>
 <p>  This function uses  <code>htest.short</code>  , to extract statistic and p-value from  <code>htest</code>  -classed object. Main advantage of using  <code>htest</code>  is that it&apos;s vectorised, and can accept multiple methods. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">htest(x, ..., use.labels = TRUE, colnames = NULL,    rownames = NULL)</code></pre>
+	<pre><code class="r">htest(x, ..., use.labels = getOption(&quot;rp.use.labels&quot;),    use.method.names = TRUE,    colnames = c(&quot;Statistic&quot;, &quot;p-value&quot;))</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -2687,19 +2876,25 @@ variable labels should be placed in row names. If set to
  </tr>
  <tr valign="top">
   <td>
+   <code>use.method.names</code>
+  </td>
+  <td>
+   <p>
+    use the string provided in
+    <code>method</code>
+    attribute of
+    <code>htest</code>
+    object
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
    <code>colnames</code>
   </td>
   <td>
    <p>a character string containing column
 names</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>rownames</code>
-  </td>
-  <td>
-   <p>a character string containing row names</p>
   </td>
  </tr>
 </table>
@@ -3845,7 +4040,7 @@ print(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;))
 <p>  <em>rapport</em>  is an R package that facilitates creation of reproducible statistical report templates. Once created,  <em>rapport</em>  templates can be exported to various external formats:  <em>HTML</em>  ,  <em>LaTeX</em>  ,  <em>PDF</em>  ,  <em>ODT</em>  , etc. Apart from R, all you need to know to start writing your own templates is  <em>pandoc</em>  markup syntax, and several  <em>rapport</em>  -specific conventions that allow the reproducibility of the template.  <em>rapport</em>  uses  <em>brew</em>  -like tags to support dynamic inline and/or block evaluation of R code. Unlike many other report-writing conventions in R (  <em>Sweave</em>  ,  <em>brew</em>  ),  <em>rapport</em>  converts generated output in a convenient form via  <em>acii</em>  function.  <em>rapport</em>  also comes with support for plots: images are automatically saved to temporary file, and image path is returned. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rapport(fp, data = NULL, ..., reproducible = FALSE,    header.levels.offset = 0,    rapport.mode = getOption(&quot;rapport.mode&quot;),    graph.output = &quot;png&quot;)</code></pre>
+	<pre><code class="r">rapport(fp, data = NULL, ..., reproducible = FALSE,    header.levels.offset = 0,    rapport.mode = getOption(&quot;rapport.mode&quot;),    graph.output = getOption(&quot;graph.format&quot;),    graph.width = getOption(&quot;graph.width&quot;),    graph.height = getOption(&quot;graph.height&quot;),    graph.res = getOption(&quot;graph.res&quot;),    graph.hi.res = getOption(&quot;graph.hi.res&quot;))</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -3943,8 +4138,44 @@ error.
    <code>graph.output</code>
   </td>
   <td>
-   <p>set the required file format of saved
-plots</p>
+   <p>the required file format of saved
+plots (optional)</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>graph.width</code>
+  </td>
+  <td>
+   <p>the required width of saved plots
+(optional)</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>graph.height</code>
+  </td>
+  <td>
+   <p>the required height of saved plots
+(optional)</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>graph.res</code>
+  </td>
+  <td>
+   <p>the required nominal resolution in ppi
+of saved plots (optional)</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>graph.hi.res</code>
+  </td>
+  <td>
+   <p>logical value indicating if high
+resolution (1280x~1280) images would be also genareted</p>
   </td>
  </tr>
 </table>
@@ -3955,11 +4186,19 @@ plots</p>
  class.
 </p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">rapport(&quot;example&quot;, ius2008, var=&quot;leisure&quot;)
-rapport(&quot;example&quot;, ius2008, var=&quot;leisure&quot;, desc=FALSE, hist=T, themer=&quot;Set1&quot;)
-rapport(&quot;example&quot;, ius2008, var=&quot;leisure&quot;, rapport.mode=&apos;debug&apos;)
-rapport(&quot;example&quot;, ius2008, var=&quot;leisure&quot;, rapport.mode=&apos;performance&apos;)
+<div class="highlight"><pre><code class="r">rapport(&quot;example&quot;, ius2008, var = &quot;leisure&quot;)
+rapport(&quot;example&quot;, ius2008, var = &quot;leisure&quot;, desc = FALSE, hist = TRUE, theme = &quot;Set1&quot;)
+rapport(&quot;example&quot;, ius2008, var = &quot;leisure&quot;, rapport.mode = &apos;debug&apos;)
+rapport(&quot;example&quot;, ius2008, var = &quot;leisure&quot;, rapport.mode = &apos;performance&apos;)
 ## Or set \code{&apos;rapport.mode&apos;} option to \code{debug}, \code{performance} or back to \code{normal}.
+## generating high resolution images also
+rapport(&quot;example&quot;, ius2008, var=&quot;leisure&quot;, hist = TRUE, graph.hi.res = TRUE)
+rapport.html(&quot;nortest&quot;, ius2008, var = &quot;leisure&quot;, graph.hi.res=T)
+## generating only high resolution image
+rapport(&quot;example&quot;, ius2008, var=&quot;leisure&quot;, hist = TRUE, graph.width = 1280, graph.height = 1280)    # might be a good idea to set \code{graph.res} too
+## nested templates cannot get custom setting, use custom rapport option:
+options(&apos;graph.hi.res&apos; = TRUE)
+rapport(&apos;descriptives-multivar&apos;, data=ius2008, vars=c(&quot;gender&quot;, &apos;age&apos;))
 </code></pre>
 </div>
 
@@ -4324,7 +4563,7 @@ appropriate error</p>
 <p>Checks if the examples of given template can be run without any error and if the same output would be returned by calling the template in &quot;strict&quot; mode.</p>
 ###### Details:
 <p>  Strict mode is a huge performance gain (principally with nested templates where the overhead of extra checks lead to exponential slowdown with every level of nested hierarchy) based on  <code>evals</code>  &apos;  <code>check.output</code>  parameter: no checks would be performed on template body about outputs. Thanks to this, strict mode templates should be written considering the following requirements: </p>
-<ul>  <li>   <p>each block should return on the last line of the code,</p>  </li>  <li>   <p>    each block should always return something on the last line (if you do not want to return anything, add    <code>NULL</code>    to the last line),   </p>  </li>  <li>   <p>ggplot and lattice graphs should be always printed (of course on the last line),</p>  </li>  <li>   <p>    the template should be checked before live run with    <code>tpl.check</code>    .   </p>  </li> </ul>
+<ul>  <li>   <p>each block should return on the last line of the code,</p>  </li>  <li>   <p>    each block should always return something on the last line (if you do not want to return anything, add    <code>NULL</code>    to the last line),   </p>  </li>  <li>   <p>ggplot and lattice graphs should be always printed (of course on the last line),</p>  </li>  <li>   <p>a block resulting in a plot should not alter variables and data sets,</p>  </li>  <li>   <p>    the template should be checked before live run with    <code>tpl.check</code>    .   </p>  </li> </ul>
 <p>  <code>tpl.check</code>  will print on the console some text messages about the result of the test (errors etc.), but will also return a  <code>list</code>  invisible. List elements: </p>
 <ul>  <li>   <p>run: if all blocks could run without error (TRUE/FALSE),</p>  </li>  <li>   <p>strict: if rapport in &quot;performance&quot; (strict) mode returns the same output (TRUE/FALSE).</p>  </li> </ul>
 <p>  If everything went fine and you get two  <code>TRUE</code>  values, update your template to use &quot;performance&quot; mode on default by adding &quot;Strict: TRUE&quot; to template header. </p>###### Usage:
@@ -4625,7 +4864,7 @@ report. If not set, current time will be set.</p>
 </table>
 ###### Examples:
 <div class="highlight"><pre><code class="r">## eval some template
-x &lt;- rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;hp&quot;)
+x &lt;- rapport(&apos;descriptives-univar&apos;, data=mtcars, var=&quot;hp&quot;)
 ## try basic parameters
 tpl.export(x)
 tpl.export(x, file=&apos;demo&apos;)
