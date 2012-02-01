@@ -166,7 +166,7 @@ Here you can see several diagnostic plots for ANOVA model:
  - normal Q-Q plot
  - residuals against leverages
 
-/tmp/RtmpeIwHkw/file1f0e3b0a.png
+/tmp/RtmpeIwHkw/file20ba7193.png
 
 # ANOVA Summary
 
@@ -282,7 +282,7 @@ Here you can see several diagnostic plots for ANOVA model:
  - normal Q-Q plot
  - residuals against leverages
 
-/tmp/RtmpeIwHkw/file7476378b.png
+/tmp/RtmpeIwHkw/filecc858b1.png
 
 # ANOVA Summary
 
@@ -315,6 +315,7 @@ rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-
 <h6>Popular formats:</h6>
 <ul>
 	<li><a href="demo/anova.html" target="_blank">HTML</a></li>
+	<li><a href="demo/anova.docx">docx (MS Word 2007 format)</a></li>
 	<li><a href="demo/anova.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/anova.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/anova.epub">epub</a></li>
@@ -557,7 +558,7 @@ leisure   -0.0338         0.1732  * * *
 --------- --------------- --------------- ---------------
 
 
-/tmp/RtmpeIwHkw/file4b51894f.png
+/tmp/RtmpeIwHkw/file25ce6bd0.png
 
 
 ##############################################################################################################################################
@@ -621,7 +622,7 @@ carb   -0.5509  * *     0.5270  * *      0.3950  *        0.7498  * * *    -0.09
 ------ ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ----------------
 
 
-/tmp/RtmpeIwHkw/file40ae95ce.png
+/tmp/RtmpeIwHkw/file1001bb88.png
 
 
 {% endhighlight %}
@@ -637,6 +638,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 
 <h6>Popular formats:</h6>
 <ul>
 	<li><a href="demo/correlations.html" target="_blank">HTML</a></li>
+	<li><a href="demo/correlations.docx">docx (MS Word 2007 format)</a></li>
 	<li><a href="demo/correlations.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/correlations.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/correlations.epub">epub</a></li>
@@ -845,7 +847,7 @@ female   3.0844     -3.4312          -0.7595
 
 ## Mosaic chart
 
-/tmp/RtmpeIwHkw/file7e123342.png
+/tmp/RtmpeIwHkw/file38878de7.png
 
 
 #################################################################################
@@ -953,7 +955,7 @@ always        2.0982     -1.2561          -1.6443
 
 ## Mosaic chart
 
-/tmp/RtmpeIwHkw/file55714a93.png
+/tmp/RtmpeIwHkw/file2235fc6f.png
 
 
 {% endhighlight %}
@@ -969,6 +971,7 @@ rapport('crosstable', data=ius2008, row='email', col='dwell')
 <h6>Popular formats:</h6>
 <ul>
 	<li><a href="demo/crosstable.html" target="_blank">HTML</a></li>
+	<li><a href="demo/crosstable.docx">docx (MS Word 2007 format)</a></li>
 	<li><a href="demo/crosstable.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/crosstable.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/crosstable.epub">epub</a></li>
@@ -1142,7 +1145,7 @@ Total        673     100       673            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file2c0df25f.png
+/tmp/RtmpeIwHkw/file6b2b7dc1.png
 
 It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
 
@@ -1165,7 +1168,7 @@ Age            24.5731    6.8491   46.9107
 
 ## Histogram
 
-/tmp/RtmpeIwHkw/file3c83a6ff.png
+/tmp/RtmpeIwHkw/file9f0c262.png
 
 It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
 
@@ -1186,7 +1189,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpeIwHkw/file2bc6744b.png
+/tmp/RtmpeIwHkw/file626292a0.png
 
 ### Normality Tests
 
@@ -1220,19 +1223,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpeIwHkw/file29d8a78d.png
+/tmp/RtmpeIwHkw/file1aea2087.png
 
 #### Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpeIwHkw/file4de2380.png
+/tmp/RtmpeIwHkw/file34c07c0.png
 
 #### Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpeIwHkw/file669e646.png
+/tmp/RtmpeIwHkw/file18dc4103.png
 
 
 
@@ -1265,7 +1268,7 @@ Total         669     100       669            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file4d256c7a.png
+/tmp/RtmpeIwHkw/file69159f7b.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1295,7 +1298,7 @@ Total         677     100       677            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file7c49649c.png
+/tmp/RtmpeIwHkw/file9f761b.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1325,7 +1328,7 @@ Total         678     100       678            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file661dd9cb.png
+/tmp/RtmpeIwHkw/file3fd8011b.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1355,7 +1358,7 @@ Total         672     100       672            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file58d41b2d.png
+/tmp/RtmpeIwHkw/file22555c92.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1385,7 +1388,7 @@ Total          677     100       677            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file6d17deb7.png
+/tmp/RtmpeIwHkw/file1647fd35.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1415,7 +1418,7 @@ Total         673     100       673            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file197dbecc.png
+/tmp/RtmpeIwHkw/file693ec567.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1445,7 +1448,7 @@ Total         678     100       678            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file547f8e99.png
+/tmp/RtmpeIwHkw/file1f5fe624.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1475,7 +1478,7 @@ Total         674     100       674            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file67d4319c.png
+/tmp/RtmpeIwHkw/file1b9b138f.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1505,7 +1508,7 @@ hp             146.6875   68.5629   4700.8669
 
 ## Histogram
 
-/tmp/RtmpeIwHkw/file2d37238.png
+/tmp/RtmpeIwHkw/file448fb78.png
 
 It seems that the highest value is _335_ which is exactly 6.4423 times higher than the smallest value (_52_).
 
@@ -1526,7 +1529,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpeIwHkw/file25d90229.png
+/tmp/RtmpeIwHkw/file5bc7af28.png
 
 ### Normality Tests
 
@@ -1560,19 +1563,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpeIwHkw/file3f56c0f5.png
+/tmp/RtmpeIwHkw/file4506748f.png
 
 #### Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpeIwHkw/file7e42af61.png
+/tmp/RtmpeIwHkw/file483d11b4.png
 
 #### Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpeIwHkw/file41707ad0.png
+/tmp/RtmpeIwHkw/file1594fe66.png
 
 
 
@@ -1591,7 +1594,7 @@ wt             3.2172     0.9785   0.9574
 
 ## Histogram
 
-/tmp/RtmpeIwHkw/file7da799c7.png
+/tmp/RtmpeIwHkw/file51159f43.png
 
 It seems that the highest value is _5.424_ which is exactly 3.5849 times higher than the smallest value (_1.513_).
 
@@ -1612,7 +1615,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpeIwHkw/file7540bc32.png
+/tmp/RtmpeIwHkw/filea0a5e5a.png
 
 ### Normality Tests
 
@@ -1646,19 +1649,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpeIwHkw/file60613c27.png
+/tmp/RtmpeIwHkw/file40aeb96b.png
 
 #### Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpeIwHkw/file69dd2b6d.png
+/tmp/RtmpeIwHkw/file16235e6e.png
 
 #### Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpeIwHkw/file4dc0e306.png
+/tmp/RtmpeIwHkw/file4848bb3.png
 
 
 
@@ -1679,6 +1682,7 @@ rapport('descriptives-multivar', data=mtcars, vars=c('hp','wt'))
 <h6>Popular formats:</h6>
 <ul>
 	<li><a href="demo/descriptives-multivar.html" target="_blank">HTML</a></li>
+	<li><a href="demo/descriptives-multivar.docx">docx (MS Word 2007 format)</a></li>
 	<li><a href="demo/descriptives-multivar.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/descriptives-multivar.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/descriptives-multivar.epub">epub</a></li>
@@ -1804,7 +1808,7 @@ Total        673     100       673            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file26529bd0.png
+/tmp/RtmpeIwHkw/file736db3b3.png
 
 It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
 
@@ -1833,7 +1837,7 @@ Total        662     100       662            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file28c25394.png
+/tmp/RtmpeIwHkw/file573244f6.png
 
 It seems that the highest value is _3_ which is exactly 3 times higher than the smallest value (_1_).
 
@@ -1853,6 +1857,7 @@ rapport('descriptives-univar-factor', data=ius2008, var='dwell')
 <h6>Popular formats:</h6>
 <ul>
 	<li><a href="demo/descriptives-univar-factor.html" target="_blank">HTML</a></li>
+	<li><a href="demo/descriptives-univar-factor.docx">docx (MS Word 2007 format)</a></li>
 	<li><a href="demo/descriptives-univar-factor.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/descriptives-univar-factor.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/descriptives-univar-factor.epub">epub</a></li>
@@ -1984,7 +1989,7 @@ Age            24.5731    6.8491   46.9107
 
 ## Histogram
 
-/tmp/RtmpeIwHkw/file3d36f8e7.png
+/tmp/RtmpeIwHkw/file4b1d6998.png
 
 It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
 
@@ -2005,7 +2010,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpeIwHkw/file37b53527.png
+/tmp/RtmpeIwHkw/file6b8ad1c5.png
 
 ### Normality Tests
 
@@ -2039,19 +2044,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpeIwHkw/file34a78901.png
+/tmp/RtmpeIwHkw/file18227734.png
 
 #### Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpeIwHkw/file2f6dc6bb.png
+/tmp/RtmpeIwHkw/file7014e56b.png
 
 #### Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpeIwHkw/file7dfc666e.png
+/tmp/RtmpeIwHkw/file8611649.png
 
 
 {% endhighlight %}
@@ -2066,6 +2071,7 @@ rapport('descriptives-univar-numeric', data=ius2008, var='age')
 <h6>Popular formats:</h6>
 <ul>
 	<li><a href="demo/descriptives-univar-numeric.html" target="_blank">HTML</a></li>
+	<li><a href="demo/descriptives-univar-numeric.docx">docx (MS Word 2007 format)</a></li>
 	<li><a href="demo/descriptives-univar-numeric.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/descriptives-univar-numeric.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/descriptives-univar-numeric.epub">epub</a></li>
@@ -2207,7 +2213,7 @@ Total        673     100       673            100
 
 ## Barplot
 
-/tmp/RtmpeIwHkw/file334e2c7a.png
+/tmp/RtmpeIwHkw/file1fe85711.png
 
 It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
 
@@ -2235,7 +2241,7 @@ Age            24.5731    6.8491   46.9107
 
 ## Histogram
 
-/tmp/RtmpeIwHkw/file7ad1e683.png
+/tmp/RtmpeIwHkw/file4c80b3c4.png
 
 It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
 
@@ -2256,7 +2262,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpeIwHkw/file32bffdf0.png
+/tmp/RtmpeIwHkw/file6a26f268.png
 
 ### Normality Tests
 
@@ -2290,19 +2296,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpeIwHkw/file37006c86.png
+/tmp/RtmpeIwHkw/file4ece53b3.png
 
 #### Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpeIwHkw/file799d9ac5.png
+/tmp/RtmpeIwHkw/file29414658.png
 
 #### Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpeIwHkw/file3fee5439.png
+/tmp/RtmpeIwHkw/file2d10b315.png
 
 
 
@@ -2320,6 +2326,7 @@ rapport('descriptives-univar', data=ius2008, var='age')
 <h6>Popular formats:</h6>
 <ul>
 	<li><a href="demo/descriptives-univar.html" target="_blank">HTML</a></li>
+	<li><a href="demo/descriptives-univar.docx">docx (MS Word 2007 format)</a></li>
 	<li><a href="demo/descriptives-univar.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/descriptives-univar.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/descriptives-univar.epub">epub</a></li>
@@ -2500,7 +2507,7 @@ And wow, the mean of *leisure* is _3.1994_!
 
 ## Histogram
 
-/tmp/RtmpeIwHkw/file4990c520.png
+/tmp/RtmpeIwHkw/file48feadaf.png
 
 
 ################################################################################################
@@ -2519,7 +2526,7 @@ And wow, the mean of *leisure* is _3.1994_!
 
 ## Histogram
 
-/tmp/RtmpeIwHkw/file4bf4466e.png
+/tmp/RtmpeIwHkw/file49e44603.png
 
 
 {% endhighlight %}
@@ -2537,6 +2544,7 @@ rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')
 <h6>Popular formats:</h6>
 <ul>
 	<li><a href="demo/example.html" target="_blank">HTML</a></li>
+	<li><a href="demo/example.docx">docx (MS Word 2007 format)</a></li>
 	<li><a href="demo/example.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/example.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/example.epub">epub</a></li>
@@ -2693,7 +2701,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpeIwHkw/file49e4345d.png
+/tmp/RtmpeIwHkw/file1d52e978.png
 
 # Normality Tests
 
@@ -2727,19 +2735,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpeIwHkw/file2bb031b1.png
+/tmp/RtmpeIwHkw/file6a58a50d.png
 
 ## Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpeIwHkw/file1cf6b150.png
+/tmp/RtmpeIwHkw/file793f2334.png
 
 ## Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpeIwHkw/file618d0c00.png
+/tmp/RtmpeIwHkw/filef24e211.png
 
 
 #################################################################################
@@ -2789,19 +2797,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpeIwHkw/file531a8b11.png
+/tmp/RtmpeIwHkw/file33aabd82.png
 
 ## Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpeIwHkw/file174f3343.png
+/tmp/RtmpeIwHkw/file60eeead0.png
 
 ## Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpeIwHkw/file797fca8c.png
+/tmp/RtmpeIwHkw/file45e9f847.png
 
 
 #################################################################################
@@ -2819,7 +2827,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpeIwHkw/fileacdc96e.png
+/tmp/RtmpeIwHkw/file3fcfabb2.png
 
 # Normality Tests
 
@@ -2853,19 +2861,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpeIwHkw/file619faf76.png
+/tmp/RtmpeIwHkw/file487d5958.png
 
 ## Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpeIwHkw/file68e8497a.png
+/tmp/RtmpeIwHkw/file44a905e7.png
 
 ## Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpeIwHkw/file548c5fdb.png
+/tmp/RtmpeIwHkw/file52041ba8.png
 
 
 {% endhighlight %}
@@ -2882,6 +2890,7 @@ rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
 <h6>Popular formats:</h6>
 <ul>
 	<li><a href="demo/nortest.html" target="_blank">HTML</a></li>
+	<li><a href="demo/nortest.docx">docx (MS Word 2007 format)</a></li>
 	<li><a href="demo/nortest.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/nortest.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/nortest.epub">epub</a></li>
@@ -3098,7 +3107,7 @@ rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALS
 
 # Boxplot
 
-/tmp/RtmpeIwHkw/file33437c02.png
+/tmp/RtmpeIwHkw/file1dabbac3.png
 
 # Lund test
 
@@ -3143,7 +3152,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
 # Boxplot
 
-/tmp/RtmpeIwHkw/file70e1cec7.png
+/tmp/RtmpeIwHkw/file24fe57a8.png
 
 # Lund test
 
@@ -3188,7 +3197,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
 # Boxplot
 
-/tmp/RtmpeIwHkw/file44ab9b7f.png
+/tmp/RtmpeIwHkw/file7a2ef99.png
 
 # Lund test
 
@@ -3220,6 +3229,7 @@ rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALS
 <h6>Popular formats:</h6>
 <ul>
 	<li><a href="demo/outlier-test.html" target="_blank">HTML</a></li>
+	<li><a href="demo/outlier-test.docx">docx (MS Word 2007 format)</a></li>
 	<li><a href="demo/outlier-test.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/outlier-test.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/outlier-test.epub">epub</a></li>
@@ -3568,6 +3578,7 @@ rapport("t-test", ius2008, x = "leisure", mu = 3.2)
 <h6>Popular formats:</h6>
 <ul>
 	<li><a href="demo/t-test.html" target="_blank">HTML</a></li>
+	<li><a href="demo/t-test.docx">docx (MS Word 2007 format)</a></li>
 	<li><a href="demo/t-test.odt">odt (MS Word compatibile)</a></li>
 	<li><a href="demo/t-test.rtf">rtf (MS Word compatibile)</a></li>
 	<li><a href="demo/t-test.epub">epub</a></li>
