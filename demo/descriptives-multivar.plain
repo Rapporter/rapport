@@ -8,8 +8,6 @@ Description
 This template will return descriptive statistics of numerical or
 frequency tables of categorical variables.
 
-2
-
 gender ("Gender")
 -----------------
 
@@ -41,9 +39,9 @@ age ("Age"), which seems to be a quantitative variable.
 
 Base statistics
 
-  value   mean(age)   sd(age)   var(age)
-  ------- ----------- --------- ----------
-  (all)   24.5731     6.8491    46.9107
+  Variable   mean      sd       var
+  ---------- --------- -------- ---------
+  Age        24.5731   6.8491   46.9107
 
 Histogram
 
@@ -161,8 +159,6 @@ Description
 
 This template will return descriptive statistics of numerical or
 frequency tables of categorical variables.
-
-8
 
 chatim ("Chat & IM usage")
 --------------------------
@@ -395,8 +391,6 @@ Description
 This template will return descriptive statistics of numerical or
 frequency tables of categorical variables.
 
-2
-
 hp
 --
 
@@ -405,9 +399,9 @@ which seems to be a quantitative variable.
 
 Base statistics
 
-  value   mean(hp)   sd(hp)    var(hp)
-  ------- ---------- --------- -----------
-  (all)   146.6875   68.5629   4700.8669
+  Variable   mean       sd        var
+  ---------- ---------- --------- -----------
+  hp         146.6875   68.5629   4700.8669
 
 Histogram
 
@@ -528,9 +522,9 @@ which seems to be a quantitative variable.
 
 Base statistics
 
-  value   mean(wt)   sd(wt)   var(wt)
-  ------- ---------- -------- ---------
-  (all)   3.2172     0.9785   0.9574
+  Variable   mean     sd       var
+  ---------- -------- -------- --------
+  wt         3.2172   0.9785   0.9574
 
 Histogram
 
@@ -644,7 +638,7 @@ known "bell shape".
 
 * * * * *
 
-This report was generated in R with Rapport in 3.061 sec. Feel free to
-create your own reporting templates!
+This report was generated with R (2.14.0) and rapport (0.1) in 6.111 sec
+on x86_64-unknown-linux-gnu platform.
 
 []

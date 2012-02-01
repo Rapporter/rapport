@@ -111,15 +111,13 @@
   </section>
   <section id="barplot">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file75e80a33-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="3ed92ab3ffc6e875335e7e8c774c35a8.png" />
+          <imagedata fileref="3a46554ee29cd4dfe45dda5016464658.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>2</emphasis> which is
       exactly 2 times higher than the smallest value
@@ -156,23 +154,23 @@
         <thead>
           <row>
             <entry>
-              <emphasis role="strong">value</emphasis>
+              <emphasis role="strong">Variable</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">mean(age)</emphasis>
+              <emphasis role="strong">mean</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">sd(age)</emphasis>
+              <emphasis role="strong">sd</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">var(age)</emphasis>
+              <emphasis role="strong">var</emphasis>
             </entry>
           </row>
         </thead>
         <tbody>
           <row>
             <entry>
-              (all)
+              Age
             </entry>
             <entry>
               24.5731
@@ -190,15 +188,13 @@
   </section>
   <section id="histogram">
     <title>Histogram</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file5d4e0c0d-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="ac5d789145bdef09b10219ef16429f53.png" />
+          <imagedata fileref="4f025d440bf35d40e21208e8b0c58b77.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>58</emphasis> which
       is exactly 3.625 times higher than the smallest value
@@ -256,15 +252,13 @@
           </para>
         </listitem>
       </itemizedlist>
-      <figure>
-        <title></title>
-        <mediaobject>
+      <para>
+        <ulink url="/tmp/RtmpeIwHkw/file4dd701cc-hires.png"><inlinemediaobject>
           <imageobject>
-            <imagedata fileref="2f8c434e103f36ec70966b372838d448.png" />
+            <imagedata fileref="806ea97c59e1a12d4acae4968957aaa9.png" />
           </imageobject>
-          <textobject><phrase></phrase></textobject>
-        </mediaobject>
-      </figure>
+        </inlinemediaobject></ulink>
+      </para>
     </section>
     <section id="normality-tests-1">
       <title>Normality Tests</title>
@@ -387,15 +381,13 @@
           distribution is normal, bins should resemble the
           &quot;bell-like&quot; shape.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
+        <para>
+          <ulink url="/tmp/RtmpeIwHkw/file6fb71f43-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="ac5d789145bdef09b10219ef16429f53.png" />
+              <imagedata fileref="4f025d440bf35d40e21208e8b0c58b77.png" />
             </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
+          </inlinemediaobject></ulink>
+        </para>
       </section>
       <section id="q-q-plot">
         <title>Q-Q Plot</title>
@@ -408,15 +400,13 @@
           dots should approximate a &quot;straight&quot;,
           <literal>x = y</literal> line.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
+        <para>
+          <ulink url="/tmp/RtmpeIwHkw/file35f509a2-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="cbbba756d844aa053998959b73b9feff.png" />
+              <imagedata fileref="131f20f388f78bd4863828d9fed8c35c.png" />
             </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
+          </inlinemediaobject></ulink>
+        </para>
       </section>
       <section id="kernel-density-plot">
         <title>Kernel Density Plot</title>
@@ -427,28 +417,24 @@
           For normal distributions, it should resemble the well known
           &quot;bell shape&quot;.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
-            <imageobject>
-              <imagedata fileref="4599005cf6ab3467d8da53b77f40ff98.png" />
-            </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
         <para>
-          This report was generated in
-          <ulink url="http://www.r-project.org/">R</ulink> with
-          <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink>
-          in 0.76 sec. Feel free to create
-          <ulink url="http://al3xa.github.com/rapport/#custom">your own
-          reporting templates</ulink>!
+          <ulink url="/tmp/RtmpeIwHkw/file3c06b601-hires.png"><inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="6b02f49521f9cdd18ef0206b1dac3583.png" />
+            </imageobject>
+          </inlinemediaobject></ulink>
+        </para>
+        <para>
+          This report was generated with
+          <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
+          <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
+          (0.1) in 1.606 sec on x86_64-unknown-linux-gnu platform.
         </para>
         <figure>
           <title></title>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/rapport.png" />
+              <imagedata fileref="images/logo.png" />
             </imageobject>
             <textobject><phrase></phrase></textobject>
           </mediaobject>

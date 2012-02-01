@@ -23,9 +23,8 @@ The dataset has /709/ observations with /673/ valid values (missing:
 
 *** Barplot
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file5022119d-hires.png][[[3a46554ee29cd4dfe45dda5016464658.png]]]]
 
-[[3ed92ab3ffc6e875335e7e8c774c35a8.png]]
 It seems that the highest value is /2/ which is exactly 2 times higher
 than the smallest value (/1/).
 
@@ -52,9 +51,8 @@ The dataset has /709/ observations with /662/ valid values (missing:
 
 *** Barplot
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file33dfbcb6-hires.png][[[a370513c6bd94251e700ff5fea9dd33f.png]]]]
 
-[[56568b0b0cecf2de13fbe0316f43f8fc.png]]
 It seems that the highest value is /3/ which is exactly 3 times higher
 than the smallest value (/1/).
 
@@ -62,11 +60,10 @@ The most frequent value is /city/.
 
 --------------
 
-This report was generated in [[http://www.r-project.org/][R]] with
-[[http://al3xa.github.com/rapport/][Rapport]] in 0.269 sec. Feel free to
-create [[http://al3xa.github.com/rapport/#custom][your own reporting
-templates]]!
+This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
+and [[http://al3xa.github.com/rapport/][rapport]] (0.1) in 0.672 sec on
+x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 
 
-[[images/rapport.png]]
+[[images/logo.png]]

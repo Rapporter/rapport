@@ -37,25 +37,25 @@ descriptive statistics is displayed below.
 tab(@);
 l l l l l l l l l l.
 T{
-\f[B]y\f[]
+\f[B]Gender\f[]
 T}@T{
-\f[B]min(x)\f[]
+\f[B]min\f[]
 T}@T{
-\f[B]max(x)\f[]
+\f[B]max\f[]
 T}@T{
-\f[B]mean(x)\f[]
+\f[B]mean\f[]
 T}@T{
-\f[B]sd(x)\f[]
+\f[B]sd\f[]
 T}@T{
-\f[B]var(x)\f[]
+\f[B]var\f[]
 T}@T{
-\f[B]median(x)\f[]
+\f[B]median\f[]
 T}@T{
-\f[B]IQR(x)\f[]
+\f[B]IQR\f[]
 T}@T{
-\f[B]skewness(x)\f[]
+\f[B]skewness\f[]
 T}@T{
-\f[B]kurtosis(x)\f[]
+\f[B]kurtosis\f[]
 T}
 _
 T{
@@ -100,26 +100,6 @@ T}@T{
 T}@T{
 4.9089
 T}
-T{
-T}@T{
-0
-T}@T{
-10
-T}@T{
-3.3824
-T}@T{
-2.5822
-T}@T{
-6.6676
-T}@T{
-3
-T}@T{
-2
-T}@T{
-1.2197
-T}@T{
-3.8058
-T}
 .TE
 .SS Diagnostics
 .PP
@@ -140,27 +120,27 @@ tab(@);
 l l l.
 T{
 T}@T{
-\f[B]W\f[]
+\f[B]N\f[]
 T}@T{
 \f[B]p\f[]
 T}
 _
 T{
-shapiro.test
+Shapiro-Wilk normality test
 T}@T{
 0.9001
 T}@T{
 0
 T}
 T{
-lillie.test
+Lilliefors (Kolmogorov-Smirnov) normality test
 T}@T{
 0.168
 T}@T{
 0
 T}
 T{
-ad.test
+Anderson-Darling normality test
 T}@T{
 18.753
 T}@T{
@@ -240,29 +220,29 @@ descriptive statistics is displayed below.
 tab(@);
 l l l l l l l l l l.
 T{
-\f[B]value\f[]
+\f[B]Variable\f[]
 T}@T{
-\f[B]min(x)\f[]
+\f[B]NA\f[]
 T}@T{
-\f[B]max(x)\f[]
+\f[B]NA\f[]
 T}@T{
-\f[B]mean(x)\f[]
+\f[B]NA\f[]
 T}@T{
-\f[B]sd(x)\f[]
+\f[B]NA\f[]
 T}@T{
-\f[B]var(x)\f[]
+\f[B]NA\f[]
 T}@T{
-\f[B]median(x)\f[]
+\f[B]NA\f[]
 T}@T{
-\f[B]IQR(x)\f[]
+\f[B]NA\f[]
 T}@T{
-\f[B]skewness(x)\f[]
+\f[B]NA\f[]
 T}@T{
-\f[B]kurtosis(x)\f[]
+\f[B]NA\f[]
 T}
 _
 T{
-(all)
+Internet usage in leisure time (hours per day)
 T}@T{
 0
 T}@T{
@@ -302,27 +282,27 @@ tab(@);
 l l l.
 T{
 T}@T{
-\f[B]W\f[]
+\f[B]N\f[]
 T}@T{
 \f[B]p\f[]
 T}
 _
 T{
-shapiro.test
+Shapiro-Wilk normality test
 T}@T{
 0.9001
 T}@T{
 0
 T}
 T{
-lillie.test
+Lilliefors (Kolmogorov-Smirnov) normality test
 T}@T{
 0.168
 T}@T{
 0
 T}
 T{
-ad.test
+Anderson-Darling normality test
 T}@T{
 18.753
 T}@T{
@@ -368,11 +348,10 @@ T}
 .PP
    *   *   *   *   *
 .PP
-This report was generated in R (http://www.r-project.org/) with
-Rapport (http://al3xa.github.com/rapport/) in 0.837 sec.
-Feel free to create your own reporting
-templates (http://al3xa.github.com/rapport/#custom)!
+This report was generated with R (http://www.r-project.org/) (2.14.0)
+and rapport (http://al3xa.github.com/rapport/) (0.1) in 0.691 sec on
+x86_64-unknown-linux-gnu platform.
 .PP
-[IMAGE: image (images/rapport.png)]
+[IMAGE: image (images/logo.png)]
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

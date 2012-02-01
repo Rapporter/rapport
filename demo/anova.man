@@ -85,23 +85,23 @@ right-hand side.
 tab(@);
 l l l l l l l l l.
 T{
-\f[B]fac\f[]
+\f[B]Gender\f[]
 T}@T{
-\f[B]min(resp)\f[]
+\f[B]Min\f[]
 T}@T{
-\f[B]max(resp)\f[]
+\f[B]Max\f[]
 T}@T{
-\f[B]mean(resp)\f[]
+\f[B]Mean\f[]
 T}@T{
-\f[B]SD(resp)\f[]
+\f[B]Std.Dev.\f[]
 T}@T{
-\f[B]median(resp)\f[]
+\f[B]Median\f[]
 T}@T{
-\f[B]IQR(resp)\f[]
+\f[B]IQR\f[]
 T}@T{
-\f[B]skewness(resp)\f[]
+\f[B]Skewness\f[]
 T}@T{
-\f[B]kurtosis(resp)\f[]
+\f[B]Kurtosis\f[]
 T}
 _
 T{
@@ -142,24 +142,6 @@ T}@T{
 T}@T{
 4.9089
 T}
-T{
-T}@T{
-0
-T}@T{
-10
-T}@T{
-3.3824
-T}@T{
-2.5822
-T}@T{
-3
-T}@T{
-2
-T}@T{
-1.2197
-T}@T{
-3.8058
-T}
 .TE
 .SS Diagnostics
 .PP
@@ -181,27 +163,27 @@ tab(@);
 l l l.
 T{
 T}@T{
-\f[B]W\f[]
+\f[B]Statistic\f[]
 T}@T{
-\f[B]p\f[]
+\f[B]p-value\f[]
 T}
 _
 T{
-shapiro.test
+Shapiro-Wilk normality test
 T}@T{
 0.9001
 T}@T{
 0
 T}
 T{
-lillie.test
+Lilliefors (Kolmogorov-Smirnov) normality test
 T}@T{
 0.168
 T}@T{
 0
 T}
 T{
-ad.test
+Anderson-Darling normality test
 T}@T{
 18.753
 T}@T{
@@ -220,20 +202,20 @@ tab(@);
 l l l.
 T{
 T}@T{
-\f[B]H\f[]
+\f[B]Statistic\f[]
 T}@T{
-\f[B]p\f[]
+\f[B]p-value\f[]
 T}
 _
 T{
-fligner.test
+Fligner-Killeen test of homogeneity of variances
 T}@T{
 0.4629
 T}@T{
 0.4963
 T}
 T{
-bartlett.test
+Bartlett test of homogeneity of variances
 T}@T{
 10.7698
 T}@T{
@@ -257,7 +239,7 @@ normal Q-Q plot
 .IP \[bu] 2
 residuals against leverages
 .PP
-[IMAGE: image (1c63b6fad7856cf59a751b0f80339918.png)]
+[IMAGE: image (dd5cdfe79c3741b4373910424cb2824c.png)] (/tmp/RtmpeIwHkw/file2f8d0c35-hires.png)
 .SS ANOVA Summary
 .SS ANOVA Table
 .PP
@@ -450,30 +432,33 @@ right-hand side.
 .PP
 .TS
 tab(@);
-l l l l l l l l l l.
+l l l l l l l l l l l.
 T{
-\f[B]gender\f[]
 T}@T{
-\f[B]partner\f[]
+\f[B]Gender\f[]
 T}@T{
-\f[B]min(resp)\f[]
+\f[B]Relationship status\f[]
 T}@T{
-\f[B]max(resp)\f[]
+\f[B]Min\f[]
 T}@T{
-\f[B]mean(resp)\f[]
+\f[B]Max\f[]
 T}@T{
-\f[B]SD(resp)\f[]
+\f[B]Mean\f[]
 T}@T{
-\f[B]median(resp)\f[]
+\f[B]Std.Dev.\f[]
 T}@T{
-\f[B]IQR(resp)\f[]
+\f[B]Median\f[]
 T}@T{
-\f[B]skewness(resp)\f[]
+\f[B]IQR\f[]
 T}@T{
-\f[B]kurtosis(resp)\f[]
+\f[B]Skewness\f[]
+T}@T{
+\f[B]Kurtosis\f[]
 T}
 _
 T{
+1
+T}@T{
 male
 T}@T{
 in a relationship
@@ -495,6 +480,8 @@ T}@T{
 5.727
 T}
 T{
+2
+T}@T{
 male
 T}@T{
 married
@@ -516,6 +503,8 @@ T}@T{
 3.351
 T}
 T{
+3
+T}@T{
 male
 T}@T{
 single
@@ -537,26 +526,8 @@ T}@T{
 3.1208
 T}
 T{
-male
+5
 T}@T{
-T}@T{
-0.5
-T}@T{
-6.5
-T}@T{
-3.1304
-T}@T{
-1.7788
-T}@T{
-3
-T}@T{
-2.75
-T}@T{
-0.0719
-T}@T{
-1.9965
-T}
-T{
 female
 T}@T{
 in a relationship
@@ -578,6 +549,8 @@ T}@T{
 4.9165
 T}
 T{
+6
+T}@T{
 female
 T}@T{
 married
@@ -599,6 +572,8 @@ T}@T{
 9.2864
 T}
 T{
+7
+T}@T{
 female
 T}@T{
 single
@@ -618,105 +593,6 @@ T}@T{
 1.2045
 T}@T{
 4.0139
-T}
-T{
-female
-T}@T{
-T}@T{
-0.5
-T}@T{
-6
-T}@T{
-2.6562
-T}@T{
-1.739
-T}@T{
-2
-T}@T{
-3
-T}@T{
-0.6914
-T}@T{
-2.4285
-T}
-T{
-T}@T{
-in a relationship
-T}@T{
-0
-T}@T{
-8
-T}@T{
-3.3333
-T}@T{
-2.4398
-T}@T{
-3
-T}@T{
-2.5
-T}@T{
-0.7897
-T}@T{
-2.5973
-T}
-T{
-T}@T{
-married
-T}@T{
-2
-T}@T{
-7
-T}@T{
-3.8
-T}@T{
-1.9235
-T}@T{
-3
-T}@T{
-1
-T}@T{
-1.018
-T}@T{
-2.6519
-T}
-T{
-T}@T{
-single
-T}@T{
-0
-T}@T{
-10
-T}@T{
-3.5833
-T}@T{
-3.2039
-T}@T{
-3
-T}@T{
-1.5
-T}@T{
-1.279
-T}@T{
-3.4365
-T}
-T{
-T}@T{
-T}@T{
-1
-T}@T{
-2
-T}@T{
-1.5
-T}@T{
-0.7071
-T}@T{
-1.5
-T}@T{
-0.5
-T}@T{
-0
-T}@T{
-1
 T}
 .TE
 .SS Diagnostics
@@ -739,27 +615,27 @@ tab(@);
 l l l.
 T{
 T}@T{
-\f[B]W\f[]
+\f[B]Statistic\f[]
 T}@T{
-\f[B]p\f[]
+\f[B]p-value\f[]
 T}
 _
 T{
-shapiro.test
+Shapiro-Wilk normality test
 T}@T{
 0.9001
 T}@T{
 0
 T}
 T{
-lillie.test
+Lilliefors (Kolmogorov-Smirnov) normality test
 T}@T{
 0.168
 T}@T{
 0
 T}
 T{
-ad.test
+Anderson-Darling normality test
 T}@T{
 18.753
 T}@T{
@@ -778,20 +654,20 @@ tab(@);
 l l l.
 T{
 T}@T{
-\f[B]H\f[]
+\f[B]Statistic\f[]
 T}@T{
-\f[B]p\f[]
+\f[B]p-value\f[]
 T}
 _
 T{
-fligner.test
+Fligner-Killeen test of homogeneity of variances
 T}@T{
 1.1234
 T}@T{
 0.2892
 T}
 T{
-bartlett.test
+Bartlett test of homogeneity of variances
 T}@T{
 11.1267
 T}@T{
@@ -815,7 +691,7 @@ normal Q-Q plot
 .IP \[bu] 2
 residuals against leverages
 .PP
-[IMAGE: image (efd197b02ca1541c48611907a3c42576.png)]
+[IMAGE: image (3e897b547f80202649804e256107f6e0.png)] (/tmp/RtmpeIwHkw/file38c269fb-hires.png)
 .SS ANOVA Summary
 .SS ANOVA Table
 .PP
@@ -896,11 +772,10 @@ status\f[] wasn\[aq]t found significant (p = 0.717).
 .PP
    *   *   *   *   *
 .PP
-This report was generated in R (http://www.r-project.org/) with
-Rapport (http://al3xa.github.com/rapport/) in 0.617 sec.
-Feel free to create your own reporting
-templates (http://al3xa.github.com/rapport/#custom)!
+This report was generated with R (http://www.r-project.org/) (2.14.0)
+and rapport (http://al3xa.github.com/rapport/) (0.1) in 1.188 sec on
+x86_64-unknown-linux-gnu platform.
 .PP
-[IMAGE: image (images/rapport.png)]
+[IMAGE: image (images/logo.png)]
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

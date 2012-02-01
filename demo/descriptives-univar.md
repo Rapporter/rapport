@@ -24,7 +24,7 @@ The dataset has *709* observations with *673* valid values (missing:
 
 ### Barplot
 
-![image](3ed92ab3ffc6e875335e7e8c774c35a8.png)
+[![image](3a46554ee29cd4dfe45dda5016464658.png)](/tmp/RtmpeIwHkw/file75e80a33-hires.png)
 
 It seems that the highest value is *2* which is exactly 2 times higher
 than the smallest value (*1*).
@@ -45,13 +45,13 @@ The dataset has *709* observations with *677* valid values (missing:
 
 ### Base statistics
 
-  **value**   **mean(age)**   **sd(age)**   **var(age)**
-  ----------- --------------- ------------- --------------
-  (all)       24.5731         6.8491        46.9107
+  **Variable**   **mean**   **sd**   **var**
+  -------------- ---------- -------- ---------
+  Age            24.5731    6.8491   46.9107
 
 ### Histogram
 
-![image](ac5d789145bdef09b10219ef16429f53.png)
+[![image](4f025d440bf35d40e21208e8b0c58b77.png)](/tmp/RtmpeIwHkw/file5d4e0c0d-hires.png)
 
 It seems that the highest value is *58* which is exactly 3.625 times
 higher than the smallest value (*16*).
@@ -83,7 +83,7 @@ distributions, as it's defined two parameters:
 -   *μ* - *mean* or *expectation* (location parameter)
 -   *σ^2^* - *variance* (scale parameter)
 
-![image](2f8c434e103f36ec70966b372838d448.png)
+[![image](806ea97c59e1a12d4acae4968957aaa9.png)](/tmp/RtmpeIwHkw/file4dd701cc-hires.png)
 
 #### Normality Tests
 
@@ -142,7 +142,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-![image](ac5d789145bdef09b10219ef16429f53.png)
+[![image](4f025d440bf35d40e21208e8b0c58b77.png)](/tmp/RtmpeIwHkw/file6fb71f43-hires.png)
 
 ##### Q-Q Plot
 
@@ -151,7 +151,7 @@ and theoretical distribution (in this case, *normal* distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", `x = y` line.
 
-![image](cbbba756d844aa053998959b73b9feff.png)
+[![image](131f20f388f78bd4863828d9fed8c35c.png)](/tmp/RtmpeIwHkw/file35f509a2-hires.png)
 
 ##### Kernel Density Plot
 
@@ -160,13 +160,12 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](4599005cf6ab3467d8da53b77f40ff98.png)
+[![image](6b02f49521f9cdd18ef0206b1dac3583.png)](/tmp/RtmpeIwHkw/file3c06b601-hires.png)
 
 * * * * *
 
-This report was generated in [R](http://www.r-project.org/) with
-[Rapport](http://al3xa.github.com/rapport/) in 0.76 sec. Feel free to
-create [your own reporting
-templates](http://al3xa.github.com/rapport/#custom)!
+This report was generated with [R](http://www.r-project.org/) (2.14.0)
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.606 sec on
+x86\_64-unknown-linux-gnu platform.
 
-![image](images/rapport.png)
+![image](images/logo.png)

@@ -36,23 +36,23 @@
         <thead>
           <row>
             <entry>
-              <emphasis role="strong">value</emphasis>
+              <emphasis role="strong">Variable</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">mean(age)</emphasis>
+              <emphasis role="strong">mean</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">sd(age)</emphasis>
+              <emphasis role="strong">sd</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">var(age)</emphasis>
+              <emphasis role="strong">var</emphasis>
             </entry>
           </row>
         </thead>
         <tbody>
           <row>
             <entry>
-              (all)
+              Age
             </entry>
             <entry>
               24.5731
@@ -74,7 +74,7 @@
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="ac5d789145bdef09b10219ef16429f53.png" />
+          <imagedata fileref="4f025d440bf35d40e21208e8b0c58b77.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>
@@ -140,7 +140,7 @@
         <title></title>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="2f8c434e103f36ec70966b372838d448.png" />
+            <imagedata fileref="806ea97c59e1a12d4acae4968957aaa9.png" />
           </imageobject>
           <textobject><phrase></phrase></textobject>
         </mediaobject>
@@ -271,7 +271,7 @@
           <title></title>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="ac5d789145bdef09b10219ef16429f53.png" />
+              <imagedata fileref="4f025d440bf35d40e21208e8b0c58b77.png" />
             </imageobject>
             <textobject><phrase></phrase></textobject>
           </mediaobject>
@@ -292,7 +292,7 @@
           <title></title>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="cbbba756d844aa053998959b73b9feff.png" />
+              <imagedata fileref="131f20f388f78bd4863828d9fed8c35c.png" />
             </imageobject>
             <textobject><phrase></phrase></textobject>
           </mediaobject>
@@ -311,24 +311,22 @@
           <title></title>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="168d92f4cf90d2c563e5a0166a64150c.png" />
+              <imagedata fileref="9435c7015dbc7e9f9adb4c53640f9c92.png" />
             </imageobject>
             <textobject><phrase></phrase></textobject>
           </mediaobject>
         </figure>
         <para>
-          This report was generated in
-          <ulink url="http://www.r-project.org/">R</ulink> with
-          <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink>
-          in 0.625 sec. Feel free to create
-          <ulink url="http://al3xa.github.com/rapport/#custom">your own
-          reporting templates</ulink>!
+          This report was generated with
+          <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
+          <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
+          (0.1) in 1.592 sec on x86_64-unknown-linux-gnu platform.
         </para>
         <figure>
           <title></title>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/rapport.png" />
+              <imagedata fileref="images/logo.png" />
             </imageobject>
             <textobject><phrase></phrase></textobject>
           </mediaobject>

@@ -60,15 +60,15 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <table>
 <thead>
 <tr class="header">
-<th align="left">'''fac'''</th>
-<th align="left">'''min(resp)'''</th>
-<th align="left">'''max(resp)'''</th>
-<th align="left">'''mean(resp)'''</th>
-<th align="left">'''SD(resp)'''</th>
-<th align="left">'''median(resp)'''</th>
-<th align="left">'''IQR(resp)'''</th>
-<th align="left">'''skewness(resp)'''</th>
-<th align="left">'''kurtosis(resp)'''</th>
+<th align="left">'''Gender'''</th>
+<th align="left">'''Min'''</th>
+<th align="left">'''Max'''</th>
+<th align="left">'''Mean'''</th>
+<th align="left">'''Std.Dev.'''</th>
+<th align="left">'''Median'''</th>
+<th align="left">'''IQR'''</th>
+<th align="left">'''Skewness'''</th>
+<th align="left">'''Kurtosis'''</th>
 </tr>
 </thead>
 <tbody>
@@ -94,17 +94,6 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">1.4064</td>
 <td align="left">4.9089</td>
 </tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">0</td>
-<td align="left">10</td>
-<td align="left">3.3824</td>
-<td align="left">2.5822</td>
-<td align="left">3</td>
-<td align="left">2</td>
-<td align="left">1.2197</td>
-<td align="left">3.8058</td>
-</tr>
 </tbody>
 </table>
 
@@ -124,23 +113,23 @@ We will use ''Shapiro-Wilk'', ''Lilliefors'' and ''Anderson-Darling'' tests to s
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left">'''W'''</th>
-<th align="left">'''p'''</th>
+<th align="left">'''Statistic'''</th>
+<th align="left">'''p-value'''</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">shapiro.test</td>
+<td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
 <td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="left">lillie.test</td>
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
 <td align="left">0.168</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="left">ad.test</td>
+<td align="left">Anderson-Darling normality test</td>
 <td align="left">18.753</td>
 <td align="left">0</td>
 </tr>
@@ -159,18 +148,18 @@ In order to test homoscedascity, ''Bartlett'' and ''Fligner-Kileen'' tests are a
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left">'''H'''</th>
-<th align="left">'''p'''</th>
+<th align="left">'''Statistic'''</th>
+<th align="left">'''p-value'''</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">fligner.test</td>
+<td align="left">Fligner-Killeen test of homogeneity of variances</td>
 <td align="left">0.4629</td>
 <td align="left">0.4963</td>
 </tr>
 <tr class="even">
-<td align="left">bartlett.test</td>
+<td align="left">Bartlett test of homogeneity of variances</td>
 <td align="left">10.7698</td>
 <td align="left">0.001</td>
 </tr>
@@ -188,7 +177,7 @@ Here you can see several diagnostic plots for ANOVA model:
 * normal Q-Q plot
 * residuals against leverages
 
-[[Image:1c63b6fad7856cf59a751b0f80339918.png|frame|none]]
+[[tmp/RtmpeIwHkw/file2f8d0c35-hires.png|[[Image:dd5cdfe79c3741b4373910424cb2824c.png]]]]
 
 == ANOVA Summary ==
 
@@ -326,23 +315,27 @@ Below lies a frequency table for factors in ANOVA model. Note that the missing v
 
 The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
+<!-- endlist -->
+
 <table>
 <thead>
 <tr class="header">
-<th align="left">'''gender'''</th>
-<th align="left">'''partner'''</th>
-<th align="left">'''min(resp)'''</th>
-<th align="left">'''max(resp)'''</th>
-<th align="left">'''mean(resp)'''</th>
-<th align="left">'''SD(resp)'''</th>
-<th align="left">'''median(resp)'''</th>
-<th align="left">'''IQR(resp)'''</th>
-<th align="left">'''skewness(resp)'''</th>
-<th align="left">'''kurtosis(resp)'''</th>
+<th align="left"></th>
+<th align="left">'''Gender'''</th>
+<th align="left">'''Relationship status'''</th>
+<th align="left">'''Min'''</th>
+<th align="left">'''Max'''</th>
+<th align="left">'''Mean'''</th>
+<th align="left">'''Std.Dev.'''</th>
+<th align="left">'''Median'''</th>
+<th align="left">'''IQR'''</th>
+<th align="left">'''Skewness'''</th>
+<th align="left">'''Kurtosis'''</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">1</td>
 <td align="left">male</td>
 <td align="left">in a relationship</td>
 <td align="left">0.5</td>
@@ -355,6 +348,7 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">5.727</td>
 </tr>
 <tr class="even">
+<td align="left">2</td>
 <td align="left">male</td>
 <td align="left">married</td>
 <td align="left">0</td>
@@ -367,6 +361,7 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">3.351</td>
 </tr>
 <tr class="odd">
+<td align="left">3</td>
 <td align="left">male</td>
 <td align="left">single</td>
 <td align="left">0</td>
@@ -379,18 +374,7 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">3.1208</td>
 </tr>
 <tr class="even">
-<td align="left">male</td>
-<td align="left"></td>
-<td align="left">0.5</td>
-<td align="left">6.5</td>
-<td align="left">3.1304</td>
-<td align="left">1.7788</td>
-<td align="left">3</td>
-<td align="left">2.75</td>
-<td align="left">0.0719</td>
-<td align="left">1.9965</td>
-</tr>
-<tr class="odd">
+<td align="left">5</td>
 <td align="left">female</td>
 <td align="left">in a relationship</td>
 <td align="left">0.5</td>
@@ -402,7 +386,8 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">1.4017</td>
 <td align="left">4.9165</td>
 </tr>
-<tr class="even">
+<tr class="odd">
+<td align="left">6</td>
 <td align="left">female</td>
 <td align="left">married</td>
 <td align="left">0</td>
@@ -414,7 +399,8 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">2.1875</td>
 <td align="left">9.2864</td>
 </tr>
-<tr class="odd">
+<tr class="even">
+<td align="left">7</td>
 <td align="left">female</td>
 <td align="left">single</td>
 <td align="left">0</td>
@@ -425,66 +411,6 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">3.5</td>
 <td align="left">1.2045</td>
 <td align="left">4.0139</td>
-</tr>
-<tr class="even">
-<td align="left">female</td>
-<td align="left"></td>
-<td align="left">0.5</td>
-<td align="left">6</td>
-<td align="left">2.6562</td>
-<td align="left">1.739</td>
-<td align="left">2</td>
-<td align="left">3</td>
-<td align="left">0.6914</td>
-<td align="left">2.4285</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">in a relationship</td>
-<td align="left">0</td>
-<td align="left">8</td>
-<td align="left">3.3333</td>
-<td align="left">2.4398</td>
-<td align="left">3</td>
-<td align="left">2.5</td>
-<td align="left">0.7897</td>
-<td align="left">2.5973</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">married</td>
-<td align="left">2</td>
-<td align="left">7</td>
-<td align="left">3.8</td>
-<td align="left">1.9235</td>
-<td align="left">3</td>
-<td align="left">1</td>
-<td align="left">1.018</td>
-<td align="left">2.6519</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">single</td>
-<td align="left">0</td>
-<td align="left">10</td>
-<td align="left">3.5833</td>
-<td align="left">3.2039</td>
-<td align="left">3</td>
-<td align="left">1.5</td>
-<td align="left">1.279</td>
-<td align="left">3.4365</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">1</td>
-<td align="left">2</td>
-<td align="left">1.5</td>
-<td align="left">0.7071</td>
-<td align="left">1.5</td>
-<td align="left">0.5</td>
-<td align="left">0</td>
-<td align="left">1</td>
 </tr>
 </tbody>
 </table>
@@ -505,23 +431,23 @@ We will use ''Shapiro-Wilk'', ''Lilliefors'' and ''Anderson-Darling'' tests to s
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left">'''W'''</th>
-<th align="left">'''p'''</th>
+<th align="left">'''Statistic'''</th>
+<th align="left">'''p-value'''</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">shapiro.test</td>
+<td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
 <td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="left">lillie.test</td>
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
 <td align="left">0.168</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="left">ad.test</td>
+<td align="left">Anderson-Darling normality test</td>
 <td align="left">18.753</td>
 <td align="left">0</td>
 </tr>
@@ -540,18 +466,18 @@ In order to test homoscedascity, ''Bartlett'' and ''Fligner-Kileen'' tests are a
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left">'''H'''</th>
-<th align="left">'''p'''</th>
+<th align="left">'''Statistic'''</th>
+<th align="left">'''p-value'''</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">fligner.test</td>
+<td align="left">Fligner-Killeen test of homogeneity of variances</td>
 <td align="left">1.1234</td>
 <td align="left">0.2892</td>
 </tr>
 <tr class="even">
-<td align="left">bartlett.test</td>
+<td align="left">Bartlett test of homogeneity of variances</td>
 <td align="left">11.1267</td>
 <td align="left">0.0009</td>
 </tr>
@@ -569,7 +495,7 @@ Here you can see several diagnostic plots for ANOVA model:
 * normal Q-Q plot
 * residuals against leverages
 
-[[Image:efd197b02ca1541c48611907a3c42576.png|frame|none]]
+[[tmp/RtmpeIwHkw/file38c269fb-hires.png|[[Image:3e897b547f80202649804e256107f6e0.png]]]]
 
 == ANOVA Summary ==
 
@@ -629,6 +555,6 @@ Here you can see several diagnostic plots for ANOVA model:
 
 -----
 
-This report was generated in [http://www.r-project.org/ R] with [http://al3xa.github.com/rapport/ Rapport] in 0.617 sec. Feel free to create [http://al3xa.github.com/rapport/#custom your own reporting templates]!
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.1) in 1.188 sec on x86_64-unknown-linux-gnu platform.
 
-[[Image:images/rapport.png|frame|none]]
+[[Image:images/logo.png|frame|none]]

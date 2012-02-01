@@ -38,11 +38,10 @@ Descriptives
 In order to get more insight on the underlying data, a table of basic
 descriptive statistics is displayed below.
 
-  **y**    **min(x)**   **max(x)**   **mean(x)**   **sd(x)**   **var(x)**   **median(x)**   **IQR(x)**   **skewness(x)**   **kurtosis(x)**
-  -------- ------------ ------------ ------------- ----------- ------------ --------------- ------------ ----------------- -----------------
-  male     0            12           3.2699        1.9535      3.8161       3               3            0.9479            4.0064
-  female   0            12           3.0643        2.3546      5.5442       2               3            1.4064            4.9089
-           0            10           3.3824        2.5822      6.6676       3               2            1.2197            3.8058
+  **Gender**   **min**   **max**   **mean**   **sd**   **var**   **median**   **IQR**   **skewness**   **kurtosis**
+  ------------ --------- --------- ---------- -------- --------- ------------ --------- -------------- --------------
+  male         0         12        3.2699     1.9535   3.8161    3            3         0.9479         4.0064
+  female       0         12        3.0643     2.3546   5.5442    2            3         1.4064         4.9089
 
 Diagnostics
 -----------
@@ -60,11 +59,11 @@ usage in leisure time (hours per day)*).
 
 <!-- endlist -->
 
-                 **W**    **p**
-  -------------- -------- -------
-  shapiro.test   0.9001   0
-  lillie.test    0.168    0
-  ad.test        18.753   0
+                                                   **N**    **p**
+  ------------------------------------------------ -------- -------
+  Shapiro-Wilk normality test                      0.9001   0
+  Lilliefors (Kolmogorov-Smirnov) normality test   0.168    0
+  Anderson-Darling normality test                  18.753   0
 
 As you can see, applied tests confirm departures from normality.
 
@@ -115,9 +114,9 @@ Descriptives
 In order to get more insight on the underlying data, a table of basic
 descriptive statistics is displayed below.
 
-  **value**   **min(x)**   **max(x)**   **mean(x)**   **sd(x)**   **var(x)**   **median(x)**   **IQR(x)**   **skewness(x)**   **kurtosis(x)**
-  ----------- ------------ ------------ ------------- ----------- ------------ --------------- ------------ ----------------- -----------------
-  (all)       0            12           3.1994        2.1436      4.5951       3               2            1.1873            4.547
+  **Variable**                                     **NA**   **NA**   **NA**   **NA**   **NA**   **NA**   **NA**   **NA**   **NA**
+  ------------------------------------------------ -------- -------- -------- -------- -------- -------- -------- -------- --------
+  Internet usage in leisure time (hours per day)   0        12       3.1994   2.1436   4.5951   3        2        1.1873   4.547
 
 Diagnostics
 -----------
@@ -135,11 +134,11 @@ usage in leisure time (hours per day)*).
 
 <!-- endlist -->
 
-                 **W**    **p**
-  -------------- -------- -------
-  shapiro.test   0.9001   0
-  lillie.test    0.168    0
-  ad.test        18.753   0
+                                                   **N**    **p**
+  ------------------------------------------------ -------- -------
+  Shapiro-Wilk normality test                      0.9001   0
+  Lilliefors (Kolmogorov-Smirnov) normality test   0.168    0
+  Anderson-Darling normality test                  18.753   0
 
 As you can see, applied tests confirm departures from normality.
 
@@ -156,9 +155,8 @@ One Sample t-test was applied, and significant differences were found.
 
 * * * * *
 
-This report was generated in [R](http://www.r-project.org/) with
-[Rapport](http://al3xa.github.com/rapport/) in 0.837 sec. Feel free to
-create [your own reporting
-templates](http://al3xa.github.com/rapport/#custom)!
+This report was generated with [R](http://www.r-project.org/) (2.14.0)
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 0.691 sec on
+x86\_64-unknown-linux-gnu platform.
 
-![image](images/rapport.png)
+![image](images/logo.png)

@@ -8,8 +8,6 @@ Description
 This template will return descriptive statistics of numerical or
 frequency tables of categorical variables.
 
-*2*
-
 *gender* ("Gender")
 -------------------
 
@@ -26,7 +24,7 @@ The dataset has *709* observations with *673* valid values (missing:
 
 ### Barplot
 
-![image](3ed92ab3ffc6e875335e7e8c774c35a8.png)
+[![image](3a46554ee29cd4dfe45dda5016464658.png)](/tmp/RtmpeIwHkw/file62ea0e3d-hires.png)
 
 It seems that the highest value is *2* which is exactly 2 times higher
 than the smallest value (*1*).
@@ -41,13 +39,13 @@ The dataset has *709* observations with *677* valid values (missing:
 
 ### Base statistics
 
-  **value**   **mean(age)**   **sd(age)**   **var(age)**
-  ----------- --------------- ------------- --------------
-  (all)       24.5731         6.8491        46.9107
+  **Variable**   **mean**   **sd**   **var**
+  -------------- ---------- -------- ---------
+  Age            24.5731    6.8491   46.9107
 
 ### Histogram
 
-![image](ac5d789145bdef09b10219ef16429f53.png)
+[![image](4f025d440bf35d40e21208e8b0c58b77.png)](/tmp/RtmpeIwHkw/file951f5de-hires.png)
 
 It seems that the highest value is *58* which is exactly 3.625 times
 higher than the smallest value (*16*).
@@ -79,7 +77,7 @@ distributions, as it's defined two parameters:
 -   *μ* - *mean* or *expectation* (location parameter)
 -   *σ^2^* - *variance* (scale parameter)
 
-![image](2f8c434e103f36ec70966b372838d448.png)
+[![image](806ea97c59e1a12d4acae4968957aaa9.png)](/tmp/RtmpeIwHkw/file1c2be681-hires.png)
 
 #### Normality Tests
 
@@ -138,7 +136,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-![image](ac5d789145bdef09b10219ef16429f53.png)
+[![image](4f025d440bf35d40e21208e8b0c58b77.png)](/tmp/RtmpeIwHkw/fileb079b29-hires.png)
 
 ##### Q-Q Plot
 
@@ -147,7 +145,7 @@ and theoretical distribution (in this case, *normal* distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", `x = y` line.
 
-![image](cbbba756d844aa053998959b73b9feff.png)
+[![image](131f20f388f78bd4863828d9fed8c35c.png)](/tmp/RtmpeIwHkw/file361e8e5f-hires.png)
 
 ##### Kernel Density Plot
 
@@ -156,15 +154,13 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](bde5b5e4ca06fa103953fc17e5273291.png)
+[![image](a7ec6c240344a65f58d22a787409082c.png)](/tmp/RtmpeIwHkw/file4de24319-hires.png)
 
 Description
 -----------
 
 This template will return descriptive statistics of numerical or
 frequency tables of categorical variables.
-
-*8*
 
 *chatim* ("Chat & IM usage")
 ----------------------------
@@ -188,7 +184,7 @@ variable.
 
 ### Barplot
 
-![image](5a00abbe4c793ceedbbf10939665b5cf.png)
+[![image](a3a825d8535e7c9b8a9d23cc8c1293b1.png)](/tmp/RtmpeIwHkw/file3b12acb3-hires.png)
 
 It seems that the highest value is *7* which is exactly 7 times higher
 than the smallest value (*1*).
@@ -217,7 +213,7 @@ variable.
 
 ### Barplot
 
-![image](e53046a09491443064e085131e547971.png)
+[![image](601bf73b7f424e34c795446ca73a1bac.png)](/tmp/RtmpeIwHkw/file55a73940-hires.png)
 
 It seems that the highest value is *7* which is exactly 7 times higher
 than the smallest value (*1*).
@@ -246,7 +242,7 @@ variable.
 
 ### Barplot
 
-![image](0166a8b5df2f3db871e8736bfee8af6e.png)
+[![image](8b8013a5d21daf05463bf12edc7d6bfa.png)](/tmp/RtmpeIwHkw/file294a644e-hires.png)
 
 It seems that the highest value is *7* which is exactly 7 times higher
 than the smallest value (*1*).
@@ -275,7 +271,7 @@ variable.
 
 ### Barplot
 
-![image](895cde198b269bf65b01e1e067a515c8.png)
+[![image](7d530054059115b70f8098f2e3ff6c81.png)](/tmp/RtmpeIwHkw/file6ad9045d-hires.png)
 
 It seems that the highest value is *7* which is exactly 7 times higher
 than the smallest value (*1*).
@@ -304,7 +300,7 @@ variable.
 
 ### Barplot
 
-![image](dde181184885b8777d0248b3f421289a.png)
+[![image](c5c68401731dd8623c3bac532d4f93b1.png)](/tmp/RtmpeIwHkw/file620c192a-hires.png)
 
 It seems that the highest value is *7* which is exactly 7 times higher
 than the smallest value (*1*).
@@ -333,7 +329,7 @@ variable.
 
 ### Barplot
 
-![image](ac419134b2f4695e544d8886ba12e0c2.png)
+[![image](e866a67bba62e7f5cbe93b184599019f.png)](/tmp/RtmpeIwHkw/file3ebe4451-hires.png)
 
 It seems that the highest value is *7* which is exactly 7 times higher
 than the smallest value (*1*).
@@ -362,7 +358,7 @@ qualitative variable.
 
 ### Barplot
 
-![image](8475d98870c1cdd2436a3abdb0d69a66.png)
+[![image](6619f2daf580503ce53708176cb0d83b.png)](/tmp/RtmpeIwHkw/file51f44bf-hires.png)
 
 It seems that the highest value is *7* which is exactly 7 times higher
 than the smallest value (*1*).
@@ -391,7 +387,7 @@ variable.
 
 ### Barplot
 
-![image](4fda8cf992e8de93624c45ef3c72a0c5.png)
+[![image](cbda2b116fe3f7095f2997068f945424.png)](/tmp/RtmpeIwHkw/file22031a5b-hires.png)
 
 It seems that the highest value is *7* which is exactly 7 times higher
 than the smallest value (*1*).
@@ -404,8 +400,6 @@ Description
 This template will return descriptive statistics of numerical or
 frequency tables of categorical variables.
 
-*2*
-
 *hp*
 ----
 
@@ -414,13 +408,13 @@ in *hp*, which seems to be a quantitative variable.
 
 ### Base statistics
 
-  **value**   **mean(hp)**   **sd(hp)**   **var(hp)**
-  ----------- -------------- ------------ -------------
-  (all)       146.6875       68.5629      4700.8669
+  **Variable**   **mean**   **sd**    **var**
+  -------------- ---------- --------- -----------
+  hp             146.6875   68.5629   4700.8669
 
 ### Histogram
 
-![image](d90ec4a0af55fabeae7988710a062ce0.png)
+[![image](78517cde85fc1ba06a3513dd17e567da.png)](/tmp/RtmpeIwHkw/file3fb31a9-hires.png)
 
 It seems that the highest value is *335* which is exactly 6.4423 times
 higher than the smallest value (*52*).
@@ -452,7 +446,7 @@ distributions, as it's defined two parameters:
 -   *μ* - *mean* or *expectation* (location parameter)
 -   *σ^2^* - *variance* (scale parameter)
 
-![image](2f8c434e103f36ec70966b372838d448.png)
+[![image](806ea97c59e1a12d4acae4968957aaa9.png)](/tmp/RtmpeIwHkw/file17df6234-hires.png)
 
 #### Normality Tests
 
@@ -511,7 +505,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-![image](d90ec4a0af55fabeae7988710a062ce0.png)
+[![image](78517cde85fc1ba06a3513dd17e567da.png)](/tmp/RtmpeIwHkw/file569da685-hires.png)
 
 ##### Q-Q Plot
 
@@ -520,7 +514,7 @@ and theoretical distribution (in this case, *normal* distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", `x = y` line.
 
-![image](17e5c77b83c6e3e636487406decc14c7.png)
+[![image](1cefec04e4451a937a5c6aa4dfdcb352.png)](/tmp/RtmpeIwHkw/file584ddd86-hires.png)
 
 ##### Kernel Density Plot
 
@@ -529,7 +523,7 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](e63199776da0ad4146eff538e5ef7af7.png)
+[![image](9d1aa0141cbe00d3fc38daa10e0ee295.png)](/tmp/RtmpeIwHkw/file38a3f274-hires.png)
 
 *wt*
 ----
@@ -539,13 +533,13 @@ in *wt*, which seems to be a quantitative variable.
 
 ### Base statistics
 
-  **value**   **mean(wt)**   **sd(wt)**   **var(wt)**
-  ----------- -------------- ------------ -------------
-  (all)       3.2172         0.9785       0.9574
+  **Variable**   **mean**   **sd**   **var**
+  -------------- ---------- -------- ---------
+  wt             3.2172     0.9785   0.9574
 
 ### Histogram
 
-![image](10caa8222b28328a6d8fd28917cbfb45.png)
+[![image](bf47295875cfa6d1667455a7d2721b19.png)](/tmp/RtmpeIwHkw/file4293f893-hires.png)
 
 It seems that the highest value is *5.424* which is exactly 3.5849 times
 higher than the smallest value (*1.513*).
@@ -577,7 +571,7 @@ distributions, as it's defined two parameters:
 -   *μ* - *mean* or *expectation* (location parameter)
 -   *σ^2^* - *variance* (scale parameter)
 
-![image](2f8c434e103f36ec70966b372838d448.png)
+[![image](806ea97c59e1a12d4acae4968957aaa9.png)](/tmp/RtmpeIwHkw/file32221e18-hires.png)
 
 #### Normality Tests
 
@@ -636,7 +630,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-![image](10caa8222b28328a6d8fd28917cbfb45.png)
+[![image](bf47295875cfa6d1667455a7d2721b19.png)](/tmp/RtmpeIwHkw/file222d547b-hires.png)
 
 ##### Q-Q Plot
 
@@ -645,7 +639,7 @@ and theoretical distribution (in this case, *normal* distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", `x = y` line.
 
-![image](ff471a5bcb80aaf91b4c053ab038d69a.png)
+[![image](975387b3193e28fb08a85f37cb17f87e.png)](/tmp/RtmpeIwHkw/file3e388fb3-hires.png)
 
 ##### Kernel Density Plot
 
@@ -654,13 +648,12 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](c3769779837adedcb4198ec881cc946b.png)
+[![image](80be91ef1e8d4bfbd708bf23dc9b14a8.png)](/tmp/RtmpeIwHkw/file15a36828-hires.png)
 
 * * * * *
 
-This report was generated in [R](http://www.r-project.org/) with
-[Rapport](http://al3xa.github.com/rapport/) in 3.061 sec. Feel free to
-create [your own reporting
-templates](http://al3xa.github.com/rapport/#custom)!
+This report was generated with [R](http://www.r-project.org/) (2.14.0)
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 6.111 sec on
+x86\_64-unknown-linux-gnu platform.
 
-![image](images/rapport.png)
+![image](images/logo.png)

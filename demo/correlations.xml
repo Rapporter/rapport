@@ -115,15 +115,13 @@
         </tbody>
       </tgroup>
     </informaltable>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file744ae54d-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="fc8b6edbaddadbdf0c5014f99fda88d6.png" />
+          <imagedata fileref="0e4cca7017b21223d68df3b9e300c895.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
 </section>
 <section id="description-1">
@@ -748,28 +746,24 @@
         </tbody>
       </tgroup>
     </informaltable>
-    <figure>
-      <title></title>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="ce42e944b62284a3bebf2101155af100.png" />
-        </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
     <para>
-      This report was generated in
-      <ulink url="http://www.r-project.org/">R</ulink> with
-      <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink> in
-      0.596 sec. Feel free to create
-      <ulink url="http://al3xa.github.com/rapport/#custom">your own
-      reporting templates</ulink>!
+      <ulink url="/tmp/RtmpeIwHkw/file30916d08-hires.png"><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="82a0f381195bb4f50da3c943e264add1.png" />
+        </imageobject>
+      </inlinemediaobject></ulink>
+    </para>
+    <para>
+      This report was generated with
+      <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
+      <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
+      (0.1) in 1.308 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="images/rapport.png" />
+          <imagedata fileref="images/logo.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>

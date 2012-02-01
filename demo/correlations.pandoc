@@ -33,8 +33,7 @@ leisure   -0.0338         0.1732  * * *
 --------- --------------- --------------- ---------------
  
 
-![](fc8b6edbaddadbdf0c5014f99fda88d6.png)
-
+[![](0e4cca7017b21223d68df3b9e300c895.png)](/tmp/RtmpeIwHkw/file744ae54d-hires.png) 
 
 ## Description 
 
@@ -97,11 +96,10 @@ carb   -0.5509  * *     0.5270  * *      0.3950  *        0.7498  * * *    -0.09
 ------ ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ----------------
  
 
-![](ce42e944b62284a3bebf2101155af100.png)
-
+[![](82a0f381195bb4f50da3c943e264add1.png)](/tmp/RtmpeIwHkw/file30916d08-hires.png) 
 
 -------
-This report was generated in [R](http://www.r-project.org/) with [Rapport](http://al3xa.github.com/rapport/) in 0.596 sec. Feel free to create [your own reporting templates](http://al3xa.github.com/rapport/#custom)! 
+This report was generated with [R](http://www.r-project.org/) (2.14.0) and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.308 sec on x86_64-unknown-linux-gnu platform. 
 
-![](images/rapport.png)
+![](images/logo.png)
 

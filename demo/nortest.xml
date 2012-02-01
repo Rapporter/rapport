@@ -49,15 +49,13 @@
       </para>
     </listitem>
   </itemizedlist>
-  <figure>
-    <title></title>
-    <mediaobject>
+  <para>
+    <ulink url="/tmp/RtmpeIwHkw/file29cf7939-hires.png"><inlinemediaobject>
       <imageobject>
-        <imagedata fileref="2f8c434e103f36ec70966b372838d448.png" />
+        <imagedata fileref="806ea97c59e1a12d4acae4968957aaa9.png" />
       </imageobject>
-      <textobject><phrase></phrase></textobject>
-    </mediaobject>
-  </figure>
+    </inlinemediaobject></ulink>
+  </para>
 </section>
 <section id="normality-tests">
   <title>Normality Tests</title>
@@ -177,15 +175,13 @@
       so it can sometimes be misleading. If the variable distribution is
       normal, bins should resemble the &quot;bell-like&quot; shape.
     </para>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file4bd98e0c-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="12bea9ba14449f76d79a9d5792bf29f9.png" />
+          <imagedata fileref="a949c4cf7eda15cd079e9d63b81acdd4.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
   <section id="q-q-plot">
     <title>Q-Q Plot</title>
@@ -198,15 +194,13 @@
       dots should approximate a &quot;straight&quot;,
       <literal>x = y</literal> line.
     </para>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file726063db-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="fff2bb7b8b095f881f85302d0128bae7.png" />
+          <imagedata fileref="eecb9a780afd4dd0de9737991e467a6e.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
   <section id="kernel-density-plot">
     <title>Kernel Density Plot</title>
@@ -217,15 +211,13 @@
       normal distributions, it should resemble the well known &quot;bell
       shape&quot;.
     </para>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file16927214-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="d6e712fea18fd4ee7d4e10dfdf62f2c5.png" />
+          <imagedata fileref="4e2660e6a8a36e1bcad14531e85bd72e.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
 </section>
 <section id="description-1">
@@ -386,15 +378,13 @@
       so it can sometimes be misleading. If the variable distribution is
       normal, bins should resemble the &quot;bell-like&quot; shape.
     </para>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file1b612d0c-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="12bea9ba14449f76d79a9d5792bf29f9.png" />
+          <imagedata fileref="a949c4cf7eda15cd079e9d63b81acdd4.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
   <section id="q-q-plot-1">
     <title>Q-Q Plot</title>
@@ -407,15 +397,13 @@
       dots should approximate a &quot;straight&quot;,
       <literal>x = y</literal> line.
     </para>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file50e9fae2-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="fff2bb7b8b095f881f85302d0128bae7.png" />
+          <imagedata fileref="eecb9a780afd4dd0de9737991e467a6e.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
   <section id="kernel-density-plot-1">
     <title>Kernel Density Plot</title>
@@ -426,15 +414,13 @@
       normal distributions, it should resemble the well known &quot;bell
       shape&quot;.
     </para>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file425e5640-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="17a0ceb36b1aa86ef5d6aec6d641ad0b.png" />
+          <imagedata fileref="fa1b2f4d134ba88d20bd5ad1abc4f050.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
 </section>
 <section id="description-2">
@@ -476,15 +462,13 @@
       </para>
     </listitem>
   </itemizedlist>
-  <figure>
-    <title></title>
-    <mediaobject>
+  <para>
+    <ulink url="/tmp/RtmpeIwHkw/file73238815-hires.png"><inlinemediaobject>
       <imageobject>
-        <imagedata fileref="2f8c434e103f36ec70966b372838d448.png" />
+        <imagedata fileref="806ea97c59e1a12d4acae4968957aaa9.png" />
       </imageobject>
-      <textobject><phrase></phrase></textobject>
-    </mediaobject>
-  </figure>
+    </inlinemediaobject></ulink>
+  </para>
 </section>
 <section id="normality-tests-2">
   <title>Normality Tests</title>
@@ -604,15 +588,13 @@
       so it can sometimes be misleading. If the variable distribution is
       normal, bins should resemble the &quot;bell-like&quot; shape.
     </para>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file56754fe0-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="12bea9ba14449f76d79a9d5792bf29f9.png" />
+          <imagedata fileref="a949c4cf7eda15cd079e9d63b81acdd4.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
   <section id="q-q-plot-2">
     <title>Q-Q Plot</title>
@@ -625,15 +607,13 @@
       dots should approximate a &quot;straight&quot;,
       <literal>x = y</literal> line.
     </para>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file3f8d9eca-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="90c36448209c0d19b8b44a89277b29a3.png" />
+          <imagedata fileref="95d42d4d0934008cfa630e1c4523e09a.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
   <section id="kernel-density-plot-2">
     <title>Kernel Density Plot</title>
@@ -644,28 +624,24 @@
       normal distributions, it should resemble the well known &quot;bell
       shape&quot;.
     </para>
-    <figure>
-      <title></title>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="cf85f7da760795cb0d5f7370b623a2a9.png" />
-        </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
     <para>
-      This report was generated in
-      <ulink url="http://www.r-project.org/">R</ulink> with
-      <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink> in
-      1.245 sec. Feel free to create
-      <ulink url="http://al3xa.github.com/rapport/#custom">your own
-      reporting templates</ulink>!
+      <ulink url="/tmp/RtmpeIwHkw/file5230f292-hires.png"><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="c4329e15f77e779dabbdb967f69129a6.png" />
+        </imageobject>
+      </inlinemediaobject></ulink>
+    </para>
+    <para>
+      This report was generated with
+      <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
+      <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
+      (0.1) in 2.765 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="images/rapport.png" />
+          <imagedata fileref="images/logo.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>

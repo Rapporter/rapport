@@ -46,11 +46,10 @@ Factor levels and/or their combinations lie on the left hand side, while
 the corresponding statistics for response variable are given on the
 right-hand side.
 
-  **fac**   **min(resp)**   **max(resp)**   **mean(resp)**   **SD(resp)**   **median(resp)**   **IQR(resp)**   **skewness(resp)**   **kurtosis(resp)**
-  --------- --------------- --------------- ---------------- -------------- ------------------ --------------- -------------------- --------------------
-  male      0               12              3.2699           1.9535         3                  3               0.9479               4.0064
-  female    0               12              3.0643           2.3546         2                  3               1.4064               4.9089
-            0               10              3.3824           2.5822         3                  2               1.2197               3.8058
+  **Gender**   **Min**   **Max**   **Mean**   **Std.Dev.**   **Median**   **IQR**   **Skewness**   **Kurtosis**
+  ------------ --------- --------- ---------- -------------- ------------ --------- -------------- --------------
+  male         0         12        3.2699     1.9535         3            3         0.9479         4.0064
+  female       0         12        3.0643     2.3546         2            3         1.4064         4.9089
 
 Diagnostics
 -----------
@@ -70,11 +69,11 @@ usage in leisure time (hours per day)*).
 
 <!-- endlist -->
 
-                 **W**    **p**
-  -------------- -------- -------
-  shapiro.test   0.9001   0
-  lillie.test    0.168    0
-  ad.test        18.753   0
+                                                   **Statistic**   **p-value**
+  ------------------------------------------------ --------------- -------------
+  Shapiro-Wilk normality test                      0.9001          0
+  Lilliefors (Kolmogorov-Smirnov) normality test   0.168           0
+  Anderson-Darling normality test                  18.753          0
 
 As you can see, applied tests confirm departures from normality.
 
@@ -85,10 +84,10 @@ are applied.
 
 <!-- endlist -->
 
-                  **H**     **p**
-  --------------- --------- --------
-  fligner.test    0.4629    0.4963
-  bartlett.test   10.7698   0.001
+                                                     **Statistic**   **p-value**
+  -------------------------------------------------- --------------- -------------
+  Fligner-Killeen test of homogeneity of variances   0.4629          0.4963
+  Bartlett test of homogeneity of variances          10.7698         0.001
 
 When it comes to equality of variances, applied tests yield inconsistent
 results. While *Fligner-Kileen test* confirmed the hypotheses of
@@ -104,7 +103,7 @@ Here you can see several diagnostic plots for ANOVA model:
 -   normal Q-Q plot
 -   residuals against leverages
 
-![image](1c63b6fad7856cf59a751b0f80339918.png)
+[![image](dd5cdfe79c3741b4373910424cb2824c.png)](/tmp/RtmpeIwHkw/file2f8d0c35-hires.png)
 
 ANOVA Summary
 -------------
@@ -171,20 +170,16 @@ Factor levels and/or their combinations lie on the left hand side, while
 the corresponding statistics for response variable are given on the
 right-hand side.
 
-  **gender**   **partner**         **min(resp)**   **max(resp)**   **mean(resp)**   **SD(resp)**   **median(resp)**   **IQR(resp)**   **skewness(resp)**   **kurtosis(resp)**
-  ------------ ------------------- --------------- --------------- ---------------- -------------- ------------------ --------------- -------------------- --------------------
-  male         in a relationship   0.5             12              3.0582           1.9692         2.5                2               1.3376               5.727
-  male         married             0               8               2.9848           2.029          3                  2               0.9027               3.351
-  male         single              0               10              3.5027           1.9361         3                  3               0.7636               3.1208
-  male                             0.5             6.5             3.1304           1.7788         3                  2.75            0.0719               1.9965
-  female       in a relationship   0.5             10              3.0439           2.2158         3                  3               1.4017               4.9165
-  female       married             0               10              2.4808           1.9671         2                  1.75            2.1875               9.2864
-  female       single              0               12              3.3226           2.6791         3                  3.5             1.2045               4.0139
-  female                           0.5             6               2.6562           1.739          2                  3               0.6914               2.4285
-               in a relationship   0               8               3.3333           2.4398         3                  2.5             0.7897               2.5973
-               married             2               7               3.8              1.9235         3                  1               1.018                2.6519
-               single              0               10              3.5833           3.2039         3                  1.5             1.279                3.4365
-                                   1               2               1.5              0.7071         1.5                0.5             0                    1
+<!-- endlist -->
+
+      **Gender**   **Relationship status**   **Min**   **Max**   **Mean**   **Std.Dev.**   **Median**   **IQR**   **Skewness**   **Kurtosis**
+  --- ------------ ------------------------- --------- --------- ---------- -------------- ------------ --------- -------------- --------------
+  1   male         in a relationship         0.5       12        3.0582     1.9692         2.5          2         1.3376         5.727
+  2   male         married                   0         8         2.9848     2.029          3            2         0.9027         3.351
+  3   male         single                    0         10        3.5027     1.9361         3            3         0.7636         3.1208
+  5   female       in a relationship         0.5       10        3.0439     2.2158         3            3         1.4017         4.9165
+  6   female       married                   0         10        2.4808     1.9671         2            1.75      2.1875         9.2864
+  7   female       single                    0         12        3.3226     2.6791         3            3.5       1.2045         4.0139
 
 Diagnostics
 -----------
@@ -204,11 +199,11 @@ usage in leisure time (hours per day)*).
 
 <!-- endlist -->
 
-                 **W**    **p**
-  -------------- -------- -------
-  shapiro.test   0.9001   0
-  lillie.test    0.168    0
-  ad.test        18.753   0
+                                                   **Statistic**   **p-value**
+  ------------------------------------------------ --------------- -------------
+  Shapiro-Wilk normality test                      0.9001          0
+  Lilliefors (Kolmogorov-Smirnov) normality test   0.168           0
+  Anderson-Darling normality test                  18.753          0
 
 As you can see, applied tests confirm departures from normality.
 
@@ -219,10 +214,10 @@ are applied.
 
 <!-- endlist -->
 
-                  **H**     **p**
-  --------------- --------- --------
-  fligner.test    1.1234    0.2892
-  bartlett.test   11.1267   0.0009
+                                                     **Statistic**   **p-value**
+  -------------------------------------------------- --------------- -------------
+  Fligner-Killeen test of homogeneity of variances   1.1234          0.2892
+  Bartlett test of homogeneity of variances          11.1267         0.0009
 
 When it comes to equality of variances, applied tests yield inconsistent
 results. While *Fligner-Kileen test* confirmed the hypotheses of
@@ -238,7 +233,7 @@ Here you can see several diagnostic plots for ANOVA model:
 -   normal Q-Q plot
 -   residuals against leverages
 
-![image](efd197b02ca1541c48611907a3c42576.png)
+[![image](3e897b547f80202649804e256107f6e0.png)](/tmp/RtmpeIwHkw/file38c269fb-hires.png)
 
 ANOVA Summary
 -------------
@@ -262,9 +257,8 @@ significant (p = 0.717).
 
 * * * * *
 
-This report was generated in [R](http://www.r-project.org/) with
-[Rapport](http://al3xa.github.com/rapport/) in 0.617 sec. Feel free to
-create [your own reporting
-templates](http://al3xa.github.com/rapport/#custom)!
+This report was generated with [R](http://www.r-project.org/) (2.14.0)
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.188 sec on
+x86\_64-unknown-linux-gnu platform.
 
-![image](images/rapport.png)
+![image](images/logo.png)

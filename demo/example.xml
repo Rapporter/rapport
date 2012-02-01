@@ -157,15 +157,13 @@
   </para>
   <section id="histogram">
     <title>Histogram</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file4362bdf0-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="9542b7929dcd934208ee4f18bde6ff31.png" />
+          <imagedata fileref="ae1d2677d19224aec6e79aa6edd92e0e.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
 </section>
 <section id="description-3">
@@ -196,28 +194,24 @@
   </para>
   <section id="histogram-1">
     <title>Histogram</title>
-    <figure>
-      <title></title>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="f72d3b7413bcb88fce740c2ab229411a.png" />
-        </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
     <para>
-      This report was generated in
-      <ulink url="http://www.r-project.org/">R</ulink> with
-      <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink> in
-      0.357 sec. Feel free to create
-      <ulink url="http://al3xa.github.com/rapport/#custom">your own
-      reporting templates</ulink>!
+      <ulink url="/tmp/RtmpeIwHkw/file3bc4c25e-hires.png"><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="7779958734926ffb57756d6c1d01b75b.png" />
+        </imageobject>
+      </inlinemediaobject></ulink>
+    </para>
+    <para>
+      This report was generated with
+      <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
+      <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
+      (0.1) in 0.729 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="images/rapport.png" />
+          <imagedata fileref="images/logo.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>

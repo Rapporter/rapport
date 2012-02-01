@@ -86,9 +86,8 @@ V (0.1001).
 
 *** Mosaic chart
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file6edbb4a8-hires.png][[[e34aca6c7784de0d3c094d3d071f5038.png]]]]
 
-[[089332282780d32b96117afe8dba0470.png]]
 ** Description
 
 Returning the Chi-squared test of two given variables with count,
@@ -194,17 +193,14 @@ other statistical tests were performed.
 
 *** Mosaic chart
 
-#+CAPTION: 
-
-[[b945f6de1aad4225593b3e9c0eb6d7dc.png]]
+[[/tmp/RtmpeIwHkw/file163c9108-hires.png][[[788ce96f4378f09151fe29c0e370c6f9.png]]]]
 
 --------------
 
-This report was generated in [[http://www.r-project.org/][R]] with
-[[http://al3xa.github.com/rapport/][Rapport]] in 0.174 sec. Feel free to
-create [[http://al3xa.github.com/rapport/#custom][your own reporting
-templates]]!
+This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
+and [[http://al3xa.github.com/rapport/][rapport]] (0.1) in 0.382 sec on
+x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 
 
-[[images/rapport.png]]
+[[images/logo.png]]

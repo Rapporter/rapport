@@ -82,34 +82,34 @@
       <thead>
         <row>
           <entry>
-            <emphasis role="strong">y</emphasis>
+            <emphasis role="strong">Gender</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">min(x)</emphasis>
+            <emphasis role="strong">min</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">max(x)</emphasis>
+            <emphasis role="strong">max</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">mean(x)</emphasis>
+            <emphasis role="strong">mean</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">sd(x)</emphasis>
+            <emphasis role="strong">sd</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">var(x)</emphasis>
+            <emphasis role="strong">var</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">median(x)</emphasis>
+            <emphasis role="strong">median</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">IQR(x)</emphasis>
+            <emphasis role="strong">IQR</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">skewness(x)</emphasis>
+            <emphasis role="strong">skewness</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">kurtosis(x)</emphasis>
+            <emphasis role="strong">kurtosis</emphasis>
           </entry>
         </row>
       </thead>
@@ -178,37 +178,6 @@
             4.9089
           </entry>
         </row>
-        <row>
-          <entry>
-          </entry>
-          <entry>
-            0
-          </entry>
-          <entry>
-            10
-          </entry>
-          <entry>
-            3.3824
-          </entry>
-          <entry>
-            2.5822
-          </entry>
-          <entry>
-            6.6676
-          </entry>
-          <entry>
-            3
-          </entry>
-          <entry>
-            2
-          </entry>
-          <entry>
-            1.2197
-          </entry>
-          <entry>
-            3.8058
-          </entry>
-        </row>
       </tbody>
     </tgroup>
   </informaltable>
@@ -242,7 +211,7 @@
             <entry>
             </entry>
             <entry>
-              <emphasis role="strong">W</emphasis>
+              <emphasis role="strong">N</emphasis>
             </entry>
             <entry>
               <emphasis role="strong">p</emphasis>
@@ -252,7 +221,7 @@
         <tbody>
           <row>
             <entry>
-              shapiro.test
+              Shapiro-Wilk normality test
             </entry>
             <entry>
               0.9001
@@ -263,7 +232,7 @@
           </row>
           <row>
             <entry>
-              lillie.test
+              Lilliefors (Kolmogorov-Smirnov) normality test
             </entry>
             <entry>
               0.168
@@ -274,7 +243,7 @@
           </row>
           <row>
             <entry>
-              ad.test
+              Anderson-Darling normality test
             </entry>
             <entry>
               18.753
@@ -423,41 +392,41 @@
       <thead>
         <row>
           <entry>
-            <emphasis role="strong">value</emphasis>
+            <emphasis role="strong">Variable</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">min(x)</emphasis>
+            <emphasis role="strong">NA</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">max(x)</emphasis>
+            <emphasis role="strong">NA</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">mean(x)</emphasis>
+            <emphasis role="strong">NA</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">sd(x)</emphasis>
+            <emphasis role="strong">NA</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">var(x)</emphasis>
+            <emphasis role="strong">NA</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">median(x)</emphasis>
+            <emphasis role="strong">NA</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">IQR(x)</emphasis>
+            <emphasis role="strong">NA</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">skewness(x)</emphasis>
+            <emphasis role="strong">NA</emphasis>
           </entry>
           <entry>
-            <emphasis role="strong">kurtosis(x)</emphasis>
+            <emphasis role="strong">NA</emphasis>
           </entry>
         </row>
       </thead>
       <tbody>
         <row>
           <entry>
-            (all)
+            Internet usage in leisure time (hours per day)
           </entry>
           <entry>
             0
@@ -520,7 +489,7 @@
             <entry>
             </entry>
             <entry>
-              <emphasis role="strong">W</emphasis>
+              <emphasis role="strong">N</emphasis>
             </entry>
             <entry>
               <emphasis role="strong">p</emphasis>
@@ -530,7 +499,7 @@
         <tbody>
           <row>
             <entry>
-              shapiro.test
+              Shapiro-Wilk normality test
             </entry>
             <entry>
               0.9001
@@ -541,7 +510,7 @@
           </row>
           <row>
             <entry>
-              lillie.test
+              Lilliefors (Kolmogorov-Smirnov) normality test
             </entry>
             <entry>
               0.168
@@ -552,7 +521,7 @@
           </row>
           <row>
             <entry>
-              ad.test
+              Anderson-Darling normality test
             </entry>
             <entry>
               18.753
@@ -630,18 +599,16 @@
     </tgroup>
   </informaltable>
   <para>
-    This report was generated in
-    <ulink url="http://www.r-project.org/">R</ulink> with
-    <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink> in
-    0.837 sec. Feel free to create
-    <ulink url="http://al3xa.github.com/rapport/#custom">your own
-    reporting templates</ulink>!
+    This report was generated with
+    <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
+    <ulink url="http://al3xa.github.com/rapport/">rapport</ulink> (0.1)
+    in 0.691 sec on x86_64-unknown-linux-gnu platform.
   </para>
   <figure>
     <title></title>
     <mediaobject>
       <imageobject>
-        <imagedata fileref="images/rapport.png" />
+        <imagedata fileref="images/logo.png" />
       </imageobject>
       <textobject><phrase></phrase></textobject>
     </mediaobject>

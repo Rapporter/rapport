@@ -7,30 +7,32 @@
   <meta name="author" content="Rapport package team @ https://github.com/aL3xa/rapport" />
   <meta name="date" content="2011-04-26 20:25 CET" />
   <title>t-test Template</title>
-  	<!--[if lt IE 9]>
-  		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  	<![endif]-->
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
   
-  	<link rel="stylesheet" href="stylesheets/base.css">
-  	<link rel="stylesheet" href="stylesheets/skeleton.css">
-  	<link rel="stylesheet" href="stylesheets/layout.css">
-  	<link rel="stylesheet" href="stylesheets/fonts.css">
-  	<link rel="stylesheet" href="stylesheets/custom.css">
+  <link rel="stylesheet" href="stylesheets/base.css" />
+  <link rel="stylesheet" href="stylesheets/skeleton.css" />
+  <link rel="stylesheet" href="stylesheets/layout.css" />
+  <link rel="stylesheet" href="stylesheets/fonts.css" />
+  <link rel="stylesheet" href="stylesheets/slimbox2.css" />
+  <link rel="stylesheet" href="stylesheets/custom.css" />
   
-  	<link rel="shortcut icon" href="images/favicon.ico">
-  	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-  	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  <link rel="shortcut icon" href="images/favicon.gif" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
   
-  	<script type="text/javascript" src="javascripts/jquery-1.7.1.min.js"></script>
-  	<script type="text/javascript" src="javascripts/nav.js"></script>
-  	<script type="text/javascript" src="javascripts/tabs.js"></script>
-  	<script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-              tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-          });
-      </script>
-  	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  <script type="text/javascript" src="javascripts/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="javascripts/tabs.js"></script>  <!--remove-->
+  <script type="text/javascript" src="javascripts/custom.js"></script>
+  <script type="text/javascript" src="javascripts/slimbox2.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="header">
@@ -54,16 +56,16 @@
 <table>
 <thead>
 <tr class="header">
-<th align="left"><strong>y</strong></th>
-<th align="left"><strong>min(x)</strong></th>
-<th align="left"><strong>max(x)</strong></th>
-<th align="left"><strong>mean(x)</strong></th>
-<th align="left"><strong>sd(x)</strong></th>
-<th align="left"><strong>var(x)</strong></th>
-<th align="left"><strong>median(x)</strong></th>
-<th align="left"><strong>IQR(x)</strong></th>
-<th align="left"><strong>skewness(x)</strong></th>
-<th align="left"><strong>kurtosis(x)</strong></th>
+<th align="left"><strong>Gender</strong></th>
+<th align="left"><strong>min</strong></th>
+<th align="left"><strong>max</strong></th>
+<th align="left"><strong>mean</strong></th>
+<th align="left"><strong>sd</strong></th>
+<th align="left"><strong>var</strong></th>
+<th align="left"><strong>median</strong></th>
+<th align="left"><strong>IQR</strong></th>
+<th align="left"><strong>skewness</strong></th>
+<th align="left"><strong>kurtosis</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -91,18 +93,6 @@
 <td align="left">1.4064</td>
 <td align="left">4.9089</td>
 </tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">0</td>
-<td align="left">10</td>
-<td align="left">3.3824</td>
-<td align="left">2.5822</td>
-<td align="left">6.6676</td>
-<td align="left">3</td>
-<td align="left">2</td>
-<td align="left">1.2197</td>
-<td align="left">3.8058</td>
-</tr>
 </tbody>
 </table>
 <h2 id="diagnostics">Diagnostics</h2>
@@ -115,23 +105,23 @@
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left"><strong>W</strong></th>
+<th align="left"><strong>N</strong></th>
 <th align="left"><strong>p</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">shapiro.test</td>
+<td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
 <td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="left">lillie.test</td>
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
 <td align="left">0.168</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="left">ad.test</td>
+<td align="left">Anderson-Darling normality test</td>
 <td align="left">18.753</td>
 <td align="left">0</td>
 </tr>
@@ -180,21 +170,21 @@
 <table>
 <thead>
 <tr class="header">
-<th align="left"><strong>value</strong></th>
-<th align="left"><strong>min(x)</strong></th>
-<th align="left"><strong>max(x)</strong></th>
-<th align="left"><strong>mean(x)</strong></th>
-<th align="left"><strong>sd(x)</strong></th>
-<th align="left"><strong>var(x)</strong></th>
-<th align="left"><strong>median(x)</strong></th>
-<th align="left"><strong>IQR(x)</strong></th>
-<th align="left"><strong>skewness(x)</strong></th>
-<th align="left"><strong>kurtosis(x)</strong></th>
+<th align="left"><strong>Variable</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">(all)</td>
+<td align="left">Internet usage in leisure time (hours per day)</td>
 <td align="left">0</td>
 <td align="left">12</td>
 <td align="left">3.1994</td>
@@ -217,23 +207,23 @@
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left"><strong>W</strong></th>
+<th align="left"><strong>N</strong></th>
 <th align="left"><strong>p</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">shapiro.test</td>
+<td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
 <td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="left">lillie.test</td>
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
 <td align="left">0.168</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="left">ad.test</td>
+<td align="left">Anderson-Darling normality test</td>
 <td align="left">18.753</td>
 <td align="left">0</td>
 </tr>
@@ -267,10 +257,12 @@
 </tbody>
 </table>
 <hr />
-<p>This report was generated in <a href="http://www.r-project.org/">R</a> with <a href="http://al3xa.github.com/rapport/">Rapport</a> in 0.837 sec. Feel free to create <a href="http://al3xa.github.com/rapport/#custom">your own reporting templates</a>!</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.14.0) and <a href="http://al3xa.github.com/rapport/">rapport</a> (0.1) in 0.691 sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
-<img src="images/rapport.png" /><p class="caption"></p>
+<img src="images/logo.png" /><p class="caption"></p>
 </div>
-
+<p>
+  Logo and design: &copy; 2012 <i>rapport</i> Development Team | License (<a href="http://www.gnu.org/licenses/agpl.html" target="_blank">AGPL3</a>) | Fork on <a href="https://github.com/aL3xa/rapport" target="_blank">GitHub</a> | Styled with <a href="http://www.getskeleton.com/" target="_blank">skeleton</a>
+</p>
 </body>
 </html>

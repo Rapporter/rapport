@@ -24,7 +24,7 @@ distributions, as it's defined two parameters:
 -   *μ* - *mean* or *expectation* (location parameter)
 -   *σ^2^* - *variance* (scale parameter)
 
-![image](2f8c434e103f36ec70966b372838d448.png)
+[![image](806ea97c59e1a12d4acae4968957aaa9.png)](/tmp/RtmpeIwHkw/file29cf7939-hires.png)
 
 Normality Tests
 ---------------
@@ -86,7 +86,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-![image](12bea9ba14449f76d79a9d5792bf29f9.png)
+[![image](a949c4cf7eda15cd079e9d63b81acdd4.png)](/tmp/RtmpeIwHkw/file4bd98e0c-hires.png)
 
 ### Q-Q Plot
 
@@ -95,7 +95,7 @@ and theoretical distribution (in this case, *normal* distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", `x = y` line.
 
-![image](fff2bb7b8b095f881f85302d0128bae7.png)
+[![image](eecb9a780afd4dd0de9737991e467a6e.png)](/tmp/RtmpeIwHkw/file726063db-hires.png)
 
 ### Kernel Density Plot
 
@@ -104,7 +104,7 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](d6e712fea18fd4ee7d4e10dfdf62f2c5.png)
+[![image](4e2660e6a8a36e1bcad14531e85bd72e.png)](/tmp/RtmpeIwHkw/file16927214-hires.png)
 
 Description
 -----------
@@ -188,7 +188,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-![image](12bea9ba14449f76d79a9d5792bf29f9.png)
+[![image](a949c4cf7eda15cd079e9d63b81acdd4.png)](/tmp/RtmpeIwHkw/file1b612d0c-hires.png)
 
 ### Q-Q Plot
 
@@ -197,7 +197,7 @@ and theoretical distribution (in this case, *normal* distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", `x = y` line.
 
-![image](fff2bb7b8b095f881f85302d0128bae7.png)
+[![image](eecb9a780afd4dd0de9737991e467a6e.png)](/tmp/RtmpeIwHkw/file50e9fae2-hires.png)
 
 ### Kernel Density Plot
 
@@ -206,7 +206,7 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](17a0ceb36b1aa86ef5d6aec6d641ad0b.png)
+[![image](fa1b2f4d134ba88d20bd5ad1abc4f050.png)](/tmp/RtmpeIwHkw/file425e5640-hires.png)
 
 Description
 -----------
@@ -230,7 +230,7 @@ distributions, as it's defined two parameters:
 -   *μ* - *mean* or *expectation* (location parameter)
 -   *σ^2^* - *variance* (scale parameter)
 
-![image](2f8c434e103f36ec70966b372838d448.png)
+[![image](806ea97c59e1a12d4acae4968957aaa9.png)](/tmp/RtmpeIwHkw/file73238815-hires.png)
 
 Normality Tests
 ---------------
@@ -292,7 +292,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-![image](12bea9ba14449f76d79a9d5792bf29f9.png)
+[![image](a949c4cf7eda15cd079e9d63b81acdd4.png)](/tmp/RtmpeIwHkw/file56754fe0-hires.png)
 
 ### Q-Q Plot
 
@@ -301,7 +301,7 @@ and theoretical distribution (in this case, *normal* distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", `x = y` line.
 
-![image](90c36448209c0d19b8b44a89277b29a3.png)
+[![image](95d42d4d0934008cfa630e1c4523e09a.png)](/tmp/RtmpeIwHkw/file3f8d9eca-hires.png)
 
 ### Kernel Density Plot
 
@@ -310,13 +310,12 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](cf85f7da760795cb0d5f7370b623a2a9.png)
+[![image](c4329e15f77e779dabbdb967f69129a6.png)](/tmp/RtmpeIwHkw/file5230f292-hires.png)
 
 * * * * *
 
-This report was generated in [R](http://www.r-project.org/) with
-[Rapport](http://al3xa.github.com/rapport/) in 1.245 sec. Feel free to
-create [your own reporting
-templates](http://al3xa.github.com/rapport/#custom)!
+This report was generated with [R](http://www.r-project.org/) (2.14.0)
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 2.765 sec on
+x86\_64-unknown-linux-gnu platform.
 
-![image](images/rapport.png)
+![image](images/logo.png)

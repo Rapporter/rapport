@@ -16,13 +16,13 @@ The dataset has *709* observations with *677* valid values (missing:
 
 ### Base statistics
 
-  **value**   **mean(age)**   **sd(age)**   **var(age)**
-  ----------- --------------- ------------- --------------
-  (all)       24.5731         6.8491        46.9107
+  **Variable**   **mean**   **sd**   **var**
+  -------------- ---------- -------- ---------
+  Age            24.5731    6.8491   46.9107
 
 ### Histogram
 
-![image](ac5d789145bdef09b10219ef16429f53.png)
+![image](4f025d440bf35d40e21208e8b0c58b77.png)
 
 It seems that the highest value is *58* which is exactly 3.625 times
 higher than the smallest value (*16*).
@@ -54,7 +54,7 @@ distributions, as it's defined two parameters:
 -   *μ* - *mean* or *expectation* (location parameter)
 -   *σ^2^* - *variance* (scale parameter)
 
-![image](2f8c434e103f36ec70966b372838d448.png)
+![image](806ea97c59e1a12d4acae4968957aaa9.png)
 
 #### Normality Tests
 
@@ -113,7 +113,7 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-![image](ac5d789145bdef09b10219ef16429f53.png)
+![image](4f025d440bf35d40e21208e8b0c58b77.png)
 
 ##### Q-Q Plot
 
@@ -122,7 +122,7 @@ and theoretical distribution (in this case, *normal* distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", `x = y` line.
 
-![image](cbbba756d844aa053998959b73b9feff.png)
+![image](131f20f388f78bd4863828d9fed8c35c.png)
 
 ##### Kernel Density Plot
 
@@ -131,13 +131,12 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-![image](168d92f4cf90d2c563e5a0166a64150c.png)
+![image](9435c7015dbc7e9f9adb4c53640f9c92.png)
 
 * * * * *
 
-This report was generated in [R](http://www.r-project.org/) with
-[Rapport](http://al3xa.github.com/rapport/) in 0.625 sec. Feel free to
-create [your own reporting
-templates](http://al3xa.github.com/rapport/#custom)!
+This report was generated with [R](http://www.r-project.org/) (2.14.0)
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.592 sec on
+x86\_64-unknown-linux-gnu platform.
 
-![image](images/rapport.png)
+![image](images/logo.png)

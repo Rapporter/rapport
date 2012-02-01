@@ -21,16 +21,16 @@ In order to get more insight on the underlying data, a table of basic descriptiv
 <table>
 <thead>
 <tr class="header">
-<th align="left">'''y'''</th>
-<th align="left">'''min(x)'''</th>
-<th align="left">'''max(x)'''</th>
-<th align="left">'''mean(x)'''</th>
-<th align="left">'''sd(x)'''</th>
-<th align="left">'''var(x)'''</th>
-<th align="left">'''median(x)'''</th>
-<th align="left">'''IQR(x)'''</th>
-<th align="left">'''skewness(x)'''</th>
-<th align="left">'''kurtosis(x)'''</th>
+<th align="left">'''Gender'''</th>
+<th align="left">'''min'''</th>
+<th align="left">'''max'''</th>
+<th align="left">'''mean'''</th>
+<th align="left">'''sd'''</th>
+<th align="left">'''var'''</th>
+<th align="left">'''median'''</th>
+<th align="left">'''IQR'''</th>
+<th align="left">'''skewness'''</th>
+<th align="left">'''kurtosis'''</th>
 </tr>
 </thead>
 <tbody>
@@ -58,18 +58,6 @@ In order to get more insight on the underlying data, a table of basic descriptiv
 <td align="left">1.4064</td>
 <td align="left">4.9089</td>
 </tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">0</td>
-<td align="left">10</td>
-<td align="left">3.3824</td>
-<td align="left">2.5822</td>
-<td align="left">6.6676</td>
-<td align="left">3</td>
-<td align="left">2</td>
-<td align="left">1.2197</td>
-<td align="left">3.8058</td>
-</tr>
 </tbody>
 </table>
 
@@ -87,23 +75,23 @@ We will use ''Shapiro-Wilk'', ''Lilliefors'' and ''Anderson-Darling'' tests to s
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left">'''W'''</th>
+<th align="left">'''N'''</th>
 <th align="left">'''p'''</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">shapiro.test</td>
+<td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
 <td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="left">lillie.test</td>
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
 <td align="left">0.168</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="left">ad.test</td>
+<td align="left">Anderson-Darling normality test</td>
 <td align="left">18.753</td>
 <td align="left">0</td>
 </tr>
@@ -164,21 +152,21 @@ In order to get more insight on the underlying data, a table of basic descriptiv
 <table>
 <thead>
 <tr class="header">
-<th align="left">'''value'''</th>
-<th align="left">'''min(x)'''</th>
-<th align="left">'''max(x)'''</th>
-<th align="left">'''mean(x)'''</th>
-<th align="left">'''sd(x)'''</th>
-<th align="left">'''var(x)'''</th>
-<th align="left">'''median(x)'''</th>
-<th align="left">'''IQR(x)'''</th>
-<th align="left">'''skewness(x)'''</th>
-<th align="left">'''kurtosis(x)'''</th>
+<th align="left">'''Variable'''</th>
+<th align="left">'''NA'''</th>
+<th align="left">'''NA'''</th>
+<th align="left">'''NA'''</th>
+<th align="left">'''NA'''</th>
+<th align="left">'''NA'''</th>
+<th align="left">'''NA'''</th>
+<th align="left">'''NA'''</th>
+<th align="left">'''NA'''</th>
+<th align="left">'''NA'''</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">(all)</td>
+<td align="left">Internet usage in leisure time (hours per day)</td>
 <td align="left">0</td>
 <td align="left">12</td>
 <td align="left">3.1994</td>
@@ -206,23 +194,23 @@ We will use ''Shapiro-Wilk'', ''Lilliefors'' and ''Anderson-Darling'' tests to s
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left">'''W'''</th>
+<th align="left">'''N'''</th>
 <th align="left">'''p'''</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">shapiro.test</td>
+<td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
 <td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="left">lillie.test</td>
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
 <td align="left">0.168</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="left">ad.test</td>
+<td align="left">Anderson-Darling normality test</td>
 <td align="left">18.753</td>
 <td align="left">0</td>
 </tr>
@@ -263,6 +251,6 @@ One Sample t-test was applied, and significant differences were found.
 
 -----
 
-This report was generated in [http://www.r-project.org/ R] with [http://al3xa.github.com/rapport/ Rapport] in 0.837 sec. Feel free to create [http://al3xa.github.com/rapport/#custom your own reporting templates]!
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.1) in 0.691 sec on x86_64-unknown-linux-gnu platform.
 
-[[Image:images/rapport.png|frame|none]]
+[[Image:images/logo.png|frame|none]]

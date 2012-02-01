@@ -62,9 +62,8 @@ And wow, the mean of /leisure/ is /3.1994/!
 
 *** Histogram
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file4362bdf0-hires.png][[[ae1d2677d19224aec6e79aa6edd92e0e.png]]]]
 
-[[9542b7929dcd934208ee4f18bde6ff31.png]]
 ** Description
 
 This template demonstrates the basic features of rapport. We all hope
@@ -84,17 +83,14 @@ And wow, the mean of /leisure/ is /3.1994/!
 
 *** Histogram
 
-#+CAPTION: 
-
-[[f72d3b7413bcb88fce740c2ab229411a.png]]
+[[/tmp/RtmpeIwHkw/file3bc4c25e-hires.png][[[7779958734926ffb57756d6c1d01b75b.png]]]]
 
 --------------
 
-This report was generated in [[http://www.r-project.org/][R]] with
-[[http://al3xa.github.com/rapport/][Rapport]] in 0.357 sec. Feel free to
-create [[http://al3xa.github.com/rapport/#custom][your own reporting
-templates]]!
+This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
+and [[http://al3xa.github.com/rapport/][rapport]] (0.1) in 0.729 sec on
+x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 
 
-[[images/rapport.png]]
+[[images/logo.png]]

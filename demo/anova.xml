@@ -153,31 +153,31 @@
         <thead>
           <row>
             <entry>
-              <emphasis role="strong">fac</emphasis>
+              <emphasis role="strong">Gender</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">min(resp)</emphasis>
+              <emphasis role="strong">Min</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">max(resp)</emphasis>
+              <emphasis role="strong">Max</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">mean(resp)</emphasis>
+              <emphasis role="strong">Mean</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">SD(resp)</emphasis>
+              <emphasis role="strong">Std.Dev.</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">median(resp)</emphasis>
+              <emphasis role="strong">Median</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">IQR(resp)</emphasis>
+              <emphasis role="strong">IQR</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">skewness(resp)</emphasis>
+              <emphasis role="strong">Skewness</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">kurtosis(resp)</emphasis>
+              <emphasis role="strong">Kurtosis</emphasis>
             </entry>
           </row>
         </thead>
@@ -240,34 +240,6 @@
               4.9089
             </entry>
           </row>
-          <row>
-            <entry>
-            </entry>
-            <entry>
-              0
-            </entry>
-            <entry>
-              10
-            </entry>
-            <entry>
-              3.3824
-            </entry>
-            <entry>
-              2.5822
-            </entry>
-            <entry>
-              3
-            </entry>
-            <entry>
-              2
-            </entry>
-            <entry>
-              1.2197
-            </entry>
-            <entry>
-              3.8058
-            </entry>
-          </row>
         </tbody>
       </tgroup>
     </informaltable>
@@ -303,17 +275,17 @@
               <entry>
               </entry>
               <entry>
-                <emphasis role="strong">W</emphasis>
+                <emphasis role="strong">Statistic</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">p</emphasis>
+                <emphasis role="strong">p-value</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
-                shapiro.test
+                Shapiro-Wilk normality test
               </entry>
               <entry>
                 0.9001
@@ -324,7 +296,7 @@
             </row>
             <row>
               <entry>
-                lillie.test
+                Lilliefors (Kolmogorov-Smirnov) normality test
               </entry>
               <entry>
                 0.168
@@ -335,7 +307,7 @@
             </row>
             <row>
               <entry>
-                ad.test
+                Anderson-Darling normality test
               </entry>
               <entry>
                 18.753
@@ -368,17 +340,17 @@
               <entry>
               </entry>
               <entry>
-                <emphasis role="strong">H</emphasis>
+                <emphasis role="strong">Statistic</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">p</emphasis>
+                <emphasis role="strong">p-value</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
-                fligner.test
+                Fligner-Killeen test of homogeneity of variances
               </entry>
               <entry>
                 0.4629
@@ -389,7 +361,7 @@
             </row>
             <row>
               <entry>
-                bartlett.test
+                Bartlett test of homogeneity of variances
               </entry>
               <entry>
                 10.7698
@@ -437,15 +409,13 @@
         </para>
       </listitem>
     </itemizedlist>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file2f8d0c35-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="1c63b6fad7856cf59a751b0f80339918.png" />
+          <imagedata fileref="dd5cdfe79c3741b4373910424cb2824c.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
 </section>
 <section id="anova-summary">
@@ -757,8 +727,10 @@
       hand side, while the corresponding statistics for response
       variable are given on the right-hand side.
     </para>
+    <!-- endlist -->
     <informaltable>
-      <tgroup cols="10">
+      <tgroup cols="11">
+        <colspec align="left" />
         <colspec align="left" />
         <colspec align="left" />
         <colspec align="left" />
@@ -772,39 +744,44 @@
         <thead>
           <row>
             <entry>
-              <emphasis role="strong">gender</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">partner</emphasis>
+              <emphasis role="strong">Gender</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">min(resp)</emphasis>
+              <emphasis role="strong">Relationship status</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">max(resp)</emphasis>
+              <emphasis role="strong">Min</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">mean(resp)</emphasis>
+              <emphasis role="strong">Max</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">SD(resp)</emphasis>
+              <emphasis role="strong">Mean</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">median(resp)</emphasis>
+              <emphasis role="strong">Std.Dev.</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">IQR(resp)</emphasis>
+              <emphasis role="strong">Median</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">skewness(resp)</emphasis>
+              <emphasis role="strong">IQR</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">kurtosis(resp)</emphasis>
+              <emphasis role="strong">Skewness</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">Kurtosis</emphasis>
             </entry>
           </row>
         </thead>
         <tbody>
           <row>
+            <entry>
+              1
+            </entry>
             <entry>
               male
             </entry>
@@ -838,6 +815,9 @@
           </row>
           <row>
             <entry>
+              2
+            </entry>
+            <entry>
               male
             </entry>
             <entry>
@@ -869,6 +849,9 @@
             </entry>
           </row>
           <row>
+            <entry>
+              3
+            </entry>
             <entry>
               male
             </entry>
@@ -902,36 +885,8 @@
           </row>
           <row>
             <entry>
-              male
+              5
             </entry>
-            <entry>
-            </entry>
-            <entry>
-              0.5
-            </entry>
-            <entry>
-              6.5
-            </entry>
-            <entry>
-              3.1304
-            </entry>
-            <entry>
-              1.7788
-            </entry>
-            <entry>
-              3
-            </entry>
-            <entry>
-              2.75
-            </entry>
-            <entry>
-              0.0719
-            </entry>
-            <entry>
-              1.9965
-            </entry>
-          </row>
-          <row>
             <entry>
               female
             </entry>
@@ -965,6 +920,9 @@
           </row>
           <row>
             <entry>
+              6
+            </entry>
+            <entry>
               female
             </entry>
             <entry>
@@ -997,6 +955,9 @@
           </row>
           <row>
             <entry>
+              7
+            </entry>
+            <entry>
               female
             </entry>
             <entry>
@@ -1025,160 +986,6 @@
             </entry>
             <entry>
               4.0139
-            </entry>
-          </row>
-          <row>
-            <entry>
-              female
-            </entry>
-            <entry>
-            </entry>
-            <entry>
-              0.5
-            </entry>
-            <entry>
-              6
-            </entry>
-            <entry>
-              2.6562
-            </entry>
-            <entry>
-              1.739
-            </entry>
-            <entry>
-              2
-            </entry>
-            <entry>
-              3
-            </entry>
-            <entry>
-              0.6914
-            </entry>
-            <entry>
-              2.4285
-            </entry>
-          </row>
-          <row>
-            <entry>
-            </entry>
-            <entry>
-              in a relationship
-            </entry>
-            <entry>
-              0
-            </entry>
-            <entry>
-              8
-            </entry>
-            <entry>
-              3.3333
-            </entry>
-            <entry>
-              2.4398
-            </entry>
-            <entry>
-              3
-            </entry>
-            <entry>
-              2.5
-            </entry>
-            <entry>
-              0.7897
-            </entry>
-            <entry>
-              2.5973
-            </entry>
-          </row>
-          <row>
-            <entry>
-            </entry>
-            <entry>
-              married
-            </entry>
-            <entry>
-              2
-            </entry>
-            <entry>
-              7
-            </entry>
-            <entry>
-              3.8
-            </entry>
-            <entry>
-              1.9235
-            </entry>
-            <entry>
-              3
-            </entry>
-            <entry>
-              1
-            </entry>
-            <entry>
-              1.018
-            </entry>
-            <entry>
-              2.6519
-            </entry>
-          </row>
-          <row>
-            <entry>
-            </entry>
-            <entry>
-              single
-            </entry>
-            <entry>
-              0
-            </entry>
-            <entry>
-              10
-            </entry>
-            <entry>
-              3.5833
-            </entry>
-            <entry>
-              3.2039
-            </entry>
-            <entry>
-              3
-            </entry>
-            <entry>
-              1.5
-            </entry>
-            <entry>
-              1.279
-            </entry>
-            <entry>
-              3.4365
-            </entry>
-          </row>
-          <row>
-            <entry>
-            </entry>
-            <entry>
-            </entry>
-            <entry>
-              1
-            </entry>
-            <entry>
-              2
-            </entry>
-            <entry>
-              1.5
-            </entry>
-            <entry>
-              0.7071
-            </entry>
-            <entry>
-              1.5
-            </entry>
-            <entry>
-              0.5
-            </entry>
-            <entry>
-              0
-            </entry>
-            <entry>
-              1
             </entry>
           </row>
         </tbody>
@@ -1216,17 +1023,17 @@
               <entry>
               </entry>
               <entry>
-                <emphasis role="strong">W</emphasis>
+                <emphasis role="strong">Statistic</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">p</emphasis>
+                <emphasis role="strong">p-value</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
-                shapiro.test
+                Shapiro-Wilk normality test
               </entry>
               <entry>
                 0.9001
@@ -1237,7 +1044,7 @@
             </row>
             <row>
               <entry>
-                lillie.test
+                Lilliefors (Kolmogorov-Smirnov) normality test
               </entry>
               <entry>
                 0.168
@@ -1248,7 +1055,7 @@
             </row>
             <row>
               <entry>
-                ad.test
+                Anderson-Darling normality test
               </entry>
               <entry>
                 18.753
@@ -1281,17 +1088,17 @@
               <entry>
               </entry>
               <entry>
-                <emphasis role="strong">H</emphasis>
+                <emphasis role="strong">Statistic</emphasis>
               </entry>
               <entry>
-                <emphasis role="strong">p</emphasis>
+                <emphasis role="strong">p-value</emphasis>
               </entry>
             </row>
           </thead>
           <tbody>
             <row>
               <entry>
-                fligner.test
+                Fligner-Killeen test of homogeneity of variances
               </entry>
               <entry>
                 1.1234
@@ -1302,7 +1109,7 @@
             </row>
             <row>
               <entry>
-                bartlett.test
+                Bartlett test of homogeneity of variances
               </entry>
               <entry>
                 11.1267
@@ -1350,15 +1157,13 @@
         </para>
       </listitem>
     </itemizedlist>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file38c269fb-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="efd197b02ca1541c48611907a3c42576.png" />
+          <imagedata fileref="3e897b547f80202649804e256107f6e0.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
 </section>
 <section id="anova-summary-1">
@@ -1487,18 +1292,16 @@
       (p = 0.717).
     </para>
     <para>
-      This report was generated in
-      <ulink url="http://www.r-project.org/">R</ulink> with
-      <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink> in
-      0.617 sec. Feel free to create
-      <ulink url="http://al3xa.github.com/rapport/#custom">your own
-      reporting templates</ulink>!
+      This report was generated with
+      <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
+      <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
+      (0.1) in 1.188 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="images/rapport.png" />
+          <imagedata fileref="images/logo.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>

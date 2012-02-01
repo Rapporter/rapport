@@ -2,8 +2,6 @@ h2. Description
 
 This template will return descriptive statistics of numerical or frequency tables of categorical variables.
 
-_2_
-
 h2. _gender_ (&quot;Gender&quot;)
 
 The dataset has _709_ observations with _673_ valid values (missing: _36_) in _gender_ (&quot;Gender&quot;), which seems to be a qualitative variable.
@@ -18,8 +16,7 @@ h3. Base statistics
 
 h3. Barplot
 
-!3ed92ab3ffc6e875335e7e8c774c35a8.png!
-
+"!3a46554ee29cd4dfe45dda5016464658.png!":/tmp/RtmpeIwHkw/file62ea0e3d-hires.png
 
 It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
 
@@ -31,14 +28,13 @@ The dataset has _709_ observations with _677_ valid values (missing: _32_) in _a
 
 h3. Base statistics
 
-|_. *value*|_. *mean(age)*|_. *sd(age)*|_. *var(age)*|
-|(all)|24.5731|6.8491|46.9107|
+|_. *Variable*|_. *mean*|_. *sd*|_. *var*|
+|Age|24.5731|6.8491|46.9107|
 
 
 h3. Histogram
 
-!ac5d789145bdef09b10219ef16429f53.png!
-
+"!4f025d440bf35d40e21208e8b0c58b77.png!":/tmp/RtmpeIwHkw/file951f5de-hires.png
 
 It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
 
@@ -59,8 +55,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
 * _μ_ - _mean_ or _expectation_ (location parameter)
 * _σ[^2^]_ - _variance_ (scale parameter)
 
-!2f8c434e103f36ec70966b372838d448.png!
-
+"!806ea97c59e1a12d4acae4968957aaa9.png!":/tmp/RtmpeIwHkw/file1c2be681-hires.png
 
 h4. Normality Tests
 
@@ -94,28 +89,23 @@ h5. Histogram
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-!ac5d789145bdef09b10219ef16429f53.png!
-
+"!4f025d440bf35d40e21208e8b0c58b77.png!":/tmp/RtmpeIwHkw/fileb079b29-hires.png
 
 h5. Q-Q Plot
 
 &quot;Q&quot; in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, @x = y@ line.
 
-!cbbba756d844aa053998959b73b9feff.png!
-
+"!131f20f388f78bd4863828d9fed8c35c.png!":/tmp/RtmpeIwHkw/file361e8e5f-hires.png
 
 h5. Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-!bde5b5e4ca06fa103953fc17e5273291.png!
-
+"!a7ec6c240344a65f58d22a787409082c.png!":/tmp/RtmpeIwHkw/file4de24319-hires.png
 
 h2. Description
 
 This template will return descriptive statistics of numerical or frequency tables of categorical variables.
-
-_8_
 
 h2. _chatim_ (&quot;Chat &amp; IM usage&quot;)
 
@@ -136,8 +126,7 @@ h3. Base statistics
 
 h3. Barplot
 
-!5a00abbe4c793ceedbbf10939665b5cf.png!
-
+"!a3a825d8535e7c9b8a9d23cc8c1293b1.png!":/tmp/RtmpeIwHkw/file3b12acb3-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -162,8 +151,7 @@ h3. Base statistics
 
 h3. Barplot
 
-!e53046a09491443064e085131e547971.png!
-
+"!601bf73b7f424e34c795446ca73a1bac.png!":/tmp/RtmpeIwHkw/file55a73940-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -188,8 +176,7 @@ h3. Base statistics
 
 h3. Barplot
 
-!0166a8b5df2f3db871e8736bfee8af6e.png!
-
+"!8b8013a5d21daf05463bf12edc7d6bfa.png!":/tmp/RtmpeIwHkw/file294a644e-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -214,8 +201,7 @@ h3. Base statistics
 
 h3. Barplot
 
-!895cde198b269bf65b01e1e067a515c8.png!
-
+"!7d530054059115b70f8098f2e3ff6c81.png!":/tmp/RtmpeIwHkw/file6ad9045d-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -240,8 +226,7 @@ h3. Base statistics
 
 h3. Barplot
 
-!dde181184885b8777d0248b3f421289a.png!
-
+"!c5c68401731dd8623c3bac532d4f93b1.png!":/tmp/RtmpeIwHkw/file620c192a-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -266,8 +251,7 @@ h3. Base statistics
 
 h3. Barplot
 
-!ac419134b2f4695e544d8886ba12e0c2.png!
-
+"!e866a67bba62e7f5cbe93b184599019f.png!":/tmp/RtmpeIwHkw/file3ebe4451-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -292,8 +276,7 @@ h3. Base statistics
 
 h3. Barplot
 
-!8475d98870c1cdd2436a3abdb0d69a66.png!
-
+"!6619f2daf580503ce53708176cb0d83b.png!":/tmp/RtmpeIwHkw/file51f44bf-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -318,8 +301,7 @@ h3. Base statistics
 
 h3. Barplot
 
-!4fda8cf992e8de93624c45ef3c72a0c5.png!
-
+"!cbda2b116fe3f7095f2997068f945424.png!":/tmp/RtmpeIwHkw/file22031a5b-hires.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -329,22 +311,19 @@ h2. Description
 
 This template will return descriptive statistics of numerical or frequency tables of categorical variables.
 
-_2_
-
 h2. _hp_
 
 The dataset has _32_ observations with _32_ valid values (missing: _0_) in _hp_, which seems to be a quantitative variable.
 
 h3. Base statistics
 
-|_. *value*|_. *mean(hp)*|_. *sd(hp)*|_. *var(hp)*|
-|(all)|146.6875|68.5629|4700.8669|
+|_. *Variable*|_. *mean*|_. *sd*|_. *var*|
+|hp|146.6875|68.5629|4700.8669|
 
 
 h3. Histogram
 
-!d90ec4a0af55fabeae7988710a062ce0.png!
-
+"!78517cde85fc1ba06a3513dd17e567da.png!":/tmp/RtmpeIwHkw/file3fb31a9-hires.png
 
 It seems that the highest value is _335_ which is exactly 6.4423 times higher than the smallest value (_52_).
 
@@ -365,8 +344,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
 * _μ_ - _mean_ or _expectation_ (location parameter)
 * _σ[^2^]_ - _variance_ (scale parameter)
 
-!2f8c434e103f36ec70966b372838d448.png!
-
+"!806ea97c59e1a12d4acae4968957aaa9.png!":/tmp/RtmpeIwHkw/file17df6234-hires.png
 
 h4. Normality Tests
 
@@ -400,22 +378,19 @@ h5. Histogram
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-!d90ec4a0af55fabeae7988710a062ce0.png!
-
+"!78517cde85fc1ba06a3513dd17e567da.png!":/tmp/RtmpeIwHkw/file569da685-hires.png
 
 h5. Q-Q Plot
 
 &quot;Q&quot; in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, @x = y@ line.
 
-!17e5c77b83c6e3e636487406decc14c7.png!
-
+"!1cefec04e4451a937a5c6aa4dfdcb352.png!":/tmp/RtmpeIwHkw/file584ddd86-hires.png
 
 h5. Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-!e63199776da0ad4146eff538e5ef7af7.png!
-
+"!9d1aa0141cbe00d3fc38daa10e0ee295.png!":/tmp/RtmpeIwHkw/file38a3f274-hires.png
 
 h2. _wt_
 
@@ -423,14 +398,13 @@ The dataset has _32_ observations with _32_ valid values (missing: _0_) in _wt_,
 
 h3. Base statistics
 
-|_. *value*|_. *mean(wt)*|_. *sd(wt)*|_. *var(wt)*|
-|(all)|3.2172|0.9785|0.9574|
+|_. *Variable*|_. *mean*|_. *sd*|_. *var*|
+|wt|3.2172|0.9785|0.9574|
 
 
 h3. Histogram
 
-!10caa8222b28328a6d8fd28917cbfb45.png!
-
+"!bf47295875cfa6d1667455a7d2721b19.png!":/tmp/RtmpeIwHkw/file4293f893-hires.png
 
 It seems that the highest value is _5.424_ which is exactly 3.5849 times higher than the smallest value (_1.513_).
 
@@ -451,8 +425,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
 * _μ_ - _mean_ or _expectation_ (location parameter)
 * _σ[^2^]_ - _variance_ (scale parameter)
 
-!2f8c434e103f36ec70966b372838d448.png!
-
+"!806ea97c59e1a12d4acae4968957aaa9.png!":/tmp/RtmpeIwHkw/file32221e18-hires.png
 
 h4. Normality Tests
 
@@ -486,26 +459,23 @@ h5. Histogram
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-!10caa8222b28328a6d8fd28917cbfb45.png!
-
+"!bf47295875cfa6d1667455a7d2721b19.png!":/tmp/RtmpeIwHkw/file222d547b-hires.png
 
 h5. Q-Q Plot
 
 &quot;Q&quot; in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, @x = y@ line.
 
-!ff471a5bcb80aaf91b4c053ab038d69a.png!
-
+"!975387b3193e28fb08a85f37cb17f87e.png!":/tmp/RtmpeIwHkw/file3e388fb3-hires.png
 
 h5. Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-!c3769779837adedcb4198ec881cc946b.png!
-
+"!80be91ef1e8d4bfbd708bf23dc9b14a8.png!":/tmp/RtmpeIwHkw/file15a36828-hires.png
 
 <hr />
 
-This report was generated in "R":http://www.r-project.org/ with "Rapport":http://al3xa.github.com/rapport/ in 3.061 sec. Feel free to create "your own reporting templates":http://al3xa.github.com/rapport/#custom!
+This report was generated with "R":http://www.r-project.org/ (2.14.0) and "rapport":http://al3xa.github.com/rapport/ (0.1) in 6.111 sec on x86&#95;64-unknown-linux-gnu platform.
 
-!images/rapport.png!
+!images/logo.png!
 

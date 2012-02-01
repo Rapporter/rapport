@@ -4,50 +4,7 @@ This template will check if provided variable has any outliers.
 
 h2. Boxplot
 
-!d24b3eb41da4d1de21d4bce0e30d2e1b.png!
-
-
-h2. Lund test
-
-It seems that _4_ extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.
-
-h3. Explanation
-
-The above test for outliers was based on _lm(1 ~ edu)_:
-
-|_. |_. *Estimate*|_. *Std. Error*|_. *t value*|_. *Pr(&gt;&#124;t&#124;)*|
-|(Intercept)|2.0481|0.078|26.2677|0|
-
-
-h3. References
-
-* Lund, R. E. 1975, &quot;Tables for An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 4, pp. 473-476.
-* Prescott, P. 1975, &quot;An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 1, pp. 129-132.
-
-h2. Grubb's test
-
-Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.0002).
-
-h3. References
-
-* Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.
-
-h2. Dixon's test
-
-chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
-
-h3. References
-
-* Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.
-
-h2. Description
-
-This template will check if provided variable has any outliers.
-
-h2. Boxplot
-
-!d24b3eb41da4d1de21d4bce0e30d2e1b.png!
-
+"!ea1797865a9d9a619be0e9c5d55d5de7.png!":/tmp/RtmpeIwHkw/file171523b9-hires.png
 
 h2. Lund test
 
@@ -88,8 +45,48 @@ This template will check if provided variable has any outliers.
 
 h2. Boxplot
 
-!d24b3eb41da4d1de21d4bce0e30d2e1b.png!
+"!ea1797865a9d9a619be0e9c5d55d5de7.png!":/tmp/RtmpeIwHkw/file2c5cc653-hires.png
 
+h2. Lund test
+
+It seems that _4_ extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.
+
+h3. Explanation
+
+The above test for outliers was based on _lm(1 ~ edu)_:
+
+|_. |_. *Estimate*|_. *Std. Error*|_. *t value*|_. *Pr(&gt;&#124;t&#124;)*|
+|(Intercept)|2.0481|0.078|26.2677|0|
+
+
+h3. References
+
+* Lund, R. E. 1975, &quot;Tables for An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 4, pp. 473-476.
+* Prescott, P. 1975, &quot;An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 1, pp. 129-132.
+
+h2. Grubb's test
+
+Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.0002).
+
+h3. References
+
+* Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.
+
+h2. Dixon's test
+
+chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
+
+h3. References
+
+* Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.
+
+h2. Description
+
+This template will check if provided variable has any outliers.
+
+h2. Boxplot
+
+"!ea1797865a9d9a619be0e9c5d55d5de7.png!":/tmp/RtmpeIwHkw/file57d6ef9e-hires.png
 
 h2. Lund test
 
@@ -105,7 +102,7 @@ The above test for outliers was based on _lm(1 ~ edu)_:
 
 <hr />
 
-This report was generated in "R":http://www.r-project.org/ with "Rapport":http://al3xa.github.com/rapport/ in 0.638 sec. Feel free to create "your own reporting templates":http://al3xa.github.com/rapport/#custom!
+This report was generated with "R":http://www.r-project.org/ (2.14.0) and "rapport":http://al3xa.github.com/rapport/ (0.1) in 1.147 sec on x86&#95;64-unknown-linux-gnu platform.
 
-!images/rapport.png!
+!images/logo.png!
 

@@ -23,7 +23,7 @@ of distributions, as it\[aq]s defined two parameters:
 .IP \[bu] 2
 \f[I]σ^2^\f[] - \f[I]variance\f[] (scale parameter)
 .PP
-[IMAGE: image (2f8c434e103f36ec70966b372838d448.png)]
+[IMAGE: image (806ea97c59e1a12d4acae4968957aaa9.png)] (/tmp/RtmpeIwHkw/file29cf7939-hires.png)
 .SS Normality Tests
 .SS Overview
 .PP
@@ -90,7 +90,7 @@ misleading.
 If the variable distribution is normal, bins should resemble the
 "bell-like" shape.
 .PP
-[IMAGE: image (12bea9ba14449f76d79a9d5792bf29f9.png)]
+[IMAGE: image (a949c4cf7eda15cd079e9d63b81acdd4.png)] (/tmp/RtmpeIwHkw/file4bd98e0c-hires.png)
 .SS Q-Q Plot
 .PP
 "Q" in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this plot
@@ -100,7 +100,7 @@ other.
 For normal distribution, plotted dots should approximate a "straight",
 \f[C]x\ =\ y\f[] line.
 .PP
-[IMAGE: image (fff2bb7b8b095f881f85302d0128bae7.png)]
+[IMAGE: image (eecb9a780afd4dd0de9737991e467a6e.png)] (/tmp/RtmpeIwHkw/file726063db-hires.png)
 .SS Kernel Density Plot
 .PP
 \f[I]Kernel density plot\f[] is a plot of smoothed \f[I]empirical
@@ -109,7 +109,7 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (d6e712fea18fd4ee7d4e10dfdf62f2c5.png)]
+[IMAGE: image (4e2660e6a8a36e1bcad14531e85bd72e.png)] (/tmp/RtmpeIwHkw/file16927214-hires.png)
 .SS Description
 .PP
 Overview of several normality tests and diagnostic plots that can screen
@@ -199,7 +199,7 @@ misleading.
 If the variable distribution is normal, bins should resemble the
 "bell-like" shape.
 .PP
-[IMAGE: image (12bea9ba14449f76d79a9d5792bf29f9.png)]
+[IMAGE: image (a949c4cf7eda15cd079e9d63b81acdd4.png)] (/tmp/RtmpeIwHkw/file1b612d0c-hires.png)
 .SS Q-Q Plot
 .PP
 "Q" in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this plot
@@ -209,7 +209,7 @@ other.
 For normal distribution, plotted dots should approximate a "straight",
 \f[C]x\ =\ y\f[] line.
 .PP
-[IMAGE: image (fff2bb7b8b095f881f85302d0128bae7.png)]
+[IMAGE: image (eecb9a780afd4dd0de9737991e467a6e.png)] (/tmp/RtmpeIwHkw/file50e9fae2-hires.png)
 .SS Kernel Density Plot
 .PP
 \f[I]Kernel density plot\f[] is a plot of smoothed \f[I]empirical
@@ -218,7 +218,7 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (17a0ceb36b1aa86ef5d6aec6d641ad0b.png)]
+[IMAGE: image (fa1b2f4d134ba88d20bd5ad1abc4f050.png)] (/tmp/RtmpeIwHkw/file425e5640-hires.png)
 .SS Description
 .PP
 Overview of several normality tests and diagnostic plots that can screen
@@ -243,7 +243,7 @@ of distributions, as it\[aq]s defined two parameters:
 .IP \[bu] 2
 \f[I]σ^2^\f[] - \f[I]variance\f[] (scale parameter)
 .PP
-[IMAGE: image (2f8c434e103f36ec70966b372838d448.png)]
+[IMAGE: image (806ea97c59e1a12d4acae4968957aaa9.png)] (/tmp/RtmpeIwHkw/file73238815-hires.png)
 .SS Normality Tests
 .SS Overview
 .PP
@@ -310,7 +310,7 @@ misleading.
 If the variable distribution is normal, bins should resemble the
 "bell-like" shape.
 .PP
-[IMAGE: image (12bea9ba14449f76d79a9d5792bf29f9.png)]
+[IMAGE: image (a949c4cf7eda15cd079e9d63b81acdd4.png)] (/tmp/RtmpeIwHkw/file56754fe0-hires.png)
 .SS Q-Q Plot
 .PP
 "Q" in \f[I]Q-Q plot\f[] stands for \f[I]quantile\f[], as this plot
@@ -320,7 +320,7 @@ other.
 For normal distribution, plotted dots should approximate a "straight",
 \f[C]x\ =\ y\f[] line.
 .PP
-[IMAGE: image (90c36448209c0d19b8b44a89277b29a3.png)]
+[IMAGE: image (95d42d4d0934008cfa630e1c4523e09a.png)] (/tmp/RtmpeIwHkw/file3f8d9eca-hires.png)
 .SS Kernel Density Plot
 .PP
 \f[I]Kernel density plot\f[] is a plot of smoothed \f[I]empirical
@@ -329,15 +329,14 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (cf85f7da760795cb0d5f7370b623a2a9.png)]
+[IMAGE: image (c4329e15f77e779dabbdb967f69129a6.png)] (/tmp/RtmpeIwHkw/file5230f292-hires.png)
 .PP
    *   *   *   *   *
 .PP
-This report was generated in R (http://www.r-project.org/) with
-Rapport (http://al3xa.github.com/rapport/) in 1.245 sec.
-Feel free to create your own reporting
-templates (http://al3xa.github.com/rapport/#custom)!
+This report was generated with R (http://www.r-project.org/) (2.14.0)
+and rapport (http://al3xa.github.com/rapport/) (0.1) in 2.765 sec on
+x86_64-unknown-linux-gnu platform.
 .PP
-[IMAGE: image (images/rapport.png)]
+[IMAGE: image (images/logo.png)]
 .SH AUTHORS
 Rapport package team \@ https://github.com/aL3xa/rapport.

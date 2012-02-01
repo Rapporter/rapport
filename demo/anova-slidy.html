@@ -78,15 +78,15 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <table>
 <thead>
 <tr class="header">
-<th align="left"><strong>fac</strong></th>
-<th align="left"><strong>min(resp)</strong></th>
-<th align="left"><strong>max(resp)</strong></th>
-<th align="left"><strong>mean(resp)</strong></th>
-<th align="left"><strong>SD(resp)</strong></th>
-<th align="left"><strong>median(resp)</strong></th>
-<th align="left"><strong>IQR(resp)</strong></th>
-<th align="left"><strong>skewness(resp)</strong></th>
-<th align="left"><strong>kurtosis(resp)</strong></th>
+<th align="left"><strong>Gender</strong></th>
+<th align="left"><strong>Min</strong></th>
+<th align="left"><strong>Max</strong></th>
+<th align="left"><strong>Mean</strong></th>
+<th align="left"><strong>Std.Dev.</strong></th>
+<th align="left"><strong>Median</strong></th>
+<th align="left"><strong>IQR</strong></th>
+<th align="left"><strong>Skewness</strong></th>
+<th align="left"><strong>Kurtosis</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -112,17 +112,6 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">1.4064</td>
 <td align="left">4.9089</td>
 </tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">0</td>
-<td align="left">10</td>
-<td align="left">3.3824</td>
-<td align="left">2.5822</td>
-<td align="left">3</td>
-<td align="left">2</td>
-<td align="left">1.2197</td>
-<td align="left">3.8058</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -138,23 +127,23 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left"><strong>W</strong></th>
-<th align="left"><strong>p</strong></th>
+<th align="left"><strong>Statistic</strong></th>
+<th align="left"><strong>p-value</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">shapiro.test</td>
+<td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
 <td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="left">lillie.test</td>
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
 <td align="left">0.168</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="left">ad.test</td>
+<td align="left">Anderson-Darling normality test</td>
 <td align="left">18.753</td>
 <td align="left">0</td>
 </tr>
@@ -169,18 +158,18 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left"><strong>H</strong></th>
-<th align="left"><strong>p</strong></th>
+<th align="left"><strong>Statistic</strong></th>
+<th align="left"><strong>p-value</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">fligner.test</td>
+<td align="left">Fligner-Killeen test of homogeneity of variances</td>
 <td align="left">0.4629</td>
 <td align="left">0.4963</td>
 </tr>
 <tr class="even">
-<td align="left">bartlett.test</td>
+<td align="left">Bartlett test of homogeneity of variances</td>
 <td align="left">10.7698</td>
 <td align="left">0.001</td>
 </tr>
@@ -195,9 +184,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <li>normal Q-Q plot</li>
 <li>residuals against leverages</li>
 </ul>
-<div class="figure">
-<img src="1c63b6fad7856cf59a751b0f80339918.png" /><p class="caption"></p>
-</div>
+<p><a href="/tmp/RtmpeIwHkw/file2f8d0c35-hires.png"><img src="dd5cdfe79c3741b4373910424cb2824c.png" /></a></p>
 </div>
 <div class="section slide level2" id="anova-summary">
 <h1 id="anova-summary">ANOVA Summary</h1>
@@ -326,23 +313,27 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </table>
 <h3 id="descriptive-statistics-1">Descriptive Statistics</h3>
 <p>The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.</p>
+<!-- endlist -->
+
 <table>
 <thead>
 <tr class="header">
-<th align="left"><strong>gender</strong></th>
-<th align="left"><strong>partner</strong></th>
-<th align="left"><strong>min(resp)</strong></th>
-<th align="left"><strong>max(resp)</strong></th>
-<th align="left"><strong>mean(resp)</strong></th>
-<th align="left"><strong>SD(resp)</strong></th>
-<th align="left"><strong>median(resp)</strong></th>
-<th align="left"><strong>IQR(resp)</strong></th>
-<th align="left"><strong>skewness(resp)</strong></th>
-<th align="left"><strong>kurtosis(resp)</strong></th>
+<th align="left"></th>
+<th align="left"><strong>Gender</strong></th>
+<th align="left"><strong>Relationship status</strong></th>
+<th align="left"><strong>Min</strong></th>
+<th align="left"><strong>Max</strong></th>
+<th align="left"><strong>Mean</strong></th>
+<th align="left"><strong>Std.Dev.</strong></th>
+<th align="left"><strong>Median</strong></th>
+<th align="left"><strong>IQR</strong></th>
+<th align="left"><strong>Skewness</strong></th>
+<th align="left"><strong>Kurtosis</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">1</td>
 <td align="left">male</td>
 <td align="left">in a relationship</td>
 <td align="left">0.5</td>
@@ -355,6 +346,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">5.727</td>
 </tr>
 <tr class="even">
+<td align="left">2</td>
 <td align="left">male</td>
 <td align="left">married</td>
 <td align="left">0</td>
@@ -367,6 +359,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">3.351</td>
 </tr>
 <tr class="odd">
+<td align="left">3</td>
 <td align="left">male</td>
 <td align="left">single</td>
 <td align="left">0</td>
@@ -379,18 +372,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">3.1208</td>
 </tr>
 <tr class="even">
-<td align="left">male</td>
-<td align="left"></td>
-<td align="left">0.5</td>
-<td align="left">6.5</td>
-<td align="left">3.1304</td>
-<td align="left">1.7788</td>
-<td align="left">3</td>
-<td align="left">2.75</td>
-<td align="left">0.0719</td>
-<td align="left">1.9965</td>
-</tr>
-<tr class="odd">
+<td align="left">5</td>
 <td align="left">female</td>
 <td align="left">in a relationship</td>
 <td align="left">0.5</td>
@@ -402,7 +384,8 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">1.4017</td>
 <td align="left">4.9165</td>
 </tr>
-<tr class="even">
+<tr class="odd">
+<td align="left">6</td>
 <td align="left">female</td>
 <td align="left">married</td>
 <td align="left">0</td>
@@ -414,7 +397,8 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">2.1875</td>
 <td align="left">9.2864</td>
 </tr>
-<tr class="odd">
+<tr class="even">
+<td align="left">7</td>
 <td align="left">female</td>
 <td align="left">single</td>
 <td align="left">0</td>
@@ -425,66 +409,6 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">3.5</td>
 <td align="left">1.2045</td>
 <td align="left">4.0139</td>
-</tr>
-<tr class="even">
-<td align="left">female</td>
-<td align="left"></td>
-<td align="left">0.5</td>
-<td align="left">6</td>
-<td align="left">2.6562</td>
-<td align="left">1.739</td>
-<td align="left">2</td>
-<td align="left">3</td>
-<td align="left">0.6914</td>
-<td align="left">2.4285</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">in a relationship</td>
-<td align="left">0</td>
-<td align="left">8</td>
-<td align="left">3.3333</td>
-<td align="left">2.4398</td>
-<td align="left">3</td>
-<td align="left">2.5</td>
-<td align="left">0.7897</td>
-<td align="left">2.5973</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">married</td>
-<td align="left">2</td>
-<td align="left">7</td>
-<td align="left">3.8</td>
-<td align="left">1.9235</td>
-<td align="left">3</td>
-<td align="left">1</td>
-<td align="left">1.018</td>
-<td align="left">2.6519</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">single</td>
-<td align="left">0</td>
-<td align="left">10</td>
-<td align="left">3.5833</td>
-<td align="left">3.2039</td>
-<td align="left">3</td>
-<td align="left">1.5</td>
-<td align="left">1.279</td>
-<td align="left">3.4365</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">1</td>
-<td align="left">2</td>
-<td align="left">1.5</td>
-<td align="left">0.7071</td>
-<td align="left">1.5</td>
-<td align="left">0.5</td>
-<td align="left">0</td>
-<td align="left">1</td>
 </tr>
 </tbody>
 </table>
@@ -501,23 +425,23 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left"><strong>W</strong></th>
-<th align="left"><strong>p</strong></th>
+<th align="left"><strong>Statistic</strong></th>
+<th align="left"><strong>p-value</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">shapiro.test</td>
+<td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
 <td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="left">lillie.test</td>
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
 <td align="left">0.168</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="left">ad.test</td>
+<td align="left">Anderson-Darling normality test</td>
 <td align="left">18.753</td>
 <td align="left">0</td>
 </tr>
@@ -532,18 +456,18 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left"><strong>H</strong></th>
-<th align="left"><strong>p</strong></th>
+<th align="left"><strong>Statistic</strong></th>
+<th align="left"><strong>p-value</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">fligner.test</td>
+<td align="left">Fligner-Killeen test of homogeneity of variances</td>
 <td align="left">1.1234</td>
 <td align="left">0.2892</td>
 </tr>
 <tr class="even">
-<td align="left">bartlett.test</td>
+<td align="left">Bartlett test of homogeneity of variances</td>
 <td align="left">11.1267</td>
 <td align="left">0.0009</td>
 </tr>
@@ -558,9 +482,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <li>normal Q-Q plot</li>
 <li>residuals against leverages</li>
 </ul>
-<div class="figure">
-<img src="efd197b02ca1541c48611907a3c42576.png" /><p class="caption"></p>
-</div>
+<p><a href="/tmp/RtmpeIwHkw/file38c269fb-hires.png"><img src="3e897b547f80202649804e256107f6e0.png" /></a></p>
 </div>
 <div class="section slide level2" id="anova-summary-1">
 <h1 id="anova-summary-1">ANOVA Summary</h1>
@@ -617,9 +539,9 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </div>
 <div class="section slide level2" id="section">
 <h1 id="section"></h1>
-<p>This report was generated in <a href="http://www.r-project.org/">R</a> with <a href="http://al3xa.github.com/rapport/">Rapport</a> in 0.617 sec. Feel free to create <a href="http://al3xa.github.com/rapport/#custom">your own reporting templates</a>!</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.14.0) and <a href="http://al3xa.github.com/rapport/">rapport</a> (0.1) in 1.188 sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
-<img src="images/rapport.png" /><p class="caption"></p>
+<img src="images/logo.png" /><p class="caption"></p>
 </div>
 </div>
 </body>

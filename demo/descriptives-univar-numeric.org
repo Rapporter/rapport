@@ -15,15 +15,15 @@ The dataset has /709/ observations with /677/ valid values (missing:
 
 *** Base statistics
 
-| *value*   | *mean(age)*   | *sd(age)*   | *var(age)*   |
-|-----------+---------------+-------------+--------------|
-| (all)     | 24.5731       | 6.8491      | 46.9107      |
+| *Variable*   | *mean*    | *sd*     | *var*     |
+|--------------+-----------+----------+-----------|
+| Age          | 24.5731   | 6.8491   | 46.9107   |
 
 *** Histogram
 
 #+CAPTION: 
 
-[[ac5d789145bdef09b10219ef16429f53.png]]
+[[4f025d440bf35d40e21208e8b0c58b77.png]]
 It seems that the highest value is /58/ which is exactly 3.625 times
 higher than the smallest value (/16/).
 
@@ -56,7 +56,7 @@ distributions, as it's defined two parameters:
 
 #+CAPTION: 
 
-[[2f8c434e103f36ec70966b372838d448.png]]
+[[806ea97c59e1a12d4acae4968957aaa9.png]]
 **** Normality Tests
 
 ***** Overview
@@ -116,7 +116,7 @@ should resemble the "bell-like" shape.
 
 #+CAPTION: 
 
-[[ac5d789145bdef09b10219ef16429f53.png]]
+[[4f025d440bf35d40e21208e8b0c58b77.png]]
 ***** Q-Q Plot
 
 "Q" in /Q-Q plot/ stands for /quantile/, as this plot compares empirical
@@ -126,7 +126,7 @@ plotted dots should approximate a "straight", =x = y= line.
 
 #+CAPTION: 
 
-[[cbbba756d844aa053998959b73b9feff.png]]
+[[131f20f388f78bd4863828d9fed8c35c.png]]
 ***** Kernel Density Plot
 
 /Kernel density plot/ is a plot of smoothed /empirical distribution
@@ -136,15 +136,14 @@ known "bell shape".
 
 #+CAPTION: 
 
-[[168d92f4cf90d2c563e5a0166a64150c.png]]
+[[9435c7015dbc7e9f9adb4c53640f9c92.png]]
 
 --------------
 
-This report was generated in [[http://www.r-project.org/][R]] with
-[[http://al3xa.github.com/rapport/][Rapport]] in 0.625 sec. Feel free to
-create [[http://al3xa.github.com/rapport/#custom][your own reporting
-templates]]!
+This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
+and [[http://al3xa.github.com/rapport/][rapport]] (0.1) in 1.592 sec on
+x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 
 
-[[images/rapport.png]]
+[[images/logo.png]]

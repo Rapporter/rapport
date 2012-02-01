@@ -111,15 +111,13 @@
   </section>
   <section id="barplot">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file5022119d-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="3ed92ab3ffc6e875335e7e8c774c35a8.png" />
+          <imagedata fileref="3a46554ee29cd4dfe45dda5016464658.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>2</emphasis> which is
       exactly 2 times higher than the smallest value
@@ -248,15 +246,13 @@
   </section>
   <section id="barplot-1">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file33dfbcb6-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="56568b0b0cecf2de13fbe0316f43f8fc.png" />
+          <imagedata fileref="a370513c6bd94251e700ff5fea9dd33f.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>3</emphasis> which is
       exactly 3 times higher than the smallest value
@@ -266,18 +262,16 @@
       The most frequent value is <emphasis>city</emphasis>.
     </para>
     <para>
-      This report was generated in
-      <ulink url="http://www.r-project.org/">R</ulink> with
-      <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink> in
-      0.269 sec. Feel free to create
-      <ulink url="http://al3xa.github.com/rapport/#custom">your own
-      reporting templates</ulink>!
+      This report was generated with
+      <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
+      <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
+      (0.1) in 0.672 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="images/rapport.png" />
+          <imagedata fileref="images/logo.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>

@@ -165,7 +165,7 @@ Mosaic chart
 
 * * * * *
 
-This report was generated in R with Rapport in 0.174 sec. Feel free to
-create your own reporting templates!
+This report was generated with R (2.14.0) and rapport (0.1) in 0.382 sec
+on x86_64-unknown-linux-gnu platform.
 
 []

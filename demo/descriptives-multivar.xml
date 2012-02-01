@@ -16,9 +16,6 @@
     This template will return descriptive statistics of numerical or
     frequency tables of categorical variables.
   </para>
-  <para>
-    <emphasis>2</emphasis>
-  </para>
 </section>
 <section id="gender-gender">
   <title><emphasis>gender</emphasis> (&quot;Gender&quot;)</title>
@@ -114,15 +111,13 @@
   </section>
   <section id="barplot">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file62ea0e3d-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="3ed92ab3ffc6e875335e7e8c774c35a8.png" />
+          <imagedata fileref="3a46554ee29cd4dfe45dda5016464658.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>2</emphasis> which is
       exactly 2 times higher than the smallest value
@@ -152,23 +147,23 @@
         <thead>
           <row>
             <entry>
-              <emphasis role="strong">value</emphasis>
+              <emphasis role="strong">Variable</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">mean(age)</emphasis>
+              <emphasis role="strong">mean</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">sd(age)</emphasis>
+              <emphasis role="strong">sd</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">var(age)</emphasis>
+              <emphasis role="strong">var</emphasis>
             </entry>
           </row>
         </thead>
         <tbody>
           <row>
             <entry>
-              (all)
+              Age
             </entry>
             <entry>
               24.5731
@@ -186,15 +181,13 @@
   </section>
   <section id="histogram">
     <title>Histogram</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file951f5de-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="ac5d789145bdef09b10219ef16429f53.png" />
+          <imagedata fileref="4f025d440bf35d40e21208e8b0c58b77.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>58</emphasis> which
       is exactly 3.625 times higher than the smallest value
@@ -252,15 +245,13 @@
           </para>
         </listitem>
       </itemizedlist>
-      <figure>
-        <title></title>
-        <mediaobject>
+      <para>
+        <ulink url="/tmp/RtmpeIwHkw/file1c2be681-hires.png"><inlinemediaobject>
           <imageobject>
-            <imagedata fileref="2f8c434e103f36ec70966b372838d448.png" />
+            <imagedata fileref="806ea97c59e1a12d4acae4968957aaa9.png" />
           </imageobject>
-          <textobject><phrase></phrase></textobject>
-        </mediaobject>
-      </figure>
+        </inlinemediaobject></ulink>
+      </para>
     </section>
     <section id="normality-tests-1">
       <title>Normality Tests</title>
@@ -383,15 +374,13 @@
           distribution is normal, bins should resemble the
           &quot;bell-like&quot; shape.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
+        <para>
+          <ulink url="/tmp/RtmpeIwHkw/fileb079b29-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="ac5d789145bdef09b10219ef16429f53.png" />
+              <imagedata fileref="4f025d440bf35d40e21208e8b0c58b77.png" />
             </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
+          </inlinemediaobject></ulink>
+        </para>
       </section>
       <section id="q-q-plot">
         <title>Q-Q Plot</title>
@@ -404,15 +393,13 @@
           dots should approximate a &quot;straight&quot;,
           <literal>x = y</literal> line.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
+        <para>
+          <ulink url="/tmp/RtmpeIwHkw/file361e8e5f-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="cbbba756d844aa053998959b73b9feff.png" />
+              <imagedata fileref="131f20f388f78bd4863828d9fed8c35c.png" />
             </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
+          </inlinemediaobject></ulink>
+        </para>
       </section>
       <section id="kernel-density-plot">
         <title>Kernel Density Plot</title>
@@ -423,15 +410,13 @@
           For normal distributions, it should resemble the well known
           &quot;bell shape&quot;.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
+        <para>
+          <ulink url="/tmp/RtmpeIwHkw/file4de24319-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="bde5b5e4ca06fa103953fc17e5273291.png" />
+              <imagedata fileref="a7ec6c240344a65f58d22a787409082c.png" />
             </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
+          </inlinemediaobject></ulink>
+        </para>
       </section>
     </section>
   </section>
@@ -441,9 +426,6 @@
   <para>
     This template will return descriptive statistics of numerical or
     frequency tables of categorical variables.
-  </para>
-  <para>
-    <emphasis>8</emphasis>
   </para>
 </section>
 <section id="chatim-chat-im-usage">
@@ -626,15 +608,13 @@
   </section>
   <section id="barplot-1">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file3b12acb3-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="5a00abbe4c793ceedbbf10939665b5cf.png" />
+          <imagedata fileref="a3a825d8535e7c9b8a9d23cc8c1293b1.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>7</emphasis> which is
       exactly 7 times higher than the smallest value
@@ -825,15 +805,13 @@
   </section>
   <section id="barplot-2">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file55a73940-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="e53046a09491443064e085131e547971.png" />
+          <imagedata fileref="601bf73b7f424e34c795446ca73a1bac.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>7</emphasis> which is
       exactly 7 times higher than the smallest value
@@ -1024,15 +1002,13 @@
   </section>
   <section id="barplot-3">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file294a644e-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="0166a8b5df2f3db871e8736bfee8af6e.png" />
+          <imagedata fileref="8b8013a5d21daf05463bf12edc7d6bfa.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>7</emphasis> which is
       exactly 7 times higher than the smallest value
@@ -1222,15 +1198,13 @@
   </section>
   <section id="barplot-4">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file6ad9045d-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="895cde198b269bf65b01e1e067a515c8.png" />
+          <imagedata fileref="7d530054059115b70f8098f2e3ff6c81.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>7</emphasis> which is
       exactly 7 times higher than the smallest value
@@ -1422,15 +1396,13 @@
   </section>
   <section id="barplot-5">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file620c192a-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="dde181184885b8777d0248b3f421289a.png" />
+          <imagedata fileref="c5c68401731dd8623c3bac532d4f93b1.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>7</emphasis> which is
       exactly 7 times higher than the smallest value
@@ -1621,15 +1593,13 @@
   </section>
   <section id="barplot-6">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file3ebe4451-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="ac419134b2f4695e544d8886ba12e0c2.png" />
+          <imagedata fileref="e866a67bba62e7f5cbe93b184599019f.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>7</emphasis> which is
       exactly 7 times higher than the smallest value
@@ -1821,15 +1791,13 @@
   </section>
   <section id="barplot-7">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file51f44bf-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="8475d98870c1cdd2436a3abdb0d69a66.png" />
+          <imagedata fileref="6619f2daf580503ce53708176cb0d83b.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>7</emphasis> which is
       exactly 7 times higher than the smallest value
@@ -2020,15 +1988,13 @@
   </section>
   <section id="barplot-8">
     <title>Barplot</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file22031a5b-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="4fda8cf992e8de93624c45ef3c72a0c5.png" />
+          <imagedata fileref="cbda2b116fe3f7095f2997068f945424.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>7</emphasis> which is
       exactly 7 times higher than the smallest value
@@ -2044,9 +2010,6 @@
   <para>
     This template will return descriptive statistics of numerical or
     frequency tables of categorical variables.
-  </para>
-  <para>
-    <emphasis>2</emphasis>
   </para>
 </section>
 <section id="hp">
@@ -2068,23 +2031,23 @@
         <thead>
           <row>
             <entry>
-              <emphasis role="strong">value</emphasis>
+              <emphasis role="strong">Variable</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">mean(hp)</emphasis>
+              <emphasis role="strong">mean</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">sd(hp)</emphasis>
+              <emphasis role="strong">sd</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">var(hp)</emphasis>
+              <emphasis role="strong">var</emphasis>
             </entry>
           </row>
         </thead>
         <tbody>
           <row>
             <entry>
-              (all)
+              hp
             </entry>
             <entry>
               146.6875
@@ -2102,15 +2065,13 @@
   </section>
   <section id="histogram-2">
     <title>Histogram</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file3fb31a9-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="d90ec4a0af55fabeae7988710a062ce0.png" />
+          <imagedata fileref="78517cde85fc1ba06a3513dd17e567da.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>335</emphasis> which
       is exactly 6.4423 times higher than the smallest value
@@ -2168,15 +2129,13 @@
           </para>
         </listitem>
       </itemizedlist>
-      <figure>
-        <title></title>
-        <mediaobject>
+      <para>
+        <ulink url="/tmp/RtmpeIwHkw/file17df6234-hires.png"><inlinemediaobject>
           <imageobject>
-            <imagedata fileref="2f8c434e103f36ec70966b372838d448.png" />
+            <imagedata fileref="806ea97c59e1a12d4acae4968957aaa9.png" />
           </imageobject>
-          <textobject><phrase></phrase></textobject>
-        </mediaobject>
-      </figure>
+        </inlinemediaobject></ulink>
+      </para>
     </section>
     <section id="normality-tests-3">
       <title>Normality Tests</title>
@@ -2299,15 +2258,13 @@
           distribution is normal, bins should resemble the
           &quot;bell-like&quot; shape.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
+        <para>
+          <ulink url="/tmp/RtmpeIwHkw/file569da685-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="d90ec4a0af55fabeae7988710a062ce0.png" />
+              <imagedata fileref="78517cde85fc1ba06a3513dd17e567da.png" />
             </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
+          </inlinemediaobject></ulink>
+        </para>
       </section>
       <section id="q-q-plot-1">
         <title>Q-Q Plot</title>
@@ -2320,15 +2277,13 @@
           dots should approximate a &quot;straight&quot;,
           <literal>x = y</literal> line.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
+        <para>
+          <ulink url="/tmp/RtmpeIwHkw/file584ddd86-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="17e5c77b83c6e3e636487406decc14c7.png" />
+              <imagedata fileref="1cefec04e4451a937a5c6aa4dfdcb352.png" />
             </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
+          </inlinemediaobject></ulink>
+        </para>
       </section>
       <section id="kernel-density-plot-1">
         <title>Kernel Density Plot</title>
@@ -2339,15 +2294,13 @@
           For normal distributions, it should resemble the well known
           &quot;bell shape&quot;.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
+        <para>
+          <ulink url="/tmp/RtmpeIwHkw/file38a3f274-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="e63199776da0ad4146eff538e5ef7af7.png" />
+              <imagedata fileref="9d1aa0141cbe00d3fc38daa10e0ee295.png" />
             </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
+          </inlinemediaobject></ulink>
+        </para>
       </section>
     </section>
   </section>
@@ -2371,23 +2324,23 @@
         <thead>
           <row>
             <entry>
-              <emphasis role="strong">value</emphasis>
+              <emphasis role="strong">Variable</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">mean(wt)</emphasis>
+              <emphasis role="strong">mean</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">sd(wt)</emphasis>
+              <emphasis role="strong">sd</emphasis>
             </entry>
             <entry>
-              <emphasis role="strong">var(wt)</emphasis>
+              <emphasis role="strong">var</emphasis>
             </entry>
           </row>
         </thead>
         <tbody>
           <row>
             <entry>
-              (all)
+              wt
             </entry>
             <entry>
               3.2172
@@ -2405,15 +2358,13 @@
   </section>
   <section id="histogram-4">
     <title>Histogram</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file4293f893-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="10caa8222b28328a6d8fd28917cbfb45.png" />
+          <imagedata fileref="bf47295875cfa6d1667455a7d2721b19.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
     <para>
       It seems that the highest value is <emphasis>5.424</emphasis>
       which is exactly 3.5849 times higher than the smallest value
@@ -2471,15 +2422,13 @@
           </para>
         </listitem>
       </itemizedlist>
-      <figure>
-        <title></title>
-        <mediaobject>
+      <para>
+        <ulink url="/tmp/RtmpeIwHkw/file32221e18-hires.png"><inlinemediaobject>
           <imageobject>
-            <imagedata fileref="2f8c434e103f36ec70966b372838d448.png" />
+            <imagedata fileref="806ea97c59e1a12d4acae4968957aaa9.png" />
           </imageobject>
-          <textobject><phrase></phrase></textobject>
-        </mediaobject>
-      </figure>
+        </inlinemediaobject></ulink>
+      </para>
     </section>
     <section id="normality-tests-5">
       <title>Normality Tests</title>
@@ -2602,15 +2551,13 @@
           distribution is normal, bins should resemble the
           &quot;bell-like&quot; shape.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
+        <para>
+          <ulink url="/tmp/RtmpeIwHkw/file222d547b-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="10caa8222b28328a6d8fd28917cbfb45.png" />
+              <imagedata fileref="bf47295875cfa6d1667455a7d2721b19.png" />
             </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
+          </inlinemediaobject></ulink>
+        </para>
       </section>
       <section id="q-q-plot-2">
         <title>Q-Q Plot</title>
@@ -2623,15 +2570,13 @@
           dots should approximate a &quot;straight&quot;,
           <literal>x = y</literal> line.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
+        <para>
+          <ulink url="/tmp/RtmpeIwHkw/file3e388fb3-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="ff471a5bcb80aaf91b4c053ab038d69a.png" />
+              <imagedata fileref="975387b3193e28fb08a85f37cb17f87e.png" />
             </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
+          </inlinemediaobject></ulink>
+        </para>
       </section>
       <section id="kernel-density-plot-2">
         <title>Kernel Density Plot</title>
@@ -2642,28 +2587,24 @@
           For normal distributions, it should resemble the well known
           &quot;bell shape&quot;.
         </para>
-        <figure>
-          <title></title>
-          <mediaobject>
-            <imageobject>
-              <imagedata fileref="c3769779837adedcb4198ec881cc946b.png" />
-            </imageobject>
-            <textobject><phrase></phrase></textobject>
-          </mediaobject>
-        </figure>
         <para>
-          This report was generated in
-          <ulink url="http://www.r-project.org/">R</ulink> with
-          <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink>
-          in 3.061 sec. Feel free to create
-          <ulink url="http://al3xa.github.com/rapport/#custom">your own
-          reporting templates</ulink>!
+          <ulink url="/tmp/RtmpeIwHkw/file15a36828-hires.png"><inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="80be91ef1e8d4bfbd708bf23dc9b14a8.png" />
+            </imageobject>
+          </inlinemediaobject></ulink>
+        </para>
+        <para>
+          This report was generated with
+          <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
+          <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
+          (0.1) in 6.111 sec on x86_64-unknown-linux-gnu platform.
         </para>
         <figure>
           <title></title>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/rapport.png" />
+              <imagedata fileref="images/logo.png" />
             </imageobject>
             <textobject><phrase></phrase></textobject>
           </mediaobject>

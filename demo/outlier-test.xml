@@ -18,15 +18,13 @@
 </section>
 <section id="boxplot">
   <title>Boxplot</title>
-  <figure>
-    <title></title>
-    <mediaobject>
+  <para>
+    <ulink url="/tmp/RtmpeIwHkw/file171523b9-hires.png"><inlinemediaobject>
       <imageobject>
-        <imagedata fileref="d24b3eb41da4d1de21d4bce0e30d2e1b.png" />
+        <imagedata fileref="ea1797865a9d9a619be0e9c5d55d5de7.png" />
       </imageobject>
-      <textobject><phrase></phrase></textobject>
-    </mediaobject>
-  </figure>
+    </inlinemediaobject></ulink>
+  </para>
 </section>
 <section id="lund-test">
   <title>Lund test</title>
@@ -152,15 +150,13 @@
 </section>
 <section id="boxplot-1">
   <title>Boxplot</title>
-  <figure>
-    <title></title>
-    <mediaobject>
+  <para>
+    <ulink url="/tmp/RtmpeIwHkw/file2c5cc653-hires.png"><inlinemediaobject>
       <imageobject>
-        <imagedata fileref="d24b3eb41da4d1de21d4bce0e30d2e1b.png" />
+        <imagedata fileref="ea1797865a9d9a619be0e9c5d55d5de7.png" />
       </imageobject>
-      <textobject><phrase></phrase></textobject>
-    </mediaobject>
-  </figure>
+    </inlinemediaobject></ulink>
+  </para>
 </section>
 <section id="lund-test-1">
   <title>Lund test</title>
@@ -286,15 +282,13 @@
 </section>
 <section id="boxplot-2">
   <title>Boxplot</title>
-  <figure>
-    <title></title>
-    <mediaobject>
+  <para>
+    <ulink url="/tmp/RtmpeIwHkw/file57d6ef9e-hires.png"><inlinemediaobject>
       <imageobject>
-        <imagedata fileref="d24b3eb41da4d1de21d4bce0e30d2e1b.png" />
+        <imagedata fileref="ea1797865a9d9a619be0e9c5d55d5de7.png" />
       </imageobject>
-      <textobject><phrase></phrase></textobject>
-    </mediaobject>
-  </figure>
+    </inlinemediaobject></ulink>
+  </para>
 </section>
 <section id="lund-test-2">
   <title>Lund test</title>
@@ -356,18 +350,16 @@
       </tgroup>
     </informaltable>
     <para>
-      This report was generated in
-      <ulink url="http://www.r-project.org/">R</ulink> with
-      <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink> in
-      0.638 sec. Feel free to create
-      <ulink url="http://al3xa.github.com/rapport/#custom">your own
-      reporting templates</ulink>!
+      This report was generated with
+      <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
+      <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
+      (0.1) in 1.147 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="images/rapport.png" />
+          <imagedata fileref="images/logo.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>

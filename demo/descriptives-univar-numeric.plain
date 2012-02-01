@@ -16,9 +16,9 @@ age ("Age"), which seems to be a quantitative variable.
 
 Base statistics
 
-  value   mean(age)   sd(age)   var(age)
-  ------- ----------- --------- ----------
-  (all)   24.5731     6.8491    46.9107
+  Variable   mean      sd       var
+  ---------- --------- -------- ---------
+  Age        24.5731   6.8491   46.9107
 
 Histogram
 
@@ -133,7 +133,7 @@ known "bell shape".
 
 * * * * *
 
-This report was generated in R with Rapport in 0.625 sec. Feel free to
-create your own reporting templates!
+This report was generated with R (2.14.0) and rapport (0.1) in 1.592 sec
+on x86_64-unknown-linux-gnu platform.
 
 []

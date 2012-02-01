@@ -23,9 +23,8 @@ The dataset has /709/ observations with /673/ valid values (missing:
 
 *** Barplot
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file75e80a33-hires.png][[[3a46554ee29cd4dfe45dda5016464658.png]]]]
 
-[[3ed92ab3ffc6e875335e7e8c774c35a8.png]]
 It seems that the highest value is /2/ which is exactly 2 times higher
 than the smallest value (/1/).
 
@@ -43,15 +42,14 @@ The dataset has /709/ observations with /677/ valid values (missing:
 
 *** Base statistics
 
-| *value*   | *mean(age)*   | *sd(age)*   | *var(age)*   |
-|-----------+---------------+-------------+--------------|
-| (all)     | 24.5731       | 6.8491      | 46.9107      |
+| *Variable*   | *mean*    | *sd*     | *var*     |
+|--------------+-----------+----------+-----------|
+| Age          | 24.5731   | 6.8491   | 46.9107   |
 
 *** Histogram
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file5d4e0c0d-hires.png][[[4f025d440bf35d40e21208e8b0c58b77.png]]]]
 
-[[ac5d789145bdef09b10219ef16429f53.png]]
 It seems that the highest value is /58/ which is exactly 3.625 times
 higher than the smallest value (/16/).
 
@@ -82,9 +80,8 @@ distributions, as it's defined two parameters:
 -  /μ/ - /mean/ or /expectation/ (location parameter)
 -  /σ^{2}/ - /variance/ (scale parameter)
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file4dd701cc-hires.png][[[806ea97c59e1a12d4acae4968957aaa9.png]]]]
 
-[[2f8c434e103f36ec70966b372838d448.png]]
 **** Normality Tests
 
 ***** Overview
@@ -142,9 +139,8 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file6fb71f43-hires.png][[[4f025d440bf35d40e21208e8b0c58b77.png]]]]
 
-[[ac5d789145bdef09b10219ef16429f53.png]]
 ***** Q-Q Plot
 
 "Q" in /Q-Q plot/ stands for /quantile/, as this plot compares empirical
@@ -152,9 +148,8 @@ and theoretical distribution (in this case, /normal/ distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", =x = y= line.
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file35f509a2-hires.png][[[131f20f388f78bd4863828d9fed8c35c.png]]]]
 
-[[cbbba756d844aa053998959b73b9feff.png]]
 ***** Kernel Density Plot
 
 /Kernel density plot/ is a plot of smoothed /empirical distribution
@@ -162,17 +157,14 @@ function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-#+CAPTION: 
-
-[[4599005cf6ab3467d8da53b77f40ff98.png]]
+[[/tmp/RtmpeIwHkw/file3c06b601-hires.png][[[6b02f49521f9cdd18ef0206b1dac3583.png]]]]
 
 --------------
 
-This report was generated in [[http://www.r-project.org/][R]] with
-[[http://al3xa.github.com/rapport/][Rapport]] in 0.76 sec. Feel free to
-create [[http://al3xa.github.com/rapport/#custom][your own reporting
-templates]]!
+This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
+and [[http://al3xa.github.com/rapport/][rapport]] (0.1) in 1.606 sec on
+x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 
 
-[[images/rapport.png]]
+[[images/logo.png]]

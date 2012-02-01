@@ -45,16 +45,16 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <table>
 <thead>
 <tr class="header">
-<th align="left"><strong>y</strong></th>
-<th align="left"><strong>min(x)</strong></th>
-<th align="left"><strong>max(x)</strong></th>
-<th align="left"><strong>mean(x)</strong></th>
-<th align="left"><strong>sd(x)</strong></th>
-<th align="left"><strong>var(x)</strong></th>
-<th align="left"><strong>median(x)</strong></th>
-<th align="left"><strong>IQR(x)</strong></th>
-<th align="left"><strong>skewness(x)</strong></th>
-<th align="left"><strong>kurtosis(x)</strong></th>
+<th align="left"><strong>Gender</strong></th>
+<th align="left"><strong>min</strong></th>
+<th align="left"><strong>max</strong></th>
+<th align="left"><strong>mean</strong></th>
+<th align="left"><strong>sd</strong></th>
+<th align="left"><strong>var</strong></th>
+<th align="left"><strong>median</strong></th>
+<th align="left"><strong>IQR</strong></th>
+<th align="left"><strong>skewness</strong></th>
+<th align="left"><strong>kurtosis</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -82,18 +82,6 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <td align="left">1.4064</td>
 <td align="left">4.9089</td>
 </tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">0</td>
-<td align="left">10</td>
-<td align="left">3.3824</td>
-<td align="left">2.5822</td>
-<td align="left">6.6676</td>
-<td align="left">3</td>
-<td align="left">2</td>
-<td align="left">1.2197</td>
-<td align="left">3.8058</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -108,23 +96,23 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left"><strong>W</strong></th>
+<th align="left"><strong>N</strong></th>
 <th align="left"><strong>p</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">shapiro.test</td>
+<td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
 <td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="left">lillie.test</td>
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
 <td align="left">0.168</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="left">ad.test</td>
+<td align="left">Anderson-Darling normality test</td>
 <td align="left">18.753</td>
 <td align="left">0</td>
 </tr>
@@ -183,21 +171,21 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <table>
 <thead>
 <tr class="header">
-<th align="left"><strong>value</strong></th>
-<th align="left"><strong>min(x)</strong></th>
-<th align="left"><strong>max(x)</strong></th>
-<th align="left"><strong>mean(x)</strong></th>
-<th align="left"><strong>sd(x)</strong></th>
-<th align="left"><strong>var(x)</strong></th>
-<th align="left"><strong>median(x)</strong></th>
-<th align="left"><strong>IQR(x)</strong></th>
-<th align="left"><strong>skewness(x)</strong></th>
-<th align="left"><strong>kurtosis(x)</strong></th>
+<th align="left"><strong>Variable</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
+<th align="left"><strong>NA</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">(all)</td>
+<td align="left">Internet usage in leisure time (hours per day)</td>
 <td align="left">0</td>
 <td align="left">12</td>
 <td align="left">3.1994</td>
@@ -222,23 +210,23 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left"><strong>W</strong></th>
+<th align="left"><strong>N</strong></th>
 <th align="left"><strong>p</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">shapiro.test</td>
+<td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
 <td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="left">lillie.test</td>
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
 <td align="left">0.168</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="left">ad.test</td>
+<td align="left">Anderson-Darling normality test</td>
 <td align="left">18.753</td>
 <td align="left">0</td>
 </tr>
@@ -276,9 +264,9 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </div>
 <div class="section slide level2" id="section">
 <h1 id="section"></h1>
-<p>This report was generated in <a href="http://www.r-project.org/">R</a> with <a href="http://al3xa.github.com/rapport/">Rapport</a> in 0.837 sec. Feel free to create <a href="http://al3xa.github.com/rapport/#custom">your own reporting templates</a>!</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.14.0) and <a href="http://al3xa.github.com/rapport/">rapport</a> (0.1) in 0.691 sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
-<img src="images/rapport.png" /><p class="caption"></p>
+<img src="images/logo.png" /><p class="caption"></p>
 </div>
 </div>
 </body>

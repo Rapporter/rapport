@@ -9,9 +9,8 @@ This template will check if provided variable has any outliers.
 
 ** Boxplot
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file171523b9-hires.png][[[ea1797865a9d9a619be0e9c5d55d5de7.png]]]]
 
-[[d24b3eb41da4d1de21d4bce0e30d2e1b.png]]
 ** Lund test
 
 It seems that /4/ extreme values can be found in "Internet usage for
@@ -58,9 +57,8 @@ This template will check if provided variable has any outliers.
 
 ** Boxplot
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file2c5cc653-hires.png][[[ea1797865a9d9a619be0e9c5d55d5de7.png]]]]
 
-[[d24b3eb41da4d1de21d4bce0e30d2e1b.png]]
 ** Lund test
 
 It seems that /4/ extreme values can be found in "Internet usage for
@@ -107,9 +105,8 @@ This template will check if provided variable has any outliers.
 
 ** Boxplot
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file57d6ef9e-hires.png][[[ea1797865a9d9a619be0e9c5d55d5de7.png]]]]
 
-[[d24b3eb41da4d1de21d4bce0e30d2e1b.png]]
 ** Lund test
 
 It seems that /4/ extreme values can be found in "Internet usage for
@@ -125,11 +122,10 @@ The above test for outliers was based on /lm(1 ~ edu)/:
 
 --------------
 
-This report was generated in [[http://www.r-project.org/][R]] with
-[[http://al3xa.github.com/rapport/][Rapport]] in 0.638 sec. Feel free to
-create [[http://al3xa.github.com/rapport/#custom][your own reporting
-templates]]!
+This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
+and [[http://al3xa.github.com/rapport/][rapport]] (0.1) in 1.147 sec on
+x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 
 
-[[images/rapport.png]]
+[[images/logo.png]]

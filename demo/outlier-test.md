@@ -10,7 +10,7 @@ This template will check if provided variable has any outliers.
 Boxplot
 -------
 
-![image](d24b3eb41da4d1de21d4bce0e30d2e1b.png)
+[![image](ea1797865a9d9a619be0e9c5d55d5de7.png)](/tmp/RtmpeIwHkw/file171523b9-hires.png)
 
 Lund test
 ---------
@@ -63,7 +63,7 @@ This template will check if provided variable has any outliers.
 Boxplot
 -------
 
-![image](d24b3eb41da4d1de21d4bce0e30d2e1b.png)
+[![image](ea1797865a9d9a619be0e9c5d55d5de7.png)](/tmp/RtmpeIwHkw/file2c5cc653-hires.png)
 
 Lund test
 ---------
@@ -116,7 +116,7 @@ This template will check if provided variable has any outliers.
 Boxplot
 -------
 
-![image](d24b3eb41da4d1de21d4bce0e30d2e1b.png)
+[![image](ea1797865a9d9a619be0e9c5d55d5de7.png)](/tmp/RtmpeIwHkw/file57d6ef9e-hires.png)
 
 Lund test
 ---------
@@ -134,9 +134,8 @@ The above test for outliers was based on *lm(1 \~ edu)*:
 
 * * * * *
 
-This report was generated in [R](http://www.r-project.org/) with
-[Rapport](http://al3xa.github.com/rapport/) in 0.638 sec. Feel free to
-create [your own reporting
-templates](http://al3xa.github.com/rapport/#custom)!
+This report was generated with [R](http://www.r-project.org/) (2.14.0)
+and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.147 sec on
+x86\_64-unknown-linux-gnu platform.
 
-![image](images/rapport.png)
+![image](images/logo.png)

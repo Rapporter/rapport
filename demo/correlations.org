@@ -35,9 +35,8 @@ Uncorrelated (-0.2 < r < 0.2) variables:
 | edu       | 0.2273 * * *   |                | 0.1732 * * *   |
 | leisure   | -0.0338        | 0.1732 * * *   |                |
 
-#+CAPTION: 
+[[/tmp/RtmpeIwHkw/file744ae54d-hires.png][[[0e4cca7017b21223d68df3b9e300c895.png]]]]
 
-[[fc8b6edbaddadbdf0c5014f99fda88d6.png]]
 ** Description
 
 This template will return the correlation matrix of supplied numerical
@@ -102,17 +101,14 @@ Uncorrelated (-0.2 < r < 0.2) variables:
 | gear   | 0.4803 * *      | -0.4927 * *     | -0.5556 * * *   | -0.1257         | 0.6996 * * *    | -0.5833 * * *   | -0.2127         | 0.2060          | 0.7941 * * *    |                 | 0.2741          |
 | carb   | -0.5509 * *     | 0.5270 * *      | 0.3950 *        | 0.7498 * * *    | -0.0908         | 0.4276 *        | -0.6562 * * *   | -0.5696 * * *   | 0.0575          | 0.2741          |                 |
 
-#+CAPTION: 
-
-[[ce42e944b62284a3bebf2101155af100.png]]
+[[/tmp/RtmpeIwHkw/file30916d08-hires.png][[[82a0f381195bb4f50da3c943e264add1.png]]]]
 
 --------------
 
-This report was generated in [[http://www.r-project.org/][R]] with
-[[http://al3xa.github.com/rapport/][Rapport]] in 0.596 sec. Feel free to
-create [[http://al3xa.github.com/rapport/#custom][your own reporting
-templates]]!
+This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
+and [[http://al3xa.github.com/rapport/][rapport]] (0.1) in 1.308 sec on
+x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 
 
-[[images/rapport.png]]
+[[images/logo.png]]

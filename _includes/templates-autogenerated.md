@@ -113,12 +113,11 @@ Total        673     100       673            100
 The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
 
-**fac**   **min(resp)**   **max(resp)**   **mean(resp)**   **SD(resp)**   **median(resp)**   **IQR(resp)**   **skewness(resp)**   **kurtosis(resp)**  
---------- --------------- --------------- ---------------- -------------- ------------------ --------------- -------------------- --------------------
-male      0               12              3.2699           1.9535         3                  3               0.9479               4.0064              
-female    0               12              3.0643           2.3546         2                  3               1.4064               4.9089              
-          0               10              3.3824           2.5822         3                  2               1.2197               3.8058              
---------- --------------- --------------- ---------------- -------------- ------------------ --------------- -------------------- --------------------
+**Gender**   **Min**   **Max**   **Mean**   **Std.Dev.**   **Median**   **IQR**   **Skewness**   **Kurtosis**  
+------------ --------- --------- ---------- -------------- ------------ --------- -------------- --------------
+male         0         12        3.2699     1.9535         3            3         0.9479         4.0064        
+female       0         12        3.0643     2.3546         2            3         1.4064         4.9089        
+------------ --------- --------- ---------- -------------- ------------ --------- -------------- --------------
 
 
 # Diagnostics
@@ -129,16 +128,16 @@ Before we carry out ANOVA, we'd like to check some basic assumptions. For those 
 
 ### Univariate Normality
 
-We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_). 
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_).
 
 <!-- endlist -->
 
-               **W**    **p**  
--------------- -------- -------
-shapiro.test   0.9001   0      
-lillie.test    0.168    0      
-ad.test        18.753   0      
--------------- -------- -------
+                                                 **Statistic**   **p-value**  
+------------------------------------------------ --------------- -------------
+Shapiro-Wilk normality test                      0.9001          0            
+Lilliefors (Kolmogorov-Smirnov) normality test   0.168           0            
+Anderson-Darling normality test                  18.753          0            
+------------------------------------------------ --------------- -------------
 
 
 As you can see, applied tests confirm departures from normality.
@@ -149,11 +148,11 @@ In order to test homoscedascity, _Bartlett_ and _Fligner-Kileen_ tests are appli
 
 <!-- endlist -->
 
-                **H**     **p**   
---------------- --------- --------
-fligner.test    0.4629    0.4963  
-bartlett.test   10.7698   0.001   
---------------- --------- --------
+                                                   **Statistic**   **p-value**  
+-------------------------------------------------- --------------- -------------
+Fligner-Killeen test of homogeneity of variances   0.4629          0.4963       
+Bartlett test of homogeneity of variances          10.7698         0.001        
+-------------------------------------------------- --------------- -------------
 
 
 When it comes to equality of variances, applied tests yield inconsistent results. While _Fligner-Kileen test_ confirmed the hypotheses of homoscedascity, _Bartlett's test_ rejected it.
@@ -167,7 +166,7 @@ Here you can see several diagnostic plots for ANOVA model:
  - normal Q-Q plot
  - residuals against leverages
 
-/tmp/RtmpwIuUZk/filef30d5c8.png
+/tmp/RtmpeIwHkw/file1f0e3b0a.png
 
 # ANOVA Summary
 
@@ -224,22 +223,17 @@ Total        Total               633     100       633            100
 
 The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
+<!-- endlist -->
 
-**gender**   **partner**         **min(resp)**   **max(resp)**   **mean(resp)**   **SD(resp)**   **median(resp)**   **IQR(resp)**   **skewness(resp)**   **kurtosis(resp)**  
------------- ------------------- --------------- --------------- ---------------- -------------- ------------------ --------------- -------------------- --------------------
-male         in a relationship   0.5             12              3.0582           1.9692         2.5                2               1.3376               5.727               
-male         married             0               8               2.9848           2.029          3                  2               0.9027               3.351               
-male         single              0               10              3.5027           1.9361         3                  3               0.7636               3.1208              
-male                             0.5             6.5             3.1304           1.7788         3                  2.75            0.0719               1.9965              
-female       in a relationship   0.5             10              3.0439           2.2158         3                  3               1.4017               4.9165              
-female       married             0               10              2.4808           1.9671         2                  1.75            2.1875               9.2864              
-female       single              0               12              3.3226           2.6791         3                  3.5             1.2045               4.0139              
-female                           0.5             6               2.6562           1.739          2                  3               0.6914               2.4285              
-             in a relationship   0               8               3.3333           2.4398         3                  2.5             0.7897               2.5973              
-             married             2               7               3.8              1.9235         3                  1               1.018                2.6519              
-             single              0               10              3.5833           3.2039         3                  1.5             1.279                3.4365              
-                                 1               2               1.5              0.7071         1.5                0.5             0                    1                   
------------- ------------------- --------------- --------------- ---------------- -------------- ------------------ --------------- -------------------- --------------------
+    **Gender**   **Relationship status**   **Min**   **Max**   **Mean**   **Std.Dev.**   **Median**   **IQR**   **Skewness**   **Kurtosis**  
+--- ------------ ------------------------- --------- --------- ---------- -------------- ------------ --------- -------------- --------------
+1   male         in a relationship         0.5       12        3.0582     1.9692         2.5          2         1.3376         5.727         
+2   male         married                   0         8         2.9848     2.029          3            2         0.9027         3.351         
+3   male         single                    0         10        3.5027     1.9361         3            3         0.7636         3.1208        
+5   female       in a relationship         0.5       10        3.0439     2.2158         3            3         1.4017         4.9165        
+6   female       married                   0         10        2.4808     1.9671         2            1.75      2.1875         9.2864        
+7   female       single                    0         12        3.3226     2.6791         3            3.5       1.2045         4.0139        
+--- ------------ ------------------------- --------- --------- ---------- -------------- ------------ --------- -------------- --------------
 
 
 # Diagnostics
@@ -250,16 +244,16 @@ Before we carry out ANOVA, we'd like to check some basic assumptions. For those 
 
 ### Univariate Normality
 
-We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_). 
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_).
 
 <!-- endlist -->
 
-               **W**    **p**  
--------------- -------- -------
-shapiro.test   0.9001   0      
-lillie.test    0.168    0      
-ad.test        18.753   0      
--------------- -------- -------
+                                                 **Statistic**   **p-value**  
+------------------------------------------------ --------------- -------------
+Shapiro-Wilk normality test                      0.9001          0            
+Lilliefors (Kolmogorov-Smirnov) normality test   0.168           0            
+Anderson-Darling normality test                  18.753          0            
+------------------------------------------------ --------------- -------------
 
 
 As you can see, applied tests confirm departures from normality.
@@ -270,11 +264,11 @@ In order to test homoscedascity, _Bartlett_ and _Fligner-Kileen_ tests are appli
 
 <!-- endlist -->
 
-                **H**     **p**   
---------------- --------- --------
-fligner.test    1.1234    0.2892  
-bartlett.test   11.1267   0.0009  
---------------- --------- --------
+                                                   **Statistic**   **p-value**  
+-------------------------------------------------- --------------- -------------
+Fligner-Killeen test of homogeneity of variances   1.1234          0.2892       
+Bartlett test of homogeneity of variances          11.1267         0.0009       
+-------------------------------------------------- --------------- -------------
 
 
 When it comes to equality of variances, applied tests yield inconsistent results. While _Fligner-Kileen test_ confirmed the hypotheses of homoscedascity, _Bartlett's test_ rejected it.
@@ -288,7 +282,7 @@ Here you can see several diagnostic plots for ANOVA model:
  - normal Q-Q plot
  - residuals against leverages
 
-/tmp/RtmpwIuUZk/file734b0955.png
+/tmp/RtmpeIwHkw/file7476378b.png
 
 # ANOVA Summary
 
@@ -391,7 +385,7 @@ Below lies a frequency table for factors in ANOVA model. Note that the missing v
 The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
 <%
-(desc <- rp.desc(resp, fac, c(min, max, mean, SD = sd, median, IQR, skewness, kurtosis)))
+(desc <- rp.desc(resp, fac, c(Min = min, Max = max, Mean = mean, Std.Dev. = sd, Median = median, IQR, Skewness = skewness, Kurtosis = kurtosis)))
 %>
 
 # Diagnostics
@@ -402,10 +396,10 @@ Before we carry out ANOVA, we'd like to check some basic assumptions. For those 
 
 ### Univariate Normality
 
-We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<% p(resp.label) %>). 
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<% p(resp.label) %>).
 
 <%
-(ntest <- htest(resp, shapiro.test, lillie.test, ad.test, colnames = c("N", "p")))
+(ntest <- htest(resp, shapiro.test, lillie.test, ad.test))
 %>
 
 
@@ -563,7 +557,7 @@ leisure   -0.0338         0.1732  * * *
 --------- --------------- --------------- ---------------
 
 
-/tmp/RtmpwIuUZk/file133f4a51.png
+/tmp/RtmpeIwHkw/file4b51894f.png
 
 
 ##############################################################################################################################################
@@ -627,7 +621,7 @@ carb   -0.5509  * *     0.5270  * *      0.3950  *        0.7498  * * *    -0.09
 ------ ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ---------------- ----------------
 
 
-/tmp/RtmpwIuUZk/file4ca48e70.png
+/tmp/RtmpeIwHkw/file40ae95ce.png
 
 
 {% endhighlight %}
@@ -851,7 +845,7 @@ female   3.0844     -3.4312          -0.7595
 
 ## Mosaic chart
 
-/tmp/RtmpwIuUZk/file5d84a5d0.png
+/tmp/RtmpeIwHkw/file7e123342.png
 
 
 #################################################################################
@@ -959,7 +953,7 @@ always        2.0982     -1.2561          -1.6443
 
 ## Mosaic chart
 
-/tmp/RtmpwIuUZk/file1a1a28df.png
+/tmp/RtmpeIwHkw/file55714a93.png
 
 
 {% endhighlight %}
@@ -1131,8 +1125,6 @@ rapport('descriptives-multivar', data=mtcars, vars=c('hp','wt'))
 ##	 Running: rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
 ###########################################################################################
 
-_2_
-
 # *gender* ("Gender")
 
 The dataset has _709_ observations with _673_ valid values (missing: _36_) in *gender* ("Gender"), which seems to be a qualitative variable.
@@ -1150,7 +1142,7 @@ Total        673     100       673            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file60415eee.png
+/tmp/RtmpeIwHkw/file2c0df25f.png
 
 It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
 
@@ -1165,15 +1157,15 @@ The dataset has _709_ observations with _677_ valid values (missing: _32_) in *a
 ## Base statistics
 
 
-**value**   **mean(age)**   **sd(age)**   **var(age)**  
------------ --------------- ------------- --------------
-(all)       24.5731         6.8491        46.9107       
------------ --------------- ------------- --------------
+**Variable**   **mean**   **sd**   **var**  
+-------------- ---------- -------- ---------
+Age            24.5731    6.8491   46.9107  
+-------------- ---------- -------- ---------
 
 
 ## Histogram
 
-/tmp/RtmpwIuUZk/file32a6df83.png
+/tmp/RtmpeIwHkw/file3c83a6ff.png
 
 It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
 
@@ -1194,7 +1186,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpwIuUZk/file6eeddc59.png
+/tmp/RtmpeIwHkw/file2bc6744b.png
 
 ### Normality Tests
 
@@ -1228,19 +1220,21 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpwIuUZk/file584ccc0a.png
+/tmp/RtmpeIwHkw/file29d8a78d.png
 
 #### Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpwIuUZk/file715ab947.png
+/tmp/RtmpeIwHkw/file4de2380.png
 
 #### Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpwIuUZk/file77aa23d1.png
+/tmp/RtmpeIwHkw/file669e646.png
+
+
 
 
 
@@ -1248,8 +1242,6 @@ _Kernel density plot_ is a plot of smoothed _empirical distribution function_. A
 ###################################################################################################################################################
 ##	 Running: rapport('descriptives-multivar', data=ius2008, vars=c("chatim", "game", "surf", "email", "download", "forum", "socnet", "xxx"))
 ###################################################################################################################################################
-
-_8_
 
 # *chatim* ("Chat & IM usage")
 
@@ -1273,7 +1265,7 @@ Total         669     100       669            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file1eac42c0.png
+/tmp/RtmpeIwHkw/file4d256c7a.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1303,7 +1295,7 @@ Total         677     100       677            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file67cd6eae.png
+/tmp/RtmpeIwHkw/file7c49649c.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1333,7 +1325,7 @@ Total         678     100       678            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file1c3c8ee1.png
+/tmp/RtmpeIwHkw/file661dd9cb.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1363,7 +1355,7 @@ Total         672     100       672            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file139ba9c6.png
+/tmp/RtmpeIwHkw/file58d41b2d.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1393,7 +1385,7 @@ Total          677     100       677            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file25617fae.png
+/tmp/RtmpeIwHkw/file6d17deb7.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1423,7 +1415,7 @@ Total         673     100       673            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file4c8d8e2.png
+/tmp/RtmpeIwHkw/file197dbecc.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1453,7 +1445,7 @@ Total         678     100       678            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file75cc9459.png
+/tmp/RtmpeIwHkw/file547f8e99.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1483,7 +1475,7 @@ Total         674     100       674            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file57651ad9.png
+/tmp/RtmpeIwHkw/file67d4319c.png
 
 It seems that the highest value is _7_ which is exactly 7 times higher than the smallest value (_1_).
 
@@ -1492,11 +1484,11 @@ The most frequent value is *never*.
 
 
 
+
+
 ####################################################################################
 ##	 Running: rapport('descriptives-multivar', data=mtcars, vars=c('hp','wt'))
 ####################################################################################
-
-_2_
 
 # *hp*
 
@@ -1505,15 +1497,15 @@ The dataset has _32_ observations with _32_ valid values (missing: _0_) in *hp*,
 ## Base statistics
 
 
-**value**   **mean(hp)**   **sd(hp)**   **var(hp)**  
------------ -------------- ------------ -------------
-(all)       146.6875       68.5629      4700.8669    
------------ -------------- ------------ -------------
+**Variable**   **mean**   **sd**    **var**    
+-------------- ---------- --------- -----------
+hp             146.6875   68.5629   4700.8669  
+-------------- ---------- --------- -----------
 
 
 ## Histogram
 
-/tmp/RtmpwIuUZk/file63916415.png
+/tmp/RtmpeIwHkw/file2d37238.png
 
 It seems that the highest value is _335_ which is exactly 6.4423 times higher than the smallest value (_52_).
 
@@ -1534,7 +1526,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpwIuUZk/filea7708b4.png
+/tmp/RtmpeIwHkw/file25d90229.png
 
 ### Normality Tests
 
@@ -1568,19 +1560,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpwIuUZk/file36d3e429.png
+/tmp/RtmpeIwHkw/file3f56c0f5.png
 
 #### Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpwIuUZk/file5f1a9066.png
+/tmp/RtmpeIwHkw/file7e42af61.png
 
 #### Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpwIuUZk/file3a45d303.png
+/tmp/RtmpeIwHkw/file41707ad0.png
 
 
 
@@ -1591,15 +1583,15 @@ The dataset has _32_ observations with _32_ valid values (missing: _0_) in *wt*,
 ## Base statistics
 
 
-**value**   **mean(wt)**   **sd(wt)**   **var(wt)**  
------------ -------------- ------------ -------------
-(all)       3.2172         0.9785       0.9574       
------------ -------------- ------------ -------------
+**Variable**   **mean**   **sd**   **var**  
+-------------- ---------- -------- ---------
+wt             3.2172     0.9785   0.9574   
+-------------- ---------- -------- ---------
 
 
 ## Histogram
 
-/tmp/RtmpwIuUZk/file46ce309d.png
+/tmp/RtmpeIwHkw/file7da799c7.png
 
 It seems that the highest value is _5.424_ which is exactly 3.5849 times higher than the smallest value (_1.513_).
 
@@ -1620,7 +1612,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpwIuUZk/file66119b7.png
+/tmp/RtmpeIwHkw/file7540bc32.png
 
 ### Normality Tests
 
@@ -1654,19 +1646,21 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpwIuUZk/file4903e0b.png
+/tmp/RtmpeIwHkw/file60613c27.png
 
 #### Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpwIuUZk/file590f4654.png
+/tmp/RtmpeIwHkw/file69dd2b6d.png
 
 #### Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpwIuUZk/file4776a768.png
+/tmp/RtmpeIwHkw/file4dc0e306.png
+
+
 
 
 
@@ -1722,8 +1716,6 @@ Example:        rapport('descriptives-multivar', data=ius2008, vars=c("gender", 
 vars            | *variable[1,50]| Variables         | Categorical or numerical variables. The template will determine the measurement level of the given variable and will return detailed frequency tables or appropriate descriptive statistics for numerics.
 nortest         | TRUE          | Normality tests   | Should normality tests be performed on numerical variables?  
 head-->
-
-<%vars.ilen%>
 
 <%
 if (vars.ilen == 1) {
@@ -1812,7 +1804,7 @@ Total        673     100       673            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file4fee1dc6.png
+/tmp/RtmpeIwHkw/file26529bd0.png
 
 It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
 
@@ -1841,7 +1833,7 @@ Total        662     100       662            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file741cf4be.png
+/tmp/RtmpeIwHkw/file28c25394.png
 
 It seems that the highest value is _3_ which is exactly 3 times higher than the smallest value (_1_).
 
@@ -1984,15 +1976,15 @@ The dataset has _709_ observations with _677_ valid values (missing: _32_) in *a
 ## Base statistics
 
 
-**value**   **mean(age)**   **sd(age)**   **var(age)**  
------------ --------------- ------------- --------------
-(all)       24.5731         6.8491        46.9107       
------------ --------------- ------------- --------------
+**Variable**   **mean**   **sd**   **var**  
+-------------- ---------- -------- ---------
+Age            24.5731    6.8491   46.9107  
+-------------- ---------- -------- ---------
 
 
 ## Histogram
 
-/tmp/RtmpwIuUZk/filec81922.png
+/tmp/RtmpeIwHkw/file3d36f8e7.png
 
 It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
 
@@ -2013,7 +2005,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpwIuUZk/file1775f1f8.png
+/tmp/RtmpeIwHkw/file37b53527.png
 
 ### Normality Tests
 
@@ -2047,19 +2039,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpwIuUZk/file407470c0.png
+/tmp/RtmpeIwHkw/file34a78901.png
 
 #### Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpwIuUZk/file76b345ab.png
+/tmp/RtmpeIwHkw/file2f6dc6bb.png
 
 #### Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpwIuUZk/file41e58f33.png
+/tmp/RtmpeIwHkw/file7dfc666e.png
 
 
 {% endhighlight %}
@@ -2215,7 +2207,7 @@ Total        673     100       673            100
 
 ## Barplot
 
-/tmp/RtmpwIuUZk/file4a35967b.png
+/tmp/RtmpeIwHkw/file334e2c7a.png
 
 It seems that the highest value is _2_ which is exactly 2 times higher than the smallest value (_1_).
 
@@ -2235,15 +2227,15 @@ The dataset has _709_ observations with _677_ valid values (missing: _32_) in *a
 ## Base statistics
 
 
-**value**   **mean(age)**   **sd(age)**   **var(age)**  
------------ --------------- ------------- --------------
-(all)       24.5731         6.8491        46.9107       
------------ --------------- ------------- --------------
+**Variable**   **mean**   **sd**   **var**  
+-------------- ---------- -------- ---------
+Age            24.5731    6.8491   46.9107  
+-------------- ---------- -------- ---------
 
 
 ## Histogram
 
-/tmp/RtmpwIuUZk/file742be097.png
+/tmp/RtmpeIwHkw/file7ad1e683.png
 
 It seems that the highest value is _58_ which is exactly 3.625 times higher than the smallest value (_16_).
 
@@ -2264,7 +2256,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpwIuUZk/file4b77ba4a.png
+/tmp/RtmpeIwHkw/file32bffdf0.png
 
 ### Normality Tests
 
@@ -2298,19 +2290,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpwIuUZk/file1d86c5b7.png
+/tmp/RtmpeIwHkw/file37006c86.png
 
 #### Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpwIuUZk/file113b5316.png
+/tmp/RtmpeIwHkw/file799d9ac5.png
 
 #### Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpwIuUZk/filefccfed5.png
+/tmp/RtmpeIwHkw/file3fee5439.png
 
 
 
@@ -2508,7 +2500,7 @@ And wow, the mean of *leisure* is _3.1994_!
 
 ## Histogram
 
-/tmp/RtmpwIuUZk/filefe4cc66.png
+/tmp/RtmpeIwHkw/file4990c520.png
 
 
 ################################################################################################
@@ -2527,7 +2519,7 @@ And wow, the mean of *leisure* is _3.1994_!
 
 ## Histogram
 
-/tmp/RtmpwIuUZk/file36dab2f7.png
+/tmp/RtmpeIwHkw/file4bf4466e.png
 
 
 {% endhighlight %}
@@ -2612,8 +2604,10 @@ if (desc) sprintf('The 5 highest values are: %s.', p(sort(var, decreasing = TRUE
 ## <%if (hist) 'Histogram'%>
 
 <%
-if (hist)
-    print(rp.hist(var, theme=theme))
+if (hist) {
+    options('style.color.palette' = theme) 
+    print(rp.hist(var))
+}
 %>
 
 {% endhighlight %}
@@ -2699,7 +2693,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpwIuUZk/file4905fabd.png
+/tmp/RtmpeIwHkw/file49e4345d.png
 
 # Normality Tests
 
@@ -2733,19 +2727,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpwIuUZk/filed1c8974.png
+/tmp/RtmpeIwHkw/file2bb031b1.png
 
 ## Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpwIuUZk/file1aeb7bac.png
+/tmp/RtmpeIwHkw/file1cf6b150.png
 
 ## Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpwIuUZk/file26f87f6a.png
+/tmp/RtmpeIwHkw/file618d0c00.png
 
 
 #################################################################################
@@ -2795,19 +2789,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpwIuUZk/file6e49d10d.png
+/tmp/RtmpeIwHkw/file531a8b11.png
 
 ## Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpwIuUZk/file67b72380.png
+/tmp/RtmpeIwHkw/file174f3343.png
 
 ## Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpwIuUZk/file378dded1.png
+/tmp/RtmpeIwHkw/file797fca8c.png
 
 
 #################################################################################
@@ -2825,7 +2819,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-/tmp/RtmpwIuUZk/file536de95b.png
+/tmp/RtmpeIwHkw/fileacdc96e.png
 
 # Normality Tests
 
@@ -2859,19 +2853,19 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-/tmp/RtmpwIuUZk/file67895293.png
+/tmp/RtmpeIwHkw/file619faf76.png
 
 ## Q-Q Plot
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-/tmp/RtmpwIuUZk/file4b32a80d.png
+/tmp/RtmpeIwHkw/file68e8497a.png
 
 ## Kernel Density Plot
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-/tmp/RtmpwIuUZk/file4ac8022f.png
+/tmp/RtmpeIwHkw/file548c5fdb.png
 
 
 {% endhighlight %}
@@ -3104,7 +3098,7 @@ rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALS
 
 # Boxplot
 
-/tmp/RtmpwIuUZk/file7db5b277.png
+/tmp/RtmpeIwHkw/file33437c02.png
 
 # Lund test
 
@@ -3149,7 +3143,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
 # Boxplot
 
-/tmp/RtmpwIuUZk/file9356182.png
+/tmp/RtmpeIwHkw/file70e1cec7.png
 
 # Lund test
 
@@ -3194,7 +3188,7 @@ chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
 
 # Boxplot
 
-/tmp/RtmpwIuUZk/file20b2c3ec.png
+/tmp/RtmpeIwHkw/file44ab9b7f.png
 
 # Lund test
 
@@ -3461,12 +3455,11 @@ Independent samples _t-test_ is carried out with _Internet usage in leisure time
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
 
-**y**    **min(x)**   **max(x)**   **mean(x)**   **sd(x)**   **var(x)**   **median(x)**   **IQR(x)**   **skewness(x)**   **kurtosis(x)**  
--------- ------------ ------------ ------------- ----------- ------------ --------------- ------------ ----------------- -----------------
-male     0            12           3.2699        1.9535      3.8161       3               3            0.9479            4.0064           
-female   0            12           3.0643        2.3546      5.5442       2               3            1.4064            4.9089           
-         0            10           3.3824        2.5822      6.6676       3               2            1.2197            3.8058           
--------- ------------ ------------ ------------- ----------- ------------ --------------- ------------ ----------------- -----------------
+**Gender**   **min**   **max**   **mean**   **sd**   **var**   **median**   **IQR**   **skewness**   **kurtosis**  
+------------ --------- --------- ---------- -------- --------- ------------ --------- -------------- --------------
+male         0         12        3.2699     1.9535   3.8161    3            3         0.9479         4.0064        
+female       0         12        3.0643     2.3546   5.5442    2            3         1.4064         4.9089        
+------------ --------- --------- ---------- -------- --------- ------------ --------- -------------- --------------
 
 
 # Diagnostics
@@ -3479,12 +3472,12 @@ We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen 
 
 <!-- endlist -->
 
-               **W**    **p**  
--------------- -------- -------
-shapiro.test   0.9001   0      
-lillie.test    0.168    0      
-ad.test        18.753   0      
--------------- -------- -------
+                                                 **N**    **p**  
+------------------------------------------------ -------- -------
+Shapiro-Wilk normality test                      0.9001   0      
+Lilliefors (Kolmogorov-Smirnov) normality test   0.168    0      
+Anderson-Darling normality test                  18.753   0      
+------------------------------------------------ -------- -------
 
 
 As you can see, applied tests confirm departures from normality.
@@ -3523,10 +3516,10 @@ One-sample _t-test_ is carried out with _Internet usage in leisure time (hours p
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
 
-**value**   **min(x)**   **max(x)**   **mean(x)**   **sd(x)**   **var(x)**   **median(x)**   **IQR(x)**   **skewness(x)**   **kurtosis(x)**  
------------ ------------ ------------ ------------- ----------- ------------ --------------- ------------ ----------------- -----------------
-(all)       0            12           3.1994        2.1436      4.5951       3               2            1.1873            4.547            
------------ ------------ ------------ ------------- ----------- ------------ --------------- ------------ ----------------- -----------------
+**Variable**                                     **NA**   **NA**   **NA**   **NA**   **NA**   **NA**   **NA**   **NA**   **NA**  
+------------------------------------------------ -------- -------- -------- -------- -------- -------- -------- -------- --------
+Internet usage in leisure time (hours per day)   0        12       3.1994   2.1436   4.5951   3        2        1.1873   4.547   
+------------------------------------------------ -------- -------- -------- -------- -------- -------- -------- -------- --------
 
 
 # Diagnostics
@@ -3539,12 +3532,12 @@ We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen 
 
 <!-- endlist -->
 
-               **W**    **p**  
--------------- -------- -------
-shapiro.test   0.9001   0      
-lillie.test    0.168    0      
-ad.test        18.753   0      
--------------- -------- -------
+                                                 **N**    **p**  
+------------------------------------------------ -------- -------
+Shapiro-Wilk normality test                      0.9001   0      
+Lilliefors (Kolmogorov-Smirnov) normality test   0.168    0      
+Anderson-Darling normality test                  18.753   0      
+------------------------------------------------ -------- -------
 
 
 As you can see, applied tests confirm departures from normality.

@@ -376,15 +376,13 @@
   </section>
   <section id="mosaic-chart">
     <title>Mosaic chart</title>
-    <figure>
-      <title></title>
-      <mediaobject>
+    <para>
+      <ulink url="/tmp/RtmpeIwHkw/file6edbb4a8-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="089332282780d32b96117afe8dba0470.png" />
+          <imagedata fileref="e34aca6c7784de0d3c094d3d071f5038.png" />
         </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
+      </inlinemediaobject></ulink>
+    </para>
   </section>
 </section>
 <section id="description-1">
@@ -1099,28 +1097,24 @@
   </section>
   <section id="mosaic-chart-1">
     <title>Mosaic chart</title>
-    <figure>
-      <title></title>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="b945f6de1aad4225593b3e9c0eb6d7dc.png" />
-        </imageobject>
-        <textobject><phrase></phrase></textobject>
-      </mediaobject>
-    </figure>
     <para>
-      This report was generated in
-      <ulink url="http://www.r-project.org/">R</ulink> with
-      <ulink url="http://al3xa.github.com/rapport/">Rapport</ulink> in
-      0.174 sec. Feel free to create
-      <ulink url="http://al3xa.github.com/rapport/#custom">your own
-      reporting templates</ulink>!
+      <ulink url="/tmp/RtmpeIwHkw/file163c9108-hires.png"><inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="788ce96f4378f09151fe29c0e370c6f9.png" />
+        </imageobject>
+      </inlinemediaobject></ulink>
+    </para>
+    <para>
+      This report was generated with
+      <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
+      <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
+      (0.1) in 0.382 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="images/rapport.png" />
+          <imagedata fileref="images/logo.png" />
         </imageobject>
         <textobject><phrase></phrase></textobject>
       </mediaobject>
