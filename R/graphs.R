@@ -148,7 +148,7 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
 #'     \item 'style.grid'.
 #' }
 #' @param expr call to lattice which will be evaluated with added theme options
-#' @param theme name of theme to use. Besides \code{\link{'theme.rapport'}} there are several themes available in other packages too, eg. \code{standard.theme()} from lattice, \code{gplot2like()} and \code{theEconomist.theme()} from latticeExtra and \code{custom.theme.black()} from latticist package. Of course custom theme might be provided also, check out \code{?custom.theme} from latticeExtra package or head directly to: \code{?trellis.par.get()}
+#' @param theme name of theme to use. Besides \code{\link{theme.rapport}} there are several themes available in other packages too, eg. \code{standard.theme()} from lattice, \code{gplot2like()} and \code{theEconomist.theme()} from latticeExtra and \code{custom.theme.black()} from latticist package. Of course custom theme might be provided also, check out \code{?custom.theme} from latticeExtra package or head directly to: \code{?trellis.par.get()}
 #' @param grid show grid in the background? It is possible to render a grid for \code{'both'}, only for \code{'x'} or solely to \code{'y'} axis. \code{'none'} results in a blank background.
 #' @return lattice/trellis object
 #' @export
@@ -582,8 +582,6 @@ rp.scatterplot <- function(x, y, facet = NULL, data = NULL, ...) {
 #' @param facet an optional categorical variable to make facets by
 #' @param groups an optional categorical grouping variable
 #' @param data an optional data frame from which the variables should be taken
-#' @param theme a color palette name from \code{\link{RColorBrewer}} or 'default'
-#' @param colorize if set the color is chosen from palette at random
 #' @param ... additional parameters to \code{\link{xyplot}}
 #' @export
 #' @examples \dontrun{
