@@ -184,7 +184,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
                 list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
                 list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
                 list(title = 'Example'       , regex = '.+', mandatory = FALSE),
-                list(title = 'Strict'        , regex = 'TRUE', mandatory = FALSE, default.value = FALSE)
+                list(title = 'Strict'        , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE)
                 )
 
     ## no fields specified, load default fields
@@ -640,7 +640,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' @param graph.width the required width of saved plots (optional)
 #' @param graph.height the required height of saved plots (optional)
 #' @param graph.res the required nominal resolution in ppi of saved plots (optional)
-#' @param graph.hi.res logical value indicating if high resolution (1280x~1280) images would be also genareted 
+#' @param graph.hi.res logical value indicating if high resolution (1280x~1280) images would be also genareted
 #' @return a list with \code{rapport} class.
 #' @examples \dontrun{
 #' rapport("example", ius2008, var = "leisure")
@@ -648,7 +648,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' rapport("example", ius2008, var = "leisure", rapport.mode = 'debug')
 #' rapport("example", ius2008, var = "leisure", rapport.mode = 'performance')
 #' ## Or set \code{'rapport.mode'} option to \code{debug}, \code{performance} or back to \code{normal}.
-#' 
+#'
 #' ## generating high resolution images also
 #' rapport("example", ius2008, var="leisure", hist = TRUE, graph.hi.res = TRUE)
 #' rapport.html("nortest", ius2008, var = "leisure", graph.hi.res=T)
