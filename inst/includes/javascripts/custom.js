@@ -2,7 +2,8 @@
 $(document).ready(function() {
 
     var $b = $('body'),
-        $h = $('#header');
+        $h = $('#header'),
+        rapportUrl = 'http://rapport-package.info/';
 
     // add container div
     var $container = $('<div/>', {
@@ -28,14 +29,23 @@ $(document).ready(function() {
     var $logo = $('<div/>', {
         id: 'logo',
         html: $('<a/>', {
-            href: 'http://rapport-package.info/',
+            href: rapportUrl,
             target: '_blank'
         })
     }).prependTo($nav);
 
-    // move logo image to logo div
-    $('div.figure').last().find('img').appendTo($logo.find('a')); // move logo
-    $('div.figure').last().remove();   // remove element
+    // find logo
+    var $logoImg = $('div.figure').last().find('img[src$="logo.png"]');
+    // move logo image to logo div or create a link if logo not found
+    if ($logoImg.length > 0) {
+        $logoImg.appendTo($logo.find('a')); // move logo
+        $('div.figure').last().remove();    // remove element
+    } else {
+        $logo.find('a').attr({
+            href: rapportUrl,
+            class: 'noimg-link'
+        }).text('rapport');
+    }
 
     // add ul for sidebar menu
     var $ul = $('<ul/>').appendTo($nav);

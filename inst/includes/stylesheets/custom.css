@@ -50,6 +50,7 @@ code {
 
 nav {
     height: 85%;
+    overflow: auto;
     position: fixed;
     width: 160px;
 }
@@ -96,7 +97,12 @@ nav a:hover {
 }
 
 #logo {
-    margin: 10px 0 20px;
+    margin: 20px 0;
+}
+
+.noimg-link {
+    font-size: 2em;
+    font-weight: bold;
 }
 
 ul.tabs li {
