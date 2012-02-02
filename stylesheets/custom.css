@@ -50,6 +50,7 @@ code {
 
 nav {
     height: 85%;
+    overflow: auto;
     position: fixed;
     width: 160px;
 }
