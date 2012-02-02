@@ -1,18 +1,21 @@
 Package: rapport
 Maintainer: Gergely Daróczi <gergely@snowl.net>
-License: AGPL-3
 Title: rapport - a report templating system
-LazyData: yes
 Type: Package
-LazyLoad: yes
-Author: Aleksandar Blagotić <aca.blagotic@gmail.com> and Gergely Daróczi
-    <gergely@snowl.net>
+Encoding: UTF-8
 Description: A package that facilitates creation of reproducible statistical
     report templates. Once created, rapport templates can be exported to
     various external formats (HTML, LaTeX, PDF, ODT, etc.) with pandoc
     converter as a backend.
-Version: 0.1
-Date: 2011-11-26
+Author: Aleksandar Blagotić <aca.blagotic@gmail.com> and Gergely Daróczi
+    <gergely@snowl.net>
+Version: 0.2
+Date: 2012-02-02
+URL: http://rapport-package.info/
+BugReports: https://github.com/aL3xa/rapport/issues
+License: AGPL-3
+LazyData: yes
+LazyLoad: yes
 Depends:
     ascii,
     evaluate,
@@ -22,7 +25,6 @@ Depends:
     RColorBrewer,
     reshape,
     RJSONIO
-Encoding: UTF-8
 Collate:
     'crypt.R'
     'eval.R'
