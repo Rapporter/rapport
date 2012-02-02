@@ -4,7 +4,6 @@ Author:       Aleksandar Blagotić
 Description:  An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.
 Packages:     nortest
 Data required: TRUE
-Strict:        TRUE
 Example:      rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way
               rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way
 
@@ -107,4 +106,3 @@ data.frame(a)
 %>
 
 _F-test_ for <% p(fac.label[1]) %> is <% ifelse(a.fp[1], "", "not") %> statistically significant, which implies that there is <% ifelse(a.fp[1], "an", "no") %> <% fac.label[1] %> effect on response variable. <% if (fac.ilen == 2) sprintf("Effect of %s on response variable is %s significant. ", p(fac.label[2]), ifelse(a.fp[2], "", "not")) else "" %><% if (fac.ilen == 2 & fac.intr) sprintf("Interaction between levels of %s %s found significant (p = %.3f).", p(fac.label), ifelse(a.fp[3], "was", "wasn't"), a.p[3]) else "" %>
-
