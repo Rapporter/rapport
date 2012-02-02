@@ -10,7 +10,7 @@
   added theme options}
 
   \item{theme}{name of theme to use. Besides
-  \code{\link{'theme.rapport'}} there are several themes
+  \code{\link{theme.rapport}} there are several themes
   available in other packages too, eg.
   \code{standard.theme()} from lattice, \code{gplot2like()}
   and \code{theEconomist.theme()} from latticeExtra and

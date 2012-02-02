@@ -18,12 +18,6 @@
   \item{data}{an optional data frame from which the
   variables should be taken}
 
-  \item{theme}{a color palette name from
-  \code{\link{RColorBrewer}} or 'default'}
-
-  \item{colorize}{if set the color is chosen from palette
-  at random}
-
   \item{...}{additional parameters to \code{\link{xyplot}}}
 }
 \description{
