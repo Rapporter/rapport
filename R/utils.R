@@ -51,7 +51,7 @@ alike.integer <- function(x){
 #' This function checks if given expression generates a plot.
 #' @param cmd an expression that is to be tested
 #' @return a logical value
-#' @references See original thread for more details (\url{http://stackoverflow.com/a/2744434/457898}). Special thanks to Hadley Wickam for this one!
+#' @references See original thread for more details (\url{http://stackoverflow.com/a/2744434/457898}). Special thanks to Hadley Wickham for this one!
 #' @author Hadley Wickham <h.wickham@@gmail.com>
 #' @examples \dontrun{
 #'     makes.plot(plot(rnorm(100))) # returns TRUE

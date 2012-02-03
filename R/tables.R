@@ -133,7 +133,7 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
 
 #' Frequency Table
 #'
-#' Diplay frequency table with counts, percentage, and cumulatives.
+#' Display frequency table with counts, percentage, and cumulatives.
 #' @param f.vars a character vector with variable names
 #' @param data a \code{data.frame}
 #' @param na.rm should missing values be removed?
@@ -153,7 +153,7 @@ rp.freq <- freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop
 
     ## R CMD check NOTE dismiss based on http://stackoverflow.com/a/8096882/564164
     N <- `%` <- NULL
-    
+
     ## TODO: subset
     ## TODO: add variables/data.frames instead of names
     exclude <- if (isTRUE(na.rm)) NA else NULL

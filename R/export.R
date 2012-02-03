@@ -10,17 +10,17 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' Export rapport class
 #'
 #' This function exports rapport class objects to various formats based on ascii package.
-#' 
+#'
 #' By default this function tries to export the report to HTML with pandoc. Some default styles are applied. If you do not like those default settings, use your own \code{options}.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item "getOption('rp.date.format')",
 #'     \item "getOption('tpl.user')",
-#'     \item "getOption('tpl.email')", 
+#'     \item "getOption('tpl.email')",
 #' }
-#' 
+#'
 #' Please be sure to set \code{'tpl.user'} and \code{'tpl.email'} options with \code{options()} to get your name in the head of your generated reports!
 #' @param rp a rapport class object or list of rapport class objects
 #' @param file filename (NULL returns a tempfile)
@@ -30,7 +30,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' @param date character string as the date field of the report. If not set, current time will be set.
 #' @param desc add Description of the rapport class (template)? Default set to TRUE.
 #' @param format format of the wanted report, see: \code{ascii:::asciiOpts(".outputs")}
-#' @param backend backend for the format conversions, see: \code{scii:::asciiOpts(".backends")}
+#' @param backend backend for the format conversions, see: \code{ascii:::asciiOpts(".backends")}
 #' @param options command line options passed to backend
 #' @param logo add rapport logo
 #' @examples \dontrun{
@@ -65,7 +65,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' ### Adding own custom CSS to exported HTML
 #' tpl.export(x, options=sprintf('-c %s', system.file('templates/css/default.css', package='rapport')))
 #' ## For other formats check out backend specific documentation!
-#' ## Eg. pandoc uses "--reference-odt" as styles reference for odt exports.
+#' ## E.g. pandoc uses "--reference-odt" as styles reference for odt exports.
 #'}
 #' @export
 tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), getOption('rp.date.format')), desc=TRUE, format='html', backend='pandoc', options=NULL, logo=TRUE) {
@@ -139,7 +139,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                         img.hi.res <- sub(sprintf('.%s$', file.ext), sprintf('-hires.%s', file.ext), x.r$output)
                         if (file.exists(img.hi.res) & format == 'html' & backend == 'pandoc')
                             r$add(paragraph(sprintf('[![](%s)](%s)', x.r$output, img.hi.res)))
-                        else 
+                        else
                             r$addFig(file=x.r$output)
                     }
                     if (all(x.r$type != c('image', 'error')))
@@ -176,7 +176,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
 #' @export
 rapport.html <- function(...) tpl.export(rapport(...))
 
-#' Rapport to odt
+#' Rapport to ODT
 #'
 #' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
 #' @param ... parameters passed directly to \code{\link{rapport}}

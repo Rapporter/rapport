@@ -84,7 +84,7 @@ print.rp.inputs <- function(x, ...){
 
 #' Print Template Header
 #'
-#' Prints out the contents of template header (metadata and inputs) in human-readable format, so you can get insight about template requirements.
+#' Prints out the contents of template header (both metadata and inputs) in human-readable format, so you can get insight about the template requirements.
 #' @param x object of class \code{rp.header}. See \code{\link{tpl.header}} for details.
 #' @param ... ignored
 #' @method print rp.info
@@ -96,8 +96,7 @@ print.rp.info <- function(x, ...){
 
 #' Prints rapport
 #'
-#' Default print method for "rapport" class objects which show the report body.
-#'
+#' Default print method for \code{rapport} class objects that shows evaluated report contents.
 #' @param x any "rapport" class object
 #' @param ... ignored
 #' @examples \dontrun{

@@ -1,6 +1,6 @@
 #' Rapport Object
 #'
-#' Checks if provided R object is of "rapport" class.
+#' Checks if provided R object is of \code{rapport} class.
 #' @param x any R object to check
 #' @return a logical value indicating whether provided object is a \code{rapport} object
 #' @export
@@ -93,7 +93,7 @@ is.heading <- function(x){
 
 #' Variable Name
 #'
-#' This function returns character value previously stored in variable's \code{name} attribute. If none found, the function fallbacks to object's name.
+#' This function returns character value previously stored in variable's \code{name} attribute. If none found, the function defaults to object's name.
 #' @param x an R (atomic or data.frame/list) object to extract names from
 #' @return a character value with variable's label
 #' @examples \dontrun{
@@ -136,7 +136,7 @@ rp.name <- function(x){
 
 #' Get Variable Label
 #'
-#' This function returns character value previously stored in variable's \code{label} attribute. If none found, the function fallbacks to object's name (retrieved by \code{deparse(substitute(x))}).
+#' This function returns character value previously stored in variable's \code{label} attribute. If none found, the function defaults to object's name (retrieved by \code{deparse(substitute(x))}).
 #' @param x an R object to extract labels from
 #' @param fallback a logical value indicating if labels should fallback to object name(s)
 #' @return a character vector with variable's label(s)
@@ -260,9 +260,9 @@ has.tags <- function(x, ...){
 #' Inline Chunk Contents
 #'
 #' Returns inline code chunks with or without tags that wrap them.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'inline.open',
 #'     \item 'inline.close'.
@@ -270,7 +270,7 @@ has.tags <- function(x, ...){
 #' @param x a character vector
 #' @param tag.open a character value with opening tag regular expression
 #' @param tag.close a character value with closing tag regular expression
-#' @param include a logical value indicating wheter chunks should be returned (defaults to \code{FALSE})
+#' @param include a logical value indicating whether chunks should be returned (defaults to \code{FALSE})
 #' @param ... additional arguments for \code{\link{gregexpr}} function
 #' @return a character vector with code chunks
 #' @examples \dontrun{
@@ -301,9 +301,9 @@ grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.t
 #' Tag Values
 #'
 #' Returns report tag vales (usually regexes): either user-defined, or the default ones.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'chunk.open',
 #'     \item 'chunk.close',
@@ -380,9 +380,9 @@ get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.op
 #' Misplaced Tags
 #'
 #' Searches for misplaced tags.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'inline.open,
 #'     \item 'inline.close'.
@@ -419,9 +419,9 @@ tags.misplaced <- function(x, tag.open = get.tags('inline.open'), tag.close = ge
 #' Purge Comments
 #'
 #' Remove comments from provided character vector.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'comment.open',
 #'     \item 'comment.close'.
@@ -482,9 +482,9 @@ table.json <- function(d, name.rows = 'rows', name.cols = 'cols', name.body = 'b
 #' Percent
 #'
 #' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to value specified in \code{rp.decimal.short} option).
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'rp.decimal.short'
 #' }
@@ -525,10 +525,10 @@ pct <- function(x, digits = getOption('rp.decimal.short'), type = c('percent', '
 #'
 #' Check if template metadata field matches provided format, and return matched value in a list.
 #' @param x a string containing template metadata
-#' @param title a string containint metadata field title (can be regex-powered)
+#' @param title a string containing metadata field title (can be regex-powered)
 #' @param regex a string with regular expression to match field value
 #' @param short a string with a short name for given metadata field
-#' @param trim.white a logical value indicating whether trailing and leading whitespaces of the given string should be removed before extraction
+#' @param trim.white a logical value indicating whether trailing and leading spaces of the given string should be removed before extraction
 #' @param mandatory a logical value indicating required field
 #' @param default.value fallback to this value if non-mandatory field is not found/malformed
 #' @param field.length maximum number of field characters (defaults to 1000)
@@ -832,9 +832,9 @@ check.type <- function(x){
 #' Round numeric values
 #'
 #' Round numeric values with default number of decimals (see: \code{getOption('rp.decimal'}) and decimal mark (see: \code{getOption('rp.decimal')}).
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'rp.decimal',
 #'     \item 'rp.decimal.short',
@@ -874,9 +874,9 @@ rp.round <- function(x, short = FALSE, digits = NULL) {
 #' Return pretty ascii form
 #'
 #' Some standard formatting is applied to the value which is returned as ascii object.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'rp.decimal',
 #'     \item 'rp.decimal.short',
@@ -885,7 +885,7 @@ rp.round <- function(x, short = FALSE, digits = NULL) {
 #' @param x R object
 #' @return ascii
 #' @examples \dontrun{
-#' rp.prettyascii('Hallo, World?')
+#' rp.prettyascii('Hello, World?')
 #' rp.prettyascii(22/7)
 #' rp.prettyascii(matrix(runif(25), 5, 5))
 #' rp.prettyascii(lm(hp~wt, mtcars))
@@ -951,9 +951,9 @@ rp.prettyascii <- function(x) {
 #' Inline Printing
 #'
 #' Merge atomic vector elements in one string for pretty inline printing.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'p.wrap',
 #'     \item 'p.sep',
@@ -972,7 +972,7 @@ rp.prettyascii <- function(x) {
 p <- function(x, wrap = getOption('p.wrap'), sep = getOption('p.sep'), copula = getOption('p.copula'), limit = 20L){
 
     stopifnot(is.atomic(x))           # check for atomic vector
-    x.len <- length(x)                # vector lenght
+    x.len <- length(x)                # vector length
     stopifnot(x.len > 0)              # no zero-length vectors allowed
     stopifnot(x.len <= limit)         # check limits
 
@@ -990,8 +990,8 @@ p <- function(x, wrap = getOption('p.wrap'), sep = getOption('p.sep'), copula = 
 #' Takes multiple character arguments as left and right-hand side arguments of a formula, and concatenates them in a single string.
 #' @param left a string with left-hand side formula argument
 #' @param right a character vector with right-hand side formula arguments
-#' @param join.left a string to catenate elements of character vector specified in \code{left}
-#' @param join.right a string to catenate elements of character vector specified in \code{right}
+#' @param join.left concatenation string for elements of character vector specified in \code{left}
+#' @param join.right concatenation string for elements of character vector specified in \code{right}
 #' @examples
 #' fml("hp", c("am", "cyl"))    # "hp ~ am + cyl"
 #' @export

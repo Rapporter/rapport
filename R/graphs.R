@@ -12,9 +12,9 @@
 #' Color palettes
 #'
 #' This function returns a given number of color codes from given palette from \code{\link{RColorBrewer}}. Besides those falling back to \code{'default'}: a color-blind-friendly palette from \url{http://jfly.iam.u-tokyo.ac.jp/color/}.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'style.color.palette',
 #'     \item 'style.colorize'.
@@ -37,10 +37,10 @@ rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=g
         num <- ifelse(palette == 'default', 8, brewer.pal.info[palette,'maxcolors'])
     if (any(!is.numeric(num), (length(num)>1))) stop('Wrong number of colors provided.')
     if (palette=='default') {
-        if (num > 8) stop('Maximum number of colors (8) with choosen palette is lower then provided.')
+        if (num > 8) stop('Maximum number of colors (8) with chosen palette is lower then provided.')
         cols <- c("#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999", "#E69F00")
 	} else {
-		if (num > brewer.pal.info[palette,'maxcolors']) stop(paste('Maximum number of colors (', brewer.pal.info[palette, "maxcolors"], ') with choosen palette is lower then provided (', num, ').', sep=''))
+		if (num > brewer.pal.info[palette,'maxcolors']) stop(paste('Maximum number of colors (', brewer.pal.info[palette, "maxcolors"], ') with chosen palette is lower then provided (', num, ').', sep=''))
 		## ugly hack to be able to return colors from palettes with higher minimum 'n' requirement
         if (num < 3) n <- 3
 		cols <- brewer.pal(brewer.pal.info[palette,'maxcolors'], palette)
@@ -51,22 +51,22 @@ rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=g
 
 
 #' Rapport theme
-#' 
+#'
 #' Custom minimalistic but colorful lattice/trellis theme used by default in rapport.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'style.color.palette',
 #'     \item 'style.colorize',
 #'     \item 'style.font'.
 #' }
 #' @param bw generating black and white output?
-#' @param palette color palette to use. See: \code{rp.palette} for details. 
+#' @param palette color palette to use. See: \code{rp.palette} for details.
 #' @param colorize adding some random noise instead of using first available color(s) from palette
 #' @param font specified font family
-#' @param custom list of custom lattice options to change. Eg. \code{par.main.text = list(lineheight = 2)}
-#' @return list of lattice parameters 
+#' @param custom list of custom lattice options to change. E.g. \code{par.main.text = list(lineheight = 2)}
+#' @return list of lattice parameters
 #' @export
 #' @references Forked from \code{latticeExtra::ggplot2like()} and \code{lattice::standard.theme()}.
 #' @examples \dontrun{
@@ -81,8 +81,8 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
     theme <- standard.theme(color = !bw)
     theme <- modifyList(theme, list(
         add.text = list(cex = 0.8),
-        axis.line = list(col = "transparent"), 
-        axis.text = list(cex = 0.8, lineheight = 0.9, col = "grey50"), 
+        axis.line = list(col = "transparent"),
+        axis.text = list(cex = 0.8, lineheight = 0.9, col = "grey50"),
         background = list(col = "white"),
         box.dot = list(col = "grey20", pch = "|"),
         box.rectangle = list(fill = color, col = "transparent", alpha=0.9, lwd=2),
@@ -93,10 +93,10 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
         plot.line = list(col = color, lwd = 2),
         plot.polygon = list(col = color, alpha = 0.9, border = "white", lwd = 2),
         plot.symbol = list(fill = color, col="transparent", pch = 21, cex = 0.8),
-        reference.line = list(col = "grey50", lty = "dashed"), 
-        strip.background = list(col = c("grey80", "grey70", "grey60")), 
+        reference.line = list(col = "grey50", lty = "dashed"),
+        strip.background = list(col = c("grey80", "grey70", "grey60")),
         strip.border = list(col = "transparent"),
-        strip.shingle = list(col = c("grey60", "grey50", "grey40")), 
+        strip.shingle = list(col = c("grey60", "grey50", "grey40")),
         superpose.polygon = list(col = colors, border = "white", alpha = 0.9, lwd = 2),
         superpose.symbol = list(col = colors, pch = 19, cex = 0.6)
             ))
@@ -108,11 +108,11 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
     theme$par.main.text$fontfamily <- font
     theme$par.sub.text$fontfamily <- font
     if (bw) {
-        colors <- c("#000000", "#999999", "#4C4C4C", "#E6E6E6", 
-            "#F2F2F2", "#B2B2B2", "#000000", "#030303", "#050505", 
-            "#080808", "#0A0A0A", "#0D0D0D", "#0F0F0F", "#121212", 
+        colors <- c("#000000", "#999999", "#4C4C4C", "#E6E6E6",
+            "#F2F2F2", "#B2B2B2", "#000000", "#030303", "#050505",
+            "#080808", "#0A0A0A", "#0D0D0D", "#0F0F0F", "#121212",
             "#151515", "#AAAAAA", "transparent")
-        theme$box.rectangle$col =  colors[1]    
+        theme$box.rectangle$col =  colors[1]
         theme$box.rectangle$fill =  colors[5]
         theme$box.umbrella$col =  colors[1]
         theme$dot.line$col =  colors[4]
@@ -139,11 +139,11 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
 
 
 #' Decorating lattice plots
-#' 
+#'
 #' Apply required theme and grid options to called lattice/trellis plot.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'style.theme',
 #'     \item 'style.grid'.
@@ -190,12 +190,12 @@ decorate.lattice <- function(expr, theme = getOption('style.theme'), grid = getO
 
 
 #' Add grid to x axis
-#' @param side 
-#' @param ... 
-#' @param ticks 
-#' @param scales 
-#' @param components 
-#' @param line.col 
+#' @param side
+#' @param ...
+#' @param ticks
+#' @param scales
+#' @param components
+#' @param line.col
 #' @references Forked from \code{latticeExtra::axis.grid()}.
 #' @keywords internal
 add.grid <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c("default", "yes", "no"), scales, components, line.col, where='both') {
@@ -203,7 +203,7 @@ add.grid <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c
         stop('Wrong "where" argument: it must be "both", "x" or "y"!')
     side <- match.arg(side)
     ticks <- match.arg(ticks)
-    scales.tck <- switch(side, left = , bottom = scales$tck[1], 
+    scales.tck <- switch(side, left = , bottom = scales$tck[1],
             right = , top = scales$tck[2])
     comps.major <- components
     mycomps <- components[[side]]
@@ -213,7 +213,7 @@ add.grid <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c
             tck <- mycomps$ticks$tck
             if (any(tck * scales.tck != 0)) {
                 tck <- rep(tck, length = length(lab))
-                comps.major[[side]]$ticks$tck <- ifelse(lab == 
+                comps.major[[side]]$ticks$tck <- ifelse(lab ==
                                 "", NA, tck)
             }
         }
@@ -222,32 +222,32 @@ add.grid <- function (side = c("top", "bottom", "left", "right"), ..., ticks = c
         ticks <- "no"
     }
     axis.text <- trellis.par.get("axis.text")
-    axis.default(side, scales = scales, ticks = ticks, components = comps.major, 
+    axis.default(side, scales = scales, ticks = ticks, components = comps.major,
             ..., line.col = axis.text$col)
-    if (side %in% c("top", "left")) 
+    if (side %in% c("top", "left"))
         return()
-    if (scales$draw == FALSE) 
+    if (scales$draw == FALSE)
         return()
     ref.line <- trellis.par.get("reference.line")
     if (where %in% c('both', 'x'))
         if (side == "bottom") {
             tck <- abs(mycomps$ticks$tck)
-            panel.refline(v = mycomps$ticks$at, lwd = ref.line$lwd * 
+            panel.refline(v = mycomps$ticks$at, lwd = ref.line$lwd *
                             tck, alpha = ref.line$alpha * tck/max(tck, na.rm = TRUE))
         }
     if (where %in% c('both', 'y'))
         if (side == "right") {
-            if (!is.list(mycomps)) 
+            if (!is.list(mycomps))
                 mycomps <- components[["left"]]
             tck <- abs(mycomps$ticks$tck)
-            panel.refline(h = mycomps$ticks$at, lwd = ref.line$lwd * 
+            panel.refline(h = mycomps$ticks$at, lwd = ref.line$lwd *
                             tck, alpha = ref.line$alpha * tck/max(tck, na.rm = TRUE))
         }
 }
 
 
 #' Add grid to y axis
-#' @param ... passed to \code{add.grid} 
+#' @param ... passed to \code{add.grid}
 #' @keywords internal
 add.grid.y <- function (...) {
     add.grid(..., where = 'y')
@@ -255,7 +255,7 @@ add.grid.y <- function (...) {
 
 
 #' Add grid to x axis
-#' @param ... passed to \code{add.grid} 
+#' @param ... passed to \code{add.grid}
 #' @keywords internal
 add.grid.x <- function (...) {
     add.grid(..., where = 'x')
@@ -285,9 +285,9 @@ rp.graph.check <- function(x, facet = NULL, subset = NULL, ...) {
 #'
 #' This function is a wrapper around \code{\link{histogram}} which operates only on numeric vectors
 #' with optional facet.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'  \item 'style.theme'.
 #' }
@@ -347,7 +347,7 @@ rp.hist <- function(x, facet = NULL, data = NULL, kernel.smooth = FALSE, ...) {
 #' with optional facet.
 #'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'  \item 'style.theme'.
 #' }
@@ -394,7 +394,7 @@ rp.densityplot <- function(x, facet=NULL, data=NULL, ...) {
 #' with optional facet.
 #'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'  \item 'style.theme'.
 #' }
@@ -480,7 +480,7 @@ rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
 #' with optional facet.
 #'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'  \item 'style.theme'.
 #' }
@@ -553,7 +553,7 @@ rp.dotplot <- function(x, facet = NULL, data = NULL, groups = FALSE, auto.key = 
 #' with optional facet.
 #'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'  \item 'style.theme'.
 #' }
@@ -604,7 +604,7 @@ rp.scatterplot <- function(x, y, facet = NULL, data = NULL, ...) {
 #' with optional facet.
 #'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'  \item 'style.theme'.
 #' }
@@ -619,7 +619,7 @@ rp.scatterplot <- function(x, y, facet = NULL, data = NULL, ...) {
 #' a <- aggregate(wt~gear, mtcars, mean)
 #' rp.lineplot(a$gear, a$wt)
 #' rp.lineplot(gear, wt, data=a)
-#' 
+#'
 #' ## lame demo:
 #' rp.lineplot(1:length(mtcars$hp), mtcars$hp, facet=mtcars$cyl)
 #'
@@ -689,7 +689,7 @@ rp.lineplot <- function(x, y, facet = NULL, data = NULL, groups = NULL, ...) {
 #' with optional facet.
 #'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'  \item 'style.theme'.
 #' }
@@ -717,7 +717,7 @@ rp.boxplot <- function(x, y = NULL, facet = NULL, data = NULL, ...) {
         }
     } else {
         rp.graph.check(x, ...)
- 
+
         ## getting labs
         xlab <- rp.label(x)
         if (xlab == 'x') xlab <- tail(as.character(substitute(x)), 1)
@@ -802,7 +802,7 @@ rp.cor.plot <- function(x, lower.panel = 'panel.smooth', upper.panel = 'panel.co
 #' with optional facet.
 #'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'  \item 'style.theme'.
 #' }
@@ -816,7 +816,7 @@ rp.cor.plot <- function(x, lower.panel = 'panel.smooth', upper.panel = 'panel.co
 #' rp.qqplot(ius2008$age)
 #' rp.qqplot(ius2008$age, qunif)
 #' rp.qqplot(ius2008$age, qunif, facet = ius2008$gender)
-#' 
+#'
 #' with(ius2008, rp.qqplot(age))
 #' rp.qqplot(age, data = ius2008)
 #' rp.qqplot(age, facet = gender, data = ius2008)
@@ -838,7 +838,7 @@ rp.qqplot <- function(x, dist = qnorm, facet = NULL, data = NULL, ...) {
         ## getting labs
         ylab <- rp.label(x)
         if (ylab=='x') ylab <- tail(as.character(substitute(x)), 1)
-        ## ylab is defined by used function's title (like: "The Normal Distribution", "The Unifomr Distribution")
+        ## ylab is defined by used function's title (like: "The Normal Distribution", "The Uniform Distribution")
         target <- gsub("^.+/library/(.+)/help.+$", "\\1", utils:::index.search(deparse(substitute(dist)), find.package()))
         doc.txt <- pkg_topic(target, deparse(substitute(dist)))
         dist.name <- doc.txt[[1]][[1]][1]
@@ -852,3 +852,5 @@ rp.qqplot <- function(x, dist = qnorm, facet = NULL, data = NULL, ...) {
         qqmath(eval(parse(text = text)), distribution = dist, xlab = dist.name, ylab = ylab, par.settings = getOption('style.theme'), axis = add.grid, ...)
     }
 }
+
+##  LocalWords:  colorful

@@ -3,7 +3,7 @@
 #' A simple test for outliers. This functions returns all extreme values (if any) found in the specified vector.
 #'
 #' @param x a numeric vector of values
-#' @return vecotor of outlier values
+#' @return vector of outlier values
 #' @examples \dontrun{
 #' rp.outlier(mtcars$hp)
 #' rp.outlier(c(rep(1,100), 200))
@@ -11,7 +11,7 @@
 #' }
 #' @references {
 #' Credit goes to PaulHurleyuk: \url{http://stackoverflow.com/a/1444548/564164}
-#' 
+#'
 #' \itemize{
 #'  \item Lund, R. E. 1975, "Tables for An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 4, pp. 473-476.
 #'  \item Prescott, P. 1975, "An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 1, pp. 129-132.
@@ -49,7 +49,7 @@ rp.outlier <- function(x) {
 #' Computes Goodman and Kruskal's lambda for given table.
 #' @param table a \code{table} of two variables
 #' @param direction numeric value of \code{c(0,1,2)} where 1 means the lambda value computed for row, 2 for columns and 0 for both
-#' @return computed lambda value(s) for row/col of given given table
+#' @return computed lambda value(s) for row/col of given table
 #' @examples \dontrun{
 #' lambda.test(table(mtcars$am, mtcars$gear))
 #' lambda.test(table(mtcars$am, mtcars$gear), 1)
@@ -68,9 +68,9 @@ lambda.test <- function(table, direction=0) {
 #' Hypothesis Tests
 #'
 #' This function uses \code{\link{htest.short}}, to extract statistic and p-value from \code{htest}-classed object. Main advantage of using \code{htest} is that it's vectorised, and can accept multiple methods.
-#' 
+#'
 #' Default parameters are read from \code{options}:
-#' 
+#'
 #' \itemize{
 #'     \item 'rp.use.labels'.
 #' }
@@ -90,9 +90,6 @@ lambda.test <- function(table, direction=0) {
 #' @export
 htest <- function(x, ..., use.labels = getOption('rp.use.labels'), use.method.names = TRUE, colnames = c('Statistic', 'p-value')){
 
-    ## R CMD check NOTE dismiss based on http://stackoverflow.com/a/8096882/564164
-    foo <- NULL
-    
     test <- list(...)
     test.len <- length(test)
     test.name <- sapply(substitute(list(...)), deparse)[-1]
@@ -106,7 +103,10 @@ htest <- function(x, ..., use.labels = getOption('rp.use.labels'), use.method.na
             method.name <- sapply(res, attr, which = 'method')
         }
         res <- data.frame(t(res))
-        x.nms <- if (is.formula(x)) deparse(substitute(x)) else rp.label(x, use.labels)
+        if (is.formula(x))
+            x.nms <- deparse(substitute(x))
+        else
+            x.nms <- if (use.labels) rp.label(x) else rp.name(x)
         x.len <- 1
     } else {
         if (test.len == 1){
@@ -114,10 +114,10 @@ htest <- function(x, ..., use.labels = getOption('rp.use.labels'), use.method.na
             method.name <- sapply(res, attr, which = 'method')
         } else {
             res <- lapply(x, function(y) lapply(each(test)(y), htest.short))
-            method.name <- sapply(foo[[1]], attr, which = "method")
+            method.name <- sapply(res[[1]], attr, which = "method")
         }
         res <- t(data.frame(res))
-        x.nms <- rp.label(x, use.labels)
+        x.nms <- if (use.labels) rp.label(x) else rp.name(x)
         x.len <- length(x)
     }
 

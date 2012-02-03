@@ -2,7 +2,7 @@
 #'
 #' This dataset contains data gathered in a survey of Internet usage in Serbian population in the period from April to May 2008. During 90-day period, there were gathered 709 valid responses via on-line distributed questionnaire.
 #'
-#' However, this dataset does not contain the original data, as some \code{NA}s were added to dataset afterwards, in order to demonstrate functionality of \emph{rapport} helpers.
+#' However, this dataset does not contain the original data, as some random noise is added afterwards, in order to demonstrate functionality of \emph{rapport} helpers.
 #'
 #' Dataset variables can be divided into 3 sets: \emph{demographic data}, \emph{Internet usage aspects} and \emph{application usage/content preference}.
 #'
@@ -22,7 +22,7 @@
 #' \itemize{
 #'     \item \emph{edu} - time spent on-line in educational purposes (expressed in hours)
 #'     \item \emph{leisure} - time spent on-line in leisure time (expressed in hours)
-#'     \item \emph{net.required} - is Internet access required for your proffesion? (factor with 5 levels: "never", "rarely", "sometimes", "often" and "always")
+#'     \item \emph{net.required} - is Internet access required for your profession? (factor with 5 levels: "never", "rarely", "sometimes", "often" and "always")
 #'     \item \emph{net.pay} - who pays for Internet access? (factor with 5 levels: "parents", "school/faculty", "employer", "self-funded" and "other")
 #'     \item \emph{net.use} - how long is respondent using Internet? (ordered factor with 7 levels, ranging from "less than 6 months" to "more than 5 years")
 #' }

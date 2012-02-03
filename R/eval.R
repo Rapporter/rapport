@@ -1,12 +1,12 @@
-#' Eval with messages
+#' Evaluate with messages
 #'
 #' This function takes text(s) of R code and \code{eval}s all at one run then returns a list with four elements:
 #'
 #' \itemize{
 #'     \item \emph{src} - a character value with specified R code.
-#'     \item \emph{output} - generated output. \code{NULL} if nothing is returned. If any string returned an R object while evaling then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{tmpfile()}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
-#'     \item \emph{type} - class of generated output. "NULL" if nothing is returned, "image" if the graphic device was touched, "error" if some error occured.
-#'     \item \emph{msg} - possible messages grabbed while evaling specified R code with the following structure:
+#'     \item \emph{output} - generated output. \code{NULL} if nothing is returned. If any string returned an R object while evaluating then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{tmpfile()}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
+#'     \item \emph{type} - class of generated output. "NULL" if nothing is returned, "image" if the graphic device was touched, "error" if some error occurred.
+#'     \item \emph{msg} - possible messages grabbed while evaluating specified R code with the following structure:
 #'     \itemize{
 #'         \item \emph{messages} - string of possible diagnostic message(s)
 #'         \item \emph{warnings} - string of possible warning message(s)
@@ -15,7 +15,7 @@
 #' }
 #' @param src character values containing R code
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
-#' @return  a list of parsed elements each containg: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
+#' @return  a list of parsed elements each containing: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was generated), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
 #' @export
 #' @examples \dontrun{
 #' eval.msgs('1:5')
@@ -64,18 +64,18 @@ eval.msgs <- function(src, env = NULL) {
 #'
 #' This function takes either a list of integer indices which point to position of R code in \code{body} character vector, or a vector/list of strings with actual R code, then evaluates each list element, and returns a list with four elements: a character value with R code, generated output, class of generated output and possible error/warning messages. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory. Please see Details below.
 #'
-#' If input strings are given as vector or not nested list (or even only one string), the returned list's length equals to the length of the input - as each string is evalued as separate R code in the same environment. If a nested list is provided like \code{list(c('runif(1)', 'runif(1)'))} then all strings found in a list element is evaled at one run so the length of returned list equals to the length of parent list. See examples below.
+#' If input strings are given as vector or not nested list (or even only one string), the returned list's length equals to the length of the input - as each string is evaluated as separate R code in the same environment. If a nested list is provided like \code{list(c('runif(1)', 'runif(1)'))} then all strings found in a list element is \code{eval}ed at one run so the length of returned list equals to the length of parent list. See examples below.
 #'
-#' As \code{\link{evals}} tries to grab the plots internally, pleas do not run commands that set graphic device or \code{\link{dev.off}} if you want to use \code{\link{evals}} to save the images and return the path of generated png(s). Eg. running \code{evals(c('png("/tmp/x.png")', 'plot(1:10)', 'dev.off()'))} would fail.
-#' 
+#' As \code{\link{evals}} tries to grab the plots internally, pleas do not run commands that set graphic device or \code{\link{dev.off}} if you want to use \code{\link{evals}} to save the images and return the path of generated png(s). E.g. running \code{evals(c('png("/tmp/x.png")', 'plot(1:10)', 'dev.off()'))} would fail.
+#'
 #' The generated image file(s) of the plots can be fine-tuned by some specific options, please check out \code{graph.output}, \code{width}, \code{height}, \code{res}, \code{hi.res}, \code{hi.res.width}, \code{hi.res.height} and \code{hi.res.res}. Most of these options are better not to touch, see details of parameters below.
 #'
 #' Returned result values: list with the following elements
 #' \itemize{
 #'     \item \emph{src} - a character value with specified R code.
-#'     \item \emph{output} - generated output. \code{NULL} if nothing is returned. If any string returned an R object while evaling then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{tmpfile()}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
-#'     \item \emph{type} - class of generated output. "NULL" if nothing is returned, "image" if the graphic device was touched, "error" if some error occured.
-#'     \item \emph{msg} - possible messages grabbed while evaling specified R code with the following structure:
+#'     \item \emph{output} - generated output. \code{NULL} if nothing is returned. If any string returned an R object while \code{eval}ing then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{tmpfile()}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
+#'     \item \emph{type} - class of generated output. "NULL" if nothing is returned, "image" if the graphic device was touched, "error" if some error occurred.
+#'     \item \emph{msg} - possible messages grabbed while \code{eval}ing specified R code with the following structure:
 #'     \itemize{
 #'         \item \emph{messages} - string of possible diagnostic message(s)
 #'         \item \emph{warnings} - string of possible warning message(s)
@@ -88,7 +88,7 @@ eval.msgs <- function(src, env = NULL) {
 #' \itemize{
 #'     \item the code should return on the last line of the passed code (if it returns before that, it would not be grabbed),
 #'     \item the code should always return something on the last line (if you do not want to return anything, add \code{NULL} as the last line),
-#'     \item ggplot and lattice graphs should be always printed (of course on the last line),
+#'     \item \code{ggplot} and \code{lattice} graphs should be always printed (of course on the last line),
 #'     \item a code part resulting in a plot should not alter variables and data sets,
 #'     \item the code should be checked before live run with \code{check.output} option set to \code{TRUE} just to be sure if everything goes OK.
 #' }
@@ -98,23 +98,23 @@ eval.msgs <- function(src, env = NULL) {
 #' @param ind a list with numeric indices pointing to R code in \code{body}
 #' @param body a character vector that contains template body
 #' @param classes a vector or list of classes which should be returned. If set to \code{NULL} (by default) all R objects will be returned.
-#' @param hooks list of hooks to bo run for given classes in the form of \code{list(class=fn)}. If you	would also specify some parameters of the function, a list should be provided in the form of \code{list(fn, param1, param2=NULL)} etc. So the hooks would become \code{list(class1=list(fn, param1, param2=NULL), ...)}. See example below. A default hook can be specified too by setting the class to \code{'default'}. This can be handy if you do not want to define separate methods/functions to each possible class, but automatically apply the default hook to all classes not mentioned in the list. You may also specify only one element in the list like: \code{hooks=list('default'=ascii)}.
+#' @param hooks list of hooks to be run for given classes in the form of \code{list(class=fn)}. If you	would also specify some parameters of the function, a list should be provided in the form of \code{list(fn, param1, param2=NULL)} etc. So the hooks would become \code{list(class1=list(fn, param1, param2=NULL), ...)}. See example below. A default hook can be specified too by setting the class to \code{'default'}. This can be handy if you do not want to define separate methods/functions to each possible class, but automatically apply the default hook to all classes not mentioned in the list. You may also specify only one element in the list like: \code{hooks=list('default'=ascii)}.
 #' @param length R object exceeding the specified length will not be returned. The default value (\code{Inf}) does not have any restrictions.
 #' @param output a character vector of required returned values. See below.
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @param check.output to check each line of \code{txt} for outputs. If set to \code{TRUE} you would result in some overhead as all commands have to be run twice (first to check if any output was generated and if so in which part(s), later the R objects are to be grabbed). With \code{FALSE} settings \code{evals} runs much faster, but as now checks are made, some requirements apply, see Details.
 #' @param graph.name set the file name of saved plots which is a \code{tempfile()} by default. A simple character string (or a function which returns a single character vector) might be provided where \code{\%INDEX} would be replaced by the index of the generating \code{txt} source.
 #' @param graph.output set the required file format of saved plots
-#' @param width width of generated plot in pixels for even vector formats (!) 
-#' @param height height of generated plot in pixels for even vector formats (!) 
+#' @param width width of generated plot in pixels for even vector formats (!)
+#' @param height height of generated plot in pixels for even vector formats (!)
 #' @param res nominal resolution in ppi. The height and width of vector plots will be calculated based in this.
 #' @param hi.res generate high resolution plots also?
-#' @param hi.res.width  width of generated high resolution plot in pixels for even vector formats (!) 
-#' @param hi.res.height height of generated high resolution plot in pixels for even vector formats (!). This value can be left blank to be automatically calculated to match original plot ascpect ratio.
+#' @param hi.res.width  width of generated high resolution plot in pixels for even vector formats (!)
+#' @param hi.res.height height of generated high resolution plot in pixels for even vector formats (!). This value can be left blank to be automatically calculated to match original plot aspect ratio.
 #' @param hi.res.res nominal resolution of high resolution plot in ppi. The height and width of vector plots will be calculated based in this. This value can be left blank to be automatically calculated to fit original plot scales.
 #' @param graph.env save the environments in which plots were generated to distinct files?
-#' @param ... optional parameters passed to graphics device (eg. \code{bg}, \code{pointsize} etc.)
-#' @return a list of parsed elements each containg: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
+#' @param ... optional parameters passed to graphics device (e.g. \code{bg}, \code{pointsize} etc.)
+#' @return a list of parsed elements each containing: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was generated), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
 #' @author Gergely Daróczi
 #' @examples \dontrun{
 #' # parsing line-by-line
@@ -130,7 +130,7 @@ eval.msgs <- function(src, env = NULL) {
 #'   ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))'))
 #' evals(txt)
 #'
-#' ## parsing a list of commnads
+#' ## parsing a list of commands
 #' txt <- list('df <- mtcars',
 #'  c('plot(mtcars$hp, pch = 19)','text(mtcars$hp, label = rownames(mtcars), pos = 4)'),
 #'  'ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))')
@@ -174,7 +174,7 @@ eval.msgs <- function(src, env = NULL) {
 #' evals(list(c('x <- runif(100)', 'plot(x)')), graph.env = TRUE)
 #' evals(c('plot(1:10)', 'plot(2:20)'), graph.env = TRUE)
 #' evals(list(c('x <- runif(100)', 'plot(x)'), c('y <- runif(100)', 'plot(y)')), graph.env = TRUE)
-#' 
+#'
 #' ## hooks
 #' hooks <- list('numeric' = round, 'matrix' = ascii)
 #' evals(txt, hooks = hooks)
@@ -206,13 +206,13 @@ eval.msgs <- function(src, env = NULL) {
 #' # note the following will not be filtered!
 #' evals('matrix(1,1,1)', length = 1)
 #'
-#' # if you do not want to let such things be evaled in the middle of a string use it with other filters :)
+#' # if you do not want to let such things be eval-ed in the middle of a string use it with other filters :)
 #' evals('matrix(1,1,1)', length = 1, classes = 'numeric')
 #'
 #'# hooks & filtering
 #' evals('matrix(5,5,5)', hooks = list('matrix' = ascii), output = 'output')
 #'
-#' # evaling chunks in given environment
+#' # eval-ing chunks in given environment
 #' myenv <- new.env()
 #' evals('x <- c(0,10)', env = myenv)
 #' evals('mean(x)', env = myenv)
@@ -241,7 +241,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
     if (!any(is.list(hooks), is.null(hooks)))
         stop('Wrong list of hooks provided!')
-    
+
     if (!missing(graph.name))
         graph.name <- match.call()$graph.name
     else
@@ -252,14 +252,14 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
     ## env for running all lines of code -> eval()
     if (is.null(env)) env <- new.env()
-    if (!is.environment(env)) stop('Wrong env paramater (not an environment) provided!')
+    if (!is.environment(env)) stop('Wrong env parameter (not an environment) provided!')
     ## env for checking output before truly eval-ing -> evaluate()
     if (check.output)
         env.evaluate <- env
     ## env for optional high resolution images while checking outputs
     if (hi.res & check.output)
         env.hires <- env
-    
+
     `%INDEX` <- 0
     lapply(txt, function(src) {
         `%INDEX` <<- `%INDEX` + 1
@@ -277,7 +277,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             do.call(graph.output, list(file, width = width/res, height = height/res, ...)) # TODO: font-family?
 
         if (check.output) {
-            ## running evalute for checking outputs and grabbing warnings/errors
+            ## running evaluate for checking outputs and grabbing warnings/errors
             eval <- suppressWarnings(try(evaluate(src, envir = env.evaluate), silent=TRUE))
 
             ## error handling
@@ -305,7 +305,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
             ### good code survived here!
 
-            ### checking out wich element produced the output               ## outRageous coding starts here
+            ### checking out which element produced the output               ## outRageous coding starts here
             ## removing messages/errors
             eval.no.msg <- eval[sapply(eval, function(x) {if (is.list(x)) all(names(x) == 'src') else TRUE})]
             ## which elements are the sources?
@@ -365,7 +365,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             ## saving environment on demand
             if (graph.env)
                 save(list = ls(envir = env), file = sprintf('%s.RData', file.name), envir = env)
-            
+
             ## generate high resolution images if needed
             if (hi.res) {
                 ## FIX: tiff-hires dev.off problem
@@ -390,7 +390,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             if (hi.res & check.output)
                 env.hires <- env
         }
-        
+
         ## check length
         if (length(returns) > length) returns <- NULL
 
