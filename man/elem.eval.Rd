@@ -31,5 +31,10 @@
   additional post-evaluation proccesing (heading level is
   stored, as well as "raw" and evaluated chunk contents).
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'inline.open', \item 'inline.close'. }
+}
 \keyword{internal}
 

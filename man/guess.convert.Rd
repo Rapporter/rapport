@@ -20,12 +20,12 @@
 }
 \examples{
 \dontrun{
-storage.mode(guess.mode("234"))
-storage.mode(guess.mode("234.23"))
-storage.mode(guess.mode("234.23.234"))
-storage.mode(guess.mode("TRUE"))
-storage.mode(guess.mode("TRUE         "))
-storage.mode(guess.mode("     TRUE         ", TRUE))
+guess.convert("234")
+guess.convert("234.23")
+guess.convert("234.23.234")
+guess.convert("TRUE")
+guess.convert("TRUE         ")
+guess.convert("     TRUE         ", TRUE)
 }
 }
 

@@ -10,8 +10,18 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' Export rapport class
 #'
 #' This function exports rapport class objects to various formats based on ascii package.
-#' Note that no error/warning messages will be shown!
-#' By default this function tries to export the report to HTML with pandoc. Some default styles are applied. If you do not need those default settings, use your own \code{options}.
+#' 
+#' By default this function tries to export the report to HTML with pandoc. Some default styles are applied. If you do not like those default settings, use your own \code{options}.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item "getOption('rp.date.format')",
+#'     \item "getOption('tpl.user')",
+#'     \item "getOption('tpl.email')", 
+#' }
+#' 
+#' Please be sure to set \code{'tpl.user'} and \code{'tpl.email'} options with \code{options()} to get your name in the head of your generated reports!
 #' @param rp a rapport class object or list of rapport class objects
 #' @param file filename (NULL returns a tempfile)
 #' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added

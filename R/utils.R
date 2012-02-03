@@ -48,9 +48,10 @@ alike.integer <- function(x){
 
 #' Check plot creation
 #'
-#' This function checks if given expression generates a plot. See original thread for more details (\url{http://stackoverflow.com/a/2744434/457898}). Special thanks to Hadley Wickam for this one!
+#' This function checks if given expression generates a plot.
 #' @param cmd an expression that is to be tested
 #' @return a logical value
+#' @references See original thread for more details (\url{http://stackoverflow.com/a/2744434/457898}). Special thanks to Hadley Wickam for this one!
 #' @author Hadley Wickham <h.wickham@@gmail.com>
 #' @examples \dontrun{
 #'     makes.plot(plot(rnorm(100))) # returns TRUE
@@ -100,10 +101,11 @@ trim.space <- function(x, leading = FALSE, trailing = TRUE, re = '[:space:]', ..
 
 #' Adjacent Values Run Length Encoding
 #'
-#' Similar to \code{\link{rle}} function, this function detects "runs" of adjacent integers, and displays vector of run lengths and list of corresponding integer sequences. See original thread for more details \url{http://stackoverflow.com/a/8467446/457898}. Special thanks to Gabor Grothendieck for this one!
+#' Similar to \code{\link{rle}} function, this function detects "runs" of adjacent integers, and displays vector of run lengths and list of corresponding integer sequences.
 #' @param x a numeric vector with
 #' @return a list with two elements: vector of run lengths, and another list of values corresponding to generated sequences' lengths.
 #' @author Gabor Grothendieck <ggrothendieck@@gmail.com>
+#' @references See original thread for more details \url{http://stackoverflow.com/a/8467446/457898}. Special thanks to Gabor Grothendieck for this one!
 #' @export
 adj.rle <- function(x){
 
@@ -126,11 +128,12 @@ catn <- function(...){
 
 #' Vectorised String Replacement
 #'
-#' A simple wrapper for \code{\link{gsub}} that replaces all patterns from \code{pattern} argument with ones in \code{replacement} over vector provided in argument \code{x}. See original thread for more details \url{http://stackoverflow.com/a/6954308/457898}. Special thanks to user Jean-Robert for this one!
+#' A simple wrapper for \code{\link{gsub}} that replaces all patterns from \code{pattern} argument with ones in \code{replacement} over vector provided in argument \code{x}.
 #' @param pattern see eponymous argument for \code{\link{gsub}} function
 #' @param replacement see eponymous argument for \code{\link{gsub}} function
 #' @param x see eponymous argument for \code{\link{gsub}} function
 #' @param ... additional arguments for \code{\link{gsub}} function
+#' @references See original thread for more details \url{http://stackoverflow.com/a/6954308/457898}. Special thanks to user Jean-Robert for this one!
 #' @return a character vector with string replacements
 #' @export
 vgsub <- function(pattern, replacement, x, ...){
@@ -204,12 +207,12 @@ capitalise <- function(x){
 #' @param trim.white a logical value indicating whether white spaces should be removed before guessing
 #' @return an atomic vector with (hopefully) successfully guessed mode
 #' @examples \dontrun{
-#' storage.mode(guess.mode("234"))
-#' storage.mode(guess.mode("234.23"))
-#' storage.mode(guess.mode("234.23.234"))
-#' storage.mode(guess.mode("TRUE"))
-#' storage.mode(guess.mode("TRUE         "))
-#' storage.mode(guess.mode("     TRUE         ", TRUE))
+#' guess.convert("234")
+#' guess.convert("234.23")
+#' guess.convert("234.23.234")
+#' guess.convert("TRUE")
+#' guess.convert("TRUE         ")
+#' guess.convert("     TRUE         ", TRUE)
 #' }
 #' @export
 guess.convert <- function(x, trim.white = FALSE){

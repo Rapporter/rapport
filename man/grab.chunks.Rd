@@ -28,6 +28,11 @@
   Returns inline code chunks with or without tags that wrap
   them.
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'inline.open', \item 'inline.close'. }
+}
 \examples{
 \dontrun{
 s <- c("As you know, pi equals <\%pi\%>",  "2 raised to the power of 3 is <\%2^3\%>")

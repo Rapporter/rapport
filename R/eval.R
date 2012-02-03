@@ -1,6 +1,6 @@
 #' Eval with messages
 #'
-#' This function takes text(s) of R code, evaluates all at one run then returns a list with four elements:
+#' This function takes text(s) of R code and \code{eval}s all at one run then returns a list with four elements:
 #'
 #' \itemize{
 #'     \item \emph{src} - a character value with specified R code.
@@ -13,8 +13,6 @@
 #'         \item \emph{errors} - string of possible error message(s)
 #'     }
 #' }
-#'
-#' Note, that \code{ggplot2} and \code{lattice} graphs should be printed in \code{evals.msg} to show the plot.
 #' @param src character values containing R code
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @return  a list of parsed elements each containg: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
@@ -115,7 +113,7 @@ eval.msgs <- function(src, env = NULL) {
 #' @param hi.res.height height of generated high resolution plot in pixels for even vector formats (!). This value can be left blank to be automatically calculated to match original plot ascpect ratio.
 #' @param hi.res.res nominal resolution of high resolution plot in ppi. The height and width of vector plots will be calculated based in this. This value can be left blank to be automatically calculated to fit original plot scales.
 #' @param graph.env save the environments in which plots were generated to distinct files?
-#' @param ... optional parameters passed to graphics device (eg. \code{width}, \code{height} etc.)
+#' @param ... optional parameters passed to graphics device (eg. \code{bg}, \code{pointsize} etc.)
 #' @return a list of parsed elements each containg: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was genereted), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
 #' @author Gergely Daróczi
 #' @examples \dontrun{

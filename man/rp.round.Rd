@@ -22,6 +22,12 @@
   (see: \code{getOption('rp.decimal'}) and decimal mark
   (see: \code{getOption('rp.decimal')}).
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'rp.decimal', \item 'rp.decimal.short',
+  \item 'rp.decimal.mark'. }
+}
 \note{
   This function is a simple demo for \code{\link{evals}}'s
   hooks.

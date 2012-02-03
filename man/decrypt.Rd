@@ -13,6 +13,12 @@
 \description{
   Decrypts string encrypted by \code{encrypt}.
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item '.encrypt.chars', \item '.encrypt.keys'.
+  }
+}
 \examples{
 \dontrun{
 decrypt("loRR7KT72R=!")

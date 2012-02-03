@@ -34,6 +34,11 @@
   Main advantage of using \code{htest} is that it's
   vectorised, and can accept multiple methods.
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'rp.use.labels'. }
+}
 \examples{
 \dontrun{
 library(nortest)

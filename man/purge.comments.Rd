@@ -19,4 +19,9 @@
 \description{
   Remove comments from provided character vector.
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'comment.open', \item 'comment.close'. }
+}
 

@@ -27,9 +27,13 @@
   This function is a wrapper around \code{\link{dotplot}}
   which operates only on factors with optional facet.
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'style.theme'. }
+}
 \examples{
 \dontrun{
-df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
 rp.dotplot(ius2008$game)
 rp.dotplot(ius2008$game, horizontal = FALSE)
 rp.dotplot(ius2008$game, facet = ius2008$dwell)

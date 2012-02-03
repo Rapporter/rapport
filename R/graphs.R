@@ -12,6 +12,7 @@
 #' Color palettes
 #'
 #' This function returns a given number of color codes from given palette from \code{\link{RColorBrewer}}. Besides those falling back to \code{'default'}: a color-blind-friendly palette from \url{http://jfly.iam.u-tokyo.ac.jp/color/}.
+#' 
 #' Default parameters are read from \code{options}:
 #' 
 #' \itemize{
@@ -284,6 +285,12 @@ rp.graph.check <- function(x, facet = NULL, subset = NULL, ...) {
 #'
 #' This function is a wrapper around \code{\link{histogram}} which operates only on numeric vectors
 #' with optional facet.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'  \item 'style.theme'.
+#' }
 #'
 #' @param x a numeric variable
 #' @param facet an optional categorical variable to make facets by
@@ -339,6 +346,11 @@ rp.hist <- function(x, facet = NULL, data = NULL, kernel.smooth = FALSE, ...) {
 #' This function is a wrapper around \code{\link{densityplot}} which operates only on numeric vectors
 #' with optional facet.
 #'
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'  \item 'style.theme'.
+#' }
 #' @param x a numeric variable
 #' @param facet an optional categorical variable to make facets by
 #' @param data an optional data frame from which the variables should be taken
@@ -381,6 +393,11 @@ rp.densityplot <- function(x, facet=NULL, data=NULL, ...) {
 #' This function is a wrapper around \code{\link{barchart}} which operates only on factors
 #' with optional facet.
 #'
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'  \item 'style.theme'.
+#' }
 #' @param x a numeric variable
 #' @param facet an optional categorical variable to make facets by
 #' @param data an optional data frame from which the variables should be taken
@@ -462,6 +479,11 @@ rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
 #' This function is a wrapper around \code{\link{dotplot}} which operates only on factors
 #' with optional facet.
 #'
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'  \item 'style.theme'.
+#' }
 #' @param x a factor variable
 #' @param facet an optional categorical variable to make facets by
 #' @param data an optional data frame from which the variables should be taken
@@ -471,7 +493,6 @@ rp.barplot <- function(x, facet=NULL, data=NULL, groups=FALSE, auto.key=FALSE, h
 #' @param ... additional parameters to \code{\link{dotplot}}
 #' @export
 #' @examples \dontrun{
-#' df <- transform(mtcars, cyl = factor(cyl, labels = c('4', '6', '8')), am = factor(am, labels = c('automatic', 'manual')), vs = factor(vs))
 #' rp.dotplot(ius2008$game)
 #' rp.dotplot(ius2008$game, horizontal = FALSE)
 #' rp.dotplot(ius2008$game, facet = ius2008$dwell)
@@ -531,6 +552,11 @@ rp.dotplot <- function(x, facet = NULL, data = NULL, groups = FALSE, auto.key = 
 #' This function is a wrapper around \code{\link{xyplot}} which operates only on numeric variables
 #' with optional facet.
 #'
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'  \item 'style.theme'.
+#' }
 #' @param x a numeric variable
 #' @param y a numeric variable
 #' @param facet an optional categorical variable to make facets by
@@ -577,6 +603,11 @@ rp.scatterplot <- function(x, y, facet = NULL, data = NULL, ...) {
 #' This function is a wrapper around \code{\link{xyplot}} with custom panel. Only numeric variables are accepted
 #' with optional facet.
 #'
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'  \item 'style.theme'.
+#' }
 #' @param x a numeric variable
 #' @param y a numeric variable
 #' @param facet an optional categorical variable to make facets by
@@ -657,6 +688,11 @@ rp.lineplot <- function(x, y, facet = NULL, data = NULL, groups = NULL, ...) {
 #' This function is a wrapper around \code{\link{bwplot}} which operates only on numeric variables
 #' with optional facet.
 #'
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'  \item 'style.theme'.
+#' }
 #' @param x a factor variable
 #' @param y a numeric variable
 #' @param facet an optional categorical variable to make facets by
@@ -705,7 +741,6 @@ rp.boxplot <- function(x, y = NULL, facet = NULL, data = NULL, ...) {
 #'
 #' This function is a wrapper around \code{\link{pairs}} which operates only on numeric variables.
 #' Panel options are: \code{c('panel.cor', 'panel.smooth', 'panel.hist')}. Custom panels may be also added.
-#'
 #' @param x numeric variables
 #' @param lower.panel see: \code{\link{pairs}} parameter. Default set to \code{'panel.smooth'}.
 #' @param upper.panel see: \code{\link{pairs}} parameter. Default set to \code{'panel.cor'}.
@@ -766,6 +801,11 @@ rp.cor.plot <- function(x, lower.panel = 'panel.smooth', upper.panel = 'panel.co
 #' This function is a wrapper around \code{\link{qqmath}} which operates only on a numeric variable
 #' with optional facet.
 #'
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'  \item 'style.theme'.
+#' }
 #' @param x a numeric variable
 #' @param dist a theoretical distribution
 #' @param facet an optional categorical variable to make facets by

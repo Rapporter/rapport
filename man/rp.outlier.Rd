@@ -23,11 +23,13 @@ rp.outlier(c(rep(1,100), 200,201))
 }
 \references{
   { Credit goes to PaulHurleyuk:
-  \url{http://stackoverflow.com/a/1444548/564164} Lund, R.
-  E. 1975, "Tables for An Approximate Test for Outliers in
-  Linear Models", Technometrics, vol. 17, no. 4, pp.
-  473-476. Prescott, P. 1975, "An Approximate Test for
-  Outliers in Linear Models", Technometrics, vol. 17, no.
-  1, pp. 129-132. }
+  \url{http://stackoverflow.com/a/1444548/564164}
+
+  \itemize{ \item Lund, R. E. 1975, "Tables for An
+  Approximate Test for Outliers in Linear Models",
+  Technometrics, vol. 17, no. 4, pp. 473-476.  \item
+  Prescott, P. 1975, "An Approximate Test for Outliers in
+  Linear Models", Technometrics, vol. 17, no. 1, pp.
+  129-132. } }
 }
 

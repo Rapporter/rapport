@@ -19,4 +19,9 @@
 \description{
   Returns contents of template body.
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'header.close'. }
+}
 

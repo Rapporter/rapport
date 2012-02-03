@@ -23,6 +23,6 @@
   single string.
 }
 \examples{
-fml("hp", c("am", "cyl"))
+fml("hp", c("am", "cyl"))    # "hp ~ am + cyl"
 }
 

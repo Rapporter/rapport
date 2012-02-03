@@ -17,7 +17,7 @@
 }
 \examples{
 \dontrun{
-e(shapiro.test(rnorm(100))
+htest.short(shapiro.test(rnorm(100)))
 }
 }
 

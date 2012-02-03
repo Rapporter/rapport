@@ -49,6 +49,13 @@ tpl.find <- function(fp){
 #' Template Header
 #'
 #' Returns \code{rapport} template header from provided path or a character vector.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'header.open',
+#'     \item 'header.close'.
+#' }
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param open.tag a string with opening tag (defaults to value of user-defined \code{"header.open"} tag)
 #' @param close.tag a string with closing tag (defaults to value of user-defined \code{"header.close"} tag)
@@ -88,6 +95,12 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 #' Template Body
 #'
 #' Returns contents of template body.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'header.close'.
+#' }
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param htag a string with closing body tag
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
@@ -267,11 +280,8 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 #' }
 #'
 #' Now we'll make a little digression and talk about \strong{input limits}. You may have noticed some additional stuff in type specification, e.g. `numeric[1,6]`. All dataset inputs, as well as *string* and *numeric standalone inputs* can contain _limit specifications_. If you want to bundle several variables from dataset or provide a vector with several string/numeric values, you can apply some rules within square brackets in `[a,b]` format, where `[a,b]` stands for "from \code{a} to \code{b} inputs", e.g. `[1,6]` means "from 1 to 6 inputs". Limit specifications can be left out, but even in that case implicit limit rules are applied, with \code{a} and \code{b} being set to 1.
-
 #' \strong{Dataset inputs} will match one or more variables from a dataset (d'uh), and check its mode and/or class. \code{variable} type is a bit different, since it matches any kind of variable (not to confuse with \code{Any} type), but it still refers to variable(s) from a provided dataset. Dataset inputs cannot have default value, but can be optional (just leave out `*` sign in front of input name). Note that if you provide more than one variable name in \code{rapport} function call, that input will be stored as a `data.frame`, otherwise, it will be stored as a \emph{variable} (atomic vector).
-
 #' \strong{Standalone inputs} are a bit different since they do not refer to any varible from a dataset. However, they are more complex than *dataset inputs*, especially because they can contain default values.
-
 #' - \strong{number} and \strong{string} inputs are defined with \code{number} and \code{string} declaration, respectively. They can also contain limit specifications, e.g. `number[1,6]` accepts numeric vector with at least 1 and at most 6 elements. Of course, you can pass the same specification to string inputs: `string[1,6]`. In this case, you're setting length limits to a character vector. \emph{number} and \emph{string} inputs can have \emph{default value}, which can be defined by placing `=` after type/limit specification followed by default value. For instance, `number[1,6]=3.14` sets value `3.14` as default. Same stands for string inputs: default value can be defined in the same manner: `string=foo` sets "foo" as default string value (note that you don't have to specify quotes unless they are the part of the default string).
 #' - \strong{boolean} inputs can contain either \code{TRUE} or \code{FALSE} values. The specified value is the default one. They cannot contain limit specification.
 #' - \strong{option} inputs are nothing more than a comma-separated list of strings. Even if you specify numbers in a list, they will be coerced to strings once the list is parsed. Values in \emph{option} list will be placed in a character vector, and matched with `match.arg` function. That means that you could only choose one value from a list. Partial matches are allowed, and the first value in \emph{option} list is the defalt one.
@@ -527,6 +537,13 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
 #' Evaluate Template Elements
 #'
 #' This function grabs template elements from \code{\link{tpl.elem}} and evaluates them. For \code{rp.block}-classed elements just a vanilla \code{\link{evals}} call is carried out, while \code{rp.inline} and \code{rp.heading} classes have some additional post-evaluation proccesing (heading level is stored, as well as "raw" and evaluated chunk contents).
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'inline.open',
+#'     \item 'inline.close'.
+#' }
 #' @param x a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param tag.open a string containing opening tag
 #' @param tag.close a string containing closing tag
@@ -630,6 +647,17 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' Evaluate Template
 #'
 #' This is the central function in the \code{rapport} package, and hence eponymous. In following lines we'll use \code{rapport} to denote the function, not the package. \code{rapport} requires a template file, while dataset (\code{data} argument) can be optional, depending on the value of \code{Data required} field in template header. Template inputs are matched with \code{...} argument, and should be provided in \code{x = value} format, where \code{x} matches input name and \code{value}, wait for it... input value! See \code{\link{tpl.inputs}} for more details on template inputs.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'rapport.mode',
+#'     \item 'graph.format',
+#'     \item 'graph.width',
+#'     \item 'graph.height',
+#'     \item 'graph.res',
+#'     \item 'graph.hi.res'.
+#' }
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param data a \code{data.frame} to be used in template
 #' @param ... matches template inputs in format 'key = "value"'
@@ -653,7 +681,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' rapport("example", ius2008, var="leisure", hist = TRUE, graph.hi.res = TRUE)
 #' rapport.html("nortest", ius2008, var = "leisure", graph.hi.res=T)
 #' ## generating only high resolution image
-#' rapport("example", ius2008, var="leisure", hist = TRUE, graph.width = 1280, graph.height = 1280)    # might be a good idea to set \code{graph.res} too
+#' rapport("example", ius2008, var="leisure", hist = TRUE, graph.width = 1280, graph.height = 1280)
 #' ## nested templates cannot get custom setting, use custom rapport option:
 #' options('graph.hi.res' = TRUE)
 #' rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))

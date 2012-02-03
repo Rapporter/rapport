@@ -12,9 +12,7 @@
 }
 \description{
   This function checks if given expression generates a
-  plot. See original thread for more details
-  (\url{http://stackoverflow.com/a/2744434/457898}).
-  Special thanks to Hadley Wickam for this one!
+  plot.
 }
 \examples{
 \dontrun{
@@ -24,5 +22,10 @@
 }
 \author{
   Hadley Wickham <h.wickham@gmail.com>
+}
+\references{
+  See original thread for more details
+  (\url{http://stackoverflow.com/a/2744434/457898}).
+  Special thanks to Hadley Wickam for this one!
 }
 

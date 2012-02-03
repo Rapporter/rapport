@@ -2,7 +2,7 @@
 #'
 #' Checks if provided R object is of "rapport" class.
 #' @param x any R object to check
-#' @return a logical value
+#' @return a logical value indicating whether provided object is a \code{rapport} object
 #' @export
 is.rapport <- function(x)  inherits(x, 'rapport')
 
@@ -11,7 +11,7 @@ is.rapport <- function(x)  inherits(x, 'rapport')
 #'
 #' Checks if provided R object is a \code{rapport} block element.
 #' @param x any R object to check
-#' @return a logical value
+#' @return a logical value indicating whether provided object is a \code{rp.block} object
 is.rp.block <- function(x)  (inherits(x, 'rp.block'))
 
 
@@ -19,7 +19,7 @@ is.rp.block <- function(x)  (inherits(x, 'rp.block'))
 #'
 #' Checks if provided R object is a \code{rapport} inline element.
 #' @param x any R object to check
-#' @return a logical value
+#' @return a logical value indicating whether provided object is a \code{rp.inline} object
 is.rp.inline <- function(x)  (inherits(x, 'rp.inline'))
 
 
@@ -27,7 +27,7 @@ is.rp.inline <- function(x)  (inherits(x, 'rp.inline'))
 #'
 #' Checks if provided R object is a \code{rapport} inline element.
 #' @param x any R object to check
-#' @return a logical value
+#' @return a logical value indicating whether provided object is a \code{rp.heading} object
 is.rp.heading <- function(x)  (inherits(x, 'rp.heading'))
 
 
@@ -260,6 +260,13 @@ has.tags <- function(x, ...){
 #' Inline Chunk Contents
 #'
 #' Returns inline code chunks with or without tags that wrap them.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'inline.open',
+#'     \item 'inline.close'.
+#' }
 #' @param x a character vector
 #' @param tag.open a character value with opening tag regular expression
 #' @param tag.close a character value with closing tag regular expression
@@ -294,6 +301,19 @@ grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.t
 #' Tag Values
 #'
 #' Returns report tag vales (usually regexes): either user-defined, or the default ones.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'chunk.open',
+#'     \item 'chunk.close',
+#'     \item 'inline.open',
+#'     \item 'inline.close',
+#'     \item 'header.open',
+#'     \item 'header.close',
+#'     \item 'comment.open',
+#'     \item 'comment.close'.
+#' }
 #' @param tag.type a character value with tag value name
 #' @param preset a character value specifying which preset to return
 #' @return either a list (default) or a character value with tag regexes
@@ -359,7 +379,14 @@ get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.op
 
 #' Misplaced Tags
 #'
-#' Searches for misplaced tags
+#' Searches for misplaced tags.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'inline.open,
+#'     \item 'inline.close'.
+#' }
 #' @param x a string to check for misplaced tags
 #' @param tag.open a string containing opening tag
 #' @param tag.close a string containing closing tag
@@ -392,6 +419,13 @@ tags.misplaced <- function(x, tag.open = get.tags('inline.open'), tag.close = ge
 #' Purge Comments
 #'
 #' Remove comments from provided character vector.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'comment.open',
+#'     \item 'comment.close'.
+#' }
 #' @param x a character string to remove comments from
 #' @param comment.open a string containing opening tag
 #' @param comment.close a string containing closing tag
@@ -448,6 +482,12 @@ table.json <- function(d, name.rows = 'rows', name.cols = 'cols', name.body = 'b
 #' Percent
 #'
 #' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to value specified in \code{rp.decimal.short} option).
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'rp.decimal.short'
+#' }
 #' @param x a numeric value that is to be rendered to percent
 #' @param digits an integer value indicating number of decimal places
 #' @param type a character value indicating whether percent or proportion value was provided (partial match is allowed)
@@ -792,6 +832,14 @@ check.type <- function(x){
 #' Round numeric values
 #'
 #' Round numeric values with default number of decimals (see: \code{getOption('rp.decimal'}) and decimal mark (see: \code{getOption('rp.decimal')}).
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'rp.decimal',
+#'     \item 'rp.decimal.short',
+#'     \item 'rp.decimal.mark'.
+#' }
 #' @param x numeric value(s)
 #' @param short if \code{getOption('rp.decimal.short'} should be used instead of \code{getOption('rp.decimal'}. Can be overwritten by \code{digits} parameter, see below.
 #' @param digits (optional) number of decimals
@@ -826,6 +874,14 @@ rp.round <- function(x, short = FALSE, digits = NULL) {
 #' Return pretty ascii form
 #'
 #' Some standard formatting is applied to the value which is returned as ascii object.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'rp.decimal',
+#'     \item 'rp.decimal.short',
+#'     \item 'rp.decimal.mark'.
+#' }
 #' @param x R object
 #' @return ascii
 #' @examples \dontrun{
@@ -895,12 +951,20 @@ rp.prettyascii <- function(x) {
 #' Inline Printing
 #'
 #' Merge atomic vector elements in one string for pretty inline printing.
+#' 
+#' Default parameters are read from \code{options}:
+#' 
+#' \itemize{
+#'     \item 'p.wrap',
+#'     \item 'p.sep',
+#'     \item 'p.copula'.
+#' }
 #' @param x an atomic vector to get merged for inline printing
 #' @param wrap string to wrap vector elements (defaults to \code{_}, i.e. underline in pandoc)
 #' @param sep a string with main separator (separates all vector elements but the last one)
 #' @param copula a string with last separator (usually a copula like "and")
 #' @param limit maximum character length (defaults to 20 elements)
-#' @return a string with catenated vector contents
+#' @return a string with concatenated vector contents
 #' @examples
 #' p(c("fee", "fi", "foo", "fam"))
 #' ## [1] "_fee_, _fi_, _foo_ and _fam_"
@@ -929,7 +993,7 @@ p <- function(x, wrap = getOption('p.wrap'), sep = getOption('p.sep'), copula = 
 #' @param join.left a string to catenate elements of character vector specified in \code{left}
 #' @param join.right a string to catenate elements of character vector specified in \code{right}
 #' @examples
-#' fml("hp", c("am", "cyl"))
+#' fml("hp", c("am", "cyl"))    # "hp ~ am + cyl"
 #' @export
 fml <- function(left, right, join.left = ' + ', join.right = ' + '){
     sprintf('%s ~ %s', paste(left, collapse = join.left), paste(right, collapse = join.right))

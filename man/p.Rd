@@ -23,11 +23,17 @@
   elements)}
 }
 \value{
-  a string with catenated vector contents
+  a string with concatenated vector contents
 }
 \description{
   Merge atomic vector elements in one string for pretty
   inline printing.
+}
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'p.wrap', \item 'p.sep', \item
+  'p.copula'. }
 }
 \examples{
 p(c("fee", "fi", "foo", "fam"))

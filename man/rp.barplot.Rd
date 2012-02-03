@@ -33,6 +33,11 @@
   This function is a wrapper around \code{\link{barchart}}
   which operates only on factors with optional facet.
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'style.theme'. }
+}
 \examples{
 \dontrun{
 rp.barplot(ius2008$game)

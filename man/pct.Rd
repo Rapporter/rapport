@@ -29,4 +29,9 @@
   \code{decimals} formal argument (defaults to value
   specified in \code{rp.decimal.short} option).
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'rp.decimal.short' }
+}
 

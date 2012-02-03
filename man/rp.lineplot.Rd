@@ -25,6 +25,11 @@
   with custom panel. Only numeric variables are accepted
   with optional facet.
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'style.theme'. }
+}
 \examples{
 \dontrun{
 a <- aggregate(wt~gear, mtcars, mean)

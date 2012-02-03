@@ -12,9 +12,16 @@
   and 0 for both}
 }
 \value{
-  numeric
+  computed lambda value(s) for row/col of given given table
 }
 \description{
   Computes Goodman and Kruskal's lambda for given table.
+}
+\examples{
+\dontrun{
+lambda.test(table(mtcars$am, mtcars$gear))
+lambda.test(table(mtcars$am, mtcars$gear), 1)
+lambda.test(table(mtcars$am, mtcars$gear), 2)
+}
 }
 

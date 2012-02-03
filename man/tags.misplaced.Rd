@@ -18,6 +18,11 @@
   appropriate error
 }
 \description{
-  Searches for misplaced tags
+  Searches for misplaced tags.
+}
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'inline.open, \item 'inline.close'. }
 }
 

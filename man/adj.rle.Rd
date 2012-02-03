@@ -16,11 +16,14 @@
   Similar to \code{\link{rle}} function, this function
   detects "runs" of adjacent integers, and displays vector
   of run lengths and list of corresponding integer
-  sequences. See original thread for more details
-  \url{http://stackoverflow.com/a/8467446/457898}. Special
-  thanks to Gabor Grothendieck for this one!
+  sequences.
 }
 \author{
   Gabor Grothendieck <ggrothendieck@gmail.com>
+}
+\references{
+  See original thread for more details
+  \url{http://stackoverflow.com/a/8467446/457898}. Special
+  thanks to Gabor Grothendieck for this one!
 }
 

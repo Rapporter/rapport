@@ -14,6 +14,12 @@
   Some standard formatting is applied to the value which is
   returned as ascii object.
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'rp.decimal', \item 'rp.decimal.short',
+  \item 'rp.decimal.mark'. }
+}
 \examples{
 \dontrun{
 rp.prettyascii('Hallo, World?')

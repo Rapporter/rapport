@@ -89,6 +89,13 @@
   \code{\link{tpl.inputs}} for more details on template
   inputs.
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item 'rapport.mode', \item 'graph.format',
+  \item 'graph.width', \item 'graph.height', \item
+  'graph.res', \item 'graph.hi.res'. }
+}
 \examples{
 \dontrun{
 rapport("example", ius2008, var = "leisure")
@@ -101,7 +108,7 @@ rapport("example", ius2008, var = "leisure", rapport.mode = 'performance')
 rapport("example", ius2008, var="leisure", hist = TRUE, graph.hi.res = TRUE)
 rapport.html("nortest", ius2008, var = "leisure", graph.hi.res=T)
 ## generating only high resolution image
-rapport("example", ius2008, var="leisure", hist = TRUE, graph.width = 1280, graph.height = 1280)    # might be a good idea to set \\code{graph.res} too
+rapport("example", ius2008, var="leisure", hist = TRUE, graph.width = 1280, graph.height = 1280)
 ## nested templates cannot get custom setting, use custom rapport option:
 options('graph.hi.res' = TRUE)
 rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))

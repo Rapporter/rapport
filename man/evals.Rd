@@ -100,7 +100,7 @@
   were generated to distinct files?}
 
   \item{...}{optional parameters passed to graphics device
-  (eg. \code{width}, \code{height} etc.)}
+  (eg. \code{bg}, \code{pointsize} etc.)}
 }
 \value{
   a list of parsed elements each containg: src (the command

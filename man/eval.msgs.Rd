@@ -22,8 +22,8 @@
   Details above.
 }
 \description{
-  This function takes text(s) of R code, evaluates all at
-  one run then returns a list with four elements:
+  This function takes text(s) of R code and \code{eval}s
+  all at one run then returns a list with four elements:
 }
 \details{
   \itemize{ \item \emph{src} - a character value with
@@ -46,9 +46,6 @@
   message(s) \item \emph{warnings} - string of possible
   warning message(s) \item \emph{errors} - string of
   possible error message(s) } }
-
-  Note, that \code{ggplot2} and \code{lattice} graphs
-  should be printed in \code{evals.msg} to show the plot.
 }
 \examples{
 \dontrun{

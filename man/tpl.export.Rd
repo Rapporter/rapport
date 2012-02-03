@@ -42,11 +42,23 @@
 }
 \description{
   This function exports rapport class objects to various
-  formats based on ascii package. Note that no
-  error/warning messages will be shown! By default this
-  function tries to export the report to HTML with pandoc.
-  Some default styles are applied. If you do not need those
-  default settings, use your own \code{options}.
+  formats based on ascii package.
+}
+\details{
+  By default this function tries to export the report to
+  HTML with pandoc. Some default styles are applied. If you
+  do not like those default settings, use your own
+  \code{options}.
+
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item "getOption('rp.date.format')", \item
+  "getOption('tpl.user')", \item "getOption('tpl.email')",
+  }
+
+  Please be sure to set \code{'tpl.user'} and
+  \code{'tpl.email'} options with \code{options()} to get
+  your name in the head of your generated reports!
 }
 \examples{
 \dontrun{

@@ -23,6 +23,12 @@
   192:246, 248:382), nchar(getOption('.encrypt.chars'))))}
   would return a quite complex but readable key.
 }
+\details{
+  Default parameters are read from \code{options}:
+
+  \itemize{ \item '.encrypt.chars', \item '.encrypt.keys'.
+  }
+}
 \examples{
 \dontrun{
 encrypt("Hello world!")

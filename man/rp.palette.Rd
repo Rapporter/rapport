@@ -20,10 +20,11 @@
   given palette from \code{\link{RColorBrewer}}. Besides
   those falling back to \code{'default'}: a
   color-blind-friendly palette from
-  \url{http://jfly.iam.u-tokyo.ac.jp/color/}. Default
-  parameters are read from \code{options}:
+  \url{http://jfly.iam.u-tokyo.ac.jp/color/}.
 }
 \details{
+  Default parameters are read from \code{options}:
+
   \itemize{ \item 'style.color.palette', \item
   'style.colorize'. }
 }
