@@ -12,6 +12,8 @@
     \usepackage[utf8]{inputenc}
   \fi
 \fi
+\usepackage{ctable}
+\usepackage{float} % provides the H option for float placement
 \usepackage{graphicx}
 % We will generate all images so they have a width \maxwidth. This means
 % that they will get their normal width if they fit onto the page, but
@@ -111,7 +113,22 @@ on CRAN.
 Here you can see the results of applied normality tests (\emph{p-values}
 less than 0.05 indicate significant discrepancies):
 
-\emph{0.05}
+\ctable[pos = H, center, botcap]{lll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{Statistic} & \textbf{p-value}
+\ML
+Shapiro-Wilk normality test & 0.9001 & 0
+\\\noalign{\medskip}
+Lilliefors (Kolmogorov-Smirnov) normality test & 0.168 & 0
+\\\noalign{\medskip}
+Anderson-Darling normality test & 18.753 & 0
+\\\noalign{\medskip}
+Pearson chi-square normality test & 1791.25 & 0
+\LL
+}
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -162,7 +179,7 @@ distribution function}. As such, it provides good insight about the
 shape of the distribution. For normal distributions, it should resemble
 the well known ``bell shape''.
 
-\href{246f5a087a114ce124304e671fa92f08-hires.png}{\includegraphics{246f5a087a114ce124304e671fa92f08.png}}
+\href{fe4ddb2fb2ffd78d3c5448a9cc27a8de-hires.png}{\includegraphics{fe4ddb2fb2ffd78d3c5448a9cc27a8de.png}}
 
 \subsection{Description}
 
@@ -226,7 +243,22 @@ on CRAN.
 Here you can see the results of applied normality tests (\emph{p-values}
 less than 0.05 indicate significant discrepancies):
 
-\emph{0.05}
+\ctable[pos = H, center, botcap]{lll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{Statistic} & \textbf{p-value}
+\ML
+Shapiro-Wilk normality test & 0.9001 & 0
+\\\noalign{\medskip}
+Lilliefors (Kolmogorov-Smirnov) normality test & 0.168 & 0
+\\\noalign{\medskip}
+Anderson-Darling normality test & 18.753 & 0
+\\\noalign{\medskip}
+Pearson chi-square normality test & 1791.25 & 0
+\LL
+}
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -277,7 +309,7 @@ distribution function}. As such, it provides good insight about the
 shape of the distribution. For normal distributions, it should resemble
 the well known ``bell shape''.
 
-\href{c65fb254666a1b3ccc51c353cde3368c-hires.png}{\includegraphics{c65fb254666a1b3ccc51c353cde3368c.png}}
+\href{daf251be0fc0a31c9b51a510640ce60f-hires.png}{\includegraphics{daf251be0fc0a31c9b51a510640ce60f.png}}
 
 \subsection{Description}
 
@@ -343,7 +375,22 @@ on CRAN.
 Here you can see the results of applied normality tests (\emph{p-values}
 less than 0.05 indicate significant discrepancies):
 
-\emph{0.05}
+\ctable[pos = H, center, botcap]{lll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{Statistic} & \textbf{p-value}
+\ML
+Shapiro-Wilk normality test & 0.9001 & 0
+\\\noalign{\medskip}
+Lilliefors (Kolmogorov-Smirnov) normality test & 0.168 & 0
+\\\noalign{\medskip}
+Anderson-Darling normality test & 18.753 & 0
+\\\noalign{\medskip}
+Pearson chi-square normality test & 1791.25 & 0
+\LL
+}
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -394,13 +441,13 @@ distribution function}. As such, it provides good insight about the
 shape of the distribution. For normal distributions, it should resemble
 the well known ``bell shape''.
 
-\href{e3667d7af0218f91620f548c42f15931-hires.png}{\includegraphics{e3667d7af0218f91620f548c42f15931.png}}
+\href{db1e16796e7e791e46cc0c0ca2f68bab-hires.png}{\includegraphics{db1e16796e7e791e46cc0c0ca2f68bab.png}}
 
 \begin{center}\rule{3in}{0.4pt}\end{center}
 
 This report was generated with \href{http://www.r-project.org/}{R}
-(2.14.0) and \href{http://al3xa.github.com/rapport/}{rapport} (0.1) in
-2.914 sec on x86\_64-unknown-linux-gnu platform.
+(2.14.0) and \href{http://al3xa.github.com/rapport/}{rapport} (0.2) in
+2.928 sec on x86\_64-unknown-linux-gnu platform.
 
 \begin{figure}[htbp]
 \centering

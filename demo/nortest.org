@@ -57,7 +57,16 @@ on CRAN.
 Here you can see the results of applied normality tests (/p-values/ less
 than 0.05 indicate significant discrepancies):
 
-/0.05/
+#+BEGIN_HTML
+  <!-- endlist -->
+#+END_HTML
+
+|                                                  | *Statistic*   | *p-value*   |
+|--------------------------------------------------+---------------+-------------|
+| Shapiro-Wilk normality test                      | 0.9001        | 0           |
+| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.168         | 0           |
+| Anderson-Darling normality test                  | 18.753        | 0           |
+| Pearson chi-square normality test                | 1791.25       | 0           |
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -101,7 +110,7 @@ function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[246f5a087a114ce124304e671fa92f08-hires.png][[[246f5a087a114ce124304e671fa92f08.png]]]]
+[[fe4ddb2fb2ffd78d3c5448a9cc27a8de-hires.png][[[fe4ddb2fb2ffd78d3c5448a9cc27a8de.png]]]]
 
 ** Description
 
@@ -155,7 +164,16 @@ on CRAN.
 Here you can see the results of applied normality tests (/p-values/ less
 than 0.05 indicate significant discrepancies):
 
-/0.05/
+#+BEGIN_HTML
+  <!-- endlist -->
+#+END_HTML
+
+|                                                  | *Statistic*   | *p-value*   |
+|--------------------------------------------------+---------------+-------------|
+| Shapiro-Wilk normality test                      | 0.9001        | 0           |
+| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.168         | 0           |
+| Anderson-Darling normality test                  | 18.753        | 0           |
+| Pearson chi-square normality test                | 1791.25       | 0           |
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -199,7 +217,7 @@ function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[c65fb254666a1b3ccc51c353cde3368c-hires.png][[[c65fb254666a1b3ccc51c353cde3368c.png]]]]
+[[daf251be0fc0a31c9b51a510640ce60f-hires.png][[[daf251be0fc0a31c9b51a510640ce60f.png]]]]
 
 ** Description
 
@@ -255,7 +273,16 @@ on CRAN.
 Here you can see the results of applied normality tests (/p-values/ less
 than 0.05 indicate significant discrepancies):
 
-/0.05/
+#+BEGIN_HTML
+  <!-- endlist -->
+#+END_HTML
+
+|                                                  | *Statistic*   | *p-value*   |
+|--------------------------------------------------+---------------+-------------|
+| Shapiro-Wilk normality test                      | 0.9001        | 0           |
+| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.168         | 0           |
+| Anderson-Darling normality test                  | 18.753        | 0           |
+| Pearson chi-square normality test                | 1791.25       | 0           |
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -299,12 +326,12 @@ function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[e3667d7af0218f91620f548c42f15931-hires.png][[[e3667d7af0218f91620f548c42f15931.png]]]]
+[[db1e16796e7e791e46cc0c0ca2f68bab-hires.png][[[db1e16796e7e791e46cc0c0ca2f68bab.png]]]]
 
 --------------
 
 This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
-and [[http://al3xa.github.com/rapport/][rapport]] (0.1) in 2.914 sec on
+and [[http://al3xa.github.com/rapport/][rapport]] (0.2) in 2.928 sec on
 x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 

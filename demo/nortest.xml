@@ -120,9 +120,72 @@
       (<emphasis>p-values</emphasis> less than 0.05 indicate significant
       discrepancies):
     </para>
-    <para>
-      <emphasis>0.05</emphasis>
-    </para>
+    <!-- endlist -->
+    <informaltable>
+      <tgroup cols="3">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">Statistic</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">p-value</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              Shapiro-Wilk normality test
+            </entry>
+            <entry>
+              0.9001
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Lilliefors (Kolmogorov-Smirnov) normality test
+            </entry>
+            <entry>
+              0.168
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Anderson-Darling normality test
+            </entry>
+            <entry>
+              18.753
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Pearson chi-square normality test
+            </entry>
+            <entry>
+              1791.25
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
     <para>
       So, let's draw some conclusions based on applied normality test:
     </para>
@@ -212,9 +275,9 @@
       shape&quot;.
     </para>
     <para>
-      <ulink url="246f5a087a114ce124304e671fa92f08-hires.png"><inlinemediaobject>
+      <ulink url="fe4ddb2fb2ffd78d3c5448a9cc27a8de-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="246f5a087a114ce124304e671fa92f08.png" />
+          <imagedata fileref="fe4ddb2fb2ffd78d3c5448a9cc27a8de.png" />
         </imageobject>
       </inlinemediaobject></ulink>
     </para>
@@ -323,9 +386,72 @@
       (<emphasis>p-values</emphasis> less than 0.05 indicate significant
       discrepancies):
     </para>
-    <para>
-      <emphasis>0.05</emphasis>
-    </para>
+    <!-- endlist -->
+    <informaltable>
+      <tgroup cols="3">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">Statistic</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">p-value</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              Shapiro-Wilk normality test
+            </entry>
+            <entry>
+              0.9001
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Lilliefors (Kolmogorov-Smirnov) normality test
+            </entry>
+            <entry>
+              0.168
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Anderson-Darling normality test
+            </entry>
+            <entry>
+              18.753
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Pearson chi-square normality test
+            </entry>
+            <entry>
+              1791.25
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
     <para>
       So, let's draw some conclusions based on applied normality test:
     </para>
@@ -415,9 +541,9 @@
       shape&quot;.
     </para>
     <para>
-      <ulink url="c65fb254666a1b3ccc51c353cde3368c-hires.png"><inlinemediaobject>
+      <ulink url="daf251be0fc0a31c9b51a510640ce60f-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="c65fb254666a1b3ccc51c353cde3368c.png" />
+          <imagedata fileref="daf251be0fc0a31c9b51a510640ce60f.png" />
         </imageobject>
       </inlinemediaobject></ulink>
     </para>
@@ -533,9 +659,72 @@
       (<emphasis>p-values</emphasis> less than 0.05 indicate significant
       discrepancies):
     </para>
-    <para>
-      <emphasis>0.05</emphasis>
-    </para>
+    <!-- endlist -->
+    <informaltable>
+      <tgroup cols="3">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+            </entry>
+            <entry>
+              <emphasis role="strong">Statistic</emphasis>
+            </entry>
+            <entry>
+              <emphasis role="strong">p-value</emphasis>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              Shapiro-Wilk normality test
+            </entry>
+            <entry>
+              0.9001
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Lilliefors (Kolmogorov-Smirnov) normality test
+            </entry>
+            <entry>
+              0.168
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Anderson-Darling normality test
+            </entry>
+            <entry>
+              18.753
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Pearson chi-square normality test
+            </entry>
+            <entry>
+              1791.25
+            </entry>
+            <entry>
+              0
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
     <para>
       So, let's draw some conclusions based on applied normality test:
     </para>
@@ -625,9 +814,9 @@
       shape&quot;.
     </para>
     <para>
-      <ulink url="e3667d7af0218f91620f548c42f15931-hires.png"><inlinemediaobject>
+      <ulink url="db1e16796e7e791e46cc0c0ca2f68bab-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="e3667d7af0218f91620f548c42f15931.png" />
+          <imagedata fileref="db1e16796e7e791e46cc0c0ca2f68bab.png" />
         </imageobject>
       </inlinemediaobject></ulink>
     </para>
@@ -635,7 +824,7 @@
       This report was generated with
       <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
       <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
-      (0.1) in 2.914 sec on x86_64-unknown-linux-gnu platform.
+      (0.2) in 2.928 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>
