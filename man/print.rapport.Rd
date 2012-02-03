@@ -10,8 +10,8 @@
   \item{...}{ignored}
 }
 \description{
-  Default print method for "rapport" class objects which
-  show the report body.
+  Default print method for \code{rapport} class objects
+  that shows evaluated report contents.
 }
 \examples{
 \dontrun{

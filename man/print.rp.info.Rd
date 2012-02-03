@@ -11,8 +11,8 @@
   \item{...}{ignored}
 }
 \description{
-  Prints out the contents of template header (metadata and
-  inputs) in human-readable format, so you can get insight
-  about template requirements.
+  Prints out the contents of template header (both metadata
+  and inputs) in human-readable format, so you can get
+  insight about the template requirements.
 }
 

@@ -11,9 +11,8 @@
 }
 \details{
   However, this dataset does not contain the original data,
-  as some \code{NA}s were added to dataset afterwards, in
-  order to demonstrate functionality of \emph{rapport}
-  helpers.
+  as some random noise is added afterwards, in order to
+  demonstrate functionality of \emph{rapport} helpers.
 
   Dataset variables can be divided into 3 sets:
   \emph{demographic data}, \emph{Internet usage aspects}
@@ -37,7 +36,7 @@
   educational purposes (expressed in hours) \item
   \emph{leisure} - time spent on-line in leisure time
   (expressed in hours) \item \emph{net.required} - is
-  Internet access required for your proffesion? (factor
+  Internet access required for your profession? (factor
   with 5 levels: "never", "rarely", "sometimes", "often"
   and "always") \item \emph{net.pay} - who pays for
   Internet access? (factor with 5 levels: "parents",

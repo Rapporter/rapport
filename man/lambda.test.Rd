@@ -12,7 +12,7 @@
   and 0 for both}
 }
 \value{
-  computed lambda value(s) for row/col of given given table
+  computed lambda value(s) for row/col of given table
 }
 \description{
   Computes Goodman and Kruskal's lambda for given table.

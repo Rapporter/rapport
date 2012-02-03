@@ -1,6 +1,6 @@
 \name{eval.msgs}
 \alias{eval.msgs}
-\title{Eval with messages}
+\title{Evaluate with messages}
 \usage{
   eval.msgs(src, env = NULL)
 }
@@ -12,14 +12,14 @@
   created.}
 }
 \value{
-  a list of parsed elements each containg: src (the command
-  run), output (what the command returns, \code{NULL} if
-  nothing returned, path to image file if a plot was
-  genereted), type (class of returned object if any) and
-  messages: warnings (if any returned by the command run,
-  otherwise set to \code{NULL}) and errors (if any returned
-  by the command run, otherwise set to \code{NULL}). See
-  Details above.
+  a list of parsed elements each containing: src (the
+  command run), output (what the command returns,
+  \code{NULL} if nothing returned, path to image file if a
+  plot was generated), type (class of returned object if
+  any) and messages: warnings (if any returned by the
+  command run, otherwise set to \code{NULL}) and errors (if
+  any returned by the command run, otherwise set to
+  \code{NULL}). See Details above.
 }
 \description{
   This function takes text(s) of R code and \code{eval}s
@@ -29,23 +29,23 @@
   \itemize{ \item \emph{src} - a character value with
   specified R code.  \item \emph{output} - generated
   output. \code{NULL} if nothing is returned. If any string
-  returned an R object while evaling then the \emph{last} R
-  object will be returned as a raw R object. If a graph is
-  plotted in the given text, the returned object is a
-  string specifying the path to the saved png in temporary
-  directory (see: \code{tmpfile()}). If multiple plots was
-  run in the same run (see: nested lists as inputs above)
-  then the last plot is saved. If graphic device was
-  touched, then no other R objects will be returned.  \item
-  \emph{type} - class of generated output. "NULL" if
-  nothing is returned, "image" if the graphic device was
-  touched, "error" if some error occured.  \item \emph{msg}
-  - possible messages grabbed while evaling specified R
-  code with the following structure: \itemize{ \item
-  \emph{messages} - string of possible diagnostic
-  message(s) \item \emph{warnings} - string of possible
-  warning message(s) \item \emph{errors} - string of
-  possible error message(s) } }
+  returned an R object while evaluating then the
+  \emph{last} R object will be returned as a raw R object.
+  If a graph is plotted in the given text, the returned
+  object is a string specifying the path to the saved png
+  in temporary directory (see: \code{tmpfile()}). If
+  multiple plots was run in the same run (see: nested lists
+  as inputs above) then the last plot is saved. If graphic
+  device was touched, then no other R objects will be
+  returned.  \item \emph{type} - class of generated output.
+  "NULL" if nothing is returned, "image" if the graphic
+  device was touched, "error" if some error occurred.
+  \item \emph{msg} - possible messages grabbed while
+  evaluating specified R code with the following structure:
+  \itemize{ \item \emph{messages} - string of possible
+  diagnostic message(s) \item \emph{warnings} - string of
+  possible warning message(s) \item \emph{errors} - string
+  of possible error message(s) } }
 }
 \examples{
 \dontrun{

@@ -9,7 +9,7 @@
 \arguments{
   \item{x}{a string containing template metadata}
 
-  \item{title}{a string containint metadata field title
+  \item{title}{a string containing metadata field title
   (can be regex-powered)}
 
   \item{regex}{a string with regular expression to match
@@ -19,8 +19,8 @@
   metadata field}
 
   \item{trim.white}{a logical value indicating whether
-  trailing and leading whitespaces of the given string
-  should be removed before extraction}
+  trailing and leading spaces of the given string should be
+  removed before extraction}
 
   \item{mandatory}{a logical value indicating required
   field}

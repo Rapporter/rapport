@@ -15,7 +15,7 @@
   \item{tag.close}{a character value with closing tag
   regular expression}
 
-  \item{include}{a logical value indicating wheter chunks
+  \item{include}{a logical value indicating whether chunks
   should be returned (defaults to \code{FALSE})}
 
   \item{...}{additional arguments for

@@ -12,6 +12,6 @@
   \code{rapport} object
 }
 \description{
-  Checks if provided R object is of "rapport" class.
+  Checks if provided R object is of \code{rapport} class.
 }
 

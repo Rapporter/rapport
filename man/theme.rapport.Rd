@@ -19,7 +19,7 @@
   \item{font}{specified font family}
 
   \item{custom}{list of custom lattice options to change.
-  Eg. \code{par.main.text = list(lineheight = 2)}}
+  E.g. \code{par.main.text = list(lineheight = 2)}}
 }
 \value{
   list of lattice parameters

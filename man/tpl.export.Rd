@@ -34,7 +34,7 @@
   \code{ascii:::asciiOpts(".outputs")}}
 
   \item{backend}{backend for the format conversions, see:
-  \code{scii:::asciiOpts(".backends")}}
+  \code{ascii:::asciiOpts(".backends")}}
 
   \item{options}{command line options passed to backend}
 
@@ -53,7 +53,7 @@
   Default parameters are read from \code{options}:
 
   \itemize{ \item "getOption('rp.date.format')", \item
-  "getOption('tpl.user')", \item "getOption('tpl.email')",
+  "getOption('tpl.user')", \item "getOption('tpl.email')".
   }
 
   Please be sure to set \code{'tpl.user'} and
@@ -93,7 +93,7 @@ tpl.export()
 ### Adding own custom CSS to exported HTML
 tpl.export(x, options=sprintf('-c \%s', system.file('templates/css/default.css', package='rapport')))
 ## For other formats check out backend specific documentation!
-## Eg. pandoc uses "--reference-odt" as styles reference for odt exports.
+## E.g. pandoc uses "--reference-odt" as styles reference for odt exports.
 }
 }
 

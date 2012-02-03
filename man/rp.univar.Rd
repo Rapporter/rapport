@@ -14,8 +14,8 @@
   \item{fn}{a function or a function name to be applied on
   a variable or it's subset}
 
-  \item{na.rm}{a logical value indicating whether NA's
-  should be removed (defaults to \code{TRUE})}
+  \item{na.rm}{a logical value indicating whether
+  \code{NA}'s should be removed (defaults to \code{TRUE})}
 
   \item{...}{additional arguments for function specified in
   \code{fn}}

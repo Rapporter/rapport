@@ -18,7 +18,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' \itemize{
 #'     \item "getOption('rp.date.format')",
 #'     \item "getOption('tpl.user')",
-#'     \item "getOption('tpl.email')",
+#'     \item "getOption('tpl.email')".
 #' }
 #'
 #' Please be sure to set \code{'tpl.user'} and \code{'tpl.email'} options with \code{options()} to get your name in the head of your generated reports!

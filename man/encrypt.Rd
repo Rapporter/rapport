@@ -17,7 +17,7 @@
   do not use this for sensitive data! The key is set by
   default on library startup. It can be changed by
   modifying \code{options('.encrypt.key')} to any character
-  string with same lenght as
+  string with same length as
   \code{options('.encrypt.chars')}. E.g.
   \code{intToUtf8(sample(c(33, 36:38, 48:57, 64:90, 97:122,
   192:246, 248:382), nchar(getOption('.encrypt.chars'))))}

@@ -8,7 +8,7 @@
   \item{fp}{a template file pointer (see
   \code{\link{tpl.find}} for details)}
 
-  \item{use.header}{a logical value indicating wether the
+  \item{use.header}{a logical value indicating whether the
   header section is provided in \code{h} argument}
 }
 \value{
@@ -109,7 +109,7 @@
   left out, but even in that case implicit limit rules are
   applied, with \code{a} and \code{b} being set to 1.
   \strong{Dataset inputs} will match one or more variables
-  from a dataset (d'uh), and check its mode and/or class.
+  from a dataset, and check its mode and/or class.
   \code{variable} type is a bit different, since it matches
   any kind of variable (not to confuse with \code{Any}
   type), but it still refers to variable(s) from a provided
@@ -120,8 +120,8 @@
   will be stored as a `data.frame`, otherwise, it will be
   stored as a \emph{variable} (atomic vector).
   \strong{Standalone inputs} are a bit different since they
-  do not refer to any varible from a dataset. However, they
-  are more complex than *dataset inputs*, especially
+  do not refer to any variables from a dataset. However,
+  they are more complex than *dataset inputs*, especially
   because they can contain default values. -
   \strong{number} and \strong{string} inputs are defined
   with \code{number} and \code{string} declaration,
@@ -149,7 +149,7 @@
   `match.arg` function. That means that you could only
   choose one value from a list. Partial matches are
   allowed, and the first value in \emph{option} list is the
-  defalt one.
+  default one.
 
   \strong{Input Label and Description}
 

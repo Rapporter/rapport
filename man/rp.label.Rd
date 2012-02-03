@@ -16,7 +16,7 @@
 \description{
   This function returns character value previously stored
   in variable's \code{label} attribute. If none found, the
-  function fallbacks to object's name (retrieved by
+  function defaults to object's name (retrieved by
   \code{deparse(substitute(x))}).
 }
 \examples{

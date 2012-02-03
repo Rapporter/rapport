@@ -22,7 +22,7 @@
 }
 \examples{
 \dontrun{
-rp.prettyascii('Hallo, World?')
+rp.prettyascii('Hello, World?')
 rp.prettyascii(22/7)
 rp.prettyascii(matrix(runif(25), 5, 5))
 rp.prettyascii(lm(hp~wt, mtcars))

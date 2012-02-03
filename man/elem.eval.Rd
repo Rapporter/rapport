@@ -28,7 +28,7 @@
   \code{rp.block}-classed elements just a vanilla
   \code{\link{evals}} call is carried out, while
   \code{rp.inline} and \code{rp.heading} classes have some
-  additional post-evaluation proccesing (heading level is
+  additional post-evaluation processing (heading level is
   stored, as well as "raw" and evaluated chunk contents).
 }
 \details{

@@ -8,7 +8,7 @@
   \item{x}{a numeric vector of values}
 }
 \value{
-  vecotor of outlier values
+  vector of outlier values
 }
 \description{
   A simple test for outliers. This functions returns all

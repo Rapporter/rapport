@@ -52,7 +52,7 @@
   of saved plots (optional)}
 
   \item{graph.hi.res}{logical value indicating if high
-  resolution (1280x~1280) images would be also genareted}
+  resolution (1280x~1280) images would be also generated}
 }
 \value{
   a list with \code{rapport} class.

@@ -11,10 +11,10 @@
   \item{right}{a character vector with right-hand side
   formula arguments}
 
-  \item{join.left}{a string to catenate elements of
+  \item{join.left}{concatenation string for elements of
   character vector specified in \code{left}}
 
-  \item{join.right}{a string to catenate elements of
+  \item{join.right}{concatenation string for elements of
   character vector specified in \code{right}}
 }
 \description{

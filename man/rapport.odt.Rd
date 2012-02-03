@@ -1,6 +1,6 @@
 \name{rapport.odt}
 \alias{rapport.odt}
-\title{Rapport to odt}
+\title{Rapport to ODT}
 \usage{
   rapport.odt(...)
 }

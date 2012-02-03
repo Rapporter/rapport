@@ -14,7 +14,7 @@
 \description{
   This function returns character value previously stored
   in variable's \code{name} attribute. If none found, the
-  function fallbacks to object's name.
+  function defaults to object's name.
 }
 \examples{
 \dontrun{

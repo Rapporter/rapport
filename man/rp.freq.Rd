@@ -35,7 +35,7 @@
   a \code{data.frame} with a frequency table
 }
 \description{
-  Diplay frequency table with counts, percentage, and
+  Display frequency table with counts, percentage, and
   cumulatives.
 }
 \examples{

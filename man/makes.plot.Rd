@@ -26,6 +26,6 @@
 \references{
   See original thread for more details
   (\url{http://stackoverflow.com/a/2744434/457898}).
-  Special thanks to Hadley Wickam for this one!
+  Special thanks to Hadley Wickham for this one!
 }
 
