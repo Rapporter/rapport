@@ -25,6 +25,8 @@ Depends:
     RColorBrewer,
     reshape,
     RJSONIO
+Suggests:
+    testthat
 Collate:
     'crypt.R'
     'eval.R'

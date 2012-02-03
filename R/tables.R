@@ -151,6 +151,9 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
 #' @export
 rp.freq <- freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.levels = FALSE, count = TRUE, pct = TRUE, cumul.count = TRUE, cumul.pct = TRUE, total.name = 'Total'){
 
+    ## R CMD check NOTE dismiss based on http://stackoverflow.com/a/8096882/564164
+    N <- `%` <- NULL
+    
     ## TODO: subset
     ## TODO: add variables/data.frames instead of names
     exclude <- if (isTRUE(na.rm)) NA else NULL

@@ -6,3 +6,8 @@ inst/templates/test.tpl
 \.Rhistory$
 \.Rpackages$
 .+/rapport-Ex.R
+\.settings$
+\.project$
+^test.*r$
+^test.*tpl$
+^notes.*$

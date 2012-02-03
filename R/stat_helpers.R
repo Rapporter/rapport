@@ -76,6 +76,9 @@ lambda.test <- function(table, direction=0) {
 #' @export
 htest <- function(x, ..., use.labels = getOption('rp.use.labels'), use.method.names = TRUE, colnames = c('Statistic', 'p-value')){
 
+    ## R CMD check NOTE dismiss based on http://stackoverflow.com/a/8096882/564164
+    foo <- NULL
+    
     test <- list(...)
     test.len <- length(test)
     test.name <- sapply(substitute(list(...)), deparse)[-1]
