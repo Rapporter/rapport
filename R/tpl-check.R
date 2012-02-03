@@ -62,12 +62,14 @@ tpl.check <- function(fp) {
         cat(sprintf('\n"%s" template examples run without error, but it does not support strict mode: %s errors found while running all examples in strict mode. See warnings():\n\n', fp, sum(errors)))
         return(invisible(list(run = TRUE, strict = FALSE)))
     }
+    examples <- gsub('.*.png$', '<IMAGE HERE>', examples)
+    examples.performance <- gsub('.*.png$', '<IMAGE HERE>', examples.performance)
     res <- identical(examples, examples.performance)
     if (res) {
-        cat(sprintf('\n"%s" template examples run without error, but it does not support strict mode!\n\n', fp))
-        return(invisible(list(run = TRUE, strict = FALSE)))
-    } else {
         cat(sprintf('\n"%s" template examples run without error - even in strict mode, which resulted in the same output compared to normal run.\nConsider adding "Strict: TRUE" line to template header!\n\n', fp))
         return(invisible(list(run = TRUE, strict = TRUE)))
+    } else {
+        cat(sprintf('\n"%s" template examples run without error, but it does not support strict mode!\n\n', fp))
+        return(invisible(list(run = TRUE, strict = FALSE)))
     }
 }
