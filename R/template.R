@@ -842,17 +842,17 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
             }
 
             ## assign stuff
-            assign(name, val, env = e)                             # value
-            assign(sprintf('%s.iname', name), name, env = e)       # input name (the stuff)
-            assign(sprintf('%s.ilen', name), input.len, env = e)   # input length
-            assign(sprintf('%s.ilabel', name), x$label, env = e)   # input label
-            assign(sprintf('%s.idesc', name), x$desc, env = e)     # input description
-            assign(sprintf('%s.name', name), input.value, env = e) # variable name(s)
-            assign(sprintf('%s.len', name), length(val), env = e)  # variable length
+            assign(name, val, envir = e)                             # value
+            assign(sprintf('%s.iname', name), name, envir = e)       # input name (the stuff)
+            assign(sprintf('%s.ilen', name), input.len, envir = e)   # input length
+            assign(sprintf('%s.ilabel', name), x$label, envir = e)   # input label
+            assign(sprintf('%s.idesc', name), x$desc, envir = e)     # input description
+            assign(sprintf('%s.name', name), input.value, envir = e) # variable name(s)
+            assign(sprintf('%s.len', name), length(val), envir = e)  # variable length
             if (is.data.frame(val))
-                assign(sprintf('%s.label', name), sapply(val, rp.label), env = e) # variable labels
+                assign(sprintf('%s.label', name), sapply(val, rp.label), envir = e) # variable labels
             else if (is.atomic(val))
-                assign(sprintf('%s.label', name), rp.label(val), env = e) # variable label
+                assign(sprintf('%s.label', name), rp.label(val), envir = e) # variable label
             else
                 stopf('"%s" is not a "data.frame" or an atomic vector', name) # you never know...
         })

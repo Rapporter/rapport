@@ -866,7 +866,7 @@ rp.round <- function(x, short = FALSE, digits = NULL) {
     if (missing(digits))
         digits <- ifelse(short, getOption('rp.decimal.short'), getOption('rp.decimal'))
     if (is.vector(x))
-        return(as.vector(tocharac(x, digit=digits, decimal.mark = decimal.mark, format='nice')))
+        return(as.vector(tocharac(x, digits = digits, decimal.mark = decimal.mark, format = 'nice')))
     return(format(round(x, digits), decimal.mark = decimal.mark))
 }
 
