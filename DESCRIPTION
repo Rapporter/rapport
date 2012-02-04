@@ -18,13 +18,13 @@ LazyData: yes
 LazyLoad: yes
 Depends:
     R (>= 2.14.0),
-    cairo (>= 1.2),
     ascii,
     evaluate,
     lattice,
     RColorBrewer,
     reshape,
     RJSONIO
+SystemRequirements: cairo (>= 1.2)
 Collate:
     'crypt.R'
     'eval.R'
