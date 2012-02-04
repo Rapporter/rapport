@@ -8,7 +8,7 @@ Fields to be translated in header section (between `<!--head` and `head-->` tags
  * Author/Email
  * Description
  * Example (updating the name/path of the template is sufficient)
- * variable informations (3rd and 4th block)
+ * variable information (3rd and 4th block)
 
 In the body of the report (after `head-->` tag) you may change any text, reorder R code (stuff between `<%` and `%>` tags) or even tweak those (if you know what you are doing).
 

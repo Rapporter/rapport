@@ -1,11 +1,17 @@
-Currently, this package is hosted only on [GitHub](https://github.com/aL3xa/rapport/), but it will be submitted to [CRAN](cran.r-project.org) once in reaches v.0.2 (hopefully soon). Until then, you can install _rapport_ via nifty function from `devtools` package:
+Starting from v.0.2 _rapport_ is hosted on [CRAN](cran.r-project.org), so you can install it by calling:
+
+{% highlight r %}
+install.packages('rapport')
+{% endhighlight %}
+
+Or you can grab the latest build from [GitHub](https://github.com/aL3xa/rapport/) via nifty function from `devtools` package:
 
 {% highlight r %}
 library(devtools)
 install_github('rapport', 'aL3xa')
 {% endhighlight %}
 
-You can also download sources in a [zip](https://github.com/aL3xa/rapport/zipball/master) or [tarball](https://github.com/aL3xa/rapport/tarball/master ) archive and build package manually. To do so, please extract archive to an empty dir and run the following commands:
+You can also download sources in a [zip](https://github.com/aL3xa/rapport/zipball/master) or [tarball](https://github.com/aL3xa/rapport/tarball/master ) archive and build package manually. To do so, please extract archive to an empty directory and run the following commands:
 
 {% highlight bash %}
 R CMD build rapport
@@ -28,4 +34,4 @@ In order to export _rapport_ templates to  _HTML_, _ODT_, or _PDF_ export, pleas
  * [txt2tags](http://txt2tags.org/) and
  * [markdown2pdf](http://johnmacfarlane.net/pandoc/README.html#markdown2pdf).
 
-We recommend using [pandoc](http://johnmacfarlane.net/pandoc/), especially the [devel version](https://github.com/jgm/pandoc/wiki/Installing-the-development-version-of-pandoc-1.9), as it has some really neat updates (docx writer, odt image size fix etc.)!
+We recommend using [pandoc](http://johnmacfarlane.net/pandoc/), especially the [devel version](https://github.com/jgm/pandoc/wiki/Installing-the-development-version-of-pandoc-1.9), as it has some really neat updates (DOCX writer, ODT image size fix etc.)!

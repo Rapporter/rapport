@@ -6,7 +6,7 @@ Actually a lot of stuff:
 - initially, _rapport_ was just a pun (and a very lame attempt to get an available domain name)
 - it also refers to _"the relationship of two or more people who are in sync or on the same wavelength because they feel similar and/or relate well to each other"_\*
 - in psychotherapy, _rapport_ reflects mutual empathy and understanding between a therapist and client
-- if you're a German (oder Sie sprechen fließend Deutsch), then it's just a synonim for "report" (BTW, in Hungarian *rapport* denotes interrogation in military parlance)
+- if you're a German (oder Sie sprechen fließend Deutsch), then it's just a synonym for "report" (BTW, in Hungarian *rapport* denotes interrogation in military parlance)
 - if you're a Kwakiutl Indian or a Khalkha Mongol, _rapport_ probably means nothing in your language, but you should give [R](http://www.r-project.org ) a try, it's bonkers!
 
 \* Stewart, Dorothy (1998). Gower handbook of management skills. Gower Publishing. p. 282. ISBN 0566078899
@@ -20,13 +20,13 @@ Members of the [_rapport_ development team](#contact) are painstakingly procrast
 
 **Short answer:** you should not.
 
-**Long answer:**  you should not... oftentimes... especially if you already have an efficient development workflow. But *rapport* is a bit different from the other popular dynamic report frameworks in R: [Sweave](http://www.stat.uni-muenchen.de/~leisch/Sweave/), [brew](http://cran.r-project.org/web/packages/brew/index.html), or even [knitr](https://github.com/yihui/knitr). With those nifty tools you can easily embed _R_ code and _R_ output in _TeX_, _PDF_, _HTML_ and other formats, which is a common practice in advanced R users. <!-- You can easily write custom reports in pure [R](http://www.r-project.org/) and, if needed, export them to various formats with nice formatting. -->
+**Long answer:**  you should not... oftentimes... especially if you already have an efficient development work flow. But *rapport* is a bit different from the other popular dynamic report frameworks in R: [Sweave](http://www.stat.uni-muenchen.de/~leisch/Sweave/), [brew](http://cran.r-project.org/web/packages/brew/index.html), or even [knitr](https://github.com/yihui/knitr). With those nifty tools you can easily embed _R_ code and _R_ output in _TeX_, _PDF_, _HTML_ and other formats, which is a common practice in advanced R users.
 
-_rapport_ has a similar goal: to use R to generate dynamic, reproducible templates, which can be easily exported to various external formats, providing (hopefully) nicely formated template elements, such as tables, graphs or in-line expressions. You may get an impression that _rapport_ is n00b-friendly interface to statistical report creation, but from our POV, it's just a convenient way of dealing with repetitive tasks.
+_rapport_ has a similar goal: to use R to generate dynamic, reproducible templates, which can be easily exported to various external formats, providing (hopefully) nicely formatted template elements, such as tables, graphs or in-line expressions. You may get an impression that _rapport_ is n00b-friendly interface to statistical report creation, but from our POV, it's just a convenient way of dealing with repetitive tasks.
 
 _rapport_ relies on some [predefined](#templates)/[custom](#custom) templates, which can be easily ran against any dataset and with user-defined input specifications <!-- add links to inputs section -->. Don't forget: [custom templates](#custom) are easy to write!
 
-#### Okay, you got me. How can I use this package?
+#### OK, you got me. How can I use this package?
 
 Read sections on [usage](#usage) and/or [writing custom templates](#custom).
 
@@ -52,19 +52,19 @@ Of course, with some limitations: see [license terms](#license) for details.
 
 #### How can I use my custom templates without always specifying the full path and name of the templates?
 
-Check out [`tpl.path`](/functions#tpl.path) and [`tpl.path.add`](/functions#tpl.path.add). If you add the paths of the diretories holding your custom templates, [`rapport`](/functions#rapport) and any related function would easily find it just like you would use a [package bundled template](#templates). So if you have eg. `mytemplate.tpl` in `/tmp`, adding that to the list of custom paths like `tpl.path.add('/tmp')`, you can easily call `rapport('mytemplate', ...)`. You don't even have to inlcude the extension of the file (unless it ends with something other than `tpl`).
+Check out [`tpl.path`](/functions#tpl.path) and [`tpl.path.add`](/functions#tpl.path.add). If you add the paths of the directories holding your custom templates, [`rapport`](/functions#rapport) and any related function would easily find it just like you would use a [package bundled template](#templates). So if you have e.g. `mytemplate.tpl` in `/tmp`, adding that to the list of custom paths like `tpl.path.add('/tmp')`, you can easily call `rapport('mytemplate', ...)`. You don't even have to include the extension of the file (unless it ends with something other than `tpl`).
 
 It would be a good practice to add a call to [`tpl.paths.add(...)`](/functions#tpl.paths.add) to your [`.Rprofile`](http://www.statmethods.net/interface/customizing.html), which would be evaluated on each R session startup.
 
 #### Can I use custom file extensions (`!= 'tpl'`) in custom path (`!=system.file("templates", package = "rapport")`')?
 
-Sure! [`tpl.find`](#tpl.find) (which is called from [`rapport`](/functions#rapport) too) will be able to deal with that, but bear in mind the fact that you will have to specify the full path of your custom template with extension while calling [`rapport`](/functions#rapport) or any other [template related funtion](#Template-related-functions).
+Sure! [`tpl.find`](#tpl.find) (which is called from [`rapport`](/functions#rapport) too) will be able to deal with that, but bear in mind the fact that you will have to specify the full path of your custom template with extension while calling [`rapport`](/functions#rapport) or any other [template related function](#Template-related-functions).
 
 #### Why do you write such complex templates? Why not including those in [helpers](#functions) like `rp.anova`?
 
 It is based on a theory behind *rapport*: you can define a function at any part of your template and use it, or just load any library which is installed on your system - even your own, local packages. You might even include a `source` command in your local template, but bear in mind that this template will not be able to run on other computers!
 
-#### Okay, I understand, but I have a really handy function which should be added to *rapport*!
+#### OK, I understand, but I have a really handy function which should be added to *rapport*!
 
 We are open to happily check out your idea, please [file an issue about your idea on Github](https://github.com/aL3xa/rapport/issues) tagged as `feature`. Or write your own package submitted to [CRAN](cran.r-project.org) and please attract our attention to add that package to our [required or suggested package list](https://github.com/aL3xa/rapport/blob/master/DESCRIPTION).
 

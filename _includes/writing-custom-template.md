@@ -1,4 +1,4 @@
-Writing a custom _rapport_ template or modifying an existing one is not trickier than writing an ordinary statistical report. It requires some basic **R** skills, and an familiarity with _rapport_ input specifications that we're about to cover thorougly. Of course, sophisticated reports would require more proficiency in **R**.
+Writing a custom _rapport_ template or modifying an existing one is not trickier than writing an ordinary statistical report. It requires some basic **R** skills, and an familiarity with _rapport_ input specifications that we're about to cover thoroughly. Of course, sophisticated reports would require more proficiency in **R**.
 
 #### Input Header
 
@@ -34,7 +34,7 @@ Apart from _template metadata_, header also requires specification for template 
 *foo.bar | numeric[1,6] | Numeric variable | A set of up to 6 numeric variables
 {% endhighlight %}
 
-As you can see, it contains four distinct blocks delimited with `|` (pipe) character. Parser first trims all whitespaces from both ends, and extracts the value from a given block. The first block is reserved for input name (`*` indicates a required input), second block holds input type specification (in this case, with input limits), while third and fourth block contain label and description, respectively.
+As you can see, it contains four distinct blocks delimited with `|` (pipe) character. Parser first trims all excessive spaces from both ends, and extracts the value from a given block. The first block is reserved for input name (`*` indicates a required input), second block holds input type specification (in this case, with input limits), while third and fourth block contain label and description, respectively.
 
 ###### Required Inputs
 
@@ -66,24 +66,12 @@ Now we'll make a little digression and talk about **input limits**. You may have
 
 **Dataset inputs** will match one or more variables from a dataset (d'uh), and check its mode and/or class. `variable` type is a bit different, since it matches any kind of variable (not to confuse with `Any` type), but it still refers to variable(s) from a provided dataset. Dataset inputs cannot have default value, but can be optional (just leave out `*` sign in front of input name). Note that if you provide more than one variable name in `rapport` function call, that input will be stored as a `data.frame`, otherwise, it will be stored as a _variable_ (atomic vector).
 
-**Standalone inputs** are a bit different since they do not refer to any varible from a dataset. However, they are more complex than *dataset inputs*, especially because they can contain default values.
+**Standalone inputs** are a bit different since they do not refer to any variable from a dataset. However, they are more complex than *dataset inputs*, especially because they can contain default values.
 
 - **number** and **string** inputs are defined with `number` and `string` declaration, respectively. They can also contain limit specifications, e.g. `number[1,6]` accepts numeric vector with at least 1 and at most 6 elements. Of course, you can pass the same specification to string inputs: `string[1,6]`. In this case, you're setting length limits to a character vector. _number_ and _string_ inputs can have **default value**, which can be defined by placing `=` after type/limit specification followed by default value. For instance, `number[1,6]=3.14` sets value `3.14` as default. Same stands for string inputs: default value can be defined in the same manner: `string=foo` sets "foo" as default string value (note that you don't have to specify quotes unless they are the part of the default string).
 - **boolean** inputs can contain either `TRUE` or `FALSE` values. The specified value is the default one. They cannot contain limit specification.
-- **option** inputs are nothing more than a comma-separated list of strings. Even if you specify numbers in a list, they will be coerced to strings once the list is parsed. Values in _option_ list will be placed in a character vector, and matched with `match.arg` function. That means that you could only choose one value from a list. Partial matches are allowed, and the first value in _option_ list is the defalt one. Note that you can put a space after comma for better readability (but not more than one space).
+- **option** inputs are nothing more than a comma-separated list of strings. Even if you specify numbers in a list, they will be coerced to strings once the list is parsed. Values in _option_ list will be placed in a character vector, and matched with `match.arg` function. That means that you could only choose one value from a list. Partial matches are allowed, and the first value in _option_ list is the default one. Note that you can put a space after comma for better readability (but not more than one space).
 
 ##### Input Label and Description
 
 Third block in input definition is an input label. While _variable_ can have its own label (see `rp.label`), you may want to use the one defined in input specifications. At last, fourth block contains input description, which should be a lengthy description of current input. Just to remind you - all fields in input specification are mandatory. You can cheat, though, by providing `.` or something like that as input label and/or description, but please don't do that unless you're testing the template. Labels and descriptions are meant to be informative.
-
-<!-- In our opinion the easiest way to learn how to write a template is by checking out the sources of an [existing one](#custom). For demonstration purposes, we will go through the source of [`example.tpl`](#exampletpl) (see the ["Usage"](#usage) section for more info). -->
-
-<!-- First, let us check out the source code of [`example.tpl`](#exampletpl): -->
-
-<!--  * check out in [R](http://www.r-project.org/) console with [`tpl.find`](#tpl.find): `tpl.find('example')` -->
-<!--  * search in installed package directory: `system.file("templates", 'example.tpl', package = "rapport")` -->
-<!--  * take a look at [sources on Github](https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl) -->
-<!--  * see the sources tab of [`example.tpl`](#exampletpl) below -->
-
-<!-- Contribute! -->
-
