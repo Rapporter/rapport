@@ -89,8 +89,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
     }
     if (check.backend(backend))
         stop(sprintf('Specified backend (%s) is not installed! Please see details in INSTALL file or rapport homepage (http://rapport-package.info).', backend), call. = FALSE)
-    if (backend == 'pandoc')
-        
+       
     if (!is.null(file))
         if (!is.character(file))
             stop('Wrong file parameter!')
