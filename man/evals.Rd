@@ -253,6 +253,8 @@ evals('plot(1:10)', graph.env = TRUE)
 evals(list(c('x <- runif(100)', 'plot(x)')), graph.env = TRUE)
 evals(c('plot(1:10)', 'plot(2:20)'), graph.env = TRUE)
 evals(list(c('x <- runif(100)', 'plot(x)'), c('y <- runif(100)', 'plot(y)')), graph.env = TRUE)
+evals('plot(10:100)', graph.output = 'pdf')
+evals('runif(10)', graph.output = 'pdf')
 
 ## hooks
 hooks <- list('numeric' = round, 'matrix' = ascii)

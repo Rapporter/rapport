@@ -49,6 +49,14 @@ test_that('Plot: multiline code', {
             expect_that(evals(list(c('plot(cars, main="Stopping Distance versus Speed")', 'plot(cars, main="Stopping Distance versus Speed")')))[[1]]$output, is_a('image'))
         })
 
+test_that('Plot: pdf', {
+            expect_that(evals('plot(1:10)', graph.output = 'pdf')[[1]]$output, is_a('image'))
+        })
+
+test_that('Plot: pdf without plotting', {
+            expect_that(evals('runif(10)', graph.output = 'pdf')[[1]]$output, is_a('numeric'))
+        })
+
 context('evals: no output after output')
 
 test_that('NULL', {

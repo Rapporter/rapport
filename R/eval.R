@@ -174,6 +174,8 @@ eval.msgs <- function(src, env = NULL) {
 #' evals(list(c('x <- runif(100)', 'plot(x)')), graph.env = TRUE)
 #' evals(c('plot(1:10)', 'plot(2:20)'), graph.env = TRUE)
 #' evals(list(c('x <- runif(100)', 'plot(x)'), c('y <- runif(100)', 'plot(y)')), graph.env = TRUE)
+#' evals('plot(10:100)', graph.output = 'pdf')
+#' evals('runif(10)', graph.output = 'pdf')
 #'
 #' ## hooks
 #' hooks <- list('numeric' = round, 'matrix' = ascii)
@@ -273,8 +275,10 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         file <- sprintf('%s.%s', file.name, graph.output)
         if (graph.output %in% c('bmp', 'jpeg', 'png', 'tiff'))
             do.call(graph.output, list(file, type = 'cairo', width = width, height = height, res = res, ...))
-        else
+        if (graph.output == 'svg')
             do.call(graph.output, list(file, width = width/res, height = height/res, ...)) # TODO: font-family?
+        if (graph.output == 'pdf')
+            do.call('cairo_pdf', list(file, width = width/res, height = height/res, ...)) # TODO: font-family?
 
         if (check.output) {
             ## running evaluate for checking outputs and grabbing warnings/errors
