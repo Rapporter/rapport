@@ -272,7 +272,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         file.name <- sub('%INDEX', `%INDEX`, eval(graph.name), fixed = TRUE)
         file <- sprintf('%s.%s', file.name, graph.output)
         if (graph.output %in% c('bmp', 'jpeg', 'png', 'tiff'))
-            do.call(graph.output, list(file, width = width, height = height, res = res, ...))
+            do.call(graph.output, list(file, type = 'cairo', width = width, height = height, res = res, ...))
         else
             do.call(graph.output, list(file, width = width/res, height = height/res, ...)) # TODO: font-family?
 
