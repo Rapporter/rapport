@@ -82,9 +82,14 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         backend <- backends[1]
     }
     ## checking if backend is installed
-    if (backend == 'pandoc')
-        if (!any(grepl("Web:  http://johnmacfarlane.net/pandoc", tryCatch(system('pandoc -v', intern=T), error=function(e) e))))
-            stop('Pandoc is not installed! Please install from: http://johnmacfarlane.net/pandoc/installing.html')
+    check.backend <- function(backend) {
+        if (backend == 't2t')
+            backend <- 'txt2tags'
+        paste(suppressWarnings(tryCatch(system(sprintf('%s -v', backend), intern=T), error=function(x) 'ERROR')), collapse='\n') == 'ERROR'
+    }
+    if (check.backend(backend))
+        stop(sprintf('Specified backend (%s) is not installed! Please see details in INSTALL file or rapport homepage (http://rapport-package.info).', backend), call. = FALSE)
+       
     if (!is.null(file))
         if (!is.character(file))
             stop('Wrong file parameter!')
