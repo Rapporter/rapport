@@ -74,7 +74,7 @@ _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most po
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape". 
 
-[![](fe4ddb2fb2ffd78d3c5448a9cc27a8de.png)](fe4ddb2fb2ffd78d3c5448a9cc27a8de-hires.png) 
+[![](6a0f561af9011f5f333cfe1871910009.png)](6a0f561af9011f5f333cfe1871910009-hires.png) 
 
 === Description ===
 
@@ -143,7 +143,7 @@ _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most po
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape". 
 
-[![](daf251be0fc0a31c9b51a510640ce60f.png)](daf251be0fc0a31c9b51a510640ce60f-hires.png) 
+[![](7d0c55e277021e21b97714931ae0202d.png)](7d0c55e277021e21b97714931ae0202d-hires.png) 
 
 === Description ===
 
@@ -214,10 +214,10 @@ _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most po
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape". 
 
-[![](db1e16796e7e791e46cc0c0ca2f68bab.png)](db1e16796e7e791e46cc0c0ca2f68bab-hires.png) 
+[![](671bcc255ddb72c6cb5cc6b4bf845303.png)](671bcc255ddb72c6cb5cc6b4bf845303-hires.png) 
 
 <s>---</s>
-This report was generated with [R]([http://www.r-project.org/]) (2.14.0) and [rapport]([http://al3xa.github.com/rapport/]) (0.2) in 2.928 sec on x86_64-unknown-linux-gnu platform. 
+This report was generated with [R]([http://www.r-project.org/]) (2.14.0) and [rapport]([http://al3xa.github.com/rapport/]) (0.2) in 3.197 sec on x86_64-unknown-linux-gnu platform. 
 
 [[Image:images/logo.png|center]]
 

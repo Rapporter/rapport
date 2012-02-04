@@ -8,7 +8,7 @@ This template will return the correlation matrix of supplied numerical variables
 
 The highest correlation coefficient (0.2273) is between ''edu'' and ''age'' and the lowest (-0.0338) is between ''leisure'' and ''age''. It seems that the strongest association (r=0.2273) is between ''edu'' and ''age''.
 
-Higly correlated (r &lt; 0.7 or r &gt; 0.7) variables: -
+Highly correlated (r &lt; 0.7 or r &gt; 0.7) variables: -
 
 Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 
@@ -50,7 +50,7 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 </tbody>
 </table>
 
-[[tmp/RtmpeIwHkw/file5a1a0b65-hires.png|[[Image:0e4cca7017b21223d68df3b9e300c895.png]]]]
+[[tmp/RtmpI5pYwT/file2d5defae-hires.png|[[Image:0e4cca7017b21223d68df3b9e300c895.png]]]]
 
 == Description ==
 
@@ -62,7 +62,7 @@ This template will return the correlation matrix of supplied numerical variables
 
 The highest correlation coefficient (0.902) is between ''disp'' and ''cyl'' and the lowest (-0.8677) is between ''wt'' and ''mpg''. It seems that the strongest association (r=0.902) is between ''disp'' and ''cyl''.
 
-Higly correlated (r &lt; 0.7 or r &gt; 0.7) variables:
+Highly correlated (r &lt; 0.7 or r &gt; 0.7) variables:
 
 * ''mpg'' and ''cyl''
 * ''mpg'' and ''disp''
@@ -272,11 +272,11 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 </tbody>
 </table>
 
-[[tmp/RtmpeIwHkw/file6f311f9b-hires.png|[[Image:82a0f381195bb4f50da3c943e264add1.png]]]]
+[[tmp/RtmpI5pYwT/file7bdbb441-hires.png|[[Image:82a0f381195bb4f50da3c943e264add1.png]]]]
 
 
 -----
 
-This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.1) in 1.333 sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 1.728 sec on x86_64-unknown-linux-gnu platform.
 
 [[Image:images/logo.png|frame|none]]

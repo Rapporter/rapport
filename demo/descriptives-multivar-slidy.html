@@ -95,7 +95,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <p><a href="4f025d440bf35d40e21208e8b0c58b77-hires.png"><img src="4f025d440bf35d40e21208e8b0c58b77.png" /></a></p>
 <p>It seems that the highest value is <em>58</em> which is exactly 3.625 times higher than the smallest value (<em>16</em>).</p>
 <p>The standard deviation is <em>6.8491</em> (variance: <em>46.9107</em>). The expected value is around <em>24.5731</em>, somewhere between <em>24.0572</em> and <em>25.0891</em> with the standard error of <em>0.2632</em>.</p>
-<p>If we suppose that <em>Age</em> is not near to a normal distribution (test: see below, skewness: <em>1.9296</em>, kurtosis: <em>7.4851</em>), checking the median (<em>23</em>) might be a better option instead of the mean. The interquartile range (<em>6</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
+<p>If we suppose that <em>Age</em> is not near to a normal distribution (test: see below, skewness: <em>1.9254</em>, kurtosis: <em>4.463</em>), checking the median (<em>23</em>) might be a better option instead of the mean. The interquartile range (<em>6</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
 <h3 id="normality-tests">Normality tests</h3>
 <h4 id="introduction">Introduction</h4>
 <p>In statistics, <em>normality</em> refers to an assumption that the distribution of a random variable follows <em>normal</em> (<em>Gaussian</em>) distribution. Because of its bell-like shape, it's also known as the <em>&quot;bell curve&quot;</em>. The formula for <em>normal distribution</em> is:</p>
@@ -117,7 +117,39 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </ul>
 <h5 id="results">Results</h5>
 <p>Here you can see the results of applied normality tests (<em>p-values</em> less than 0.05 indicate significant discrepancies):</p>
-<p><em>0.05</em></p>
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>Statistic</strong></th>
+<th align="left"><strong>p-value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk normality test</td>
+<td align="left">0.8216</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="left">0.17</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Anderson-Darling normality test</td>
+<td align="left">32.1645</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">Pearson chi-square normality test</td>
+<td align="left">625.8479</td>
+<td align="left">0</td>
+</tr>
+</tbody>
+</table>
 <p>So, let's draw some conclusions based on applied normality test:</p>
 <ul>
 <li>according to <em>Shapiro-Wilk test</em>, the distribution of <em>Age</em> is not normal.</li>
@@ -135,7 +167,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <p><a href="131f20f388f78bd4863828d9fed8c35c-hires.png"><img src="131f20f388f78bd4863828d9fed8c35c.png" /></a></p>
 <h5 id="kernel-density-plot">Kernel Density Plot</h5>
 <p><em>Kernel density plot</em> is a plot of smoothed <em>empirical distribution function</em>. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.</p>
-<p><a href="d9ffb95307c560c15d33484c3a2d87f0-hires.png"><img src="d9ffb95307c560c15d33484c3a2d87f0.png" /></a></p>
+<p><a href="bc1ecb30c3876bf5b13dc1cbeeb16afe-hires.png"><img src="bc1ecb30c3876bf5b13dc1cbeeb16afe.png" /></a></p>
 </div>
 <div class="section slide level2" id="description-1">
 <h1 id="description-1">Description</h1>
@@ -795,7 +827,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <p><a href="78517cde85fc1ba06a3513dd17e567da-hires.png"><img src="78517cde85fc1ba06a3513dd17e567da.png" /></a></p>
 <p>It seems that the highest value is <em>335</em> which is exactly 6.4423 times higher than the smallest value (<em>52</em>).</p>
 <p>The standard deviation is <em>68.5629</em> (variance: <em>4700.8669</em>). The expected value is around <em>146.6875</em>, somewhere between <em>122.9317</em> and <em>170.4433</em> with the standard error of <em>12.1203</em>.</p>
-<p>If we suppose that <em>hp</em> is not near to a normal distribution (test: see below, skewness: <em>0.7614</em>, kurtosis: <em>3.0522</em>), checking the median (<em>123</em>) might be a better option instead of the mean. The interquartile range (<em>83.5</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
+<p>If we suppose that <em>hp</em> is not near to a normal distribution (test: see below, skewness: <em>0.726</em>, kurtosis: <em>-0.1356</em>), checking the median (<em>123</em>) might be a better option instead of the mean. The interquartile range (<em>83.5</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
 <h3 id="normality-tests-2">Normality tests</h3>
 <h4 id="introduction-1">Introduction</h4>
 <p>In statistics, <em>normality</em> refers to an assumption that the distribution of a random variable follows <em>normal</em> (<em>Gaussian</em>) distribution. Because of its bell-like shape, it's also known as the <em>&quot;bell curve&quot;</em>. The formula for <em>normal distribution</em> is:</p>
@@ -817,7 +849,39 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </ul>
 <h5 id="results-1">Results</h5>
 <p>Here you can see the results of applied normality tests (<em>p-values</em> less than 0.05 indicate significant discrepancies):</p>
-<p><em>0.05</em></p>
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>Statistic</strong></th>
+<th align="left"><strong>p-value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk normality test</td>
+<td align="left">0.9334</td>
+<td align="left">0.0488</td>
+</tr>
+<tr class="even">
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="left">0.1664</td>
+<td align="left">0.0245</td>
+</tr>
+<tr class="odd">
+<td align="left">Anderson-Darling normality test</td>
+<td align="left">0.7077</td>
+<td align="left">0.0584</td>
+</tr>
+<tr class="even">
+<td align="left">Pearson chi-square normality test</td>
+<td align="left">11.5</td>
+<td align="left">0.0423</td>
+</tr>
+</tbody>
+</table>
 <p>So, let's draw some conclusions based on applied normality test:</p>
 <ul>
 <li>according to <em>Shapiro-Wilk test</em>, the distribution of <em>hp</em> is not normal.</li>
@@ -835,7 +899,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <p><a href="1cefec04e4451a937a5c6aa4dfdcb352-hires.png"><img src="1cefec04e4451a937a5c6aa4dfdcb352.png" /></a></p>
 <h5 id="kernel-density-plot-1">Kernel Density Plot</h5>
 <p><em>Kernel density plot</em> is a plot of smoothed <em>empirical distribution function</em>. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.</p>
-<p><a href="6fabf9a1622d1251d1e917289ebb984a-hires.png"><img src="6fabf9a1622d1251d1e917289ebb984a.png" /></a></p>
+<p><a href="6a3b7d163c48e1538a0050d4cfd19719-hires.png"><img src="6a3b7d163c48e1538a0050d4cfd19719.png" /></a></p>
 </div>
 <div class="section slide level2" id="wt">
 <h1 id="wt"><em>wt</em></h1>
@@ -863,7 +927,7 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <p><a href="bf47295875cfa6d1667455a7d2721b19-hires.png"><img src="bf47295875cfa6d1667455a7d2721b19.png" /></a></p>
 <p>It seems that the highest value is <em>5.424</em> which is exactly 3.5849 times higher than the smallest value (<em>1.513</em>).</p>
 <p>The standard deviation is <em>0.9785</em> (variance: <em>0.9574</em>). The expected value is around <em>3.2172</em>, somewhere between <em>2.8782</em> and <em>3.5563</em> with the standard error of <em>0.173</em>.</p>
-<p>If we suppose that <em>wt</em> is not near to a normal distribution (test: see below, skewness: <em>0.4438</em>, kurtosis: <em>3.1725</em>), checking the median (<em>3.325</em>) might be a better option instead of the mean. The interquartile range (<em>1.0288</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
+<p>If we suppose that <em>wt</em> is not near to a normal distribution (test: see below, skewness: <em>0.4231</em>, kurtosis: <em>-0.0227</em>), checking the median (<em>3.325</em>) might be a better option instead of the mean. The interquartile range (<em>1.0288</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
 <h3 id="normality-tests-4">Normality tests</h3>
 <h4 id="introduction-2">Introduction</h4>
 <p>In statistics, <em>normality</em> refers to an assumption that the distribution of a random variable follows <em>normal</em> (<em>Gaussian</em>) distribution. Because of its bell-like shape, it's also known as the <em>&quot;bell curve&quot;</em>. The formula for <em>normal distribution</em> is:</p>
@@ -885,7 +949,39 @@ Rapport package team @ https://github.com/aL3xa/rapport
 </ul>
 <h5 id="results-2">Results</h5>
 <p>Here you can see the results of applied normality tests (<em>p-values</em> less than 0.05 indicate significant discrepancies):</p>
-<p><em>0.05</em></p>
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>Statistic</strong></th>
+<th align="left"><strong>p-value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk normality test</td>
+<td align="left">0.9433</td>
+<td align="left">0.0927</td>
+</tr>
+<tr class="even">
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="left">0.1356</td>
+<td align="left">0.1412</td>
+</tr>
+<tr class="odd">
+<td align="left">Anderson-Darling normality test</td>
+<td align="left">0.6091</td>
+<td align="left">0.1038</td>
+</tr>
+<tr class="even">
+<td align="left">Pearson chi-square normality test</td>
+<td align="left">4.5</td>
+<td align="left">0.4799</td>
+</tr>
+</tbody>
+</table>
 <p>So, let's draw some conclusions based on applied normality test:</p>
 <ul>
 <li>according to <em>Shapiro-Wilk test</em>, the distribution of <em>wt</em> is normal.</li>
@@ -903,11 +999,11 @@ Rapport package team @ https://github.com/aL3xa/rapport
 <p><a href="975387b3193e28fb08a85f37cb17f87e-hires.png"><img src="975387b3193e28fb08a85f37cb17f87e.png" /></a></p>
 <h5 id="kernel-density-plot-2">Kernel Density Plot</h5>
 <p><em>Kernel density plot</em> is a plot of smoothed <em>empirical distribution function</em>. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.</p>
-<p><a href="68d781df2baa06f59e1f194c9b06ddac-hires.png"><img src="68d781df2baa06f59e1f194c9b06ddac.png" /></a></p>
+<p><a href="cbf6f06455995fe122a29a4acc4c8400-hires.png"><img src="cbf6f06455995fe122a29a4acc4c8400.png" /></a></p>
 </div>
 <div class="section slide level2" id="section">
 <h1 id="section"></h1>
-<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.14.0) and <a href="http://al3xa.github.com/rapport/">rapport</a> (0.1) in 6.375 sec on x86_64-unknown-linux-gnu platform.</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.14.0) and <a href="http://al3xa.github.com/rapport/">rapport</a> (0.2) in 6.964 sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
 <img src="images/logo.png" /><p class="caption"></p>
 </div>

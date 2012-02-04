@@ -55,7 +55,7 @@ is around 24.5731, somewhere between 24.0572 and 25.0891 with the
 standard error of 0.2632.
 
 If we suppose that Age is not near to a normal distribution (test: see
-below, skewness: 1.9296, kurtosis: 7.4851), checking the median (23)
+below, skewness: 1.9254, kurtosis: 4.463), checking the median (23)
 might be a better option instead of the mean. The interquartile range
 (6) measures the statistics dispersion of the variable (similar to
 standard deviation) based on median.
@@ -109,7 +109,12 @@ Results
 Here you can see the results of applied normality tests (p-values less
 than 0.05 indicate significant discrepancies):
 
-0.05
+                                                   Statistic   p-value
+  ------------------------------------------------ ----------- ---------
+  Shapiro-Wilk normality test                      0.8216      0
+  Lilliefors (Kolmogorov-Smirnov) normality test   0.17        0
+  Anderson-Darling normality test                  32.1645     0
+  Pearson chi-square normality test                625.8479    0
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -415,7 +420,7 @@ value is around 146.6875, somewhere between 122.9317 and 170.4433 with
 the standard error of 12.1203.
 
 If we suppose that hp is not near to a normal distribution (test: see
-below, skewness: 0.7614, kurtosis: 3.0522), checking the median (123)
+below, skewness: 0.726, kurtosis: -0.1356), checking the median (123)
 might be a better option instead of the mean. The interquartile range
 (83.5) measures the statistics dispersion of the variable (similar to
 standard deviation) based on median.
@@ -469,7 +474,12 @@ Results
 Here you can see the results of applied normality tests (p-values less
 than 0.05 indicate significant discrepancies):
 
-0.05
+                                                   Statistic   p-value
+  ------------------------------------------------ ----------- ---------
+  Shapiro-Wilk normality test                      0.9334      0.0488
+  Lilliefors (Kolmogorov-Smirnov) normality test   0.1664      0.0245
+  Anderson-Darling normality test                  0.7077      0.0584
+  Pearson chi-square normality test                11.5        0.0423
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -538,7 +548,7 @@ is around 3.2172, somewhere between 2.8782 and 3.5563 with the standard
 error of 0.173.
 
 If we suppose that wt is not near to a normal distribution (test: see
-below, skewness: 0.4438, kurtosis: 3.1725), checking the median (3.325)
+below, skewness: 0.4231, kurtosis: -0.0227), checking the median (3.325)
 might be a better option instead of the mean. The interquartile range
 (1.0288) measures the statistics dispersion of the variable (similar to
 standard deviation) based on median.
@@ -592,7 +602,12 @@ Results
 Here you can see the results of applied normality tests (p-values less
 than 0.05 indicate significant discrepancies):
 
-0.05
+                                                   Statistic   p-value
+  ------------------------------------------------ ----------- ---------
+  Shapiro-Wilk normality test                      0.9433      0.0927
+  Lilliefors (Kolmogorov-Smirnov) normality test   0.1356      0.1412
+  Anderson-Darling normality test                  0.6091      0.1038
+  Pearson chi-square normality test                4.5         0.4799
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -638,7 +653,7 @@ known "bell shape".
 
 * * * * *
 
-This report was generated with R (2.14.0) and rapport (0.1) in 6.375 sec
+This report was generated with R (2.14.0) and rapport (0.2) in 6.964 sec
 on x86_64-unknown-linux-gnu platform.
 
 []

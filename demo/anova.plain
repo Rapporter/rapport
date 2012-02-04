@@ -48,8 +48,8 @@ right-hand side.
 
   Gender   Min   Max   Mean     Std.Dev.   Median   IQR   Skewness   Kurtosis
   -------- ----- ----- -------- ---------- -------- ----- ---------- ----------
-  male     0     12    3.2699   1.9535     3        3     0.9479     4.0064
-  female   0     12    3.0643   2.3546     2        3     1.4064     4.9089
+  male     0     12    3.2699   1.9535     3        3     0.9443     0.9858
+  female   0     12    3.0643   2.3546     2        3     1.3979     1.8696
 
 Diagnostics
 -----------
@@ -120,8 +120,6 @@ Description
 An ANOVA report with table of descriptives, diagnostic tests and
 ANOVA-specific statistics.
 
-s
-
 Introduction
 ------------
 
@@ -164,14 +162,14 @@ Factor levels and/or their combinations lie on the left hand side, while
 the corresponding statistics for response variable are given on the
 right-hand side.
 
-      Gender   Relationship status   Min   Max   Mean     Std.Dev.   Median   IQR    Skewness   Kurtosis
-  --- -------- --------------------- ----- ----- -------- ---------- -------- ------ ---------- ----------
-  1   male     in a relationship     0.5   12    3.0582   1.9692     2.5      2      1.3376     5.727
-  2   male     married               0     8     2.9848   2.029      3        2      0.9027     3.351
-  3   male     single                0     10    3.5027   1.9361     3        3      0.7636     3.1208
-  5   female   in a relationship     0.5   10    3.0439   2.2158     3        3      1.4017     4.9165
-  6   female   married               0     10    2.4808   1.9671     2        1.75   2.1875     9.2864
-  7   female   single                0     12    3.3226   2.6791     3        3.5    1.2045     4.0139
+  Gender   Relationship status   Min   Max   Mean     Std.Dev.   Median   IQR    Skewness   Kurtosis
+  -------- --------------------- ----- ----- -------- ---------- -------- ------ ---------- ----------
+  male     in a relationship     0.5   12    3.0582   1.9692     2.5      2      1.3239     2.6488
+  male     married               0     8     2.9848   2.029      3        2      0.862      0.1509
+  male     single                0     10    3.5027   1.9361     3        3      0.7574     0.0875
+  female   in a relationship     0.5   10    3.0439   2.2158     3        3      1.3833     1.8306
+  female   married               0     10    2.4808   1.9671     2        1.75   2.0626     5.5858
+  female   single                0     12    3.3226   2.6791     3        3.5    1.1851     0.9281
 
 Diagnostics
 -----------
@@ -242,7 +240,7 @@ of Gender and Relationship status wasn't found significant (p = 0.717).
 
 * * * * *
 
-This report was generated with R (2.14.0) and rapport (0.1) in 0.919 sec
+This report was generated with R (2.14.0) and rapport (0.2) in 1.776 sec
 on x86_64-unknown-linux-gnu platform.
 
 []

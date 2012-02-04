@@ -111,7 +111,7 @@ The expected value is around \f[I]24.5731\f[], somewhere between
 \f[I]0.2632\f[].
 .PP
 If we suppose that \f[I]Age\f[] is not near to a normal distribution
-(test: see below, skewness: \f[I]1.9296\f[], kurtosis: \f[I]7.4851\f[]),
+(test: see below, skewness: \f[I]1.9254\f[], kurtosis: \f[I]4.463\f[]),
 checking the median (\f[I]23\f[]) might be a better option instead of
 the mean.
 The interquartile range (\f[I]6\f[]) measures the statistics dispersion
@@ -173,7 +173,45 @@ You can find \f[C]ad.test\f[] function in \f[C]nortest\f[] package.
 Here you can see the results of applied normality tests
 (\f[I]p-values\f[] less than 0.05 indicate significant discrepancies):
 .PP
-\f[I]0.05\f[]
+.TS
+tab(@);
+l l l.
+T{
+T}@T{
+\f[B]Statistic\f[]
+T}@T{
+\f[B]p-value\f[]
+T}
+_
+T{
+Shapiro-Wilk normality test
+T}@T{
+0.8216
+T}@T{
+0
+T}
+T{
+Lilliefors (Kolmogorov-Smirnov) normality test
+T}@T{
+0.17
+T}@T{
+0
+T}
+T{
+Anderson-Darling normality test
+T}@T{
+32.1645
+T}@T{
+0
+T}
+T{
+Pearson chi-square normality test
+T}@T{
+625.8479
+T}@T{
+0
+T}
+.TE
 .PP
 So, let\[aq]s draw some conclusions based on applied normality test:
 .IP \[bu] 2
@@ -223,7 +261,7 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (d9ffb95307c560c15d33484c3a2d87f0.png)] (d9ffb95307c560c15d33484c3a2d87f0-hires.png)
+[IMAGE: image (bc1ecb30c3876bf5b13dc1cbeeb16afe.png)] (bc1ecb30c3876bf5b13dc1cbeeb16afe-hires.png)
 .SS Description
 .PP
 This template will return descriptive statistics of numerical or
@@ -1228,7 +1266,7 @@ The expected value is around \f[I]146.6875\f[], somewhere between
 \f[I]12.1203\f[].
 .PP
 If we suppose that \f[I]hp\f[] is not near to a normal distribution
-(test: see below, skewness: \f[I]0.7614\f[], kurtosis: \f[I]3.0522\f[]),
+(test: see below, skewness: \f[I]0.726\f[], kurtosis: \f[I]-0.1356\f[]),
 checking the median (\f[I]123\f[]) might be a better option instead of
 the mean.
 The interquartile range (\f[I]83.5\f[]) measures the statistics
@@ -1291,7 +1329,45 @@ You can find \f[C]ad.test\f[] function in \f[C]nortest\f[] package.
 Here you can see the results of applied normality tests
 (\f[I]p-values\f[] less than 0.05 indicate significant discrepancies):
 .PP
-\f[I]0.05\f[]
+.TS
+tab(@);
+l l l.
+T{
+T}@T{
+\f[B]Statistic\f[]
+T}@T{
+\f[B]p-value\f[]
+T}
+_
+T{
+Shapiro-Wilk normality test
+T}@T{
+0.9334
+T}@T{
+0.0488
+T}
+T{
+Lilliefors (Kolmogorov-Smirnov) normality test
+T}@T{
+0.1664
+T}@T{
+0.0245
+T}
+T{
+Anderson-Darling normality test
+T}@T{
+0.7077
+T}@T{
+0.0584
+T}
+T{
+Pearson chi-square normality test
+T}@T{
+11.5
+T}@T{
+0.0423
+T}
+.TE
 .PP
 So, let\[aq]s draw some conclusions based on applied normality test:
 .IP \[bu] 2
@@ -1340,7 +1416,7 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (6fabf9a1622d1251d1e917289ebb984a.png)] (6fabf9a1622d1251d1e917289ebb984a-hires.png)
+[IMAGE: image (6a3b7d163c48e1538a0050d4cfd19719.png)] (6a3b7d163c48e1538a0050d4cfd19719-hires.png)
 .SS \f[I]wt\f[]
 .PP
 The dataset has \f[I]32\f[] observations with \f[I]32\f[] valid values
@@ -1384,9 +1460,9 @@ The expected value is around \f[I]3.2172\f[], somewhere between
 \f[I]0.173\f[].
 .PP
 If we suppose that \f[I]wt\f[] is not near to a normal distribution
-(test: see below, skewness: \f[I]0.4438\f[], kurtosis: \f[I]3.1725\f[]),
-checking the median (\f[I]3.325\f[]) might be a better option instead of
-the mean.
+(test: see below, skewness: \f[I]0.4231\f[], kurtosis:
+\f[I]-0.0227\f[]), checking the median (\f[I]3.325\f[]) might be a
+better option instead of the mean.
 The interquartile range (\f[I]1.0288\f[]) measures the statistics
 dispersion of the variable (similar to standard deviation) based on
 median.
@@ -1447,7 +1523,45 @@ You can find \f[C]ad.test\f[] function in \f[C]nortest\f[] package.
 Here you can see the results of applied normality tests
 (\f[I]p-values\f[] less than 0.05 indicate significant discrepancies):
 .PP
-\f[I]0.05\f[]
+.TS
+tab(@);
+l l l.
+T{
+T}@T{
+\f[B]Statistic\f[]
+T}@T{
+\f[B]p-value\f[]
+T}
+_
+T{
+Shapiro-Wilk normality test
+T}@T{
+0.9433
+T}@T{
+0.0927
+T}
+T{
+Lilliefors (Kolmogorov-Smirnov) normality test
+T}@T{
+0.1356
+T}@T{
+0.1412
+T}
+T{
+Anderson-Darling normality test
+T}@T{
+0.6091
+T}@T{
+0.1038
+T}
+T{
+Pearson chi-square normality test
+T}@T{
+4.5
+T}@T{
+0.4799
+T}
+.TE
 .PP
 So, let\[aq]s draw some conclusions based on applied normality test:
 .IP \[bu] 2
@@ -1496,12 +1610,12 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (68d781df2baa06f59e1f194c9b06ddac.png)] (68d781df2baa06f59e1f194c9b06ddac-hires.png)
+[IMAGE: image (cbf6f06455995fe122a29a4acc4c8400.png)] (cbf6f06455995fe122a29a4acc4c8400-hires.png)
 .PP
    *   *   *   *   *
 .PP
 This report was generated with R (http://www.r-project.org/) (2.14.0)
-and rapport (http://al3xa.github.com/rapport/) (0.1) in 6.375 sec on
+and rapport (http://al3xa.github.com/rapport/) (0.2) in 6.964 sec on
 x86_64-unknown-linux-gnu platform.
 .PP
 [IMAGE: image (images/logo.png)]

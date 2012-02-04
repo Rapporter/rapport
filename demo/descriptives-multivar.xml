@@ -203,8 +203,8 @@
     <para>
       If we suppose that <emphasis>Age</emphasis> is not near to a
       normal distribution (test: see below, skewness:
-      <emphasis>1.9296</emphasis>, kurtosis:
-      <emphasis>7.4851</emphasis>), checking the median
+      <emphasis>1.9254</emphasis>, kurtosis:
+      <emphasis>4.463</emphasis>), checking the median
       (<emphasis>23</emphasis>) might be a better option instead of the
       mean. The interquartile range (<emphasis>6</emphasis>) measures
       the statistics dispersion of the variable (similar to standard
@@ -318,9 +318,72 @@
           (<emphasis>p-values</emphasis> less than 0.05 indicate
           significant discrepancies):
         </para>
-        <para>
-          <emphasis>0.05</emphasis>
-        </para>
+        <!-- endlist -->
+        <informaltable>
+          <tgroup cols="3">
+            <colspec align="left" />
+            <colspec align="left" />
+            <colspec align="left" />
+            <thead>
+              <row>
+                <entry>
+                </entry>
+                <entry>
+                  <emphasis role="strong">Statistic</emphasis>
+                </entry>
+                <entry>
+                  <emphasis role="strong">p-value</emphasis>
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  Shapiro-Wilk normality test
+                </entry>
+                <entry>
+                  0.8216
+                </entry>
+                <entry>
+                  0
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  Lilliefors (Kolmogorov-Smirnov) normality test
+                </entry>
+                <entry>
+                  0.17
+                </entry>
+                <entry>
+                  0
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  Anderson-Darling normality test
+                </entry>
+                <entry>
+                  32.1645
+                </entry>
+                <entry>
+                  0
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  Pearson chi-square normality test
+                </entry>
+                <entry>
+                  625.8479
+                </entry>
+                <entry>
+                  0
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
         <para>
           So, let's draw some conclusions based on applied normality
           test:
@@ -411,9 +474,9 @@
           &quot;bell shape&quot;.
         </para>
         <para>
-          <ulink url="d9ffb95307c560c15d33484c3a2d87f0-hires.png"><inlinemediaobject>
+          <ulink url="bc1ecb30c3876bf5b13dc1cbeeb16afe-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="d9ffb95307c560c15d33484c3a2d87f0.png" />
+              <imagedata fileref="bc1ecb30c3876bf5b13dc1cbeeb16afe.png" />
             </imageobject>
           </inlinemediaobject></ulink>
         </para>
@@ -2087,8 +2150,8 @@
     <para>
       If we suppose that <emphasis>hp</emphasis> is not near to a normal
       distribution (test: see below, skewness:
-      <emphasis>0.7614</emphasis>, kurtosis:
-      <emphasis>3.0522</emphasis>), checking the median
+      <emphasis>0.726</emphasis>, kurtosis:
+      <emphasis>-0.1356</emphasis>), checking the median
       (<emphasis>123</emphasis>) might be a better option instead of the
       mean. The interquartile range (<emphasis>83.5</emphasis>) measures
       the statistics dispersion of the variable (similar to standard
@@ -2202,9 +2265,72 @@
           (<emphasis>p-values</emphasis> less than 0.05 indicate
           significant discrepancies):
         </para>
-        <para>
-          <emphasis>0.05</emphasis>
-        </para>
+        <!-- endlist -->
+        <informaltable>
+          <tgroup cols="3">
+            <colspec align="left" />
+            <colspec align="left" />
+            <colspec align="left" />
+            <thead>
+              <row>
+                <entry>
+                </entry>
+                <entry>
+                  <emphasis role="strong">Statistic</emphasis>
+                </entry>
+                <entry>
+                  <emphasis role="strong">p-value</emphasis>
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  Shapiro-Wilk normality test
+                </entry>
+                <entry>
+                  0.9334
+                </entry>
+                <entry>
+                  0.0488
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  Lilliefors (Kolmogorov-Smirnov) normality test
+                </entry>
+                <entry>
+                  0.1664
+                </entry>
+                <entry>
+                  0.0245
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  Anderson-Darling normality test
+                </entry>
+                <entry>
+                  0.7077
+                </entry>
+                <entry>
+                  0.0584
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  Pearson chi-square normality test
+                </entry>
+                <entry>
+                  11.5
+                </entry>
+                <entry>
+                  0.0423
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
         <para>
           So, let's draw some conclusions based on applied normality
           test:
@@ -2295,9 +2421,9 @@
           &quot;bell shape&quot;.
         </para>
         <para>
-          <ulink url="6fabf9a1622d1251d1e917289ebb984a-hires.png"><inlinemediaobject>
+          <ulink url="6a3b7d163c48e1538a0050d4cfd19719-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="6fabf9a1622d1251d1e917289ebb984a.png" />
+              <imagedata fileref="6a3b7d163c48e1538a0050d4cfd19719.png" />
             </imageobject>
           </inlinemediaobject></ulink>
         </para>
@@ -2380,8 +2506,8 @@
     <para>
       If we suppose that <emphasis>wt</emphasis> is not near to a normal
       distribution (test: see below, skewness:
-      <emphasis>0.4438</emphasis>, kurtosis:
-      <emphasis>3.1725</emphasis>), checking the median
+      <emphasis>0.4231</emphasis>, kurtosis:
+      <emphasis>-0.0227</emphasis>), checking the median
       (<emphasis>3.325</emphasis>) might be a better option instead of
       the mean. The interquartile range (<emphasis>1.0288</emphasis>)
       measures the statistics dispersion of the variable (similar to
@@ -2495,9 +2621,72 @@
           (<emphasis>p-values</emphasis> less than 0.05 indicate
           significant discrepancies):
         </para>
-        <para>
-          <emphasis>0.05</emphasis>
-        </para>
+        <!-- endlist -->
+        <informaltable>
+          <tgroup cols="3">
+            <colspec align="left" />
+            <colspec align="left" />
+            <colspec align="left" />
+            <thead>
+              <row>
+                <entry>
+                </entry>
+                <entry>
+                  <emphasis role="strong">Statistic</emphasis>
+                </entry>
+                <entry>
+                  <emphasis role="strong">p-value</emphasis>
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  Shapiro-Wilk normality test
+                </entry>
+                <entry>
+                  0.9433
+                </entry>
+                <entry>
+                  0.0927
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  Lilliefors (Kolmogorov-Smirnov) normality test
+                </entry>
+                <entry>
+                  0.1356
+                </entry>
+                <entry>
+                  0.1412
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  Anderson-Darling normality test
+                </entry>
+                <entry>
+                  0.6091
+                </entry>
+                <entry>
+                  0.1038
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  Pearson chi-square normality test
+                </entry>
+                <entry>
+                  4.5
+                </entry>
+                <entry>
+                  0.4799
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
         <para>
           So, let's draw some conclusions based on applied normality
           test:
@@ -2588,9 +2777,9 @@
           &quot;bell shape&quot;.
         </para>
         <para>
-          <ulink url="68d781df2baa06f59e1f194c9b06ddac-hires.png"><inlinemediaobject>
+          <ulink url="cbf6f06455995fe122a29a4acc4c8400-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="68d781df2baa06f59e1f194c9b06ddac.png" />
+              <imagedata fileref="cbf6f06455995fe122a29a4acc4c8400.png" />
             </imageobject>
           </inlinemediaobject></ulink>
         </para>
@@ -2598,7 +2787,7 @@
           This report was generated with
           <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
           <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
-          (0.1) in 6.375 sec on x86_64-unknown-linux-gnu platform.
+          (0.2) in 6.964 sec on x86_64-unknown-linux-gnu platform.
         </para>
         <figure>
           <title></title>

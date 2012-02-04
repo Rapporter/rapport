@@ -2,11 +2,12 @@
 
 ## FAQ
 
- * odt image bug in pandoc
+ * ~~~odt image bug in pandoc~~~
 
 ## Usage:
 
- * custom templates' path functions
+ * ~~custom templates' path functions~~~
+ * tpl.find not exported!
 
 ## Custom templates
 

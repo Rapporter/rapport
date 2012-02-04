@@ -80,8 +80,8 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">1.9535</td>
 <td align="left">3</td>
 <td align="left">3</td>
-<td align="left">0.9479</td>
-<td align="left">4.0064</td>
+<td align="left">0.9443</td>
+<td align="left">0.9858</td>
 </tr>
 <tr class="even">
 <td align="left">female</td>
@@ -91,8 +91,8 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">2.3546</td>
 <td align="left">2</td>
 <td align="left">3</td>
-<td align="left">1.4064</td>
-<td align="left">4.9089</td>
+<td align="left">1.3979</td>
+<td align="left">1.8696</td>
 </tr>
 </tbody>
 </table>
@@ -177,7 +177,7 @@ Here you can see several diagnostic plots for ANOVA model:
 * normal Q-Q plot
 * residuals against leverages
 
-[[tmp/RtmpeIwHkw/file385a23bb-hires.png|[[Image:dd5cdfe79c3741b4373910424cb2824c.png]]]]
+[[tmp/RtmpI5pYwT/file61035aeb-hires.png|[[Image:dd5cdfe79c3741b4373910424cb2824c.png]]]]
 
 == ANOVA Summary ==
 
@@ -221,8 +221,6 @@ Here you can see several diagnostic plots for ANOVA model:
 == Description ==
 
 An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.
-
-s
 
 == Introduction ==
 
@@ -315,12 +313,9 @@ Below lies a frequency table for factors in ANOVA model. Note that the missing v
 
 The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
-<!-- endlist -->
-
 <table>
 <thead>
 <tr class="header">
-<th align="left"></th>
 <th align="left">'''Gender'''</th>
 <th align="left">'''Relationship status'''</th>
 <th align="left">'''Min'''</th>
@@ -335,7 +330,6 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">1</td>
 <td align="left">male</td>
 <td align="left">in a relationship</td>
 <td align="left">0.5</td>
@@ -344,11 +338,10 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">1.9692</td>
 <td align="left">2.5</td>
 <td align="left">2</td>
-<td align="left">1.3376</td>
-<td align="left">5.727</td>
+<td align="left">1.3239</td>
+<td align="left">2.6488</td>
 </tr>
 <tr class="even">
-<td align="left">2</td>
 <td align="left">male</td>
 <td align="left">married</td>
 <td align="left">0</td>
@@ -357,11 +350,10 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">2.029</td>
 <td align="left">3</td>
 <td align="left">2</td>
-<td align="left">0.9027</td>
-<td align="left">3.351</td>
+<td align="left">0.862</td>
+<td align="left">0.1509</td>
 </tr>
 <tr class="odd">
-<td align="left">3</td>
 <td align="left">male</td>
 <td align="left">single</td>
 <td align="left">0</td>
@@ -370,11 +362,10 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">1.9361</td>
 <td align="left">3</td>
 <td align="left">3</td>
-<td align="left">0.7636</td>
-<td align="left">3.1208</td>
+<td align="left">0.7574</td>
+<td align="left">0.0875</td>
 </tr>
 <tr class="even">
-<td align="left">5</td>
 <td align="left">female</td>
 <td align="left">in a relationship</td>
 <td align="left">0.5</td>
@@ -383,11 +374,10 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">2.2158</td>
 <td align="left">3</td>
 <td align="left">3</td>
-<td align="left">1.4017</td>
-<td align="left">4.9165</td>
+<td align="left">1.3833</td>
+<td align="left">1.8306</td>
 </tr>
 <tr class="odd">
-<td align="left">6</td>
 <td align="left">female</td>
 <td align="left">married</td>
 <td align="left">0</td>
@@ -396,11 +386,10 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">1.9671</td>
 <td align="left">2</td>
 <td align="left">1.75</td>
-<td align="left">2.1875</td>
-<td align="left">9.2864</td>
+<td align="left">2.0626</td>
+<td align="left">5.5858</td>
 </tr>
 <tr class="even">
-<td align="left">7</td>
 <td align="left">female</td>
 <td align="left">single</td>
 <td align="left">0</td>
@@ -409,8 +398,8 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 <td align="left">2.6791</td>
 <td align="left">3</td>
 <td align="left">3.5</td>
-<td align="left">1.2045</td>
-<td align="left">4.0139</td>
+<td align="left">1.1851</td>
+<td align="left">0.9281</td>
 </tr>
 </tbody>
 </table>
@@ -495,7 +484,7 @@ Here you can see several diagnostic plots for ANOVA model:
 * normal Q-Q plot
 * residuals against leverages
 
-[[tmp/RtmpeIwHkw/file3313f054-hires.png|[[Image:3e897b547f80202649804e256107f6e0.png]]]]
+[[tmp/RtmpI5pYwT/file6a39a0a7-hires.png|[[Image:3e897b547f80202649804e256107f6e0.png]]]]
 
 == ANOVA Summary ==
 
@@ -555,6 +544,6 @@ Here you can see several diagnostic plots for ANOVA model:
 
 -----
 
-This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.1) in 0.919 sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 1.776 sec on x86_64-unknown-linux-gnu platform.
 
 [[Image:images/logo.png|frame|none]]

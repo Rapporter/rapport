@@ -61,7 +61,7 @@ value is around *24.5731*, somewhere between *24.0572* and *25.0891*
 with the standard error of *0.2632*.
 
 If we suppose that *Age* is not near to a normal distribution (test: see
-below, skewness: *1.9296*, kurtosis: *7.4851*), checking the median
+below, skewness: *1.9254*, kurtosis: *4.463*), checking the median
 (*23*) might be a better option instead of the mean. The interquartile
 range (*6*) measures the statistics dispersion of the variable (similar
 to standard deviation) based on median.
@@ -117,7 +117,14 @@ on CRAN.
 Here you can see the results of applied normality tests (*p-values* less
 than 0.05 indicate significant discrepancies):
 
-*0.05*
+<!-- endlist -->
+
+                                                   **Statistic**   **p-value**
+  ------------------------------------------------ --------------- -------------
+  Shapiro-Wilk normality test                      0.8216          0
+  Lilliefors (Kolmogorov-Smirnov) normality test   0.17            0
+  Anderson-Darling normality test                  32.1645         0
+  Pearson chi-square normality test                625.8479        0
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -160,12 +167,12 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[![image](0728c7b59307ecf9bff0607f068b191c.png)](0728c7b59307ecf9bff0607f068b191c-hires.png)
+[![image](e8f4e3c4ec02dd48e8b38ff87ade53b4.png)](e8f4e3c4ec02dd48e8b38ff87ade53b4-hires.png)
 
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.14.0)
-and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.658 sec on
+and [rapport](http://al3xa.github.com/rapport/) (0.2) in 1.766 sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![image](images/logo.png)

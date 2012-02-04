@@ -55,7 +55,7 @@ value is around *24.5731*, somewhere between *24.0572* and *25.0891*
 with the standard error of *0.2632*.
 
 If we suppose that *Age* is not near to a normal distribution (test: see
-below, skewness: *1.9296*, kurtosis: *7.4851*), checking the median
+below, skewness: *1.9254*, kurtosis: *4.463*), checking the median
 (*23*) might be a better option instead of the mean. The interquartile
 range (*6*) measures the statistics dispersion of the variable (similar
 to standard deviation) based on median.
@@ -111,7 +111,14 @@ on CRAN.
 Here you can see the results of applied normality tests (*p-values* less
 than 0.05 indicate significant discrepancies):
 
-*0.05*
+<!-- endlist -->
+
+                                                   **Statistic**   **p-value**
+  ------------------------------------------------ --------------- -------------
+  Shapiro-Wilk normality test                      0.8216          0
+  Lilliefors (Kolmogorov-Smirnov) normality test   0.17            0
+  Anderson-Darling normality test                  32.1645         0
+  Pearson chi-square normality test                625.8479        0
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -154,7 +161,7 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[![image](d9ffb95307c560c15d33484c3a2d87f0.png)](d9ffb95307c560c15d33484c3a2d87f0-hires.png)
+[![image](bc1ecb30c3876bf5b13dc1cbeeb16afe.png)](bc1ecb30c3876bf5b13dc1cbeeb16afe-hires.png)
 
 Description
 -----------
@@ -424,7 +431,7 @@ expected value is around *146.6875*, somewhere between *122.9317* and
 *170.4433* with the standard error of *12.1203*.
 
 If we suppose that *hp* is not near to a normal distribution (test: see
-below, skewness: *0.7614*, kurtosis: *3.0522*), checking the median
+below, skewness: *0.726*, kurtosis: *-0.1356*), checking the median
 (*123*) might be a better option instead of the mean. The interquartile
 range (*83.5*) measures the statistics dispersion of the variable
 (similar to standard deviation) based on median.
@@ -480,7 +487,14 @@ on CRAN.
 Here you can see the results of applied normality tests (*p-values* less
 than 0.05 indicate significant discrepancies):
 
-*0.05*
+<!-- endlist -->
+
+                                                   **Statistic**   **p-value**
+  ------------------------------------------------ --------------- -------------
+  Shapiro-Wilk normality test                      0.9334          0.0488
+  Lilliefors (Kolmogorov-Smirnov) normality test   0.1664          0.0245
+  Anderson-Darling normality test                  0.7077          0.0584
+  Pearson chi-square normality test                11.5            0.0423
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -523,7 +537,7 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[![image](6fabf9a1622d1251d1e917289ebb984a.png)](6fabf9a1622d1251d1e917289ebb984a-hires.png)
+[![image](6a3b7d163c48e1538a0050d4cfd19719.png)](6a3b7d163c48e1538a0050d4cfd19719-hires.png)
 
 *wt*
 ----
@@ -549,7 +563,7 @@ value is around *3.2172*, somewhere between *2.8782* and *3.5563* with
 the standard error of *0.173*.
 
 If we suppose that *wt* is not near to a normal distribution (test: see
-below, skewness: *0.4438*, kurtosis: *3.1725*), checking the median
+below, skewness: *0.4231*, kurtosis: *-0.0227*), checking the median
 (*3.325*) might be a better option instead of the mean. The
 interquartile range (*1.0288*) measures the statistics dispersion of the
 variable (similar to standard deviation) based on median.
@@ -605,7 +619,14 @@ on CRAN.
 Here you can see the results of applied normality tests (*p-values* less
 than 0.05 indicate significant discrepancies):
 
-*0.05*
+<!-- endlist -->
+
+                                                   **Statistic**   **p-value**
+  ------------------------------------------------ --------------- -------------
+  Shapiro-Wilk normality test                      0.9433          0.0927
+  Lilliefors (Kolmogorov-Smirnov) normality test   0.1356          0.1412
+  Anderson-Darling normality test                  0.6091          0.1038
+  Pearson chi-square normality test                4.5             0.4799
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -648,12 +669,12 @@ function*. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[![image](68d781df2baa06f59e1f194c9b06ddac.png)](68d781df2baa06f59e1f194c9b06ddac-hires.png)
+[![image](cbf6f06455995fe122a29a4acc4c8400.png)](cbf6f06455995fe122a29a4acc4c8400-hires.png)
 
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.14.0)
-and [rapport](http://al3xa.github.com/rapport/) (0.1) in 6.375 sec on
+and [rapport](http://al3xa.github.com/rapport/) (0.2) in 6.964 sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![image](images/logo.png)

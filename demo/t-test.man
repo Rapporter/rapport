@@ -75,9 +75,9 @@ T}@T{
 T}@T{
 3
 T}@T{
-0.9479
+0.9443
 T}@T{
-4.0064
+0.9858
 T}
 T{
 female
@@ -96,16 +96,16 @@ T}@T{
 T}@T{
 3
 T}@T{
-1.4064
+1.3979
 T}@T{
-4.9089
+1.8696
 T}
 .TE
 .SS Diagnostics
 .PP
 Since \f[I]t-test\f[] is a parametric technique, it sets some basic
 assumptions on distribution shape: it has to be \f[I]normal\f[] (or
-appoximately normal).
+approximately normal).
 A few normality test are to be applied, in order to screen possible
 departures from normality.
 .SS Normality Tests
@@ -258,16 +258,16 @@ T}@T{
 T}@T{
 2
 T}@T{
-1.1873
+1.1847
 T}@T{
-4.547
+1.5334
 T}
 .TE
 .SS Diagnostics
 .PP
 Since \f[I]t-test\f[] is a parametric technique, it sets some basic
 assumptions on distribution shape: it has to be \f[I]normal\f[] (or
-appoximately normal).
+approximately normal).
 A few normality test are to be applied, in order to screen possible
 departures from normality.
 .SS Normality Tests
@@ -349,7 +349,7 @@ T}
    *   *   *   *   *
 .PP
 This report was generated with R (http://www.r-project.org/) (2.14.0)
-and rapport (http://al3xa.github.com/rapport/) (0.1) in 0.801 sec on
+and rapport (http://al3xa.github.com/rapport/) (0.2) in 0.725 sec on
 x86_64-unknown-linux-gnu platform.
 .PP
 [IMAGE: image (images/logo.png)]

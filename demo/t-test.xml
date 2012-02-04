@@ -140,10 +140,10 @@
             3
           </entry>
           <entry>
-            0.9479
+            0.9443
           </entry>
           <entry>
-            4.0064
+            0.9858
           </entry>
         </row>
         <row>
@@ -172,10 +172,10 @@
             3
           </entry>
           <entry>
-            1.4064
+            1.3979
           </entry>
           <entry>
-            4.9089
+            1.8696
           </entry>
         </row>
       </tbody>
@@ -187,7 +187,7 @@
   <para>
     Since <emphasis>t-test</emphasis> is a parametric technique, it sets
     some basic assumptions on distribution shape: it has to be
-    <emphasis>normal</emphasis> (or appoximately normal). A few
+    <emphasis>normal</emphasis> (or approximately normal). A few
     normality test are to be applied, in order to screen possible
     departures from normality.
   </para>
@@ -450,10 +450,10 @@
             2
           </entry>
           <entry>
-            1.1873
+            1.1847
           </entry>
           <entry>
-            4.547
+            1.5334
           </entry>
         </row>
       </tbody>
@@ -465,7 +465,7 @@
   <para>
     Since <emphasis>t-test</emphasis> is a parametric technique, it sets
     some basic assumptions on distribution shape: it has to be
-    <emphasis>normal</emphasis> (or appoximately normal). A few
+    <emphasis>normal</emphasis> (or approximately normal). A few
     normality test are to be applied, in order to screen possible
     departures from normality.
   </para>
@@ -601,8 +601,8 @@
   <para>
     This report was generated with
     <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
-    <ulink url="http://al3xa.github.com/rapport/">rapport</ulink> (0.1)
-    in 0.801 sec on x86_64-unknown-linux-gnu platform.
+    <ulink url="http://al3xa.github.com/rapport/">rapport</ulink> (0.2)
+    in 0.725 sec on x86_64-unknown-linux-gnu platform.
   </para>
   <figure>
     <title></title>

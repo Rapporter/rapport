@@ -115,7 +115,7 @@ The expected value is around \f[I]24.5731\f[], somewhere between
 \f[I]0.2632\f[].
 .PP
 If we suppose that \f[I]Age\f[] is not near to a normal distribution
-(test: see below, skewness: \f[I]1.9296\f[], kurtosis: \f[I]7.4851\f[]),
+(test: see below, skewness: \f[I]1.9254\f[], kurtosis: \f[I]4.463\f[]),
 checking the median (\f[I]23\f[]) might be a better option instead of
 the mean.
 The interquartile range (\f[I]6\f[]) measures the statistics dispersion
@@ -177,7 +177,45 @@ You can find \f[C]ad.test\f[] function in \f[C]nortest\f[] package.
 Here you can see the results of applied normality tests
 (\f[I]p-values\f[] less than 0.05 indicate significant discrepancies):
 .PP
-\f[I]0.05\f[]
+.TS
+tab(@);
+l l l.
+T{
+T}@T{
+\f[B]Statistic\f[]
+T}@T{
+\f[B]p-value\f[]
+T}
+_
+T{
+Shapiro-Wilk normality test
+T}@T{
+0.8216
+T}@T{
+0
+T}
+T{
+Lilliefors (Kolmogorov-Smirnov) normality test
+T}@T{
+0.17
+T}@T{
+0
+T}
+T{
+Anderson-Darling normality test
+T}@T{
+32.1645
+T}@T{
+0
+T}
+T{
+Pearson chi-square normality test
+T}@T{
+625.8479
+T}@T{
+0
+T}
+.TE
 .PP
 So, let\[aq]s draw some conclusions based on applied normality test:
 .IP \[bu] 2
@@ -227,12 +265,12 @@ As such, it provides good insight about the shape of the distribution.
 For normal distributions, it should resemble the well known "bell
 shape".
 .PP
-[IMAGE: image (0728c7b59307ecf9bff0607f068b191c.png)] (0728c7b59307ecf9bff0607f068b191c-hires.png)
+[IMAGE: image (e8f4e3c4ec02dd48e8b38ff87ade53b4.png)] (e8f4e3c4ec02dd48e8b38ff87ade53b4-hires.png)
 .PP
    *   *   *   *   *
 .PP
 This report was generated with R (http://www.r-project.org/) (2.14.0)
-and rapport (http://al3xa.github.com/rapport/) (0.1) in 1.658 sec on
+and rapport (http://al3xa.github.com/rapport/) (0.2) in 1.766 sec on
 x86_64-unknown-linux-gnu platform.
 .PP
 [IMAGE: image (images/logo.png)]

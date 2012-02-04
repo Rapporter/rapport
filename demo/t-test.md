@@ -40,15 +40,15 @@ descriptive statistics is displayed below.
 
   **Gender**   **min**   **max**   **mean**   **sd**   **var**   **median**   **IQR**   **skewness**   **kurtosis**
   ------------ --------- --------- ---------- -------- --------- ------------ --------- -------------- --------------
-  male         0         12        3.2699     1.9535   3.8161    3            3         0.9479         4.0064
-  female       0         12        3.0643     2.3546   5.5442    2            3         1.4064         4.9089
+  male         0         12        3.2699     1.9535   3.8161    3            3         0.9443         0.9858
+  female       0         12        3.0643     2.3546   5.5442    2            3         1.3979         1.8696
 
 Diagnostics
 -----------
 
 Since *t-test* is a parametric technique, it sets some basic assumptions
-on distribution shape: it has to be *normal* (or appoximately normal). A
-few normality test are to be applied, in order to screen possible
+on distribution shape: it has to be *normal* (or approximately normal).
+A few normality test are to be applied, in order to screen possible
 departures from normality.
 
 ### Normality Tests
@@ -116,14 +116,14 @@ descriptive statistics is displayed below.
 
   **Variable**                                     **NA**   **NA**   **NA**   **NA**   **NA**   **NA**   **NA**   **NA**   **NA**
   ------------------------------------------------ -------- -------- -------- -------- -------- -------- -------- -------- --------
-  Internet usage in leisure time (hours per day)   0        12       3.1994   2.1436   4.5951   3        2        1.1873   4.547
+  Internet usage in leisure time (hours per day)   0        12       3.1994   2.1436   4.5951   3        2        1.1847   1.5334
 
 Diagnostics
 -----------
 
 Since *t-test* is a parametric technique, it sets some basic assumptions
-on distribution shape: it has to be *normal* (or appoximately normal). A
-few normality test are to be applied, in order to screen possible
+on distribution shape: it has to be *normal* (or approximately normal).
+A few normality test are to be applied, in order to screen possible
 departures from normality.
 
 ### Normality Tests
@@ -156,7 +156,7 @@ One Sample t-test was applied, and significant differences were found.
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.14.0)
-and [rapport](http://al3xa.github.com/rapport/) (0.1) in 0.801 sec on
+and [rapport](http://al3xa.github.com/rapport/) (0.2) in 0.725 sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![image](images/logo.png)

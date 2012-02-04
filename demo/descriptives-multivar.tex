@@ -119,7 +119,7 @@ expected value is around \emph{24.5731}, somewhere between
 \emph{0.2632}.
 
 If we suppose that \emph{Age} is not near to a normal distribution
-(test: see below, skewness: \emph{1.9296}, kurtosis: \emph{7.4851}),
+(test: see below, skewness: \emph{1.9254}, kurtosis: \emph{4.463}),
 checking the median (\emph{23}) might be a better option instead of the
 mean. The interquartile range (\emph{6}) measures the statistics
 dispersion of the variable (similar to standard deviation) based on
@@ -186,7 +186,22 @@ on CRAN.
 Here you can see the results of applied normality tests (\emph{p-values}
 less than 0.05 indicate significant discrepancies):
 
-\emph{0.05}
+\ctable[pos = H, center, botcap]{lll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{Statistic} & \textbf{p-value}
+\ML
+Shapiro-Wilk normality test & 0.8216 & 0
+\\\noalign{\medskip}
+Lilliefors (Kolmogorov-Smirnov) normality test & 0.17 & 0
+\\\noalign{\medskip}
+Anderson-Darling normality test & 32.1645 & 0
+\\\noalign{\medskip}
+Pearson chi-square normality test & 625.8479 & 0
+\LL
+}
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -237,7 +252,7 @@ distribution function}. As such, it provides good insight about the
 shape of the distribution. For normal distributions, it should resemble
 the well known ``bell shape''.
 
-\href{d9ffb95307c560c15d33484c3a2d87f0-hires.png}{\includegraphics{d9ffb95307c560c15d33484c3a2d87f0.png}}
+\href{bc1ecb30c3876bf5b13dc1cbeeb16afe-hires.png}{\includegraphics{bc1ecb30c3876bf5b13dc1cbeeb16afe.png}}
 
 \subsection{Description}
 
@@ -625,7 +640,7 @@ The expected value is around \emph{146.6875}, somewhere between
 \emph{12.1203}.
 
 If we suppose that \emph{hp} is not near to a normal distribution (test:
-see below, skewness: \emph{0.7614}, kurtosis: \emph{3.0522}), checking
+see below, skewness: \emph{0.726}, kurtosis: \emph{-0.1356}), checking
 the median (\emph{123}) might be a better option instead of the mean.
 The interquartile range (\emph{83.5}) measures the statistics dispersion
 of the variable (similar to standard deviation) based on median.
@@ -691,7 +706,22 @@ on CRAN.
 Here you can see the results of applied normality tests (\emph{p-values}
 less than 0.05 indicate significant discrepancies):
 
-\emph{0.05}
+\ctable[pos = H, center, botcap]{lll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{Statistic} & \textbf{p-value}
+\ML
+Shapiro-Wilk normality test & 0.9334 & 0.0488
+\\\noalign{\medskip}
+Lilliefors (Kolmogorov-Smirnov) normality test & 0.1664 & 0.0245
+\\\noalign{\medskip}
+Anderson-Darling normality test & 0.7077 & 0.0584
+\\\noalign{\medskip}
+Pearson chi-square normality test & 11.5 & 0.0423
+\LL
+}
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -741,7 +771,7 @@ distribution function}. As such, it provides good insight about the
 shape of the distribution. For normal distributions, it should resemble
 the well known ``bell shape''.
 
-\href{6fabf9a1622d1251d1e917289ebb984a-hires.png}{\includegraphics{6fabf9a1622d1251d1e917289ebb984a.png}}
+\href{6a3b7d163c48e1538a0050d4cfd19719-hires.png}{\includegraphics{6a3b7d163c48e1538a0050d4cfd19719.png}}
 
 \subsection{\emph{wt}}
 
@@ -774,7 +804,7 @@ expected value is around \emph{3.2172}, somewhere between \emph{2.8782}
 and \emph{3.5563} with the standard error of \emph{0.173}.
 
 If we suppose that \emph{wt} is not near to a normal distribution (test:
-see below, skewness: \emph{0.4438}, kurtosis: \emph{3.1725}), checking
+see below, skewness: \emph{0.4231}, kurtosis: \emph{-0.0227}), checking
 the median (\emph{3.325}) might be a better option instead of the mean.
 The interquartile range (\emph{1.0288}) measures the statistics
 dispersion of the variable (similar to standard deviation) based on
@@ -841,7 +871,22 @@ on CRAN.
 Here you can see the results of applied normality tests (\emph{p-values}
 less than 0.05 indicate significant discrepancies):
 
-\emph{0.05}
+\ctable[pos = H, center, botcap]{lll}
+{% notes
+}
+{% rows
+\FL
+ & \textbf{Statistic} & \textbf{p-value}
+\ML
+Shapiro-Wilk normality test & 0.9433 & 0.0927
+\\\noalign{\medskip}
+Lilliefors (Kolmogorov-Smirnov) normality test & 0.1356 & 0.1412
+\\\noalign{\medskip}
+Anderson-Darling normality test & 0.6091 & 0.1038
+\\\noalign{\medskip}
+Pearson chi-square normality test & 4.5 & 0.4799
+\LL
+}
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -891,13 +936,13 @@ distribution function}. As such, it provides good insight about the
 shape of the distribution. For normal distributions, it should resemble
 the well known ``bell shape''.
 
-\href{68d781df2baa06f59e1f194c9b06ddac-hires.png}{\includegraphics{68d781df2baa06f59e1f194c9b06ddac.png}}
+\href{cbf6f06455995fe122a29a4acc4c8400-hires.png}{\includegraphics{cbf6f06455995fe122a29a4acc4c8400.png}}
 
 \begin{center}\rule{3in}{0.4pt}\end{center}
 
 This report was generated with \href{http://www.r-project.org/}{R}
-(2.14.0) and \href{http://al3xa.github.com/rapport/}{rapport} (0.1) in
-6.375 sec on x86\_64-unknown-linux-gnu platform.
+(2.14.0) and \href{http://al3xa.github.com/rapport/}{rapport} (0.2) in
+6.964 sec on x86\_64-unknown-linux-gnu platform.
 
 \begin{figure}[htbp]
 \centering

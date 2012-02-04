@@ -8,7 +8,7 @@ _3_ variables provided.
 
 The highest correlation coefficient (0.2273) is between _edu_ and _age_ and the lowest (-0.0338) is between _leisure_ and _age_. It seems that the strongest association (r=0.2273) is between _edu_ and _age_.
 
-Higly correlated (r &lt; 0.7 or r &gt; 0.7) variables: -
+Highly correlated (r &lt; 0.7 or r &gt; 0.7) variables: -
 
 Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 
@@ -37,7 +37,7 @@ _11_ variables provided.
 
 The highest correlation coefficient (0.902) is between _disp_ and _cyl_ and the lowest (-0.8677) is between _wt_ and _mpg_. It seems that the strongest association (r=0.902) is between _disp_ and _cyl_.
 
-Higly correlated (r &lt; 0.7 or r &gt; 0.7) variables:
+Highly correlated (r &lt; 0.7 or r &gt; 0.7) variables:
 
 * _mpg_ and _cyl_
 * _mpg_ and _disp_
@@ -90,7 +90,7 @@ h3. Correlation matrix
 
 <hr />
 
-This report was generated with "R":http://www.r-project.org/ (2.14.0) and "rapport":http://al3xa.github.com/rapport/ (0.1) in 1.333 sec on x86&#95;64-unknown-linux-gnu platform.
+This report was generated with "R":http://www.r-project.org/ (2.14.0) and "rapport":http://al3xa.github.com/rapport/ (0.2) in 1.728 sec on x86&#95;64-unknown-linux-gnu platform.
 
 !images/logo.png!
 

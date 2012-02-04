@@ -119,9 +119,9 @@ T}@T{
 T}@T{
 3
 T}@T{
-0.9479
+0.9443
 T}@T{
-4.0064
+0.9858
 T}
 T{
 female
@@ -138,9 +138,9 @@ T}@T{
 T}@T{
 3
 T}@T{
-1.4064
+1.3979
 T}@T{
-4.9089
+1.8696
 T}
 .TE
 .SS Diagnostics
@@ -291,8 +291,6 @@ which implies that there is no Gender effect on response variable.
 .PP
 An ANOVA report with table of descriptives, diagnostic tests and
 ANOVA-specific statistics.
-.PP
-s
 .SS Introduction
 .PP
 \f[B]Analysis of Variance\f[] or \f[B]ANOVA\f[] is a statistical
@@ -432,9 +430,8 @@ right-hand side.
 .PP
 .TS
 tab(@);
-l l l l l l l l l l l.
+l l l l l l l l l l.
 T{
-T}@T{
 \f[B]Gender\f[]
 T}@T{
 \f[B]Relationship status\f[]
@@ -457,8 +454,6 @@ T}@T{
 T}
 _
 T{
-1
-T}@T{
 male
 T}@T{
 in a relationship
@@ -475,13 +470,11 @@ T}@T{
 T}@T{
 2
 T}@T{
-1.3376
+1.3239
 T}@T{
-5.727
+2.6488
 T}
 T{
-2
-T}@T{
 male
 T}@T{
 married
@@ -498,13 +491,11 @@ T}@T{
 T}@T{
 2
 T}@T{
-0.9027
+0.862
 T}@T{
-3.351
+0.1509
 T}
 T{
-3
-T}@T{
 male
 T}@T{
 single
@@ -521,13 +512,11 @@ T}@T{
 T}@T{
 3
 T}@T{
-0.7636
+0.7574
 T}@T{
-3.1208
+0.0875
 T}
 T{
-5
-T}@T{
 female
 T}@T{
 in a relationship
@@ -544,13 +533,11 @@ T}@T{
 T}@T{
 3
 T}@T{
-1.4017
+1.3833
 T}@T{
-4.9165
+1.8306
 T}
 T{
-6
-T}@T{
 female
 T}@T{
 married
@@ -567,13 +554,11 @@ T}@T{
 T}@T{
 1.75
 T}@T{
-2.1875
+2.0626
 T}@T{
-9.2864
+5.5858
 T}
 T{
-7
-T}@T{
 female
 T}@T{
 single
@@ -590,9 +575,9 @@ T}@T{
 T}@T{
 3.5
 T}@T{
-1.2045
+1.1851
 T}@T{
-4.0139
+0.9281
 T}
 .TE
 .SS Diagnostics
@@ -773,7 +758,7 @@ status\f[] wasn\[aq]t found significant (p = 0.717).
    *   *   *   *   *
 .PP
 This report was generated with R (http://www.r-project.org/) (2.14.0)
-and rapport (http://al3xa.github.com/rapport/) (0.1) in 0.919 sec on
+and rapport (http://al3xa.github.com/rapport/) (0.2) in 1.776 sec on
 x86_64-unknown-linux-gnu platform.
 .PP
 [IMAGE: image (images/logo.png)]

@@ -13,7 +13,7 @@ In statistics, ''normality'' refers to an assumption that the distribution of a 
 * ''μ'' - ''mean'' or ''expectation'' (location parameter)
 * ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
 
-[[tmp/RtmpEMWtXJ/file57cf518c-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
+[[tmp/RtmpI5pYwT/file3e2bbbe6-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
 
 == Normality Tests ==
 
@@ -79,19 +79,19 @@ There are various plots that can help you decide about the normality of the dist
 
 ''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-[[tmp/RtmpEMWtXJ/file31e2c9ce-hires.png|[[Image:a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
+[[tmp/RtmpI5pYwT/file23576767-hires.png|[[Image:a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
 
 === Q-Q Plot ===
 
 &quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
 
-[[tmp/RtmpEMWtXJ/file6b2072d0-hires.png|[[Image:eecb9a780afd4dd0de9737991e467a6e.png]]]]
+[[tmp/RtmpI5pYwT/file158ccc7c-hires.png|[[Image:eecb9a780afd4dd0de9737991e467a6e.png]]]]
 
 === Kernel Density Plot ===
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[tmp/RtmpEMWtXJ/file1b51e9ee-hires.png|[[Image:fe4ddb2fb2ffd78d3c5448a9cc27a8de.png]]]]
+[[tmp/RtmpI5pYwT/file708bf150-hires.png|[[Image:6a0f561af9011f5f333cfe1871910009.png]]]]
 
 == Description ==
 
@@ -172,19 +172,19 @@ There are various plots that can help you decide about the normality of the dist
 
 ''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-[[tmp/RtmpEMWtXJ/file6962071e-hires.png|[[Image:a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
+[[tmp/RtmpI5pYwT/file1c9975d1-hires.png|[[Image:a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
 
 === Q-Q Plot ===
 
 &quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
 
-[[tmp/RtmpEMWtXJ/file57eaa8d5-hires.png|[[Image:eecb9a780afd4dd0de9737991e467a6e.png]]]]
+[[tmp/RtmpI5pYwT/file47d810e1-hires.png|[[Image:eecb9a780afd4dd0de9737991e467a6e.png]]]]
 
 === Kernel Density Plot ===
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[tmp/RtmpEMWtXJ/file2a1716e0-hires.png|[[Image:daf251be0fc0a31c9b51a510640ce60f.png]]]]
+[[tmp/RtmpI5pYwT/file13d5086d-hires.png|[[Image:7d0c55e277021e21b97714931ae0202d.png]]]]
 
 == Description ==
 
@@ -201,7 +201,7 @@ In statistics, ''normality'' refers to an assumption that the distribution of a 
 * ''μ'' - ''mean'' or ''expectation'' (location parameter)
 * ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
 
-[[tmp/RtmpEMWtXJ/file3e3f48e3-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
+[[tmp/RtmpI5pYwT/file3432495-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
 
 == Normality Tests ==
 
@@ -267,23 +267,23 @@ There are various plots that can help you decide about the normality of the dist
 
 ''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-[[tmp/RtmpEMWtXJ/file2c22a323-hires.png|[[Image:a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
+[[tmp/RtmpI5pYwT/file253b816b-hires.png|[[Image:a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
 
 === Q-Q Plot ===
 
 &quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
 
-[[tmp/RtmpEMWtXJ/file37a2e360-hires.png|[[Image:95d42d4d0934008cfa630e1c4523e09a.png]]]]
+[[tmp/RtmpI5pYwT/file61d0e279-hires.png|[[Image:95d42d4d0934008cfa630e1c4523e09a.png]]]]
 
 === Kernel Density Plot ===
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[tmp/RtmpEMWtXJ/file3a07c3c-hires.png|[[Image:db1e16796e7e791e46cc0c0ca2f68bab.png]]]]
+[[tmp/RtmpI5pYwT/filecb1613e-hires.png|[[Image:671bcc255ddb72c6cb5cc6b4bf845303.png]]]]
 
 
 -----
 
-This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 2.928 sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 3.197 sec on x86_64-unknown-linux-gnu platform.
 
 [[Image:images/logo.png|frame|none]]

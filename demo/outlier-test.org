@@ -123,7 +123,7 @@ The above test for outliers was based on /lm(1 ~ edu)/:
 --------------
 
 This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
-and [[http://al3xa.github.com/rapport/][rapport]] (0.1) in 1.157 sec on
+and [[http://al3xa.github.com/rapport/][rapport]] (0.2) in 1.273 sec on
 x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 

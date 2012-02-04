@@ -45,7 +45,7 @@ The dataset has ''709'' observations with ''673'' valid values (missing: ''36'')
 
 === Barplot ===
 
-[[tmp/RtmpeIwHkw/file727553a4-hires.png|[[Image:3a46554ee29cd4dfe45dda5016464658.png]]]]
+[[tmp/RtmpI5pYwT/file40aed829-hires.png|[[Image:3a46554ee29cd4dfe45dda5016464658.png]]]]
 
 It seems that the highest value is ''2'' which is exactly 2 times higher than the smallest value (''1'').
 
@@ -78,13 +78,13 @@ The dataset has ''709'' observations with ''677'' valid values (missing: ''32'')
 
 === Histogram ===
 
-[[tmp/RtmpeIwHkw/file7fc63454-hires.png|[[Image:4f025d440bf35d40e21208e8b0c58b77.png]]]]
+[[tmp/RtmpI5pYwT/file5c03d144-hires.png|[[Image:4f025d440bf35d40e21208e8b0c58b77.png]]]]
 
 It seems that the highest value is ''58'' which is exactly 3.625 times higher than the smallest value (''16'').
 
 The standard deviation is ''6.8491'' (variance: ''46.9107''). The expected value is around ''24.5731'', somewhere between ''24.0572'' and ''25.0891'' with the standard error of ''0.2632''.
 
-If we suppose that ''Age'' is not near to a normal distribution (test: see below, skewness: ''1.9296'', kurtosis: ''7.4851''), checking the median (''23'') might be a better option instead of the mean. The interquartile range (''6'') measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+If we suppose that ''Age'' is not near to a normal distribution (test: see below, skewness: ''1.9254'', kurtosis: ''4.463''), checking the median (''23'') might be a better option instead of the mean. The interquartile range (''6'') measures the statistics dispersion of the variable (similar to standard deviation) based on median.
 
 === Normality tests ===
 
@@ -99,7 +99,7 @@ In statistics, ''normality'' refers to an assumption that the distribution of a 
 * ''μ'' - ''mean'' or ''expectation'' (location parameter)
 * ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
 
-[[tmp/RtmpeIwHkw/file6e47782e-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
+[[tmp/RtmpI5pYwT/file102f513d-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
 
 ==== Normality Tests ====
 
@@ -116,7 +116,39 @@ Various hypothesis tests can be applied in order to test if the distribution of 
 
 Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
 
-''0.05''
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''Statistic'''</th>
+<th align="left">'''p-value'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk normality test</td>
+<td align="left">0.8216</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="left">0.17</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Anderson-Darling normality test</td>
+<td align="left">32.1645</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">Pearson chi-square normality test</td>
+<td align="left">625.8479</td>
+<td align="left">0</td>
+</tr>
+</tbody>
+</table>
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -133,19 +165,19 @@ There are various plots that can help you decide about the normality of the dist
 
 ''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-[[tmp/RtmpeIwHkw/file7f9e61b1-hires.png|[[Image:4f025d440bf35d40e21208e8b0c58b77.png]]]]
+[[tmp/RtmpI5pYwT/file5073abdb-hires.png|[[Image:4f025d440bf35d40e21208e8b0c58b77.png]]]]
 
 ===== Q-Q Plot =====
 
 &quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
 
-[[tmp/RtmpeIwHkw/file47267446-hires.png|[[Image:131f20f388f78bd4863828d9fed8c35c.png]]]]
+[[tmp/RtmpI5pYwT/file456dbb06-hires.png|[[Image:131f20f388f78bd4863828d9fed8c35c.png]]]]
 
 ===== Kernel Density Plot =====
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[tmp/RtmpeIwHkw/file7d004782-hires.png|[[Image:d9ffb95307c560c15d33484c3a2d87f0.png]]]]
+[[tmp/RtmpI5pYwT/file24338788-hires.png|[[Image:bc1ecb30c3876bf5b13dc1cbeeb16afe.png]]]]
 
 == Description ==
 
@@ -229,7 +261,7 @@ The dataset has ''709'' observations with ''669'' valid values (missing: ''40'')
 
 === Barplot ===
 
-[[tmp/RtmpeIwHkw/file93d1232-hires.png|[[Image:a3a825d8535e7c9b8a9d23cc8c1293b1.png]]]]
+[[tmp/RtmpI5pYwT/file60002312-hires.png|[[Image:a3a825d8535e7c9b8a9d23cc8c1293b1.png]]]]
 
 It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
@@ -313,7 +345,7 @@ The dataset has ''709'' observations with ''677'' valid values (missing: ''32'')
 
 === Barplot ===
 
-[[tmp/RtmpeIwHkw/file71e9deaa-hires.png|[[Image:601bf73b7f424e34c795446ca73a1bac.png]]]]
+[[tmp/RtmpI5pYwT/file5ae57c44-hires.png|[[Image:601bf73b7f424e34c795446ca73a1bac.png]]]]
 
 It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
@@ -397,7 +429,7 @@ The dataset has ''709'' observations with ''678'' valid values (missing: ''31'')
 
 === Barplot ===
 
-[[tmp/RtmpeIwHkw/file5d99a8cf-hires.png|[[Image:8b8013a5d21daf05463bf12edc7d6bfa.png]]]]
+[[tmp/RtmpI5pYwT/file6941da2-hires.png|[[Image:8b8013a5d21daf05463bf12edc7d6bfa.png]]]]
 
 It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
@@ -481,7 +513,7 @@ The dataset has ''709'' observations with ''672'' valid values (missing: ''37'')
 
 === Barplot ===
 
-[[tmp/RtmpeIwHkw/file11bda0c1-hires.png|[[Image:7d530054059115b70f8098f2e3ff6c81.png]]]]
+[[tmp/RtmpI5pYwT/file5a9c79bc-hires.png|[[Image:7d530054059115b70f8098f2e3ff6c81.png]]]]
 
 It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
@@ -565,7 +597,7 @@ The dataset has ''709'' observations with ''677'' valid values (missing: ''32'')
 
 === Barplot ===
 
-[[tmp/RtmpeIwHkw/file6ddf6420-hires.png|[[Image:c5c68401731dd8623c3bac532d4f93b1.png]]]]
+[[tmp/RtmpI5pYwT/file71c1849a-hires.png|[[Image:c5c68401731dd8623c3bac532d4f93b1.png]]]]
 
 It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
@@ -649,7 +681,7 @@ The dataset has ''709'' observations with ''673'' valid values (missing: ''36'')
 
 === Barplot ===
 
-[[tmp/RtmpeIwHkw/file1b30f349-hires.png|[[Image:e866a67bba62e7f5cbe93b184599019f.png]]]]
+[[tmp/RtmpI5pYwT/file37bcb05e-hires.png|[[Image:e866a67bba62e7f5cbe93b184599019f.png]]]]
 
 It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
@@ -733,7 +765,7 @@ The dataset has ''709'' observations with ''678'' valid values (missing: ''31'')
 
 === Barplot ===
 
-[[tmp/RtmpeIwHkw/file2ef79f27-hires.png|[[Image:6619f2daf580503ce53708176cb0d83b.png]]]]
+[[tmp/RtmpI5pYwT/file68f2fe42-hires.png|[[Image:6619f2daf580503ce53708176cb0d83b.png]]]]
 
 It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
@@ -817,7 +849,7 @@ The dataset has ''709'' observations with ''674'' valid values (missing: ''35'')
 
 === Barplot ===
 
-[[tmp/RtmpeIwHkw/file4edaa950-hires.png|[[Image:cbda2b116fe3f7095f2997068f945424.png]]]]
+[[tmp/RtmpI5pYwT/file4f39a969-hires.png|[[Image:cbda2b116fe3f7095f2997068f945424.png]]]]
 
 It seems that the highest value is ''7'' which is exactly 7 times higher than the smallest value (''1'').
 
@@ -854,13 +886,13 @@ The dataset has ''32'' observations with ''32'' valid values (missing: ''0'') in
 
 === Histogram ===
 
-[[tmp/RtmpeIwHkw/file19c529f7-hires.png|[[Image:78517cde85fc1ba06a3513dd17e567da.png]]]]
+[[tmp/RtmpI5pYwT/file45a77aab-hires.png|[[Image:78517cde85fc1ba06a3513dd17e567da.png]]]]
 
 It seems that the highest value is ''335'' which is exactly 6.4423 times higher than the smallest value (''52'').
 
 The standard deviation is ''68.5629'' (variance: ''4700.8669''). The expected value is around ''146.6875'', somewhere between ''122.9317'' and ''170.4433'' with the standard error of ''12.1203''.
 
-If we suppose that ''hp'' is not near to a normal distribution (test: see below, skewness: ''0.7614'', kurtosis: ''3.0522''), checking the median (''123'') might be a better option instead of the mean. The interquartile range (''83.5'') measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+If we suppose that ''hp'' is not near to a normal distribution (test: see below, skewness: ''0.726'', kurtosis: ''-0.1356''), checking the median (''123'') might be a better option instead of the mean. The interquartile range (''83.5'') measures the statistics dispersion of the variable (similar to standard deviation) based on median.
 
 === Normality tests ===
 
@@ -875,7 +907,7 @@ In statistics, ''normality'' refers to an assumption that the distribution of a 
 * ''μ'' - ''mean'' or ''expectation'' (location parameter)
 * ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
 
-[[tmp/RtmpeIwHkw/file6a24b7b8-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
+[[tmp/RtmpI5pYwT/file61fcffb-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
 
 ==== Normality Tests ====
 
@@ -892,7 +924,39 @@ Various hypothesis tests can be applied in order to test if the distribution of 
 
 Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
 
-''0.05''
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''Statistic'''</th>
+<th align="left">'''p-value'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk normality test</td>
+<td align="left">0.9334</td>
+<td align="left">0.0488</td>
+</tr>
+<tr class="even">
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="left">0.1664</td>
+<td align="left">0.0245</td>
+</tr>
+<tr class="odd">
+<td align="left">Anderson-Darling normality test</td>
+<td align="left">0.7077</td>
+<td align="left">0.0584</td>
+</tr>
+<tr class="even">
+<td align="left">Pearson chi-square normality test</td>
+<td align="left">11.5</td>
+<td align="left">0.0423</td>
+</tr>
+</tbody>
+</table>
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -909,19 +973,19 @@ There are various plots that can help you decide about the normality of the dist
 
 ''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-[[tmp/RtmpeIwHkw/file555ab01-hires.png|[[Image:78517cde85fc1ba06a3513dd17e567da.png]]]]
+[[tmp/RtmpI5pYwT/file83cdbf0-hires.png|[[Image:78517cde85fc1ba06a3513dd17e567da.png]]]]
 
 ===== Q-Q Plot =====
 
 &quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
 
-[[tmp/RtmpeIwHkw/file7056010f-hires.png|[[Image:1cefec04e4451a937a5c6aa4dfdcb352.png]]]]
+[[tmp/RtmpI5pYwT/file7de977a8-hires.png|[[Image:1cefec04e4451a937a5c6aa4dfdcb352.png]]]]
 
 ===== Kernel Density Plot =====
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[tmp/RtmpeIwHkw/file2fbc01e2-hires.png|[[Image:6fabf9a1622d1251d1e917289ebb984a.png]]]]
+[[tmp/RtmpI5pYwT/file6062df15-hires.png|[[Image:6a3b7d163c48e1538a0050d4cfd19719.png]]]]
 
 == ''wt'' ==
 
@@ -950,13 +1014,13 @@ The dataset has ''32'' observations with ''32'' valid values (missing: ''0'') in
 
 === Histogram ===
 
-[[tmp/RtmpeIwHkw/file7071cae2-hires.png|[[Image:bf47295875cfa6d1667455a7d2721b19.png]]]]
+[[tmp/RtmpI5pYwT/file7c31213-hires.png|[[Image:bf47295875cfa6d1667455a7d2721b19.png]]]]
 
 It seems that the highest value is ''5.424'' which is exactly 3.5849 times higher than the smallest value (''1.513'').
 
 The standard deviation is ''0.9785'' (variance: ''0.9574''). The expected value is around ''3.2172'', somewhere between ''2.8782'' and ''3.5563'' with the standard error of ''0.173''.
 
-If we suppose that ''wt'' is not near to a normal distribution (test: see below, skewness: ''0.4438'', kurtosis: ''3.1725''), checking the median (''3.325'') might be a better option instead of the mean. The interquartile range (''1.0288'') measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+If we suppose that ''wt'' is not near to a normal distribution (test: see below, skewness: ''0.4231'', kurtosis: ''-0.0227''), checking the median (''3.325'') might be a better option instead of the mean. The interquartile range (''1.0288'') measures the statistics dispersion of the variable (similar to standard deviation) based on median.
 
 === Normality tests ===
 
@@ -971,7 +1035,7 @@ In statistics, ''normality'' refers to an assumption that the distribution of a 
 * ''μ'' - ''mean'' or ''expectation'' (location parameter)
 * ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
 
-[[tmp/RtmpeIwHkw/filee7f7b49-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
+[[tmp/RtmpI5pYwT/file452804ad-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
 
 ==== Normality Tests ====
 
@@ -988,7 +1052,39 @@ Various hypothesis tests can be applied in order to test if the distribution of 
 
 Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
 
-''0.05''
+<!-- endlist -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">'''Statistic'''</th>
+<th align="left">'''p-value'''</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk normality test</td>
+<td align="left">0.9433</td>
+<td align="left">0.0927</td>
+</tr>
+<tr class="even">
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="left">0.1356</td>
+<td align="left">0.1412</td>
+</tr>
+<tr class="odd">
+<td align="left">Anderson-Darling normality test</td>
+<td align="left">0.6091</td>
+<td align="left">0.1038</td>
+</tr>
+<tr class="even">
+<td align="left">Pearson chi-square normality test</td>
+<td align="left">4.5</td>
+<td align="left">0.4799</td>
+</tr>
+</tbody>
+</table>
 
 So, let's draw some conclusions based on applied normality test:
 
@@ -1005,23 +1101,23 @@ There are various plots that can help you decide about the normality of the dist
 
 ''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-[[tmp/RtmpeIwHkw/file132e7c63-hires.png|[[Image:bf47295875cfa6d1667455a7d2721b19.png]]]]
+[[tmp/RtmpI5pYwT/file60427f04-hires.png|[[Image:bf47295875cfa6d1667455a7d2721b19.png]]]]
 
 ===== Q-Q Plot =====
 
 &quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
 
-[[tmp/RtmpeIwHkw/file5a652bb5-hires.png|[[Image:975387b3193e28fb08a85f37cb17f87e.png]]]]
+[[tmp/RtmpI5pYwT/file648dc6d8-hires.png|[[Image:975387b3193e28fb08a85f37cb17f87e.png]]]]
 
 ===== Kernel Density Plot =====
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[tmp/RtmpeIwHkw/file61130f2-hires.png|[[Image:68d781df2baa06f59e1f194c9b06ddac.png]]]]
+[[tmp/RtmpI5pYwT/file144b44d6-hires.png|[[Image:cbf6f06455995fe122a29a4acc4c8400.png]]]]
 
 
 -----
 
-This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.1) in 6.375 sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 6.964 sec on x86_64-unknown-linux-gnu platform.
 
 [[Image:images/logo.png|frame|none]]

@@ -43,8 +43,8 @@ In order to get more insight on the underlying data, a table of basic descriptiv
 <td align="left">3.8161</td>
 <td align="left">3</td>
 <td align="left">3</td>
-<td align="left">0.9479</td>
-<td align="left">4.0064</td>
+<td align="left">0.9443</td>
+<td align="left">0.9858</td>
 </tr>
 <tr class="even">
 <td align="left">female</td>
@@ -55,15 +55,15 @@ In order to get more insight on the underlying data, a table of basic descriptiv
 <td align="left">5.5442</td>
 <td align="left">2</td>
 <td align="left">3</td>
-<td align="left">1.4064</td>
-<td align="left">4.9089</td>
+<td align="left">1.3979</td>
+<td align="left">1.8696</td>
 </tr>
 </tbody>
 </table>
 
 == Diagnostics ==
 
-Since ''t-test'' is a parametric technique, it sets some basic assumptions on distribution shape: it has to be ''normal'' (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.
+Since ''t-test'' is a parametric technique, it sets some basic assumptions on distribution shape: it has to be ''normal'' (or approximately normal). A few normality test are to be applied, in order to screen possible departures from normality.
 
 === Normality Tests ===
 
@@ -174,15 +174,15 @@ In order to get more insight on the underlying data, a table of basic descriptiv
 <td align="left">4.5951</td>
 <td align="left">3</td>
 <td align="left">2</td>
-<td align="left">1.1873</td>
-<td align="left">4.547</td>
+<td align="left">1.1847</td>
+<td align="left">1.5334</td>
 </tr>
 </tbody>
 </table>
 
 == Diagnostics ==
 
-Since ''t-test'' is a parametric technique, it sets some basic assumptions on distribution shape: it has to be ''normal'' (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality.
+Since ''t-test'' is a parametric technique, it sets some basic assumptions on distribution shape: it has to be ''normal'' (or approximately normal). A few normality test are to be applied, in order to screen possible departures from normality.
 
 === Normality Tests ===
 
@@ -251,6 +251,6 @@ One Sample t-test was applied, and significant differences were found.
 
 -----
 
-This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.1) in 0.801 sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 0.725 sec on x86_64-unknown-linux-gnu platform.
 
 [[Image:images/logo.png|frame|none]]

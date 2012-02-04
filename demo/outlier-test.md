@@ -135,7 +135,7 @@ The above test for outliers was based on *lm(1 \~ edu)*:
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.14.0)
-and [rapport](http://al3xa.github.com/rapport/) (0.1) in 1.157 sec on
+and [rapport](http://al3xa.github.com/rapport/) (0.2) in 1.273 sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![image](images/logo.png)
