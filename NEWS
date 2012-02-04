@@ -1,0 +1,12 @@
+rapport 0.21
+----------------------------------------------------------------
+
+NEW FEATURES
+
+* Introduced `skewness()` and `kurtosis()` functions.
+
+
+CHANGES
+
+* Removed `moments` and `latticeExtra` from package dependencies.
+* `rapport()` will now check for packages specified in the template header and throw error if something goes wrong while loading.
