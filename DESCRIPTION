@@ -1,6 +1,6 @@
 Package: rapport
 Maintainer: Gergely Daróczi <gergely@snowl.net>
-Title: rapport - a report templating system
+Title: A report templating system
 Type: Package
 Encoding: UTF-8
 Description: A package that facilitates creation of reproducible statistical
