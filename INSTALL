@@ -1,0 +1,48 @@
+
+Installing a backend
+====================
+
+As the main purpose of `rapport` is to export the template-based reports to nicely formatted
+documents - it is highly recommended to install a backend for that.
+
+Based on `ascii` (URL: http://eusebe.github.com/ascii/), the following engines are supported:
+ * a2x          http://www.methods.co.nz/asciidoc/a2x.1.html
+ * asciidoc     http://www.methods.co.nz/asciidoc/
+ * markdown2pdf http://johnmacfarlane.net/pandoc/README.html#markdown2pdf
+ * pandoc       http://johnmacfarlane.net/pandoc/
+ * txt2tags     http://txt2tags.org/
+ 
+In order to export templates to our factory default HTML design (http://rapport-package.info), 
+install pandoc from http://johnmacfarlane.net/pandoc/installing.html and use default settings.
+
+We recommend using the development version of pandoc which even supports docx output:
+    https://github.com/jgm/pandoc/wiki/Installing-the-development-version-of-pandoc-1.9
+
+---------------------------------------------------------------------------------------------------
+
+Development version
+===================
+
+Besides CRAN release you can grab the latest build from GitHub:
+    https://github.com/aL3xa/rapport/
+
+That nifty function of `devtools` package might speed up installing dev version:
+
+    library(devtools)
+    install_github('rapport', 'aL3xa')
+
+Or you can also download sources in a zip and build the package manually:
+    https://github.com/aL3xa/rapport/zipball/master
+
+To do so, please extract archive to an empty directory and run the following commands on a unix-like system:
+
+    R CMD build rapport
+    R CMD INSTALL <path to .tar.gz file>
+
+If you're running R on Windows, you need to install Rtools:
+    http://cran.stat.ucla.edu/bin/windows/Rtools/
+
+Once you have installed it, and issue following commands in command prompt:
+
+    R CMD build --binary <path to .tar.gz file>
+    R CMD INSTALL <path to .zip file>
