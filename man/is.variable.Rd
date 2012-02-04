@@ -12,9 +12,10 @@
   "variable"
 }
 \description{
-  From our point of view, a \code{variable} is a
-  non-\code{NULL} atomic vector that has no dimensions.
-  This approach bypasses \code{factor} issues with
+  From \emph{rapport}'s point of view, a \code{variable} is
+  a non-\code{NULL} atomic vector that has no dimension
+  attribute (see \code{dim} for details). This approach
+  bypasses \code{factor} issues with
   \code{\link{is.vector}}, and also eliminates
   multidimensional vectors, such as matrices and arrays.
 }

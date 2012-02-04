@@ -33,7 +33,7 @@ is.rp.heading <- function(x)  (inherits(x, 'rp.heading'))
 
 #' Variables
 #'
-#' From our point of view, a \code{variable} is a non-\code{NULL} atomic vector that has no dimensions. This approach bypasses \code{factor} issues with \code{\link{is.vector}}, and also eliminates multidimensional vectors, such as matrices and arrays.
+#' From \emph{rapport}'s point of view, a \code{variable} is a non-\code{NULL} atomic vector that has no dimension attribute (see \code{dim} for details). This approach bypasses \code{factor} issues with \code{\link{is.vector}}, and also eliminates multidimensional vectors, such as matrices and arrays.
 #' @param x an object to be checked for "variable" format
 #' @return a logical value indicating that provided object is a "variable"
 #' @examples

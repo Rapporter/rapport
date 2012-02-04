@@ -21,7 +21,6 @@ Depends:
     ascii,
     evaluate,
     lattice,
-    moments,
     RColorBrewer,
     reshape,
     RJSONIO
