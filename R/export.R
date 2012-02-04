@@ -81,6 +81,10 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         warning(paste('Wrong backend provided, using instead:', backends[1], '\nAll compatible backends:', paste(backends, collapse=', ')))
         backend <- backends[1]
     }
+    ## checking if backend is installed
+    if (backend == 'pandoc')
+        if (!any(grepl("Web:  http://johnmacfarlane.net/pandoc", tryCatch(system('pandoc -v', intern=T), error=function(e) e))))
+            stop('Pandoc is not installed! Please install from: http://johnmacfarlane.net/pandoc/installing.html')
     if (!is.null(file))
         if (!is.character(file))
             stop('Wrong file parameter!')

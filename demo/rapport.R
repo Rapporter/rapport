@@ -18,13 +18,14 @@ tpl.example('example', 1)
 readline('Press ENTER to continue!')
 tpl.list()
 
-## Ok, 'anova.tpl' seems interesting, let us run the example of that!
-## Will run: tpl.example('anova', 'all')
+## Ok, 'anova.tpl' seems interesting, let us run an example of that!
+## Will run: tpl.example('anova')
 readline('Press ENTER to continue!')
-tpl.example('anova', 'all')
+tpl.example('anova')
 
-## And check out the HTML export of that *rapport*!
+## And check out the HTML export of *all* examples!
 ## Will run: tpl.export(tpl.example('anova', 'all'))
+## NOTE: this needs pandoc to be installed!
 readline('Press ENTER to continue!')
 tpl.export(tpl.example('anova', 'all'))
 
@@ -35,6 +36,7 @@ rapport('anova', data=ius2008, resp = 'edu', fac = 'dwell')
 
 ## And an easy wrapper to get the HTML export of the document in one run:
 ## Will run: rapport.html('anova', data=ius2008, resp = 'edu', fac = 'dwell') 
+## NOTE: this needs pandoc to be installed!
 rapport.html('anova', data=ius2008, resp = 'edu', fac = 'dwell')
 
 ## Do not forget to check out the docs located @ \url{http://rapport-package.info}.
