@@ -687,9 +687,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' @export
 rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res')) {
 
-    ## start timer
-    timer <- proc.time()
-
+    timer  <- proc.time()                       # start timer
     txt    <- tpl.find(fp)                      # split file to text
     h      <- tpl.info(txt)                     # template header
     meta   <- h$meta                            # header metadata
@@ -702,8 +700,12 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
     pkgs   <- meta$packages                                # required packages
 
     ## load required packages (if any)
-    if (!is.null(pkgs))
-        suppressMessages(lapply(pkgs, require, character.only = TRUE))
+    if (length(pkgs)){
+        pk <- suppressMessages(sapply(pkgs, require, character.only = TRUE, quietly = TRUE))
+        nopkg <- pk == FALSE
+        if (length(nopkg))
+            stopf('Following packages are required by the template, but were not loaded: %s', p(names(pk[nopkg]), wrap = '"'))
+    }
 
     ## no inputs provided
     if (length(inputs) == 0){
