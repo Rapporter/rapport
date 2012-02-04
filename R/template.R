@@ -700,7 +700,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
     pkgs   <- meta$packages                                # required packages
 
     ## load required packages (if any)
-    if (!is.null(pkgs)){
+    if (length(pkgs)){
         pk <- suppressMessages(sapply(pkgs, require, character.only = TRUE, quietly = TRUE))
         nopkg <- pk == FALSE
         if (length(nopkg))
