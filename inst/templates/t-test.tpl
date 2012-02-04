@@ -74,7 +74,7 @@ rp.desc(x, y, c(min, max, mean, sd, var, median, IQR, skewness, kurtosis))
 
 # Diagnostics
 
-Since _t-test_ is a parametric technique, it sets some basic assumptions on distribution shape: it has to be _normal_ (or appoximately normal). A few normality test are to be applied, in order to screen possible departures from normality. 
+Since _t-test_ is a parametric technique, it sets some basic assumptions on distribution shape: it has to be _normal_ (or approximately normal). A few normality test are to be applied, in order to screen possible departures from normality. 
 
 ## Normality Tests
 

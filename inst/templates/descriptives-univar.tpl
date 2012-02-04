@@ -9,7 +9,7 @@ Example:        rapport('descriptives-univar', data=ius2008, var='gender')
                 rapport('descriptives-univar', data=ius2008, var='age')
 
 var             | variable  | Variable          | A categorical or numerical variable. The template will determine the measurement level of the given variable and will return a detailed frequency table or appropriate descriptive statistics for numerics.
-nortest         | TRUE      | Normality test    | If normality tests should be performed fot numerical variable
+nortest         | TRUE      | Normality test    | If normality tests should be performed for numerical variable
 head-->
 
 <%

@@ -11,10 +11,10 @@ Example:        rapport('outlier-test', data=ius2008, var='edu')
                 rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALSE, grubb=FALSE, dixon=FALSE)
 
 var             | *numeric | Variable        | Numerical variable
-lund.res        | FALSE   | Residuals       | Return Lund's residuals?
-references      | TRUE    | References      | Print references?
-grubb           | TRUE    | Grubb's test    | Show Grubb's test?
-dixon           | TRUE    | Dixon's test    | Show Dixon's test?
+lund.res        | FALSE    | Residuals       | Return Lund's residuals?
+references      | TRUE     | References      | Print references?
+grubb           | TRUE     | Grubb's test    | Show Grubb's test?
+dixon           | TRUE     | Dixon's test    | Show Dixon's test?
 head-->
 
 # Boxplot
