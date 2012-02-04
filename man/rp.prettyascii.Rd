@@ -2,7 +2,7 @@
 \alias{rp.prettyascii}
 \title{Return pretty ascii form}
 \usage{
-  rp.prettyascii(x)
+  rp.prettyascii(x, asciitype = getOption("asciiType"))
 }
 \arguments{
   \item{x}{R object}

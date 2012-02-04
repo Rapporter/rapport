@@ -62,6 +62,12 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' ### Never do this as being dumb:
 #' tpl.export()
 #'
+#' ### Using other backends
+#' ## asciidoc
+#' tpl.export(tpl.example('example', 'all'), backend='asciidoc')
+#' ## txt2tags
+#' tpl.export(tpl.example('example', 'all'), backend='t2t')
+#' 
 #' ### Adding own custom CSS to exported HTML
 #' tpl.export(x, options=sprintf('-c %s', system.file('templates/css/default.css', package='rapport')))
 #' ## For other formats check out backend specific documentation!
@@ -70,7 +76,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' @export
 tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), getOption('rp.date.format')), desc=TRUE, format='html', backend='pandoc', options=NULL, logo=TRUE) {
 
-    ## dummy checks and config parameters set
+    ## checking parameters
     if (!(format %in% tpl.export.outputs()))
         stop('Invalid format specified. See: rapport.report.outputs()')
     if (!(backend %in% tpl.export.backends()))
@@ -81,15 +87,6 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         warning(paste('Wrong backend provided, using instead:', backends[1], '\nAll compatible backends:', paste(backends, collapse=', ')))
         backend <- backends[1]
     }
-    ## checking if backend is installed
-    check.backend <- function(backend) {
-        if (backend == 't2t')
-            backend <- 'txt2tags'
-        paste(suppressWarnings(tryCatch(system(sprintf('%s -v', backend), intern=T), error=function(x) 'ERROR')), collapse='\n') == 'ERROR'
-    }
-    if (check.backend(backend))
-        stop(sprintf('Specified backend (%s) is not installed! Please see details in INSTALL file or rapport homepage (http://rapport-package.info).', backend), call. = FALSE)
-       
     if (!is.null(file))
         if (!is.character(file))
             stop('Wrong file parameter!')
@@ -109,12 +106,29 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
     if (!is.logical(create)) stop('Wrong create (!=TRUE|FALSE) parameter!')
     if (!is.logical(logo)) stop('Wrong logo (!=TRUE|FALSE) parameter!')
 
+    ## checking if backend is installed
+    check.backend <- function(backend) {
+        if (backend == 't2t')
+            backend <- 'txt2tags'
+        paste(suppressWarnings(tryCatch(system(sprintf('%s -v', backend), intern=T), error=function(x) 'ERROR')), collapse='\n') == 'ERROR'
+    }
+    if (check.backend(backend))
+        stop(sprintf('Specified backend (%s) is not installed! Please see details in INSTALL file or rapport homepage (http://rapport-package.info).', backend), call. = FALSE)
+
+    ## set backend specific markdown language
+    if (backend %in% c('asciidoc', 'a2x'))
+        md.lang <- 'asciidoc'
+    if (backend == 't2t')
+        md.lang <- 't2t'
+    if (backend %in% c('pandoc', 'markdown2pdf'))
+        md.lang <- 'pandoc'
+
     ## exporting multiple rapport classes at once
     if (class(rp) == 'list') {
         if (all(lapply(rp, class) == 'rapport')) {
             r$title <- as.character(rp[[1]]$meta['title'])
             for (i in 1:length(rp)) {
-                r <- tpl.export(rp[[i]], file=file, append=r, create=FALSE, open=FALSE, date=date)
+                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, date = date, format = format, backend = backend)
             }
         } else
             stop('Wrong rp parameter!')
@@ -123,10 +137,10 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
     r$backend <- backend
     r$format <- format
 
-    ## header stuff
     if (!is.null(rp))
         if(class(rp) == 'rapport') {
             if (desc) {
+                ## header
                 r$addSection('Description', 2)
                 r$add(paragraph(as.character(rp$meta['desc'])))
             }
@@ -152,7 +166,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                             r$addFig(file=x.r$output)
                     }
                     if (all(x.r$type != c('image', 'error')))
-                        r$add(paragraph(rp.prettyascii(x.r$output)))
+                        r$add(paragraph(rp.prettyascii(x.r$output, asciitype = md.lang)))
                     if (!is.null(x.r$msg$warnings))
                         r$add(paragraph(as.character(x.r$msg$warnings)))
                     }
@@ -169,10 +183,15 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                 cat(gsub('"includes/', normalizePath(system.file('includes', package='rapport')), readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
             options <- sprintf('-H "%s" -A "%s"', file.path(gsub('\\', '/', tempdir(), fixed = TRUE), 'rapport-header.html'), system.file('includes/html/footer.html', package='rapport'))
         }
-        if (logo) { # TODO: rewrite
-            r$add(paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://al3xa.github.com/rapport/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$time), R.version$platform)))
+        
+        if (logo) {
+            switch(md.lang,
+                'asciidoc' = r$add(paragraph(sprintf("'''''\nThis report was generated with http://www.r-project.org/[R] (%s) and http://al3xa.github.com/rapport/[rapport] (%s) in %s sec on %s platform.", sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$time), R.version$platform))),
+                'pandoc' = r$add(paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://al3xa.github.com/rapport/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$time), R.version$platform))),
+                't2t' = r$add(paragraph(sprintf('--------------------\nThis report was generated with [R http://www.r-project.org/] (%s) and [rapport http://al3xa.github.com/rapport/] (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$time), R.version$platform))))
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
         }
+        
         r$create(file=file, open=open, options=options, date=date)
     } else
         return(r)

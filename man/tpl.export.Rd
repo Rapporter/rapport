@@ -90,6 +90,12 @@ tpl.export(list(rapport('univar-descriptive', data=mtcars, var="hp"),
 ### Never do this as being dumb:
 tpl.export()
 
+### Using other backends
+## asciidoc
+tpl.export(tpl.example('example', 'all'), backend='asciidoc')
+## txt2tags
+tpl.export(tpl.example('example', 'all'), backend='t2t')
+
 ### Adding own custom CSS to exported HTML
 tpl.export(x, options=sprintf('-c \%s', system.file('templates/css/default.css', package='rapport')))
 ## For other formats check out backend specific documentation!
