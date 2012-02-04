@@ -481,9 +481,9 @@
           &quot;bell shape&quot;.
         </para>
         <para>
-          <ulink url="e8f4e3c4ec02dd48e8b38ff87ade53b4-hires.png"><inlinemediaobject>
+          <ulink url="e338dfb56b54f88d13bf39a4a4011a33-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="e8f4e3c4ec02dd48e8b38ff87ade53b4.png" />
+              <imagedata fileref="e338dfb56b54f88d13bf39a4a4011a33.png" />
             </imageobject>
           </inlinemediaobject></ulink>
         </para>
@@ -491,7 +491,7 @@
           This report was generated with
           <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
           <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
-          (0.2) in 1.766 sec on x86_64-unknown-linux-gnu platform.
+          (0.2) in 1.908 sec on x86_64-unknown-linux-gnu platform.
         </para>
         <figure>
           <title></title>

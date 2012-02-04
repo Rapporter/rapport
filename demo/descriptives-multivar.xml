@@ -474,9 +474,9 @@
           &quot;bell shape&quot;.
         </para>
         <para>
-          <ulink url="bc1ecb30c3876bf5b13dc1cbeeb16afe-hires.png"><inlinemediaobject>
+          <ulink url="b721e8de05c207e4bb17bbf28c7edda8-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="bc1ecb30c3876bf5b13dc1cbeeb16afe.png" />
+              <imagedata fileref="b721e8de05c207e4bb17bbf28c7edda8.png" />
             </imageobject>
           </inlinemediaobject></ulink>
         </para>
@@ -2421,9 +2421,9 @@
           &quot;bell shape&quot;.
         </para>
         <para>
-          <ulink url="6a3b7d163c48e1538a0050d4cfd19719-hires.png"><inlinemediaobject>
+          <ulink url="edfab5d9e83f64514100b0acc016dbea-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="6a3b7d163c48e1538a0050d4cfd19719.png" />
+              <imagedata fileref="edfab5d9e83f64514100b0acc016dbea.png" />
             </imageobject>
           </inlinemediaobject></ulink>
         </para>
@@ -2777,9 +2777,9 @@
           &quot;bell shape&quot;.
         </para>
         <para>
-          <ulink url="cbf6f06455995fe122a29a4acc4c8400-hires.png"><inlinemediaobject>
+          <ulink url="1c20f2249107ddc2f8f5945197315e27-hires.png"><inlinemediaobject>
             <imageobject>
-              <imagedata fileref="cbf6f06455995fe122a29a4acc4c8400.png" />
+              <imagedata fileref="1c20f2249107ddc2f8f5945197315e27.png" />
             </imageobject>
           </inlinemediaobject></ulink>
         </para>
@@ -2787,7 +2787,7 @@
           This report was generated with
           <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
           <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
-          (0.2) in 6.964 sec on x86_64-unknown-linux-gnu platform.
+          (0.2) in 6.843 sec on x86_64-unknown-linux-gnu platform.
         </para>
         <figure>
           <title></title>

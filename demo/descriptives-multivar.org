@@ -161,7 +161,7 @@ function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[bc1ecb30c3876bf5b13dc1cbeeb16afe-hires.png][[[bc1ecb30c3876bf5b13dc1cbeeb16afe.png]]]]
+[[b721e8de05c207e4bb17bbf28c7edda8-hires.png][[[b721e8de05c207e4bb17bbf28c7edda8.png]]]]
 
 ** Description
 
@@ -528,7 +528,7 @@ function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[6a3b7d163c48e1538a0050d4cfd19719-hires.png][[[6a3b7d163c48e1538a0050d4cfd19719.png]]]]
+[[edfab5d9e83f64514100b0acc016dbea-hires.png][[[edfab5d9e83f64514100b0acc016dbea.png]]]]
 
 ** /wt/
 
@@ -660,12 +660,12 @@ function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[cbf6f06455995fe122a29a4acc4c8400-hires.png][[[cbf6f06455995fe122a29a4acc4c8400.png]]]]
+[[1c20f2249107ddc2f8f5945197315e27-hires.png][[[1c20f2249107ddc2f8f5945197315e27.png]]]]
 
 --------------
 
 This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
-and [[http://al3xa.github.com/rapport/][rapport]] (0.2) in 6.964 sec on
+and [[http://al3xa.github.com/rapport/][rapport]] (0.2) in 6.843 sec on
 x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 

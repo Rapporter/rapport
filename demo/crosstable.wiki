@@ -182,7 +182,7 @@ always        2.0982     -1.2561          -1.6443
 [![](788ce96f4378f09151fe29c0e370c6f9.png)](788ce96f4378f09151fe29c0e370c6f9-hires.png) 
 
 <s>---</s>
-This report was generated with [R]([http://www.r-project.org/]) (2.14.0) and [rapport]([http://al3xa.github.com/rapport/]) (0.2) in 0.361 sec on x86_64-unknown-linux-gnu platform. 
+This report was generated with [R]([http://www.r-project.org/]) (2.14.0) and [rapport]([http://al3xa.github.com/rapport/]) (0.2) in 0.37 sec on x86_64-unknown-linux-gnu platform. 
 
 [[Image:images/logo.png|center]]
 

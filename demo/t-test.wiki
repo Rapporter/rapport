@@ -117,7 +117,7 @@ t   -0.0072         671      0.9943   3.037           3.3618
 <s>- -------------</s> <s>----</s> <s>----</s> <s>-----------</s> <s>-----------</s>
 
 <s>---</s>
-This report was generated with [R]([http://www.r-project.org/]) (2.14.0) and [rapport]([http://al3xa.github.com/rapport/]) (0.2) in 0.725 sec on x86_64-unknown-linux-gnu platform. 
+This report was generated with [R]([http://www.r-project.org/]) (2.14.0) and [rapport]([http://al3xa.github.com/rapport/]) (0.2) in 0.695 sec on x86_64-unknown-linux-gnu platform. 
 
 [[Image:images/logo.png|center]]
 

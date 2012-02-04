@@ -50,7 +50,7 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 </tbody>
 </table>
 
-[[tmp/RtmpI5pYwT/file2d5defae-hires.png|[[Image:0e4cca7017b21223d68df3b9e300c895.png]]]]
+[[tmp/RtmpI5pYwT/file7d89795b-hires.png|[[Image:0e4cca7017b21223d68df3b9e300c895.png]]]]
 
 == Description ==
 
@@ -272,11 +272,11 @@ Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:
 </tbody>
 </table>
 
-[[tmp/RtmpI5pYwT/file7bdbb441-hires.png|[[Image:82a0f381195bb4f50da3c943e264add1.png]]]]
+[[tmp/RtmpI5pYwT/file32d4f363-hires.png|[[Image:82a0f381195bb4f50da3c943e264add1.png]]]]
 
 
 -----
 
-This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 1.728 sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 1.466 sec on x86_64-unknown-linux-gnu platform.
 
 [[Image:images/logo.png|frame|none]]

@@ -275,9 +275,9 @@
       shape&quot;.
     </para>
     <para>
-      <ulink url="6a0f561af9011f5f333cfe1871910009-hires.png"><inlinemediaobject>
+      <ulink url="d6afe5eede3603d041ec8dd001c5280d-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="6a0f561af9011f5f333cfe1871910009.png" />
+          <imagedata fileref="d6afe5eede3603d041ec8dd001c5280d.png" />
         </imageobject>
       </inlinemediaobject></ulink>
     </para>
@@ -541,9 +541,9 @@
       shape&quot;.
     </para>
     <para>
-      <ulink url="7d0c55e277021e21b97714931ae0202d-hires.png"><inlinemediaobject>
+      <ulink url="f97c1f6e5897d555baf02b977276ccfe-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="7d0c55e277021e21b97714931ae0202d.png" />
+          <imagedata fileref="f97c1f6e5897d555baf02b977276ccfe.png" />
         </imageobject>
       </inlinemediaobject></ulink>
     </para>
@@ -814,9 +814,9 @@
       shape&quot;.
     </para>
     <para>
-      <ulink url="671bcc255ddb72c6cb5cc6b4bf845303-hires.png"><inlinemediaobject>
+      <ulink url="73a741791c399acd94fdfb544c213fb4-hires.png"><inlinemediaobject>
         <imageobject>
-          <imagedata fileref="671bcc255ddb72c6cb5cc6b4bf845303.png" />
+          <imagedata fileref="73a741791c399acd94fdfb544c213fb4.png" />
         </imageobject>
       </inlinemediaobject></ulink>
     </para>
@@ -824,7 +824,7 @@
       This report was generated with
       <ulink url="http://www.r-project.org/">R</ulink> (2.14.0) and
       <ulink url="http://al3xa.github.com/rapport/">rapport</ulink>
-      (0.2) in 3.197 sec on x86_64-unknown-linux-gnu platform.
+      (0.2) in 3.355 sec on x86_64-unknown-linux-gnu platform.
     </para>
     <figure>
       <title></title>

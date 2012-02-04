@@ -210,7 +210,7 @@ Residuals        593      2703.0899    4.5583
 _F-test_ for _Gender_ is not statistically significant, which implies that there is no Gender effect on response variable. Effect of _Relationship status_ on response variable is  significant. Interaction between levels of _Gender_ and _Relationship status_ wasn't found significant (p = 0.717). 
 
 <s>---</s>
-This report was generated with [R]([http://www.r-project.org/]) (2.14.0) and [rapport]([http://al3xa.github.com/rapport/]) (0.2) in 1.776 sec on x86_64-unknown-linux-gnu platform. 
+This report was generated with [R]([http://www.r-project.org/]) (2.14.0) and [rapport]([http://al3xa.github.com/rapport/]) (0.2) in 1.82 sec on x86_64-unknown-linux-gnu platform. 
 
 [[Image:images/logo.png|center]]
 

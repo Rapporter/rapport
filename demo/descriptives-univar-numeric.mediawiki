@@ -128,11 +128,11 @@ There are various plots that can help you decide about the normality of the dist
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[Image:d6d2aee93254581bd11a007e8dfa1c62.png|frame|none]]
+[[Image:8b45e08e2c000c6fb17910f9ac629654.png|frame|none]]
 
 
 -----
 
-This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 1.704 sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 2.101 sec on x86_64-unknown-linux-gnu platform.
 
 [[Image:images/logo.png|frame|none]]

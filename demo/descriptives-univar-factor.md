@@ -64,7 +64,7 @@ The most frequent value is *city*.
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.14.0)
-and [rapport](http://al3xa.github.com/rapport/) (0.2) in 0.769 sec on
+and [rapport](http://al3xa.github.com/rapport/) (0.2) in 0.704 sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![image](images/logo.png)

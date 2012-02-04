@@ -69,7 +69,7 @@ And wow, the mean of ''leisure'' is ''3.1994''!
 
 === Histogram ===
 
-[[tmp/RtmpI5pYwT/file3d8e7993-hires.png|[[Image:ae1d2677d19224aec6e79aa6edd92e0e.png]]]]
+[[tmp/RtmpI5pYwT/file263c5e2d-hires.png|[[Image:ae1d2677d19224aec6e79aa6edd92e0e.png]]]]
 
 == Description ==
 
@@ -87,11 +87,11 @@ And wow, the mean of ''leisure'' is ''3.1994''!
 
 === Histogram ===
 
-[[tmp/RtmpI5pYwT/file417f8b30-hires.png|[[Image:7779958734926ffb57756d6c1d01b75b.png]]]]
+[[tmp/RtmpI5pYwT/file16442609-hires.png|[[Image:7779958734926ffb57756d6c1d01b75b.png]]]]
 
 
 -----
 
-This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 0.718 sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 0.81 sec on x86_64-unknown-linux-gnu platform.
 
 [[Image:images/logo.png|frame|none]]

@@ -45,7 +45,7 @@ The dataset has ''709'' observations with ''673'' valid values (missing: ''36'')
 
 === Barplot ===
 
-[[tmp/RtmpI5pYwT/filea8bf1f-hires.png|[[Image:3a46554ee29cd4dfe45dda5016464658.png]]]]
+[[tmp/RtmpI5pYwT/file400792fc-hires.png|[[Image:3a46554ee29cd4dfe45dda5016464658.png]]]]
 
 It seems that the highest value is ''2'' which is exactly 2 times higher than the smallest value (''1'').
 
@@ -82,7 +82,7 @@ The dataset has ''709'' observations with ''677'' valid values (missing: ''32'')
 
 === Histogram ===
 
-[[tmp/RtmpI5pYwT/file27eeb36e-hires.png|[[Image:4f025d440bf35d40e21208e8b0c58b77.png]]]]
+[[tmp/RtmpI5pYwT/file453fe68b-hires.png|[[Image:4f025d440bf35d40e21208e8b0c58b77.png]]]]
 
 It seems that the highest value is ''58'' which is exactly 3.625 times higher than the smallest value (''16'').
 
@@ -103,7 +103,7 @@ In statistics, ''normality'' refers to an assumption that the distribution of a 
 * ''μ'' - ''mean'' or ''expectation'' (location parameter)
 * ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
 
-[[tmp/RtmpI5pYwT/file70166cbe-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
+[[tmp/RtmpI5pYwT/file6716adde-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
 
 ==== Normality Tests ====
 
@@ -169,23 +169,23 @@ There are various plots that can help you decide about the normality of the dist
 
 ''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
 
-[[tmp/RtmpI5pYwT/file621a8eba-hires.png|[[Image:4f025d440bf35d40e21208e8b0c58b77.png]]]]
+[[tmp/RtmpI5pYwT/file61793fe0-hires.png|[[Image:4f025d440bf35d40e21208e8b0c58b77.png]]]]
 
 ===== Q-Q Plot =====
 
 &quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
 
-[[tmp/RtmpI5pYwT/filef1fed19-hires.png|[[Image:131f20f388f78bd4863828d9fed8c35c.png]]]]
+[[tmp/RtmpI5pYwT/file413fa841-hires.png|[[Image:131f20f388f78bd4863828d9fed8c35c.png]]]]
 
 ===== Kernel Density Plot =====
 
 ''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
 
-[[tmp/RtmpI5pYwT/file2f8d1d2c-hires.png|[[Image:e8f4e3c4ec02dd48e8b38ff87ade53b4.png]]]]
+[[tmp/RtmpI5pYwT/file69b1fb2c-hires.png|[[Image:e338dfb56b54f88d13bf39a4a4011a33.png]]]]
 
 
 -----
 
-This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 1.766 sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 1.908 sec on x86_64-unknown-linux-gnu platform.
 
 [[Image:images/logo.png|frame|none]]

@@ -70,7 +70,7 @@ h3. Histogram
 
 <hr />
 
-This report was generated with "R":http://www.r-project.org/ (2.14.0) and "rapport":http://al3xa.github.com/rapport/ (0.2) in 0.718 sec on x86&#95;64-unknown-linux-gnu platform.
+This report was generated with "R":http://www.r-project.org/ (2.14.0) and "rapport":http://al3xa.github.com/rapport/ (0.2) in 0.81 sec on x86&#95;64-unknown-linux-gnu platform.
 
 !images/logo.png!
 

@@ -111,7 +111,7 @@ Okay, we have seen the examples before, but new information appears now too:
  * required packages to run the template and
  * some input parameters.
 
-These latter shows exactly what we were looking for which can be returned by [`tpl.info`](/functions#tpl.info)`('example', meta=F)` command too without meta informations.
+These latter shows exactly what we were looking for which can be returned by [`tpl.info`](/functions#tpl.info)`('example', meta=F)` command too without meta information.
 
 There we can see that four parameters can be provided. `var` is the name of the variable we want to analyze, we can set `desc` to `FALSE` instead of the default value `TRUE` not to print descriptive statistics and we can instruct the template to return a histogram too (see: `hist` parameter) with given color `theme`.
 
@@ -135,7 +135,7 @@ And wow, the mean of *leisure* is 3.1994!
 /tmp/RtmpyEDSZb/file12c8cb13.png
 {% endhighlight %}
 
-Here instead of the known [`tpl.example`](/functions#tpl.example) we used directly [`rapport`](/functions#rapport) which takes the above described input parameters. As you can see the descriptive statistics table is gone, instead we got a histogram. Or at least a path to a png - which holds that image. You can find that file after running tha above command with a modified path (based on `tempfile()`) on your local machine and check it out, we have attached that [here](demo/9542b7929dcd934208ee4f18bde6ff31.png).
+Here instead of the known [`tpl.example`](/functions#tpl.example) we used directly [`rapport`](/functions#rapport) which takes the above described input parameters. As you can see the descriptive statistics table is gone, instead we got a histogram. Or at least a path to a png - which holds that image. You can find that file after running the above command with a modified path (based on `tempfile()`) on your local machine and check it out, we have attached that [here](demo/3f5075e30419f077ee974a022dd89e33.png).
 
 Well, this is a quite rough way of checking out plots generated in a template :)
 
@@ -186,5 +186,5 @@ As you might have seen there are several general options in *rapport* which can 
 
 - [`p`](/functions#p) function which concatenates vector values to a nicely formatted string have some handy global options too, which are to be modified in a localised environment. The separator between multiple items can be set by `p.sep` from which the last would be `p.copula`. Based on that I would eg. set `p.copula` to `és` for Hungarian templates.
 - Developpers might be interested in the list of options in `rp.tags` which let users specify custom tags for [`rapport`](/functions#rapport). By changing the default values you may create and use your own syntax for writing and using templates.
-     
+
 And after all, do not forget to check out other templates of this package too or even [write](#custom)/[translate](#translate) your own templates! :)
