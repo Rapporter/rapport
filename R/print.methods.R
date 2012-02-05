@@ -134,3 +134,20 @@ print.rapport <- function(x, ...) {
         catn()
     }
 }
+
+
+#' Redraws saved plot
+#' 
+#' This function is a wrapper around \code{replayPlot} with some added tweaks (fixing memory address nullpointer issue) for compatibility.
+#' @param file path and name of file to read saved \code{recordPlot} object
+#' @references Thanks to Jeroen Ooms: \url{http://permalink.gmane.org/gmane.comp.lang.r.devel/29897}.
+#' @export
+redraw.recordedplot <- function(file) {
+    plot <- readRDS(file)
+    for(i in 1:length(plot[[1]])) { 
+        if( "NativeSymbolInfo" %in% class(plot[[1]][[i]][[2]][[1]]) ){ 
+            plot[[1]][[i]][[2]][[1]] <- getNativeSymbolInfo(plot[[1]][[i]][[2]][[1]]$name); 
+        } 
+    }
+    replayPlot(plot)
+}
