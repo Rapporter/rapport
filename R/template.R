@@ -701,10 +701,10 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
     pkgs   <- meta$packages                                # required packages
 
     ## load required packages (if any)
-    if (length(pkgs)){
+    if (!is.null(pkgs)){
         pk <- suppressMessages(sapply(pkgs, require, character.only = TRUE, quietly = TRUE))
         nopkg <- pk == FALSE
-        if (length(nopkg))
+        if (any(nopkg))
             stopf('Following packages are required by the template, but were not loaded: %s', p(names(pk[nopkg]), wrap = '"'))
     }
 
