@@ -883,6 +883,7 @@ rp.round <- function(x, short = FALSE, digits = NULL) {
 #'     \item 'rp.decimal.mark'.
 #' }
 #' @param x R object
+#' @param asciitype markdown language to use for returning tables (eg. pandox, t2t, asciidoc etc.)
 #' @return ascii
 #' @examples \dontrun{
 #' rp.prettyascii('Hello, World?')

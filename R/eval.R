@@ -16,6 +16,7 @@
 #' @param src character values containing R code
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @return  a list of parsed elements each containing: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was generated), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
+#' @seealso \code{\link{evals}}
 #' @export
 #' @examples \dontrun{
 #' eval.msgs('1:5')
@@ -117,6 +118,7 @@ eval.msgs <- function(src, env = NULL) {
 #' @param ... optional parameters passed to graphics device (e.g. \code{bg}, \code{pointsize} etc.)
 #' @return a list of parsed elements each containing: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was generated), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
 #' @author Gergely Daróczi
+#' @seealso \code{\link{eval.msgs}}, \code{\link{redraw.recordedplot}}
 #' @examples \dontrun{
 #' # parsing line-by-line
 #' txt <- readLines(textConnection('x <- rnorm(100)

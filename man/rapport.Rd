@@ -11,7 +11,8 @@
     graph.width = getOption("graph.width"),
     graph.height = getOption("graph.height"),
     graph.res = getOption("graph.res"),
-    graph.hi.res = getOption("graph.hi.res"))
+    graph.hi.res = getOption("graph.hi.res"),
+    graph.replay = getOption("graph.record"))
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -53,6 +54,10 @@
 
   \item{graph.hi.res}{logical value indicating if high
   resolution (1280x~1280) images would be also generated}
+
+  \item{graph.replay}{logical value indicating if plots
+  need to be recorded for later replay (eg. while
+  \code{print}ing \code{rapport} objects in R console)}
 }
 \value{
   a list with \code{rapport} class.

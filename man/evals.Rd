@@ -315,4 +315,8 @@ evals('mean(x)')
 \author{
   Gergely Daróczi
 }
+\seealso{
+  \code{\link{eval.msgs}},
+  \code{\link{redraw.recordedplot}}
+}
 

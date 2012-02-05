@@ -58,4 +58,7 @@ eval.msgs('1:2')
 identical(evals('pi')[[1]], eval.msgs('pi'))
 }
 }
+\seealso{
+  \code{\link{evals}}
+}
 

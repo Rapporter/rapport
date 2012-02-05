@@ -6,6 +6,9 @@
 }
 \arguments{
   \item{x}{R object}
+
+  \item{asciitype}{markdown language to use for returning
+  tables (eg. pandox, t2t, asciidoc etc.)}
 }
 \value{
   ascii
