@@ -1,4 +1,4 @@
-Before we start, a bit of redundancy is required: make sure that you have installed [pandoc](http://johnmacfarlane.net/pandoc/installing.html) converter, and then proceed with usual package installation.
+We'll start with a brief reminder: make sure that you have [pandoc](http://johnmacfarlane.net/pandoc/installing.html) converter installed, and then proceed with package installation.
 
 Starting from v.0.2 _rapport_ is hosted on [CRAN](cran.r-project.org), so you can install it by calling:
 
