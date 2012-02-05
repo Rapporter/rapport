@@ -18,16 +18,16 @@ tpl.example('example', 1)
 readline('Press ENTER to continue!')
 tpl.list()
 
-## Ok, 'anova.tpl' seems interesting, let us run an example of that!
-## Will run: tpl.example('anova')
+## Ok, 'correlations.tpl' seems interesting, let us run an example of that!
+## Will run: tpl.example('correlations')
 readline('Press ENTER to continue!')
-tpl.example('anova')
+tpl.example('correlations')
 
 ## And check out the HTML export of *all* examples!
-## Will run: tpl.export(tpl.example('anova', 'all'))
+## Will run: tpl.export(tpl.example('correlations', 'all'))
 ## NOTE: this needs pandoc to be installed!
 readline('Press ENTER to continue!')
-tpl.export(tpl.example('anova', 'all'))
+tpl.export(tpl.example('correlations', 'all'))
 
 ## Or let us run this template against our custom data:
 ## Will run: rapport('anova', data=ius2008, resp = 'edu', fac = 'dwell') 

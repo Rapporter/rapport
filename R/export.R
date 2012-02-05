@@ -180,7 +180,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         ## if pandoc is converting to HTML then apply default styles
         if (is.null(options) & format == 'html' & backend == 'pandoc') {
             if (!file.exists(sprintf('%s%s', tempdir(), '/rapport-header.html')))
-                cat(gsub('"includes/', normalizePath(system.file('includes', package='rapport')), readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
+                cat(gsub('includes', system.file('includes', package='rapport'), readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
             options <- sprintf('-H "%s" -A "%s"', file.path(gsub('\\', '/', tempdir(), fixed = TRUE), 'rapport-header.html'), system.file('includes/html/footer.html', package='rapport'))
         }
         
