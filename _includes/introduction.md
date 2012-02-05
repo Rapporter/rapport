@@ -5,5 +5,5 @@ Several [predefined templates](#templates ) come bundled with default _rapport_ 
 For a brief introduction to _rapport_, run:
 
 {% highlight r %}
-demo(rapport)
+demo(rapport, ask = FALSE)
 {% endhighlight %}
