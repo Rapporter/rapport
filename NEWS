@@ -1,4 +1,4 @@
-rapport 0.21
+rapport 0.21 (2012-02-06)
 ----------------------------------------------------------------
 
 NEW FEATURES
@@ -9,6 +9,7 @@ CHANGES
 
 * Removed `moments` and `latticeExtra` from package dependencies.
 * New (system) dependency: cairo (1.2+) - see bugfixes below 
+* Updated demo
 * `rapport()` will now check for packages specified in the template header and throw error if something goes wrong while loading.
 * `tpl.example` now uses `readlines` instead of reading from `stdin` (Windows and Eclipse/StatET bug)
 * `tpl.export` now checks if specified backend is installed and throws an error if not.
@@ -20,7 +21,7 @@ BUGFIXES
 * Windows default grDevice bug with checking if a plot was generated (file size changes despite nothing is drawn) -> using cairo device now
 * Formatting issues with non-pandoc backends
 
-rapport 0.2
+rapport 0.2 (2012-02-04)
 ----------------------------------------------------------------
 
 Initial CRAN release.
