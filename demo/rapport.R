@@ -30,14 +30,14 @@ readline('Press ENTER to continue!')
 tpl.export(tpl.example('correlations', 'all'))
 
 ## Or let us run this template against our custom data:
-## Will run: rapport('anova', data=ius2008, resp = 'edu', fac = 'dwell') 
+## Will run: rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec')) 
 readline('Press ENTER to continue!')
-rapport('anova', data=ius2008, resp = 'edu', fac = 'dwell')
+rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec')) 
 
 ## And an easy wrapper to get the HTML export of the document in one run:
-## Will run: rapport.html('anova', data=ius2008, resp = 'edu', fac = 'dwell') 
+## Will run: rapport.html('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec')) 
 ## NOTE: this needs pandoc to be installed!
-rapport.html('anova', data=ius2008, resp = 'edu', fac = 'dwell')
-
+rapport.html('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
+ 
 ## Do not forget to check out the docs located @ \url{http://rapport-package.info}.
 ## Thanks for your kind attention!
