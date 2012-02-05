@@ -4,6 +4,7 @@ rapport 0.21 (2012-02-06)
 NEW FEATURES
 
 * Introduced own `skewness()` and `kurtosis()` functions to get rid of 'moments' dependency.
+* Option (default set to TRUE) to view generated plots without exporting (`replayPlot`) 
 
 CHANGES
 
