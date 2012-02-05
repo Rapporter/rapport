@@ -232,7 +232,7 @@ eval.msgs <- function(src, env = NULL) {
 #' }
 #' @export
 evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.name = tempfile(), graph.output = c('png', 'bmp', 'jpeg', 'jpg', 'tiff', 'svg', 'pdf'), width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), graph.env = FALSE, graph.recordplot = FALSE, ...){
-    ## TODO: use recordplot() instead of saving envir?
+
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
 
@@ -295,8 +295,10 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             eval <- suppressWarnings(try(evaluate(src, envir = env.evaluate), silent=TRUE))
 
             if (graph.recordplot) {
-                recorded.plot <- recordPlot()
-                dev.control("inhibit")
+                if (!is.null(dev.list())) {
+                    recorded.plot <- recordPlot()
+                    dev.control("inhibit")
+                }
             }
 
             ## error handling
@@ -371,8 +373,10 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         } else {
             res <- eval.msgs(src, env = env)
             if (graph.recordplot) {
-                recorded.plot <- recordPlot()
-                dev.control("inhibit")
+                if (!is.null(dev.list())) {
+                    recorded.plot <- recordPlot()
+                    dev.control("inhibit")
+                }
             }
             clear.devs()
             if (!is.null(res$msg$errors))
