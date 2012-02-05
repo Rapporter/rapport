@@ -1,3 +1,5 @@
+Before we start, a bit of redundancy is required: make sure that you have installed [pandoc](http://johnmacfarlane.net/pandoc/installing.html) converter, and then proceed with usual package installation.
+
 Starting from v.0.2 _rapport_ is hosted on [CRAN](cran.r-project.org), so you can install it by calling:
 
 {% highlight r %}
@@ -18,7 +20,7 @@ R CMD build rapport
 R CMD INSTALL <path to .tar.gz file>
 {% endhighlight %}
 
-If you're running R on Windows, you need to install [Rtools](http://cran.stat.ucla.edu/bin/windows/Rtools/ ). Once you have installed it, download [tarball sources](https://github.com/aL3xa/rapport/tarball/master ) and issue following commands in command prompt:
+If you're running R on Windows, you need to install [Rtools](http://cran.stat.ucla.edu/bin/windows/Rtools/ ). Once you have installed it, you can either try out the `install_github()` approach or install package manually by downloading [tarball sources](https://github.com/aL3xa/rapport/tarball/master ) and issuing following commands in the command prompt:
 
 {% highlight bash %}
 R CMD build --binary <path to .tar.gz file>
@@ -34,4 +36,4 @@ In order to export _rapport_ templates to  _HTML_, _ODT_, or _PDF_ export, pleas
  * [txt2tags](http://txt2tags.org/) and
  * [markdown2pdf](http://johnmacfarlane.net/pandoc/README.html#markdown2pdf).
 
-We recommend using [pandoc](http://johnmacfarlane.net/pandoc/), especially the [devel version](https://github.com/jgm/pandoc/wiki/Installing-the-development-version-of-pandoc-1.9), as it has some really neat updates (DOCX writer, ODT image size fix etc.)!
+We recommend using [pandoc](http://johnmacfarlane.net/pandoc/), especially the [development version](https://github.com/jgm/pandoc/wiki/Installing-the-development-version-of-pandoc-1.9), as it has some really neat updates (DOCX writer, ODT image size fix etc.)!
