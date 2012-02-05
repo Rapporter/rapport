@@ -139,16 +139,22 @@ print.rapport <- function(x, ...) {
     
     ## replay plots on demand (and if possible)
     if (getOption('graph.replay')) {
+        cat('\n==========\n Appendix\n==========')
         
         for (image in images) {
+            
+            cat(sprintf('\n Showing image: %s\n', image))
+            
             img.ext <- tail(strsplit(image, "\\.")[[1]], 1)
             recorded.plot <- sub(sprintf('%s$', img.ext), 'recordplot', image)
             
             if (file.exists(recorded.plot)) {
                 redraw.recordedplot(recorded.plot)
                 
-                if (image != tail(images, 1))
+                if (image != tail(images, 1)) {
                     readline('Press ENTER for next plot! ')
+                    dev.off()
+                }
             }
         }
     }
