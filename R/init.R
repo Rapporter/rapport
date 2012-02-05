@@ -1,8 +1,10 @@
 .onLoad <- function(libname, pkgname)
 {
     ## rapport settings
-    options('rapport.mode'     = 'normal')
-    options('asciiType'        = 'pandoc')
+    options('rapport.mode'          = 'normal')
+    options('rapport.record.plots'  = TRUE)
+    options('rapport.replay.plots'  = TRUE)
+    options('asciiType'             = 'pandoc')
 
     ## encrypt/decrypt key generation settings
     options('.encrypt.chars'   = paste(c(LETTERS, letters, 0:9, ' ', '(', ')', '=', '~', '.', '+', '"', "'",'$', '#'), collapse = ""))

@@ -12,7 +12,7 @@
     hi.res.width = 960,
     hi.res.height = 960 * (height/width),
     hi.res.res = res * (hi.res.width/width),
-    graph.env = FALSE, ...)
+    graph.env = FALSE, graph.recordplot = FALSE, ...)
 }
 \arguments{
   \item{txt}{a list with character values containing R
@@ -97,7 +97,12 @@
   be automatically calculated to fit original plot scales.}
 
   \item{graph.env}{save the environments in which plots
-  were generated to distinct files?}
+  were generated to distinct files with \code{env}
+  extension?}
+
+  \item{graph.recordplot}{save the plot via
+  \code{recordPlot} to distinct files with {recodplot}
+  extension?}
 
   \item{...}{optional parameters passed to graphics device
   (e.g. \code{bg}, \code{pointsize} etc.)}
@@ -250,6 +255,8 @@ evals('plot(1:10)', res = 30)
 evals('plot(1:10)', graph.name = 'myplot')
 evals(list('plot(1:10)', 'plot(2:20)'), graph.name = 'myplots-\%INDEX')
 evals('plot(1:10)', graph.env = TRUE)
+evals('plot(1:10)', graph.recordplot = TRUE)
+evals('histogram(mtcars$hp)', graph.recordplot = TRUE)
 evals(list(c('x <- runif(100)', 'plot(x)')), graph.env = TRUE)
 evals(c('plot(1:10)', 'plot(2:20)'), graph.env = TRUE)
 evals(list(c('x <- runif(100)', 'plot(x)'), c('y <- runif(100)', 'plot(y)')), graph.env = TRUE)
