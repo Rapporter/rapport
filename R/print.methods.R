@@ -109,6 +109,8 @@ print.rapport <- function(x, ...) {
 
     if (!is.rapport(x)) stop('Wrong type of argument (!rapport) supplied!')
 
+    images <- NULL
+
     ## print report body
     for (part in x$report){
         robj  <- part$robjects[[1]]
@@ -119,9 +121,10 @@ print.rapport <- function(x, ...) {
         switch(part$type,
                'block' = {
                    if (!is.null(rout)){
-                       if (any(robj$type == 'image'))
+                       if (any(robj$type == 'image')) {
+                           images <- c(images, as.character(rout))
                            cat(as.character(rout))
-                       else
+                       } else
                            cat(rp.prettyascii(rout))
                    }
 
@@ -132,6 +135,22 @@ print.rapport <- function(x, ...) {
                cat(rp.prettyascii(as.character(part$text$eval)))
                )
         catn()
+    }
+    
+    ## replay plots on demand (and if possible)
+    if (getOption('graph.replay')) {
+        
+        for (image in images) {
+            img.ext <- tail(strsplit(image, "\\.")[[1]], 1)
+            recorded.plot <- sub(sprintf('%s$', img.ext), 'recordplot', image)
+            
+            if (file.exists(recorded.plot)) {
+                redraw.recordedplot(recorded.plot)
+                
+                if (image != tail(images, 1))
+                    readline('Press ENTER for next plot! ')
+            }
+        }
     }
 }
 
