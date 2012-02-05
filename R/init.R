@@ -2,8 +2,6 @@
 {
     ## rapport settings
     options('rapport.mode'          = 'normal')
-    options('rapport.record.plots'  = TRUE)
-    options('rapport.replay.plots'  = TRUE)
     options('asciiType'             = 'pandoc')
 
     ## encrypt/decrypt key generation settings
@@ -58,6 +56,10 @@
     options('graph.height'        = 480)
     options('graph.res'           = 72)
     options('graph.hi.res'        = FALSE)
+    ## image environment
+    options('graph.save.env'      = FALSE)
+    options('graph.record'        = TRUE)
+    options('graph.replay'        = TRUE)
 
     ## tag regexes
     options('rp.tags' = c(
