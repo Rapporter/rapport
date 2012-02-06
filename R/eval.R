@@ -287,18 +287,15 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             do.call(graph.output, list(file, width = width/res, height = height/res, ...)) # TODO: font-family?
         if (graph.output == 'pdf')
             do.call('cairo_pdf', list(file, width = width/res, height = height/res, ...)) # TODO: font-family?
-        if (graph.recordplot)
-            dev.control(displaylist = "enable")
+        dev.control(displaylist = "enable")
 
         if (check.output) {
             ## running evaluate for checking outputs and grabbing warnings/errors
             eval <- suppressWarnings(try(evaluate(src, envir = env.evaluate), silent=TRUE))
 
-            if (graph.recordplot) {
-                if (!is.null(dev.list())) {
-                    recorded.plot <- recordPlot()
-                    dev.control("inhibit")
-                }
+            if (!is.null(dev.list())) {
+                recorded.plot <- recordPlot()
+                dev.control("inhibit")
             }
 
             ## error handling
@@ -346,8 +343,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
             ## graph was produced?
             clear.devs()
-            file.size <- file.info(file)$size
-            graph <- ifelse(is.na(file.size) | file.size == 0, FALSE, file)
+            graph <- ifelse(is.null(recorded.plot[[1]]), FALSE, file)
             ## any returned value?
             if (length(eval.sources.outputs) > 0) {
                 if (is.logical(graph)) {
@@ -373,19 +369,16 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             }
         } else {
             res <- eval.msgs(src, env = env)
-            if (graph.recordplot) {
-                if (!is.null(dev.list())) {
-                    recorded.plot <- recordPlot()
-                    dev.control("inhibit")
-                }
+            if (!is.null(dev.list())) {
+                recorded.plot <- recordPlot()
+                dev.control("inhibit")
             }
             clear.devs()
             if (!is.null(res$msg$errors))
                 return(res)
             returns <- res$output
             warnings <- res$msg$warnings
-            file.size <- file.info(file)$size
-            graph <- ifelse(is.na(file.size) | file.size == 0, FALSE, file)
+            graph <- ifelse(is.null(recorded.plot[[1]]), FALSE, file)
         }
 
         ## save recorded plot on demand
