@@ -47,7 +47,10 @@
     ##  * custom.theme.black() from latticist package
     ##  * set custom theme to an R object, details: ?trellis.par.get()
     options('style.grid'          = 'both')           # to draw grids for 'x', 'y', 'both' axis or 'none'
-    options('style.font'          = 'Helvetica')
+    if (.Platform$OS.type == "windows")
+        options('style.font'      = '') # TODO: set Arial (?) or something on windows
+    else
+        options('style.font'      = 'Helvetica')
     options('style.color.palette' = 'default')      # for other palette options, see: ?brewer.pal.info
     options('style.colorize'      = FALSE)
     ## image format settings
@@ -59,7 +62,7 @@
     ## image environment
     options('graph.save.env'      = FALSE)
     options('graph.record'        = FALSE)
-    options('graph.replay'        = FALSE)
+    options('graph.replay'        = FALSE) # TODO: fix on Win platform!
 
     ## tag regexes
     options('rp.tags' = c(
