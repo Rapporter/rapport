@@ -153,7 +153,8 @@ print.rapport <- function(x, ...) {
                 
                 if (image != tail(images, 1)) {
                     readline('Press ENTER for next plot! ')
-                    dev.off()
+                    if (length(dev.list()) > 0)
+                        dev.off()
                 }
             }
         }

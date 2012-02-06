@@ -58,8 +58,8 @@
     options('graph.hi.res'        = FALSE)
     ## image environment
     options('graph.save.env'      = FALSE)
-    options('graph.record'        = TRUE)
-    options('graph.replay'        = TRUE)
+    options('graph.record'        = FALSE)
+    options('graph.replay'        = FALSE)
 
     ## tag regexes
     options('rp.tags' = c(
