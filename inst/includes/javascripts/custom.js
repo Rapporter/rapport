@@ -82,9 +82,8 @@ $(document).ready(function() {
     // image popups
     $('.content a > img').slimbox({
         counterText: "Plot: {x} of {y}"
-        }, function(el) {
-            return [el.parentNode.href];
-        }
-    );
+    }, function(el) {
+        return [el.parentNode.href];
+    });
 
 });

@@ -1,6 +1,8 @@
+\docType{package}
 \name{rapport}
 \alias{rapport}
-\title{Evaluate Template}
+\alias{rapport-package}
+\title{rapport: An R engine for reproducible template generation}
 \usage{
   rapport(fp, data = NULL, ..., reproducible = FALSE,
     header.levels.offset = 0,
@@ -61,6 +63,24 @@
   a list with \code{rapport} class.
 }
 \description{
+  \emph{rapport} is an R package that facilitates creation
+  of reproducible statistical report templates. Once
+  created, \emph{rapport} templates can be exported to
+  various external formats: \emph{HTML}, \emph{LaTeX},
+  \emph{PDF}, \emph{ODT}, etc. Apart from R, all you need
+  to know to start writing your own templates is
+  \emph{pandoc} markup syntax, and several
+  \emph{rapport}-specific conventions that allow the
+  reproducibility of the template. \emph{rapport} uses
+  \emph{brew}-like tags to support dynamic inline and/or
+  block evaluation of R code. Unlike many other
+  report-writing conventions in R (\emph{Sweave},
+  \emph{brew}), \emph{rapport} converts generated output in
+  a convenient form via \emph{acii} function.
+  \emph{rapport} also comes with support for plots: images
+  are automatically saved to temporary file, and image path
+  is returned.
+
   This is the central function in the \code{rapport}
   package, and hence eponymous. In following lines we'll
   use \code{rapport} to denote the function, not the
@@ -98,8 +118,5 @@ rapport("example", ius2008, var="leisure", hist = TRUE, graph.width = 1280, grap
 options('graph.hi.res' = TRUE)
 rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
 }
-}
-\seealso{
-  \code{\link{rapport-package}}
 }
 
