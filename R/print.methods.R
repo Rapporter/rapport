@@ -137,26 +137,35 @@ print.rapport <- function(x, ...) {
         catn()
     }
     
-    ## replay plots on demand (and if possible)
     if (getOption('graph.replay')) {
-        cat('\n==========\n Appendix\n==========')
+        cat('\n', paste(rep('=', getOption('width')), collapse=''))
+        cat('\n  Attached images:\n\n\tNote: you may optionally resize images on the fly which new dimensions will be saved to disk.\n\t\t  Do not close graphics device before this happens (pressing ENTER) if you want to update your image files!\n')
         
         for (image in images) {
-            
-            cat(sprintf('\n Showing image: %s\n', image))
             
             img.ext <- tail(strsplit(image, "\\.")[[1]], 1)
             recorded.plot <- sub(sprintf('%s$', img.ext), 'recordplot', image)
             
             if (file.exists(recorded.plot)) {
+
+                cat(sprintf('\n\t* %s', image))
                 redraw.recordedplot(recorded.plot)
-                
-                if (image != tail(images, 1)) {
-                    readline('Press ENTER for next plot! ')
-                    if (length(dev.list()) > 0)
-                        dev.off()
+                `/dev/null` <- readline('\nPress ENTER to continue! ')
+
+                if (length(dev.list()) > 0) {
+                    device <- img.ext # this should be done outside of this check...
+
+                    if (device == 'jpg')
+                        device <- 'jpeg'
+                    res <- ifelse(device %in% c('svg', 'pdf'), 1, getOption('graph.res'))
+                    size <- dev.size()
+                    
+                    dev.copy(get(device), width = size[1]*res, height = size[2]*res, image)
+                    dev.off(); dev.off()
                 }
-            }
+
+            } else
+                cat(sprintf('\n\t* %s: was not run with `graph.record` option set to `TRUE`', image))
         }
     }
 }
