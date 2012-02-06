@@ -40,6 +40,6 @@ encrypt(paste(names(mtcars), collapse=" "))
   \url{https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html}
 }
 \seealso{
-  \code{decrypt}
+  \code{\link{decrypt}}
 }
 
