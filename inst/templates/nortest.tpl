@@ -4,6 +4,7 @@ Author:         Aleksandar Blagotić
 Description:    Overview of several normality tests and diagnostic plots that can screen departures from normality.
 Packages:       nortest
 Data required:  TRUE
+Strict:         TRUE
 Example:        rapport("nortest", ius2008, var = "leisure")
                 rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
                 rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
@@ -48,8 +49,9 @@ Various hypothesis tests can be applied in order to test if the distribution of 
 Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
 
 <%
-(h <- htest(var, shapiro.test, lillie.test, ad.test, pearson.test))
+h <- htest(var, shapiro.test, lillie.test, ad.test, pearson.test)
 p <- .05
+h
 %>
 
 So, let's draw some conclusions based on applied normality test:

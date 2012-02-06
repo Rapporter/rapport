@@ -667,6 +667,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' @param graph.height the required height of saved plots (optional)
 #' @param graph.res the required nominal resolution in ppi of saved plots (optional)
 #' @param graph.hi.res logical value indicating if high resolution (1280x~1280) images would be also generated
+#' @param graph.replay logical value indicating if plots need to be recorded for later replay (eg. while \code{print}ing \code{rapport} objects in R console)
 #' @return a list with \code{rapport} class.
 #' @examples \dontrun{
 #' rapport("example", ius2008, var = "leisure")
@@ -685,7 +686,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res')) {
+rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
 
     timer  <- proc.time()                       # start timer
     txt    <- tpl.find(fp)                      # split file to text
@@ -859,7 +860,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
     }
 
     opts.bak <- options()                      # backup options
-    report <- lapply(elem, elem.eval, env = e, check.output = !(as.logical(meta$strict) | (rapport.mode == 'performance')), rapport.mode = rapport.mode, graph.output = graph.output, width = graph.width, height = graph.height, res = graph.res, hi.res = graph.hi.res) # render template body
+    report <- lapply(elem, elem.eval, env = e, check.output = !(as.logical(meta$strict) | (rapport.mode == 'performance')), rapport.mode = rapport.mode, graph.output = graph.output, width = graph.width, height = graph.height, res = graph.res, hi.res = graph.hi.res, graph.recordplot = graph.replay) # render template body
     options(opts.bak)                          # resetting options
 
     ## error handling in chunks

@@ -12,7 +12,7 @@
     hi.res.width = 960,
     hi.res.height = 960 * (height/width),
     hi.res.res = res * (hi.res.width/width),
-    graph.env = FALSE, ...)
+    graph.env = FALSE, graph.recordplot = FALSE, ...)
 }
 \arguments{
   \item{txt}{a list with character values containing R
@@ -97,7 +97,12 @@
   be automatically calculated to fit original plot scales.}
 
   \item{graph.env}{save the environments in which plots
-  were generated to distinct files?}
+  were generated to distinct files with \code{env}
+  extension?}
+
+  \item{graph.recordplot}{save the plot via
+  \code{recordPlot} to distinct files with {recodplot}
+  extension?}
 
   \item{...}{optional parameters passed to graphics device
   (e.g. \code{bg}, \code{pointsize} etc.)}
@@ -253,6 +258,10 @@ evals('plot(1:10)', graph.env = TRUE)
 evals(list(c('x <- runif(100)', 'plot(x)')), graph.env = TRUE)
 evals(c('plot(1:10)', 'plot(2:20)'), graph.env = TRUE)
 evals(list(c('x <- runif(100)', 'plot(x)'), c('y <- runif(100)', 'plot(y)')), graph.env = TRUE)
+evals('plot(1:10)', graph.recordplot = TRUE)
+evals('histogram(mtcars$hp)', graph.recordplot = TRUE)
+evals(list(c('x <- runif(100)', 'plot(x)')), graph.recordplot = TRUE)
+evals(c('plot(1:10)', 'plot(2:20)'), graph.recordplot = TRUE)
 evals('plot(10:100)', graph.output = 'pdf')
 evals('runif(10)', graph.output = 'pdf')
 
@@ -305,5 +314,9 @@ evals('mean(x)')
 }
 \author{
   Gergely Daróczi
+}
+\seealso{
+  \code{\link{eval.msgs}},
+  \code{\link{redraw.recordedplot}}
 }
 

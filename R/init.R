@@ -1,8 +1,8 @@
 .onLoad <- function(libname, pkgname)
 {
     ## rapport settings
-    options('rapport.mode'     = 'normal')
-    options('asciiType'        = 'pandoc')
+    options('rapport.mode'          = 'normal')
+    options('asciiType'             = 'pandoc')
 
     ## encrypt/decrypt key generation settings
     options('.encrypt.chars'   = paste(c(LETTERS, letters, 0:9, ' ', '(', ')', '=', '~', '.', '+', '"', "'",'$', '#'), collapse = ""))
@@ -56,6 +56,10 @@
     options('graph.height'        = 480)
     options('graph.res'           = 72)
     options('graph.hi.res'        = FALSE)
+    ## image environment
+    options('graph.save.env'      = FALSE)
+    options('graph.record'        = FALSE)
+    options('graph.replay'        = FALSE)
 
     ## tag regexes
     options('rp.tags' = c(
