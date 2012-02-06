@@ -46,11 +46,10 @@
     ##  * theEconomist.theme() from latticeExtra package
     ##  * custom.theme.black() from latticist package
     ##  * set custom theme to an R object, details: ?trellis.par.get()
-    options('style.grid'          = 'both')           # to draw grids for 'x', 'y', 'both' axis or 'none'
-    if (.Platform$OS.type == "windows")
-        options('style.font'      = '') # TODO: set Arial (?) or something on windows
-    else
-        options('style.font'      = 'Helvetica')
+    options('style.grid'          = 'both')         # to draw grids for 'x', 'y', 'both' axis or 'none'
+    if (.Platform$OS.type == "windows")             # set Windows fonts if necessary  
+        windowsFonts(Helvetica = windowsFont("TT Helvetica")) 
+    options('style.font'          = 'Helvetica')
     options('style.color.palette' = 'default')      # for other palette options, see: ?brewer.pal.info
     options('style.colorize'      = FALSE)
     ## image format settings
