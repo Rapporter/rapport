@@ -282,7 +282,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         file.name <- sub('%INDEX', `%INDEX`, eval(graph.name), fixed = TRUE)
         file <- sprintf('%s.%s', file.name, graph.output)
         if (graph.output %in% c('bmp', 'jpeg', 'png', 'tiff'))
-            do.call(graph.output, list(file, type = 'cairo', width = width, height = height, res = res, ...))
+            do.call(graph.output, list(file, width = width, height = height, res = res, ...))
         if (graph.output == 'svg')
             do.call(graph.output, list(file, width = width/res, height = height/res, ...)) # TODO: font-family?
         if (graph.output == 'pdf')
@@ -346,7 +346,8 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
             ## graph was produced?
             clear.devs()
-            graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
+            file.size <- file.info(file)$size
+            graph <- ifelse(is.na(file.size) | file.size == 0, FALSE, file)
             ## any returned value?
             if (length(eval.sources.outputs) > 0) {
                 if (is.logical(graph)) {
@@ -383,7 +384,8 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                 return(res)
             returns <- res$output
             warnings <- res$msg$warnings
-            graph <- ifelse(is.na(file.info(file)$size), FALSE, file)
+            file.size <- file.info(file)$size
+            graph <- ifelse(is.na(file.size) | file.size == 0, FALSE, file)
         }
 
         ## save recorded plot on demand

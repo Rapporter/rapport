@@ -24,7 +24,6 @@ Depends:
     RColorBrewer,
     reshape,
     RJSONIO
-SystemRequirements: cairo (>= 1.2)
 Collate:
     'crypt.R'
     'eval.R'

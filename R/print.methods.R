@@ -138,8 +138,8 @@ print.rapport <- function(x, ...) {
     }
     
     if (getOption('graph.replay')) {
-        cat('\n', paste(rep('=', getOption('width')), collapse=''))
-        cat('\n  Attached images:\n\n\tNote: you may optionally resize images on the fly which new dimensions will be saved to disk.\n\t\t  Do not close graphics device before this happens (pressing ENTER) if you want to update your image files!\n')
+        cat('\n', rep('=', getOption('width')), sep='')
+        cat('\n  Attached images:\n\n    Note: you may optionally resize images on the fly which new dimensions will be saved to disk.\n         Do not close graphics device before this happens (pressing ENTER) if you want to update your image files!\n')
         
         for (image in images) {
             
@@ -148,9 +148,9 @@ print.rapport <- function(x, ...) {
             
             if (file.exists(recorded.plot)) {
 
-                cat(sprintf('\n\t* %s', image))
+                cat(sprintf('\n    * %s', image))
                 redraw.recordedplot(recorded.plot)
-                `/dev/null` <- readline('\nPress ENTER to continue! ')
+                `/dev/null` <- readline('\n    Press ENTER to continue! ')
 
                 if (length(dev.list()) > 0) {
                     device <- img.ext # this should be done outside of this check...
