@@ -1,24 +1,17 @@
 require(rapport)
+demo.opt <- getOption("demo.ask"); replay.opt <- getOption("graph.replay"); record.opt <- getOption("graph.record"); options("demo.ask" = FALSE)
 next.please <- function(msg = "Press ENTER to continue: ") invisible(readline(msg))
 
-###################################
-##                               ##
-##    Welcome to rapport demo    ##
-##                               ##
-###################################
-
-
+########################################################################################
+##                                                                                    ##
+##    Welcome to rapport demo!                                                        ##
+##                                                                                    ##
 ########################################################################################
 ##                                                                                    ##
 ## You will find some simple rapport calls below, for more details and tutorials      ##
 ## please check out our homepage at:                                                  ##
 ##                                                                                    ##
 ##                       http://rapport-package.info                                  ##
-##                                                                                    ##
-## NOTE: If you get "Hit <Return> to see next plot:" messages while running this demo ##
-## (usually happens on a Windows machines), please rerun the demo with `ask = FALSE`: ##
-##                                                                                    ##
-##                       demo(rapport, ask = FALSE)                                   ##
 ##                                                                                    ##
 ########################################################################################
 
@@ -56,14 +49,20 @@ next.please()
 tpl.example('example', 1)
 
 
-#######################################
-##                                   ##
-## And find out other templates too! ##
-##                                   ##
-## Will run:                         ##
-##      tpl.list()                   ##
-##                                   ##
-#######################################
+############################################
+##                                        ##
+## You can see here some predefined text  ##
+## updated by ius2008$leisure parameters. ##
+##                                        ##
+## That is the spiriot of rapport :)      ##
+##                                        ##
+## OK, find out other templates too!      ##
+## Let us list all available templates:   ##
+##                                        ##
+## Will run:                              ##
+##      tpl.list()                        ##
+##                                        ##
+#########################################>##
 
 
 next.please()
@@ -117,6 +116,36 @@ next.please()
 rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 
 
+##################################################################################
+##                                                                              ##
+## The last line is the path of a generated image which would be added          ##
+## to the exported document.                                                    ##
+##                                                                              ##
+## If you would rather not export the report first but would like to easily     ##
+## check out the generated images, please run `rapport` with custom options:    ##
+##                                                                              ##
+##     * graph.record = TRUE                                                    ##
+##     * graph.replay = TRUE                                                    ##
+##                                                                              ##
+## These would tell `rapport` to save generated images and show them in the     ##
+## the graphics device while printing. This would also let you resize images    ##
+## on the fly.                                                                  ##
+##                                                                              ##
+## Will run:                                                                    ##
+##                                                                              ##
+##      options('graph.record' = TRUE)                                          ##
+##      options('graph.record' = TRUE)                                          ##
+##      rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec')) ##
+##                                                                              ##
+##################################################################################
+
+
+next.please()
+options('graph.record' = TRUE)
+options('graph.replay' = TRUE)
+rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
+
+
 ############################################################################################################
 ##                                                                                                        ##
 ## And an easy wrapper to get the HTML export of the document in one run with hi-res images attached:     ##
@@ -131,9 +160,9 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 
 
 next.please()
-rm(next.please)
 rapport.html('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE)
 
+rm(next.please); options("demo.ask" = demo.opt); options("graph.replay" = replay.opt); options("graph.record" = record.opt)
 
 ##############################################
 ##                                          ##
