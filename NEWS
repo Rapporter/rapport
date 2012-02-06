@@ -11,7 +11,6 @@ NEW FEATURES
 CHANGES
 
 * Removed `moments` and `latticeExtra` from package dependencies.
-* New (system) dependency: cairo (1.2+) - see bugfixes below 
 * Updated demo
 * `rapport()` will now check for packages specified in the template header and throw error if
   something goes wrong while loading.
