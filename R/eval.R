@@ -343,7 +343,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
             ## graph was produced?
             clear.devs()
-            graph <- ifelse(is.null(recorded.plot[[1]]), FALSE, file)
+            graph <- ifelse(exists('recorded.plot'), ifelse(is.null(recorded.plot[[1]]), FALSE, file), FALSE)
             ## any returned value?
             if (length(eval.sources.outputs) > 0) {
                 if (is.logical(graph)) {
@@ -378,7 +378,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                 return(res)
             returns <- res$output
             warnings <- res$msg$warnings
-            graph <- ifelse(is.null(recorded.plot[[1]]), FALSE, file)
+            graph <- ifelse(exists('recorded.plot'), ifelse(is.null(recorded.plot[[1]]), FALSE, file), FALSE)
         }
 
         ## save recorded plot on demand

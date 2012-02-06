@@ -139,7 +139,7 @@ print.rapport <- function(x, ...) {
     
     if (getOption('graph.replay')) {
         cat('\n', rep('=', getOption('width')), sep='')
-        cat('\n  Attached images:\n\n    Note: you may optionally resize images on the fly which new dimensions will be saved to disk.\n         Do not close graphics device before this happens (pressing ENTER) if you want to update your image files!\n')
+        cat('\n  Attached images:\n\n    Note: you may optionally resize images on the fly which new dimensions will be saved to disk.\n          Do not close graphics device before this happens (pressing ENTER) if you want to update your image files!\n')
         
         for (image in images) {
             
