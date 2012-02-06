@@ -22,6 +22,6 @@ x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
 }
 }
 \seealso{
-  \code{rp.label}
+  \code{\link{rp.label}}
 }
 

@@ -12,7 +12,7 @@
 #' }
 #' @param message a string to encrypt
 #' @return string
-#' @seealso \code{decrypt}
+#' @seealso \code{\link{decrypt}}
 #' @references Credits goes to Barry Rowlingson and Hadley Wickham: \url{https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html}
 #' @export
 #' @examples \dontrun{
@@ -25,7 +25,7 @@ encrypt <- function(message) {
 
 #' Decrypt a string
 #'
-#' Decrypts string encrypted by \code{encrypt}.
+#' Decrypts string encrypted by \code{\link{encrypt}}.
 #'
 #' Default parameters are read from \code{options}:
 #'
@@ -35,7 +35,7 @@ encrypt <- function(message) {
 #' }
 #' @param message a string to decrypt
 #' @return string
-#' @seealso \code{encrypt}
+#' @seealso \code{\link{encrypt}}
 #' @references Credits goes to Barry Rowlingson and Hadley Wickham: \url{https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html}
 #' @export
 #' @examples \dontrun{

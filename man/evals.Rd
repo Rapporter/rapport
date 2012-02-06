@@ -101,8 +101,8 @@
   extension?}
 
   \item{graph.recordplot}{save the plot via
-  \code{recordPlot} to distinct files with {recodplot}
-  extension?}
+  \code{\link{recordPlot}} to distinct files with
+  {recodplot} extension?}
 
   \item{...}{optional parameters passed to graphics device
   (e.g. \code{bg}, \code{pointsize} etc.)}
@@ -136,8 +136,9 @@
   evaluated as separate R code in the same environment. If
   a nested list is provided like \code{list(c('runif(1)',
   'runif(1)'))} then all strings found in a list element is
-  \code{eval}ed at one run so the length of returned list
-  equals to the length of parent list. See examples below.
+  \code{\link{eval}}ed at one run so the length of returned
+  list equals to the length of parent list. See examples
+  below.
 
   As \code{\link{evals}} tries to grab the plots
   internally, pleas do not run commands that set graphic
@@ -159,11 +160,11 @@
   \itemize{ \item \emph{src} - a character value with
   specified R code.  \item \emph{output} - generated
   output. \code{NULL} if nothing is returned. If any string
-  returned an R object while \code{eval}ing then the
+  returned an R object while \code{\link{eval}}ing then the
   \emph{last} R object will be returned as a raw R object.
   If a graph is plotted in the given text, the returned
   object is a string specifying the path to the saved png
-  in temporary directory (see: \code{tmpfile()}). If
+  in temporary directory (see: \code{\link{tempfile}}). If
   multiple plots was run in the same run (see: nested lists
   as inputs above) then the last plot is saved. If graphic
   device was touched, then no other R objects will be
@@ -171,30 +172,30 @@
   "NULL" if nothing is returned, "image" if the graphic
   device was touched, "error" if some error occurred.
   \item \emph{msg} - possible messages grabbed while
-  \code{eval}ing specified R code with the following
+  \code{\link{eval}}ing specified R code with the following
   structure: \itemize{ \item \emph{messages} - string of
   possible diagnostic message(s) \item \emph{warnings} -
   string of possible warning message(s) \item \emph{errors}
   - string of possible error message(s) } }
 
   With \code{check.output} options set to \code{FALSE},
-  \code{evals} will not check each line of passed R code
-  for outputs to speed up runtime. This way the user is
-  required to pass only reliable and well
-  structured/formatted text to \code{evals}. A list to
-  check before running code in \code{evals}:
+  \code{\link{evals}} will not check each line of passed R
+  code for outputs to speed up runtime. This way the user
+  is required to pass only reliable and well
+  structured/formatted text to \code{\link{evals}}. A list
+  to check before running code in \code{\link{evals}}:
 
   \itemize{ \item the code should return on the last line
   of the passed code (if it returns before that, it would
   not be grabbed), \item the code should always return
   something on the last line (if you do not want to return
   anything, add \code{NULL} as the last line), \item
-  \code{ggplot} and \code{lattice} graphs should be always
-  printed (of course on the last line), \item a code part
-  resulting in a plot should not alter variables and data
-  sets, \item the code should be checked before live run
-  with \code{check.output} option set to \code{TRUE} just
-  to be sure if everything goes OK. }
+  \code{ggplot2} and \code{\link{lattice}} graphs should be
+  always printed (of course on the last line), \item a code
+  part resulting in a plot should not alter variables and
+  data sets, \item the code should be checked before live
+  run with \code{check.output} option set to \code{TRUE}
+  just to be sure if everything goes OK. }
 
   Please check the examples carefully below to get a
   detailed overview of \code{\link{evals}}.

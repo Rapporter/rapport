@@ -13,7 +13,7 @@
   For a more detailed introduction please check out our
   homepage located at:
 
-  \link{http://rapport-package.info}
+  \url{http://rapport-package.info}
 
   You may use the package bundled templates with minimal R
   knowledge, a quick tutorial is shown in the demo:

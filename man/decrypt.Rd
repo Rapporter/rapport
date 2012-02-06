@@ -11,7 +11,7 @@
   string
 }
 \description{
-  Decrypts string encrypted by \code{encrypt}.
+  Decrypts string encrypted by \code{\link{encrypt}}.
 }
 \details{
   Default parameters are read from \code{options}:
@@ -31,6 +31,6 @@ eval(parse(text=decrypt("rR7~HM~Pg2B40r,KP7Rkp2o=pc")))
   \url{https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html}
 }
 \seealso{
-  \code{encrypt}
+  \code{\link{encrypt}}
 }
 

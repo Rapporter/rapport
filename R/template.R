@@ -673,6 +673,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' @param graph.hi.res logical value indicating if high resolution (1280x~1280) images would be also generated
 #' @param graph.replay logical value indicating if plots need to be recorded for later replay (eg. while \code{print}ing \code{rapport} objects in R console)
 #' @return a list with \code{rapport} class.
+#' @seealso \code{\link{rapport-package}}
 #' @examples \dontrun{
 #' rapport("example", ius2008, var = "leisure")
 #' rapport("example", ius2008, var = "leisure", desc = FALSE, hist = TRUE, theme = "Set1")

@@ -22,8 +22,9 @@
   \code{NULL}). See Details above.
 }
 \description{
-  This function takes text(s) of R code and \code{eval}s
-  all at one run then returns a list with four elements:
+  This function takes text(s) of R code and
+  \code{\link{eval}}s all at one run then returns a list
+  with four elements:
 }
 \details{
   \itemize{ \item \emph{src} - a character value with
@@ -33,7 +34,7 @@
   \emph{last} R object will be returned as a raw R object.
   If a graph is plotted in the given text, the returned
   object is a string specifying the path to the saved png
-  in temporary directory (see: \code{tmpfile()}). If
+  in temporary directory (see: \code{\link{tempfile}}). If
   multiple plots was run in the same run (see: nested lists
   as inputs above) then the last plot is saved. If graphic
   device was touched, then no other R objects will be
