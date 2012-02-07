@@ -10,45 +10,48 @@ The most obvious goal of this package is to easily reproduce a report by providi
 
 {% highlight r %}
 > tpl.list()
-[1] "anova.tpl"                "correlations.tpl"         "crosstable.tpl"
-[4] "example.tpl"              "multivar-descriptive.tpl" "outlier-test.tpl"
-[7] "type_demo.tpl"            "univar-descriptive.tpl"
+ [1] "anova.tpl"                       "correlations.tpl"               
+ [3] "crosstable.tpl"                  "descriptives-multivar.tpl"      
+ [5] "descriptives-univar-factor.tpl"  "descriptives-univar-numeric.tpl"
+ [7] "descriptives-univar.tpl"         "example.tpl"                    
+ [9] "nortest.tpl"                     "outlier-test.tpl"               
+[11] "t-test.tpl"    
 {% endhighlight %}
 
 If you, find, say [`example.tpl`](/functions#exampletpl) promising, you can check it out by calling [`tpl.example`](/functions#tpl.example) function which prints out the examples specified in the template, prompting you to choose one from the list:
 
 {% highlight r %}
 > tpl.example('example')
-Enter example ID from the list below:
+Enter example ID from the list below: 
 
-(1) rapport("example", ius2009, var='leisure')
-(2) rapport("example", ius2009, var='leisure', desc=FALSE)
-(3) rapport("example", ius2009, var='leisure', desc=FALSE, hist=T)
-(4) rapport("example", ius2009, var='leisure', desc=FALSE, hist=T, theme='Set2')
-(all)   Run all examples
+(1) rapport("example", ius2008, var='leisure') 
+(2) rapport("example", ius2008, var='leisure', desc=FALSE) 
+(3) rapport("example", ius2008, var='leisure', desc=FALSE, hist=T) 
+(4) rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2') 
+(all)   Run all examples 
 
 Template ID>
 {% endhighlight %}
 
-After you choose the template ID, press `ENTER` key to see it in action. For example, running the first example of `example` template returns:
+After you typed in a template ID (`1`, `2`, `3`, `4` or `all`), press `ENTER` key to see it in action. For example, running the first example of `example` template returns (which can be called like `tpl.example('example', 1)` too):
 
 {% highlight r %}
 
- == Début
+# Début
 
 Hello, world!
 
 I have just specified a *Variable* in this template named to **leisure**. The label of this variable is "Internet usage in leisure time (hours per day)".
 
-And wow, the mean of *leisure* is 3.1994!
+And wow, the mean of *leisure* is _3.1994_!
 
- === Descriptive statistics
+## Descriptive statistics
 
 
-    **Min.**   **1st Qu.**   **Median**   **Mean**   **3rd Qu.**   **Max.**   **NA's**
---- ---------- ------------- ------------ ---------- ------------- ---------- ----------
-1   0.0        2.0           3.0          3.2        4.0           12.0       37.0
---- ---------- ------------- ------------ ---------- ------------- ---------- ----------
+**Min.**   **1st Qu.**   **Median**   **Mean**   **3rd Qu.**   **Max.**   **NA's**  
+---------- ------------- ------------ ---------- ------------- ---------- ----------
+0.000      2.000         3.000        3.199      4.000         12.000     37.000    
+---------- ------------- ------------ ---------- ------------- ---------- ----------
 
 
 The 5 highest values are: _12_, _12_, _10_, _10_ and _10_.
@@ -67,41 +70,42 @@ As you could see in the examples there are some other parameters of this templat
  by Gergely Daróczi
 
  This template demonstrates the basic features of rapport. We all hope you will like it!
+ 
+ packages:  NULL
+ dataRequired:  TRUE
+ strict:    TRUE    (see ?tpl.check for details)
+ 
+ Examples: 
+ rapport("example", ius2008, var='leisure') 
+ rapport("example", ius2008, var='leisure', desc=FALSE) 
+ rapport("example", ius2008, var='leisure', desc=FALSE, hist=T) 
+ rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2') 
 
- packages:  lattice
- dataRequired:  NA
 
- Examples:
- rapport("example", ius2008, var='leisure')
- rapport("example", ius2008, var='leisure', desc=FALSE)
- rapport("example", ius2008, var='leisure', desc=FALSE, hist=T)
- rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')
+Input parameters 
 
-Input parameters
-
-`var` (Variable)
-   A numeric variable.
+ `var` (Variable) - required!
+  A numeric variable.
      - type:    numeric
      - limits:  exactly 1 variable
 
-
-`desc` (Boolean)
-   Show descriptive statistics of specified variable?
+ `desc` (Boolean)
+  Show descriptive statistics of specified variable?
      - type:    boolean
      - limits:  exactly 1 variable
      - default value:   TRUE
 
-`hist` (Boolean)
-   Show histogram of specified variable?
+ `hist` (Boolean)
+  Show histogram of specified variable?
      - type:    boolean
      - limits:  exactly 1 variable
      - default value:   FALSE
 
-`theme` (Color theme)
-   Color theme of the diagram
+ `theme` (Color theme)
+  Color theme of the diagram
      - type:    option
      - limits:  exactly 1 variable
-     - default value:   Set1, Set2, Set3
+     - default value:   "Set1", "Set2" or "Set3"
 {% endhighlight %}
 
 Okay, we have seen the examples before, but new information appears now too:
@@ -109,9 +113,9 @@ Okay, we have seen the examples before, but new information appears now too:
  * the name and the author of the template,
  * a brief description of what is the template for, what will be returned,
  * required packages to run the template and
- * some input parameters.
+ * some input parameters (see [`tpl.inputs`](/functions#tpl.inputs) for details).
 
-These latter shows exactly what we were looking for which can be returned by [`tpl.info`](/functions#tpl.info)`('example', meta=F)` command too without meta information.
+These latter shows exactly what we were looking for which can be returned by `tpl.info('example', meta = F)` command too without meta information.
 
 There we can see that four parameters can be provided. `var` is the name of the variable we want to analyze, we can set `desc` to `FALSE` instead of the default value `TRUE` not to print descriptive statistics and we can instruct the template to return a histogram too (see: `hist` parameter) with given color `theme`.
 
@@ -135,11 +139,14 @@ And wow, the mean of *leisure* is 3.1994!
 /tmp/RtmpyEDSZb/file12c8cb13.png
 {% endhighlight %}
 
-Here instead of the known [`tpl.example`](/functions#tpl.example) we used directly [`rapport`](/functions#rapport) which takes the above described input parameters. As you can see the descriptive statistics table is gone, instead we got a histogram. Or at least a path to a png - which holds that image. You can find that file after running the above command with a modified path (based on `tempfile()`) on your local machine and check it out, we have attached that [here](demo/3f5075e30419f077ee974a022dd89e33.png).
+Here instead of the known [`tpl.example`](/functions#tpl.example) we used directly [`rapport`](/functions#rapport) which takes the above described input parameters. As you can see the descriptive statistics table is gone, instead we got a histogram. Or at least a path to a `png` file - which holds that image. You can find that file after running the above command (not exactly on the same path - see `?tempfile` for details) on your local machine and check it out. We have attached that [here](demo/3f5075e30419f077ee974a022dd89e33.png).
 
 Well, this is a quite rough way of checking out plots generated in a template :)
 
-There are a lot easier ways for that, as we can export our reports (to be more technical our `rapport` classes, see `str()` on any [`rapport`](/functions#rapport) returned object) to wide range of formats with [`tpl.export`](/functions#tpl.expport).
+There are a lot easier ways for that:
+
+- run [`rapport`](/functions#rapport) with [modified global options](#rapport-options): set `graph.record` and `graph.replay` to `TRUE`. This way you will see all generated plots pop-up while `print`ing a *rapport* class object. This way you can even resize the plots and later export the report with modified image dimension (see below).
+- as we can export our reports (to be more technical our `rapport` classes, see `str` function on any [`rapport`](/functions#rapport) returned object) to wide range of formats with [`tpl.export`](/functions#tpl.expport).
 
 Please find the HTML exported versions of the examples of [`example.tpl`](#exampletpl) [here](demo/example.html) or run on your machine:
 
@@ -161,6 +168,15 @@ options('tpl.email' = 'userR@example.com')
 
 And rerun the following commands to see the changes. For other settings in [`tpl.export`](/functions#tpl.export) please check out the [docs](/functions#tpl.export).
 
+If you would like to resize/alter the dimensions of generated images in the exported reports, a nice way of doing this is like:
+
+ - save a *rapport* class to a variable (e.g.: `report <- rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')`),
+ - `print` it (e.g.: `report`)
+ - while the plots are shown on the graphics device feel free to resize them, *rapport* will resave the images to disk with modified dimensions,
+ - export the R object (e.g.: `tpl.export(report)`)
+
+If you would export several *rapport* object at once, you can do that by combining those to a list, see [`tpl.export`](/functions#tpl.export) (especially the examples) for more details.
+
 There are a bunch of other helper functions in *rapport* to deal with templates. As most starts with `tpl` prefix (except for the main [`rapport`](/functions#rapport) function), we can easily list them by typing `tpl.` and pressing `TAB` twice:
 
 {% highlight r %}
@@ -174,6 +190,7 @@ By this method you might not find all handy functions, for example [`rapport.htm
 rapport.html('example', ius2008, var = 'leisure')
 {% endhighlight %}
 
+<a id="rapport-options"> </a>
 As you might have seen there are several general options in *rapport* which can be as handy as the [funtions](/functions) used while *rapporting*. [Above](#username-options) we have set the username and e-mail address of the user, which affects the result of all run templates. Please see the (almost) full list of available options below:
 
 - `tpl.user`: a (user)name to show in exported report (defaults to `"Anonymous"`)
