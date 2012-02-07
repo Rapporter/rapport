@@ -1,5 +1,5 @@
 require(rapport)
-demo.opt <- getOption("demo.ask"); replay.opt <- getOption("graph.replay"); record.opt <- getOption("graph.record"); options("demo.ask" = FALSE)
+demo.opt <- getOption("demo.ask"); dev.ask <- getOption("device.ask.default"); replay.opt <- getOption("graph.replay"); record.opt <- getOption("graph.record"); options("demo.ask" = FALSE); options("device.ask.default" = FALSE)
 next.please <- function(msg = "Press ENTER to continue: ") invisible(readline(msg))
 
 ########################################################################################
@@ -14,7 +14,13 @@ next.please <- function(msg = "Press ENTER to continue: ") invisible(readline(ms
 ##                       http://rapport-package.info                                  ##
 ##                                                                                    ##
 ########################################################################################
-
+##                                                                                    ##
+## NOTE: If you get "Hit <Return> to see next plot:" messages while running this demo ##
+## (usually happens on a Windows machine), please rerun the demo with `ask = FALSE`:  ##
+##                                                                                    ##
+##                   demo(rapport, ask = FALSE)                                       ##
+##                                                                                    ##
+########################################################################################
 
 
 ##############################################################################################
@@ -54,7 +60,7 @@ tpl.example('example', 1)
 ## You can see here some predefined text  ##
 ## updated by ius2008$leisure parameters. ##
 ##                                        ##
-## That is the spiriot of rapport :)      ##
+## That is the spirit of rapport :)       ##
 ##                                        ##
 ## OK, find out other templates too!      ##
 ## Let us list all available templates:   ##
@@ -134,7 +140,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 ## Will run:                                                                    ##
 ##                                                                              ##
 ##      options('graph.record' = TRUE)                                          ##
-##      options('graph.record' = TRUE)                                          ##
+##      options('graph.replay' = TRUE)                                          ##
 ##      rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec')) ##
 ##                                                                              ##
 ##################################################################################
@@ -162,7 +168,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 next.please()
 rapport.html('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE)
 
-rm(next.please); options("demo.ask" = demo.opt); options("graph.replay" = replay.opt); options("graph.record" = record.opt)
+rm(next.please); options("demo.ask" = demo.opt); options("graph.replay" = replay.opt); options("graph.record" = record.opt); options("device.ask.default" = dev.ask)
 
 ##############################################
 ##                                          ##

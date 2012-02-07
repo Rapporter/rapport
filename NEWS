@@ -1,4 +1,4 @@
-rapport 0.21 (2012-02-06)
+rapport 0.3 (2012-02-06)
 ----------------------------------------------------------------
 
 NEW FEATURES
@@ -16,12 +16,14 @@ CHANGES
   something goes wrong while loading.
 * `tpl.example` now uses `readlines` instead of reading from `stdin` (Windows and Eclipse/StatET bug)
 * `tpl.export` now checks if specified backend is installed and throws an error if not.
+* Checking if a plot was generated in `evals` is done with the help of `replayPlot` instead of
+  file size checks (for OS independence).
 
 
 BUGFIXES
 
 * Windows path issue
-* Windows default grDevice bug with checking if a plot was generated (checking file size changes)
+* Windows default grDevice bug with checking if a plot was generated (by checking file size changes)
 * Formatting issues with non-pandoc backends
 
 rapport 0.2 (2012-02-04)
