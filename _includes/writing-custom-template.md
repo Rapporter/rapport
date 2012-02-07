@@ -60,7 +60,7 @@ _Input type_ is specified in the second input block. It is the most (read: "only
   - **string** - accepts an atomic character vector
   - **number** - accepts an atomic numeric vector
   - **boolean** - accepts a logical value
-  - **option** - accepts a comma-separated list of values, that are to be matched with `match.arg`. The first value in a list is a default one.
+  - **option** - accepts a comma-separated list of values, that are to be matched with `match.arg`. The first value in a list is the default one.
 
 Now we'll make a little digression and talk about **input limits**. You may have noticed some additional stuff in type specification, e.g. `numeric[1,6]`. All dataset inputs, as well as *string* and *numeric standalone inputs* can contain _limit specifications_. If you want to bundle several variables from dataset or provide a vector with several string/numeric values, you can apply some rules within square brackets in `[a,b]` format, where `[a,b]` stands for "from `a` to `b` inputs", e.g. `[1,6]` means "from 1 to 6 inputs". Limit specifications can be left out, but even in that case implicit limit rules are applied, with `a` and `b` being set to 1.
 
