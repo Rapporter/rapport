@@ -136,7 +136,6 @@
   \code{rp.tags} interesting, as it lets users to specify
   custom tags for \code{\link{rapport}} chunks. By changing
   the default values you may create custom reports and use
-  your own syntax in custom templates. However,
-  \code{rapport} }
+  your own syntax in custom templates. }
 }
 

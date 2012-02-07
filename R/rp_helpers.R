@@ -439,46 +439,6 @@ purge.comments <- function(x, comment.open = get.tags('comment.open'), comment.c
 }
 
 
-#' Convert table-like structures to JSON object
-#'
-#' This function takes either a \code{\link{matrix}} or a \code{\link{data.frame}} object to extract column names, row names and the "body" of the table-like object, hence exports them to JSON.
-#' @param d either a \code{matrix} or a \code{data.frame} object
-#' @param name.rows a string naming object that contains row names
-#' @param name.cols a string naming object that contains columns names
-#' @param name.body a string naming object that contains table body
-#' @return string with JSON object containing \code{rows}, \code{cols} and \code{body} attributes.
-#' @examples \dontrun{
-#'     table.json(mtcars)
-#'
-#'     set.seed(1)
-#'     m <- matrix(sample(10, 100, TRUE), 10)
-#'     table.json(m)
-#' }
-#' @export
-table.json <- function(d, name.rows = 'rows', name.cols = 'cols', name.body = 'body'){
-
-    if (missing(d))
-        stop('no object to export to table')
-
-    ## check object class
-    if (!inherits(d, c('matrix', 'data.frame')))
-        stopf('object "%s" is not of "matrix" or a "data.frame" class', deparse(substitute(d)))
-
-    if (is.matrix(d))
-        d <- as.data.frame(d)
-
-    res <- structure(list(
-                          rownames(d),
-                          colnames(d),
-                          structure(d, row.names = c(NA, -nrow(d)), .Names = NULL)
-                          ),
-                     .Names = c(name.rows, name.cols, name.body))
-
-    ## add a class?
-    return (toJSON(res))
-}
-
-
 #' Percent
 #'
 #' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to value specified in \code{rp.decimal.short} option).
