@@ -18,6 +18,7 @@ LazyData: yes
 LazyLoad: yes
 Depends:
     R (>= 2.14.0),
+    grDevices,
     ascii,
     evaluate,
     lattice,
