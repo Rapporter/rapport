@@ -145,12 +145,30 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 next.please()
 options('graph.record' = TRUE)
 options('graph.replay' = TRUE)
-rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
+report <- rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
+report
 
 
 ############################################################################################################
 ##                                                                                                        ##
-## And an easy wrapper to get the HTML export of the document in one run with hi-res images attached:     ##
+## And let us export this report to OpenDocument format with the resized image:                           ##
+##                                                                                                        ##
+## Will run:                                                                                              ##
+##                                                                                                        ##
+##      tpl.export(report, format = 'odt')                                                                ##
+##                                                                                                        ##
+## NOTE: this requires pandoc to be installed!                                                            ##
+##                                                                                                        ##
+############################################################################################################
+
+
+next.please()
+tpl.export(report, format = 'odt')
+
+
+############################################################################################################
+##                                                                                                        ##
+## Or call an easy wrapper to get the HTML export of the document in one run with hi-res images attached: ##
 ##                                                                                                        ##
 ## Will run:                                                                                              ##
 ##                                                                                                        ##
@@ -165,7 +183,7 @@ next.please()
 rapport.html('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE)
 
 
-rm(next.please); options("demo.ask" = demo.opt); options("graph.replay" = replay.opt); options("graph.record" = record.opt); options("device.ask.default" = dev.ask)
+rm(next.please); rm(report); options("demo.ask" = demo.opt); options("graph.replay" = replay.opt); options("graph.record" = record.opt); options("device.ask.default" = dev.ask)
 
 
 ##############################################
