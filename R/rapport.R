@@ -30,7 +30,7 @@
 #'         }
 #'     }
 #'     \item \code{\link{p}} function concatenates vector values to a nicely formatted string by using the values from global options (see help page for \code{p} for details).
-#'     \item Developers might find the list of options in \code{rp.tags} interesting, as it lets users to specify custom tags for \code{\link{rapport}} chunks. By changing the default values you may create custom reports and use your own syntax in custom templates. However, \code{rapport}
+#'     \item Developers might find the list of options in \code{rp.tags} interesting, as it lets users to specify custom tags for \code{\link{rapport}} chunks. By changing the default values you may create custom reports and use your own syntax in custom templates.
 #' }
 #' @docType package
 #' @name rapport-package
