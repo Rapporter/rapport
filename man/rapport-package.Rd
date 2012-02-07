@@ -35,50 +35,51 @@
   package-specific options. Please skim through the summary
   of following options:
 
-  \itemize{ \item \emph{tpl.user}: a (user)name to show in
+  \itemize{ \item \code{tpl.user}: a (user)name to show in
   exported report (defaults to \code{"Anonymous"}) \item
-  \emph{tpl.email}: a user's e-mail address to show in
+  \code{tpl.email}: a user's e-mail address to show in
   exported report (defaults to an empty string).  \item
-  \emph{rapport.mode} defines the manner in which
+  \code{rapport.mode} defines the manner in which
   \code{\link{rapport}} evaluates the templates - by
-  default it is set to \emph{normal}. In \emph{normal} mode
+  default it is set to \code{normal}. In \code{normal} mode
   \code{link{rapport}} would check all non-strict templates
   (see: \code{\link{tpl.check}}) "linewise", and that can
-  cause huge overhead, while \emph{performance} mode would
+  cause huge overhead, while \code{performance} mode would
   not perform cautious checks and evaluate all commands at
-  once. That is not a problem if you write \emph{strict}
-  templates, which is really advised. \emph{debug} mode is
+  once. That is not a problem if you write \code{strict}
+  templates, which is really advised. \code{debug} mode is
   appropriate for developers, as it will interrupt the
   execution if template contains any errors.  \item By
   default \code{\link{rapport}} function saves plots to
   image files (see the settings below) and \code{print}
   method just shows the path(s) of the generated image(s).
   If you would like to see the plot(s) when calling
-  \code{rapport} function from an interactive R console,
-  please set \code{graph.record} and \code{graph.replay}
-  options to \code{TRUE} beforehand. In that case all
-  generated plots will be displayed after printing the
-  \code{rapport} object. These options are set to
-  \code{FALSE} by default although we find these settings
-  really handy, as you can resize the images on the fly and
-  export resized images to HTML/ODT/DOCX/PDF etc. If you
-  would even like to save the actual environment of each
-  generated plot (variables, data sets etc.) as an
-  \code{RData} file, please set \code{graph.save.env} to
-  \code{TRUE}.  \item \code{\link{rapport}} also has some
-  options to set formatting style of numbers, characters
-  and dates. The decimals needed for automatic rounding is
-  defined in \code{rp.decimal} and {rp.decimal.short}
-  options which are by default set to \code{4} and
-  \code{2}, respectively. Inline numeric values are
-  presented in a short form, while the tables use the long
-  form. The decimal mark can be set easily to e.g.
-  \code{","} in \code{rp.decimal.mark} option, and the date
-  format can be specified in POSIX format via
-  \code{rp.date.format} option.  \item the exported graphs
-  can be customised via following options: \itemize{ \item
-  The most basic option is \code{style.theme} which points
-  to a \code{lattice}/\code{trellis} theme, and uses
+  \code{\link{rapport}} function from an interactive R
+  console, please set \code{graph.record} and
+  \code{graph.replay} options to \code{TRUE} beforehand. In
+  that case all generated plots will be displayed after
+  printing the \code{rapport} object. These options are set
+  to \code{FALSE} by default although we find these
+  settings really handy, as you can resize the images on
+  the fly and export resized images to HTML/ODT/DOCX/PDF
+  etc. If you would even like to save the actual
+  environment of each generated plot (variables, data sets
+  etc.) as an \code{RData} file, please set
+  \code{graph.save.env} to \code{TRUE}.  \item
+  \code{\link{rapport}} also has some options to set
+  formatting style of numbers, characters and dates. The
+  decimals needed for automatic rounding is defined in
+  \code{rp.decimal} and \code{rp.decimal.short} options
+  which are by default set to \code{4} and \code{2},
+  respectively. Inline numeric values are presented in a
+  short form, while the tables use the long form. The
+  decimal mark can be set easily to e.g. \code{","} in
+  \code{rp.decimal.mark} option, and the date format can be
+  specified in POSIX format via \code{rp.date.format}
+  option.  \item the exported graphs can be customised via
+  following options: \itemize{ \item The most basic option
+  is \code{style.theme} which points to a
+  \code{\link{lattice}}/\code{trellis} theme, and uses
   default \emph{rapport} theme:
   \code{\link{theme.rapport}}. If you do not like this
   minimalistic bluish theme, you might reconsider using
@@ -89,7 +90,7 @@
   package. Of course, custom theme might be provided too -
   check out the \code{?custom.theme} from
   \code{latticeExtra} package or head directly to:
-  \code{\link{trellis.par.get()}}.  \item
+  \code{\link{trellis.par.get}}.  \item
   \code{theme.rapport} can deal with a great number of
   colour palettes. By default it uses \code{default} theme
   specified in \code{style.color.palette} option, which is
@@ -115,12 +116,12 @@
   \code{"y"}). \code{"none"} results in a blank background.
   \item The plots are saved to disk with
   \code{\link{rapport}} function, and the resulting files
-  can be customised with several options: \itemize{
+  can be customised with several options: \itemize{ \item
   \code{graph.format} option holds the plot output format:
   \code{"png"}, \code{"jpg"}, \code{"bmp"}, \code{"tiff"},
-  \code{"svg"} or \code{"pdf"} \code{graph.width} and
+  \code{"svg"} or \code{"pdf"} \item \code{graph.width} and
   \code{graph.height} options hold settings for plot width
-  and height, respectively \code{graph.res} sets the
+  and height, respectively \item \code{graph.res} sets the
   default resolution in points per inch (\code{ppi}). If
   you would like to export images to high resolution
   regardless of the specified dimensions, set
