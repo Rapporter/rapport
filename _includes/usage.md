@@ -139,7 +139,7 @@ And wow, the mean of *leisure* is 3.1994!
 /tmp/RtmpyEDSZb/file12c8cb13.png
 {% endhighlight %}
 
-Here instead of the known [`tpl.example`](/functions#tpl.example) we used directly [`rapport`](/functions#rapport) which takes the above described input parameters. As you can see the descriptive statistics table is gone, instead we got a histogram. Or at least a path to a `png` file - which holds that image. You can find that file after running the above command (not exactly on the same path - see `?tempfile` for details) on your local machine and check it out. We have attached that [here](demo/3f5075e30419f077ee974a022dd89e33.png).
+Here instead of the known [`tpl.example`](/functions#tpl.example) we used directly [`rapport`](/functions#rapport) which takes the above described input parameters. As you can see the descriptive statistics table is gone, instead we got a histogram. Or at least a path to a `png` file - which holds that image. You can find that file after running the above command (not exactly on the same path - see `?tempfile` for details) on your local machine and check it out. We have attached that [here](demo/7779958734926ffb57756d6c1d01b75b.png).
 
 Well, this is a quite rough way of checking out plots generated in a template :)
 
