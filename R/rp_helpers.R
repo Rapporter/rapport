@@ -957,28 +957,27 @@ rp.prettyascii <- function(x, asciitype = getOption('asciiType')) {
 
 #' Inline Printing
 #'
-#' Merge atomic vector elements in one string for pretty inline printing.
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'p.wrap',
-#'     \item 'p.sep',
-#'     \item 'p.copula'.
-#' }
+#' \code{\link{p}} merges elements of a variable (see \code{\link{is.variable}}) in one string for the sake of pretty inline printing. Default parameters are read from appropriate \code{option} values (see argument description for details). This function allows you to put the results of an expression that yields a variable \emph{inline}, by wrapping the vector elements with the string provided in \code{wrap}, and separating elements by main and ending separator (\code{sep} and \code{copula}). In case of a two-length vector, value specified in \code{copula} will be used as a separator. You can also control the length of provided vector by altering an integer value specified in \code{limit} argument (defaults to \code{20}).
 #' @param x an atomic vector to get merged for inline printing
-#' @param wrap string to wrap vector elements (defaults to \code{_}, i.e. underline in pandoc)
-#' @param sep a string with main separator (separates all vector elements but the last one)
-#' @param copula a string with last separator (usually a copula like "and")
+#' @param wrap a string to wrap vector elements (uses value set in \code{p.wrap} option: \code{"_"} by default, which is a markdown-friendly wrapper and it puts the string in \emph{italic})
+#' @param sep a string with the main separator, i.e. the one that separates all vector elements but the last two (uses the value set in \code{p.sep} option - \code{","} by default)
+#' @param copula a string with ending separator - the one that separates the last two vector elements (uses the value set in \code{p.copula} option, \code{"and"} by default)
 #' @param limit maximum character length (defaults to 20 elements)
 #' @return a string with concatenated vector contents
 #' @examples
 #' p(c("fee", "fi", "foo", "fam"))
 #' ## [1] "_fee_, _fi_, _foo_ and _fam_"
+#' p(1:3, wrap = "")
+#' ## [1] "1, 2 and 3"
+#' p(LETTERS[1:5], copula = "and the letter")
+#' ## [1] "_A_, _B_, _C_, _D_ and the letter _E_"
+#' p(c("Thelma", "Louise"), wrap = "", copula = "&")
+#' ## [1] "Thelma & Louise"
 #' @export
 p <- function(x, wrap = getOption('p.wrap'), sep = getOption('p.sep'), copula = getOption('p.copula'), limit = 20L){
 
-    stopifnot(is.atomic(x))           # check for atomic vector
+    stopifnot(is.variable(x))         # check output (should be output)
+    stopifnot(all(sapply(list(wrap, sep, copula), is.string))) # separators should be strings
     x.len <- length(x)                # vector length
     stopifnot(x.len > 0)              # no zero-length vectors allowed
     stopifnot(x.len <= limit)         # check limits
@@ -986,9 +985,9 @@ p <- function(x, wrap = getOption('p.wrap'), sep = getOption('p.sep'), copula = 
     if (x.len == 1)
         wrap(x, wrap)
     else if (x.len == 2)
-        paste(wrap(x, wrap), collapse = wrap(copula, ' '))
+        paste(wrap(x, wrap), collapse = sprintf(' %s ', copula))
     else
-        paste(paste(wrap(x[1:(x.len - 1)], wrap), collapse = sep), copula, wrap(x[x.len], wrap))
+        paste(paste(wrap(head(x, -1), wrap), collapse = sep), copula, wrap(tail(x, 1), wrap))
 }
 
 
