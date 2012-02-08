@@ -3,6 +3,7 @@ rapport 0.31 (2012-02-08)
 
 This is a hotfix release:
  * fixed .onLoad/windowsFont call error
+ * fixed #47 (https://github.com/aL3xa/rapport/issues/36) of custom RefClassField
  * removed `RJSONIO` dependency (just like: `table.json` function)
  * small documentation and CSS tweaks
 
