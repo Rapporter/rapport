@@ -48,7 +48,7 @@
     ##  * set custom theme to an R object, details: ?trellis.par.get()
     options('style.grid'          = 'both')         # to draw grids for 'x', 'y', 'both' axis or 'none'
     if (.Platform$OS.type == "windows")             # set Windows fonts if necessary  
-        windowsFonts(Helvetica = windowsFont("TT Helvetica")) 
+        grDevices:::windowsFonts(Helvetica = grDevices:::windowsFont("TT Helvetica")) 
     options('style.font'          = 'Helvetica')
     options('style.color.palette' = 'default')      # for other palette options, see: ?brewer.pal.info
     options('style.colorize'      = FALSE)

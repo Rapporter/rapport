@@ -46,28 +46,6 @@ alike.integer <- function(x){
 }
 
 
-#' Check plot creation
-#'
-#' This function checks if given expression generates a plot.
-#' @param cmd an expression that is to be tested
-#' @return a logical value
-#' @references See original thread for more details (\url{http://stackoverflow.com/a/2744434/457898}). Special thanks to Hadley Wickham for this one!
-#' @author Hadley Wickham <h.wickham@@gmail.com>
-#' @examples \dontrun{
-#'     makes.plot(plot(rnorm(100))) # returns TRUE
-#'     makes.plot(sample(10))       # returns FALSE
-#' }
-#' @export
-makes.plot <- function(cmd){
-
-    before <- .Internal(getSnapshot())
-    force(cmd)
-    after <- .Internal(getSnapshot())
-    dev.off()
-    !identical(before, after)
-}
-
-
 #' Trim Spaces
 #'
 #' Removes leading and/or trailing space(s) from a character vector value. By default, it removes only trailing spaces. In order to trim both leading and trailing spaces, pass \code{TRUE} to both \code{leading} and \code{trailing} arguments.

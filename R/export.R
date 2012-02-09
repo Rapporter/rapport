@@ -101,7 +101,8 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         r$title <- as.character(rp$meta['title'])
         r$author <- as.character(getOption('tpl.user'))
         r$email <- as.character(getOption('tpl.email'))
-        r$time <- 0
+        ## as we cannot use a custom Field here, using date temporary. See: https://github.com/aL3xa/rapport/issues/36
+        r$date <- 0
     }
     if (!is.logical(create)) stop('Wrong create (!=TRUE|FALSE) parameter!')
     if (!is.logical(logo)) stop('Wrong logo (!=TRUE|FALSE) parameter!')
@@ -128,7 +129,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         if (all(lapply(rp, class) == 'rapport')) {
             r$title <- as.character(rp[[1]]$meta['title'])
             for (i in 1:length(rp)) {
-                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, date = date, format = format, backend = backend)
+                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, backend = backend)
             }
         } else
             stop('Wrong rp parameter!')
@@ -172,7 +173,7 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
                     }
             })
 
-            r$time <- r$time + rp$time
+            r$date <- r$date + rp$time
         }
 
     ## create report or return the Report class
@@ -186,9 +187,9 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         
         if (logo) {
             switch(md.lang,
-                'asciidoc' = r$add(paragraph(sprintf("'''''\nThis report was generated with http://www.r-project.org/[R] (%s) and http://al3xa.github.com/rapport/[rapport] (%s) in %s sec on %s platform.", sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$time), R.version$platform))),
-                'pandoc' = r$add(paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://al3xa.github.com/rapport/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$time), R.version$platform))),
-                't2t' = r$add(paragraph(sprintf('--------------------\nThis report was generated with [R http://www.r-project.org/] (%s) and [rapport http://al3xa.github.com/rapport/] (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$time), R.version$platform))))
+                'asciidoc' = r$add(paragraph(sprintf("'''''\nThis report was generated with http://www.r-project.org/[R] (%s) and http://al3xa.github.com/rapport/[rapport] (%s) in %s sec on %s platform.", sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
+                'pandoc' = r$add(paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://al3xa.github.com/rapport/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
+                't2t' = r$add(paragraph(sprintf('--------------------\nThis report was generated with [R http://www.r-project.org/] (%s) and [rapport http://al3xa.github.com/rapport/] (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))))
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
         }
         

@@ -1,9 +1,18 @@
+rapport 0.31 (2012-02-08)
+----------------------------------------------------------------
+
+This is a hotfix release:
+ * fixed .onLoad/windowsFont call error
+ * fixed #47 (https://github.com/aL3xa/rapport/issues/36) of custom RefClassField
+ * removed `RJSONIO` dependency (just like: `table.json` function)
+ * small documentation and CSS tweaks
+
 rapport 0.3 (2012-02-07)
 ----------------------------------------------------------------
 
 NEW FEATURES
 
-* Introduced own `skewness()` and `kurtosis()` functions to get rid of 'moments' dependency.
+* Introduced own `skewness()` and `kurtosis()` functions to get rid of `moments` dependency.
 * Option (default set to FALSE) to view generated plots without exporting (`replayPlot`)
 * Same option let users resize generated (and saved) images on the fly while printing rapport classes
   and later exporting   
