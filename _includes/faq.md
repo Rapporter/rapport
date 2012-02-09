@@ -77,3 +77,24 @@ security.fileuri.strict_origin_policy
 {% endhighlight %}
 
 Set it to `false` (by double-clicking on it) and refresh the page (you may want to bypass the browser cache, too: use *Shift* + click on *Refresh* button, or *Ctrl*+*Shift*+*R*). Behold the pretty fonts! See an [answer](http://stackoverflow.com/a/3704578/457898) that solved this strange behaviour.
+
+#### I'm trying to produce those fancy _HTML_ tables you have in _rapport_. Any tips on how to do that? (Q of _Roman Luštrik_)
+
+Sure, just put a piece of code that returns a `data.frame` object in a _block chunk_ (not an _inline chunk_), and it will be converted to HTML table once you export it. Put something like this in your `.tpl` file:
+
+{% highlight r %}
+<%
+rp.desc("edu", "student", c(min, max, mean, sd), ius2008)
+%>
+{% endhighlight %}
+
+and run `tpl.export(rapport(<file path>, <data>, <inputs>))`. Note however, that only the last non-assigning statement will be evaluated:
+
+{% highlight r %}
+<%
+head(mtcars)
+rp.desc("edu", "student", c(min, max, mean, sd), ius2008)
+%>
+{% endhighlight %}
+
+as this will return same output as the previous chunk.
