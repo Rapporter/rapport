@@ -7,7 +7,7 @@ Actually a lot of stuff:
 - it also refers to _"the relationship of two or more people who are in sync or on the same wavelength because they feel similar and/or relate well to each other"_\*
 - in psychotherapy, _rapport_ reflects mutual empathy and understanding between a therapist and client
 - if you're a German (oder Sie sprechen fließend Deutsch), then it's just a synonym for "report" (BTW, in Hungarian *rapport* denotes interrogation in military parlance)
-- if you're a Kwakiutl Indian or a Khalkha Mongol, _rapport_ probably means nothing in your language, but you should give [R](http://www.r-project.org ) a try, it's bonkers!
+- if you're a Kwakiutl Indian or a Khalkha Mongol, _rapport_ probably means nothing in your language, but you should give it a try, it's bonkers!
 
 \* Stewart, Dorothy (1998). Gower handbook of management skills. Gower Publishing. p. 282. ISBN 0566078899
 
