@@ -104,7 +104,8 @@ eval.msgs <- function(src, env = NULL) {
 #' @param output a character vector of required returned values. See below.
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @param check.output to check each line of \code{txt} for outputs. If set to \code{TRUE} you would result in some overhead as all commands have to be run twice (first to check if any output was generated and if so in which part(s), later the R objects are to be grabbed). With \code{FALSE} settings \code{evals} runs much faster, but as now checks are made, some requirements apply, see Details.
-#' @param graph.name set the file name of saved plots which is a \code{tempfile()} by default. A simple character string might be provided where \code{\%d} would be replaced by the index of the generating \code{txt} source and \code{\%t} by some random characters.
+#' @param graph.name set the file name of saved plots which is a \code{\link{tempfile}} by default. A simple character string might be provided where \code{\%d} would be replaced by the index of the generating \code{txt} source and \code{\%t} by some random characters. Default is set to call \code{\link{tempfile}} instead.
+#' @param graph.dir path to an existing directory where to place generated images. Default set to NULL as using \code{\link{tempfile}}s.
 #' @param graph.output set the required file format of saved plots
 #' @param width width of generated plot in pixels for even vector formats (!)
 #' @param height height of generated plot in pixels for even vector formats (!)
@@ -232,7 +233,7 @@ eval.msgs <- function(src, env = NULL) {
 #' evals('mean(x)')
 #' }
 #' @export
-evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.name = substitute(tempfile()), graph.dir = tempdir(), graph.output = c('png', 'bmp', 'jpeg', 'jpg', 'tiff', 'svg', 'pdf'), width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), graph.env = FALSE, graph.recordplot = FALSE, ...){
+evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.name = substitute(tempfile()), graph.dir = '', graph.output = c('png', 'bmp', 'jpeg', 'jpg', 'tiff', 'svg', 'pdf'), width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), graph.env = FALSE, graph.recordplot = FALSE, ...){
 
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
@@ -252,13 +253,11 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
     if (!any(is.list(hooks), is.null(hooks)))
         stop('Wrong list of hooks provided!')
 
-    #if (!missing(graph.name))
-    #    graph.name <- match.call()$graph.name
-    #graph.name<-tempfile()
-
     graph.output <- match.arg(graph.output)
     if (graph.output == 'jpg')
         graph.output <- 'jpeg'
+    if (!identical(file.info(graph.dir)$isdir, TRUE) & graph.dir != '')
+        stop(sprintf('Wrong path specified! It does not seems to be a directory: %s', graph.dir))
 
     ## env for running all lines of code -> eval()
     if (is.null(env)) env <- new.env()
@@ -432,6 +431,8 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
             }
         } else {
+
+            unlink(file)
 
             if (hi.res & check.output)
                 env.hires <- env

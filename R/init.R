@@ -3,6 +3,9 @@
     ## rapport settings
     options('rapport.mode'          = 'normal')
     options('asciiType'             = 'pandoc')
+    options('file.name'             = 'rapport-%D-%d')
+    options('file.path'             = tempdir())
+    options('portable.html'         = FALSE)
 
     ## encrypt/decrypt key generation settings
     options('.encrypt.chars'   = paste(c(LETTERS, letters, 0:9, ' ', '(', ')', '=', '~', '.', '+', '"', "'",'$', '#'), collapse = ""))
@@ -54,8 +57,6 @@
     options('style.colorize'      = FALSE)
     ## image format settings
     options('graph.format'        = 'png')
-    options('graph.name'          = 'rapport-%D-%d')
-    options('graph.dir'           = tempdir())
     options('graph.width'         = 480)
     options('graph.height'        = 480)
     options('graph.res'           = 72)

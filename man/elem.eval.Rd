@@ -5,7 +5,7 @@
   elem.eval(x, tag.open = get.tags("inline.open"),
     tag.close = get.tags("inline.close"),
     remove.comments = TRUE, rapport.mode = "normal",
-    graph.name = getOption("graph.name"), parent, ...)
+    graph.name = getOption("file.name"), parent, ...)
 }
 \arguments{
   \item{x}{a template file pointer (see

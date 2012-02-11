@@ -555,7 +555,7 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
 #' @param parent parent list holding the current (child) element
 #' @param ... additional params for \code{grep}-like functions
 #' @keywords internal
-elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, rapport.mode = 'normal', graph.name = getOption('graph.name'), parent, ...){
+elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, rapport.mode = 'normal', graph.name = getOption('file.name'), parent, ...){
 
     `%d` <- which(sapply(parent, function(parent) identical(x, parent)))
     if (!missing(graph.name))
@@ -661,18 +661,23 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #'
 #' \itemize{
 #'     \item 'rapport.mode',
+#'     \item 'file.name',
+#'     \item 'file.path',
 #'     \item 'graph.format',
 #'     \item 'graph.width',
 #'     \item 'graph.height',
 #'     \item 'graph.res',
 #'     \item 'graph.hi.res'.
 #' }
+#' 
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param data a \code{data.frame} to be used in template
 #' @param ... matches template inputs in format 'key = "value"'
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
 #' @param rapport.mode forces \code{rapport} to run in \emph{performance} or \emph{debug} mode instead of normal behaviour. Change this only if you really know what are you doing! In \code{performance} mode \code{rapport} will evaluate all templates in \code{strict} mode (see: \code{evals(..., check.output = FALSE)}), while in \code{debug} mode \code{rapport} will halt on first error.
+#' @param file.name set the file name of saved plots and exported documents. A simple character string might be provided where \code{\%D} is an auto-incrementing integer (increments while all \code{\link{rapport}} call), \code{\%d} would be replaced by the index of the generating chunk (in the same \code{rapport}), \code{\%T} by the name of the template in action and \code{\%t} by some random characters.
+#' @param file.path path of a directory where to store generated images and exported reports
 #' @param graph.output the required file format of saved plots (optional)
 #' @param graph.width the required width of saved plots (optional)
 #' @param graph.height the required height of saved plots (optional)
@@ -698,7 +703,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), graph.name = getOption('graph.name'), graph.dir = getOption('graph.dir'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
+rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), file.name = getOption('file.name'), file.path = getOption('file.path'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
 
     timer  <- proc.time()                       # start timer
     txt    <- tpl.find(fp)                      # split file to text
@@ -871,22 +876,24 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
         })
     }
 
-    ## pregenerate graph file name (update the value of "%D" based on file list in current directory if needed)
-    if (grepl('%D', graph.name)) {
+    ## pregenerate file name (update the value of "%D" based on file list in current directory if needed)
+    if (grepl('%T', file.name))
+        file.name <- gsub('%T', fp, file.name, fixed = TRUE)
+    if (grepl('%D', file.name)) {
         ## TODO: check if only one '%D' in there
-        similar.files <- list.files(graph.dir, pattern = sprintf('^%s\\.(jpeg|tiff|png|svg|bmp)$', gsub('%t', '[a-z0-9]*', gsub('%D|%d', '[[:digit:]]*', graph.name))))
+        similar.files <- list.files(file.path, pattern = sprintf('^%s\\.(jpeg|tiff|png|svg|bmp)$', gsub('%t', '[a-z0-9]*', gsub('%D|%d', '[[:digit:]]*', file.name))))
         if (length(similar.files) > 0) {
             similar.files <- sub('\\.(jpeg|tiff|png|svg|bmp)$', '', similar.files)
-            rep <- gsub('%t', '[a-z0-9]*', gsub('%d', '[[:digit:]]*', strsplit(graph.name, '%D')[[1]]))
+            rep <- gsub('%t', '[a-z0-9]*', gsub('%d', '[[:digit:]]*', strsplit(file.name, '%D')[[1]]))
             `%D` <- max(as.numeric(gsub(paste(rep, collapse = '|'), '', similar.files))) + 1
         } else
             `%D` <- 1
-        graph.name <- gsub('%D', `%D`, graph.name, fixed = TRUE)
+        file.name <- gsub('%D', `%D`, file.name, fixed = TRUE)
     }
     
     ## eval chunks
     opts.bak <- options()                      # backup options
-    report <- lapply(elem, elem.eval, parent = elem, env = e, check.output = !(as.logical(meta$strict) | (rapport.mode == 'performance')), rapport.mode = rapport.mode, graph.output = graph.output, graph.name = graph.name, graph.dir = graph.dir, width = graph.width, height = graph.height, res = graph.res, hi.res = graph.hi.res, graph.recordplot = graph.replay) # render template body
+    report <- lapply(elem, elem.eval, parent = elem, env = e, check.output = !(as.logical(meta$strict) | (rapport.mode == 'performance')), rapport.mode = rapport.mode, graph.output = graph.output, graph.name = file.name, graph.dir = file.path, width = graph.width, height = graph.height, res = graph.res, hi.res = graph.hi.res, graph.recordplot = graph.replay) # render template body
     options(opts.bak)                          # resetting options
 
     ## error handling in chunks
@@ -948,11 +955,12 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
     })
 
     res <- list(
-                meta   = meta,
-                inputs = inputs,
-                report = report,
-                call   = match.call(),
-                time   = as.numeric(proc.time() - timer)[3]
+                meta        = meta,
+                inputs      = inputs,
+                report      = report,
+                call        = match.call(),
+                time        = as.numeric(proc.time() - timer)[3],
+                file.name   = file.path(gsub('\\', '/', file.path, fixed = TRUE), file.name)
                 )
 
     if (isTRUE(reproducible)){

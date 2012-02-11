@@ -6,8 +6,7 @@
     classes = NULL, hooks = NULL, length = Inf,
     output = c("all", "src", "output", "type", "msg"),
     env = NULL, check.output = TRUE,
-    graph.name = substitute(tempfile()),
-    graph.dir = tempdir(),
+    graph.name = substitute(tempfile()), graph.dir = "",
     graph.output = c("png", "bmp", "jpeg", "jpg", "tiff", "svg", "pdf"),
     width = 480, height = 480, res = 72, hi.res = FALSE,
     hi.res.width = 960,
@@ -64,10 +63,15 @@
   Details.}
 
   \item{graph.name}{set the file name of saved plots which
-  is a \code{tempfile()} by default. A simple character
-  string might be provided where \code{\%d} would be
-  replaced by the index of the generating \code{txt} source
-  and \code{\%t} by some random characters.}
+  is a \code{\link{tempfile}} by default. A simple
+  character string might be provided where \code{\%d} would
+  be replaced by the index of the generating \code{txt}
+  source and \code{\%t} by some random characters. Default
+  is set to call \code{\link{tempfile}} instead.}
+
+  \item{graph.dir}{path to an existing directory where to
+  place generated images. Default set to NULL as using
+  \code{\link{tempfile}}s.}
 
   \item{graph.output}{set the required file format of saved
   plots}
