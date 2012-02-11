@@ -551,16 +551,23 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
 #' @param tag.close a string containing closing tag
 #' @param remove.comments should comments be omitted on evaluation?
 #' @param rapport.mode see: \code{?rapport}
+#' @param graph.name indirectly read from "graph.name" option by calling \code{\link{rapport}}, should not be directly changed
+#' @param parent parent list holding the current (child) element
 #' @param ... additional params for \code{grep}-like functions
 #' @keywords internal
-elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, rapport.mode = 'normal', ...){
+elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, rapport.mode = 'normal', graph.name = getOption('graph.name'), parent, ...){
+
+    `%d` <- which(sapply(parent, function(parent) identical(x, parent)))
+    if (!missing(graph.name))
+        if (is.character(graph.name))
+            graph.name <- gsub('%d', `%d`, graph.name, fixed = TRUE)
 
     if (inherits(x, 'rp.block')){
 
         ## template blocks
         res <- list(
                     type = 'block',
-                    robjects = evals(x, ...)
+                    robjects = evals(x, graph.name = graph.name, ...)
                     )
 
     } else if (inherits(x, c('rp.inline', 'rp.heading'))) {
@@ -588,7 +595,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
         if (ntags == 2){
             c.yes <- grab.chunks(x, tag.open, tag.close, TRUE) # chunks with tags
             c.no  <- grab.chunks(x, tag.open, tag.close, FALSE) # chunks sans tags
-            resp  <- evals(c.no, ...)
+            resp  <- evals(c.no, graph.name = graph.name, ...)
             out   <- sapply(resp, function(x){
                 ## OK, this is lame, we should allow users to define tables in blocks,
                 ## but not in headings, assuming that we find an easy way to add
@@ -691,7 +698,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
+rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), graph.name = getOption('graph.name'), graph.dir = getOption('graph.dir'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
 
     timer  <- proc.time()                       # start timer
     txt    <- tpl.find(fp)                      # split file to text
@@ -864,8 +871,22 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
         })
     }
 
+    ## pregenerate graph file name (update the value of "%D" based on file list in current directory if needed)
+    if (grepl('%D', graph.name)) {
+        ## TODO: check if only one '%D' in there
+        similar.files <- list.files(graph.dir, pattern = sprintf('^%s\\.(jpeg|tiff|png|svg|bmp)$', gsub('%t', '[a-z0-9]*', gsub('%D|%d', '[[:digit:]]*', graph.name))))
+        if (length(similar.files) > 0) {
+            similar.files <- sub('\\.(jpeg|tiff|png|svg|bmp)$', '', similar.files)
+            rep <- gsub('%t', '[a-z0-9]*', gsub('%d', '[[:digit:]]*', strsplit(graph.name, '%D')[[1]]))
+            `%D` <- max(as.numeric(gsub(paste(rep, collapse = '|'), '', similar.files))) + 1
+        } else
+            `%D` <- 1
+        graph.name <- gsub('%D', `%D`, graph.name, fixed = TRUE)
+    }
+    
+    ## eval chunks
     opts.bak <- options()                      # backup options
-    report <- lapply(elem, elem.eval, env = e, check.output = !(as.logical(meta$strict) | (rapport.mode == 'performance')), rapport.mode = rapport.mode, graph.output = graph.output, width = graph.width, height = graph.height, res = graph.res, hi.res = graph.hi.res, graph.recordplot = graph.replay) # render template body
+    report <- lapply(elem, elem.eval, parent = elem, env = e, check.output = !(as.logical(meta$strict) | (rapport.mode == 'performance')), rapport.mode = rapport.mode, graph.output = graph.output, graph.name = graph.name, graph.dir = graph.dir, width = graph.width, height = graph.height, res = graph.res, hi.res = graph.hi.res, graph.recordplot = graph.replay) # render template body
     options(opts.bak)                          # resetting options
 
     ## error handling in chunks

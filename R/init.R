@@ -54,6 +54,8 @@
     options('style.colorize'      = FALSE)
     ## image format settings
     options('graph.format'        = 'png')
+    options('graph.name'          = 'rapport-%D-%d')
+    options('graph.dir'           = tempdir())
     options('graph.width'         = 480)
     options('graph.height'        = 480)
     options('graph.res'           = 72)

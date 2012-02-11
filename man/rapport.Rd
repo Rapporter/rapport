@@ -6,6 +6,8 @@
     header.levels.offset = 0,
     rapport.mode = getOption("rapport.mode"),
     graph.output = getOption("graph.format"),
+    graph.name = getOption("graph.name"),
+    graph.dir = getOption("graph.dir"),
     graph.width = getOption("graph.width"),
     graph.height = getOption("graph.height"),
     graph.res = getOption("graph.res"),
