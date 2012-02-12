@@ -205,10 +205,6 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
         }
         
-        if (.Platform$OS.type == 'windows')
-            file <- shortPathName(file)
-        else
-            file <- gsub(' ', '\\ ', file, fixed = TRUE)
         file <- gsub('%d', '0', file, fixed = TRUE)
         if (grepl('%t', file)) {
             if (length(strsplit(sprintf('placeholder%splaceholder', file), '%t')[[1]]) > 2)
@@ -218,6 +214,11 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             rep <- strsplit(file, '%t')[[1]]
             file <- tempfile(pattern = rep[1], tmpdir = file.dir, fileext = ifelse(is.na(rep[2]), '', rep[2]))
         }
+        if (.Platform$OS.type == 'windows') # short-name tweak on Windows
+            file <- shortPathName(file)
+        ## else                                # how to solve that ouside of ascii?
+        ##    file <- gsub(' ', '\\ ', file, fixed = TRUE)
+
         r$create(file = file, open = open, options = options, date = date)
     } else
         return(r)
