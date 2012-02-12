@@ -705,6 +705,13 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' @export
 rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), file.name = getOption('file.name'), file.path = getOption('file.path'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
 
+    ## dummy checks for possible ascii export bug (space in path/filename)
+    if (grepl(' ', file.name))
+        stop('You should not use spaces in filename ATM.')
+    if (file.path != tempdir())
+        if (grepl(' ', file.path))
+            stop('You should not use spaces in file path ATM.')
+
     timer  <- proc.time()                       # start timer
     txt    <- tpl.find(fp)                      # split file to text
     h      <- tpl.info(txt)                     # template header
