@@ -280,11 +280,11 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
         clear.devs()
 
-        ## TODO: check if only one '%d' in there
         file.name <- gsub('%d', `%d`, eval(graph.name), fixed = TRUE)
         file <- sprintf('%s.%s', file.name, graph.output)
         if (grepl('%t', graph.name)) {
-            ## TODO: check if only one '%t' is in there
+            if (length(strsplit(sprintf('placeholder%splaceholder', file.name), '%t')[[1]]) > 2)
+                stop('File name contains more then 1 "%t"!')
             rep <- strsplit(file, '%t')[[1]]
             file <- tempfile(pattern = rep[1], tmpdir = graph.dir, fileext = rep[2])
             file.name <- sub(sprintf('.%s$', graph.output), '', file)

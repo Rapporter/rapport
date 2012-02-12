@@ -880,7 +880,8 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
     if (grepl('%T', file.name))
         file.name <- gsub('%T', fp, file.name, fixed = TRUE)
     if (grepl('%D', file.name)) {
-        ## TODO: check if only one '%D' in there
+        if (length(strsplit(sprintf('placeholder%splaceholder', file.name), '%D')[[1]]) > 2)
+            stop('File name contains more then 1 "%D"!')
         similar.files <- list.files(file.path, pattern = sprintf('^%s\\.(jpeg|tiff|png|svg|bmp)$', gsub('%t', '[a-z0-9]*', gsub('%D|%d', '[[:digit:]]*', file.name))))
         if (length(similar.files) > 0) {
             similar.files <- sub('\\.(jpeg|tiff|png|svg|bmp)$', '', similar.files)
