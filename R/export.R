@@ -205,12 +205,10 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
         }
         
-        warning(file)
         if (.Platform$OS.type == 'windows')
             file <- shortPathName(file)
         else
             file <- gsub(' ', '\\ ', file, fixed = TRUE)
-        warning(file)
         r$create(file = file, open = open, options = options, date = date)
     } else
         return(r)
