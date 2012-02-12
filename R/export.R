@@ -209,6 +209,15 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             file <- shortPathName(file)
         else
             file <- gsub(' ', '\\ ', file, fixed = TRUE)
+        file <- gsub('%d', '0', file, fixed = TRUE)
+        if (grepl('%t', file)) {
+            if (length(strsplit(sprintf('placeholder%splaceholder', file), '%t')[[1]]) > 2)
+                stop('File name contains more then 1 "%t"!')
+            file.dir <- sub("(.+)(\\/.+$)", "\\1", file)
+            file <- sub('\\\\|/', '', sub(file.dir, '', file))
+            rep <- strsplit(file, '%t')[[1]]
+            file <- tempfile(pattern = rep[1], tmpdir = file.dir, fileext = ifelse(is.na(rep[2]), '', rep[2]))
+        }
         r$create(file = file, open = open, options = options, date = date)
     } else
         return(r)
