@@ -6,8 +6,8 @@
     header.levels.offset = 0,
     rapport.mode = getOption("rapport.mode"),
     graph.output = getOption("graph.format"),
-    file.name = getOption("file.name"),
-    file.path = getOption("file.path"),
+    file.name = getOption("rp.file.name"),
+    file.path = getOption("rp.file.path"),
     graph.width = getOption("graph.width"),
     graph.height = getOption("graph.height"),
     graph.res = getOption("graph.res"),
@@ -91,10 +91,10 @@
 \details{
   Default parameters are read from \code{options}:
 
-  \itemize{ \item 'rapport.mode', \item 'file.name', \item
-  'file.path', \item 'graph.format', \item 'graph.width',
-  \item 'graph.height', \item 'graph.res', \item
-  'graph.hi.res'. }
+  \itemize{ \item 'rapport.mode', \item 'rp.file.name',
+  \item 'rp.file.path', \item 'graph.format', \item
+  'graph.width', \item 'graph.height', \item 'graph.res',
+  \item 'graph.hi.res'. }
 }
 \examples{
 \dontrun{

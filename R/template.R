@@ -544,7 +544,8 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
 #'
 #' \itemize{
 #'     \item 'inline.open',
-#'     \item 'inline.close'.
+#'     \item 'inline.close',
+#'     \item 'rp.file.name'.
 #' }
 #' @param x a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param tag.open a string containing opening tag
@@ -555,7 +556,7 @@ tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.b
 #' @param parent parent list holding the current (child) element
 #' @param ... additional params for \code{grep}-like functions
 #' @keywords internal
-elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, rapport.mode = 'normal', graph.name = getOption('file.name'), parent, ...){
+elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, rapport.mode = 'normal', graph.name = getOption('rp.file.name'), parent, ...){
 
     `%d` <- which(sapply(parent, function(parent) identical(x, parent)))
     if (!missing(graph.name))
@@ -661,8 +662,8 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #'
 #' \itemize{
 #'     \item 'rapport.mode',
-#'     \item 'file.name',
-#'     \item 'file.path',
+#'     \item 'rp.file.name',
+#'     \item 'rp.file.path',
 #'     \item 'graph.format',
 #'     \item 'graph.width',
 #'     \item 'graph.height',
@@ -703,7 +704,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), file.name = getOption('file.name'), file.path = getOption('file.path'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
+rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
 
     ## dummy checks for possible ascii export bug (space in path/filename)
     if (grepl(' ', file.name))
