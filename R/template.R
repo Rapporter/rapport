@@ -212,7 +212,12 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 
     inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
     spaces.ind <- grep("^([:space:]+|)$", header)
-    h <- header[-c(inputs.ind, spaces.ind)]
+    rm.ind     <- c(inputs.ind, spaces.ind)
+
+    if (length(rm.ind) > 0)
+        h <- header[-rm.ind]
+    else
+        h <- header
 
     l <- sapply(fld, function(x){
         m <- grep(sprintf("^%s:", x$title), h)
@@ -308,8 +313,6 @@ tpl.inputs <- function(fp, use.header = TRUE){
 
     if (length(inputs.ind) == 0)
         return (structure(NULL, class = 'rp.inputs'))
-    ## don't do issue the warning here
-    ## warning('no input definitions found in header file')
 
     inputs.raw <- lapply(strsplit(header[inputs.ind], '|', fixed = TRUE), function(x) trim.space(x, TRUE)) # "raw" as in "unchecked", split by | and trimmed for whitespace
 

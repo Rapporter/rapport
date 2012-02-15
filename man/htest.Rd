@@ -4,7 +4,7 @@
 \usage{
   htest(x, ..., use.labels = getOption("rp.use.labels"),
     use.method.names = TRUE,
-    colnames = c("Statistic", "p-value"))
+    colnames = c("Method", "Statistic", "p-value"))
 }
 \arguments{
   \item{x}{arguments to be passed to function specified in
