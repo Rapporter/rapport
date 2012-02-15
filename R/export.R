@@ -193,7 +193,6 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
         }
         
-<<<<<<< HEAD
         file <- gsub('%d', '0', file, fixed = TRUE)
         if (grepl('%t', file)) {
             if (length(strsplit(sprintf('placeholder%splaceholder', file), '%t')[[1]]) > 2)
