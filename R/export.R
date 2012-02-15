@@ -221,6 +221,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
         ##    file <- gsub(' ', '\\ ', file, fixed = TRUE)
 
         r$create(file = file, open = open, options = options, date = date)
+        file.rename(sprintf('%s.txt', file), sprintf('%s.pandoc', file))
     } else
         return(r)
 }
