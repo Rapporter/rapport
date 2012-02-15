@@ -163,7 +163,7 @@ kurtosis <- function(x, na.rm = FALSE){
 #' htest(mtcars, lillie.test, ad.test, shapiro.test)
 #' }
 #' @export
-htest <- function(x, ..., use.labels = getOption('rp.use.labels'), use.method.names = TRUE, colnames = c('Statistic', 'p-value')){
+htest <- function(x, ..., use.labels = getOption('rp.use.labels'), use.method.names = TRUE, colnames = c('Method', 'Statistic', 'p-value')){
 
     test <- list(...)
     test.len <- length(test)
@@ -196,8 +196,6 @@ htest <- function(x, ..., use.labels = getOption('rp.use.labels'), use.method.na
         x.len <- length(x)
     }
 
-    colnames(res) <- colnames
-
     if (use.method.names)
         test.name <- method.name
 
@@ -206,7 +204,10 @@ htest <- function(x, ..., use.labels = getOption('rp.use.labels'), use.method.na
     else
         rn <- sprintf("%s (%s)", rep(test.name, x.len), rep(x.nms, each = test.len))
 
-    rownames(res) <- rn
+    names(rn) <- NULL
+    rownames(res) <- NULL
+    res <- cbind(rn, res)
+    colnames(res) <- colnames
 
     return(res)
 }
