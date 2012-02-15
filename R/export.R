@@ -16,10 +16,9 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' Default parameters are read from \code{options}:
 #'
 #' \itemize{
-#'     \item 'rp.portable.html',
-#'     \item 'rp.date.format',
-#'     \item 'tpl.user',
-#'     \item 'tpl.email'.
+#'     \item "getOption('rp.date.format')",
+#'     \item "getOption('tpl.user')",
+#'     \item "getOption('tpl.email')".
 #' }
 #'
 #' Please be sure to set \code{'tpl.user'} and \code{'tpl.email'} options with \code{options()} to get your name in the head of your generated reports!
@@ -76,7 +75,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' ## E.g. pandoc uses "--reference-odt" as styles reference for odt exports.
 #'}
 #' @export
-tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = format(Sys.time(), getOption('rp.date.format')), desc = TRUE, format = 'html', backend = 'pandoc', options = NULL, logo = TRUE, portable.html = getOption('rp.portable.html')) {
+tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = format(Sys.time(), getOption('rp.date.format')), desc = TRUE, format = 'html', backend = 'pandoc', options = NULL, logo = TRUE, portable.html = getOption('portable.html')) {
 
     ## checking parameters
     if (!(format %in% tpl.export.outputs()))

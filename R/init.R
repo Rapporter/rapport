@@ -3,11 +3,9 @@
     ## rapport settings
     options('rapport.mode'          = 'normal')
     options('asciiType'             = 'pandoc')
-
-    ## file path and name settings
-    options('rp.file.name'          = 'rapport-%D-%d')
-    options('rp.file.path'          = tempdir())
-    options('rp.portable.html'      = FALSE)
+    options('file.name'             = 'rapport-%D-%d')
+    options('file.path'             = tempdir())
+    options('portable.html'         = FALSE)
 
     ## encrypt/decrypt key generation settings
     options('.encrypt.chars'   = paste(c(LETTERS, letters, 0:9, ' ', '(', ')', '=', '~', '.', '+', '"', "'",'$', '#'), collapse = ""))

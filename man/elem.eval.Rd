@@ -5,7 +5,7 @@
   elem.eval(x, tag.open = get.tags("inline.open"),
     tag.close = get.tags("inline.close"),
     remove.comments = TRUE, rapport.mode = "normal",
-    graph.name = getOption("rp.file.name"), parent, ...)
+    graph.name = getOption("file.name"), parent, ...)
 }
 \arguments{
   \item{x}{a template file pointer (see
@@ -42,8 +42,7 @@
 \details{
   Default parameters are read from \code{options}:
 
-  \itemize{ \item 'inline.open', \item 'inline.close',
-  \item 'rp.file.name'. }
+  \itemize{ \item 'inline.open', \item 'inline.close'. }
 }
 \keyword{internal}
 

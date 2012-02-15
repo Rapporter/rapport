@@ -7,7 +7,7 @@
     date = format(Sys.time(), getOption("rp.date.format")),
     desc = TRUE, format = "html", backend = "pandoc",
     options = NULL, logo = TRUE,
-    portable.html = getOption("rp.portable.html"))
+    portable.html = getOption("portable.html"))
 }
 \arguments{
   \item{rp}{a rapport class object or list of rapport class
@@ -58,8 +58,9 @@
 
   Default parameters are read from \code{options}:
 
-  \itemize{ \item 'rp.portable.html', \item
-  'rp.date.format', \item 'tpl.user', \item 'tpl.email'. }
+  \itemize{ \item "getOption('rp.date.format')", \item
+  "getOption('tpl.user')", \item "getOption('tpl.email')".
+  }
 
   Please be sure to set \code{'tpl.user'} and
   \code{'tpl.email'} options with \code{options()} to get
