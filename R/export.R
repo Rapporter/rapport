@@ -23,7 +23,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #'
 #' Please be sure to set \code{'tpl.user'} and \code{'tpl.email'} options with \code{options()} to get your name in the head of your generated reports!
 #' @param rp a rapport class object or list of rapport class objects
-#' @param file filename (NULL returns a tempfile). Inherited from rapport class if not set (default).
+#' @param file filename (NULL returns a tempfile)
 #' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added
 #' @param create should export really happen? It might be handy if you want to append several reports.
 #' @param open open the exported document? Default set to TRUE.
@@ -33,7 +33,6 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' @param backend backend for the format conversions, see: \code{ascii:::asciiOpts(".backends")}
 #' @param options command line options passed to backend
 #' @param logo add rapport logo
-#' @param portable.html if set to \code{TRUE}, all required HTML stuff (JS/CSS/images) will be copied to the exported documents' directory.
 #' @examples \dontrun{
 #'
 #' ## eval some template
@@ -75,7 +74,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' ## E.g. pandoc uses "--reference-odt" as styles reference for odt exports.
 #'}
 #' @export
-tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = format(Sys.time(), getOption('rp.date.format')), desc = TRUE, format = 'html', backend = 'pandoc', options = NULL, logo = TRUE, portable.html = getOption('portable.html')) {
+tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), getOption('rp.date.format')), desc=TRUE, format='html', backend='pandoc', options=NULL, logo=TRUE) {
 
     ## checking parameters
     if (!(format %in% tpl.export.outputs()))
@@ -88,10 +87,6 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
         warning(paste('Wrong backend provided, using instead:', backends[1], '\nAll compatible backends:', paste(backends, collapse=', ')))
         backend <- backends[1]
     }
-    if (missing(file))
-        file <- rp$file
-    else
-        file <- NULL
     if (!is.null(file))
         if (!is.character(file))
             stop('Wrong file parameter!')
@@ -185,15 +180,8 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
     if (create) {
         ## if pandoc is converting to HTML then apply default styles
         if (is.null(options) & format == 'html' & backend == 'pandoc') {
-            ## if (!file.exists(sprintf('%s%s', tempdir(), '/rapport-header.html')))    # regenerating all the time based on portable.html output
-            if (portable.html) {
-                portable.dirs <- c('fonts', 'images', 'javascripts', 'stylesheets')
-                for (portable.dir in portable.dirs)
-                    file.copy(system.file(sprintf('includes/%s', portable.dir), package='rapport'), sub("(.+)(\\/.+$)", "\\1", file), recursive  = TRUE)
-                cat(gsub('includes\\/', '', readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
-            } else {
+            if (!file.exists(sprintf('%s%s', tempdir(), '/rapport-header.html')))
                 cat(gsub('includes', system.file('includes', package='rapport'), readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
-            }
             options <- sprintf('-H "%s" -A "%s"', file.path(gsub('\\', '/', tempdir(), fixed = TRUE), 'rapport-header.html'), system.file('includes/html/footer.html', package='rapport'))
         }
         
@@ -205,21 +193,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
         }
         
-        file <- gsub('%d', '0', file, fixed = TRUE)
-        if (grepl('%t', file)) {
-            if (length(strsplit(sprintf('placeholder%splaceholder', file), '%t')[[1]]) > 2)
-                stop('File name contains more then 1 "%t"!')
-            file.dir <- sub("(.+)(\\/.+$)", "\\1", file)
-            file <- sub('\\\\|/', '', sub(file.dir, '', file))
-            rep <- strsplit(file, '%t')[[1]]
-            file <- tempfile(pattern = rep[1], tmpdir = file.dir, fileext = ifelse(is.na(rep[2]), '', rep[2]))
-        }
-        if (.Platform$OS.type == 'windows') # short-name tweak on Windows
-            file <- shortPathName(file)
-        ## else                                # how to solve that ouside of ascii?
-        ##    file <- gsub(' ', '\\ ', file, fixed = TRUE)
-
-        r$create(file = file, open = open, options = options, date = date)
+        r$create(file=file, open=open, options=options, date=date)
     } else
         return(r)
 }

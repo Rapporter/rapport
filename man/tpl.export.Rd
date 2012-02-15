@@ -2,19 +2,17 @@
 \alias{tpl.export}
 \title{Export rapport class}
 \usage{
-  tpl.export(rp = NULL, file, append = FALSE,
+  tpl.export(rp = NULL, file = NULL, append = FALSE,
     create = TRUE, open = TRUE,
     date = format(Sys.time(), getOption("rp.date.format")),
     desc = TRUE, format = "html", backend = "pandoc",
-    options = NULL, logo = TRUE,
-    portable.html = getOption("portable.html"))
+    options = NULL, logo = TRUE)
 }
 \arguments{
   \item{rp}{a rapport class object or list of rapport class
   objects}
 
-  \item{file}{filename (NULL returns a tempfile). Inherited
-  from rapport class if not set (default).}
+  \item{file}{filename (NULL returns a tempfile)}
 
   \item{append}{FALSE (new report created) or an R object
   (class of "Report") to which the new report will be
@@ -41,10 +39,6 @@
   \item{options}{command line options passed to backend}
 
   \item{logo}{add rapport logo}
-
-  \item{portable.html}{if set to \code{TRUE}, all required
-  HTML stuff (JS/CSS/images) will be copied to the exported
-  documents' directory.}
 }
 \description{
   This function exports rapport class objects to various

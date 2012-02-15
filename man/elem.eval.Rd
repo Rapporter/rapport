@@ -4,8 +4,7 @@
 \usage{
   elem.eval(x, tag.open = get.tags("inline.open"),
     tag.close = get.tags("inline.close"),
-    remove.comments = TRUE, rapport.mode = "normal",
-    graph.name = getOption("file.name"), parent, ...)
+    remove.comments = TRUE, rapport.mode = "normal", ...)
 }
 \arguments{
   \item{x}{a template file pointer (see
@@ -19,13 +18,6 @@
   evaluation?}
 
   \item{rapport.mode}{see: \code{?rapport}}
-
-  \item{graph.name}{indirectly read from "graph.name"
-  option by calling \code{\link{rapport}}, should not be
-  directly changed}
-
-  \item{parent}{parent list holding the current (child)
-  element}
 
   \item{...}{additional params for \code{grep}-like
   functions}

@@ -16,7 +16,7 @@ hist   | FALSE     | Boolean | Show histogram of specified variable?
 theme  | Set1, Set2, Set3   | Color theme  | Color theme of the diagram
 head-->
 
-# Debut
+# Début
 
 Hello, world!
 
