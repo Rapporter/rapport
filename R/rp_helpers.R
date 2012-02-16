@@ -863,14 +863,14 @@ rp.round <- function(x, short = FALSE, digits = NULL) {
 #' }
 #' @export
 rp.prettyascii <- function(x, asciitype = getOption('asciiType')) {
-
+    
     if ((length(x) == 1) & (is.rapport(x) | is.character(x)))
         return(x)
-
+    
     if (is.list(x))
         if (all(lapply(x, class) == 'rapport'))
             return(l_ply(x, print))
-
+    
     if (is.numeric(x)) {
         classes <- class(x)
         ## dims <- dim(x)
@@ -879,17 +879,19 @@ rp.prettyascii <- function(x, asciitype = getOption('asciiType')) {
         if (length(x) != 1)
             class(x) <- classes
     }
-
+    
     if (is.vector(x))
         return(p(x, limit = Inf))
-
+    
     asciitype.original <- getOption('asciiType')
     options('asciiType' = asciitype)
     if (is.data.frame(x) | is.table(x)) {
         ## rounding till \code{ascii} bug fixed: https://github.com/eusebe/ascii/issues/12
-        numerics <- which(sapply(x, is.numeric))
-        for (numeric in as.numeric(numerics)) {
-            x[, numeric] <- rp.round(x[, numeric])
+        if (getOption('rp.decimal.mark') != '.') {
+            numerics <- which(sapply(x, is.numeric))
+            for (numeric in as.numeric(numerics)) {
+                x[, numeric] <- rp.round(x[, numeric])
+            }
         }
         rownms <- rownames(x)
         include.rownames <- !is.null(rownms)
@@ -900,15 +902,15 @@ rp.prettyascii <- function(x, asciitype = getOption('asciiType')) {
             ## not so neat hack to close all possible lists before exporting a table with missing first column header
             pre.txt <- ifelse(include.rownames, '<!-- endlist -->\n', '')
         }
-        res <- paste(pre.txt, paste(capture.output(ascii(x, include.rownames = include.rownames)), collapse='\n'), sep='')
+        res <- paste(pre.txt, paste(capture.output(ascii(x, format='nice', digits=getOption('rp.decimal'), include.rownames = include.rownames)), collapse='\n'), sep='')
         options('asciiType' = asciitype.original)
         return(res)
     }
-
+    
     x.class <- class(x)
     if (x.class == 'trellis' | x.class == 'ggplot')
         stop('ggplot2 and trellis objects must be printed in strict mode!')
-
+    
     res <- paste(capture.output(ascii(x, format='nice', digits=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'))), collapse='\n')
     options('asciiType' = asciitype.original)
     return(res)
