@@ -6,6 +6,8 @@
     header.levels.offset = 0,
     rapport.mode = getOption("rapport.mode"),
     graph.output = getOption("graph.format"),
+    file.name = getOption("rp.file.name"),
+    file.path = getOption("rp.file.path"),
     graph.width = getOption("graph.width"),
     graph.height = getOption("graph.height"),
     graph.res = getOption("graph.res"),
@@ -37,6 +39,19 @@
   \code{evals(..., check.output = FALSE)}), while in
   \code{debug} mode \code{rapport} will halt on first
   error.}
+
+  \item{file.name}{set the file name of saved plots and
+  exported documents. A simple character string might be
+  provided where \code{\%D} is an auto-incrementing integer
+  (increments while each \code{\link{rapport}} call),
+  \code{\%d} would be replaced by the index of the
+  generating chunk (in the same \code{rapport}), \code{\%T}
+  by the name of the template in action and \code{\%t} by
+  some uniqe random characters based on
+  \code{\link{tempfile}}.}
+
+  \item{file.path}{path of a directory where to store
+  generated images and exported reports}
 
   \item{graph.output}{the required file format of saved
   plots (optional)}
@@ -77,9 +92,10 @@
 \details{
   Default parameters are read from \code{options}:
 
-  \itemize{ \item 'rapport.mode', \item 'graph.format',
-  \item 'graph.width', \item 'graph.height', \item
-  'graph.res', \item 'graph.hi.res'. }
+  \itemize{ \item 'rapport.mode', \item 'rp.file.name',
+  \item 'rp.file.path', \item 'graph.format', \item
+  'graph.width', \item 'graph.height', \item 'graph.res',
+  \item 'graph.hi.res'. }
 }
 \examples{
 \dontrun{

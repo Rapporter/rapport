@@ -2,17 +2,19 @@
 \alias{tpl.export}
 \title{Export rapport class}
 \usage{
-  tpl.export(rp = NULL, file = NULL, append = FALSE,
+  tpl.export(rp = NULL, file, append = FALSE,
     create = TRUE, open = TRUE,
     date = format(Sys.time(), getOption("rp.date.format")),
     desc = TRUE, format = "html", backend = "pandoc",
-    options = NULL, logo = TRUE)
+    options = NULL, logo = TRUE,
+    portable.html = getOption("rp.portable.html"))
 }
 \arguments{
   \item{rp}{a rapport class object or list of rapport class
   objects}
 
-  \item{file}{filename (NULL returns a tempfile)}
+  \item{file}{filename (NULL returns a tempfile). Inherited
+  from rapport class if not set (default).}
 
   \item{append}{FALSE (new report created) or an R object
   (class of "Report") to which the new report will be
@@ -39,6 +41,14 @@
   \item{options}{command line options passed to backend}
 
   \item{logo}{add rapport logo}
+
+  \item{portable.html}{if set to \code{TRUE}, all required
+  HTML stuff (JS/CSS/images) will be copied to the exported
+  documents' directory.}
+}
+\value{
+  filepath on \code{create = TRUE}, \code{Report} class
+  otherwise
 }
 \description{
   This function exports rapport class objects to various
@@ -52,9 +62,8 @@
 
   Default parameters are read from \code{options}:
 
-  \itemize{ \item "getOption('rp.date.format')", \item
-  "getOption('tpl.user')", \item "getOption('tpl.email')".
-  }
+  \itemize{ \item 'rp.portable.html', \item
+  'rp.date.format', \item 'tpl.user', \item 'tpl.email'. }
 
   Please be sure to set \code{'tpl.user'} and
   \code{'tpl.email'} options with \code{options()} to get
@@ -64,7 +73,7 @@
 \dontrun{
 
 ## eval some template
-x <- rapport('descriptives-univar', data=mtcars, var="hp")
+x <- rapport('descriptives-univar', data = mtcars, var="hp")
 
 ## try basic parameters
 tpl.export(x)
@@ -84,8 +93,8 @@ tpl.export(append=report, format='rst')
 ### exporting multiple reports at once
 tpl.export(tpl.example('example', 'all'))
 tpl.export(tpl.example('example', 'all'), format='odt')
-tpl.export(list(rapport('univar-descriptive', data=mtcars, var="hp"),
-    rapport('univar-descriptive', data=mtcars, var="mpg")))
+tpl.export(list(rapport('univar-descriptive', data = mtcars, var="hp"),
+    rapport('univar-descriptive', data = mtcars, var="mpg")))
 
 ### Never do this as being dumb:
 tpl.export()

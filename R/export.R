@@ -16,14 +16,15 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' Default parameters are read from \code{options}:
 #'
 #' \itemize{
-#'     \item "getOption('rp.date.format')",
-#'     \item "getOption('tpl.user')",
-#'     \item "getOption('tpl.email')".
+#'     \item 'rp.portable.html',
+#'     \item 'rp.date.format',
+#'     \item 'tpl.user',
+#'     \item 'tpl.email'.
 #' }
 #'
 #' Please be sure to set \code{'tpl.user'} and \code{'tpl.email'} options with \code{options()} to get your name in the head of your generated reports!
 #' @param rp a rapport class object or list of rapport class objects
-#' @param file filename (NULL returns a tempfile)
+#' @param file filename (NULL returns a tempfile). Inherited from rapport class if not set (default).
 #' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added
 #' @param create should export really happen? It might be handy if you want to append several reports.
 #' @param open open the exported document? Default set to TRUE.
@@ -33,10 +34,12 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' @param backend backend for the format conversions, see: \code{ascii:::asciiOpts(".backends")}
 #' @param options command line options passed to backend
 #' @param logo add rapport logo
+#' @param portable.html if set to \code{TRUE}, all required HTML stuff (JS/CSS/images) will be copied to the exported documents' directory.
+#' @return filepath on \code{create = TRUE}, \code{Report} class otherwise
 #' @examples \dontrun{
 #'
 #' ## eval some template
-#' x <- rapport('descriptives-univar', data=mtcars, var="hp")
+#' x <- rapport('descriptives-univar', data = mtcars, var="hp")
 #'
 #' ## try basic parameters
 #' tpl.export(x)
@@ -56,8 +59,8 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' ### exporting multiple reports at once
 #' tpl.export(tpl.example('example', 'all'))
 #' tpl.export(tpl.example('example', 'all'), format='odt')
-#' tpl.export(list(rapport('univar-descriptive', data=mtcars, var="hp"),
-#'     rapport('univar-descriptive', data=mtcars, var="mpg")))
+#' tpl.export(list(rapport('univar-descriptive', data = mtcars, var="hp"),
+#'     rapport('univar-descriptive', data = mtcars, var="mpg")))
 #'
 #' ### Never do this as being dumb:
 #' tpl.export()
@@ -74,7 +77,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' ## E.g. pandoc uses "--reference-odt" as styles reference for odt exports.
 #'}
 #' @export
-tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE, date=format(Sys.time(), getOption('rp.date.format')), desc=TRUE, format='html', backend='pandoc', options=NULL, logo=TRUE) {
+tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = format(Sys.time(), getOption('rp.date.format')), desc = TRUE, format = 'html', backend = 'pandoc', options = NULL, logo = TRUE, portable.html = getOption('rp.portable.html')) {
 
     ## checking parameters
     if (!(format %in% tpl.export.outputs()))
@@ -87,6 +90,10 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
         warning(paste('Wrong backend provided, using instead:', backends[1], '\nAll compatible backends:', paste(backends, collapse=', ')))
         backend <- backends[1]
     }
+    if (missing(file))
+        file <- rp$file.name
+    else
+        file <- NULL
     if (!is.null(file))
         if (!is.character(file))
             stop('Wrong file parameter!')
@@ -127,12 +134,19 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
     ## exporting multiple rapport classes at once
     if (class(rp) == 'list') {
         if (all(lapply(rp, class) == 'rapport')) {
+
+            ## using the first rapport's filename
+            file <- rp[[1]]$file.name
             r$title <- as.character(rp[[1]]$meta['title'])
+
             for (i in 1:length(rp)) {
                 r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, backend = backend)
             }
+
         } else
+
             stop('Wrong rp parameter!')
+
     }
 
     r$backend <- backend
@@ -180,20 +194,49 @@ tpl.export <- function(rp=NULL, file=NULL, append=FALSE, create=TRUE, open=TRUE,
     if (create) {
         ## if pandoc is converting to HTML then apply default styles
         if (is.null(options) & format == 'html' & backend == 'pandoc') {
-            if (!file.exists(sprintf('%s%s', tempdir(), '/rapport-header.html')))
+
+            if (portable.html) {
+                portable.dirs <- c('fonts', 'images', 'javascripts', 'stylesheets')
+                for (portable.dir in portable.dirs)
+                    file.copy(system.file(sprintf('includes/%s', portable.dir), package='rapport'), sub("(.+)(\\/.+$)", "\\1", file), recursive  = TRUE)
+                cat(gsub('includes\\/', '', readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
+            } else {
                 cat(gsub('includes', system.file('includes', package='rapport'), readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
+            }
             options <- sprintf('-H "%s" -A "%s"', file.path(gsub('\\', '/', tempdir(), fixed = TRUE), 'rapport-header.html'), system.file('includes/html/footer.html', package='rapport'))
+
         }
 
         if (logo) {
+
             switch(md.lang,
                 'asciidoc' = r$add(paragraph(sprintf("'''''\nThis report was generated with http://www.r-project.org/[R] (%s) and http://rapport-package.info/[rapport] (%s) in %s sec on %s platform.", sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
                 'pandoc' = r$add(paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://rapport-package.info/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
                 't2t' = r$add(paragraph(sprintf('--------------------\nThis report was generated with [R http://www.r-project.org/] (%s) and [rapport http://rapport-package.info/] (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))))
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
-        }
 
-        r$create(file=file, open=open, options=options, date=date)
+        }
+        
+        file <- gsub('%d', '0', file, fixed = TRUE)
+        if (grepl('%t', file)) {
+
+            if (length(strsplit(sprintf('placeholder%splaceholder', file), '%t')[[1]]) > 2)
+                stop('File name contains more then 1 "%t"!')
+            file.dir <- sub("(.+)(\\/.+$)", "\\1", file)
+            file <- sub('\\\\|/', '', sub(file.dir, '', file))
+            rep <- strsplit(file, '%t')[[1]]
+            file <- tempfile(pattern = rep[1], tmpdir = file.dir, fileext = ifelse(is.na(rep[2]), '', rep[2]))
+
+        }
+        if (.Platform$OS.type == 'windows') # short-name tweak on Windows
+            file <- shortPathName(file)
+
+        r$create(file = file, open = open, options = options, date = date)
+        file.rename(sprintf('%s.txt', file), sprintf('%s.%s', file, md.lang))
+        file.ext <- ifelse(format %in% ascii:::asciiOpts(".extensions"), ascii:::asciiOpts(".extensions")[format], format)
+
+        return(sprintf('%s.%s', file, file.ext))
+
     } else
         return(r)
 }
