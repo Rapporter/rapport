@@ -39,7 +39,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' @examples \dontrun{
 #'
 #' ## eval some template
-#' x <- rapport('descriptives-univar', data=mtcars, var="hp")
+#' x <- rapport('descriptives-univar', data = mtcars, var="hp")
 #'
 #' ## try basic parameters
 #' tpl.export(x)
@@ -59,8 +59,8 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' ### exporting multiple reports at once
 #' tpl.export(tpl.example('example', 'all'))
 #' tpl.export(tpl.example('example', 'all'), format='odt')
-#' tpl.export(list(rapport('univar-descriptive', data=mtcars, var="hp"),
-#'     rapport('univar-descriptive', data=mtcars, var="mpg")))
+#' tpl.export(list(rapport('univar-descriptive', data = mtcars, var="hp"),
+#'     rapport('univar-descriptive', data = mtcars, var="mpg")))
 #'
 #' ### Never do this as being dumb:
 #' tpl.export()
@@ -194,7 +194,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
     if (create) {
         ## if pandoc is converting to HTML then apply default styles
         if (is.null(options) & format == 'html' & backend == 'pandoc') {
-            ## if (!file.exists(sprintf('%s%s', tempdir(), '/rapport-header.html')))    # regenerating all the time based on portable.html output
+
             if (portable.html) {
                 portable.dirs <- c('fonts', 'images', 'javascripts', 'stylesheets')
                 for (portable.dir in portable.dirs)
@@ -204,29 +204,32 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
                 cat(gsub('includes', system.file('includes', package='rapport'), readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
             }
             options <- sprintf('-H "%s" -A "%s"', file.path(gsub('\\', '/', tempdir(), fixed = TRUE), 'rapport-header.html'), system.file('includes/html/footer.html', package='rapport'))
+
         }
 
         if (logo) {
+
             switch(md.lang,
                 'asciidoc' = r$add(paragraph(sprintf("'''''\nThis report was generated with http://www.r-project.org/[R] (%s) and http://rapport-package.info/[rapport] (%s) in %s sec on %s platform.", sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
                 'pandoc' = r$add(paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://rapport-package.info/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
                 't2t' = r$add(paragraph(sprintf('--------------------\nThis report was generated with [R http://www.r-project.org/] (%s) and [rapport http://rapport-package.info/] (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))))
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
+
         }
         
         file <- gsub('%d', '0', file, fixed = TRUE)
         if (grepl('%t', file)) {
+
             if (length(strsplit(sprintf('placeholder%splaceholder', file), '%t')[[1]]) > 2)
                 stop('File name contains more then 1 "%t"!')
             file.dir <- sub("(.+)(\\/.+$)", "\\1", file)
             file <- sub('\\\\|/', '', sub(file.dir, '', file))
             rep <- strsplit(file, '%t')[[1]]
             file <- tempfile(pattern = rep[1], tmpdir = file.dir, fileext = ifelse(is.na(rep[2]), '', rep[2]))
+
         }
         if (.Platform$OS.type == 'windows') # short-name tweak on Windows
             file <- shortPathName(file)
-        ## else                                # how to solve that ouside of ascii?
-        ##    file <- gsub(' ', '\\ ', file, fixed = TRUE)
 
         r$create(file = file, open = open, options = options, date = date)
         file.rename(sprintf('%s.txt', file), sprintf('%s.%s', file, md.lang))

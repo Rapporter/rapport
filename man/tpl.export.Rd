@@ -46,6 +46,10 @@
   HTML stuff (JS/CSS/images) will be copied to the exported
   documents' directory.}
 }
+\value{
+  filepath on \code{create = TRUE}, \code{Report} class
+  otherwise
+}
 \description{
   This function exports rapport class objects to various
   formats based on ascii package.
@@ -69,7 +73,7 @@
 \dontrun{
 
 ## eval some template
-x <- rapport('descriptives-univar', data=mtcars, var="hp")
+x <- rapport('descriptives-univar', data = mtcars, var="hp")
 
 ## try basic parameters
 tpl.export(x)
@@ -89,8 +93,8 @@ tpl.export(append=report, format='rst')
 ### exporting multiple reports at once
 tpl.export(tpl.example('example', 'all'))
 tpl.export(tpl.example('example', 'all'), format='odt')
-tpl.export(list(rapport('univar-descriptive', data=mtcars, var="hp"),
-    rapport('univar-descriptive', data=mtcars, var="mpg")))
+tpl.export(list(rapport('univar-descriptive', data = mtcars, var="hp"),
+    rapport('univar-descriptive', data = mtcars, var="mpg")))
 
 ### Never do this as being dumb:
 tpl.export()
