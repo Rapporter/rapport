@@ -225,6 +225,8 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
         file.rename(sprintf('%s.txt', file), sprintf('%s.%s', file, md.lang))
         file.ext <- ifelse(format %in% ascii:::asciiOpts(".extensions"), ascii:::asciiOpts(".extensions")[format], format)
 
+        return(sprintf('%s.%s', file, file.ext))
+
     } else
         return(r)
 }
