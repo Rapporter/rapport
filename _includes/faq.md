@@ -66,7 +66,7 @@ It is based on a theory behind *rapport*: you can define a function at any part 
 
 #### OK, I understand, but I have a really handy function which should be added to *rapport*!
 
-We are open to happily check out your idea, please [file an issue about your idea on Github](https://github.com/aL3xa/rapport/issues) tagged as `feature`. Or write your own package submitted to [CRAN](cran.r-project.org) and please attract our attention to add that package to our [required or suggested package list](https://github.com/aL3xa/rapport/blob/master/DESCRIPTION).
+We'd be glad to incorporate it in our webapp, please [file an issue about your idea on Github](https://github.com/aL3xa/rapport/issues) tagged as `feature`. Or write your own package submitted to [CRAN](http://cran.r-project.org) and please attract our attention to add that package to our [required or suggested package list](https://github.com/aL3xa/rapport/blob/master/DESCRIPTION).
 
 #### HTML template exports have ugly fonts in Firefox, but not in other browsers. What's the catch?
 
