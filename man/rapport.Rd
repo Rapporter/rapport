@@ -43,11 +43,12 @@
   \item{file.name}{set the file name of saved plots and
   exported documents. A simple character string might be
   provided where \code{\%D} is an auto-incrementing integer
-  (increments while all \code{\link{rapport}} call),
+  (increments while each \code{\link{rapport}} call),
   \code{\%d} would be replaced by the index of the
   generating chunk (in the same \code{rapport}), \code{\%T}
   by the name of the template in action and \code{\%t} by
-  some random characters.}
+  some uniqe random characters based on
+  \code{\link{tempfile}}.}
 
   \item{file.path}{path of a directory where to store
   generated images and exported reports}
