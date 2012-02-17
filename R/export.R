@@ -35,6 +35,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' @param options command line options passed to backend
 #' @param logo add rapport logo
 #' @param portable.html if set to \code{TRUE}, all required HTML stuff (JS/CSS/images) will be copied to the exported documents' directory.
+#' @return filepath on \code{create = TRUE}, \code{Report} class otherwise
 #' @examples \dontrun{
 #'
 #' ## eval some template
@@ -221,7 +222,8 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
         ##    file <- gsub(' ', '\\ ', file, fixed = TRUE)
 
         r$create(file = file, open = open, options = options, date = date)
-        file.rename(sprintf('%s.txt', file), sprintf('%s.pandoc', file))
+        file.rename(sprintf('%s.txt', file), sprintf('%s.%s', file, md.lang))
+        file.ext <- ifelse(format %in% ascii:::asciiOpts(".extensions"), ascii:::asciiOpts(".extensions")[format], format)
 
     } else
         return(r)
