@@ -69,7 +69,7 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' tpl.export(tpl.example('example', 'all'), backend='asciidoc')
 #' ## txt2tags
 #' tpl.export(tpl.example('example', 'all'), backend='t2t')
-#' 
+#'
 #' ### Adding own custom CSS to exported HTML
 #' tpl.export(x, options=sprintf('-c %s', system.file('templates/css/default.css', package='rapport')))
 #' ## For other formats check out backend specific documentation!
@@ -197,12 +197,12 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             }
             options <- sprintf('-H "%s" -A "%s"', file.path(gsub('\\', '/', tempdir(), fixed = TRUE), 'rapport-header.html'), system.file('includes/html/footer.html', package='rapport'))
         }
-        
+
         if (logo) {
             switch(md.lang,
-                'asciidoc' = r$add(paragraph(sprintf("'''''\nThis report was generated with http://www.r-project.org/[R] (%s) and http://al3xa.github.com/rapport/[rapport] (%s) in %s sec on %s platform.", sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
-                'pandoc' = r$add(paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://al3xa.github.com/rapport/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
-                't2t' = r$add(paragraph(sprintf('--------------------\nThis report was generated with [R http://www.r-project.org/] (%s) and [rapport http://al3xa.github.com/rapport/] (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))))
+                'asciidoc' = r$add(paragraph(sprintf("'''''\nThis report was generated with http://www.r-project.org/[R] (%s) and http://rapport-package.info/[rapport] (%s) in %s sec on %s platform.", sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
+                'pandoc' = r$add(paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://rapport-package.info/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
+                't2t' = r$add(paragraph(sprintf('--------------------\nThis report was generated with [R http://www.r-project.org/] (%s) and [rapport http://rapport-package.info/] (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))))
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
         }
         
@@ -222,6 +222,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
 
         r$create(file = file, open = open, options = options, date = date)
         file.rename(sprintf('%s.txt', file), sprintf('%s.pandoc', file))
+
     } else
         return(r)
 }
