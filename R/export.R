@@ -91,7 +91,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
         backend <- backends[1]
     }
     if (missing(file))
-        file <- rp$file
+        file <- rp$file.name
     else
         file <- NULL
     if (!is.null(file))
@@ -134,12 +134,19 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
     ## exporting multiple rapport classes at once
     if (class(rp) == 'list') {
         if (all(lapply(rp, class) == 'rapport')) {
+
+            ## using the first rapport's filename
+            file <- rp[[1]]$file.name
             r$title <- as.character(rp[[1]]$meta['title'])
+
             for (i in 1:length(rp)) {
                 r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, backend = backend)
             }
+
         } else
+
             stop('Wrong rp parameter!')
+
     }
 
     r$backend <- backend
