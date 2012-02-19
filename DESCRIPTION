@@ -9,8 +9,8 @@ Description: A package that facilitates creation of reproducible statistical
     converter as a backend.
 Author: Aleksandar Blagotić <aca.blagotic@gmail.com> and Gergely Daróczi
     <gergely@snowl.net>
-Version: 0.32
-Date: 2012-02-08
+Version: 0.33
+Date: 2012-02-18
 URL: http://rapport-package.info/
 BugReports: https://github.com/aL3xa/rapport/issues
 License: AGPL-3

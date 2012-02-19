@@ -1,3 +1,25 @@
+rapport 0.32 (2012-02-18)
+----------------------------------------------------------------
+
+NEW FEATURES
+
+ * New global options:
+    * to specify exported documents and generated images (dynamic) name and path
+    * to generate "portable" HTML files
+ * raw pandoc/asciidoc etc. outputs are also saved with appropriate extension 
+
+CHANGES
+
+ * removing `makes.plot` function
+ * performance boost in `rp.prettyascii` (rounding)
+ * `tpl.export` returns the generated document's filename
+ * tweaks in `htest`
+
+BUGFIXES
+
+ * fixed: deadlinks in exported documents to Rapport homepage
+ * fixed: NULL-indexing bug in tpl.meta
+
 rapport 0.31 (2012-02-08)
 ----------------------------------------------------------------
 
