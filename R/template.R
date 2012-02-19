@@ -587,6 +587,8 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
             x     <- gsub('^#{1,6}[[:space:]]', '', x) # remove heading markup
         }
 
+        msg <- list(messages = NULL, warnings = NULL, errors = NULL)
+
         ## both tags found
         if (ntags == 2){
             c.yes <- grab.chunks(x, tag.open, tag.close, TRUE) # chunks with tags
@@ -600,8 +602,15 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
                     stop("it's not allowed to create graphs within inline chunks")
                 if (is.tabular(x$output))
                     stop('tabular structures are not allowed within inline chunks')
+
+                ## get messages for a heading/inline chunk
+                m <- x$msg
+                msg$messages <<- c(msg$messages, if (is.null(m$messages)) NA else m$messages)
+                msg$warnings <<- c(msg$warnings, if (is.null(m$warnings)) NA else m$warnings)
+                msg$errors   <<- c(msg$errors, if (is.null(m$errors)) NA else m$errors)
+
+                err <- m$errors
                 ## return info on errors, don't just bleed to death! (bug spotted & fixed by Gergely)
-                err <- x$msg$errors
                 if (!is.null(err)) {                ## error handling in blocks:
                     if (rapport.mode == 'debug') {  ##   * in debug mode: halt
                         cat(sprintf('Malformed command: %s', x$src), '\n')
@@ -613,7 +622,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
                 if (!is.null(x$output))
                     return(rp.prettyascii(x$output))    # get output
             })
-            ## check chunk for tables an graphs!
+            ## check chunk for tables and graphs!
 
             rpl   <- vgsub(c.yes, out, x, fixed = TRUE) # replace evaled chunk
         }
@@ -633,7 +642,8 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
                     chunks = list(
                         raw  = c.yes,
                         eval = out
-                        )
+                        ),
+                    msg = msg
                     )
 
         if (isTRUE(head))
