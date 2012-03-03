@@ -42,5 +42,9 @@
 #'     \item Developers might find the list of options in \code{rp.tags} interesting, as it lets users to specify custom tags for \code{\link{rapport}} chunks. By changing the default values you may create custom reports and use your own syntax in custom templates.
 #' }
 #' @docType package
+#' @importFrom reshape melt melt.data.frame melt.table cast
+#' @importFrom ascii ascii tocharac Report paragraph
+#' @importFrom evaluate evaluate
+#' @importFrom RColorBrewer brewer.pal brewer.pal.info
 #' @name rapport-package
 NULL
