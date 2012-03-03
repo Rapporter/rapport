@@ -178,42 +178,6 @@ capitalise <- function(x){
 }
 
 
-#' Guess Mode
-#'
-#' "Guesses" a mode of provided character vector and converts it to appropriate mode.
-#' @param x an atomic vector to guess its mode
-#' @param trim.white a logical value indicating whether white spaces should be removed before guessing
-#' @return an atomic vector with (hopefully) successfully guessed mode
-#' @examples \dontrun{
-#' guess.convert("234")
-#' guess.convert("234.23")
-#' guess.convert("234.23.234")
-#' guess.convert("TRUE")
-#' guess.convert("TRUE         ")
-#' guess.convert("     TRUE         ", TRUE)
-#' }
-#' @export
-guess.convert <- function(x, trim.white = FALSE){
-    ## you can't polish a turd, write a new one!!!
-
-    stopifnot(is.vector(x, 'character'))
-
-    if (isTRUE(trim.white))
-        x <- trim.space(x, TRUE)
-
-    if (all(grepl('^(TRUE|FALSE)$', x)))
-        as.logical(x)
-    else if (all(grepl('^-?[[:digit:]]+$', x)))
-        as.integer(x)
-    else if (all(grepl('^-?[[:digit:]]+\\.[[:digit:]]+$', x)))
-        as.numeric(x)
-    else if (all(grepl('^NULL$', x)))
-        NULL
-    else
-        x
-}
-
-
 #' Wrap Vector Elements
 #'
 #' Wraps vector elements with string provided in \code{wrap} argument.
