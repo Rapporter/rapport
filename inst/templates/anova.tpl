@@ -7,9 +7,9 @@ Data required: TRUE
 Example:      rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way
               rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way
 
-resp     | numeric     | Response variable  | Dependent (response) variable
-fac      | factor[1,2] | Factor variables   | Independent variables (factors)
-fac.intr | TRUE        | Factor interaction | Include factor interaction
+resp     | *numeric     | Response variable  | Dependent (response) variable
+fac      | *factor[1,2] | Factor variables   | Independent variables (factors)
+fac.intr | TRUE         | Factor interaction | Include factor interaction
 head-->
 <%
 d <- structure(data.frame(resp, fac), .Names = c(resp.iname, fac.name))
