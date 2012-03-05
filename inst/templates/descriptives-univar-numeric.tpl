@@ -7,8 +7,8 @@ Data required:  TRUE
 Strict:         TRUE
 Example:        rapport('descriptives-univar-numeric', data=ius2008, var='age')
 
-var             | numeric   | Variable          | A numerical variable
-nortest         | TRUE      | Normality test    | If normality tests should be performed 
+var             | *numeric   | Variable          | A numerical variable
+nortest         | TRUE       | Normality test    | If normality tests should be performed 
 head-->
 
 # *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>

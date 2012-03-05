@@ -8,8 +8,8 @@ Strict:         TRUE
 Example:        rapport('descriptives-univar-factor', data=ius2008, var='gender')
                 rapport('descriptives-univar-factor', data=ius2008, var='dwell')
 
-var             | factor    | Variable          | A categorical variable
-nortest         | TRUE      | Normality test    | If normality tests should be performed 
+var             | *factor    | Variable          | A categorical variable
+nortest         | TRUE       | Normality test    | If normality tests should be performed 
 head-->
 
 # *<%=rp.name(var)%>*<%ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>
