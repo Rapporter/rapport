@@ -5,7 +5,7 @@ Email:          gergely@snowl.net
 Description:    This template will return descriptive statistics of a numerical variable.
 Data required:  TRUE
 Strict:         TRUE
-Example:        rapport('descriptives-univar-numeric', data=ius2008, var='age')
+Example:        rapport('children/descriptives-univar-numeric', data=ius2008, var='age')
 
 var             | *numeric   | Variable          | A numerical variable
 nortest         | TRUE       | Normality test    | If normality tests should be performed 

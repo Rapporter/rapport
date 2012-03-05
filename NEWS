@@ -1,9 +1,18 @@
 rapport 0.33 (?)
 ----------------------------------------------------------------
 
+NEW FEATURES
+
+ * towards method/class-based reporting (issue #42)
+
 CHANGES
 
  * removing most packages from 'Depends' and using NAMESPACE imports instead
+ * rearrange "templates" directory: subtemplates and internationalized templates goes to separate directories
+
+BUGFIXES
+
+ * typos in templates
 
 rapport 0.32 (2012-02-18)
 ----------------------------------------------------------------
