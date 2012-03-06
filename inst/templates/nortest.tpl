@@ -20,7 +20,7 @@ In statistics, _normality_ refers to an assumption that the distribution of a ra
 
 $$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$$
 
-_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters:
+_Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined by two parameters:
 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)

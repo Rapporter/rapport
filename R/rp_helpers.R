@@ -725,14 +725,23 @@ check.type <- function(x){
     ## regexes
     re.lim <- '(\\[([[:digit:]]+)(,([[:digit:]]+))?\\]|)' # limits
     fmt <- '^(\\*)?%s%s%s$'
+    re0 <- sprintf(fmt, 'whatever', '', '')
     re1 <- sprintf(fmt, '(character|complex|factor|logical|numeric|variable|number|string)', re.lim, '') # variable regex
     re2 <- '^(TRUE|FALSE)$'             # boolean regex
     re3 <- '^([[:alnum:]\\._]+(, ?[[:alnum:]\\._]+){1,})$' # CSV regex
     re4 <- sprintf(fmt, '(string)', re.lim, '( ?= ?(.+|))?') # string regex
     re5 <- sprintf(fmt, '(number)', re.lim, '( ?= ?(([[:digit:]]+(\\.[[:digit:]]+)?)|))?') # number regex
 
+    ## 0th option: whatever
+    if (grepl(re0, x))
+        res <- list(
+                    type = 'whatever',
+                    limit = list(min = -Inf, max = Inf),
+                    default = NULL,
+                    mandatory = grepl('^\\*', x)
+                    )
     ## 1st option: TRUE|FALSE
-    if (grepl(re2, x))
+    else if (grepl(re2, x))
         res <- list(
                     type = 'boolean',
                     limit = list(min = 1, max = 1),
@@ -863,14 +872,14 @@ rp.round <- function(x, short = FALSE, digits = NULL) {
 #' }
 #' @export
 rp.prettyascii <- function(x, asciitype = getOption('asciiType')) {
-    
+
     if ((length(x) == 1) & (is.rapport(x) | is.character(x)))
         return(x)
-    
+
     if (is.list(x))
         if (all(lapply(x, class) == 'rapport'))
             return(l_ply(x, print))
-    
+
     if (is.numeric(x)) {
         classes <- class(x)
         ## dims <- dim(x)
@@ -879,10 +888,10 @@ rp.prettyascii <- function(x, asciitype = getOption('asciiType')) {
         if (length(x) != 1)
             class(x) <- classes
     }
-    
+
     if (is.vector(x))
         return(p(x, limit = Inf))
-    
+
     asciitype.original <- getOption('asciiType')
     options('asciiType' = asciitype)
     if (is.data.frame(x) | is.table(x)) {
@@ -906,11 +915,11 @@ rp.prettyascii <- function(x, asciitype = getOption('asciiType')) {
         options('asciiType' = asciitype.original)
         return(res)
     }
-    
+
     x.class <- class(x)
     if (x.class == 'trellis' | x.class == 'ggplot')
         stop('ggplot2 and trellis objects must be printed in strict mode!')
-    
+
     res <- paste(capture.output(ascii(x, format='nice', digits=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'))), collapse='\n')
     options('asciiType' = asciitype.original)
     return(res)

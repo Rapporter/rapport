@@ -683,7 +683,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #'     \item 'graph.res',
 #'     \item 'graph.hi.res'.
 #' }
-#' 
+#'
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param data a \code{data.frame} to be used in template
 #' @param ... matches template inputs in format 'key = "value"'
@@ -811,13 +811,14 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
                               number    = , # number input
                               numeric   = is.numeric,
                               variable  = is.variable,
+                              whatever  = function(x) !is.null(x),
                               stopf('unknown type: "%s"', input.type)
                               )
 
             ## if any of our "custom" input types
             ## values are not extracted from data.frame in this case
             ## for custom types, default value is always assigned!!!
-            if (input.type %in% c('number', 'string', 'option', 'boolean')){
+            if (input.type %in% c('number', 'string', 'option', 'boolean', 'whatever')){
 
                 ## the ones specified in the template should take precedence
                 val <- if (is.null(input.value)) input.default[1] else input.value
@@ -829,6 +830,9 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
                 ## CSV input (allow multi match?)
                 if (input.type == 'option')
                     val <- match.arg(input.value, input.default)
+
+                if (input.type == 'whatever')
+                    val <- input.value
 
             } else {
                 ## ain't a "custom" input type, so it should be extracted from data.frame
@@ -890,10 +894,10 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
             assign(sprintf('%s.len', name), length(val), envir = e)  # variable length
             if (is.data.frame(val))
                 assign(sprintf('%s.label', name), sapply(val, rp.label), envir = e) # variable labels
-            else if (is.atomic(val))
+            else if (is.atomic(val) || !is.null(val))
                 assign(sprintf('%s.label', name), rp.label(val), envir = e) # variable label
             else
-                stopf('"%s" is not a "data.frame" or an atomic vector', name) # you never know...
+                stopf('"%s" is not a "data.frame", an atomic vector or "whatever" type', name) # you never know...
         })
     }
 
@@ -912,7 +916,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
             `%D` <- 1
         file.name <- gsub('%D', `%D`, file.name, fixed = TRUE)
     }
-    
+
     ## eval chunks
     opts.bak <- options()                      # backup options
     report <- lapply(elem, elem.eval, parent = elem, env = e, check.output = !(as.logical(meta$strict) | (rapport.mode == 'performance')), rapport.mode = rapport.mode, graph.output = graph.output, graph.name = file.name, graph.dir = file.path, width = graph.width, height = graph.height, res = graph.res, hi.res = graph.hi.res, graph.recordplot = graph.replay) # render template body
