@@ -5,8 +5,8 @@ Email:          gergely@snowl.net
 Description:    This template will return descriptive statistics and frequency table of a categorical variable.
 Data required:  TRUE
 Strict:         TRUE
-Example:        rapport('descriptives-univar-factor', data=ius2008, var='gender')
-                rapport('descriptives-univar-factor', data=ius2008, var='dwell')
+Example:        rapport('children/descriptives-univar-factor', data=ius2008, var='gender')
+                rapport('children/descriptives-univar-factor', data=ius2008, var='dwell')
 
 var             | *factor    | Variable          | A categorical variable
 nortest         | TRUE       | Normality test    | If normality tests should be performed 
