@@ -9,4 +9,6 @@ decimal.mark| string=.      | Decimal mark  | Decimal mark
 Example:        rapport('classes/numeric.tpl', x=pi, digits=3)
                 rapport('classes/numeric.tpl', x=pi, digits=20)
 head-->
-<%as.character(format(x, digits = digits, decimal.mark = decimal.mark))%>
+<%
+as.character(format(x, digits = digits, decimal.mark = decimal.mark))
+%>

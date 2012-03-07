@@ -25,7 +25,7 @@ report <- function (...) {
 report.numeric <-function(x, digits = 5, decimal.mark = '.', tpl = 'classes/numeric.tpl', ...){
     if (is.null(tryCatch(rapport:::tpl.find(tpl), error = function(e) NULL)))
         stop('Template not found!')
-    rapport(tpl, x = x, digits = digits, decimal.mark = decimal.mark, ...);
+    rapport(tpl, x = x, digits = digits, decimal.mark = decimal.mark, ...)$report[[1]]$robjects[[1]]$output
 }
 
 
@@ -41,5 +41,5 @@ report.numeric <-function(x, digits = 5, decimal.mark = '.', tpl = 'classes/nume
 report.matrix <-function(x, tpl = 'classes/matrix.tpl', ...){
     if (is.null(tryCatch(rapport:::tpl.find(tpl), error = function(e) NULL)))
         stop('Template not found!')
-    rapport(tpl, x = x, ...);
+    rapport(tpl, x = x, ...)
 }
