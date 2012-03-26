@@ -1,8 +1,8 @@
-\name{tangle.template}
-\alias{tangle.template}
+\name{tpl.tangle}
+\alias{tpl.tangle}
 \title{Extract R Code from Template}
 \usage{
-  tangle.template(fp, file = NULL, include.inline = FALSE,
+  tpl.tangle(fp, file = NULL, include.inline = FALSE,
     include.comments = TRUE, sep = "\n", ...)
 }
 \arguments{
@@ -28,8 +28,8 @@
 }
 \examples{
 \dontrun{
-tangle.template("anova")
-tangle.template("anova", file = "anova.R")
+tpl.tangle("anova")
+tpl.tangle("anova", file = "anova.R")
 }
 }
 

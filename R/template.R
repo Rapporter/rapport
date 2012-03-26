@@ -677,11 +677,11 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' @param sep separator for output to file
 #' @param ... additional parameters for \code{\link{cat}} function
 #' @examples \dontrun{
-#' tangle.template("anova")
-#' tangle.template("anova", file = "anova.R")
+#' tpl.tangle("anova")
+#' tpl.tangle("anova", file = "anova.R")
 #' }
 #' @export
-tangle.template <- function(fp, file = NULL, include.inline = FALSE, include.comments = TRUE, sep = '\n', ...){
+tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments = TRUE, sep = '\n', ...){
 
     tpl <- tpl.elem(fp)
 
