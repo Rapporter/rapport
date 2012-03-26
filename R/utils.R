@@ -212,7 +212,7 @@ stopf <- function(s, ...){
 
 #' Empty Value
 #'
-#' Rails-inspired helper that checks if value is "empty", i.e. if it's of \code{NULL}, \code{NA}, \code{NaN}, \code{FALSE}, empty string or \code{0}.
+#' Rails-inspired helper that checks if vector values are "empty", i.e. if it's of \code{NULL}, \code{NA}, \code{NaN}, \code{FALSE}, empty string or \code{0}. Note that unlike its `is.` siblings, `is.empty` is vectorised.
 #' @param x an object to check
 #' @param trim trim whitespace? (by default removes only trailing spaces)
 #' @param ... additional arguments for \code{\link{trim.space}}
@@ -228,16 +228,20 @@ stopf <- function(s, ...){
 #' @export
 is.empty <- function(x, trim = FALSE, ...){
 
-    if (is.null(x))
-        return (TRUE)
-    else if (is.na(x) || is.nan(x))
-        return (TRUE)
-    else if (is.character(x) && nchar(ifelse(trim, trim.space(x, ...), x)) == 0)
-        return (TRUE)
-    else if (is.logical(x) && !isTRUE(x))
-        return (TRUE)
-    else if (is.numeric(x) && x == 0)
-        return (TRUE)
-    else
-        return (FALSE)
+    if (length(x) <= 1) {
+        if (is.null(x))
+            return (TRUE)
+        else if (is.na(x) || is.nan(x))
+            return (TRUE)
+        else if (is.character(x) && nchar(ifelse(trim, trim.space(x, ...), x)) == 0)
+            return (TRUE)
+        else if (is.logical(x) && !isTRUE(x))
+            return (TRUE)
+        else if (is.numeric(x) && x == 0)
+            return (TRUE)
+        else
+            return (FALSE)
+    } else {
+        sapply(x, is.empty)
+    }
 }

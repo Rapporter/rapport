@@ -14,9 +14,10 @@
   \code{\link{trim.space}}}
 }
 \description{
-  Rails-inspired helper that checks if value is "empty",
-  i.e. if it's of \code{NULL}, \code{NA}, \code{NaN},
-  \code{FALSE}, empty string or \code{0}.
+  Rails-inspired helper that checks if vector values are
+  "empty", i.e. if it's of \code{NULL}, \code{NA},
+  \code{NaN}, \code{FALSE}, empty string or \code{0}. Note
+  that unlike its `is.` siblings, `is.empty` is vectorised.
 }
 \examples{
 is.empty(NULL)     # returns [1] TRUE

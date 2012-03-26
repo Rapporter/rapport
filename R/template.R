@@ -685,16 +685,17 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 
     tpl <- tpl.elem(fp)
 
-    if (include.inline == FALSE)
+    if (!include.inline)
         tpl <- tpl[sapply(tpl, is.rp.block)]
 
-    el <- rapply(tpl, function(x){
-        res <- if (is.rp.block(x)) x else grab.chunks(x)
-        res <- res[!is.empty(res)]
-        trim.space(res, leading = TRUE)
+    el <- sapply(tpl, function(x){
+        if (is.rp.block(x)) x else trim.space(grab.chunks(x), TRUE)
     })
 
-    if (include.comments == FALSE)
+    el <- unlist(el)
+    el <- el[!is.empty(el)]
+
+    if (!include.comments)
         el <- grep('^[^#]', el, value = TRUE)
 
     if (is.string(file)){
