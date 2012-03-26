@@ -672,7 +672,8 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #' \code{tangle}-like function to extract R code from \emph{rapport} templates.
 #' @param fp template file pointer
 #' @param file if specified, saves R code to a file (defaults to NULL, which puts the code in \code{stdout})
-#' @param include.inline if \code{TRUE}, code from inline chunks will be included too
+#' @param include.inline if \code{TRUE} (default), code from inline chunks will be included too
+#' @param include.comments if \code{TRUE} (default), comments will be included too
 #' @param sep separator for output to file
 #' @param ... additional parameters for \code{\link{cat}} function
 #' @examples \dontrun{
