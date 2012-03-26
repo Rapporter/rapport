@@ -667,6 +667,44 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 }
 
 
+#' Extract R Code from Template
+#'
+#' \code{tangle}-like function to extract R code from \emph{rapport} templates.
+#' @param fp template file pointer
+#' @param file if specified, saves R code to a file (defaults to NULL, which puts the code in \code{stdout})
+#' @param include.inline if \code{TRUE}, code from inline chunks will be included too
+#' @param sep separator for output to file
+#' @param ... additional parameters for \code{\link{cat}} function
+#' @examples \dontrun{
+#' tangle.template("anova")
+#' tangle.template("anova", file = "anova.R")
+#' }
+#' @export
+tangle.template <- function(fp, file = NULL, include.inline = FALSE, include.comments = TRUE, sep = '\n', ...){
+
+    tpl <- tpl.elem(fp)
+
+    if (include.inline == FALSE)
+        tpl <- tpl[sapply(tpl, is.rp.block)]
+
+    el <- rapply(tpl, function(x){
+        res <- if (is.rp.block(x)) grab.chunks(x) else x
+        res <- res[!is.empty(res)]
+        trim.space(res, leading = TRUE)
+    })
+
+    if (include.comments == FALSE)
+        el <- grep('^[^#]', el, value = TRUE)
+
+    if (is.string(file)){
+        cat(el, file = file, sep = sep, ...)
+        invisible(el)
+    } else {
+        return(el)
+    }
+}
+
+
 #' Evaluate Template
 #'
 #' This is the central function in the \code{rapport} package, and hence eponymous. In following lines we'll use \code{rapport} to denote the function, not the package. \code{rapport} requires a template file, while dataset (\code{data} argument) can be optional, depending on the value of \code{Data required} field in template header. Template inputs are matched with \code{...} argument, and should be provided in \code{x = value} format, where \code{x} matches input name and \code{value}, wait for it... input value! See \code{\link{tpl.inputs}} for more details on template inputs.
@@ -683,7 +721,7 @@ elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tag
 #'     \item 'graph.res',
 #'     \item 'graph.hi.res'.
 #' }
-#' 
+#'
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param data a \code{data.frame} to be used in template
 #' @param ... matches template inputs in format 'key = "value"'
@@ -912,7 +950,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
             `%D` <- 1
         file.name <- gsub('%D', `%D`, file.name, fixed = TRUE)
     }
-    
+
     ## eval chunks
     opts.bak <- options()                      # backup options
     report <- lapply(elem, elem.eval, parent = elem, env = e, check.output = !(as.logical(meta$strict) | (rapport.mode == 'performance')), rapport.mode = rapport.mode, graph.output = graph.output, graph.name = file.name, graph.dir = file.path, width = graph.width, height = graph.height, res = graph.res, hi.res = graph.hi.res, graph.recordplot = graph.replay) # render template body

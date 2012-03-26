@@ -212,7 +212,7 @@ stopf <- function(s, ...){
 
 #' Empty Value
 #'
-#' Rails-inspired helper that checks if value is "empty", i.e. if it's of \code{NULL}, \code{NA}, \code{NaN}, \code{FALSE}, empty string or 0.
+#' Rails-inspired helper that checks if value is "empty", i.e. if it's of \code{NULL}, \code{NA}, \code{NaN}, \code{FALSE}, empty string or \code{0}.
 #' @param x an object to check
 #' @param trim trim whitespace? (by default removes only trailing spaces)
 #' @param ... additional arguments for \code{\link{trim.space}}
