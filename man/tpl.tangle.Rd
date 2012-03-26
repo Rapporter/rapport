@@ -11,8 +11,8 @@
   \item{file}{if specified, saves R code to a file
   (defaults to NULL, which puts the code in \code{stdout})}
 
-  \item{include.inline}{if \code{TRUE} (default), code from
-  inline chunks will be included too}
+  \item{include.inline}{if \code{FALSE} (default), code
+  from inline chunks will be included too}
 
   \item{include.comments}{if \code{TRUE} (default),
   comments will be included too}
