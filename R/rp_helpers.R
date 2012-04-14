@@ -12,7 +12,7 @@ is.rapport <- function(x)  inherits(x, 'rapport')
 #' Checks if provided R object is a \code{rapport} block element.
 #' @param x any R object to check
 #' @return a logical value indicating whether provided object is a \code{rp.block} object
-is.rp.block <- function(x)  (inherits(x, 'rp.block'))
+is.rp.block <- function(x)  inherits(x, 'rp.block')
 
 
 #' Rapport Inline Element
@@ -20,7 +20,7 @@ is.rp.block <- function(x)  (inherits(x, 'rp.block'))
 #' Checks if provided R object is a \code{rapport} inline element.
 #' @param x any R object to check
 #' @return a logical value indicating whether provided object is a \code{rp.inline} object
-is.rp.inline <- function(x)  (inherits(x, 'rp.inline'))
+is.rp.inline <- function(x)  inherits(x, 'rp.inline')
 
 
 #' Rapport Heading Element
@@ -28,7 +28,7 @@ is.rp.inline <- function(x)  (inherits(x, 'rp.inline'))
 #' Checks if provided R object is a \code{rapport} inline element.
 #' @param x any R object to check
 #' @return a logical value indicating whether provided object is a \code{rp.heading} object
-is.rp.heading <- function(x)  (inherits(x, 'rp.heading'))
+is.rp.heading <- function(x)  inherits(x, 'rp.heading')
 
 
 #' Variables
@@ -136,21 +136,23 @@ rp.name <- function(x){
 
 #' Get Variable Label
 #'
-#' This function returns character value previously stored in variable's \code{label} attribute. If none found, the function defaults to object's name (retrieved by \code{deparse(substitute(x))}).
+#' This function returns character value previously stored in variable's \code{label} attribute. If none found, and \code{fallback} argument is set to \code{TRUE} (default), the function returns object's name (retrieved by \code{deparse(substitute(x))}), otherwise \code{NA} is returned with a warning notice.
 #' @param x an R object to extract labels from
 #' @param fallback a logical value indicating if labels should fallback to object name(s)
+#' @param simplify coerce results to a vector (\code{TRUE} by default), otherwise, a \code{list} is returned
 #' @return a character vector with variable's label(s)
 #' @examples \dontrun{
 #' x <- rnorm(100)
 #' rp.label(x)         # returns "x"
-#' rp.label(x, FALSE)  # fails with error message
+#' rp.label(x, FALSE)  # returns NA and issues a warning
 #'
 #' rp.label(mtcars$hp) <- "Horsepower"
 #' rp.label(mtcars)         # returns "Horsepower" instead of "hp"
 #' rp.label(mtcars, FALSE)  # returns NA where no labels are found
+#' rp.label(sleep, FALSE)   # returns NA for each variable and issues a warning
 #' }
 #' @export
-rp.label <- function(x, fallback = TRUE){
+rp.label <- function(x, fallback = TRUE, simplify = TRUE){
 
     if (missing(x))
         stop('variable not provided')
@@ -161,10 +163,12 @@ rp.label <- function(x, fallback = TRUE){
     if (is.atomic(x)){
         lbl <- attr(x, which = 'label', exact = TRUE)
         if (is.null(lbl)){
-            if (fallback)
+            if (fallback){
                 lbl <- tail(as.character(substitute(x)), 1)
-            else
-                stop('atomic vector has no label')
+            } else {
+                warning('atomic object has no labels')
+                lbl <- NA
+            }
         } else {
             if (length(lbl) > 1){
                 warning('variable label is not a length-one vector, only first element is returned')
@@ -177,18 +181,22 @@ rp.label <- function(x, fallback = TRUE){
 
         ## no labels found
         if (all(lbl.nil)){
-            if (fallback)
+            if (fallback){
                 lbl <- names(lbl)
-            else
-                stop('no labels found in recursive object')
+            } else {
+                warning('no labels found in recursive object')
+                lbl[lbl.nil] <- NA
+            }
         } else {
             if (fallback)
                 lbl[lbl.nil] <- names(lbl)[lbl.nil]
             else
                 lbl[lbl.nil] <- NA
-            lbl <- unlist(lbl)
         }
     }
+
+    if (simplify)
+        lbl <- unlist(lbl)
 
     return(lbl)
 }
@@ -863,14 +871,14 @@ rp.round <- function(x, short = FALSE, digits = NULL) {
 #' }
 #' @export
 rp.prettyascii <- function(x, asciitype = getOption('asciiType')) {
-    
+
     if ((length(x) == 1) & (is.rapport(x) | is.character(x)))
         return(x)
-    
+
     if (is.list(x))
         if (all(lapply(x, class) == 'rapport'))
             return(l_ply(x, print))
-    
+
     if (is.numeric(x)) {
         classes <- class(x)
         ## dims <- dim(x)
@@ -879,10 +887,10 @@ rp.prettyascii <- function(x, asciitype = getOption('asciiType')) {
         if (length(x) != 1)
             class(x) <- classes
     }
-    
+
     if (is.vector(x))
         return(p(x, limit = Inf))
-    
+
     asciitype.original <- getOption('asciiType')
     options('asciiType' = asciitype)
     if (is.data.frame(x) | is.table(x)) {
@@ -906,11 +914,11 @@ rp.prettyascii <- function(x, asciitype = getOption('asciiType')) {
         options('asciiType' = asciitype.original)
         return(res)
     }
-    
+
     x.class <- class(x)
     if (x.class == 'trellis' | x.class == 'ggplot')
         stop('ggplot2 and trellis objects must be printed in strict mode!')
-    
+
     res <- paste(capture.output(ascii(x, format='nice', digits=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'))), collapse='\n')
     options('asciiType' = asciitype.original)
     return(res)
