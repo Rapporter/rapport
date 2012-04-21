@@ -182,7 +182,7 @@ rp.label <- function(x, fallback = TRUE, simplify = TRUE){
         ## no labels found
         if (all(lbl.nil)){
             if (fallback){
-                lbl <- names(lbl)
+                lbl <- structure(names(lbl), .Names = names(lbl))
             } else {
                 warning('no labels found in recursive object')
                 lbl[lbl.nil] <- NA
