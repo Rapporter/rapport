@@ -2,8 +2,8 @@
 \alias{rapport}
 \title{Evaluate Template}
 \usage{
-  rapport(fp, data = NULL, ..., reproducible = FALSE,
-    header.levels.offset = 0,
+  rapport(fp, data = NULL, ..., env = new.env(),
+    reproducible = FALSE, header.levels.offset = 0,
     rapport.mode = getOption("rapport.mode"),
     graph.output = getOption("graph.format"),
     file.name = getOption("rp.file.name"),
@@ -22,6 +22,9 @@
 
   \item{...}{matches template inputs in format 'key =
   "value"'}
+
+  \item{env}{an environment where template commands be
+  evaluated (defaults to \code{new.env()}}
 
   \item{reproducible}{a logical value indicating if the
   call and data should be stored in template object, thus

@@ -727,6 +727,7 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param data a \code{data.frame} to be used in template
 #' @param ... matches template inputs in format 'key = "value"'
+#' @param env an environment where template commands be evaluated (defaults to \code{new.env()}
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
 #' @param rapport.mode forces \code{rapport} to run in \emph{performance} or \emph{debug} mode instead of normal behaviour. Change this only if you really know what are you doing! In \code{performance} mode \code{rapport} will evaluate all templates in \code{strict} mode (see: \code{evals(..., check.output = FALSE)}), while in \code{debug} mode \code{rapport} will halt on first error.
@@ -757,7 +758,7 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
+rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
 
     ## dummy checks for possible ascii export bug (space in path/filename)
     if (grepl(' ', file.name))
@@ -773,7 +774,7 @@ rapport <- function(fp, data = NULL, ..., reproducible = FALSE, header.levels.of
     inputs <- h$inputs                          # header inputs
     b      <- tpl.body(txt)                     # template body
     elem   <- tpl.elem(b, use.body = TRUE)      # template elements
-    e      <- new.env()                         # create evaluation environment
+    e      <- env                               # load/create evaluation environment
     i      <- list(...)                         # user inputs
     data.required <- isTRUE(as.logical(meta$dataRequired)) # is data required
     pkgs   <- meta$packages                                # required packages
