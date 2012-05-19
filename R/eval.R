@@ -43,7 +43,7 @@ eval.msgs <- function(src, env = NULL) {
         messages <<- m$message
     }
 
-    returns <- withCallingHandlers(tryCatch(eval(parse(text=src), envir = env), error = function(e) e), warning = warning.handler, message = message.handler)
+    returns <- suppressMessages(withCallingHandlers(tryCatch(eval(parse(text=src), envir = env), error = function(e) e), warning = warning.handler, message = message.handler))
     error <- grep('error', lapply(returns, function(x) class(x)))
     error <- c(error, grep('error', class(returns)))
 
