@@ -835,7 +835,9 @@ rp.round <- function(x, short = FALSE, digits = NULL) {
         digits <- ifelse(short, getOption('rp.decimal.short'), getOption('rp.decimal'))
     if (is.vector(x))
         return(as.vector(tocharac(x, digits = digits, decimal.mark = decimal.mark, format = 'nice')))
-    return(format(round(x, digits), decimal.mark = decimal.mark))
+    res        <- format(round(x, digits), decimal.mark = decimal.mark)
+    class(res) <- class(x)
+    return(res)
 }
 
 
