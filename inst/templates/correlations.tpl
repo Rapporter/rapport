@@ -44,7 +44,7 @@ if (cor.matrix) {
 
 <%
 if (cor.plot) {
-    caption('Scattorplot matrix')
+    caption('Scatterplot matrix')
     rp.cor.plot(vars)
 }
 %>
