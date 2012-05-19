@@ -1,16 +1,16 @@
 <!--head
 Title:          Crosstable
-Author:         Gergely Daróczi 
+Author:         Gergely Daróczi
 Email:          gergely@snowl.net
-Description:    Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table. 
+Description:    Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
 Packages:       descr
 Data required:  TRUE
 Strict:         TRUE
 Example:        rapport('crosstable', data=ius2008, row='gender', col='dwell')
-                rapport('crosstable', data=ius2008, row='email', col='dwell')
+		rapport('crosstable', data=ius2008, row='email', col='dwell')
 
 row             | *factor | Row variable        | A categorical variable.
-col             | *factor | Column variable     | A categorical variable. 
+col             | *factor | Column variable     | A categorical variable.
 head-->
 
 # Variable description
@@ -23,6 +23,7 @@ Two variables specified:
 # Counts
 
 <%
+caption('Counted values')
 table <- table(row, col, deparse.level = 0)
 table
 %>
@@ -30,18 +31,17 @@ table
 # Percentages
 
 <%
+caption('Total percentages')
 prop.table(table)
 %>
 
-## Row percentages
-
 <%
+caption('Row percentages')
 prop.table(table, 1)
 %>
 
-## Column percentages
-
 <%
+caption('Column percentages')
 prop.table(table, 2)
 %>
 
@@ -64,8 +64,9 @@ ifelse(t$p.value < 0.05, sprintf('It seems that a real association can be pointe
 suppressWarnings(CrossTable(table))$chisq$stdres
 %>
 
-## Mosaic chart
+# Charts
 
 <%
+caption('Mosaic chart')
 mosaicplot(table, shade=T, main=NULL)
 %>

@@ -19,12 +19,14 @@ The dataset has <%nvar<-as.numeric(var); length(nvar)%> observations with <%=rp.
 ## Base statistics
 
 <%
+caption(sprintf('Frequency table: %s', rp.name(var)))
 rp.freq(rp.name(var), rp.data)
 %>
 
-## Barplot
+## Charts
 
 <%
+caption(sprintf('Barplot: %s', rp.name(var)))
 print(rp.barplot(var))
 %>
 

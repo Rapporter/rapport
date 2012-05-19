@@ -17,9 +17,10 @@ grubb           | TRUE     | Grubb's test    | Show Grubb's test?
 dixon           | TRUE     | Dixon's test    | Show Dixon's test?
 head-->
 
-# Boxplot
+# Charts
 
 <%
+caption(sprintf('Boxplot: %s', rp.name(var)))
 print(rp.boxplot(var))
 %>
 
@@ -32,6 +33,7 @@ It seems that <%length(rp.outlier(var))%> extreme values can be found in "<%rp.l
 The above test for outliers was based on *lm(1 ~ <%rp.name(var)%>)*:
 
 <%
+caption(sprintf('Linear model: 1 ~ %s', rp.name(var)))
 lm(var ~ 1)
 %>
 

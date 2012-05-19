@@ -18,12 +18,14 @@ The dataset has <%length(var)%> observations with <%=rp.valid(var)%> valid value
 ## Base statistics
 
 <%
+caption(sprintf('Descriptives: %s', rp.name(var)))
 rp.desc(rp.name(var), NULL, c('mean', 'sd', 'var'), rp.data)
 %>
 
-## Histogram
+## Charts
 
 <%
+caption(sprintf('Histogram: %s', rp.name(var)))
 print(rp.hist(var))
 %>
 
