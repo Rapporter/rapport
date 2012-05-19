@@ -57,6 +57,8 @@ eval.msgs(c('pi', '1:10', 'NULL'))
 eval.msgs('pi')
 eval.msgs('1:2')
 identical(evals('pi')[[1]], eval.msgs('pi'))
+eval.msgs(c('message("FOO")', '1:2'))
+eval.msgs(c('caption("FOO")', '1:2'))
 }
 }
 \seealso{

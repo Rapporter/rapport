@@ -176,12 +176,16 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
                         file.ext <- tail(strsplit(x.r$output, '\\.')[[1]], 1)
                         img.hi.res <- sub(sprintf('.%s$', file.ext), sprintf('-hires.%s', file.ext), x.r$output)
                         if (file.exists(img.hi.res) & format == 'html' & backend == 'pandoc')
-                            r$add(paragraph(sprintf('[![](%s)](%s)', x.r$output, img.hi.res)))
+                            r$add(paragraph(paste0('[![', x.r$msg$messages, '](', x.r$output, ')](', img.hi.res, ')')))
                         else
-                            r$addFig(file=x.r$output)
+                            r$add(paragraph(paste0('![', x.r$msg$messages, '](', x.r$output, ')')))
                     }
                     if (all(x.r$type != c('image', 'error')))
                         r$add(paragraph(rp.prettyascii(x.r$output, asciitype = md.lang)))
+                    ## add captions to tables
+                    if (!is.null(x.r$msg$messages) & all(x.r$type != c('image', 'error')))
+                        r$add(paragraph(sprintf('\nTable: %s', x.r$msg$messages)))
+                    ## and warnings
                     if (!is.null(x.r$msg$warnings))
                         r$add(paragraph(as.character(x.r$msg$warnings)))
                     }
@@ -216,7 +220,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             r$addFig(system.file('includes/images/logo.png', package='rapport'))
 
         }
-        
+
         file <- gsub('%d', '0', file, fixed = TRUE)
         if (grepl('%t', file)) {
 

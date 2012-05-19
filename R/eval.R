@@ -26,6 +26,8 @@
 #' eval.msgs('pi')
 #' eval.msgs('1:2')
 #' identical(evals('pi')[[1]], eval.msgs('pi'))
+#' eval.msgs(c('message("FOO")', '1:2'))
+#' eval.msgs(c('caption("FOO")', '1:2'))
 #' }
 eval.msgs <- function(src, env = NULL) {
 
@@ -36,8 +38,12 @@ eval.msgs <- function(src, env = NULL) {
         warnings <<- w
         invokeRestart("muffleWarning")
     }
+    messages <- NULL
+    message.handler <- function(m) {
+        messages <<- m$message
+    }
 
-    returns <- withCallingHandlers(tryCatch(eval(parse(text=src), envir = env), error = function(e) e), warning = warning.handler)
+    returns <- withCallingHandlers(tryCatch(eval(parse(text=src), envir = env), error = function(e) e), warning = warning.handler, message = message.handler)
     error <- grep('error', lapply(returns, function(x) class(x)))
     error <- c(error, grep('error', class(returns)))
 
@@ -55,7 +61,7 @@ eval.msgs <- function(src, env = NULL) {
          output = returns,
          type   = class(returns),
          msg    = list(
-             messages = NULL,
+             messages = messages,
              warnings = warnings,
              errors   = error))
 }
@@ -147,6 +153,11 @@ eval.msgs <- function(src, env = NULL) {
 #'    matrix(0,3,5)'))
 #' evals(txt, classes = 'numeric')
 #' evals(txt, classes = c('numeric', 'list'))
+#'
+#' ## handling messages
+#' evals('message(20)')
+#' evals('message(20)', check.output = FALSE)
+#' evals('caption("FOO"); plot(1:10)')
 #'
 #' ## handling warnings
 #' evals('chisq.test(mtcars$gear, mtcars$hp)')
@@ -332,7 +343,12 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                 warnings <- NULL
             } else
             warnings <- sprintf('**Warning** in "%s": "%s"', paste(sapply(eval[warnings], function(x) x$call), collapse = " + "), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
-
+            ## messages
+            messages <- grep('message', lapply(eval, function(x) class(x)))
+            if (length(messages) == 0)
+                messages <- NULL
+            else
+                messages <- eval[[messages]]$message
             ### good code survived here!
 
             ### checking out which element produced the output               ## outRageous coding starts here
@@ -388,16 +404,17 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             clear.devs()
             if (!is.null(res$msg$errors))
                 return(res)
-            returns <- res$output
+            returns  <- res$output
             warnings <- res$msg$warnings
-            graph <- ifelse(exists('recorded.plot'), ifelse(is.null(recorded.plot[[1]]), FALSE, file), FALSE)
+            messages <- res$msg$messages
+            graph    <- ifelse(exists('recorded.plot'), ifelse(is.null(recorded.plot[[1]]), FALSE, file), FALSE)
         }
 
         ## save recorded plot on demand
         if (is.character(graph) & graph.recordplot) {
             saveRDS(recorded.plot, file = sprintf('%s.recordplot', file.name))
         }
-            
+
         if (is.character(graph)) {
             returns <- graph
             class(returns) <- "image"
@@ -472,7 +489,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                     output   = returns,
                     type     = class(returns),
                     msg      = list(
-                        messages = NULL,
+                        messages = messages,
                         warnings = warnings,
                         errors   = NULL)
                     )

@@ -233,6 +233,11 @@ txt <- readLines(textConnection('rnorm(100)
 evals(txt, classes = 'numeric')
 evals(txt, classes = c('numeric', 'list'))
 
+## handling messages
+evals('message(20)')
+evals('message(20)', check.output = FALSE)
+evals('caption("FOO"); plot(1:10)')
+
 ## handling warnings
 evals('chisq.test(mtcars$gear, mtcars$hp)')
 evals(list(c('chisq.test(mtcars$gear, mtcars$am)', 'pi', 'chisq.test(mtcars$gear, mtcars$hp)')))
