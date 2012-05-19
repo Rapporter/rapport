@@ -25,8 +25,14 @@ Two variables specified:
 
 <%
 caption('Counted values')
-table     <- table(row, col, deparse.level = 0)
-(fulltable <- addmargins(table))
+table		<- table(row, col, deparse.level = 0)
+fulltable	<- addmargins(table)
+fulltable.nrow  <- nrow(fulltable)
+fulltable.ncol  <- ncol(fulltable)
+fulltable[fulltable.nrow, ] <- paste0('**', fulltable[fulltable.nrow, ], '**')
+rownames(fulltable)[fulltable.nrow] <- paste0('**', rownames(fulltable)[fulltable.nrow], '**')
+fulltable[1:fulltable.nrow-1, fulltable.ncol] <- paste0('**', fulltable[1:fulltable.nrow-1, fulltable.ncol], '**')
+fulltable
 %>
 
 <%
@@ -40,17 +46,33 @@ if (annotation) {
 
 <%
 caption('Total percentages')
-rp.round(addmargins(prop.table(table)*100), short = TRUE)
+fulltable <- rp.round(addmargins(prop.table(table)*100), short = TRUE)
+fulltable <- trim.space(fulltable, leading = TRUE)
+fulltable.nrow  <- nrow(fulltable)
+fulltable.ncol  <- ncol(fulltable)
+fulltable[fulltable.nrow, ] <- paste0('**', fulltable[fulltable.nrow, ], '**')
+rownames(fulltable)[fulltable.nrow] <- paste0('**', rownames(fulltable)[fulltable.nrow], '**')
+fulltable[1:fulltable.nrow-1, fulltable.ncol] <- paste0('**', fulltable[1:fulltable.nrow-1, fulltable.ncol], '**')
+fulltable
 %>
 
 <%
 caption('Row percentages')
-rp.round(prop.table(addmargins(table, 1), 1)*100, short = TRUE)
+fulltable <- rp.round(prop.table(addmargins(table, 1), 1)*100, short = TRUE)
+fulltable <- trim.space(fulltable, leading = TRUE)
+fulltable.nrow  <- nrow(fulltable)
+fulltable[fulltable.nrow, ] <- paste0('**', fulltable[fulltable.nrow, ], '**')
+rownames(fulltable)[fulltable.nrow] <- paste0('**', rownames(fulltable)[fulltable.nrow], '**')
+fulltable
 %>
 
 <%
 caption('Column percentages')
-rp.round(prop.table(addmargins(table,2 ), 2)*100, short = TRUE)
+fulltable <- rp.round(prop.table(addmargins(table,2 ), 2)*100, short = TRUE)
+fulltable <- trim.space(fulltable, leading = TRUE)
+fulltable.ncol  <- ncol(fulltable)
+fulltable[, fulltable.ncol] <- paste0('**', fulltable[, fulltable.ncol], '**')
+fulltable
 %>
 
 # Chi-squared test
@@ -68,14 +90,17 @@ ifelse(t$p.value < 0.05, sprintf('It seems that a real association can be pointe
 
 <%
 caption('Pearson\'s residuals')
-(table.res <- suppressWarnings(CrossTable(table))$chisq$stdres)
+table.res <- suppressWarnings(CrossTable(table))$chisq$stdres
+table.res.highlow  <- which(table.res < -2 | table.res > 2, arr.ind = TRUE)
+table.res <- trim.space(rp.round(table.res, short = TRUE), leading = TRUE)
+table.res[table.res.highlow] <- paste0('**', table.res[table.res.highlow], '**')
+table.res
 %>
 
 <%
 if (annotation) {
-   table.res.high     <- which(table.res >  2, arr.ind = TRUE)
-   table.res.low      <- which(table.res < -2, arr.ind = TRUE)
-   table.res.highlow  <- which(table.res < -2 | table.res > 2, arr.ind = TRUE)
+   ## table.res.high     <- which(table.res >  2, arr.ind = TRUE)
+   ## table.res.low      <- which(table.res < -2, arr.ind = TRUE)
    if (nrow(table.res.highlow) > 0)
       sprintf('Based on Pearson\'s resuals the following cells seems interesting (with values higher then `2` or lower then `-2`):\n%s', paste(sapply(1:nrow(table.res.highlow), function(i) sprintf('\n * "%s - %s"', rownames(table)[table.res.highlow[i, 1]], colnames(table)[table.res.highlow[i, 2]])), collapse = ''))
    else
