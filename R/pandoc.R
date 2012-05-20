@@ -127,7 +127,6 @@ pandoc.horizontal.rule <- function()
 #' cat(pandoc.list(l))
 #' cat(pandoc.list(l, loose = TRUE))
 #' cat(pandoc.list(l, 'roman'))
-#' @note No nested lists are supported ATM!
 #' @importFrom utils as.roman
 pandoc.list <- function(elements, style = c('bullet', 'ordered', 'roman'), loose = FALSE, add.line.breaks = TRUE, add.end.of.list = TRUE, indent.level = 0) {
 
