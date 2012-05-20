@@ -3,31 +3,48 @@
 \title{Create a list}
 \usage{
   pandoc.list(elements,
-    style = c("bullet", "ordered", "roman"), loose = FALSE)
+    style = c("bullet", "ordered", "roman"), loose = FALSE,
+    add.line.breaks = TRUE, add.end.of.list = TRUE,
+    indent.level = 0)
 }
 \arguments{
   \item{elements}{character vector of strings}
 
   \item{style}{the required style of the list}
 
-  \item{loose}{boolean: if adding a newline between
-  elements}
+  \item{loose}{adding a newline between elements}
+
+  \item{add.line.breaks}{adding a leading and trailing
+  newline before/after the list}
+
+  \item{add.end.of.list}{adding a separator comment after
+  the list}
+
+  \item{indent.level}{the level of ident}
 }
 \value{
   character vector
 }
 \description{
-  Create a list
+  Creates a pandoc style list from provided character
+  vector/list.
 }
 \note{
   No nested lists are supported ATM!
 }
 \examples{
+## basic lists
 pandoc.list(letters[1:5])
 cat(pandoc.list(letters[1:5]))
 cat(pandoc.list(letters[1:5], 'ordered'))
 cat(pandoc.list(letters[1:5], 'roman'))
 cat(pandoc.list(letters[1:5], loose = TRUE))
+
+## nested lists
+l <- list("First list element", paste0(1:5, '. subelement'), "Second element", list('F', 'B', 'I', c('phone', 'pad', 'talics')))
+cat(pandoc.list(l))
+cat(pandoc.list(l, loose = TRUE))
+cat(pandoc.list(l, 'roman'))
 }
 \references{
   John MacFarlane (2012): _Pandoc User's Guide_.

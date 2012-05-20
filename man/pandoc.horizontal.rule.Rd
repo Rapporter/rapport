@@ -8,7 +8,8 @@
   character vector
 }
 \description{
-  Create horizontal rule
+  Creates a pandoc style horizontal line with trailing and
+  leading newlines.
 }
 \references{
   John MacFarlane (2012): _Pandoc User's Guide_.

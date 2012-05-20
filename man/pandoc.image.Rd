@@ -13,7 +13,7 @@
   character vector
 }
 \description{
-  Create pandoc image tags
+  Creates a pandoc style image hyperlink.
 }
 \examples{
 pandoc.image('foo.png')

@@ -78,6 +78,8 @@ pandoc.link <- function(url, text = url)
 
 
 #' Create pandoc image tags
+#'
+#' Creates a pandoc style image hyperlink.
 #' @param img image path
 #' @param caption text
 #' @return character vector
@@ -91,6 +93,8 @@ pandoc.image <- function(img, caption = '')
 
 
 #' Create horizontal rule
+#'
+#' Creates a pandoc style horizontal line with trailing and leading newlines.
 #' @return character vector
 #' @export
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
@@ -99,21 +103,33 @@ pandoc.horizontal.rule <- function()
 
 
 #' Create a list
+#'
+#' Creates a pandoc style list from provided character vector/list.
 #' @param elements character vector of strings
 #' @param style the required style of the list
-#' @param loose boolean: if adding a newline between elements
+#' @param loose adding a newline between elements
+#' @param add.line.breaks adding a leading and trailing newline before/after the list
+#' @param add.end.of.list adding a separator comment after the list
+#' @param indent.level the level of ident
 #' @return character vector
 #' @export
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
 #' @examples
+#' ## basic lists
 #' pandoc.list(letters[1:5])
 #' cat(pandoc.list(letters[1:5]))
 #' cat(pandoc.list(letters[1:5], 'ordered'))
 #' cat(pandoc.list(letters[1:5], 'roman'))
 #' cat(pandoc.list(letters[1:5], loose = TRUE))
+#'
+#' ## nested lists
+#' l <- list("First list element", paste0(1:5, '. subelement'), "Second element", list('F', 'B', 'I', c('phone', 'pad', 'talics')))
+#' cat(pandoc.list(l))
+#' cat(pandoc.list(l, loose = TRUE))
+#' cat(pandoc.list(l, 'roman'))
 #' @note No nested lists are supported ATM!
 #' @importFrom utils as.roman
-pandoc.list <- function(elements, style = c('bullet', 'ordered', 'roman'), loose = FALSE) {
+pandoc.list <- function(elements, style = c('bullet', 'ordered', 'roman'), loose = FALSE, add.line.breaks = TRUE, add.end.of.list = TRUE, indent.level = 0) {
 
     if (!is.logical(loose))
         stop('Wrong argument provided: loose')
@@ -123,14 +139,24 @@ pandoc.list <- function(elements, style = c('bullet', 'ordered', 'roman'), loose
     marker     <- switch(style,
                          'bullet'  = rep('* ', elements.l),
                          'ordered' = paste0(1:elements.l, '. '),
-                         'roman' = paste0(as.roman(1:elements.l), '. '))
+                         'roman'   = paste0(as.roman(1:elements.l), '. '))
 
-    res <- '\n\n'
-    res <- paste(sapply(1:elements.l, function(i) paste0(marker[i], elements[i])), collapse = '\n', ifelse(loose, '\n', ''))
+    i.lag <- 0
+    res <- ifelse(add.line.breaks, '\n', '')
+    res <- paste(sapply(1:elements.l, function(i) {
+        if (length(elements[[i]]) == 1) {
+            paste0(paste(rep(' ', indent.level * 4), collapse = ''), marker[i-i.lag], elements[i])
+        } else {
+            i.lag <<- i.lag + 1
+            pandoc.list(elements[[i]], style, loose, FALSE, FALSE, indent.level + 1)
+        }
+    }), collapse = '\n', ifelse(loose, '\n', ''))
 
-    ## TODO: add nested lists!
+    if (add.end.of.list)
+        res <- paste0(res, ifelse(loose, '', '\n\n'), '<!-- end of list -->\n')
+    if (add.line.breaks)
+        res <- add.blank.lines(res)
 
-    res <- c(res, '<!-- end of list -->\n')
-    add.blank.lines(res)
+    return(res)
 
 }
