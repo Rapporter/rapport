@@ -48,15 +48,15 @@ alike.integer <- function(x){
 
 #' Trim Spaces
 #'
-#' Removes leading and/or trailing space(s) from a character vector value. By default, it removes only trailing spaces. In order to trim both leading and trailing spaces, pass \code{TRUE} to both \code{leading} and \code{trailing} arguments.
-#' @param x a character vector which needs whitespace trimming
+#' Removes leading and/or trailing space(s) from a character vector value. By default, it removes both leading and trailing spaces. In order to get fine-tune control on trailing, pass appropriate logical values to \code{leading} and \code{trailing} arguments.
+#' @param x a character vector which values need whitespace trimming
 #' @param leading a logical value indicating if leading spaces should be removed (defaults to \code{FALSE})
 #' @param trailing a logical value indicating if trailing spaces should be removed (defaults to \code{TRUE})
 #' @param re a character value containing a regex that defines a space character
 #' @param ... additional arguments for \code{\link{gsub}} function
 #' @return a character vector with removed spaces
 #' @export
-trim.space <- function(x, leading = FALSE, trailing = TRUE, re = '[:space:]', ...){
+trim.space <- function(x, leading = TRUE, trailing = TRUE, re = '[:space:]', ...){
 
     if (missing(x))
         stop('no string to trim spaces')
