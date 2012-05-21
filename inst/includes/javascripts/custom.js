@@ -78,12 +78,16 @@ $(document).ready(function() {
     
     // wrap each table in a container div
     $content.find('table').wrap('<div class="table-container" />');
+    // add math container
+    $content.find('span.math').parent().wrap('<div class="math-container" />');
 
-    // image popups
-    $('.content a > img').slimbox({
-        counterText: "Plot: {x} of {y}"
-    }, function(el) {
-        return [el.parentNode.href];
+    // Colorbox
+    var $contentImg = $content.find('img');
+    $contentImg.each(function(i, e){
+	$(e).colorbox({
+	    inline: true,
+	    href: $(e)
+	});
     });
 
 });

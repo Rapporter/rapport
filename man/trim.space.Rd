@@ -2,11 +2,11 @@
 \alias{trim.space}
 \title{Trim Spaces}
 \usage{
-  trim.space(x, leading = FALSE, trailing = TRUE,
+  trim.space(x, leading = TRUE, trailing = TRUE,
     re = "[:space:]", ...)
 }
 \arguments{
-  \item{x}{a character vector which needs whitespace
+  \item{x}{a character vector which values need whitespace
   trimming}
 
   \item{leading}{a logical value indicating if leading
@@ -26,9 +26,9 @@
 }
 \description{
   Removes leading and/or trailing space(s) from a character
-  vector value. By default, it removes only trailing
-  spaces. In order to trim both leading and trailing
-  spaces, pass \code{TRUE} to both \code{leading} and
-  \code{trailing} arguments.
+  vector value. By default, it removes both leading and
+  trailing spaces. In order to get fine-tune control on
+  trailing, pass appropriate logical values to
+  \code{leading} and \code{trailing} arguments.
 }
 

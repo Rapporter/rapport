@@ -186,7 +186,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         header <- tpl.header(header)
 
     if (isTRUE(trim.white))
-        header <- trim.space(header, TRUE)
+        header <- trim.space(header)
 
     ## required fields
     fld <- list(
@@ -228,7 +228,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
     ## store only packages that aren't listed in dependencies
     if (!is.null(l$packages)){
         pkg.dep    <- strsplit(packageDescription("rapport")$Depends, "[,[:space:]]+")[[1]]
-        l$packages <- lapply(strsplit(l$packages, ','), trim.space, leading = TRUE, trailing = TRUE)[[1]]
+        l$packages <- lapply(strsplit(l$packages, ','), trim.space)[[1]]
         l$packages <- setdiff(l$packages, pkg.dep)
     }
 
@@ -314,7 +314,7 @@ tpl.inputs <- function(fp, use.header = TRUE){
     if (length(inputs.ind) == 0)
         return (structure(NULL, class = 'rp.inputs'))
 
-    inputs.raw <- lapply(strsplit(header[inputs.ind], '|', fixed = TRUE), function(x) trim.space(x, TRUE)) # "raw" as in "unchecked", split by | and trimmed for whitespace
+    inputs.raw <- lapply(strsplit(header[inputs.ind], '|', fixed = TRUE), function(x) trim.space(x)) # "raw" as in "unchecked", split by | and trimmed for whitespace
 
     if (!all(sapply(inputs.raw, length) == 4))
         stop('input definition error: missing fields')
@@ -689,7 +689,7 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
         tpl <- tpl[sapply(tpl, is.rp.block)]
 
     el <- sapply(tpl, function(x){
-        if (is.rp.block(x)) x else trim.space(grab.chunks(x), TRUE)
+        if (is.rp.block(x)) x else trim.space(grab.chunks(x))
     })
 
     el <- unlist(el)

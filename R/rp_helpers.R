@@ -521,7 +521,7 @@ extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
             stop('"short" argument should be a string')
 
     if (isTRUE(trim.white))
-        x <- trim.space(x, leading = TRUE, trailing = TRUE)
+        x <- trim.space(x)
 
 
     fl <- if (length(x) == 0) 0 else nchar(x)
@@ -725,7 +725,7 @@ check.limit <- function(x, max.lim = 50L){
 #' }
 check.type <- function(x){
 
-    x <- trim.space(x, TRUE)
+    x <- trim.space(x)
 
     if (x == '')
         stop('empty input type definition')
