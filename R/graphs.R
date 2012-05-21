@@ -39,14 +39,14 @@ rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=g
     if (palette=='default') {
         if (num > 8) stop('Maximum number of colors (8) with chosen palette is lower then provided.')
         cols <- c("#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999", "#E69F00")
-	} else {
-		if (num > brewer.pal.info[palette,'maxcolors']) stop(paste('Maximum number of colors (', brewer.pal.info[palette, "maxcolors"], ') with chosen palette is lower then provided (', num, ').', sep=''))
-		## ugly hack to be able to return colors from palettes with higher minimum 'n' requirement
+        } else {
+                if (num > brewer.pal.info[palette,'maxcolors']) stop(paste('Maximum number of colors (', brewer.pal.info[palette, "maxcolors"], ') with chosen palette is lower then provided (', num, ').', sep=''))
+                ## ugly hack to be able to return colors from palettes with higher minimum 'n' requirement
         if (num < 3) n <- 3
-		cols <- brewer.pal(brewer.pal.info[palette,'maxcolors'], palette)
-	}
-	if (colorize == TRUE) cols <- sample(cols)
-	return(cols[1:num])
+                cols <- brewer.pal(brewer.pal.info[palette,'maxcolors'], palette)
+        }
+        if (colorize == TRUE) cols <- sample(cols)
+        return(cols[1:num])
 }
 
 
@@ -76,6 +76,7 @@ rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=g
 #' theme.rapport(custom=list(par.main.text = list(lineheight = 2)))
 #' }
 theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette'), colorize = getOption('style.colorize'), font = getOption('style.font'), custom) {
+
     color <- rp.palette(1, palette = palette, colorize = colorize)
     colors <- rp.palette(palette = palette, colorize = colorize)
     theme <- standard.theme(color = !bw)
@@ -107,6 +108,7 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
     theme$par.zlab.text$fontfamily <- font
     theme$par.main.text$fontfamily <- font
     theme$par.sub.text$fontfamily <- font
+
     if (bw) {
         colors <- c("#000000", "#999999", "#4C4C4C", "#E6E6E6",
             "#F2F2F2", "#B2B2B2", "#000000", "#030303", "#050505",
@@ -132,8 +134,16 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
         theme$superpose.symbol$col = colors[rep(1, 7)]
         theme$superpose.symbol$pch = c(1, 3, 6, 0, 5, 16, 17)
     }
+
+    ## minimal margin
+    theme$layout.heights$top.padding = 0.1
+    theme$layout.heights$bottom.padding = 0.1
+    theme$layout.widths$right.padding = 0.1
+    theme$layout.widths$left.padding = 0.1
+
     if (!missing(custom))
         theme <- modifyList(theme, custom)
+
     return(theme)
 }
 
@@ -272,9 +282,9 @@ add.grid.x <- function (...) {
 #' @export
 #' @keywords internal
 rp.graph.check <- function(x, facet = NULL, subset = NULL, ...) {
-	if (missing(x)) stop('Variable was not specified.')
-	if (!missing(facet) & !is.factor(facet)) stop('Wrong variable type (!factor) given as facet.')
-	if (!is.variable(x)) stop('Wrong type of varible (!atomic) provided.')
+        if (missing(x)) stop('Variable was not specified.')
+        if (!missing(facet) & !is.factor(facet)) stop('Wrong variable type (!factor) given as facet.')
+        if (!is.variable(x)) stop('Wrong type of varible (!atomic) provided.')
 }
 
 

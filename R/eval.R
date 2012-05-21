@@ -110,6 +110,7 @@ eval.msgs <- function(src, env = NULL) {
 #' @param output a character vector of required returned values. See below.
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @param check.output to check each line of \code{txt} for outputs. If set to \code{TRUE} you would result in some overhead as all commands have to be run twice (first to check if any output was generated and if so in which part(s), later the R objects are to be grabbed). With \code{FALSE} settings \code{evals} runs much faster, but as now checks are made, some requirements apply, see Details.
+#' @param graph.nomargin should \code{evals} try to keep plots' margins minimal?
 #' @param graph.name set the file name of saved plots which is a \code{\link{tempfile}} by default. A simple character string might be provided where \code{\%d} would be replaced by the index of the generating \code{txt} source and \code{\%t} by some random characters. Default is set to call \code{\link{tempfile}} instead.
 #' @param graph.dir path to an existing directory where to place generated images. Default set to NULL as using \code{\link{tempfile}}s.
 #' @param graph.output set the required file format of saved plots
@@ -117,7 +118,7 @@ eval.msgs <- function(src, env = NULL) {
 #' @param height height of generated plot in pixels for even vector formats (!)
 #' @param res nominal resolution in ppi. The height and width of vector plots will be calculated based in this.
 #' @param hi.res generate high resolution plots also?
-#' @param hi.res.width  width of generated high resolution plot in pixels for even vector formats (!)
+#' @param hi.res.width width of generated high resolution plot in pixels for even vector formats (!)
 #' @param hi.res.height height of generated high resolution plot in pixels for even vector formats (!). This value can be left blank to be automatically calculated to match original plot aspect ratio.
 #' @param hi.res.res nominal resolution of high resolution plot in ppi. The height and width of vector plots will be calculated based in this. This value can be left blank to be automatically calculated to fit original plot scales.
 #' @param graph.env save the environments in which plots were generated to distinct files with \code{env} extension?
@@ -244,7 +245,7 @@ eval.msgs <- function(src, env = NULL) {
 #' evals('mean(x)')
 #' }
 #' @export
-evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.name = substitute(tempfile()), graph.dir = '', graph.output = c('png', 'bmp', 'jpeg', 'jpg', 'tiff', 'svg', 'pdf'), width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), graph.env = FALSE, graph.recordplot = FALSE, ...){
+evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.nomargin = TRUE, graph.name = substitute(tempfile()), graph.dir = '', graph.output = c('png', 'bmp', 'jpeg', 'jpg', 'tiff', 'svg', 'pdf'), width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), graph.env = FALSE, graph.recordplot = FALSE, ...){
 
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
@@ -291,6 +292,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
         clear.devs()
 
+        ## init (potential) img file
         file.name <- gsub('%d', `%d`, eval(graph.name), fixed = TRUE)
         file <- sprintf('%s.%s', file.name, graph.output)
         if (grepl('%t', graph.name)) {
@@ -310,6 +312,13 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             do.call(graph.output, list(file, width = width/res, height = height/res, ...)) # TODO: font-family?
         if (graph.output == 'pdf')
             do.call('cairo_pdf', list(file, width = width/res, height = height/res, ...)) # TODO: font-family?
+
+        ## remove margins
+        if (graph.nomargin) {
+            trellis.par.set(layout.heights = list(top.padding = 0.1, bottom.padding = 0.1), layout.widths = list(right.padding = 0.1, left.padding = 0.1))
+            par(mar=c(4, 4, 2.1, 0.1))
+        }
+
         dev.control(displaylist = "enable")
 
         if (check.output) {

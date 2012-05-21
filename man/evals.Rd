@@ -5,7 +5,7 @@
   evals(txt = NULL, ind = NULL, body = NULL,
     classes = NULL, hooks = NULL, length = Inf,
     output = c("all", "src", "output", "type", "msg"),
-    env = NULL, check.output = TRUE,
+    env = NULL, check.output = TRUE, graph.nomargin = TRUE,
     graph.name = substitute(tempfile()), graph.dir = "",
     graph.output = c("png", "bmp", "jpeg", "jpg", "tiff", "svg", "pdf"),
     width = 480, height = 480, res = 72, hi.res = FALSE,
@@ -61,6 +61,9 @@
   \code{FALSE} settings \code{evals} runs much faster, but
   as now checks are made, some requirements apply, see
   Details.}
+
+  \item{graph.nomargin}{should \code{evals} try to keep
+  plots' margins minimal?}
 
   \item{graph.name}{set the file name of saved plots which
   is a \code{\link{tempfile}} by default. A simple

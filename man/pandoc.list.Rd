@@ -29,9 +29,6 @@
   Creates a pandoc style list from provided character
   vector/list.
 }
-\note{
-  No nested lists are supported ATM!
-}
 \examples{
 ## basic lists
 pandoc.list(letters[1:5])
