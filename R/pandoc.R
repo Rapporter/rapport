@@ -13,7 +13,7 @@ add.blank.lines <- function(x)
 #' @export
 #' @seealso \code{\link{trim.space}}
 trim.spaces <- function(x)
-    gsub(sprintf('^[%s]+|[%s]+$', x, x), '', x)
+    gsub('^[[:space:]]+|[[:space:]]+$', '', x)
 
 #' Repeating chars
 #'
@@ -66,12 +66,34 @@ pandoc.strikeout <- function(x)
 #'
 #' Pandoc style verbatim format (e.g. \code{`FOO`}) is added to character string.
 #' @param x character vector
+#' @param style show code \code{inline} or in a separate (\code{indent}ed or \code{delim}ited) block
+#' @param attrs (optionally) pass ID, classes and any attribute to the \code{delimited} block
 #' @return character vector
 #' @export
 #' @seealso \code{\link{pandoc.emphasis}} \code{\link{pandoc.strikeout}} \code{\link{pandoc.strong}}
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
-pandoc.verbatim <- function(x)
-    paste0('`', trim.spaces(x), '`')
+#' @examples
+#' ## different styles/formats
+#' pandoc.verbatim('FOO')
+#' pandoc.verbatim('FOO', 'indent')
+#' cat(pandoc.verbatim(c('FOOO\nBAR  ', ' I do R'), 'indent'))
+#' cat(pandoc.verbatim(c('FOOO\nBAR  ', ' I do R'), 'delim'))
+#'
+#' ## add highlighting and HTML/LaTeX ID and classes (even custom attribute)
+#' cat(pandoc.verbatim(c('cat("FOO")', 'mean(bar)'), 'delim', '.R #MyCode custom_var="10"'))
+pandoc.verbatim <- function(x, style = c('inline', 'indent', 'delim'), attrs = '') {
+
+    style <- match.arg(style)
+    if (style != 'delim' & !missing(attrs))
+        warning('Providing attrs is only meaningful with delimited blocks.')
+
+    switch(style,
+           'inline' = paste0('`', trim.spaces(x), '`'),
+           'indent' = sprintf('\n%s\n', paste(paste0(rep.char(' ', 4), unlist(strsplit(trim.spaces(x), '\n'))), collapse = '\n')),
+           'delim'  = paste0('\n', rep.string('`', 7), ifelse(attrs == '', '', sprintf('{%s}', attrs)), '\n', paste(trim.spaces(x), collapse = '\n'), '\n', rep.string('`', 7), '\n')
+           )
+
+}
 
 
 #' Create pandoc link
