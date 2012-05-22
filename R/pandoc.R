@@ -13,8 +13,18 @@ add.blank.lines <- function(x)
 #' @export
 #' @seealso \code{\link{trim.space}}
 trim.spaces <- function(x)
-    sprintf('^[%s]+|[%s]+$', x, x)
+    gsub(sprintf('^[%s]+|[%s]+$', x, x), '', x)
 
+#' Repeating chars
+#'
+#' Repeating a string \code{n} times and returning a concatenated character vector.
+#' @param x string to repeat
+#' @param n integer
+#' @param sep separator between repeatitions
+#' @return character vector
+#' @export
+rep.char <- function(x, n, sep = '')
+    paste(rep.int(x, n), collapse = sep)
 
 #' Add strong emphasis
 #'
@@ -155,6 +165,111 @@ pandoc.list <- function(elements, style = c('bullet', 'ordered', 'roman'), loose
         res <- paste0(res, ifelse(loose, '', '\n\n'), '<!-- end of list -->\n')
     if (add.line.breaks)
         res <- add.blank.lines(res)
+
+    return(res)
+
+}
+
+#' Create a table
+#'
+#' Creates a pandoc style "grid" table with optional caption.
+#'
+#' This function will try to make pretty the provided R object's content like: rounding numbers, auto-recognizing if row names should be included etc.
+#' @param t data frame, matrix or table
+#' @param caption string
+#' @param digits see \code{prettyNum}
+#' @param decimal.mark see \code{prettyNum}
+#' @param justify see \code{prettyNum}
+#' @return character vector
+#' @note Pandoc does not support justify parameter for grid tables ATM. ## TODO: multiline?
+#' @export
+#' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
+#' @examples
+#' cat(pandoc.table(mtcars))
+#'
+#' ## caption
+#' cat(pandoc.table(mtcars, 'Motor Trend Car Road Tests'))
+#'
+#' ## other input/output formats
+#' cat(pandoc.table(mtcars, decimal.mark = ','))
+#' cat(pandoc.table(mtcars, decimal.mark = ',', justify = 'right'))
+#' cat(pandoc.table(matrix(sample(1:1000, 25), 5, 5)))
+#' cat(pandoc.table(matrix(runif(25), 5, 5)))
+#' cat(pandoc.table(matrix(runif(25), 5, 5), digits = 5))
+#' cat(pandoc.table(table(mtcars$am, mtcars$gear)))
+#' cat(pandoc.table(table(state.division, state.region)))
+#' cat(pandoc.table(table(state.division, state.region), justify = 'centre'))
+#'
+#' m <- data.frame(a=c(1, -500, 10320, 23, 77), b=runif(5), c=c('a', 'bb', 'ccc', 'dddd', 'eeeee'))
+#' cat(pandoc.table(m))
+#' cat(pandoc.table(m, justify = c('right', 'left', 'centre')))
+pandoc.table <- function(t, caption, digits = 2, decimal.mark = '.', justify = 'left') {
+
+    ## helper functions
+    table.sep  <- function(cols.width, sep = '+')
+        paste0(sep, paste(sapply(cols.width+2, function(x) rep.char('-', x)), collapse = sep), sep)
+
+    table.expand <- function(cells, cols.width, justify) {
+
+        df  <- data.frame(txt = cells, width = cols.width, justify = justify)
+        res <- apply(df, 1, function(x) format(x[1], justify = x[3], width = x[2]))
+        paste0('| ', paste(res, collapse = ' | '), ' |')
+
+    }
+
+    ## intializing result
+    res <- '\n'
+
+    ## format numerics & convert to string
+    t <- format(t, trim = TRUE, digits = digits, decimal.mark = decimal.mark)
+
+    ## TODO: adding formatting (emphasis, strong etc.)
+
+    ## helper variables
+    t.colnames  <- colnames(t)
+    t.width     <- as.numeric(apply(cbind(nchar(t.colnames), apply(t, 2, function(x) max(nchar(x)))), 1, max))
+    t.rownames  <- rownames(t)
+
+    ## remove obvoius row.names
+    if (all(rownames(t) == 1:nrow(t)))
+        t.rownames <- NULL
+
+    if (length(t.rownames) != 0) {
+
+        t.colnames <- c('', t.colnames)
+        t.width <- c(max(nchar(t.rownames)), t.width)
+
+    }
+
+    if (length(justify) != 1) {
+        if (length(t.rownames) != 0)
+            if (length(justify) != length(t.width))
+                stop('Wrong number of parameters passed: justify')
+    } else {
+        justify <- rep(justify, length(t.width))
+    }
+
+    t.sep <- table.sep(t.width)
+
+    ## header
+    if (length(t.colnames) != 0) {
+        res <- paste(res, t.sep, table.expand(t.colnames, t.width, justify[1]), gsub('-', '=', t.sep), sep = '\n')
+    } else {
+        res <- paste(res, t.sep, sep = '\n')
+    }
+
+    ## body
+    res <- paste0(res, '\n')
+    b   <- t
+    if (length(t.rownames) != 0)
+        b <- cbind(t.rownames, b)
+    res <- paste0(res, paste(apply(b, 1, function(x) paste(table.expand(x, t.width, justify), t.sep, sep = '\n')), collapse = '\n'))
+
+    res <- paste0(res, '\n\n')
+
+    ## (optional) caption
+    if (!missing(caption))
+        res <- sprintf('%s    Table: %s\n\n', res, caption)
 
     return(res)
 
