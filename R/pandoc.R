@@ -1,3 +1,7 @@
+## TODO: default should be to return results to stdout (using `cat`)?
+## TODO: add S4 class stuff for easy reporting
+## TODO: add more functionality to pandoc.table (see below)
+
 #' Add trailing and leading blank line
 #'
 #' Adds a line break before *and* after the character string(s).
@@ -134,6 +138,40 @@ pandoc.horizontal.rule <- function()
     add.blank.lines('---')
 
 
+#' Create header
+#'
+#' Creates a pandoc/markdown style header with given level.
+#' @param x character vector
+#' @param level integer
+#' @param style atx or setext type of heading
+#' @return character vector
+#' @export
+#' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
+#' @examples
+#' pandoc.header('Foo!', 2)
+#' pandoc.header('Foo!', 2, 'setext')
+#' cat(pandoc.header('Foo!', 2, 'setext'))
+#' cat(pandoc.header('Foo **bar**!', 1, 'setext'))
+pandoc.header <- function(x, level = 1, style = c('atx', 'setext')) {
+
+    style <- match.arg(style)
+    if (!is.numeric(level))
+        stop('Wrong level provided!')
+    if (any((style == 'atx' & level > 6), (style == 'setext' & level > 2)))
+        stop('Too hight level provided!')
+    if (level < 1)
+        stop('Too low level provided!')
+
+    res <- switch(style,
+           'atx'    = paste(rep.char('#', level), x),
+           'setext' = paste(x, rep.char(ifelse(level == 1, '=', '-'), nchar(x)), sep = '\n')
+           )
+
+    add.blank.lines(res)
+
+}
+
+
 #' Create a list
 #'
 #' Creates a pandoc style list from provided character vector/list.
@@ -266,7 +304,7 @@ pandoc.table <- function(t, caption, digits = 2, decimal.mark = '.', justify = '
     if (length(justify) != 1) {
         if (length(t.rownames) != 0)
             if (length(justify) != length(t.width))
-                stop('Wrong number of parameters passed: justify')
+                stop(sprintf('Wrong number of parameters (%s instead of *%s*) passed: justify', length(justify), length(t.width)))
     } else {
         justify <- rep(justify, length(t.width))
     }

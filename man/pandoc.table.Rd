@@ -23,6 +23,11 @@
   Creates a pandoc style "grid" table with optional
   caption.
 }
+\details{
+  This function will try to make pretty the provided R
+  object's content like: rounding numbers, auto-recognizing
+  if row names should be included etc.
+}
 \note{
   Pandoc does not support justify parameter for grid tables
   ATM. ## TODO: multiline?
@@ -42,8 +47,10 @@ cat(pandoc.table(matrix(runif(25), 5, 5), digits = 5))
 cat(pandoc.table(table(mtcars$am, mtcars$gear)))
 cat(pandoc.table(table(state.division, state.region)))
 cat(pandoc.table(table(state.division, state.region), justify = 'centre'))
-m <- data.frame(a=1:5, b=runif(5), c=c('a', 'bb', 'ccc', 'dddd', 'eeeee'))
+
+m <- data.frame(a=c(1, -500, 10320, 23, 77), b=runif(5), c=c('a', 'bb', 'ccc', 'dddd', 'eeeee'))
 cat(pandoc.table(m))
+cat(pandoc.table(m, justify = c('right', 'left', 'centre')))
 }
 \references{
   John MacFarlane (2012): _Pandoc User's Guide_.
