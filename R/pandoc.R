@@ -172,6 +172,55 @@ pandoc.header <- function(x, level = 1, style = c('atx', 'setext')) {
 }
 
 
+#' Create title block
+#'
+#' Creates a pandoc style title block with optional author, title and date fields.
+#' @param author character vector or semicolon delimited list of authors without line break
+#' @param title character vector of lines of title or multiline string with \code{\n} separators
+#' @param date any string fit in one line
+#' @return character vector
+#' @export
+#' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
+#' @examples
+#' pandoc.title('Gergely Daróczi', 'Render pandoc in R', '2012-05-16')
+#' pandoc.title(c('Tom', 'Jerry'), 'Render pandoc in R', '2012-05-16')
+#' pandoc.title('Tom; Jerry', 'Render pandoc in R', '2012-05-16')
+#' pandoc.title('Tom; Jerry', c('Render', 'pandoc', 'in R'), '2012-05-16')
+#' pandoc.title('Tom; Jerry', 'Render\n    pandoc \n    in R', '2012-05-16')
+pandoc.title <- function(author, title, date) {
+
+    if (missing(author) & missing(title) & !missing(date))
+        stop('You cannot create a title with only date specified!')
+
+    ## updating title tags
+    if (!missing(author))
+        author <- paste('%', paste(author, collapse = '; '))
+    if (!missing(title))
+        title  <- paste0('% ', gsub('[\t ][\t ]*', '  ', gsub('\n', '\n  ', paste(title, collapse = '\n'))))
+
+    ## formatting result
+    if (missing(title)) {               # author
+        res <- paste0('%\n', author)
+    } else {
+        date <- paste0('% ', gsub('\n', ' ', date)[1])
+        if (missing(date)) {
+            if (missing(author))        # title
+                res <- title
+            else                        # author & title
+                res <- paste(title, author, sep = '\n')
+        } else {
+            if (missing(author))        # title & date
+                res <- paste(title, '%', date, sep = '\n')
+            else                        # author & title & date
+                res <- paste(title, author, date, sep = '\n')
+
+        }
+    }
+
+    add.blank.lines(res)
+
+}
+
 #' Create a list
 #'
 #' Creates a pandoc style list from provided character vector/list.
