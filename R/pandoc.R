@@ -31,6 +31,26 @@ rep.char <- function(x, n, sep = '')
     paste(rep.int(x, n), collapse = sep)
 
 
+#' Paragraphs
+#'
+#' Pandoc style paragraph.
+#' @param x character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
+#' @export
+#' @aliases pandoc.p
+#' @seealso \code{\link{pandoc.emphasis}} \code{\link{pandoc.strikeout}} \code{\link{pandoc.verbatim}}
+#' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
+#' @examples
+#' pandoc.p('FOO')
+#' pandoc.p(c('Lorem', 'ipsum', 'lorem ipsum'))
+pandoc.p.return <- function(x)
+    add.blank.lines(paste(x, collapse = '\n'))
+
+#' @export
+pandoc.p <- function(...)
+    cat(pandoc.p.return(...))
+
+
 #' Strong emphasis
 #'
 #' Pandoc style strong emphasis format (e.g. \code{**FOO**}) is added to character string.
