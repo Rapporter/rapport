@@ -1,11 +1,14 @@
-\name{pandoc.horizontal.rule}
+\name{pandoc.horizontal.rule.return}
 \alias{pandoc.horizontal.rule}
+\alias{pandoc.horizontal.rule.return}
 \title{Create horizontal rule}
 \usage{
-  pandoc.horizontal.rule()
+  pandoc.horizontal.rule.return()
 }
 \value{
-  character vector
+  By default this function outputs (see: \code{cat}) the
+  result. If you would want to catch the result instead,
+  then call the function ending in \code{.return}.
 }
 \description{
   Creates a pandoc style horizontal line with trailing and

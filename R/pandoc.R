@@ -1,4 +1,4 @@
-## TODO: default should be to return results to stdout (using `cat`)?
+## TODO: ~~default should be to return results to stdout (using `cat`)?~~
 ## TODO: add S4 class stuff for easy reporting
 ## TODO: add more functionality to pandoc.table (see below)
 
@@ -30,40 +30,64 @@ trim.spaces <- function(x)
 rep.char <- function(x, n, sep = '')
     paste(rep.int(x, n), collapse = sep)
 
-#' Add strong emphasis
+
+#' Strong emphasis
 #'
 #' Pandoc style strong emphasis format (e.g. \code{**FOO**}) is added to character string.
 #' @param x character vector
-#' @return character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
 #' @export
+#' @aliases pandoc.strong
 #' @seealso \code{\link{pandoc.emphasis}} \code{\link{pandoc.strikeout}} \code{\link{pandoc.verbatim}}
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
-pandoc.strong <- function(x)
+#' @examples
+#' pandoc.strong('FOO')
+#' pandoc.strong.return('FOO')
+pandoc.strong.return <- function(x)
     paste0('**', trim.spaces(x), '**')
 
+#' @export
+pandoc.strong <- function(...)
+    cat(pandoc.strong.return(...))
 
-#' Add emphasis
+#' Emphasis
 #'
 #' Pandoc style emphasis format (e.g. \code{*FOO*}) is added to character string.
 #' @param x character vector
-#' @return character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
 #' @export
+#' @aliases pandoc.empasis
 #' @seealso \code{\link{pandoc.strong}} \code{\link{pandoc.strikeout}} \code{\link{pandoc.verbatim}}
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
-pandoc.emphasis <- function(x)
+#' @examples
+#' pandoc.emphasis('FOO')
+#' pandoc.emphasis.return('FOO')
+pandoc.emphasis.return <- function(x)
     paste0('*', trim.spaces(x), '*')
+
+#' @export
+pandoc.emphasis <- function(...)
+    cat(pandoc.emphasis.return(...))
 
 
 #' Add strikeout
 #'
 #' Pandoc style strikeout format (e.g. \code{~~FOO~~}) is added to character string.
 #' @param x character vector
-#' @return character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
 #' @export
+#' @aliases pandoc.strikeout
 #' @seealso \code{\link{pandoc.emphasis}} \code{\link{pandoc.strong}} \code{\link{pandoc.verbatim}}
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
-pandoc.strikeout <- function(x)
+#' @examples
+#' pandoc.strikeout('FOO')
+#' pandoc.strikeout.return('FOO')
+pandoc.strikeout.return <- function(x)
     paste0('~~', trim.spaces(x), '~~')
+
+#' @export
+pandoc.strikeout <- function(...)
+    cat(pandoc.strikeout.return(...))
 
 
 #' Add verbatim
@@ -72,45 +96,58 @@ pandoc.strikeout <- function(x)
 #' @param x character vector
 #' @param style show code \code{inline} or in a separate (\code{indent}ed or \code{delim}ited) block
 #' @param attrs (optionally) pass ID, classes and any attribute to the \code{delimited} block
-#' @return character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
 #' @export
+#' @aliases pandoc.verbatim
 #' @seealso \code{\link{pandoc.emphasis}} \code{\link{pandoc.strikeout}} \code{\link{pandoc.strong}}
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
 #' @examples
 #' ## different styles/formats
 #' pandoc.verbatim('FOO')
-#' pandoc.verbatim('FOO', 'indent')
-#' cat(pandoc.verbatim(c('FOOO\nBAR  ', ' I do R'), 'indent'))
-#' cat(pandoc.verbatim(c('FOOO\nBAR  ', ' I do R'), 'delim'))
+#'
+#' src <- c('FOO', 'indent', 'BAR' )
+#' pandoc.verbatim(src)
+#' pandoc.verbatim.return(src)
+#' pandoc.verbatim(c('FOOO\nBAR  ', ' I do R'), 'indent')
+#' pandoc.verbatim(c('FOOO\nBAR  ', ' I do R'), 'delim')
 #'
 #' ## add highlighting and HTML/LaTeX ID and classes (even custom attribute)
-#' cat(pandoc.verbatim(c('cat("FOO")', 'mean(bar)'), 'delim', '.R #MyCode custom_var="10"'))
-pandoc.verbatim <- function(x, style = c('inline', 'indent', 'delim'), attrs = '') {
+#' pandoc.verbatim(c('cat("FOO")', 'mean(bar)'), 'delim', '.R #MyCode custom_var="10"')
+pandoc.verbatim.return <- function(x, style = c('inline', 'indent', 'delim'), attrs = '') {
 
     style <- match.arg(style)
     if (style != 'delim' & !missing(attrs))
         warning('Providing attrs is only meaningful with delimited blocks.')
 
     switch(style,
-           'inline' = paste0('`', trim.spaces(x), '`'),
-           'indent' = sprintf('\n%s\n', paste(paste0(rep.char(' ', 4), unlist(strsplit(trim.spaces(x), '\n'))), collapse = '\n')),
+           'inline' = paste0('`', trim.spaces(paste(x, collapse = ' ')), '`'),
+           'indent' = sprintf('\n%s\n', paste(paste0(rep.char(' ', 4), unlist(strsplit(trim.spaces(x)), '\n'))), collapse = '\n'),
            'delim'  = paste0('\n', rep.string('`', 7), ifelse(attrs == '', '', sprintf('{%s}', attrs)), '\n', paste(trim.spaces(x), collapse = '\n'), '\n', rep.string('`', 7), '\n')
            )
 
 }
 
+#' @export
+pandoc.verbatim <- function(...)
+    cat(pandoc.verbatim.return(...))
+
 
 #' Create pandoc link
 #' @param url hyperlink
 #' @param text link text
-#' @return character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
 #' @export
+#' @aliases pandoc.link.return
 #' @examples
 #' pandoc.link('http://r-project.org')
 #' pandoc.link('http://r-project.org', 'R')
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
-pandoc.link <- function(url, text = url)
+pandoc.link.return <- function(url, text = url)
     sprintf('[%s](%s)', text, url)
+
+#' @export
+pandoc.link <- function(...)
+    cat(pandoc.link.return(...))
 
 
 #' Create pandoc image tags
@@ -118,24 +155,34 @@ pandoc.link <- function(url, text = url)
 #' Creates a pandoc style image hyperlink.
 #' @param img image path
 #' @param caption text
-#' @return character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
 #' @export
+#' @aliases pandoc.image
 #' @examples
 #' pandoc.image('foo.png')
 #' pandoc.image('foo.png', 'Nice image, huh?')
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
-pandoc.image <- function(img, caption = '')
+pandoc.image.return <- function(img, caption = '')
     sprintf('![%s](%s)', caption, img)
+
+#' @export
+pandoc.image <- function(...)
+    cat(pandoc.image.return(...))
 
 
 #' Create horizontal rule
 #'
 #' Creates a pandoc style horizontal line with trailing and leading newlines.
-#' @return character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
 #' @export
+#' @aliases pandoc.horizontal.rule
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
-pandoc.horizontal.rule <- function()
+pandoc.horizontal.rule.return <- function()
     add.blank.lines('---')
+
+#' @export
+pandoc.horizontal.rule <- function(...)
+    cat(pandoc.horizontal.rule.return(...))
 
 
 #' Create header
@@ -144,15 +191,15 @@ pandoc.horizontal.rule <- function()
 #' @param x character vector
 #' @param level integer
 #' @param style atx or setext type of heading
-#' @return character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
 #' @export
+#' @aliases pandoc.header
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
 #' @examples
-#' pandoc.header('Foo!', 2)
+#' pandoc.header('Foo!', 4)
 #' pandoc.header('Foo!', 2, 'setext')
-#' cat(pandoc.header('Foo!', 2, 'setext'))
-#' cat(pandoc.header('Foo **bar**!', 1, 'setext'))
-pandoc.header <- function(x, level = 1, style = c('atx', 'setext')) {
+#' pandoc.header('Foo **bar**!', 1, 'setext')
+pandoc.header.return <- function(x, level = 1, style = c('atx', 'setext')) {
 
     style <- match.arg(style)
     if (!is.numeric(level))
@@ -171,15 +218,20 @@ pandoc.header <- function(x, level = 1, style = c('atx', 'setext')) {
 
 }
 
+#' @export
+pandoc.header <- function(...)
+    cat(pandoc.header.return(...))
+
 
 #' Create title block
 #'
 #' Creates a pandoc style title block with optional author, title and date fields.
 #' @param author character vector or semicolon delimited list of authors without line break
-#' @param title character vector of lines of title or multiline string with \code{\n} separators
+#' @param title character vector of lines of title or multiline string with \code{\\n} separators
 #' @param date any string fit in one line
-#' @return character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
 #' @export
+#' @aliases pandoc.title
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
 #' @examples
 #' pandoc.title('Gergely Daróczi', 'Render pandoc in R', '2012-05-16')
@@ -187,7 +239,13 @@ pandoc.header <- function(x, level = 1, style = c('atx', 'setext')) {
 #' pandoc.title('Tom; Jerry', 'Render pandoc in R', '2012-05-16')
 #' pandoc.title('Tom; Jerry', c('Render', 'pandoc', 'in R'), '2012-05-16')
 #' pandoc.title('Tom; Jerry', 'Render\n    pandoc \n    in R', '2012-05-16')
-pandoc.title <- function(author, title, date) {
+#'
+#' ## missing fields
+#'
+#' pandoc.title('Tom; Jerry', 'Render pandoc in R')
+#' pandoc.title('Tom; Jerry')
+#' pandoc.title(, 'Render pandoc in R', '2012-05-16')
+pandoc.title.return <- function(author, title, date) {
 
     if (missing(author) & missing(title) & !missing(date))
         stop('You cannot create a title with only date specified!')
@@ -221,6 +279,11 @@ pandoc.title <- function(author, title, date) {
 
 }
 
+#' @export
+pandoc.title <- function(...)
+    cat(pandoc.title.return(...))
+
+
 #' Create a list
 #'
 #' Creates a pandoc style list from provided character vector/list.
@@ -230,24 +293,25 @@ pandoc.title <- function(author, title, date) {
 #' @param add.line.breaks adding a leading and trailing newline before/after the list
 #' @param add.end.of.list adding a separator comment after the list
 #' @param indent.level the level of ident
-#' @return character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
 #' @export
+#' @aliases pandoc.list
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
 #' @examples
 #' ## basic lists
 #' pandoc.list(letters[1:5])
-#' cat(pandoc.list(letters[1:5]))
-#' cat(pandoc.list(letters[1:5], 'ordered'))
-#' cat(pandoc.list(letters[1:5], 'roman'))
-#' cat(pandoc.list(letters[1:5], loose = TRUE))
+#' pandoc.list(letters[1:5])
+#' pandoc.list(letters[1:5], 'ordered')
+#' pandoc.list(letters[1:5], 'roman')
+#' pandoc.list(letters[1:5], loose = TRUE)
 #'
 #' ## nested lists
 #' l <- list("First list element", paste0(1:5, '. subelement'), "Second element", list('F', 'B', 'I', c('phone', 'pad', 'talics')))
-#' cat(pandoc.list(l))
-#' cat(pandoc.list(l, loose = TRUE))
-#' cat(pandoc.list(l, 'roman'))
+#' pandoc.list(l)
+#' pandoc.list(l, loose = TRUE)
+#' pandoc.list(l, 'roman')
 #' @importFrom utils as.roman
-pandoc.list <- function(elements, style = c('bullet', 'ordered', 'roman'), loose = FALSE, add.line.breaks = TRUE, add.end.of.list = TRUE, indent.level = 0) {
+pandoc.list.return <- function(elements, style = c('bullet', 'ordered', 'roman'), loose = FALSE, add.line.breaks = TRUE, add.end.of.list = TRUE, indent.level = 0) {
 
     if (!is.logical(loose))
         stop('Wrong argument provided: loose')
@@ -266,7 +330,7 @@ pandoc.list <- function(elements, style = c('bullet', 'ordered', 'roman'), loose
             paste0(paste(rep(' ', indent.level * 4), collapse = ''), marker[i-i.lag], elements[i])
         } else {
             i.lag <<- i.lag + 1
-            pandoc.list(elements[[i]], style, loose, FALSE, FALSE, indent.level + 1)
+            pandoc.list.return(elements[[i]], style, loose, FALSE, FALSE, indent.level + 1)
         }
     }), collapse = '\n', ifelse(loose, '\n', ''))
 
@@ -279,6 +343,11 @@ pandoc.list <- function(elements, style = c('bullet', 'ordered', 'roman'), loose
 
 }
 
+#' @export
+pandoc.list <- function(...)
+    cat(pandoc.list.return(...))
+
+
 #' Create a table
 #'
 #' Creates a pandoc style "grid" table with optional caption.
@@ -289,30 +358,31 @@ pandoc.list <- function(elements, style = c('bullet', 'ordered', 'roman'), loose
 #' @param digits see \code{prettyNum}
 #' @param decimal.mark see \code{prettyNum}
 #' @param justify see \code{prettyNum}
-#' @return character vector
-#' @note Pandoc does not support justify parameter for grid tables ATM. ## TODO: multiline?
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
 #' @export
+#' @aliases pandoc.table
+#' @note Pandoc does not support justify parameter for grid tables ATM. ## TODO: multiline?
 #' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
 #' @examples
-#' cat(pandoc.table(mtcars))
+#' pandoc.table(mtcars)
 #'
 #' ## caption
-#' cat(pandoc.table(mtcars, 'Motor Trend Car Road Tests'))
+#' pandoc.table(mtcars, 'Motor Trend Car Road Tests')
 #'
 #' ## other input/output formats
-#' cat(pandoc.table(mtcars, decimal.mark = ','))
-#' cat(pandoc.table(mtcars, decimal.mark = ',', justify = 'right'))
-#' cat(pandoc.table(matrix(sample(1:1000, 25), 5, 5)))
-#' cat(pandoc.table(matrix(runif(25), 5, 5)))
-#' cat(pandoc.table(matrix(runif(25), 5, 5), digits = 5))
-#' cat(pandoc.table(table(mtcars$am, mtcars$gear)))
-#' cat(pandoc.table(table(state.division, state.region)))
-#' cat(pandoc.table(table(state.division, state.region), justify = 'centre'))
+#' pandoc.table(mtcars, decimal.mark = ',')
+#' pandoc.table(mtcars, decimal.mark = ',', justify = 'right')
+#' pandoc.table(matrix(sample(1:1000, 25), 5, 5))
+#' pandoc.table(matrix(runif(25), 5, 5))
+#' pandoc.table(matrix(runif(25), 5, 5), digits = 5)
+#' pandoc.table(table(mtcars$am, mtcars$gear))
+#' pandoc.table(table(state.division, state.region))
+#' pandoc.table(table(state.division, state.region), justify = 'centre')
 #'
 #' m <- data.frame(a=c(1, -500, 10320, 23, 77), b=runif(5), c=c('a', 'bb', 'ccc', 'dddd', 'eeeee'))
-#' cat(pandoc.table(m))
-#' cat(pandoc.table(m, justify = c('right', 'left', 'centre')))
-pandoc.table <- function(t, caption, digits = 2, decimal.mark = '.', justify = 'left') {
+#' pandoc.table(m)
+#' pandoc.table(m, justify = c('right', 'left', 'centre'))
+pandoc.table.return <- function(t, caption, digits = 2, decimal.mark = '.', justify = 'left') {
 
     ## helper functions
     table.sep  <- function(cols.width, sep = '+')
@@ -383,3 +453,7 @@ pandoc.table <- function(t, caption, digits = 2, decimal.mark = '.', justify = '
     return(res)
 
 }
+
+#' @export
+pandoc.table <- function(...)
+    cat(pandoc.table.return(...))

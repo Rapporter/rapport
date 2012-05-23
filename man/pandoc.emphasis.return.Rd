@@ -1,18 +1,25 @@
-\name{pandoc.emphasis}
-\alias{pandoc.emphasis}
-\title{Add emphasis}
+\name{pandoc.emphasis.return}
+\alias{pandoc.empasis}
+\alias{pandoc.emphasis.return}
+\title{Emphasis}
 \usage{
-  pandoc.emphasis(x)
+  pandoc.emphasis.return(x)
 }
 \arguments{
   \item{x}{character vector}
 }
 \value{
-  character vector
+  By default this function outputs (see: \code{cat}) the
+  result. If you would want to catch the result instead,
+  then call the function ending in \code{.return}.
 }
 \description{
   Pandoc style emphasis format (e.g. \code{*FOO*}) is added
   to character string.
+}
+\examples{
+pandoc.emphasis('FOO')
+pandoc.emphasis.return('FOO')
 }
 \references{
   John MacFarlane (2012): _Pandoc User's Guide_.

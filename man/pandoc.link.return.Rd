@@ -1,8 +1,8 @@
-\name{pandoc.link}
-\alias{pandoc.link}
+\name{pandoc.link.return}
+\alias{pandoc.link.return}
 \title{Create pandoc link}
 \usage{
-  pandoc.link(url, text = url)
+  pandoc.link.return(url, text = url)
 }
 \arguments{
   \item{url}{hyperlink}
@@ -10,7 +10,9 @@
   \item{text}{link text}
 }
 \value{
-  character vector
+  By default this function outputs (see: \code{cat}) the
+  result. If you would want to catch the result instead,
+  then call the function ending in \code{.return}.
 }
 \description{
   Create pandoc link

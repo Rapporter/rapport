@@ -1,8 +1,9 @@
-\name{pandoc.list}
+\name{pandoc.list.return}
 \alias{pandoc.list}
+\alias{pandoc.list.return}
 \title{Create a list}
 \usage{
-  pandoc.list(elements,
+  pandoc.list.return(elements,
     style = c("bullet", "ordered", "roman"), loose = FALSE,
     add.line.breaks = TRUE, add.end.of.list = TRUE,
     indent.level = 0)
@@ -23,7 +24,9 @@
   \item{indent.level}{the level of ident}
 }
 \value{
-  character vector
+  By default this function outputs (see: \code{cat}) the
+  result. If you would want to catch the result instead,
+  then call the function ending in \code{.return}.
 }
 \description{
   Creates a pandoc style list from provided character
@@ -32,16 +35,16 @@
 \examples{
 ## basic lists
 pandoc.list(letters[1:5])
-cat(pandoc.list(letters[1:5]))
-cat(pandoc.list(letters[1:5], 'ordered'))
-cat(pandoc.list(letters[1:5], 'roman'))
-cat(pandoc.list(letters[1:5], loose = TRUE))
+pandoc.list(letters[1:5])
+pandoc.list(letters[1:5], 'ordered')
+pandoc.list(letters[1:5], 'roman')
+pandoc.list(letters[1:5], loose = TRUE)
 
 ## nested lists
 l <- list("First list element", paste0(1:5, '. subelement'), "Second element", list('F', 'B', 'I', c('phone', 'pad', 'talics')))
-cat(pandoc.list(l))
-cat(pandoc.list(l, loose = TRUE))
-cat(pandoc.list(l, 'roman'))
+pandoc.list(l)
+pandoc.list(l, loose = TRUE)
+pandoc.list(l, 'roman')
 }
 \references{
   John MacFarlane (2012): _Pandoc User's Guide_.

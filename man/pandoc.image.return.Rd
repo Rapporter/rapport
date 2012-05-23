@@ -1,8 +1,9 @@
-\name{pandoc.image}
+\name{pandoc.image.return}
 \alias{pandoc.image}
+\alias{pandoc.image.return}
 \title{Create pandoc image tags}
 \usage{
-  pandoc.image(img, caption = "")
+  pandoc.image.return(img, caption = "")
 }
 \arguments{
   \item{img}{image path}
@@ -10,7 +11,9 @@
   \item{caption}{text}
 }
 \value{
-  character vector
+  By default this function outputs (see: \code{cat}) the
+  result. If you would want to catch the result instead,
+  then call the function ending in \code{.return}.
 }
 \description{
   Creates a pandoc style image hyperlink.

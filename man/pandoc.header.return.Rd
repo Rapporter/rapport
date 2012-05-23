@@ -1,8 +1,10 @@
-\name{pandoc.header}
+\name{pandoc.header.return}
 \alias{pandoc.header}
+\alias{pandoc.header.return}
 \title{Create header}
 \usage{
-  pandoc.header(x, level = 1, style = c("atx", "setext"))
+  pandoc.header.return(x, level = 1,
+    style = c("atx", "setext"))
 }
 \arguments{
   \item{x}{character vector}
@@ -12,16 +14,17 @@
   \item{style}{atx or setext type of heading}
 }
 \value{
-  character vector
+  By default this function outputs (see: \code{cat}) the
+  result. If you would want to catch the result instead,
+  then call the function ending in \code{.return}.
 }
 \description{
   Creates a pandoc/markdown style header with given level.
 }
 \examples{
-pandoc.header('Foo!', 2)
+pandoc.header('Foo!', 4)
 pandoc.header('Foo!', 2, 'setext')
-cat(pandoc.header('Foo!', 2, 'setext'))
-cat(pandoc.header('Foo **bar**!', 1, 'setext'))
+pandoc.header('Foo **bar**!', 1, 'setext')
 }
 \references{
   John MacFarlane (2012): _Pandoc User's Guide_.

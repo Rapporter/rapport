@@ -1,18 +1,25 @@
-\name{pandoc.strikeout}
+\name{pandoc.strikeout.return}
 \alias{pandoc.strikeout}
+\alias{pandoc.strikeout.return}
 \title{Add strikeout}
 \usage{
-  pandoc.strikeout(x)
+  pandoc.strikeout.return(x)
 }
 \arguments{
   \item{x}{character vector}
 }
 \value{
-  character vector
+  By default this function outputs (see: \code{cat}) the
+  result. If you would want to catch the result instead,
+  then call the function ending in \code{.return}.
 }
 \description{
   Pandoc style strikeout format (e.g. \code{~~FOO~~}) is
   added to character string.
+}
+\examples{
+pandoc.strikeout('FOO')
+pandoc.strikeout.return('FOO')
 }
 \references{
   John MacFarlane (2012): _Pandoc User's Guide_.

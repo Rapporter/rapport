@@ -1,8 +1,9 @@
-\name{pandoc.verbatim}
+\name{pandoc.verbatim.return}
 \alias{pandoc.verbatim}
+\alias{pandoc.verbatim.return}
 \title{Add verbatim}
 \usage{
-  pandoc.verbatim(x,
+  pandoc.verbatim.return(x,
     style = c("inline", "indent", "delim"), attrs = "")
 }
 \arguments{
@@ -15,7 +16,9 @@
   attribute to the \code{delimited} block}
 }
 \value{
-  character vector
+  By default this function outputs (see: \code{cat}) the
+  result. If you would want to catch the result instead,
+  then call the function ending in \code{.return}.
 }
 \description{
   Pandoc style verbatim format (e.g. \code{`FOO`}) is added
@@ -24,12 +27,15 @@
 \examples{
 ## different styles/formats
 pandoc.verbatim('FOO')
-pandoc.verbatim('FOO', 'indent')
-cat(pandoc.verbatim(c('FOOO\\nBAR  ', ' I do R'), 'indent'))
-cat(pandoc.verbatim(c('FOOO\\nBAR  ', ' I do R'), 'delim'))
+
+src <- c('FOO', 'indent', 'BAR' )
+pandoc.verbatim(src)
+pandoc.verbatim.return(src)
+pandoc.verbatim(c('FOOO\\nBAR  ', ' I do R'), 'indent')
+pandoc.verbatim(c('FOOO\\nBAR  ', ' I do R'), 'delim')
 
 ## add highlighting and HTML/LaTeX ID and classes (even custom attribute)
-cat(pandoc.verbatim(c('cat("FOO")', 'mean(bar)'), 'delim', '.R #MyCode custom_var="10"'))
+pandoc.verbatim(c('cat("FOO")', 'mean(bar)'), 'delim', '.R #MyCode custom_var="10"')
 }
 \references{
   John MacFarlane (2012): _Pandoc User's Guide_.
