@@ -190,6 +190,24 @@ pandoc.image <- function(...)
     cat(pandoc.image.return(...))
 
 
+#' Footnote
+#'
+#' Creates a pandoc style footnote.
+#' @param x character vector
+#' @return By default this function outputs (see: \code{cat}) the result. If you would want to catch the result instead, then call the function ending in \code{.return}.
+#' @export
+#' @aliases pandoc.footnote
+#' @examples
+#' pandoc.footnote('Automatically numbered footnote, right?')
+#' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
+pandoc.footnote.return <- function(x)
+    gsub('[\n][\n]*', '\n', sprintf('^[%s]', paste(x, collapse = ' ')))
+
+#' @export
+pandoc.footnote <- function(...)
+    cat(pandoc.footnote.return(...))
+
+
 #' Create horizontal rule
 #'
 #' Creates a pandoc style horizontal line with trailing and leading newlines.
