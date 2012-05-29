@@ -257,6 +257,10 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
         txt <- lapply(ind, function(x) body[x])
     }
 
+    if (!identical(file.info(graph.dir)$isdir, TRUE))
+        if (!dir.create(graph.dir, showWarnings = FALSE, recursive = TRUE))
+            stop(sprintf('Something is definitely wrong with `graph.dir`: %s!', graph.dir))
+
     output <- match.arg(output, several.ok = TRUE)
 
     if (sum(grepl('all', output)) > 0)
@@ -268,8 +272,6 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
     graph.output <- match.arg(graph.output)
     if (graph.output == 'jpg')
         graph.output <- 'jpeg'
-    if (!identical(file.info(graph.dir)$isdir, TRUE) & graph.dir != '')
-        stop(sprintf('Wrong path specified! It does not seems to be a directory: %s', graph.dir))
 
     ## env for running all lines of code -> eval()
     if (is.null(env)) env <- new.env()
