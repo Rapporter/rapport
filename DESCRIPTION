@@ -42,4 +42,3 @@ Collate:
     'template.R'
     'utils.R'
     'tpl-check.R'
-    'pandoc.R'
