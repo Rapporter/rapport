@@ -27,7 +27,7 @@
   with four elements:
 }
 \details{
-  \itemize{ \item \emph{src} - a character value with
+  \itemize{ \item \emph{src} - character vector of
   specified R code.  \item \emph{output} - generated
   output. \code{NULL} if nothing is returned. If any string
   returned an R object while evaluating then the
@@ -46,7 +46,9 @@
   \itemize{ \item \emph{messages} - string of possible
   diagnostic message(s) \item \emph{warnings} - string of
   possible warning message(s) \item \emph{errors} - string
-  of possible error message(s) } }
+  of possible error message(s) } \item \emph{stdout} -
+  character vector of possibly printed texts to standard
+  output (console) }
 }
 \examples{
 \dontrun{
@@ -59,6 +61,7 @@ eval.msgs('1:2')
 identical(evals('pi')[[1]], eval.msgs('pi'))
 eval.msgs(c('message("FOO")', '1:2'))
 eval.msgs(c('caption("FOO")', '1:2'))
+eval.msgs('cat("writing to console")')
 }
 }
 \seealso{

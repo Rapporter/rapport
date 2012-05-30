@@ -3,7 +3,7 @@
 #' This function takes text(s) of R code and \code{\link{eval}}s all at one run then returns a list with four elements:
 #'
 #' \itemize{
-#'     \item \emph{src} - a character value with specified R code.
+#'     \item \emph{src} - character vector of specified R code.
 #'     \item \emph{output} - generated output. \code{NULL} if nothing is returned. If any string returned an R object while evaluating then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{\link{tempfile}}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
 #'     \item \emph{type} - class of generated output. "NULL" if nothing is returned, "image" if the graphic device was touched, "error" if some error occurred.
 #'     \item \emph{msg} - possible messages grabbed while evaluating specified R code with the following structure:
@@ -12,6 +12,7 @@
 #'         \item \emph{warnings} - string of possible warning message(s)
 #'         \item \emph{errors} - string of possible error message(s)
 #'     }
+#'     \item \emph{stdout} - character vector of possibly printed texts to standard output (console)
 #' }
 #' @param src character values containing R code
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
@@ -28,6 +29,7 @@
 #' identical(evals('pi')[[1]], eval.msgs('pi'))
 #' eval.msgs(c('message("FOO")', '1:2'))
 #' eval.msgs(c('caption("FOO")', '1:2'))
+#' eval.msgs('cat("writing to console")')
 #' }
 eval.msgs <- function(src, env = NULL) {
 
@@ -43,11 +45,21 @@ eval.msgs <- function(src, env = NULL) {
         messages <<- m$message
     }
 
+    ## grab stdout
+    stdout <- vector("character")
+    con <- textConnection("stdout", "wr", local=TRUE)
+    sink(con, split = FALSE)
+
     returns <- suppressMessages(withCallingHandlers(tryCatch(eval(parse(text=src), envir = env), error = function(e) e), warning = warning.handler, message = message.handler))
-    error <- grep('error', lapply(returns, function(x) class(x)))
-    error <- c(error, grep('error', class(returns)))
+
+    sink()
+    close(con)
+    if (length(stdout) == 0)
+        stdout <- NULL
 
     ## error handling
+    error <- grep('error', lapply(returns, function(x) class(x)))
+    error <- c(error, grep('error', class(returns)))
     if (length(error) > 0) {
         error <- returns$message
         returns <- NULL
@@ -63,7 +75,8 @@ eval.msgs <- function(src, env = NULL) {
          msg    = list(
              messages = messages,
              warnings = warnings,
-             errors   = error))
+             errors   = error),
+         stdout = stdout)
 }
 
 
@@ -245,6 +258,7 @@ eval.msgs <- function(src, env = NULL) {
 #' evals('mean(x)')
 #' }
 #' @export
+#' @importFrom evaluate evaluate
 evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.nomargin = TRUE, graph.name = substitute(tempfile()), graph.dir = tempdir(), graph.output = c('png', 'bmp', 'jpeg', 'jpg', 'tiff', 'svg', 'pdf'), width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), graph.env = FALSE, graph.recordplot = FALSE, ...){
 
     if (!xor(missing(txt), missing(ind)))
@@ -353,7 +367,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             if (length(warnings) == 0) {
                 warnings <- NULL
             } else
-            warnings <- sprintf('**Warning** in "%s": "%s"', paste(sapply(eval[warnings], function(x) x$call), collapse = " + "), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
+                warnings <- sprintf('**Warning** in "%s": "%s"', paste(sapply(eval[warnings], function(x) x$call), collapse = " + "), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
             ## messages
             messages <- grep('message', lapply(eval, function(x) class(x)))
             if (length(messages) == 0)
