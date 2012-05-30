@@ -432,6 +432,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                 }
             } else {
                 returns <- NULL
+                stdout  <- NULL
             }
         } else {
             res <- eval.msgs(src, env = env)
