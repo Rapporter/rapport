@@ -373,17 +373,18 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             }
 
             ## warnings
-            warnings <- grep('warning', lapply(eval, function(x) class(x)))
-            if (length(warnings) == 0) {
-                warnings <- NULL
-            } else
-                warnings <- sprintf('**Warning** in "%s": "%s"', paste(sapply(eval[warnings], function(x) x$call), collapse = " + "), paste(sapply(eval[warnings], function(x) x$message), collapse = " + "))
-            ## messages
-            messages <- grep('message', lapply(eval, function(x) class(x)))
-            if (length(messages) == 0)
-                messages <- NULL
+            warnings <- sapply(eval, is.warning)
+            if (any(warnings))
+                warnings <- paste(sapply(eval[warnings], function(x) x$message), collapse = " + ")
             else
-                messages <- eval[[messages]]$message
+                warnings <- NULL
+
+            ## messages
+            messages <- sapply(eval, is.message)
+            if (any(messages))
+                messages <- gsub('\n', '', paste(sapply(eval[messages], function(x) x$message), collapse = " + "))
+            else
+                messages <- NULL
             ### good code survived here!
 
             ### checking out which element produced the output               ## outRageous coding starts here
