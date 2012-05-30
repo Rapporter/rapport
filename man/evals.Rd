@@ -4,7 +4,7 @@
 \usage{
   evals(txt = NULL, ind = NULL, body = NULL,
     classes = NULL, hooks = NULL, length = Inf,
-    output = c("all", "src", "output", "type", "msg"),
+    output = c("all", "src", "output", "type", "msg", "stdout"),
     env = NULL, check.output = TRUE, graph.nomargin = TRUE,
     graph.name = substitute(tempfile()),
     graph.dir = tempdir(),
@@ -120,10 +120,11 @@
   command run), output (what the command returns,
   \code{NULL} if nothing returned, path to image file if a
   plot was generated), type (class of returned object if
-  any) and messages: warnings (if any returned by the
-  command run, otherwise set to \code{NULL}) and errors (if
-  any returned by the command run, otherwise set to
-  \code{NULL}). See Details above.
+  any), messages: warnings (if any returned by the command
+  run, otherwise set to \code{NULL}) and errors (if any
+  returned by the command run, otherwise set to
+  \code{NULL}) and possible stdout value. See Details
+  above.
 }
 \description{
   This function takes either a list of integer indices
@@ -165,7 +166,7 @@
   parameters below.
 
   Returned result values: list with the following elements
-  \itemize{ \item \emph{src} - a character value with
+  \itemize{ \item \emph{src} - a character vector of
   specified R code.  \item \emph{output} - generated
   output. \code{NULL} if nothing is returned. If any string
   returned an R object while \code{\link{eval}}ing then the
@@ -184,7 +185,9 @@
   structure: \itemize{ \item \emph{messages} - string of
   possible diagnostic message(s) \item \emph{warnings} -
   string of possible warning message(s) \item \emph{errors}
-  - string of possible error message(s) } }
+  - string of possible error message(s) } \item
+  \emph{stdout} - character vector of possibly printed
+  texts to standard output (console) }
 
   With \code{check.output} options set to \code{FALSE},
   \code{\link{evals}} will not check each line of passed R

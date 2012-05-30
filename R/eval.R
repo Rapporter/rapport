@@ -16,7 +16,7 @@
 #' }
 #' @param src character values containing R code
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
-#' @return  a list of parsed elements each containing: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was generated), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
+#' @return  a list of parsed elements each containing: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was generated), type (class of returned object if any), messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}) and possible stdout value. See Details above.
 #' @seealso \code{\link{evals}}
 #' @export
 #' @examples \dontrun{
@@ -92,7 +92,7 @@ eval.msgs <- function(src, env = NULL) {
 #'
 #' Returned result values: list with the following elements
 #' \itemize{
-#'     \item \emph{src} - a character value with specified R code.
+#'     \item \emph{src} - a character vector of specified R code.
 #'     \item \emph{output} - generated output. \code{NULL} if nothing is returned. If any string returned an R object while \code{\link{eval}}ing then the \emph{last} R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see: \code{\link{tempfile}}). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.
 #'     \item \emph{type} - class of generated output. "NULL" if nothing is returned, "image" if the graphic device was touched, "error" if some error occurred.
 #'     \item \emph{msg} - possible messages grabbed while \code{\link{eval}}ing specified R code with the following structure:
@@ -101,6 +101,7 @@ eval.msgs <- function(src, env = NULL) {
 #'         \item \emph{warnings} - string of possible warning message(s)
 #'         \item \emph{errors} - string of possible error message(s)
 #'     }
+#'     \item \emph{stdout} - character vector of possibly printed texts to standard output (console)
 #' }
 #'
 #' With \code{check.output} options set to \code{FALSE}, \code{\link{evals}} will not check each line of passed R code for outputs to speed up runtime. This way the user is required to pass only reliable and well structured/formatted text to \code{\link{evals}}. A list to check before running code in \code{\link{evals}}:
@@ -137,7 +138,7 @@ eval.msgs <- function(src, env = NULL) {
 #' @param graph.env save the environments in which plots were generated to distinct files with \code{env} extension?
 #' @param graph.recordplot save the plot via \code{\link{recordPlot}} to distinct files with {recodplot} extension?
 #' @param ... optional parameters passed to graphics device (e.g. \code{bg}, \code{pointsize} etc.)
-#' @return a list of parsed elements each containing: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was generated), type (class of returned object if any) and messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}). See Details above.
+#' @return a list of parsed elements each containing: src (the command run), output (what the command returns, \code{NULL} if nothing returned, path to image file if a plot was generated), type (class of returned object if any), messages: warnings (if any returned by the command run, otherwise set to \code{NULL}) and errors (if any returned by the command run, otherwise set to \code{NULL}) and possible stdout value. See Details above.
 #' @author Gergely Daróczi
 #' @seealso \code{\link{eval.msgs}}, \code{\link{redraw.recordedplot}}
 #' @examples \dontrun{
@@ -259,7 +260,7 @@ eval.msgs <- function(src, env = NULL) {
 #' }
 #' @export
 #' @importFrom evaluate evaluate
-evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg'), env = NULL, check.output = TRUE, graph.nomargin = TRUE, graph.name = substitute(tempfile()), graph.dir = tempdir(), graph.output = c('png', 'bmp', 'jpeg', 'jpg', 'tiff', 'svg', 'pdf'), width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), graph.env = FALSE, graph.recordplot = FALSE, ...){
+evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = NULL, length = Inf, output = c('all', 'src', 'output', 'type', 'msg', 'stdout'), env = NULL, check.output = TRUE, graph.nomargin = TRUE, graph.name = substitute(tempfile()), graph.dir = tempdir(), graph.output = c('png', 'bmp', 'jpeg', 'jpg', 'tiff', 'svg', 'pdf'), width = 480, height = 480, res= 72, hi.res = FALSE, hi.res.width = 960, hi.res.height = 960*(height/width), hi.res.res = res*(hi.res.width/width), graph.env = FALSE, graph.recordplot = FALSE, ...){
 
     if (!xor(missing(txt), missing(ind)))
         stop('either a list of text or a list of indices should be provided')
@@ -278,7 +279,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
     output <- match.arg(output, several.ok = TRUE)
 
     if (sum(grepl('all', output)) > 0)
-        output <- c('src', 'output', 'type', 'msg')
+        output <- c('src', 'output', 'type', 'msg', 'stdout')
 
     if (!any(is.list(hooks), is.null(hooks)))
         stop('Wrong list of hooks provided!')
@@ -400,6 +401,12 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             ## any returned value?
             if (length(eval.sources.outputs) > 0) {
                 if (is.logical(graph)) {
+
+                    ## grab stdout
+                    stdout <- vector("character")
+                    con <- textConnection("stdout", "wr", local=TRUE)
+                    sink(con, split = FALSE)
+
                     ## if last element returns value (happily)
                     if (eval.sources.last.outputs == tail(eval.sources.n, 1)) {
                         returns <- suppressWarnings(eval(parse(text = src), envir = env))
@@ -416,6 +423,12 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                         ## and run all stuff in main environment for consistency
                         suppressWarnings(eval(parse(text = src), envir = env))
                     }
+
+                    sink()
+                    close(con)
+                    if (length(stdout) == 0)
+                        stdout <- NULL
+
                 }
             } else {
                 returns <- NULL
@@ -433,6 +446,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             warnings <- res$msg$warnings
             messages <- res$msg$messages
             graph    <- ifelse(exists('recorded.plot'), ifelse(is.null(recorded.plot[[1]]), FALSE, file), FALSE)
+            stdout   <- res$stdout
         }
 
         ## save recorded plot on demand
@@ -516,8 +530,10 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                     msg      = list(
                         messages = messages,
                         warnings = warnings,
-                        errors   = NULL)
+                        errors   = NULL),
+                    stdout   = stdout
                     )
+
         return(res[output])
     })
 }

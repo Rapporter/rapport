@@ -16,10 +16,11 @@
   command run), output (what the command returns,
   \code{NULL} if nothing returned, path to image file if a
   plot was generated), type (class of returned object if
-  any) and messages: warnings (if any returned by the
-  command run, otherwise set to \code{NULL}) and errors (if
-  any returned by the command run, otherwise set to
-  \code{NULL}). See Details above.
+  any), messages: warnings (if any returned by the command
+  run, otherwise set to \code{NULL}) and errors (if any
+  returned by the command run, otherwise set to
+  \code{NULL}) and possible stdout value. See Details
+  above.
 }
 \description{
   This function takes text(s) of R code and
