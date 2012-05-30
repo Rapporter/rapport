@@ -340,7 +340,7 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
 
         if (check.output) {
             ## running evaluate for checking outputs and grabbing warnings/errors
-            eval <- suppressWarnings(try(evaluate(src, envir = env.evaluate), silent=TRUE))
+            eval <- suppressWarnings(tryCatch(evaluate(src, envir = env.evaluate), error = function(e) e))
 
             if (!is.null(dev.list())) {
                 recorded.plot <- recordPlot()
@@ -348,9 +348,15 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             }
 
             ## error handling
-            error <- grep('error', lapply(eval, function(x) class(x)))
-            error <- c(error, grep('error', class(eval)))
-            if (length(error) != 0) {
+            error <- sapply(eval, is.error)
+            if (any(error)) {
+                error <- paste(sapply(which(error), function(x) eval[[x]]$message), collapse = ' + ')
+            } else {
+                if (is.error(eval))
+                    error <- eval$message
+            }
+
+            if (all(is.character(error))) {
 
                 res <- list(src = src,
                             output = NULL,
@@ -358,8 +364,11 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
                             msg    = list(
                                 messages = NULL,
                                 warnings = NULL,
-                                errors   = sprintf('**Error** in "%s": "%s"',  ifelse(paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')=='', paste(src, collapse=' + '), paste(sapply(eval[error-1], function(x) x$src), collapse = ' + ')), ifelse(class(eval)=='try-error', gsub('Error in parse.text = string, src = src) :.*text.:[[:digit:]]:[[:digit:]]: |\n.*', '', as.character(eval[error])), paste(sapply(eval[error], function(x) x$message), collapse = " + "))))
+                                errors   = error
+                                ),
+                            stdout = NULL
                             )
+
                 return(res[output])
             }
 
