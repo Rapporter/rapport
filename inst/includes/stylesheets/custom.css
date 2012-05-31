@@ -52,6 +52,20 @@ code {
     padding: 0 5px;
 }
 
+pre code {
+    border: none;
+    background-color: transparent;   
+    padding: 0px;
+}
+
+pre {
+    background-color: #F5F5F5;
+    border: solid 1px #DDD;
+    padding: 5px;
+    margin: 0 0 20px;
+    overflow: auto;
+}
+
 nav {
     height: 85%;
     overflow: auto;
