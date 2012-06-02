@@ -125,7 +125,7 @@ eval.msgs <- function(src, env = NULL) {
 #' @param env environment where evaluation takes place. If not set (by default), a new temporary environment is created.
 #' @param check.output to check each line of \code{txt} for outputs. If set to \code{TRUE} you would result in some overhead as all commands have to be run twice (first to check if any output was generated and if so in which part(s), later the R objects are to be grabbed). With \code{FALSE} settings \code{evals} runs much faster, but as now checks are made, some requirements apply, see Details.
 #' @param graph.nomargin should \code{evals} try to keep plots' margins minimal?
-#' @param graph.name set the file name of saved plots which is a \code{\link{tempfile}} by default. A simple character string might be provided where \code{\%d} would be replaced by the index of the generating \code{txt} source and \code{\%t} by some random characters. Default is set to call \code{\link{tempfile}} instead.
+#' @param graph.name set the file name of saved plots which is a \code{\link{tempfile}} by default. A simple character string might be provided where \code{\%d} would be replaced by the index of the generating \code{txt} source, \code{\%n} with an incremented integer in \code{graph.dir} with similar file names and \code{\%t} by some random characters. Default is set to call \code{\link{tempfile}} instead.
 #' @param graph.dir path to an existing directory where to place generated images. Default set to NULL as using \code{\link{tempfile}}s.
 #' @param graph.output set the required file format of saved plots
 #' @param width width of generated plot in pixels for even vector formats (!)
@@ -322,6 +322,20 @@ evals <- function(txt = NULL, ind = NULL, body = NULL, classes = NULL, hooks = N
             file <- file.path(gsub('\\', '/', graph.dir, fixed = TRUE), file)
             file.name <- file.path(gsub('\\', '/', graph.dir, fixed = TRUE), file.name)
         }
+        if (grepl('%n', file.name)) {
+            if (length(strsplit(sprintf('placeholder%splaceholder', file.name), '%n')[[1]]) > 2)
+                stop('File name contains more then 1 "%n"!')
+            similar.files <- list.files(graph.dir, pattern = sprintf('^%s\\.(jpeg|tiff|png|svg|bmp)$', gsub('%t', '[a-z0-9]*', gsub('%d|%n|%D', '[[:digit:]]*', basename(file.name)))))
+            if (length(similar.files) > 0) {
+                similar.files <- sub('\\.(jpeg|tiff|png|svg|bmp)$', '', similar.files)
+                rep <- gsub('%t', '[a-z0-9]*', gsub('%d|%D', '[[:digit:]]*', strsplit(basename(file.name), '%n')[[1]]))
+                `%n` <- max(as.numeric(gsub(paste(rep, collapse = '|'), '', similar.files))) + 1
+            } else
+                `%n` <- 1
+            file.name <- gsub('%n', `%n`, file.name, fixed = TRUE)
+            file <- gsub('%n', `%n`, file, fixed = TRUE)
+        }
+
 
         if (graph.output %in% c('bmp', 'jpeg', 'png', 'tiff'))
             do.call(graph.output, list(file, width = width, height = height, res = res, ...))

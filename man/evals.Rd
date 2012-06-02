@@ -69,8 +69,10 @@
   is a \code{\link{tempfile}} by default. A simple
   character string might be provided where \code{\%d} would
   be replaced by the index of the generating \code{txt}
-  source and \code{\%t} by some random characters. Default
-  is set to call \code{\link{tempfile}} instead.}
+  source, \code{\%n} with an incremented integer in
+  \code{graph.dir} with similar file names and \code{\%t}
+  by some random characters. Default is set to call
+  \code{\link{tempfile}} instead.}
 
   \item{graph.dir}{path to an existing directory where to
   place generated images. Default set to NULL as using
