@@ -139,7 +139,7 @@ theme.rapport <- function(bw = FALSE, palette = getOption('style.color.palette')
     theme$layout.heights$top.padding = 0.1
     theme$layout.heights$bottom.padding = 0.1
     theme$layout.widths$right.padding = 0.1
-    theme$layout.widths$left.padding = 0.1
+    theme$layout.widths$left.padding = 0.4
 
     if (!missing(custom))
         theme <- modifyList(theme, custom)
