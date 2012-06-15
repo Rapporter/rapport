@@ -847,9 +847,9 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                               character = is.character,
                               complex   = is.complex,
                               factor    = is.factor,
-                              boolean   = , # a length-one logical
+                              boolean   = is.boolean,
                               logical   = is.logical,
-                              number    = , # number input
+                              number    = is.number,
                               numeric   = is.numeric,
                               variable  = is.variable,
                               stopf('unknown type: "%s"', input.type)
