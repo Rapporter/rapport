@@ -144,12 +144,13 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
 #' @param cumul.count show cumulative frequencies?
 #' @param cumul.pct show cumulative percentage?
 #' @param total.name a sting containing footer label (defaults to "Total")
+#' @param reorder reorder the table based on frequencies?
 #' @return a \code{data.frame} with a frequency table
 #' @examples \dontrun{
 #' rp.freq(c("am", "cyl", "vs"), mtcars)
 #' }
 #' @export
-rp.freq <- freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.levels = FALSE, count = TRUE, pct = TRUE, cumul.count = TRUE, cumul.pct = TRUE, total.name = 'Total'){
+rp.freq <- freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop.unused.levels = FALSE, count = TRUE, pct = TRUE, cumul.count = TRUE, cumul.pct = TRUE, total.name = 'Total', reorder = FALSE){
 
     ## R CMD check NOTE dismiss based on http://stackoverflow.com/a/8096882/564164
     N <- `%` <- NULL
@@ -164,6 +165,9 @@ rp.freq <- freq <- function(f.vars, data, na.rm = TRUE, include.na = FALSE, drop
     nfac <- length(f.vars)              # number of factors
 
     if (drop.unused.levels)  tbl <- tbl[tbl$N != 0, ] # remove 0-count levels
+
+    if (reorder)
+        tbl <- tbl[order(tbl$N), ]
 
     ## calculate freqs
     tbl <- transform(tbl, `%` = N / sum(N) * 100, check.names = FALSE) # add percentage
