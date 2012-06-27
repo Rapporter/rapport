@@ -43,7 +43,7 @@ if (desc) sprintf('The 5 highest values are: %s.', p(sort(var, decreasing = TRUE
 
 <%
 if (hist) {
-    caption('A nice histogram')
+    set.caption('A nice histogram')
     options('style.color.palette' = theme) 
     print(rp.hist(var))
 }

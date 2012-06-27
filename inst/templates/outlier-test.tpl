@@ -20,7 +20,7 @@ head-->
 # Charts
 
 <%
-caption(sprintf('Boxplot: %s', rp.name(var)))
+set.caption(sprintf('Boxplot: %s', rp.name(var)))
 print(rp.boxplot(var))
 %>
 

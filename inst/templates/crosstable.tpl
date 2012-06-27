@@ -24,7 +24,7 @@ Two variables specified:
 # Counts
 
 <%
-caption('Counted values')
+set.caption('Counted values')
 table		<- table(row, col, deparse.level = 0)
 fulltable	<- addmargins(table)
 fulltable.nrow  <- nrow(fulltable)
@@ -45,7 +45,7 @@ if (annotation) {
 # Percentages
 
 <%
-caption('Total percentages')
+set.caption('Total percentages')
 fulltable <- rp.round(addmargins(prop.table(table)*100), short = TRUE)
 fulltable <- trim.space(fulltable, leading = TRUE)
 fulltable.nrow  <- nrow(fulltable)
@@ -57,7 +57,7 @@ fulltable
 %>
 
 <%
-caption('Row percentages')
+set.caption('Row percentages')
 fulltable <- rp.round(prop.table(addmargins(table, 1), 1)*100, short = TRUE)
 fulltable <- trim.space(fulltable, leading = TRUE)
 fulltable.nrow  <- nrow(fulltable)
@@ -67,7 +67,7 @@ fulltable
 %>
 
 <%
-caption('Column percentages')
+set.caption('Column percentages')
 fulltable <- rp.round(prop.table(addmargins(table,2 ), 2)*100, short = TRUE)
 fulltable <- trim.space(fulltable, leading = TRUE)
 fulltable.ncol  <- ncol(fulltable)
@@ -89,7 +89,7 @@ ifelse(t$p.value < 0.05, sprintf('It seems that a real association can be pointe
 %>
 
 <%
-caption('Pearson\'s residuals')
+set.caption('Pearson\'s residuals')
 table.res <- suppressWarnings(CrossTable(table))$chisq$stdres
 table.res.highlow  <- which(table.res < -2 | table.res > 2, arr.ind = TRUE)
 table.res <- trim.space(rp.round(table.res, short = TRUE), leading = TRUE)
@@ -112,6 +112,6 @@ if (annotation) {
 # Charts
 
 <%
-caption('Mosaic chart')
+set.caption('Mosaic chart')
 mosaicplot(table, shade=T, main=NULL)
 %>

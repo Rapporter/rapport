@@ -261,15 +261,3 @@ is.empty <- function(x, trim = FALSE, ...){
         sapply(x, is.empty)
     }
 }
-
-
-#' Add caption
-#'
-#' Simply adds a caption to table or image in the current block.
-#' @param msg text
-#' @export
-caption <- function(msg) {
-
-    message(msg, appendLF = FALSE)
-
-}
