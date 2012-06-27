@@ -19,7 +19,8 @@ LazyLoad: yes
 Depends:
     R (>= 2.14.0),
     lattice,
-    plyr
+    plyr,
+    pander
 Imports:
     grDevices,
     ascii,
@@ -28,7 +29,6 @@ Imports:
     reshape
 Collate:
     'crypt.R'
-    'eval.R'
     'export.R'
     'graphs.R'
     'init.R'
