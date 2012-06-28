@@ -1,24 +1,28 @@
 
-Installing a backend
-====================
+Installing Pandoc
+=================
 
-As the main purpose of `rapport` is to export the template-based reports to nicely formatted
-documents - it is highly recommended to install a backend for that.
+As the main purpose of `rapport` is to export the template-based reports to
+nicely formatted documents - it is highly recommended to install Pandoc as 
+backend for that:
 
-Based on `ascii` (URL: http://eusebe.github.com/ascii/), the following engines are supported:
- * a2x          http://www.methods.co.nz/asciidoc/a2x.1.html
- * asciidoc     http://www.methods.co.nz/asciidoc/
- * markdown2pdf http://johnmacfarlane.net/pandoc/README.html#markdown2pdf
- * pandoc       http://johnmacfarlane.net/pandoc/
- * txt2tags     http://txt2tags.org/
- 
-In order to export templates to our factory default HTML design (http://rapport-package.info), 
-install pandoc from http://johnmacfarlane.net/pandoc/installing.html and use default settings.
+    http://johnmacfarlane.net/pandoc
 
-We recommend using the development version of pandoc which even supports docx output:
+In order to export templates to our factory default HTML design
+(http://rapport-package.info), and use other formats (like pdf, odt, 
+docx etc.), install pandoc from: 
+
+    http://johnmacfarlane.net/pandoc/installing.html
+
+We recommend using the development version of pandoc which has bunch of
+new features:
+
     https://github.com/jgm/pandoc/wiki/Installing-the-development-version-of-pandoc-1.9
 
----------------------------------------------------------------------------------------------------
+Unfortunatelly Linux distributions tend to ship a really outdated version of
+Pandoc, so it is highly recommended to build from sources with cabal-install.
+
+--------------------------------------------------------------------------------
 
 Development version
 ===================
@@ -34,7 +38,8 @@ That nifty function of `devtools` package might speed up installing dev version:
 Or you can also download sources in a zip and build the package manually:
     https://github.com/aL3xa/rapport/zipball/master
 
-To do so, please extract archive to an empty directory and run the following commands on a unix-like system:
+To do so, please extract archive to an empty directory and run the following
+commands on a unix-like system:
 
     R CMD build rapport
     R CMD INSTALL <path to .tar.gz file>
