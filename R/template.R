@@ -105,6 +105,7 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 #' @param htag a string with closing body tag
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template body contents
+#' @export
 tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 
     txt   <- tpl.find(fp)
@@ -843,7 +844,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             ## check type
             type.fn <- switch(input.type,
                               option    = , # CSV list of strings
-                              string    = , # string input
+                              string    = is.string,
                               character = is.character,
                               complex   = is.complex,
                               factor    = is.factor,

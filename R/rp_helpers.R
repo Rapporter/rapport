@@ -91,6 +91,55 @@ is.heading <- function(x){
 }
 
 
+#' Convert Metadata to Character
+#'
+#' Converts template metadata to character vector.
+#' @param meta template metadata object
+#' @param include.examples include examples in results
+#' @export 
+as.character.rp.meta <- function(meta, include.examples = TRUE){
+    meta.example <- meta['example']
+    other <- meta[names(meta) != "example"]
+    res <- paste(tocamel(names(other), upper = TRUE), other, sep = ": ")
+
+    datareq.regex <- "^datarequired(\\:.+)$"
+    ind <- grepl(datareq.regex, res, ignore.case=TRUE)
+    res[ind]<- gsub(datareq.regex, "Data required\\1", res[ind], ignore.case=TRUE)
+    if (length(meta$example) && include.examples) {
+        e <- meta$example
+        res <- c(sprintf("Example: %s", e[1]), e[-1])
+    }
+    res
+}
+
+
+#' Convert Inputs to Character
+#'
+#' Converts template inputs to character vector.
+#' @param inputs template inputs object
+#' @export 
+as.character.rp.inputs <- function(inputs){
+    unlist(sapply(inputs, function(x){
+        mandatory <- if (x$mandatory) "*" else ""
+        limits <- sprintf("[%s]", paste(x$limit, collapse = ","))
+        opts <- switch(x$type,
+                       boolean = x$default,
+                       number =,
+                       string = paste(mandatory, x$type, limits, if (is.null(x$default) || is.na(x$default)) "" else sprintf("=%s", x$default), sep = ""),
+                       option = paste(x$default, collapse = ","),
+                       character =,
+                       complex =,
+                       numeric =,
+                       logical =,
+                       factor =,
+                       variable = paste(mandatory, x$type, limits, sep = ""),
+                       stopf('Incorrect input type (%s)!', x$type)
+                       )
+        paste(x$name, opts, x$label, x$desc, sep = " | ")
+    }))
+}
+
+
 #' Variable Name
 #'
 #' This function returns character value previously stored in variable's \code{name} attribute. If none found, the function defaults to object's name.
@@ -568,7 +617,7 @@ extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
 #' @export
 check.name <- function(x, size = 30L, ...){
 
-    re.name <- '^[[:alpha:]]+(([[:digit:]]+)?((\\.|_)?[[:alnum:]])+)?$'
+    re.name <- '^[[:alpha:]]+(([[:digit:]]+)?((\\.|_)?[[:alnum:]]+)+)?$'
     len <- nchar(x) < size
 
     if (any(!len))
