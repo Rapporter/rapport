@@ -4,7 +4,6 @@
 \usage{
   rapport(fp, data = NULL, ..., env = new.env(),
     reproducible = FALSE, header.levels.offset = 0,
-    rapport.mode = getOption("rapport.mode"),
     graph.output = getOption("graph.format"),
     file.name = getOption("rp.file.name"),
     file.path = getOption("rp.file.path"),
@@ -33,15 +32,6 @@
 
   \item{header.levels.offset}{number added to header levels
   (handy when using nested templates)}
-
-  \item{rapport.mode}{forces \code{rapport} to run in
-  \emph{performance} or \emph{debug} mode instead of normal
-  behaviour. Change this only if you really know what are
-  you doing! In \code{performance} mode \code{rapport} will
-  evaluate all templates in \code{strict} mode (see:
-  \code{evals(..., check.output = FALSE)}), while in
-  \code{debug} mode \code{rapport} will halt on first
-  error.}
 
   \item{file.name}{set the file name of saved plots and
   exported documents. A simple character string might be
@@ -95,18 +85,15 @@
 \details{
   Default parameters are read from \code{options}:
 
-  \itemize{ \item 'rapport.mode', \item 'rp.file.name',
-  \item 'rp.file.path', \item 'graph.format', \item
-  'graph.width', \item 'graph.height', \item 'graph.res',
-  \item 'graph.hi.res'. }
+  \itemize{ \item 'rp.file.name', \item 'rp.file.path',
+  \item 'graph.format', \item 'graph.width', \item
+  'graph.height', \item 'graph.res', \item 'graph.hi.res'.
+  }
 }
 \examples{
 \dontrun{
 rapport("example", ius2008, var = "leisure")
 rapport("example", ius2008, var = "leisure", desc = FALSE, hist = TRUE, theme = "Set1")
-rapport("example", ius2008, var = "leisure", rapport.mode = 'debug')
-rapport("example", ius2008, var = "leisure", rapport.mode = 'performance')
-## Or set \\code{'rapport.mode'} option to \\code{debug}, \\code{performance} or back to \\code{normal}.
 
 ## generating high resolution images also
 rapport("example", ius2008, var="leisure", hist = TRUE, graph.hi.res = TRUE)

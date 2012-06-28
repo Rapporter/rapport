@@ -28,7 +28,6 @@ Imports:
     RColorBrewer,
     reshape
 Collate:
-    'crypt.R'
     'export.R'
     'graphs.R'
     'init.R'

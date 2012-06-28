@@ -434,239 +434,6 @@ tpl.rerun <- function(tpl){
 }
 
 
-#' Template Elements
-#'
-#' Returns a \code{data.frame} containing summary of relevant template elements: \code{ind} - indice of current element in template's body, \code{type} - a string indicating the type of the content ("heading", "inline" or "block"), and \code{chunk} - a string containing R expression found in a code chunk.
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
-#' @param extract a string indicating which elements should be extracted from the template: headings, blocks, or code chunks (by default it returns all of the above)
-#' @param use.body a logical value indicating whether the whole template should be used, or just its body
-#' @param skip.blank.lines remove blank lines within R chunks
-#' @param skip.r.comments remove comments withing R chunks
-#' @param ... additional arguments to be passed to \code{\link{grep}} and \code{\link{get.tags}} functions
-#' @return a \code{data.frame} with 3 columns:
-#' @examples \dontrun{
-#'     fp <- system.file("templates", "example.tpl", package = "rapport")
-#'     tpl.elem(fp) # returns all elements (headings, inlines and blocks)
-#'
-#'     ## returns only code blocks
-#'     tpl.elem(fp, extract = "block")
-#' }
-tpl.elem <- function(fp, extract = c('all', 'heading', 'inline', 'block'), use.body = FALSE, skip.blank.lines = TRUE, skip.r.comments = FALSE, ...){
-
-    if (isTRUE(use.body))
-        b <- fp
-    else
-        b <- tpl.body(tpl.find(fp))
-
-    ## check for empty body
-    if (all(grepl('^[:space:]*$', b)))
-        stop('template body is empty')
-
-    ext <- match.arg(extract)           # what should be extracted?
-
-    ## bunch of regexes
-    re.blank     <- '^([[:blank:]]+|)$'              # blank line
-    re.head      <- '^#{1,6}([ |\t]+)?[[:print:]]+$' # heading
-    re.co        <- get.tags('chunk.open', ...)      # chunk open
-    re.cc        <- get.tags('chunk.close', ...)     # chunk closed
-    re.cmt.open  <- get.tags('comment.open', ...)    # comment open
-    re.cmt.close <- get.tags('comment.close', ...)   # comment close
-
-    ## get blank line indices
-    blank.ind <- grep(re.blank, b, ...) # get blank line indices
-
-    ## get pandoc (HTML) comment indices
-    cmt.o.ind <- grep(re.cmt.open, b, ...)
-    cmt.c.ind <- grep(re.cmt.close, b, ...)
-
-    ## chunks
-    co.ind    <- grep(re.co, b, ...) # get indices of opening chunk tags
-    cc.ind    <- grep(re.cc, b, ...) # get indices of closing chunk tags
-    chunk.lst <- mapply(seq, co.ind + 1, cc.ind - 1, SIMPLIFY = FALSE) # get indices of lines within the chunk tags and store them in a list
-    chunk.all <- c(co.ind, unlist(chunk.lst), cc.ind) # get all chunk indices
-    ## skip blank lines
-    if (isTRUE(skip.blank.lines))
-        chunk.lst <- lapply(chunk.lst, function(x) x[!x %in% blank.ind])
-    ## skip R comments
-    if (isTRUE(skip.blank.lines))
-        chunk.lst <- lapply(chunk.lst, function(x) x[!grepl('^#', x)])
-    ## exclude empty list elements
-    chunk.lst <- chunk.lst[sapply(chunk.lst, length) > 0]
-
-    ## heading
-    h.ind    <- grep(re.head, b, ...) # get heading-like indices (this matches R in chunks)
-    h.ind    <- h.ind[!h.ind %in% chunk.all] # exclude chunks (bye-bye R comments)
-    h.is.1st <- 1 %in% h.ind                 # check 1st line heading
-    h.adj    <- (h.ind %in% (h.ind - 1)) | (h.ind %in% (h.ind + 1)) # get adjacent headers
-    h.white  <- ((h.ind - 1) %in% blank.ind) & ((h.ind + 1) %in% blank.ind) # get whitespace before/after the heading
-    h        <- h.ind[h.adj | h.white]
-    if (h.is.1st == TRUE)
-        h <- c(1, h)
-
-    ## blocks
-    len   <- 1:length(b)
-    block <- adj.rle(len[!len %in% c(blank.ind, h.ind, chunk.all)])$values
-    ## TODO: check tag mismatch
-    ## TODO: check comment mismatch, but yield only warnings
-
-    ## prepare response list
-    ind <- switch(ext,
-                  all = list(
-                      heading = lapply(h, structure, type = "heading"),
-                      inline  = lapply(block, structure, type = "inline"),
-                      block   = lapply(chunk.lst, structure, type = "block")
-                      ),
-                  heading = lapply(h, structure, type = "heading"),
-                  inline  = lapply(block, structure, type = "inline"),
-                  block   = lapply(chunk.lst, structure, type = "block"),
-                  stop('unknown indices type')
-                  )
-
-    ## preserve original element order
-    u <- unlist(ind, recursive = FALSE, use.names = FALSE)
-    u.ind <- order(sapply(u, function(x) x[1]))
-    u <- u[u.ind]
-    lapply(u, function(x){
-        tx <- attr(x, 'type')
-        bx <- b[x]
-        switch(tx,
-               heading = structure(bx, class = 'rp.heading'),
-               inline  = structure(paste(bx, collapse = '\n'), class = 'rp.inline'),
-               block   = structure(list(bx), class = 'rp.block'),
-               stop('unknown element class')
-               )
-    })
-}
-
-
-#' Evaluate Template Elements
-#'
-#' This function grabs template elements from \code{\link{tpl.elem}} and evaluates them. For \code{rp.block}-classed elements just a vanilla \code{\link{evals}} call is carried out, while \code{rp.inline} and \code{rp.heading} classes have some additional post-evaluation processing (heading level is stored, as well as "raw" and evaluated chunk contents).
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'inline.open',
-#'     \item 'inline.close',
-#'     \item 'rp.file.name'.
-#' }
-#' @param x a template file pointer (see \code{\link{tpl.find}} for details)
-#' @param tag.open a string containing opening tag
-#' @param tag.close a string containing closing tag
-#' @param remove.comments should comments be omitted on evaluation?
-#' @param rapport.mode see: \code{?rapport}
-#' @param graph.name indirectly read from "graph.name" option by calling \code{\link{rapport}}, should not be directly changed
-#' @param parent parent list holding the current (child) element
-#' @param ... additional params for \code{grep}-like functions
-#' @keywords internal
-elem.eval <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), remove.comments = TRUE, rapport.mode = 'normal', graph.name = getOption('rp.file.name'), parent, ...){
-
-    `%d` <- which(sapply(parent, function(parent) identical(x, parent)))
-    if (!missing(graph.name))
-        if (is.character(graph.name))
-            graph.name <- gsub('%d', `%d`, graph.name, fixed = TRUE)
-
-    if (inherits(x, 'rp.block')){
-
-        ## template blocks
-        res <- list(
-                    type = 'block',
-                    robjects = evals(x, graph.name = graph.name, ...)
-                    )
-
-    } else if (inherits(x, c('rp.inline', 'rp.heading'))) {
-
-        ## inline/heading elements
-
-        stopifnot(is.string(x))
-
-        if (!inherits(x, c('rp.heading', 'rp.inline')))
-            stop('invalid element class, either a heading or a block should be provided')
-
-        if (isTRUE(remove.comments))
-            x <- purge.comments(x)          # purge comments
-
-        head  <- is.heading(x)               # is it a heading
-        x     <- tags.misplaced(x, tag.open, tag.close) # check for misplaced tags
-        ntags <- sum(has.tags(x, tag.open, tag.close)) # number of tags
-        ## only for heading
-        if (isTRUE(head)){
-            lvl   <- nchar(gsub('^(#{1,6}).+$', '\\1', x)) # get heading level
-            x     <- gsub('^#{1,6}[[:space:]]', '', x) # remove heading markup
-        }
-
-        msg <- list(messages = NULL, warnings = NULL, errors = NULL)
-
-        ## both tags found
-        if (ntags == 2){
-            c.yes <- grab.chunks(x, tag.open, tag.close, TRUE) # chunks with tags
-            c.no  <- grab.chunks(x, tag.open, tag.close, FALSE) # chunks sans tags
-            resp  <- evals(c.no, graph.name = graph.name, ...)
-            out   <- sapply(resp, function(x){
-                ## OK, this is lame, we should allow users to define tables in blocks,
-                ## but not in headings, assuming that we find an easy way to add
-                ## something like anchor to the generated graph
-                if (x$type == 'image')
-                    stop("it's not allowed to create graphs within inline chunks")
-                if (is.tabular(x$output))
-                    stop('tabular structures are not allowed within inline chunks')
-
-                ## get messages for a heading/inline chunk
-                m <- x$msg
-                msg$messages <<- c(msg$messages, if (is.null(m$messages)) NA else m$messages)
-                msg$warnings <<- c(msg$warnings, if (is.null(m$warnings)) NA else m$warnings)
-                msg$errors   <<- c(msg$errors, if (is.null(m$errors)) NA else m$errors)
-
-                err <- m$errors
-                ## return info on errors, don't just bleed to death! (bug spotted & fixed by Gergely)
-                if (!is.null(err)) {                ## error handling in blocks:
-                    if (rapport.mode == 'debug') {  ##   * in debug mode: halt
-                        cat(sprintf('Malformed command: %s', x$src), '\n')
-                        stop(err, call. = FALSE)
-                    }                               ##   * otherwise:
-                    warning(err, call.=F)           ##       * shoot warning()
-                    return('<ERROR>')               ##       * returning '<ERROR>' inline
-                }
-                if (!is.null(x$output))
-                    return(rp.prettyascii(x$output))    # get output
-            })
-            ## check chunk for tables and graphs!
-
-            rpl   <- vgsub(c.yes, out, x, fixed = TRUE) # replace evaled chunk
-        }
-
-        ## no tags found, carry on
-        if (ntags == 0) {
-            rpl   <- x
-            c.yes <- NULL
-            out   <- NULL
-        }
-
-        lst <- list(
-                    text = list(
-                        raw  = x,
-                        eval = rpl
-                        ),
-                    chunks = list(
-                        raw  = c.yes,
-                        eval = out
-                        ),
-                    msg = msg
-                    )
-
-        if (isTRUE(head))
-            res <- c(type = 'heading', level = lvl, lst)        # this is heading
-        else
-            res <- c(type = 'inline', lst)   # this is block
-
-    } else {
-        stop ('invalid "rapport" template element type')
-    }
-
-    return (res)
-}
-
-
 #' Extract R Code from Template
 #'
 #' \code{tangle}-like function to extract R code from \emph{rapport} templates.
@@ -714,7 +481,6 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' Default parameters are read from \code{options}:
 #'
 #' \itemize{
-#'     \item 'rapport.mode',
 #'     \item 'rp.file.name',
 #'     \item 'rp.file.path',
 #'     \item 'graph.format',
@@ -730,7 +496,6 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' @param env an environment where template commands be evaluated (defaults to \code{new.env()}
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
-#' @param rapport.mode forces \code{rapport} to run in \emph{performance} or \emph{debug} mode instead of normal behaviour. Change this only if you really know what are you doing! In \code{performance} mode \code{rapport} will evaluate all templates in \code{strict} mode (see: \code{evals(..., check.output = FALSE)}), while in \code{debug} mode \code{rapport} will halt on first error.
 #' @param file.name set the file name of saved plots and exported documents. A simple character string might be provided where \code{\%D} is an auto-incrementing integer (increments while each \code{\link{rapport}} call), \code{\%d} would be replaced by the index of the generating chunk (in the same \code{rapport}), \code{\%T} by the name of the template in action and \code{\%t} by some uniqe random characters based on \code{\link{tempfile}}.
 #' @param file.path path of a directory where to store generated images and exported reports
 #' @param graph.output the required file format of saved plots (optional)
@@ -744,9 +509,6 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' @examples \dontrun{
 #' rapport("example", ius2008, var = "leisure")
 #' rapport("example", ius2008, var = "leisure", desc = FALSE, hist = TRUE, theme = "Set1")
-#' rapport("example", ius2008, var = "leisure", rapport.mode = 'debug')
-#' rapport("example", ius2008, var = "leisure", rapport.mode = 'performance')
-#' ## Or set \code{'rapport.mode'} option to \code{debug}, \code{performance} or back to \code{normal}.
 #'
 #' ## generating high resolution images also
 #' rapport("example", ius2008, var="leisure", hist = TRUE, graph.hi.res = TRUE)
@@ -758,7 +520,7 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, rapport.mode = getOption('rapport.mode'), graph.output = getOption('graph.format'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
+rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = getOption('graph.format'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
 
     ## dummy checks for possible ascii export bug (space in path/filename)
     if (grepl(' ', file.name))
@@ -773,7 +535,6 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     meta   <- h$meta                            # header metadata
     inputs <- h$inputs                          # header inputs
     b      <- tpl.body(txt)                     # template body
-    elem   <- tpl.elem(b, use.body = TRUE)      # template elements
     e      <- env                               # load/create evaluation environment
     i      <- list(...)                         # user inputs
     data.required <- isTRUE(as.logical(meta$dataRequired)) # is data required
@@ -954,42 +715,17 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         file.name <- gsub('%D', `%D`, file.name, fixed = TRUE)
     }
 
-    ## eval chunks
+    ## evaluate (brew) template body
     opts.bak <- options()                      # backup options
-    report <- lapply(elem, elem.eval, parent = elem, env = e, check.output = !(as.logical(meta$strict) | (rapport.mode == 'performance')), rapport.mode = rapport.mode, graph.output = graph.output, graph.name = file.name, graph.dir = file.path, width = graph.width, height = graph.height, res = graph.res, hi.res = graph.hi.res, graph.recordplot = graph.replay) # render template body
+    assign('rp.body', paste(b, collapse = '\n'), envir = e)
+    report <- eval.msgs('Pandoc.brew(text = rp.body, envir = e)', showInvisible = TRUE, env = e)$result
     options(opts.bak)                          # resetting options
-
-    ## error handling in chunks
-    report <- lapply(report, function(x){
-        ## * shoot warning() and return '<ERROR>' inline
-        if (x$type == 'block'){
-            rerr <- x$robjects[[1]]$msg$errors
-            if (!is.null(rerr)){
-                if (rapport.mode == 'debug') {      ## halt in debug mode
-                        cat(sprintf('Malformed command(s):\n%s', paste(x$robjects[[1]]$src, collapse='\n')), '\n')
-                        stop(rerr, call. = FALSE)
-                    }
-                warning(rerr, call. = FALSE)
-                x$robjects[[1]]$output <- '<ERROR>'
-            }
-        }
-        return(x)
-    })
-
-    ## remove NULL/blank parts
-    ind.nullblank <- sapply(report, function(x){
-        if (x$type == 'block')
-            ifelse(is.null(x$robjects[[1]]$output), FALSE, TRUE)
-        else
-            ifelse(x$text$eval == 'NULL', FALSE, TRUE)
-    })
-    report <- report[ind.nullblank]     # update template body contents
 
     ## tidy up (removing metadata, inputs from) nested templates
     report <- unlist(lapply(report, function(x){
 
-        robj  <- x$robjects[[1]]
-        rout  <- robj$output
+        robj  <- x$robject
+        rout  <- robj$result
         xtype <- x$type
 
         ## chunk holding a rapport class

@@ -14,7 +14,7 @@ vars            | *variable[1,50]| Variables         | Categorical or numerical 
 nortest         | TRUE          | Normality tests   | Should normality tests be performed on numerical variables?  
 head-->
 
-<%
+<%=
 if (vars.ilen == 1) {
     rapport('children/descriptives-univar', data=rp.data, var=rp.name(vars), nortest=nortest)
 } else {
