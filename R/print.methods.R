@@ -100,41 +100,26 @@ print.rp.info <- function(x, ...){
 #' @param x any "rapport" class object
 #' @param ... ignored
 #' @examples \dontrun{
-#' rapport('univar-descriptive', data=mtcars, var='hp')
-#' print(rapport('univar-descriptive', data=mtcars, var='hp'))
+#' rapport('example', data = mtcars, var='hp')
 #' }
 #' @method print rapport
 #' @S3method print rapport
 print.rapport <- function(x, ...) {
 
-    if (!is.rapport(x)) stop('Wrong type of argument (!rapport) supplied!')
+    if (!is.rapport(x))
+        stop('Wrong type of argument (!rapport) supplied!')
 
     images <- NULL
 
     ## print report body
     for (part in x$report){
-        robj  <- part$robjects[[1]]
-        rout  <- robj$output
-        rwarn <- robj$msg$warnings
 
-        catn()
         switch(part$type,
-               'block' = {
-                   if (!is.null(rout)){
-                       if (any(robj$type == 'image')) {
-                           images <- c(images, as.character(rout))
-                           cat(as.character(rout))
-                       } else
-                           cat(rp.prettyascii(rout))
-                   }
-
-                   if (!is.null(rwarn))
-                       cat('\n', rwarn)
-               },
+               'block' = pander(part$robject),
                'heading' = cat(paste(paste(rep('#', part$level), collapse=''), part$text$eval)),
-               cat(rp.prettyascii(as.character(part$text$eval)))
+               cat(part$text$eval)
                )
-        catn()
+
     }
 
     if (getOption('graph.replay')) {
