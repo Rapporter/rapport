@@ -116,7 +116,7 @@ print.rapport <- function(x, ...) {
 
         switch(part$type,
                'block' = pander(part$robject),
-               'heading' = cat(paste(paste(rep('#', part$level), collapse=''), part$text$eval)),
+               'heading' = pandoc.header(part$text$eval, part$level),
                cat(part$text$eval)
                )
 
