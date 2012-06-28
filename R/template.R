@@ -721,6 +721,15 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     report <- eval.msgs('Pandoc.brew(text = rp.body, envir = e)', showInvisible = TRUE, env = e)$result
     options(opts.bak)                          # resetting options
 
+    ## remove NULL/blank parts
+    ## ind.nullblank <- sapply(report, function(x){
+    ##     if (x$type == 'block')
+    ##         ifelse(is.null(x$robjects[[1]]$output), FALSE, TRUE)
+    ##     else
+    ##         ifelse(x$text$eval == 'NULL', FALSE, TRUE)
+    ## })
+    ## report <- report[ind.nullblank]     # update template body contents
+
     ## tidy up (removing metadata, inputs from) nested templates
     report <- unlist(lapply(report, function(x){
 
