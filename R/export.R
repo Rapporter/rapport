@@ -131,7 +131,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
 
             if (desc) {
                 ## header
-                r$add.paragraph(pandoc.header('Description', 2))
+                r$add.paragraph(pandoc.header.return('Description', 2))
                 r$add.paragraph(as.character(rp$meta['desc']))
             }
 
