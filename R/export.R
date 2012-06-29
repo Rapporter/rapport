@@ -1,13 +1,4 @@
-#' tpl.export.outputs
-#'
-#' List of all available output formats (from ascii package).
-tpl.export.outputs <- function() setdiff(sort(unique(unlist(ascii:::asciiOpts(".outputs")))), "")
-#' tpl.export.backends
-#'
-#' List of all available backend formats (from ascii package).
-tpl.export.backends <- function() ascii:::asciiOpts(".backends")
-
-#' Export rapport class
+#' Export rapport object
 #'
 #' This function exports rapport class objects to various formats based on ascii package.
 #'
@@ -24,18 +15,17 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #'
 #' Please be sure to set \code{'tpl.user'} and \code{'tpl.email'} options with \code{options()} to get your name in the head of your generated reports!
 #' @param rp a rapport class object or list of rapport class objects
-#' @param file filename (NULL returns a tempfile). Inherited from rapport class if not set (default).
+#' @param file filename of the generated document. Inherited from rapport class if not set.
 #' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added
 #' @param create should export really happen? It might be handy if you want to append several reports.
 #' @param open open the exported document? Default set to TRUE.
 #' @param date character string as the date field of the report. If not set, current time will be set.
-#' @param desc add Description of the rapport class (template)? Default set to TRUE.
-#' @param format format of the wanted report, see: \code{ascii:::asciiOpts(".outputs")}
-#' @param backend backend for the format conversions, see: \code{ascii:::asciiOpts(".backends")}
-#' @param options command line options passed to backend
+#' @param desc add \code{Description} of the rapport class (template)? Default set to TRUE.
+#' @param format format of the wanted report. See Pandoc's user manual for details. In short, choose something like: \code{html}, \code{pdf}, \code{odt} or \code{docx}.
+#' @param options options passed to \code{Pandoc.convert}.
 #' @param logo add rapport logo
-#' @param portable.html if set to \code{TRUE}, all required HTML stuff (JS/CSS/images) will be copied to the exported documents' directory.
 #' @return filepath on \code{create = TRUE}, \code{Report} class otherwise
+#' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
 #' @examples \dontrun{
 #'
 #' ## eval some template
@@ -79,145 +69,100 @@ tpl.export.backends <- function() ascii:::asciiOpts(".backends")
 #' @export
 tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = format(Sys.time(), getOption('rp.date.format')), desc = TRUE, format = 'html', backend = 'pandoc', options = NULL, logo = TRUE, portable.html = getOption('rp.portable.html')) {
 
-    ## checking parameters
-    if (!(format %in% tpl.export.outputs()))
-        stop('Invalid format specified. See: rapport.report.outputs()')
-    if (!(backend %in% tpl.export.backends()))
-        stop(paste("Wrong backend. Please choose: ", paste(tpl.export.backends(), collapse = ", "), ".", sep = ""))
-    if (!(format %in% ascii:::asciiOpts(".outputs")[[backend]])) {
-        backends <- lapply(ascii:::asciiOpts(".outputs"), function(x) format %in% x)
-        backends <- names(backends[as.numeric(which(backends==TRUE))])
-        warning(paste('Wrong backend provided, using instead:', backends[1], '\nAll compatible backends:', paste(backends, collapse=', ')))
-        backend <- backends[1]
-    }
     if (missing(file))
         file <- rp$file.name
-    else
-        file <- NULL
-    if (!is.null(file))
-        if (!is.character(file))
-            stop('Wrong file parameter!')
+
     if (!is.logical(append)) {
-        ## if (!(deparse(substitute(append)) %in% ls(envir = .GlobalEnv))) stop('Not existing object given as append parameter!')
-        if (class(append) != 'Report') stop('Wrong class (!="Report") found in append parameter!')
+
+        if (class(append) != 'Pandoc')
+            stop('Wrong class (!="Report") found in append parameter!')
+
         r <- append
+
     } else {
-        if (append != 'FALSE') stop('Wrong append parameter!')
-        if (is.null(rp)) stop('There is no sense in exporting a blank report :)')
-        r <- Report$new()
-        r$title <- as.character(rp$meta['title'])
-        r$author <- as.character(getOption('tpl.user'))
-        r$email <- as.character(getOption('tpl.email'))
-        ## as we cannot use a custom Field here, using date temporary. See: https://github.com/aL3xa/rapport/issues/36
-        r$date <- 0
-    }
-    if (!is.logical(create)) stop('Wrong create (!=TRUE|FALSE) parameter!')
-    if (!is.logical(logo)) stop('Wrong logo (!=TRUE|FALSE) parameter!')
 
-    ## checking if backend is installed
-    check.backend <- function(backend) {
-        if (backend == 't2t')
-            backend <- 'txt2tags'
-        paste(suppressWarnings(tryCatch(system(sprintf('%s -v', backend), intern=T), error=function(x) 'ERROR')), collapse='\n') == 'ERROR'
-    }
-    if (check.backend(backend))
-        stop(sprintf('Specified backend (%s) is not installed! Please see details in INSTALL file or rapport homepage (http://rapport-package.info).', backend), call. = FALSE)
+        if (append != 'FALSE')
+            stop('Wrong append parameter!')
 
-    ## set backend specific markdown language
-    if (backend %in% c('asciidoc', 'a2x'))
-        md.lang <- 'asciidoc'
-    if (backend == 't2t')
-        md.lang <- 't2t'
-    if (backend %in% c('pandoc', 'markdown2pdf'))
-        md.lang <- 'pandoc'
+        if (is.null(rp))
+            stop('There is no sense in exporting a blank report :)')
 
-    ## exporting multiple rapport classes at once
-    if (class(rp) == 'list') {
-        if (all(lapply(rp, class) == 'rapport')) {
-
-            ## using the first rapport's filename
-            file <- rp[[1]]$file.name
-            r$title <- as.character(rp[[1]]$meta['title'])
-
-            for (i in 1:length(rp)) {
-                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, backend = backend)
-            }
-
-        } else
-
-            stop('Wrong rp parameter!')
+        r <- Pandoc$new(author = as.character(getOption('tpl.user')), title = as.character(rp$meta['title']), date = date)
 
     }
 
-    r$backend <- backend
     r$format <- format
 
+    if (!is.logical(create))
+        stop('Wrong create (!=TRUE|FALSE) parameter!')
+
+    if (!is.logical(logo))
+        stop('Wrong logo (!=TRUE|FALSE) parameter!')
+
+    ## ## exporting multiple rapport classes at once
+    ## if (class(rp) == 'list') {
+    ##     if (all(lapply(rp, class) == 'rapport')) {
+
+    ##         ## using the first rapport's filename
+    ##         file <- rp[[1]]$file.name
+    ##         r$title <- as.character(rp[[1]]$meta['title'])
+
+    ##         for (i in 1:length(rp)) {
+    ##             r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, backend = backend)
+    ##         }
+
+    ##     } else
+
+    ##         stop('Wrong rp parameter!')
+
+    ## }
+
     if (!is.null(rp))
+
         if(class(rp) == 'rapport') {
+
+            r$proc.time <- r$proc.time + rp$time
+
             if (desc) {
                 ## header
-                r$addSection('Description', 2)
-                r$add(paragraph(as.character(rp$meta['desc'])))
+                r$add.paragraph(pandoc.header('Description', 2))
+                r$add.paragraph(as.character(rp$meta['desc']))
             }
 
             ## body
             lapply(rp$report, function(x) {
+
                 x.type <- x$type
-                if (x.type=='heading') r$addSection(x$text$eval, x$level + 1)
-                if (x.type=='inline')
-                    r$add(paragraph(ifelse(is.null(unlist(x$chunks$raw)),
+                if (x.type=='heading')
+                    r$add.paragraph(pandoc.header.return(x$text$eval, x$level + 1))
+                if (x.type=='text')
+                    r$add.paragraph(ifelse(is.null(unlist(x$chunks$raw)),
                         unlist(x$text$raw),
-                        unlist(x$text$eval))
-                        )
-                    )
-                if (x.type=='block' & !is.null(x$robjects[[1]]$type)) {
-                    x.r <- x$robjects[[1]]
-                    if (any(x.r$type == 'image')) {
-                        file.ext <- tail(strsplit(x.r$output, '\\.')[[1]], 1)
-                        img.hi.res <- sub(sprintf('.%s$', file.ext), sprintf('-hires.%s', file.ext), x.r$output)
-                        if (file.exists(img.hi.res) & format == 'html' & backend == 'pandoc')
-                            r$add(paragraph(paste0('[![', x.r$msg$messages, '](', x.r$output, ')](', img.hi.res, ')')))
-                        else
-                            r$add(paragraph(paste0('![', x.r$msg$messages, '](', x.r$output, ')')))
-                    }
-                    if (all(x.r$type != c('image', 'error')))
-                        r$add(paragraph(rp.prettyascii(x.r$output, asciitype = md.lang)))
-                    ## add captions to tables
-                    if (!is.null(x.r$msg$messages) & all(x.r$type != c('image', 'error')))
-                        r$add(paragraph(sprintf('\nTable: %s', x.r$msg$messages)))
-                    ## and warnings
-                    if (!is.null(x.r$msg$warnings))
-                        r$add(paragraph(as.character(x.r$msg$warnings)))
-                    }
+                        unlist(x$text$eval)))
+                if (x.type=='block')
+                    r$add.paragraph(pander.return(x$robject))
+
             })
 
-            r$date <- r$date + rp$time
         }
 
     ## create report or return the Report class
     if (create) {
-        ## if pandoc is converting to HTML then apply default styles
-        if (is.null(options) & format == 'html' & backend == 'pandoc') {
 
-            if (portable.html) {
-                portable.dirs <- c('fonts', 'images', 'javascripts', 'stylesheets')
-                for (portable.dir in portable.dirs)
-                    file.copy(system.file(sprintf('includes/%s', portable.dir), package='rapport'), sub("(.+)(\\/.+$)", "\\1", file), recursive  = TRUE)
-                cat(gsub('includes\\/', '', readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
-            } else {
-                cat(gsub('includes', system.file('includes', package='rapport'), readLines(system.file('includes/html/header.html', package='rapport'))), sep='\n', file=sprintf('%s%s', tempdir(), '/rapport-header.html'))
-            }
-            options <- sprintf('-H "%s" -A "%s"', file.path(gsub('\\', '/', tempdir(), fixed = TRUE), 'rapport-header.html'), system.file('includes/html/footer.html', package='rapport'))
+        ## if Pandoc is converting to HTML then apply default `rapport` styles
+        if (is.null(options) & format == 'html') {
+
+            portable.dirs <- c('fonts', 'images', 'javascripts', 'stylesheets')
+            for (portable.dir in portable.dirs)
+                file.copy(system.file(sprintf('includes/%s', portable.dir), package='rapport'), dirname(file), recursive  = TRUE)
+            options <- sprintf('-H "%s" -A "%s"', system.file('includes/html/header.html', package='rapport'), system.file('includes/html/footer.html', package='rapport'))
 
         }
 
         if (logo) {
 
-            switch(md.lang,
-                'asciidoc' = r$add(paragraph(sprintf("'''''\nThis report was generated with http://www.r-project.org/[R] (%s) and http://rapport-package.info/[rapport] (%s) in %s sec on %s platform.", sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
-                'pandoc' = r$add(paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://rapport-package.info/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))),
-                't2t' = r$add(paragraph(sprintf('--------------------\nThis report was generated with [R http://www.r-project.org/] (%s) and [rapport http://rapport-package.info/] (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$date), R.version$platform))))
-            r$addFig(system.file('includes/images/logo.png', package='rapport'))
+            r$add.paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://rapport-package.info/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$proc.time), R.version$platform))
+            r$add.paragraph(pandoc.image.return(system.file('includes/images/logo.png', package='rapport')))
 
         }
 
@@ -235,26 +180,45 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
         if (.Platform$OS.type == 'windows') # short-name tweak on Windows
             file <- shortPathName(file)
 
-        r$create(file = file, open = open, options = options, date = date)
-        file.rename(sprintf('%s.txt', file), sprintf('%s.%s', file, md.lang))
-        file.ext <- ifelse(format %in% ascii:::asciiOpts(".extensions"), ascii:::asciiOpts(".extensions")[format], format)
-
-        return(sprintf('%s.%s', file, file.ext))
+        r$export(f = file, open = open, options = options, footer = FALSE)
+        return(sprintf('%s.%s', file, format))
 
     } else
         return(r)
 }
+
 
 #' Rapport to HTML
 #'
 #' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
 #' @param ... parameters passed directly to \code{\link{rapport}}
 #' @export
-rapport.html <- function(...) tpl.export(rapport(...))
+rapport.html <- function(...)
+    tpl.export(rapport(...))
+
 
 #' Rapport to ODT
 #'
 #' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
 #' @param ... parameters passed directly to \code{\link{rapport}}
 #' @export
-rapport.odt <- function(...) tpl.export(rapport(...), format='odt')
+rapport.odt <- function(...)
+    tpl.export(rapport(...), format='odt')
+
+
+#' Rapport to PDF
+#'
+#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
+#' @param ... parameters passed directly to \code{\link{rapport}}
+#' @export
+rapport.pdf <- function(...)
+    tpl.export(rapport(...), format='pdf')
+
+
+#' Rapport to DOCX
+#'
+#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
+#' @param ... parameters passed directly to \code{\link{rapport}}
+#' @export
+rapport.docx <- function(...)
+    tpl.export(rapport(...), format='docx')
