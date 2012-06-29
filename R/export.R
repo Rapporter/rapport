@@ -63,8 +63,6 @@
 #'
 #' ### Adding own custom CSS to exported HTML
 #' tpl.export(x, options=sprintf('-c %s', system.file('templates/css/default.css', package='rapport')))
-#' ## For other formats check out backend specific documentation!
-#' ## E.g. pandoc uses "--reference-odt" as styles reference for odt exports.
 #'}
 #' @export
 #' @seealso \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odf}} \code{\link{rapport.docx}}
@@ -75,8 +73,10 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             file <- rp[[1]]$file.name
         else
             file <- rp$file.name
-    if (length(file) != 1 & !is.character(file))
-        stop('Wrong file name provided.')
+    if (length(file) != 1 & !is.character(file)) {
+        warning('Wrong file name provided, using a temporary file instead')
+        file <- tempfile()
+    }
 
     if (!is.logical(append)) {
 
@@ -167,7 +167,13 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
 
         if (logo) {
 
-            r$add.paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://rapport-package.info/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, rp.round(r$proc.time), R.version$platform))
+            ## removing logo and footer if added before
+            logo.prior <- sapply(r$body, function(x) grepl('rapport/includes/images/logo.png', x))
+            footer.prior <- sapply(r$body, function(x) grepl('-------\\nThis report was generated with \\[R\\]\\(http://www.r-project.org/\\) \\([0-9\\.]*\\) and \\[rapport\\]\\(http://rapport-package.info/\\) \\([0-9\\.]*\\) in [0-9\\.,\\*]* sec', x))
+            prior <- which(logo.prior | footer.prior)
+            if (length(prior) > 0)
+                r$body[prior] <- NULL
+            r$add.paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://rapport-package.info/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, pander.return(r$proc.time), R.version$platform))
             r$add.paragraph(pandoc.image.return(system.file('includes/images/logo.png', package='rapport')))
 
         }

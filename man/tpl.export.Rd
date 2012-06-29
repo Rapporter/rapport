@@ -100,8 +100,6 @@ tpl.export(tpl.example('example', 'all'), backend='t2t')
 
 ### Adding own custom CSS to exported HTML
 tpl.export(x, options=sprintf('-c \%s', system.file('templates/css/default.css', package='rapport')))
-## For other formats check out backend specific documentation!
-## E.g. pandoc uses "--reference-odt" as styles reference for odt exports.
 }
 }
 \references{
