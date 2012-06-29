@@ -29,7 +29,7 @@
 #' @examples \dontrun{
 #'
 #' ## eval some template
-#' x <- rapport('descriptives-univar', data = mtcars, var="hp")
+#' x <- rapport('example', data = mtcars, var="hp")
 #'
 #' ## try basic parameters
 #' tpl.export(x)
@@ -68,7 +68,7 @@
 #'}
 #' @export
 #' @seealso \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odf}} \code{\link{rapport.docx}}
-tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = format(Sys.time(), getOption('rp.date.format')), desc = TRUE, format = 'html', backend = 'pandoc', options = NULL, logo = TRUE, portable.html = TRUE) {
+tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = format(Sys.time(), getOption('rp.date.format')), desc = TRUE, format = 'html', backend = 'pandoc', options = '', logo = TRUE, portable.html = TRUE) {
 
     if (missing(file))
         if (is.null(rp$file.name))
@@ -156,7 +156,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
     if (create) {
 
         ## if Pandoc is converting to HTML then apply default `rapport` styles
-        if (is.null(options) & format == 'html') {
+        if (options == '' & format == 'html') {
 
             portable.dirs <- c('fonts', 'images', 'javascripts', 'stylesheets')
             for (portable.dir in portable.dirs)

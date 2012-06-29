@@ -6,7 +6,7 @@
     create = TRUE, open = TRUE,
     date = format(Sys.time(), getOption("rp.date.format")),
     desc = TRUE, format = "html", backend = "pandoc",
-    options = NULL, logo = TRUE, portable.html = TRUE)
+    options = "", logo = TRUE, portable.html = TRUE)
 }
 \arguments{
   \item{rp}{a rapport class object or list of rapport class
@@ -66,7 +66,7 @@
 \dontrun{
 
 ## eval some template
-x <- rapport('descriptives-univar', data = mtcars, var="hp")
+x <- rapport('example', data = mtcars, var="hp")
 
 ## try basic parameters
 tpl.export(x)
