@@ -30,6 +30,6 @@ set.caption(sprintf('Barplot: %s', rp.name(var)))
 print(rp.barplot(var))
 %>
 
-It seems that the highest value is <%=rp.max(nvar)%> which is exactly <%=rp.round(rp.max(nvar)/rp.min(nvar))%> times higher than the smallest value (<%=rp.min(nvar)%>).
+It seems that the highest value is <%=rp.max(nvar)%> which is exactly <%=pander.return(rp.max(nvar)/rp.min(nvar))%> times higher than the smallest value (<%=rp.min(nvar)%>).
 
 The most frequent value is *<%=t <- table(var); names(t[t==max(t)])%>*.

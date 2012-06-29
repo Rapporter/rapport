@@ -7,13 +7,10 @@
 #' Default parameters are read from \code{options}:
 #'
 #' \itemize{
-#'     \item 'rp.portable.html',
-#'     \item 'rp.date.format',
-#'     \item 'tpl.user',
-#'     \item 'tpl.email'.
+#'     \item 'tpl.user'
 #' }
 #'
-#' Please be sure to set \code{'tpl.user'} and \code{'tpl.email'} options with \code{options()} to get your name in the head of your generated reports!
+#' Please be sure to set \code{'tpl.user'} option with \code{options()} to get your name in the head of your generated reports!
 #' @param rp a rapport class object or list of rapport class objects
 #' @param file filename of the generated document. Inherited from rapport class if not set.
 #' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added
@@ -66,7 +63,7 @@
 #'}
 #' @export
 #' @seealso \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odf}} \code{\link{rapport.docx}}
-tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = format(Sys.time(), getOption('rp.date.format')), desc = TRUE, format = 'html', backend = 'pandoc', options = '', logo = TRUE, portable.html = TRUE) {
+tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = pander.return(Sys.time()), desc = TRUE, format = 'html', backend = 'pandoc', options = '', logo = TRUE, portable.html = TRUE) {
 
     if (missing(file))
         if (is.null(rp$file.name))

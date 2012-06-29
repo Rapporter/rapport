@@ -46,7 +46,7 @@ if (annotation) {
 
 <%
 set.caption('Total percentages')
-fulltable <- rp.round(addmargins(prop.table(table)*100), short = TRUE)
+fulltable <- round(addmargins(prop.table(table)*100), 2)
 fulltable <- trim.space(fulltable, leading = TRUE)
 fulltable.nrow  <- nrow(fulltable)
 fulltable.ncol  <- ncol(fulltable)
@@ -58,7 +58,7 @@ fulltable
 
 <%
 set.caption('Row percentages')
-fulltable <- rp.round(prop.table(addmargins(table, 1), 1)*100, short = TRUE)
+fulltable <- round(prop.table(addmargins(table, 1), 1)*100, 2)
 fulltable <- trim.space(fulltable, leading = TRUE)
 fulltable.nrow  <- nrow(fulltable)
 fulltable[fulltable.nrow, ] <- paste0('**', fulltable[fulltable.nrow, ], '**')
@@ -68,7 +68,7 @@ fulltable
 
 <%
 set.caption('Column percentages')
-fulltable <- rp.round(prop.table(addmargins(table,2 ), 2)*100, short = TRUE)
+fulltable <- round(prop.table(addmargins(table,2 ), 2)*100, 2)
 fulltable <- trim.space(fulltable, leading = TRUE)
 fulltable.ncol  <- ncol(fulltable)
 fulltable[, fulltable.ncol] <- paste0('**', fulltable[, fulltable.ncol], '**')
@@ -85,14 +85,14 @@ t
 %>
 
 <%
-ifelse(t$p.value < 0.05, sprintf('It seems that a real association can be pointed out between *%s* and *%s* by the *%s* (χ=%s at the degree of freedom being %s) at the significance level of %s.\nBased on Goodman and Kruskal\'s lambda it seems that *%s* (λ=%s) has an effect on *%s* (λ=%s) if we assume both variables to be nominal.\nThe association between the two variables seems to be %s based on Cramer\'s V (%s).', rp.name(row), rp.name(col), t$method, rp.round(as.numeric(t$statistic)), rp.round(as.numeric(t$parameter)), rp.round(t$p.value), c(rp.name(col),rp.name(row))[which.max(lambda)], rp.round(max(as.numeric(lambda))), c(rp.name(col),rp.name(row))[which.min(lambda)], rp.round(min(as.numeric(lambda))), ifelse(cramer < 0.5, "weak", "strong"), rp.round(cramer)), sprintf('It seems that no real association can be pointed out between *%s* and *%s* by the *%s* (χ=%s at the degree of freedom being %s) at the significance level of %s.\nFor this end no other statistical tests were performed.', rp.name(row), rp.name(col), t$method, rp.round(as.numeric(t$statistic)), rp.round(as.numeric(t$parameter)), rp.round(t$p.value)))
+ifelse(t$p.value < 0.05, sprintf('It seems that a real association can be pointed out between *%s* and *%s* by the *%s* (χ=%s at the degree of freedom being %s) at the significance level of %s.\nBased on Goodman and Kruskal\'s lambda it seems that *%s* (λ=%s) has an effect on *%s* (λ=%s) if we assume both variables to be nominal.\nThe association between the two variables seems to be %s based on Cramer\'s V (%s).', rp.name(row), rp.name(col), t$method, pander.return(as.numeric(t$statistic)), pander.return(as.numeric(t$parameter)), pander.return(t$p.value), c(rp.name(col),rp.name(row))[which.max(lambda)], pander.return(max(as.numeric(lambda))), c(rp.name(col),rp.name(row))[which.min(lambda)], pander.return(min(as.numeric(lambda))), ifelse(cramer < 0.5, "weak", "strong"), pander.return(cramer)), sprintf('It seems that no real association can be pointed out between *%s* and *%s* by the *%s* (χ=%s at the degree of freedom being %s) at the significance level of %s.\nFor this end no other statistical tests were performed.', rp.name(row), rp.name(col), t$method, pander.return(as.numeric(t$statistic)), pander.return(as.numeric(t$parameter)), pander.return(t$p.value)))
 %>
 
 <%
 set.caption('Pearson\'s residuals')
 table.res <- suppressWarnings(CrossTable(table))$chisq$stdres
 table.res.highlow  <- which(table.res < -2 | table.res > 2, arr.ind = TRUE)
-table.res <- trim.space(rp.round(table.res, short = TRUE), leading = TRUE)
+table.res <- trim.space(round(table.res, 2), leading = TRUE)
 table.res[table.res.highlow] <- paste0('**', table.res[table.res.highlow], '**')
 table.res
 %>

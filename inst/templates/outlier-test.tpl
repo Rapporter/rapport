@@ -40,7 +40,7 @@ lm(var ~ 1)
 ## <% if (lund.res) 'The residuals returned:'%>
 
 <%
-if (lund.res) p(rp.round(rstandard(lm(var ~ 1))), limit=Inf)
+if (lund.res) pander.return(rstandard(lm(var ~ 1)))
 %>
 
 ## <%if (references) 'References'%>
@@ -55,7 +55,7 @@ if (references) ' * Lund, R. E. 1975, "Tables for An Approximate Test for Outlie
 <%
 if (grubb) if (suppressMessages(suppressWarnings(require(outliers)))) {
 test <- grubbs.test(var)
-sprintf('%s shows that %s (p=%s).', test$method, ifelse(test$p.value>0.05, 'there are no outliers', test$alternative), rp.round(test$p.value))   
+sprintf('%s shows that %s (p=%s).', test$method, ifelse(test$p.value>0.05, 'there are no outliers', test$alternative), pander.return(test$p.value))   
 } else 'Cannot run test, please install "outliers" package!'
 %>
 
@@ -70,7 +70,7 @@ if (references) ' * Grubbs, F.E. (1950). Sample Criteria for testing outlying ob
 <%
 if (dixon) if (suppressMessages(suppressWarnings(require(outliers)))) {
 test <- chisq.out.test(var)
-sprintf('%s shows that %s (p=%s).', test$method, ifelse(test$p.value>0.05, 'there are no outliers', test$alternative), rp.round(test$p.value))   
+sprintf('%s shows that %s (p=%s).', test$method, ifelse(test$p.value>0.05, 'there are no outliers', test$alternative), pander.return(test$p.value))   
 } else 'Cannot run test, please install "outliers" package!'
 %>
 

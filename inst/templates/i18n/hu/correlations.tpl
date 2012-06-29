@@ -2,7 +2,7 @@
 Title:          Korrelációs együtthatók
 Author:         Daróczi Gergely 
 Email:          gergely@snowl.net
-Description:    Folytonos változók közötti lineáris összefüggések vizsgálata.
+Description:    Folytonos változók közötti lineáris összefüggések vizsgálata. ## TODO: update
 Data required:  TRUE
 Strict:         TRUE
 Example:        rapport('hu/correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
