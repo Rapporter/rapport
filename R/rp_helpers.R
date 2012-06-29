@@ -100,7 +100,7 @@ is.heading <- function(x){
 as.character.rp.meta <- function(meta, include.examples = TRUE){
     meta.example <- meta['example']
     other <- meta[names(meta) != "example"]
-    res <- paste(tocamel(names(other), upper = TRUE), other, sep = ": ")
+    res <- paste(tocamel(names(other), upper = TRUE), sapply(other, paste, collapse = ","), sep = ": ")
 
     datareq.regex <- "^datarequired(\\:.+)$"
     ind <- grepl(datareq.regex, res, ignore.case=TRUE)
