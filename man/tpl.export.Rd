@@ -6,8 +6,7 @@
     create = TRUE, open = TRUE,
     date = format(Sys.time(), getOption("rp.date.format")),
     desc = TRUE, format = "html", backend = "pandoc",
-    options = NULL, logo = TRUE,
-    portable.html = getOption("rp.portable.html"))
+    options = NULL, logo = TRUE, portable.html = TRUE)
 }
 \arguments{
   \item{rp}{a rapport class object or list of rapport class
@@ -108,5 +107,9 @@ tpl.export(x, options=sprintf('-c \%s', system.file('templates/css/default.css',
 \references{
   John MacFarlane (2012): _Pandoc User's Guide_.
   \url{http://johnmacfarlane.net/pandoc/README.html}
+}
+\seealso{
+  \code{\link{rapport.html}} \code{\link{rapport.pdf}}
+  \code{\link{rapport.odf}} \code{\link{rapport.docx}}
 }
 

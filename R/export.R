@@ -67,15 +67,18 @@
 #' ## E.g. pandoc uses "--reference-odt" as styles reference for odt exports.
 #'}
 #' @export
-tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = format(Sys.time(), getOption('rp.date.format')), desc = TRUE, format = 'html', backend = 'pandoc', options = NULL, logo = TRUE, portable.html = getOption('rp.portable.html')) {
+#' @seealso \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odf}} \code{\link{rapport.docx}}
+tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = format(Sys.time(), getOption('rp.date.format')), desc = TRUE, format = 'html', backend = 'pandoc', options = NULL, logo = TRUE, portable.html = TRUE) {
 
     if (missing(file))
         file <- rp$file.name
+    if (length(file) != 1 & !is.character(file))
+        stop('Wrong file name provided.')
 
     if (!is.logical(append)) {
 
         if (class(append) != 'Pandoc')
-            stop('Wrong class (!="Report") found in append parameter!')
+            stop('Wrong class (!="Report") found in append parameter.')
 
         r <- append
 
@@ -100,22 +103,22 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
         stop('Wrong logo (!=TRUE|FALSE) parameter!')
 
     ## ## exporting multiple rapport classes at once
-    ## if (class(rp) == 'list') {
-    ##     if (all(lapply(rp, class) == 'rapport')) {
+    if (class(rp) == 'list') {
+        if (all(lapply(rp, class) == 'rapport')) {
 
-    ##         ## using the first rapport's filename
-    ##         file <- rp[[1]]$file.name
-    ##         r$title <- as.character(rp[[1]]$meta['title'])
+            ## using the first rapport's filename
+            file <- rp[[1]]$file.name
+            r$title <- as.character(rp[[1]]$meta['title'])
 
-    ##         for (i in 1:length(rp)) {
-    ##             r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, backend = backend)
-    ##         }
+            for (i in 1:length(rp)) {
+                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, backend = backend)
+            }
 
-    ##     } else
+        } else
 
-    ##         stop('Wrong rp parameter!')
+            stop('Wrong rp parameter!')
 
-    ## }
+    }
 
     if (!is.null(rp))
 
