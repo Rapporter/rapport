@@ -71,7 +71,10 @@
 tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = format(Sys.time(), getOption('rp.date.format')), desc = TRUE, format = 'html', backend = 'pandoc', options = NULL, logo = TRUE, portable.html = TRUE) {
 
     if (missing(file))
-        file <- rp$file.name
+        if (is.null(rp$file.name))
+            file <- rp[[1]]$file.name
+        else
+            file <- rp$file.name
     if (length(file) != 1 & !is.character(file))
         stop('Wrong file name provided.')
 
@@ -102,7 +105,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
     if (!is.logical(logo))
         stop('Wrong logo (!=TRUE|FALSE) parameter!')
 
-    ## ## exporting multiple rapport classes at once
+    ## exporting multiple rapport classes at once
     if (class(rp) == 'list') {
         if (all(lapply(rp, class) == 'rapport')) {
 
@@ -111,7 +114,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             r$title <- as.character(rp[[1]]$meta['title'])
 
             for (i in 1:length(rp)) {
-                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, backend = backend)
+                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format)
             }
 
         } else
