@@ -15,19 +15,19 @@ head-->
 
 # Variable description
 
-<%length(vars)%> variables provided.
+<%=length(vars)%> variables provided.
 
-The highest correlation coefficient (<%cm <- cor(vars, use = 'complete.obs');diag(cm) <- NA; pander.return(max(cm, na.rm=T))%>) is between <%p(row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2])%> and the lowest (<%pander.return(min(cm, na.rm=T))%>) is between <%p(row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2])%>. It seems that the strongest association (r=<%pander.return(cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1])%>) is between <%p(row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2])%>.
+The highest correlation coefficient (<%=cm <- cor(vars, use = 'complete.obs');diag(cm) <- NA; pander.return(max(cm, na.rm=T))%>) is between <%=p(row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2])%> and the lowest (<%=pander.return(min(cm, na.rm=T))%>) is between <%=p(row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2])%>. It seems that the strongest association (r=<%=pander.return(cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1])%>) is between <%=p(row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2])%>.
 
-Highly correlated (r < -0.7 or r > 0.7) variables: <%cm[lower.tri(cm)] <- NA; l <- row.names(cm)[which((cm > 0.7) | (cm < -0.7), arr.ind=T)]; ifelse(length(l) == 0, '-', '')%>
-<%ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), p), collapse=''), '')%>
+Highly correlated (r < -0.7 or r > 0.7) variables: <%=cm[lower.tri(cm)] <- NA; l <- row.names(cm)[which((cm > 0.7) | (cm < -0.7), arr.ind=T)]; ifelse(length(l) == 0, '-', '')%>
+<%=ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), p), collapse=''), '')%>
 
-Uncorrelated (-0.2 < r < 0.2) variables: <%l <- row.names(cm)[which((cm < 0.2)&(cm > -0.2), arr.ind=T)]; ifelse(length(l) == 0, '-', '')%>
-<%ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), p), collapse=''), '')%>
+Uncorrelated (-0.2 < r < 0.2) variables: <%=l <- row.names(cm)[which((cm < 0.2)&(cm > -0.2), arr.ind=T)]; ifelse(length(l) == 0, '-', '')%>
+<%=ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), p), collapse=''), '')%>
 
-## <%if (cor.matrix) 'Correlation matrix'%>
+## <%=if (cor.matrix) 'Correlation matrix'%>
 
-<%
+<%=
 if (cor.matrix) {
     set.caption('Correlation matrix')
     cm <- round(cor(vars, use = 'complete.obs'), 4)
@@ -42,7 +42,7 @@ if (cor.matrix) {
 }
 %>
 
-<%
+<%=
 if (cor.plot) {
     set.caption('Scatterplot matrix')
     rp.cor.plot(vars)
