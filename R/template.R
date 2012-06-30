@@ -726,10 +726,16 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     assign('rp.body', paste(b, collapse = '\n'), envir = e)
     assign('.graph.name', file.name, envir = e)
     assign('.graph.dir', evals.option('graph.dir'), envir = e)
-    report <- eval.msgs('Pandoc.brew(text = rp.body, envir = e, graph.name = .graph.name, graph.dir = .graph.dir)', showInvisible = TRUE, env = e)$result
+    report <- eval.msgs('Pandoc.brew(text = rp.body, envir = e, graph.name = .graph.name, graph.dir = .graph.dir)', showInvisible = TRUE, env = e)
 
     options(opts.bak)                          # resetting options
     setwd(wd.bak)
+
+    ## error handling
+    if (!is.null(report$msg$errors))
+        stop(report$msg$errors)
+    else
+        report <- report$result
 
     ## remove NULL/blank parts
     ## ind.nullblank <- sapply(report, function(x){
