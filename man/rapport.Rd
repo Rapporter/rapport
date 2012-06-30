@@ -4,14 +4,14 @@
 \usage{
   rapport(fp, data = NULL, ..., env = new.env(),
     reproducible = FALSE, header.levels.offset = 0,
-    graph.output = getOption("graph.format"),
+    graph.output = evals.option("graph.output"),
     file.name = getOption("rp.file.name"),
     file.path = getOption("rp.file.path"),
-    graph.width = getOption("graph.width"),
-    graph.height = getOption("graph.height"),
-    graph.res = getOption("graph.res"),
-    graph.hi.res = getOption("graph.hi.res"),
-    graph.replay = getOption("graph.record"))
+    graph.width = evals.option("width"),
+    graph.height = evals.option("height"),
+    graph.res = evals.option("res"),
+    graph.hi.res = evals.option("hi.res"),
+    graph.replay = evals.option("graph.recordplot"))
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -35,13 +35,13 @@
 
   \item{file.name}{set the file name of saved plots and
   exported documents. A simple character string might be
-  provided where \code{\%D} is an auto-incrementing integer
-  (increments while each \code{\link{rapport}} call),
-  \code{\%d} would be replaced by the index of the
-  generating chunk (in the same \code{rapport}), \code{\%T}
-  by the name of the template in action and \code{\%t} by
-  some uniqe random characters based on
-  \code{\link{tempfile}}.}
+  provided where \code{N} would be replaced by an
+  auto-increment integer based on similar exported
+  document's file name , \code{\%n} an auto-increment
+  integer based on similar (plot) file names (see:
+  \code{?evals.option}), \code{\%T} by the name of the
+  template in action and \code{\%t} by some uniqe random
+  characters based on \code{\link{tempfile}}.}
 
   \item{file.path}{path of a directory where to store
   generated images and exported reports}

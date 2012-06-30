@@ -4,16 +4,18 @@
 \usage{
   tpl.export(rp = NULL, file, append = FALSE,
     create = TRUE, open = TRUE,
-    date = format(Sys.time(), getOption("rp.date.format")),
-    desc = TRUE, format = "html", backend = "pandoc",
-    options = "", logo = TRUE, portable.html = TRUE)
+    date = pander.return(Sys.time()), desc = TRUE,
+    format = "html", backend = "pandoc", options = "",
+    logo = TRUE, portable.html = TRUE)
 }
 \arguments{
   \item{rp}{a rapport class object or list of rapport class
   objects}
 
   \item{file}{filename of the generated document. Inherited
-  from rapport class if not set.}
+  from rapport class if not set. If \code{file} is set with
+  path (not equal to \code{getwd()}), please set an
+  absolute path for images (see: \code{evals.option()}).}
 
   \item{append}{FALSE (new report created) or an R object
   (class of "Report") to which the new report will be
@@ -55,12 +57,11 @@
 
   Default parameters are read from \code{options}:
 
-  \itemize{ \item 'rp.portable.html', \item
-  'rp.date.format', \item 'tpl.user', \item 'tpl.email'. }
+  \itemize{ \item 'tpl.user' }
 
-  Please be sure to set \code{'tpl.user'} and
-  \code{'tpl.email'} options with \code{options()} to get
-  your name in the head of your generated reports!
+  Please be sure to set \code{'tpl.user'} option with
+  \code{options()} to get your name in the head of your
+  generated reports!
 }
 \examples{
 \dontrun{

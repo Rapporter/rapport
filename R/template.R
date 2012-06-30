@@ -496,7 +496,7 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' @param env an environment where template commands be evaluated (defaults to \code{new.env()}
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
-#' @param file.name set the file name of saved plots and exported documents. A simple character string might be provided where \code{\%D} is an auto-incrementing integer (increments while each \code{\link{rapport}} call), \code{\%d} would be replaced by the index of the generating chunk (in the same \code{rapport}), \code{\%T} by the name of the template in action and \code{\%t} by some uniqe random characters based on \code{\link{tempfile}}.
+#' @param file.name set the file name of saved plots and exported documents. A simple character string might be provided where \code{N} would be replaced by an auto-increment integer based on similar exported document's file name , \code{\%n} an auto-increment integer based on similar (plot) file names (see: \code{?evals.option}), \code{\%T} by the name of the template in action and \code{\%t} by some uniqe random characters based on \code{\link{tempfile}}.
 #' @param file.path path of a directory where to store generated images and exported reports
 #' @param graph.output the required file format of saved plots (optional)
 #' @param graph.width the required width of saved plots (optional)
@@ -520,8 +520,9 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = getOption('graph.format'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = getOption('graph.width'), graph.height = getOption('graph.height'), graph.res = getOption('graph.res'), graph.hi.res = getOption('graph.hi.res'), graph.replay = getOption('graph.record')) {
+rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evals.option('graph.output'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = evals.option('width'), graph.height = evals.option('height'), graph.res = evals.option('res'), graph.hi.res = evals.option('hi.res'), graph.replay = evals.option('graph.recordplot')) {
 
+    ## TODO: is this still an issue?
     ## dummy checks for possible ascii export bug (space in path/filename)
     if (grepl(' ', file.name))
         stop('You should not use spaces in filename ATM.')
@@ -529,16 +530,17 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         if (grepl(' ', file.path))
             stop('You should not use spaces in file path ATM.')
 
-    timer  <- proc.time()                       # start timer
-    txt    <- tpl.find(fp)                      # split file to text
-    h      <- tpl.info(txt)                     # template header
-    meta   <- h$meta                            # header metadata
-    inputs <- h$inputs                          # header inputs
-    b      <- tpl.body(txt)                     # template body
-    e      <- env                               # load/create evaluation environment
-    i      <- list(...)                         # user inputs
+    timer    <- proc.time()                       # start timer
+    txt      <- tpl.find(fp)                      # split file to text
+    h        <- tpl.info(txt)                     # template header
+    meta     <- h$meta                            # header metadata
+    inputs   <- h$inputs                          # header inputs
+    b        <- tpl.body(txt)                     # template body
+    e        <- env                               # load/create evaluation environment
+    i        <- list(...)                         # user inputs
     data.required <- isTRUE(as.logical(meta$dataRequired)) # is data required
-    pkgs   <- meta$packages                                # required packages
+    pkgs     <- meta$packages                                # required packages
+    file.path <- gsub('\\', '/', file.path, fixed = TRUE)
 
     ## load required packages (if any)
     if (!is.null(pkgs)){
@@ -699,27 +701,35 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         })
     }
 
-    ## pregenerate file name (update the value of "%D" based on file list in current directory if needed)
+    ## pregenerate file name
     if (grepl('%T', file.name))
-        file.name <- gsub('%T', fp, file.name, fixed = TRUE)
-    if (grepl('%D', file.name)) {
-        if (length(strsplit(sprintf('placeholder%splaceholder', file.name), '%D')[[1]]) > 2)
-            stop('File name contains more then 1 "%D"!')
-        similar.files <- list.files(file.path, pattern = sprintf('^%s\\.(jpeg|tiff|png|svg|bmp)$', gsub('%t', '[a-z0-9]*', gsub('%D|%d', '[[:digit:]]*', file.name))))
+        file.name <- gsub('%T', gsub('\\\\|/', '-', fp), file.name, fixed = TRUE)
+    if (grepl('%N', file.name)) {
+        if (length(strsplit(sprintf('placeholder%splaceholder', file.name), '%N')[[1]]) > 2)
+            stop('File name contains more then 1 "%N"!')
+        similar.files <-  list.files(file.path(file.path, 'plots'), pattern = sprintf('^%s\\.(jpeg|tiff|png|svg|bmp)$', gsub('%t', '[a-z0-9]*', gsub('%N|%n', '[[:digit:]]*', file.name))))
         if (length(similar.files) > 0) {
             similar.files <- sub('\\.(jpeg|tiff|png|svg|bmp)$', '', similar.files)
-            rep <- gsub('%t', '[a-z0-9]*', gsub('%d', '[[:digit:]]*', strsplit(file.name, '%D')[[1]]))
-            `%D` <- max(as.numeric(gsub(paste(rep, collapse = '|'), '', similar.files))) + 1
+            rep <- gsub('%t|%n', '[a-z0-9]*', strsplit(basename(file.name), '%N')[[1]])
+            `%N` <- max(as.numeric(gsub(paste(rep, collapse = '|'), '', similar.files))) + 1
         } else
-            `%D` <- 1
-        file.name <- gsub('%D', `%D`, file.name, fixed = TRUE)
+            `%N` <- 1
+        file.name <- gsub('%N', `%N`, file.name, fixed = TRUE)
     }
 
     ## evaluate (brew) template body
     opts.bak <- options()                      # backup options
+    wd.bak   <- getwd()
+    setwd(file.path
+          )
+    evals.option('graph.name', file.name)
     assign('rp.body', paste(b, collapse = '\n'), envir = e)
-    report <- eval.msgs('Pandoc.brew(text = rp.body, envir = e)', showInvisible = TRUE, env = e)$result
+    assign('.graph.name', file.name, envir = e)
+    assign('.graph.dir', evals.option('graph.dir'), envir = e)
+    report <- eval.msgs('Pandoc.brew(text = rp.body, envir = e, graph.name = .graph.name, graph.dir = .graph.dir)', showInvisible = TRUE, env = e)$result
+
     options(opts.bak)                          # resetting options
+    setwd(wd.bak)
 
     ## remove NULL/blank parts
     ## ind.nullblank <- sapply(report, function(x){
@@ -768,7 +778,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                 report      = report,
                 call        = match.call(),
                 time        = as.numeric(proc.time() - timer)[3],
-                file.name   = file.path(gsub('\\', '/', file.path, fixed = TRUE), file.name)
+                file.name   = file.path(file.path, file.name)
                 )
 
     if (isTRUE(reproducible)){

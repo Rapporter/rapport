@@ -449,20 +449,14 @@ purge.comments <- function(x, comment.open = get.tags('comment.open'), comment.c
 
 #' Percent
 #'
-#' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to value specified in \code{rp.decimal.short} option).
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'rp.decimal.short'
-#' }
+#' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to value specified in \code{pander.option('digits')}).
 #' @param x a numeric value that is to be rendered to percent
 #' @param digits an integer value indicating number of decimal places
 #' @param type a character value indicating whether percent or proportion value was provided (partial match is allowed)
 #' @param check.value perform a sanity check to see if provided numeric value is correct
 #' @return a character value with formatted percent
 #' @export
-pct <- function(x, digits = getOption('rp.decimal.short'), type = c('percent', '%', 'proportion'), check.value = TRUE){
+pct <- function(x, digits = pander.option('digits'), type = c('percent', '%', 'proportion'), check.value = TRUE){
 
     if (!is.numeric(x))
         stop('only numeric values should be provided')
