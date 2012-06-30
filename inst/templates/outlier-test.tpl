@@ -33,7 +33,7 @@ It seems that <%=length(rp.outlier(var))%> extreme values can be found in "<%=rp
 The above test for outliers was based on *lm(1 ~ <%=rp.name(var)%>)*:
 
 <%=
-caption(sprintf('Linear model: 1 ~ %s', rp.name(var)))
+set.caption(sprintf('Linear model: 1 ~ %s', rp.name(var)))
 lm(var ~ 1)
 %>
 
