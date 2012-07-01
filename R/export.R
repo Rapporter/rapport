@@ -112,7 +112,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             r$title <- as.character(rp[[1]]$meta['title'])
 
             for (i in 1:length(rp)) {
-                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format)
+                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, desc = desc)
             }
 
         } else
