@@ -63,7 +63,7 @@
 #'}
 #' @export
 #' @seealso \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odf}} \code{\link{rapport.docx}}
-tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = pander.return(Sys.time()), desc = TRUE, format = 'html', backend = 'pandoc', options = '', logo = TRUE, portable.html = TRUE) {
+tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = pander.return(Sys.time()), desc = TRUE, format = 'html', options = '', logo = TRUE) {
 
     if (missing(file))
         if (is.null(rp$file.name))
@@ -138,11 +138,9 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
 
                 x.type <- x$type
                 if (x.type=='heading')
-                    r$add.paragraph(pandoc.header.return(x$text$eval, x$level + 1))
+                    r$add.paragraph(pandoc.header.return(x$text$eval, x$level + 1 + desc))
                 if (x.type=='text')
-                    r$add.paragraph(ifelse(is.null(unlist(x$chunks$raw)),
-                        unlist(x$text$raw),
-                        unlist(x$text$eval)))
+                    r$add.paragraph(x$text$eval)
                 if (x.type=='block')
                     r$add.paragraph(pander.return(x$robject))
 

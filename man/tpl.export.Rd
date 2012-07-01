@@ -5,8 +5,7 @@
   tpl.export(rp = NULL, file, append = FALSE,
     create = TRUE, open = TRUE,
     date = pander.return(Sys.time()), desc = TRUE,
-    format = "html", backend = "pandoc", options = "",
-    logo = TRUE, portable.html = TRUE)
+    format = "html", options = "", logo = TRUE)
 }
 \arguments{
   \item{rp}{a rapport class object or list of rapport class
