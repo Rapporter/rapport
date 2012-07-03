@@ -28,18 +28,21 @@ And wow, the mean of *<%=rp.name(var)%>* is <%=rp.mean(var)%>!
 if (!desc) '**For more detailed statistics, you should have set `desc=TRUE`!**'
 %>
 
+<%if (desc) {%>
 
-## <%=if (desc) 'Descriptive statistics'%>
+## Descriptive statistics
+
+<%=summary(var)%>
 
 <%=
-if (desc) summary(var)
+sprintf('The 5 highest values are: %s.', p(sort(var, decreasing = TRUE)[1:5]))
 %>
 
-<%=
-if (desc) sprintf('The 5 highest values are: %s.', p(sort(var, decreasing = TRUE)[1:5]))
-%>
+<%}%>
 
-## <%=if (hist) 'Histogram'%>
+<%if (hist) {%>
+
+## Histogram
 
 <%=
 if (hist) {
@@ -48,3 +51,5 @@ if (hist) {
     print(rp.hist(var))
 }
 %>
+
+<%}%>
