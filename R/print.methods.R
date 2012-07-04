@@ -115,7 +115,7 @@ print.rapport <- function(x, ...) {
     for (part in x$report){
 
         switch(part$type,
-               'block' = pander(part$robject),
+               'block' = part$robject$output,
                'heading' = pandoc.header(part$text$eval, part$level),
                cat(part$text$eval)
                )
