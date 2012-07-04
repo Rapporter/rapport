@@ -90,7 +90,7 @@ Here you can see several diagnostic plots for ANOVA model:
 
 <%=
 par(mfrow = c(2, 2))
-plot(fit)
++plot(fit)
 %>
 
 # ANOVA Summary
