@@ -148,7 +148,7 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 
 #' Header Metadata
 #'
-#' Displays summary of template metadata stored in a header section. This part of template header consists of several \emph{key: value} pairs, which define some basic template info, such as \emph{Title}, \emph{Example}, \emph{Strict}, etc. If you're familiar with package development in R, you'll probably find this approach very similar to \code{DESCRIPTION} file.
+#' Displays summary of template metadata stored in a header section. This part of template header consists of several \emph{key: value} pairs, which define some basic template info, such as \emph{Title}, \emph{Example}  etc. If you're familiar with package development in R, you'll probably find this approach very similar to \code{DESCRIPTION} file.
 #'
 #' \strong{Mandatory Fields}
 #'
@@ -169,7 +169,6 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 #'     \item \emph{Packages} - a comma-separated list of packages required by the template (defaults to \code{NA})
 #'     \item \emph{Data required} - is dataset required by a template? Field accepts \code{TRUE} or \code{FALSE}, and defaults to \code{FALSE}.
 #'     \item \emph{Example} - newline-separated example calls to \code{rapport} function, including template data and inputs (defaults to \code{NULL})
-#'     \item \emph{Strict} - "strict mode" returns only the last warning from a chunk. Field accepts \code{TRUE} or \code{FALSE}, and defaults to \code{FALSE}.
 #' }
 #'
 #' Upon successful execution, \code{rp.meta}-class object is returned invisibly.
@@ -197,8 +196,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
                 list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
                 list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
                 list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
-                list(title = 'Example'       , regex = '.+', mandatory = FALSE),
-                list(title = 'Strict'        , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE)
+                list(title = 'Example'       , regex = '.+', mandatory = FALSE)
                 )
 
     ## no fields specified, load default fields

@@ -5,7 +5,6 @@ Email:          gergely@snowl.net
 Description:    Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
 Packages:       descr
 Data required:  TRUE
-Strict:         TRUE
 Example:        rapport('crosstable', data=ius2008, row='gender', col='dwell')
 		rapport('crosstable', data=ius2008, row='email', col='dwell')
 

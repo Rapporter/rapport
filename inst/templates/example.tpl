@@ -4,7 +4,6 @@ Author:         Gergely Daróczi
 Description:    This template demonstrates the basic features of rapport. We all hope you will like it!
 Packages:       lattice
 Data required:  TRUE
-Strict:         TRUE
 Example:        rapport("example", ius2008, var='leisure')
                 rapport("example", ius2008, var='leisure', desc=FALSE)
                 rapport("example", ius2008, var='leisure', desc=FALSE, hist=T)

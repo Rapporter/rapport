@@ -12,7 +12,6 @@ print.rp.meta <- function(x, ...){
     ind <- c('title', 'author', 'email', 'desc', 'example')
     email <- if (is.null(x$email)) '' else sprintf(' (%s)', x$email) # show email if any
     exmpl <- if (is.null(x$example)) 'no examples found in template' else x$example # examples
-    x$strict <- sprintf('%s\t(see ?tpl.check for details)', x$strict)
     other.meta <- x[!names(x) %in% ind]
 
     fn <- function(x){
