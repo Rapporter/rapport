@@ -114,7 +114,11 @@ print.rapport <- function(x, ...) {
     for (part in x$report){
 
         switch(part$type,
-               'block' = cat(part$robject$output),
+               'block' = {
+                   if (part$robject$type == 'image')
+                       images <- c(images, as.character(part$robject$result))
+                   cat(part$robject$output, sep = '\n')
+                   },
                'heading' = pandoc.header(part$text$eval, part$level),
                cat(part$text$eval)
                )
@@ -122,6 +126,7 @@ print.rapport <- function(x, ...) {
     }
 
     if (getOption('graph.replay')) {
+        wd <- getwd(); setwd(getOption('rp.file.path'))
         cat('\n', rep('=', getOption('width')), sep='')
         cat('\n  Attached images:\n\n    Note: you may optionally resize images on the fly which new dimensions will be saved to disk.\n          Do not close graphics device before this happens (pressing ENTER) if you want to update your image files!\n')
 
@@ -141,16 +146,17 @@ print.rapport <- function(x, ...) {
 
                     if (device == 'jpg')
                         device <- 'jpeg'
-                    res <- ifelse(device %in% c('svg', 'pdf'), 1, getOption('graph.res'))
+                    res <- ifelse(device %in% c('svg', 'pdf'), 1, evals.option('res'))
                     size <- dev.size()
 
-                    dev.copy(get(device), width = size[1]*res, height = size[2]*res, image)
+                    dev.copy(get(device), width = size[1] * res, height = size[2] * res, image)
                     dev.off(); dev.off()
                 }
 
             } else
                 cat(sprintf('\n\t* %s: was not run with `graph.record` option set to `TRUE`', image))
         }
+        setwd(wd)
     }
 }
 

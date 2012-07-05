@@ -1,5 +1,5 @@
 require(rapport)
-demo.opt <- getOption("demo.ask"); dev.ask <- getOption("device.ask.default"); replay.opt <- getOption("graph.replay"); record.opt <- getOption("graph.record"); options("demo.ask" = FALSE); options("device.ask.default" = FALSE)
+demo.opt <- getOption("demo.ask"); dev.ask <- getOption("device.ask.default"); replay.opt <- getOption("graph.replay"); record.opt <- evals.option('graph.recordplot'); options("demo.ask" = FALSE); options("device.ask.default" = FALSE)
 next.please <- function(msg = "Press ENTER to continue: ") invisible(readline(msg))
 
 
@@ -135,7 +135,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 ##                                                                              ##
 ## Will run:                                                                    ##
 ##                                                                              ##
-##      options('graph.record' = TRUE)                                          ##
+##      evals.option('graph.recordplot', TRUE)                                   ##
 ##      options('graph.replay' = TRUE)                                          ##
 ##      rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec')) ##
 ##                                                                              ##
@@ -143,7 +143,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 
 
 next.please()
-options('graph.record' = TRUE)
+evals.option('graph.recordplot', TRUE)
 options('graph.replay' = TRUE)
 report <- rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 report
@@ -183,7 +183,7 @@ next.please()
 rapport.html('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE)
 
 
-rm(next.please); rm(report); options("demo.ask" = demo.opt); options("graph.replay" = replay.opt); options("graph.record" = record.opt); options("device.ask.default" = dev.ask)
+rm(next.please); rm(report); options("demo.ask" = demo.opt); options("graph.replay" = replay.opt); evals.option("graph.recordplot", record.opt); options("device.ask.default" = dev.ask)
 
 
 ##############################################
