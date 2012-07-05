@@ -477,16 +477,11 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #'
 #' This is the central function in the \code{rapport} package, and hence eponymous. In following lines we'll use \code{rapport} to denote the function, not the package. \code{rapport} requires a template file, while dataset (\code{data} argument) can be optional, depending on the value of \code{Data required} field in template header. Template inputs are matched with \code{...} argument, and should be provided in \code{x = value} format, where \code{x} matches input name and \code{value}, wait for it... input value! See \code{\link{tpl.inputs}} for more details on template inputs.
 #'
-#' Default parameters are read from \code{options}:
+#' Default parameters are read from \code{evals.option()} and the following \code{options}:
 #'
 #' \itemize{
 #'     \item 'rp.file.name',
 #'     \item 'rp.file.path',
-#'     \item 'graph.format',
-#'     \item 'graph.width',
-#'     \item 'graph.height',
-#'     \item 'graph.res',
-#'     \item 'graph.hi.res'.
 #' }
 #'
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)

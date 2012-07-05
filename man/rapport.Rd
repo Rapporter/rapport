@@ -35,7 +35,7 @@
 
   \item{file.name}{set the file name of saved plots and
   exported documents. A simple character string might be
-  provided where \code{N} would be replaced by an
+  provided where \code{\%N} would be replaced by an
   auto-increment integer based on similar exported
   document's file name , \code{\%n} an auto-increment
   integer based on similar (plot) file names (see:
@@ -83,12 +83,10 @@
   inputs.
 }
 \details{
-  Default parameters are read from \code{options}:
+  Default parameters are read from \code{evals.option()}
+  and the following \code{options}:
 
-  \itemize{ \item 'rp.file.name', \item 'rp.file.path',
-  \item 'graph.format', \item 'graph.width', \item
-  'graph.height', \item 'graph.res', \item 'graph.hi.res'.
-  }
+  \itemize{ \item 'rp.file.name', \item 'rp.file.path', }
 }
 \examples{
 \dontrun{

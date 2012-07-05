@@ -38,7 +38,9 @@
     ## image format/envir settings
     options('graph.replay'        = FALSE) # TODO: fix on Win platform!
 
-    ## tag regexes ## TODO: deprecated? Do we use has.tags etc.?
+    ## tag regexes
+    ## TODO: deprecated? Do we use has.tags etc.? @aL3xa: please check out!
+    ## As far as I know `tpl.body`, `tpl.header` and `grab.chunks`, `get.tags`, `tags.misplaced`, `purge.comments` builds on that
     options('rp.tags' = c(
                 chunk.open    = '^<%$',
                 chunk.close   = '^%>$',

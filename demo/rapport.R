@@ -126,8 +126,8 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 ## If you would rather not export the report first but would just like to       ##
 ## check out the generated images, please run `rapport` with custom options:    ##
 ##                                                                              ##
-##     * graph.record = TRUE                                                    ##
-##     * graph.replay = TRUE                                                    ##
+##     * evals.option('graph.recordplot', TRUE)                                 ##
+##     * options('graph.replay' = TRUE)                                         ##
 ##                                                                              ##
 ## This would tell `rapport` to save generated images and show them in the      ##
 ## the graphics device while printing. This would also let you resize images    ##
@@ -135,7 +135,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 ##                                                                              ##
 ## Will run:                                                                    ##
 ##                                                                              ##
-##      evals.option('graph.recordplot', TRUE)                                   ##
+##      evals.option('graph.recordplot', TRUE)                                  ##
 ##      options('graph.replay' = TRUE)                                          ##
 ##      rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec')) ##
 ##                                                                              ##
