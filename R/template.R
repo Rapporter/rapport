@@ -495,7 +495,7 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' @param env an environment where template commands be evaluated (defaults to \code{new.env()}
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
-#' @param file.name set the file name of saved plots and exported documents. A simple character string might be provided where \code{N} would be replaced by an auto-increment integer based on similar exported document's file name , \code{\%n} an auto-increment integer based on similar (plot) file names (see: \code{?evals.option}), \code{\%T} by the name of the template in action and \code{\%t} by some uniqe random characters based on \code{\link{tempfile}}.
+#' @param file.name set the file name of saved plots and exported documents. A simple character string might be provided where \code{\%N} would be replaced by an auto-increment integer based on similar exported document's file name , \code{\%n} an auto-increment integer based on similar (plot) file names (see: \code{?evals.option}), \code{\%T} by the name of the template in action and \code{\%t} by some uniqe random characters based on \code{\link{tempfile}}.
 #' @param file.path path of a directory where to store generated images and exported reports
 #' @param graph.output the required file format of saved plots (optional)
 #' @param graph.width the required width of saved plots (optional)
@@ -520,14 +520,6 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' }
 #' @export
 rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evals.option('graph.output'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = evals.option('width'), graph.height = evals.option('height'), graph.res = evals.option('res'), graph.hi.res = evals.option('hi.res'), graph.replay = evals.option('graph.recordplot')) {
-
-    ## TODO: is this still an issue?
-    ## dummy checks for possible ascii export bug (space in path/filename)
-    if (grepl(' ', file.name))
-        stop('You should not use spaces in filename ATM.')
-    if (file.path != tempdir())
-        if (grepl(' ', file.path))
-            stop('You should not use spaces in file path ATM.')
 
     timer    <- proc.time()                       # start timer
     txt      <- tpl.find(fp)                      # split file to text
