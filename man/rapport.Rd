@@ -4,14 +4,14 @@
 \usage{
   rapport(fp, data = NULL, ..., env = new.env(),
     reproducible = FALSE, header.levels.offset = 0,
-    graph.output = evals.option("graph.output"),
+    graph.output = evalsOptions("graph.output"),
     file.name = getOption("rp.file.name"),
     file.path = getOption("rp.file.path"),
-    graph.width = evals.option("width"),
-    graph.height = evals.option("height"),
-    graph.res = evals.option("res"),
-    graph.hi.res = evals.option("hi.res"),
-    graph.replay = evals.option("graph.recordplot"))
+    graph.width = evalsOptions("width"),
+    graph.height = evalsOptions("height"),
+    graph.res = evalsOptions("res"),
+    graph.hi.res = evalsOptions("hi.res"),
+    graph.replay = evalsOptions("graph.recordplot"))
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -39,7 +39,7 @@
   auto-increment integer based on similar exported
   document's file name , \code{\%n} an auto-increment
   integer based on similar (plot) file names (see:
-  \code{?evals.option}), \code{\%T} by the name of the
+  \code{?evalsOptions}), \code{\%T} by the name of the
   template in action and \code{\%t} by some uniqe random
   characters based on \code{\link{tempfile}}.}
 
@@ -83,7 +83,7 @@
   inputs.
 }
 \details{
-  Default parameters are read from \code{evals.option()}
+  Default parameters are read from \code{evalsOptions()}
   and the following \code{options}:
 
   \itemize{ \item 'rp.file.name', \item 'rp.file.path', }

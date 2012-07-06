@@ -12,7 +12,7 @@
 #'
 #' Please be sure to set \code{'tpl.user'} option with \code{options()} to get your name in the head of your generated reports!
 #' @param rp a rapport class object or list of rapport class objects
-#' @param file filename of the generated document. Inherited from rapport class if not set. If \code{file} is set with path (not equal to \code{getwd()}), please set an absolute path for images (see: \code{evals.option()}).
+#' @param file filename of the generated document. Inherited from rapport class if not set. If \code{file} is set with path (not equal to \code{getwd()}), please set an absolute path for images (see: \code{evalsOptions()}).
 #' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added
 #' @param create should export really happen? It might be handy if you want to append several reports.
 #' @param open open the exported document? Default set to TRUE.
@@ -72,7 +72,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             file <- rp$file.name
     if (length(file) != 1 & !is.character(file)) {
         warning('Wrong file name provided, using a temporary file instead')
-        file <- tempfile(tmpdir = dirname(evals.option('graph.dir')))
+        file <- tempfile(tmpdir = dirname(evalsOptions('graph.dir')))
     }
     file <- gsub('%n', 0, file, fixed = TRUE)
 

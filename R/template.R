@@ -477,7 +477,7 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #'
 #' This is the central function in the \code{rapport} package, and hence eponymous. In following lines we'll use \code{rapport} to denote the function, not the package. \code{rapport} requires a template file, while dataset (\code{data} argument) can be optional, depending on the value of \code{Data required} field in template header. Template inputs are matched with \code{...} argument, and should be provided in \code{x = value} format, where \code{x} matches input name and \code{value}, wait for it... input value! See \code{\link{tpl.inputs}} for more details on template inputs.
 #'
-#' Default parameters are read from \code{evals.option()} and the following \code{options}:
+#' Default parameters are read from \code{evalsOptions()} and the following \code{options}:
 #'
 #' \itemize{
 #'     \item 'rp.file.name',
@@ -490,7 +490,7 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' @param env an environment where template commands be evaluated (defaults to \code{new.env()}
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
-#' @param file.name set the file name of saved plots and exported documents. A simple character string might be provided where \code{\%N} would be replaced by an auto-increment integer based on similar exported document's file name , \code{\%n} an auto-increment integer based on similar (plot) file names (see: \code{?evals.option}), \code{\%T} by the name of the template in action and \code{\%t} by some uniqe random characters based on \code{\link{tempfile}}.
+#' @param file.name set the file name of saved plots and exported documents. A simple character string might be provided where \code{\%N} would be replaced by an auto-increment integer based on similar exported document's file name , \code{\%n} an auto-increment integer based on similar (plot) file names (see: \code{?evalsOptions}), \code{\%T} by the name of the template in action and \code{\%t} by some uniqe random characters based on \code{\link{tempfile}}.
 #' @param file.path path of a directory where to store generated images and exported reports
 #' @param graph.output the required file format of saved plots (optional)
 #' @param graph.width the required width of saved plots (optional)
@@ -514,7 +514,7 @@ tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments
 #' rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evals.option('graph.output'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = evals.option('width'), graph.height = evals.option('height'), graph.res = evals.option('res'), graph.hi.res = evals.option('hi.res'), graph.replay = evals.option('graph.recordplot')) {
+rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evalsOptions('graph.output'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = evalsOptions('width'), graph.height = evalsOptions('height'), graph.res = evalsOptions('res'), graph.hi.res = evalsOptions('hi.res'), graph.replay = evalsOptions('graph.recordplot')) {
 
     timer    <- proc.time()                       # start timer
     txt      <- tpl.find(fp)                      # split file to text
@@ -708,10 +708,10 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     wd.bak   <- getwd()
     setwd(file.path
           )
-    evals.option('graph.name', file.name)
+    evalsOptions('graph.name', file.name)
     assign('rp.body', paste(b, collapse = '\n'), envir = e)
     assign('.graph.name', file.name, envir = e)
-    assign('.graph.dir', evals.option('graph.dir'), envir = e)
+    assign('.graph.dir', evalsOptions('graph.dir'), envir = e)
     report <- eval.msgs('Pandoc.brew(text = rp.body, envir = e, graph.name = .graph.name, graph.dir = .graph.dir)', showInvisible = TRUE, env = e)
 
     options(opts.bak)                          # resetting options

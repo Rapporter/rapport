@@ -46,17 +46,17 @@
   \code{\link{tempfile}}, \item \code{\%T}: template name
   in action, \item \code{\%n}: an auto-increment integer
   based on similar (plot) file names (see:
-  \code{?evals.option}), \item \code{\%N}: an
+  \code{?evalsOptions}), \item \code{\%N}: an
   auto-increment integer based on similar exported
   document's file name } \item \code{rp.file.path}: a
   directory where generated images and exported documents
   would take place.  \item By default \code{\link{rapport}}
   function saves plots to image files (see the settings in
-  \code{evals.option()}) and \code{print} method just shows
+  \code{evalsOptions()}) and \code{print} method just shows
   the path(s) of the generated image(s). If you would like
   to see the plot(s) when calling \code{\link{rapport}}
   function from an interactive R console, please set
-  \code{evals.option('graph.recordplot')} and
+  \code{evalsOptions('graph.recordplot')} and
   \code{graph.replay} options to \code{TRUE} beforehand. In
   that case all generated plots will be displayed after
   printing the \code{rapport} object. These options are set
@@ -66,10 +66,10 @@
   etc. If you would even like to save the actual
   environment of each generated plot (variables, data sets
   etc.) as an \code{RData} file, please set
-  \code{evals.option('graph.env')} to \code{TRUE}.  \item
+  \code{evalsOptions('graph.env')} to \code{TRUE}.  \item
   \code{\link{rapport}} also has some options to set
   formatting style of numbers, characters and dates
-  specified in \code{pander.option()} \item the exported
+  specified in \code{panderOptions()} \item the exported
   graphs can be customised via following options: \itemize{
   \item The most basic option is \code{style.theme} which
   points to a \code{\link{lattice}}/\code{trellis} theme,
@@ -110,10 +110,10 @@
   \item The plots are saved to disk with
   \code{\link{rapport}} function, and the resulting files
   can be customised with several options in
-  \code{evals.option()}.  \item And there are also other
+  \code{evalsOptions()}.  \item And there are also other
   options (e.g. affecting the cache), for full details
   check out: \itemize{ \item \code{rapport.option} - TODO,
-  \item \code{pander.option}, \item \code{evals.option} } }
+  \item \code{panderOptions}, \item \code{evalsOptions} } }
   }
 }
 \seealso{

@@ -14,7 +14,7 @@
   \item{file}{filename of the generated document. Inherited
   from rapport class if not set. If \code{file} is set with
   path (not equal to \code{getwd()}), please set an
-  absolute path for images (see: \code{evals.option()}).}
+  absolute path for images (see: \code{evalsOptions()}).}
 
   \item{append}{FALSE (new report created) or an R object
   (class of "Report") to which the new report will be

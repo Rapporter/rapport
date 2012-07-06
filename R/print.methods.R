@@ -146,7 +146,7 @@ print.rapport <- function(x, ...) {
 
                     if (device == 'jpg')
                         device <- 'jpeg'
-                    res <- ifelse(device %in% c('svg', 'pdf'), 1, evals.option('res'))
+                    res <- ifelse(device %in% c('svg', 'pdf'), 1, evalsOptions('res'))
                     size <- dev.size()
 
                     dev.copy(get(device), width = size[1] * res, height = size[2] * res, image)

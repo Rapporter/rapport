@@ -96,7 +96,7 @@ is.heading <- function(x){
 #' Converts template metadata to character vector.
 #' @param meta template metadata object
 #' @param include.examples include examples in results
-#' @export 
+#' @export
 as.character.rp.meta <- function(meta, include.examples = TRUE){
     meta.example <- meta['example']
     other <- meta[names(meta) != "example"]
@@ -123,7 +123,7 @@ as.character.rp.meta <- function(meta, include.examples = TRUE){
 #'
 #' Converts template inputs to character vector.
 #' @param inputs template inputs object
-#' @export 
+#' @export
 as.character.rp.inputs <- function(inputs){
     unlist(sapply(inputs, function(x){
         mandatory <- if (x$mandatory) "*" else ""
@@ -504,14 +504,14 @@ purge.comments <- function(x, comment.open = get.tags('comment.open'), comment.c
 
 #' Percent
 #'
-#' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to value specified in \code{pander.option('digits')}).
+#' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to value specified in \code{panderOptions('digits')}).
 #' @param x a numeric value that is to be rendered to percent
 #' @param digits an integer value indicating number of decimal places
 #' @param type a character value indicating whether percent or proportion value was provided (partial match is allowed)
 #' @param check.value perform a sanity check to see if provided numeric value is correct
 #' @return a character value with formatted percent
 #' @export
-pct <- function(x, digits = pander.option('digits'), type = c('percent', '%', 'proportion'), check.value = TRUE){
+pct <- function(x, digits = panderOptions('digits'), type = c('percent', '%', 'proportion'), check.value = TRUE){
 
     if (!is.numeric(x))
         stop('only numeric values should be provided')

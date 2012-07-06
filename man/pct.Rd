@@ -2,7 +2,7 @@
 \alias{pct}
 \title{Percent}
 \usage{
-  pct(x, digits = pander.option("digits"),
+  pct(x, digits = panderOptions("digits"),
     type = c("percent", "\%", "proportion"),
     check.value = TRUE)
 }
@@ -27,6 +27,6 @@
   Appends a percent sign to provided numerical value.
   Rounding is carried out according to value passed in
   \code{decimals} formal argument (defaults to value
-  specified in \code{pander.option('digits')}).
+  specified in \code{panderOptions('digits')}).
 }
 
