@@ -590,7 +590,7 @@ extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
         res <- val
     } else {
         if (isTRUE(mandatory)){
-            stopf('"%s" metadata field %s', title, ifelse(fl == 0, 'not found', 'has errors'))
+            stopf('"%s" metadata field %s', title, if(fl == 0) 'not found' else 'has errors')
         } else {
             ## throw error only if meta is specified/non-empty, and has incorrect value
             if (fl == 0)

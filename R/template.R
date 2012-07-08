@@ -191,9 +191,9 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 
     ## required fields
     fld <- list(
-                list(title = 'Title'         , regex = '[[:print:]]+', field.length = 500),
+                list(title = 'Title'         , regex = '.+', field.length = 500),
                 list(title = 'Author'        , regex = '.+', field.length = 100),
-                list(title = 'Description'   , regex = '[[:print:]]+', short = 'desc'),
+                list(title = 'Description'   , regex = '.+', short = 'desc'),
                 list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
                 list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
                 list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
