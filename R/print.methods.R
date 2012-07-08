@@ -115,7 +115,7 @@ print.rapport <- function(x, ...) {
 
         switch(part$type,
                'block' = {
-                   if (part$robject$type == 'image')
+                   if ('image' %in% part$robject$type)
                        images <- c(images, as.character(part$robject$result))
                    cat(part$robject$output, sep = '\n')
                    },
