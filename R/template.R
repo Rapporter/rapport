@@ -522,7 +522,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     meta     <- h$meta                            # header metadata
     inputs   <- h$inputs                          # header inputs
     b        <- tpl.body(txt)                     # template body
-    e        <- env                               # load/create evaluation environment
+    e        <- new.env(parent = env)             # load/create evaluation environment
     i        <- list(...)                         # user inputs
     data.required <- isTRUE(as.logical(meta$dataRequired)) # is data required
     pkgs     <- meta$packages                                # required packages
@@ -712,7 +712,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     assign('rp.body', paste(b, collapse = '\n'), envir = e)
     assign('.graph.name', file.name, envir = e)
     assign('.graph.dir', evalsOptions('graph.dir'), envir = e)
-    report <- eval.msgs('Pandoc.brew(text = rp.body, envir = e, graph.name = .graph.name, graph.dir = .graph.dir)', showInvisible = TRUE, env = e)
+    report <- eval.msgs('Pandoc.brew(text = rp.body, graph.name = .graph.name, graph.dir = .graph.dir)', showInvisible = TRUE, env = e)
 
     options(opts.bak)                          # resetting options
     setwd(wd.bak)
