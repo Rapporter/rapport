@@ -11,7 +11,7 @@ resp     | *numeric     | Response variable  | Dependent (response) variable
 fac      | *factor[1,2] | Factor variables   | Independent variables (factors)
 fac.intr | TRUE         | Factor interaction | Include factor interaction
 head-->
-<%
+<%=
 d <- structure(data.frame(resp, fac), .Names = c(resp.iname, fac.name))
 f.int <- fml(resp.iname, fac.name, join.right = "*")
 f.nonint <- fml(resp.iname, fac.name, join.right = "+")

@@ -706,8 +706,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     ## evaluate (brew) template body
     opts.bak <- options()                      # backup options
     wd.bak   <- getwd()
-    setwd(file.path
-          )
+    setwd(file.path)
     evalsOptions('graph.name', file.name)
     assign('rp.body', paste(b, collapse = '\n'), envir = e)
     assign('.graph.name', file.name, envir = e)
