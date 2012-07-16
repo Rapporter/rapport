@@ -91,9 +91,9 @@ ifelse(t$p.value < 0.05, sprintf('It seems that a real association can be pointe
 set.caption('Pearson\'s residuals')
 table.res <- suppressWarnings(CrossTable(table))$chisq$stdres
 table.res <- round(table.res, 2)
-table.res.highlow  <- which(table.res < -2 | table.res > 2, arr.ind = TRUE)
+#table.res.highlow  <- which(table.res < -2 | table.res > 2, arr.ind = TRUE)
 #table.res <- trim.space(round(table.res, 2), leading = TRUE)
-table.res[table.res.highlow] <- paste0('**', table.res[table.res.highlow], '**')
+#table.res[table.res.highlow] <- paste0('**', table.res[table.res.highlow], '**')
 table.res
 %>
 
