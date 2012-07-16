@@ -12,7 +12,7 @@
   \code{rp.heading} object
 }
 \description{
-  Checks if provided R object is a \code{rapport} inline
+  Checks if provided R object is a \code{rapport} heading
   element.
 }
 

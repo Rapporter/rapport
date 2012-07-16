@@ -112,9 +112,8 @@
   can be customised with several options in
   \code{evalsOptions()}.  \item And there are also other
   options (e.g. affecting the cache), for full details
-  check out: \itemize{ \item \code{rapport.option} - TODO,
-  \item \code{panderOptions}, \item \code{evalsOptions} } }
-  }
+  check out: \itemize{ \item \code{panderOptions()}, \item
+  \code{evalsOptions()} } } }
 }
 \seealso{
   \code{pander} package:

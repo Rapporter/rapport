@@ -7,25 +7,9 @@
 is.rapport <- function(x)  inherits(x, 'rapport')
 
 
-#' Rapport Block Element
-#'
-#' Checks if provided R object is a \code{rapport} block element.
-#' @param x any R object to check
-#' @return a logical value indicating whether provided object is a \code{rp.block} object
-is.rp.block <- function(x)  inherits(x, 'rp.block')
-
-
-#' Rapport Inline Element
-#'
-#' Checks if provided R object is a \code{rapport} inline element.
-#' @param x any R object to check
-#' @return a logical value indicating whether provided object is a \code{rp.inline} object
-is.rp.inline <- function(x)  inherits(x, 'rp.inline')
-
-
 #' Rapport Heading Element
 #'
-#' Checks if provided R object is a \code{rapport} inline element.
+#' Checks if provided R object is a \code{rapport} heading element.
 #' @param x any R object to check
 #' @return a logical value indicating whether provided object is a \code{rp.heading} object
 is.rp.heading <- function(x)  inherits(x, 'rp.heading')
@@ -286,81 +270,6 @@ rp.label <- function(x, fallback = TRUE, simplify = TRUE){
 }
 
 
-#' Tag Existence
-#'
-#' Checks if a character vector elements contain specified tags. Note that this helper does not parse R code within tags, but just checks for tag existence in provided string!
-#' @param x a character value to check for tag strings
-#' @param ... an argument list with tags to check
-#' @return a logical value indicating if the string has passed the check
-#' @examples
-#' has.tags("<% pi %>", "<%")
-#' has.tags("<% pi %>", "<%", "%>", "<!--", "-->")
-#' has.tags(c("<% pi %>", "<!-- foobar -->"), "<%", "%>", "<!--", "-->")
-#' @export
-has.tags <- function(x, ...){
-
-    if (missing(x))
-        stop('no character vector to test for tag existence')
-
-    tags <- list(...)
-
-    if (!all(sapply(tags, function(x) (is.character(x) & length(x) == 1))))
-        stop('tags should be strings')
-
-    res <- sapply(tags, grepl, x)
-
-    if (length(dim(res))){
-        rownames(res) <- x
-        colnames(res) <- unlist(tags)
-    } else {
-        names(res) <- unlist(tags)
-    }
-
-    return(res)
-}
-
-
-#' Inline Chunk Contents
-#'
-#' Returns inline code chunks with or without tags that wrap them.
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'inline.open',
-#'     \item 'inline.close'.
-#' }
-#' @param x a character vector
-#' @param tag.open a character value with opening tag regular expression
-#' @param tag.close a character value with closing tag regular expression
-#' @param include a logical value indicating whether chunks should be returned (defaults to \code{FALSE})
-#' @param ... additional arguments for \code{\link{gregexpr}} function
-#' @return a character vector with code chunks
-#' @examples \dontrun{
-#' s <- c("As you know, pi equals <%pi%>",  "2 raised to the power of 3 is <%2^3%>")
-#' grab.chunks(s, "<%", "%>", FALSE)
-#' ## [1] "pi"  "2^3"
-#' grab.chunks(s, "<%", "%>", FALSE)
-#' ## [1] "<%pi%>"  "<%2^3%>"
-#' }
-#' @export
-grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), include = FALSE, ...){
-
-    co <- gregexpr(tag.open, x, ...)
-    cc <- gregexpr(tag.close, x, ...)
-
-    if (include == FALSE){
-        s <- unlist(lapply(co, function(x) x + attr(x, 'match.length')))
-        e <- unlist(lapply(cc, function(x) x - (attr(x, 'match.length') - (attr(x, 'match.length') - 1))))
-    } else {
-        s <- unlist(co)
-        e <- unlist(lapply(cc, function(x) x + (attr(x, 'match.length') - 1)))
-    }
-
-    substring(x, s, e)
-}
-
-
 #' Tag Values
 #'
 #' Returns report tag vales (usually regexes): either user-defined, or the default ones.
@@ -368,10 +277,6 @@ grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.t
 #' Default parameters are read from \code{options}:
 #'
 #' \itemize{
-#'     \item 'chunk.open',
-#'     \item 'chunk.close',
-#'     \item 'inline.open',
-#'     \item 'inline.close',
 #'     \item 'header.open',
 #'     \item 'header.close',
 #'     \item 'comment.open',
@@ -384,17 +289,13 @@ grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.t
 #' get.tags()        # same as 'get.tags("all")'
 #' get.tags("chunk.open")
 #' @export
-get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.open', 'inline.close', 'header.open', 'header.close', 'comment.open', 'comment.close'), preset = c('user', 'default')){
+get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment.open', 'comment.close'), preset = c('user', 'default')){
 
     t.type <- match.arg(tag.type)       # tag type
     t.preset <- match.arg(preset)       # preset (default/user)
 
     ## default tag list
     tag.default <- c(
-                     chunk.open    = '^<%$',
-                     chunk.close   = '^%>$',
-                     inline.open   = '<%=',
-                     inline.close  = '%>',
                      header.open   = '^<!--head$',
                      header.close  = '^head-->$',
                      comment.open  = '^<!--',
@@ -437,45 +338,6 @@ get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.op
                   )
 
     return (res)
-}
-
-
-#' Misplaced Tags
-#'
-#' Searches for misplaced tags.
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'inline.open,
-#'     \item 'inline.close'.
-#' }
-#' @param x a string to check for misplaced tags
-#' @param tag.open a string containing opening tag
-#' @param tag.close a string containing closing tag
-#' @return if no tags, or no mismatches are found, original string is returned, otherwise the function will return appropriate error
-tags.misplaced <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close')){
-
-    stopifnot(is.string(x))             # strings only!
-    ht <- has.tags(x, tag.open, tag.close) # has tags?
-    ntags <- sum(ht)                       # sum of found tags
-
-    ## no tags found, return provided string
-    if (ntags == 0)
-        return (x)
-
-    ## missing tags, fall and
-    if (ntags == 1)
-        stop(c('opening', 'closing')[which(ht == FALSE)] , ' tag(s) missing')
-
-    if (ntags == 2){
-        chunks <- grab.chunks(x, tag.open, tag.close)
-        m <- grep(sprintf('%s|%s', tag.open, tag.close), chunks)
-        if (length(m) > 0)
-            stop('misplaced tag in ', chunks[m], ' chunk')
-        else
-            return (x)
-    }
 }
 
 

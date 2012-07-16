@@ -39,13 +39,8 @@
     options('graph.replay'        = FALSE) # TODO: fix on Win platform!
 
     ## tag regexes
-    ## TODO: deprecated? Do we use has.tags etc.? @aL3xa: please check out!
-    ## As far as I know `tpl.body`, `tpl.header` and `grab.chunks`, `get.tags`, `tags.misplaced`, `purge.comments` builds on that
+    ## TODO: user customized "brew" tags should be added here
     options('rp.tags' = c(
-                chunk.open    = '^<%$',
-                chunk.close   = '^%>$',
-                inline.open   = '<%=?',
-                inline.close  = '-?%>',
                 header.open   = '^<!--head$',
                 header.close  = '^head-->$',
                 comment.open  = '<!--',

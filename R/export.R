@@ -62,7 +62,7 @@
 #' tpl.export(x, options=sprintf('-c %s', system.file('templates/css/default.css', package='rapport')))
 #'}
 #' @export
-#' @seealso \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odf}} \code{\link{rapport.docx}}
+#' @seealso \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}
 tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = pander.return(Sys.time()), desc = TRUE, format = 'html', options = '', logo = TRUE) {
 
     if (missing(file))

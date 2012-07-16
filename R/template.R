@@ -433,46 +433,6 @@ tpl.rerun <- function(tpl){
 }
 
 
-#' Extract R Code from Template
-#'
-#' \code{tangle}-like function to extract R code from \emph{rapport} templates.
-#' @param fp template file pointer
-#' @param file if specified, saves R code to a file (defaults to NULL, which puts the code in \code{stdout})
-#' @param include.inline if \code{FALSE} (default), code from inline chunks will be included too
-#' @param include.comments if \code{TRUE} (default), comments will be included too
-#' @param sep separator for output to file
-#' @param ... additional parameters for \code{\link{cat}} function
-#' @examples \dontrun{
-#' tpl.tangle("anova")
-#' tpl.tangle("anova", file = "anova.R")
-#' }
-#' @export
-tpl.tangle <- function(fp, file = NULL, include.inline = FALSE, include.comments = TRUE, sep = '\n', ...){
-
-    tpl <- tpl.elem(fp)
-
-    if (!include.inline)
-        tpl <- tpl[sapply(tpl, is.rp.block)]
-
-    el <- sapply(tpl, function(x){
-        if (is.rp.block(x)) x else trim.space(grab.chunks(x))
-    })
-
-    el <- unlist(el)
-    el <- el[!is.empty(el)]
-
-    if (!include.comments)
-        el <- grep('^[^#]', el, value = TRUE)
-
-    if (is.string(file)){
-        cat(el, file = file, sep = sep, ...)
-        invisible(el)
-    } else {
-        return(el)
-    }
-}
-
-
 #' Evaluate Template
 #'
 #' This is the central function in the \code{rapport} package, and hence eponymous. In following lines we'll use \code{rapport} to denote the function, not the package. \code{rapport} requires a template file, while dataset (\code{data} argument) can be optional, depending on the value of \code{Data required} field in template header. Template inputs are matched with \code{...} argument, and should be provided in \code{x = value} format, where \code{x} matches input name and \code{value}, wait for it... input value! See \code{\link{tpl.inputs}} for more details on template inputs.

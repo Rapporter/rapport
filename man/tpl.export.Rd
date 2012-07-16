@@ -108,6 +108,6 @@ tpl.export(x, options=sprintf('-c \%s', system.file('templates/css/default.css',
 }
 \seealso{
   \code{\link{rapport.html}} \code{\link{rapport.pdf}}
-  \code{\link{rapport.odf}} \code{\link{rapport.docx}}
+  \code{\link{rapport.odt}} \code{\link{rapport.docx}}
 }
 
