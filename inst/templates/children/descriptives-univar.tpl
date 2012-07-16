@@ -12,7 +12,7 @@ var             | *variable  | Variable          | A categorical or numerical va
 nortest         | TRUE       | Normality test    | If normality tests should be performed for numerical variable
 head-->
 
-<%
+<%=
 if (is.numeric(var)) {
         rapport('children/descriptives-univar-numeric', data=rp.data, var=rp.name(var))
     } else {

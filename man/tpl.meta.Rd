@@ -27,10 +27,10 @@
   Displays summary of template metadata stored in a header
   section. This part of template header consists of several
   \emph{key: value} pairs, which define some basic template
-  info, such as \emph{Title}, \emph{Example},
-  \emph{Strict}, etc. If you're familiar with package
-  development in R, you'll probably find this approach very
-  similar to \code{DESCRIPTION} file.
+  info, such as \emph{Title}, \emph{Example} etc. If you're
+  familiar with package development in R, you'll probably
+  find this approach very similar to \code{DESCRIPTION}
+  file.
 }
 \details{
   \strong{Mandatory Fields}
@@ -59,10 +59,7 @@
   or \code{FALSE}, and defaults to \code{FALSE}.  \item
   \emph{Example} - newline-separated example calls to
   \code{rapport} function, including template data and
-  inputs (defaults to \code{NULL}) \item \emph{Strict} -
-  "strict mode" returns only the last warning from a chunk.
-  Field accepts \code{TRUE} or \code{FALSE}, and defaults
-  to \code{FALSE}. }
+  inputs (defaults to \code{NULL}) }
 
   Upon successful execution, \code{rp.meta}-class object is
   returned invisibly.

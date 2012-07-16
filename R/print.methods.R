@@ -12,7 +12,6 @@ print.rp.meta <- function(x, ...){
     ind <- c('title', 'author', 'email', 'desc', 'example')
     email <- if (is.null(x$email)) '' else sprintf(' (%s)', x$email) # show email if any
     exmpl <- if (is.null(x$example)) 'no examples found in template' else x$example # examples
-    x$strict <- sprintf('%s\t(see ?tpl.check for details)', x$strict)
     other.meta <- x[!names(x) %in% ind]
 
     fn <- function(x){
@@ -100,44 +99,34 @@ print.rp.info <- function(x, ...){
 #' @param x any "rapport" class object
 #' @param ... ignored
 #' @examples \dontrun{
-#' rapport('univar-descriptive', data=mtcars, var='hp')
-#' print(rapport('univar-descriptive', data=mtcars, var='hp'))
+#' rapport('example', data = mtcars, var='hp')
 #' }
 #' @method print rapport
 #' @S3method print rapport
 print.rapport <- function(x, ...) {
 
-    if (!is.rapport(x)) stop('Wrong type of argument (!rapport) supplied!')
+    if (!is.rapport(x))
+        stop('Wrong type of argument (!rapport) supplied!')
 
     images <- NULL
 
     ## print report body
     for (part in x$report){
-        robj  <- part$robjects[[1]]
-        rout  <- robj$output
-        rwarn <- robj$msg$warnings
 
-        catn()
         switch(part$type,
                'block' = {
-                   if (!is.null(rout)){
-                       if (any(robj$type == 'image')) {
-                           images <- c(images, as.character(rout))
-                           cat(as.character(rout))
-                       } else
-                           cat(rp.prettyascii(rout))
-                   }
-
-                   if (!is.null(rwarn))
-                       cat('\n', rwarn)
-               },
-               'heading' = cat(paste(paste(rep('#', part$level), collapse=''), part$text$eval)),
-               cat(rp.prettyascii(as.character(part$text$eval)))
+                   if ('image' %in% part$robject$type)
+                       images <- c(images, as.character(part$robject$result))
+                   cat(part$robject$output, sep = '\n')
+                   },
+               'heading' = pandoc.header(part$text$eval, part$level),
+               cat(part$text$eval)
                )
-        catn()
+
     }
 
     if (getOption('graph.replay')) {
+        wd <- getwd(); setwd(getOption('rp.file.path'))
         cat('\n', rep('=', getOption('width')), sep='')
         cat('\n  Attached images:\n\n    Note: you may optionally resize images on the fly which new dimensions will be saved to disk.\n          Do not close graphics device before this happens (pressing ENTER) if you want to update your image files!\n')
 
@@ -157,33 +146,16 @@ print.rapport <- function(x, ...) {
 
                     if (device == 'jpg')
                         device <- 'jpeg'
-                    res <- ifelse(device %in% c('svg', 'pdf'), 1, getOption('graph.res'))
+                    res <- ifelse(device %in% c('svg', 'pdf'), 1, evalsOptions('res'))
                     size <- dev.size()
 
-                    dev.copy(get(device), width = size[1]*res, height = size[2]*res, image)
+                    dev.copy(get(device), width = size[1] * res, height = size[2] * res, image)
                     dev.off(); dev.off()
                 }
 
             } else
                 cat(sprintf('\n\t* %s: was not run with `graph.record` option set to `TRUE`', image))
         }
+        setwd(wd)
     }
-}
-
-
-#' Redraws saved plot
-#'
-#' This function is a wrapper around \code{replayPlot} with some added tweaks (fixing memory address nullpointer issue) for compatibility.
-#' @param file path and name of file to read saved \code{recordPlot} object
-#' @references Thanks to Jeroen Ooms: \url{http://permalink.gmane.org/gmane.comp.lang.r.devel/29897}.
-#' @seealso \code{\link{evals}}
-#' @export
-redraw.recordedplot <- function(file) {
-    plot <- readRDS(file)
-    for(i in 1:length(plot[[1]])) {
-        if( "NativeSymbolInfo" %in% class(plot[[1]][[i]][[2]][[1]]) ){
-            plot[[1]][[i]][[2]][[1]] <- getNativeSymbolInfo(plot[[1]][[i]][[2]][[1]]$name);
-        }
-    }
-    replayPlot(plot)
 }

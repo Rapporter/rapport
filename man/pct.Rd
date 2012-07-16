@@ -2,7 +2,7 @@
 \alias{pct}
 \title{Percent}
 \usage{
-  pct(x, digits = getOption("rp.decimal.short"),
+  pct(x, digits = panderOptions("digits"),
     type = c("percent", "\%", "proportion"),
     check.value = TRUE)
 }
@@ -27,11 +27,6 @@
   Appends a percent sign to provided numerical value.
   Rounding is carried out according to value passed in
   \code{decimals} formal argument (defaults to value
-  specified in \code{rp.decimal.short} option).
-}
-\details{
-  Default parameters are read from \code{options}:
-
-  \itemize{ \item 'rp.decimal.short' }
+  specified in \code{panderOptions('digits')}).
 }
 
