@@ -31,9 +31,8 @@
 #'         \item The plots are saved to disk with \code{\link{rapport}} function, and the resulting files can be customised with several options in \code{evalsOptions()}.
 #'         \item And there are also other options (e.g. affecting the cache), for full details check out:
 #'         \itemize{
-#'              \item \code{rapport.option} - TODO,
-#'              \item \code{panderOptions},
-#'              \item \code{evalsOptions}
+#'              \item \code{panderOptions()},
+#'              \item \code{evalsOptions()}
 #' }
 #'     }
 #' }
