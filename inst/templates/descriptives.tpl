@@ -4,7 +4,6 @@ Author:         Gergely Daróczi
 Email:          gergely@snowl.net
 Description:    This template will return descriptive statistics of numerical or frequency tables of categorical variables. 
 Data required:  TRUE
-Strict:         TRUE
 Example:        rapport('descriptives', data=ius2008, vars=c('gender'))
                 rapport('descriptives', data=ius2008, vars=c('gender', 'age'))
                 rapport('descriptives', data=ius2008, vars=c('chatim', 'game', 'surf', 'email', 'download', 'forum', 'socnet', 'xxx'))
@@ -14,7 +13,7 @@ vars            | *variable[1,50]| Variables         | Categorical or numerical 
 nortest         | TRUE          | Normality tests   | Should normality tests be performed on numerical variables?  
 head-->
 
-<%
+<%=
 if (vars.ilen == 1) {
     rapport('children/descriptives-univar', data=rp.data, var=rp.name(vars), nortest=nortest)
 } else {

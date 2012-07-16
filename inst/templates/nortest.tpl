@@ -4,7 +4,6 @@ Author:         Aleksandar Blagotić
 Description:    Overview of several normality tests and diagnostic plots that can screen departures from normality.
 Packages:       nortest
 Data required:  TRUE
-Strict:         TRUE
 Example:        rapport("nortest", ius2008, var = "leisure")
                 rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
                 rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
@@ -25,7 +24,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - *&mu;* - _mean_ or _expectation_ (location parameter)
  - *&sigma;^2^* - _variance_ (scale parameter)
 
-<%
+<%=
 # generate normal curve plot
 if (nc.plot){
    x <- seq(-3, 3, length.out = 1e3)
@@ -48,7 +47,7 @@ Various hypothesis tests can be applied in order to test if the distribution of 
 
 Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
 
-<%
+<%=
 h <- htest(var, shapiro.test, lillie.test, ad.test, pearson.test)
 p <- .05
 h
@@ -56,10 +55,10 @@ h
 
 So, let's draw some conclusions based on applied normality test:
 
- - according to _Shapiro-Wilk test_, the distribution of _<% var.label %>_ is <% ifelse(h[1, 2] < p, "not", "") %> normal.
- - based on _Lilliefors test_, distribution of _<% var.label %>_ is <% ifelse(h[2, 2], "not normal", "normal") %>
- - _Anderson-Darling test_ confirms <% ifelse(h[3, 2] < p, "violation of", "") %> normality assumption
- - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as <% ifelse(h[4, 2], "non-normal", "normal") %>
+ - according to _Shapiro-Wilk test_, the distribution of _<%= var.label %>_ is <%= ifelse(h[1, 2] < p, "not", "") %> normal.
+ - based on _Lilliefors test_, distribution of _<%= var.label %>_ is <%= ifelse(h[2, 2], "not normal", "normal") %>
+ - _Anderson-Darling test_ confirms <%= ifelse(h[3, 2] < p, "violation of", "") %> normality assumption
+ - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as <%= ifelse(h[4, 2], "non-normal", "normal") %>
 
 # Diagnostic Plots
 
@@ -69,7 +68,7 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
  
-<%
+<%=
 print(rp.hist(var))
 %>
 
@@ -77,7 +76,7 @@ print(rp.hist(var))
  
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-<%
+<%=
 if (qq.line){
    print(qqmath(var, panel=function(x){
                panel.qqmath(x)
@@ -92,6 +91,6 @@ if (qq.line){
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-<%
+<%=
 print(rp.densityplot(var))
 %>

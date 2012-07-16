@@ -7,25 +7,9 @@
 is.rapport <- function(x)  inherits(x, 'rapport')
 
 
-#' Rapport Block Element
-#'
-#' Checks if provided R object is a \code{rapport} block element.
-#' @param x any R object to check
-#' @return a logical value indicating whether provided object is a \code{rp.block} object
-is.rp.block <- function(x)  inherits(x, 'rp.block')
-
-
-#' Rapport Inline Element
-#'
-#' Checks if provided R object is a \code{rapport} inline element.
-#' @param x any R object to check
-#' @return a logical value indicating whether provided object is a \code{rp.inline} object
-is.rp.inline <- function(x)  inherits(x, 'rp.inline')
-
-
 #' Rapport Heading Element
 #'
-#' Checks if provided R object is a \code{rapport} inline element.
+#' Checks if provided R object is a \code{rapport} heading element.
 #' @param x any R object to check
 #' @return a logical value indicating whether provided object is a \code{rp.heading} object
 is.rp.heading <- function(x)  inherits(x, 'rp.heading')
@@ -96,7 +80,7 @@ is.heading <- function(x){
 #' Converts template metadata to character vector.
 #' @param meta template metadata object
 #' @param include.examples include examples in results
-#' @export 
+#' @export
 as.character.rp.meta <- function(meta, include.examples = TRUE){
     meta.example <- meta['example']
     other <- meta[names(meta) != "example"]
@@ -123,7 +107,7 @@ as.character.rp.meta <- function(meta, include.examples = TRUE){
 #'
 #' Converts template inputs to character vector.
 #' @param inputs template inputs object
-#' @export 
+#' @export
 as.character.rp.inputs <- function(inputs){
     unlist(sapply(inputs, function(x){
         mandatory <- if (x$mandatory) "*" else ""
@@ -286,81 +270,6 @@ rp.label <- function(x, fallback = TRUE, simplify = TRUE){
 }
 
 
-#' Tag Existence
-#'
-#' Checks if a character vector elements contain specified tags. Note that this helper does not parse R code within tags, but just checks for tag existence in provided string!
-#' @param x a character value to check for tag strings
-#' @param ... an argument list with tags to check
-#' @return a logical value indicating if the string has passed the check
-#' @examples
-#' has.tags("<% pi %>", "<%")
-#' has.tags("<% pi %>", "<%", "%>", "<!--", "-->")
-#' has.tags(c("<% pi %>", "<!-- foobar -->"), "<%", "%>", "<!--", "-->")
-#' @export
-has.tags <- function(x, ...){
-
-    if (missing(x))
-        stop('no character vector to test for tag existence')
-
-    tags <- list(...)
-
-    if (!all(sapply(tags, function(x) (is.character(x) & length(x) == 1))))
-        stop('tags should be strings')
-
-    res <- sapply(tags, grepl, x)
-
-    if (length(dim(res))){
-        rownames(res) <- x
-        colnames(res) <- unlist(tags)
-    } else {
-        names(res) <- unlist(tags)
-    }
-
-    return(res)
-}
-
-
-#' Inline Chunk Contents
-#'
-#' Returns inline code chunks with or without tags that wrap them.
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'inline.open',
-#'     \item 'inline.close'.
-#' }
-#' @param x a character vector
-#' @param tag.open a character value with opening tag regular expression
-#' @param tag.close a character value with closing tag regular expression
-#' @param include a logical value indicating whether chunks should be returned (defaults to \code{FALSE})
-#' @param ... additional arguments for \code{\link{gregexpr}} function
-#' @return a character vector with code chunks
-#' @examples \dontrun{
-#' s <- c("As you know, pi equals <%pi%>",  "2 raised to the power of 3 is <%2^3%>")
-#' grab.chunks(s, "<%", "%>", FALSE)
-#' ## [1] "pi"  "2^3"
-#' grab.chunks(s, "<%", "%>", FALSE)
-#' ## [1] "<%pi%>"  "<%2^3%>"
-#' }
-#' @export
-grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close'), include = FALSE, ...){
-
-    co <- gregexpr(tag.open, x, ...)
-    cc <- gregexpr(tag.close, x, ...)
-
-    if (include == FALSE){
-        s <- unlist(lapply(co, function(x) x + attr(x, 'match.length')))
-        e <- unlist(lapply(cc, function(x) x - (attr(x, 'match.length') - (attr(x, 'match.length') - 1))))
-    } else {
-        s <- unlist(co)
-        e <- unlist(lapply(cc, function(x) x + (attr(x, 'match.length') - 1)))
-    }
-
-    substring(x, s, e)
-}
-
-
 #' Tag Values
 #'
 #' Returns report tag vales (usually regexes): either user-defined, or the default ones.
@@ -368,10 +277,6 @@ grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.t
 #' Default parameters are read from \code{options}:
 #'
 #' \itemize{
-#'     \item 'chunk.open',
-#'     \item 'chunk.close',
-#'     \item 'inline.open',
-#'     \item 'inline.close',
 #'     \item 'header.open',
 #'     \item 'header.close',
 #'     \item 'comment.open',
@@ -384,17 +289,13 @@ grab.chunks <- function(x, tag.open = get.tags('inline.open'), tag.close = get.t
 #' get.tags()        # same as 'get.tags("all")'
 #' get.tags("chunk.open")
 #' @export
-get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.open', 'inline.close', 'header.open', 'header.close', 'comment.open', 'comment.close'), preset = c('user', 'default')){
+get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment.open', 'comment.close'), preset = c('user', 'default')){
 
     t.type <- match.arg(tag.type)       # tag type
     t.preset <- match.arg(preset)       # preset (default/user)
 
     ## default tag list
     tag.default <- c(
-                     chunk.open    = '^<%$',
-                     chunk.close   = '^%>$',
-                     inline.open   = '<%=',
-                     inline.close  = '%>',
                      header.open   = '^<!--head$',
                      header.close  = '^head-->$',
                      comment.open  = '^<!--',
@@ -440,45 +341,6 @@ get.tags <- function(tag.type = c('all', 'chunk.open', 'chunk.close', 'inline.op
 }
 
 
-#' Misplaced Tags
-#'
-#' Searches for misplaced tags.
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'inline.open,
-#'     \item 'inline.close'.
-#' }
-#' @param x a string to check for misplaced tags
-#' @param tag.open a string containing opening tag
-#' @param tag.close a string containing closing tag
-#' @return if no tags, or no mismatches are found, original string is returned, otherwise the function will return appropriate error
-tags.misplaced <- function(x, tag.open = get.tags('inline.open'), tag.close = get.tags('inline.close')){
-
-    stopifnot(is.string(x))             # strings only!
-    ht <- has.tags(x, tag.open, tag.close) # has tags?
-    ntags <- sum(ht)                       # sum of found tags
-
-    ## no tags found, return provided string
-    if (ntags == 0)
-        return (x)
-
-    ## missing tags, fall and
-    if (ntags == 1)
-        stop(c('opening', 'closing')[which(ht == FALSE)] , ' tag(s) missing')
-
-    if (ntags == 2){
-        chunks <- grab.chunks(x, tag.open, tag.close)
-        m <- grep(sprintf('%s|%s', tag.open, tag.close), chunks)
-        if (length(m) > 0)
-            stop('misplaced tag in ', chunks[m], ' chunk')
-        else
-            return (x)
-    }
-}
-
-
 #' Purge Comments
 #'
 #' Remove comments from provided character vector.
@@ -504,20 +366,14 @@ purge.comments <- function(x, comment.open = get.tags('comment.open'), comment.c
 
 #' Percent
 #'
-#' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to value specified in \code{rp.decimal.short} option).
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'rp.decimal.short'
-#' }
+#' Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in \code{decimals} formal argument (defaults to value specified in \code{panderOptions('digits')}).
 #' @param x a numeric value that is to be rendered to percent
 #' @param digits an integer value indicating number of decimal places
 #' @param type a character value indicating whether percent or proportion value was provided (partial match is allowed)
 #' @param check.value perform a sanity check to see if provided numeric value is correct
 #' @return a character value with formatted percent
 #' @export
-pct <- function(x, digits = getOption('rp.decimal.short'), type = c('percent', '%', 'proportion'), check.value = TRUE){
+pct <- function(x, digits = panderOptions('digits'), type = c('percent', '%', 'proportion'), check.value = TRUE){
 
     if (!is.numeric(x))
         stop('only numeric values should be provided')
@@ -849,172 +705,6 @@ check.type <- function(x){
         stopf('input type definition error in: "%s"', x)
 
     return(res)
-}
-
-
-#' Round numeric values
-#'
-#' Round numeric values with default number of decimals (see: \code{getOption('rp.decimal'}) and decimal mark (see: \code{getOption('rp.decimal')}).
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'rp.decimal',
-#'     \item 'rp.decimal.short',
-#'     \item 'rp.decimal.mark'.
-#' }
-#' @param x numeric value(s)
-#' @param short if \code{getOption('rp.decimal.short'} should be used instead of \code{getOption('rp.decimal'}. Can be overwritten by \code{digits} parameter, see below.
-#' @param digits (optional) number of decimals
-#' @return character vector of rounded value(s)
-#' @note This function is a simple demo for \code{\link{evals}}'s hooks.
-#' @examples {
-#' rp.round(22/7)
-#' rp.round(22/7, short = TRUE)
-#' rp.round(22/7, TRUE)
-#' rp.round(22/7, digits = 10)
-#' rp.round(matrix(runif(9), 3, 3))
-#' }
-#' @examples \dontrun{
-#' # alter options
-#' options('rp.decimal'       = 2)
-#' options('rp.decimal.mark'  = ',')
-#' rp.round(22/7)
-#' rp.round(matrix(runif(9), 3, 3))
-#' }
-#' @export
-rp.round <- function(x, short = FALSE, digits = NULL) {
-    if (!is.numeric(x)) stop('Wrong variable type (!numeric) provided.')
-    decimal.mark <- getOption('rp.decimal.mark')
-    if (missing(digits))
-        digits <- ifelse(short, getOption('rp.decimal.short'), getOption('rp.decimal'))
-    if (is.vector(x))
-        return(as.vector(tocharac(x, digits = digits, decimal.mark = decimal.mark, format = 'nice')))
-    res        <- format(round(x, digits), decimal.mark = decimal.mark)
-    class(res) <- class(x)
-    return(res)
-}
-
-
-#' Return pretty ascii form
-#'
-#' Some standard formatting is applied to the value which is returned as ascii object.
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'rp.decimal',
-#'     \item 'rp.decimal.short',
-#'     \item 'rp.decimal.mark'.
-#' }
-#' @param x R object
-#' @param asciitype markdown language to use for returning tables (eg. pandox, t2t, asciidoc etc.)
-#' @return ascii
-#' @examples \dontrun{
-#' rp.prettyascii('Hello, World?')
-#' rp.prettyascii(22/7)
-#' rp.prettyascii(matrix(runif(25), 5, 5))
-#' rp.prettyascii(lm(hp~wt, mtcars))
-#' rp.prettyascii(summary(mtcars$hp))
-#' rp.prettyascii(htest(rnorm(100), shapiro.test))
-#' rp.prettyascii(table(mtcars$am,mtcars$gear))
-#' rp.prettyascii(data.frame(x=1:2, y=3:4))
-#' rp.prettyascii(data.frame(x=1:2, y=3:4, z=c(22/7, pi)))
-#' rp.prettyascii(mtcars)
-#' rp.prettyascii(table(mtcars$am))
-#'
-#' ## it is better to \code{cat} the output
-#' cat(rp.prettyascii(rp.freq("gender", data = ius2008)))
-#' }
-#' @export
-rp.prettyascii <- function(x, asciitype = getOption('asciiType')) {
-
-    if ((length(x) == 1) & (is.rapport(x) | is.character(x)))
-        return(x)
-
-    if (is.list(x))
-        if (all(lapply(x, class) == 'rapport'))
-            return(l_ply(x, print))
-
-    if (is.numeric(x)) {
-        classes <- class(x)
-        ## dims <- dim(x)
-        x <- rp.round(x)
-        ## dim(x) <- dims
-        if (length(x) != 1)
-            class(x) <- classes
-    }
-
-    if (is.vector(x))
-        return(p(x, limit = Inf))
-
-    asciitype.original <- getOption('asciiType')
-    options('asciiType' = asciitype)
-    if (is.data.frame(x) | is.table(x)) {
-        ## rounding till \code{ascii} bug fixed: https://github.com/eusebe/ascii/issues/12
-        if (getOption('rp.decimal.mark') != '.') {
-            numerics <- which(sapply(x, is.numeric))
-            for (numeric in as.numeric(numerics)) {
-                x[, numeric] <- rp.round(x[, numeric])
-            }
-        }
-        rownms <- rownames(x)
-        include.rownames <- !is.null(rownms)
-        if (!include.rownames) {
-            pre.txt <- ''
-        } else {
-            include.rownames <- !all(rownms == 1:nrow(x))
-            ## not so neat hack to close all possible lists before exporting a table with missing first column header
-            pre.txt <- ifelse(include.rownames, '<!-- endlist -->\n', '')
-        }
-        res <- paste(pre.txt, paste(capture.output(ascii(x, format='nice', digits=getOption('rp.decimal'), include.rownames = include.rownames)), collapse='\n'), sep='')
-        options('asciiType' = asciitype.original)
-        return(res)
-    }
-
-    x.class <- class(x)
-    if (x.class == 'trellis' | x.class == 'ggplot')
-        stop('ggplot2 and trellis objects must be printed in strict mode!')
-
-    res <- paste(capture.output(ascii(x, format='nice', digits=getOption('rp.decimal'), decimal.mark = getOption('rp.decimal.mark'))), collapse='\n')
-    options('asciiType' = asciitype.original)
-    return(res)
-}
-
-
-#' Inline Printing
-#'
-#' \code{\link{p}} merges elements of a variable (see \code{\link{is.variable}}) in one string for the sake of pretty inline printing. Default parameters are read from appropriate \code{option} values (see argument description for details). This function allows you to put the results of an expression that yields a variable \emph{inline}, by wrapping the vector elements with the string provided in \code{wrap}, and separating elements by main and ending separator (\code{sep} and \code{copula}). In case of a two-length vector, value specified in \code{copula} will be used as a separator. You can also control the length of provided vector by altering an integer value specified in \code{limit} argument (defaults to \code{20}).
-#' @param x an atomic vector to get merged for inline printing
-#' @param wrap a string to wrap vector elements (uses value set in \code{p.wrap} option: \code{"_"} by default, which is a markdown-friendly wrapper and it puts the string in \emph{italic})
-#' @param sep a string with the main separator, i.e. the one that separates all vector elements but the last two (uses the value set in \code{p.sep} option - \code{","} by default)
-#' @param copula a string with ending separator - the one that separates the last two vector elements (uses the value set in \code{p.copula} option, \code{"and"} by default)
-#' @param limit maximum character length (defaults to 20 elements)
-#' @return a string with concatenated vector contents
-#' @examples
-#' p(c("fee", "fi", "foo", "fam"))
-#' ## [1] "_fee_, _fi_, _foo_ and _fam_"
-#' p(1:3, wrap = "")
-#' ## [1] "1, 2 and 3"
-#' p(LETTERS[1:5], copula = "and the letter")
-#' ## [1] "_A_, _B_, _C_, _D_ and the letter _E_"
-#' p(c("Thelma", "Louise"), wrap = "", copula = "&")
-#' ## [1] "Thelma & Louise"
-#' @export
-p <- function(x, wrap = getOption('p.wrap'), sep = getOption('p.sep'), copula = getOption('p.copula'), limit = 20L){
-
-    stopifnot(is.variable(x))         # check output (should be output)
-    stopifnot(all(sapply(list(wrap, sep, copula), is.string))) # separators should be strings
-    x.len <- length(x)                # vector length
-    stopifnot(x.len > 0)              # no zero-length vectors allowed
-    stopifnot(x.len <= limit)         # check limits
-
-    if (x.len == 1)
-        wrap(x, wrap)
-    else if (x.len == 2)
-        paste(wrap(x, wrap), collapse = sprintf(' %s ', copula))
-    else
-        paste(paste(wrap(head(x, -1), wrap), collapse = sep), copula, wrap(tail(x, 1), wrap))
 }
 
 

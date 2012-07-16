@@ -15,8 +15,7 @@
 }
 \examples{
 \dontrun{
-rapport('univar-descriptive', data=mtcars, var='hp')
-print(rapport('univar-descriptive', data=mtcars, var='hp'))
+rapport('example', data = mtcars, var='hp')
 }
 }
 

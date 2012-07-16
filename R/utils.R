@@ -194,23 +194,6 @@ capitalise <- function(x){
 }
 
 
-#' Wrap Vector Elements
-#'
-#' Wraps vector elements with string provided in \code{wrap} argument.
-#' @param x a vector to wrap
-#' @param wrap a string to wrap around vector elements
-#' @return a string with wrapped elements
-#' @examples \dontrun{
-#' wrap("foobar")
-#' wrap(c("fee", "fi", "foo", "fam"), "_")
-#' }
-#' @export
-wrap <- function(x, wrap = '"'){
-    stopifnot(is.variable(x))
-    sprintf('%s%s%s', wrap, x, wrap)
-}
-
-
 #' Stop Execution with String Interpolated Messages
 #'
 #' This helper combines \code{stop} function with \code{sprintf} thus allowing string interpolated messages when execution is halted.
@@ -260,16 +243,4 @@ is.empty <- function(x, trim = FALSE, ...){
     } else {
         sapply(x, is.empty)
     }
-}
-
-
-#' Add caption
-#'
-#' Simply adds a caption to table or image in the current block.
-#' @param msg text
-#' @export
-caption <- function(msg) {
-
-    message(msg, appendLF = FALSE)
-
 }
