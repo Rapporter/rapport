@@ -7,13 +7,13 @@ Data required:  TRUE
 Example:        rapport("t-test", ius2008, x = "leisure", y = "gender")
                 rapport("t-test", ius2008, x = "leisure", mu = 3.2)
 
-x         | *numeric    | X variable          | Dependent (response) variable
-y         | variable    | Y variable          | Independent variable (factor, or another numeric)
+x         | *numeric          | X variable          | Dependent (response) variable
+y         | variable          | Y variable          | Independent variable (factor, or another numeric)
 alter     | two.sided,less,greater | Alternative hypothesis | Whether two-sided, greater or less variant will be applied
-mu        | number      | Mean value          | Mean value for one-sample t-test
-paired    | FALSE       | Paired t-test       | Carry out paired t-test or not
-var.equal | FALSE       | Variance equality   | Equal variances assumed: choose automatically or not
-ci.level  | number=0.95 | Confidence interval | Confidence interval level
+mu        | number[1,10]      | Mean value          | Mean value for one-sample t-test
+paired    | FALSE             | Paired t-test       | Carry out paired t-test or not
+var.equal | FALSE             | Variance equality   | Equal variances assumed: choose automatically or not
+ci.level  | number[1,10]=0.95 | Confidence interval | Confidence interval level
 head-->
 <%
 
@@ -62,13 +62,13 @@ In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equali
 
 # Overview
 
-<%= capitalise(variant) %> _t-test_ is carried out with <%= p(x.label) %> as dependent variable<%= if (!is.null(y)) sprintf(", and %s as independent variable", p(y.label)) else ""%>. Confidence interval is set to <%= pct(ci.level * 100, 0) %>. <% if (!is.null(variant)) sprintf("Equality of variances %s assumed.", ifelse(var.equal, "was", "wasn't")) else "" %>
+<% capitalise(variant) %> _t-test_ is carried out with <% p(x.label) %> as dependent variable<% if (!is.null(y)) sprintf(", and %s as independent variable", p(y.label)) else ""%>. Confidence interval is set to <% pct(ci.level * 100, 0) %>. <% if (!is.null(variant)) sprintf("Equality of variances %s assumed.", ifelse(var.equal, "was", "wasn't")) else "" %>
 
 # Descriptives
 
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
-<%=
+<%
 rp.desc(x, y, c(min, max, mean, sd, var, median, IQR, skewness, kurtosis))
 %>
 
@@ -78,19 +78,19 @@ Since _t-test_ is a parametric technique, it sets some basic assumptions on dist
 
 ## Normality Tests
 
-We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<%= p(x.label) %>). 
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<% p(x.label) %>). 
 
-<%=
+<%
 (ntest <- htest(x, shapiro.test, lillie.test, ad.test, colnames = c("N", "p")))
 %>
 
-As you can see, applied tests <%= ifelse(all(ntest$p < .05), "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.") %>.
+As you can see, applied tests <% ifelse(all(ntest$p < .05), "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.") %>.
 
 
 # Results
 
-<%= tt$method %> was applied, and significant differences <%= ifelse(tt$p.value < 1 - ci.level, "weren't", "were") %> found.
+<% tt$method %> was applied, and significant differences <% ifelse(tt$p.value < 1 - ci.level, "weren't", "were") %> found.
 
-<%=
+<%
 with(tt, data.frame(statistic, df = parameter, p = p.value, `CI(lower)` = conf.int[1], `CI(upper)` = conf.int[2], check.names = FALSE))
 %>

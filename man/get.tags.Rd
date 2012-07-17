@@ -26,7 +26,9 @@
   \item 'comment.open', \item 'comment.close'. }
 }
 \examples{
+\dontrun{
 get.tags()        # same as 'get.tags("all")'
 get.tags("header.open")
+}
 }
 
