@@ -27,6 +27,6 @@
 }
 \examples{
 get.tags()        # same as 'get.tags("all")'
-get.tags("chunk.open")
+get.tags("header.open")
 }
 

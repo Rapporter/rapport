@@ -287,7 +287,7 @@ rp.label <- function(x, fallback = TRUE, simplify = TRUE){
 #' @return either a list (default) or a character value with tag regexes
 #' @examples
 #' get.tags()        # same as 'get.tags("all")'
-#' get.tags("chunk.open")
+#' get.tags("header.open")
 #' @export
 get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment.open', 'comment.close'), preset = c('user', 'default')){
 
