@@ -48,7 +48,11 @@ Various hypothesis tests can be applied in order to test if the distribution of 
 Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
 
 <%=
-h <- htest(var, shapiro.test, lillie.test, ad.test, pearson.test)
+if (length(var) > 5000) {
+    h <- htest(var, lillie.test, ad.test, pearson.test)
+} else {
+    h <- htest(var, shapiro.test, lillie.test, ad.test, pearson.test)
+}
 p <- .05
 h
 %>
@@ -67,13 +71,13 @@ There are various plots that can help you decide about the normality of the dist
 ## Histogram
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
- 
+
 <%=
 print(rp.hist(var))
 %>
 
 ## Q-Q Plot
- 
+
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
 <%=

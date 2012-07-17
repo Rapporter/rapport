@@ -21,7 +21,7 @@ fac.plu <- switch(fac.ilen, '', 's')
 
 # Introduction
 
-**Analysis of Variance** or **ANOVA** is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921. by famous English statistician Sir Ronald Aylmer Fisher.
+**Analysis of Variance** or **ANOVA** is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921 by famous English statistician Sir Ronald Aylmer Fisher.
 
 # Model Overview
 
@@ -58,7 +58,12 @@ Before we carry out ANOVA, we'd like to check some basic assumptions. For those 
 We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<%= p(resp.label) %>).
 
 <%=
-(ntest <- htest(resp, shapiro.test, lillie.test, ad.test))
+if (length(resp) < 5000) {
+    ntest <- htest(resp, shapiro.test, lillie.test, ad.test)
+} else {
+    ntest <- htest(resp, lillie.test, ad.test)
+}
+ntest
 %>
 
 
