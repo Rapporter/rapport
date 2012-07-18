@@ -1,6 +1,6 @@
 <!--head
 Title:          Example template
-Author:         Gergely Daróczi 
+Author:         Gergely Daróczi
 Description:    This template demonstrates the basic features of rapport. We all hope you will like it!
 Packages:       lattice
 Data required:  TRUE
@@ -27,6 +27,8 @@ And wow, the mean of *<%=rp.name(var)%>* is <%=rp.mean(var)%>!
 if (!desc) '**For more detailed statistics, you should have set `desc=TRUE`!**'
 %>
 
+By checking out the [sources of this template](https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl), you could see that we used all `BRCATCODE`s above from `brew` syntax. `BRCODE` tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if `desc` input equals to `TRUE`, then the resulting report would have that chunk, if set to `FALSE`, it would be left our.
+
 <%if (desc) {%>
 
 ## Descriptive statistics
@@ -43,10 +45,12 @@ sprintf('The 5 highest values are: %s.', p(sort(var, decreasing = TRUE)[1:5]))
 
 ## Histogram
 
+For demonstartion purposes you can find a histogram below:
+
 <%=
 if (hist) {
     set.caption('A nice histogram')
-    options('style.color.palette' = theme) 
+    options('style.color.palette' = theme)
     print(rp.hist(var))
 }
 %>
