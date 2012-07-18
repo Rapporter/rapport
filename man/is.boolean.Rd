@@ -16,10 +16,12 @@
   logical vector.
 }
 \examples{
-is.boolean(TRUE)                # [1] TRUE
+\dontrun{
+    is.boolean(TRUE)                # [1] TRUE
     # the following will work on most systems, unless you have tweaked global Rprofile
     is.boolean(T)                   # [1] TRUE
     is.boolean(1)                   # [1] FALSE
     is.string(c("foo", "bar"))      # [1] FALSE
+}
 }
 

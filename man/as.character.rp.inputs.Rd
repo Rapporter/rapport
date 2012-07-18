@@ -2,10 +2,12 @@
 \alias{as.character.rp.inputs}
 \title{Convert Inputs to Character}
 \usage{
-  as.character.rp.inputs(inputs)
+  \method{as.character}{rp.inputs} (x, ...)
 }
 \arguments{
-  \item{inputs}{template inputs object}
+  \item{x}{template inputs object}
+
+  \item{...}{ignored}
 }
 \description{
   Converts template inputs to character vector.

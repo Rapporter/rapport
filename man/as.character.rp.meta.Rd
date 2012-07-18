@@ -2,12 +2,14 @@
 \alias{as.character.rp.meta}
 \title{Convert Metadata to Character}
 \usage{
-  as.character.rp.meta(meta, include.examples = TRUE)
+  \method{as.character}{rp.meta} (x, ...)
 }
 \arguments{
-  \item{meta}{template metadata object}
+  \item{x}{template metadata object}
 
-  \item{include.examples}{include examples in results}
+  \item{...}{accepts \code{include.examples} which
+  indicates that examples should be included in output (if
+  any)}
 }
 \description{
   Converts template metadata to character vector.

@@ -78,26 +78,31 @@ is.heading <- function(x){
 #' Convert Metadata to Character
 #'
 #' Converts template metadata to character vector.
-#' @param meta template metadata object
-#' @param include.examples include examples in results
+#' @param x template metadata object
+#' @param ... accepts \code{include.examples} which indicates that examples should be included in output (if any)
+#' @method as.character rp.meta
+#' @S3method as.character rp.meta
 #' @export
-as.character.rp.meta <- function(meta, include.examples = TRUE){
-    meta.example <- meta['example']
-    other <- meta[names(meta) != "example"]
-    res <- rapply(other, function(x){
-        if (!is.null(x)){
-            sapply(x, paste, collapse = ",", USE.NAMES=FALSE)
-        }
+as.character.rp.meta <- function(x, ...){
+    
+    if (!inherits(x, 'rp.meta'))
+        stop("template metadata not provided")
+    
+    mc <- match.call()
+    
+    meta.example <- x$example
+    other <- x[!names(x) %in% c('example')]
+    res <- sapply(other, function(x){
+        if (!is.null(x))
+            paste(x, collapse = ',')
     })
-
-    res <- paste(tocamel(names(res), upper = TRUE), res, sep = ": ")
-
-    datareq.regex <- "^datarequired(\\:.+)$"
-    ind <- grepl(datareq.regex, res, ignore.case=TRUE)
-    res[ind]<- gsub(datareq.regex, "Data required\\1", res[ind], ignore.case=TRUE)
-    if (length(meta$example) && include.examples) {
-        e <- meta$example
-        res <- c(sprintf("Example: %s", e[1]), e[-1])
+    res <- paste(tocamel(names(other), upper = TRUE), res, sep = ": ")
+    datareq.regex <- '^datarequired(\\:.+)$'
+    ind <- grepl(datareq.regex, res, ignore.case = TRUE)
+    res[ind]<- gsub(datareq.regex, "Data required\\1", res[ind], ignore.case = TRUE)
+    if (!is.null(meta.example) && isTRUE(mc$include.examples)) {
+        exmpl <- c(sprintf("Example: %s", meta.example[1]), meta.example[-1])
+        res <- c(res, exmpl)
     }
     res
 }
@@ -106,10 +111,13 @@ as.character.rp.meta <- function(meta, include.examples = TRUE){
 #' Convert Inputs to Character
 #'
 #' Converts template inputs to character vector.
-#' @param inputs template inputs object
+#' @param x template inputs object
+#' @param ... ignored
+#' @method as.character rp.inputs
+#' @S3method as.character rp.inputs
 #' @export
-as.character.rp.inputs <- function(inputs){
-    unlist(sapply(inputs, function(x){
+as.character.rp.inputs <- function(x, ...){
+    unlist(sapply(x, function(x){
         mandatory <- if (x$mandatory) "*" else ""
         limits <- sprintf("[%s]", paste(x$limit, collapse = ","))
         opts <- switch(x$type,
@@ -285,9 +293,10 @@ rp.label <- function(x, fallback = TRUE, simplify = TRUE){
 #' @param tag.type a character value with tag value name
 #' @param preset a character value specifying which preset to return
 #' @return either a list (default) or a character value with tag regexes
-#' @examples
+#' @examples \dontrun{
 #' get.tags()        # same as 'get.tags("all")'
 #' get.tags("header.open")
+#' }
 #' @export
 get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment.open', 'comment.close'), preset = c('user', 'default')){
 
