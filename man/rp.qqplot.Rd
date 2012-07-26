@@ -23,11 +23,6 @@
   which operates only on a numeric variable with optional
   facet.
 }
-\details{
-  Default parameters are read from \code{options}:
-
-  \itemize{ \item 'style.theme'. }
-}
 \examples{
 \dontrun{
 rp.qqplot(ius2008$age)

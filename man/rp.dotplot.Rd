@@ -3,7 +3,7 @@
 \title{Dotplot}
 \usage{
   rp.dotplot(x, facet = NULL, data = NULL, groups = FALSE,
-    auto.key = FALSE, horizontal = TRUE, ...)
+    horizontal = TRUE, ...)
 }
 \arguments{
   \item{x}{a factor variable}
@@ -14,11 +14,9 @@
   \item{data}{an optional data frame from which the
   variables should be taken}
 
-  \item{horizontal}{see \code{\link{xyplot}}}
-
   \item{groups}{see \code{\link{xyplot}}}
 
-  \item{auto.key}{see \code{\link{xyplot}}}
+  \item{horizontal}{see \code{\link{xyplot}}}
 
   \item{...}{additional parameters to
   \code{\link{dotplot}}}
@@ -26,11 +24,6 @@
 \description{
   This function is a wrapper around \code{\link{dotplot}}
   which operates only on factors with optional facet.
-}
-\details{
-  Default parameters are read from \code{options}:
-
-  \itemize{ \item 'style.theme'. }
 }
 \examples{
 \dontrun{

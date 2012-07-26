@@ -25,11 +25,6 @@
   with custom panel. Only numeric variables are accepted
   with optional facet.
 }
-\details{
-  Default parameters are read from \code{options}:
-
-  \itemize{ \item 'style.theme'. }
-}
 \examples{
 \dontrun{
 a <- aggregate(wt~gear, mtcars, mean)
@@ -40,7 +35,7 @@ rp.lineplot(gear, wt, data=a)
 rp.lineplot(1:length(mtcars$hp), mtcars$hp, facet=mtcars$cyl)
 
 ## advanced usage
-rp.lineplot(partner, age, data = rp.desc('age', 'partner', fn = 'mean', data=ius2008))
+rp.lineplot(partner, age, data = rp.desc('age', 'partner', fn = 'mean', data=ius2008)) ## TODO: fix....
 rp.lineplot(partner, age, gender, data = rp.desc('age', c('gender', 'partner'), fn = 'mean', data=ius2008))
 rp.lineplot(partner, age, groups = gender, data=rp.desc('age', c('gender', 'partner'), fn = 'mean', data = ius2008))
 

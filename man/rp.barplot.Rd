@@ -3,8 +3,7 @@
 \title{Barplot}
 \usage{
   rp.barplot(x, facet = NULL, data = NULL, groups = FALSE,
-    auto.key = FALSE, horizontal = TRUE, percent = FALSE,
-    ...)
+    percent = FALSE, horizontal = TRUE, ...)
 }
 \arguments{
   \item{x}{a numeric variable}
@@ -15,16 +14,14 @@
   \item{data}{an optional data frame from which the
   variables should be taken}
 
-  \item{horizontal}{see \code{\link{xyplot}}}
-
   \item{groups}{see \code{\link{xyplot}}}
 
   \item{percent}{an option to show percentages (100% for a
   category) instead of number of cases. Handy with
-  \code{groups=TRUE}. Default value: FALSE without groups,
-  TRUE with groups.}
+  \code{groups=TRUE}. Default value: \code{FALSE} without
+  groups, \code{TRUE} with groups.}
 
-  \item{auto.key}{see \code{\link{xyplot}}}
+  \item{horizontal}{see \code{\link{xyplot}}}
 
   \item{...}{additional parameters to
   \code{\link{barchart}}}
@@ -32,11 +29,6 @@
 \description{
   This function is a wrapper around \code{\link{barchart}}
   which operates only on factors with optional facet.
-}
-\details{
-  Default parameters are read from \code{options}:
-
-  \itemize{ \item 'style.theme'. }
 }
 \examples{
 \dontrun{

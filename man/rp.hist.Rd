@@ -24,11 +24,6 @@
   which operates only on numeric vectors with optional
   facet.
 }
-\details{
-  Default parameters are read from \code{options}:
-
-  \itemize{ \item 'style.theme'. }
-}
 \examples{
 \dontrun{
 rp.hist(ius2008$edu)

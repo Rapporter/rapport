@@ -22,11 +22,6 @@
   which operates only on numeric variables with optional
   facet.
 }
-\details{
-  Default parameters are read from \code{options}:
-
-  \itemize{ \item 'style.theme'. }
-}
 \examples{
 \dontrun{
 rp.boxplot(ius2008$age)

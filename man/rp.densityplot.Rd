@@ -21,11 +21,6 @@
   \code{\link{densityplot}} which operates only on numeric
   vectors with optional facet.
 }
-\details{
-  Default parameters are read from \code{options}:
-
-  \itemize{ \item 'style.theme'. }
-}
 \examples{
 \dontrun{
 rp.densityplot(ius2008$edu)
