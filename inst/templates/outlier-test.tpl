@@ -20,7 +20,7 @@ head-->
 
 <%=
 set.caption(sprintf('Boxplot: %s', rp.name(var)))
-print(rp.boxplot(var))
+rp.boxplot(var)
 %>
 
 # Lund test

@@ -6,13 +6,11 @@ Packages:       lattice
 Data required:  TRUE
 Example:        rapport("example", ius2008, var='leisure')
                 rapport("example", ius2008, var='leisure', desc=FALSE)
-                rapport("example", ius2008, var='leisure', desc=FALSE, hist=T)
-                rapport("example", ius2008, var='leisure', desc=FALSE, hist=T, theme='Set2')
+                rapport("example", ius2008, var='leisure', desc=FALSE, histogram=T)
 
-var    | *numeric           | Variable    | A numeric variable.
-desc   | TRUE               | Descriptive | Show descriptive statistics of specified variable?
-hist   | FALSE              | Histogram   | Show histogram of specified variable?
-theme  | Set1, Set2, Set3   | Color theme | Color theme of the diagram
+var         | *numeric           | Variable    | A numeric variable.
+desc        | TRUE               | Descriptive | Show descriptive statistics of specified variable?
+histogram   | FALSE              | Histogram   | Show histogram of specified variable?
 head-->
 
 # Début
@@ -41,18 +39,15 @@ sprintf('The 5 highest values are: %s.', p(sort(var, decreasing = TRUE)[1:5]))
 
 <%}%>
 
-<%if (hist) {%>
+<%if (histogram) {%>
 
 ## Histogram
 
 For demonstartion purposes you can find a histogram below:
 
 <%=
-if (hist) {
-    set.caption('A nice histogram')
-    options('style.color.palette' = theme)
-    print(rp.hist(var))
-}
+set.caption('A nice histogram')
+rp.hist(var)
 %>
 
 <%}%>

@@ -73,7 +73,7 @@ There are various plots that can help you decide about the normality of the dist
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
 <%=
-print(rp.hist(var))
+rp.hist(var)
 %>
 
 ## Q-Q Plot
@@ -82,12 +82,12 @@ print(rp.hist(var))
 
 <%=
 if (qq.line){
-   print(qqmath(var, panel=function(x){
+   qqmath(var, panel=function(x){
                panel.qqmath(x)
                panel.qqmathline(x, distribution = qnorm)
-   }, xlab = "Theoretical Quantiles", ylab = "Empirical Quantiles"))
+   }, xlab = "Theoretical Quantiles", ylab = "Empirical Quantiles")
 } else {
-   print(rp.qqplot(var))
+   rp.qqplot(var)
 }
 %>
 
@@ -96,5 +96,5 @@ if (qq.line){
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
 <%=
-print(rp.densityplot(var))
+rp.densityplot(var)
 %>

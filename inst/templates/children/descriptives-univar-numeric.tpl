@@ -26,7 +26,7 @@ rp.desc(rp.name(var), NULL, c('mean', 'sd', 'var'), rp.data)
 
 <%=
 set.caption(sprintf('Histogram: %s', rp.name(var)))
-print(rp.hist(var))
+hist(var)
 %>
 
 It seems that the highest value is <%=rp.max(var)%> which is exactly <%=pander.return(rp.max(var)/rp.min(var))%> times higher than the smallest value (<%=rp.min(var)%>).
