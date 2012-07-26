@@ -53,7 +53,7 @@ if (cor.plot) {
     ## custom panels
     panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...) {
         ## forked from ?pairs
-        usr <- par("usr"); on.exit(par(usr))
+        # usr <- par("usr"); on.exit(par(usr)) # grDevice would be closed anyway
         par(usr = c(0, 1, 0, 1))
         r <- cor(x, y, use = 'complete.obs')
         txt <- format(c(r, 0.123456789), digits = digits)[1]
