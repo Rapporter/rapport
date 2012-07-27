@@ -8,9 +8,10 @@ Example:        rapport('correlations', data=ius2008, vars=c('age', 'edu'))
 		rapport('correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
 		rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
 
-vars            | *numeric[2,50]| Variable              | Numerical variables
-cor.matrix      | TRUE          | Correlation matrix    | Show correlation matrix (numbers)?
-cor.plot        | TRUE          | Scatterplot matrix    | Show scatterplot matrix (image)?
+vars            | *numeric[2,50]| Variable                      | Numerical variables
+cor.matrix      | TRUE          | Correlation matrix            | Show correlation matrix (numbers)?
+cor.plot        | TRUE          | Scatterplot matrix            | Show scatterplot matrix (image)?
+quick.plot      | TRUE          | Using a sample for plotting   | If set to TRUE, the scatterplot matrix will be drawn on a sample size of max. 1000 cases not to render millions of points.
 head-->
 
 # Variable description
@@ -50,12 +51,18 @@ if (cor.matrix) {
 <%=
 if (cor.plot) {
 
+    labels <- lapply(vars, rp.name)
+
+    if (quick.plot)
+        if (nrow(vars) > 1000)
+            vars <- vars[sample(1:nrow(vars), size = 1000), ]
+
     ## custom panels
     panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...) {
+
         ## forked from ?pairs
-        # usr <- par("usr"); on.exit(par(usr)) # grDevice would be closed anyway
         par(usr = c(0, 1, 0, 1))
-        r <- cor(x, y, use = 'complete.obs')
+        r   <- cor(x, y, use = 'complete.obs')
         txt <- format(c(r, 0.123456789), digits = digits)[1]
         txt <- paste(prefix, txt, sep = "")
         if(missing(cex.cor))
@@ -64,23 +71,13 @@ if (cor.plot) {
         Signif <- symnum(test$p.value, corr = FALSE, na = FALSE,
                          cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
                          symbols = c("***", "**", "*", ".", " "))
-
         text(0.5, 0.5, txt, cex = cex * abs(r) * 1.5)
         text(.8, .8, Signif, cex = cex, col = 2)
     }
-    panel.hist <- function(x, ...) {
-        ## forked from ?pairs
-        usr <- par("usr"); on.exit(par(usr))
-        par(usr = c(usr[1:2], 0, 1.5) )
-        h <- hist(x, plot = FALSE)
-        breaks <- h$breaks; nB <- length(breaks)
-        y <- h$counts; y <- y/max(y)
-        rect(breaks[-nB], 0, breaks[-1], y, col="cyan", ...)
-    }
 
     ## plot
-    set.caption('Scatterplot matrix')
-    pairs(vars, lower.panel = 'panel.smooth', upper.panel = 'panel.cor', labels = lapply(vars, rp.name))
+    set.caption(sprintf('Scatterplot matrix%s', ifelse(quick.plot, ' (based on a sample size of 1000)', '')))
+    pairs(vars, lower.panel = 'panel.smooth', upper.panel = 'panel.cor', labels = labels)
 
 }
 %>
