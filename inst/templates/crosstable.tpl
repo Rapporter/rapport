@@ -23,14 +23,18 @@ Two variables specified:
 # Counts
 
 <%=
-set.caption('Counted values')
-table		<- table(row, col, deparse.level = 0)
+table		<- table(row, col, deparse.level = 0, useNA = 'ifany')
+if (length(which(is.na(rownames(table)))) > 0)
+    rownames(table)[which(is.na(rownames(table)))] <- 'Missing'
+if (length(which(is.na(colnames(table)))) > 0)
+    colnames(table)[which(is.na(colnames(table)))] <- 'Missing'
 fulltable	<- addmargins(table)
 # fulltable.nrow  <- nrow(fulltable)
 # fulltable.ncol  <- ncol(fulltable)
 # fulltable[fulltable.nrow, ] <- paste0('**', fulltable[fulltable.nrow, ], '**')
 # rownames(fulltable)[fulltable.nrow] <- paste0('**', rownames(fulltable)[fulltable.nrow], '**')
 # fulltable[1:fulltable.nrow-1, fulltable.ncol] <- paste0('**', fulltable[1:fulltable.nrow-1, fulltable.ncol], '**')
+set.caption('Counted values')
 fulltable
 %>
 
@@ -89,6 +93,7 @@ ifelse(t$p.value < 0.05, sprintf('It seems that a real association can be pointe
 
 <%=
 set.caption('Pearson\'s residuals')
+table		<- table(row, col, deparse.level = 0)
 table.res <- suppressWarnings(CrossTable(table))$chisq$stdres
 table.res <- round(table.res, 2)
 table.res.highlow  <- which(table.res < -2 | table.res > 2, arr.ind = TRUE)
