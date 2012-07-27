@@ -18,18 +18,46 @@ head-->
 
 <%=length(vars)%> variables provided.
 
-<%=cm <- cor(vars, use = 'complete.obs');diag(cm) <- NA
+<%=
+cm <- cor(vars, use = 'complete.obs')
+diag(cm) <- NA
 %>
 
 <%if (length(vars) >2 ) {%>
-The highest correlation coefficient (<%pander.return(max(cm, na.rm=T))%>) is between <%=p(row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2])%> and the lowest (<%=pander.return(min(cm, na.rm=T))%>) is between <%=p(row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2])%>. It seems that the strongest association (r=<%=pander.return(cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1])%>) is between <%=p(row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2])%>.
+The highest correlation coefficient (<%=max(cm, na.rm=T)%>) is between <%=row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2]%> and the lowest (<%=min(cm, na.rm=T)%>) is between <%=row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2]%>. It seems that the strongest association (r=<%=cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1]%>) is between <%=row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2]%>.
 <%}%>
 
-Highly correlated (r < -0.7 or r > 0.7) variables: <%=cm[lower.tri(cm)] <- NA; l <- row.names(cm)[which((cm > 0.7) | (cm < -0.7), arr.ind=T)]; ifelse(length(l) == 0, '-', '')%>
-<%=ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), p), collapse=''), '')%>
+<%
+cm[upper.tri(cm)] <- NA
+h <- which((cm > 0.7) | (cm < -0.7), arr.ind=T)
+if (nrow(h) > 0) {
+%>
 
-Uncorrelated (-0.2 < r < 0.2) variables: <%=l <- row.names(cm)[which((cm < 0.2)&(cm > -0.2), arr.ind=T)]; ifelse(length(l) == 0, '-', '')%>
-<%=ifelse(length(l) > 0, paste('\n *', lapply(split(l, 1:(length(l)/2)), p), collapse=''), '')%>
+Highly correlated (r < -0.7 or r > 0.7) variables:
+
+<%=paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i,1]], colnames(cm)[h[i,2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')%>
+
+<%} else {%>
+
+There are no highly correlated (r < -0.7 or r > 0.7) variables.
+<%}%>
+
+<%
+h <- which((cm < 0.2)&(cm > -0.2), arr.ind=T)
+if (nrow(h) > 0) {
+%>
+
+Uncorrelated (-0.2 < r < 0.2) variables:
+
+<%=
+if (nrow(h) > 0)
+    paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i,1]], colnames(cm)[h[i,2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')
+%>
+
+<%} else {%>
+
+There are no uncorrelated correlated (r < -0.2 or r > 0.2) variables.
+<%}%>
 
 ## <%=if (cor.matrix) 'Correlation matrix'%>
 
@@ -41,9 +69,10 @@ if (cor.matrix) {
     for (row in attr(cm, 'dimnames')[[1]])
 	for (col in attr(cm, 'dimnames')[[2]]) {
 	    test.p <- cor.test(vars[, row], vars[, col])$p.value
-	    cm[row, col] <- paste(cm[row, col], ' ', ifelse(test.p > 0.05, '', ifelse(test.p > 0.01, ' *', ifelse(test.p > 0.001, ' * *', ' * * *'))), sep='')
+	    cm[row, col] <- paste(cm[row, col], ' ', ifelse(test.p > 0.05, '', ifelse(test.p > 0.01, ' ★', ifelse(test.p > 0.001, ' ★★', ' ★★★'))), sep='')
 	}
     diag(cm) <- ''
+    set.alignment('centre', 'right')
     as.data.frame(cm)
 }
 %>
