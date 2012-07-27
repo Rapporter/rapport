@@ -48,6 +48,8 @@ if (cor.matrix) {
 }
 %>
 
+Where the stars represent the [significance levels](http://en.wikipedia.org/wiki/Statistical_significance) of the bivariate correlation coefficients: one star for `0.05`, two for `0.01` and three  for `0.001`.
+
 <%=
 if (cor.plot) {
 
