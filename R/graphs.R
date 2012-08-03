@@ -1,62 +1,5 @@
 ## functions for easy and themed plotting of data
 
-## theme functions
-
-#' Color palettes
-#'
-#' This function returns a given number of color codes from given palette from \code{\link{RColorBrewer}}. Besides those falling back to \code{'default'}: a color-blind-friendly palette from \url{http://jfly.iam.u-tokyo.ac.jp/color/}.
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'style.color.palette',
-#'     \item 'style.colorize'.
-#' }
-#' @param num number of colors to return
-#' @param palette a palette name from \code{\link{RColorBrewer}} or 'default'
-#' @param colorize if set colors are chosen from palette at random order
-#' @export
-#' @examples {
-#' rp.palette()
-#' rp.palette(1)
-#' rp.palette(1, colorize = TRUE)
-#' rp.palette(5, 'Greens')
-#' rp.palette(5, 'Greens', colorize = TRUE)
-#' }
-rp.palette <- function(num, palette=getOption('style.color.palette'), colorize=getOption('style.colorize')) {
-
-    if (!(palette %in% c(row.names(brewer.pal.info), 'default')))
-        stop('Wrong palette provided.')
-
-    if (missing(num))
-        num <- ifelse(palette == 'default', 8, brewer.pal.info[palette,'maxcolors'])
-
-    if (any(!is.numeric(num), (length(num)>1)))
-        stop('Wrong number of colors provided.')
-
-    if (palette=='default') {
-
-        if (num > 8)
-            stop('Maximum number of colors (8) with chosen palette is lower then provided.')
-
-        cols <- c("#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999", "#E69F00")
-
-        } else {
-
-            if (num > brewer.pal.info[palette,'maxcolors']) stop(paste('Maximum number of colors (', brewer.pal.info[palette, "maxcolors"], ') with chosen palette is lower then provided (', num, ').', sep=''))
-            ## ugly hack to be able to return colors from palettes with higher minimum 'n' requirement
-            if (num < 3) n <- 3
-            cols <- brewer.pal(brewer.pal.info[palette,'maxcolors'], palette)
-        }
-
-    if (colorize == TRUE)
-        cols <- sample(cols)
-
-    return(cols[1:num])
-
-}
-
-
 #' Input cheks (internal)
 #'
 #' Internal function used by eg. \code{rp.histogram}.
@@ -300,9 +243,9 @@ rp.dotplot <- function(x, facet = NULL, data = NULL, groups = FALSE, horizontal 
 
     if (!missing(data)) {
         if (missing(facet))
-            rp.dotplot(x = eval(mc$x, data), groups = groups, auto.key = auto.key, ...)
+            rp.dotplot(x = eval(mc$x, data), groups = groups, horizontal = horizontal, ...)
         else
-            rp.dotplot(x = eval(mc$x, data), facet = eval(mc$facet, data), groups = groups, auto.key = auto.key, horizontal = horizontal, ...)
+            rp.dotplot(x = eval(mc$x, data), facet = eval(mc$facet, data), groups = groups, horizontal = horizontal, ...)
 
     } else {
 

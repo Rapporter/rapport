@@ -22,20 +22,8 @@
 #'     \item \code{rp.file.path}: a directory where generated images and exported documents would take place.
 #'     \item By default \code{\link{rapport}} function saves plots to image files (see the settings in \code{evalsOptions()}) and \code{print} method just shows the path(s) of the generated image(s). If you would like to see the plot(s) when calling \code{\link{rapport}} function from an interactive R console, please set \code{evalsOptions('graph.recordplot')} and \code{graph.replay} options to \code{TRUE} beforehand. In that case all generated plots will be displayed after printing the \code{rapport} object. These options are set to \code{FALSE} by default although we find these settings really handy, as you can resize the images on the fly and export resized images to HTML/ODT/DOCX/PDF etc. If you would even like to save the actual environment of each generated plot (variables, data sets etc.) as an \code{RData} file, please set \code{evalsOptions('graph.env')} to \code{TRUE}.
 #'     \item \code{\link{rapport}} also has some options to set formatting style of numbers, characters and dates specified in \code{panderOptions()}
-#'     \item the exported graphs can be customised via following options:
-#'     \itemize{
-#'         \item The most basic option is \code{style.theme} which points to a \code{\link{lattice}}/\code{trellis} theme, and uses default \emph{rapport} theme: \code{\link{theme.rapport}}. If you do not like this minimalistic bluish theme, you might reconsider using e.g. \code{standard.theme()} from \code{lattice}, \code{ggplot2like()} or \code{theEconomist.theme()} themes available in \code{latticeExtra} package or either \code{custom.theme.black()} from \code{latticist} package. Of course, custom theme might be provided too - check out the \code{?custom.theme} from \code{latticeExtra} package or head directly to: \code{\link{trellis.par.get}}.
-#'         \item \code{theme.rapport} can deal with a great number of colour palettes. By default it uses \code{default} theme specified in \code{style.color.palette} option, which is both print and colourblind-friendly palette (visit \url{http://jfly.iam.u-tokyo.ac.jp/color/} for details). Of course, other palettes can be specified there, just check out \code{\link{brewer.pal.info}}. If you would like to get really colourful plots, you might consider setting \code{style.colorize} option to \code{TRUE} as it will choose random colours from a given palette for each plot.
-#'         \item By default \code{\link{rapport}} tries to generate images with Helvetica font family as it's a neat, OS independent font. If you don't like that, you can change the \code{style.font} option. Note that you might need to set the font family afterwards, especially on Windows machines (see \code{windowsFonts} for details).
-#'         \item While the most graph functions in \emph{rapport} can "decide" if showing a grid in the background is a good idea or not, there is a global option for all other graph functions: \code{graph.grid}. It is possible to render a grid for both axes (\code{"both"}) or separate axes only (\code{"x"} or \code{"y"}). \code{"none"} results in a blank background.
-#'         \item The plots are saved to disk with \code{\link{rapport}} function, and the resulting files can be customised with several options in \code{evalsOptions()}.
-#'         \item And there are also other options (e.g. affecting the cache), for full details check out:
-#'         \itemize{
-#'              \item \code{panderOptions()},
-#'              \item \code{evalsOptions()}
-#' }
-#'     }
-#' }
+#'     \item the exported graphs can be customised via further \code{panderOptions}
+#'}
 #' @docType package
 #' @importFrom reshape melt melt.data.frame melt.table cast
 #' @importFrom RColorBrewer brewer.pal brewer.pal.info
