@@ -21,7 +21,9 @@
     options('tpl.paths' = NULL)
 
     ## pander options
-    evalsOptions('graph.unify', TRUE)
+    eO  <- getOption('evals')
+    eO$graph.unify <- TRUE
+    options('evals' = eO)
 
     ## image format/envir settings
     options('graph.replay'        = FALSE) # TODO: fix on Win platform!
