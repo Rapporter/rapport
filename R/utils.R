@@ -210,6 +210,35 @@ stopf <- function(s, ...){
 }
 
 
+#' Send Warning with String Interpolated Messages
+#'
+#' Combines \code{warning} with \code{sprintf} thus allowing string interpolated warnings.
+#' @param s a character vector of format strings
+#' @param ... values to be interpolated
+#' @examples \dontrun{
+#' warningf("%.3f is not larger than %d and/or smaller than %d", pi, 10, 40)
+#' }
+#' @export
+warningf <- function(s, ...){
+    warning(sprintf(s, ...))
+}
+
+
+#' Send Message with String Interpolated Messages
+#'
+#' Combines \code{warning} with \code{sprintf} thus allowing string interpolated diagnostic messages.
+#' @param s a character vector of format strings
+#' @param ... values to be interpolated
+#' @examples \dontrun{
+#' messagef("%.3f is not larger than %d and/or smaller than %d", pi, 10, 40)
+#' }
+#' @export
+messagef <- function(s, ...){
+    message(sprintf(s, ...))
+}
+
+
+
 #' Empty Value
 #'
 #' Rails-inspired helper that checks if vector values are "empty", i.e. if it's of \code{NULL}, \code{NA}, \code{NaN}, \code{FALSE}, empty string or \code{0}. Note that unlike its `is.` siblings, `is.empty` is vectorised.

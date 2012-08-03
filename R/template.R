@@ -320,25 +320,34 @@ tpl.inputs <- function(fp, use.header = TRUE){
 
     chk.fn <- function(x, nms){
 
-        re.lbl <- '^[[:print:]][^\\|]+$' # variable text (for label & description)
-
+        i.name  <- x[1]
+        i.type  <- x[2]
+        i.label <- x[3]
+        i.desc  <- x[4]
+        
+        re.lbl <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
+        
         ## 1st: check variable name
         ## must begin with a letter, and can continue either with a letter or a digit, separated either by underscore or dot, e.g. 'var.90', or 'v90_alpha'.
-        if (!check.name(x[1]))
-            stopf('invalid input name: "%s"', x[1])
+        if (!check.name(i.name))
+            stopf('invalid input name: "%s"', i.name)
 
         ## 2nd: check/get type
-        var.type <- check.type(x[2])
+        var.type <- check.type(i.type)
 
         ## 3rd: check label
-        if (!grepl(re.lbl, x[3]))
-            stopf('invalid input label: "%s"', x[2])
+        if (nchar(i.label) < 1)
+            warningf('label string for input "%s" was not provided', i.name)
+        if (!grepl(re.lbl, i.label))
+            stopf('invalid input label: "%s"', i.type)
 
         ## 4th: check description
-        if (!grepl(re.lbl, x[4]))
-            stopf('invalid input description: "%s"', x[4])
+        if (nchar(i.desc) < 1)
+            warningf('description string for input "%s" was not provided', i.desc)
+        if (!grepl(re.lbl, i.desc))
+            stopf('invalid input description: "%s"', i.desc)
 
-        c(name = x[1], label = x[3], var.type, desc = x[4])
+        c(name = i.name, label = i.label, var.type, desc = i.desc)
     }
 
     inputs <- lapply(inputs.raw, chk.fn)

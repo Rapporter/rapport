@@ -423,11 +423,11 @@ pct <- function(x, digits = panderOptions('digits'), type = c('percent', '%', 'p
 #' @param ... additional parameters for \code{grepl} function
 #' @return a list with matched content, or \code{NULL} if the field is not required
 #' @examples \dontrun{
-#'     extract_meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#'     rapport:::extract_meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
 #'     ## $name
 #'     ## [1] "John Smith"
 #'
-#'     extract_meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#'     rapport:::extract_meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
 #'     ## $name
 #'     ## [1] "John"
 #' }
@@ -473,7 +473,7 @@ extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
 #'
 #' Checks package-specific naming conventions: variables should start by a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.
 #' @param x a character vector to test names
-#' @param size an integer value that indicates maximum name length
+#' @param max.size an integer value that indicates maximum name length
 #' @param ... additional arguments to be passed to \code{\link{grepl}} function
 #' @return a logical vector indicating which values satisfy the naming conventions
 #' @examples
@@ -486,15 +486,14 @@ extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
 #' check.name("_asdf")             # [1] FALSE
 #' check.name(".foo")              # [1] FALSE
 #' @export
-check.name <- function(x, size = 30L, ...){
+check.name <- function(x, min.size = 1L, max.size = 30L, ...){
 
     re.name <- '^[[:alpha:]]+(([[:digit:]]+)?((\\.|_)?[[:alnum:]]+)+)?$'
-    len <- nchar(x) < size
+    len <- nchar(x)
+    if (len < min.size || len > max.size)
+        warningf('input name has %d, and should have at least %d and at most %d characters', len, min.size, max.size)
 
-    if (any(!len))
-        warning('following variable names exceed maximum length: ', paste(x[!len], collapse = ','))
-
-    grepl(re.name, x) & len
+    grepl(re.name, x)
 }
 
 

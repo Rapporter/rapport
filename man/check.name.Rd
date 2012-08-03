@@ -2,13 +2,13 @@
 \alias{check.name}
 \title{Naming Conventions}
 \usage{
-  check.name(x, size = 30L, ...)
+  check.name(x, min.size = 1L, max.size = 30L, ...)
 }
 \arguments{
   \item{x}{a character vector to test names}
 
-  \item{size}{an integer value that indicates maximum name
-  length}
+  \item{max.size}{an integer value that indicates maximum
+  name length}
 
   \item{...}{additional arguments to be passed to
   \code{\link{grepl}} function}

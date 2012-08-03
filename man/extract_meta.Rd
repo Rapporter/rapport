@@ -44,11 +44,11 @@
 }
 \examples{
 \dontrun{
-    extract_meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+    rapport:::extract_meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
     ## $name
     ## [1] "John Smith"
 
-    extract_meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+    rapport:::extract_meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
     ## $name
     ## [1] "John"
 }
