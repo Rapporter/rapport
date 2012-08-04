@@ -6,14 +6,16 @@ Several [predefined templates](http://rapport-package.info#templates ) come bund
 
 ## Installation
 
-Currently, this package is hosted only on [GitHub](https://github.com/aL3xa/rapport/), but it will be submitted to [CRAN](cran.r-project.org) once in reaches v. 0.2 (hopefully soon, meanwhile you can check [our progress](https://github.com/aL3xa/rapport/issues?milestone=1&state=open)). Until then, you can install it via nifty function from `devtools` package:
+The most recent version of this package is hosted on [GitHub](https://github.com/rapporter/rapport), but we also submit stable versions to [CRAN](cran.r-project.org) from time to time (read:  once in a blue moon).
+
+We encourage everyone to install `rapport` via the nifty function from `devtools` package:
 
 ```
 library(devtools)
-install_github('rapport', 'aL3xa')
+install_github('rapport', 'rapporter')
 ```
 
-Or download the [sources in a zip file](https://github.com/aL3xa/rapport/zipball/master) and build manually. To do so, please unzip the file to an empty dir and run the following commands there:
+Or download the [sources in a zip file](https://github.com/rapporter/rapport/zipball/master) and build manually. To do so, please unzip the file to an empty dir and run the following commands there:
 
 ```
 R CMD build rapport
