@@ -364,11 +364,8 @@ get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment
 #' @param comment.open a string containing opening tag
 #' @param comment.close a string containing closing tag
 #' @return a string with removed pandoc comments
-#' @export
 purge.comments <- function(x, comment.open = get.tags('comment.open'), comment.close = get.tags('comment.close')){
-
     stopifnot(is.string(x))
-    ## long live greedy quantifier modifier!!!
     sub(sprintf('%s.*?%s', comment.open, comment.close), '', x)
 }
 
@@ -473,19 +470,19 @@ extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
 #'
 #' Checks package-specific naming conventions: variables should start by a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.
 #' @param x a character vector to test names
+#' @param min.size an integer value that indicates minimum name length
 #' @param max.size an integer value that indicates maximum name length
 #' @param ... additional arguments to be passed to \code{\link{grepl}} function
 #' @return a logical vector indicating which values satisfy the naming conventions
 #' @examples
-#' check.name("foo")               # [1] TRUE
-#' check.name("foo.bar")           # [1] TRUE
-#' check.name("foo_bar")           # [1] TRUE
-#' check.name("foo.bar.234")       # [1] TRUE
-#' check.name("foo.bar.234_asdf")  # [1] TRUE
-#' check.name("234.asdf")          # [1] FALSE
-#' check.name("_asdf")             # [1] FALSE
-#' check.name(".foo")              # [1] FALSE
-#' @export
+#' rapport:::check.name("foo")               # [1] TRUE
+#' rapport:::check.name("foo.bar")           # [1] TRUE
+#' rapport:::check.name("foo_bar")           # [1] TRUE
+#' rapport:::check.name("foo.bar.234")       # [1] TRUE
+#' rapport:::check.name("foo.bar.234_asdf")  # [1] TRUE
+#' rapport:::check.name("234.asdf")          # [1] FALSE
+#' rapport:::check.name("_asdf")             # [1] FALSE
+#' rapport:::check.name(".foo")              # [1] FALSE
 check.name <- function(x, min.size = 1L, max.size = 30L, ...){
 
     re.name <- '^[[:alpha:]]+(([[:digit:]]+)?((\\.|_)?[[:alnum:]]+)+)?$'

@@ -7,6 +7,9 @@
 \arguments{
   \item{x}{a character vector to test names}
 
+  \item{min.size}{an integer value that indicates minimum
+  name length}
+
   \item{max.size}{an integer value that indicates maximum
   name length}
 
@@ -24,13 +27,13 @@
   underscores.
 }
 \examples{
-check.name("foo")               # [1] TRUE
-check.name("foo.bar")           # [1] TRUE
-check.name("foo_bar")           # [1] TRUE
-check.name("foo.bar.234")       # [1] TRUE
-check.name("foo.bar.234_asdf")  # [1] TRUE
-check.name("234.asdf")          # [1] FALSE
-check.name("_asdf")             # [1] FALSE
-check.name(".foo")              # [1] FALSE
+rapport:::check.name("foo")               # [1] TRUE
+rapport:::check.name("foo.bar")           # [1] TRUE
+rapport:::check.name("foo_bar")           # [1] TRUE
+rapport:::check.name("foo.bar.234")       # [1] TRUE
+rapport:::check.name("foo.bar.234_asdf")  # [1] TRUE
+rapport:::check.name("234.asdf")          # [1] FALSE
+rapport:::check.name("_asdf")             # [1] FALSE
+rapport:::check.name(".foo")              # [1] FALSE
 }
 
