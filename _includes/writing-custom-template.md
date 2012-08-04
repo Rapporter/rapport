@@ -1,4 +1,4 @@
-Writing a custom _rapport_ template or modifying an existing one is not trickier than writing an ordinary statistical report. It requires some basic **R** skills, and an familiarity with _rapport_ input specifications that we're about to cover thoroughly. Of course, sophisticated reports would require more proficiency in **R**.
+Writing a custom _rapport_ template or modifying an existing one is not trickier than writing an ordinary statistical report. It requires some basic **R** skills, and a familiarity with _rapport_ input specifications that we're about to cover thoroughly. Of course, sophisticated reports would require more proficiency in **R**.
 
 #### Input Header
 
@@ -75,3 +75,7 @@ Now we'll make a little digression and talk about **input limits**. You may have
 ##### Input Label and Description
 
 Third block in input definition is an input label. While _variable_ can have its own label (see `rp.label`), you may want to use the one defined in input specifications. At last, fourth block contains input description, which should be a lengthy description of current input. Just to remind you - all fields in input specification are mandatory. You can cheat, though, by providing `.` or something like that as input label and/or description, but please don't do that unless you're testing the template. Labels and descriptions are meant to be informative.
+
+#### Body
+
+The body of the template uses `brew` syntax with a forked back-end, please check out [pander's documentation](http://rapporter.github.com/pander/#brew-to-pandoc) for details.

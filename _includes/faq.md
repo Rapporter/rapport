@@ -36,15 +36,15 @@ Read sections on [usage](#usage) and/or [writing custom templates](#custom).
 ... : error running command
 {% endhighlight %}
 
-Yup, that is the normal behaviour if you do not have a [pandoc](http://johnmacfarlane.net/pandoc/index.html) backend installed. Please read the [manual](#install)!
+Yup, that is the normal behaviour if you do not have [Pandoc](http://johnmacfarlane.net/pandoc/index.html) installed. Please read the [manual](#install)!
 
 #### I found a bug. What should I do?
 
-Please join our [discussion list](#discuss) or [file an issue on Github](https://github.com/aL3xa/rapport/issues) tagged as `bug`!
+Please join our [discussion list](#discuss) or [file an issue on Github](https://github.com/rapporter/rapport/issues) tagged as `bug`!
 
 #### I have a really cool idea about this package. Are you interested?
 
-Hell yeah! Please join our [discussion list](#discuss) or [file an issue about your idea on Github](https://github.com/aL3xa/rapport/issues) tagged as `feature`, we will be really interested to check it out.
+Hell yeah! Please join our [discussion list](#discuss) or [file an issue about your idea on Github](https://github.com/rapporter/rapport/issues) tagged as `feature`, we will be really interested to check it out.
 
 #### Can I use this package for academic/commercial/any other purpose?
 
@@ -66,7 +66,7 @@ It is based on a theory behind *rapport*: you can define a function at any part 
 
 #### OK, I understand, but I have a really handy function which should be added to *rapport*!
 
-We'd be glad to incorporate it in our webapp, please [file an issue about your idea on Github](https://github.com/aL3xa/rapport/issues) tagged as `feature`. Or write your own package submitted to [CRAN](http://cran.r-project.org) and please attract our attention to add that package to our [required or suggested package list](https://github.com/aL3xa/rapport/blob/master/DESCRIPTION).
+We'd be glad to incorporate it in our package, please [file an issue about your idea on Github](https://github.com/rapporter/rapport/issues) tagged as `feature`. Or write your own package submitted to [CRAN](http://cran.r-project.org) and please attract our attention to add that package to our [required or suggested package list](https://github.com/rapporter/rapport/blob/master/DESCRIPTION).
 
 #### HTML template exports have ugly fonts in Firefox, but not in other browsers. What's the catch?
 
@@ -80,21 +80,12 @@ Set it to `false` (by double-clicking on it) and refresh the page (you may want 
 
 #### I'm trying to produce those fancy _HTML_ tables you have in _rapport_. Any tips on how to do that? (Q of _Roman Luštrik_)
 
-Sure, just put a piece of code that returns a `data.frame` object in a _block chunk_ (not an _inline chunk_), and it will be converted to HTML table once you export it. Put something like this in your `.tpl` file:
+Sure, just put a piece of code that returns a `data.frame` object in a _chunk_, and it will be converted to HTML table once you export it. Put something like this in your `.tpl` file:
 
 {% highlight r %}
-<%
+<%=
 rp.desc("edu", "student", c(min, max, mean, sd), ius2008)
 %>
 {% endhighlight %}
 
-and run `tpl.export(rapport(<file path>, <data>, <inputs>))`. Note however, that only the last non-assigning statement will be evaluated:
-
-{% highlight r %}
-<%
-head(mtcars)
-rp.desc("edu", "student", c(min, max, mean, sd), ius2008)
-%>
-{% endhighlight %}
-
-as this will return same output as the previous chunk.
+and run `tpl.export(rapport(<file path>, <data>, <inputs>))`.
