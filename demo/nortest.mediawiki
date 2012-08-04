@@ -1,289 +1,283 @@
-== Description ==
-
-Overview of several normality tests and diagnostic plots that can screen departures from normality.
-
-== Introduction ==
-
-In statistics, ''normality'' refers to an assumption that the distribution of a random variable follows ''normal'' (''Gaussian'') distribution. Because of its bell-like shape, it's also known as the ''&quot;bell curve&quot;''. The formula for ''normal distribution'' is:
-
-<math>f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}</math>
-
-''Normal distribution'' belongs to a ''location-scale family'' of distributions, as it's defined two parameters:
-
-* ''μ'' - ''mean'' or ''expectation'' (location parameter)
-* ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
-
-[[tmp/RtmpI5pYwT/file3861b538-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
-
-== Normality Tests ==
-
-=== Overview ===
-
-Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is ''normal''. At this point only few such tests will be covered: the ones that are available in <tt>stats</tt> package (which comes bundled with default R installation) and <tt>nortest</tt> package that is [http://cran.r-project.org/web/packages/nortest/index.html available] on CRAN.
-
-* '''Shapiro-Wilk test''' is a powerful normality test appropriate for small samples. In R, it's implemented in <tt>shapiro.test</tt> function available in <tt>stats</tt> package.
-* '''Lilliefors test''' is a modification of ''Kolmogorov-Smirnov test'' appropriate for testing normality when parameters or normal distribution (''μ'', ''σ<sup>2</sup>'') are not known. <tt>lillie.test</tt> function is located in <tt>nortest</tt> package.
-* '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <tt>ad.test</tt> function in <tt>nortest</tt> package.
-* '''Pearson Χ<sup>2</sup> test''' is another normality test which takes more &quot;traditional&quot; approach in normality testing. <tt>pearson.test</tt> is located in <tt>nortest</tt> package.
-
-=== Results ===
-
-Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
-
-<!-- endlist -->
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Normality Tests" />
+  <title>Rapport package team</title>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Normality Tests</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#normality-tests">Normality Tests</a><ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#results">Results</a></li>
+</ul></li>
+<li><a href="#diagnostic-plots">Diagnostic Plots</a><ul>
+<li><a href="#histogram">Histogram</a></li>
+<li><a href="#q-q-plot">Q-Q Plot</a></li>
+<li><a href="#kernel-density-plot">Kernel Density Plot</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#introduction-1">Introduction</a></li>
+<li><a href="#normality-tests-1">Normality Tests</a><ul>
+<li><a href="#overview-1">Overview</a></li>
+<li><a href="#results-1">Results</a></li>
+</ul></li>
+<li><a href="#diagnostic-plots-1">Diagnostic Plots</a><ul>
+<li><a href="#histogram-1">Histogram</a></li>
+<li><a href="#q-q-plot-1">Q-Q Plot</a></li>
+<li><a href="#kernel-density-plot-1">Kernel Density Plot</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#introduction-2">Introduction</a></li>
+<li><a href="#normality-tests-2">Normality Tests</a><ul>
+<li><a href="#overview-2">Overview</a></li>
+<li><a href="#results-2">Results</a></li>
+</ul></li>
+<li><a href="#diagnostic-plots-2">Diagnostic Plots</a><ul>
+<li><a href="#histogram-2">Histogram</a></li>
+<li><a href="#q-q-plot-2">Q-Q Plot</a></li>
+<li><a href="#kernel-density-plot-2">Kernel Density Plot</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#TOC">Description</a></h2>
+<p>Overview of several normality tests and diagnostic plots that can screen departures from normality.</p>
+<h3 id="introduction"><a href="#TOC">Introduction</a></h3>
+<p>In statistics, <em>normality</em> refers to an assumption that the distribution of a random variable follows <em>normal</em> (<em>Gaussian</em>) distribution. Because of its bell-like shape, it's also known as the <em>&quot;bell curve&quot;</em>. The formula for <em>normal distribution</em> is:</p>
+<p><br /><span class="math">$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$</span><br /></p>
+<p><em>Normal distribution</em> belongs to a <em>location-scale family</em> of distributions, as it's defined two parameters:</p>
+<ul>
+<li><em>μ</em> - <em>mean</em> or <em>expectation</em> (location parameter)</li>
+<li><em>σ<sup>2</sup></em> - <em>variance</em> (scale parameter)</li>
+</ul>
+<p><a href="plots/nortest-1-hires.png"><img src="plots/nortest-1.png" /></a></p>
+<h3 id="normality-tests"><a href="#TOC">Normality Tests</a></h3>
+<h4 id="overview"><a href="#TOC">Overview</a></h4>
+<p>Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is <em>normal</em>. At this point only few such tests will be covered: the ones that are available in <code>stats</code> package (which comes bundled with default R installation) and <code>nortest</code> package that is <a href="http://cran.r-project.org/web/packages/nortest/index.html">available</a> on CRAN.</p>
+<ul>
+<li><strong>Shapiro-Wilk test</strong> is a powerful normality test appropriate for small samples. In R, it's implemented in <code>shapiro.test</code> function available in <code>stats</code> package.</li>
+<li><strong>Lilliefors test</strong> is a modification of <em>Kolmogorov-Smirnov test</em> appropriate for testing normality when parameters or normal distribution (<em>μ</em>, <em>σ<sup>2</sup></em>) are not known. <code>lillie.test</code> function is located in <code>nortest</code> package.</li>
+<li><strong>Anderson-Darling test</strong> is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <code>ad.test</code> function in <code>nortest</code> package.</li>
+<li><strong>Pearson Χ<sup>2</sup> test</strong> is another normality test which takes more &quot;traditional&quot; approach in normality testing. <code>pearson.test</code> is located in <code>nortest</code> package.</li>
+</ul>
+<h4 id="results"><a href="#TOC">Results</a></h4>
+<p>Here you can see the results of applied normality tests (<em>p-values</em> less than 0.05 indicate significant discrepancies):</p>
 <table>
+<col width="40%" />
+<col width="16%" />
+<col width="12%" />
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="left">'''Statistic'''</th>
-<th align="left">'''p-value'''</th>
+<th align="left">Method</th>
+<th align="left">Statistic</th>
+<th align="left">p-value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
-<td align="left">0</td>
+<td align="left">1.617e-20</td>
 </tr>
 <tr class="even">
 <td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
-<td align="left">0.168</td>
-<td align="left">0</td>
+<td align="left">0.1680</td>
+<td align="left">3.000e-52</td>
 </tr>
 <tr class="odd">
 <td align="left">Anderson-Darling normality test</td>
-<td align="left">18.753</td>
-<td align="left">0</td>
+<td align="left">18.7530</td>
+<td align="left">7.261e-44</td>
 </tr>
 <tr class="even">
 <td align="left">Pearson chi-square normality test</td>
-<td align="left">1791.25</td>
-<td align="left">0</td>
+<td align="left">1791.2500</td>
+<td align="left">0.000e+00</td>
 </tr>
 </tbody>
 </table>
-
-So, let's draw some conclusions based on applied normality test:
-
-* according to ''Shapiro-Wilk test'', the distribution of ''Internet usage in leisure time (hours per day)'' is not normal.
-* based on ''Lilliefors test'', distribution of ''Internet usage in leisure time (hours per day)'' is not normal
-* ''Anderson-Darling test'' confirms violation of normality assumption
-* ''Pearson's Χ<sup>2</sup> test'' classifies the underlying distribution as normal
-
-== Diagnostic Plots ==
-
-There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: ''histogram'', ''Q-Q plot'' and ''kernel density plot''.
-
-=== Histogram ===
-
-''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
-
-[[tmp/RtmpI5pYwT/file7ff04be5-hires.png|[[Image:a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
-
-=== Q-Q Plot ===
-
-&quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
-
-[[tmp/RtmpI5pYwT/file79fc58c-hires.png|[[Image:eecb9a780afd4dd0de9737991e467a6e.png]]]]
-
-=== Kernel Density Plot ===
-
-''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
-
-[[tmp/RtmpI5pYwT/file3a089403-hires.png|[[Image:d6afe5eede3603d041ec8dd001c5280d.png]]]]
-
-== Description ==
-
-Overview of several normality tests and diagnostic plots that can screen departures from normality.
-
-== Introduction ==
-
-In statistics, ''normality'' refers to an assumption that the distribution of a random variable follows ''normal'' (''Gaussian'') distribution. Because of its bell-like shape, it's also known as the ''&quot;bell curve&quot;''. The formula for ''normal distribution'' is:
-
-<math>f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}</math>
-
-''Normal distribution'' belongs to a ''location-scale family'' of distributions, as it's defined two parameters:
-
-* ''μ'' - ''mean'' or ''expectation'' (location parameter)
-* ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
-
-== Normality Tests ==
-
-=== Overview ===
-
-Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is ''normal''. At this point only few such tests will be covered: the ones that are available in <tt>stats</tt> package (which comes bundled with default R installation) and <tt>nortest</tt> package that is [http://cran.r-project.org/web/packages/nortest/index.html available] on CRAN.
-
-* '''Shapiro-Wilk test''' is a powerful normality test appropriate for small samples. In R, it's implemented in <tt>shapiro.test</tt> function available in <tt>stats</tt> package.
-* '''Lilliefors test''' is a modification of ''Kolmogorov-Smirnov test'' appropriate for testing normality when parameters or normal distribution (''μ'', ''σ<sup>2</sup>'') are not known. <tt>lillie.test</tt> function is located in <tt>nortest</tt> package.
-* '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <tt>ad.test</tt> function in <tt>nortest</tt> package.
-* '''Pearson Χ<sup>2</sup> test''' is another normality test which takes more &quot;traditional&quot; approach in normality testing. <tt>pearson.test</tt> is located in <tt>nortest</tt> package.
-
-=== Results ===
-
-Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
-
-<!-- endlist -->
-
+<p>So, let's draw some conclusions based on applied normality test:</p>
+<ul>
+<li>according to <em>Shapiro-Wilk test</em>, the distribution of <em>Internet usage in leisure time (hours per day)</em> is normal.</li>
+<li>based on <em>Lilliefors test</em>, distribution of <em>Internet usage in leisure time (hours per day)</em> is not normal</li>
+<li><em>Anderson-Darling test</em> confirms normality assumption</li>
+<li><em>Pearson's Χ<sup>2</sup> test</em> classifies the underlying distribution as non-normal</li>
+</ul>
+<h3 id="diagnostic-plots"><a href="#TOC">Diagnostic Plots</a></h3>
+<p>There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: <em>histogram</em>, <em>Q-Q plot</em> and <em>kernel density plot</em>.</p>
+<h4 id="histogram"><a href="#TOC">Histogram</a></h4>
+<p><em>Histogram</em> was first introduced by <em>Karl Pearson</em> and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.</p>
+<p><a href="plots/example-1-hires.png"><img src="plots/example-1.png" alt="A nice histogram" /></a></p>
+<h4 id="q-q-plot"><a href="#TOC">Q-Q Plot</a></h4>
+<p>&quot;Q&quot; in <em>Q-Q plot</em> stands for <em>quantile</em>, as this plot compares empirical and theoretical distribution (in this case, <em>normal</em> distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <code>x = y</code> line.</p>
+<p><a href="plots/nortest-2-hires.png"><img src="plots/nortest-2.png" /></a></p>
+<h4 id="kernel-density-plot"><a href="#TOC">Kernel Density Plot</a></h4>
+<p><em>Kernel density plot</em> is a plot of smoothed <em>empirical distribution function</em>. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.</p>
+<p><a href="plots/nortest-3-hires.png"><img src="plots/nortest-3.png" /></a></p>
+<h2 id="description-1"><a href="#TOC">Description</a></h2>
+<p>Overview of several normality tests and diagnostic plots that can screen departures from normality.</p>
+<h3 id="introduction-1"><a href="#TOC">Introduction</a></h3>
+<p>In statistics, <em>normality</em> refers to an assumption that the distribution of a random variable follows <em>normal</em> (<em>Gaussian</em>) distribution. Because of its bell-like shape, it's also known as the <em>&quot;bell curve&quot;</em>. The formula for <em>normal distribution</em> is:</p>
+<p><br /><span class="math">$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$</span><br /></p>
+<p><em>Normal distribution</em> belongs to a <em>location-scale family</em> of distributions, as it's defined two parameters:</p>
+<ul>
+<li><em>μ</em> - <em>mean</em> or <em>expectation</em> (location parameter)</li>
+<li><em>σ<sup>2</sup></em> - <em>variance</em> (scale parameter)</li>
+</ul>
+<h3 id="normality-tests-1"><a href="#TOC">Normality Tests</a></h3>
+<h4 id="overview-1"><a href="#TOC">Overview</a></h4>
+<p>Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is <em>normal</em>. At this point only few such tests will be covered: the ones that are available in <code>stats</code> package (which comes bundled with default R installation) and <code>nortest</code> package that is <a href="http://cran.r-project.org/web/packages/nortest/index.html">available</a> on CRAN.</p>
+<ul>
+<li><strong>Shapiro-Wilk test</strong> is a powerful normality test appropriate for small samples. In R, it's implemented in <code>shapiro.test</code> function available in <code>stats</code> package.</li>
+<li><strong>Lilliefors test</strong> is a modification of <em>Kolmogorov-Smirnov test</em> appropriate for testing normality when parameters or normal distribution (<em>μ</em>, <em>σ<sup>2</sup></em>) are not known. <code>lillie.test</code> function is located in <code>nortest</code> package.</li>
+<li><strong>Anderson-Darling test</strong> is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <code>ad.test</code> function in <code>nortest</code> package.</li>
+<li><strong>Pearson Χ<sup>2</sup> test</strong> is another normality test which takes more &quot;traditional&quot; approach in normality testing. <code>pearson.test</code> is located in <code>nortest</code> package.</li>
+</ul>
+<h4 id="results-1"><a href="#TOC">Results</a></h4>
+<p>Here you can see the results of applied normality tests (<em>p-values</em> less than 0.05 indicate significant discrepancies):</p>
 <table>
+<col width="40%" />
+<col width="16%" />
+<col width="12%" />
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="left">'''Statistic'''</th>
-<th align="left">'''p-value'''</th>
+<th align="left">Method</th>
+<th align="left">Statistic</th>
+<th align="left">p-value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
-<td align="left">0</td>
+<td align="left">1.617e-20</td>
 </tr>
 <tr class="even">
 <td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
-<td align="left">0.168</td>
-<td align="left">0</td>
+<td align="left">0.1680</td>
+<td align="left">3.000e-52</td>
 </tr>
 <tr class="odd">
 <td align="left">Anderson-Darling normality test</td>
-<td align="left">18.753</td>
-<td align="left">0</td>
+<td align="left">18.7530</td>
+<td align="left">7.261e-44</td>
 </tr>
 <tr class="even">
 <td align="left">Pearson chi-square normality test</td>
-<td align="left">1791.25</td>
-<td align="left">0</td>
+<td align="left">1791.2500</td>
+<td align="left">0.000e+00</td>
 </tr>
 </tbody>
 </table>
-
-So, let's draw some conclusions based on applied normality test:
-
-* according to ''Shapiro-Wilk test'', the distribution of ''Internet usage in leisure time (hours per day)'' is not normal.
-* based on ''Lilliefors test'', distribution of ''Internet usage in leisure time (hours per day)'' is not normal
-* ''Anderson-Darling test'' confirms violation of normality assumption
-* ''Pearson's Χ<sup>2</sup> test'' classifies the underlying distribution as normal
-
-== Diagnostic Plots ==
-
-There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: ''histogram'', ''Q-Q plot'' and ''kernel density plot''.
-
-=== Histogram ===
-
-''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
-
-[[tmp/RtmpI5pYwT/file6113ee71-hires.png|[[Image:a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
-
-=== Q-Q Plot ===
-
-&quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
-
-[[tmp/RtmpI5pYwT/file6f55adad-hires.png|[[Image:eecb9a780afd4dd0de9737991e467a6e.png]]]]
-
-=== Kernel Density Plot ===
-
-''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
-
-[[tmp/RtmpI5pYwT/file5321dd00-hires.png|[[Image:f97c1f6e5897d555baf02b977276ccfe.png]]]]
-
-== Description ==
-
-Overview of several normality tests and diagnostic plots that can screen departures from normality.
-
-== Introduction ==
-
-In statistics, ''normality'' refers to an assumption that the distribution of a random variable follows ''normal'' (''Gaussian'') distribution. Because of its bell-like shape, it's also known as the ''&quot;bell curve&quot;''. The formula for ''normal distribution'' is:
-
-<math>f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}</math>
-
-''Normal distribution'' belongs to a ''location-scale family'' of distributions, as it's defined two parameters:
-
-* ''μ'' - ''mean'' or ''expectation'' (location parameter)
-* ''σ<sup>2</sup>'' - ''variance'' (scale parameter)
-
-[[tmp/RtmpI5pYwT/file78fd1e0b-hires.png|[[Image:806ea97c59e1a12d4acae4968957aaa9.png]]]]
-
-== Normality Tests ==
-
-=== Overview ===
-
-Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is ''normal''. At this point only few such tests will be covered: the ones that are available in <tt>stats</tt> package (which comes bundled with default R installation) and <tt>nortest</tt> package that is [http://cran.r-project.org/web/packages/nortest/index.html available] on CRAN.
-
-* '''Shapiro-Wilk test''' is a powerful normality test appropriate for small samples. In R, it's implemented in <tt>shapiro.test</tt> function available in <tt>stats</tt> package.
-* '''Lilliefors test''' is a modification of ''Kolmogorov-Smirnov test'' appropriate for testing normality when parameters or normal distribution (''μ'', ''σ<sup>2</sup>'') are not known. <tt>lillie.test</tt> function is located in <tt>nortest</tt> package.
-* '''Anderson-Darling test''' is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <tt>ad.test</tt> function in <tt>nortest</tt> package.
-* '''Pearson Χ<sup>2</sup> test''' is another normality test which takes more &quot;traditional&quot; approach in normality testing. <tt>pearson.test</tt> is located in <tt>nortest</tt> package.
-
-=== Results ===
-
-Here you can see the results of applied normality tests (''p-values'' less than 0.05 indicate significant discrepancies):
-
-<!-- endlist -->
-
+<p>So, let's draw some conclusions based on applied normality test:</p>
+<ul>
+<li>according to <em>Shapiro-Wilk test</em>, the distribution of <em>Internet usage in leisure time (hours per day)</em> is normal.</li>
+<li>based on <em>Lilliefors test</em>, distribution of <em>Internet usage in leisure time (hours per day)</em> is not normal</li>
+<li><em>Anderson-Darling test</em> confirms normality assumption</li>
+<li><em>Pearson's Χ<sup>2</sup> test</em> classifies the underlying distribution as non-normal</li>
+</ul>
+<h3 id="diagnostic-plots-1"><a href="#TOC">Diagnostic Plots</a></h3>
+<p>There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: <em>histogram</em>, <em>Q-Q plot</em> and <em>kernel density plot</em>.</p>
+<h4 id="histogram-1"><a href="#TOC">Histogram</a></h4>
+<p><em>Histogram</em> was first introduced by <em>Karl Pearson</em> and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.</p>
+<p><a href="plots/example-1-hires.png"><img src="plots/example-1.png" alt="A nice histogram" /></a></p>
+<h4 id="q-q-plot-1"><a href="#TOC">Q-Q Plot</a></h4>
+<p>&quot;Q&quot; in <em>Q-Q plot</em> stands for <em>quantile</em>, as this plot compares empirical and theoretical distribution (in this case, <em>normal</em> distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <code>x = y</code> line.</p>
+<p><a href="plots/nortest-4-hires.png"><img src="plots/nortest-4.png" /></a></p>
+<h4 id="kernel-density-plot-1"><a href="#TOC">Kernel Density Plot</a></h4>
+<p><em>Kernel density plot</em> is a plot of smoothed <em>empirical distribution function</em>. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.</p>
+<p><a href="plots/nortest-3-hires.png"><img src="plots/nortest-3.png" /></a></p>
+<h2 id="description-2"><a href="#TOC">Description</a></h2>
+<p>Overview of several normality tests and diagnostic plots that can screen departures from normality.</p>
+<h3 id="introduction-2"><a href="#TOC">Introduction</a></h3>
+<p>In statistics, <em>normality</em> refers to an assumption that the distribution of a random variable follows <em>normal</em> (<em>Gaussian</em>) distribution. Because of its bell-like shape, it's also known as the <em>&quot;bell curve&quot;</em>. The formula for <em>normal distribution</em> is:</p>
+<p><br /><span class="math">$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$</span><br /></p>
+<p><em>Normal distribution</em> belongs to a <em>location-scale family</em> of distributions, as it's defined two parameters:</p>
+<ul>
+<li><em>μ</em> - <em>mean</em> or <em>expectation</em> (location parameter)</li>
+<li><em>σ<sup>2</sup></em> - <em>variance</em> (scale parameter)</li>
+</ul>
+<p><a href="plots/nortest-1-hires.png"><img src="plots/nortest-1.png" /></a></p>
+<h3 id="normality-tests-2"><a href="#TOC">Normality Tests</a></h3>
+<h4 id="overview-2"><a href="#TOC">Overview</a></h4>
+<p>Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H<sub>0</sub> that provided variable's distribution is <em>normal</em>. At this point only few such tests will be covered: the ones that are available in <code>stats</code> package (which comes bundled with default R installation) and <code>nortest</code> package that is <a href="http://cran.r-project.org/web/packages/nortest/index.html">available</a> on CRAN.</p>
+<ul>
+<li><strong>Shapiro-Wilk test</strong> is a powerful normality test appropriate for small samples. In R, it's implemented in <code>shapiro.test</code> function available in <code>stats</code> package.</li>
+<li><strong>Lilliefors test</strong> is a modification of <em>Kolmogorov-Smirnov test</em> appropriate for testing normality when parameters or normal distribution (<em>μ</em>, <em>σ<sup>2</sup></em>) are not known. <code>lillie.test</code> function is located in <code>nortest</code> package.</li>
+<li><strong>Anderson-Darling test</strong> is one of the most powerful normality tests as it will detect the most of departures from normality. You can find <code>ad.test</code> function in <code>nortest</code> package.</li>
+<li><strong>Pearson Χ<sup>2</sup> test</strong> is another normality test which takes more &quot;traditional&quot; approach in normality testing. <code>pearson.test</code> is located in <code>nortest</code> package.</li>
+</ul>
+<h4 id="results-2"><a href="#TOC">Results</a></h4>
+<p>Here you can see the results of applied normality tests (<em>p-values</em> less than 0.05 indicate significant discrepancies):</p>
 <table>
+<col width="40%" />
+<col width="16%" />
+<col width="12%" />
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="left">'''Statistic'''</th>
-<th align="left">'''p-value'''</th>
+<th align="left">Method</th>
+<th align="left">Statistic</th>
+<th align="left">p-value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">Shapiro-Wilk normality test</td>
 <td align="left">0.9001</td>
-<td align="left">0</td>
+<td align="left">1.617e-20</td>
 </tr>
 <tr class="even">
 <td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
-<td align="left">0.168</td>
-<td align="left">0</td>
+<td align="left">0.1680</td>
+<td align="left">3.000e-52</td>
 </tr>
 <tr class="odd">
 <td align="left">Anderson-Darling normality test</td>
-<td align="left">18.753</td>
-<td align="left">0</td>
+<td align="left">18.7530</td>
+<td align="left">7.261e-44</td>
 </tr>
 <tr class="even">
 <td align="left">Pearson chi-square normality test</td>
-<td align="left">1791.25</td>
-<td align="left">0</td>
+<td align="left">1791.2500</td>
+<td align="left">0.000e+00</td>
 </tr>
 </tbody>
 </table>
-
-So, let's draw some conclusions based on applied normality test:
-
-* according to ''Shapiro-Wilk test'', the distribution of ''Internet usage in leisure time (hours per day)'' is not normal.
-* based on ''Lilliefors test'', distribution of ''Internet usage in leisure time (hours per day)'' is not normal
-* ''Anderson-Darling test'' confirms violation of normality assumption
-* ''Pearson's Χ<sup>2</sup> test'' classifies the underlying distribution as normal
-
-== Diagnostic Plots ==
-
-There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: ''histogram'', ''Q-Q plot'' and ''kernel density plot''.
-
-=== Histogram ===
-
-''Histogram'' was first introduced by ''Karl Pearson'' and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.
-
-[[tmp/RtmpI5pYwT/file133cae47-hires.png|[[Image:a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
-
-=== Q-Q Plot ===
-
-&quot;Q&quot; in ''Q-Q plot'' stands for ''quantile'', as this plot compares empirical and theoretical distribution (in this case, ''normal'' distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <tt>x = y</tt> line.
-
-[[tmp/RtmpI5pYwT/file7165e0e9-hires.png|[[Image:95d42d4d0934008cfa630e1c4523e09a.png]]]]
-
-=== Kernel Density Plot ===
-
-''Kernel density plot'' is a plot of smoothed ''empirical distribution function''. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.
-
-[[tmp/RtmpI5pYwT/file6253aa40-hires.png|[[Image:73a741791c399acd94fdfb544c213fb4.png]]]]
-
-
------
-
-This report was generated with [http://www.r-project.org/ R] (2.14.0) and [http://al3xa.github.com/rapport/ rapport] (0.2) in 3.355 sec on x86_64-unknown-linux-gnu platform.
-
-[[Image:images/logo.png|frame|none]]
+<p>So, let's draw some conclusions based on applied normality test:</p>
+<ul>
+<li>according to <em>Shapiro-Wilk test</em>, the distribution of <em>Internet usage in leisure time (hours per day)</em> is normal.</li>
+<li>based on <em>Lilliefors test</em>, distribution of <em>Internet usage in leisure time (hours per day)</em> is not normal</li>
+<li><em>Anderson-Darling test</em> confirms normality assumption</li>
+<li><em>Pearson's Χ<sup>2</sup> test</em> classifies the underlying distribution as non-normal</li>
+</ul>
+<h3 id="diagnostic-plots-2"><a href="#TOC">Diagnostic Plots</a></h3>
+<p>There are various plots that can help you decide about the normality of the distribution. Only a few most commonly used plots will be shown: <em>histogram</em>, <em>Q-Q plot</em> and <em>kernel density plot</em>.</p>
+<h4 id="histogram-2"><a href="#TOC">Histogram</a></h4>
+<p><em>Histogram</em> was first introduced by <em>Karl Pearson</em> and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the &quot;bell-like&quot; shape.</p>
+<p><a href="plots/example-1-hires.png"><img src="plots/example-1.png" alt="A nice histogram" /></a></p>
+<h4 id="q-q-plot-2"><a href="#TOC">Q-Q Plot</a></h4>
+<p>&quot;Q&quot; in <em>Q-Q plot</em> stands for <em>quantile</em>, as this plot compares empirical and theoretical distribution (in this case, <em>normal</em> distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a &quot;straight&quot;, <code>x = y</code> line.</p>
+<p><a href="plots/nortest-5-hires.png"><img src="plots/nortest-5.png" /></a></p>
+<h4 id="kernel-density-plot-2"><a href="#TOC">Kernel Density Plot</a></h4>
+<p><em>Kernel density plot</em> is a plot of smoothed <em>empirical distribution function</em>. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known &quot;bell shape&quot;.</p>
+<p><a href="plots/nortest-3-hires.png"><img src="plots/nortest-3.png" /></a></p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="http://rapport-package.info/">rapport</a> (0.4) in <em>1.872</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" /><p class="caption"></p>
+</div>
+</body>
+</html>

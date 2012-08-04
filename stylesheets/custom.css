@@ -52,6 +52,20 @@ code {
     padding: 0 5px;
 }
 
+pre code {
+    border: none;
+    background-color: transparent;   
+    padding: 0px;
+}
+
+pre {
+    background-color: #F5F5F5;
+    border: solid 1px #DDD;
+    padding: 5px;
+    margin: 0 0 20px;
+    overflow: auto;
+}
+
 nav {
     height: 85%;
     overflow: auto;
@@ -69,8 +83,67 @@ nav a:hover {
     color: #0099D9;
 }
 
+
+/* Captions */
+caption, p.caption {
+    text-align: center;
+    font-style: italic;
+}
+
+
+/* Figure centering */
+div.figure {
+    text-align: center;
+    overflow: auto;
+}
+
+div.figure img {
+    margin: 0 auto;
+}
+
+div.figure p.caption {
+    margin: 15px 0 0 0;
+}
+
+
+/* Nested navigation */
+
+/* this shouldn't happen, but still... */
+.nnav-1 {
+    display: none;              /* a bit radical approach*/
+}
+
+.nnav-2 {
+    padding: 0;
+}
+
+.nnav-3 {
+    margin: -10px 0 12px;
+    padding: 0 0 0 10px;
+}
+
+.nnav-4 {
+    margin: -10px 0 12px;
+    padding: 0 0 0 20px;
+}
+
+.nnav-5 {
+    margin: -10px 0 12px;
+    padding: 0 0 0 30px;
+}
+
+.nnav-6 {
+    margin: -10px 0 12px;
+    padding: 0 0 0 40px;
+}
+
 #logo {
-    margin: 10px 0 20px;
+    margin: 20px 0;
+}
+
+.noimg-link {
+    font-size: 2em;
+    font-weight: bold;
 }
 
 ul.tabs li {
@@ -97,14 +170,25 @@ ul.tabs li a.active {
 
 
 /* Table styling */
+.table-container {
+    margin: 0 0 20px 0;
+    max-height: 500px;
+    overflow: auto;
+    text-align: center;
+    width: 100%;
+}
+
 table {
     background: none repeat scroll 0 0 #0099D9;
-    margin: 0 0 20px 0;
     border-radius: 8px;
+    margin: 0 auto;
+}
+
+table caption {
+    margin: 0 0 15px 0;
 }
 
 th {
-    text-align: left;
     padding: 4px 10px;
 }
 
@@ -127,16 +211,14 @@ td {
 }
 
 
-/* Arglist table */
-table[summary="R argblock"] {
-    min-width: 400px;
+/* Math container */
+.math-container {
+    text-align: center;
 }
 
-table[summary="R argblock"] code {
-    background: inherit;
-    border: none;
+.math-container span.math {
+    margin: 0 auto;
 }
-
 
 /* Mobile */
 

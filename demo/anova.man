@@ -1,766 +1,639 @@
-.\"t
-.TH ANOVA "" "2011-04-26 20:25 CET" "Template"
-.SS Description
-.PP
-An ANOVA report with table of descriptives, diagnostic tests and
-ANOVA-specific statistics.
-.SS Introduction
-.PP
-\f[B]Analysis of Variance\f[] or \f[B]ANOVA\f[] is a statistical
-procedure that tests equality of means for several samples.
-It was first introduced in 1921.
-by famous English statistician Sir Ronald Aylmer Fisher.
-.SS Model Overview
-.PP
-One-Way ANOVA was carried out, with \f[I]Gender\f[] as independent
-variable, and \f[I]Internet usage in leisure time (hours per day)\f[] as
-a response variable.
-Factor interaction was taken into account.
-.SS Descriptives
-.PP
-In order to get more insight on the model data, a table of frequencies
-for ANOVA factors is displayed, as well as a table of descriptives.
-.SS Frequency Table
-.PP
-Below lies a frequency table for factors in ANOVA model.
-Note that the missing values are removed from the summary.
-.PP
-.TS
-tab(@);
-l l l l l.
-T{
-\f[B]gender\f[]
-T}@T{
-\f[B]N\f[]
-T}@T{
-\f[B]%\f[]
-T}@T{
-\f[B]Cumul. N\f[]
-T}@T{
-\f[B]Cumul. %\f[]
-T}
-_
-T{
-male
-T}@T{
-410
-T}@T{
-60.9212
-T}@T{
-410
-T}@T{
-60.9212
-T}
-T{
-female
-T}@T{
-263
-T}@T{
-39.0788
-T}@T{
-673
-T}@T{
-100
-T}
-T{
-Total
-T}@T{
-673
-T}@T{
-100
-T}@T{
-673
-T}@T{
-100
-T}
-.TE
-.SS Descriptive Statistics
-.PP
-The following table displays the descriptive statistics of ANOVA model.
-Factor levels and/or their combinations lie on the left hand side, while
-the corresponding statistics for response variable are given on the
-right-hand side.
-.PP
-.TS
-tab(@);
-l l l l l l l l l.
-T{
-\f[B]Gender\f[]
-T}@T{
-\f[B]Min\f[]
-T}@T{
-\f[B]Max\f[]
-T}@T{
-\f[B]Mean\f[]
-T}@T{
-\f[B]Std.Dev.\f[]
-T}@T{
-\f[B]Median\f[]
-T}@T{
-\f[B]IQR\f[]
-T}@T{
-\f[B]Skewness\f[]
-T}@T{
-\f[B]Kurtosis\f[]
-T}
-_
-T{
-male
-T}@T{
-0
-T}@T{
-12
-T}@T{
-3.2699
-T}@T{
-1.9535
-T}@T{
-3
-T}@T{
-3
-T}@T{
-0.9443
-T}@T{
-0.9858
-T}
-T{
-female
-T}@T{
-0
-T}@T{
-12
-T}@T{
-3.0643
-T}@T{
-2.3546
-T}@T{
-2
-T}@T{
-3
-T}@T{
-1.3979
-T}@T{
-1.8696
-T}
-.TE
-.SS Diagnostics
-.PP
-Before we carry out ANOVA, we\[aq]d like to check some basic
-assumptions.
-For those purposes, normality and homoscedascity tests are carried out
-alongside several graphs that may help you with your decision on
-model\[aq]s main assumptions.
-.SS Diagnostics
-.SS Univariate Normality
-.PP
-We will use \f[I]Shapiro-Wilk\f[], \f[I]Lilliefors\f[] and
-\f[I]Anderson-Darling\f[] tests to screen departures from normality in
-the response variable (\f[I]Internet usage in leisure time (hours per
-day)\f[]).
-.PP
-.TS
-tab(@);
-l l l.
-T{
-T}@T{
-\f[B]Statistic\f[]
-T}@T{
-\f[B]p-value\f[]
-T}
-_
-T{
-Shapiro-Wilk normality test
-T}@T{
-0.9001
-T}@T{
-0
-T}
-T{
-Lilliefors (Kolmogorov-Smirnov) normality test
-T}@T{
-0.168
-T}@T{
-0
-T}
-T{
-Anderson-Darling normality test
-T}@T{
-18.753
-T}@T{
-0
-T}
-.TE
-.PP
-As you can see, applied tests confirm departures from normality.
-.SS Homoscedascity
-.PP
-In order to test homoscedascity, \f[I]Bartlett\f[] and
-\f[I]Fligner-Kileen\f[] tests are applied.
-.PP
-.TS
-tab(@);
-l l l.
-T{
-T}@T{
-\f[B]Statistic\f[]
-T}@T{
-\f[B]p-value\f[]
-T}
-_
-T{
-Fligner-Killeen test of homogeneity of variances
-T}@T{
-0.4629
-T}@T{
-0.4963
-T}
-T{
-Bartlett test of homogeneity of variances
-T}@T{
-10.7698
-T}@T{
-0.001
-T}
-.TE
-.PP
-When it comes to equality of variances, applied tests yield inconsistent
-results.
-While \f[I]Fligner-Kileen test\f[] confirmed the hypotheses of
-homoscedascity, \f[I]Bartlett\[aq]s test\f[] rejected it.
-.SS Diagnostic Plots
-.PP
-Here you can see several diagnostic plots for ANOVA model:
-.IP \[bu] 2
-residuals against fitted values
-.IP \[bu] 2
-scale-location plot of square root of residuals against fitted values
-.IP \[bu] 2
-normal Q-Q plot
-.IP \[bu] 2
-residuals against leverages
-.PP
-[IMAGE: image (dd5cdfe79c3741b4373910424cb2824c.png)] (dd5cdfe79c3741b4373910424cb2824c-hires.png)
-.SS ANOVA Summary
-.SS ANOVA Table
-.PP
-.TS
-tab(@);
-l l l l l l.
-T{
-T}@T{
-\f[B]Df\f[]
-T}@T{
-\f[B]Sum.Sq\f[]
-T}@T{
-\f[B]Mean.Sq\f[]
-T}@T{
-\f[B]F.value\f[]
-T}@T{
-\f[B]Pr..F.\f[]
-T}
-_
-T{
-gender
-T}@T{
-1
-T}@T{
-6.4217
-T}@T{
-6.4217
-T}@T{
-1.4302
-T}@T{
-0.2322
-T}
-T{
-Residuals
-T}@T{
-636
-T}@T{
-2855.63
-T}@T{
-4.49
-T}@T{
-T}@T{
-T}
-.TE
-.PP
-\f[I]F-test\f[] for \f[I]Gender\f[] is not statistically significant,
-which implies that there is no Gender effect on response variable.
-.SS Description
-.PP
-An ANOVA report with table of descriptives, diagnostic tests and
-ANOVA-specific statistics.
-.SS Introduction
-.PP
-\f[B]Analysis of Variance\f[] or \f[B]ANOVA\f[] is a statistical
-procedure that tests equality of means for several samples.
-It was first introduced in 1921.
-by famous English statistician Sir Ronald Aylmer Fisher.
-.SS Model Overview
-.PP
-Two-Way ANOVA was carried out, with \f[I]Gender\f[] and
-\f[I]Relationship status\f[] as independent variables, and \f[I]Internet
-usage in leisure time (hours per day)\f[] as a response variable.
-Factor interaction was taken into account.
-.SS Descriptives
-.PP
-In order to get more insight on the model data, a table of frequencies
-for ANOVA factors is displayed, as well as a table of descriptives.
-.SS Frequency Table
-.PP
-Below lies a frequency table for factors in ANOVA model.
-Note that the missing values are removed from the summary.
-.PP
-.TS
-tab(@);
-l l l l l l.
-T{
-\f[B]gender\f[]
-T}@T{
-\f[B]partner\f[]
-T}@T{
-\f[B]N\f[]
-T}@T{
-\f[B]%\f[]
-T}@T{
-\f[B]Cumul. N\f[]
-T}@T{
-\f[B]Cumul. %\f[]
-T}
-_
-T{
-male
-T}@T{
-in a relationship
-T}@T{
-150
-T}@T{
-23.6967
-T}@T{
-150
-T}@T{
-23.6967
-T}
-T{
-female
-T}@T{
-in a relationship
-T}@T{
-120
-T}@T{
-18.9573
-T}@T{
-270
-T}@T{
-42.654
-T}
-T{
-male
-T}@T{
-married
-T}@T{
-33
-T}@T{
-5.2133
-T}@T{
-303
-T}@T{
-47.8673
-T}
-T{
-female
-T}@T{
-married
-T}@T{
-29
-T}@T{
-4.5814
-T}@T{
-332
-T}@T{
-52.4487
-T}
-T{
-male
-T}@T{
-single
-T}@T{
-204
-T}@T{
-32.2275
-T}@T{
-536
-T}@T{
-84.6761
-T}
-T{
-female
-T}@T{
-single
-T}@T{
-97
-T}@T{
-15.3239
-T}@T{
-633
-T}@T{
-100
-T}
-T{
-Total
-T}@T{
-Total
-T}@T{
-633
-T}@T{
-100
-T}@T{
-633
-T}@T{
-100
-T}
-.TE
-.SS Descriptive Statistics
-.PP
-The following table displays the descriptive statistics of ANOVA model.
-Factor levels and/or their combinations lie on the left hand side, while
-the corresponding statistics for response variable are given on the
-right-hand side.
-.PP
-.TS
-tab(@);
-l l l l l l l l l l.
-T{
-\f[B]Gender\f[]
-T}@T{
-\f[B]Relationship status\f[]
-T}@T{
-\f[B]Min\f[]
-T}@T{
-\f[B]Max\f[]
-T}@T{
-\f[B]Mean\f[]
-T}@T{
-\f[B]Std.Dev.\f[]
-T}@T{
-\f[B]Median\f[]
-T}@T{
-\f[B]IQR\f[]
-T}@T{
-\f[B]Skewness\f[]
-T}@T{
-\f[B]Kurtosis\f[]
-T}
-_
-T{
-male
-T}@T{
-in a relationship
-T}@T{
-0.5
-T}@T{
-12
-T}@T{
-3.0582
-T}@T{
-1.9692
-T}@T{
-2.5
-T}@T{
-2
-T}@T{
-1.3239
-T}@T{
-2.6488
-T}
-T{
-male
-T}@T{
-married
-T}@T{
-0
-T}@T{
-8
-T}@T{
-2.9848
-T}@T{
-2.029
-T}@T{
-3
-T}@T{
-2
-T}@T{
-0.862
-T}@T{
-0.1509
-T}
-T{
-male
-T}@T{
-single
-T}@T{
-0
-T}@T{
-10
-T}@T{
-3.5027
-T}@T{
-1.9361
-T}@T{
-3
-T}@T{
-3
-T}@T{
-0.7574
-T}@T{
-0.0875
-T}
-T{
-female
-T}@T{
-in a relationship
-T}@T{
-0.5
-T}@T{
-10
-T}@T{
-3.0439
-T}@T{
-2.2158
-T}@T{
-3
-T}@T{
-3
-T}@T{
-1.3833
-T}@T{
-1.8306
-T}
-T{
-female
-T}@T{
-married
-T}@T{
-0
-T}@T{
-10
-T}@T{
-2.4808
-T}@T{
-1.9671
-T}@T{
-2
-T}@T{
-1.75
-T}@T{
-2.0626
-T}@T{
-5.5858
-T}
-T{
-female
-T}@T{
-single
-T}@T{
-0
-T}@T{
-12
-T}@T{
-3.3226
-T}@T{
-2.6791
-T}@T{
-3
-T}@T{
-3.5
-T}@T{
-1.1851
-T}@T{
-0.9281
-T}
-.TE
-.SS Diagnostics
-.PP
-Before we carry out ANOVA, we\[aq]d like to check some basic
-assumptions.
-For those purposes, normality and homoscedascity tests are carried out
-alongside several graphs that may help you with your decision on
-model\[aq]s main assumptions.
-.SS Diagnostics
-.SS Univariate Normality
-.PP
-We will use \f[I]Shapiro-Wilk\f[], \f[I]Lilliefors\f[] and
-\f[I]Anderson-Darling\f[] tests to screen departures from normality in
-the response variable (\f[I]Internet usage in leisure time (hours per
-day)\f[]).
-.PP
-.TS
-tab(@);
-l l l.
-T{
-T}@T{
-\f[B]Statistic\f[]
-T}@T{
-\f[B]p-value\f[]
-T}
-_
-T{
-Shapiro-Wilk normality test
-T}@T{
-0.9001
-T}@T{
-0
-T}
-T{
-Lilliefors (Kolmogorov-Smirnov) normality test
-T}@T{
-0.168
-T}@T{
-0
-T}
-T{
-Anderson-Darling normality test
-T}@T{
-18.753
-T}@T{
-0
-T}
-.TE
-.PP
-As you can see, applied tests confirm departures from normality.
-.SS Homoscedascity
-.PP
-In order to test homoscedascity, \f[I]Bartlett\f[] and
-\f[I]Fligner-Kileen\f[] tests are applied.
-.PP
-.TS
-tab(@);
-l l l.
-T{
-T}@T{
-\f[B]Statistic\f[]
-T}@T{
-\f[B]p-value\f[]
-T}
-_
-T{
-Fligner-Killeen test of homogeneity of variances
-T}@T{
-1.1234
-T}@T{
-0.2892
-T}
-T{
-Bartlett test of homogeneity of variances
-T}@T{
-11.1267
-T}@T{
-0.0009
-T}
-.TE
-.PP
-When it comes to equality of variances, applied tests yield inconsistent
-results.
-While \f[I]Fligner-Kileen test\f[] confirmed the hypotheses of
-homoscedascity, \f[I]Bartlett\[aq]s test\f[] rejected it.
-.SS Diagnostic Plots
-.PP
-Here you can see several diagnostic plots for ANOVA model:
-.IP \[bu] 2
-residuals against fitted values
-.IP \[bu] 2
-scale-location plot of square root of residuals against fitted values
-.IP \[bu] 2
-normal Q-Q plot
-.IP \[bu] 2
-residuals against leverages
-.PP
-[IMAGE: image (3e897b547f80202649804e256107f6e0.png)] (3e897b547f80202649804e256107f6e0-hires.png)
-.SS ANOVA Summary
-.SS ANOVA Table
-.PP
-.TS
-tab(@);
-l l l l l l.
-T{
-T}@T{
-\f[B]Df\f[]
-T}@T{
-\f[B]Sum.Sq\f[]
-T}@T{
-\f[B]Mean.Sq\f[]
-T}@T{
-\f[B]F.value\f[]
-T}@T{
-\f[B]Pr..F.\f[]
-T}
-_
-T{
-gender
-T}@T{
-1
-T}@T{
-4.9473
-T}@T{
-4.9473
-T}@T{
-1.0853
-T}@T{
-0.2979
-T}
-T{
-partner
-T}@T{
-2
-T}@T{
-31.2124
-T}@T{
-15.6062
-T}@T{
-3.4237
-T}@T{
-0.0332
-T}
-T{
-gender:partner
-T}@T{
-2
-T}@T{
-3.0375
-T}@T{
-1.5188
-T}@T{
-0.3332
-T}@T{
-0.7168
-T}
-T{
-Residuals
-T}@T{
-593
-T}@T{
-2703.0899
-T}@T{
-4.5583
-T}@T{
-T}@T{
-T}
-.TE
-.PP
-\f[I]F-test\f[] for \f[I]Gender\f[] is not statistically significant,
-which implies that there is no Gender effect on response variable.
-Effect of \f[I]Relationship status\f[] on response variable is
-significant.
-Interaction between levels of \f[I]Gender\f[] and \f[I]Relationship
-status\f[] wasn\[aq]t found significant (p = 0.717).
-.PP
-   *   *   *   *   *
-.PP
-This report was generated with R (http://www.r-project.org/) (2.14.0)
-and rapport (http://al3xa.github.com/rapport/) (0.2) in 1.82 sec on
-x86_64-unknown-linux-gnu platform.
-.PP
-[IMAGE: image (images/logo.png)]
-.SH AUTHORS
-Rapport package team \@ https://github.com/aL3xa/rapport.
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="ANOVA Template" />
+  <title>Rapport package team</title>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">ANOVA Template</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#model-overview">Model Overview</a></li>
+<li><a href="#descriptives">Descriptives</a><ul>
+<li><a href="#frequency-table">Frequency Table</a></li>
+<li><a href="#descriptive-statistics">Descriptive Statistics</a></li>
+</ul></li>
+<li><a href="#diagnostics">Diagnostics</a><ul>
+<li><a href="#diagnostics-1">Diagnostics</a><ul>
+<li><a href="#univariate-normality">Univariate Normality</a></li>
+<li><a href="#homoscedascity">Homoscedascity</a></li>
+</ul></li>
+<li><a href="#diagnostic-plots">Diagnostic Plots</a></li>
+</ul></li>
+<li><a href="#anova-summary">ANOVA Summary</a><ul>
+<li><a href="#anova-table">ANOVA Table</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#introduction-1">Introduction</a></li>
+<li><a href="#model-overview-1">Model Overview</a></li>
+<li><a href="#descriptives-1">Descriptives</a><ul>
+<li><a href="#frequency-table-1">Frequency Table</a></li>
+<li><a href="#descriptive-statistics-1">Descriptive Statistics</a></li>
+</ul></li>
+<li><a href="#diagnostics-2">Diagnostics</a><ul>
+<li><a href="#diagnostics-3">Diagnostics</a><ul>
+<li><a href="#univariate-normality-1">Univariate Normality</a></li>
+<li><a href="#homoscedascity-1">Homoscedascity</a></li>
+</ul></li>
+<li><a href="#diagnostic-plots-1">Diagnostic Plots</a></li>
+</ul></li>
+<li><a href="#anova-summary-1">ANOVA Summary</a><ul>
+<li><a href="#anova-table-1">ANOVA Table</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#TOC">Description</a></h2>
+<p>An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.</p>
+<h3 id="introduction"><a href="#TOC">Introduction</a></h3>
+<p><strong>Analysis of Variance</strong> or <strong>ANOVA</strong> is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921 by famous English statistician Sir Ronald Aylmer Fisher.</p>
+<h3 id="model-overview"><a href="#TOC">Model Overview</a></h3>
+<p>One-Way ANOVA was carried out, with <em>Gender</em> as independent variable, and <em>Internet usage in leisure time (hours per day)</em> as a response variable. Factor interaction was taken into account.</p>
+<h3 id="descriptives"><a href="#TOC">Descriptives</a></h3>
+<p>In order to get more insight on the model data, a table of frequencies for ANOVA factors is displayed, as well as a table of descriptives.</p>
+<h4 id="frequency-table"><a href="#TOC">Frequency Table</a></h4>
+<p>Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.</p>
+<table>
+<col width="12%" />
+<col width="5%" />
+<col width="9%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="left">gender</th>
+<th align="left">N</th>
+<th align="left">%</th>
+<th align="left">Cumul. N</th>
+<th align="left">Cumul. %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">410</td>
+<td align="left">60.92</td>
+<td align="left">410</td>
+<td align="left">60.92</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">263</td>
+<td align="left">39.08</td>
+<td align="left">673</td>
+<td align="left">100.00</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">673</td>
+<td align="left">100.00</td>
+<td align="left">673</td>
+<td align="left">100.00</td>
+</tr>
+</tbody>
+</table>
+<h4 id="descriptive-statistics"><a href="#TOC">Descriptive Statistics</a></h4>
+<p>The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.</p>
+<table>
+<col width="12%" />
+<col width="8%" />
+<col width="8%" />
+<col width="9%" />
+<col width="15%" />
+<col width="12%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="left">Gender</th>
+<th align="left">Min</th>
+<th align="left">Max</th>
+<th align="left">Mean</th>
+<th align="left">Std.Dev.</th>
+<th align="left">Median</th>
+<th align="left">IQR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">0</td>
+<td align="left">12</td>
+<td align="left">3.270</td>
+<td align="left">1.953</td>
+<td align="left">3</td>
+<td align="left">3</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">0</td>
+<td align="left">12</td>
+<td align="left">3.064</td>
+<td align="left">2.355</td>
+<td align="left">2</td>
+<td align="left">3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="left">Skewness</th>
+<th align="left">Kurtosis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0.9443</td>
+<td align="left">0.9858</td>
+</tr>
+<tr class="even">
+<td align="left">1.3979</td>
+<td align="left">1.8696</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagnostics"><a href="#TOC">Diagnostics</a></h3>
+<p>Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.</p>
+<h4 id="diagnostics-1"><a href="#TOC">Diagnostics</a></h4>
+<h5 id="univariate-normality"><a href="#TOC">Univariate Normality</a></h5>
+<p>We will use <em>Shapiro-Wilk</em>, <em>Lilliefors</em> and <em>Anderson-Darling</em> tests to screen departures from normality in the response variable (<em>Internet usage in leisure time (hours per day)</em>).</p>
+<table>
+<col width="38%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left">Method</th>
+<th align="left">Statistic</th>
+<th align="left">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk normality test</td>
+<td align="left">0.9001</td>
+<td align="left">1.617e-20</td>
+</tr>
+<tr class="even">
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="left">0.1680</td>
+<td align="left">3.000e-52</td>
+</tr>
+<tr class="odd">
+<td align="left">Anderson-Darling normality test</td>
+<td align="left">18.7530</td>
+<td align="left">7.261e-44</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, applied tests confirm departures from normality.</p>
+<h5 id="homoscedascity"><a href="#TOC">Homoscedascity</a></h5>
+<p>In order to test homoscedascity, <em>Bartlett</em> and <em>Fligner-Kileen</em> tests are applied.</p>
+<table>
+<col width="40%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left">Method</th>
+<th align="left">Statistic</th>
+<th align="left">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Fligner-Killeen test of homogeneity of variances</td>
+<td align="left">0.4629</td>
+<td align="left">0.496287</td>
+</tr>
+<tr class="even">
+<td align="left">Bartlett test of homogeneity of variances</td>
+<td align="left">10.7698</td>
+<td align="left">0.001032</td>
+</tr>
+</tbody>
+</table>
+<p>When it comes to equality of variances, applied tests yield inconsistent results. While <em>Fligner-Kileen test</em> confirmed the hypotheses of homoscedascity, <em>Bartlett's test</em> rejected it.</p>
+<h4 id="diagnostic-plots"><a href="#TOC">Diagnostic Plots</a></h4>
+<p>Here you can see several diagnostic plots for ANOVA model:</p>
+<ul>
+<li>residuals against fitted values</li>
+<li>scale-location plot of square root of residuals against fitted values</li>
+<li>normal Q-Q plot</li>
+<li>residuals against leverages</li>
+</ul>
+<p><a href="plots/anova-1-hires.png"><img src="plots/anova-1.png" /></a></p>
+<h3 id="anova-summary"><a href="#TOC">ANOVA Summary</a></h3>
+<h4 id="anova-table"><a href="#TOC">ANOVA Table</a></h4>
+<table>
+<col width="22%" />
+<col width="6%" />
+<col width="12%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">Df</th>
+<th align="left">Sum.Sq</th>
+<th align="left">Mean.Sq</th>
+<th align="left">F.value</th>
+<th align="left">Pr..F.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>gender</strong></td>
+<td align="left">1</td>
+<td align="left">6.422</td>
+<td align="left">6.422</td>
+<td align="left">1.43</td>
+<td align="left">0.2322</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Residuals</strong></td>
+<td align="left">636</td>
+<td align="left">2855.630</td>
+<td align="left">4.490</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p><em>F-test</em> for <em>Gender</em> is not statistically significant, which implies that there is no Gender effect on response variable.</p>
+<h2 id="description-1"><a href="#TOC">Description</a></h2>
+<p>An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.</p>
+<h3 id="introduction-1"><a href="#TOC">Introduction</a></h3>
+<p><strong>Analysis of Variance</strong> or <strong>ANOVA</strong> is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921 by famous English statistician Sir Ronald Aylmer Fisher.</p>
+<h3 id="model-overview-1"><a href="#TOC">Model Overview</a></h3>
+<p>Two-Way ANOVA was carried out, with <em>Gender</em> and <em>Relationship status</em> as independent variables, and <em>Internet usage in leisure time (hours per day)</em> as a response variable. Factor interaction was taken into account.</p>
+<h3 id="descriptives-1"><a href="#TOC">Descriptives</a></h3>
+<p>In order to get more insight on the model data, a table of frequencies for ANOVA factors is displayed, as well as a table of descriptives.</p>
+<h4 id="frequency-table-1"><a href="#TOC">Frequency Table</a></h4>
+<p>Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.</p>
+<table>
+<col width="12%" />
+<col width="25%" />
+<col width="5%" />
+<col width="11%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="left">gender</th>
+<th align="left">partner</th>
+<th align="left">N</th>
+<th align="left">%</th>
+<th align="left">Cumul. N</th>
+<th align="left">Cumul. %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">in a relationship</td>
+<td align="left">150</td>
+<td align="left">23.697</td>
+<td align="left">150</td>
+<td align="left">23.70</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">in a relationship</td>
+<td align="left">120</td>
+<td align="left">18.957</td>
+<td align="left">270</td>
+<td align="left">42.65</td>
+</tr>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">married</td>
+<td align="left">33</td>
+<td align="left">5.213</td>
+<td align="left">303</td>
+<td align="left">47.87</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">married</td>
+<td align="left">29</td>
+<td align="left">4.581</td>
+<td align="left">332</td>
+<td align="left">52.45</td>
+</tr>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">single</td>
+<td align="left">204</td>
+<td align="left">32.227</td>
+<td align="left">536</td>
+<td align="left">84.68</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">single</td>
+<td align="left">97</td>
+<td align="left">15.324</td>
+<td align="left">633</td>
+<td align="left">100.00</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">Total</td>
+<td align="left">633</td>
+<td align="left">100.000</td>
+<td align="left">633</td>
+<td align="left">100.00</td>
+</tr>
+</tbody>
+</table>
+<h4 id="descriptive-statistics-1"><a href="#TOC">Descriptive Statistics</a></h4>
+<p>The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.</p>
+<table>
+<col width="12%" />
+<col width="30%" />
+<col width="8%" />
+<col width="8%" />
+<col width="9%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="left">Gender</th>
+<th align="left">Relationship status</th>
+<th align="left">Min</th>
+<th align="left">Max</th>
+<th align="left">Mean</th>
+<th align="left">Std.Dev.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">in a relationship</td>
+<td align="left">0.5</td>
+<td align="left">12</td>
+<td align="left">3.058</td>
+<td align="left">1.969</td>
+</tr>
+<tr class="even">
+<td align="left">male</td>
+<td align="left">married</td>
+<td align="left">0.0</td>
+<td align="left">8</td>
+<td align="left">2.985</td>
+<td align="left">2.029</td>
+</tr>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">single</td>
+<td align="left">0.0</td>
+<td align="left">10</td>
+<td align="left">3.503</td>
+<td align="left">1.936</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">in a relationship</td>
+<td align="left">0.5</td>
+<td align="left">10</td>
+<td align="left">3.044</td>
+<td align="left">2.216</td>
+</tr>
+<tr class="odd">
+<td align="left">female</td>
+<td align="left">married</td>
+<td align="left">0.0</td>
+<td align="left">10</td>
+<td align="left">2.481</td>
+<td align="left">1.967</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">single</td>
+<td align="left">0.0</td>
+<td align="left">12</td>
+<td align="left">3.323</td>
+<td align="left">2.679</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="12%" />
+<col width="8%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="left">Median</th>
+<th align="left">IQR</th>
+<th align="left">Skewness</th>
+<th align="left">Kurtosis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2.5</td>
+<td align="left">2.00</td>
+<td align="left">1.3239</td>
+<td align="left">2.64881</td>
+</tr>
+<tr class="even">
+<td align="left">3.0</td>
+<td align="left">2.00</td>
+<td align="left">0.8620</td>
+<td align="left">0.15095</td>
+</tr>
+<tr class="odd">
+<td align="left">3.0</td>
+<td align="left">3.00</td>
+<td align="left">0.7574</td>
+<td align="left">0.08749</td>
+</tr>
+<tr class="even">
+<td align="left">3.0</td>
+<td align="left">3.00</td>
+<td align="left">1.3833</td>
+<td align="left">1.83058</td>
+</tr>
+<tr class="odd">
+<td align="left">2.0</td>
+<td align="left">1.75</td>
+<td align="left">2.0626</td>
+<td align="left">5.58575</td>
+</tr>
+<tr class="even">
+<td align="left">3.0</td>
+<td align="left">3.50</td>
+<td align="left">1.1851</td>
+<td align="left">0.92806</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagnostics-2"><a href="#TOC">Diagnostics</a></h3>
+<p>Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.</p>
+<h4 id="diagnostics-3"><a href="#TOC">Diagnostics</a></h4>
+<h5 id="univariate-normality-1"><a href="#TOC">Univariate Normality</a></h5>
+<p>We will use <em>Shapiro-Wilk</em>, <em>Lilliefors</em> and <em>Anderson-Darling</em> tests to screen departures from normality in the response variable (<em>Internet usage in leisure time (hours per day)</em>).</p>
+<table>
+<col width="38%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left">Method</th>
+<th align="left">Statistic</th>
+<th align="left">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk normality test</td>
+<td align="left">0.9001</td>
+<td align="left">1.617e-20</td>
+</tr>
+<tr class="even">
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="left">0.1680</td>
+<td align="left">3.000e-52</td>
+</tr>
+<tr class="odd">
+<td align="left">Anderson-Darling normality test</td>
+<td align="left">18.7530</td>
+<td align="left">7.261e-44</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, applied tests confirm departures from normality.</p>
+<h5 id="homoscedascity-1"><a href="#TOC">Homoscedascity</a></h5>
+<p>In order to test homoscedascity, <em>Bartlett</em> and <em>Fligner-Kileen</em> tests are applied.</p>
+<table>
+<col width="40%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left">Method</th>
+<th align="left">Statistic</th>
+<th align="left">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Fligner-Killeen test of homogeneity of variances</td>
+<td align="left">1.123</td>
+<td align="left">0.2891837</td>
+</tr>
+<tr class="even">
+<td align="left">Bartlett test of homogeneity of variances</td>
+<td align="left">11.127</td>
+<td align="left">0.0008509</td>
+</tr>
+</tbody>
+</table>
+<p>When it comes to equality of variances, applied tests yield inconsistent results. While <em>Fligner-Kileen test</em> confirmed the hypotheses of homoscedascity, <em>Bartlett's test</em> rejected it.</p>
+<h4 id="diagnostic-plots-1"><a href="#TOC">Diagnostic Plots</a></h4>
+<p>Here you can see several diagnostic plots for ANOVA model:</p>
+<ul>
+<li>residuals against fitted values</li>
+<li>scale-location plot of square root of residuals against fitted values</li>
+<li>normal Q-Q plot</li>
+<li>residuals against leverages</li>
+</ul>
+<p><a href="plots/anova-2-hires.png"><img src="plots/anova-2.png" /></a></p>
+<h3 id="anova-summary-1"><a href="#TOC">ANOVA Summary</a></h3>
+<h4 id="anova-table-1"><a href="#TOC">ANOVA Table</a></h4>
+<table>
+<col width="29%" />
+<col width="6%" />
+<col width="12%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">Df</th>
+<th align="left">Sum.Sq</th>
+<th align="left">Mean.Sq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>gender</strong></td>
+<td align="left">1</td>
+<td align="left">4.947</td>
+<td align="left">4.947</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>partner</strong></td>
+<td align="left">2</td>
+<td align="left">31.212</td>
+<td align="left">15.606</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>gender:partner</strong></td>
+<td align="left">2</td>
+<td align="left">3.038</td>
+<td align="left">1.519</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Residuals</strong></td>
+<td align="left">593</td>
+<td align="left">2703.090</td>
+<td align="left">4.558</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="29%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">F.value</th>
+<th align="left">Pr..F.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>gender</strong></td>
+<td align="left">1.0853</td>
+<td align="left">0.29793</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>partner</strong></td>
+<td align="left">3.4237</td>
+<td align="left">0.03324</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>gender:partner</strong></td>
+<td align="left">0.3332</td>
+<td align="left">0.71677</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Residuals</strong></td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p><em>F-test</em> for <em>Gender</em> is not statistically significant, which implies that there is no Gender effect on response variable. Effect of <em>Relationship status</em> on response variable is significant. Interaction between levels of <em>Gender</em> and <em>Relationship status</em> wasn't found significant (p = 0.717).</p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="http://rapport-package.info/">rapport</a> (0.4) in <em>1.999</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" /><p class="caption"></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,263 @@
+% Rapport package team
+% Crosstable
+% 2011-04-26 20:25 CET
+
+-   Description
+    -   Variable description
+    -   Counts
+    -   Percentages
+    -   Chi-squared test
+    -   Charts
+
+-   Description
+    -   Variable description
+    -   Counts
+    -   Percentages
+    -   Chi-squared test
+    -   Charts
+
+
+Description
+-----------
+
+Returning the Chi-squared test of two given variables with count,
+percentages and Pearson's residuals table.
+
+### Variable description
+
+Two variables specified:
+
+-   "gender" ("Gender") with *673* and
+-   "dwell" ("Dwelling") with *662* valid values.
+
+### Counts
+
+                 city    small town    village    Missing    Sum
+  -------------- ------- ------------- ---------- ---------- -----
+  **male**       338     28            19         25         410
+  **female**     234     3             9          17         263
+  **Missing**    27      2             2          5          36
+  **Sum**        599     33            30         47         709
+
+  : Counted values
+
+Most of the cases (338) can be found in "male-city" categories. Row-wise
+"male" holds the highest number of cases (410) while column-wise "city"
+has the utmost cases (599).
+
+### Percentages
+
+                 city    small town    village    Missing    Sum
+  -------------- ------- ------------- ---------- ---------- ------
+  **male**       47.67   3.95          2.68       3.53       57.83
+  **female**     33.00   0.42          1.27       2.40       37.09
+  **Missing**    3.81    0.28          0.28       0.71       5.08
+  **Sum**        84.49   4.65          4.23       6.63       100.00
+
+  : Total percentages
+
+                 city    small town    village    Missing
+  -------------- ------- ------------- ---------- ----------
+  **male**       82.44   6.83          4.63       6.10
+  **female**     88.97   1.14          3.42       6.46
+  **Missing**    75.00   5.56          5.56       13.89
+  **Sum**        84.49   4.65          4.23       6.63
+
+  : Row percentages
+
+                 city    small town    village    Missing    Sum
+  -------------- ------- ------------- ---------- ---------- -----
+  **male**       56.43   84.85         63.33      53.19      57.83
+  **female**     39.07   9.09          30.00      36.17      37.09
+  **Missing**    4.51    6.06          6.67       10.64      5.08
+
+  : Column percentages
+
+### Chi-squared test
+
+   Test statistic    df    P value
+  ----------------- ----- ---------
+        16.18         6    0.01282
+
+  : Pearson's Chi-squared test: `table`
+
+It seems that a real association can be pointed out between *gender* and
+*dwell* by the *Pearson's Chi-squared test* (χ=*16.18* at the degree of
+freedom being *6*) at the significance level of *0.01282*. Based on
+Goodman and Kruskal's lambda it seems that *dwell* (λ=*0.6321*) has an
+effect on *gender* (λ=*0*) if we assume both variables to be nominal.
+The association between the two variables seems to be weak based on
+Cramer's V (*0.08722*).
+
+                city    small town    village
+  ------------- ------- ------------- ---------
+  **male**      -3.08   3.43          0.76
+  **female**    3.08    -3.43         -0.76
+
+  : Pearson's residuals
+
+Based on Pearson's resuals the following cells seems interesting (with
+values higher then `2` or lower then `-2`):
+
+-   "male - city"
+-   "female - city"
+-   "male - small town"
+-   "female - small town"
+
+### Charts
+
+[![Mosaic chart](plots/crosstable-1.png)](plots/crosstable-1-hires.png)
+
+Description
+-----------
+
+Returning the Chi-squared test of two given variables with count,
+percentages and Pearson's residuals table.
+
+### Variable description
+
+Two variables specified:
+
+-   "email" ("Email usage") with *672* and
+-   "dwell" ("Dwelling") with *662* valid values.
+
+### Counts
+
+                     city    small town    village
+  ------------------ ------- ------------- ---------
+  **never**          12      0             0
+  **very rarely**    30      1             3
+  **rarely**         41      3             1
+  **sometimes**      67      4             8
+  **often**          101     10            5
+  **very often**     88      5             5
+  **always**         226     9             7
+  **Missing**        34      1             1
+  **Sum**            599     33            30
+
+  : Counted values (continued below)
+
+                     Missing    Sum
+  ------------------ ---------- -----
+  **never**          1          13
+  **very rarely**    2          36
+  **rarely**         1          46
+  **sometimes**      8          87
+  **often**          7          123
+  **very often**     10         108
+  **always**         17         259
+  **Missing**        1          37
+  **Sum**            47         709
+
+Most of the cases (226) can be found in "always-city" categories.
+Row-wise "always" holds the highest number of cases (259) while
+column-wise "city" has the utmost cases (599).
+
+### Percentages
+
+                     city    small town    village
+  ------------------ ------- ------------- ---------
+  **never**          1.69    0.00          0.00
+  **very rarely**    4.23    0.14          0.42
+  **rarely**         5.78    0.42          0.14
+  **sometimes**      9.45    0.56          1.13
+  **often**          14.25   1.41          0.71
+  **very often**     12.41   0.71          0.71
+  **always**         31.88   1.27          0.99
+  **Missing**        4.80    0.14          0.14
+  **Sum**            84.49   4.65          4.23
+
+  : Total percentages (continued below)
+
+                     Missing    Sum
+  ------------------ ---------- ------
+  **never**          0.14       1.83
+  **very rarely**    0.28       5.08
+  **rarely**         0.14       6.49
+  **sometimes**      1.13       12.27
+  **often**          0.99       17.35
+  **very often**     1.41       15.23
+  **always**         2.40       36.53
+  **Missing**        0.14       5.22
+  **Sum**            6.63       100.00
+
+                     city    small town    village    Missing
+  ------------------ ------- ------------- ---------- ----------
+  **never**          92.31   0.00          0.00       7.69
+  **very rarely**    83.33   2.78          8.33       5.56
+  **rarely**         89.13   6.52          2.17       2.17
+  **sometimes**      77.01   4.60          9.20       9.20
+  **often**          82.11   8.13          4.07       5.69
+  **very often**     81.48   4.63          4.63       9.26
+  **always**         87.26   3.47          2.70       6.56
+  **Missing**        91.89   2.70          2.70       2.70
+  **Sum**            84.49   4.65          4.23       6.63
+
+  : Row percentages
+
+                     city    small town    village
+  ------------------ ------- ------------- ---------
+  **never**          2.00    0.00          0.00
+  **very rarely**    5.01    3.03          10.00
+  **rarely**         6.84    9.09          3.33
+  **sometimes**      11.19   12.12         26.67
+  **often**          16.86   30.30         16.67
+  **very often**     14.69   15.15         16.67
+  **always**         37.73   27.27         23.33
+  **Missing**        5.68    3.03          3.33
+
+  : Column percentages (continued below)
+
+                     Missing    Sum
+  ------------------ ---------- -----
+  **never**          2.13       1.83
+  **very rarely**    4.26       5.08
+  **rarely**         2.13       6.49
+  **sometimes**      17.02      12.27
+  **often**          14.89      17.35
+  **very often**     21.28      15.23
+  **always**         36.17      36.53
+  **Missing**        2.13       5.22
+
+### Chi-squared test
+
+   Test statistic    df    P value
+  ----------------- ----- ---------
+        20.63        21    0.4818
+
+  : Pearson's Chi-squared test: `table`
+
+It seems that no real association can be pointed out between *email* and
+*dwell* by the *Pearson's Chi-squared test* (χ=*20.63* at the degree of
+freedom being *21*) at the significance level of *0.4818*. For this end
+no other statistical tests were performed.
+
+                     city    small town    village
+  ------------------ ------- ------------- ---------
+  **never**          1.15    -0.81         -0.77
+  **very rarely**    -0.41   -0.59         1.20
+  **rarely**         0.20    0.49          -0.80
+  **sometimes**      -1.75   -0.02         2.49
+  **often**          -1.28   1.90          -0.18
+  **very often**     -0.17   0.00          0.24
+  **always**         2.10    -1.26         -1.64
+
+  : Pearson's residuals
+
+Based on Pearson's resuals the following cells seems interesting (with
+values higher then `2` or lower then `-2`):
+
+-   "always - city"
+-   "sometimes - village"
+
+### Charts
+
+[![Mosaic chart](plots/crosstable-2.png)](plots/crosstable-2-hires.png)
+
+* * * * *
+
+This report was generated with [R](http://www.r-project.org/) (2.15.1)
+and [rapport](http://rapport-package.info/) (0.4) in *1.608* sec on
+x86\_64-unknown-linux-gnu platform.
+
+![](images/logo.png)

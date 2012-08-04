@@ -1,6 +1,6 @@
-#+TITLE: Normality Tests
+#+TITLE: Rapport package team
 
-#+AUTHOR: Rapport package team @ https://github.com/aL3xa/rapport
+#+AUTHOR: Normality Tests
 #+DATE: 2011-04-26 20:25 CET
 
 ** Description
@@ -8,7 +8,7 @@
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
 
-** Introduction
+*** Introduction
 
 In statistics, /normality/ refers to an assumption that the distribution
 of a random variable follows /normal/ (/Gaussian/) distribution. Because
@@ -23,11 +23,11 @@ distributions, as it's defined two parameters:
 -  /μ/ - /mean/ or /expectation/ (location parameter)
 -  /σ^{2}/ - /variance/ (scale parameter)
 
-[[806ea97c59e1a12d4acae4968957aaa9-hires.png][[[806ea97c59e1a12d4acae4968957aaa9.png]]]]
+[[plots/nortest-1-hires.png][[[plots/nortest-1.png]]]]
 
-** Normality Tests
+*** Normality Tests
 
-*** Overview
+**** Overview
 
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
@@ -52,39 +52,35 @@ on CRAN.
    "traditional" approach in normality testing. =pearson.test= is
    located in =nortest= package.
 
-*** Results
+**** Results
 
 Here you can see the results of applied normality tests (/p-values/ less
 than 0.05 indicate significant discrepancies):
 
-#+BEGIN_HTML
-  <!-- endlist -->
-#+END_HTML
-
-|                                                  | *Statistic*   | *p-value*   |
-|--------------------------------------------------+---------------+-------------|
-| Shapiro-Wilk normality test                      | 0.9001        | 0           |
-| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.168         | 0           |
-| Anderson-Darling normality test                  | 18.753        | 0           |
-| Pearson chi-square normality test                | 1791.25       | 0           |
+| Method                                           | Statistic   | p-value     |
+|--------------------------------------------------+-------------+-------------|
+| Shapiro-Wilk normality test                      | 0.9001      | 1.617e-20   |
+| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.1680      | 3.000e-52   |
+| Anderson-Darling normality test                  | 18.7530     | 7.261e-44   |
+| Pearson chi-square normality test                | 1791.2500   | 0.000e+00   |
 
 So, let's draw some conclusions based on applied normality test:
 
 -  according to /Shapiro-Wilk test/, the distribution of /Internet usage
-   in leisure time (hours per day)/ is not normal.
+   in leisure time (hours per day)/ is normal.
 -  based on /Lilliefors test/, distribution of /Internet usage in
    leisure time (hours per day)/ is not normal
--  /Anderson-Darling test/ confirms violation of normality assumption
+-  /Anderson-Darling test/ confirms normality assumption
 -  /Pearson's Χ^{2} test/ classifies the underlying distribution as
-   normal
+   non-normal
 
-** Diagnostic Plots
+*** Diagnostic Plots
 
 There are various plots that can help you decide about the normality of
 the distribution. Only a few most commonly used plots will be shown:
 /histogram/, /Q-Q plot/ and /kernel density plot/.
 
-*** Histogram
+**** Histogram
 
 /Histogram/ was first introduced by /Karl Pearson/ and it's probably the
 most popular plot for depicting the probability distribution of a random
@@ -92,32 +88,32 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-[[a949c4cf7eda15cd079e9d63b81acdd4-hires.png][[[a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
+[[plots/example-1-hires.png][[[plots/example-1.png]]]]
 
-*** Q-Q Plot
+**** Q-Q Plot
 
 "Q" in /Q-Q plot/ stands for /quantile/, as this plot compares empirical
 and theoretical distribution (in this case, /normal/ distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", =x = y= line.
 
-[[eecb9a780afd4dd0de9737991e467a6e-hires.png][[[eecb9a780afd4dd0de9737991e467a6e.png]]]]
+[[plots/nortest-2-hires.png][[[plots/nortest-2.png]]]]
 
-*** Kernel Density Plot
+**** Kernel Density Plot
 
 /Kernel density plot/ is a plot of smoothed /empirical distribution
 function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[d6afe5eede3603d041ec8dd001c5280d-hires.png][[[d6afe5eede3603d041ec8dd001c5280d.png]]]]
+[[plots/nortest-3-hires.png][[[plots/nortest-3.png]]]]
 
 ** Description
 
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
 
-** Introduction
+*** Introduction
 
 In statistics, /normality/ refers to an assumption that the distribution
 of a random variable follows /normal/ (/Gaussian/) distribution. Because
@@ -132,9 +128,9 @@ distributions, as it's defined two parameters:
 -  /μ/ - /mean/ or /expectation/ (location parameter)
 -  /σ^{2}/ - /variance/ (scale parameter)
 
-** Normality Tests
+*** Normality Tests
 
-*** Overview
+**** Overview
 
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
@@ -159,39 +155,35 @@ on CRAN.
    "traditional" approach in normality testing. =pearson.test= is
    located in =nortest= package.
 
-*** Results
+**** Results
 
 Here you can see the results of applied normality tests (/p-values/ less
 than 0.05 indicate significant discrepancies):
 
-#+BEGIN_HTML
-  <!-- endlist -->
-#+END_HTML
-
-|                                                  | *Statistic*   | *p-value*   |
-|--------------------------------------------------+---------------+-------------|
-| Shapiro-Wilk normality test                      | 0.9001        | 0           |
-| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.168         | 0           |
-| Anderson-Darling normality test                  | 18.753        | 0           |
-| Pearson chi-square normality test                | 1791.25       | 0           |
+| Method                                           | Statistic   | p-value     |
+|--------------------------------------------------+-------------+-------------|
+| Shapiro-Wilk normality test                      | 0.9001      | 1.617e-20   |
+| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.1680      | 3.000e-52   |
+| Anderson-Darling normality test                  | 18.7530     | 7.261e-44   |
+| Pearson chi-square normality test                | 1791.2500   | 0.000e+00   |
 
 So, let's draw some conclusions based on applied normality test:
 
 -  according to /Shapiro-Wilk test/, the distribution of /Internet usage
-   in leisure time (hours per day)/ is not normal.
+   in leisure time (hours per day)/ is normal.
 -  based on /Lilliefors test/, distribution of /Internet usage in
    leisure time (hours per day)/ is not normal
--  /Anderson-Darling test/ confirms violation of normality assumption
+-  /Anderson-Darling test/ confirms normality assumption
 -  /Pearson's Χ^{2} test/ classifies the underlying distribution as
-   normal
+   non-normal
 
-** Diagnostic Plots
+*** Diagnostic Plots
 
 There are various plots that can help you decide about the normality of
 the distribution. Only a few most commonly used plots will be shown:
 /histogram/, /Q-Q plot/ and /kernel density plot/.
 
-*** Histogram
+**** Histogram
 
 /Histogram/ was first introduced by /Karl Pearson/ and it's probably the
 most popular plot for depicting the probability distribution of a random
@@ -199,32 +191,32 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-[[a949c4cf7eda15cd079e9d63b81acdd4-hires.png][[[a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
+[[plots/example-1-hires.png][[[plots/example-1.png]]]]
 
-*** Q-Q Plot
+**** Q-Q Plot
 
 "Q" in /Q-Q plot/ stands for /quantile/, as this plot compares empirical
 and theoretical distribution (in this case, /normal/ distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", =x = y= line.
 
-[[eecb9a780afd4dd0de9737991e467a6e-hires.png][[[eecb9a780afd4dd0de9737991e467a6e.png]]]]
+[[plots/nortest-4-hires.png][[[plots/nortest-4.png]]]]
 
-*** Kernel Density Plot
+**** Kernel Density Plot
 
 /Kernel density plot/ is a plot of smoothed /empirical distribution
 function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[f97c1f6e5897d555baf02b977276ccfe-hires.png][[[f97c1f6e5897d555baf02b977276ccfe.png]]]]
+[[plots/nortest-3-hires.png][[[plots/nortest-3.png]]]]
 
 ** Description
 
 Overview of several normality tests and diagnostic plots that can screen
 departures from normality.
 
-** Introduction
+*** Introduction
 
 In statistics, /normality/ refers to an assumption that the distribution
 of a random variable follows /normal/ (/Gaussian/) distribution. Because
@@ -239,11 +231,11 @@ distributions, as it's defined two parameters:
 -  /μ/ - /mean/ or /expectation/ (location parameter)
 -  /σ^{2}/ - /variance/ (scale parameter)
 
-[[806ea97c59e1a12d4acae4968957aaa9-hires.png][[[806ea97c59e1a12d4acae4968957aaa9.png]]]]
+[[plots/nortest-1-hires.png][[[plots/nortest-1.png]]]]
 
-** Normality Tests
+*** Normality Tests
 
-*** Overview
+**** Overview
 
 Various hypothesis tests can be applied in order to test if the
 distribution of given random variable violates normality assumption.
@@ -268,39 +260,35 @@ on CRAN.
    "traditional" approach in normality testing. =pearson.test= is
    located in =nortest= package.
 
-*** Results
+**** Results
 
 Here you can see the results of applied normality tests (/p-values/ less
 than 0.05 indicate significant discrepancies):
 
-#+BEGIN_HTML
-  <!-- endlist -->
-#+END_HTML
-
-|                                                  | *Statistic*   | *p-value*   |
-|--------------------------------------------------+---------------+-------------|
-| Shapiro-Wilk normality test                      | 0.9001        | 0           |
-| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.168         | 0           |
-| Anderson-Darling normality test                  | 18.753        | 0           |
-| Pearson chi-square normality test                | 1791.25       | 0           |
+| Method                                           | Statistic   | p-value     |
+|--------------------------------------------------+-------------+-------------|
+| Shapiro-Wilk normality test                      | 0.9001      | 1.617e-20   |
+| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.1680      | 3.000e-52   |
+| Anderson-Darling normality test                  | 18.7530     | 7.261e-44   |
+| Pearson chi-square normality test                | 1791.2500   | 0.000e+00   |
 
 So, let's draw some conclusions based on applied normality test:
 
 -  according to /Shapiro-Wilk test/, the distribution of /Internet usage
-   in leisure time (hours per day)/ is not normal.
+   in leisure time (hours per day)/ is normal.
 -  based on /Lilliefors test/, distribution of /Internet usage in
    leisure time (hours per day)/ is not normal
--  /Anderson-Darling test/ confirms violation of normality assumption
+-  /Anderson-Darling test/ confirms normality assumption
 -  /Pearson's Χ^{2} test/ classifies the underlying distribution as
-   normal
+   non-normal
 
-** Diagnostic Plots
+*** Diagnostic Plots
 
 There are various plots that can help you decide about the normality of
 the distribution. Only a few most commonly used plots will be shown:
 /histogram/, /Q-Q plot/ and /kernel density plot/.
 
-*** Histogram
+**** Histogram
 
 /Histogram/ was first introduced by /Karl Pearson/ and it's probably the
 most popular plot for depicting the probability distribution of a random
@@ -308,30 +296,30 @@ variable. However, the decision depends on number of bins, so it can
 sometimes be misleading. If the variable distribution is normal, bins
 should resemble the "bell-like" shape.
 
-[[a949c4cf7eda15cd079e9d63b81acdd4-hires.png][[[a949c4cf7eda15cd079e9d63b81acdd4.png]]]]
+[[plots/example-1-hires.png][[[plots/example-1.png]]]]
 
-*** Q-Q Plot
+**** Q-Q Plot
 
 "Q" in /Q-Q plot/ stands for /quantile/, as this plot compares empirical
 and theoretical distribution (in this case, /normal/ distribution) by
 plotting their quantiles against each other. For normal distribution,
 plotted dots should approximate a "straight", =x = y= line.
 
-[[95d42d4d0934008cfa630e1c4523e09a-hires.png][[[95d42d4d0934008cfa630e1c4523e09a.png]]]]
+[[plots/nortest-5-hires.png][[[plots/nortest-5.png]]]]
 
-*** Kernel Density Plot
+**** Kernel Density Plot
 
 /Kernel density plot/ is a plot of smoothed /empirical distribution
 function/. As such, it provides good insight about the shape of the
 distribution. For normal distributions, it should resemble the well
 known "bell shape".
 
-[[73a741791c399acd94fdfb544c213fb4-hires.png][[[73a741791c399acd94fdfb544c213fb4.png]]]]
+[[plots/nortest-3-hires.png][[[plots/nortest-3.png]]]]
 
 --------------
 
-This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
-and [[http://al3xa.github.com/rapport/][rapport]] (0.2) in 3.355 sec on
+This report was generated with [[http://www.r-project.org/][R]] (2.15.1)
+and [[http://rapport-package.info/][rapport]] (0.4) in /1.872/ sec on
 x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 

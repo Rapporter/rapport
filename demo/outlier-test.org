@@ -1,52 +1,53 @@
-#+TITLE: Outlier tests
+#+TITLE: Rapport package team
 
-#+AUTHOR: Rapport package team @ https://github.com/aL3xa/rapport
+#+AUTHOR: Outlier tests
 #+DATE: 2011-04-26 20:25 CET
 
 ** Description
 
 This template will check if provided variable has any outliers.
 
-** Boxplot
+*** Charts
 
-[[ea1797865a9d9a619be0e9c5d55d5de7-hires.png][[[ea1797865a9d9a619be0e9c5d55d5de7.png]]]]
+[[plots/outlier-test-1-hires.png][[[plots/outlier-test-1.png]]]]
 
-** Lund test
+*** Lund test
 
 It seems that /4/ extreme values can be found in "Internet usage for
 educational purposes (hours per day)". These are: 10, 0.5, 1.5, 0.5.
 
-*** Explanation
+**** Explanation
 
 The above test for outliers was based on /lm(1 ~ edu)/:
 
-|               | *Estimate*   | *Std. Error*   | *t value*   | *Pr(>|t|)*   |
-|---------------+--------------+----------------+-------------+--------------|
-| (Intercept)   | 2.0481       | 0.078          | 26.2677     | 0            |
+|                 | Estimate    | Std. Error   | t value     | Pr(>|t|)     |
+|-----------------+-------------+--------------+-------------+--------------|
+| *(Intercept)*   | 2.048e+00   | 7.797e-02    | 2.627e+01   | 7.939e-105   |
+#+CAPTION: Fitting linear model: var ~ 1
 
-*** References
+**** References
 
 -  Lund, R. E. 1975, "Tables for An Approximate Test for Outliers in
    Linear Models", Technometrics, vol. 17, no. 4, pp. 473-476.
 -  Prescott, P. 1975, "An Approximate Test for Outliers in Linear
    Models", Technometrics, vol. 17, no. 1, pp. 129-132.
 
-** Grubb's test
+*** Grubb's test
 
 Grubbs test for one outlier shows that highest value 12 is an outlier
-(p=0.0002).
+(p=/0.0001964/).
 
-*** References
+**** References
 
 -  Grubbs, F.E. (1950). Sample Criteria for testing outlying
    observations. Ann. Math. Stat. 21, 1, 27-58.
 
-** Dixon's test
+*** Dixon's test
 
 chi-squared test for outlier shows that highest value 12 is an outlier
-(p=0).
+(p=/7.441e-07/).
 
-*** References
+**** References
 
 -  Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21,
    4, 488-506.
@@ -55,46 +56,47 @@ chi-squared test for outlier shows that highest value 12 is an outlier
 
 This template will check if provided variable has any outliers.
 
-** Boxplot
+*** Charts
 
-[[ea1797865a9d9a619be0e9c5d55d5de7-hires.png][[[ea1797865a9d9a619be0e9c5d55d5de7.png]]]]
+[[plots/outlier-test-1-hires.png][[[plots/outlier-test-1.png]]]]
 
-** Lund test
+*** Lund test
 
 It seems that /4/ extreme values can be found in "Internet usage for
 educational purposes (hours per day)". These are: 10, 0.5, 1.5, 0.5.
 
-*** Explanation
+**** Explanation
 
 The above test for outliers was based on /lm(1 ~ edu)/:
 
-|               | *Estimate*   | *Std. Error*   | *t value*   | *Pr(>|t|)*   |
-|---------------+--------------+----------------+-------------+--------------|
-| (Intercept)   | 2.0481       | 0.078          | 26.2677     | 0            |
+|                 | Estimate    | Std. Error   | t value     | Pr(>|t|)     |
+|-----------------+-------------+--------------+-------------+--------------|
+| *(Intercept)*   | 2.048e+00   | 7.797e-02    | 2.627e+01   | 7.939e-105   |
+#+CAPTION: Fitting linear model: var ~ 1
 
-*** References
+**** References
 
 -  Lund, R. E. 1975, "Tables for An Approximate Test for Outliers in
    Linear Models", Technometrics, vol. 17, no. 4, pp. 473-476.
 -  Prescott, P. 1975, "An Approximate Test for Outliers in Linear
    Models", Technometrics, vol. 17, no. 1, pp. 129-132.
 
-** Grubb's test
+*** Grubb's test
 
 Grubbs test for one outlier shows that highest value 12 is an outlier
-(p=0.0002).
+(p=/0.0001964/).
 
-*** References
+**** References
 
 -  Grubbs, F.E. (1950). Sample Criteria for testing outlying
    observations. Ann. Math. Stat. 21, 1, 27-58.
 
-** Dixon's test
+*** Dixon's test
 
 chi-squared test for outlier shows that highest value 12 is an outlier
-(p=0).
+(p=/7.441e-07/).
 
-*** References
+**** References
 
 -  Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21,
    4, 488-506.
@@ -103,27 +105,28 @@ chi-squared test for outlier shows that highest value 12 is an outlier
 
 This template will check if provided variable has any outliers.
 
-** Boxplot
+*** Charts
 
-[[ea1797865a9d9a619be0e9c5d55d5de7-hires.png][[[ea1797865a9d9a619be0e9c5d55d5de7.png]]]]
+[[plots/outlier-test-1-hires.png][[[plots/outlier-test-1.png]]]]
 
-** Lund test
+*** Lund test
 
 It seems that /4/ extreme values can be found in "Internet usage for
 educational purposes (hours per day)". These are: 10, 0.5, 1.5, 0.5.
 
-*** Explanation
+**** Explanation
 
 The above test for outliers was based on /lm(1 ~ edu)/:
 
-|               | *Estimate*   | *Std. Error*   | *t value*   | *Pr(>|t|)*   |
-|---------------+--------------+----------------+-------------+--------------|
-| (Intercept)   | 2.0481       | 0.078          | 26.2677     | 0            |
+|                 | Estimate    | Std. Error   | t value     | Pr(>|t|)     |
+|-----------------+-------------+--------------+-------------+--------------|
+| *(Intercept)*   | 2.048e+00   | 7.797e-02    | 2.627e+01   | 7.939e-105   |
+#+CAPTION: Fitting linear model: var ~ 1
 
 --------------
 
-This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
-and [[http://al3xa.github.com/rapport/][rapport]] (0.2) in 1.334 sec on
+This report was generated with [[http://www.r-project.org/][R]] (2.15.1)
+and [[http://rapport-package.info/][rapport]] (0.4) in /0.916/ sec on
 x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 

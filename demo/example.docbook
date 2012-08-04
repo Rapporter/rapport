@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Example template" />
+  <title>Rapport package team</title>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Example template</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#début">Début</a><ul>
+<li><a href="#descriptive-statistics">Descriptive statistics</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#début-1">Début</a></li>
+</ul></li>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#début-2">Début</a><ul>
+<li><a href="#histogram">Histogram</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#TOC">Description</a></h2>
+<p>This template demonstrates the basic features of rapport. We all hope you will like it!</p>
+<h3 id="début"><a href="#TOC">Début</a></h3>
+<p>Hello, world!</p>
+<p>I have just specified a <em>Variable</em> in this template named to <strong>leisure</strong>. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.</p>
+<p>And wow, the mean of <em>leisure</em> is <em>3.199</em>!</p>
+<p>By checking out the <a href="https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl">sources of this template</a>, you could see that we used all <code>BRCATCODE</code>s above from <code>brew</code> syntax. <code>BRCODE</code> tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if <code>desc</code> input equals to <code>TRUE</code>, then the resulting report would have that chunk, if set to <code>FALSE</code>, it would be left our.</p>
+<h4 id="descriptive-statistics"><a href="#TOC">Descriptive statistics</a></h4>
+<table>
+<col width="9%" />
+<col width="13%" />
+<col width="12%" />
+<col width="9%" />
+<col width="13%" />
+<col width="9%" />
+<col width="9%" />
+<thead>
+<tr class="header">
+<th align="left">Min.</th>
+<th align="left">1st Qu.</th>
+<th align="left">Median</th>
+<th align="left">Mean</th>
+<th align="left">3rd Qu.</th>
+<th align="left">Max.</th>
+<th align="left">NA's</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0.000</td>
+<td align="left">2.000</td>
+<td align="left">3.000</td>
+<td align="left">3.199</td>
+<td align="left">4.000</td>
+<td align="left">12.000</td>
+<td align="left">37</td>
+</tr>
+</tbody>
+</table>
+<p>The 5 highest values are: <em>12</em>, <em>12</em>, <em>10</em>, <em>10</em> and <em>10</em>.</p>
+<h2 id="description-1"><a href="#TOC">Description</a></h2>
+<p>This template demonstrates the basic features of rapport. We all hope you will like it!</p>
+<h3 id="début-1"><a href="#TOC">Début</a></h3>
+<p>Hello, world!</p>
+<p>I have just specified a <em>Variable</em> in this template named to <strong>leisure</strong>. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.</p>
+<p>And wow, the mean of <em>leisure</em> is <em>3.199</em>!</p>
+<p><strong>For more detailed statistics, you should have set <code>desc=TRUE</code>!</strong></p>
+<p>By checking out the <a href="https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl">sources of this template</a>, you could see that we used all <code>BRCATCODE</code>s above from <code>brew</code> syntax. <code>BRCODE</code> tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if <code>desc</code> input equals to <code>TRUE</code>, then the resulting report would have that chunk, if set to <code>FALSE</code>, it would be left our.</p>
+<h2 id="description-2"><a href="#TOC">Description</a></h2>
+<p>This template demonstrates the basic features of rapport. We all hope you will like it!</p>
+<h3 id="début-2"><a href="#TOC">Début</a></h3>
+<p>Hello, world!</p>
+<p>I have just specified a <em>Variable</em> in this template named to <strong>leisure</strong>. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.</p>
+<p>And wow, the mean of <em>leisure</em> is <em>3.199</em>!</p>
+<p><strong>For more detailed statistics, you should have set <code>desc=TRUE</code>!</strong></p>
+<p>By checking out the <a href="https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl">sources of this template</a>, you could see that we used all <code>BRCATCODE</code>s above from <code>brew</code> syntax. <code>BRCODE</code> tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if <code>desc</code> input equals to <code>TRUE</code>, then the resulting report would have that chunk, if set to <code>FALSE</code>, it would be left our.</p>
+<h4 id="histogram"><a href="#TOC">Histogram</a></h4>
+<p>For demonstartion purposes you can find a histogram below:</p>
+<p><a href="plots/example-1-hires.png"><img src="plots/example-1.png" alt="A nice histogram" /></a></p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="http://rapport-package.info/">rapport</a> (0.4) in <em>0.559</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="/usr/lib/R/library/rapport/includes/images/logo.png" /><p class="caption"></p>
+</div>
+</body>
+</html>

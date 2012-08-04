@@ -18,6 +18,10 @@ h1, h2, h3, h4, h5, h6, .subtitle {
     font-size: 21pt;
 }
 
+.content {
+    text-align: justify;
+}
+
 .content a {
     color: #0099D9;
     text-decoration: none;
@@ -48,6 +52,20 @@ code {
     padding: 0 5px;
 }
 
+pre code {
+    border: none;
+    background-color: transparent;   
+    padding: 0px;
+}
+
+pre {
+    background-color: #F5F5F5;
+    border: solid 1px #DDD;
+    padding: 5px;
+    margin: 0 0 20px;
+    overflow: auto;
+}
+
 nav {
     height: 85%;
     overflow: auto;
@@ -64,6 +82,29 @@ nav a {
 nav a:hover {
     color: #0099D9;
 }
+
+
+/* Captions */
+caption, p.caption {
+    text-align: center;
+    font-style: italic;
+}
+
+
+/* Figure centering */
+div.figure {
+    text-align: center;
+    overflow: auto;
+}
+
+div.figure img {
+    margin: 0 auto;
+}
+
+div.figure p.caption {
+    margin: 15px 0 0 0;
+}
+
 
 /* Nested navigation */
 
@@ -133,16 +174,21 @@ ul.tabs li a.active {
     margin: 0 0 20px 0;
     max-height: 500px;
     overflow: auto;
+    text-align: center;
     width: 100%;
 }
 
 table {
     background: none repeat scroll 0 0 #0099D9;
     border-radius: 8px;
+    margin: 0 auto;
+}
+
+table caption {
+    margin: 0 0 15px 0;
 }
 
 th {
-    text-align: left;
     padding: 4px 10px;
 }
 
@@ -164,6 +210,15 @@ td {
     min-width: 50px;
 }
 
+
+/* Math container */
+.math-container {
+    text-align: center;
+}
+
+.math-container span.math {
+    margin: 0 auto;
+}
 
 /* Mobile */
 

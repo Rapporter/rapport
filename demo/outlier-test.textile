@@ -2,40 +2,63 @@ h2. Description
 
 This template will check if provided variable has any outliers.
 
-h2. Boxplot
+h3. Charts
 
-"!ea1797865a9d9a619be0e9c5d55d5de7.png!":ea1797865a9d9a619be0e9c5d55d5de7-hires.png
+"!plots/outlier-test-1.png(Boxplot: edu)!":plots/outlier-test-1-hires.png
 
-h2. Lund test
+h3. Lund test
 
 It seems that _4_ extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.
 
-h3. Explanation
+h4. Explanation
 
 The above test for outliers was based on _lm(1 ~ edu)_:
 
-|_. |_. *Estimate*|_. *Std. Error*|_. *t value*|_. *Pr(&gt;&#124;t&#124;)*|
-|(Intercept)|2.0481|0.078|26.2677|0|
+<table>
+<caption>Fitting linear model: var ~ 1</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;&#124;t&#124;)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*(Intercept)*</td>
+<td align="center">2.048e+00</td>
+<td align="center">7.797e-02</td>
+<td align="center">2.627e+01</td>
+<td align="center">7.939e-105</td>
+</tr>
+</tbody>
+</table>
 
-
-h3. References
+h4. References
 
 * Lund, R. E. 1975, &quot;Tables for An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 4, pp. 473-476.
 * Prescott, P. 1975, &quot;An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 1, pp. 129-132.
 
-h2. Grubb's test
+h3. Grubb's test
 
-Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.0002).
+Grubbs test for one outlier shows that highest value 12 is an outlier (p=_0.0001964_).
 
-h3. References
+h4. References
 
 * Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.
 
-h2. Dixon's test
+h3. Dixon's test
 
-chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
+chi-squared test for outlier shows that highest value 12 is an outlier (p=_7.441e-07_).
 
-h3. References
+h4. References
 
 * Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.
 
@@ -43,40 +66,63 @@ h2. Description
 
 This template will check if provided variable has any outliers.
 
-h2. Boxplot
+h3. Charts
 
-"!ea1797865a9d9a619be0e9c5d55d5de7.png!":ea1797865a9d9a619be0e9c5d55d5de7-hires.png
+"!plots/outlier-test-1.png(Boxplot: edu)!":plots/outlier-test-1-hires.png
 
-h2. Lund test
+h3. Lund test
 
 It seems that _4_ extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.
 
-h3. Explanation
+h4. Explanation
 
 The above test for outliers was based on _lm(1 ~ edu)_:
 
-|_. |_. *Estimate*|_. *Std. Error*|_. *t value*|_. *Pr(&gt;&#124;t&#124;)*|
-|(Intercept)|2.0481|0.078|26.2677|0|
+<table>
+<caption>Fitting linear model: var ~ 1</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;&#124;t&#124;)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*(Intercept)*</td>
+<td align="center">2.048e+00</td>
+<td align="center">7.797e-02</td>
+<td align="center">2.627e+01</td>
+<td align="center">7.939e-105</td>
+</tr>
+</tbody>
+</table>
 
-
-h3. References
+h4. References
 
 * Lund, R. E. 1975, &quot;Tables for An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 4, pp. 473-476.
 * Prescott, P. 1975, &quot;An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 1, pp. 129-132.
 
-h2. Grubb's test
+h3. Grubb's test
 
-Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.0002).
+Grubbs test for one outlier shows that highest value 12 is an outlier (p=_0.0001964_).
 
-h3. References
+h4. References
 
 * Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.
 
-h2. Dixon's test
+h3. Dixon's test
 
-chi-squared test for outlier shows that highest value 12 is an outlier (p=0).
+chi-squared test for outlier shows that highest value 12 is an outlier (p=_7.441e-07_).
 
-h3. References
+h4. References
 
 * Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.
 
@@ -84,25 +130,48 @@ h2. Description
 
 This template will check if provided variable has any outliers.
 
-h2. Boxplot
+h3. Charts
 
-"!ea1797865a9d9a619be0e9c5d55d5de7.png!":ea1797865a9d9a619be0e9c5d55d5de7-hires.png
+"!plots/outlier-test-1.png(Boxplot: edu)!":plots/outlier-test-1-hires.png
 
-h2. Lund test
+h3. Lund test
 
 It seems that _4_ extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.
 
-h3. Explanation
+h4. Explanation
 
 The above test for outliers was based on _lm(1 ~ edu)_:
 
-|_. |_. *Estimate*|_. *Std. Error*|_. *t value*|_. *Pr(&gt;&#124;t&#124;)*|
-|(Intercept)|2.0481|0.078|26.2677|0|
-
+<table>
+<caption>Fitting linear model: var ~ 1</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;&#124;t&#124;)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*(Intercept)*</td>
+<td align="center">2.048e+00</td>
+<td align="center">7.797e-02</td>
+<td align="center">2.627e+01</td>
+<td align="center">7.939e-105</td>
+</tr>
+</tbody>
+</table>
 
 <hr />
 
-This report was generated with "R":http://www.r-project.org/ (2.14.0) and "rapport":http://al3xa.github.com/rapport/ (0.2) in 1.334 sec on x86&#95;64-unknown-linux-gnu platform.
+This report was generated with "R":http://www.r-project.org/ (2.15.1) and "rapport":http://rapport-package.info/ (0.4) in _0.916_ sec on x86&#95;64-unknown-linux-gnu platform.
 
 !images/logo.png!
 

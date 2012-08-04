@@ -22,741 +22,16 @@
 </div>
 
 
-<a id="Generic-functions"> </a>
-#### Generic functions
-
-<a id="decrypt"> </a>
-##### decrypt: Decrypt a string
-###### Description:
-<p>  Decrypts string encrypted by  <code>encrypt</code>  . </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;.encrypt.chars&apos;,</p>  </li>  <li>   <p>&apos;.encrypt.keys&apos;.</p>  </li> </ul> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">decrypt(message)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>message</code>
-  </td>
-  <td>
-   <p>a string to decrypt</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>string</p>
-###### References:
-<p>
- Credits goes to Barry Rowlingson and Hadley Wickham:
- <a href="https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html">https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html</a>
-</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">decrypt(&quot;loRR7KT72R=!&quot;)
-strsplit(decrypt(&quot;MrhKPzRK=tBrK0rK=2g~KT~K8BoPK1BKgMKhog2KPg2A&quot;), &quot; &quot;)[[1]]
-eval(parse(text=decrypt(&quot;rR7~HM~Pg2B40r,KP7Rkp2o=pc&quot;)))
-</code></pre>
-</div>
-
-<a id="encrypt"> </a>
-##### encrypt: Encrypt a string
-###### Description:
-<p>  A simple encryption function which reorders the characters in a given string based on a predefined key. As it can be seen: the used encryption is easy to crack, do not use this for sensitive data! The key is set by default on library startup. It can be changed by modifying  <code>options(&apos;.encrypt.key&apos;)</code>  to any character string with same length as  <code>options(&apos;.encrypt.chars&apos;)</code>  . E.g.  <code>intToUtf8(sample(c(33, 36:38, 48:57, 64:90, 97:122,   192:246, 248:382), nchar(getOption(&apos;.encrypt.chars&apos;))))</code>  would return a quite complex but readable key. </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;.encrypt.chars&apos;,</p>  </li>  <li>   <p>&apos;.encrypt.keys&apos;.</p>  </li> </ul> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">encrypt(message)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>message</code>
-  </td>
-  <td>
-   <p>a string to encrypt</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>string</p>
-###### References:
-<p>
- Credits goes to Barry Rowlingson and Hadley Wickham:
- <a href="https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html">https://stat.ethz.ch/pipermail/r-help/2010-March/232533.html</a>
-</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">encrypt(&quot;Hello world!&quot;)
-encrypt(paste(names(mtcars), collapse=&quot; &quot;))
-</code></pre>
-</div>
-
-<a id="eval.msgs"> </a>
-##### eval.msgs: Evaluate with messages
-###### Description:
-<p>  This function takes text(s) of R code and  <code>eval</code>  s all at one run then returns a list with four elements: </p>
-###### Details:
-<ul>  <li>   <p>    <em>src</em>    - a character value with specified R code.   </p>  </li>  <li>   <p>    <em>output</em>    - generated output.    <code>NULL</code>    if nothing is returned. If any string returned an R object while evaluating then the    <em>last</em>    R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see:    <code>tempfile</code>    ). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.   </p>  </li>  <li>   <p>    <em>type</em>    - class of generated output. &quot;NULL&quot; if nothing is returned, &quot;image&quot; if the graphic device was touched, &quot;error&quot; if some error occurred.   </p>  </li>  <li>   <p>    <em>msg</em>    - possible messages grabbed while evaluating specified R code with the following structure:   </p>   <ul>    <li>     <p>      <em>messages</em>      - string of possible diagnostic message(s)     </p>    </li>    <li>     <p>      <em>warnings</em>      - string of possible warning message(s)     </p>    </li>    <li>     <p>      <em>errors</em>      - string of possible error message(s)     </p>    </li>   </ul>  </li> </ul> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">eval.msgs(src, env = NULL)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>src</code>
-  </td>
-  <td>
-   <p>character values containing R code</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>env</code>
-  </td>
-  <td>
-   <p>environment where evaluation takes place. If
-not set (by default), a new temporary environment is
-created.</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>
- a list of parsed elements each containing: src (the
-command run), output (what the command returns,
- <code>NULL</code>
- if nothing returned, path to image file if a
-plot was generated), type (class of returned object if
-any) and messages: warnings (if any returned by the
-command run, otherwise set to
- <code>NULL</code>
- ) and errors (if
-any returned by the command run, otherwise set to
- <code>NULL</code>
- ). See Details above.
-</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">eval.msgs(&apos;1:5&apos;)
-eval.msgs(c(&apos;1:3&apos;, &apos;runiff(23)&apos;))
-eval.msgs(c(&apos;1:5&apos;, &apos;3:5&apos;))
-eval.msgs(c(&apos;pi&apos;, &apos;1:10&apos;, &apos;NULL&apos;))
-eval.msgs(&apos;pi&apos;)
-eval.msgs(&apos;1:2&apos;)
-identical(evals(&apos;pi&apos;)[[1]], eval.msgs(&apos;pi&apos;))
-</code></pre>
-</div>
-
-<a id="evals"> </a>
-##### evals: Evaluate and Check R Code
-###### Description:
-<p>  This function takes either a list of integer indices which point to position of R code in  <code>body</code>  character vector, or a vector/list of strings with actual R code, then evaluates each list element, and returns a list with four elements: a character value with R code, generated output, class of generated output and possible error/warning messages. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory. Please see Details below. </p>
-###### Details:
-<p>  If input strings are given as vector or not nested list (or even only one string), the returned list&apos;s length equals to the length of the input - as each string is evaluated as separate R code in the same environment. If a nested list is provided like  <code>list(c(&apos;runif(1)&apos;,   &apos;runif(1)&apos;))</code>  then all strings found in a list element is  <code>eval</code>  ed at one run so the length of returned list equals to the length of parent list. See examples below. </p>
-<p>  As  <code>evals</code>  tries to grab the plots internally, pleas do not run commands that set graphic device or  <code>dev.off</code>  if you want to use  <code>evals</code>  to save the images and return the path of generated png(s). E.g. running  <code>evals(c(&apos;png(&quot;/tmp/x.png&quot;)&apos;, &apos;plot(1:10)&apos;,   &apos;dev.off()&apos;))</code>  would fail. </p>
-<p>  The generated image file(s) of the plots can be fine-tuned by some specific options, please check out  <code>graph.output</code>  ,  <code>width</code>  ,  <code>height</code>  ,  <code>res</code>  ,  <code>hi.res</code>  ,  <code>hi.res.width</code>  ,  <code>hi.res.height</code>  and  <code>hi.res.res</code>  . Most of these options are better not to touch, see details of parameters below. </p>
-<p>Returned result values: list with the following elements</p>
-<ul>  <li>   <p>    <em>src</em>    - a character value with specified R code.   </p>  </li>  <li>   <p>    <em>output</em>    - generated output.    <code>NULL</code>    if nothing is returned. If any string returned an R object while    <code>eval</code>    ing then the    <em>last</em>    R object will be returned as a raw R object. If a graph is plotted in the given text, the returned object is a string specifying the path to the saved png in temporary directory (see:    <code>tempfile</code>    ). If multiple plots was run in the same run (see: nested lists as inputs above) then the last plot is saved. If graphic device was touched, then no other R objects will be returned.   </p>  </li>  <li>   <p>    <em>type</em>    - class of generated output. &quot;NULL&quot; if nothing is returned, &quot;image&quot; if the graphic device was touched, &quot;error&quot; if some error occurred.   </p>  </li>  <li>   <p>    <em>msg</em>    - possible messages grabbed while    <code>eval</code>    ing specified R code with the following structure:   </p>   <ul>    <li>     <p>      <em>messages</em>      - string of possible diagnostic message(s)     </p>    </li>    <li>     <p>      <em>warnings</em>      - string of possible warning message(s)     </p>    </li>    <li>     <p>      <em>errors</em>      - string of possible error message(s)     </p>    </li>   </ul>  </li> </ul>
-<p>  With  <code>check.output</code>  options set to  <code>FALSE</code>  ,  <code>evals</code>  will not check each line of passed R code for outputs to speed up runtime. This way the user is required to pass only reliable and well structured/formatted text to  <code>evals</code>  . A list to check before running code in  <code>evals</code>  : </p>
-<ul>  <li>   <p>the code should return on the last line of the passed code (if it returns before that, it would not be grabbed),</p>  </li>  <li>   <p>    the code should always return something on the last line (if you do not want to return anything, add    <code>NULL</code>    as the last line),   </p>  </li>  <li>   <p>    <code>ggplot2</code>    and    <code>lattice</code>    graphs should be always printed (of course on the last line),   </p>  </li>  <li>   <p>a code part resulting in a plot should not alter variables and data sets,</p>  </li>  <li>   <p>    the code should be checked before live run with    <code>check.output</code>    option set to    <code>TRUE</code>    just to be sure if everything goes OK.   </p>  </li> </ul>
-<p>  Please check the examples carefully below to get a detailed overview of  <code>evals</code>  . </p> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">evals(txt = NULL, ind = NULL, body = NULL,    classes = NULL, hooks = NULL, length = Inf,    output = c(&quot;all&quot;, &quot;src&quot;, &quot;output&quot;, &quot;type&quot;, &quot;msg&quot;),    env = NULL, check.output = TRUE,    graph.name = tempfile(),    graph.output = c(&quot;png&quot;, &quot;bmp&quot;, &quot;jpeg&quot;, &quot;jpg&quot;, &quot;tiff&quot;, &quot;svg&quot;, &quot;pdf&quot;),    width = 480, height = 480, res = 72, hi.res = FALSE,    hi.res.width = 960,    hi.res.height = 960 * (height/width),    hi.res.res = res * (hi.res.width/width),    graph.env = FALSE, graph.recordplot = FALSE, ...)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>txt</code>
-  </td>
-  <td>
-   <p>a list with character values containing R
-code</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>ind</code>
-  </td>
-  <td>
-   <p>
-    a list with numeric indices pointing to R code
-in
-    <code>body</code>
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>body</code>
-  </td>
-  <td>
-   <p>a character vector that contains template
-body</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>classes</code>
-  </td>
-  <td>
-   <p>
-    a vector or list of classes which should
-be returned. If set to
-    <code>NULL</code>
-    (by default) all R
-objects will be returned.
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>hooks</code>
-  </td>
-  <td>
-   <p>
-    list of hooks to be run for given classes in
-the form of
-    <code>list(class=fn)</code>
-    . If you would also
-specify some parameters of the function, a list should be
-provided in the form of
-    <code>list(fn, param1,
-  param2=NULL)</code>
-    etc. So the hooks would become
-    <code>list(class1=list(fn, param1, param2=NULL), ...)</code>
-    .
-See example below. A default hook can be specified too by
-setting the class to
-    <code>&apos;default&apos;</code>
-    . This can be handy
-if you do not want to define separate methods/functions
-to each possible class, but automatically apply the
-default hook to all classes not mentioned in the list.
-You may also specify only one element in the list like:
-    <code>hooks=list(&apos;default&apos;=ascii)</code>
-    .
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>length</code>
-  </td>
-  <td>
-   <p>
-    R object exceeding the specified length
-will not be returned. The default value (
-    <code>Inf</code>
-    ) does
-not have any restrictions.
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>output</code>
-  </td>
-  <td>
-   <p>a character vector of required returned
-values. See below.</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>env</code>
-  </td>
-  <td>
-   <p>environment where evaluation takes place. If
-not set (by default), a new temporary environment is
-created.</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>check.output</code>
-  </td>
-  <td>
-   <p>
-    to check each line of
-    <code>txt</code>
-    for
-outputs. If set to
-    <code>TRUE</code>
-    you would result in some
-overhead as all commands have to be run twice (first to
-check if any output was generated and if so in which
-part(s), later the R objects are to be grabbed). With
-    <code>FALSE</code>
-    settings
-    <code>evals</code>
-    runs much faster, but
-as now checks are made, some requirements apply, see
-Details.
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>graph.name</code>
-  </td>
-  <td>
-   <p>
-    set the file name of saved plots which
-is a
-    <code>tempfile()</code>
-    by default. A simple character
-string (or a function which returns a single character
-vector) might be provided where
-    <code>%INDEX</code>
-    would be
-replaced by the index of the generating
-    <code>txt</code>
-    source.
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>graph.output</code>
-  </td>
-  <td>
-   <p>set the required file format of saved
-plots</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>width</code>
-  </td>
-  <td>
-   <p>width of generated plot in pixels for even
-vector formats (!)</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>height</code>
-  </td>
-  <td>
-   <p>height of generated plot in pixels for even
-vector formats (!)</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>res</code>
-  </td>
-  <td>
-   <p>nominal resolution in ppi. The height and
-width of vector plots will be calculated based in this.</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>hi.res</code>
-  </td>
-  <td>
-   <p>generate high resolution plots also?</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>hi.res.width</code>
-  </td>
-  <td>
-   <p>width of generated high resolution
-plot in pixels for even vector formats (!)</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>hi.res.height</code>
-  </td>
-  <td>
-   <p>height of generated high resolution
-plot in pixels for even vector formats (!). This value
-can be left blank to be automatically calculated to match
-original plot aspect ratio.</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>hi.res.res</code>
-  </td>
-  <td>
-   <p>nominal resolution of high resolution
-plot in ppi. The height and width of vector plots will be
-calculated based in this. This value can be left blank to
-be automatically calculated to fit original plot scales.</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>graph.env</code>
-  </td>
-  <td>
-   <p>
-    save the environments in which plots
-were generated to distinct files with
-    <code>env</code>
-    extension?
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>graph.recordplot</code>
-  </td>
-  <td>
-   <p>
-    save the plot via
-    <code>recordPlot</code>
-    to distinct files with
-recodplot extension?
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>...</code>
-  </td>
-  <td>
-   <p>
-    optional parameters passed to graphics device
-(e.g.
-    <code>bg</code>
-    ,
-    <code>pointsize</code>
-    etc.)
-   </p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>
- a list of parsed elements each containing: src (the
-command run), output (what the command returns,
- <code>NULL</code>
- if nothing returned, path to image file if a
-plot was generated), type (class of returned object if
-any) and messages: warnings (if any returned by the
-command run, otherwise set to
- <code>NULL</code>
- ) and errors (if
-any returned by the command run, otherwise set to
- <code>NULL</code>
- ). See Details above.
-</p>
-###### Examples:
-<div class="highlight"><pre><code class="r"># parsing line-by-line
-txt &lt;- readLines(textConnection(&apos;x &lt;- rnorm(100)
-  runif(10)
-  warning(&quot;You should check out rapport package!&quot;)
-  plot(1:10)
-  qplot(rating, data = movies, geom = &quot;histogram&quot;)
-  y &lt;- round(runif(100))
-  cor.test(x, y)
-  crl &lt;- cor.test(runif(10), runif(10))
-  table(mtcars$am, mtcars$cyl)
-  ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))&apos;))
-evals(txt)
-## parsing a list of commands
-txt &lt;- list(&apos;df &lt;- mtcars&apos;,
- c(&apos;plot(mtcars$hp, pch = 19)&apos;,&apos;text(mtcars$hp, label = rownames(mtcars), pos = 4)&apos;),
- &apos;ggplot(mtcars) + geom_point(aes(x = hp, y = mpg))&apos;)
-evals(txt)
-## returning only a few classes
-txt &lt;- readLines(textConnection(&apos;rnorm(100)
-  list(x = 10:1, y = &quot;Godzilla!&quot;)
-  c(1,2,3)
-   matrix(0,3,5)&apos;))
-evals(txt, classes = &apos;numeric&apos;)
-evals(txt, classes = c(&apos;numeric&apos;, &apos;list&apos;))
-## handling warnings
-evals(&apos;chisq.test(mtcars$gear, mtcars$hp)&apos;)
-evals(list(c(&apos;chisq.test(mtcars$gear, mtcars$am)&apos;, &apos;pi&apos;, &apos;chisq.test(mtcars$gear, mtcars$hp)&apos;)))
-evals(c(&apos;chisq.test(mtcars$gear, mtcars$am)&apos;, &apos;pi&apos;, &apos;chisq.test(mtcars$gear, mtcars$hp)&apos;))
-## handling errors
-evals(&apos;runiff(20)&apos;)
-evals(&apos;Old MacDonald had a farm\\dots&apos;)
-evals(&apos;## Some comment&apos;)
-evals(list(c(&apos;runiff(20)&apos;, &apos;Old MacDonald had a farm?&apos;)))
-evals(c(&apos;mean(1:10)&apos;, &apos;no.R.function()&apos;))
-evals(list(c(&apos;mean(1:10)&apos;, &apos;no.R.function()&apos;)))
-evals(c(&apos;no.R.object&apos;, &apos;no.R.function()&apos;, &apos;very.mixed.up(stuff)&apos;))
-evals(list(c(&apos;no.R.object&apos;, &apos;no.R.function()&apos;, &apos;very.mixed.up(stuff)&apos;)))
-evals(c(&apos;no.R.object&apos;, &apos;Old MacDonald had a farm\\dots&apos;, &apos;pi&apos;))
-evals(list(c(&apos;no.R.object&apos;, &apos;Old MacDonald had a farm\\dots&apos;, &apos;pi&apos;)))
-## graph options
-evals(&apos;plot(1:10)&apos;)
-evals(&apos;plot(1:10)&apos;, graph.output = &apos;jpg&apos;)
-evals(&apos;plot(1:10)&apos;, height = 800)
-evals(&apos;plot(1:10)&apos;, height = 800, hi.res = T)
-evals(&apos;plot(1:10)&apos;, graph.output = &apos;pdf&apos;, hi.res = T)
-evals(&apos;plot(1:10)&apos;, res = 30)
-evals(&apos;plot(1:10)&apos;, graph.name = &apos;myplot&apos;)
-evals(list(&apos;plot(1:10)&apos;, &apos;plot(2:20)&apos;), graph.name = &apos;myplots-%INDEX&apos;)
-evals(&apos;plot(1:10)&apos;, graph.env = TRUE)
-evals(list(c(&apos;x &lt;- runif(100)&apos;, &apos;plot(x)&apos;)), graph.env = TRUE)
-evals(c(&apos;plot(1:10)&apos;, &apos;plot(2:20)&apos;), graph.env = TRUE)
-evals(list(c(&apos;x &lt;- runif(100)&apos;, &apos;plot(x)&apos;), c(&apos;y &lt;- runif(100)&apos;, &apos;plot(y)&apos;)), graph.env = TRUE)
-evals(&apos;plot(1:10)&apos;, graph.recordplot = TRUE)
-evals(&apos;histogram(mtcars$hp)&apos;, graph.recordplot = TRUE)
-evals(list(c(&apos;x &lt;- runif(100)&apos;, &apos;plot(x)&apos;)), graph.recordplot = TRUE)
-evals(c(&apos;plot(1:10)&apos;, &apos;plot(2:20)&apos;), graph.recordplot = TRUE)
-evals(&apos;plot(10:100)&apos;, graph.output = &apos;pdf&apos;)
-evals(&apos;runif(10)&apos;, graph.output = &apos;pdf&apos;)
-## hooks
-hooks &lt;- list(&apos;numeric&apos; = round, &apos;matrix&apos; = ascii)
-evals(txt, hooks = hooks)
-evals(&apos;22/7&apos;, hooks = list(&apos;numeric&apos; = rp.round))
-evals(&apos;matrix(runif(25), 5, 5)&apos;, hooks = list(&apos;matrix&apos; = rp.round))
-## using rapport&apos;s default hook
-evals(&apos;22/7&apos;, hooks = TRUE)
-## setting default hook
-evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks = list(&apos;default&apos;=round))
-## round all values except for matrices
-evals(c(&apos;runif(10)&apos;, &apos;matrix(runif(9), 3, 3)&apos;), hooks = list(matrix = &apos;print&apos;, &apos;default&apos; = round))
-# advanced hooks
-fun &lt;- function(x, asciiformat) paste(capture.output(print(ascii(x), asciiformat)), collapse = &apos;\n&apos;)
-hooks &lt;- list(&apos;numeric&apos; = list(round, 2), &apos;matrix&apos; = list(fun, &quot;rest&quot;))
-evals(txt, hooks = hooks)
-# return only returned values
-evals(txt, output = &apos;output&apos;)
-# return only messages (for checking syntax errors etc.)
-evals(txt, output = &apos;msg&apos;)
-# check the length of returned values
-evals(&apos;runif(10)&apos;, length = 5)
-# note the following will not be filtered!
-evals(&apos;matrix(1,1,1)&apos;, length = 1)
-# if you do not want to let such things be eval-ed in the middle of a string use it with other filters :)
-evals(&apos;matrix(1,1,1)&apos;, length = 1, classes = &apos;numeric&apos;)
-# hooks &amp; filtering
-evals(&apos;matrix(5,5,5)&apos;, hooks = list(&apos;matrix&apos; = ascii), output = &apos;output&apos;)
-# eval-ing chunks in given environment
-myenv &lt;- new.env()
-evals(&apos;x &lt;- c(0,10)&apos;, env = myenv)
-evals(&apos;mean(x)&apos;, env = myenv)
-rm(myenv)
-# note: if you had not specified &apos;myenv&apos;, the second &apos;evals&apos; would have failed
-evals(&apos;x &lt;- c(0,10)&apos;)
-evals(&apos;mean(x)&apos;)
-</code></pre>
-</div>
-
-
 <a id="Generic-graph-functions"> </a>
 #### Generic graph functions
-
-<a id="add.grid"> </a>
-##### add.grid: Add grid to x axis
-###### Description:
-<p>Add grid to x axis</p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">add.grid(side = c(&quot;top&quot;, &quot;bottom&quot;, &quot;left&quot;, &quot;right&quot;), ...,    ticks = c(&quot;default&quot;, &quot;yes&quot;, &quot;no&quot;), scales, components,    line.col, where = &quot;both&quot;)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>side</code>
-  </td>
-  <td/>
- </tr>
- <tr valign="top">
-  <td>
-   <code>...</code>
-  </td>
-  <td/>
- </tr>
- <tr valign="top">
-  <td>
-   <code>ticks</code>
-  </td>
-  <td/>
- </tr>
- <tr valign="top">
-  <td>
-   <code>scales</code>
-  </td>
-  <td/>
- </tr>
- <tr valign="top">
-  <td>
-   <code>components</code>
-  </td>
-  <td/>
- </tr>
- <tr valign="top">
-  <td>
-   <code>line.col</code>
-  </td>
-  <td/>
- </tr>
-</table>
-###### References:
-<p>
- Forked from
- <code>latticeExtra::axis.grid()</code>
- .
-</p>
-<a id="add.grid.x"> </a>
-##### add.grid.x: Add grid to x axis
-###### Description:
-<p>Add grid to x axis</p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">add.grid.x(...)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>...</code>
-  </td>
-  <td>
-   <p>
-    passed to
-    <code>add.grid</code>
-   </p>
-  </td>
- </tr>
-</table>
-<a id="add.grid.y"> </a>
-##### add.grid.y: Add grid to y axis
-###### Description:
-<p>Add grid to y axis</p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">add.grid.y(...)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>...</code>
-  </td>
-  <td>
-   <p>
-    passed to
-    <code>add.grid</code>
-   </p>
-  </td>
- </tr>
-</table>
-<a id="decorate.lattice"> </a>
-##### decorate.lattice: Decorating lattice plots
-###### Description:
-<p>Apply required theme and grid options to called lattice/trellis plot.</p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;style.theme&apos;,</p>  </li>  <li>   <p>&apos;style.grid&apos;.</p>  </li> </ul> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">decorate.lattice(expr, theme = getOption(&quot;style.theme&quot;),    grid = getOption(&quot;style.grid&quot;))</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>expr</code>
-  </td>
-  <td>
-   <p>call to lattice which will be evaluated with
-added theme options</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>theme</code>
-  </td>
-  <td>
-   <p>
-    name of theme to use. Besides
-    <code>theme.rapport</code>
-    there are several themes
-available in other packages too, eg.
-    <code>standard.theme()</code>
-    from lattice,
-    <code>gplot2like()</code>
-    and
-    <code>theEconomist.theme()</code>
-    from latticeExtra and
-    <code>custom.theme.black()</code>
-    from latticist package. Of
-course custom theme might be provided also, check out
-    <code>?custom.theme</code>
-    from latticeExtra package or head
-directly to:
-    <code>?trellis.par.get()</code>
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>grid</code>
-  </td>
-  <td>
-   <p>
-    show grid in the background? It is possible
-to render a grid for
-    <code>&apos;both&apos;</code>
-    , only for
-    <code>&apos;x&apos;</code>
-    or solely to
-    <code>&apos;y&apos;</code>
-    axis.
-    <code>&apos;none&apos;</code>
-    results in a
-blank background.
-   </p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>lattice/trellis object</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">decorate.lattice(histogram(mtcars$hp))
-decorate.lattice(histogram(mtcars$hp), grid=&apos;y&apos;)
-decorate.lattice(histogram(mtcars$hp), grid=&apos;both&apos;)
-decorate.lattice(histogram(mtcars$hp), theme=&quot;theme.rapport(bw = TRUE)&quot;)
-decorate.lattice(histogram(mtcars$hp, type = &quot;density&quot;, panel = function(x, ...) {
-  panel.histogram(x, ...)
-  panel.densityplot(x, darg=list(na.rm=TRUE), ...)
-}))
-decorate.lattice(bwplot(decrease ~ treatment, OrchardSprays, groups = rowpos), grid=&apos;none&apos;)
-decorate.lattice(bwplot(decrease ~ treatment, OrchardSprays, groups = rowpos), grid=&apos;y&apos;)
-decorate.lattice(bwplot(voice.part ~ height, data = singer), grid=&apos;x&apos;)
-decorate.lattice(bwplot(voice.part ~ height, data = singer), grid=&apos;x&apos;, theme=&quot;theme.rapport(bw = TRUE)&quot;)
-decorate.lattice(barchart(VADeaths))
-decorate.lattice(barchart(VADeaths), theme=&quot;theme.rapport(palette=&apos;Greens&apos;)&quot;, grid=&apos;x&apos;)
-decorate.lattice(barchart(VADeaths), theme=&quot;theme.rapport(bw = TRUE)&quot;, grid=&apos;x&apos;)
-decorate.lattice(barchart(VADeaths), theme=&quot;theme.rapport(font = &apos;Garamond&apos;)&quot;, grid=&apos;x&apos;)
-decorate.lattice(barchart(VADeaths), theme=&quot;ggplot2like&quot;, grid=&apos;x&apos;)
-decorate.lattice(barchart(VADeaths), theme=&quot;theEconomist.theme&quot;, grid=&apos;x&apos;)
-decorate.lattice(barchart(VADeaths, main=&apos;TITLE (70-74)&apos;), theme=&quot;theme.rapport(custom = list(axis.text = list(fontfamily=&apos;Garamond&apos;)))&quot;, grid=&apos;x&apos;)
-</code></pre>
-</div>
 
 <a id="rp.barplot"> </a>
 ##### rp.barplot: Barplot
 ###### Description:
 <p>  This function is a wrapper around  <code>barchart</code>  which operates only on factors with optional facet. </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;style.theme&apos;.</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.barplot(x, facet = NULL, data = NULL, groups = FALSE,    auto.key = FALSE, horizontal = TRUE, percent = FALSE,    ...)</code></pre>
+	<pre><code class="r">rp.barplot(x, facet = NULL, data = NULL, groups = FALSE,    percent = FALSE, horizontal = TRUE, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -788,17 +63,6 @@ variables should be taken</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>horizontal</code>
-  </td>
-  <td>
-   <p>
-    see
-    <code>xyplot</code>
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
    <code>groups</code>
   </td>
   <td>
@@ -817,14 +81,18 @@ variables should be taken</p>
     an option to show percentages (100
 category) instead of number of cases. Handy with
     <code>groups=TRUE</code>
-    . Default value: FALSE without groups,
-TRUE with groups.
+    . Default value:
+    <code>FALSE</code>
+    without
+groups,
+    <code>TRUE</code>
+    with groups.
    </p>
   </td>
  </tr>
  <tr valign="top">
   <td>
-   <code>auto.key</code>
+   <code>horizontal</code>
   </td>
   <td>
    <p>
@@ -861,9 +129,6 @@ rp.barplot(dwell, gender, ius2008)
 ##### rp.boxplot: Boxplot
 ###### Description:
 <p>  This function is a wrapper around  <code>bwplot</code>  which operates only on numeric variables with optional facet. </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;style.theme&apos;.</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">rp.boxplot(x, y = NULL, facet = NULL, data = NULL, ...)</code></pre>
@@ -926,92 +191,10 @@ rp.boxplot(age, dwell, gender, ius2008)
 </code></pre>
 </div>
 
-<a id="rp.cor.plot"> </a>
-##### rp.cor.plot: Scatterplot matrices
-###### Description:
-<p>  This function is a wrapper around  <code>pairs</code>  which operates only on numeric variables. Panel options are:  <code>c(&apos;panel.cor&apos;, &apos;panel.smooth&apos;, &apos;panel.hist&apos;)</code>  . Custom panels may be also added. </p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">rp.cor.plot(x, lower.panel = &quot;panel.smooth&quot;,    upper.panel = &quot;panel.cor&quot;, data = NULL, ...)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>numeric variables</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>lower.panel</code>
-  </td>
-  <td>
-   <p>
-    see:
-    <code>pairs</code>
-    parameter.
-Default set to
-    <code>&apos;panel.smooth&apos;</code>
-    .
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>upper.panel</code>
-  </td>
-  <td>
-   <p>
-    see:
-    <code>pairs</code>
-    parameter.
-Default set to
-    <code>&apos;panel.cor&apos;</code>
-    .
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>data</code>
-  </td>
-  <td>
-   <p>an optional data frame from which the
-variables should be taken</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>...</code>
-  </td>
-  <td>
-   <p>
-    additional parameters to
-    <code>pairs</code>
-   </p>
-  </td>
- </tr>
-</table>
-###### Examples:
-<div class="highlight"><pre><code class="r">## setting rp.names first
-df &lt;- mtcars
-for (i in 1:ncol(df))
-  attr(df[, i], &quot;name&quot;) &lt;- names(df)[i]
-rp.cor.plot(df)
-rp.cor.plot(df, diag.panel = &apos;panel.hist&apos;)
-</code></pre>
-</div>
-
 <a id="rp.densityplot"> </a>
 ##### rp.densityplot: Density plot
 ###### Description:
 <p>  This function is a wrapper around  <code>densityplot</code>  which operates only on numeric vectors with optional facet. </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;style.theme&apos;.</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">rp.densityplot(x, facet = NULL, data = NULL, ...)</code></pre>
@@ -1070,12 +253,9 @@ rp.densityplot(edu, gender, ius2008)
 ##### rp.dotplot: Dotplot
 ###### Description:
 <p>  This function is a wrapper around  <code>dotplot</code>  which operates only on factors with optional facet. </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;style.theme&apos;.</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.dotplot(x, facet = NULL, data = NULL, groups = FALSE,    auto.key = FALSE, horizontal = TRUE, ...)</code></pre>
+	<pre><code class="r">rp.dotplot(x, facet = NULL, data = NULL, groups = FALSE,    horizontal = TRUE, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -1107,17 +287,6 @@ variables should be taken</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>horizontal</code>
-  </td>
-  <td>
-   <p>
-    see
-    <code>xyplot</code>
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
    <code>groups</code>
   </td>
   <td>
@@ -1129,7 +298,7 @@ variables should be taken</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>auto.key</code>
+   <code>horizontal</code>
   </td>
   <td>
    <p>
@@ -1209,9 +378,6 @@ rp.dotplot(dwell, gender, ius2008)
 ##### rp.hist: Histogram
 ###### Description:
 <p>  This function is a wrapper around  <code>histogram</code>  which operates only on numeric vectors with optional facet. </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;style.theme&apos;.</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">rp.hist(x, facet = NULL, data = NULL,    kernel.smooth = FALSE, ...)</code></pre>
@@ -1279,9 +445,6 @@ rp.hist(edu, gender, ius2008)
 ##### rp.lineplot: Lineplot
 ###### Description:
 <p>  This function is a wrapper around  <code>xyplot</code>  with custom panel. Only numeric variables are accepted with optional facet. </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;style.theme&apos;.</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">rp.lineplot(x, y, facet = NULL, data = NULL,    groups = NULL, ...)</code></pre>
@@ -1349,7 +512,7 @@ rp.lineplot(gear, wt, data=a)
 ## lame demo:
 rp.lineplot(1:length(mtcars$hp), mtcars$hp, facet=mtcars$cyl)
 ## advanced usage
-rp.lineplot(partner, age, data = rp.desc(&apos;age&apos;, &apos;partner&apos;, fn = &apos;mean&apos;, data=ius2008))
+rp.lineplot(partner, age, data = rp.desc(&apos;age&apos;, &apos;partner&apos;, fn = &apos;mean&apos;, data=ius2008)) ## TODO: fix....
 rp.lineplot(partner, age, gender, data = rp.desc(&apos;age&apos;, c(&apos;gender&apos;, &apos;partner&apos;), fn = &apos;mean&apos;, data=ius2008))
 rp.lineplot(partner, age, groups = gender, data=rp.desc(&apos;age&apos;, c(&apos;gender&apos;, &apos;partner&apos;), fn = &apos;mean&apos;, data = ius2008))
 ## Did you noticed the nasty axis titles? Why not correct those? :)
@@ -1365,65 +528,10 @@ rp.lineplot(partner, age, groups = gender, data = df)
 </code></pre>
 </div>
 
-<a id="rp.palette"> </a>
-##### rp.palette: Color palettes
-###### Description:
-<p>  This function returns a given number of color codes from given palette from  <code>RColorBrewer</code>  . Besides those falling back to  <code>&apos;default&apos;</code>  : a color-blind-friendly palette from  <a href="http://jfly.iam.u-tokyo.ac.jp/color/">http://jfly.iam.u-tokyo.ac.jp/color/</a>  . </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;style.color.palette&apos;,</p>  </li>  <li>   <p>&apos;style.colorize&apos;.</p>  </li> </ul> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">rp.palette(num,    palette = getOption(&quot;style.color.palette&quot;),    colorize = getOption(&quot;style.colorize&quot;))</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>num</code>
-  </td>
-  <td>
-   <p>number of colors to return</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>palette</code>
-  </td>
-  <td>
-   <p>
-    a palette name from
-    <code>RColorBrewer</code>
-    or &apos;default&apos;
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>colorize</code>
-  </td>
-  <td>
-   <p>if set colors are chosen from palette at
-random order</p>
-  </td>
- </tr>
-</table>
-###### Examples:
-<div class="highlight"><pre><code class="r">rp.palette()
-rp.palette(1)
-rp.palette(1, colorize = TRUE)
-rp.palette(5, &apos;Greens&apos;)
-rp.palette(5, &apos;Greens&apos;, colorize = TRUE)
-}</code></pre>
-</div>
-
 <a id="rp.qqplot"> </a>
 ##### rp.qqplot: Q-Q plot with Theoretical Distribution
 ###### Description:
 <p>  This function is a wrapper around  <code>qqmath</code>  which operates only on a numeric variable with optional facet. </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;style.theme&apos;.</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">rp.qqplot(x, dist = qnorm, facet = NULL, data = NULL,    ...)</code></pre>
@@ -1492,9 +600,6 @@ rp.qqplot(ius2008$age, panel = function(x) {panel.qqmath(x); panel.qqmathline(x,
 ##### rp.scatterplot: Scatterplot
 ###### Description:
 <p>  This function is a wrapper around  <code>xyplot</code>  which operates only on numeric variables with optional facet. </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;style.theme&apos;.</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">rp.scatterplot(x, y, facet = NULL, data = NULL, ...)</code></pre>
@@ -1553,87 +658,6 @@ rp.scatterplot(ius2008$edu, ius2008$age, facet=ius2008$gender)
 with(ius2008, rp.scatterplot(edu, age, facet = gender))
 rp.scatterplot(edu, age, data=ius2008)
 rp.scatterplot(edu, age, gender, ius2008)
-</code></pre>
-</div>
-
-<a id="theme.rapport"> </a>
-##### theme.rapport: Rapport theme
-###### Description:
-<p>Custom minimalistic but colorful lattice/trellis theme used by default in rapport.</p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;style.color.palette&apos;,</p>  </li>  <li>   <p>&apos;style.colorize&apos;,</p>  </li>  <li>   <p>&apos;style.font&apos;.</p>  </li> </ul> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">theme.rapport(bw = FALSE,    palette = getOption(&quot;style.color.palette&quot;),    colorize = getOption(&quot;style.colorize&quot;),    font = getOption(&quot;style.font&quot;), custom)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>bw</code>
-  </td>
-  <td>
-   <p>generating black and white output?</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>palette</code>
-  </td>
-  <td>
-   <p>
-    color palette to use. See:
-    <code>rp.palette</code>
-    for details.
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>colorize</code>
-  </td>
-  <td>
-   <p>adding some random noise instead of using
-first available color(s) from palette</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>font</code>
-  </td>
-  <td>
-   <p>specified font family</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>custom</code>
-  </td>
-  <td>
-   <p>
-    list of custom lattice options to change.
-E.g.
-    <code>par.main.text = list(lineheight = 2)</code>
-   </p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>list of lattice parameters</p>
-###### References:
-<p>
- Forked from
- <code>latticeExtra::ggplot2like()</code>
- and
- <code>lattice::standard.theme()</code>
- .
-</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">theme.rapport()
-theme.rapport(palette=&apos;Greens&apos;)
-theme.rapport(palette=&apos;Greens&apos;, colorize = FALSE)
-theme.rapport(custom=list(par.main.text = list(lineheight = 2)))
 </code></pre>
 </div>
 
@@ -1743,13 +767,13 @@ thanks to Gabor Grothendieck for this one!
 </table>
 ###### Returned value:
 <p>None (invisible ‘NULL’).</p>
-<a id="guess.convert"> </a>
-##### guess.convert: Guess Mode
+<a id="is.boolean"> </a>
+##### is.boolean: Boolean
 ###### Description:
-<p>&quot;Guesses&quot; a mode of provided character vector and converts it to appropriate mode.</p>
+<p>Checks if provided object is a boolean i.e. a length-one logical vector.</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">guess.convert(x, trim.white = FALSE)</code></pre>
+	<pre><code class="r">is.boolean(x)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -1758,36 +782,26 @@ thanks to Gabor Grothendieck for this one!
    <code>x</code>
   </td>
   <td>
-   <p>an atomic vector to guess its mode</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>trim.white</code>
-  </td>
-  <td>
-   <p>a logical value indicating whether
-white spaces should be removed before guessing</p>
+   <p>an object to check</p>
   </td>
  </tr>
 </table>
 ###### Returned value:
-<p>an atomic vector with (hopefully) successfully guessed
-mode</p>
+<p>a logical value indicating whether provided object is a
+boolean</p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">guess.convert(&quot;234&quot;)
-guess.convert(&quot;234.23&quot;)
-guess.convert(&quot;234.23.234&quot;)
-guess.convert(&quot;TRUE&quot;)
-guess.convert(&quot;TRUE         &quot;)
-guess.convert(&quot;     TRUE         &quot;, TRUE)
+<div class="highlight"><pre><code class="r">    is.boolean(TRUE)                # [1] TRUE
+    # the following will work on most systems, unless you have tweaked global Rprofile
+    is.boolean(T)                   # [1] TRUE
+    is.boolean(1)                   # [1] FALSE
+    is.string(c(&quot;foo&quot;, &quot;bar&quot;))      # [1] FALSE
 </code></pre>
 </div>
 
 <a id="is.empty"> </a>
 ##### is.empty: Empty Value
 ###### Description:
-<p>  Rails-inspired helper that checks if value is &quot;empty&quot;, i.e. if it&apos;s of  <code>NULL</code>  ,  <code>NA</code>  ,  <code>NaN</code>  ,  <code>FALSE</code>  , empty string or 0. </p>
+<p>  Rails-inspired helper that checks if vector values are &quot;empty&quot;, i.e. if it&apos;s of  <code>NULL</code>  ,  <code>NA</code>  ,  <code>NaN</code>  ,  <code>FALSE</code>  , empty string or  <code>0</code>  . Note that unlike its &apos;is.&apos; siblings, &apos;is.empty&apos; is vectorised. </p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">is.empty(x, trim = FALSE, ...)</code></pre>
@@ -1892,38 +906,35 @@ string</p>
     is.string(c(&quot;foo&quot;, &quot;bar&quot;))   # [1] FALSE</code></pre>
 </div>
 
-<a id="makes.plot"> </a>
-##### makes.plot: Check plot creation
+<a id="messagef"> </a>
+##### messagef: Send Message with String Interpolated Messages
 ###### Description:
-<p>This function checks if given expression generates a plot.</p>
+<p>  Combines  <code>warning</code>  with  <code>sprintf</code>  thus allowing string interpolated diagnostic messages. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">makes.plot(cmd)</code></pre>
+	<pre><code class="r">messagef(s, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
-   <code>cmd</code>
+   <code>s</code>
   </td>
   <td>
-   <p>an expression that is to be tested</p>
+   <p>a character vector of format strings</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>...</code>
+  </td>
+  <td>
+   <p>values to be interpolated</p>
   </td>
  </tr>
 </table>
-###### Returned value:
-<p>a logical value</p>
-###### References:
-<p>
- See original thread for more details
-(
- <a href="http://stackoverflow.com/a/2744434/457898">http://stackoverflow.com/a/2744434/457898</a>
- ).
-Special thanks to Hadley Wickham for this one!
-</p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">    makes.plot(plot(rnorm(100))) # returns TRUE
-    makes.plot(sample(10))       # returns FALSE
+<div class="highlight"><pre><code class="r">messagef(&quot;%.3f is not larger than %d and/or smaller than %d&quot;, pi, 10, 40)
 </code></pre>
 </div>
 
@@ -2029,10 +1040,10 @@ to
 <a id="trim.space"> </a>
 ##### trim.space: Trim Spaces
 ###### Description:
-<p>  Removes leading and/or trailing space(s) from a character vector value. By default, it removes only trailing spaces. In order to trim both leading and trailing spaces, pass  <code>TRUE</code>  to both  <code>leading</code>  and  <code>trailing</code>  arguments. </p>
+<p>  Removes leading and/or trailing space(s) from a character vector value. By default, it removes both leading and trailing spaces. In order to get fine-tune control on trailing, pass appropriate logical values to  <code>leading</code>  and  <code>trailing</code>  arguments. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">trim.space(x, leading = FALSE, trailing = TRUE,    re = &quot;[:space:]&quot;, ...)</code></pre>
+	<pre><code class="r">trim.space(x, leading = TRUE, trailing = TRUE,    re = &quot;[:space:]&quot;, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -2041,7 +1052,7 @@ to
    <code>x</code>
   </td>
   <td>
-   <p>a character vector which needs whitespace
+   <p>a character vector which values need whitespace
 trimming</p>
   </td>
  </tr>
@@ -2163,38 +1174,35 @@ defines a space character</p>
  . Special
 thanks to user Jean-Robert for this one!
 </p>
-<a id="wrap"> </a>
-##### wrap: Wrap Vector Elements
+<a id="warningf"> </a>
+##### warningf: Send Warning with String Interpolated Messages
 ###### Description:
-<p>  Wraps vector elements with string provided in  <code>wrap</code>  argument. </p>
+<p>  Combines  <code>warning</code>  with  <code>sprintf</code>  thus allowing string interpolated warnings. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">wrap(x, wrap = &quot;\&quot;&quot;)</code></pre>
+	<pre><code class="r">warningf(s, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
-   <code>x</code>
+   <code>s</code>
   </td>
   <td>
-   <p>a vector to wrap</p>
+   <p>a character vector of format strings</p>
   </td>
  </tr>
  <tr valign="top">
   <td>
-   <code>wrap</code>
+   <code>...</code>
   </td>
   <td>
-   <p>a string to wrap around vector elements</p>
+   <p>values to be interpolated</p>
   </td>
  </tr>
 </table>
-###### Returned value:
-<p>a string with wrapped elements</p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">wrap(&quot;foobar&quot;)
-wrap(c(&quot;fee&quot;, &quot;fi&quot;, &quot;foo&quot;, &quot;fam&quot;), &quot;_&quot;)
+<div class="highlight"><pre><code class="r">warningf(&quot;%.3f is not larger than %d and/or smaller than %d&quot;, pi, 10, 40)
 </code></pre>
 </div>
 
@@ -2393,7 +1401,7 @@ rp.desc(&quot;age&quot;, c(&quot;gender&quot;, &quot;student&quot;), c(&quot;Ave
 <p>Display frequency table with counts, percentage, and cumulatives.</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.freq(f.vars, data, na.rm = TRUE, include.na = FALSE,    drop.unused.levels = FALSE, count = TRUE, pct = TRUE,    cumul.count = TRUE, cumul.pct = TRUE,    total.name = &quot;Total&quot;)</code></pre>
+	<pre><code class="r">rp.freq(f.vars, data, na.rm = TRUE, include.na = FALSE,    drop.unused.levels = FALSE, count = TRUE, pct = TRUE,    cumul.count = TRUE, cumul.pct = TRUE,    total.name = &quot;Total&quot;, reorder = FALSE)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -2481,6 +1489,14 @@ be left out</p>
   <td>
    <p>a sting containing footer label
 (defaults to &quot;Total&quot;)</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>reorder</code>
+  </td>
+  <td>
+   <p>reorder the table based on frequencies?</p>
   </td>
  </tr>
 </table>
@@ -3002,7 +2018,7 @@ elements</p>
 <ul>  <li>   <p>&apos;rp.use.labels&apos;.</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">htest(x, ..., use.labels = getOption(&quot;rp.use.labels&quot;),    use.method.names = TRUE,    colnames = c(&quot;Statistic&quot;, &quot;p-value&quot;))</code></pre>
+	<pre><code class="r">htest(x, ..., use.labels = getOption(&quot;rp.use.labels&quot;),    use.method.names = TRUE,    colnames = c(&quot;Method&quot;, &quot;Statistic&quot;, &quot;p-value&quot;))</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -3298,6 +2314,66 @@ rm(x)</code></pre>
 <a id="Template-related-functions"> </a>
 #### Template related functions
 
+<a id="as.character.rp.inputs"> </a>
+##### as.character.rp.inputs: Convert Inputs to Character
+###### Description:
+<p>Converts template inputs to character vector.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">## S3 method for class &apos;rp.inputs&apos; as.character(x, ...)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>template inputs object</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>...</code>
+  </td>
+  <td>
+   <p>ignored</p>
+  </td>
+ </tr>
+</table>
+<a id="as.character.rp.meta"> </a>
+##### as.character.rp.meta: Convert Metadata to Character
+###### Description:
+<p>Converts template metadata to character vector.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">## S3 method for class &apos;rp.meta&apos; as.character(x, ...)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>template metadata object</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>...</code>
+  </td>
+  <td>
+   <p>
+    accepts
+    <code>include.examples</code>
+    which
+indicates that examples should be included in output (if
+any)
+   </p>
+  </td>
+ </tr>
+</table>
 <a id="check.limit"> </a>
 ##### check.limit: Input Limits
 ###### Description:
@@ -3347,7 +2423,7 @@ rapport:::check.limit(&quot;[1, 0]&quot;)  # will throw error
 <p>Checks package-specific naming conventions: variables should start by a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">check.name(x, size = 30L, ...)</code></pre>
+	<pre><code class="r">check.name(x, min.size = 1L, max.size = 30L, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -3361,11 +2437,20 @@ rapport:::check.limit(&quot;[1, 0]&quot;)  # will throw error
  </tr>
  <tr valign="top">
   <td>
-   <code>size</code>
+   <code>min.size</code>
   </td>
   <td>
-   <p>an integer value that indicates maximum name
-length</p>
+   <p>an integer value that indicates minimum
+name length</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>max.size</code>
+  </td>
+  <td>
+   <p>an integer value that indicates maximum
+name length</p>
   </td>
  </tr>
  <tr valign="top">
@@ -3385,14 +2470,14 @@ length</p>
 <p>a logical vector indicating which values satisfy the
 naming conventions</p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">check.name(&quot;foo&quot;)               # [1] TRUE
-check.name(&quot;foo.bar&quot;)           # [1] TRUE
-check.name(&quot;foo_bar&quot;)           # [1] TRUE
-check.name(&quot;foo.bar.234&quot;)       # [1] TRUE
-check.name(&quot;foo.bar.234_asdf&quot;)  # [1] TRUE
-check.name(&quot;234.asdf&quot;)          # [1] FALSE
-check.name(&quot;_asdf&quot;)             # [1] FALSE
-check.name(&quot;.foo&quot;)              # [1] FALSE</code></pre>
+<div class="highlight"><pre><code class="r">rapport:::check.name(&quot;foo&quot;)               # [1] TRUE
+rapport:::check.name(&quot;foo.bar&quot;)           # [1] TRUE
+rapport:::check.name(&quot;foo_bar&quot;)           # [1] TRUE
+rapport:::check.name(&quot;foo.bar.234&quot;)       # [1] TRUE
+rapport:::check.name(&quot;foo.bar.234_asdf&quot;)  # [1] TRUE
+rapport:::check.name(&quot;234.asdf&quot;)          # [1] FALSE
+rapport:::check.name(&quot;_asdf&quot;)             # [1] FALSE
+rapport:::check.name(&quot;.foo&quot;)              # [1] FALSE</code></pre>
 </div>
 
 <a id="check.type"> </a>
@@ -3423,81 +2508,6 @@ rapport:::check.type(&quot;number[3]=123.456&quot;)
 </code></pre>
 </div>
 
-<a id="elem.eval"> </a>
-##### elem.eval: Evaluate Template Elements
-###### Description:
-<p>  This function grabs template elements from  <code>tpl.elem</code>  and evaluates them. For  <code>rp.block</code>  -classed elements just a vanilla  <code>evals</code>  call is carried out, while  <code>rp.inline</code>  and  <code>rp.heading</code>  classes have some additional post-evaluation processing (heading level is stored, as well as &quot;raw&quot; and evaluated chunk contents). </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;inline.open&apos;,</p>  </li>  <li>   <p>&apos;inline.close&apos;.</p>  </li> </ul> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">elem.eval(x, tag.open = get.tags(&quot;inline.open&quot;),    tag.close = get.tags(&quot;inline.close&quot;),    remove.comments = TRUE, rapport.mode = &quot;normal&quot;, ...)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>
-    a template file pointer (see
-    <code>tpl.find</code>
-    for details)
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>tag.open</code>
-  </td>
-  <td>
-   <p>a string containing opening tag</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>tag.close</code>
-  </td>
-  <td>
-   <p>a string containing closing tag</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>remove.comments</code>
-  </td>
-  <td>
-   <p>should comments be omitted on
-evaluation?</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>rapport.mode</code>
-  </td>
-  <td>
-   <p>
-    see:
-    <code>?rapport</code>
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>...</code>
-  </td>
-  <td>
-   <p>
-    additional params for
-    <code>grep</code>
-    -like
-functions
-   </p>
-  </td>
- </tr>
-</table>
 <a id="extract_meta"> </a>
 ##### extract_meta: Extract Template Metadata
 ###### Description:
@@ -3601,10 +2611,10 @@ non-mandatory field is not found/malformed</p>
 is not required
 </p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">    extract_meta(&quot;Name: John Smith&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
+<div class="highlight"><pre><code class="r">    rapport:::extract_meta(&quot;Name: John Smith&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
     ## $name
     ## [1] &quot;John Smith&quot;
-    extract_meta(&quot;Name: John&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
+    rapport:::extract_meta(&quot;Name: John&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
     ## $name
     ## [1] &quot;John&quot;
 </code></pre>
@@ -3673,10 +2683,10 @@ character vector specified in
 <p>Returns report tag vales (usually regexes): either user-defined, or the default ones.</p>
 ###### Details:
 <p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;chunk.open&apos;,</p>  </li>  <li>   <p>&apos;chunk.close&apos;,</p>  </li>  <li>   <p>&apos;inline.open&apos;,</p>  </li>  <li>   <p>&apos;inline.close&apos;,</p>  </li>  <li>   <p>&apos;header.open&apos;,</p>  </li>  <li>   <p>&apos;header.close&apos;,</p>  </li>  <li>   <p>&apos;comment.open&apos;,</p>  </li>  <li>   <p>&apos;comment.close&apos;.</p>  </li> </ul> 
+<ul>  <li>   <p>&apos;header.open&apos;,</p>  </li>  <li>   <p>&apos;header.close&apos;,</p>  </li>  <li>   <p>&apos;comment.open&apos;,</p>  </li>  <li>   <p>&apos;comment.close&apos;.</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">get.tags(tag.type = c(&quot;all&quot;, &quot;chunk.open&quot;, &quot;chunk.close&quot;, &quot;inline.open&quot;, &quot;inline.close&quot;, &quot;header.open&quot;, &quot;header.close&quot;, &quot;comment.open&quot;, &quot;comment.close&quot;),    preset = c(&quot;user&quot;, &quot;default&quot;))</code></pre>
+	<pre><code class="r">get.tags(tag.type = c(&quot;all&quot;, &quot;header.open&quot;, &quot;header.close&quot;, &quot;comment.open&quot;, &quot;comment.close&quot;),    preset = c(&quot;user&quot;, &quot;default&quot;))</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -3703,119 +2713,8 @@ to return</p>
 regexes</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">get.tags()        # same as &apos;get.tags(&quot;all&quot;)&apos;
-get.tags(&quot;chunk.open&quot;)</code></pre>
-</div>
-
-<a id="grab.chunks"> </a>
-##### grab.chunks: Inline Chunk Contents
-###### Description:
-<p>Returns inline code chunks with or without tags that wrap them.</p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;inline.open&apos;,</p>  </li>  <li>   <p>&apos;inline.close&apos;.</p>  </li> </ul> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">grab.chunks(x, tag.open = get.tags(&quot;inline.open&quot;),    tag.close = get.tags(&quot;inline.close&quot;), include = FALSE,    ...)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>a character vector</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>tag.open</code>
-  </td>
-  <td>
-   <p>a character value with opening tag
-regular expression</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>tag.close</code>
-  </td>
-  <td>
-   <p>a character value with closing tag
-regular expression</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>include</code>
-  </td>
-  <td>
-   <p>
-    a logical value indicating whether chunks
-should be returned (defaults to
-    <code>FALSE</code>
-    )
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>...</code>
-  </td>
-  <td>
-   <p>
-    additional arguments for
-    <code>gregexpr</code>
-    function
-   </p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>a character vector with code chunks</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">s &lt;- c(&quot;As you know, pi equals &lt;%pi%&gt;&quot;,  &quot;2 raised to the power of 3 is &lt;%2^3%&gt;&quot;)
-grab.chunks(s, &quot;&lt;%&quot;, &quot;%&gt;&quot;, FALSE)
-## [1] &quot;pi&quot;  &quot;2^3&quot;
-grab.chunks(s, &quot;&lt;%&quot;, &quot;%&gt;&quot;, FALSE)
-## [1] &quot;&lt;%pi%&gt;&quot;  &quot;&lt;%2^3%&gt;&quot;
+get.tags(&quot;header.open&quot;)
 </code></pre>
-</div>
-
-<a id="has.tags"> </a>
-##### has.tags: Tag Existence
-###### Description:
-<p>Checks if a character vector elements contain specified tags. Note that this helper does not parse R code within tags, but just checks for tag existence in provided string!</p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">has.tags(x, ...)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>a character value to check for tag strings</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>...</code>
-  </td>
-  <td>
-   <p>an argument list with tags to check</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>a logical value indicating if the string has passed the
-check</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">has.tags(&quot;&lt;% pi %&gt;&quot;, &quot;&lt;%&quot;)
-has.tags(&quot;&lt;% pi %&gt;&quot;, &quot;&lt;%&quot;, &quot;%&gt;&quot;, &quot;&lt;!--&quot;, &quot;--&gt;&quot;)
-has.tags(c(&quot;&lt;% pi %&gt;&quot;, &quot;&lt;!-- foobar --&gt;&quot;), &quot;&lt;%&quot;, &quot;%&gt;&quot;, &quot;&lt;!--&quot;, &quot;--&gt;&quot;)</code></pre>
 </div>
 
 <a id="is.heading"> </a>
@@ -3865,35 +2764,10 @@ heading</p>
  <code>rapport</code>
  object
 </p>
-<a id="is.rp.block"> </a>
-##### is.rp.block: Rapport Block Element
-###### Description:
-<p>  Checks if provided R object is a  <code>rapport</code>  block element. </p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">is.rp.block(x)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>any R object to check</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>
- a logical value indicating whether provided object is a
- <code>rp.block</code>
- object
-</p>
 <a id="is.rp.heading"> </a>
 ##### is.rp.heading: Rapport Heading Element
 ###### Description:
-<p>  Checks if provided R object is a  <code>rapport</code>  inline element. </p>
+<p>  Checks if provided R object is a  <code>rapport</code>  heading element. </p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">is.rp.heading(x)</code></pre>
@@ -3913,31 +2787,6 @@ heading</p>
 <p>
  a logical value indicating whether provided object is a
  <code>rp.heading</code>
- object
-</p>
-<a id="is.rp.inline"> </a>
-##### is.rp.inline: Rapport Inline Element
-###### Description:
-<p>  Checks if provided R object is a  <code>rapport</code>  inline element. </p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">is.rp.inline(x)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>any R object to check</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>
- a logical value indicating whether provided object is a
- <code>rp.inline</code>
  object
 </p>
 <a id="is.tabular"> </a>
@@ -4005,13 +2854,10 @@ is.variable(list())      # [1] FALSE</code></pre>
 <a id="pct"> </a>
 ##### pct: Percent
 ###### Description:
-<p>  Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in  <code>decimals</code>  formal argument (defaults to value specified in  <code>rp.decimal.short</code>  option). </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;rp.decimal.short&apos;</p>  </li> </ul> 
+<p>  Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in  <code>decimals</code>  formal argument (defaults to value specified in  <code>panderOptions(&apos;digits&apos;)</code>  ). </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">pct(x, digits = getOption(&quot;rp.decimal.short&quot;),    type = c(&quot;percent&quot;, &quot;%&quot;, &quot;proportion&quot;),    check.value = TRUE)</code></pre>
+	<pre><code class="r">pct(x, digits = panderOptions(&quot;digits&quot;),    type = c(&quot;percent&quot;, &quot;%&quot;, &quot;proportion&quot;),    check.value = TRUE)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -4055,100 +2901,6 @@ provided numeric value is correct</p>
 </table>
 ###### Returned value:
 <p>a character value with formatted percent</p>
-<a id="p"> </a>
-##### p: Inline Printing
-###### Description:
-<p>  <code>p</code>  merges elements of a variable (see  <code>is.variable</code>  ) in one string for the sake of pretty inline printing. Default parameters are read from appropriate  <code>option</code>  values (see argument description for details). This function allows you to put the results of an expression that yields a variable  <em>inline</em>  , by wrapping the vector elements with the string provided in  <code>wrap</code>  , and separating elements by main and ending separator (  <code>sep</code>  and  <code>copula</code>  ). In case of a two-length vector, value specified in  <code>copula</code>  will be used as a separator. You can also control the length of provided vector by altering an integer value specified in  <code>limit</code>  argument (defaults to  <code>20</code>  ). </p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">p(x, wrap = getOption(&quot;p.wrap&quot;),    sep = getOption(&quot;p.sep&quot;),    copula = getOption(&quot;p.copula&quot;), limit = 20L)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>an atomic vector to get merged for inline
-printing</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>wrap</code>
-  </td>
-  <td>
-   <p>
-    a string to wrap vector elements (uses value
-set in
-    <code>p.wrap</code>
-    option:
-    <code>&quot;_&quot;</code>
-    by default, which
-is a markdown-friendly wrapper and it puts the string in
-    <em>italic</em>
-    )
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>sep</code>
-  </td>
-  <td>
-   <p>
-    a string with the main separator, i.e. the one
-that separates all vector elements but the last two (uses
-the value set in
-    <code>p.sep</code>
-    option -
-    <code>&quot;,&quot;</code>
-    by
-default)
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>copula</code>
-  </td>
-  <td>
-   <p>
-    a string with ending separator - the one
-that separates the last two vector elements (uses the
-value set in
-    <code>p.copula</code>
-    option,
-    <code>&quot;and&quot;</code>
-    by
-default)
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>limit</code>
-  </td>
-  <td>
-   <p>maximum character length (defaults to 20
-elements)</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>a string with concatenated vector contents</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">p(c(&quot;fee&quot;, &quot;fi&quot;, &quot;foo&quot;, &quot;fam&quot;))
-## [1] &quot;_fee_, _fi_, _foo_ and _fam_&quot;
-p(1:3, wrap = &quot;&quot;)
-## [1] &quot;1, 2 and 3&quot;
-p(LETTERS[1:5], copula = &quot;and the letter&quot;)
-## [1] &quot;_A_, _B_, _C_, _D_ and the letter _E_&quot;
-p(c(&quot;Thelma&quot;, &quot;Louise&quot;), wrap = &quot;&quot;, copula = &quot;&amp;&quot;)
-## [1] &quot;Thelma &amp; Louise&quot;</code></pre>
-</div>
-
 <a id="print.rapport"> </a>
 ##### print.rapport: Prints rapport
 ###### Description:
@@ -4177,8 +2929,7 @@ p(c(&quot;Thelma&quot;, &quot;Louise&quot;), wrap = &quot;&quot;, copula = &quot
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r">rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;)
-print(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;))
+<div class="highlight"><pre><code class="r">rapport(&apos;example&apos;, data = mtcars, var=&apos;hp&apos;)
 </code></pre>
 </div>
 
@@ -4321,6 +3072,28 @@ print(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;))
 </table>
 ###### Returned value:
 <p>a string with removed pandoc comments</p>
+<a id="rapport.docx"> </a>
+##### rapport.docx: Rapport to DOCX
+###### Description:
+<p>  This is a simple wrapper around  <code>rapport</code>  and  <code>tpl.export</code>  . Basically it works like  <code>rapport</code>  but the returned class is exported at one go. </p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">rapport.docx(...)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>...</code>
+  </td>
+  <td>
+   <p>
+    parameters passed directly to
+    <code>rapport</code>
+   </p>
+  </td>
+ </tr>
+</table>
 <a id="rapport.html"> </a>
 ##### rapport.html: Rapport to HTML
 ###### Description:
@@ -4365,16 +3138,38 @@ print(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;))
   </td>
  </tr>
 </table>
+<a id="rapport.pdf"> </a>
+##### rapport.pdf: Rapport to PDF
+###### Description:
+<p>  This is a simple wrapper around  <code>rapport</code>  and  <code>tpl.export</code>  . Basically it works like  <code>rapport</code>  but the returned class is exported at one go. </p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">rapport.pdf(...)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>...</code>
+  </td>
+  <td>
+   <p>
+    parameters passed directly to
+    <code>rapport</code>
+   </p>
+  </td>
+ </tr>
+</table>
 <a id="rapport"> </a>
 ##### rapport: Evaluate Template
 ###### Description:
 <p>  This is the central function in the  <code>rapport</code>  package, and hence eponymous. In following lines we&apos;ll use  <code>rapport</code>  to denote the function, not the package.  <code>rapport</code>  requires a template file, while dataset (  <code>data</code>  argument) can be optional, depending on the value of  <code>Data required</code>  field in template header. Template inputs are matched with  <code>...</code>  argument, and should be provided in  <code>x = value</code>  format, where  <code>x</code>  matches input name and  <code>value</code>  , wait for it... input value! See  <code>tpl.inputs</code>  for more details on template inputs. </p>
 ###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;rapport.mode&apos;,</p>  </li>  <li>   <p>&apos;graph.format&apos;,</p>  </li>  <li>   <p>&apos;graph.width&apos;,</p>  </li>  <li>   <p>&apos;graph.height&apos;,</p>  </li>  <li>   <p>&apos;graph.res&apos;,</p>  </li>  <li>   <p>&apos;graph.hi.res&apos;.</p>  </li> </ul> 
+<p>  Default parameters are read from  <code>evalsOptions()</code>  and the following  <code>options</code>  : </p>
+<ul>  <li>   <p>&apos;rp.file.name&apos;,</p>  </li>  <li>   <p>&apos;rp.file.path&apos;,</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rapport(fp, data = NULL, ..., reproducible = FALSE,    header.levels.offset = 0,    rapport.mode = getOption(&quot;rapport.mode&quot;),    graph.output = getOption(&quot;graph.format&quot;),    graph.width = getOption(&quot;graph.width&quot;),    graph.height = getOption(&quot;graph.height&quot;),    graph.res = getOption(&quot;graph.res&quot;),    graph.hi.res = getOption(&quot;graph.hi.res&quot;),    graph.replay = getOption(&quot;graph.record&quot;))</code></pre>
+	<pre><code class="r">rapport(fp, data = NULL, ..., env = new.env(),    reproducible = FALSE, header.levels.offset = 0,    graph.output = evalsOptions(&quot;graph.output&quot;),    file.name = getOption(&quot;rp.file.name&quot;),    file.path = getOption(&quot;rp.file.path&quot;),    graph.width = evalsOptions(&quot;width&quot;),    graph.height = evalsOptions(&quot;height&quot;),    graph.res = evalsOptions(&quot;res&quot;),    graph.hi.res = evalsOptions(&quot;hi.res&quot;),    graph.replay = evalsOptions(&quot;graph.recordplot&quot;))</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -4413,6 +3208,18 @@ print(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&apos;hp&apos;))
  </tr>
  <tr valign="top">
   <td>
+   <code>env</code>
+  </td>
+  <td>
+   <p>
+    an environment where template commands be
+evaluated (defaults to
+    <code>new.env()</code>
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
    <code>reproducible</code>
   </td>
   <td>
@@ -4437,34 +3244,40 @@ details)
  </tr>
  <tr valign="top">
   <td>
-   <code>rapport.mode</code>
+   <code>file.name</code>
   </td>
   <td>
    <p>
-    forces
-    <code>rapport</code>
-    to run in
-    <em>performance</em>
-    or
-    <em>debug</em>
-    mode instead of normal
-behaviour. Change this only if you really know what are
-you doing! In
-    <code>performance</code>
-    mode
-    <code>rapport</code>
-    will
-evaluate all templates in
-    <code>strict</code>
-    mode (see:
-    <code>evals(..., check.output = FALSE)</code>
-    ), while in
-    <code>debug</code>
-    mode
-    <code>rapport</code>
-    will halt on first
-error.
+    set the file name of saved plots and
+exported documents. A simple character string might be
+provided where
+    <code>%N</code>
+    would be replaced by an
+auto-increment integer based on similar exported
+document&apos;s file name ,
+    <code>%n</code>
+    an auto-increment
+integer based on similar (plot) file names (see:
+    <code>?evalsOptions</code>
+    ),
+    <code>%T</code>
+    by the name of the
+template in action and
+    <code>%t</code>
+    by some uniqe random
+characters based on
+    <code>tempfile</code>
+    .
    </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>file.path</code>
+  </td>
+  <td>
+   <p>path of a directory where to store
+generated images and exported reports</p>
   </td>
  </tr>
  <tr valign="top">
@@ -4537,9 +3350,6 @@ need to be recorded for later replay (eg. while
 ###### Examples:
 <div class="highlight"><pre><code class="r">rapport(&quot;example&quot;, ius2008, var = &quot;leisure&quot;)
 rapport(&quot;example&quot;, ius2008, var = &quot;leisure&quot;, desc = FALSE, hist = TRUE, theme = &quot;Set1&quot;)
-rapport(&quot;example&quot;, ius2008, var = &quot;leisure&quot;, rapport.mode = &apos;debug&apos;)
-rapport(&quot;example&quot;, ius2008, var = &quot;leisure&quot;, rapport.mode = &apos;performance&apos;)
-## Or set \code{&apos;rapport.mode&apos;} option to \code{debug}, \code{performance} or back to \code{normal}.
 ## generating high resolution images also
 rapport(&quot;example&quot;, ius2008, var=&quot;leisure&quot;, hist = TRUE, graph.hi.res = TRUE)
 rapport.html(&quot;nortest&quot;, ius2008, var = &quot;leisure&quot;, graph.hi.res=T)
@@ -4551,42 +3361,13 @@ rapport(&apos;descriptives-multivar&apos;, data=ius2008, vars=c(&quot;gender&quo
 </code></pre>
 </div>
 
-<a id="redraw.recordedplot"> </a>
-##### redraw.recordedplot: Redraws saved plot
-###### Description:
-<p>  This function is a wrapper around  <code>replayPlot</code>  with some added tweaks (fixing memory address nullpointer issue) for compatibility. </p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">redraw.recordedplot(file)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>file</code>
-  </td>
-  <td>
-   <p>
-    path and name of file to read saved
-    <code>recordPlot</code>
-    object
-   </p>
-  </td>
- </tr>
-</table>
-###### References:
-<p>
- Thanks to Jeroen Ooms:
- <a href="http://permalink.gmane.org/gmane.comp.lang.r.devel/29897">http://permalink.gmane.org/gmane.comp.lang.r.devel/29897</a>
- .
-</p>
 <a id="rp.label"> </a>
 ##### rp.label: Get Variable Label
 ###### Description:
-<p>  This function returns character value previously stored in variable&apos;s  <code>label</code>  attribute. If none found, the function defaults to object&apos;s name (retrieved by  <code>deparse(substitute(x))</code>  ). </p>
+<p>  This function returns character value previously stored in variable&apos;s  <code>label</code>  attribute. If none found, and  <code>fallback</code>  argument is set to  <code>TRUE</code>  (default), the function returns object&apos;s name (retrieved by  <code>deparse(substitute(x))</code>  ), otherwise  <code>NA</code>  is returned with a warning notice. </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">rp.label(x, fallback = TRUE)</code></pre>
+	<pre><code class="r">rp.label(x, fallback = TRUE, simplify = TRUE)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -4607,16 +3388,31 @@ rapport(&apos;descriptives-multivar&apos;, data=ius2008, vars=c(&quot;gender&quo
 should fallback to object name(s)</p>
   </td>
  </tr>
+ <tr valign="top">
+  <td>
+   <code>simplify</code>
+  </td>
+  <td>
+   <p>
+    coerce results to a vector (
+    <code>TRUE</code>
+    by default), otherwise, a
+    <code>list</code>
+    is returned
+   </p>
+  </td>
+ </tr>
 </table>
 ###### Returned value:
 <p>a character vector with variable&apos;s label(s)</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">x &lt;- rnorm(100)
 rp.label(x)         # returns &quot;x&quot;
-rp.label(x, FALSE)  # fails with error message
+rp.label(x, FALSE)  # returns NA and issues a warning
 rp.label(mtcars$hp) &lt;- &quot;Horsepower&quot;
 rp.label(mtcars)         # returns &quot;Horsepower&quot; instead of &quot;hp&quot;
 rp.label(mtcars, FALSE)  # returns NA where no labels are found
+rp.label(sleep, FALSE)   # returns NA for each variable and issues a warning
 </code></pre>
 </div>
 
@@ -4687,157 +3483,6 @@ x &lt;- 1:10; rp.name(x)
 </code></pre>
 </div>
 
-<a id="rp.prettyascii"> </a>
-##### rp.prettyascii: Return pretty ascii form
-###### Description:
-<p>Some standard formatting is applied to the value which is returned as ascii object.</p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;rp.decimal&apos;,</p>  </li>  <li>   <p>&apos;rp.decimal.short&apos;,</p>  </li>  <li>   <p>&apos;rp.decimal.mark&apos;.</p>  </li> </ul> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">rp.prettyascii(x, asciitype = getOption(&quot;asciiType&quot;))</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>R object</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>asciitype</code>
-  </td>
-  <td>
-   <p>markdown language to use for returning
-tables (eg. pandox, t2t, asciidoc etc.)</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>ascii</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">rp.prettyascii(&apos;Hello, World?&apos;)
-rp.prettyascii(22/7)
-rp.prettyascii(matrix(runif(25), 5, 5))
-rp.prettyascii(lm(hp~wt, mtcars))
-rp.prettyascii(summary(mtcars$hp))
-rp.prettyascii(htest(rnorm(100), shapiro.test))
-rp.prettyascii(table(mtcars$am,mtcars$gear))
-rp.prettyascii(data.frame(x=1:2, y=3:4))
-rp.prettyascii(data.frame(x=1:2, y=3:4, z=c(22/7, pi)))
-rp.prettyascii(mtcars)
-rp.prettyascii(table(mtcars$am))
-## it is better to \code{cat} the output
-cat(rp.prettyascii(rp.freq(&quot;gender&quot;, data = ius2008)))
-</code></pre>
-</div>
-
-<a id="rp.round"> </a>
-##### rp.round: Round numeric values
-###### Description:
-<p>  Round numeric values with default number of decimals (see:  <code>getOption(&apos;rp.decimal&apos;</code>  ) and decimal mark (see:  <code>getOption(&apos;rp.decimal&apos;)</code>  ). </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;rp.decimal&apos;,</p>  </li>  <li>   <p>&apos;rp.decimal.short&apos;,</p>  </li>  <li>   <p>&apos;rp.decimal.mark&apos;.</p>  </li> </ul> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">rp.round(x, short = FALSE, digits = NULL)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>numeric value(s)</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>short</code>
-  </td>
-  <td>
-   <p>
-    if
-    <code>getOption(&apos;rp.decimal.short&apos;</code>
-    should be used instead of
-    <code>getOption(&apos;rp.decimal&apos;</code>
-    .
-Can be overwritten by
-    <code>digits</code>
-    parameter, see
-below.
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>digits</code>
-  </td>
-  <td>
-   <p>(optional) number of decimals</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>character vector of rounded value(s)</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">rp.round(22/7)
-rp.round(22/7, short = TRUE)
-rp.round(22/7, TRUE)
-rp.round(22/7, digits = 10)
-rp.round(matrix(runif(9), 3, 3))
-}</code></pre>
-</div>
-
-<a id="tags.misplaced"> </a>
-##### tags.misplaced: Misplaced Tags
-###### Description:
-<p>Searches for misplaced tags.</p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;inline.open,</p>  </li>  <li>   <p>&apos;inline.close&apos;.</p>  </li> </ul> 
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">tags.misplaced(x, tag.open = get.tags(&quot;inline.open&quot;),    tag.close = get.tags(&quot;inline.close&quot;))</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>a string to check for misplaced tags</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>tag.open</code>
-  </td>
-  <td>
-   <p>a string containing opening tag</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>tag.close</code>
-  </td>
-  <td>
-   <p>a string containing closing tag</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>if no tags, or no mismatches are found, original string
-is returned, otherwise the function will return
-appropriate error</p>
 <a id="tpl.body"> </a>
 ##### tpl.body: Template Body
 ###### Description:
@@ -4889,13 +3534,9 @@ appropriate error</p>
 <a id="tpl.check"> </a>
 ##### tpl.check: Check Template
 ###### Description:
-<p>Checks if the examples of given template can be run without any error and if the same output would be returned by calling the template in &quot;strict&quot; mode.</p>
+<p>Checks if the examples of given template can be run without any error.</p>
 ###### Details:
-<p>  Strict mode is a huge performance gain (principally with nested templates where the overhead of extra checks lead to exponential slowdown with every level of nested hierarchy) based on  <code>evals</code>  &apos;  <code>check.output</code>  parameter: no checks would be performed on template body about outputs. Thanks to this, strict mode templates should be written considering the following requirements: </p>
-<ul>  <li>   <p>each block should return on the last line of the code,</p>  </li>  <li>   <p>    each block should always return something on the last line (if you do not want to return anything, add    <code>NULL</code>    to the last line),   </p>  </li>  <li>   <p>ggplot and lattice graphs should be always printed (of course on the last line),</p>  </li>  <li>   <p>a block resulting in a plot should not alter variables and data sets,</p>  </li>  <li>   <p>    the template should be checked before live run with    <code>tpl.check</code>    .   </p>  </li> </ul>
-<p>  <code>tpl.check</code>  will print on the console some text messages about the result of the test (errors etc.), but will also return a  <code>list</code>  invisible. List elements: </p>
-<ul>  <li>   <p>run: if all blocks could run without error (TRUE/FALSE),</p>  </li>  <li>   <p>strict: if rapport in &quot;performance&quot; (strict) mode returns the same output (TRUE/FALSE).</p>  </li> </ul>
-<p>  If everything went fine and you get two  <code>TRUE</code>  values, update your template to use &quot;performance&quot; mode on default by adding &quot;Strict: TRUE&quot; to template header. </p> 
+<p>  If everything went fine and you get a list of  <code>success</code>  equals to  <code>TRUE</code>  values, otherwise  <code>success</code>  returns  <code>FALSE</code>  with additional  <code>message</code> </p> 
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">tpl.check(fp)</code></pre>
@@ -4909,101 +3550,12 @@ appropriate error</p>
   <td>
    <p>a character vector containing template name
 (&quot;.tpl&quot; extension is optional), file path or a text to be
-split by lines</p>
+split by line breaks</p>
   </td>
  </tr>
 </table>
-###### Returned value:
-<p>list of logicals - see details above</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">tpl.check(&apos;example&apos;)
-</code></pre>
-</div>
-
-<a id="tpl.elem"> </a>
-##### tpl.elem: Template Elements
-###### Description:
-<p>  Returns a  <code>data.frame</code>  containing summary of relevant template elements:  <code>ind</code>  - indice of current element in template&apos;s body,  <code>type</code>  - a string indicating the type of the content (&quot;heading&quot;, &quot;inline&quot; or &quot;block&quot;), and  <code>chunk</code>  - a string containing R expression found in a code chunk. </p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">tpl.elem(fp,    extract = c(&quot;all&quot;, &quot;heading&quot;, &quot;inline&quot;, &quot;block&quot;),    use.body = FALSE, skip.blank.lines = TRUE,    skip.r.comments = FALSE, ...)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>fp</code>
-  </td>
-  <td>
-   <p>
-    a template file pointer (see
-    <code>tpl.find</code>
-    for details)
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>extract</code>
-  </td>
-  <td>
-   <p>a string indicating which elements should
-be extracted from the template: headings, blocks, or code
-chunks (by default it returns all of the above)</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>use.body</code>
-  </td>
-  <td>
-   <p>a logical value indicating whether the
-whole template should be used, or just its body</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>skip.blank.lines</code>
-  </td>
-  <td>
-   <p>remove blank lines within R
-chunks</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>skip.r.comments</code>
-  </td>
-  <td>
-   <p>remove comments withing R chunks</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>...</code>
-  </td>
-  <td>
-   <p>
-    additional arguments to be passed to
-    <code>grep</code>
-    and
-    <code>get.tags</code>
-    functions
-   </p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>
- a
- <code>data.frame</code>
- with 3 columns:
-</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">    fp &lt;- system.file(&quot;templates&quot;, &quot;example.tpl&quot;, package = &quot;rapport&quot;)
-    tpl.elem(fp) # returns all elements (headings, inlines and blocks)
-    ## returns only code blocks
-    tpl.elem(fp, extract = &quot;block&quot;)
 </code></pre>
 </div>
 
@@ -5064,34 +3616,18 @@ tpl.export(tpl.example(&apos;crosstable&apos;))
 </code></pre>
 </div>
 
-<a id="tpl.export.backends"> </a>
-##### tpl.export.backends: tpl.export.backends
-###### Description:
-<p>List of all available backend formats (from ascii package).</p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">tpl.export.backends()</code></pre>
-</div>
-<a id="tpl.export.outputs"> </a>
-##### tpl.export.outputs: tpl.export.outputs
-###### Description:
-<p>List of all available output formats (from ascii package).</p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">tpl.export.outputs()</code></pre>
-</div>
 <a id="tpl.export"> </a>
-##### tpl.export: Export rapport class
+##### tpl.export: Export rapport object
 ###### Description:
 <p>This function exports rapport class objects to various formats based on ascii package.</p>
 ###### Details:
 <p>  By default this function tries to export the report to HTML with pandoc. Some default styles are applied. If you do not like those default settings, use your own  <code>options</code>  . </p>
 <p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&quot;getOption(&apos;rp.date.format&apos;)&quot;,</p>  </li>  <li>   <p>&quot;getOption(&apos;tpl.user&apos;)&quot;,</p>  </li>  <li>   <p>&quot;getOption(&apos;tpl.email&apos;)&quot;.</p>  </li> </ul>
-<p>  Please be sure to set  <code>&apos;tpl.user&apos;</code>  and  <code>&apos;tpl.email&apos;</code>  options with  <code>options()</code>  to get your name in the head of your generated reports! </p> 
+<ul>  <li>   <p>&apos;tpl.user&apos;</p>  </li> </ul>
+<p>  Please be sure to set  <code>&apos;tpl.user&apos;</code>  option with  <code>options()</code>  to get your name in the head of your generated reports! </p> 
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">tpl.export(rp = NULL, file = NULL, append = FALSE,    create = TRUE, open = TRUE,    date = format(Sys.time(), getOption(&quot;rp.date.format&quot;)),    desc = TRUE, format = &quot;html&quot;, backend = &quot;pandoc&quot;,    options = NULL, logo = TRUE)</code></pre>
+	<pre><code class="r">tpl.export(rp = NULL, file, append = FALSE,    create = TRUE, open = TRUE,    date = pander.return(Sys.time()), desc = TRUE,    format = &quot;html&quot;, options = &quot;&quot;, logo = TRUE)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -5109,7 +3645,18 @@ objects</p>
    <code>file</code>
   </td>
   <td>
-   <p>filename (NULL returns a tempfile)</p>
+   <p>
+    filename of the generated document. Inherited
+from rapport class if not set. If
+    <code>file</code>
+    is set with
+path (not equal to
+    <code>getwd()</code>
+    ), please set an
+absolute path for images (see:
+    <code>evalsOptions()</code>
+    ).
+   </p>
   </td>
  </tr>
  <tr valign="top">
@@ -5154,8 +3701,12 @@ report. If not set, current time will be set.</p>
    <code>desc</code>
   </td>
   <td>
-   <p>add Description of the rapport class
-(template)? Default set to TRUE.</p>
+   <p>
+    add
+    <code>Description</code>
+    of the rapport class
+(template)? Default set to TRUE.
+   </p>
   </td>
  </tr>
  <tr valign="top">
@@ -5164,19 +3715,16 @@ report. If not set, current time will be set.</p>
   </td>
   <td>
    <p>
-    format of the wanted report, see:
-    <code>ascii:::asciiOpts(&quot;.outputs&quot;)</code>
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>backend</code>
-  </td>
-  <td>
-   <p>
-    backend for the format conversions, see:
-    <code>ascii:::asciiOpts(&quot;.backends&quot;)</code>
+    format of the wanted report. See Pandoc&apos;s
+user manual for details. In short, choose something like:
+    <code>html</code>
+    ,
+    <code>pdf</code>
+    ,
+    <code>odt</code>
+    or
+    <code>docx</code>
+    .
    </p>
   </td>
  </tr>
@@ -5185,7 +3733,11 @@ report. If not set, current time will be set.</p>
    <code>options</code>
   </td>
   <td>
-   <p>command line options passed to backend</p>
+   <p>
+    options passed to
+    <code>Pandoc.convert</code>
+    .
+   </p>
   </td>
  </tr>
  <tr valign="top">
@@ -5197,9 +3749,23 @@ report. If not set, current time will be set.</p>
   </td>
  </tr>
 </table>
+###### Returned value:
+<p>
+ filepath on
+ <code>create = TRUE</code>
+ ,
+ <code>Report</code>
+ class
+otherwise
+</p>
+###### References:
+<p>
+ John MacFarlane (2012): _Pandoc User&apos;s Guide_.
+ <a href="http://johnmacfarlane.net/pandoc/README.html">http://johnmacfarlane.net/pandoc/README.html</a>
+</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">## eval some template
-x &lt;- rapport(&apos;descriptives-univar&apos;, data=mtcars, var=&quot;hp&quot;)
+x &lt;- rapport(&apos;example&apos;, data = mtcars, var=&quot;hp&quot;)
 ## try basic parameters
 tpl.export(x)
 tpl.export(x, file=&apos;demo&apos;)
@@ -5216,8 +3782,8 @@ tpl.export(append=report, format=&apos;rst&apos;)
 ### exporting multiple reports at once
 tpl.export(tpl.example(&apos;example&apos;, &apos;all&apos;))
 tpl.export(tpl.example(&apos;example&apos;, &apos;all&apos;), format=&apos;odt&apos;)
-tpl.export(list(rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;hp&quot;),
-    rapport(&apos;univar-descriptive&apos;, data=mtcars, var=&quot;mpg&quot;)))
+tpl.export(list(rapport(&apos;univar-descriptive&apos;, data = mtcars, var=&quot;hp&quot;),
+    rapport(&apos;univar-descriptive&apos;, data = mtcars, var=&quot;mpg&quot;)))
 ### Never do this as being dumb:
 tpl.export()
 ### Using other backends
@@ -5227,8 +3793,6 @@ tpl.export(tpl.example(&apos;example&apos;, &apos;all&apos;), backend=&apos;asci
 tpl.export(tpl.example(&apos;example&apos;, &apos;all&apos;), backend=&apos;t2t&apos;)
 ### Adding own custom CSS to exported HTML
 tpl.export(x, options=sprintf(&apos;-c %s&apos;, system.file(&apos;templates/css/default.css&apos;, package=&apos;rapport&apos;)))
-## For other formats check out backend specific documentation!
-## E.g. pandoc uses &quot;--reference-odt&quot; as styles reference for odt exports.
 </code></pre>
 </div>
 
@@ -5463,14 +4027,14 @@ header section is provided in
 <a id="tpl.meta"> </a>
 ##### tpl.meta: Header Metadata
 ###### Description:
-<p>  Displays summary of template metadata stored in a header section. This part of template header consists of several  <em>key: value</em>  pairs, which define some basic template info, such as  <em>Title</em>  ,  <em>Example</em>  ,  <em>Strict</em>  , etc. If you&apos;re familiar with package development in R, you&apos;ll probably find this approach very similar to  <code>DESCRIPTION</code>  file. </p>
+<p>  Displays summary of template metadata stored in a header section. This part of template header consists of several  <em>key: value</em>  pairs, which define some basic template info, such as  <em>Title</em>  ,  <em>Example</em>  etc. If you&apos;re familiar with package development in R, you&apos;ll probably find this approach very similar to  <code>DESCRIPTION</code>  file. </p>
 ###### Details:
 <p>  <strong>Mandatory Fields</strong> </p>
 <p>The following fields must be specified in the template header and their size limits must be taken into account:</p>
 <ul>  <li>   <p>    <em>Title</em>    - a template title (at most 500 characters)   </p>  </li>  <li>   <p>    <em>Author</em>    - author&apos;s (nick)name (at most 100 characters)   </p>  </li>  <li>   <p>    <em>Description</em>    - template description (at most 5000 characters)   </p>  </li> </ul>
 <p>  <strong>Optional Fields</strong> </p>
 <p>Some fields are not required by the template. However, you should reconsider including them in the template, so that the other users could get a better impression of what your template does. These are currently supported fields:</p>
-<ul>  <li>   <p>    <em>Email</em>    - author&apos;s email address (defaults to    <code>NULL</code>    )   </p>  </li>  <li>   <p>    <em>Packages</em>    - a comma-separated list of packages required by the template (defaults to    <code>NA</code>    )   </p>  </li>  <li>   <p>    <em>Data required</em>    - is dataset required by a template? Field accepts    <code>TRUE</code>    or    <code>FALSE</code>    , and defaults to    <code>FALSE</code>    .   </p>  </li>  <li>   <p>    <em>Example</em>    - newline-separated example calls to    <code>rapport</code>    function, including template data and inputs (defaults to    <code>NULL</code>    )   </p>  </li>  <li>   <p>    <em>Strict</em>    - &quot;strict mode&quot; returns only the last warning from a chunk. Field accepts    <code>TRUE</code>    or    <code>FALSE</code>    , and defaults to    <code>FALSE</code>    .   </p>  </li> </ul>
+<ul>  <li>   <p>    <em>Email</em>    - author&apos;s email address (defaults to    <code>NULL</code>    )   </p>  </li>  <li>   <p>    <em>Packages</em>    - a comma-separated list of packages required by the template (defaults to    <code>NA</code>    )   </p>  </li>  <li>   <p>    <em>Data required</em>    - is dataset required by a template? Field accepts    <code>TRUE</code>    or    <code>FALSE</code>    , and defaults to    <code>FALSE</code>    .   </p>  </li>  <li>   <p>    <em>Example</em>    - newline-separated example calls to    <code>rapport</code>    function, including template data and inputs (defaults to    <code>NULL</code>    )   </p>  </li> </ul>
 <p>  Upon successful execution,  <code>rp.meta</code>  -class object is returned invisibly. </p> 
 ###### Usage:
 <div class="highlight">

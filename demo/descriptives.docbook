@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Descriptive statistics" />
+  <title>Rapport package team</title>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Descriptive statistics</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#gender-gender"><em>gender</em> (&quot;Gender&quot;)</a><ul>
+<li><a href="#charts">Charts</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#age-age"><em>age</em> (&quot;Age&quot;)</a><ul>
+<li><a href="#base-statistics">Base statistics</a></li>
+<li><a href="#charts-1">Charts</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#hp"><em>hp</em></a><ul>
+<li><a href="#base-statistics-1">Base statistics</a></li>
+<li><a href="#charts-2">Charts</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#TOC">Description</a></h2>
+<p>This template will return descriptive statistics of a numerical or frequency table of a categorical variable.</p>
+<h3 id="gender-gender"><a href="#TOC"><em>gender</em> (&quot;Gender&quot;)</a></h3>
+<p>The dataset has <em>709</em> observations with <em>673</em> valid values (missing: <em>36</em>).</p>
+<table>
+<caption>Frequency table: Gender</caption>
+<col width="12%" />
+<col width="5%" />
+<col width="9%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="left">gender</th>
+<th align="left">N</th>
+<th align="left">%</th>
+<th align="left">Cumul. N</th>
+<th align="left">Cumul. %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">410</td>
+<td align="left">60.92</td>
+<td align="left">410</td>
+<td align="left">60.92</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">263</td>
+<td align="left">39.08</td>
+<td align="left">673</td>
+<td align="left">100.00</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">673</td>
+<td align="left">100.00</td>
+<td align="left">673</td>
+<td align="left">100.00</td>
+</tr>
+</tbody>
+</table>
+<p>The most frequent value is <em>male</em>.</p>
+<h4 id="charts"><a href="#TOC">Charts</a></h4>
+<p><a href="plots/descriptives-1-hires.png"><img src="plots/descriptives-1.png" alt="Barplot: Gender" /></a></p>
+<p>It seems that the highest value is <em>2</em> which is exactly <em>2</em> times higher than the smallest value (<em>1</em>).</p>
+<h2 id="description-1"><a href="#TOC">Description</a></h2>
+<p>This template will return descriptive statistics of a numerical or frequency table of a categorical variable.</p>
+<h3 id="age-age"><a href="#TOC"><em>age</em> (&quot;Age&quot;)</a></h3>
+<p>The dataset has <em>709</em> observations with <em>677</em> valid values (missing: <em>32</em>).</p>
+<h4 id="base-statistics"><a href="#TOC">Base statistics</a></h4>
+<table>
+<caption>Descriptives: Age</caption>
+<col width="15%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">mean</th>
+<th align="left">sd</th>
+<th align="left">var</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Age</td>
+<td align="left">24.57</td>
+<td align="left">6.849</td>
+<td align="left">46.91</td>
+</tr>
+</tbody>
+</table>
+<p>The standard deviation is <em>6.849</em> (variance: <em>46.91</em>). The expected value is around <em>24.57</em>, somewhere between <em>24.06</em> and <em>25.09</em> with the standard error of <em>0.2632</em>.</p>
+<h4 id="charts-1"><a href="#TOC">Charts</a></h4>
+<p><a href="plots/descriptives-2-hires.png"><img src="plots/descriptives-2.png" alt="Histogram: Age" /></a></p>
+<p>It seems that the highest value is <em>58</em> which is exactly <em>3.625</em> times higher than the smallest value (<em>16</em>).</p>
+<p>If we <em>suppose</em> that <em>Age</em> is not near to a normal distribution (skewness: <em>1.925</em>, kurtosis: <em>4.463</em>), checking the median (<em>23</em>) might be a better option instead of the mean. The interquartile range (<em>6</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
+<h2 id="description-2"><a href="#TOC">Description</a></h2>
+<p>This template will return descriptive statistics of a numerical or frequency table of a categorical variable.</p>
+<h3 id="hp"><a href="#TOC"><em>hp</em></a></h3>
+<p>The dataset has <em>32</em> observations with <em>32</em> valid values (missing: <em>0</em>).</p>
+<h4 id="base-statistics-1"><a href="#TOC">Base statistics</a></h4>
+<table>
+<caption>Descriptives: hp</caption>
+<col width="15%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">mean</th>
+<th align="left">sd</th>
+<th align="left">var</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">hp</td>
+<td align="left">146.7</td>
+<td align="left">68.56</td>
+<td align="left">4701</td>
+</tr>
+</tbody>
+</table>
+<p>The standard deviation is <em>68.56</em> (variance: <em>4701</em>). The expected value is around <em>146.7</em>, somewhere between <em>122.9</em> and <em>170.4</em> with the standard error of <em>12.12</em>.</p>
+<h4 id="charts-2"><a href="#TOC">Charts</a></h4>
+<p><a href="plots/descriptives-3-hires.png"><img src="plots/descriptives-3.png" alt="Histogram: hp" /></a></p>
+<p>It seems that the highest value is <em>335</em> which is exactly <em>6.442</em> times higher than the smallest value (<em>52</em>).</p>
+<p>If we <em>suppose</em> that <em>hp</em> is not near to a normal distribution (skewness: <em>0.726</em>, kurtosis: <em>-0.1356</em>), checking the median (<em>123</em>) might be a better option instead of the mean. The interquartile range (<em>83.5</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="http://rapport-package.info/">rapport</a> (0.4) in <em>1.258</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="/usr/lib/R/library/rapport/includes/images/logo.png" /><p class="caption"></p>
+</div>
+</body>
+</html>

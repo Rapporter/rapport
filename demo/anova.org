@@ -1,6 +1,6 @@
-#+TITLE: ANOVA Template
+#+TITLE: Rapport package team
 
-#+AUTHOR: Rapport package team @ https://github.com/aL3xa/rapport
+#+AUTHOR: ANOVA Template
 #+DATE: 2011-04-26 20:25 CET
 
 ** Description
@@ -8,92 +8,89 @@
 An ANOVA report with table of descriptives, diagnostic tests and
 ANOVA-specific statistics.
 
-** Introduction
+*** Introduction
 
 *Analysis of Variance* or *ANOVA* is a statistical procedure that tests
-equality of means for several samples. It was first introduced in 1921.
+equality of means for several samples. It was first introduced in 1921
 by famous English statistician Sir Ronald Aylmer Fisher.
 
-** Model Overview
+*** Model Overview
 
 One-Way ANOVA was carried out, with /Gender/ as independent variable,
 and /Internet usage in leisure time (hours per day)/ as a response
 variable. Factor interaction was taken into account.
 
-** Descriptives
+*** Descriptives
 
 In order to get more insight on the model data, a table of frequencies
 for ANOVA factors is displayed, as well as a table of descriptives.
 
-*** Frequency Table
+**** Frequency Table
 
 Below lies a frequency table for factors in ANOVA model. Note that the
 missing values are removed from the summary.
 
-| *gender*   | *N*   | *%*       | *Cumul. N*   | *Cumul. %*   |
-|------------+-------+-----------+--------------+--------------|
-| male       | 410   | 60.9212   | 410          | 60.9212      |
-| female     | 263   | 39.0788   | 673          | 100          |
-| Total      | 673   | 100       | 673          | 100          |
+| gender   | N     | %        | Cumul. N   | Cumul. %   |
+|----------+-------+----------+------------+------------|
+| male     | 410   | 60.92    | 410        | 60.92      |
+| female   | 263   | 39.08    | 673        | 100.00     |
+| Total    | 673   | 100.00   | 673        | 100.00     |
 
-*** Descriptive Statistics
+**** Descriptive Statistics
 
 The following table displays the descriptive statistics of ANOVA model.
 Factor levels and/or their combinations lie on the left hand side, while
 the corresponding statistics for response variable are given on the
 right-hand side.
 
-| *Gender*   | *Min*   | *Max*   | *Mean*   | *Std.Dev.*   | *Median*   | *IQR*   | *Skewness*   | *Kurtosis*   |
-|------------+---------+---------+----------+--------------+------------+---------+--------------+--------------|
-| male       | 0       | 12      | 3.2699   | 1.9535       | 3          | 3       | 0.9443       | 0.9858       |
-| female     | 0       | 12      | 3.0643   | 2.3546       | 2          | 3       | 1.3979       | 1.8696       |
+| Gender   | Min   | Max   | Mean    | Std.Dev.   | Median   | IQR   |
+|----------+-------+-------+---------+------------+----------+-------|
+| male     | 0     | 12    | 3.270   | 1.953      | 3        | 3     |
+| female   | 0     | 12    | 3.064   | 2.355      | 2        | 3     |
 
-** Diagnostics
+| Skewness   | Kurtosis   |
+|------------+------------|
+| 0.9443     | 0.9858     |
+| 1.3979     | 1.8696     |
+
+*** Diagnostics
 
 Before we carry out ANOVA, we'd like to check some basic assumptions.
 For those purposes, normality and homoscedascity tests are carried out
 alongside several graphs that may help you with your decision on model's
 main assumptions.
 
-*** Diagnostics
+**** Diagnostics
 
-**** Univariate Normality
+***** Univariate Normality
 
 We will use /Shapiro-Wilk/, /Lilliefors/ and /Anderson-Darling/ tests to
 screen departures from normality in the response variable (/Internet
 usage in leisure time (hours per day)/).
 
-#+BEGIN_HTML
-  <!-- endlist -->
-#+END_HTML
-
-|                                                  | *Statistic*   | *p-value*   |
-|--------------------------------------------------+---------------+-------------|
-| Shapiro-Wilk normality test                      | 0.9001        | 0           |
-| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.168         | 0           |
-| Anderson-Darling normality test                  | 18.753        | 0           |
+| Method                                           | Statistic   | p-value     |
+|--------------------------------------------------+-------------+-------------|
+| Shapiro-Wilk normality test                      | 0.9001      | 1.617e-20   |
+| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.1680      | 3.000e-52   |
+| Anderson-Darling normality test                  | 18.7530     | 7.261e-44   |
 
 As you can see, applied tests confirm departures from normality.
 
-**** Homoscedascity
+***** Homoscedascity
 
 In order to test homoscedascity, /Bartlett/ and /Fligner-Kileen/ tests
 are applied.
 
-#+BEGIN_HTML
-  <!-- endlist -->
-#+END_HTML
-
-|                                                    | *Statistic*   | *p-value*   |
-|----------------------------------------------------+---------------+-------------|
-| Fligner-Killeen test of homogeneity of variances   | 0.4629        | 0.4963      |
-| Bartlett test of homogeneity of variances          | 10.7698       | 0.001       |
+| Method                                             | Statistic   | p-value    |
+|----------------------------------------------------+-------------+------------|
+| Fligner-Killeen test of homogeneity of variances   | 0.4629      | 0.496287   |
+| Bartlett test of homogeneity of variances          | 10.7698     | 0.001032   |
 
 When it comes to equality of variances, applied tests yield inconsistent
 results. While /Fligner-Kileen test/ confirmed the hypotheses of
 homoscedascity, /Bartlett's test/ rejected it.
 
-*** Diagnostic Plots
+**** Diagnostic Plots
 
 Here you can see several diagnostic plots for ANOVA model:
 
@@ -102,20 +99,16 @@ Here you can see several diagnostic plots for ANOVA model:
 -  normal Q-Q plot
 -  residuals against leverages
 
-[[dd5cdfe79c3741b4373910424cb2824c-hires.png][[[dd5cdfe79c3741b4373910424cb2824c.png]]]]
+[[plots/anova-1-hires.png][[[plots/anova-1.png]]]]
 
-** ANOVA Summary
+*** ANOVA Summary
 
-*** ANOVA Table
+**** ANOVA Table
 
-#+BEGIN_HTML
-  <!-- endlist -->
-#+END_HTML
-
-|             | *Df*   | *Sum.Sq*   | *Mean.Sq*   | *F.value*   | *Pr..F.*   |
-|-------------+--------+------------+-------------+-------------+------------|
-| gender      | 1      | 6.4217     | 6.4217      | 1.4302      | 0.2322     |
-| Residuals   | 636    | 2855.63    | 4.49        |             |            |
+|               | Df    | Sum.Sq     | Mean.Sq   | F.value   | Pr..F.   |
+|---------------+-------+------------+-----------+-----------+----------|
+| *gender*      | 1     | 6.422      | 6.422     | 1.43      | 0.2322   |
+| *Residuals*   | 636   | 2855.630   | 4.490     | NA        | NA       |
 
 /F-test/ for /Gender/ is not statistically significant, which implies
 that there is no Gender effect on response variable.
@@ -125,100 +118,101 @@ that there is no Gender effect on response variable.
 An ANOVA report with table of descriptives, diagnostic tests and
 ANOVA-specific statistics.
 
-** Introduction
+*** Introduction
 
 *Analysis of Variance* or *ANOVA* is a statistical procedure that tests
-equality of means for several samples. It was first introduced in 1921.
+equality of means for several samples. It was first introduced in 1921
 by famous English statistician Sir Ronald Aylmer Fisher.
 
-** Model Overview
+*** Model Overview
 
 Two-Way ANOVA was carried out, with /Gender/ and /Relationship status/
 as independent variables, and /Internet usage in leisure time (hours per
 day)/ as a response variable. Factor interaction was taken into account.
 
-** Descriptives
+*** Descriptives
 
 In order to get more insight on the model data, a table of frequencies
 for ANOVA factors is displayed, as well as a table of descriptives.
 
-*** Frequency Table
+**** Frequency Table
 
 Below lies a frequency table for factors in ANOVA model. Note that the
 missing values are removed from the summary.
 
-| *gender*   | *partner*           | *N*   | *%*       | *Cumul. N*   | *Cumul. %*   |
-|------------+---------------------+-------+-----------+--------------+--------------|
-| male       | in a relationship   | 150   | 23.6967   | 150          | 23.6967      |
-| female     | in a relationship   | 120   | 18.9573   | 270          | 42.654       |
-| male       | married             | 33    | 5.2133    | 303          | 47.8673      |
-| female     | married             | 29    | 4.5814    | 332          | 52.4487      |
-| male       | single              | 204   | 32.2275   | 536          | 84.6761      |
-| female     | single              | 97    | 15.3239   | 633          | 100          |
-| Total      | Total               | 633   | 100       | 633          | 100          |
+| gender   | partner             | N     | %         | Cumul. N   | Cumul. %   |
+|----------+---------------------+-------+-----------+------------+------------|
+| male     | in a relationship   | 150   | 23.697    | 150        | 23.70      |
+| female   | in a relationship   | 120   | 18.957    | 270        | 42.65      |
+| male     | married             | 33    | 5.213     | 303        | 47.87      |
+| female   | married             | 29    | 4.581     | 332        | 52.45      |
+| male     | single              | 204   | 32.227    | 536        | 84.68      |
+| female   | single              | 97    | 15.324    | 633        | 100.00     |
+| Total    | Total               | 633   | 100.000   | 633        | 100.00     |
 
-*** Descriptive Statistics
+**** Descriptive Statistics
 
 The following table displays the descriptive statistics of ANOVA model.
 Factor levels and/or their combinations lie on the left hand side, while
 the corresponding statistics for response variable are given on the
 right-hand side.
 
-| *Gender*   | *Relationship status*   | *Min*   | *Max*   | *Mean*   | *Std.Dev.*   | *Median*   | *IQR*   | *Skewness*   | *Kurtosis*   |
-|------------+-------------------------+---------+---------+----------+--------------+------------+---------+--------------+--------------|
-| male       | in a relationship       | 0.5     | 12      | 3.0582   | 1.9692       | 2.5        | 2       | 1.3239       | 2.6488       |
-| male       | married                 | 0       | 8       | 2.9848   | 2.029        | 3          | 2       | 0.862        | 0.1509       |
-| male       | single                  | 0       | 10      | 3.5027   | 1.9361       | 3          | 3       | 0.7574       | 0.0875       |
-| female     | in a relationship       | 0.5     | 10      | 3.0439   | 2.2158       | 3          | 3       | 1.3833       | 1.8306       |
-| female     | married                 | 0       | 10      | 2.4808   | 1.9671       | 2          | 1.75    | 2.0626       | 5.5858       |
-| female     | single                  | 0       | 12      | 3.3226   | 2.6791       | 3          | 3.5     | 1.1851       | 0.9281       |
+| Gender   | Relationship status   | Min   | Max   | Mean    | Std.Dev.   |
+|----------+-----------------------+-------+-------+---------+------------|
+| male     | in a relationship     | 0.5   | 12    | 3.058   | 1.969      |
+| male     | married               | 0.0   | 8     | 2.985   | 2.029      |
+| male     | single                | 0.0   | 10    | 3.503   | 1.936      |
+| female   | in a relationship     | 0.5   | 10    | 3.044   | 2.216      |
+| female   | married               | 0.0   | 10    | 2.481   | 1.967      |
+| female   | single                | 0.0   | 12    | 3.323   | 2.679      |
 
-** Diagnostics
+| Median   | IQR    | Skewness   | Kurtosis   |
+|----------+--------+------------+------------|
+| 2.5      | 2.00   | 1.3239     | 2.64881    |
+| 3.0      | 2.00   | 0.8620     | 0.15095    |
+| 3.0      | 3.00   | 0.7574     | 0.08749    |
+| 3.0      | 3.00   | 1.3833     | 1.83058    |
+| 2.0      | 1.75   | 2.0626     | 5.58575    |
+| 3.0      | 3.50   | 1.1851     | 0.92806    |
+
+*** Diagnostics
 
 Before we carry out ANOVA, we'd like to check some basic assumptions.
 For those purposes, normality and homoscedascity tests are carried out
 alongside several graphs that may help you with your decision on model's
 main assumptions.
 
-*** Diagnostics
+**** Diagnostics
 
-**** Univariate Normality
+***** Univariate Normality
 
 We will use /Shapiro-Wilk/, /Lilliefors/ and /Anderson-Darling/ tests to
 screen departures from normality in the response variable (/Internet
 usage in leisure time (hours per day)/).
 
-#+BEGIN_HTML
-  <!-- endlist -->
-#+END_HTML
-
-|                                                  | *Statistic*   | *p-value*   |
-|--------------------------------------------------+---------------+-------------|
-| Shapiro-Wilk normality test                      | 0.9001        | 0           |
-| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.168         | 0           |
-| Anderson-Darling normality test                  | 18.753        | 0           |
+| Method                                           | Statistic   | p-value     |
+|--------------------------------------------------+-------------+-------------|
+| Shapiro-Wilk normality test                      | 0.9001      | 1.617e-20   |
+| Lilliefors (Kolmogorov-Smirnov) normality test   | 0.1680      | 3.000e-52   |
+| Anderson-Darling normality test                  | 18.7530     | 7.261e-44   |
 
 As you can see, applied tests confirm departures from normality.
 
-**** Homoscedascity
+***** Homoscedascity
 
 In order to test homoscedascity, /Bartlett/ and /Fligner-Kileen/ tests
 are applied.
 
-#+BEGIN_HTML
-  <!-- endlist -->
-#+END_HTML
-
-|                                                    | *Statistic*   | *p-value*   |
-|----------------------------------------------------+---------------+-------------|
-| Fligner-Killeen test of homogeneity of variances   | 1.1234        | 0.2892      |
-| Bartlett test of homogeneity of variances          | 11.1267       | 0.0009      |
+| Method                                             | Statistic   | p-value     |
+|----------------------------------------------------+-------------+-------------|
+| Fligner-Killeen test of homogeneity of variances   | 1.123       | 0.2891837   |
+| Bartlett test of homogeneity of variances          | 11.127      | 0.0008509   |
 
 When it comes to equality of variances, applied tests yield inconsistent
 results. While /Fligner-Kileen test/ confirmed the hypotheses of
 homoscedascity, /Bartlett's test/ rejected it.
 
-*** Diagnostic Plots
+**** Diagnostic Plots
 
 Here you can see several diagnostic plots for ANOVA model:
 
@@ -227,22 +221,25 @@ Here you can see several diagnostic plots for ANOVA model:
 -  normal Q-Q plot
 -  residuals against leverages
 
-[[3e897b547f80202649804e256107f6e0-hires.png][[[3e897b547f80202649804e256107f6e0.png]]]]
+[[plots/anova-2-hires.png][[[plots/anova-2.png]]]]
 
-** ANOVA Summary
+*** ANOVA Summary
 
-*** ANOVA Table
+**** ANOVA Table
 
-#+BEGIN_HTML
-  <!-- endlist -->
-#+END_HTML
+|                    | Df    | Sum.Sq     | Mean.Sq   |
+|--------------------+-------+------------+-----------|
+| *gender*           | 1     | 4.947      | 4.947     |
+| *partner*          | 2     | 31.212     | 15.606    |
+| *gender:partner*   | 2     | 3.038      | 1.519     |
+| *Residuals*        | 593   | 2703.090   | 4.558     |
 
-|                  | *Df*   | *Sum.Sq*    | *Mean.Sq*   | *F.value*   | *Pr..F.*   |
-|------------------+--------+-------------+-------------+-------------+------------|
-| gender           | 1      | 4.9473      | 4.9473      | 1.0853      | 0.2979     |
-| partner          | 2      | 31.2124     | 15.6062     | 3.4237      | 0.0332     |
-| gender:partner   | 2      | 3.0375      | 1.5188      | 0.3332      | 0.7168     |
-| Residuals        | 593    | 2703.0899   | 4.5583      |             |            |
+|                    | F.value   | Pr..F.    |
+|--------------------+-----------+-----------|
+| *gender*           | 1.0853    | 0.29793   |
+| *partner*          | 3.4237    | 0.03324   |
+| *gender:partner*   | 0.3332    | 0.71677   |
+| *Residuals*        | NA        | NA        |
 
 /F-test/ for /Gender/ is not statistically significant, which implies
 that there is no Gender effect on response variable. Effect of
@@ -252,8 +249,8 @@ significant (p = 0.717).
 
 --------------
 
-This report was generated with [[http://www.r-project.org/][R]] (2.14.0)
-and [[http://al3xa.github.com/rapport/][rapport]] (0.2) in 1.82 sec on
+This report was generated with [[http://www.r-project.org/][R]] (2.15.1)
+and [[http://rapport-package.info/][rapport]] (0.4) in /1.999/ sec on
 x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 

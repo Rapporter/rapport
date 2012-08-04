@@ -4,9 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Rapport package team @ https://github.com/aL3xa/rapport" />
-  <meta name="date" content="2011-04-26 20:25 CET" />
-  <title>Outlier tests</title>
+  <meta name="author" content="Outlier tests" />
+  <title>Rapport package team</title>
   <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
       <![endif]-->
@@ -15,7 +14,7 @@
   <link rel="stylesheet" href="stylesheets/skeleton.css" />
   <link rel="stylesheet" href="stylesheets/layout.css" />
   <link rel="stylesheet" href="stylesheets/fonts.css" />
-  <link rel="stylesheet" href="stylesheets/slimbox2.css" />
+  <link rel="stylesheet" href="stylesheets/colorbox.css" />
   <link rel="stylesheet" href="stylesheets/custom.css" />
   
   <link rel="shortcut icon" href="images/favicon.gif" />
@@ -23,10 +22,10 @@
   <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
   <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
   
-  <script type="text/javascript" src="javascripts/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="javascripts/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="javascripts/tabs.js"></script>  <!--remove-->
   <script type="text/javascript" src="javascripts/custom.js"></script>
-  <script type="text/javascript" src="javascripts/slimbox2.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.colorbox.js"></script>
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
     tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
@@ -36,130 +35,148 @@
 </head>
 <body>
 <div id="header">
-<h1 class="title">Outlier tests</h1>
-<h2 class="author">Rapport package team @ https://github.com/aL3xa/rapport</h2>
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Outlier tests</h2>
 <h3 class="date">2011-04-26 20:25 CET</h3>
 </div>
 <h2 id="description">Description</h2>
 <p>This template will check if provided variable has any outliers.</p>
-<h2 id="boxplot">Boxplot</h2>
-<p><a href="ea1797865a9d9a619be0e9c5d55d5de7-hires.png"><img src="ea1797865a9d9a619be0e9c5d55d5de7.png" /></a></p>
-<h2 id="lund-test">Lund test</h2>
+<h3 id="charts">Charts</h3>
+<p><a href="plots/outlier-test-1-hires.png"><img src="plots/outlier-test-1.png" alt="Boxplot: edu" /></a></p>
+<h3 id="lund-test">Lund test</h3>
 <p>It seems that <em>4</em> extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.</p>
-<h3 id="explanation">Explanation</h3>
+<h4 id="explanation">Explanation</h4>
 <p>The above test for outliers was based on <em>lm(1 ~ edu)</em>:</p>
 <table>
+<caption>Fitting linear model: var ~ 1</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="left"><strong>Estimate</strong></th>
-<th align="left"><strong>Std. Error</strong></th>
-<th align="left"><strong>t value</strong></th>
-<th align="left"><strong>Pr(&gt;|t|)</strong></th>
+<th align="right"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">(Intercept)</td>
-<td align="left">2.0481</td>
-<td align="left">0.078</td>
-<td align="left">26.2677</td>
-<td align="left">0</td>
+<td align="right"><strong>(Intercept)</strong></td>
+<td align="center">2.048e+00</td>
+<td align="center">7.797e-02</td>
+<td align="center">2.627e+01</td>
+<td align="center">7.939e-105</td>
 </tr>
 </tbody>
 </table>
-<h3 id="references">References</h3>
+<h4 id="references">References</h4>
 <ul>
 <li>Lund, R. E. 1975, &quot;Tables for An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 4, pp. 473-476.</li>
 <li>Prescott, P. 1975, &quot;An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 1, pp. 129-132.</li>
 </ul>
-<h2 id="grubbs-test">Grubb's test</h2>
-<p>Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.0002).</p>
-<h3 id="references-1">References</h3>
+<h3 id="grubbs-test">Grubb's test</h3>
+<p>Grubbs test for one outlier shows that highest value 12 is an outlier (p=<em>0.0001964</em>).</p>
+<h4 id="references-1">References</h4>
 <ul>
 <li>Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.</li>
 </ul>
-<h2 id="dixons-test">Dixon's test</h2>
-<p>chi-squared test for outlier shows that highest value 12 is an outlier (p=0).</p>
-<h3 id="references-2">References</h3>
+<h3 id="dixons-test">Dixon's test</h3>
+<p>chi-squared test for outlier shows that highest value 12 is an outlier (p=<em>7.441e-07</em>).</p>
+<h4 id="references-2">References</h4>
 <ul>
 <li>Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.</li>
 </ul>
 <h2 id="description-1">Description</h2>
 <p>This template will check if provided variable has any outliers.</p>
-<h2 id="boxplot-1">Boxplot</h2>
-<p><a href="ea1797865a9d9a619be0e9c5d55d5de7-hires.png"><img src="ea1797865a9d9a619be0e9c5d55d5de7.png" /></a></p>
-<h2 id="lund-test-1">Lund test</h2>
+<h3 id="charts-1">Charts</h3>
+<p><a href="plots/outlier-test-1-hires.png"><img src="plots/outlier-test-1.png" alt="Boxplot: edu" /></a></p>
+<h3 id="lund-test-1">Lund test</h3>
 <p>It seems that <em>4</em> extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.</p>
-<h3 id="explanation-1">Explanation</h3>
+<h4 id="explanation-1">Explanation</h4>
 <p>The above test for outliers was based on <em>lm(1 ~ edu)</em>:</p>
 <table>
+<caption>Fitting linear model: var ~ 1</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="left"><strong>Estimate</strong></th>
-<th align="left"><strong>Std. Error</strong></th>
-<th align="left"><strong>t value</strong></th>
-<th align="left"><strong>Pr(&gt;|t|)</strong></th>
+<th align="right"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">(Intercept)</td>
-<td align="left">2.0481</td>
-<td align="left">0.078</td>
-<td align="left">26.2677</td>
-<td align="left">0</td>
+<td align="right"><strong>(Intercept)</strong></td>
+<td align="center">2.048e+00</td>
+<td align="center">7.797e-02</td>
+<td align="center">2.627e+01</td>
+<td align="center">7.939e-105</td>
 </tr>
 </tbody>
 </table>
-<h3 id="references-3">References</h3>
+<h4 id="references-3">References</h4>
 <ul>
 <li>Lund, R. E. 1975, &quot;Tables for An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 4, pp. 473-476.</li>
 <li>Prescott, P. 1975, &quot;An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 1, pp. 129-132.</li>
 </ul>
-<h2 id="grubbs-test-1">Grubb's test</h2>
-<p>Grubbs test for one outlier shows that highest value 12 is an outlier (p=0.0002).</p>
-<h3 id="references-4">References</h3>
+<h3 id="grubbs-test-1">Grubb's test</h3>
+<p>Grubbs test for one outlier shows that highest value 12 is an outlier (p=<em>0.0001964</em>).</p>
+<h4 id="references-4">References</h4>
 <ul>
 <li>Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.</li>
 </ul>
-<h2 id="dixons-test-1">Dixon's test</h2>
-<p>chi-squared test for outlier shows that highest value 12 is an outlier (p=0).</p>
-<h3 id="references-5">References</h3>
+<h3 id="dixons-test-1">Dixon's test</h3>
+<p>chi-squared test for outlier shows that highest value 12 is an outlier (p=<em>7.441e-07</em>).</p>
+<h4 id="references-5">References</h4>
 <ul>
 <li>Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.</li>
 </ul>
 <h2 id="description-2">Description</h2>
 <p>This template will check if provided variable has any outliers.</p>
-<h2 id="boxplot-2">Boxplot</h2>
-<p><a href="ea1797865a9d9a619be0e9c5d55d5de7-hires.png"><img src="ea1797865a9d9a619be0e9c5d55d5de7.png" /></a></p>
-<h2 id="lund-test-2">Lund test</h2>
+<h3 id="charts-2">Charts</h3>
+<p><a href="plots/outlier-test-1-hires.png"><img src="plots/outlier-test-1.png" alt="Boxplot: edu" /></a></p>
+<h3 id="lund-test-2">Lund test</h3>
 <p>It seems that <em>4</em> extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: 10, 0.5, 1.5, 0.5.</p>
-<h3 id="explanation-2">Explanation</h3>
+<h4 id="explanation-2">Explanation</h4>
 <p>The above test for outliers was based on <em>lm(1 ~ edu)</em>:</p>
 <table>
+<caption>Fitting linear model: var ~ 1</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="left"><strong>Estimate</strong></th>
-<th align="left"><strong>Std. Error</strong></th>
-<th align="left"><strong>t value</strong></th>
-<th align="left"><strong>Pr(&gt;|t|)</strong></th>
+<th align="right"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">(Intercept)</td>
-<td align="left">2.0481</td>
-<td align="left">0.078</td>
-<td align="left">26.2677</td>
-<td align="left">0</td>
+<td align="right"><strong>(Intercept)</strong></td>
+<td align="center">2.048e+00</td>
+<td align="center">7.797e-02</td>
+<td align="center">2.627e+01</td>
+<td align="center">7.939e-105</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.14.0) and <a href="http://al3xa.github.com/rapport/">rapport</a> (0.2) in 1.334 sec on x86_64-unknown-linux-gnu platform.</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="http://rapport-package.info/">rapport</a> (0.4) in <em>0.916</em> sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
 <img src="images/logo.png" /><p class="caption"></p>
 </div>
