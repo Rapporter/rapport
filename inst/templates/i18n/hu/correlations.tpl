@@ -75,7 +75,7 @@ if (cor.matrix) {
     for (row in attr(cm, 'dimnames')[[1]])
 	for (col in attr(cm, 'dimnames')[[2]]) {
 	    test.p <- cor.test(vars[, row], vars[, col])$p.value
-	    cm[row, col] <- paste(cm[row, col], ' ', ifelse(test.p > 0.05, '', ifelse(test.p > 0.01, ' ★', ifelse(test.p > 0.001, ' ★★', ' ★★★'))), sep='')
+	    cm[row, col] <- paste(cm[row, col], ' ', ifelse(test.p > 0.05, '', ifelse(test.p > 0.01, ' *', ifelse(test.p > 0.001, ' * *', ' * * *'))), sep='')
 	}
     diag(cm) <- ''
     set.alignment('centre', 'right')
