@@ -1030,9 +1030,9 @@ cm <- cor(vars, use = 'complete.obs')
 diag(cm) <- NA
 %>
 
-<%if (length(vars) >2 ) {%>
+<%if (length(vars) >2 ) { %>
 The highest correlation coefficient (<%=max(cm, na.rm=T)%>) is between <%=row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2]%> and the lowest (<%=min(cm, na.rm=T)%>) is between <%=row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2]%>. It seems that the strongest association (r=<%=cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1]%>) is between <%=row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2]%>.
-<%}%>
+<% } %>
 
 <%
 cm[upper.tri(cm)] <- NA
@@ -1044,10 +1044,10 @@ Highly correlated (r < -0.7 or r > 0.7) variables:
 
 <%=paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i,1]], colnames(cm)[h[i,2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')%>
 
-<%} else {%>
+<%} else { %>
 
 There are no highly correlated (r < -0.7 or r > 0.7) variables.
-<%}%>
+<% } %>
 
 <%
 h <- which((cm < 0.2)&(cm > -0.2), arr.ind=T)
@@ -1061,10 +1061,10 @@ if (nrow(h) > 0)
     paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i,1]], colnames(cm)[h[i,2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')
 %>
 
-<%} else {%>
+<%} else { %>
 
 There are no uncorrelated correlated (r < -0.2 or r > 0.2) variables.
-<%}%>
+<% } %>
 
 ## <%=if (cor.matrix) 'Correlation matrix'%>
 
@@ -2007,7 +2007,7 @@ head-->
 
 The dataset has <%=nvar<-as.numeric(var); length(nvar)%> observations with <%=rp.valid(nvar)%> valid values (missing: <%=rp.missing(nvar)%>).
 
-<%if (is.numeric(var)) {%>
+<%if (is.numeric(var)) { %>
 ## Base statistics
 
 <%=
@@ -2028,7 +2028,7 @@ It seems that the highest value is <%=rp.max(var)%> which is exactly <%=pander.r
 
 If we *suppose* that *<%=rp.label(var)%>* is not near to a normal distribution (skewness: <%=rp.skewness(var)%>, kurtosis: <%=rp.kurtosis(var)%>), checking the median (<%=rp.median(var)%>) might be a better option instead of the mean. The interquartile range (<%=rp.iqr(var)%>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
 
-<%} else {%>
+<%} else { %>
 
 <%=
 set.caption(sprintf('Frequency table: %s', rp.label(var)))
@@ -2046,7 +2046,7 @@ rp.barplot(var)
 
 It seems that the highest value is <%=rp.max(nvar)%> which is exactly <%=pander.return(rp.max(nvar)/rp.min(nvar))%> times higher than the smallest value (<%=rp.min(nvar)%>).
 
-<%}%>
+<% } %>
 
 {% endhighlight %}
 </div></li>
@@ -2283,7 +2283,7 @@ if (!desc) '**For more detailed statistics, you should have set `desc=TRUE`!**'
 
 By checking out the [sources of this template](https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl), you could see that we used all `BRCATCODE`s above from `brew` syntax. `BRCODE` tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if `desc` input equals to `TRUE`, then the resulting report would have that chunk, if set to `FALSE`, it would be left our.
 
-<%if (desc) {%>
+<%if (desc) { %>
 
 ## Descriptive statistics
 
@@ -2293,9 +2293,9 @@ By checking out the [sources of this template](https://github.com/aL3xa/rapport/
 sprintf('The 5 highest values are: %s.', p(sort(var, decreasing = TRUE)[1:5]))
 %>
 
-<%}%>
+<% } %>
 
-<%if (histogram) {%>
+<%if (histogram) { %>
 
 ## Histogram
 
@@ -2306,7 +2306,7 @@ set.caption('A nice histogram')
 rp.hist(var)
 %>
 
-<%}%>
+<% } %>
 
 {% endhighlight %}
 </div></li>
@@ -3220,24 +3220,24 @@ set.caption(sprintf('Linear model: 1 ~ %s', rp.name(var)))
 lm(var ~ 1)
 %>
 
-<% if (lund.res) {%>
+<% if (lund.res) { %>
 
 ## The residuals returned:
 
 <%=pander.return(rstandard(lm(var ~ 1)))%>
 
-<%}%>
+<% } %>
 
-<%if (references) {%>
+<%if (references) { %>
 
 ## References
 
   * Lund, R. E. 1975, "Tables for An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 4, pp. 473-476.
  * Prescott, P. 1975, "An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 1, pp. 129-132.
 
-<%}%>
+<% } %>
 
-<%if (grubb & suppressMessages(suppressWarnings(require(outliers)))) {%>
+<%if (grubb & suppressMessages(suppressWarnings(require(outliers)))) { %>
 
 # Grubb's test
 
@@ -3248,18 +3248,18 @@ sprintf('%s shows that %s (p=%s).', test$method, ifelse(test$p.value>0.05, 'ther
 } else 'Cannot run test, please install "outliers" package!'
 %>
 
-<%if (references) {%>
+<%if (references) { %>
 
 ## References
 
   * Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.
 
-<%}%>
+<% } %>
 
-<%}%>
+<% } %>
 
 
-<% if (dixon & suppressMessages(suppressWarnings(require(outliers)))) {%>
+<% if (dixon & suppressMessages(suppressWarnings(require(outliers)))) { %>
 
 # Dixon's test
 
@@ -3270,15 +3270,15 @@ sprintf('%s shows that %s (p=%s).', test$method, ifelse(test$p.value>0.05, 'ther
 } else 'Cannot run test, please install "outliers" package!'
 %>
 
-<%if (references) {%>
+<%if (references) { %>
 
 ## References
 
   * Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.
 
-<%}%>
+<% } %>
 
-<%}%>
+<% } %>
 
 {% endhighlight %}
 </div></li>
