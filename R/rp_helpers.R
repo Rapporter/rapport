@@ -117,6 +117,10 @@ as.character.rp.meta <- function(x, ...){
 #' @S3method as.character rp.inputs
 #' @export
 as.character.rp.inputs <- function(x, ...){
+
+    if (!inherits(x, 'rp.inputs'))
+        stop("template inputs not provided")
+    
     unlist(sapply(x, function(x){
         mandatory <- if (x$mandatory) "*" else ""
         limits <- sprintf("[%s]", paste(x$limit, collapse = ","))
