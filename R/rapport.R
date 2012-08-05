@@ -26,7 +26,6 @@
 #'}
 #' @docType package
 #' @importFrom reshape melt melt.data.frame melt.table cast
-#' @importFrom RColorBrewer brewer.pal brewer.pal.info
-#' @seealso \code{pander} package: \url{http://daroczig.github.com/pander/}
+#' @seealso \code{pander} package: \url{http://rapporter.github.com/pander/}
 #' @name rapport-package
 NULL

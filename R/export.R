@@ -65,11 +65,12 @@
 #' @seealso \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}
 tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = pander.return(Sys.time()), desc = TRUE, format = 'html', options = '', logo = TRUE) {
 
-    if (missing(file))
+    if (missing(file)) {
         if (is.null(rp$file.name))
             file <- rp[[1]]$file.name
         else
             file <- rp$file.name
+    }
     if (length(file) != 1 & !is.character(file)) {
         warning('Wrong file name provided, using a temporary file instead')
         file <- tempfile(tmpdir = dirname(evalsOptions('graph.dir')))
@@ -107,8 +108,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
     if (class(rp) == 'list') {
         if (all(lapply(rp, class) == 'rapport')) {
 
-            ## using the first rapport's filename
-            file <- rp[[1]]$file.name
+            ## using the first rapport's title as global
             r$title <- as.character(rp[[1]]$meta['title'])
 
             for (i in 1:length(rp)) {

@@ -324,9 +324,9 @@ tpl.inputs <- function(fp, use.header = TRUE){
         i.type  <- x[2]
         i.label <- x[3]
         i.desc  <- x[4]
-        
+
         re.lbl <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
-        
+
         ## 1st: check variable name
         ## must begin with a letter, and can continue either with a letter or a digit, separated either by underscore or dot, e.g. 'var.90', or 'v90_alpha'.
         if (!check.name(i.name))
@@ -680,7 +680,8 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     assign('rp.body', paste(b, collapse = '\n'), envir = e)
     assign('.graph.name', file.name, envir = e)
     assign('.graph.dir', evalsOptions('graph.dir'), envir = e)
-    report <- eval.msgs('Pandoc.brew(text = rp.body, graph.name = .graph.name, graph.dir = .graph.dir)', showInvisible = TRUE, env = e)
+    assign('.graph.hi.res', graph.hi.res, envir = e)
+    report <- eval.msgs('Pandoc.brew(text = rp.body, graph.name = .graph.name, graph.dir = .graph.dir, graph.hi.res = .graph.hi.res)', showInvisible = TRUE, env = e)
 
     options(opts.bak)                          # resetting options
     setwd(wd.bak)

@@ -1,4 +1,17 @@
-rapport 0.33 (?)
+rapport 0.4 (2012-08-04)
+----------------------------------------------------------------
+
+CHANGES
+
+  * removed `ascii` and `evaluate` packages and introduced `pander`
+
+    This was a quite big change in the backend which resulted in some removed functions of prior version.
+    For example `tpl.tangle` is dropped temporarily and most of the custom options were moved to
+    `panderOptions()` and `evalsOptions()` from `pander` package.
+
+  * the repository was moved to Rapporter's organisation GH account from @aL3xa
+
+rapport 0.33
 ----------------------------------------------------------------
 
 NEW FEATURES

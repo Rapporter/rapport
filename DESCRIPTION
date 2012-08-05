@@ -9,10 +9,10 @@ Description: A package that facilitates creation of reproducible statistical
     converter as a backend.
 Author: Aleksandar Blagotić <aca.blagotic@gmail.com> and Gergely Daróczi
     <gergely@snowl.net>
-Version: 0.33
-Date: 2012-02-18
+Version: 0.4
+Date: 2012-08-04
 URL: http://rapport-package.info/
-BugReports: https://github.com/aL3xa/rapport/issues
+BugReports: https://github.com/rapporter/rapport/issues
 License: AGPL-3
 LazyData: yes
 LazyLoad: yes
@@ -23,9 +23,6 @@ Depends:
     pander
 Imports:
     grDevices,
-    ascii,
-    evaluate,
-    RColorBrewer,
     reshape
 Collate:
     'export.R'

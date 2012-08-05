@@ -75,6 +75,6 @@
 }
 \seealso{
   \code{pander} package:
-  \url{http://daroczig.github.com/pander/}
+  \url{http://rapporter.github.com/pander/}
 }
 
