@@ -35,20 +35,23 @@ fulltable	<- addmargins(table)
 # rownames(fulltable)[fulltable.nrow] <- paste0('**', rownames(fulltable)[fulltable.nrow], '**')
 # fulltable[1:fulltable.nrow-1, fulltable.ncol] <- paste0('**', fulltable[1:fulltable.nrow-1, fulltable.ncol], '**')
 set.caption('Counted values')
+set.alignment(row.names = "right")
 fulltable
 %>
 
-<%=
-if (annotation) {
+<%if (annotation) {
    table.max <- which(table == max(table), arr.ind = TRUE)
-   sprintf('Most of the cases (%s) can be found in "%s" categories. Row-wise "%s" holds the highest number of cases (%s) while column-wise "%s" has the utmost cases (%s).', table[table.max], paste(rownames(table)[table.max[,1]], colnames(table)[table.max[,2]], sep = '-'), names(which.max(rowSums(table))), max(rowSums(table)), names(which.max(colSums(table))), max(colSums(table)))
-}
 %>
+
+Most of the cases (<%=table[table.max]%>) can be found in "<%=paste(rownames(table)[table.max[,1]], colnames(table)[table.max[,2]], sep = '-')%>" categories. Row-wise "<%=names(which.max(rowSums(table)))%>" holds the highest number of cases (<%=max(rowSums(table))%>) while column-wise "<%=names(which.max(colSums(table)))%>" has the utmost cases (<%=max(colSums(table))%>).
+
+<% } %>
 
 # Percentages
 
 <%=
 set.caption('Total percentages')
+set.alignment(row.names = "right")
 fulltable <- round(addmargins(prop.table(table)*100), 2)
 # fulltable <- trim.space(fulltable, leading = TRUE)
 # fulltable.nrow  <- nrow(fulltable)
@@ -61,6 +64,7 @@ fulltable
 
 <%=
 set.caption('Row percentages')
+set.alignment(row.names = "right")
 fulltable <- round(prop.table(addmargins(table, 1), 1)*100, 2)
 # fulltable <- trim.space(fulltable, leading = TRUE)
 # fulltable.nrow  <- nrow(fulltable)
@@ -71,6 +75,7 @@ fulltable
 
 <%=
 set.caption('Column percentages')
+set.alignment(row.names = "right")
 fulltable <- round(prop.table(addmargins(table,2 ), 2)*100, 2)
 # fulltable <- trim.space(fulltable, leading = TRUE)
 # fulltable.ncol  <- ncol(fulltable)
@@ -87,12 +92,25 @@ cramer <- sqrt(as.numeric(t$statistic)/(sum(table)*min(dim(table))))
 t
 %>
 
-<%=
-ifelse(t$p.value < 0.05, sprintf('It seems that a real association can be pointed out between *%s* and *%s* by the *%s* (χ=%s at the degree of freedom being %s) at the significance level of %s.\nBased on Goodman and Kruskal\'s lambda it seems that *%s* (λ=%s) has an effect on *%s* (λ=%s) if we assume both variables to be nominal.\nThe association between the two variables seems to be %s based on Cramer\'s V (%s).', rp.name(row), rp.name(col), t$method, pander.return(as.numeric(t$statistic)), pander.return(as.numeric(t$parameter)), pander.return(t$p.value), c(rp.name(col),rp.name(row))[which.max(lambda)], pander.return(max(as.numeric(lambda))), c(rp.name(col),rp.name(row))[which.min(lambda)], pander.return(min(as.numeric(lambda))), ifelse(cramer < 0.5, "weak", "strong"), pander.return(cramer)), sprintf('It seems that no real association can be pointed out between *%s* and *%s* by the *%s* (χ=%s at the degree of freedom being %s) at the significance level of %s.\nFor this end no other statistical tests were performed.', rp.name(row), rp.name(col), t$method, pander.return(as.numeric(t$statistic)), pander.return(as.numeric(t$parameter)), pander.return(t$p.value)))
-%>
+<%if (t$p.value < 0.05) { %>
+
+It seems that a real association can be pointed out between *<%=rp.name(row)%>* and *<%=rp.name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%> at the degree of freedom being <%=as.numeric(t$parameter)%>) at the significance level of <%=t$p.value%>.
+
+Based on Goodman and Kruskal's lambda it seems that *<%=c(rp.name(col),rp.name(row))[which.max(lambda)]%>* ($\lambda$=<%=pander.return(max(as.numeric(lambda)))%>) has an effect on *<%=c(rp.name(col),rp.name(row))[which.min(lambda)]%>* ($\lambda$=<%=min(as.numeric(lambda))%>) if we assume both variables to be nominal.
+
+The association between the two variables seems to be <%=ifelse(cramer < 0.5, "weak", "strong")%> based on Cramer\'s V (<%=cramer%>).
+
+<% } else { %>
+
+It seems that no real association can be pointed out between *<%=rp.name(row)%>* and *<%=rp.name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%> at the degree of freedom being <%=as.numeric(t$parameter)%>) at the significance level of <%=t$p.value)%>.
+
+For this end no other statistical tests were performed.
+
+<% } %>
 
 <%=
 set.caption('Pearson\'s residuals')
+set.alignment(row.names = "right")
 table		<- table(row, col, deparse.level = 0)
 table.res <- suppressWarnings(CrossTable(table))$chisq$stdres
 table.res <- round(table.res, 2)

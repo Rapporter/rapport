@@ -21,8 +21,8 @@ $$f(x) = \frac{1}{\sqrt{2\pi{}\sigma{}^2}} e^{-\frac{(x-\mu{})^2}{2\sigma{}^2}}$
 
 _Normal distribution_ belongs to a _location-scale family_ of distributions, as it's defined two parameters:
 
- - *&mu;* - _mean_ or _expectation_ (location parameter)
- - *&sigma;^2^* - _variance_ (scale parameter)
+ - $\mu$ - _mean_ or _expectation_ (location parameter)
+ - $\sigma^2$ - _variance_ (scale parameter)
 
 <%=
 # generate normal curve plot
@@ -39,9 +39,9 @@ if (nc.plot){
 Various hypothesis tests can be applied in order to test if the distribution of given random variable violates normality assumption. These procedures test the H~0~ that provided variable's distribution is _normal_. At this point only few such tests will be covered: the ones that are available in `stats` package (which comes bundled with default R installation) and `nortest` package that is [available](http://cran.r-project.org/web/packages/nortest/index.html) on CRAN.
 
  - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
- - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution (_&mu;_, _&sigma;^2^_) are not known. `lillie.test` function is located in `nortest` package.
+ - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution ($\mu$, $\sigma^2$) are not known. `lillie.test` function is located in `nortest` package.
  - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
- - **Pearson &Chi;^2^ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
+ - **Pearson $\chi^2$ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
 
 ## Results
 
@@ -62,7 +62,7 @@ So, let's draw some conclusions based on applied normality test:
  - according to _Shapiro-Wilk test_, the distribution of _<%= var.label %>_ is <%= ifelse(h[1, 2] < p, "not", "") %> normal.
  - based on _Lilliefors test_, distribution of _<%= var.label %>_ is <%= ifelse(h[2, 2], "not normal", "normal") %>
  - _Anderson-Darling test_ confirms <%= ifelse(h[3, 2] < p, "violation of", "") %> normality assumption
- - _Pearson's &Chi;^2^ test_ classifies the underlying distribution as <%= ifelse(h[4, 2], "non-normal", "normal") %>
+ - _Pearson's $\chi^2$ test_ classifies the underlying distribution as <%= ifelse(h[4, 2], "non-normal", "normal") %>
 
 # Diagnostic Plots
 
