@@ -28,7 +28,7 @@ Grubbs, F. E.: 1969, Procedures for detecting outlying observations in samples. 
 
 # Charts
 
-Among the graphical displays the Box plots are quite widespread. Box plots are an excellent tool for conveying location and variation information in data sets, particularly for detecting and illustrating location and variation changes between different groups of data.
+Among the graphical displays the Box plots are quite widespread, because of their several advantages. For example, one can easily get approximately punctual first impression from the data and one can visually see the positions of the (possible) outliers, with the help of them. 
 The Box Plot we used here is based on IQR (Inner-quartile Range), which is the difference between the higher and the lower quartiles. 
 On the chart the blue box shows the "middle-half" of the data, the so-called whiskers shows the border where from the possible values can be called outliers. 
 The lower whisker is placed 1.5 times below the first quartile, similarly the higher whisker 1.5 times above the third quartile.
