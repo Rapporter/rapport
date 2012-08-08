@@ -1,6 +1,6 @@
-<!--head
+﻿<!--head
 Title:          Outlier tests
-Author:         Gergely Daróczi 
+Author:         Gergely Daróczi, Dániel Nagy 
 Email:          gergely@snowl.net
 Description:    This template will check if provided variable has any outliers. 
 Packages:       outliers
