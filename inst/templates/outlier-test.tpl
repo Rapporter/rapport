@@ -1,6 +1,6 @@
-<!--head
+﻿<!--head
 Title:          Outlier tests
-Author:         Gergely Daróczi 
+Author:         Gergely Daróczi, Dániel Nagy 
 Email:          gergely@snowl.net
 Description:    This template will check if provided variable has any outliers. 
 Packages:       outliers
@@ -16,12 +16,32 @@ grubb           | TRUE     | Grubb's test    | Show Grubb's test?
 dixon           | TRUE     | Dixon's test    | Show Dixon's test?
 head-->
 
+# Introduction
+
+An outlying observation, or outlier, is one that appears to deviate markedly from other members of the sample in which it occurs.
+There are several ways to detect the outliers of our data. However, we cannot say one of them is the perfect method for that, thus it could be useful to take different methods into consideration. 
+We present here four of them, one by a chart (a Box Plot based on IQR) and three by statistical descriptions (Lund Test, Grubb's test, Dixon's test).
+
+## References
+
+Grubbs, F. E.: 1969, Procedures for detecting outlying observations in samples. Technometrics 11, pp. 1�21.
+
 # Charts
+
+Among the graphical displays the Box plots are quite widespread, because of their several advantages. For example, one can easily get approximately punctual first impression from the data and one can visually see the positions of the (possible) outliers, with the help of them. 
+The Box Plot we used here is based on IQR (Inner-quartile Range), which is the difference between the higher and the lower quartiles. 
+On the chart the blue box shows the "middle-half" of the data, the so-called whiskers shows the border where from the possible values can be called outliers. 
+The lower whisker is placed 1.5 times below the first quartile, similarly the higher whisker 1.5 times above the third quartile.
 
 <%=
 set.caption(sprintf('Boxplot: %s', rp.name(var)))
 rp.boxplot(var)
 %>
+
+## References
+
+Chambers, John, William Cleveland, Beat Kleiner, and Paul Tukey, (1983), Graphical Methods for Data Analysis, Wadsworth.
+Upton, Graham; Cook, Ian (1996). Understanding Statistics. Oxford University Press. p. 55.
 
 # Lund test
 
