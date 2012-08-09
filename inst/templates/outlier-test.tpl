@@ -1,8 +1,8 @@
-﻿<!--head
+<!--head
 Title:          Outlier tests
-Author:         Gergely Daróczi, Dániel Nagy 
+Author:         Gergely Daróczi, Dániel Nagy
 Email:          gergely@snowl.net
-Description:    This template will check if provided variable has any outliers. 
+Description:    This template will check if provided variable has any outliers.
 Packages:       outliers
 Data required:  TRUE
 Example:        rapport('outlier-test', data=ius2008, var='edu')
@@ -19,19 +19,18 @@ head-->
 # Introduction
 
 An outlying observation, or outlier, is one that appears to deviate markedly from other members of the sample in which it occurs.
-There are several ways to detect the outliers of our data. However, we cannot say one of them is the perfect method for that, thus it could be useful to take different methods into consideration. 
+There are several ways to detect the outliers of our data. However, we cannot say one of them is the perfect method for that, thus it could be useful to take different methods into consideration.
 We present here four of them, one by a chart (a Box Plot based on IQR) and three by statistical descriptions (Lund Test, Grubb's test, Dixon's test).
 
 ## References
 
-Grubbs, F. E.: 1969, Procedures for detecting outlying observations in samples. Technometrics 11, pp. 1�21.
+  * Grubbs, F. E.: 1969, Procedures for detecting outlying observations in samples. Technometrics 11, pp. 1-21.
 
 # Charts
 
-Among the graphical displays the Box plots are quite widespread, because of their several advantages. For example, one can easily get approximately punctual first impression from the data and one can visually see the positions of the (possible) outliers, with the help of them. 
-The Box Plot we used here is based on IQR (Inner-quartile Range), which is the difference between the higher and the lower quartiles. 
-On the chart the blue box shows the "middle-half" of the data, the so-called whiskers shows the border where from the possible values can be called outliers. 
-The lower whisker is placed 1.5 times below the first quartile, similarly the higher whisker 1.5 times above the third quartile.
+Among the graphical displays the Box plots are quite widespread, because of their several advantages. For example, one can easily get approximately punctual first impression from the data and one can visually see the positions of the (possible) outliers, with the help of them.
+
+The Box Plot we used here is based on IQR (Inner-quartile Range), which is the difference between the higher and the lower quartiles. On the chart the blue box shows the "middle-half" of the data, the so-called whiskers shows the border where from the possible values can be called outliers. The lower whisker is placed 1.5 times below the first quartile, similarly the higher whisker 1.5 times above the third quartile.
 
 <%=
 set.caption(sprintf('Boxplot: %s', rp.name(var)))
@@ -40,8 +39,8 @@ rp.boxplot(var)
 
 ## References
 
-Chambers, John, William Cleveland, Beat Kleiner, and Paul Tukey, (1983), Graphical Methods for Data Analysis, Wadsworth.
-Upton, Graham; Cook, Ian (1996). Understanding Statistics. Oxford University Press. p. 55.
+  * Chambers, John, William Cleveland, Beat Kleiner, and Paul Tukey, (1983), Graphical Methods for Data Analysis, Wadsworth.
+  * Upton, Graham; Cook, Ian (1996). Understanding Statistics. Oxford University Press. p. 55.
 
 # Lund test
 
@@ -69,7 +68,7 @@ lm(var ~ 1)
 ## References
 
   * Lund, R. E. 1975, "Tables for An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 4, pp. 473-476.
- * Prescott, P. 1975, "An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 1, pp. 129-132.
+  * Prescott, P. 1975, "An Approximate Test for Outliers in Linear Models", Technometrics, vol. 17, no. 1, pp. 129-132.
 
 <%}%>
 
@@ -80,7 +79,7 @@ lm(var ~ 1)
 <%=
 if (grubb) if (suppressMessages(suppressWarnings(require(outliers)))) {
 test <- grubbs.test(var)
-sprintf('%s shows that %s (p=%s).', test$method, ifelse(test$p.value>0.05, 'there are no outliers', test$alternative), pander.return(test$p.value))   
+sprintf('%s shows that %s (p=%s).', test$method, ifelse(test$p.value>0.05, 'there are no outliers', test$alternative), pander.return(test$p.value))
 } else 'Cannot run test, please install "outliers" package!'
 %>
 
@@ -102,7 +101,7 @@ sprintf('%s shows that %s (p=%s).', test$method, ifelse(test$p.value>0.05, 'ther
 <%=
 if (dixon) if (suppressMessages(suppressWarnings(require(outliers)))) {
 test <- chisq.out.test(var)
-sprintf('%s shows that %s (p=%s).', test$method, ifelse(test$p.value>0.05, 'there are no outliers', test$alternative), pander.return(test$p.value))   
+sprintf('%s shows that %s (p=%s).', test$method, ifelse(test$p.value>0.05, 'there are no outliers', test$alternative), pander.return(test$p.value))
 } else 'Cannot run test, please install "outliers" package!'
 %>
 
