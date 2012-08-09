@@ -1,6 +1,6 @@
 <!--head
 Title:          Correlations
-Author:         Daróczi Gergely
+Author:         Daróczi Gergely, Nagy Dániel
 Email:          gergely@snowl.net
 Description:    This template will return the correlation matrix of supplied numerical variables.
 Data required:  TRUE
@@ -13,6 +13,13 @@ cor.matrix      | TRUE          | Correlation matrix            | Show correlati
 cor.plot        | TRUE          | Scatterplot matrix            | Show scatterplot matrix (image)?
 quick.plot      | TRUE          | Using a sample for plotting   | If set to TRUE, the scatterplot matrix will be drawn on a sample size of max. 1000 cases not to render millions of points.
 head-->
+
+# Introduction
+
+Correlation is one of the most commonly used statistical tool. With the help of that we can get information about a possible linear relation between two variables. According to the definition of the correlation, one can call it also as the standardized covariance.
+The maximum possible value of the correlation (the so-called correlation coefficient) could be 1, the minimum could be -1. In the first case there is a perfect positive (thus in the second case there is a perfect negative) linear relationship between the two variables, though perfect relationships, especially in the social sciences, are quite rare. Two variables are independent from each other if the correlation between them is 0.
+Because extreme values occur seldom we have rule of thumbs for the coefficients, like other fields of statistics:
+We call two variables highly correlated if the absolute value of the correlation coefficient between them is higher than 0.7 and we call them uncorrelated if that is smaller than 0.2. 
 
 # Variable description
 
@@ -78,6 +85,8 @@ if (cor.matrix) {
 %>
 
 Where the stars represent the [significance levels](http://en.wikipedia.org/wiki/Statistical_significance) of the bivariate correlation coefficients: one star for `0.05`, two for `0.01` and three  for `0.001`.
+
+On the plot one can see the correlation in two forms: below the diagonal visually, above that one can find the coefficient(s).
 
 <%=
 if (cor.plot) {
