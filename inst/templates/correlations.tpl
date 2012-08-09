@@ -17,7 +17,7 @@ head-->
 # Introduction
 
 Correlation is one of the most commonly used statistical tool. With the help of that we can get information about a possible linear relation between two variables. According to the definition of the correlation, one can call it also as the standardized covariance.
-The maximum possible value of the correlation (the so-called correlation coefficient) could be 1, the minimum could be -1. In the first case there is a perfect positive (thus in the second case there is a perfect negative) linear relationship between the two variables, though perfect relationships, especially in the social sciences, are quite rare. Two variables are independent from each other if the correlation between them is 0.
+The maximum possible value of the correlation (the so-called correlation coefficient) could be 1, the minimum could be -1. In the first case there is a perfect positive (thus in the second case there is a perfect negative) linear relationship between the two variables, though perfect relationships, especially in the social sciences, are quite rare. If two variables are independent from each other, the correlation between them is 0, but 0 correlation coefficient only means certainly a linear dependency.
 Because extreme values occur seldom we have rule of thumbs for the coefficients, like other fields of statistics:
 We call two variables highly correlated if the absolute value of the correlation coefficient between them is higher than 0.7 and we call them uncorrelated if that is smaller than 0.2. 
 
