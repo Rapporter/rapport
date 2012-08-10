@@ -54,14 +54,17 @@ rp.outlier <- function(x) {
 #' lambda.test(table(mtcars$am, mtcars$gear))
 #' lambda.test(table(mtcars$am, mtcars$gear), 1)
 #' lambda.test(table(mtcars$am, mtcars$gear), 2)
+#' x <- data.frame(x = c(5, 4, 3), y = c(9, 8, 7), z = c(7, 11, 22), zz = c(1, 15, 8))
+#' lambda.test(x)   # 0.1 and 0.18333
 #' }
 #' @export
-lambda.test <- function(table, direction=0) {
-    if (direction != 0) {
-        return(as.numeric(sum(apply(table, direction, max)) - max(rowSums(table))) / (sum(table)-max(rowSums(table))))
-    } else {
-        return(list(row=lambda.test(table, 1), col=lambda.test(table, 2)))
-    }
+lambda.test <- function(table, direction = 0) {
+
+    if (direction != 0)
+        as.numeric(sum(apply(table, direction, max)) - ifelse(direction == 1, max(colSums(table)), max(rowSums(table)))) / (sum(table) - max(rowSums(table)))
+    else
+        list(row=lambda.test(table, 1), col=lambda.test(table, 2))
+
 }
 
 

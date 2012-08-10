@@ -22,6 +22,8 @@
 lambda.test(table(mtcars$am, mtcars$gear))
 lambda.test(table(mtcars$am, mtcars$gear), 1)
 lambda.test(table(mtcars$am, mtcars$gear), 2)
+x <- data.frame(x = c(5, 4, 3), y = c(9, 8, 7), z = c(7, 11, 22), zz = c(1, 15, 8))
+lambda.test(x)   # 0.1 and 0.18333
 }
 }
 
