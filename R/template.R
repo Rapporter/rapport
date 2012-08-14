@@ -681,16 +681,16 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     assign('.graph.name', file.name, envir = e)
     assign('.graph.dir', evalsOptions('graph.dir'), envir = e)
     assign('.graph.hi.res', graph.hi.res, envir = e)
-    report <- eval.msgs('Pandoc.brew(text = rp.body, graph.name = .graph.name, graph.dir = .graph.dir, graph.hi.res = .graph.hi.res)', showInvisible = TRUE, env = e)
+    assign('.tmpout', tempfile(), envir = e)
+    report <- tryCatch(eval(parse(text = 'Pandoc.brew(text = rp.body, graph.name = .graph.name, graph.dir = .graph.dir, graph.hi.res = .graph.hi.res, output = .tmpout)'), envir = e), error = function(e) e)
 
     options(opts.bak)                          # resetting options
     setwd(wd.bak)
+    unlink(e$.tmpout)
 
     ## error handling
-    if (!is.null(report$msg$errors))
-        stop(report$msg$errors)
-    else
-        report <- report$result
+    if (inherits(report, 'error'))
+        stop(report$message)
 
     ## remove NULL/blank parts
     ## ind.nullblank <- sapply(report, function(x){
@@ -748,5 +748,5 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
     class(res) <- 'rapport'
 
-    return (res)
+    return(res)
 }
