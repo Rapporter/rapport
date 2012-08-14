@@ -8,10 +8,10 @@ Example:        rapport('correlations', data=ius2008, vars=c('age', 'edu'))
 		rapport('correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
 		rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
 
-vars            | *numeric[2,50]| Variable                      | Numerical variables
-cor.matrix      | TRUE          | Correlation matrix            | Show correlation matrix (numbers)?
-cor.plot        | TRUE          | Scatterplot matrix            | Show scatterplot matrix (image)?
-quick.plot      | TRUE          | Using a sample for plotting   | If set to TRUE, the scatterplot matrix will be drawn on a sample size of max. 1000 cases not to render millions of points.
+vars            | *numeric[2,50] | Variable                      | Numerical variables
+cor.matrix      | TRUE           | Correlation matrix            | Show correlation matrix (numbers)?
+cor.plot        | TRUE           | Scatterplot matrix            | Show scatterplot matrix (image)?
+quick.plot      | TRUE           | Using a sample for plotting   | If set to TRUE, the scatterplot matrix will be drawn on a sample size of max. 1000 cases not to render millions of points.
 head-->
 
 # Introduction
@@ -19,7 +19,7 @@ head-->
 Correlation is one of the most commonly used statistical tool. With the help of that we can get information about a possible linear relation between two variables. According to the definition of the correlation, one can call it also as the standardized covariance.
 The maximum possible value of the correlation (the so-called correlation coefficient) could be 1, the minimum could be -1. In the first case there is a perfect positive (thus in the second case there is a perfect negative) linear relationship between the two variables, though perfect relationships, especially in the social sciences, are quite rare. If two variables are independent from each other, the correlation between them is 0, but 0 correlation coefficient only means certainly a linear independency.
 Because extreme values occur seldom we have rule of thumbs for the coefficients, like other fields of statistics:
-We call two variables highly correlated if the absolute value of the correlation coefficient between them is higher than 0.7 and we call them uncorrelated if that is smaller than 0.2. 
+We call two variables highly correlated if the absolute value of the correlation coefficient between them is higher than 0.7 and we call them uncorrelated if that is smaller than 0.2.
 
 # Variable description
 
@@ -30,15 +30,16 @@ cm <- cor(vars, use = 'complete.obs')
 diag(cm) <- NA
 %>
 
-<%if (length(vars) >2 ) {%>
+<%if (length(vars) > 2) { %>
 The highest correlation coefficient (<%=max(cm, na.rm=T)%>) is between <%=row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2]%> and the lowest (<%=min(cm, na.rm=T)%>) is between <%=row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2]%>. It seems that the strongest association (r=<%=cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1]%>) is between <%=row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2]%>.
 <%}%>
 
-<%
+<%=
 cm[upper.tri(cm)] <- NA
-h <- which((cm > 0.7) | (cm < -0.7), arr.ind=T)
-if (nrow(h) > 0) {
+h <- which((cm > 0.7) | (cm < -0.7), arr.ind = T)
 %>
+
+<%if (nrow(h) > 0) { %>
 
 Highly correlated (r < -0.7 or r > 0.7) variables:
 
@@ -49,10 +50,11 @@ Highly correlated (r < -0.7 or r > 0.7) variables:
 There are no highly correlated (r < -0.7 or r > 0.7) variables.
 <%}%>
 
-<%
+<%=
 h <- which((cm < 0.2)&(cm > -0.2), arr.ind=T)
-if (nrow(h) > 0) {
 %>
+
+<%if (nrow(h) > 0) { %>
 
 Uncorrelated (-0.2 < r < 0.2) variables:
 
