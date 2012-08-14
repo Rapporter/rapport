@@ -1,5 +1,5 @@
 require(rapport)
-demo.opt <- getOption("demo.ask"); dev.ask <- getOption("device.ask.default"); replay.opt <- getOption("graph.replay"); record.opt <- evals.option('graph.recordplot'); options("demo.ask" = FALSE); options("device.ask.default" = FALSE)
+demo.opt <- getOption("demo.ask"); dev.ask <- getOption("device.ask.default"); replay.opt <- getOption("graph.replay"); record.opt <- evalsOptions('graph.recordplot'); options("demo.ask" = FALSE); options("device.ask.default" = FALSE)
 next.please <- function(msg = "Press ENTER to continue: ") invisible(readline(msg))
 
 
@@ -86,17 +86,18 @@ next.please()
 tpl.example('correlations')
 
 
-#########################################################
-##                                                     ##
-## And check out the HTML export of *all* examples!    ##
-##                                                     ##
-## Will run:                                           ##
-##                                                     ##
-##    tpl.export(tpl.example('correlations', 'all'))   ##
-##                                                     ##
-## NOTE: this requires pandoc to be installed!         ##
-##                                                     ##
-#########################################################
+################################################################
+##                                                            ##
+## And check out the HTML export of *all* examples!           ##
+##                                                            ##
+## Will run:                                                  ##
+##                                                            ##
+##    tpl.export(tpl.example('correlations', 'all'))          ##
+##                                                            ##
+## NOTE: this requires Pandoc to be installed!                ##
+##       Please check out our INSTALLATION file for details.  ##
+##                                                            ##
+################################################################
 
 
 next.please()
@@ -126,7 +127,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 ## If you would rather not export the report first but would just like to       ##
 ## check out the generated images, please run `rapport` with custom options:    ##
 ##                                                                              ##
-##     * evals.option('graph.recordplot', TRUE)                                 ##
+##     * evalsOptions('graph.recordplot', TRUE)                                 ##
 ##     * options('graph.replay' = TRUE)                                         ##
 ##                                                                              ##
 ## This would tell `rapport` to save generated images and show them in the      ##
@@ -135,7 +136,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 ##                                                                              ##
 ## Will run:                                                                    ##
 ##                                                                              ##
-##      evals.option('graph.recordplot', TRUE)                                  ##
+##      evalsOptions('graph.recordplot', TRUE)                                  ##
 ##      options('graph.replay' = TRUE)                                          ##
 ##      rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec')) ##
 ##                                                                              ##
@@ -143,7 +144,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 
 
 next.please()
-evals.option('graph.recordplot', TRUE)
+evalsOptions('graph.recordplot', TRUE)
 options('graph.replay' = TRUE)
 report <- rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 report
@@ -157,7 +158,7 @@ report
 ##                                                                                                        ##
 ##      tpl.export(report, format = 'odt')                                                                ##
 ##                                                                                                        ##
-## NOTE: this requires pandoc to be installed!                                                            ##
+## NOTE: this requires Pandoc to be installed!                                                            ##
 ##                                                                                                        ##
 ############################################################################################################
 
@@ -174,7 +175,7 @@ tpl.export(report, format = 'odt')
 ##                                                                                                        ##
 ##      rapport.html('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE) ##
 ##                                                                                                        ##
-## NOTE: this requires pandoc to be installed!                                                            ##
+## NOTE: this requires Pandoc to be installed!                                                            ##
 ##                                                                                                        ##
 ############################################################################################################
 
@@ -183,7 +184,7 @@ next.please()
 rapport.html('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE)
 
 
-rm(next.please); rm(report); options("demo.ask" = demo.opt); options("graph.replay" = replay.opt); evals.option("graph.recordplot", record.opt); options("device.ask.default" = dev.ask)
+rm(next.please); rm(report); options("demo.ask" = demo.opt); options("graph.replay" = replay.opt); evalsOptions("graph.recordplot", record.opt); options("device.ask.default" = dev.ask)
 
 
 ##############################################
