@@ -5,12 +5,12 @@ Type: Package
 Encoding: UTF-8
 Description: A package that facilitates creation of reproducible statistical
     report templates. Once created, rapport templates can be exported to
-    various external formats (HTML, LaTeX, PDF, ODT, etc.) with pandoc
-    converter as a backend.
+    various external formats (HTML, LaTeX, PDF, ODT etc.) with Pandoc as the
+    converter backend.
 Author: Aleksandar Blagotić <aca.blagotic@gmail.com> and Gergely Daróczi
     <gergely@snowl.net>
 Version: 0.4
-Date: 2012-08-04
+Date: 2012-08-15
 URL: http://rapport-package.info/
 BugReports: https://github.com/rapporter/rapport/issues
 License: AGPL-3
@@ -24,6 +24,8 @@ Depends:
 Imports:
     grDevices,
     reshape
+SystemRequirements: Pandoc (http://johnmacfarlane.net/pandoc) for exporting
+    markdown files to other formats.
 Collate:
     'export.R'
     'graphs.R'
