@@ -102,7 +102,7 @@ The association between the two variables seems to be <%=ifelse(cramer < 0.5, "w
 
 <% } else { %>
 
-It seems that no real association can be pointed out between *<%=rp.name(row)%>* and *<%=rp.name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%> at the degree of freedom being <%=as.numeric(t$parameter)%>) at the significance level of <%=t$p.value)%>.
+It seems that no real association can be pointed out between *<%=rp.name(row)%>* and *<%=rp.name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%> at the degree of freedom being <%=as.numeric(t$parameter)%>) at the significance level of <%=t$p.value%>.
 
 For this end no other statistical tests were performed.
 
