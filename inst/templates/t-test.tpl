@@ -69,7 +69,11 @@ In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equali
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
 <%=
-rp.desc(x, y, c(min, max, mean, sd, var, median, IQR, skewness, kurtosis))
+if (is.null(y)) {
+    rp.desc(rp.name(x), NULL, c('min', 'max', 'mean', 'sd', 'var', 'median', 'IQR', 'skewness', 'kurtosis'), rp.data)
+} else {
+    rp.desc(rp.name(x), rp.name(y), c('min', 'max', 'mean', 'sd', 'var', 'median', 'IQR', 'skewness', 'kurtosis'), rp.data)
+}
 %>
 
 # Diagnostics
