@@ -216,7 +216,8 @@ td {
     display: inline;
 }
 
-.math-container p {
+.math-container p span.math span.MathJax {
+    display: block;
     text-align: center;
 }
 
