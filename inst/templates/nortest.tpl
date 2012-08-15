@@ -55,14 +55,23 @@ if (length(var) > 5000) {
 }
 p <- .05
 h
-%>
+-%>
 
 So, let's draw some conclusions based on applied normality test:
 
- - according to _Shapiro-Wilk test_, the distribution of _<%= var.label %>_ is <%= ifelse(h[1, 2] < p, "not", "") %> normal.
- - based on _Lilliefors test_, distribution of _<%= var.label %>_ is <%= ifelse(h[2, 2], "not normal", "normal") %>
- - _Anderson-Darling test_ confirms <%= ifelse(h[3, 2] < p, "violation of", "") %> normality assumption
- - _Pearson's $\chi^2$ test_ classifies the underlying distribution as <%= ifelse(h[4, 2], "non-normal", "normal") %>
+<% if (!is.na(h[1, 3])) { -%>
+ - based on _Lilliefors test_, distribution of _<%= var.label %>_ is <%= ifelse(h[1, 3] < p, "not normal", "normal") %>
+<% } -%>
+<% if (!is.na(h[2, 3])) { -%>
+ - _Anderson-Darling test_ confirms <%= ifelse(h[2, 3] < p, "violation of", "") %> normality assumption
+<% } -%>
+<% if (!is.na(h[3, 3])) { -%>
+ - _Pearson's $\chi^2$ test_ classifies the underlying distribution as <%= ifelse(h[3, 3] < p, "non-normal", "normal") %>
+<% } -%>
+<% if (!is.na(h[4, 3])) { -%>
+ - according to _Shapiro-Wilk test_, the distribution of _<%= var.label %>_ is <%= ifelse(h[4, 3] < p, "not", "") %> normal.
+<% } -%>
+
 
 # Diagnostic Plots
 
