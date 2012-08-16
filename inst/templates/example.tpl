@@ -25,7 +25,7 @@ And wow, the mean of *<%=rp.name(var)%>* is <%=rp.mean(var)%>!
 if (!desc) '**For more detailed statistics, you should have set `desc=TRUE`!**'
 %>
 
-By checking out the [sources of this template](https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl), you could see that we used all `BRCATCODE`s above from `brew` syntax. `BRCODE` tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if `desc` input equals to `TRUE`, then the resulting report would have that chunk, if set to `FALSE`, it would be left our.
+By checking out the [sources of this template](https://github.com/rapporter/rapport/blob/master/inst/templates/example.tpl), you could see that we used all `BRCATCODE`s above from `brew` syntax. `BRCODE` tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if `desc` input equals to `TRUE`, then the resulting report would have that chunk, if set to `FALSE`, it would be left our.
 
 <%if (desc) {%>
 
