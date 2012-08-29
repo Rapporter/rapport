@@ -73,7 +73,7 @@ There are no uncorrelated correlated (r < -0.2 or r > 0.2) variables.
 <%=
 if (cor.matrix) {
     set.caption('Correlation matrix')
-    cm <- round(cor(vars, use = 'complete.obs'), 4)
+    cm <- format(round(cor(vars, use = 'complete.obs'), 4), decimal.mark = panderOptions('decimal.mark'))
     d <- attributes(cm)
     for (row in attr(cm, 'dimnames')[[1]])
 	for (col in attr(cm, 'dimnames')[[2]]) {
@@ -105,7 +105,7 @@ if (cor.plot) {
         ## forked from ?pairs
         par(usr = c(0, 1, 0, 1))
         r   <- cor(x, y, use = 'complete.obs')
-        txt <- format(c(r, 0.123456789), digits = digits)[1]
+        txt <- format(c(r, 0.123456789), digits = digits, decimal.mark = panderOptions('decimal.mark'))[1]
         txt <- paste(prefix, txt, sep = "")
         if(missing(cex.cor))
             cex <- 0.8/strwidth(txt)
