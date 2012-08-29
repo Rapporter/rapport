@@ -662,10 +662,10 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     if (grepl('%N', file.name)) {
         if (length(strsplit(sprintf('placeholder%splaceholder', file.name), '%N')[[1]]) > 2)
             stop('File name contains more then 1 "%N"!')
-        similar.files <-  list.files(file.path(file.path, 'plots'), pattern = sprintf('^%s\\.(jpeg|tiff|png|svg|bmp)$', gsub('%t', '[a-z0-9]*', gsub('%N|%n', '[[:digit:]]*', file.name))))
+        similar.files <-  list.files(file.path(file.path, 'plots'), pattern = sprintf('^%s\\.(jpeg|tiff|png|svg|bmp)$', gsub('%t', '[a-z0-9]*', gsub('%N|%n|%i', '[[:digit:]]*', file.name))))
         if (length(similar.files) > 0) {
             similar.files <- sub('\\.(jpeg|tiff|png|svg|bmp)$', '', similar.files)
-            rep <- gsub('%t|%n', '[a-z0-9]*', strsplit(basename(file.name), '%N')[[1]])
+            rep <- gsub('%t|%n|%i', '[a-z0-9]*', strsplit(basename(file.name), '%N')[[1]])
             `%N` <- max(as.numeric(gsub(paste(rep, collapse = '|'), '', similar.files))) + 1
         } else
             `%N` <- 1
