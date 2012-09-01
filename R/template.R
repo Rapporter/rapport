@@ -682,7 +682,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     assign('.graph.dir', evalsOptions('graph.dir'), envir = e)
     assign('.graph.hi.res', graph.hi.res, envir = e)
     assign('.tmpout', tempfile(), envir = e)
-    report <- tryCatch(eval(parse(text = 'Pandoc.brew(text = rp.body, graph.name = .graph.name, graph.dir = .graph.dir, graph.hi.res = .graph.hi.res, output = .tmpout, env = e)'), envir = e), error = function(e) e)
+    report <- tryCatch(eval(parse(text = 'Pandoc.brew(text = rp.body, graph.name = .graph.name, graph.dir = .graph.dir, graph.hi.res = .graph.hi.res, output = .tmpout)'), envir = e), error = function(e) e)
 
     options(opts.bak)                          # resetting options
     setwd(wd.bak)
