@@ -91,7 +91,7 @@ rp.percent <- function(x, subset = NULL, na.rm = TRUE, pct = FALSE, ...){
 #' @return a numeric value with minimum value
 #' @export
 rp.min <- function(...)
-    rp.univar(..., fn = min)
+    rp.univar(..., fn = base::min)
 
 
 #' Maximum
@@ -101,7 +101,7 @@ rp.min <- function(...)
 #' @return a numeric value with maximum value
 #' @export
 rp.max <- function(...)
-    rp.univar(..., fn = max)
+    rp.univar(..., fn = base::max)
 
 
 #' Range
@@ -121,7 +121,7 @@ rp.range <- function(...)
 #' @return a numeric value with sum of vector elements
 #' @export
 rp.sum <- function(...)
-    rp.univar(..., fn = sum)
+    rp.univar(..., fn = base::sum)
 
 
 #' Mean
@@ -151,7 +151,7 @@ rp.se.mean<- function(...)
 #' @return a numeric value with variable's standard deviation
 #' @export
 rp.sd <- function(...)
-    rp.univar(..., fn = sd)
+    rp.univar(..., fn = stats::sd)
 
 
 #' Variance
@@ -161,7 +161,7 @@ rp.sd <- function(...)
 #' @return a numeric value with variable's variance
 #' @export
 rp.var <- function(...)
-    rp.univar(..., fn = var)
+    rp.univar(..., fn = stats::var)
 
 
 #' Median
@@ -171,7 +171,7 @@ rp.var <- function(...)
 #' @return a numeric value with variable's median
 #' @export
 rp.median <- function(...)
-    rp.univar(..., fn = median.default)
+    rp.univar(..., fn = stats::median.default)
 
 
 #' Interquartile Range
@@ -181,7 +181,7 @@ rp.median <- function(...)
 #' @return a numeric value with variable's interquartile range
 #' @export
 rp.iqr <- function(...)
-    rp.univar(..., fn = IQR)
+    rp.univar(..., fn = stats::IQR)
 
 
 #' Skewness
