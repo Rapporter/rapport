@@ -117,10 +117,11 @@ print.rapport <- function(x, ...) {
                'block' = {
                    if ('image' %in% part$robject$type)
                        images <- c(images, as.character(part$robject$result))
-                   cat(part$robject$output, sep = '\n')
+                   if (length(part$robject$output) > 0)
+                       cat(part$robject$output, sep = '\n')
                    },
                'heading' = pandoc.header(part$text$eval, part$level),
-               cat(part$text$eval)
+               if (!grepl('^[\n]*$', part$text$eval)) cat( part$text$eval)
                )
 
     }
