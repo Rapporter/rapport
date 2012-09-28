@@ -114,7 +114,7 @@ adj.rle <- function(x){
 #'
 #' A simple wrapper for \code{\link{cat}} function that appends newline to output.
 #' @param ... arguments to be passed to \code{cat} function
-#' @return None (invisible ‘NULL’).
+#' @return None (invisible \code{NULL}).
 #' @export
 catn <- function(...){
     cat(..., "\n")

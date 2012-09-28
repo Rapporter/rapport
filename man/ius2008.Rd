@@ -66,9 +66,9 @@ rapport("example", ius2008, var = "it.leisure")
 }
 }
 \author{
-  Aleksandar Blagotić \email{aca.blagotic@gmail.com}
+  Aleksandar Blagotic \email{aca.blagotic@gmail.com}
 
-  Dušan Vučković \email{sylphs21125@gmail.com}
+  Dusan Vuckovic \email{sylphs21125@gmail.com}
 }
 \keyword{datasets}
 

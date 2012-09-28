@@ -8,7 +8,7 @@
   \item{...}{arguments to be passed to \code{cat} function}
 }
 \value{
-  None (invisible ‘NULL’).
+  None (invisible \code{NULL}).
 }
 \description{
   A simple wrapper for \code{\link{cat}} function that

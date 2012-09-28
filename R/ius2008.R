@@ -42,8 +42,8 @@
 #' }
 #' @name ius2008
 #' @docType data
-#' @author Aleksandar Blagotić \email{aca.blagotic@@gmail.com}
-#' @author Dušan Vučković \email{sylphs21125@@gmail.com}
+#' @author Aleksandar Blagotic \email{aca.blagotic@@gmail.com}
+#' @author Dusan Vuckovic \email{sylphs21125@@gmail.com}
 #' @examples \dontrun{
 #' rapport("example", ius2008, var = "it.leisure")
 #' }

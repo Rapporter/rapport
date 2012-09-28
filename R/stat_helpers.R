@@ -74,7 +74,7 @@ rp.outlier <- function(x) {
 #' lambda.test(table(mtcars$am, mtcars$gear), 2)
 #' }
 #' @references \itemize{
-#'   \item Goodman, L.A., Kruskal, W.H. (1954) Measures of association for cross classifications. Part I. \emph{Journal of the American Statistical Association} \bold{49}, 732-–764
+#'   \item Goodman, L.A., Kruskal, W.H. (1954) Measures of association for cross classifications. Part I. \emph{Journal of the American Statistical Association} \bold{49}, 732--764
 #' }
 #' @export
 lambda.test <- function(table, direction = 0) {
@@ -97,7 +97,7 @@ lambda.test <- function(table, direction = 0) {
 #' Calculates skewness coefficient for given variable (see \code{\link{is.variable}}), \code{matrix} or a \code{data.frame}.
 #' @param x a \code{variable}, \code{matrix} or a \code{data.frame}
 #' @param na.rm should \code{NA}s be removed before computation?
-#' @references Tenjović, L. (2000). Statistika u psihologiji - priručnik. Centar za primenjenu psihologiju.
+#' @references Tenjovic, L. (2000). Statistika u psihologiji - prirucnik. Centar za primenjenu psihologiju.
 #' @examples
 #' set.seed(0)
 #' x <- rnorm(100)
@@ -135,7 +135,7 @@ skewness <- function(x, na.rm = FALSE){
 #' Calculates kurtosis coefficient for given variable (see \code{\link{is.variable}}), \code{matrix} or a \code{data.frame}.
 #' @param x a \code{variable}, \code{matrix} or a \code{data.frame}
 #' @param na.rm should \code{NA}s be removed before computation?
-#' @references Tenjović, L. (2000). Statistika u psihologiji - priručnik. Centar za primenjenu psihologiju.
+#' @references Tenjovic, L. (2000). Statistika u psihologiji - prirucnik. Centar za primenjenu psihologiju.
 #' @examples
 #' set.seed(0)
 #' x <- rnorm(100)

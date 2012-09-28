@@ -25,7 +25,7 @@ kurtosis(mtcars)
 rm(x)
 }
 \references{
-  Tenjović, L. (2000). Statistika u psihologiji -
-  priručnik. Centar za primenjenu psihologiju.
+  Tenjovic, L. (2000). Statistika u psihologiji -
+  prirucnik. Centar za primenjenu psihologiju.
 }
 

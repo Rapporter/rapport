@@ -48,6 +48,6 @@ lambda.test(table(mtcars$am, mtcars$gear), 2)
   \itemize{ \item Goodman, L.A., Kruskal, W.H. (1954)
   Measures of association for cross classifications. Part
   I. \emph{Journal of the American Statistical Association}
-  \bold{49}, 732-–764 }
+  \bold{49}, 732--764 }
 }
 
