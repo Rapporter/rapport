@@ -84,12 +84,12 @@ is.heading <- function(x){
 #' @S3method as.character rp.meta
 #' @export
 as.character.rp.meta <- function(x, ...){
-    
+
     if (!inherits(x, 'rp.meta'))
         stop("template metadata not provided")
-    
+
     mc <- match.call()
-    
+
     meta.example <- x$example
     other <- x[!names(x) %in% c('example')]
     res <- sapply(other, function(x){
@@ -120,7 +120,7 @@ as.character.rp.inputs <- function(x, ...){
 
     if (!inherits(x, 'rp.inputs'))
         stop("template inputs not provided")
-    
+
     unlist(sapply(x, function(x){
         mandatory <- if (x$mandatory) "*" else ""
         limits <- sprintf("[%s]", paste(x$limit, collapse = ","))
@@ -621,6 +621,7 @@ check.limit <- function(x, input.type = "variable"){
             res <- floor(as.numeric(res))
     }
 
+    res <- as.numeric(res)
     if (diff(res) < 0)
         stop('maximum limit cannot be greater than minimum limit')
 
