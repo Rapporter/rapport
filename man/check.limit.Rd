@@ -2,12 +2,12 @@
 \alias{check.limit}
 \title{Input Limits}
 \usage{
-  check.limit(x, max.lim = 50L)
+  check.limit(x, input.type = "variable")
 }
 \arguments{
   \item{x}{a character string containing limit substring}
 
-  \item{max.lim}{an integer containing upper input limit}
+  \item{input.type}{type of input field}
 }
 \value{
   a named list with \code{min}imal and \code{max}imal input

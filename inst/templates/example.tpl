@@ -7,9 +7,9 @@ Data required:  TRUE
 Example:        rapport("example", ius2008, v='age')
                 rapport("example", ius2008, v='gender', pacman=FALSE)
                 rapport("example", ius2008, v='age', s='FOO BAR')
-v       | variable           | Variable    | A variable
-pacman  | TRUE               | Pacman      | Show Pacman in the results?
-s       | string=Bye!        | A string    | Any character value to be printed at the end of theriport
+v       | *variable           | Variable    | A variable
+pacman  | TRUE                | Pacman      | Show Pacman in the results?
+s       | string=Bye!         | A string    | Any character value to be printed at the end of theriport
 head-->
 
 # Hello, world!

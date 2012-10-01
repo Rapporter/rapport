@@ -588,45 +588,44 @@ tpl.paths.remove <- function(...) {
 #'
 #' Checks input limits based on provided string. If provided string is syntactically correct, a list with integers containing limit boundaries (minimum and maximum value) is returned. If provided input limit exceeds value specified in \code{max.lim} argument, it will be coerced to \code{max.lim} and warning will be returned. Default upper input limit is 50 (variables).
 #' @param x a character string containing limit substring
-#' @param max.lim an integer containing upper input limit
+#' @param input.type type of input field
 #' @return a named list with \code{min}imal and \code{max}imal input limit
 #' @examples \dontrun{
 #' rapport:::check.limit("[1,20]")
 #' rapport:::check.limit("[1]")
 #' rapport:::check.limit("[1, 0]")  # will throw error
 #' }
-check.limit <- function(x, max.lim = 50L){
+check.limit <- function(x, input.type = "variable"){
 
     re <- "^(\\[[[:digit:]]+(,[[:digit:]]+)?\\]|)$"
     if (!isTRUE(grepl(re, x)))
         stop('invalid limit definition')
-
-    stopifnot(is.integer(max.lim))
 
     re.lim <- '^\\[(.*)\\]$'
     lims.sb <- gsub(re.lim, '\\1', x) # grab content within brackets
     lims.split <- strsplit(lims.sb, ',')[[1]] # split by comma
     nc <- length(lims.split)
 
-    if (nc == 0)
-        res <- rep(1, 2)
-    else if (nc == 1)
-        res <- rep(lims.sb, 2)
-    else
+    if (nc == 0) {
+        if (input.type == 'string')
+            res <- c(1L, 256L)
+        else if (input.type == 'number')
+            res <- c(-Inf, Inf)
+        else
+            res <- rep(1L, 2)
+    } else if (nc == 1) {
+        res <- rep(lims.sb, 2L)
+    } else {
         res <- lims.split
-
-    res <- as.integer(res)
+        if (input.type != 'number')
+            res <- floor(as.numeric(res))
+    }
 
     if (diff(res) < 0)
         stop('maximum limit cannot be greater than minimum limit')
 
     if (any(res < 1))
         stop('only positive integers should be provided as a limit')
-
-    if (any(res > max.lim)){
-        res[res > max.lim] <- max.lim
-        warning('input limit exceeds maximal value, coerced to ', max.lim)
-    }
 
     structure(as.list(res), .Names = c('min', 'max'))
 }
@@ -671,7 +670,7 @@ check.type <- function(x){
     else if (grepl(re4, x))
         res <- list(
                     type = 'string',
-                    limit = check.limit(gsub(re4, '\\3', x)),
+                    limit = check.limit(gsub(re4, '\\3', x), 'string'),
                     default = {
                         if (grepl('^=', gsub(re4, '\\7', x)))
                             gsub(re4, '\\8', x)
@@ -684,7 +683,7 @@ check.type <- function(x){
     else if (grepl(re5, x))
         res <- list(
                     type = 'number',
-                    limit = check.limit(gsub(re5, '\\3', x)),
+                    limit = check.limit(gsub(re5, '\\3', x), 'number'),
                     default = {
                         if (grepl('^=', gsub(re5, '\\7', x)))
                             as.numeric(gsub(re5, '\\8', x))
