@@ -49,6 +49,16 @@ We have just shown the alphabet to the users in a list.
 
 Loops and `if` conditionals without the curly braces do not work between the `BRCATCODE` tags, as everything between those are `parse`d. So in short: use `BRCODE` for loops and filtering, use `BRCATCODE` for the rest.
 
+# Errors and warning
+
+What happens if you have an error in your document?
+
+<%=mean(foobar)%>
+
+And how do warnings show up?
+
+<%=chisq.test(mtcars$am, mtcars$gear)%>
+
 # Control-flow
 
 We almost forgot about our inputs! A quite detailed documentation can be found on [rapport homepage](http://rapport-package.info/#custom).
