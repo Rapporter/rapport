@@ -55,6 +55,8 @@ What happens if you have an error in your document?
 
 <%=mean(foobar)%>
 
+Which is possible even inline too: <%=foo%> and <%=bar%>.
+
 And how do warnings show up?
 
 <%=chisq.test(mtcars$am, mtcars$gear)%>
