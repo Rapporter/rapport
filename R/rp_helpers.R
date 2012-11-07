@@ -728,10 +728,6 @@ check.type <- function(x){
 #' fml("hp", c("am", "cyl"))    # "hp ~ am + cyl"
 #' @export
 fml <- function(left, right, join.left = ' + ', join.right = ' + '){
-    if (!identical(left, ''))
-        left <- wrap(left, wrap = '`')
-    if (!identical(right, ''))
-        right <- wrap(right, wrap = '`')
     sprintf('%s ~ %s', paste(left, collapse = join.left), paste(right, collapse = join.right))
 }
 
