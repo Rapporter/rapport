@@ -110,7 +110,10 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 
     txt   <- tpl.find(fp)
     h.end <- grep(htag, txt, ...)
-    structure(txt[(h.end + 1):length(txt)], class = 'rp.body')
+    if (h.end == length(txt))
+        structure('', class = 'rp.body')
+    else
+        structure(txt[(h.end + 1):length(txt)], class = 'rp.body')
 }
 
 
