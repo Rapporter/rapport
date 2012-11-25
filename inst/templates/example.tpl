@@ -72,4 +72,18 @@ Let us check if the template was called with `pacman` parameter set to TRUE and 
 Yeah, this plot is generated with `pie` from `graphics` package, no fancy `lattice` or `ggplot2` call :)
 <% } %>
 
+# Evaluate multiple commands at once
+
+All R code in the template body are parsed to separate expressions to grab all error/warning/simple message. This is really comfortable and useful most of the time, but not desired with e.g. complex plots (so multiple lines creates one plot after all) or in other situations when you want evaluate your commands at one run.
+
+Of course there is  workaround: use `+` in the beginning of the line which you want to run locked with the prior one(s). For example let us create a plot with two histograms:
+
+<%=
+par(mfrow = c(2, 1))
++hist(mtcars$wt)
++hist(mtcars$hp)
+%>
+
+### H3 tag
+
 Oh, and by the way: <%=s%>
