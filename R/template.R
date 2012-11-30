@@ -596,8 +596,9 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                 val <- if (is.null(input.value)) input.default[1] else input.value
 
                 ## check types
-                if (!do.call(type.fn, list(val)))
-                    stopf('"%s" is not of "%s" type', val, input.type)
+                if (!is.null(val))
+                    if (!do.call(type.fn, list(val)))
+                        stopf('"%s" is not of "%s" type', val, input.type)
 
                 ## CSV input (allow multi match?)
                 if (input.type == 'option')
