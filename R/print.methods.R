@@ -61,7 +61,7 @@ print.rp.inputs <- function(x, ...){
             limit.msg <- switch(x$type,
                                 string = sprintf('%s character%s', lim.range, s),
                                 number = sprintf('number %s', if (lims.unique.length > 1) lim.range else x$limit$min),
-                                sprintf('%s %s variable%s', lim.range, x$type, s)
+                                sprintf('%s variable%s', lim.range, s)
                                 )
             
             cat(
