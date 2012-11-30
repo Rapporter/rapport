@@ -600,6 +600,9 @@ check.limit <- function(x, input.type = "variable"){
 
     stopifnot(is.string(x))
 
+    if (!grepl("^(\\[-?\\d+(\\.\\d+)?(, *(-?\\d+(\\.\\d+)?))\\]|)$", x))
+        stop('invalid limit definition')
+    
     if (x == '') {
         lim <- rep(1L, 2)
     } else {
