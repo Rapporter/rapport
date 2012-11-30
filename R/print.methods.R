@@ -21,12 +21,12 @@ print.rp.meta <- function(x, ...){
     }
 
     catn(
-         sprintf('\n`%s`\n\n', x$title),
-         sprintf('by %s%s\n\n', x$author, email),
-         sprintf('%s\n', x$desc),
-         fn(other.meta),
-         sprintf('\n %s', c('Examples:', exmpl))
-         )
+        sprintf('\n`%s`\n\n', x$title),
+        sprintf('by %s%s\n\n', x$author, email),
+        sprintf('%s\n', x$desc),
+        fn(other.meta),
+        sprintf('\n %s', c('Examples:', exmpl))
+        )
 
     catn()
 
@@ -50,28 +50,29 @@ print.rp.inputs <- function(x, ...){
     } else {
         sapply(x, function(x){
 
-            ## is field mandatory?
-            mand <- if (is.null(x$mandatory))
-                ''
+            lims <- unlist(x$limit, use.names = FALSE)
+            lims.unique.length <- length(unique(lims))
+            s <- if (x$limit$max > 1) 's' else ''
+            if (lims.unique.length == 1)
+                lim.range <- lims[1]
             else
-                ifelse(x$mandatory, '  >>REQUIRED<<', '')
+                lim.range <- paste("between", x$limit$min, "and", x$limit$max, sep = " ")
 
+            limit.msg <- switch(x$type,
+                                string = sprintf('%s character%s', lim.range, s),
+                                number = sprintf('number %s', if (lims.unique.length > 1) lim.range else x$limit$min),
+                                sprintf('%s %s variable%s', lim.range, x$type, s)
+                                )
+            
             cat(
                 '\n',
-                sprintf('`%s` (%s)%s\n', x$name, x$label, mand),
+                sprintf('`%s` (%s)%s\n', x$name, x$label, if (is.null(x$mandatory)) '' else ifelse(x$mandatory, '  >>REQUIRED<<', '')),
                 sprintf(' %s\n', x$desc),
                 sprintf('    - type:\t%s\n', x$type),
-                sprintf('    - limits:\t%s\n',
-                        if (diff(unlist(x$limit)) == 0){
-                            sprintf('exactly %s variable%s', x$limit$min, ifelse(x$limit$min > 1, 's', ''))
-                        } else {
-                            sprintf('from %s, up to %s variables', x$limit$min, x$limit$max)
-                        }),
+                sprintf('    - limits:\t%s\n', limit.msg),
                 if (!is.null(x$default)){
-                    def <- x$default
-                    if (is.character(def))
-                        def <- p(def, '"', copula = 'or')
-                    sprintf('    - default value:\t%s\n', def)
+                    if (is.character(x$default))
+                        sprintf('    - default value:\t%s\n', x$default)
                 })
         })
         catn()
@@ -119,7 +120,7 @@ print.rapport <- function(x, ...) {
                        images <- c(images, as.character(part$robject$result))
                    if (length(part$robject$output) > 0)
                        cat(part$robject$output, sep = '\n')
-                   },
+               },
                'heading' = pandoc.header(part$text$eval, part$level),
                if (!grepl('^[\n]*$', part$text$eval)) cat( part$text$eval)
                )

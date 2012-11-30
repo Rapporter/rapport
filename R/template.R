@@ -567,19 +567,18 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                 ## check limits
                 if (!input.len %in% limit$min:limit$max) {
                     lims <- unlist(limit, use.names = FALSE)
-                    if (length(unique(lims)) == 1) {
+                    if (length(unique(lims)) == 1)
                         lim.range <- lims[1]
-                    } else {
-                        lim.range <- paste("between", limit$min, "and", limit$max, sep = "")
-                    }
+                    else
+                        lim.range <- paste("between", limit$min, "and", limit$max, sep = " ")
                     len.diff <- diff(lims)
                     limit.error.msg <- switch(input.type,
-                                      string = sprintf('string input "%s" (value: %s) has %d characters, and it should have %s', name, input.value, input.len, lim.range),
-                                      number = sprintf('number input "%s" (value: %s) should fall in interval [%s, %s]', name, input.value, limit$min, limit$max),
-                                      boolean =,
-                                      option = sprintf('%s input "%s" allows only one input', input.type, name),
-                                      sprintf("%s input %s has %d variables and should have %d", input.type, name, input.type, lim.range)
-                                      )
+                                              string = sprintf('string input "%s" (value: "%s") has %d character%s, and it should have %s', name, input.value, input.len, if (input.len > 1) 's' else '', lim.range),
+                                              number = sprintf('number input "%s" (value: %s) should fall in interval [%s, %s]', name, input.value, limit$min, limit$max),
+                                              boolean =,
+                                              option = sprintf('%s input "%s" allows only one input', input.type, name),
+                                              sprintf("%s input %s has %d variables and should have %d", input.type, name, input.type, lim.range)
+                                              )
                     stop(limit.error.msg)
                 }
             }
