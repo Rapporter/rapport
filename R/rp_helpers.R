@@ -669,13 +669,15 @@ check.type <- function(x){
     
     mandatory <- grepl("^\\*", x)
     input.type <- gsub(limit.regex, "\\1", x)
-    limit <- gsub(limit.regex, "\\2", x)
+    limit <- check.limit(gsub(limit.regex, "\\2", x), input.type)
     default <- if (grepl(default.regex, x)) gsub(default.regex, "\\1", x) else NULL
     if (input.type == 'number') {
         if (!is.null(default)) {
             default <- as.numeric(default)
             if (is.na(default))
                 default <- NULL
+            if (length(default) == 1 && !default %in% do.call(seq, unname(limit)))
+                stopf('default number value %s not in specified limit interval [%s, %s]', default, limit$min, limit$max)
         }
     }
 
@@ -687,7 +689,7 @@ check.type <- function(x){
            numeric =,
            variable = list(
                type = input.type,
-               limit = check.limit(limit, input.type),
+               limit = limit,
                default = NULL,
                mandatory = mandatory
                ),
@@ -704,7 +706,7 @@ check.type <- function(x){
            number =,
            string = list(
                type = input.type,
-               limit = check.limit(limit, input.type),
+               limit = limit,
                default = default,
                mandatory = mandatory
                ),
