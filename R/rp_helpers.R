@@ -600,6 +600,9 @@ check.limit <- function(x, input.type = "variable"){
 
     stopifnot(is.string(x))
 
+    if (grepl("^\\[.+, *\\]$", x))
+        stop('invalid limit definition')
+    
     if (x == '') {
         lim <- rep(1L, 2)
     } else {
@@ -613,7 +616,7 @@ check.limit <- function(x, input.type = "variable"){
             stop('limits cannot be zero')
 
         if (len > 1 && diff(lim) < 0)
-            stop('maximum limit cannot be greater than minimum limit')
+            stop('minimum limit cannot be greater than maximum limit')
         
         if (len == 0) {
             if (input.type == 'string')
