@@ -604,7 +604,10 @@ check.limit <- function(x, input.type = "variable"){
         stop('invalid limit definition')
     
     if (x == '') {
-        lim <- rep(1L, 2)
+        if (input.type == 'string')
+            lim <- c(1L, 256L)
+        else
+            lim <- rep(1L, 2)
     } else {
         lim <- suppressWarnings(as.numeric(strsplit(gsub('^\\[(.*)\\]$', '\\1', x), ',')[[1]])) # get limits
         len <- length(lim)
