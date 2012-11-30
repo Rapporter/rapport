@@ -666,9 +666,11 @@ check.type <- function(x){
     limit <- gsub(limit.regex, "\\2", x)
     default <- if (grepl(default.regex, x)) gsub(default.regex, "\\1", x) else NULL
     if (input.type == 'number') {
-        default <- as.numeric(default)
-        if (is.na(default))
-            default <- NULL
+        if (!is.null(default)) {
+            default <- as.numeric(default)
+            if (is.na(default))
+                default <- NULL
+        }
     }
 
     switch(input.type,
