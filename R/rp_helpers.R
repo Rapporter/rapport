@@ -176,7 +176,7 @@ rp.name <- function(x){
         if (all(n.nil)){
             n <- names(n)
         } else
-        n[n.nil] <- names(n)[n.nil]
+            n[n.nil] <- names(n)[n.nil]
 
         return(n)
     }
@@ -309,11 +309,11 @@ get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment
 
     ## default tag list
     tag.default <- c(
-                     header.open   = '^<!--head$',
-                     header.close  = '^head-->$',
-                     comment.open  = '^<!--',
-                     comment.close = '-->'
-                     )
+        header.open   = '^<!--head$',
+        header.close  = '^head-->$',
+        comment.open  = '^<!--',
+        comment.close = '-->'
+        )
     tag.default.names <- names(tag.default) # names of default tags
     tag.current <- getOption('rp.tags')     # currently set tags
     tag.current.names <- names(tag.current) # names of currently set tags
@@ -593,42 +593,47 @@ tpl.paths.remove <- function(...) {
 #' @examples \dontrun{
 #' rapport:::check.limit("[1,20]")
 #' rapport:::check.limit("[1]")
-#' rapport:::check.limit("[1, 0]")  # will throw error
+#' rapport:::check.limit("[1, 0]")  # will throw error (min limit larger than max limit)
+#' rapport:::check.limit("")        # returns list(min = 1, max = 1)
 #' }
 check.limit <- function(x, input.type = "variable"){
 
-    re <- "^(\\[[[:digit:]]+(,[[:digit:]]+)?\\]|)$"
-    if (!isTRUE(grepl(re, x)))
-        stop('invalid limit definition')
+    stopifnot(is.string(x))
 
-    re.lim <- '^\\[(.*)\\]$'
-    lims.sb <- gsub(re.lim, '\\1', x) # grab content within brackets
-    lims.split <- strsplit(lims.sb, ',')[[1]] # split by comma
-    nc <- length(lims.split)
-
-    if (nc == 0) {
-        if (input.type == 'string')
-            res <- c(1L, 256L)
-        else if (input.type == 'number')
-            res <- c(-Inf, Inf)
-        else
-            res <- rep(1L, 2)
-    } else if (nc == 1) {
-        res <- rep(lims.sb, 2L)
+    if (x == '') {
+        lim <- rep(1L, 2)
     } else {
-        res <- lims.split
-        if (input.type != 'number')
-            res <- floor(as.numeric(res))
+        lim <- suppressWarnings(as.numeric(strsplit(gsub('^\\[(.*)\\]$', '\\1', x), ',')[[1]])) # get limits
+        len <- length(lim)
+        
+        if (any(is.na(lim)) || !len %in% 0:2)
+            stop('invalid limit definition')
+
+        if (all(lim == 0))
+            stop('limits cannot be zero')
+
+        if (len > 1 && diff(lim) < 0)
+            stop('maximum limit cannot be greater than minimum limit')
+        
+        if (len == 0) {
+            if (input.type == 'string')
+                lim <- c(1L, 256L)
+            else if (input.type == 'number')
+                lim <- c(-Inf, Inf)
+            else
+                lim <- c(1L, 1L)
+        } else if (len == 1) {
+            lim <- rep(lim, 2)
+        } else {
+            if (input.type != 'number') {
+                if (!all(floor(lim) == lim) || any(lim < 1))
+                    stop('decimal and/or less than 1 limits only allowed for number inputs')
+                lim[lim > 50] <- 50L    # default upper limit
+            }
+        }
     }
-
-    res <- as.numeric(res)
-    if (diff(res) < 0)
-        stop('maximum limit cannot be greater than minimum limit')
-
-    if (any(res < 1))
-        stop('only positive integers should be provided as a limit')
-
-    structure(as.list(res), .Names = c('min', 'max'))
+    
+    structure(as.list(lim), .Names = c('min', 'max'))
 }
 
 
@@ -650,70 +655,67 @@ check.type <- function(x){
     if (x == '')
         stop('empty input type definition')
 
-    ## regexes
-    re.lim <- '(\\[([[:digit:]]+)(,([[:digit:]]+))?\\]|)' # limits
-    fmt <- '^(\\*)?%s%s%s$'
-    re1 <- sprintf(fmt, '(character|complex|factor|logical|numeric|variable|number|string)', re.lim, '') # variable regex
-    re2 <- '^(TRUE|FALSE)$'             # boolean regex
-    re3 <- '^([[:alnum:]\\._]+(, ?[[:alnum:]\\._]+){1,})$' # CSV regex
-    re4 <- sprintf(fmt, '(string)', re.lim, '( ?= ?(.+|))?') # string regex
-    re5 <- sprintf(fmt, '(number)', re.lim, '( ?= ?(([[:digit:]]+(\\.[[:digit:]]+)?)|))?') # number regex
+    ## regexex
+    type.regex <- "(character|complex|factor|logical|numeric|variable|TRUE|FALSE|number|string)"
+    limit.regex <- paste("^\\*?", type.regex, "(\\[.*\\]|).*$", sep = "")
+    csv.regex <- "^(([[:alnum:]\\._]+)(, ?[[:alnum:]\\._]+){1,})$"
+    default.regex <- "^.+=(.*)$"
+    
+    mandatory <- grepl("^\\*", x)
+    input.type <- gsub(limit.regex, "\\1", x)
+    limit <- gsub(limit.regex, "\\2", x)
+    default <- if (grepl(default.regex, x)) gsub(default.regex, "\\1", x) else NULL
+    if (input.type == 'number') {
+        default <- as.numeric(default)
+        if (is.na(default))
+            default <- NULL
+    }
 
-    ## 1st option: TRUE|FALSE
-    if (grepl(re2, x))
-        res <- list(
-                    type = 'boolean',
-                    limit = list(min = 1, max = 1),
-                    default = gsub(re2, '\\1', x) == TRUE,
-                    mandatory = FALSE
-                    )
-    ## 2nd option: string
-    else if (grepl(re4, x))
-        res <- list(
-                    type = 'string',
-                    limit = check.limit(gsub(re4, '\\3', x), 'string'),
-                    default = {
-                        if (grepl('^=', gsub(re4, '\\7', x)))
-                            gsub(re4, '\\8', x)
-                        else
-                            NA_character_
-                    },
-                    mandatory = grepl('^\\*', x)
-                    )
-    ## 3rd option: number
-    else if (grepl(re5, x))
-        res <- list(
-                    type = 'number',
-                    limit = check.limit(gsub(re5, '\\3', x), 'number'),
-                    default = {
-                        if (grepl('^=', gsub(re5, '\\7', x)))
-                            as.numeric(gsub(re5, '\\8', x))
-                        else
-                            NA_real_
-                    },
-                    mandatory = grepl('^\\*.+', x)
-                    )
-    ## 4th option: variable[min(, max)]
-    else if (grepl(re1, x))
-        res <- list(
-                    type = gsub(re1, '\\2', x),
-                    limit = check.limit(gsub(re1, '\\3', x)),
-                    default = NULL,
-                    mandatory = grepl('^\\*', x)
-                    )
-    ## 5th option: list, of, comma, separated, values (first one is default)
-    else if (grepl(re3, x))
-        res <- list(
-                    type = 'option',
-                    limit = list(min = 1, max = 1),
-                    default = strsplit(gsub(re3, '\\1', x), ', ?')[[1]],
-                    mandatory = FALSE
-                    )
-    ## 6th option: something went wrong
-    else
-        stopf('input type definition error in: "%s"', x)
-
-    return(res)
+    switch(input.type,
+           character =,
+           complex =,
+           factor =,
+           logical =,
+           numeric =,
+           variable = list(
+               type = input.type,
+               limit = check.limit(limit, input.type),
+               default = NULL,
+               mandatory = mandatory
+               ),
+           "TRUE" =,
+           "FALSE" = list(
+               type = 'boolean',
+               limit = list(
+                   min = 1,
+                   max = 1
+                   ),
+               default = as.logical(input.type),
+               mandatory = FALSE
+               ),
+           number =,
+           string = list(
+               type = input.type,
+               limit = check.limit(limit, input.type),
+               default = default,
+               mandatory = mandatory
+               ),
+           ## check CSV here
+           (function(){
+               if (grepl(csv.regex, x))
+                   list(
+                       type = 'option',
+                       limit = list(
+                           min = 1,
+                           max = 1
+                           ),
+                       default = strsplit(gsub(csv.regex, "\\2", x), ' *, *')[[1]],
+                       mandatory = FALSE
+                       )
+               else
+                   stop('invalid input type')
+           })()
+           )
 }
 
 
@@ -740,7 +742,7 @@ fml <- function(left, right, join.left = ' + ', join.right = ' + '){
 
 ## http://stackoverflow.com/questions/8379570/get-functions-title-from-documentation
 pkg_topic <- function(package, topic, file = NULL) {
-    # Find "file" name given topic name/alias
+                                        # Find "file" name given topic name/alias
     if (is.null(file)) {
         topics <- pkg_topics_index(package)
         topic_page <- subset(topics, alias == topic, select = file)$file
