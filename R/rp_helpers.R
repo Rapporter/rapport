@@ -685,6 +685,10 @@ check.type <- function(x){
                 stopf('default number value %s not in specified limit interval [%s, %s]', default, limit$min, limit$max)
         }
     }
+    if (input.type == 'string') {
+        if (!is.null(default) && (nchar(default) < limit$min || nchar(default) > limit$max))
+            stopf('default string value "%s" must have at least %d and at most %d characters', default, limit$min, limit$max)
+    }
 
     switch(input.type,
            character =,
@@ -724,7 +728,7 @@ check.type <- function(x){
                            min = 1,
                            max = 1
                            ),
-                       default = strsplit(gsub(csv.regex, "\\2", x), ' *, *')[[1]],
+                       default = strsplit(x, ' *, *')[[1]],
                        mandatory = FALSE
                        )
                else

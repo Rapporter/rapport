@@ -47,5 +47,5 @@ test_that('should provide correct input definition', {
     expect_that(rapport:::check.type("FALSE"), equals(list(type = 'boolean', limit = list(min = 1, max= 1), default = FALSE, mandatory = FALSE)))
     expect_that(rapport:::check.type("number"), equals(list(type = 'number', limit = list(min = -Inf, max= Inf), default = NULL, mandatory = FALSE)))
     expect_that(rapport:::check.type("string"), equals(list(type = 'string', limit = list(min = 1, max= 256), default = NULL, mandatory = FALSE)))
-    expect_that(rapport:::check.type("fee, fi, foo, fam"), equals(list(type = 'option', limit = list(min = 1, max= 1), default = "fee", mandatory = FALSE)))
+    expect_that(rapport:::check.type("fee, fi, foo, fam"), equals(list(type = 'option', limit = list(min = 1, max= 1), default = c("fee", "fi", "foo", "fam"), mandatory = FALSE)))
 })

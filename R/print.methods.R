@@ -72,7 +72,7 @@ print.rp.inputs <- function(x, ...){
                 sprintf('    - limits:\t%s\n', limit.msg),
                 if (!is.null(x$default)){
                     if (is.character(x$default))
-                        sprintf('    - default value:\t%s\n', x$default)
+                        sprintf('    - default value:\t%s\n', x$default[1])
                 })
         })
         catn()
