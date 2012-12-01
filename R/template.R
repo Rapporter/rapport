@@ -565,7 +565,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
             if (!is.null(input.value)){
                 ## check limits
-                if (!input.len %in% limit$min:limit$max) {
+                if (input.len < limit$min || input.len > limit$max) {
                     lims <- unlist(limit, use.names = FALSE)
                     if (length(unique(lims)) == 1)
                         lim.range <- lims[1]
