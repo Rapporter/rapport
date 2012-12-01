@@ -604,10 +604,11 @@ check.limit <- function(x, input.type = "variable"){
         stop('invalid limit definition')
     
     if (x == '') {
-        if (input.type == 'string')
-            lim <- c(1L, 256L)
-        else
-            lim <- rep(1L, 2)
+        lim <- switch(input.type,
+                      number = c(-Inf, Inf),
+                      string = c(1L, 256L),
+                      c(1L, 1L)
+                      )
     } else {
         lim <- suppressWarnings(as.numeric(strsplit(gsub('^\\[(.*)\\]$', '\\1', x), ',')[[1]])) # get limits
         len <- length(lim)
@@ -622,12 +623,11 @@ check.limit <- function(x, input.type = "variable"){
             stop('minimum limit cannot be greater than maximum limit')
         
         if (len == 0) {
-            if (input.type == 'string')
-                lim <- c(1L, 256L)
-            else if (input.type == 'number')
-                lim <- c(-Inf, Inf)
-            else
-                lim <- c(1L, 1L)
+            lim <- switch(input.type,
+                          number = c(-Inf, Inf),
+                          string = c(1L, 256L),
+                          c(1L, 1L)
+                          )
         } else if (len == 1) {
             lim <- rep(lim, 2)
         } else {
@@ -669,14 +669,25 @@ check.type <- function(x){
     
     mandatory <- grepl("^\\*", x)
     input.type <- gsub(limit.regex, "\\1", x)
-    limit <- gsub(limit.regex, "\\2", x)
+    ## this may be option input
+    if (input.type == x)
+        limit.text <- ''
+    else
+        limit.text <- gsub(limit.regex, "\\2", x)
+    limit <- check.limit(limit.text, input.type)
     default <- if (grepl(default.regex, x)) gsub(default.regex, "\\1", x) else NULL
     if (input.type == 'number') {
         if (!is.null(default)) {
             default <- as.numeric(default)
             if (is.na(default))
                 default <- NULL
+            if (length(default) == 1 && (default < limit$min || default > limit$max))
+                stopf('default number value %s not in specified limit interval [%s, %s]', default, limit$min, limit$max)
         }
+    }
+    if (input.type == 'string') {
+        if (!is.null(default) && (nchar(default) < limit$min || nchar(default) > limit$max))
+            stopf('default string value "%s" must have at least %d and at most %d characters', default, limit$min, limit$max)
     }
 
     switch(input.type,
@@ -687,7 +698,7 @@ check.type <- function(x){
            numeric =,
            variable = list(
                type = input.type,
-               limit = check.limit(limit, input.type),
+               limit = limit,
                default = NULL,
                mandatory = mandatory
                ),
@@ -704,7 +715,7 @@ check.type <- function(x){
            number =,
            string = list(
                type = input.type,
-               limit = check.limit(limit, input.type),
+               limit = limit,
                default = default,
                mandatory = mandatory
                ),
@@ -717,7 +728,7 @@ check.type <- function(x){
                            min = 1,
                            max = 1
                            ),
-                       default = strsplit(gsub(csv.regex, "\\2", x), ' *, *')[[1]],
+                       default = strsplit(x, ' *, *')[[1]],
                        mandatory = FALSE
                        )
                else

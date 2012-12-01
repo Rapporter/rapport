@@ -10,10 +10,10 @@ Example:        rapport("t-test", ius2008, x = "leisure", y = "gender")
 x         | *numeric          | X variable          | Dependent (response) variable
 y         | variable          | Y variable          | Independent variable (factor, or another numeric)
 alter     | two.sided,less,greater | Alternative hypothesis | Whether two-sided, greater or less variant will be applied
-mu        | number[1,10]      | Mean value          | Mean value for one-sample t-test
+mu        | number            | Mean value          | Mean value for one-sample t-test
 paired    | FALSE             | Paired t-test       | Carry out paired t-test or not
 var.equal | FALSE             | Variance equality   | Equal variances assumed: choose automatically or not
-ci.level  | number[1,10]=0.95 | Confidence interval | Confidence interval level
+ci.level  | number[0,1]=0.95  | Confidence interval | Confidence interval level
 head-->
 <%=
 
