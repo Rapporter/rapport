@@ -1,2 +1,7 @@
 *~
 _site/*
+.RData
+.Rhistory
+.Rprofile
+*.Rcheck
+rapport_*.tar.gz
