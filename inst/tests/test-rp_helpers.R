@@ -34,6 +34,10 @@ test_that('should throw error about decimal and/or less than 1 limits', {
     expect_that(rapport:::check.limit("[-2.58,2.58]"), throws_error('decimal and/or less than 1 limits only allowed for number inputs'))
 })
 
+test_that('should throw error about required range limit specifications in number inputs', {
+    expect_that(rapport:::check.limit("[2]", "number"), throws_error('Number inputs require range limit specification'))
+})
+
 context('Input type specifications')
 
 test_that('should provide correct input definition', {

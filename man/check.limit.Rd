@@ -24,10 +24,12 @@
 }
 \examples{
 \dontrun{
-rapport:::check.limit("[1,20]")
+rapport:::check.limit("[1, 20]")
 rapport:::check.limit("[1]")
 rapport:::check.limit("[1, 0]")  # will throw error (min limit larger than max limit)
 rapport:::check.limit("")        # returns list(min = 1, max = 1)
+rapport:::check.limit("[-2.58, 2.58]")
+rapport:::check.limit("[-Inf, Inf]")
 }
 }
 

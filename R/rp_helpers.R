@@ -591,10 +591,12 @@ tpl.paths.remove <- function(...) {
 #' @param input.type type of input field
 #' @return a named list with \code{min}imal and \code{max}imal input limit
 #' @examples \dontrun{
-#' rapport:::check.limit("[1,20]")
+#' rapport:::check.limit("[1, 20]")
 #' rapport:::check.limit("[1]")
 #' rapport:::check.limit("[1, 0]")  # will throw error (min limit larger than max limit)
 #' rapport:::check.limit("")        # returns list(min = 1, max = 1)
+#' rapport:::check.limit("[-2.58, 2.58]")
+#' rapport:::check.limit("[-Inf, Inf]")
 #' }
 check.limit <- function(x, input.type = "variable"){
 
@@ -629,6 +631,8 @@ check.limit <- function(x, input.type = "variable"){
                           c(1L, 1L)
                           )
         } else if (len == 1) {
+            if (input.type == 'number')
+                stop('Number inputs require range limit specification')
             lim <- rep(lim, 2)
         } else {
             if (input.type != 'number') {
