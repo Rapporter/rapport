@@ -636,8 +636,11 @@ check.limit <- function(x, input.type = "variable"){
             lim <- rep(lim, 2)
         } else {
             if (input.type != 'number') {
-                if (!all(floor(lim) == lim) || any(lim < 1))
-                    stop('decimal and/or less than 1 limits only allowed for number inputs')
+                lim.min <- 1
+                if (input.type == 'string')
+                    lim.min <- 0
+                if (!all(floor(lim) == lim) || any(lim < lim.min))
+                    stopf('decimal and/or less than %d limits only allowed for %s inputs', lim.min, input.type)
                 lim[lim > 50] <- 50L    # default upper limit
             }
         }
