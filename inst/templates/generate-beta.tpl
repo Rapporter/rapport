@@ -5,10 +5,9 @@ Author: Rapporter Team (@rapporter)
 Packages: nortest
 Data required: FALSE
 
-n | *number[-Inf,Inf]=100 | Obeservations | Number of observations
-shape1 | *number[-Inf,Inf]=0.1 | Alpha | First parameter of the Beta distribution
-shape2 | *number[-Inf,Inf]=0.1 | Beta | Second parameter of the Beta distribution
-Example: rapport(fp = "generate-beta", n = 100, shape1 = 0.1, shape2 = 0.1)
+n | *number[1,Inf]=100 | Observations | Number of observations
+shape1 | *number[0,100]=0.1 | Alpha | First parameter of the Beta distribution
+shape2 | *number[0,100]=0.1 | Beta | Second parameter of the Beta distribution
 head-->
 # Histogram
 
@@ -86,3 +85,4 @@ _Kernel density plot_ is a plot of smoothed _empirical distribution function_. A
 set.caption('Kernel Density Plot')
 rp.densityplot(g)
 %>
+
