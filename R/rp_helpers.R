@@ -606,7 +606,7 @@ check.limit <- function(x, input.type = "variable"){
     if (x == '') {
         lim <- switch(input.type,
                       number = c(-Inf, Inf),
-                      string = c(1L, 256L),
+                      string = c(0L, 256L),
                       c(1L, 1L)
                       )
     } else {
@@ -625,18 +625,15 @@ check.limit <- function(x, input.type = "variable"){
         if (len == 0) {
             lim <- switch(input.type,
                           number = c(-Inf, Inf),
-                          string = c(1L, 256L),
+                          string = c(0L, 256L),
                           c(1L, 1L)
                           )
         } else if (len == 1) {
             lim <- rep(lim, 2)
         } else {
             if (input.type != 'number') {
-                lim.min <- 1
-                if (input.type == 'string')
-                    lim.min <- 0
-                if (!all(floor(lim) == lim) || any(lim < lim.min))
-                    stopf('decimal and/or less than %d limits only allowed for %s inputs', lim.min, input.type)
+                if (!all(floor(lim) == lim) || any(lim < 1))
+                    stop('decimal and/or less than 1 limits only allowed for number inputs')
                 lim[lim > 50] <- 50L    # default upper limit
             }
         }
