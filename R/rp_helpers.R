@@ -137,7 +137,7 @@ as.character.rp.inputs <- function(x, ...){
                        variable = paste(mandatory, x$type, limits, sep = ""),
                        stopf('Incorrect input type (%s)!', x$type)
                        )
-        paste(paste0(mandatory, x$name), opts, x$label, x$desc, sep = " | ")
+        paste(x$name, opts, x$label, x$desc, sep = " | ")
     }))
 }
 
