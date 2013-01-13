@@ -606,7 +606,7 @@ check.limit <- function(x, input.type = "variable"){
     if (x == '') {
         lim <- switch(input.type,
                       number = c(-Inf, Inf),
-                      string = c(1L, 256L),
+                      string = c(0L, 256L),
                       c(1L, 1L)
                       )
     } else {
@@ -625,7 +625,7 @@ check.limit <- function(x, input.type = "variable"){
         if (len == 0) {
             lim <- switch(input.type,
                           number = c(-Inf, Inf),
-                          string = c(1L, 256L),
+                          string = c(0L, 256L),
                           c(1L, 1L)
                           )
         } else if (len == 1) {
