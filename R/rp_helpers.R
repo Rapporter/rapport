@@ -632,7 +632,7 @@ check.limit <- function(x, input.type = "variable"){
             lim <- rep(lim, 2)
         } else {
             if (input.type != 'number') {
-                if (!all(floor(lim) == lim) || any(lim < 1))
+                if (!all(floor(lim) == lim) || any(lim < 0))
                     stop('decimal and/or less than 1 limits only allowed for number inputs')
             }
         }
