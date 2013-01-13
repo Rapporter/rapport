@@ -602,7 +602,7 @@ check.limit <- function(x, input.type = "variable"){
 
     if (grepl("^\\[.+, *\\]$", x))
         stop('invalid limit definition')
-    
+
     if (x == '') {
         lim <- switch(input.type,
                       number = c(-Inf, Inf),
@@ -612,7 +612,7 @@ check.limit <- function(x, input.type = "variable"){
     } else {
         lim <- suppressWarnings(as.numeric(strsplit(gsub('^\\[(.*)\\]$', '\\1', x), ',')[[1]])) # get limits
         len <- length(lim)
-        
+
         if (any(is.na(lim)) || !len %in% 0:2)
             stop('invalid limit definition')
 
@@ -621,7 +621,7 @@ check.limit <- function(x, input.type = "variable"){
 
         if (len > 1 && diff(lim) < 0)
             stop('minimum limit cannot be greater than maximum limit')
-        
+
         if (len == 0) {
             lim <- switch(input.type,
                           number = c(-Inf, Inf),
@@ -634,11 +634,10 @@ check.limit <- function(x, input.type = "variable"){
             if (input.type != 'number') {
                 if (!all(floor(lim) == lim) || any(lim < 1))
                     stop('decimal and/or less than 1 limits only allowed for number inputs')
-                lim[lim > 50] <- 50L    # default upper limit
             }
         }
     }
-    
+
     structure(as.list(lim), .Names = c('min', 'max'))
 }
 
@@ -666,7 +665,7 @@ check.type <- function(x){
     limit.regex <- paste("^\\*?", type.regex, "(\\[.*\\]|).*$", sep = "")
     csv.regex <- "^(([[:alnum:]\\._]+)(, ?[[:alnum:]\\._]+){1,})$"
     default.regex <- "^.+=(.*)$"
-    
+
     mandatory <- grepl("^\\*", x)
     input.type <- gsub(limit.regex, "\\1", x)
     ## this may be option input
