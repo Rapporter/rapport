@@ -625,12 +625,21 @@ check.limit <- function(x, input.type = "variable"){
     } else if (len == 1) {
         lim <- rep(lim, 2)
     } else {
-        if (input.type != 'number') {
-            if (!all(floor(lim) == lim) || any(lim < 0))
-                stop('decimal and/or negative limit values are only allowed for number inputs')
-        }
+        switch(input.type,
+               character = ,
+               complex = ,
+               factor = ,
+               logical = ,
+               numeric = ,
+               variable = {
+                   if (!all(floor(lim) == lim) || any(lim < 1))
+                       stop('decimal and/or less than 1 limit values are not allowed for variable inputs')
+               },
+               string = {
+                   if (!all(floor(lim) == lim) || any(lim < 0))
+                       stop('decimal and/or negative limit values are not allowed for string inputs')
+               })
     }
-
     structure(as.list(lim), .Names = c('min', 'max'))
 }
 
