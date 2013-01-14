@@ -603,38 +603,31 @@ check.limit <- function(x, input.type = "variable"){
     if (grepl("^\\[.+, *\\]$", x))
         stop('invalid limit definition')
 
-    if (x == '') {
+    lim <- suppressWarnings(as.numeric(strsplit(gsub('^\\[(.*)\\]$', '\\1', x), ',')[[1]])) # get limits
+    len <- length(lim)
+
+    if (any(is.na(lim)) || !len %in% 0:2)
+        stop('invalid limit definition')
+
+    if (all(lim == 0) && len)
+        stop('limits cannot be zero')
+
+    if (len > 1 && diff(lim) < 0)
+        stop('minimum limit cannot be greater than maximum limit')
+
+    ## Empty string: set default values
+    if (len == 0) {
         lim <- switch(input.type,
                       number = c(-Inf, Inf),
                       string = c(0L, 256L),
                       c(1L, 1L)
                       )
+    } else if (len == 1) {
+        lim <- rep(lim, 2)
     } else {
-        lim <- suppressWarnings(as.numeric(strsplit(gsub('^\\[(.*)\\]$', '\\1', x), ',')[[1]])) # get limits
-        len <- length(lim)
-
-        if (any(is.na(lim)) || !len %in% 0:2)
-            stop('invalid limit definition')
-
-        if (all(lim == 0))
-            stop('limits cannot be zero')
-
-        if (len > 1 && diff(lim) < 0)
-            stop('minimum limit cannot be greater than maximum limit')
-
-        if (len == 0) {
-            lim <- switch(input.type,
-                          number = c(-Inf, Inf),
-                          string = c(0L, 256L),
-                          c(1L, 1L)
-                          )
-        } else if (len == 1) {
-            lim <- rep(lim, 2)
-        } else {
-            if (input.type != 'number') {
-                if (!all(floor(lim) == lim) || any(lim < 0))
-                    stop('decimal and/or less than 1 limits only allowed for number inputs')
-            }
+        if (input.type != 'number') {
+            if (!all(floor(lim) == lim) || any(lim < 0))
+                stop('decimal and/or negative limit values are only allowed for number inputs')
         }
     }
 
