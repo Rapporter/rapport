@@ -424,15 +424,15 @@ pct <- function(x, digits = panderOptions('digits'), type = c('percent', '%', 'p
 #' @param ... additional parameters for \code{grepl} function
 #' @return a list with matched content, or \code{NULL} if the field is not required
 #' @examples \dontrun{
-#'     rapport:::extract_meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#'     rapport:::extract.meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
 #'     ## $name
 #'     ## [1] "John Smith"
 #'
-#'     rapport:::extract_meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+#'     rapport:::extract.meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
 #'     ## $name
 #'     ## [1] "John"
 #' }
-extract_meta <- function(x, title, regex, short = NULL, trim.white = TRUE, mandatory = TRUE, default.value = NULL, field.length = 1e3, ...){
+extract.meta <- function(x, title, regex, short = NULL, trim.white = TRUE, mandatory = TRUE, default.value = NULL, field.length = 1e3, ...){
 
     if (!any(sapply(list(x, title, regex), is.string)))
         stop('"x", "title" and "regex" need to be strings')

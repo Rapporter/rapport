@@ -185,66 +185,76 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 
     header <- tpl.find(fp)
 
-    if (!isTRUE(use.header))
+    if (!use.header)
         header <- tpl.header(header)
 
-    if (isTRUE(trim.white))
-        header <- trim.space(header)
+    ## check if header is defined in YAML
+    h <- tryCatch({
+        y <- yaml.load(paste0(header, collapse = "\n"))
+        y$meta
+    }, error = function(e){
+        ## either something went bad or it's the old header (hopefully)
 
-    ## required fields
-    fld <- list(
-        list(title = 'Title'         , regex = '.+', field.length = 500),
-        list(title = 'Author'        , regex = '.+', field.length = 100),
-        list(title = 'Description'   , regex = '.+', short = 'desc'),
-        list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
-        list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
-        list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
-        list(title = 'Example'       , regex = '.+', mandatory = FALSE)
-        )
+        if (isTRUE(trim.white))
+            header <- trim.space(header)
 
-    ## no fields specified, load default fields
-    if (!is.null(fields)){
-        fld.title <- sapply(fld, function(x) x$title)
-        fields.title  <- sapply(fields, function(x) x$title)
-        fld <- c(fld, fields) # merge required fields with default/specified ones
-        if (any(fld %in% fields.title)){
-            stopf("Duplicate metadata fields: %s", p(intersect(fld.title, fields.title), "\""))
+        ## required fields
+        fld <- list(
+            list(title = 'Title'         , regex = '.+', field.length = 500),
+            list(title = 'Author'        , regex = '.+', field.length = 100),
+            list(title = 'Description'   , regex = '.+', short = 'desc'),
+            list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
+            list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
+            list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
+            list(title = 'Example'       , regex = '.+', mandatory = FALSE)
+            )
+
+        ## no fields specified, load default fields
+        if (!is.null(fields)){
+            fld.title <- sapply(fld, function(x) x$title)
+            fields.title  <- sapply(fields, function(x) x$title)
+            fld <- c(fld, fields) # merge required fields with default/specified ones
+            if (any(fld %in% fields.title)){
+                stopf("Duplicate metadata fields: %s", p(intersect(fld.title, fields.title), "\""))
+            }
         }
-    }
 
-    inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
-    spaces.ind <- grep("^([:space:]+|)$", header)
-    rm.ind     <- c(inputs.ind, spaces.ind)
+        inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
+        spaces.ind <- grep("^([:space:]+|)$", header)
+        rm.ind     <- c(inputs.ind, spaces.ind)
 
-    if (length(rm.ind) > 0)
-        h <- header[-rm.ind]
-    else
-        h <- header
+        if (length(rm.ind) > 0)
+            header <- header[-rm.ind]
 
-    l <- sapply(fld, function(x){
-        m <- grep(sprintf("^%s:", x$title), h)
-        x$x <- h[m]
-        do.call(extract_meta, x)
+        h <- sapply(fld, function(x){
+            m <- grep(sprintf("^%s:", x$title), header)
+            x$x <- header[m]
+            do.call(extract.meta, x)
+        })
+
+        ## examples
+        if (!is.null(h$example)){
+            ## select all "untagged" lines after Example: that contain rapport(<smth>) string
+            ## but it will not check if they're syntactically correct
+            ind.start <- grep('^Example:', header)
+            ind       <- adj.rle(grep("^[\t ]*rapport\\(.+\\)([\t ]*#*[[:print:]]*)?$", header))$values[[1]]
+                ind       <- ind[!ind %in% ind.start]
+            h$example <- c(h$example, header[ind])
+        }
+        
+        h
     })
-
+    
     ## store only packages that aren't listed in dependencies
-    if (!is.null(l$packages)){
+    ## Q: do we really have to do this? shouldn't this be handled correctly in rapport?
+    if (!is.null(h$packages)){
         pkg.dep    <- strsplit(packageDescription("rapport")$Depends, "[,[:space:]]+")[[1]]
-        l$packages <- lapply(strsplit(l$packages, ','), trim.space)[[1]]
-        l$packages <- setdiff(l$packages, pkg.dep)
+        if (is.string(h$packages))
+            h$packages <- strsplit(h$packages, " *, *")[[1]]
+        h$packages <- unique(setdiff(h$packages, pkg.dep))
     }
 
-    ## examples
-    if (!is.null(l$example)){
-        ## select all "untagged" lines after Example: that contain rapport(<smth>) string
-        ## but it will not check if they're syntactically correct
-        ind.start <- grep('^Example:', header)
-        ind       <- adj.rle(grep("^[\t ]*rapport\\(.+\\)([\t ]*#*[[:print:]]*)?$", header))$values[[1]]
-            ind       <- ind[!ind %in% ind.start]
-        l$example <- c(l$example, header[ind])
-    }
-
-    structure(l, class = 'rp.meta')
+    structure(h, class = 'rp.meta')
 }
 
 
@@ -304,56 +314,64 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 #' @param use.header a logical value indicating whether the header section is provided in \code{h} argument
 #' @return a list with variable info
 #' @export
-tpl.inputs <- function(fp, use.header = TRUE){
+tpl.inputs <- function(fp, use.header = FALSE){
 
     header <- tpl.find(fp)
 
-    if (!isTRUE(use.header))
+    if (!use.header)
         header <- tpl.header(header)
 
-    inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
+    ## Try with YAML first
+    inputs <- tryCatch({
+        h <- yaml.load(paste0(header, collapse = "\n"))
+        h$inputs
+    }, error = function(e){
+        inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
 
-    if (length(inputs.ind) == 0)
-        return (structure(NULL, class = 'rp.inputs'))
+        if (length(inputs.ind) == 0)
+            return (structure(NULL, class = 'rp.inputs'))
 
-    inputs.raw <- lapply(strsplit(header[inputs.ind], '|', fixed = TRUE), function(x) trim.space(x)) # "raw" as in "unchecked", split by | and trimmed for whitespace
+        inputs.raw <- lapply(strsplit(header[inputs.ind], '|', fixed = TRUE), function(x) trim.space(x)) # "raw" as in "unchecked", split by | and trimmed for whitespace
 
-    if (!all(sapply(inputs.raw, length) == 4))
-        stop('input definition error: missing fields')
+        if (!all(sapply(inputs.raw, length) == 4))
+            stop('input definition error: missing fields')
 
-    chk.fn <- function(x, nms){
+        chk.fn <- function(x, nms){
 
-        i.name  <- x[1]
-        i.type  <- x[2]
-        i.label <- x[3]
-        i.desc  <- x[4]
+            i.name  <- x[1]
+            i.type  <- x[2]
+            i.label <- x[3]
+            i.desc  <- x[4]
 
-        re.lbl <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
+            re.lbl <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
 
-        ## 1st: check variable name
-        ## must begin with a letter, and can continue either with a letter or a digit, separated either by underscore or dot, e.g. 'var.90', or 'v90_alpha'.
-        if (!check.name(i.name))
-            stopf('invalid input name: "%s"', i.name)
+            ## 1st: check variable name
+            ## must begin with a letter, and can continue either with a letter or a digit, separated either by underscore or dot, e.g. 'var.90', or 'v90_alpha'.
+            if (!check.name(i.name))
+                stopf('invalid input name: "%s"', i.name)
 
-        ## 2nd: check/get type
-        var.type <- check.type(i.type)
+            ## 2nd: check/get type
+            var.type <- check.type(i.type)
 
-        ## 3rd: check label
-        if (nchar(i.label) < 1)
-            warningf('label string for input "%s" was not provided', i.name)
-        if (!grepl(re.lbl, i.label))
-            stopf('invalid input label: "%s"', i.type)
+            ## 3rd: check label
+            if (nchar(i.label) < 1)
+                warningf('label string for input "%s" was not provided', i.name)
+            if (!grepl(re.lbl, i.label))
+                stopf('invalid input label: "%s"', i.type)
 
-        ## 4th: check description
-        if (nchar(i.desc) < 1)
-            warningf('description string for input "%s" was not provided', i.desc)
-        if (!grepl(re.lbl, i.desc))
-            stopf('invalid input description: "%s"', i.desc)
+            ## 4th: check description
+            if (nchar(i.desc) < 1)
+                warningf('description string for input "%s" was not provided', i.desc)
+            if (!grepl(re.lbl, i.desc))
+                stopf('invalid input description: "%s"', i.desc)
 
-        c(name = i.name, label = i.label, var.type, desc = i.desc)
-    }
+            c(name = i.name, label = i.label, var.type, desc = i.desc)
+        }
 
-    inputs <- lapply(inputs.raw, chk.fn)
+        lapply(inputs.raw, chk.fn)
+        
+    })
+
     structure(inputs, class = 'rp.inputs')
 }
 

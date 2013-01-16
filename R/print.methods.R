@@ -16,7 +16,7 @@ print.rp.meta <- function(x, ...){
 
     fn <- function(x){
         titles <- names(x)
-        content <- sapply(x, function(y) sprintf('%s', if (is.null(y) || length(y) == 0) 'NULL' else y))
+        content <- sapply(x, function(y) sprintf('%s', if (is.null(y) || length(y) == 0) 'NULL' else paste0(y, collapse = ", ")))
         res <- c('\n', sprintf('%s:\t%s\n', titles, content))
     }
 
@@ -25,10 +25,9 @@ print.rp.meta <- function(x, ...){
         sprintf('by %s%s\n\n', x$author, email),
         sprintf('%s\n', x$desc),
         fn(other.meta),
-        sprintf('\n %s', c('Examples:', exmpl))
+        sprintf('\n %s', c('Examples:', exmpl)),
+        "\n"
         )
-
-    catn()
 
     invisible(.x)
 }
