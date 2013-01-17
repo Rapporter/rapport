@@ -177,7 +177,7 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 #' Upon successful execution, \code{rp.meta}-class object is returned invisibly.
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param fields a list of named lists containing key-value pairs of field titles and corresponding regexes
-#' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains header data
+#' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains only header data and not the whole template
 #' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
 #' @return a list with template metadata
 #' @export
