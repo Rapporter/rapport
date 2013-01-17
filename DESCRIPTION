@@ -41,3 +41,4 @@ Collate:
     'template.R'
     'utils.R'
     'tpl-check.R'
+    'yaml.R'
