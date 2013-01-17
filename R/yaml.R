@@ -17,7 +17,7 @@ toYAML.list <- function(o, indent.level = 0) {
         res   <- ''
         if (!is.null(names(o[i])) && (names(o[i]) != '')) {
             res <- paste0(res, paste(rep(' ', indent.level * 2), collapse = ''), names(o[i]), ':')
-            if (length(o[[i]]) <= 1)
+            if (length(o[[i]]) <= 1 && !is.list(o[[i]]))
                 res <- paste(res, toYAML(o[[i]], indent.level + 1), '\n')
             else
                 res <- paste0(res, '\n', toYAML(o[[i]], indent.level + 1))
