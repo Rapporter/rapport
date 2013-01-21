@@ -244,7 +244,13 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         
         h
     })
-    
+
+    ## Check metadata validity (we have to do it here before we extract the meta)
+    meta.fields <- c('title', 'description', 'desc', 'author', 'email', 'packages', 'dataRequired', 'example') # TODO: add "examples" at some point
+    meta.names <- names(h)
+    if (!all(meta.names %in% meta.fields))
+        stopf("Unknown metadata field(s): %s", paste0(meta.names[!meta.names %in% meta.fields]))
+
     ## store only packages that aren't listed in dependencies
     ## Q: do we really have to do this? shouldn't this be handled correctly in rapport?
     if (!is.null(h$packages)){
@@ -324,7 +330,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
     ## Try with YAML first
     inputs <- tryCatch({
         h <- yaml.load(paste0(header, collapse = "\n"))
-        h$inputs
+        lapply(h$inputs, guess.yaml.input)
     }, error = function(e){
         inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
 
@@ -336,42 +342,22 @@ tpl.inputs <- function(fp, use.header = FALSE){
         if (!all(sapply(inputs.raw, length) == 4))
             stop('input definition error: missing fields')
 
-        chk.fn <- function(x, nms){
-
+        lapply(inputs.raw, function(x){
             i.name  <- x[1]
             i.type  <- x[2]
             i.label <- x[3]
             i.desc  <- x[4]
 
-            re.lbl <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
-
-            ## 1st: check variable name
-            ## must begin with a letter, and can continue either with a letter or a digit, separated either by underscore or dot, e.g. 'var.90', or 'v90_alpha'.
-            if (!check.name(i.name))
-                stopf('invalid input name: "%s"', i.name)
-
-            ## 2nd: check/get type
-            var.type <- check.type(i.type)
-
-            ## 3rd: check label
-            if (nchar(i.label) < 1)
-                warningf('label string for input "%s" was not provided', i.name)
-            if (!grepl(re.lbl, i.label))
-                stopf('invalid input label: "%s"', i.type)
-
-            ## 4th: check description
-            if (nchar(i.desc) < 1)
-                warningf('description string for input "%s" was not provided', i.desc)
-            if (!grepl(re.lbl, i.desc))
-                stopf('invalid input description: "%s"', i.desc)
-
-            c(name = i.name, label = i.label, var.type, desc = i.desc)
-        }
-
-        lapply(inputs.raw, chk.fn)
-        
+            c(
+                name = guess.input.name(i.name),
+                label = guess.input.label(i.label),
+                description = guess.input.description(i.desc),
+                guess.input.type(i.type)
+                )
+        })
     })
 
+    ## Check input validity
     structure(inputs, class = 'rp.inputs')
 }
 

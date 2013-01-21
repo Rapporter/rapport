@@ -470,7 +470,7 @@ extract.meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
 }
 
 
-#' Naming Conventions
+#' Input Name Validation
 #'
 #' Checks package-specific naming conventions: variables should start by a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.
 #' @param x a character vector to test names
@@ -479,22 +479,53 @@ extract.meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
 #' @param ... additional arguments to be passed to \code{\link{grepl}} function
 #' @return a logical vector indicating which values satisfy the naming conventions
 #' @examples
-#' rapport:::check.name("foo")               # [1] TRUE
-#' rapport:::check.name("foo.bar")           # [1] TRUE
-#' rapport:::check.name("foo_bar")           # [1] TRUE
-#' rapport:::check.name("foo.bar.234")       # [1] TRUE
-#' rapport:::check.name("foo.bar.234_asdf")  # [1] TRUE
-#' rapport:::check.name("234.asdf")          # [1] FALSE
-#' rapport:::check.name("_asdf")             # [1] FALSE
-#' rapport:::check.name(".foo")              # [1] FALSE
-check.name <- function(x, min.size = 1L, max.size = 30L, ...){
-
+#' rapport:::check.input.name("foo")               # [1] TRUE
+#' rapport:::check.input.name("foo.bar")           # [1] TRUE
+#' rapport:::check.input.name("foo_bar")           # [1] TRUE
+#' rapport:::check.input.name("foo.bar.234")       # [1] TRUE
+#' rapport:::check.input.name("foo.bar.234_asdf")  # [1] TRUE
+#' rapport:::check.input.name("234.asdf")          # [1] FALSE
+#' rapport:::check.input.name("_asdf")             # [1] FALSE
+#' rapport:::check.input.name(".foo")              # [1] FALSE
+guess.input.name <- function(x, min.size = 1L, max.size = 30L, ...){
+    ## must begin with a letter, and can continue either with a letter or a digit, separated either by underscore or dot, e.g. 'var.90', or 'v90_alpha'.
     re.name <- '^[[:alpha:]]+(([[:digit:]]+)?((\\.|_)?[[:alnum:]]+)+)?$'
     len <- nchar(x)
     if (len < min.size || len > max.size)
-        warningf('input name has %d, and should have at least %d and at most %d characters', len, min.size, max.size)
+        stopf('input name has %d, and should have at least %d and at most %d characters', len, min.size, max.size)
+    if (!grepl(re.name, x))
+        stopf('invalid input name: "%s"', x)
+    x
+}
 
-    grepl(re.name, x)
+
+#' Input Label
+#'
+#' Check input label.
+#' @param label 
+#' @param ... 
+guess.input.label <- function(label, name, ...) {
+    re.label <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
+    if (is.empty(label))
+        warningf('label string for input "%s" was not provided', name)
+    if (!grepl(re.label, label, ...))
+        stopf('invalid input label: "%s"', label)
+    label
+}
+
+
+#' Input Description
+#'
+#' Check input description.
+#' @param description 
+#' @param ... 
+guess.input.description <- function(description, name, ...) {
+    re.desc <- "^.*$"
+    if (is.empty(description))
+        warningf('description string for input "%s" was not provided', name)
+    if (!grepl(re.desc, description, ...))
+        stopf('invalid input description: "%s"', description)
+    description
 }
 
 
@@ -587,59 +618,114 @@ tpl.paths.remove <- function(...) {
 #' Input Limits
 #'
 #' Checks input limits based on provided string. If provided string is syntactically correct, a list with integers containing limit boundaries (minimum and maximum value) is returned. If provided input limit exceeds value specified in \code{max.lim} argument, it will be coerced to \code{max.lim} and warning will be returned. Default upper input limit is 50 (variables).
-#' @param x a character string containing limit substring
+#' @param x a character string containing limit substring or a named list with limit values
 #' @param input.type type of input field
 #' @return a named list with \code{min}imal and \code{max}imal input limit
 #' @examples \dontrun{
-#' rapport:::check.limit("[1,20]")
-#' rapport:::check.limit("[1]")
-#' rapport:::check.limit("[1, 0]")  # will throw error (min limit larger than max limit)
-#' rapport:::check.limit("")        # returns list(min = 1, max = 1)
+#' rapport:::guess.input.limits("[1,20]")
+#' rapport:::guess.input.limits("[1]")
+#' rapport:::guess.input.limits("[1, 0]")  # will throw error (min limit larger than max limit)
+#' rapport:::guess.input.limits("")        # returns list(min = 1, max = 1)
 #' }
-check.limit <- function(x, input.type = "variable"){
+guess.input.limits <- function(x, input.type){
 
-    stopifnot(is.string(x))
+    ## skip checks for boolean and option inputs
+    ## (optional: throw warning/message that limits are hardcoded)
+    if (input.type %in% c('boolean', 'option'))
+        return (list(min = 1L, max = 1L))
+    
+    ## it can be a string (old syntax)
+    if (is.string(x)) {
+        ## make a bitchy regex that will cover all allowed formats
+        if (!grepl("^(\\[-?\\d+(\\.\\d+)?(,\\s*-?\\d+(\\.\\d+)?)?\\]|\\[\\]|)$", x)) {
+            stop('invalid limit string')
+            valid <- FALSE
+        }
+        lim <- suppressWarnings(as.numeric(strsplit(gsub('^\\[(.*)\\]$', '\\1', x), ',')[[1]])) # get limits
+        is.yaml.input <- FALSE
+        ## or it can be a list(min = x, max = y)
+    } else if (is.list(x)) {
+        if (!setequal(names(x), c("min", "max")))
+            stop('invalid limit list')
+        lim <- unlist(x, use.names = FALSE)
+        is.yaml.input <- TRUE
+    } else {
+        stop('invalid limit')
+        valid <- FALSE
+    }
 
-    if (grepl("^\\[.+, *\\]$", x))
-        stop('invalid limit definition')
-
-    lim <- suppressWarnings(as.numeric(strsplit(gsub('^\\[(.*)\\]$', '\\1', x), ',')[[1]])) # get limits
     len <- length(lim)
-
+    
     if (any(is.na(lim)) || !len %in% 0:2)
         stop('invalid limit definition')
-
+    
     if (all(lim == 0) && len)
         stop('limits cannot be zero')
-
+    
     if (len > 1 && diff(lim) < 0)
         stop('minimum limit cannot be greater than maximum limit')
 
-    ## Empty string: set default values
-    if (len == 0) {
-        lim <- switch(input.type,
-                      number = c(-Inf, Inf),
-                      string = c(0L, 256L),
-                      c(1L, 1L)
-                      )
-    } else if (len == 1) {
-        lim <- rep(lim, 2)
-    } else {
-        switch(input.type,
-               character = ,
-               complex = ,
-               factor = ,
-               logical = ,
-               numeric = ,
-               variable = {
-                   if (!all(floor(lim) == lim) || any(lim < 1))
-                       stop('decimal and/or less than 1 limit values are not allowed for variable inputs')
-               },
-               string = {
-                   if (!all(floor(lim) == lim) || any(lim < 0))
-                       stop('decimal and/or negative limit values are not allowed for string inputs')
-               })
-    }
+    switch(input.type,
+           ## variable inputs
+           character = ,
+           complex   = ,
+           factor    = ,
+           logical   = ,
+           numeric   = ,
+           variable  = {
+               if (!all(floor(lim) == lim) || any(lim < 1))
+                   stop('decimal and/or less than 1 limit values are not allowed for variable inputs')
+               if (len == 0)
+                   lim <- c(1L, 1L)
+               if (len == 1)
+                   lim <- rep(lim, 2)
+           },
+           ## standalone inputs
+           string = {
+               if (!all(floor(lim) == lim) || any(lim < 0))
+                   stop('decimal and/or negative limit values are not allowed for string inputs')
+               if (len == 0)
+                   lim <- c(1L, 256L)
+               if (len == 1)
+                   stop('only one string limit provided')
+           },
+           integer = {
+               if (!is.yaml.input)
+                   stop('integer input type is only available via YAML input specification')
+               if (len == 0)
+                   lim <- c(-.Machine$integer.max, .Machine$integer.max)
+               if (len == 1)
+                   stop('only one integer limit provided')
+               if (!all(floor(lim) == lim)) {
+                   warning('decimal limit values are not allowed for integer inputs, limits are rounded')
+                   lim <- round(lim)
+               }
+           },
+           number = {
+               if (len == 0)
+                   lim <- c(-Inf, Inf)
+               if (len == 1)
+                   stop('only one number limit provided')
+           },
+           ## multiple option
+           multi = {
+               if (!is.yaml.input)
+                   stop('multiple option input type is only available via YAML input specification')
+               ## default to 1 input, rant about
+               if (len == 0)
+                   lim <- c(1L, 1L)
+               ## change this
+               if (len == 1)
+                   lim <- c(1L, 1L)
+           },
+           ## that comma-separated strings input
+           csv = {
+               if (!is.yaml.input)
+                   stop('CSV input type is only available via YAML input specification')
+               lim <- c(0L, 200L)
+           },
+           stopf('Unknown input type "%s"', input.type))
+
     structure(as.list(lim), .Names = c('min', 'max'))
 }
 
@@ -649,23 +735,23 @@ check.limit <- function(x, input.type = "variable"){
 #' Checks type of template input, based on provided sting. If input definition is syntactically correct, a list is returned, containing input type, size limits, and default value (for CSV options and boolean types only).
 #' @param x a character string containing input definition
 #' @examples \dontrun{
-#' rapport:::check.type("factor")
-#' rapport:::check.type("character[1,20]")
-#' rapport:::check.type("fee, fi, foo, fam")
-#' rapport:::check.type("FALSE")
-#' rapport:::check.type("number[3]=123.456")
+#' rapport:::guess.input.type("factor")
+#' rapport:::guess.input.type("character[1,20]")
+#' rapport:::guess.input.type("fee, fi, foo, fam")
+#' rapport:::guess.input.type("FALSE")
+#' rapport:::guess.input.type("number[3]=123.456")
 #' }
-check.type <- function(x){
+guess.input.type <- function(x){
 
     x <- trim.space(x)
 
-    if (x == '')
-        stop('empty input type definition')
+    if (is.empty(x))
+        stop('input type definition not specified')
 
-    ## regexex
-    type.regex <- "(character|complex|factor|logical|numeric|variable|TRUE|FALSE|number|string)"
-    limit.regex <- paste("^\\*?", type.regex, "(\\[.*\\]|).*$", sep = "")
-    csv.regex <- "^(([[:alnum:]\\._]+)(, ?[[:alnum:]\\._]+){1,})$"
+    ## regexes
+    type.regex    <- "(character|complex|factor|logical|numeric|variable|TRUE|FALSE|number|string)"
+    limit.regex   <- paste("^\\*?", type.regex, "(\\[.*\\]|).*$", sep = "")
+    csv.regex     <- "^(([[:alnum:]\\._]+)(, ?[[:alnum:]\\._]+){1,})$"
     default.regex <- "^.+=(.*)$"
 
     mandatory <- grepl("^\\*", x)
@@ -675,31 +761,17 @@ check.type <- function(x){
         limit.text <- ''
     else
         limit.text <- gsub(limit.regex, "\\2", x)
-    limit <- check.limit(limit.text, input.type)
     default <- if (grepl(default.regex, x)) gsub(default.regex, "\\1", x) else NULL
-    if (input.type == 'number') {
-        if (!is.null(default)) {
-            default <- as.numeric(default)
-            if (is.na(default))
-                default <- NULL
-            if (length(default) == 1 && (default < limit$min || default > limit$max))
-                stopf('default number value %s not in specified limit interval [%s, %s]', default, limit$min, limit$max)
-        }
-    }
-    if (input.type == 'string') {
-        if (!is.null(default) && (nchar(default) < limit$min || nchar(default) > limit$max))
-            stopf('default string value "%s" must have at least %d and at most %d characters', default, limit$min, limit$max)
-    }
 
     switch(input.type,
            character =,
-           complex =,
-           factor =,
-           logical =,
-           numeric =,
-           variable = list(
+           complex   =,
+           factor    =,
+           logical   =,
+           numeric   =,
+           variable  = list(
                type = input.type,
-               limit = limit,
+               limit = guess.input.limits(limit.text, input.type),
                default = NULL,
                mandatory = mandatory
                ),
@@ -714,13 +786,32 @@ check.type <- function(x){
                mandatory = FALSE
                ),
            number =,
-           string = list(
-               type = input.type,
-               limit = limit,
-               default = default,
-               mandatory = mandatory
-               ),
-           ## check CSV here
+           string = {
+               limit <- guess.input.limits(limit.text, input.type)
+
+               if (input.type == 'number') {
+                   if (!is.null(default)) {
+                       default <- as.numeric(default)
+                       if (is.na(default))
+                           default <- NULL
+                       if (length(default) == 1 && (default < limit$min || default > limit$max))
+                           stopf('default number value %s not in specified limit interval [%s, %s]', default, limit$min, limit$max)
+                   }
+               }
+               
+               if (input.type == 'string') {
+                   if (!is.null(default) && (nchar(default) < limit$min || nchar(default) > limit$max))
+                       stopf('default string value "%s" must have at least %d and at most %d characters', default, limit$min, limit$max)
+               }
+
+               list(
+                   type = input.type,
+                   limit = limit,
+                   default = default,
+                   mandatory = mandatory
+                   )
+           },
+           ## this may be option input
            (function(){
                if (grepl(csv.regex, x))
                    list(
@@ -736,6 +827,48 @@ check.type <- function(x){
                    stop('invalid input type')
            })()
            )
+}
+
+
+#' Guess YAML inputs
+#'
+#' Check and return YAML inputs
+#' @param input 
+#' @export 
+guess.yaml.input <- function(input) {
+    input$name <- guess.input.name(input$name)
+    input$label <- guess.input.label(input$label)
+    input$description <- guess.input.description(input$desc)
+    ## this will handle input type checks, too
+    input$limit <- guess.input.limits(input$limit, input$type)
+    ## default value
+    switch(input$type,
+           character = ,
+           complex   = ,
+           factor    = ,
+           logical   = ,
+           numeric   = ,
+           variable  = {
+               input$default <- list(NULL)
+           },
+           string = ,
+           integer = ,
+           number = {
+               if (!do.call(sprintf("is.%s", input$type), list(x = input$default)))
+                   stopf('default value for input "%s" is not a %s', input$name, input$type)
+           },
+           option = {
+           },
+           multi = {
+           },
+           csv = {
+           })
+    ## mandatory (required)
+    mandatory <- as.logical(input$mandatory)
+    if (!length(mandatory))
+        mandatory <- FALSE
+    input$mandatory <- mandatory
+    input
 }
 
 
