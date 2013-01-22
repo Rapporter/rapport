@@ -1,6 +1,6 @@
 <!--head
 Title:        ANOVA Template
-Author:       Aleksandar Blagotiæ
+Author:       Aleksandar Blagotiæ, Dániel Nagy
 Description:  An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.
 Packages:     nortest
 Data required: TRUE
