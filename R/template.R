@@ -330,8 +330,10 @@ tpl.inputs <- function(fp, use.header = FALSE){
     ## Try with YAML first
     inputs <- tryCatch({
         h <- yaml.load(paste0(header, collapse = "\n"))
-        lapply(h$inputs, guess.yaml.input)
+        yaml.header <- TRUE
+        h$inputs
     }, error = function(e){
+        yaml.header <- FALSE
         inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
 
         if (length(inputs.ind) == 0)
@@ -357,6 +359,9 @@ tpl.inputs <- function(fp, use.header = FALSE){
         })
     })
 
+    if (yaml.header)
+        inputs <- lapply(inputs, guess.yaml.input)
+    
     ## Check input validity
     structure(inputs, class = 'rp.inputs')
 }

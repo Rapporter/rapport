@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Example template
-  author: "Gergely Daróczi"
+  author: Gergely Daróczi, Aleksandar Blagotić
   desc: This template demonstrates the basic features of rapport. We all hope you will like it!
   email: ~
   packages:
@@ -41,6 +41,15 @@ inputs:
   default: Bye!
   mandatory: FALSE
   desc: Any character value to be printed at the end of the report
+- name: i
+  label: Integer input
+  type: number
+  limit:
+    min: 0
+    max: 100
+  default: 100
+  mandatory: FALSE
+  description: Yes, we provide means to define an integer inputs as well
 head-->
 
 # Hello, world!

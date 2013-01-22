@@ -851,11 +851,22 @@ guess.yaml.input <- function(input) {
            variable  = {
                input$default <- list(NULL)
            },
-           string = ,
+           string = {
+               if (!is.string(input$default))
+                   stopf('default value for input "%s" is not a string', input$name)
+               ## check if provided default string has "enough" characters according to limits
+               if (!is.null(input$default) && (nchar(input$default) < input$limit$min || nchar(input$default) > input$limit$max))
+                   stopf('default string value "%s" must have at least %d and at most %d characters', input$default, input$limit$min, input$limit$max)
+
+           },
            integer = ,
            number = {
                if (!do.call(sprintf("is.%s", input$type), list(x = input$default)))
                    stopf('default value for input "%s" is not a %s', input$name, input$type)
+               ## check if provided default number falls within limits
+               if (length(input$default) == 1 && (input$default < input$limit$min || input$default > input$limit$max))
+                   stopf('default number value %s not in specified limit interval [%s, %s]', input$default, input$limit$min, input$limit$max)
+
            },
            option = {
            },
