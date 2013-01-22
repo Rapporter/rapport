@@ -1,8 +1,8 @@
-\name{check.type}
-\alias{check.type}
+\name{guess.input.type}
+\alias{guess.input.type}
 \title{Check Type}
 \usage{
-  check.type(x)
+  guess.input.type(x)
 }
 \arguments{
   \item{x}{a character string containing input definition}
@@ -15,11 +15,11 @@
 }
 \examples{
 \dontrun{
-rapport:::check.type("factor")
-rapport:::check.type("character[1,20]")
-rapport:::check.type("fee, fi, foo, fam")
-rapport:::check.type("FALSE")
-rapport:::check.type("number[3]=123.456")
+rapport:::guess.input.type("factor")
+rapport:::guess.input.type("character[1,20]")
+rapport:::guess.input.type("fee, fi, foo, fam")
+rapport:::guess.input.type("FALSE")
+rapport:::guess.input.type("number[3]=123.456")
 }
 }
 

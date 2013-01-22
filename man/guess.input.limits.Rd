@@ -1,11 +1,12 @@
-\name{check.limit}
-\alias{check.limit}
+\name{guess.input.limits}
+\alias{guess.input.limits}
 \title{Input Limits}
 \usage{
-  check.limit(x, input.type = "variable")
+  guess.input.limits(x, input.type)
 }
 \arguments{
-  \item{x}{a character string containing limit substring}
+  \item{x}{a character string containing limit substring or
+  a named list with limit values}
 
   \item{input.type}{type of input field}
 }
@@ -24,10 +25,10 @@
 }
 \examples{
 \dontrun{
-rapport:::check.limit("[1,20]")
-rapport:::check.limit("[1]")
-rapport:::check.limit("[1, 0]")  # will throw error (min limit larger than max limit)
-rapport:::check.limit("")        # returns list(min = 1, max = 1)
+rapport:::guess.input.limits("[1,20]")
+rapport:::guess.input.limits("[1]")
+rapport:::guess.input.limits("[1, 0]")  # will throw error (min limit larger than max limit)
+rapport:::guess.input.limits("")        # returns list(min = 1, max = 1)
 }
 }
 
