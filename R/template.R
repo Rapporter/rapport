@@ -567,6 +567,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                                 factor    =,
                                 logical   =,
                                 numeric   =,
+                                list      =,
                                 variable  = length(input.value),
                                 stop('invalid input type'))
             limit         <- x$limit               # input limits
@@ -594,8 +595,14 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
             ## check type
             type.fn <- switch(input.type,
-                              option    = , # CSV list of strings
+                              option    = {
+                                  if (x$multiple)
+                                      is.character
+                                  else
+                                      is.string
+                              },
                               string    = is.string,
+                              list      = ,
                               character = is.character,
                               complex   = is.complex,
                               factor    = is.factor,
@@ -610,7 +617,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             ## if any of our "custom" input types
             ## values are not extracted from data.frame in this case
             ## for custom types, default value is always assigned!!!
-            if (input.type %in% c('number', 'string', 'option', 'boolean')){
+            if (input.type %in% c('number', 'string', 'option', 'boolean', 'list')){
 
                 ## the ones specified in the template should take precedence
                 val <- if (is.null(input.value)) input.default[1] else input.value
@@ -622,7 +629,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
                 ## CSV input (allow multi match?)
                 if (input.type == 'option')
-                    val <- match.arg(input.value, input.default)
+                    val <- match.arg(input.value, input.default, several.ok = x$multiple)
 
             } else {
                 ## ain't a "custom" input type, so it should be extracted from data.frame

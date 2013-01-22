@@ -48,7 +48,6 @@ print.rp.inputs <- function(x, ...){
         catn('No inputs defined!')
     } else {
         sapply(x, function(x){
-
             lims <- unlist(x$limit, use.names = FALSE)
             lims.unique.length <- length(unique(lims))
             s <- if (x$limit$max > 1) 's' else ''
@@ -59,23 +58,29 @@ print.rp.inputs <- function(x, ...){
 
             limit.msg <- switch(x$type,
                                 string = sprintf('%s character%s', lim.range, s),
+                                integer = ,
                                 number = sprintf('number %s', if (lims.unique.length > 1) lim.range else x$limit$min),
+                                option = {
+                                    if (lims.unique.length == 1)
+                                        sprintf('exactly %d option%s', lims.unique.length, s)
+                                    else
+                                        sprintf('from %d to %d options', x$limit$min, x$limit$max)
+                                },
                                 sprintf('%s variable%s', lim.range, s)
                                 )
             
-            cat(
-                '\n',
+            cat('\n',
                 sprintf('`%s` (%s)%s\n', x$name, x$label, if (is.null(x$mandatory)) '' else ifelse(x$mandatory, '  >>REQUIRED<<', '')),
                 sprintf(' %s\n', x$desc),
-                sprintf('    - type:\t%s\n', x$type),
-                sprintf('    - limits:\t%s\n', limit.msg),
+                sprintf('    - type:\t\t%s\n', x$type),
+                if (x$type == 'option') sprintf('    - multiple:\t%s\n', x$multiple),
+                sprintf('    - limits:\t\t%s\n', limit.msg),
                 if (!is.null(x$default)){
                     sprintf('    - default value:\t%s\n', x$default[1])
                 })
         })
         catn()
     }
-
     invisible(x)
 }
 

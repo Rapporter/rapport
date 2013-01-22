@@ -629,9 +629,12 @@ tpl.paths.remove <- function(...) {
 #' }
 guess.input.limits <- function(x, input.type){
 
-    ## skip checks for boolean and option inputs
-    ## (optional: throw warning/message that limits are hardcoded)
-    if (input.type %in% c('boolean', 'option'))
+    ## Not the most elegant solution, but it works. "x" should accept input, not a limit, as some checks should be performed here. Add 'rp.input' or just 'input' class to inputs as well.
+    ## Default-limit thing should be checked here. Or not... =)
+    ## Think about it!!!
+    
+    ## skip checks for boolean inputs
+    if (input.type == 'boolean')
         return (list(min = 1L, max = 1L))
     
     ## it can be a string (old syntax)
@@ -707,22 +710,20 @@ guess.input.limits <- function(x, input.type){
                if (len == 1)
                    stop('only one number limit provided')
            },
-           ## multiple option
-           multi = {
+           ## option
+           option = {
+               ## coerce to 1,1 for non-yaml (multiple not available)
                if (!is.yaml.input)
-                   stop('multiple option input type is only available via YAML input specification')
-               ## default to 1 input, rant about
-               if (len == 0)
-                   lim <- c(1L, 1L)
-               ## change this
-               if (len == 1)
                    lim <- c(1L, 1L)
            },
            ## that comma-separated strings input
-           csv = {
+           ## let's call it a list?
+           list = {
                if (!is.yaml.input)
-                   stop('CSV input type is only available via YAML input specification')
-               lim <- c(0L, 200L)
+                   stop('List input type is only available via YAML input specification')
+               ## and now what?!?
+               ## set limits based on (default) value?
+               ## remove limits?
            },
            stopf('Unknown input type "%s"', input.type))
 
@@ -832,7 +833,7 @@ guess.input.type <- function(x){
 
 #' Guess YAML inputs
 #'
-#' Check and return YAML inputs
+#' Check and return YAML input
 #' @param input 
 #' @export 
 guess.yaml.input <- function(input) {
@@ -841,6 +842,13 @@ guess.yaml.input <- function(input) {
     input$description <- guess.input.description(input$desc)
     ## this will handle input type checks, too
     input$limit <- guess.input.limits(input$limit, input$type)
+
+    ## shorthands
+    min         <- input$limit$min
+    max         <- input$limit$max
+    default     <- input$default
+    default.len <- length(default)
+    
     ## default value
     switch(input$type,
            character = ,
@@ -852,27 +860,54 @@ guess.yaml.input <- function(input) {
                input$default <- list(NULL)
            },
            string = {
-               if (!is.string(input$default))
+               nc <- nchar(default)
+               if (!is.string(default))
                    stopf('default value for input "%s" is not a string', input$name)
                ## check if provided default string has "enough" characters according to limits
-               if (!is.null(input$default) && (nchar(input$default) < input$limit$min || nchar(input$default) > input$limit$max))
-                   stopf('default string value "%s" must have at least %d and at most %d characters', input$default, input$limit$min, input$limit$max)
+               if (!is.null(default) && (nc < min || nc > max))
+                   stopf('default string value "%s" must have at least %d and at most %d characters', default, min, max)
 
            },
            integer = ,
            number = {
-               if (!do.call(sprintf("is.%s", input$type), list(x = input$default)))
+               if (!do.call(sprintf("is.%s", input$type), list(x = default)))
                    stopf('default value for input "%s" is not a %s', input$name, input$type)
                ## check if provided default number falls within limits
-               if (length(input$default) == 1 && (input$default < input$limit$min || input$default > input$limit$max))
-                   stopf('default number value %s not in specified limit interval [%s, %s]', input$default, input$limit$min, input$limit$max)
+               ## TODO: why length(x) == 1 ?!
+               if (default.len == 1 && (default < min || default > max))
+                   stopf('default number value %s not in specified limit interval [%s, %s]', default, min, max)
 
            },
+           ## option input can be multiple in YAML
            option = {
+               multi <- as.logical(input$multiple)
+               if (is.na(multi))
+                   input$multiple <- FALSE
+               else
+                   input$multiple <- multi
+               ## floor decimal limits (it's a no-no)
+               if (floor(min) != min){
+                   min <- floor(min)
+                   input$limit$min <- min
+                   warningf('floored minimum limit to %d', min)
+               }
+               if (floor(max) != max) {
+                   max <- floor(max)
+                   input$limit$max <- max
+                   warningf('floored maximum limit to %d', max)
+               }
+               ## check default value length
+               if (default.len < min || default.len > max)
+                   stop('number of provided options exceeds limit range')
+               ## coerce top limit with warning
+               if (max > default.len) {
+                   input$limit$max <- default.len
+                   warningf('coerced max limit (%d) to options length (%d) in "%s" option input', max, default.len, input$name)
+               }
            },
-           multi = {
-           },
-           csv = {
+           ## let's call it a list?
+           list = {
+               ## now what?
            })
     ## mandatory (required)
     mandatory <- as.logical(input$mandatory)
