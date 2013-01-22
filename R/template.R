@@ -241,7 +241,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
                 ind       <- ind[!ind %in% ind.start]
             h$example <- c(h$example, header[ind])
         }
-        
+
         h
     })
 
@@ -328,12 +328,11 @@ tpl.inputs <- function(fp, use.header = FALSE){
         header <- tpl.header(header)
 
     ## Try with YAML first
-    inputs <- tryCatch({
-        h <- yaml.load(paste0(header, collapse = "\n"))
-        yaml.header <- TRUE
-        h$inputs
-    }, error = function(e){
-        yaml.header <- FALSE
+    inputs <- tryCatch(yaml.load(paste0(header, collapse = "\n")), error = function(e) e)
+
+    ## Old-style syntax
+    if (inherits(inputs, 'error')) {
+
         inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
 
         if (length(inputs.ind) == 0)
@@ -344,7 +343,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
         if (!all(sapply(inputs.raw, length) == 4))
             stop('input definition error: missing fields')
 
-        lapply(inputs.raw, function(x){
+        inputs <- lapply(inputs.raw, function(x){
             i.name  <- x[1]
             i.type  <- x[2]
             i.label <- x[3]
@@ -357,11 +356,10 @@ tpl.inputs <- function(fp, use.header = FALSE){
                 guess.input.type(i.type)
                 )
         })
-    })
 
-    if (yaml.header)
-        inputs <- lapply(inputs, guess.yaml.input)
-    
+    } else
+        inputs <- lapply(inputs$inputs, guess.yaml.input)
+
     ## Check input validity
     structure(inputs, class = 'rp.inputs')
 }
