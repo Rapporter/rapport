@@ -684,13 +684,14 @@ guess.input.limits <- function(x, input.type){
                    lim <- rep(lim, 2)
            },
            ## standalone inputs
+           ## string can now accept mutliple attribute
            string = {
                if (!all(floor(lim) == lim) || any(lim < 0))
                    stop('decimal and/or negative limit values are not allowed for string inputs')
                if (len == 0)
                    lim <- c(1L, 256L)
-               if (len == 1)
-                   stop('only one string limit provided')
+               ## if (len == 1)
+               ##     stop('only one string limit provided')
            },
            integer = {
                if (!is.yaml.input)
@@ -715,6 +716,9 @@ guess.input.limits <- function(x, input.type){
                ## coerce to 1,1 for non-yaml (multiple not available)
                if (!is.yaml.input)
                    lim <- c(1L, 1L)
+               ## non-negativity
+               if (any(lim < 0))
+                   stop('option inputs cannot contain negative limits')
            },
            ## that comma-separated strings input
            ## let's call it a list?
@@ -848,7 +852,8 @@ guess.yaml.input <- function(input) {
     max         <- input$limit$max
     default     <- input$default
     default.len <- length(default)
-    
+    multi       <- isTRUE(as.logical(input$multiple))
+
     ## default value
     switch(input$type,
            character = ,
@@ -860,33 +865,36 @@ guess.yaml.input <- function(input) {
                input$default <- list(NULL)
            },
            string = {
-               nc <- nchar(default)
-               if (!is.string(default))
-                   stopf('default value for input "%s" is not a string', input$name)
+               input$multiple <- multi
+               if (input$multiple) {
+                   len <- length(default)
+                   check.fn <- is.character
+                   item <- "values"
+               } else {
+                   len <- nchar(default)
+                   check.fn <- is.string
+                   item <- "characters"
+               }
+               if (!do.call(check.fn, list(x = default)))
+                   stopf('default value for input "%s" is not valid', input$name)
                ## check if provided default string has "enough" characters according to limits
-               if (!is.null(default) && (nc < min || nc > max))
-                   stopf('default string value "%s" must have at least %d and at most %d characters', default, min, max)
-
+               if (!is.null(default) && (len < min || len > max))
+                   stopf('default string value "%s" must have at least %d and at most %d %s', paste0(default, collapse = ', '), min, max, item)
            },
            integer = ,
-           number = {
+           number  = {
                if (!do.call(sprintf("is.%s", input$type), list(x = default)))
                    stopf('default value for input "%s" is not a %s', input$name, input$type)
                ## check if provided default number falls within limits
                ## TODO: why length(x) == 1 ?!
                if (default.len == 1 && (default < min || default > max))
                    stopf('default number value %s not in specified limit interval [%s, %s]', default, min, max)
-
            },
            ## option input can be multiple in YAML
            option = {
-               multi <- as.logical(input$multiple)
-               if (is.na(multi))
-                   input$multiple <- FALSE
-               else
-                   input$multiple <- multi
+               input$multiple <- multi
                ## floor decimal limits (it's a no-no)
-               if (floor(min) != min){
+               if (floor(min) != min) {
                    min <- floor(min)
                    input$limit$min <- min
                    warningf('floored minimum limit to %d', min)
@@ -904,10 +912,6 @@ guess.yaml.input <- function(input) {
                    input$limit$max <- default.len
                    warningf('coerced max limit (%d) to options length (%d) in "%s" option input', max, default.len, input$name)
                }
-           },
-           ## let's call it a list?
-           list = {
-               ## now what?
            })
     ## mandatory (required)
     mandatory <- as.logical(input$mandatory)

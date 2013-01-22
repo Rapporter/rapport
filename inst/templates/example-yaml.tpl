@@ -64,9 +64,10 @@ inputs:
   multiple: TRUE
   mandatory: FALSE
   description: Option input
-- name: l
-  label: List input
-  type: list
+- name: multi
+  label: Multiple string
+  type: string
+  multiple: TRUE
   limit:
     min: 1
     max: 100
@@ -74,7 +75,7 @@ inputs:
   - hello
   - world
   mandatory: FALSE
-  description: List input
+  description: Extended string input
 head-->
 
 # Hello, world!
@@ -155,7 +156,7 @@ The _option_ input matched following values: <%= o %>. Yes, with new YAML input 
 
 ### List input
 
-_List input_ is another new thingy in rapport. You can now specify your own list of values and munge them afterwards, like this: <%= ls() %>
+_List input_ is another new thingy in rapport. You can now specify your own list of values and munge them afterwards, like this: <%= multi %>
 
 ### H3 tag
 

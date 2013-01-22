@@ -558,7 +558,12 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             input.type    <- x$type                # input type
             input.value   <- i[[name]]             # input value (supplied by user)
             input.len <- switch(input.type,
-                                string    = nchar(input.value),
+                                string = {
+                                    if (x$multiple)
+                                        length(input.value)
+                                    else
+                                        nchar(input.value)
+                                },
                                 number    = input.value,
                                 boolean   = 1,
                                 option    =,
@@ -601,7 +606,12 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                                   else
                                       is.string
                               },
-                              string    = is.string,
+                              string    = {
+                                  if (x$multiple)
+                                      is.character
+                                  else
+                                      is.string
+                              },
                               list      = ,
                               character = is.character,
                               complex   = is.complex,
@@ -617,10 +627,10 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             ## if any of our "custom" input types
             ## values are not extracted from data.frame in this case
             ## for custom types, default value is always assigned!!!
-            if (input.type %in% c('number', 'string', 'option', 'boolean', 'list')){
+            if (input.type %in% c('number', 'string', 'option', 'boolean')){
 
                 ## the ones specified in the template should take precedence
-                val <- if (is.null(input.value)) input.default[1] else input.value
+                val <- if (is.null(input.value)) input.default else input.value
 
                 ## check types
                 if (!is.null(val))
