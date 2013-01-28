@@ -5,84 +5,33 @@
 
 #' Deprecated input limits
 #'
-#' Guess deprecated input limits.
+#' Guess deprecated input length.
 #' @param x 
 #' @param input.type
-#' @examples \dontrun{
-#' rapport:::guess.deprecated.input.limits("[1,20]")
-#' rapport:::guess.deprecated.input.limits("[1]")
-#' rapport:::guess.deprecated.input.limits("[1, 0]")  # will throw error (min limit larger than max limit)
-#' rapport:::guess.deprecated.input.limits("")        # returns list(min = 1, max = 1)
-#' }
-
-guess.deprecated.input.limits <- function(x, input.type) {
+guess.old.input.length <- function(x, input.type) {
     stopifnot(is.string(x))
     if (missing(input.type))
         stop('input type not provided')
 
     ## skip checks for boolean inputs
     if (input.type == 'boolean')
-        return (list(min = 1L, max = 1L))
+        return (list(exactly = 1L))
     
     ## make a bitchy regex that will cover all allowed formats
     if (!grepl("^(\\[-?\\d+(\\.\\d+)?(,\\s*-?\\d+(\\.\\d+)?)?\\]|\\[\\]|)$", x))
         stop('invalid limit string')
 
     lim <- suppressWarnings(as.numeric(strsplit(gsub('^\\[(.*)\\]$', '\\1', x), ',')[[1]])) # get limits
+    len <- length(lim)
 
-    ## if (any(is.na(lim)) || !len %in% 0:2)
-    ##     stop('invalid limit definition')
+    if (any(is.na(lim)) || !len %in% 0:2)
+        stop('invalid limit definition')
     
-    ## if (all(lim == 0) && len)
-    ##     stop('limits cannot be zero')
+    if (all(lim == 0) && len)
+        stop('limits cannot be zero')
     
-    ## if (len > 1 && diff(lim) < 0)
-    ##     stop('minimum limit cannot be greater than maximum limit')
-
-    ## variable  = {
-    ##     if (!all(floor(lim) == lim) || any(lim < 1))
-    ##         stop('decimal and/or less than 1 limit values are not allowed for variable inputs')
-    ##     if (len == 0)
-    ##         lim <- c(1L, 1L)
-    ##     if (len == 1)
-    ##         lim <- rep(lim, 2)
-    ## },
-    ## ## standalone inputs
-    ## ## string can now accept mutliple attribute
-    ## string = {
-    ##     if (!all(floor(lim) == lim) || any(lim < 0))
-    ##         stop('decimal and/or negative limit values are not allowed for string inputs')
-    ##     if (len == 0)
-    ##         lim <- c(1L, 256L)
-    ##     ## if (len == 1)
-    ##     ##     stop('only one string limit provided')
-    ## },
-    ## integer = {
-    ##     if (!is.yaml.input)
-    ##         stop('integer input type is only available via YAML input specification')
-    ##     if (len == 0)
-    ##         lim <- c(-.Machine$integer.max, .Machine$integer.max)
-    ##     if (len == 1)
-    ##         stop('only one integer limit provided')
-    ##     if (!all(floor(lim) == lim)) {
-    ##         warning('decimal limit values are not allowed for integer inputs, limits are rounded')
-    ##         lim <- round(lim)
-    ##     }
-    ## },
-    ## number = {
-    ##     if (len == 0)
-    ##         lim <- c(-Inf, Inf)
-    ##     if (len == 1)
-    ##         stop('only one number limit provided')
-    ## },
-    ## option = {
-    ##     ## coerce to 1,1 for non-yaml (multiple not available)
-    ##     if (!is.yaml.input)
-    ##         lim <- c(1L, 1L)
-    ##     ## non-negativity
-    ##     if (any(lim < 0))
-    ##         stop('option inputs cannot contain negative limits')
-    ## },
+    if (len > 1 && diff(lim) < 0)
+        stop('minimum limit cannot be greater than maximum limit')
 
     switch(input.type,
            character = ,
@@ -91,18 +40,52 @@ guess.deprecated.input.limits <- function(x, input.type) {
            logical   = ,
            numeric   = ,
            variable  = {
-               ## class: NULL
+               if (!all(floor(lim) == lim) || any(lim < 1))
+                   stop('decimal and/or less than 1 limit values are not allowed for variable inputs')
+               ## length checks
+               if (len == 0)
+                   lim <- list(exactly = 1L)
+               else if (len == 1)
+                   lim <- list(exactly = 1L)
+               else
+                   if (length(unique(lim)) == 1)
+                       lim <- list(exactly = lim[1])
+                   else
+                       lim <- list(from = as.integer(lim[1]), to = as.integer(lim[2]))
+               if (lim[2] > 50) {
+                   warningf('coerced "to" limit to 50 (we cannot handle more than %d variables at once)', lim[2])
+                   lim$to <- 50L
+               }
            },
+           ## standalone inputs
            string = {
-               
+               ## not a limit check, but "nchar" attribute, hence "from"/"to"
+               if (!all(floor(lim) == lim) || any(lim < 0))
+                   stop('decimal and/or negative limit values are not allowed for string inputs')
+               ## length checks
+               if (len == 0)
+                   lim <- list(from = 1L, to = 256L)
+               ## only one limit = exactly
+               else if (len == 1)
+                   lim <- list(exactly = as.integer(len))
+               else
+                   lim <- list(from = as.integer(lim[1]), to = as.integer(lim[2]))
            },
            number = {
-               
+               ## not a length check, but limit, so it's min/max
+               if (len == 0)
+                   lim <- list(min = -Inf, max = Inf)
+               else if (len == 1)
+                   stop('only one number limit provided')
+               else
+                   lim <- list(min = lim[1], max = lim[2])
            },
            option = {
-               
+               lim <- list(exactly = 1L)
            },
-           stopf('Unknown input type "%s"', input.type))
+           stopf('Unknown input type "%s"', input.type)
+           )
+    return (lim)
 }
 
 
@@ -110,14 +93,7 @@ guess.deprecated.input.limits <- function(x, input.type) {
 #'
 #' Checks type of template input, based on provided sting. If input definition is syntactically correct, a list is returned, containing input type, size limits, and default value (for CSV options and boolean types only).
 #' @param x a character string containing input definition
-#' @examples \dontrun{
-#' rapport:::guess.deprecated.input.type("factor")
-#' rapport:::guess.deprecated.input.type("character[1,20]")
-#' rapport:::guess.deprecated.input.type("fee, fi, foo, fam")
-#' rapport:::guess.deprecated.input.type("FALSE")
-#' rapport:::guess.deprecated.input.type("number[3]=123.456")
-#' }
-guess.deprecated.input.type <- function(x){
+guess.old.input.type <- function(x){
 
     x <- trim.space(x)
 
@@ -130,7 +106,7 @@ guess.deprecated.input.type <- function(x){
     csv.regex     <- "^(([[:alnum:]\\._]+)(, ?[[:alnum:]\\._]+){1,})$"
     default.regex <- "^.+=(.*)$"
 
-    mandatory <- grepl("^\\*", x)
+    mandatory  <- grepl("^\\*", x)
     input.type <- gsub(limit.regex, "\\1", x)
     ## this may be option input
     if (input.type == x)
@@ -140,64 +116,72 @@ guess.deprecated.input.type <- function(x){
     default <- if (grepl(default.regex, x)) gsub(default.regex, "\\1", x) else NULL
 
     switch(input.type,
-           character =,
-           complex   =,
-           factor    =,
-           logical   =,
-           numeric   =,
+           character = ,
+           complex   = ,
+           factor    = ,
+           logical   = ,
+           numeric   = ,
            variable  = list(
-               type = input.type,
-               limit = guess.input.limits(limit.text, input.type),
-               default = NULL,
-               mandatory = mandatory
+               class      = input.type,
+               length     = guess.old.input.length(limit.text, input.type),
+               value      = NULL,
+               required   = mandatory,
+               standalone = FALSE
                ),
-           "TRUE" =,
+           "TRUE"  = ,
            "FALSE" = list(
-               type = 'boolean',
-               limit = list(
-                   min = 1,
-                   max = 1
-                   ),
-               default = as.logical(input.type),
-               mandatory = FALSE
+               class      = 'logical',
+               length     = list(exactly = 1L),
+               value      = as.logical(input.type),
+               required   = FALSE,
+               standalone = TRUE
                ),
-           number =,
+           number = {
+               ## these are limits, not length(s)
+               limit <- guess.old.input.length(limit.text, input.type)
+               ## default value
+               if (!is.null(default)) {
+                   default <- as.numeric(default)
+                   if (is.na(default))
+                       default <- NULL
+                   if (length(default) == 1 && (default < limit$min || default > limit$max))
+                       stopf('default number value %s not in specified limit interval [%s, %s]', default, limit$min, limit$max)
+               }
+               ## response
+               list(
+                   class      = 'numeric',
+                   length     = list(exactly = 1L),
+                   value      = default,
+                   limit      = limit,
+                   required   = mandatory,
+                   standalone = TRUE
+                   )
+           },
            string = {
-               limit <- guess.input.limits(limit.text, input.type)
-
-               if (input.type == 'number') {
-                   if (!is.null(default)) {
-                       default <- as.numeric(default)
-                       if (is.na(default))
-                           default <- NULL
-                       if (length(default) == 1 && (default < limit$min || default > limit$max))
-                           stopf('default number value %s not in specified limit interval [%s, %s]', default, limit$min, limit$max)
-                   }
-               }
+               ## this is range of nchar, which we don't implement at the moment
+               chars <- guess.old.input.length(limit.text, input.type)
                
-               if (input.type == 'string') {
-                   if (!is.null(default) && (nchar(default) < limit$min || nchar(default) > limit$max))
-                       stopf('default string value "%s" must have at least %d and at most %d characters', default, limit$min, limit$max)
-               }
+               if (!is.null(default) && (nchar(default) < limit$min || nchar(default) > limit$max))
+                   stopf('default string value "%s" must have at least %d and at most %d characters', default, limit$min, limit$max)
 
                list(
-                   type = input.type,
-                   limit = limit,
-                   default = default,
-                   mandatory = mandatory
+                   class      = 'character',
+                   length     = list(exactly = 1),
+                   value      = default,
+                   nchar      = chars,
+                   mandatory  = mandatory,
+                   standalone = TRUE
                    )
            },
            ## this may be option input
            (function(){
                if (grepl(csv.regex, x))
                    list(
-                       type = 'option',
-                       limit = list(
-                           min = 1,
-                           max = 1
-                           ),
-                       default = strsplit(x, ' *, *')[[1]],
-                       mandatory = FALSE
+                       class      = 'option',
+                       length     = list(exactly = 1L),
+                       value      = strsplit(x, ' *, *')[[1]],
+                       mandatory  = FALSE,
+                       standalone = TRUE
                        )
                else
                    stop('invalid input type')

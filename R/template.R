@@ -353,7 +353,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
                 name = guess.input.name(i.name),
                 label = guess.input.label(i.label),
                 description = guess.input.description(i.desc),
-                guess.input.type(i.type)
+                guess.old.input.type(i.type)
                 )
         })
 

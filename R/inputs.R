@@ -62,83 +62,33 @@ guess.input.description <- function(description, name, ...) {
 }
 
 
-## #' Input Length
-## #'
-## #' Input length
-## #' @param input a character string containing limit substring or a named list with input specifications containing limit
-## #' @param ...
-## #' @return a named list with \code{min}imal and \code{max}imal input limit
-## guess.input.length <- function(input, ...){
-
-##     ## it can be a string (deprecated input specification)
-##     if (is.string(input))
-##         return (guess.deprecated.input.limits(input, ...))
-##     ## or it can be a list holding new input specification #fuckyeah
-##     else if (is.list(x))
-##         len <- input$length
-##     else
-##         stop('invalid limit')
-
-##     ## it's not limits any more, it's LENGTH now
-##     len <- length(lim)
-
-##     switch(input$class,
-##            character = {
-##            },
-##            complex   = {
-
-##            },
-##            factor    = {
-
-##            },
-##            logical   = {
-
-##            },
-##            numeric   = {
-
-##            },
-##            raw = {
-
-##            },
-##            option = {
-##                ## coerce to 1,1 for non-yaml (multiple not available)
-##                if (!is.yaml.input)
-##                    lim <- c(1L, 1L)
-##                ## non-negativity
-##                if (any(lim < 0))
-##                    stop('option inputs cannot contain negative limits')
-##            },
-##            ## replace this with mary =)
-##            stopf('Unsupported input class "%s"', input.type))
-
-##     structure(as.list(lim), .Names = c('min', 'max'))
-## }
-
-
 #' Input length validation
 #'
 #' Perform (in)sanity checks on input \code{length} attribute.
 #' @param len 
 guess.input.length <- function(len) {
     
-    ## only "min", "max", "exactly" and "in"
+    ## only "from", "to" and "exactly"
     ## if NULL, set some defaults:
     ## - like... 1?
     ## if non-NULL, it can be:
     ## - an integer, which is equivalent to "exactly: x"
     ## - a named list with integer vectors:
-    ##   - "min", "max", "exactly" or "in" attribute
-    ##     - "min", "max" and "exactly" should be length-one integers
-    ##     - "in" should be integer range
-    ##   - both "min" and "max" attributes supplied
+    ##   - "from", "to" or "exactly" attribute
+    ##     - "from", "to" and "exactly" should be length-one integers
+    ##   - both "from" and "to" attributes supplied
     ##     - they should both be length-one integers
 
     if (is.null(len))
         return (list(exactly = 1L))
+    else if (is.number(len))
+        return (list(exactly = as.integer(len)))
     else if (is.list(len)) {
         l.names  <- names(len)
         l.length <- length(len)
-        ## TODO: check names
+        
+        ## check names
+        stopifnot(all(l.names %in% c('from', 'to', 'exactly')))
 
         check.len.int <- function(x) {
             if (!is.recursive(x)){
@@ -146,7 +96,7 @@ guess.input.length <- function(len) {
                     return(1L)
                 else
                     if (length(x) != 1)
-                        stop('length attributes "min" and "max" must be length-one integers')
+                        stop('length attributes "from" and "to" must be length-one integers')
                     else
                         if (grepl("^\\d+\\:\\d+$", x))
                             eval(parse(text = x))
@@ -166,36 +116,22 @@ guess.input.length <- function(len) {
                {
                    len <- check.len.int(len)
                    switch(l.names,
-                          min = {
-                              len$max <- 1L
+                          from = {
+                              len$to <- Inf
                           },
-                          max = {
-                              len$min <- 1L
+                          to = {
+                              len$from <- 1L
                           },
                           exactly = {
                               ## just don't fall through =P
                           },
-                          'in' = {
-                              f <- trim.space(len['in'])
-                              ## now, "in" will be a string in format ("from:to")
-                              if (!grepl("^\\d+\\:\\d+$", f))
-                                  stop('range attribute ("in") should be specified in format "from:to"')
-                              else
-                                  f <- eval(parse(text = f))
-                              ## only non-zero positive integers
-                              if (!(is.integer(f) && length(f) > 1 && !any(is.na(f)) && !any(f < 1)))
-                                  stop('"in" length attribute can contain only a range of non-zero positive integers')
-                              ## not likely to happen, but still...
-                              if (any(is.na(f)))
-                                  stop('NA found in length range')
-                          },
                           stopf('invalid length attribute: "%s"', l.names)
                           )
                },
-               ## length-two list ("min", "max")
+               ## length-two list ("from", "to")
                {
-                   if (!setequal(l.names, c('min', 'max')))
-                       stop('only "min" and "max" should be provided')
+                   if (!setequal(l.names, c('from', 'to')))
+                       stop('only "from" and "to" should be provided')
                    len <- check.len.int(len)
                },
                ## because it's lame to halt with "invalid length length" =P
@@ -204,8 +140,8 @@ guess.input.length <- function(len) {
     } else
         stop('invalid length type')
 
-    if (length(len) == 2 && len$min > len$max)
-        stop('"min" length cannot be smaller than "max" length')
+    if (length(len) == 2 && len$from > len$to)
+        stop('"from" value cannot be smaller than "to" value')
 
     return(len)
 }
@@ -233,7 +169,7 @@ guess.input.limit <- function(input) {
         stopifnot(limit.len %in% 1:2)
         stopifnot(all(limit.names %in% c('min', 'max')))
         ## length-one integers or numerics
-        limit <- lapply(limit, function(x){
+        limit <- lapply(limit, function(x) {
             if (!is.null(x)) {
                 stopifnot(length(x) == 1)
                 if (cls == 'integer') {
@@ -283,11 +219,13 @@ guess.input <- function(input) {
     lim         <- input$limit
 
     ## check value length
-    if (standalone)
+    if (standalone) {
+        ## TODO: check value class
         check.input.value.length(input)
-    else
+    } else {
         if (!is.null(value))
             stopf('"value" attribute assigned to non-standalone input "%s"', name)
+    }
 
     switch(cls,
            character = {
@@ -297,36 +235,18 @@ guess.input <- function(input) {
                    warningf('regexp field for "%s" input is not a character string - coerced to NULL', name)
                }
                
-               ## nchar (only for standalone inputs)
-               chars   <- as.integer(input$nchar)
-               charlen <- length(chars)
-               if (charlen) {
-                   ## coercion to integer failed
-                   if (is.na(chars))
-                       stop('"nchar" should be an integer value')
-                   ## only length-one inte
-                   if (charlen != 1)
-                       stop('"nchar" field should contain only one integer')
-                   ## only for standalone inputs
-                   if (!standalone){
-                       warningf('"nchar" field specified in non-standalone input "%s"', name)
-                       input$nchar <- NULL
-                   }
-                   input$nchar <- chars
-               } else
-                   chars <- input$nchar <- NULL
-               
+               ## nchar (same format as length)
+               chars <- input$nchar <- guess.input.length(input$nchar)
+               check.input.value.length(input, is.nchar.check = TRUE)
+
                ## check value (if any)
-               if (!is.null(value)){
+               if (!is.null(value)) {
                    ## class check
                    stopifnot(is.character(value))
                    ## regexp check (value can be a vector)
                    if (!is.null(input$regexp))
                        if (!all(grepl(input$regexp, value)))
                            stopf('%s input "%s" value is not matched with provided regular expression "%s"', name, value, input$regexp)
-                   ## nchar check
-                   if (nchar(value) != chars)
-                       stopf('%s input "%s" default value "%s" does not have %d characters', cls, name, )
                }
            },
            ## what should we ever check for complex?!
@@ -351,8 +271,8 @@ guess.input <- function(input) {
            raw       = {}
            )
 
-    ## move class from named list element to object attribute (the proper "class")
-    class(input) <- c("input", input$class)
+    ## ## move class from named list element to object attribute (the proper "class")
+    ## class(input) <- c("input", input$class)
     input
 }
 
@@ -361,29 +281,44 @@ guess.input <- function(input) {
 #'
 #' Checks input \code{value} (if any) against provided \code{length} rules. Must be called after \code{\link{guess.input.length}}, and for \code{standalone} inputs only (this check is performed in \code{\link{guess.input}}).
 #' @param input 
-check.input.value.length <- function(input) {
+check.input.value.length <- function(input, is.nchar.check = FALSE) {
     if (missing(input))
         stop('input definition not provided')
-    ## length shouldn't be NULL as this function should be called after guess.input.length
-    ## BUT, you never know...
-    if (is.null(input$length))
-        stopf('length attribute for %s input "%s" is missing', input$class, input$name)
+    if (is.nchar.check && input$class != 'character')
+        stop('"nchar" check can only be performed on character inputs')
     ## value can be NULL, so perform checks only when the value is provided
-    if (!is.null(input$val)) {
-        val     <- input$val
-        val.len <- length(val)
-        if (!is.null(len$exactly)) {
-            ## exactly N inputs
-            if (val.len != len$exactly)
-                stopf('%s input "%s" value length is not %d', input$class, input$name, len$exactly)
-            ## in (range)
-        } else if (!is.null(len['in'])) {
-            if (!val.len %in% len['in'])
-                stopf('%s input "%s" value length is not in the provided range [%d:%d]', input$class, input$name, len['in'][1], len['in'][length(len['in'])])
+    val <- input$value
+    if (!is.null(val)) {
+        if (is.nchar.check) {
+            len   <- input$nchar
+            chars <- nchar(val)
         } else {
-            ## min/max
-            if (len$min > val.len || len$max < val.len)
-                stopf('%s input "%s" value length cannot be smaller than %d or larger than %d', input$class, input$name, len$min, len$max)
+            val.len <- length(val)
+            len     <- input$length
+            ## length shouldn't be NULL as this function should be called after guess.input.length
+            ## BUT, you never know...
+            if (is.null(len))
+                stopf('length attribute for %s input "%s" is missing', input$class, input$name)
+        }
+
+        ## exactly N inputs
+        if (!is.null(len$exactly)) {
+            if (is.nchar.check) {
+                if (!all(chars == len$exactly))
+                    stopf('all character input "%s" values should have %d characters', input$name, len$exactly)
+            } else {
+                if (val.len != len$exactly)
+                    stopf('%s input "%s" value length is not %d', input$class, input$name, len$exactly)
+            }
+            ## from/to
+        } else {
+            if (is.nchar.check) {
+                if (!(all(len$from < chars) && all(len$to > chars)))
+                    stopf('all character input "%s" values should have between %d and %d characters', input$name, len$from, len$to)
+            } else {
+                if (len$from > val.len || len$to < val.len)
+                    stopf('%s input "%s" value length cannot be smaller than %d or larger than %d', input$class, input$name, len$from, len$to)
+            }
         }
     }
 }

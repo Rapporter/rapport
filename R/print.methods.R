@@ -45,7 +45,7 @@ print.rp.inputs <- function(x, ...){
     catn('\nInput parameters')
 
     if (length(x) == 0){
-        catn('No inputs defined!')
+        catn('Template contains no inputs.')
     } else {
         sapply(x, function(x){
             lims <- unlist(x$limit, use.names = FALSE)

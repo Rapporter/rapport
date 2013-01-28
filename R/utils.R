@@ -35,6 +35,7 @@ is.boolean <- function(x){
 #'
 #' Checks if provided object is a number, i.e. a length-one numeric vector.
 #' @param x an object to check
+#' @param integer logical: check if number is integer
 #' @return a logical value indicating whether provided object is a string
 #' @examples
 #' is.number(3)              # [1] TRUE
@@ -43,8 +44,9 @@ is.boolean <- function(x){
 #' is.number(NaN)            # [1] TRUE
 #' is.number(NA_integer_)    # [1] TRUE
 #' @export
-is.number <- function(x){
-    is.numeric(x) && length(x) == 1
+is.number <- function(x, integer = FALSE) {
+    check.fn <- if (isTRUE(integer)) is.integer else is.numeric
+    do.call(check.fn, list(x)) && length(x) == 1
 }
 
 
