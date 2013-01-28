@@ -358,7 +358,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
         })
 
     } else
-        inputs <- lapply(inputs$inputs, guess.yaml.input)
+        inputs <- lapply(inputs$inputs, guess.input)
 
     ## Check input validity
     structure(inputs, class = 'rp.inputs')

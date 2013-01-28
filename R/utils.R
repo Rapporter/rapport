@@ -65,32 +65,24 @@ alike.integer <- function(x){
 
 #' Trim Spaces
 #'
-#' Removes leading and/or trailing space(s) from a character vector value. By default, it removes both leading and trailing spaces. In order to get fine-tune control on trailing, pass appropriate logical values to \code{leading} and \code{trailing} arguments.
+#' Removes leading and/or trailing space(s) from a character vector. By default, it removes both leading and trailing spaces.
 #' @param x a character vector which values need whitespace trimming
-#' @param leading a logical value indicating if leading spaces should be removed (defaults to \code{FALSE})
-#' @param trailing a logical value indicating if trailing spaces should be removed (defaults to \code{TRUE})
-#' @param re a character value containing a regex that defines a space character
+#' @param what which part of the string should be trimmed. Defaults to \code{both} which removes trailing and leading spaces. If \code{none}, no trimming will be performed.
+#' @param space.regex a character value containing a regex that defines a space character
 #' @param ... additional arguments for \code{\link{gsub}} function
-#' @return a character vector with removed spaces
+#' @return a character vector with (hopefully) trimmed spaces
 #' @export
-trim.space <- function(x, leading = TRUE, trailing = TRUE, re = '[:space:]', ...){
-
+trim.space <- function(x, what = c('both', 'leading', 'trailing', 'none'), space.regex = '[:space:]', ...){
     if (missing(x))
-        stop('no string to trim spaces')
-
-    if (leading == FALSE & trailing == FALSE)
-        stop("it looks like you don't want to trim those spaces, don't you?")
-
-    if (leading == TRUE & trailing == FALSE)
-        re <- sprintf('^+[%s]', re)
-
-    if (leading == FALSE & trailing == TRUE)
-        re <- sprintf('[%s]+$', re)
-
-    if (leading == TRUE & trailing == TRUE)
-        re <- sprintf('^[%s]+|[%s]+$', re, re)
-
-    gsub(re, '', x, ...)
+        stop('nothing to trim spaces to =(')
+    re <- switch(match.arg(what),
+                 both     = sprintf('^[%s]+|[%s]+$', space.regex, space.regex),
+                 leading  = sprintf('^[%s]+', space.regex),
+                 trailing = sprintf('[%s]+$', space.regex),
+                 none     = {
+                     return (x)
+                 })
+    vgsub(re, '', x, ...)
 }
 
 
@@ -241,7 +233,7 @@ messagef <- function(s, ...){
 
 #' Empty Value
 #'
-#' Rails-inspired helper that checks if vector values are "empty", i.e. if it's of \code{NULL}, \code{NA}, \code{NaN}, \code{FALSE}, empty string or \code{0}. Note that unlike its `is.` siblings, `is.empty` is vectorised.
+#' Rails-inspired helper that checks if vector values are "empty", i.e. if it's of \code{NULL}, \code{NA}, \code{NaN}, \code{FALSE}, empty string or \code{0}. Note that unlike its \code{is.} siblings, \code{is.empty} is vectorised.
 #' @param x an object to check
 #' @param trim trim whitespace? (by default removes only trailing spaces)
 #' @param ... additional arguments for \code{\link{trim.space}}
@@ -255,7 +247,7 @@ messagef <- function(s, ...){
 #' is.empty("foobar") # returns [1] FALSE
 #' is.empty("    ")   # returns [1] FALSE
 #' @export
-is.empty <- function(x, trim = FALSE, ...){
+is.empty <- function(x, trim = FALSE, ...) {
 
     if (length(x) <= 1) {
         if (is.null(x))
