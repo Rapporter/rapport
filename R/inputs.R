@@ -202,7 +202,7 @@ guess.input.limit <- function(input) {
 guess.input <- function(input) {
     ## check class
     cls             <- input$class
-    allowed.classes <- c('character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw', 'option')
+    allowed.classes <- c('character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw', 'option', 'any')
     stopifnot(cls %in% allowed.classes)
 
     ## common fields
@@ -265,14 +265,12 @@ guess.input <- function(input) {
            ## what about logical? number of TRUE/FALSE?
            logical   = {},
            ## option input can be multiple in YAML
-           option    = {
-               input$multiple <- isTRUE(as.logical(input$multiple))
-           },
+           ## (the call is made based on length attribute)
+           option    = {},
            raw       = {}
            )
 
-    ## ## move class from named list element to object attribute (the proper "class")
-    ## class(input) <- c("input", input$class)
+    ## move class from named list element to object attribute (the proper "class")
     input
 }
 

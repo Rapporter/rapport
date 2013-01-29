@@ -48,36 +48,43 @@ print.rp.inputs <- function(x, ...){
         catn('Template contains no inputs.')
     } else {
         sapply(x, function(x){
-            lims <- unlist(x$limit, use.names = FALSE)
-            lims.unique.length <- length(unique(lims))
-            s <- if (x$limit$max > 1) 's' else ''
-            if (lims.unique.length == 1)
-                lim.range <- lims[1]
+            ## length
+            input.item.txt <- ifelse(x$class == 'option', 'option', ifelse(x$standalone, 'value', 'vector'))
+            len <- x$length
+            ## exactly
+            if (!is.null(len$exactly))
+                len.txt <- sprintf('exactly %d %s%s', len$exactly, input.item.txt, ifelse(len$exactly > 1, 's', ''))
             else
-                lim.range <- paste("between", x$limit$min, "and", x$limit$max, sep = " ")
+                len.txt <- sprintf('from %d to %d %ss', len$from, len$to, input.item.txt)
 
-            limit.msg <- switch(x$type,
-                                string = sprintf('%s character%s', lim.range, s),
-                                integer = ,
-                                number = sprintf('number %s', if (lims.unique.length > 1) lim.range else x$limit$min),
-                                option = {
-                                    if (lims.unique.length == 1)
-                                        sprintf('exactly %d option%s', lims.unique.length, s)
-                                    else
-                                        sprintf('from %d to %d options', x$limit$min, x$limit$max)
-                                },
-                                sprintf('%s variable%s', lim.range, s)
-                                )
-            
+            ## print the stuff
             cat('\n',
-                sprintf('`%s` (%s)%s\n', x$name, x$label, if (is.null(x$mandatory)) '' else ifelse(x$mandatory, '  >>REQUIRED<<', '')),
+                sprintf('"%s" (%s)%s\n', x$name, x$label, ifelse(x$required, '  *required', '')),
                 sprintf(' %s\n', x$desc),
-                sprintf('    - type:\t\t%s\n', x$type),
-                if (x$type == 'option') sprintf('    - multiple:\t%s\n', x$multiple),
-                sprintf('    - limits:\t\t%s\n', limit.msg),
-                if (!is.null(x$default)){
-                    sprintf('    - default value:\t%s\n', x$default[1])
-                })
+                sprintf('    - class:\t\t%s\n', x$class),
+                sprintf('    - standalone:\t%s\n', ifelse(x$standalone, 'yes', 'no')),
+                sprintf('    - length:\t\t%s\n', len.txt),
+                ## value
+                if (x$standalone && !is.null(x$value)) {
+                    val.wrap <- ifelse(x$class %in% c('character', 'option'), '"', '')
+                    sprintf('    - value%s:\t\t%s\n', ifelse(length(x$value) > 1, 's', ''), p(x$value, wrap = val.wrap))
+                },
+                ## limits (only for "numeric" and "integer" class inputs)
+                if (x$class %in% c('numeric', 'integer')) sprintf('    - limits:\t\t%s < x < %s', x$limit$min, x$limit$max),
+                if (x$class == 'character') {
+                    if (!is.null(x$nchar)) {
+                        chars <- x$nchar
+                        if (!is.null(chars$exactly))
+                            nchar.txt <- sprintf('exactly %d character%s', ifelse(length(chars$exactly) > 1, 's', ''), chars$exactly)
+                        else
+                            nchar.txt <- sprintf('from %d to %d characters', chars$from, chars$to)
+                        sprintf('    - limits:\t\t%s', nchar.txt)
+                    }
+                    if (!is.null(x$regexp)) {
+                        sprintf('    - regexp:\t\t"%s"', x$regexp)
+                    }
+                }
+                )
         })
         catn()
     }

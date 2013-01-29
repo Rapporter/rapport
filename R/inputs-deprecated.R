@@ -52,10 +52,6 @@ guess.old.input.length <- function(x, input.type) {
                        lim <- list(exactly = lim[1])
                    else
                        lim <- list(from = as.integer(lim[1]), to = as.integer(lim[2]))
-               if (lim[2] > 50) {
-                   warningf('coerced "to" limit to 50 (we cannot handle more than %d variables at once)', lim[2])
-                   lim$to <- 50L
-               }
            },
            ## standalone inputs
            string = {
@@ -106,7 +102,7 @@ guess.old.input.type <- function(x){
     csv.regex     <- "^(([[:alnum:]\\._]+)(, ?[[:alnum:]\\._]+){1,})$"
     default.regex <- "^.+=(.*)$"
 
-    mandatory  <- grepl("^\\*", x)
+    mandatory  <- isTRUE(grepl("^\\*", x))
     input.type <- gsub(limit.regex, "\\1", x)
     ## this may be option input
     if (input.type == x)
@@ -120,9 +116,15 @@ guess.old.input.type <- function(x){
            complex   = ,
            factor    = ,
            logical   = ,
-           numeric   = ,
-           variable  = list(
+           numeric   = list(
                class      = input.type,
+               length     = guess.old.input.length(limit.text, input.type),
+               value      = NULL,
+               required   = mandatory,
+               standalone = FALSE
+               ),
+           variable  = list(
+               class      = 'any',
                length     = guess.old.input.length(limit.text, input.type),
                value      = NULL,
                required   = mandatory,
@@ -161,7 +163,7 @@ guess.old.input.type <- function(x){
                ## this is range of nchar, which we don't implement at the moment
                chars <- guess.old.input.length(limit.text, input.type)
                
-               if (!is.null(default) && (nchar(default) < limit$min || nchar(default) > limit$max))
+               if (!is.null(default) && (nchar(default) < chars$from || nchar(default) > chars$to))
                    stopf('default string value "%s" must have at least %d and at most %d characters', default, limit$min, limit$max)
 
                list(
@@ -169,7 +171,7 @@ guess.old.input.type <- function(x){
                    length     = list(exactly = 1),
                    value      = default,
                    nchar      = chars,
-                   mandatory  = mandatory,
+                   required   = mandatory,
                    standalone = TRUE
                    )
            },
@@ -180,7 +182,7 @@ guess.old.input.type <- function(x){
                        class      = 'option',
                        length     = list(exactly = 1L),
                        value      = strsplit(x, ' *, *')[[1]],
-                       mandatory  = FALSE,
+                       required   = FALSE,
                        standalone = TRUE
                        )
                else
