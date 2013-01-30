@@ -226,13 +226,15 @@ guess.input <- function(input) {
     value       <- input$value
     lim         <- input$limit
 
-    ## check value length
-    if (standalone) {
-        ## TODO: check value class
-        check.input.value.length(input)
-    } else {
-        if (!is.null(value))
-            stopf('"value" attribute assigned to non-standalone input "%s"', name)
+    ## check value class/length
+    if (!is.null(value)) {
+        if (!standalone)
+            stopf('"value" attribute assigned to dataset input "%s"', name)
+        ## checks
+        ## class
+        check.input.class(val, cls, name)
+        ## length
+        check.input.value(input, attribute.name = 'length')
     }
 
     switch(cls,
@@ -246,12 +248,10 @@ guess.input <- function(input) {
                
                ## nchar (same format as length)
                chars <- input$nchar <- guess.input.length(input$nchar)
-               check.input.value.length(input, is.nchar.check = TRUE)
+               check.input.value(input, attribute.name = 'value')
 
                ## check value (if any)
                if (!is.null(value)) {
-                   ## class check
-                   stopifnot(is.character(value))
                    ## regexp check (value can be a vector)
                    if (!is.null(input$regexp))
                        if (!all(grepl(input$regexp, value)))
@@ -262,9 +262,10 @@ guess.input <- function(input) {
            complex   = {},
            factor    = {
                ## nlevels
-               if (!is.null(input$nlevels))
-                   if (!(is.integer(input$nlevels) && length(input$nlevels) == 1))
-                       stopf('"nlevels" attribute in factor input "%s" should be an integer value', name)
+               if (!is.null(input$nlevels)) {
+                   nlevels <- input$nlevels <- guess.input.length(input$nlevels)
+                   ## check values
+               }
            },
            integer   = ,
            numeric   = {
@@ -284,50 +285,85 @@ guess.input <- function(input) {
 }
 
 
-#' Input value length
+#' Check input value
 #'
-#' Checks input \code{value} (if any) against provided \code{length} rules. Must be called after \code{\link{guess.input.length}}, and for \code{standalone} inputs only (this check is performed in \code{\link{guess.input}}).
+#' 
 #' @param input 
 #' @param value 
-#' @param is.nchar.check 
-check.input.value.length <- function(input, value = NULL, is.nchar.check = FALSE) {
+#' @param attribute.name 
+check.input.value <- function(input, value = NULL, attribute.name = c('length', 'nchar', 'nlevels')) {
     if (missing(input))
         stop('input definition not provided')
-    if (is.nchar.check && input$class != 'character')
-        stop('"nchar" check can only be performed on character inputs')
-    ## perform checks only when the value is provided
     val <- if (is.null(value)) input$value else value
+    
+    ## perform checks only when the value is provided
     if (!is.null(val)) {
-        if (is.nchar.check) {
-            len   <- input$nchar
-            chars <- nchar(val)
-        } else {
-            val.len <- length(val)
-            len     <- input$length
-            ## length shouldn't be NULL as this function should be called after guess.input.length
-            ## BUT, you never know...
-            if (is.null(len))
-                stopf('length attribute for %s input "%s" is missing', input$class, input$name)
-        }
+        a   <- match.arg(attribute.name)
+        len <- input[[a]]
+        switch(a,
+               value = {
+                   ## length shouldn't be NULL as this function should be called after guess.input.length
+                   ## BUT, you never know...
+                   if (is.null(len))
+                       stopf('length attribute for %s input "%s" is missing', input$class, input$name)
+                   item.txt <- 'input'
+                   val.len <- length(val)
+               },
+               nchar = {
+                   if (input$class != 'character')
+                       stop('"nchar" check can only be performed on character inputs')
+                   item.txt <- 'character'
+                   val.len <- nchar(val)
+               },
+               nlevels = {
+                   if (input$class != 'factor')
+                       stop('"nlevels" check can only be performed on factor inputs')
+                   item.txt <- 'level'
+                   if (is.variable(val))
+                       val.len <- nlevels(val)
+                   else
+                       val.len <- sapply(val, nlevels)
+               })
 
-        ## exactly N inputs
-        if (!is.null(len$exactly)) {
-            if (is.nchar.check) {
-                if (!all(chars == len$exactly))
-                    stopf('all character input "%s" values should have %d characters', input$name, len$exactly)
-            } else {
-                if (val.len != len$exactly)
-                    stopf('%s input "%s" value length is not %d', input$class, input$name, len$exactly)
-            }
-            ## from/to
-        } else {
-            if (is.nchar.check) {
-                if (!(all(len$from < chars) && all(len$to > chars)))
-                    stopf('all character input "%s" values should have between %d and %d characters', input$name, len$from, len$to)
-            } else {
-                if (len$from > val.len || len$to < val.len)
-                    stopf('%s input "%s" value length cannot be smaller than %d or larger than %d', input$class, input$name, len$from, len$to)
-            }
-        }
+        ## generate range of allowed values
+        if (is.null(len$exactly))
+            len.range <- seq(len$from, len$to)
+        else
+            len.range <- len$exactly
+        
+        if (!all(val.len %in% len.range))
+            stopf('incorrect %s for "%s" input', a, input$name)
+    }
+}
+
+
+#' Check input value class
+#'
+#' Checks the class of value
+#' @param input 
+#' @param class 
+check.input.class <- function(value, class = c('character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw', 'option', 'any'), input.name = NULL) {
+    ## Q: perform checks only if !is.null(value) ?!?
+    ## you usually call this after that check is made... so... you know...
+
+    if (missing(class))
+        cls <- 'any'
+    else
+        cls <- match.arg(class)
+
+    check.fn <- switch(cls,
+                       any = is.variable,
+                       option = is.character,
+                       sprintf('is.%s', cls)
+                       )
+    
+    input.name.txt <- if (is.string(input.name)) sprintf('"%s" ', input.name) else ''
+    
+    if (is.variable(value)) {
+        if (!do.call(check.fn, list(x = value)))
+            stopf('%sinput class should be %s', input.name.txt, cls)
+    } else {
+        if (!all(sapply(value, function(i) do.call(check.fn, list(x = i)))))
+            stopf('provided object should contain only %s vectors', cls)
     }
 }

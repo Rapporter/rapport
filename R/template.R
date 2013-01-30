@@ -576,40 +576,35 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             }
 
             if (!is.null(user.input)) {
+                ## class check
+                check.input.class(val, input.class, input.name)
                 
                 ## check length (all inputs have length)
-                check.input.value.length(x, val)
+                check.input.value(x, val)
 
                 ## coerce val to vector if it's only one input
                 if (!x$standalone && length(user.input) == 1)
                     val <- val[, 1]
-                
-                ## check class(es)
-                class.check.fn <- switch(input.class,
-                                         any = is.variable,
-                                         option = is.character,
-                                         sprintf("is.%s", input.class)
-                                         )
-                if (is.variable(val)) {
-                    if (!do.call(class.check.fn, list(x = val)))
-                        stopf('"%s" input should be of %s class', input.name, input.class)
-                } else {
-                    if (!all(sapply(val, function(i) do.call(class.check.fn, list(x = i)))))
-                        stopf('provided object should contain only %s vectors', input.class)
-                }
-                
-                ## nchar check
-                if (input.class == 'character')
-                    check.input.value.length(x, val, TRUE)
-                
-                ## limit check
-                if (input.class %in% c('numeric', 'integer') && !is.null(x$limit)) {
-                    if (is.variable(val))
-                        stopifnot(all(val > x$limit$min) && all(val < x$limit$max))
-                    else
-                        stopifnot(all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
-                }
 
+                ## class-specific checks
+                switch(input.class,
+                       character = {
+                           check.input.value(x, val, 'nchar')
+                       },
+                       factor = {
+                           check.input.value(x, nlevels(factor), 'nlevels')
+                       },
+                       integer = ,
+                       numeric = {
+                           if (is.variable(val))
+                               stopifnot(all(val > x$limit$min) && all(val < x$limit$max))
+                           else
+                               stopifnot(all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
+
+                       }
+                       )
+
+                ## WAT?
                 for (t in names(val)){
                     if (rp.label(val[, t]) == 't')
                         val[, t] <- structure(val[, t], label = t, name = t)
