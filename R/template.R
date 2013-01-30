@@ -4,14 +4,10 @@
 #' @param fp a character string containing a template path, a template name (for package-bundled templates only), template contents separated by newline (\code{\\n}), or a character vector with template contents.
 #' @return a character vector with template contents
 tpl.find <- function(fp){
-
     if (missing(fp))
         stop('file pointer not provided')
-
     stopifnot(is.character(fp))
-
     l <- length(fp)
-
     ## maybe it's file path?
     if (l == 1){
         ## is it URL?
@@ -41,7 +37,6 @@ tpl.find <- function(fp){
     } else {
         stop('file pointer error')      # you never know...
     }
-
     return(txt)
 }
 
@@ -62,7 +57,6 @@ tpl.find <- function(fp){
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template header contents
 tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
-
     txt <- tpl.find(fp)                 # split by newlines
 
     ## get header tag indices
@@ -107,7 +101,6 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 #' @return a character vector with template body contents
 #' @export
 tpl.body <- function(fp, htag = get.tags('header.close'), ...){
-
     txt   <- tpl.find(fp)
     h.end <- grep(htag, txt, ...)
     if (h.end == length(txt))
@@ -214,7 +207,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
             fld.title <- sapply(fld, function(x) x$title)
             fields.title  <- sapply(fields, function(x) x$title)
             fld <- c(fld, fields) # merge required fields with default/specified ones
-            if (any(fld %in% fields.title)){
+            if (any(fld %in% fields.title)) {
                 stopf("Duplicate metadata fields: %s", p(intersect(fld.title, fields.title), "\""))
             }
         }
@@ -260,6 +253,10 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         h$packages <- unique(setdiff(h$packages, pkg.dep))
     }
 
+    ## change "desc" to "descriptives"
+    h$description <- h$desc
+    h$desc <- NULL
+    
     structure(h, class = 'rp.meta')
 }
 

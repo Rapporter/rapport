@@ -9,7 +9,7 @@ print.rp.meta <- function(x, ...){
 
     .x <- x                             # backup object
     mc <- match.call()
-    ind <- c('title', 'author', 'email', 'desc', 'example')
+    ind <- c('title', 'author', 'email', 'description', 'example')
     email <- if (is.null(x$email)) '' else sprintf(' (%s)', x$email) # show email if any
     exmpl <- if (is.null(x$example)) 'no examples found in template' else x$example # examples
     other.meta <- x[!names(x) %in% ind]
@@ -23,7 +23,7 @@ print.rp.meta <- function(x, ...){
     catn(
         sprintf('\n "%s"\n\n', x$title),
         sprintf('by %s%s\n\n', x$author, email),
-        sprintf('%s\n', x$desc),
+        sprintf('%s\n', x$description),
         fn(other.meta),
         sprintf('\n %s', c('Examples:', exmpl)),
         "\n"

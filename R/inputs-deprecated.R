@@ -190,3 +190,22 @@ guess.old.input.type <- function(x){
            })()
            )
 }
+
+
+#' Renew deprecated template
+#'
+#' Convert old-style template to new-style one (what we really do is just replacing old header syntax with YAML one).
+#' @param fp 
+#' @export 
+tpl.renew <- function(fp, output = NULL) {
+    h <- tpl.info(fp)                   #header
+    b <- tpl.body(fp)                   #body
+    new <- strsplit(as.yaml(h), '\n')[[1]]
+    tpl <- c('<!--head', new, 'head-->', b)
+    if (missing(output))
+        return(tpl)
+    else {
+        cat(tpl, sep = '\n', file = output)
+        invisible(tpl)
+    }
+}
