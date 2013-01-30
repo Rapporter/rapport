@@ -393,9 +393,11 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 
     if (examples.len > 1){
         if (is.null(index)){
-            opts  <- c(n.examples, 'all')
+            opts  <- c(n.examples)
             catn('Enter example ID from the list below:')
-            catn(sprintf('\n(%s)\t%s', opts, c(examples, 'Run all examples')))
+            catn(sprintf('\n(%s)\t%s', opts, c(examples)))
+            catn('(a)\tRun all examples')
+            catn()
             i     <- readline('Template ID> ')
             index <- unique(strsplit(gsub(' +', '', i), ',')[[1]])
         }
@@ -403,12 +405,10 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
         index <- 1
     }
 
-    if (length(index) == 0){
-        message('No example selected')
+    if (length(index) == 0 || tolower(index) == 'q')
         return(invisible(NULL))
-    }
 
-    if (length(index) == 1 && index == 'all')
+    if (length(index) == 1 && tolower(index) == 'a')
         index <- n.examples
 
     old.index <- index
@@ -503,7 +503,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     b        <- tpl.body(txt)                     # template body
     e        <- new.env(parent = env)             # load/create evaluation environment
     i        <- list(...)                         # user inputs
-    data.required <- isTRUE(as.logical(meta$dataRequired)) # is data required
+    data.required <- meta$dataRequired            # is data required
     pkgs     <- meta$packages                                # required packages
     file.path <- gsub('\\', '/', file.path, fixed = TRUE)
 
@@ -515,10 +515,10 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             stopf('Following packages are required by the template, but were not loaded: %s', p(names(pk[nopkg]), wrap = '"'))
     }
 
-    ## no inputs provided
-    if (length(inputs) == 0){
+    ## template contains no inputs
+    if (length(inputs) == 0) {
         ## check if data is required
-        if (data.required){
+        if (data.required) {
             if (is.null(data))
                 stop('"data" argument is required by the template')
             else
@@ -526,181 +526,113 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         }
         ## inputs required, carry on...
     } else {
-        ## check mandatory inputs
-        input.mandatory <- sapply(inputs, function(x){
-            mand <- if (is.null(x$mandatory)) FALSE else x$mandatory
-            structure(mand, .Names = x$name) # mandatory inputs
-        })
-        input.names <- names(input.mandatory)
-        input.ok    <- input.names[input.mandatory] %in% names(i)
+        ## check required inputs (this will only check names)
+        ## this is silly!!! what if you have input = NULL?!?
+        input.required <- sapply(inputs, function(x) structure(x$required, .Names = x$name))
+        input.names    <- names(input.required)
+        input.ok       <- input.names[input.required] %in% names(i)
         ## take default inputs into account
         if (!all(input.ok))
-            stopf("you haven't provided a value for %s", p(input.names[input.mandatory], '"'))
+            stopf("you haven't provided a value for %s", p(input.names[input.required], '"'))
 
         ## data required
         if (data.required){
-
             if(is.null(data))
                 stop('"data" not provided, but is required')
-
             if (!inherits(data, c('data.frame', 'rp.data')))
                 stop('"data" should be a "data.frame" object')
-
             data.names <- names(data)          # variable names
             assign('rp.data', data, envir = e) # load data to eval environment
         }
 
         lapply(inputs, function(x){
 
-            name          <- x$name                # input name
-            input.type    <- x$type                # input type
-            input.value   <- i[[name]]             # input value (supplied by user)
-            input.len <- switch(input.type,
-                                string = {
-                                    if (x$multiple)
-                                        length(input.value)
-                                    else
-                                        nchar(input.value)
-                                },
-                                number    = input.value,
-                                boolean   = 1,
-                                option    =,
-                                character =,
-                                complex   =,
-                                factor    =,
-                                logical   =,
-                                numeric   =,
-                                list      =,
-                                variable  = length(input.value),
-                                stop('invalid input type'))
-            limit         <- x$limit               # input limits
-            input.default <- x$default             # default value (if any)
+            ## template inputs
+            input.name   <- x$name
+            input.class  <- x$class
+            input.length <- x$length
+            input.value  <- x$value
+            ## user inputs
+            user.input   <- i[[input.name]]
 
-            if (!is.null(input.value)){
-                ## check limits
-                if (input.len < limit$min || input.len > limit$max) {
-                    lims <- unlist(limit, use.names = FALSE)
-                    if (length(unique(lims)) == 1)
-                        lim.range <- lims[1]
-                    else
-                        lim.range <- paste("between", limit$min, "and", limit$max, sep = " ")
-                    len.diff <- diff(lims)
-                    limit.error.msg <- switch(input.type,
-                                              string = sprintf('string input "%s" (value: "%s") has %d character%s, and it should have %s', name, input.value, input.len, if (input.len > 1) 's' else '', lim.range),
-                                              number = sprintf('number input "%s" (value: %s) should fall in interval [%s, %s]', name, input.value, limit$min, limit$max),
-                                              boolean =,
-                                              option = sprintf('%s input "%s" allows only one input', input.type, name),
-                                              sprintf("%s input %s has %d variables and should have %d", input.type, name, input.type, lim.range)
-                                              )
-                    stop(limit.error.msg)
-                }
-            }
-
-            ## check type
-            type.fn <- switch(input.type,
-                              option    = {
-                                  if (x$multiple)
-                                      is.character
-                                  else
-                                      is.string
-                              },
-                              string    = {
-                                  if (x$multiple)
-                                      is.character
-                                  else
-                                      is.string
-                              },
-                              list      = ,
-                              character = is.character,
-                              complex   = is.complex,
-                              factor    = is.factor,
-                              boolean   = is.boolean,
-                              logical   = is.logical,
-                              number    = is.number,
-                              numeric   = is.numeric,
-                              variable  = is.variable,
-                              stopf('unknown type: "%s"', input.type)
-                              )
-
-            ## if any of our "custom" input types
-            ## values are not extracted from data.frame in this case
-            ## for custom types, default value is always assigned!!!
-            if (input.type %in% c('number', 'string', 'option', 'boolean')){
-
-                ## the ones specified in the template should take precedence
-                val <- if (is.null(input.value)) input.default else input.value
-
-                ## check types
-                if (!is.null(val))
-                    if (!do.call(type.fn, list(val)))
-                        stopf('"%s" is not of "%s" type', val, input.type)
-
-                ## CSV input (allow multi match?)
-                if (input.type == 'option')
-                    val <- match.arg(input.value, input.default, several.ok = x$multiple)
-
-            } else {
-                ## ain't a "custom" input type, so it should be extracted from data.frame
-
-                ## check if ALL variable names exist in data
-                if (!all(input.value %in% data.names))
-                    stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(input.value, data.names), '"'))
-
-                if (is.null(input.value)){
-                    val <- NULL
+            ## standalone input can now be atomic or recursive
+            if (x$standalone) {
+                ## either a value provided in the rapport() call, or a template default, if any
+                ## or match within options
+                if (input.class == 'option') {
+                    val <- match.arg(user.input, input.value, several.ok = any(sapply(input.length, function(x) x > 1)))
                 } else {
-
-                    val <- e$rp.data[, input.value] # variable value
-
-
-                    ## multiple variables supplied
-                    if (is.data.frame(val)){
-
-                        ## check types
-                        val.types <- sapply(val, type.fn)
-                        val.modes <- sapply(val, mode)
-                        if (!all(val.types == TRUE))
-                            stopf('error in "%s": %s should be %s! (provided: %s)', name, p(input.value[!val.types], '"'), input.type, p(val.modes[!val.types], '"'))
-
-                        ## check labels
-                        for (t in names(val)){
-                            if (rp.label(val[, t]) == 't')
-                                val[, t] <- structure(val[, t], label = t, name = t)
-                            else
-                                val[, t] <- structure(val[, t], name = t)
-                        }
-                    } else if (is.atomic(val)){
-                        ## only one variable extracted from data.frame
-
-                        ## check type
-                        val.types <- do.call(type.fn, list(val))
-                        val.modes <- mode(val)
-                        if (!val.types)
-                            stopf('error in "%s": "%s" should be %s! (provided: %s)', name, input.value, input.type, val.modes)
-
-                        ## check label
-                        if (rp.label(val) == 'val')
-                            val <- structure(val, label = input.value, name = input.value)
-                        else
-                            val <- structure(val, name = input.value)
-                    } else {
-                        stop('data extraction error') # you never know...
-                    }
+                    val <- if (is.null(user.input)) input.value else user.input
                 }
+                val.length <- length(val)
+            } else {
+                ## it's not standalone, so user must have provided a character string
+                ## with names matching the ones in the data.frame
+                if (!all(user.input %in% data.names))
+                    stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(user.input, data.names), '"'))
+
+                val <- e$rp.data[user.input]
+                val.length <- length(val)
             }
+
+            if (!is.null(user.input)) {
+                
+                ## check length (all inputs have length)
+                check.input.value.length(x, val)
+
+                ## coerce val to vector if it's only one input
+                if (!x$standalone && length(user.input) == 1)
+                    val <- val[, 1]
+                
+                ## check class(es)
+                class.check.fn <- switch(input.class,
+                                         any = is.variable,
+                                         option = is.character,
+                                         sprintf("is.%s", input.class)
+                                         )
+                if (is.variable(val)) {
+                    if (!do.call(class.check.fn, list(x = val)))
+                        stopf('"%s" input should be of %s class', input.name, input.class)
+                } else {
+                    if (!all(sapply(val, function(i) do.call(class.check.fn, list(x = i)))))
+                        stopf('provided object should contain only %s vectors', input.class)
+                }
+                
+                ## nchar check
+                if (input.class == 'character')
+                    check.input.value.length(x, val, TRUE)
+                
+                ## limit check
+                if (input.class %in% c('numeric', 'integer') && !is.null(x$limit)) {
+                    if (is.variable(val))
+                        stopifnot(all(val > x$limit$min) && all(val < x$limit$max))
+                    else
+                        stopifnot(all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
+                }
+
+                for (t in names(val)){
+                    if (rp.label(val[, t]) == 't')
+                        val[, t] <- structure(val[, t], label = t, name = t)
+                    else
+                        val[, t] <- structure(val[, t], name = t)
+                }
+
+            }
+
+            ## add labels
 
             ## assign stuff
-            assign(name, val, envir = e)                             # value
-            assign(sprintf('%s.iname', name), name, envir = e)       # input name (the stuff)
-            assign(sprintf('%s.ilen', name), input.len, envir = e)   # input length
-            assign(sprintf('%s.ilabel', name), x$label, envir = e)   # input label
-            assign(sprintf('%s.idesc', name), x$desc, envir = e)     # input description
-            assign(sprintf('%s.name', name), input.value, envir = e) # variable name(s)
-            assign(sprintf('%s.len', name), length(val), envir = e)  # variable length
+            assign(input.name, val, envir = e)                                    # value
+            assign(sprintf('%s.iname', input.name), input.name, envir = e)        # input name
+            assign(sprintf('%s.ilen', input.name), length(user.input), envir = e) # input length
+            assign(sprintf('%s.ilabel', input.name), x$label, envir = e)          # input label
+            assign(sprintf('%s.idesc', input.name), x$desc, envir = e)            # input description
+            assign(sprintf('%s.name', input.name), user.input, envir = e)         # variable name(s)
+            assign(sprintf('%s.len', input.name), length(val), envir = e)         # variable length
             if (is.data.frame(val))
-                assign(sprintf('%s.label', name), sapply(val, rp.label), envir = e) # variable labels
+                assign(sprintf('%s.label', input.name), sapply(val, rp.label), envir = e) # variable labels
             else if (is.atomic(val))
-                assign(sprintf('%s.label', name), rp.label(val), envir = e) # variable label
+                assign(sprintf('%s.label', input.name), rp.label(val), envir = e) # variable label
             else
                 stopf('"%s" is not a "data.frame" or an atomic vector', name) # you never know...
         })

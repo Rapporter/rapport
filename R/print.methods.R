@@ -21,7 +21,7 @@ print.rp.meta <- function(x, ...){
     }
 
     catn(
-        sprintf('\n`%s`\n\n', x$title),
+        sprintf('\n "%s"\n\n', x$title),
         sprintf('by %s%s\n\n', x$author, email),
         sprintf('%s\n', x$desc),
         fn(other.meta),
@@ -42,7 +42,7 @@ print.rp.meta <- function(x, ...){
 #' @S3method print rp.inputs
 print.rp.inputs <- function(x, ...){
 
-    catn('\nInput parameters')
+    catn('\n Input parameters')
 
     if (length(x) == 0){
         catn('Template contains no inputs.')

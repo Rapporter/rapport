@@ -18,8 +18,8 @@ guess.old.input.length <- function(x, input.type) {
         return (list(exactly = 1L))
     
     ## make a bitchy regex that will cover all allowed formats
-    if (!grepl("^(\\[-?\\d+(\\.\\d+)?(,\\s*-?\\d+(\\.\\d+)?)?\\]|\\[\\]|)$", x))
-        stop('invalid limit string')
+    ## if (!grepl("^(\\[-?\\d+(\\.\\d+)?(,\\s*-?\\d+(\\.\\d+)?)?\\]|\\[\\]|)$", x))
+    ##     stop('invalid limit string')
 
     lim <- suppressWarnings(as.numeric(strsplit(gsub('^\\[(.*)\\]$', '\\1', x), ',')[[1]])) # get limits
     len <- length(lim)

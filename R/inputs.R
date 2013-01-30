@@ -133,6 +133,12 @@ guess.input.length <- function(len) {
                    if (!setequal(l.names, c('from', 'to')))
                        stop('only "from" and "to" should be provided')
                    len <- check.len.int(len)
+                   ## check if "from" == "to"
+                   len.u <- unique(unlist(len))
+                   if (length(len.u) == 1) {
+                       lim <- list(exactly = len.u)
+                       warningf('"from" and "to" are both equal to %d: coercing to "exactly"', len.u)
+                   }
                },
                ## because it's lame to halt with "invalid length length" =P
                stop('invalid length specification')
@@ -200,8 +206,10 @@ guess.input.limit <- function(input) {
 #' Check and return YAML input.
 #' @param input
 guess.input <- function(input) {
-    ## check class
-    cls             <- input$class
+    ## class check
+    cls <- input$class
+    if (is.null(cls))
+        cls <- input$class <- 'any'
     allowed.classes <- c('character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw', 'option', 'any')
     stopifnot(cls %in% allowed.classes)
 
@@ -228,6 +236,7 @@ guess.input <- function(input) {
     }
 
     switch(cls,
+           any       = {},
            character = {
                ## regexp
                if (!is.empty(input$regexp, trim = TRUE) && !is.string(input$regexp)) {
@@ -279,13 +288,15 @@ guess.input <- function(input) {
 #'
 #' Checks input \code{value} (if any) against provided \code{length} rules. Must be called after \code{\link{guess.input.length}}, and for \code{standalone} inputs only (this check is performed in \code{\link{guess.input}}).
 #' @param input 
-check.input.value.length <- function(input, is.nchar.check = FALSE) {
+#' @param value 
+#' @param is.nchar.check 
+check.input.value.length <- function(input, value = NULL, is.nchar.check = FALSE) {
     if (missing(input))
         stop('input definition not provided')
     if (is.nchar.check && input$class != 'character')
         stop('"nchar" check can only be performed on character inputs')
-    ## value can be NULL, so perform checks only when the value is provided
-    val <- input$value
+    ## perform checks only when the value is provided
+    val <- if (is.null(value)) input$value else value
     if (!is.null(val)) {
         if (is.nchar.check) {
             len   <- input$nchar

@@ -42,3 +42,6 @@ Collate:
     'utils.R'
     'tpl-check.R'
     'yaml.R'
+    'inputs-deprecated.R'
+    'inputs.R'
+    'misc.R'
