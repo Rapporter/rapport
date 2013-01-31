@@ -577,7 +577,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                 check.input.class(val, input.class, input.name)
                 
                 ## check length (all inputs have length)
-                check.input.value(x, val)
+                check.input.value(x, val, 'length')
 
                 ## coerce val to vector if it's only one input
                 if (!x$standalone && length(user.input) == 1)
@@ -593,10 +593,12 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                        },
                        integer = ,
                        numeric = {
-                           if (is.variable(val))
-                               stopifnot(all(val > x$limit$min) && all(val < x$limit$max))
-                           else
-                               stopifnot(all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
+                           if (!is.null(x$limit)){
+                               if (is.variable(val))
+                                   stopifnot(all(val > x$limit$min) && all(val < x$limit$max))
+                               else
+                                   stopifnot(all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
+                           }
 
                        }
                        )

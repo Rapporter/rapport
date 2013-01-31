@@ -248,7 +248,7 @@ guess.input <- function(input) {
                
                ## nchar (same format as length)
                chars <- input$nchar <- guess.input.length(input$nchar)
-               check.input.value(input, attribute.name = 'value')
+               check.input.value(input, attribute.name = 'nchar')
 
                ## check value (if any)
                if (!is.null(value)) {
@@ -295,30 +295,28 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
     if (missing(input))
         stop('input definition not provided')
     val <- if (is.null(value)) input$value else value
-    
-    ## perform checks only when the value is provided
-    if (!is.null(val)) {
-        a   <- match.arg(attribute.name)
-        len <- input[[a]]
+    a   <- match.arg(attribute.name)
+    len <- input[[a]]
+
+    ## perform checks only when both value and limits are provided
+    if (!(is.null(val) || is.null(len))) {
+
         switch(a,
-               value = {
+               length = {
                    ## length shouldn't be NULL as this function should be called after guess.input.length
                    ## BUT, you never know...
                    if (is.null(len))
                        stopf('length attribute for %s input "%s" is missing', input$class, input$name)
-                   item.txt <- 'input'
                    val.len <- length(val)
                },
                nchar = {
                    if (input$class != 'character')
                        stop('"nchar" check can only be performed on character inputs')
-                   item.txt <- 'character'
                    val.len <- nchar(val)
                },
                nlevels = {
                    if (input$class != 'factor')
                        stop('"nlevels" check can only be performed on factor inputs')
-                   item.txt <- 'level'
                    if (is.variable(val))
                        val.len <- nlevels(val)
                    else
