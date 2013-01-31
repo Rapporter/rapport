@@ -89,6 +89,13 @@ guess.input.length <- function(len) {
         
         ## check names
         stopifnot(all(l.names %in% c('from', 'to', 'exactly')))
+        ## coerce to numeric
+        len <- lapply(len, function(x){
+            x <- suppressWarnings(as.numeric(x))
+            if (any(is.na(x)))
+                stop('cannot coerce length to numeric')
+            x
+        })
 
         check.len.int <- function(x) {
             if (!is.recursive(x)){
@@ -97,16 +104,15 @@ guess.input.length <- function(len) {
                 else
                     if (length(x) != 1)
                         stop('length attributes "from" and "to" must be length-one integers')
-                    else
-                        if (grepl("^\\d+\\:\\d+$", x))
-                            eval(parse(text = x))
-                        else if (floor(x) != x) {
+                    else {
+                        if (floor(x) != x) {
                             warning('coercing number to integer')
                             floor(x)
                         } else if (x < 1)
                             stop('only positive integers can be provided')
                         else
                             x
+                    }
             } else
                 lapply(x, check.len.int)
         }
@@ -232,9 +238,10 @@ guess.input <- function(input) {
             stopf('"value" attribute assigned to dataset input "%s"', name)
         ## checks
         ## class
-        check.input.class(val, cls, name)
-        ## length
-        check.input.value(input, attribute.name = 'length')
+        check.input.class(value, cls, name)
+        ## length (don't check for options, do that in rapport() call)
+        if (cls != 'option')
+            check.input.value(input, attribute.name = 'length')
     }
 
     switch(cls,
@@ -247,8 +254,10 @@ guess.input <- function(input) {
                }
                
                ## nchar (same format as length)
-               chars <- input$nchar <- guess.input.length(input$nchar)
-               check.input.value(input, attribute.name = 'nchar')
+               if (!is.null(input$nchar)) {
+                   chars <- input$nchar <- guess.input.length(input$nchar)
+                   check.input.value(input, attribute.name = 'nchar')
+               }
 
                ## check value (if any)
                if (!is.null(value)) {
@@ -271,12 +280,22 @@ guess.input <- function(input) {
            numeric   = {
                ## limits
                input$limit <- guess.input.limit(input)
+               ## check limits
+               if (!is.null(input$limit)){
+                   if (is.variable(value))
+                       stopifnot(all(value >= input$limit$min) && all(value <= input$limit$max))
+                   else
+                       stopifnot(all(sapply(value, function(i) i > input$limit$min)) && all(sapply(value, function(i) i < input$limit$max)))
+               }
            },
            ## what about logical? number of TRUE/FALSE?
            logical   = {},
            ## option input can be multiple in YAML
            ## (the call is made based on length attribute)
-           option    = {},
+           option    = {
+               if (is.null(value))
+                   stop('option value(s) not provided')
+           },
            raw       = {}
            )
 
@@ -322,14 +341,14 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
                    else
                        val.len <- sapply(val, nlevels)
                })
-
-        ## generate range of allowed values
-        if (is.null(len$exactly))
-            len.range <- seq(len$from, len$to)
-        else
-            len.range <- len$exactly
         
-        if (!all(val.len %in% len.range))
+        ## check if value is within length interval
+        if (is.null(len$exactly))
+            len.ok <- all(val.len >= len$from && val.len <= len$to)
+        else
+            len.ok <- all(val.len == len$exactly)
+        
+        if (!len.ok)
             stopf('incorrect %s for "%s" input', a, input$name)
     }
 }
@@ -356,7 +375,7 @@ check.input.class <- function(value, class = c('character', 'complex', 'factor',
                        )
     
     input.name.txt <- if (is.string(input.name)) sprintf('"%s" ', input.name) else ''
-    
+
     if (is.variable(value)) {
         if (!do.call(check.fn, list(x = value)))
             stopf('%sinput class should be %s', input.name.txt, cls)

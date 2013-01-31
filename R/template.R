@@ -198,7 +198,6 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
             list(title = 'Description'   , regex = '.+', short = 'desc'),
             list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
             list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
-            list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
             list(title = 'Example'       , regex = '.+', mandatory = FALSE)
             )
 
@@ -253,6 +252,11 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
         h$packages <- unique(setdiff(h$packages, pkg.dep))
     }
 
+    if (!is.null(h$dataRequired)) {
+        h$dataRequired <- NULL
+        warning('dataRequired field is deprecated. You should remove it from template.')
+    }
+    
     ## change "desc" to "descriptives"
     h$description <- h$desc
     h$desc <- NULL
@@ -500,7 +504,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     b        <- tpl.body(txt)                     # template body
     e        <- new.env(parent = env)             # load/create evaluation environment
     i        <- list(...)                         # user inputs
-    data.required <- meta$dataRequired            # is data required
+    data.required <- any(sapply(inputs, function(x) !x$standalone))
     pkgs     <- meta$packages                                # required packages
     file.path <- gsub('\\', '/', file.path, fixed = TRUE)
 
@@ -586,22 +590,26 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                 ## class-specific checks
                 switch(input.class,
                        character = {
+                           ## nchar check
                            check.input.value(x, val, 'nchar')
+                           ## regexp check
+                           if (!is.null(x$regexp)) {
+                               if (!all(grepl(x$regexp, val)))
+                                   stopf('%s input "%s" value is not matched with provided regular expression "%s"', input.name, val, x$regexp)
+                           }
                        },
                        factor = {
-                           check.input.value(x, nlevels(factor), 'nlevels')
+                           check.input.value(x, val, 'nlevels')
                        },
                        integer = ,
                        numeric = {
-                           if (!is.null(x$limit)){
+                           if (!is.null(x$limit)) {
                                if (is.variable(val))
-                                   stopifnot(all(val > x$limit$min) && all(val < x$limit$max))
+                                   stopifnot(all(val >= x$limit$min) && all(val <= x$limit$max))
                                else
                                    stopifnot(all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
                            }
-
-                       }
-                       )
+                       })
 
                 ## WAT?
                 for (t in names(val)){
@@ -623,12 +631,13 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             assign(sprintf('%s.idesc', input.name), x$desc, envir = e)            # input description
             assign(sprintf('%s.name', input.name), user.input, envir = e)         # variable name(s)
             assign(sprintf('%s.len', input.name), length(val), envir = e)         # variable length
+            ## currently we support only data.frame and atomic vectos
             if (is.data.frame(val))
                 assign(sprintf('%s.label', input.name), sapply(val, rp.label), envir = e) # variable labels
             else if (is.atomic(val))
                 assign(sprintf('%s.label', input.name), rp.label(val), envir = e) # variable label
             else
-                stopf('"%s" is not a "data.frame" or an atomic vector', name) # you never know...
+                stopf('"%s" is not a "data.frame" or an atomic vector', input.name) # you never know...
         })
     }
 

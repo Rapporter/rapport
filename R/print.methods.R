@@ -11,7 +11,6 @@ print.rp.meta <- function(x, ...){
     mc <- match.call()
     ind <- c('title', 'author', 'email', 'description', 'example')
     email <- if (is.null(x$email)) '' else sprintf(' (%s)', x$email) # show email if any
-    exmpl <- if (is.null(x$example)) 'no examples found in template' else x$example # examples
     other.meta <- x[!names(x) %in% ind]
 
     fn <- function(x){
@@ -25,8 +24,7 @@ print.rp.meta <- function(x, ...){
         sprintf('by %s%s\n\n', x$author, email),
         sprintf('%s\n', x$description),
         fn(other.meta),
-        sprintf('\n %s', c('Examples:', exmpl)),
-        "\n"
+        if (!is.null(x$example)) sprintf('\n %s', c('Examples:', x$example))
         )
 
     invisible(.x)
@@ -42,7 +40,7 @@ print.rp.meta <- function(x, ...){
 #' @S3method print rp.inputs
 print.rp.inputs <- function(x, ...){
 
-    catn('\n Input parameters')
+    catn('\n Inputs')
 
     if (length(x) == 0){
         catn('Template contains no inputs.')
@@ -68,25 +66,43 @@ print.rp.inputs <- function(x, ...){
                 if (x$standalone && !is.null(x$value)) {
                     val.wrap <- ifelse(x$class %in% c('character', 'option'), '"', '')
                     sprintf('    - value%s:\t\t%s\n', ifelse(length(x$value) > 1, 's', ''), p(x$value, wrap = val.wrap))
-                },
-                ## limits (only for "numeric" and "integer" class inputs)
-                if (x$class %in% c('numeric', 'integer')) sprintf('    - limits:\t\t%s < x < %s', x$limit$min, x$limit$max),
-                if (x$class == 'character') {
-                    if (!is.null(x$nchar)) {
-                        chars <- x$nchar
-                        if (!is.null(chars$exactly))
-                            nchar.txt <- sprintf('exactly %d character%s', ifelse(length(chars$exactly) > 1, 's', ''), chars$exactly)
-                        else
-                            nchar.txt <- sprintf('from %d to %d characters', chars$from, chars$to)
-                        sprintf('    - limits:\t\t%s', nchar.txt)
-                    }
-                    if (!is.null(x$regexp)) {
-                        sprintf('    - regexp:\t\t"%s"', x$regexp)
-                    }
-                }
-                )
-        })
-        catn()
+                })
+            ## class specific options
+            catn(switch(x$class,
+                        character = {
+                            res <- c()
+                            ## nchar
+                            if (!is.null(x$nchar)) {
+                                chars <- x$nchar
+                                if (!is.null(chars$exactly))
+                                    nchar.txt <- sprintf('exactly %d character%s', chars$exactly, if (length(chars$exactly) > 1) 's' else '')
+                                else
+                                    nchar.txt <- sprintf('from %d to %d characters', chars$from, chars$to)
+                                res <- c(res, sprintf('     - nchar:\t\t%s\n', nchar.txt))
+                            }
+                            ## regexp
+                            if (!is.null(x$regexp))
+                                res <- c(res, sprintf('    - regexp:\t\t"%s"\n', x$regexp))
+                            res
+                        },
+                        ## nlevels
+                        factor = {
+                            if (!is.null(x$nlevels)) {
+                                if (!is.null(x$nlevels$exactly))
+                                    s <- sprintf('exactly %d level%s', x$nlevels$exactly, if (x$nlevels$exactly > 1) 's' else '')
+                                else
+                                    s <- sprintf('from %d to %d levels', x$nlevels$from, x$nlevels$to)
+                                sprintf('     - nlevels:\t\t%s\n', s)
+                            }
+                        },
+                        ## limits
+                        numeric = ,
+                        integer = {
+                            if (!is.null(x$limit))
+                                sprintf('     - limits:\t\t%s <= x <= %s\n', x$limit$min, x$limit$max)
+                        }
+                        ))
+        })                              # end if length(x) == 0
     }
     invisible(x)
 }
