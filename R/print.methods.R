@@ -53,7 +53,7 @@ print.rp.inputs <- function(x, ...){
             if (!is.null(len$exactly))
                 len.txt <- sprintf('exactly %d %s%s', len$exactly, input.item.txt, ifelse(len$exactly > 1, 's', ''))
             else
-                len.txt <- sprintf('from %d to %d %ss', len$from, len$to, input.item.txt)
+                len.txt <- sprintf('from %d to %d %ss', len$min, len$max, input.item.txt)
 
             ## print the stuff
             cat('\n',
@@ -77,12 +77,12 @@ print.rp.inputs <- function(x, ...){
                                 if (!is.null(chars$exactly))
                                     nchar.txt <- sprintf('exactly %d character%s', chars$exactly, if (length(chars$exactly) > 1) 's' else '')
                                 else
-                                    nchar.txt <- sprintf('from %d to %d characters', chars$from, chars$to)
+                                    nchar.txt <- sprintf('from %d to %d characters', chars$min, chars$max)
                                 res <- c(res, sprintf('     - nchar:\t\t%s\n', nchar.txt))
                             }
                             ## regexp
                             if (!is.null(x$regexp))
-                                res <- c(res, sprintf('    - regexp:\t\t"%s"\n', x$regexp))
+                                res <- c(res, sprintf('     - regexp:\t\t"%s"\n', x$regexp))
                             res
                         },
                         ## nlevels
@@ -91,7 +91,7 @@ print.rp.inputs <- function(x, ...){
                                 if (!is.null(x$nlevels$exactly))
                                     s <- sprintf('exactly %d level%s', x$nlevels$exactly, if (x$nlevels$exactly > 1) 's' else '')
                                 else
-                                    s <- sprintf('from %d to %d levels', x$nlevels$from, x$nlevels$to)
+                                    s <- sprintf('from %d to %d levels', x$nlevels$min, x$nlevels$max)
                                 sprintf('     - nlevels:\t\t%s\n', s)
                             }
                         },
@@ -102,7 +102,7 @@ print.rp.inputs <- function(x, ...){
                                 sprintf('     - limits:\t\t%s <= x <= %s\n', x$limit$min, x$limit$max)
                         }
                         ))
-        })                              # end if length(x) == 0
+        })                              # end if (length(x) == 0)
     }
     invisible(x)
 }

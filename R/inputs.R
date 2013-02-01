@@ -68,15 +68,15 @@ guess.input.description <- function(description, name, ...) {
 #' @param len 
 guess.input.length <- function(len) {
     
-    ## only "from", "to" and "exactly"
+    ## only "min", "max" and "exactly"
     ## if NULL, set some defaults:
     ## - like... 1?
     ## if non-NULL, it can be:
     ## - an integer, which is equivalent to "exactly: x"
     ## - a named list with integer vectors:
-    ##   - "from", "to" or "exactly" attribute
-    ##     - "from", "to" and "exactly" should be length-one integers
-    ##   - both "from" and "to" attributes supplied
+    ##   - "min", "max" or "exactly" attribute
+    ##     - "min", "max" and "exactly" should be length-one integers
+    ##   - both "min" and "max" attributes supplied
     ##     - they should both be length-one integers
 
     if (is.null(len))
@@ -88,7 +88,7 @@ guess.input.length <- function(len) {
         l.length <- length(len)
         
         ## check names
-        stopifnot(all(l.names %in% c('from', 'to', 'exactly')))
+        stopifnot(all(l.names %in% c('min', 'max', 'exactly')))
         ## coerce to numeric
         len <- lapply(len, function(x){
             x <- suppressWarnings(as.numeric(x))
@@ -103,7 +103,7 @@ guess.input.length <- function(len) {
                     return(1L)
                 else
                     if (length(x) != 1)
-                        stop('length attributes "from" and "to" must be length-one integers')
+                        stop('length attributes "min" and "max" must be length-one integers')
                     else {
                         if (floor(x) != x) {
                             warning('coercing number to integer')
@@ -122,11 +122,11 @@ guess.input.length <- function(len) {
                {
                    len <- check.len.int(len)
                    switch(l.names,
-                          from = {
-                              len$to <- Inf
+                          min = {
+                              len$max <- Inf
                           },
-                          to = {
-                              len$from <- 1L
+                          max = {
+                              len$min <- 1L
                           },
                           exactly = {
                               ## just don't fall through =P
@@ -134,16 +134,16 @@ guess.input.length <- function(len) {
                           stopf('invalid length attribute: "%s"', l.names)
                           )
                },
-               ## length-two list ("from", "to")
+               ## length-two list ("min", "max")
                {
-                   if (!setequal(l.names, c('from', 'to')))
-                       stop('only "from" and "to" should be provided')
+                   if (!setequal(l.names, c('min', 'max')))
+                       stop('only "min" and "max" should be provided')
                    len <- check.len.int(len)
-                   ## check if "from" == "to"
+                   ## check if "min" == "max"
                    len.u <- unique(unlist(len))
                    if (length(len.u) == 1) {
                        lim <- list(exactly = len.u)
-                       warningf('"from" and "to" are both equal to %d: coercing to "exactly"', len.u)
+                       warningf('"min" and "max" are both equal to %d: coercing to "exactly"', len.u)
                    }
                },
                ## because it's lame to halt with "invalid length length" =P
@@ -152,8 +152,8 @@ guess.input.length <- function(len) {
     } else
         stop('invalid length type')
 
-    if (length(len) == 2 && len$from > len$to)
-        stop('"from" value cannot be smaller than "to" value')
+    if (length(len) == 2 && len$min > len$max)
+        stop('"min" value cannot be smaller than "max" value')
 
     return(len)
 }
@@ -344,7 +344,7 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
         
         ## check if value is within length interval
         if (is.null(len$exactly))
-            len.ok <- all(val.len >= len$from && val.len <= len$to)
+            len.ok <- all(val.len >= len$min && val.len <= len$max)
         else
             len.ok <- all(val.len == len$exactly)
         

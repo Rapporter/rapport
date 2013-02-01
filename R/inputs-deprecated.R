@@ -51,21 +51,21 @@ guess.old.input.length <- function(x, input.type) {
                    if (length(unique(lim)) == 1)
                        lim <- list(exactly = lim[1])
                    else
-                       lim <- list(from = as.integer(lim[1]), to = as.integer(lim[2]))
+                       lim <- list(min = as.integer(lim[1]), max = as.integer(lim[2]))
            },
            ## standalone inputs
            string = {
-               ## not a limit check, but "nchar" attribute, hence "from"/"to"
+               ## not a limit check, but "nchar" attribute, hence "min"/"max"
                if (!all(floor(lim) == lim) || any(lim < 0))
                    stop('decimal and/or negative limit values are not allowed for string inputs')
                ## length checks
                if (len == 0)
-                   lim <- list(from = 1L, to = 256L)
+                   lim <- list(min = 1L, max = 256L)
                ## only one limit = exactly
                else if (len == 1)
                    lim <- list(exactly = as.integer(len))
                else
-                   lim <- list(from = as.integer(lim[1]), to = as.integer(lim[2]))
+                   lim <- list(min = as.integer(lim[1]), max = as.integer(lim[2]))
            },
            number = {
                ## not a length check, but limit, so it's min/max
@@ -163,7 +163,7 @@ guess.old.input.type <- function(x){
                ## this is range of nchar, which we don't implement at the moment
                chars <- guess.old.input.length(limit.text, input.type)
                
-               if (!is.null(default) && (nchar(default) < chars$from || nchar(default) > chars$to))
+               if (!is.null(default) && (nchar(default) < chars$min || nchar(default) > chars$max))
                    stopf('default string value "%s" must have at least %d and at most %d characters', default, limit$min, limit$max)
 
                list(
