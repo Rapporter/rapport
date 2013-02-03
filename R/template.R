@@ -556,33 +556,42 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             ## user inputs
             user.input   <- i[[input.name]]
 
-            ## standalone input can now be atomic or recursive
-            if (x$standalone) {
-                ## either a value provided in the rapport() call, or a template default, if any
-                ## or match within options
-                if (input.class == 'option') {
-                    val <- match.arg(user.input, input.value, several.ok = any(sapply(input.length, function(x) x > 1)))
-                } else {
-                    val <- if (is.null(user.input)) input.value else user.input
-                }
-                val.length <- length(val)
+            ## matchable inputs are kind-of special
+            if (isTRUE(x$matchable)) {
+                ## for factors, match from factor levels
+                if (input.class == 'factor')
+                    choices <- levels(input.value)
+                else
+                    choices <- input.value
+                arg <- as.character(user.input)
+                ## value mapped to matchable input should be a variable
+                val <- match.arg(arg, choices, several.ok = any(sapply(input.length, function(x) x > 1)))
+                if (input.class == 'factor')
+                    val <- as.factor(val)
             } else {
-                ## it's not standalone, so user must have provided a character string
-                ## with names matching the ones in the data.frame
-                if (!all(user.input %in% data.names))
-                    stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(user.input, data.names), '"'))
+                ## standalone input can now be atomic or recursive
+                if (x$standalone) {
+                    ## either a value provided in the rapport() call, or a template default, if any
+                    val <- if (is.null(user.input)) input.value else user.input
+                    val.length <- length(val)
+                } else {
+                    ## it's not standalone, so user must have provided a character string
+                    ## with names matching the ones in the data.frame
+                    if (!all(user.input %in% data.names))
+                        stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(user.input, data.names), '"'))
 
-                val <- e$rp.data[user.input]
-                val.length <- length(val)
+                    val <- e$rp.data[user.input]
+                    val.length <- length(val)
+                }
             }
 
+            ## class check
+            check.input.class(val, input.class, input.name)
+            
+            ## check length (all inputs have length)
+            check.input.value(x, val, 'length')
+            
             if (!is.null(user.input)) {
-                ## class check
-                check.input.class(val, input.class, input.name)
-                
-                ## check length (all inputs have length)
-                check.input.value(x, val, 'length')
-
                 ## coerce val to vector if it's only one input
                 if (!x$standalone && length(user.input) == 1)
                     val <- val[, 1]

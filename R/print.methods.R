@@ -45,7 +45,7 @@ print.rp.inputs <- function(x, ...){
     if (length(x) == 0){
         catn('Template contains no inputs.')
     } else {
-        sapply(x, function(x){
+        sapply(x, function(x) {
             ## length
             input.item.txt <- ifelse(x$class == 'option', 'option', ifelse(x$standalone, 'value', 'vector'))
             len <- x$length
@@ -53,7 +53,7 @@ print.rp.inputs <- function(x, ...){
             if (!is.null(len$exactly))
                 len.txt <- sprintf('exactly %d %s%s', len$exactly, input.item.txt, ifelse(len$exactly > 1, 's', ''))
             else
-                len.txt <- sprintf('from %d to %d %ss', len$min, len$max, input.item.txt)
+                len.txt <- sprintf('from %s to %s %ss', len$min, len$max, input.item.txt)
 
             ## print the stuff
             cat('\n',
@@ -68,7 +68,7 @@ print.rp.inputs <- function(x, ...){
                     sprintf('    - value%s:\t\t%s\n', ifelse(length(x$value) > 1, 's', ''), p(x$value, wrap = val.wrap))
                 })
             ## class specific options
-            catn(switch(x$class,
+            cat(switch(x$class,
                         character = {
                             res <- c()
                             ## nchar
@@ -82,7 +82,7 @@ print.rp.inputs <- function(x, ...){
                             }
                             ## regexp
                             if (!is.null(x$regexp))
-                                res <- c(res, sprintf('     - regexp:\t\t"%s"\n', x$regexp))
+                                res <- c(res, sprintf('    - regexp:\t\t"%s"\n', x$regexp))
                             res
                         },
                         ## nlevels
@@ -102,8 +102,9 @@ print.rp.inputs <- function(x, ...){
                                 sprintf('     - limits:\t\t%s <= x <= %s\n', x$limit$min, x$limit$max)
                         }
                         ))
-        })                              # end if (length(x) == 0)
-    }
+        })                              # end sapply
+        catn()
+    }                                   # end if (length(x) == 0)
     invisible(x)
 }
 

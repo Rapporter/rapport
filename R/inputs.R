@@ -123,10 +123,10 @@ guess.input.length <- function(len) {
                    len <- check.len.int(len)
                    switch(l.names,
                           min = {
-                              len$max <- Inf
+                              len <- list(min = len$min, max = Inf)
                           },
                           max = {
-                              len$min <- 1L
+                              len <- list(min = 1L, max = len$max)
                           },
                           exactly = {
                               ## just don't fall through =P
@@ -216,33 +216,45 @@ guess.input <- function(input) {
     cls <- input$class
     if (is.null(cls))
         cls <- input$class <- 'any'
-    allowed.classes <- c('character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw', 'option', 'any')
-    stopifnot(cls %in% allowed.classes)
+    allowed.classes <- c('character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw', 'any')
+    if (!cls %in% allowed.classes)
+        stopf('unsupported class "%s"', cls)
 
     ## common fields
     name        <- input$name        <- guess.input.name(input$name)
     label       <- input$label       <- guess.input.label(input$label)
     description <- input$description <- guess.input.description(input$desc)
     required    <- input$required    <- isTRUE(as.logical(input$required))
-    ## option inputs are always standalone
-    ## until we figure out how to make them more native
-    ## like, e.g. adding an additional argument to input
-    standalone  <- input$standalone  <- isTRUE(as.logical(input$standalone)) || cls == 'option'
     len         <- input$length      <- guess.input.length(input$length)
     value       <- input$value
     lim         <- input$limit
+    ## inputs are standalone by default
+    if (is.null(input$standalone))
+        standalone  <- TRUE
+    else
+        standalone  <- isTRUE(as.logical(input$standalone))
+    input$standalone <- standalone
 
     ## check value class/length
     if (!is.null(value)) {
         if (!standalone)
             stopf('"value" attribute assigned to dataset input "%s"', name)
-        ## checks
-        ## class
-        check.input.class(value, cls, name)
-        ## length (don't check for options, do that in rapport() call)
-        if (cls != 'option')
+
+        ## coerce factor values
+        if (cls == 'factor'){
+            value <- input$value <- as.factor(value)
+        } else {
+            ## length (don't check for options, do that in rapport() call)
             check.input.value(input, attribute.name = 'length')
+        }
+        ## class check
+        check.input.class(value, cls, name)
     }
+
+    ## matchable
+    matchable <- input$matchable <- isTRUE(as.logical(input$matchable))
+    if (matchable && !cls %in% c('character', 'factor'))
+        stop('"matchable" attribute only available for "character" and "factor" inputs')
 
     switch(cls,
            any       = {},
@@ -288,14 +300,7 @@ guess.input <- function(input) {
                        stopifnot(all(sapply(value, function(i) i > input$limit$min)) && all(sapply(value, function(i) i < input$limit$max)))
                }
            },
-           ## what about logical? number of TRUE/FALSE?
            logical   = {},
-           ## option input can be multiple in YAML
-           ## (the call is made based on length attribute)
-           option    = {
-               if (is.null(value))
-                   stop('option value(s) not provided')
-           },
            raw       = {}
            )
 
@@ -319,7 +324,6 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
 
     ## perform checks only when both value and limits are provided
     if (!(is.null(val) || is.null(len))) {
-
         switch(a,
                length = {
                    ## length shouldn't be NULL as this function should be called after guess.input.length
@@ -347,7 +351,6 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
             len.ok <- all(val.len >= len$min && val.len <= len$max)
         else
             len.ok <- all(val.len == len$exactly)
-        
         if (!len.ok)
             stopf('incorrect %s for "%s" input', a, input$name)
     }
@@ -360,27 +363,28 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
 #' @param input 
 #' @param class 
 check.input.class <- function(value, class = c('character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw', 'option', 'any'), input.name = NULL) {
-    ## Q: perform checks only if !is.null(value) ?!?
-    ## you usually call this after that check is made... so... you know...
+    if (is.null(value))
+        return(NULL)
+    else {
+        if (missing(class))
+            cls <- 'any'
+        else
+            cls <- match.arg(class)
 
-    if (missing(class))
-        cls <- 'any'
-    else
-        cls <- match.arg(class)
+        check.fn <- switch(cls,
+                           any = is.variable,
+                           option = is.character,
+                           sprintf('is.%s', cls)
+                           )
+        
+        input.name.txt <- if (is.string(input.name)) sprintf('"%s" ', input.name) else ''
 
-    check.fn <- switch(cls,
-                       any = is.variable,
-                       option = is.character,
-                       sprintf('is.%s', cls)
-                       )
-    
-    input.name.txt <- if (is.string(input.name)) sprintf('"%s" ', input.name) else ''
-
-    if (is.variable(value)) {
-        if (!do.call(check.fn, list(x = value)))
-            stopf('%sinput class should be %s', input.name.txt, cls)
-    } else {
-        if (!all(sapply(value, function(i) do.call(check.fn, list(x = i)))))
-            stopf('provided object should contain only %s vectors', cls)
+        if (is.variable(value)) {
+            if (!do.call(check.fn, list(x = value)))
+                stopf('%sinput class should be %s', input.name.txt, cls)
+        } else {
+            if (!all(sapply(value, function(i) do.call(check.fn, list(x = i)))))
+                stopf('provided object should contain only %s vectors', cls)
+        }
     }
 }
