@@ -16,8 +16,8 @@ inputs:
   description: Just a numeric input
   required: TRUE
   length:
-    from: 1
-    to: 10
+    min: 1
+    max: 10
   standalone: TRUE
   limit:
     min: 1

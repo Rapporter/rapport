@@ -563,12 +563,14 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                     choices <- levels(input.value)
                 else
                     choices <- input.value
-                arg <- as.character(user.input)
+                arg <- if (is.null(user.input)) choices[1] else as.character(user.input)
                 ## value mapped to matchable input should be a variable
                 val <- match.arg(arg, choices, several.ok = any(sapply(input.length, function(x) x > 1)))
                 if (input.class == 'factor')
-                    val <- as.factor(val)
+                    val <- factor(val, ordered = x$ordered)
             } else {
+                ## TODO: handle ordered factors
+                
                 ## standalone input can now be atomic or recursive
                 if (x$standalone) {
                     ## either a value provided in the rapport() call, or a template default, if any
@@ -581,6 +583,8 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                         stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(user.input, data.names), '"'))
 
                     val <- e$rp.data[user.input]
+                    if (!length(val))
+                        val <- NULL
                     val.length <- length(val)
                 }
             }
@@ -588,10 +592,11 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             ## class check
             check.input.class(val, input.class, input.name)
             
-            ## check length (all inputs have length)
-            check.input.value(x, val, 'length')
-            
             if (!is.null(user.input)) {
+
+                ## check length (all inputs have length)
+                check.input.value(x, val, 'length')
+
                 ## coerce val to vector if it's only one input
                 if (!x$standalone && length(user.input) == 1)
                     val <- val[, 1]
@@ -619,17 +624,17 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                                    stopifnot(all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
                            }
                        })
-
-                ## WAT?
+            }
+            
+            if (is.recursive(val)) {
                 for (t in names(val)){
                     if (rp.label(val[, t]) == 't')
                         val[, t] <- structure(val[, t], label = t, name = t)
                     else
                         val[, t] <- structure(val[, t], name = t)
                 }
-
             }
-
+            
             ## add labels
 
             ## assign stuff

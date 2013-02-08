@@ -76,9 +76,6 @@ guess.old.input.length <- function(x, input.type) {
                else
                    lim <- list(min = lim[1], max = lim[2])
            },
-           option = {
-               lim <- list(exactly = 1L)
-           },
            stopf('Unknown input type "%s"', input.type)
            )
     return (lim)
@@ -104,7 +101,7 @@ guess.old.input.type <- function(x){
 
     mandatory  <- isTRUE(grepl("^\\*", x))
     input.type <- gsub(limit.regex, "\\1", x)
-    ## this may be option input
+    ## this may be matchable input
     if (input.type == x)
         limit.text <- ''
     else
@@ -175,13 +172,14 @@ guess.old.input.type <- function(x){
                    standalone = TRUE
                    )
            },
-           ## this may be option input
+           ## this may be matchable input
            (function(){
                if (grepl(csv.regex, x))
                    list(
-                       class      = 'option',
+                       class      = 'character',
                        length     = list(exactly = 1L),
                        value      = strsplit(x, ' *, *')[[1]],
+                       matchable  = TRUE,
                        required   = FALSE,
                        standalone = TRUE
                        )

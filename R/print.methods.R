@@ -69,39 +69,45 @@ print.rp.inputs <- function(x, ...){
                 })
             ## class specific options
             cat(switch(x$class,
-                        character = {
-                            res <- c()
-                            ## nchar
-                            if (!is.null(x$nchar)) {
-                                chars <- x$nchar
-                                if (!is.null(chars$exactly))
-                                    nchar.txt <- sprintf('exactly %d character%s', chars$exactly, if (length(chars$exactly) > 1) 's' else '')
-                                else
-                                    nchar.txt <- sprintf('from %d to %d characters', chars$min, chars$max)
-                                res <- c(res, sprintf('     - nchar:\t\t%s\n', nchar.txt))
-                            }
-                            ## regexp
-                            if (!is.null(x$regexp))
-                                res <- c(res, sprintf('    - regexp:\t\t"%s"\n', x$regexp))
-                            res
-                        },
-                        ## nlevels
-                        factor = {
-                            if (!is.null(x$nlevels)) {
-                                if (!is.null(x$nlevels$exactly))
-                                    s <- sprintf('exactly %d level%s', x$nlevels$exactly, if (x$nlevels$exactly > 1) 's' else '')
-                                else
-                                    s <- sprintf('from %d to %d levels', x$nlevels$min, x$nlevels$max)
-                                sprintf('     - nlevels:\t\t%s\n', s)
-                            }
-                        },
-                        ## limits
-                        numeric = ,
-                        integer = {
-                            if (!is.null(x$limit))
-                                sprintf('     - limits:\t\t%s <= x <= %s\n', x$limit$min, x$limit$max)
-                        }
-                        ))
+                       character = {
+                           res <- c()
+                           ## nchar
+                           if (!is.null(x$nchar)) {
+                               chars <- x$nchar
+                               if (!is.null(chars$exactly))
+                                   nchar.txt <- sprintf('exactly %d character%s', chars$exactly, if (length(chars$exactly) > 1) 's' else '')
+                               else
+                                   nchar.txt <- sprintf('from %d to %d characters', chars$min, chars$max)
+                               res <- c(res, sprintf('     - nchar:\t\t%s\n', nchar.txt))
+                           }
+                           ## regexp
+                           if (!is.null(x$regexp))
+                               res <- c(res, sprintf('    - regexp:\t\t"%s"\n', x$regexp))
+                           ## matchable
+                           res <- c(res, sprintf('     - matchable:\t%s\n', x$matchable))
+                           res
+                       },
+                       ## nlevels
+                       factor = {
+                           res <- c()
+                           if (!is.null(x$nlevels)) {
+                               if (!is.null(x$nlevels$exactly))
+                                   s <- sprintf('exactly %d level%s', x$nlevels$exactly, if (x$nlevels$exactly > 1) 's' else '')
+                               else
+                                   s <- sprintf('from %d to %d levels', x$nlevels$min, x$nlevels$max)
+                               res <- c(res, sprintf('     - nlevels:\t\t%s\n', s))
+                           }
+                           ## matchable
+                           res <- c(res, sprintf('     - matchable:\t%s\n', x$matchable))
+                           res
+                       },
+                       ## limits
+                       numeric = ,
+                       integer = {
+                           if (!is.null(x$limit))
+                               sprintf('     - limits:\t\t%s <= x <= %s\n', x$limit$min, x$limit$max)
+                       }
+                       ))
         })                              # end sapply
         catn()
     }                                   # end if (length(x) == 0)
