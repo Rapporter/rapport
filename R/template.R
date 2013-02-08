@@ -4,14 +4,10 @@
 #' @param fp a character string containing a template path, a template name (for package-bundled templates only), template contents separated by newline (\code{\\n}), or a character vector with template contents.
 #' @return a character vector with template contents
 tpl.find <- function(fp){
-
     if (missing(fp))
         stop('file pointer not provided')
-
     stopifnot(is.character(fp))
-
     l <- length(fp)
-
     ## maybe it's file path?
     if (l == 1){
         ## is it URL?
@@ -41,7 +37,6 @@ tpl.find <- function(fp){
     } else {
         stop('file pointer error')      # you never know...
     }
-
     return(txt)
 }
 
@@ -62,7 +57,6 @@ tpl.find <- function(fp){
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template header contents
 tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
-
     txt <- tpl.find(fp)                 # split by newlines
 
     ## get header tag indices
@@ -107,7 +101,6 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 #' @return a character vector with template body contents
 #' @export
 tpl.body <- function(fp, htag = get.tags('header.close'), ...){
-
     txt   <- tpl.find(fp)
     h.end <- grep(htag, txt, ...)
     if (h.end == length(txt))
@@ -177,7 +170,7 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 #' Upon successful execution, \code{rp.meta}-class object is returned invisibly.
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param fields a list of named lists containing key-value pairs of field titles and corresponding regexes
-#' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains header data
+#' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains only header data and not the whole template
 #' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
 #' @return a list with template metadata
 #' @export
@@ -185,66 +178,90 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 
     header <- tpl.find(fp)
 
-    if (!isTRUE(use.header))
+    if (!use.header)
         header <- tpl.header(header)
 
-    if (isTRUE(trim.white))
-        header <- trim.space(header)
+    ## check if header is defined in YAML
+    h <- tryCatch({
+        y <- yaml.load(paste0(header, collapse = "\n"))
+        y$meta
+    }, error = function(e){
+        ## either something went bad or it's the old header (hopefully)
 
-    ## required fields
-    fld <- list(
-        list(title = 'Title'         , regex = '.+', field.length = 500),
-        list(title = 'Author'        , regex = '.+', field.length = 100),
-        list(title = 'Description'   , regex = '.+', short = 'desc'),
-        list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
-        list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
-        list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
-        list(title = 'Example'       , regex = '.+', mandatory = FALSE)
-        )
+        if (isTRUE(trim.white))
+            header <- trim.space(header)
 
-    ## no fields specified, load default fields
-    if (!is.null(fields)){
-        fld.title <- sapply(fld, function(x) x$title)
-        fields.title  <- sapply(fields, function(x) x$title)
-        fld <- c(fld, fields) # merge required fields with default/specified ones
-        if (any(fld %in% fields.title)){
-            stopf("Duplicate metadata fields: %s", p(intersect(fld.title, fields.title), "\""))
+        ## required fields
+        fld <- list(
+            list(title = 'Title'         , regex = '.+', field.length = 500),
+            list(title = 'Author'        , regex = '.+', field.length = 100),
+            list(title = 'Description'   , regex = '.+', short = 'desc'),
+            list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
+            list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
+            list(title = 'Example'       , regex = '.+', mandatory = FALSE)
+            )
+
+        ## no fields specified, load default fields
+        if (!is.null(fields)){
+            fld.title <- sapply(fld, function(x) x$title)
+            fields.title  <- sapply(fields, function(x) x$title)
+            fld <- c(fld, fields) # merge required fields with default/specified ones
+            if (any(fld %in% fields.title)) {
+                stopf("Duplicate metadata fields: %s", p(intersect(fld.title, fields.title), "\""))
+            }
         }
-    }
 
-    inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
-    spaces.ind <- grep("^([:space:]+|)$", header)
-    rm.ind     <- c(inputs.ind, spaces.ind)
+        inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
+        spaces.ind <- grep("^([:space:]+|)$", header)
+        rm.ind     <- c(inputs.ind, spaces.ind)
 
-    if (length(rm.ind) > 0)
-        h <- header[-rm.ind]
-    else
-        h <- header
+        if (length(rm.ind) > 0)
+            header <- header[-rm.ind]
 
-    l <- sapply(fld, function(x){
-        m <- grep(sprintf("^%s:", x$title), h)
-        x$x <- h[m]
-        do.call(extract_meta, x)
+        h <- sapply(fld, function(x){
+            m <- grep(sprintf("^%s:", x$title), header)
+            x$x <- header[m]
+            do.call(extract.meta, x)
+        })
+
+        ## examples
+        if (!is.null(h$example)){
+            ## select all "untagged" lines after Example: that contain rapport(<smth>) string
+            ## but it will not check if they're syntactically correct
+            ind.start <- grep('^Example:', header)
+            ind       <- adj.rle(grep("^[\t ]*rapport\\(.+\\)([\t ]*#*[[:print:]]*)?$", header))$values[[1]]
+                ind       <- ind[!ind %in% ind.start]
+            h$example <- c(h$example, header[ind])
+        }
+
+        h
     })
 
+    ## Check metadata validity (we have to do it here before we extract the meta)
+    meta.fields <- c('title', 'description', 'desc', 'author', 'email', 'packages', 'dataRequired', 'example') # TODO: add "examples" at some point
+    meta.names <- names(h)
+    if (!all(meta.names %in% meta.fields))
+        stopf("Unknown metadata field(s): %s", paste0(meta.names[!meta.names %in% meta.fields]))
+
     ## store only packages that aren't listed in dependencies
-    if (!is.null(l$packages)){
+    ## Q: do we really have to do this? shouldn't this be handled correctly in rapport?
+    if (!is.null(h$packages)){
         pkg.dep    <- strsplit(packageDescription("rapport")$Depends, "[,[:space:]]+")[[1]]
-        l$packages <- lapply(strsplit(l$packages, ','), trim.space)[[1]]
-        l$packages <- setdiff(l$packages, pkg.dep)
+        if (is.string(h$packages))
+            h$packages <- strsplit(h$packages, " *, *")[[1]]
+        h$packages <- unique(setdiff(h$packages, pkg.dep))
     }
 
-    ## examples
-    if (!is.null(l$example)){
-        ## select all "untagged" lines after Example: that contain rapport(<smth>) string
-        ## but it will not check if they're syntactically correct
-        ind.start <- grep('^Example:', header)
-        ind       <- adj.rle(grep("^[\t ]*rapport\\(.+\\)([\t ]*#*[[:print:]]*)?$", header))$values[[1]]
-            ind       <- ind[!ind %in% ind.start]
-        l$example <- c(l$example, header[ind])
+    if (!is.null(h$dataRequired)) {
+        h$dataRequired <- NULL
+        warning('dataRequired field is deprecated. You should remove it from template.')
     }
-
-    structure(l, class = 'rp.meta')
+    
+    ## change "desc" to "descriptives"
+    h$description <- h$desc
+    h$desc <- NULL
+    
+    structure(h, class = 'rp.meta')
 }
 
 
@@ -304,56 +321,47 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 #' @param use.header a logical value indicating whether the header section is provided in \code{h} argument
 #' @return a list with variable info
 #' @export
-tpl.inputs <- function(fp, use.header = TRUE){
+tpl.inputs <- function(fp, use.header = FALSE){
 
     header <- tpl.find(fp)
 
-    if (!isTRUE(use.header))
+    if (!use.header)
         header <- tpl.header(header)
 
-    inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
+    ## Try with YAML first
+    inputs <- tryCatch(yaml.load(paste0(header, collapse = "\n")), error = function(e) e)
 
-    if (length(inputs.ind) == 0)
-        return (structure(NULL, class = 'rp.inputs'))
+    ## Old-style syntax
+    if (inherits(inputs, 'error')) {
 
-    inputs.raw <- lapply(strsplit(header[inputs.ind], '|', fixed = TRUE), function(x) trim.space(x)) # "raw" as in "unchecked", split by | and trimmed for whitespace
+        inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
 
-    if (!all(sapply(inputs.raw, length) == 4))
-        stop('input definition error: missing fields')
+        if (length(inputs.ind) == 0)
+            return (structure(NULL, class = 'rp.inputs'))
 
-    chk.fn <- function(x, nms){
+        inputs.raw <- lapply(strsplit(header[inputs.ind], '|', fixed = TRUE), function(x) trim.space(x)) # "raw" as in "unchecked", split by | and trimmed for whitespace
 
-        i.name  <- x[1]
-        i.type  <- x[2]
-        i.label <- x[3]
-        i.desc  <- x[4]
+        if (!all(sapply(inputs.raw, length) == 4))
+            stop('input definition error: missing fields')
 
-        re.lbl <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
+        inputs <- lapply(inputs.raw, function(x){
+            i.name  <- x[1]
+            i.type  <- x[2]
+            i.label <- x[3]
+            i.desc  <- x[4]
 
-        ## 1st: check variable name
-        ## must begin with a letter, and can continue either with a letter or a digit, separated either by underscore or dot, e.g. 'var.90', or 'v90_alpha'.
-        if (!check.name(i.name))
-            stopf('invalid input name: "%s"', i.name)
+            c(
+                name = guess.input.name(i.name),
+                label = guess.input.label(i.label),
+                description = guess.input.description(i.desc),
+                guess.old.input.type(i.type)
+                )
+        })
 
-        ## 2nd: check/get type
-        var.type <- check.type(i.type)
+    } else
+        inputs <- lapply(inputs$inputs, guess.input)
 
-        ## 3rd: check label
-        if (nchar(i.label) < 1)
-            warningf('label string for input "%s" was not provided', i.name)
-        if (!grepl(re.lbl, i.label))
-            stopf('invalid input label: "%s"', i.type)
-
-        ## 4th: check description
-        if (nchar(i.desc) < 1)
-            warningf('description string for input "%s" was not provided', i.desc)
-        if (!grepl(re.lbl, i.desc))
-            stopf('invalid input description: "%s"', i.desc)
-
-        c(name = i.name, label = i.label, var.type, desc = i.desc)
-    }
-
-    inputs <- lapply(inputs.raw, chk.fn)
+    ## Check input validity
     structure(inputs, class = 'rp.inputs')
 }
 
@@ -386,9 +394,11 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 
     if (examples.len > 1){
         if (is.null(index)){
-            opts  <- c(n.examples, 'all')
+            opts  <- c(n.examples)
             catn('Enter example ID from the list below:')
-            catn(sprintf('\n(%s)\t%s', opts, c(examples, 'Run all examples')))
+            catn(sprintf('\n(%s)\t%s', opts, c(examples)))
+            catn('(a)\tRun all examples')
+            catn()
             i     <- readline('Template ID> ')
             index <- unique(strsplit(gsub(' +', '', i), ',')[[1]])
         }
@@ -396,12 +406,10 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
         index <- 1
     }
 
-    if (length(index) == 0){
-        message('No example selected')
+    if (length(index) == 0 || tolower(index) == 'q')
         return(invisible(NULL))
-    }
 
-    if (length(index) == 1 && index == 'all')
+    if (length(index) == 1 && tolower(index) == 'a')
         index <- n.examples
 
     old.index <- index
@@ -496,7 +504,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     b        <- tpl.body(txt)                     # template body
     e        <- new.env(parent = env)             # load/create evaluation environment
     i        <- list(...)                         # user inputs
-    data.required <- isTRUE(as.logical(meta$dataRequired)) # is data required
+    data.required <- any(sapply(inputs, function(x) !x$standalone))
     pkgs     <- meta$packages                                # required packages
     file.path <- gsub('\\', '/', file.path, fixed = TRUE)
 
@@ -508,10 +516,10 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             stopf('Following packages are required by the template, but were not loaded: %s', p(names(pk[nopkg]), wrap = '"'))
     }
 
-    ## no inputs provided
-    if (length(inputs) == 0){
+    ## template contains no inputs
+    if (length(inputs) == 0) {
         ## check if data is required
-        if (data.required){
+        if (data.required) {
             if (is.null(data))
                 stop('"data" argument is required by the template')
             else
@@ -519,166 +527,135 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         }
         ## inputs required, carry on...
     } else {
-        ## check mandatory inputs
-        input.mandatory <- sapply(inputs, function(x){
-            mand <- if (is.null(x$mandatory)) FALSE else x$mandatory
-            structure(mand, .Names = x$name) # mandatory inputs
-        })
-        input.names <- names(input.mandatory)
-        input.ok    <- input.names[input.mandatory] %in% names(i)
+        ## check required inputs (this will only check names)
+        ## this is silly!!! what if you have input = NULL?!?
+        input.required <- sapply(inputs, function(x) structure(x$required, .Names = x$name))
+        input.names    <- names(input.required)
+        input.ok       <- input.names[input.required] %in% names(i)
         ## take default inputs into account
         if (!all(input.ok))
-            stopf("you haven't provided a value for %s", p(input.names[input.mandatory], '"'))
+            stopf("you haven't provided a value for %s", p(input.names[input.required], '"'))
 
         ## data required
         if (data.required){
-
             if(is.null(data))
                 stop('"data" not provided, but is required')
-
             if (!inherits(data, c('data.frame', 'rp.data')))
                 stop('"data" should be a "data.frame" object')
-
             data.names <- names(data)          # variable names
             assign('rp.data', data, envir = e) # load data to eval environment
         }
 
         lapply(inputs, function(x){
 
-            name          <- x$name                # input name
-            input.type    <- x$type                # input type
-            input.value   <- i[[name]]             # input value (supplied by user)
-            input.len <- switch(input.type,
-                                string    = nchar(input.value),
-                                number    = input.value,
-                                boolean   = 1,
-                                option    =,
-                                character =,
-                                complex   =,
-                                factor    =,
-                                logical   =,
-                                numeric   =,
-                                variable  = length(input.value),
-                                stop('invalid input type'))
-            limit         <- x$limit               # input limits
-            input.default <- x$default             # default value (if any)
+            ## template inputs
+            input.name   <- x$name
+            input.class  <- x$class
+            input.length <- x$length
+            input.value  <- x$value
+            ## user inputs
+            user.input   <- i[[input.name]]
 
-            if (!is.null(input.value)){
-                ## check limits
-                if (input.len < limit$min || input.len > limit$max) {
-                    lims <- unlist(limit, use.names = FALSE)
-                    if (length(unique(lims)) == 1)
-                        lim.range <- lims[1]
-                    else
-                        lim.range <- paste("between", limit$min, "and", limit$max, sep = " ")
-                    len.diff <- diff(lims)
-                    limit.error.msg <- switch(input.type,
-                                              string = sprintf('string input "%s" (value: "%s") has %d character%s, and it should have %s', name, input.value, input.len, if (input.len > 1) 's' else '', lim.range),
-                                              number = sprintf('number input "%s" (value: %s) should fall in interval [%s, %s]', name, input.value, limit$min, limit$max),
-                                              boolean =,
-                                              option = sprintf('%s input "%s" allows only one input', input.type, name),
-                                              sprintf("%s input %s has %d variables and should have %d", input.type, name, input.type, lim.range)
-                                              )
-                    stop(limit.error.msg)
-                }
-            }
-
-            ## check type
-            type.fn <- switch(input.type,
-                              option    = , # CSV list of strings
-                              string    = is.string,
-                              character = is.character,
-                              complex   = is.complex,
-                              factor    = is.factor,
-                              boolean   = is.boolean,
-                              logical   = is.logical,
-                              number    = is.number,
-                              numeric   = is.numeric,
-                              variable  = is.variable,
-                              stopf('unknown type: "%s"', input.type)
-                              )
-
-            ## if any of our "custom" input types
-            ## values are not extracted from data.frame in this case
-            ## for custom types, default value is always assigned!!!
-            if (input.type %in% c('number', 'string', 'option', 'boolean')){
-
-                ## the ones specified in the template should take precedence
-                val <- if (is.null(input.value)) input.default[1] else input.value
-
-                ## check types
-                if (!is.null(val))
-                    if (!do.call(type.fn, list(val)))
-                        stopf('"%s" is not of "%s" type', val, input.type)
-
-                ## CSV input (allow multi match?)
-                if (input.type == 'option')
-                    val <- match.arg(input.value, input.default)
-
+            ## matchable inputs are kind-of special
+            if (isTRUE(x$matchable)) {
+                ## for factors, match from factor levels
+                if (input.class == 'factor')
+                    choices <- levels(input.value)
+                else
+                    choices <- input.value
+                arg <- if (is.null(user.input)) choices[1] else as.character(user.input)
+                ## value mapped to matchable input should be a variable
+                val <- match.arg(arg, choices, several.ok = any(sapply(input.length, function(x) x > 1)))
+                if (input.class == 'factor')
+                    val <- factor(val, ordered = x$ordered)
             } else {
-                ## ain't a "custom" input type, so it should be extracted from data.frame
-
-                ## check if ALL variable names exist in data
-                if (!all(input.value %in% data.names))
-                    stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(input.value, data.names), '"'))
-
-                if (is.null(input.value)){
-                    val <- NULL
+                ## TODO: handle ordered factors
+                
+                ## standalone input can now be atomic or recursive
+                if (x$standalone) {
+                    ## either a value provided in the rapport() call, or a template default, if any
+                    val <- if (is.null(user.input)) input.value else user.input
+                    val.length <- length(val)
                 } else {
+                    ## it's not standalone, so user must have provided a character string
+                    ## with names matching the ones in the data.frame
+                    if (!all(user.input %in% data.names))
+                        stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(user.input, data.names), '"'))
 
-                    val <- e$rp.data[, input.value] # variable value
-
-
-                    ## multiple variables supplied
-                    if (is.data.frame(val)){
-
-                        ## check types
-                        val.types <- sapply(val, type.fn)
-                        val.modes <- sapply(val, mode)
-                        if (!all(val.types == TRUE))
-                            stopf('error in "%s": %s should be %s! (provided: %s)', name, p(input.value[!val.types], '"'), input.type, p(val.modes[!val.types], '"'))
-
-                        ## check labels
-                        for (t in names(val)){
-                            if (rp.label(val[, t]) == 't')
-                                val[, t] <- structure(val[, t], label = t, name = t)
-                            else
-                                val[, t] <- structure(val[, t], name = t)
-                        }
-                    } else if (is.atomic(val)){
-                        ## only one variable extracted from data.frame
-
-                        ## check type
-                        val.types <- do.call(type.fn, list(val))
-                        val.modes <- mode(val)
-                        if (!val.types)
-                            stopf('error in "%s": "%s" should be %s! (provided: %s)', name, input.value, input.type, val.modes)
-
-                        ## check label
-                        if (rp.label(val) == 'val')
-                            val <- structure(val, label = input.value, name = input.value)
-                        else
-                            val <- structure(val, name = input.value)
-                    } else {
-                        stop('data extraction error') # you never know...
-                    }
+                    val <- e$rp.data[user.input]
+                    ## we use this as data.frame with 0 columns will not be NULL
+                    ## therefore the length check will not pass
+                    ## OR we can just change the check.input.value function
+                    ## and things will work like a charm
+                    if (!length(val))
+                        val <- NULL
+                    val.length <- length(val)
                 }
             }
+
+            ## class check
+            check.input.class(val, input.class, input.name)
+
+            ## check length (all inputs have length)
+            check.input.value(x, val, 'length')
+
+            if (!is.null(user.input)) {
+
+                ## coerce val to vector if it's only one input
+                if (!x$standalone && length(user.input) == 1)
+                    val <- val[, 1]
+
+                ## class-specific checks
+                switch(input.class,
+                       character = {
+                           ## nchar check
+                           check.input.value(x, val, 'nchar')
+                           ## regexp check
+                           if (!is.null(x$regexp)) {
+                               if (!all(grepl(x$regexp, val)))
+                                   stopf('%s input "%s" value is not matched with provided regular expression "%s"', input.name, val, x$regexp)
+                           }
+                       },
+                       factor = {
+                           check.input.value(x, val, 'nlevels')
+                       },
+                       integer = ,
+                       numeric = {
+                           if (!is.null(x$limit)) {
+                               if (is.variable(val))
+                                   stopifnot(all(val >= x$limit$min) && all(val <= x$limit$max))
+                               else
+                                   stopifnot(all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
+                           }
+                       })
+            }
+            
+            if (is.recursive(val)) {
+                for (t in names(val)){
+                    if (rp.label(val[, t]) == 't')
+                        val[, t] <- structure(val[, t], label = t, name = t)
+                    else
+                        val[, t] <- structure(val[, t], name = t)
+                }
+            }
+            
+            ## add labels
 
             ## assign stuff
-            assign(name, val, envir = e)                             # value
-            assign(sprintf('%s.iname', name), name, envir = e)       # input name (the stuff)
-            assign(sprintf('%s.ilen', name), input.len, envir = e)   # input length
-            assign(sprintf('%s.ilabel', name), x$label, envir = e)   # input label
-            assign(sprintf('%s.idesc', name), x$desc, envir = e)     # input description
-            assign(sprintf('%s.name', name), input.value, envir = e) # variable name(s)
-            assign(sprintf('%s.len', name), length(val), envir = e)  # variable length
+            assign(input.name, val, envir = e)                                    # value
+            assign(sprintf('%s.iname', input.name), input.name, envir = e)        # input name
+            assign(sprintf('%s.ilen', input.name), length(user.input), envir = e) # input length
+            assign(sprintf('%s.ilabel', input.name), x$label, envir = e)          # input label
+            assign(sprintf('%s.idesc', input.name), x$desc, envir = e)            # input description
+            assign(sprintf('%s.name', input.name), user.input, envir = e)         # variable name(s)
+            assign(sprintf('%s.len', input.name), length(val), envir = e)         # variable length
+            ## currently we support only data.frame and atomic vectos
             if (is.data.frame(val))
-                assign(sprintf('%s.label', name), sapply(val, rp.label), envir = e) # variable labels
+                assign(sprintf('%s.label', input.name), sapply(val, rp.label), envir = e) # variable labels
             else if (is.atomic(val))
-                assign(sprintf('%s.label', name), rp.label(val), envir = e) # variable label
+                assign(sprintf('%s.label', input.name), rp.label(val), envir = e) # variable label
             else
-                stopf('"%s" is not a "data.frame" or an atomic vector', name) # you never know...
+                stopf('"%s" is not a "data.frame" or an atomic vector', input.name) # you never know...
         })
     }
 

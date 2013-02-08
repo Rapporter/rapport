@@ -7,7 +7,7 @@
 
     ## tpl username
     options('tpl.user'  = {
-        if (is.empty(getOption('tpl.user'), TRUE, leading = TRUE))
+        if (is.empty(getOption('tpl.user'), TRUE, what = 'both'))
             'Anonymous'
         else
             getOption('tpl.user')

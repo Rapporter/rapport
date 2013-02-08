@@ -1,15 +1,81 @@
 <!--head
-Title:          Example template
-Author:         Gergely Daróczi
-Description:    This template demonstrates the basic features of rapport. We all hope you will like it!
-Packages:       lattice,ggplot2,xtable
-Data required:  TRUE
-Example:        rapport("example", ius2008, v='age')
-                rapport("example", ius2008, v='gender', pacman=FALSE)
-                rapport("example", ius2008, v='age', s='FOO BAR')
-v       | *variable           | Variable    | A variable
-pacman  | TRUE                | Pacman      | Show Pacman in the results?
-s       | string=Bye!         | A string    | Any character value to be printed at the end of the report
+meta:
+  title: Example template
+  author: Gergely Daróczi, Aleksandar Blagotić
+  desc: This template demonstrates the basic features of rapport. We all hope you will like it!
+  email: ~
+  packages:
+  - lattice
+  - ggplot2
+  - xtable
+  dataRequired: 'TRUE'
+  example:
+  - rapport("example", ius2008, v='age')
+  - rapport("example", ius2008, v='gender', pacman=FALSE)
+  - rapport("example", ius2008, v='age', s='FOO BAR')
+inputs:
+- name: v
+  label: Variable
+  type: variable
+  limit:
+    min: 1
+    max: 1
+  default: ~
+  mandatory: TRUE
+  desc: A variable
+- name: pacman
+  label: Pacman
+  type: boolean
+  limit:
+    min: 1.0
+    max: 1.0
+  default: TRUE
+  mandatory: FALSE
+  desc: Show Pacman in the results?
+- name: s
+  label: A string
+  type: string
+  limit:
+    min: 0
+    max: 256
+  default: Bye!
+  mandatory: FALSE
+  desc: Any character value to be printed at the end of the report
+- name: i
+  label: Integer input
+  type: number
+  limit:
+    min: 0
+    max: 100
+  default: 100
+  mandatory: FALSE
+  description: Yes, we provide means to define an integer inputs as well
+- name: o
+  label: Option input
+  type: option
+  limit:
+    min: 1
+    max: 100
+  default:
+  - fee
+  - fi
+  - foo
+  - fam
+  multiple: TRUE
+  mandatory: FALSE
+  description: Option input
+- name: multi
+  label: Multiple string
+  type: string
+  multiple: TRUE
+  limit:
+    min: 1
+    max: 100
+  default:
+  - hello
+  - world
+  mandatory: FALSE
+  description: Extended string input
 head-->
 
 # Hello, world!
@@ -83,6 +149,14 @@ par(mfrow = c(2, 1))
 +hist(mtcars$wt)
 +hist(mtcars$hp)
 %>
+
+### Multiple options
+
+The _option_ input matched following values: <%= o %>. Yes, with new YAML input syntax you can match multiple option inputs.
+
+### List input
+
+_List input_ is another new thingy in rapport. You can now specify your own list of values and munge them afterwards, like this: <%= multi %>
 
 ### H3 tag
 
