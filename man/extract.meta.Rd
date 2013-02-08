@@ -1,8 +1,8 @@
-\name{extract_meta}
-\alias{extract_meta}
+\name{extract.meta}
+\alias{extract.meta}
 \title{Extract Template Metadata}
 \usage{
-  extract_meta(x, title, regex, short = NULL,
+  extract.meta(x, title, regex, short = NULL,
     trim.white = TRUE, mandatory = TRUE,
     default.value = NULL, field.length = 1000, ...)
 }
@@ -44,11 +44,11 @@
 }
 \examples{
 \dontrun{
-    rapport:::extract_meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+    rapport:::extract.meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
     ## $name
     ## [1] "John Smith"
 
-    rapport:::extract_meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
+    rapport:::extract.meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
     ## $name
     ## [1] "John"
 }

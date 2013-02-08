@@ -2,7 +2,7 @@
 \alias{tpl.inputs}
 \title{Template Inputs}
 \usage{
-  tpl.inputs(fp, use.header = TRUE)
+  tpl.inputs(fp, use.header = FALSE)
 }
 \arguments{
   \item{fp}{a template file pointer (see

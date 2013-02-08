@@ -2,10 +2,12 @@
 \alias{is.number}
 \title{Numbers}
 \usage{
-  is.number(x)
+  is.number(x, integer = FALSE)
 }
 \arguments{
   \item{x}{an object to check}
+
+  \item{integer}{logical: check if number is integer}
 }
 \value{
   a logical value indicating whether provided object is a

@@ -2,22 +2,22 @@
 
 context('Input limit specifications')
 
-test_that('should provide correct limits', {
+test_that('should have correct limits', {
     expect_that(rapport:::check.limit(""), equals(list(min = 1, max = 1)))
     expect_that(rapport:::check.limit("[]"), equals(list(min = 1, max = 1)))
     expect_that(rapport:::check.limit("[1,20]"), equals(list(min = 1, max = 20)))
     expect_that(rapport:::check.limit("[20]"), equals(list(min = 20, max = 20)))
     expect_that(rapport:::check.limit("[0,1]", "number"), equals(list(min = 0, max = 1)))
-    expect_that(rapport:::check.limit("-100,100", "number"), equals(list(min = -100, max = 100)))
-    expect_that(rapport:::check.limit("-2.58, 2.58", "number"), equals(list(min = -2.58, max = 2.58)))
+    expect_that(rapport:::check.limit("[-100,100]", "number"), equals(list(min = -100, max = 100)))
+    expect_that(rapport:::check.limit("[-2.58, 2.58]", "number"), equals(list(min = -2.58, max = 2.58)))
 })
 
 test_that('should throw error about invalid limit definition', {
-    expect_that(rapport:::check.limit(","), throws_error('invalid limit definition'))
-    expect_that(rapport:::check.limit("[,]"), throws_error('invalid limit definition'))
-    expect_that(rapport:::check.limit("[2,]"), throws_error('invalid limit definition'))
-    expect_that(rapport:::check.limit("[,2]"), throws_error('invalid limit definition'))
-    expect_that(rapport:::check.limit("[2,2,2]"), throws_error('invalid limit definition'))
+    expect_that(rapport:::check.limit(","), throws_error('invalid limit string'))
+    expect_that(rapport:::check.limit("[,]"), throws_error('invalid limit string'))
+    expect_that(rapport:::check.limit("[2,]"), throws_error('invalid limit string'))
+    expect_that(rapport:::check.limit("[,2]"), throws_error('invalid limit string'))
+    expect_that(rapport:::check.limit("[2,2,2]"), throws_error('invalid limit string'))
 })
 
 test_that('should throw error about zero limits', {
