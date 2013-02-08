@@ -583,6 +583,10 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                         stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(user.input, data.names), '"'))
 
                     val <- e$rp.data[user.input]
+                    ## we use this as data.frame with 0 columns will not be NULL
+                    ## therefore the length check will not pass
+                    ## OR we can just change the check.input.value function
+                    ## and things will work like a charm
                     if (!length(val))
                         val <- NULL
                     val.length <- length(val)
@@ -591,11 +595,11 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
             ## class check
             check.input.class(val, input.class, input.name)
-            
-            if (!is.null(user.input)) {
 
-                ## check length (all inputs have length)
-                check.input.value(x, val, 'length')
+            ## check length (all inputs have length)
+            check.input.value(x, val, 'length')
+
+            if (!is.null(user.input)) {
 
                 ## coerce val to vector if it's only one input
                 if (!x$standalone && length(user.input) == 1)
