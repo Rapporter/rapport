@@ -1,3 +1,5 @@
+## test_file("inst/tests/test-inputs-deprecated.R")
+
 context('Deprecated input specifications')
 
 test_that('should have length 1', {

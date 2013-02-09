@@ -1,4 +1,4 @@
-## Utils
+## test_file("inst/tests/test-utils.R")
 
 context('trim.spaces')
 

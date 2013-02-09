@@ -1,4 +1,3 @@
-## rapport internals helpers
+## test_file("inst/tests/test-rp_helpers.R")
 
-context("rapport internals helpers")
-
+context("Rapport internals helpers")

@@ -2,10 +2,12 @@
 \alias{tpl.renew}
 \title{Renew deprecated template}
 \usage{
-  tpl.renew(fp, output = NULL)
+  tpl.renew(fp, file = NULL)
 }
 \arguments{
   \item{fp}{}
+
+  \item{file}{}
 }
 \description{
   Convert old-style template to new-style one (what we

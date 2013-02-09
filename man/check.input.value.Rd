@@ -3,7 +3,7 @@
 \title{Check input value}
 \usage{
   check.input.value(input, value = NULL,
-    attribute.name = c("length", "nchar", "nlevels"))
+    attribute.name = c("length", "nchar", "nlevels", "limit"))
 }
 \arguments{
   \item{input}{}
