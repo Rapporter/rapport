@@ -4,7 +4,7 @@ templates <- tpl.list()
 
 context('rapport')
 
-# run all examples
+## run all examples
 for (template in templates) {
     test_that(template, {
         for (example in tpl.info(template)$meta$example) {

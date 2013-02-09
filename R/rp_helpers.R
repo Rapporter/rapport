@@ -392,13 +392,18 @@ extract.meta <- function(x, title, regex, short = NULL, trim.white = TRUE, manda
 
 #' Package Templates
 #'
-#' Lists all templates bundled with current package build.
+#' Lists all templates bundled with current package build. By default, it will search for all \code{.tpl} files in current directory, path specified in \code{tpl.paths} option and package library path.
 #' @param ... additional parameters for \code{\link{dir}} function
 #' @return a character vector with template files
 #' @export
 tpl.list <- function(...){
-
-    dir(c('./', getOption('tpl.paths'), system.file('templates', package = 'rapport')), pattern = '^.+\\.tpl$', ...)
+    mc <- match.call()
+    if (is.null(mc$path))
+        mc$path <- c('./', getOption('tpl.paths'), system.file('templates', package = 'rapport'))
+    if (is.null(mc$pattern))
+        mc$pattern <- '^.+\\.tpl$'
+    mc[[1]] <- as.symbol('dir')
+    eval(mc)
 }
 
 

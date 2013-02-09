@@ -1,1 +1,1 @@
-## Inputs test (current implementation)
+## Inputs test (YAML implementation)

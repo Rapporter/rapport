@@ -1,44 +1,15 @@
 <!--head
-meta:
-  title: ANOVA Template
-  author: Aleksandar Blagotić
-  email: ~
-  packages: nortest
-  dataRequired: 'TRUE'
-  example:
-  - 'rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way'
-  - 'rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way'
-  description: An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific
-    statistics.
-inputs:
-- name: resp
-  label: Response variable
-  description: Dependent (response) variable
-  class: numeric
-  length:
-    exactly: 1
-  value: ~
-  required: TRUE
-  standalone: FALSE
-- name: fac
-  label: Factor variables
-  description: Independent variables (factors)
-  class: factor
-  length:
-    from: 1
-    to: 2
-  value: ~
-  required: TRUE
-  standalone: FALSE
-- name: fac.intr
-  label: Factor interaction
-  description: Include factor interaction
-  class: logical
-  length:
-    exactly: 1
-  value: TRUE
-  required: FALSE
-  standalone: TRUE
+Title:        ANOVA Template
+Author:       Aleksandar Blagotić
+Description:  An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.
+Packages:     nortest
+Data required: TRUE
+Example:      rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way
+              rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way
+
+resp     | *numeric     | Response variable  | Dependent (response) variable
+fac      | *factor[1,2] | Factor variables   | Independent variables (factors)
+fac.intr | TRUE         | Factor interaction | Include factor interaction
 head-->
 <%=
 d <- structure(data.frame(resp, fac), .Names = c(resp.iname, fac.name))

@@ -257,8 +257,12 @@ guess.input <- function(input) {
 
     ## matchable
     matchable <- input$matchable <- isTRUE(as.logical(input$matchable))
+    ## only avaialable for "character" and "factor" class inputs
     if (matchable && !cls %in% c('character', 'factor'))
         stop('"matchable" attribute only available for "character" and "factor" inputs')
+    ## matchable inputs should always contain a default value!!!
+    if (matchable && length(value) == 0)
+        stopf('"matchable" input "%s" must contain a value', name)
 
     switch(cls,
            any       = {},
@@ -319,7 +323,7 @@ guess.input <- function(input) {
 #' @param input 
 #' @param value 
 #' @param attribute.name 
-check.input.value <- function(input, value = NULL, attribute.name = c('length', 'nchar', 'nlevels')) {
+check.input.value <- function(input, value = NULL, attribute.name = c('length', 'nchar', 'nlevels', 'limit')) {
     if (missing(input))
         stop('input definition not provided')
     val <- if (is.null(value)) input$value else value
@@ -348,15 +352,35 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
                        val.len <- nlevels(val)
                    else
                        val.len <- sapply(val, nlevels)
+               },
+               limit = {
+                   a <- 'value'
+                   val.len <- val
                })
-        
-        ## check if value is within length interval
-        if (is.null(len$exactly))
-            len.ok <- all(val.len >= len$min && val.len <= len$max)
-        else
-            len.ok <- all(val.len == len$exactly)
+
+        ## matchables should be checked to see if they contain less options then provided in limits
+        if (isTRUE(input$matchable)) {
+            if (is.null(len$exactly)) {
+                len.ok  <- all(val.len >= len$min)
+                err.len <- len$min
+            } else {
+                len.ok  <- all(val.len >= len$exactly)
+                err.len <- len$exactly
+            }
+            err.msg <- sprintf('matchable %s input "%s" should have at least %d inputs (and it has %d)', input$class, input$name, err.len, val.len)
+            ## non-matchables
+        } else {
+            ## check if value is within length interval
+            if (is.null(len$exactly)) {
+                len.ok <- all(val.len >= len$min && val.len <= len$max)
+                err.msg <- sprintf('%s input "%s" %s attribute should fall between %s and %s (and it\'s %s)', input$class, input$name, a, len$min, len$max, val.len)
+            } else {
+                len.ok <- all(val.len == len$exactly)
+                err.msg <- sprintf('%s input "%s" %s attribute should be %s (and it\'s %s)', input$class, input$name, a, len$exactly, val.len)
+            }
+        }
         if (!len.ok)
-            stopf('incorrect %s for "%s" input', a, input$name)
+            stop(err.msg)
     }
 }
 

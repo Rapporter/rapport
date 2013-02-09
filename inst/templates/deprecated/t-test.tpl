@@ -1,88 +1,19 @@
 <!--head
-meta:
-  title: t-test Template
-  author: Aleksandar Blagotić
-  email: ~
-  packages: nortest
-  example:
-  - rapport("t-test", ius2008, x = "leisure", y = "gender")
-  - rapport("t-test", ius2008, x = "leisure", mu = 3.2)
-  description: A t-test report with table of descriptives, diagnostic tests and t-test
-    specific statistics.
-inputs:
-- name: x
-  label: X variable
-  description: Dependent (response) variable
-  class: numeric
-  length:
-    exactly: 1
-  value: ~
-  required: TRUE
-  standalone: FALSE
-- name: y
-  label: Y variable
-  description: Independent variable (factor, or another numeric)
-  class: any
-  length:
-    exactly: 1
-  value: ~
-  required: FALSE
-  standalone: FALSE
-- name: alter
-  label: Alternative hypothesis
-  description: Whether two-sided, greater or less variant will be applied
-  class: character
-  length:
-    exactly: 1
-  value:
-  - two.sided
-  - less
-  - greater
-  matchable: TRUE
-  required: FALSE
-  standalone: TRUE
-- name: mu
-  label: Mean value
-  description: Mean value for one-sample t-test
-  class: numeric
-  length:
-    exactly: 1
-  value: ~
-  limit:
-    min: -Inf
-    max: Inf
-  required: FALSE
-  standalone: TRUE
-- name: paired
-  label: Paired t-test
-  description: Carry out paired t-test or not
-  class: logical
-  length:
-    exactly: 1
-  value: FALSE
-  required: FALSE
-  standalone: TRUE
-- name: var.equal
-  label: Variance equality
-  description: 'Equal variances assumed: choose automatically or not'
-  class: logical
-  length:
-    exactly: 1
-  value: FALSE
-  required: FALSE
-  standalone: TRUE
-- name: ci.level
-  label: Confidence interval
-  description: Confidence interval level
-  class: numeric
-  length:
-    exactly: 1
-  value: 0.95
-  limit:
-    min: 0.0
-    max: 1.0
-  required: FALSE
-  standalone: TRUE
+Title:          t-test Template
+Author:         Aleksandar Blagotić
+Description:    A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
+Packages:       nortest
+Data required:  TRUE
+Example:        rapport("t-test", ius2008, x = "leisure", y = "gender")
+                rapport("t-test", ius2008, x = "leisure", mu = 3.2)
+
+x         | *numeric          | X variable          | Dependent (response) variable
+y         | variable          | Y variable          | Independent variable (factor, or another numeric)
+alter     | two.sided,less,greater | Alternative hypothesis | Whether two-sided, greater or less variant will be applied
+mu        | number            | Mean value          | Mean value for one-sample t-test
+paired    | FALSE             | Paired t-test       | Carry out paired t-test or not
+var.equal | FALSE             | Variance equality   | Equal variances assumed: choose automatically or not
+ci.level  | number[0,1]=0.95  | Confidence interval | Confidence interval level
 head-->
 <%=
 

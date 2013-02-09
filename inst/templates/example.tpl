@@ -1,15 +1,48 @@
 <!--head
-Title:          Example template
-Author:         Gergely Daróczi
-Description:    This template demonstrates the basic features of rapport. We all hope you will like it!
-Packages:       lattice,ggplot2,xtable
-Data required:  TRUE
-Example:        rapport("example", ius2008, v='age')
-                rapport("example", ius2008, v='gender', pacman=FALSE)
-                rapport("example", ius2008, v='age', s='FOO BAR')
-v       | *variable           | Variable    | A variable
-pacman  | TRUE                | Pacman      | Show Pacman in the results?
-s       | string=Bye!         | A string    | Any character value to be printed at the end of the report
+meta:
+  title: Example template
+  author: Gergely Daróczi
+  email: ~
+  packages:
+  - ggplot2
+  - xtable
+  example:
+  - rapport("example", ius2008, v='age')
+  - rapport("example", ius2008, v='gender', pacman=FALSE)
+  - rapport("example", ius2008, v='age', s='FOO BAR')
+  description: This template demonstrates the basic features of rapport. We all hope
+    you will like it!
+inputs:
+- name: v
+  label: Variable
+  description: A variable
+  class: any
+  length:
+    exactly: 1
+  value: ~
+  required: TRUE
+  standalone: FALSE
+- name: pacman
+  label: Pacman
+  description: Show Pacman in the results?
+  class: logical
+  length:
+    exactly: 1
+  value: TRUE
+  required: FALSE
+  standalone: TRUE
+- name: s
+  label: A string
+  description: Any character value to be printed at the end of the report
+  class: character
+  length:
+    exactly: 1.0
+  value: Bye!
+  nchar:
+    min: 1
+    max: 256
+  required: FALSE
+  standalone: TRUE
 head-->
 
 # Hello, world!

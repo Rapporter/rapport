@@ -1,48 +1,13 @@
 <!--head
-meta:
-  title: Generate beta distribution
-  author: Rapporter Team (@rapporter)
-  email: ~
-  packages: nortest
-  example: ~
-  description: Random generation for the Beta distribution with parameters.
-inputs:
-- name: n
-  label: Observations
-  description: Number of observations
-  class: numeric
-  length:
-    exactly: 1
-  value: 100.0
-  limit:
-    min: 1.0
-    max: Inf
-  required: TRUE
-  standalone: TRUE
-- name: shape1
-  label: Alpha
-  description: First parameter of the Beta distribution
-  class: numeric
-  length:
-    exactly: 1
-  value: 0.1
-  limit:
-    min: 0.0
-    max: 100.0
-  required: TRUE
-  standalone: TRUE
-- name: shape2
-  label: Beta
-  description: Second parameter of the Beta distribution
-  class: numeric
-  length:
-    exactly: 1
-  value: 0.1
-  limit:
-    min: 0.0
-    max: 100.0
-  required: TRUE
-  standalone: TRUE
+Title: Generate beta distribution
+Description: Random generation for the Beta distribution with parameters.
+Author: Rapporter Team (@rapporter)
+Packages: nortest
+Data required: FALSE
+
+n | *number[1,Inf]=100 | Observations | Number of observations
+shape1 | *number[0,100]=0.1 | Alpha | First parameter of the Beta distribution
+shape2 | *number[0,100]=0.1 | Beta | Second parameter of the Beta distribution
 head-->
 # Histogram
 

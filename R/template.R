@@ -563,7 +563,8 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                     choices <- levels(input.value)
                 else
                     choices <- input.value
-                arg <- if (is.null(user.input)) choices[1] else as.character(user.input)
+                ## matchable input values should have appropriate default length
+                arg <- if (is.null(user.input)) choices[1:(if (is.null(x$length$exactly)) x$length$min else x$length$exactly)] else as.character(user.input)
                 ## value mapped to matchable input should be a variable
                 val <- match.arg(arg, choices, several.ok = any(sapply(input.length, function(x) x > 1)))
                 if (input.class == 'factor')
@@ -622,14 +623,18 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                        integer = ,
                        numeric = {
                            if (!is.null(x$limit)) {
+                               ## check limits
                                if (is.variable(val))
-                                   stopifnot(all(val >= x$limit$min) && all(val <= x$limit$max))
-                               else
-                                   stopifnot(all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
+                                   check.input.value(x, val, 'limit')
+                               else {
+                                   if (!all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
+                                       stopf('all values in %s input "%s" should fall between %s and %s', x$class, x$name, x$limit$min, x$limit$max)
+                               }
                            }
                        })
             }
             
+            ## add labels ()
             if (is.recursive(val)) {
                 for (t in names(val)){
                     if (rp.label(val[, t]) == 't')
@@ -639,7 +644,6 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                 }
             }
             
-            ## add labels
 
             ## assign stuff
             assign(input.name, val, envir = e)                                    # value

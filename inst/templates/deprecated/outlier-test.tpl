@@ -1,61 +1,19 @@
 <!--head
-meta:
-  title: Outlier tests
-  author: Gergely Daróczi, Dániel Nagy
-  email: gergely@snowl.net
-  packages: outliers
-  example:
-  - rapport('outlier-test', data=ius2008, var='edu')
-  - rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE)
-  - rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALSE,
-    grubb=FALSE, dixon=FALSE)
-  description: This template will check if provided variable has any outliers.
-inputs:
-- name: var
-  label: Variable
-  description: Numerical variable
-  class: numeric
-  length:
-    exactly: 1
-  value: ~
-  required: TRUE
-  standalone: FALSE
-- name: lund.res
-  label: Residuals
-  description: Return Lund's residuals?
-  class: logical
-  length:
-    exactly: 1
-  value: FALSE
-  required: FALSE
-  standalone: TRUE
-- name: references
-  label: References
-  description: Print references?
-  class: logical
-  length:
-    exactly: 1
-  value: TRUE
-  required: FALSE
-  standalone: TRUE
-- name: grubb
-  label: Grubb's test
-  description: Show Grubb's test?
-  class: logical
-  length:
-    exactly: 1
-  value: TRUE
-  required: FALSE
-  standalone: TRUE
-- name: dixon
-  label: Dixon's test
-  description: Show Dixon's test?
-  class: logical
-  length:
-    exactly: 1
-  value: TRUE
-  required: FALSE
-  standalone: TRUE
+Title:          Outlier tests
+Author:         Gergely Daróczi, Dániel Nagy
+Email:          gergely@snowl.net
+Description:    This template will check if provided variable has any outliers.
+Packages:       outliers
+Data required:  TRUE
+Example:        rapport('outlier-test', data=ius2008, var='edu')
+                rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE)
+                rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALSE, grubb=FALSE, dixon=FALSE)
+
+var             | *numeric | Variable        | Numerical variable
+lund.res        | FALSE    | Residuals       | Return Lund's residuals?
+references      | TRUE     | References      | Print references?
+grubb           | TRUE     | Grubb's test    | Show Grubb's test?
+dixon           | TRUE     | Dixon's test    | Show Dixon's test?
 head-->
 
 # Introduction
