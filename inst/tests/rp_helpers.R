@@ -1,2 +1,0 @@
-## rapport internals helpers
-

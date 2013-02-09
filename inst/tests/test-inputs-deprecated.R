@@ -41,9 +41,6 @@ test_that('should throw error about decimal and/or less than X limits', {
     expect_that(rapport:::guess.old.input.length("[-2,1]", "string"), throws_error('decimal and/or negative limit values are not allowed for string inputs'))
 })
 
-
-context('Input type specifications')
-
 test_that('should provide correct input definition', {
     expect_that(rapport:::guess.old.input.type("character"), equals(list(class = 'character', length = list(exactly = 1), value = NULL, required = FALSE, standalone = FALSE)))
     expect_that(rapport:::guess.old.input.type("complex"), equals(list(class = 'complex', length = list(exactly = 1), value = NULL, required = FALSE, standalone = FALSE)))

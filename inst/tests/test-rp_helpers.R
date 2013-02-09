@@ -1,15 +1,4 @@
-context('Input type specifications')
+## rapport internals helpers
 
-test_that('should provide correct input definition', {
-    expect_that(rapport:::check.type("character"), equals(list(type = 'character', limit = list(min = 1, max= 1), default = NULL, mandatory = FALSE)))
-    expect_that(rapport:::check.type("complex"), equals(list(type = 'complex', limit = list(min = 1, max= 1), default = NULL, mandatory = FALSE)))
-    expect_that(rapport:::check.type("factor"), equals(list(type = 'factor', limit = list(min = 1, max= 1), default = NULL, mandatory = FALSE)))
-    expect_that(rapport:::check.type("logical"), equals(list(type = 'logical', limit = list(min = 1, max= 1), default = NULL, mandatory = FALSE)))
-    expect_that(rapport:::check.type("numeric"), equals(list(type = 'numeric', limit = list(min = 1, max= 1), default = NULL, mandatory = FALSE)))
-    expect_that(rapport:::check.type("variable"), equals(list(type = 'variable', limit = list(min = 1, max= 1), default = NULL, mandatory = FALSE)))
-    expect_that(rapport:::check.type("TRUE"), equals(list(type = 'boolean', limit = list(min = 1, max= 1), default = TRUE, mandatory = FALSE)))
-    expect_that(rapport:::check.type("FALSE"), equals(list(type = 'boolean', limit = list(min = 1, max= 1), default = FALSE, mandatory = FALSE)))
-    expect_that(rapport:::check.type("number"), equals(list(type = 'number', limit = list(min = -Inf, max= Inf), default = NULL, mandatory = FALSE)))
-    expect_that(rapport:::check.type("string"), equals(list(type = 'string', limit = list(min = 0, max= 256), default = NULL, mandatory = FALSE)))
-    expect_that(rapport:::check.type("fee, fi, foo, fam"), equals(list(type = 'option', limit = list(min = 1, max= 1), default = c("fee", "fi", "foo", "fam"), mandatory = FALSE)))
-})
+context("rapport internals helpers")
+
