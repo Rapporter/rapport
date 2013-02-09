@@ -333,7 +333,6 @@ tpl.inputs <- function(fp, use.header = FALSE){
 
     ## Old-style syntax
     if (inherits(inputs, 'error')) {
-
         inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
 
         if (length(inputs.ind) == 0)
@@ -349,7 +348,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
             i.type  <- x[2]
             i.label <- x[3]
             i.desc  <- x[4]
-
+            
             c(
                 name = guess.input.name(i.name),
                 label = guess.input.label(i.label),
@@ -357,11 +356,10 @@ tpl.inputs <- function(fp, use.header = FALSE){
                 guess.old.input.type(i.type)
                 )
         })
-
+        warning("Oh, no! This template has outdated input definition! You can update it by running `tpl.renew`.")
     } else
         inputs <- lapply(inputs$inputs, guess.input)
 
-    ## Check input validity
     structure(inputs, class = 'rp.inputs')
 }
 

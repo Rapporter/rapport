@@ -46,10 +46,10 @@ guess.old.input.length <- function(x, input.type) {
                if (len == 0)
                    lim <- list(exactly = 1L)
                else if (len == 1)
-                   lim <- list(exactly = 1L)
+                   lim <- list(exactly = as.integer(lim))
                else
                    if (length(unique(lim)) == 1)
-                       lim <- list(exactly = lim[1])
+                       lim <- list(exactly = as.integer(lim[1]))
                    else
                        lim <- list(min = as.integer(lim[1]), max = as.integer(lim[2]))
            },
@@ -63,7 +63,7 @@ guess.old.input.length <- function(x, input.type) {
                    lim <- list(min = 1L, max = 256L)
                ## only one limit = exactly
                else if (len == 1)
-                   lim <- list(exactly = as.integer(len))
+                   lim <- list(exactly = as.integer(lim))
                else
                    lim <- list(min = as.integer(lim[1]), max = as.integer(lim[2]))
            },
