@@ -1,6 +1,6 @@
 ## test_file("inst/tests/test-rapport.R")
 
-context("Bundled template examples validity")
+context("Bundled template examples")
 
 for (template in tpl.list(path = system.file("templates", package = "rapport"), full.names = TRUE)) {
     test_that(template, {
@@ -10,7 +10,7 @@ for (template in tpl.list(path = system.file("templates", package = "rapport"), 
 }
 
 
-context("Bundled deprecated template examples validity")
+context("Bundled deprecated template examples")
 
 for (template in tpl.list(path = system.file("templates/deprecated", package = "rapport"), full.names = TRUE)) {
     test_that(template, {

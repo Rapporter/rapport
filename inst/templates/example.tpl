@@ -2,7 +2,6 @@
 meta:
   title: Example template
   author: Gergely Daróczi
-  email: ~
   packages:
   - ggplot2
   - xtable

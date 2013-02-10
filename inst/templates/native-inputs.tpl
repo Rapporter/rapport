@@ -3,7 +3,6 @@ meta:
   title: Native inputs
   description: Example template that illustrates implementation of new "native" inputs
   author: Aleksandar Blagotić
-  dataRequired: TRUE
 inputs:
 - name: c
   class: character

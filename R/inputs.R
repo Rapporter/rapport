@@ -235,18 +235,13 @@ guess.input <- function(input) {
         standalone  <- isTRUE(as.logical(input$standalone))
     input$standalone <- standalone
 
-    ## ordered (factors only)
-    if (!is.null(input$ordered) && cls != 'factor')
-        stop('"ordered" attribute available only for "factor" inputs')
-    ordered <- input$ordered <- isTRUE(as.logical(input$ordered))
-    
     ## check value class/length
     if (!is.null(value)) {
         if (!standalone)
             stopf('"value" attribute assigned to dataset input "%s"', name)
         ## coerce factor values
         if (cls == 'factor'){
-            value <- input$value <- as.factor(value, ordered = ordered)
+            value <- input$value <- as.factor(value)
         } else {
             ## length (don't check for options, do that in rapport() call)
             check.input.value(input, attribute.name = 'length')

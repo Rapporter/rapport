@@ -165,7 +165,7 @@ guess.old.input.type <- function(x){
 
                list(
                    class      = 'character',
-                   length     = list(exactly = 1),
+                   length     = list(exactly = 1L),
                    value      = default,
                    nchar      = chars,
                    required   = mandatory,
@@ -197,7 +197,7 @@ guess.old.input.type <- function(x){
 #' @param file 
 #' @export 
 tpl.renew <- function(fp, file = NULL) {
-    h <- tpl.info(fp)                   #header
+    h <- suppressWarnings(tpl.info(fp)) #header
     b <- tpl.body(fp)                   #body
     new <- strsplit(as.yaml(h), '\n')[[1]]
     tpl <- c('<!--head', new, 'head-->', b)

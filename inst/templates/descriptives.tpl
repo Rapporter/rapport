@@ -3,7 +3,6 @@ meta:
   title: Descriptive statistics
   author: Gergely Daróczi
   email: gergely@snowl.net
-  packages: ~
   example:
   - rapport('descriptives', data=ius2008, var='gender')
   - rapport('descriptives', data=ius2008, var='age')

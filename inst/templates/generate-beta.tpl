@@ -2,9 +2,7 @@
 meta:
   title: Generate beta distribution
   author: Rapporter Team (@rapporter)
-  email: ~
   packages: nortest
-  example: ~
   description: Random generation for the Beta distribution with parameters.
 inputs:
 - name: n

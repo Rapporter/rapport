@@ -566,10 +566,8 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                 ## value mapped to matchable input should be a variable
                 val <- match.arg(arg, choices, several.ok = any(sapply(input.length, function(x) x > 1)))
                 if (input.class == 'factor')
-                    val <- factor(val, ordered = x$ordered)
+                    val <- as.factor(val)
             } else {
-                ## TODO: handle ordered factors
-                
                 ## standalone input can now be atomic or recursive
                 if (x$standalone) {
                     ## either a value provided in the rapport() call, or a template default, if any

@@ -3,7 +3,6 @@ meta:
   title: Correlations
   author: Daróczi Gergely, Nagy Dániel
   email: gergely@snowl.net
-  packages: ~
   example:
   - rapport('correlations', data=ius2008, vars=c('age', 'edu'))
   - rapport('correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
