@@ -344,16 +344,21 @@ tpl.inputs <- function(fp, use.header = FALSE){
             stop('input definition error: missing fields')
 
         inputs <- lapply(inputs.raw, function(x){
-            i.name  <- x[1]
-            i.type  <- x[2]
-            i.label <- x[3]
-            i.desc  <- x[4]
+            i.name  <- guess.input.name(x[1])
+            i.label <- guess.input.label(x[3])
+            i.desc  <- guess.input.description(x[4])
+            i.type  <- guess.old.input.type(x[2])
+
+            if (is.empty(i.label))
+                warningf('missing label for input "%s"', i.name)
+            if (is.empty(i.desc))
+                warningf('missing description for input "%s"', i.name)
             
             c(
-                name = guess.input.name(i.name),
-                label = guess.input.label(i.label),
-                description = guess.input.description(i.desc),
-                guess.old.input.type(i.type)
+                name = i.name,
+                label = i.label,
+                description = i.desc,
+                i.type
                 )
         })
         warning("Oh, no! This template has outdated input definition! You can update it by running `tpl.renew`.")

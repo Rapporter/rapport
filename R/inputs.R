@@ -5,7 +5,7 @@
 
 #' Input Name Validation
 #'
-#' Checks package-specific naming conventions: variables should start by a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.
+#' Checks package-specific naming conventions: input names should start with a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.
 #' @param x a character vector to test names
 #' @param min.size an integer value that indicates minimum name length
 #' @param max.size an integer value that indicates maximum name length
@@ -35,12 +35,10 @@ guess.input.name <- function(x, min.size = 1L, max.size = 30L, ...){
 #' Input Label
 #'
 #' Check input label.
-#' @param label
-#' @param ...
-guess.input.label <- function(label, name, ...) {
+#' @param label 
+#' @param ... 
+guess.input.label <- function(label, ...) {
     re.label <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
-    if (is.empty(label))
-        warningf('label string for input "%s" was not provided', name)
     if (!grepl(re.label, label, ...))
         stopf('invalid input label: "%s"', label)
     label
@@ -52,10 +50,8 @@ guess.input.label <- function(label, name, ...) {
 #' Check input description.
 #' @param description
 #' @param ...
-guess.input.description <- function(description, name, ...) {
+guess.input.description <- function(description, ...) {
     re.desc <- "^.*$"
-    if (is.empty(description))
-        warningf('description string for input "%s" was not provided', name)
     if (!grepl(re.desc, description, ...))
         stopf('invalid input description: "%s"', description)
     description
@@ -222,8 +218,12 @@ guess.input <- function(input) {
 
     ## common fields
     name        <- input$name        <- guess.input.name(input$name)
-    label       <- input$label       <- guess.input.label(input$label)
-    description <- input$description <- guess.input.description(input$desc)
+    label       <- input$label       <- trim.space(guess.input.label(input$label))
+    if (is.empty(label))
+        warningf('missing label for input "%s"', name)
+    description <- input$description <- trim.space(guess.input.description(input$desc))
+    if (is.empty(description))
+        warningf('missing description for input "%s"', name)
     required    <- input$required    <- isTRUE(as.logical(input$required))
     len         <- input$length      <- guess.input.length(input$length)
     value       <- input$value
@@ -267,13 +267,11 @@ guess.input <- function(input) {
                    input$regexp <- NULL
                    warningf('regexp field for "%s" input is not a character string - coerced to NULL', name)
                }
-               
                ## nchar (same format as length)
                if (!is.null(input$nchar)) {
                    chars <- input$nchar <- guess.input.length(input$nchar)
                    check.input.value(input, attribute.name = 'nchar')
                }
-
                ## check value (if any)
                if (!is.null(value)) {
                    ## regexp check (value can be a vector)
@@ -306,8 +304,6 @@ guess.input <- function(input) {
            logical   = {},
            raw       = {}
            )
-
-    ## move class from named list element to object attribute (the proper "class")
     input
 }
 

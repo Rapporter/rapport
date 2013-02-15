@@ -157,7 +157,6 @@ guess.old.input.type <- function(x){
                    )
            },
            string = {
-               ## this is range of nchar, which we don't implement at the moment
                chars <- guess.old.input.length(limit.text, input.type)
                
                if (!is.null(default) && (nchar(default) < chars$min || nchar(default) > chars$max))
