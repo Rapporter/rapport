@@ -87,10 +87,7 @@ guess.old.input.length <- function(x, input.type) {
 #' Checks type of template input, based on provided sting. If input definition is syntactically correct, a list is returned, containing input type, size limits, and default value (for CSV options and boolean types only).
 #' @param x a character string containing input definition
 guess.old.input.type <- function(x){
-
-    x <- trim.space(x)
-
-    if (is.empty(x))
+    if (is.empty(x <- trim.space(x)))
         stop('input type definition not specified')
 
     ## regexes

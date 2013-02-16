@@ -2,7 +2,7 @@
 \alias{guess.input.label}
 \title{Input Label}
 \usage{
-  guess.input.label(label, name, ...)
+  guess.input.label(label, ...)
 }
 \arguments{
   \item{label}{}

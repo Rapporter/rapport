@@ -235,36 +235,37 @@ messagef <- function(s, ...){
 
 #' Empty Value
 #'
-#' Rails-inspired helper that checks if vector values are "empty", i.e. if it's of \code{NULL}, \code{NA}, \code{NaN}, \code{FALSE}, empty string or \code{0}. Note that unlike its \code{is.} siblings, \code{is.empty} is vectorised.
-#' @param x an object to check
-#' @param trim trim whitespace? (by default removes only trailing spaces)
-#' @param ... additional arguments for \code{\link{trim.space}}
+#' Rails-inspired helper that checks if vector values are "empty", i.e. if it's: \code{NULL}, zero-length, \code{NA}, \code{NaN}, \code{FALSE}, an empty string or \code{0}. Note that unlike its native R \code{is.<something>} sibling functions, \code{is.empty} is vectorised (hence the "values").
+#' @param x an object to check its emptiness
+#' @param trim trim whitespace? (\code{TRUE} by default)
+#' @param ... additional arguments for \code{\link{sapply}}
 #' @examples
-#' is.empty(NULL)     # returns [1] TRUE
-#' is.empty(NA)       # returns [1] TRUE
-#' is.empty(NaN)      # returns [1] TRUE
-#' is.empty("")       # returns [1] TRUE
-#' is.empty(0)        # returns [1] TRUE
-#' is.empty(0.00)     # returns [1] TRUE
-#' is.empty("foobar") # returns [1] FALSE
-#' is.empty("    ")   # returns [1] FALSE
+#' is.empty(NULL)     # [1] TRUE
+#' is.empty(c())      # [1] TRUE
+#' is.empty(NA)       # [1] TRUE
+#' is.empty(NaN)      # [1] TRUE
+#' is.empty("")       # [1] TRUE
+#' is.empty(0)        # [1] TRUE
+#' is.empty(0.00)     # [1] TRUE
+#' is.empty("    ")   # [1] TRUE
+#' is.empty("foobar") # [1] FALSE
+#' is.empty("    ", trim = FALSE)   # [1] FALSE
 #' @export
-is.empty <- function(x, trim = FALSE, ...) {
-
+is.empty <- function(x, trim = TRUE, ...) {
     if (length(x) <= 1) {
         if (is.null(x))
             return (TRUE)
-        else if (is.na(x) || is.nan(x))
+        if (length(x) == 0)
             return (TRUE)
-        else if (is.character(x) && nchar(ifelse(trim, trim.space(x, ...), x)) == 0)
+        if (is.na(x) || is.nan(x))
             return (TRUE)
-        else if (is.logical(x) && !isTRUE(x))
+        if (is.character(x) && nchar(ifelse(trim, trim.space(x), x)) == 0)
             return (TRUE)
-        else if (is.numeric(x) && x == 0)
+        if (is.logical(x) && !isTRUE(x))
             return (TRUE)
-        else
-            return (FALSE)
-    } else {
-        sapply(x, is.empty)
-    }
+        if (is.numeric(x) && x == 0)
+            return (TRUE)
+        return (FALSE)
+    } else
+        sapply(x, is.empty, ...)
 }

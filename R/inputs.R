@@ -38,10 +38,13 @@ guess.input.name <- function(x, min.size = 1L, max.size = 30L, ...){
 #' @param label 
 #' @param ... 
 guess.input.label <- function(label, ...) {
-    re.label <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
-    if (!grepl(re.label, label, ...))
-        stopf('invalid input label: "%s"', label)
-    label
+    if (!is.empty(label)) {
+        stopifnot(is.string(label))
+        re.label <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
+        if (!grepl(re.label, label, ...))
+            stopf('invalid input label: "%s"', label)
+        return (label)
+    }
 }
 
 
@@ -51,10 +54,13 @@ guess.input.label <- function(label, ...) {
 #' @param description
 #' @param ...
 guess.input.description <- function(description, ...) {
-    re.desc <- "^.*$"
-    if (!grepl(re.desc, description, ...))
-        stopf('invalid input description: "%s"', description)
-    description
+    if (!is.empty(description)) {
+        stopifnot(is.string(description))
+        re.desc <- "^.*$"
+        if (!grepl(re.desc, description, ...))
+            stopf('invalid input description: "%s"', description)
+        return (description)
+    }
 }
 
 
@@ -263,7 +269,7 @@ guess.input <- function(input) {
            any       = {},
            character = {
                ## regexp
-               if (!is.empty(input$regexp, trim = TRUE) && !is.string(input$regexp)) {
+               if (!is.empty(input$regexp) && !is.string(input$regexp)) {
                    input$regexp <- NULL
                    warningf('regexp field for "%s" input is not a character string - coerced to NULL', name)
                }
