@@ -6,13 +6,17 @@
     attribute.name = c("length", "nchar", "nlevels", "limit"))
 }
 \arguments{
-  \item{input}{}
+  \item{input}{input item}
 
-  \item{value}{}
+  \item{value}{input value, either template-defined, or set
+  by the user}
 
-  \item{attribute.name}{}
+  \item{attribute.name}{input attributes containing
+  validation rules (defaults to \code{length})}
 }
 \description{
-  Check input value
+  Validates input values, according to rules set in general
+  input attributes (\code{length}) or class-specific ones
+  (\code{nchar}, \code{nlevels} or \code{limit}).
 }
 

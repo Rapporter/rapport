@@ -25,3 +25,6 @@ test_that('should trim trailing spaces (vectorised)', {
 test_that('should trim leading spaces (vectorised)', {
     expect_equal(trim.space(c(" \t\n\rfoo", " \t\n\rbar"), 'trailing'), c(" \t\n\rfoo", " \t\n\rbar"))
 })
+
+
+context('is.empty')

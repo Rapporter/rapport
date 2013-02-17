@@ -10,6 +10,6 @@
   \item{...}{}
 }
 \description{
-  Check input description.
+  Checks input description.
 }
 

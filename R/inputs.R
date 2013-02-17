@@ -1,11 +1,6 @@
-######################################################
-## New... err, non-deprecated input stuff goes here ##
-######################################################
-
-
 #' Input Name Validation
 #'
-#' Checks package-specific naming conventions: input names should start with a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.
+#' Checks \code{rapport} input naming conventions: input names should start with a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.
 #' @param x a character vector to test names
 #' @param min.size an integer value that indicates minimum name length
 #' @param max.size an integer value that indicates maximum name length
@@ -34,13 +29,13 @@ guess.input.name <- function(x, min.size = 1L, max.size = 30L, ...){
 
 #' Input Label
 #'
-#' Check input label.
+#' Checks input label.
 #' @param label 
 #' @param ... 
 guess.input.label <- function(label, ...) {
     if (!is.empty(label)) {
         stopifnot(is.string(label))
-        re.label <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
+        re.label <- "^[^\\|\n\r]*$" # allows 0 or more chars that aren't "|", carriage return or newline
         if (!grepl(re.label, label, ...))
             stopf('invalid input label: "%s"', label)
         return (label)
@@ -50,7 +45,7 @@ guess.input.label <- function(label, ...) {
 
 #' Input Description
 #'
-#' Check input description.
+#' Checks input description.
 #' @param description
 #' @param ...
 guess.input.description <- function(description, ...) {
@@ -64,10 +59,10 @@ guess.input.description <- function(description, ...) {
 }
 
 
-#' Input length validation
+#' Guess input length
 #'
-#' Perform (in)sanity checks on input \code{length} attribute.
-#' @param len 
+#' Performs sanity checks on input \code{length} attribute.
+#' @param len eiher an integer value or a named list containing input length definition
 guess.input.length <- function(len) {
     
     ## only "min", "max" and "exactly"
@@ -163,8 +158,8 @@ guess.input.length <- function(len) {
 
 #' Guess input limits
 #'
-#' Guess input limits for \code{integer} and \code{numeric} inputs
-#' @param input an input list
+#' Guess input limits for \code{integer} and \code{numeric} inputs.
+#' @param input a named list containing input definition
 guess.input.limit <- function(input) {
     if (!input$class %in% c('integer', 'numeric'))
         stop('limits are available only for "numeric" and "integer" inputs')
@@ -209,10 +204,10 @@ guess.input.limit <- function(input) {
 }
 
 
-#' Guess YAML inputs
+#' Guess Input
 #'
-#' Check and return YAML input.
-#' @param input
+#' Checks and returns valid input from YAML input definition.
+#' @param input a named list containing input definition
 guess.input <- function(input) {
     ## class check
     cls <- input$class
@@ -240,6 +235,7 @@ guess.input <- function(input) {
     else
         standalone  <- isTRUE(as.logical(input$standalone))
     input$standalone <- standalone
+    fields <- c('name', 'label', 'description', 'class', 'required', 'standalone', 'length', 'value')
 
     ## check value class/length
     if (!is.null(value)) {
@@ -253,25 +249,31 @@ guess.input <- function(input) {
             check.input.value(input, attribute.name = 'length')
         }
         ## class check
-        check.input.class(value, cls, name)
+        check.input.value.class(value, cls, name)
     }
 
     ## matchable
-    matchable <- input$matchable <- isTRUE(as.logical(input$matchable))
-    ## only avaialable for "character" and "factor" class inputs
-    if (matchable && !cls %in% c('character', 'factor'))
-        stop('"matchable" attribute only available for "character" and "factor" inputs')
-    ## matchable inputs should always contain a default value!!!
-    if (matchable && length(value) == 0)
-        stopf('"matchable" input "%s" must contain a value', name)
+    matchable <- isTRUE(as.logical(input$matchable))
+    if (matchable) {
+        input$matchable <- matchable
+        ## only avaialable for "character" and "factor" class inputs
+        if (!cls %in% c('character', 'factor'))
+            stop('"matchable" attribute only available for "character" and "factor" inputs')
+        ## matchable inputs should always contain a default value!!!
+        if (is.null(value))
+            stopf('"matchable" input "%s" must contain a value', name)
+    }
 
     switch(cls,
            any       = {},
            character = {
+               fields <- c(fields, 'regexp', 'nchar', 'matchable')
                ## regexp
-               if (!is.empty(input$regexp) && !is.string(input$regexp)) {
-                   input$regexp <- NULL
-                   warningf('regexp field for "%s" input is not a character string - coerced to NULL', name)
+               if (!is.empty(input$regexp)) {
+                   if (!is.string(input$regexp)) {
+                       input$regexp <- NULL
+                       warningf('regexp field for "%s" input is not a character string - coerced to NULL', name)
+                   }
                }
                ## nchar (same format as length)
                if (!is.null(input$nchar)) {
@@ -289,6 +291,7 @@ guess.input <- function(input) {
            ## what should we ever check for complex?!
            complex   = {},
            factor    = {
+               fields <- c(fields, 'nlevels', 'matchable')
                ## nlevels
                if (!is.null(input$nlevels)) {
                    nlevels <- input$nlevels <- guess.input.length(input$nlevels)
@@ -297,6 +300,7 @@ guess.input <- function(input) {
            },
            integer   = ,
            numeric   = {
+               fields <- c(fields, 'limit')
                ## limits
                input$limit <- guess.input.limit(input)
                ## check limits
@@ -310,16 +314,21 @@ guess.input <- function(input) {
            logical   = {},
            raw       = {}
            )
+    ## check for unsupported fields
+    nms <- names(input)
+    unsupported.fields <- nms[!nms %in% fields]
+    if (length(unsupported.fields))
+        warningf('Unsupported fields found in %s input "%s": %s', input$class, input$name, p(unsupported.fields, wrap = "\""))
     input
 }
 
 
 #' Check input value
 #'
-#' 
-#' @param input 
-#' @param value 
-#' @param attribute.name 
+#' Validates input values, according to rules set in general input attributes (\code{length}) or class-specific ones (\code{nchar}, \code{nlevels} or \code{limit}).
+#' @param input input item
+#' @param value input value, either template-defined, or set by the user
+#' @param attribute.name input attributes containing validation rules (defaults to \code{length})
 check.input.value <- function(input, value = NULL, attribute.name = c('length', 'nchar', 'nlevels', 'limit')) {
     if (missing(input))
         stop('input definition not provided')
@@ -382,12 +391,13 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
 }
 
 
-#' Check input value class
+#' Check Input Value Class
 #'
-#' Checks the class of value
-#' @param input 
-#' @param class 
-check.input.class <- function(value, class = c('character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw', 'option', 'any'), input.name = NULL) {
+#' Checks the class of an input value.
+#' @param value input value
+#' @param class input class (defaults to \code{any})
+#' @param input.name input name (used in messages)
+check.input.value.class <- function(value, class = c('any', 'character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw'), input.name = NULL) {
     if (is.null(value))
         return(NULL)
     else {

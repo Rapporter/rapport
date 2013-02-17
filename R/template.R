@@ -238,10 +238,11 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
     })
 
     ## Check metadata validity (we have to do it here before we extract the meta)
-    meta.fields <- c('title', 'description', 'desc', 'author', 'email', 'packages', 'dataRequired', 'example') # TODO: add "examples" at some point
+    meta.fields <- c('title', 'description', 'desc', 'author', 'email', 'packages', 'example') # TODO: add "examples" at some point
     meta.names <- names(h)
-    if (!all(meta.names %in% meta.fields))
-        stopf("Unknown metadata field(s): %s", paste0(meta.names[!meta.names %in% meta.fields]))
+    unsupported.meta <- meta.names[!meta.names %in% meta.fields]
+    if (length(unsupported.meta))
+        warningf("Unsupported metadata field(s) found: %s", p(unsupported.meta, wrap = "\""))
 
     ## store only packages that aren't listed in dependencies
     ## Q: do we really have to do this? shouldn't this be handled correctly in rapport?
@@ -254,7 +255,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
 
     if (!is.null(h$dataRequired)) {
         h$dataRequired <- NULL
-        warning('dataRequired field is deprecated. You should remove it from template.')
+        warning('"dataRequired" field is deprecated. You should remove it from the template.')
     }
     
     ## change "desc" to "descriptives"
@@ -596,7 +597,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             }
 
             ## class check
-            check.input.class(val, input.class, input.name)
+            check.input.value.class(val, input.class, input.name)
 
             ## check length (all inputs have length)
             check.input.value(x, val, 'length')

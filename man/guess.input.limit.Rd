@@ -5,10 +5,10 @@
   guess.input.limit(input)
 }
 \arguments{
-  \item{input}{an input list}
+  \item{input}{a named list containing input definition}
 }
 \description{
   Guess input limits for \code{integer} and \code{numeric}
-  inputs
+  inputs.
 }
 

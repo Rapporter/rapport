@@ -21,10 +21,10 @@
   naming conventions
 }
 \description{
-  Checks package-specific naming conventions: input names
-  should start with a letter, followed either by a letter
-  or a digit, while the words should be separated with dots
-  or underscores.
+  Checks \code{rapport} input naming conventions: input
+  names should start with a letter, followed either by a
+  letter or a digit, while the words should be separated
+  with dots or underscores.
 }
 \examples{
 rapport:::check.input.name("foo")               # [1] TRUE

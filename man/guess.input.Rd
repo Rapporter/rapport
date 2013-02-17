@@ -1,13 +1,14 @@
 \name{guess.input}
 \alias{guess.input}
-\title{Guess YAML inputs}
+\title{Guess Input}
 \usage{
   guess.input(input)
 }
 \arguments{
-  \item{input}{}
+  \item{input}{a named list containing input definition}
 }
 \description{
-  Check and return YAML input.
+  Checks and returns valid input from YAML input
+  definition.
 }
 

@@ -1,14 +1,14 @@
 \name{guess.input.length}
 \alias{guess.input.length}
-\title{Input length validation}
+\title{Guess input length}
 \usage{
   guess.input.length(len)
 }
 \arguments{
-  \item{len}{}
+  \item{len}{eiher an integer value or a named list
+  containing input length definition}
 }
 \description{
-  Perform (in)sanity checks on input \code{length}
-  attribute.
+  Performs sanity checks on input \code{length} attribute.
 }
 
