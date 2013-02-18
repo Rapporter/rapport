@@ -343,6 +343,12 @@ tpl.inputs <- function(fp, use.header = FALSE){
     } else
         inputs <- lapply(inputs$inputs, guess.input)
 
+    ## check for duplicate names
+    nms <- sapply(inputs, function(x) x$name)
+    dupes <- duplicated(nms)
+    if (any(dupes))
+        stopf('template contains duplicate input names: %s', p(nms[dupes], wrap = "\""))
+
     structure(inputs, class = 'rp.inputs')
 }
 
