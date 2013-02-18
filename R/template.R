@@ -396,7 +396,7 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
     if (length(index) == 0 || tolower(index) == 'q')
         return(invisible(NULL))
 
-    if (length(index) == 1 && tolower(index) == 'a')
+    if (length(index) == 1 && tolower(index) %in% c('a', 'all'))
         index <- n.examples
 
     old.index <- index
