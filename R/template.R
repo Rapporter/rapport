@@ -618,19 +618,23 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                                    }
                                }
                            })
-            }
-            
-            ## add labels ()
-            if (is.recursive(val)) {
-                for (t in names(val)){
-                    if (rp.label(val[, t]) == 't')
-                        val[, t] <- structure(val[, t], label = t, name = t)
+                
+                ## add labels
+                if (is.recursive(val)) {
+                    for (t in names(val)){
+                        if (rp.label(val[, t]) == 't')
+                            val[, t] <- structure(val[, t], label = t, name = t)
+                        else
+                            val[, t] <- structure(val[, t], name = t)
+                    }
+                } else {
+                    if (rp.label(val) == 'val')
+                        val <- structure(val, label = user.input, name = user.input)
                     else
-                        val[, t] <- structure(val[, t], name = t)
+                        val <- structure(val, name = user.input)
                 }
             }
             
-
             ## assign stuff
             assign(input.name, val, envir = e)                                    # value
             assign(sprintf('%s.iname', input.name), input.name, envir = e)        # input name

@@ -84,13 +84,17 @@ Loops and `if` conditionals without the curly braces do not work between the `BR
 
 What happens if you have an error in your document?
 
-<%=mean(foobar)%>
+<%=
+mean(foobar)
+%>
 
 Which is possible even inline too: <%=foo%> and <%=bar%> beside a normal chunk showing $\pi$ (<%=pi%>).
 
 And how do warnings show up?
 
-<%=chisq.test(mtcars$am, mtcars$gear)%>
+<%=
+chisq.test(mtcars$am, mtcars$gear)
+%>
 
 # Control-flow
 

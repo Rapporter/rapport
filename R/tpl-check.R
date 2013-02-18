@@ -31,3 +31,33 @@ tpl.check <- function(fp) {
 
     return(list(success = TRUE))
 }
+
+
+#' Check Report Chunks
+#'
+#' Checks for warnings and errors in report chunks.
+#' @param rp \code{rapport} object
+#' @param what what fields to check. defaults to all
+#' @export 
+check.report.chunks <- function(rp, what = c('errors', 'warnings', 'messages')) {
+    stopifnot(is.rapport(rp))
+    ## browser()
+    msg.type <- match.arg(what, several.ok = TRUE)
+    chunks <- lapply(rp$report, function(chunk) {
+        res <- list(
+            type = chunk$type
+            )
+        if (chunk$type == 'block') {
+            res$src <- chunk$robject$src
+            res$msg <- chunk$robject$msg[msg.type]
+        } else {
+            res$src <- chunk$text$raw
+            res$msg <- chunk$msg[msg.type]
+        }
+        if (!all(sapply(res$msg, is.null)))
+            res
+    })
+    res <- chunks[!sapply(chunks, is.null)]
+    if (length(res))
+        res
+}
