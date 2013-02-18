@@ -57,7 +57,7 @@ print.rp.inputs <- function(x, ...){
             ## prepare response vector
             res <- c(
                 sprintf(' "%s" (%s)%s\n', x$name, x$label, ifelse(x$required, '  *required', '')),
-                sprintf('%s\n', x$desc),
+                sprintf('%s\n', x$description),
                 sprintf('  - class:\t\t%s\n', x$class),
                 sprintf('  - standalone:\t%s\n', ifelse(x$standalone, 'yes', 'no')),
                 sprintf('  - length:\t\t%s\n', len.txt),

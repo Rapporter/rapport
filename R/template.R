@@ -635,7 +635,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             assign(sprintf('%s.iname', input.name), input.name, envir = e)        # input name
             assign(sprintf('%s.ilen', input.name), length(user.input), envir = e) # input length
             assign(sprintf('%s.ilabel', input.name), x$label, envir = e)          # input label
-            assign(sprintf('%s.idesc', input.name), x$desc, envir = e)            # input description
+            assign(sprintf('%s.idesc', input.name), x$description, envir = e)     # input description
             assign(sprintf('%s.name', input.name), user.input, envir = e)         # variable name(s)
             assign(sprintf('%s.len', input.name), length(val), envir = e)         # variable length
             ## currently we support only data.frame and atomic vectos

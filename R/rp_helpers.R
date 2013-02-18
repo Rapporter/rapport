@@ -35,14 +35,13 @@ is.heading <- function(x){
 #'
 #' Converts template metadata to character vector with YAML strings.
 #' @param x template metadata object
-#' @param ... accepts \code{include.examples} which indicates that examples should be included in output (if any)
+#' @param ... ignored
 #' @method as.character rp.meta
 #' @S3method as.character rp.meta
 #' @export
 as.character.rp.meta <- function(x, ...){
     if (!inherits(x, 'rp.meta'))
         stop("template metadata not provided")
-    mc <- match.call()
     as.yaml(x)
 }
 
@@ -291,66 +290,6 @@ get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment
 purge.comments <- function(x, comment.open = get.tags('comment.open'), comment.close = get.tags('comment.close')){
     stopifnot(is.string(x))
     sub(sprintf('%s.*?%s', comment.open, comment.close), '', x)
-}
-
-
-#' Extract Template Metadata
-#'
-#' Check if template metadata field matches provided format, and return matched value in a list.
-#' @param x a string containing template metadata
-#' @param title a string containing metadata field title (can be regex-powered)
-#' @param regex a string with regular expression to match field value
-#' @param short a string with a short name for given metadata field
-#' @param trim.white a logical value indicating whether trailing and leading spaces of the given string should be removed before extraction
-#' @param mandatory a logical value indicating required field
-#' @param default.value fallback to this value if non-mandatory field is not found/malformed
-#' @param field.length maximum number of field characters (defaults to 1000)
-#' @param ... additional parameters for \code{grepl} function
-#' @return a list with matched content, or \code{NULL} if the field is not required
-#' @examples \dontrun{
-#'     rapport:::extract.meta("Name: John Smith", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
-#'     ## $name
-#'     ## [1] "John Smith"
-#'
-#'     rapport:::extract.meta("Name: John", "Name", "[[:alpha:]]+( [[:alpha:]]+)?")
-#'     ## $name
-#'     ## [1] "John"
-#' }
-extract.meta <- function(x, title, regex, short = NULL, trim.white = TRUE, mandatory = TRUE, default.value = NULL, field.length = 1e3, ...){
-
-    if (!any(sapply(list(x, title, regex), is.string)))
-        stop('"x", "title" and "regex" need to be strings')
-
-    if (!is.null(short))
-        if (!is.string(short))
-            stop('"short" argument should be a string')
-
-    if (isTRUE(trim.white))
-        x <- trim.space(x)
-
-
-    fl <- if (length(x) == 0) 0 else nchar(x)
-    if (fl > field.length)
-        stopf('"%s" field exceeds maximal length (%d, while %d is allowed)', title, fl, field.length)
-
-    re <- sprintf('^%s:([\t ]+|)(%s)$', title, regex)
-    val <- gsub(re, '\\2', x, ...) # return matched value
-
-    if (isTRUE(grepl(re, x, ...))){
-        res <- val
-    } else {
-        if (isTRUE(mandatory)){
-            stopf('"%s" metadata field %s', title, if(fl == 0) 'not found' else 'has errors')
-        } else {
-            ## throw error only if meta is specified/non-empty, and has incorrect value
-            if (fl == 0)
-                res <- default.value
-            else
-                stopf('non-mandatory field "%s" contains errors', title)
-        }
-    }
-
-    structure(list(res), .Names = ifelse(length(short) > 0, short, tocamel(tolower(title))))
 }
 
 

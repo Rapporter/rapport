@@ -4,7 +4,7 @@
 \usage{
   tpl.export(rp = NULL, file, append = FALSE,
     create = TRUE, open = TRUE,
-    date = pander.return(Sys.time()), desc = TRUE,
+    date = pander.return(Sys.time()), description = TRUE,
     format = "html", options = "", logo = TRUE)
 }
 \arguments{
@@ -29,8 +29,8 @@
   \item{date}{character string as the date field of the
   report. If not set, current time will be set.}
 
-  \item{desc}{add \code{Description} of the rapport class
-  (template)? Default set to TRUE.}
+  \item{description}{add \code{Description} of the rapport
+  class (template)? Default set to TRUE.}
 
   \item{format}{format of the wanted report. See Pandoc's
   user manual for details. In short, choose something like:
