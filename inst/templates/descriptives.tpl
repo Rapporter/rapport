@@ -14,7 +14,6 @@ inputs:
   label: Variable
   description: Categorical or numerical variable. This template will determine the
     measurement level of the given variable.
-  class: any
   length:
     exactly: 1
   value: ~

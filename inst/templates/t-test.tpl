@@ -22,7 +22,6 @@ inputs:
 - name: y
   label: Y variable
   description: Independent variable (factor, or another numeric)
-  class: any
   length:
     exactly: 1
   value: ~

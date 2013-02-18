@@ -173,7 +173,7 @@ guess.old.input.type <- function(x){
                standalone = FALSE
                ),
            variable  = list(
-               class      = 'any',
+               class      = NULL,
                length     = guess.old.input.length(limit.text, input.type),
                value      = NULL,
                required   = mandatory,

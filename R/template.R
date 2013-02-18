@@ -592,31 +592,32 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                     val <- val[, 1]
 
                 ## class-specific checks
-                switch(input.class,
-                       character = {
-                           ## nchar check
-                           check.input.value(x, val, 'nchar')
-                           ## regexp check
-                           if (!is.null(x$regexp)) {
-                               if (!all(grepl(x$regexp, val)))
-                                   stopf('%s input "%s" value is not matched with provided regular expression "%s"', input.name, val, x$regexp)
-                           }
-                       },
-                       factor = {
-                           check.input.value(x, val, 'nlevels')
-                       },
-                       integer = ,
-                       numeric = {
-                           if (!is.null(x$limit)) {
-                               ## check limits
-                               if (is.variable(val))
-                                   check.input.value(x, val, 'limit')
-                               else {
-                                   if (!all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
-                                       stopf('all values in %s input "%s" should fall between %s and %s', x$class, x$name, x$limit$min, x$limit$max)
+                if (!is.null(input.class))
+                    switch(input.class,
+                           character = {
+                               ## nchar check
+                               check.input.value(x, val, 'nchar')
+                               ## regexp check
+                               if (!is.null(x$regexp)) {
+                                   if (!all(grepl(x$regexp, val)))
+                                       stopf('%s input "%s" value is not matched with provided regular expression "%s"', input.name, val, x$regexp)
                                }
-                           }
-                       })
+                           },
+                           factor = {
+                               check.input.value(x, val, 'nlevels')
+                           },
+                           integer = ,
+                           numeric = {
+                               if (!is.null(x$limit)) {
+                                   ## check limits
+                                   if (is.variable(val))
+                                       check.input.value(x, val, 'limit')
+                                   else {
+                                       if (!all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
+                                           stopf('all values in %s input "%s" should fall between %s and %s', x$class, x$name, x$limit$min, x$limit$max)
+                                   }
+                               }
+                           })
             }
             
             ## add labels ()

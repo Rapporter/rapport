@@ -202,11 +202,11 @@ guess.input.limit <- function(input) {
 guess.input <- function(input) {
     ## class check
     cls <- input$class
-    if (is.null(cls))
-        cls <- input$class <- 'any'
-    allowed.classes <- c('character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw', 'any')
-    if (!cls %in% allowed.classes)
-        stopf('unsupported class "%s"', cls)
+    if (!is.null(cls)) {
+        allowed.classes <- c('character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw')
+        if (!cls %in% allowed.classes)
+            stopf('unsupported class "%s"', cls)
+    }
 
     ## common fields
     name        <- input$name        <- guess.input.name(input$name)
@@ -255,56 +255,56 @@ guess.input <- function(input) {
             stopf('"matchable" input "%s" must contain a value', name)
     }
 
-    switch(cls,
-           any       = {},
-           character = {
-               fields <- c(fields, 'regexp', 'nchar', 'matchable')
-               ## regexp
-               if (!is.empty(input$regexp)) {
-                   if (!is.string(input$regexp)) {
-                       input$regexp <- NULL
-                       warningf('regexp field for "%s" input is not a character string - coerced to NULL', name)
+    if (!is.null(cls))
+        switch(cls,
+               character = {
+                   fields <- c(fields, 'regexp', 'nchar', 'matchable')
+                   ## regexp
+                   if (!is.empty(input$regexp)) {
+                       if (!is.string(input$regexp)) {
+                           input$regexp <- NULL
+                           warningf('regexp field for "%s" input is not a character string - coerced to NULL', name)
+                       }
                    }
-               }
-               ## nchar (same format as length)
-               if (!is.null(input$nchar)) {
-                   chars <- input$nchar <- guess.input.length(input$nchar)
-                   check.input.value(input, attribute.name = 'nchar')
-               }
-               ## check value (if any)
-               if (!is.null(value)) {
-                   ## regexp check (value can be a vector)
-                   if (!is.null(input$regexp))
-                       if (!all(grepl(input$regexp, value)))
-                           stopf('%s input "%s" value is not matched with provided regular expression "%s"', name, value, input$regexp)
-               }
-           },
-           ## what should we ever check for complex?!
-           complex   = {},
-           factor    = {
-               fields <- c(fields, 'nlevels', 'matchable')
-               ## nlevels
-               if (!is.null(input$nlevels)) {
-                   nlevels <- input$nlevels <- guess.input.length(input$nlevels)
-                   ## check values
-               }
-           },
-           integer   = ,
-           numeric   = {
-               fields <- c(fields, 'limit')
-               ## limits
-               input$limit <- guess.input.limit(input)
-               ## check limits
-               if (!is.null(input$limit)){
-                   if (is.variable(value))
-                       stopifnot(all(value >= input$limit$min) && all(value <= input$limit$max))
-                   else
-                       stopifnot(all(sapply(value, function(i) i > input$limit$min)) && all(sapply(value, function(i) i < input$limit$max)))
-               }
-           },
-           logical   = {},
-           raw       = {}
-           )
+                   ## nchar (same format as length)
+                   if (!is.null(input$nchar)) {
+                       chars <- input$nchar <- guess.input.length(input$nchar)
+                       check.input.value(input, attribute.name = 'nchar')
+                   }
+                   ## check value (if any)
+                   if (!is.null(value)) {
+                       ## regexp check (value can be a vector)
+                       if (!is.null(input$regexp))
+                           if (!all(grepl(input$regexp, value)))
+                               stopf('%s input "%s" value is not matched with provided regular expression "%s"', name, value, input$regexp)
+                   }
+               },
+               ## what should we ever check for complex?!
+               complex   = {},
+               factor    = {
+                   fields <- c(fields, 'nlevels', 'matchable')
+                   ## nlevels
+                   if (!is.null(input$nlevels)) {
+                       nlevels <- input$nlevels <- guess.input.length(input$nlevels)
+                       ## check values
+                   }
+               },
+               integer   = ,
+               numeric   = {
+                   fields <- c(fields, 'limit')
+                   ## limits
+                   input$limit <- guess.input.limit(input)
+                   ## check limits
+                   if (!is.null(input$limit)){
+                       if (is.variable(value))
+                           stopifnot(all(value >= input$limit$min) && all(value <= input$limit$max))
+                       else
+                           stopifnot(all(sapply(value, function(i) i > input$limit$min)) && all(sapply(value, function(i) i < input$limit$max)))
+                   }
+               },
+               logical   = {},
+               raw       = {}
+               )
     ## check for unsupported fields
     nms <- names(input)
     unsupported.fields <- nms[!nms %in% fields]
@@ -386,31 +386,29 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
 #'
 #' Checks the class of an input value.
 #' @param value input value
-#' @param class input class (defaults to \code{any})
+#' @param class input class (defaults to \code{NULL})
 #' @param input.name input name (used in messages)
-check.input.value.class <- function(value, class = c('any', 'character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw'), input.name = NULL) {
+check.input.value.class <- function(value, class = c('character', 'complex', 'factor', 'integer', 'logical', 'numeric', 'raw'), input.name = NULL) {
     if (is.null(value))
         return(NULL)
     else {
-        if (missing(class))
-            cls <- 'any'
-        else
-            cls <- match.arg(class)
-
-        check.fn <- switch(cls,
-                           any = is.variable,
-                           option = is.character,
-                           sprintf('is.%s', cls)
-                           )
+        if (is.empty(class)) {
+            cls <- NULL
+            cls.name <- 'vector'
+            check.fn <- is.variable
+        } else {
+            cls <- cls.name <- match.arg(class)
+            check.fn <- sprintf('is.%s', cls)
+        }
         
         input.name.txt <- if (is.string(input.name)) sprintf('"%s" ', input.name) else ''
 
         if (is.variable(value)) {
             if (!do.call(check.fn, list(x = value)))
-                stopf('%sinput class should be %s', input.name.txt, cls)
+                stopf('%sinput class should be %s', input.name.txt, cls.name)
         } else {
             if (!all(sapply(value, function(i) do.call(check.fn, list(x = i)))))
-                stopf('provided object should contain only %s vectors', cls)
+                stopf('provided object should contain only %s vectors', cls.name)
         }
     }
 }

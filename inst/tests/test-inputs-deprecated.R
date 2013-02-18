@@ -49,7 +49,7 @@ test_that('should provide correct input definition', {
     expect_that(rapport:::guess.old.input.type("factor"), equals(list(class = 'factor', length = list(exactly = 1), value = NULL, required = FALSE, standalone = FALSE)))
     expect_that(rapport:::guess.old.input.type("logical"), equals(list(class = 'logical', length = list(exactly = 1), value = NULL, required = FALSE, standalone = FALSE)))
     expect_that(rapport:::guess.old.input.type("numeric"), equals(list(class = 'numeric', length = list(exactly = 1), value = NULL, required = FALSE, standalone = FALSE)))
-    expect_that(rapport:::guess.old.input.type("variable"), equals(list(class = 'any', length = list(exactly = 1), value = NULL, required = FALSE, standalone = FALSE)))
+    expect_that(rapport:::guess.old.input.type("variable"), equals(list(class = NULL, length = list(exactly = 1), value = NULL, required = FALSE, standalone = FALSE)))
     expect_that(rapport:::guess.old.input.type("TRUE"), equals(list(class = 'logical', length = list(exactly = 1), value = TRUE, required = FALSE, standalone = TRUE)))
     expect_that(rapport:::guess.old.input.type("FALSE"), equals(list(class = 'logical', length = list(exactly = 1), value = FALSE, required = FALSE, standalone = TRUE)))
     expect_that(rapport:::guess.old.input.type("number"), equals(list(class = 'numeric', length = list(exactly = 1), value = NULL, limit = list(min = -Inf, max = Inf), required = FALSE, standalone = TRUE)))

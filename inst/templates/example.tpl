@@ -15,7 +15,6 @@ inputs:
 - name: v
   label: Variable
   description: A variable
-  class: any
   length:
     exactly: 1
   value: ~
