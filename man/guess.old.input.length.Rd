@@ -5,9 +5,11 @@
   guess.old.input.length(x, input.type)
 }
 \arguments{
-  \item{x}{}
+  \item{x}{a character string containing input length
+  definition}
 
-  \item{input.type}{}
+  \item{input.type}{a character string containing input
+  type}
 }
 \description{
   Guess deprecated input length.

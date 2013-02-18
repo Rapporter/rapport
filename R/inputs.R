@@ -6,15 +6,6 @@
 #' @param max.size an integer value that indicates maximum name length
 #' @param ... additional arguments to be passed to \code{\link{grepl}} function
 #' @return a logical vector indicating which values satisfy the naming conventions
-#' @examples
-#' rapport:::check.input.name("foo")               # [1] TRUE
-#' rapport:::check.input.name("foo.bar")           # [1] TRUE
-#' rapport:::check.input.name("foo_bar")           # [1] TRUE
-#' rapport:::check.input.name("foo.bar.234")       # [1] TRUE
-#' rapport:::check.input.name("foo.bar.234_asdf")  # [1] TRUE
-#' rapport:::check.input.name("234.asdf")          # [1] FALSE
-#' rapport:::check.input.name("_asdf")             # [1] FALSE
-#' rapport:::check.input.name(".foo")              # [1] FALSE
 guess.input.name <- function(x, min.size = 1L, max.size = 30L, ...){
     ## must begin with a letter, and can continue either with a letter or a digit, separated either by underscore or dot, e.g. 'var.90', or 'v90_alpha'.
     re.name <- '^[[:alpha:]]+(([[:digit:]]+)?((\\.|_)?[[:alnum:]]+)+)?$'
@@ -30,8 +21,8 @@ guess.input.name <- function(x, min.size = 1L, max.size = 30L, ...){
 #' Input Label
 #'
 #' Checks input label.
-#' @param label 
-#' @param ... 
+#' @param label a character string containing input label
+#' @param ... additional arguments to be passed to \code{\link{grepl}}
 guess.input.label <- function(label, ...) {
     if (!is.empty(label)) {
         stopifnot(is.string(label))
@@ -46,8 +37,8 @@ guess.input.label <- function(label, ...) {
 #' Input Description
 #'
 #' Checks input description.
-#' @param description
-#' @param ...
+#' @param description a character string containing input description
+#' @param ... additional arguments to be passed to \code{\link{grepl}}
 guess.input.description <- function(description, ...) {
     if (!is.empty(description)) {
         stopifnot(is.string(description))

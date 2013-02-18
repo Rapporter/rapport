@@ -1,8 +1,8 @@
 #' Deprecated input limits
 #'
 #' Guess deprecated input length.
-#' @param x 
-#' @param input.type
+#' @param x a character string containing input length definition
+#' @param input.type a character string containing input type
 guess.old.input.length <- function(x, input.type) {
     stopifnot(is.string(x))
     if (missing(input.type))
@@ -184,8 +184,8 @@ guess.old.input.type <- function(x){
 #' Renew deprecated template
 #'
 #' Convert old-style template to new-style one (what we really do is just replacing old header syntax with YAML one).
-#' @param fp 
-#' @param file 
+#' @param fp pointer to an old template (see \code{\link{tpl.find}} for details)
+#' @param file a path to output file. If \code{NULL}, result will be flushed to stdout.
 #' @export 
 tpl.renew <- function(fp, file = NULL) {
     h <- suppressWarnings(tpl.info(fp)) #header

@@ -26,14 +26,4 @@
   letter or a digit, while the words should be separated
   with dots or underscores.
 }
-\examples{
-rapport:::check.input.name("foo")               # [1] TRUE
-rapport:::check.input.name("foo.bar")           # [1] TRUE
-rapport:::check.input.name("foo_bar")           # [1] TRUE
-rapport:::check.input.name("foo.bar.234")       # [1] TRUE
-rapport:::check.input.name("foo.bar.234_asdf")  # [1] TRUE
-rapport:::check.input.name("234.asdf")          # [1] FALSE
-rapport:::check.input.name("_asdf")             # [1] FALSE
-rapport:::check.input.name(".foo")              # [1] FALSE
-}
 

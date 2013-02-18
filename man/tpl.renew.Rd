@@ -5,9 +5,11 @@
   tpl.renew(fp, file = NULL)
 }
 \arguments{
-  \item{fp}{}
+  \item{fp}{pointer to an old template (see
+  \code{\link{tpl.find}} for details)}
 
-  \item{file}{}
+  \item{file}{a path to output file. If \code{NULL}, result
+  will be flushed to stdout.}
 }
 \description{
   Convert old-style template to new-style one (what we
