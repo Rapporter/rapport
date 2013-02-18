@@ -1,3 +1,29 @@
+rapport 0.5 (2013-02-18)
+----------------------------------------------------------------
+
+TEMPLATE HEADER SPECIFICATION
+
+  * Template header specification is rewritten. Custom cumbersome syntax is no more, and the header content is 100% pure YAML. See `?tpl.meta` and `?tpl.inputs` for details on new metadata and input specification.
+  * Input specification relies on R class system, and the old one is deprecated (though kept for backwards compatibility). Only atomic vector classes are currently supported: `character`, `complex`, `integer`, `logical`, `numeric` and `raw`.
+  * More robust `length` checks are manageable via `exactly` and `min`/`max` attributes.
+  * `option` inputs are removed. You should use `matchable` attribute in `character` and `factor` inputs instead. Multiple matches are now allowed.
+  * `boolean`, `string` and `number` inputs are removed and `logical`, `character` and `numeric` are to be used instead, respectively.
+  * Added `integer` and `raw` inputs.
+  * Fine-tune control over inputs is achieved via class-specific options that resemble native R object methods and/or attributes, e.g. `nlevels` for factors, or `nchar` for character vectors.
+
+CHANGES
+
+  * Added `yaml` package to dependencies.
+  * `tpl.inputs` and `tpl.meta` will now perform validation of inputs and metadata, respectively. Warnings are issued if unsupported fields are found.
+  * `dataRequired` metadata attribute is deprecated. Dataset is required if the template contains non-standalone inputs (see `?tpl.inputs` for details).
+
+BUGFIXES
+
+  * Duplicate input names are not allowed in the templates.
+  * `is.empty` now returns `TRUE` for zero-length objects.
+
+YAML INPUT SPECIFICATION
+
 rapport 0.4 (2012-08-04)
 ----------------------------------------------------------------
 
