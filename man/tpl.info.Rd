@@ -16,7 +16,8 @@
 }
 \description{
   Provides information about template metadata and/or
-  inputs.
+  inputs. See \code{\link{tpl.meta}} and
+  \code{\link{tpl.inputs}} for details.
 }
 \examples{
 \dontrun{

@@ -7,11 +7,10 @@
 \arguments{
   \item{x}{template metadata object}
 
-  \item{...}{accepts \code{include.examples} which
-  indicates that examples should be included in output (if
-  any)}
+  \item{...}{ignored}
 }
 \description{
-  Converts template metadata to character vector.
+  Converts template metadata to character vector with YAML
+  strings.
 }
 

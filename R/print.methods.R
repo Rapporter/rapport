@@ -8,27 +8,23 @@
 print.rp.meta <- function(x, ...){
 
     .x <- x                             # backup object
-    mc <- match.call()
-    ind <- c('title', 'author', 'email', 'desc', 'example')
+    ind <- c('title', 'author', 'email', 'description', 'example')
     email <- if (is.null(x$email)) '' else sprintf(' (%s)', x$email) # show email if any
-    exmpl <- if (is.null(x$example)) 'no examples found in template' else x$example # examples
     other.meta <- x[!names(x) %in% ind]
 
     fn <- function(x){
         titles <- names(x)
-        content <- sapply(x, function(y) sprintf('%s', if (is.null(y) || length(y) == 0) 'NULL' else y))
+        content <- sapply(x, function(y) sprintf('%s', if (is.null(y) || length(y) == 0) 'NULL' else paste0(y, collapse = ", ")))
         res <- c('\n', sprintf('%s:\t%s\n', titles, content))
     }
 
     catn(
-        sprintf('\n`%s`\n\n', x$title),
+        sprintf('\n "%s"\n\n', x$title),
         sprintf('by %s%s\n\n', x$author, email),
-        sprintf('%s\n', x$desc),
+        sprintf('%s\n', x$description),
         fn(other.meta),
-        sprintf('\n %s', c('Examples:', exmpl))
+        if (!is.null(x$example)) sprintf('\n %s', c('Examples:', x$example))
         )
-
-    catn()
 
     invisible(.x)
 }
@@ -43,41 +39,72 @@ print.rp.meta <- function(x, ...){
 #' @S3method print rp.inputs
 print.rp.inputs <- function(x, ...){
 
-    catn('\nInput parameters')
+    catn('\n Inputs\n')
 
     if (length(x) == 0){
-        catn('No inputs defined!')
+        catn('Template contains no inputs.')
     } else {
-        sapply(x, function(x){
-
-            lims <- unlist(x$limit, use.names = FALSE)
-            lims.unique.length <- length(unique(lims))
-            s <- if (x$limit$max > 1) 's' else ''
-            if (lims.unique.length == 1)
-                lim.range <- lims[1]
+        sapply(x, function(x) {
+            ## length
+            input.item.txt <- ifelse(x$class == 'option', 'option', ifelse(x$standalone, 'value', 'vector'))
+            len <- x$length
+            ## exactly
+            if (!is.null(len$exactly))
+                len.txt <- sprintf('exactly %d %s%s', len$exactly, input.item.txt, ifelse(len$exactly > 1, 's', ''))
             else
-                lim.range <- paste("between", x$limit$min, "and", x$limit$max, sep = " ")
+                len.txt <- sprintf('from %s to %s %ss', len$min, len$max, input.item.txt)
 
-            limit.msg <- switch(x$type,
-                                string = sprintf('%s character%s', lim.range, s),
-                                number = sprintf('number %s', if (lims.unique.length > 1) lim.range else x$limit$min),
-                                sprintf('%s variable%s', lim.range, s)
-                                )
-            
-            cat(
-                '\n',
-                sprintf('`%s` (%s)%s\n', x$name, x$label, if (is.null(x$mandatory)) '' else ifelse(x$mandatory, '  >>REQUIRED<<', '')),
-                sprintf(' %s\n', x$desc),
-                sprintf('    - type:\t%s\n', x$type),
-                sprintf('    - limits:\t%s\n', limit.msg),
-                if (!is.null(x$default)){
-                    if (is.character(x$default))
-                        sprintf('    - default value:\t%s\n', x$default[1])
+            ## prepare response vector
+            res <- c(
+                sprintf(' "%s" (%s)%s\n', x$name, x$label, ifelse(x$required, '  *required', '')),
+                sprintf('%s\n', x$description),
+                sprintf('  - class:\t\t%s\n', x$class),
+                sprintf('  - standalone:\t%s\n', ifelse(x$standalone, 'yes', 'no')),
+                sprintf('  - length:\t\t%s\n', len.txt),
+                ## value
+                if (x$standalone && !is.null(x$value)) {
+                    val.wrap <- ifelse(x$class %in% c('character', 'option'), '"', '')
+                    sprintf('  - value%s:\t\t%s\n', ifelse(length(x$value) > 1, 's', ''), p(x$value, wrap = val.wrap))
                 })
-        })
-        catn()
-    }
-
+            ## class specific options
+            switch(x$class,
+                   character = {
+                       ## nchar
+                       if (!is.null(x$nchar)) {
+                           chars <- x$nchar
+                           if (!is.null(chars$exactly))
+                               nchar.txt <- sprintf('exactly %d character%s', chars$exactly, if (length(chars$exactly) > 1) 's' else '')
+                           else
+                               nchar.txt <- sprintf('from %d to %d characters', chars$min, chars$max)
+                           res <- c(res, sprintf('  - nchar:\t\t%s\n', nchar.txt))
+                       }
+                       ## regexp
+                       if (!is.null(x$regexp))
+                           res <- c(res, sprintf('  - regexp:\t\t"%s"\n', x$regexp))
+                       ## matchable
+                       res <- c(res, sprintf('  - matchable:\t\t%s\n', x$matchable))
+                   },
+                   ## nlevels
+                   factor = {
+                       if (!is.null(x$nlevels)) {
+                           if (!is.null(x$nlevels$exactly))
+                               s <- sprintf('exactly %d level%s', x$nlevels$exactly, if (x$nlevels$exactly > 1) 's' else '')
+                           else
+                               s <- sprintf('from %d to %d levels', x$nlevels$min, x$nlevels$max)
+                           res <- c(res, sprintf('  - nlevels:\t\t%s\n', s))
+                       }
+                       ## matchable
+                       res <- c(res, sprintf('  - matchable:\t\t%s\n', x$matchable))
+                   },
+                   ## limits
+                   numeric = ,
+                   integer = {
+                       if (!is.null(x$limit))
+                           res <- c(res, sprintf('  - limits:\t\t%s <= x <= %s\n', x$limit$min, x$limit$max))
+                   })
+            catn(res)
+        })                              # end sapply
+    }                                   # end if (length(x) == 0)
     invisible(x)
 }
 

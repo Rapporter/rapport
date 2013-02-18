@@ -1,16 +1,42 @@
 <!--head
-Title:          Crosstable
-Author:         Gergely Daróczi
-Email:          gergely@snowl.net
-Description:    Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
-Packages:       descr
-Data required:  TRUE
-Example:        rapport('crosstable', data=ius2008, row='gender', col='dwell')
-		rapport('crosstable', data=ius2008, row='email', col='dwell')
-
-row             | *factor | Row variable        | A categorical variable.
-col             | *factor | Column variable     | A categorical variable.
-annotation	| TRUE	  | Annotation		| Should textual annotations be added to the report?
+meta:
+  title: Crosstable
+  author: Gergely Daróczi
+  email: gergely@snowl.net
+  packages: descr
+  example:
+  - rapport('crosstable', data=ius2008, row='gender', col='dwell')
+  - rapport('crosstable', data=ius2008, row='email', col='dwell')
+  description: Returning the Chi-squared test of two given variables with count, percentages
+    and Pearson's residuals table.
+inputs:
+- name: row
+  label: Row variable
+  description: A categorical variable.
+  class: factor
+  length:
+    exactly: 1
+  value: ~
+  required: TRUE
+  standalone: FALSE
+- name: col
+  label: Column variable
+  description: A categorical variable.
+  class: factor
+  length:
+    exactly: 1
+  value: ~
+  required: TRUE
+  standalone: FALSE
+- name: annotation
+  label: Annotation
+  description: Should textual annotations be added to the report?
+  class: logical
+  length:
+    exactly: 1
+  value: TRUE
+  required: FALSE
+  standalone: TRUE
 head-->
 
 # Variable description

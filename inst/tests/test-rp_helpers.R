@@ -1,5 +1,6 @@
-## rapport internals helpers
+## test_file("inst/tests/test-rp_helpers.R")
 
+<<<<<<< HEAD
 context('Input limit specifications')
 
 test_that('should provide correct limits', {
@@ -53,3 +54,6 @@ test_that('should provide correct input definition', {
     expect_that(rapport:::check.type("string"), equals(list(type = 'string', limit = list(min = 1, max= 256), default = NULL, mandatory = FALSE)))
     expect_that(rapport:::check.type("fee, fi, foo, fam"), equals(list(type = 'option', limit = list(min = 1, max= 1), default = c("fee", "fi", "foo", "fam"), mandatory = FALSE)))
 })
+=======
+context("Rapport internals helpers")
+>>>>>>> development

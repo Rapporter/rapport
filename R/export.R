@@ -17,7 +17,7 @@
 #' @param create should export really happen? It might be handy if you want to append several reports.
 #' @param open open the exported document? Default set to TRUE.
 #' @param date character string as the date field of the report. If not set, current time will be set.
-#' @param desc add \code{Description} of the rapport class (template)? Default set to TRUE.
+#' @param description add \code{Description} of the rapport class (template)? Default set to TRUE.
 #' @param format format of the wanted report. See Pandoc's user manual for details. In short, choose something like: \code{html}, \code{pdf}, \code{odt} or \code{docx}.
 #' @param options options passed to \code{Pandoc.convert}.
 #' @param logo add rapport logo
@@ -63,7 +63,7 @@
 #'}
 #' @export
 #' @seealso \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}
-tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = pander.return(Sys.time()), desc = TRUE, format = 'html', options = '', logo = TRUE) {
+tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = pander.return(Sys.time()), description = TRUE, format = 'html', options = '', logo = TRUE) {
 
     if (missing(file)) {
         if (is.null(rp$file.name))
@@ -112,7 +112,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             r$title <- as.character(rp[[1]]$meta['title'])
 
             for (i in 1:length(rp)) {
-                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, desc = desc)
+                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, description = description)
             }
 
         } else
@@ -127,10 +127,10 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
 
             r$proc.time <- r$proc.time + rp$time
 
-            if (desc) {
+            if (description) {
                 ## header
                 r$add.paragraph(pandoc.header.return('Description', 2))
-                r$add.paragraph(as.character(rp$meta['desc']))
+                r$add.paragraph(as.character(rp$meta['description']))
             }
 
             ## body
@@ -138,7 +138,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
 
                 x.type <- x$type
                 if (x.type=='heading')
-                    r$add.paragraph(pandoc.header.return(x$text$eval, x$level + 1 + desc))
+                    r$add.paragraph(pandoc.header.return(x$text$eval, x$level + 1 + description))
                 if (x.type=='text')
                     r$add.paragraph(x$text$eval)
                 if (x.type=='block')

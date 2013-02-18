@@ -1,0 +1,22 @@
+\name{check.input.value}
+\alias{check.input.value}
+\title{Check input value}
+\usage{
+  check.input.value(input, value = NULL,
+    attribute.name = c("length", "nchar", "nlevels", "limit"))
+}
+\arguments{
+  \item{input}{input item}
+
+  \item{value}{input value, either template-defined, or set
+  by the user}
+
+  \item{attribute.name}{input attributes containing
+  validation rules (defaults to \code{length})}
+}
+\description{
+  Validates input values, according to rules set in general
+  input attributes (\code{length}) or class-specific ones
+  (\code{nchar}, \code{nlevels} or \code{limit}).
+}
+

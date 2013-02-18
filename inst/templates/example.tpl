@@ -1,15 +1,46 @@
 <!--head
-Title:          Example template
-Author:         Gergely Daróczi
-Description:    This template demonstrates the basic features of rapport. We all hope you will like it!
-Packages:       lattice
-Data required:  TRUE
-Example:        rapport("example", ius2008, v='age')
-                rapport("example", ius2008, v='gender', pacman=FALSE)
-                rapport("example", ius2008, v='age', s='FOO BAR')
-v       | *variable           | Variable    | A variable
-pacman  | TRUE                | Pacman      | Show Pacman in the results?
-s       | string=Bye!         | A string    | Any character value to be printed at the end of theriport
+meta:
+  title: Example template
+  author: Gergely Daróczi
+  packages:
+  - ggplot2
+  - xtable
+  example:
+  - rapport("example", ius2008, v='age')
+  - rapport("example", ius2008, v='gender', pacman=FALSE)
+  - rapport("example", ius2008, v='age', s='FOO BAR')
+  description: This template demonstrates the basic features of rapport. We all hope
+    you will like it!
+inputs:
+- name: v
+  label: Variable
+  description: A variable
+  length:
+    exactly: 1
+  value: ~
+  required: TRUE
+  standalone: FALSE
+- name: pacman
+  label: Pacman
+  description: Show Pacman in the results?
+  class: logical
+  length:
+    exactly: 1
+  value: TRUE
+  required: FALSE
+  standalone: TRUE
+- name: s
+  label: A string
+  description: Any character value to be printed at the end of the report
+  class: character
+  length:
+    exactly: 1.0
+  value: Bye!
+  nchar:
+    min: 1
+    max: 256
+  required: FALSE
+  standalone: TRUE
 head-->
 
 # Hello, world!
@@ -53,13 +84,17 @@ Loops and `if` conditionals without the curly braces do not work between the `BR
 
 What happens if you have an error in your document?
 
-<%=mean(foobar)%>
+<%=
+mean(foobar)
+%>
 
 Which is possible even inline too: <%=foo%> and <%=bar%> beside a normal chunk showing $\pi$ (<%=pi%>).
 
 And how do warnings show up?
 
-<%=chisq.test(mtcars$am, mtcars$gear)%>
+<%=
+chisq.test(mtcars$am, mtcars$gear)
+%>
 
 # Control-flow
 

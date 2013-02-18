@@ -1,14 +1,24 @@
 <!--head
-Title:          Descriptive statistics
-Author:         Gergely Daróczi
-Email:          gergely@snowl.net
-Description:    This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
-Data required:  TRUE
-Example:        rapport('descriptives', data=ius2008, var='gender')
-                rapport('descriptives', data=ius2008, var='age')
-                rapport('descriptives', data=mtcars, var='hp')
-
-var            | *variable[1]| Variable         | Categorical or numerical variable. This template will determine the measurement level of the given variable.
+meta:
+  title: Descriptive statistics
+  author: Gergely Daróczi
+  email: gergely@snowl.net
+  example:
+  - rapport('descriptives', data=ius2008, var='gender')
+  - rapport('descriptives', data=ius2008, var='age')
+  - rapport('descriptives', data=mtcars, var='hp')
+  description: This template will return descriptive statistics of a numerical or
+    frequency table of a categorical variable.
+inputs:
+- name: var
+  label: Variable
+  description: Categorical or numerical variable. This template will determine the
+    measurement level of the given variable.
+  length:
+    exactly: 1
+  value: ~
+  required: TRUE
+  standalone: FALSE
 head-->
 
 # *<%=rp.name(var)%>*<%=ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>

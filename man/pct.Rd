@@ -18,7 +18,8 @@
   allowed)}
 
   \item{check.value}{perform a sanity check to see if
-  provided numeric value is correct}
+  provided numeric value is correct (defaults to
+  \code{TRUE})}
 }
 \value{
   a character value with formatted percent

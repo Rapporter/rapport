@@ -10,6 +10,7 @@
   \item{...}{ignored}
 }
 \description{
-  Converts template inputs to character vector.
+  Converts template inputs to character vector with YAML
+  strings.
 }
 

@@ -1,14 +1,46 @@
 <!--head
-Title: Generate beta distribution
-Description: Random generation for the Beta distribution with parameters.
-Author: Rapporter Team (@rapporter)
-Packages: nortest
-Data required: FALSE
-
-n | *number[-Inf,Inf]=100 | Obeservations | Number of observations
-shape1 | *number[-Inf,Inf]=0.1 | Alpha | First parameter of the Beta distribution
-shape2 | *number[-Inf,Inf]=0.1 | Beta | Second parameter of the Beta distribution
-Example: rapport(fp = "generate-beta", n = 100, shape1 = 0.1, shape2 = 0.1)
+meta:
+  title: Generate beta distribution
+  author: Rapporter Team (@rapporter)
+  packages: nortest
+  description: Random generation for the Beta distribution with parameters.
+inputs:
+- name: n
+  label: Observations
+  description: Number of observations
+  class: numeric
+  length:
+    exactly: 1
+  value: 100.0
+  limit:
+    min: 1.0
+    max: Inf
+  required: TRUE
+  standalone: TRUE
+- name: shape1
+  label: Alpha
+  description: First parameter of the Beta distribution
+  class: numeric
+  length:
+    exactly: 1
+  value: 0.1
+  limit:
+    min: 0.0
+    max: 100.0
+  required: TRUE
+  standalone: TRUE
+- name: shape2
+  label: Beta
+  description: Second parameter of the Beta distribution
+  class: numeric
+  length:
+    exactly: 1
+  value: 0.1
+  limit:
+    min: 0.0
+    max: 100.0
+  required: TRUE
+  standalone: TRUE
 head-->
 # Histogram
 
@@ -86,3 +118,4 @@ _Kernel density plot_ is a plot of smoothed _empirical distribution function_. A
 set.caption('Kernel Density Plot')
 rp.densityplot(g)
 %>
+

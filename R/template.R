@@ -4,14 +4,10 @@
 #' @param fp a character string containing a template path, a template name (for package-bundled templates only), template contents separated by newline (\code{\\n}), or a character vector with template contents.
 #' @return a character vector with template contents
 tpl.find <- function(fp){
-
     if (missing(fp))
         stop('file pointer not provided')
-
     stopifnot(is.character(fp))
-
     l <- length(fp)
-
     ## maybe it's file path?
     if (l == 1){
         ## is it URL?
@@ -41,7 +37,6 @@ tpl.find <- function(fp){
     } else {
         stop('file pointer error')      # you never know...
     }
-
     return(txt)
 }
 
@@ -49,20 +44,12 @@ tpl.find <- function(fp){
 #' Template Header
 #'
 #' Returns \code{rapport} template header from provided path or a character vector.
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'header.open',
-#'     \item 'header.close'.
-#' }
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param open.tag a string with opening tag (defaults to value of user-defined \code{"header.open"} tag)
 #' @param close.tag a string with closing tag (defaults to value of user-defined \code{"header.close"} tag)
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template header contents
 tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
-
     txt <- tpl.find(fp)                 # split by newlines
 
     ## get header tag indices
@@ -94,20 +81,13 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 
 #' Template Body
 #'
-#' Returns contents of template body.
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'header.close'.
-#' }
+#' Returns contents of the template body.
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param htag a string with closing body tag
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template body contents
 #' @export
 tpl.body <- function(fp, htag = get.tags('header.close'), ...){
-
     txt   <- tpl.find(fp)
     h.end <- grep(htag, txt, ...)
     if (h.end == length(txt))
@@ -119,7 +99,7 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 
 #' Template Info
 #'
-#' Provides information about template metadata and/or inputs.
+#' Provides information about template metadata and/or inputs. See \code{\link{tpl.meta}} and \code{\link{tpl.inputs}} for details.
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param meta return template metadata? (defaults to \code{TRUE})
 #' @param inputs return template inputs? (defaults to \code{TRUE})
@@ -130,20 +110,14 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 #' }
 #' @export
 tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
-
-    h <- tpl.header(fp)                 # get header
-
+    h <- tpl.header(fp)
     if (!meta & !inputs)
         stop('Either "meta" or "inputs" should be set to TRUE')
-
     res <- list()
-
     if (meta)
         res$meta <- tpl.meta(h, use.header = TRUE)
-
     if (inputs)
         res$inputs <- tpl.inputs(h, use.header = TRUE)
-
     class(res) <- 'rp.info'
     return(res)
 }
@@ -151,209 +125,230 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 
 #' Header Metadata
 #'
-#' Displays summary of template metadata stored in a header section. This part of template header consists of several \emph{key: value} pairs, which define some basic template info, such as \emph{Title}, \emph{Example}  etc. If you're familiar with package development in R, you'll probably find this approach very similar to \code{DESCRIPTION} file.
-#'
-#' \strong{Mandatory Fields}
-#'
-#' The following fields must be specified in the template header and their size limits must be taken into account:
+#' Displays summary of template metadata stored in a header section. This part of template header consists of several YAML \code{key: value} pairs, which contain some basic information about the template, just much like the \code{DESCRIPTION} file in \code{R} packages does. Current implementation supports following fields:
 #'
 #' \itemize{
-#'     \item \emph{Title} - a template title (at most 500 characters)
-#'     \item \emph{Author} - author's (nick)name (at most 100 characters)
-#'     \item \emph{Description} - template description (at most 5000 characters)
+#'     \item \code{title} - a template title (required)
+#'     \item \code{author} - author's (nick)name (required)
+#'     \item \code{description} - template description (required)
+#'     \item \code{email} - author's email address
+#'     \item \code{packages} - YAML list of packages required by the template (if any)
+#'     \item \code{example} - example calls to \code{rapport} function, including template data and inputs
 #' }
 #'
-#' \strong{Optional Fields}
-#'
-#' Some fields are not required by the template. However, you should reconsider including them in the template, so that the other users could get a better impression of what your template does. These are currently supported fields:
-#'
-#' \itemize{
-#'     \item \emph{Email} - author's email address (defaults to \code{NULL})
-#'     \item \emph{Packages} - a comma-separated list of packages required by the template (defaults to \code{NA})
-#'     \item \emph{Data required} - is dataset required by a template? Field accepts \code{TRUE} or \code{FALSE}, and defaults to \code{FALSE}.
-#'     \item \emph{Example} - newline-separated example calls to \code{rapport} function, including template data and inputs (defaults to \code{NULL})
-#' }
-#'
-#' Upon successful execution, \code{rp.meta}-class object is returned invisibly.
+#' As of version \code{0.5}, \code{dataRequired} field is deprecated. \code{rapport} function will automatically detect if the template requires a dataset based on the presence of \emph{standalone} inputs.
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param fields a list of named lists containing key-value pairs of field titles and corresponding regexes
-#' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains header data
+#' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains only header data and not the whole template
 #' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
-#' @return a list with template metadata
+#' @return a named list with template metadata
 #' @export
-tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE){
+tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 
     header <- tpl.find(fp)
 
-    if (!isTRUE(use.header))
+    if (!use.header)
         header <- tpl.header(header)
 
-    if (isTRUE(trim.white))
-        header <- trim.space(header)
+    ## check if header is defined in YAML
+    h <- tryCatch({
+        y <- yaml.load(paste0(header, collapse = "\n"))
+        y$meta
+    }, error = function(e) {
+        ## either something went bad or it's the old header (hopefully)
 
-    ## required fields
-    fld <- list(
-        list(title = 'Title'         , regex = '.+', field.length = 500),
-        list(title = 'Author'        , regex = '.+', field.length = 100),
-        list(title = 'Description'   , regex = '.+', short = 'desc'),
-        list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
-        list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
-        list(title = 'Data required' , regex = 'TRUE|FALSE', mandatory = FALSE, default.value = FALSE),
-        list(title = 'Example'       , regex = '.+', mandatory = FALSE)
-        )
+        if (isTRUE(trim.white))
+            header <- trim.space(header)
 
-    ## no fields specified, load default fields
-    if (!is.null(fields)){
-        fld.title <- sapply(fld, function(x) x$title)
-        fields.title  <- sapply(fields, function(x) x$title)
-        fld <- c(fld, fields) # merge required fields with default/specified ones
-        if (any(fld %in% fields.title)){
-            stopf("Duplicate metadata fields: %s", p(intersect(fld.title, fields.title), "\""))
+        ## required fields
+        fld <- list(
+            list(title = 'Title'         , regex = '.+', field.length = 500),
+            list(title = 'Author'        , regex = '.+', field.length = 100),
+            list(title = 'Description'   , regex = '.+', short = 'desc'),
+            list(title = 'Email'         , regex = '[[:alnum:]\\._%\\+-]+@[[:alnum:]\\.-]+\\.[[:alpha:]]{2,4}', mandatory = FALSE, short = 'email'),
+            list(title = 'Packages'      , regex = '[[:alnum:]\\.]+((, ?[[:alnum:]+\\.]+)+)?', mandatory = FALSE),
+            list(title = 'Example'       , regex = '.+', mandatory = FALSE)
+            )
+
+        ## no fields specified, load default fields
+        if (!is.null(fields)){
+            fld.title <- sapply(fld, function(x) x$title)
+            fields.title  <- sapply(fields, function(x) x$title)
+            fld <- c(fld, fields) # merge required fields with default/specified ones
+            if (any(fld %in% fields.title)) {
+                stopf("Duplicate metadata fields: %s", p(intersect(fld.title, fields.title), "\""))
+            }
         }
-    }
 
-    inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
-    spaces.ind <- grep("^([:space:]+|)$", header)
-    rm.ind     <- c(inputs.ind, spaces.ind)
+        inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
+        spaces.ind <- grep("^([:space:]+|)$", header)
+        rm.ind     <- c(inputs.ind, spaces.ind)
 
-    if (length(rm.ind) > 0)
-        h <- header[-rm.ind]
-    else
-        h <- header
+        if (length(rm.ind) > 0)
+            header <- header[-rm.ind]
 
-    l <- sapply(fld, function(x){
-        m <- grep(sprintf("^%s:", x$title), h)
-        x$x <- h[m]
-        do.call(extract_meta, x)
+        h <- sapply(fld, function(x){
+            m <- grep(sprintf("^%s:", x$title), header)
+            x$x <- header[m]
+            do.call(extract.meta, x)
+        })
+
+        ## packages
+        if (!is.null(h$packages))
+            if (is.string(h$packages))
+                h$packages <- strsplit(h$packages, " *, *")[[1]]
+        
+        ## examples
+        ## TODO: change to "examples" at some point (easy does it)
+        if (!is.null(h$example)){
+            ## select all "untagged" lines after Example: that contain rapport(<smth>) string
+            ## but it will not check if they're syntactically correct
+            ind.start <- grep('^Example:', header)
+            ind       <- adj.rle(grep("^[\t ]*rapport\\(.+\\)([\t ]*#*[[:print:]]*)?$", header))$values[[1]]
+                ind       <- ind[!ind %in% ind.start]
+            h$example <- c(h$example, header[ind])
+        }
+
+        ## backwards-compat: change "desc" to "description"
+        h <- append(h, list(description = h$desc), after = 2)
+        h$desc <- NULL
+
+        h
     })
 
-    ## store only packages that aren't listed in dependencies
-    if (!is.null(l$packages)){
-        pkg.dep    <- strsplit(packageDescription("rapport")$Depends, "[,[:space:]]+")[[1]]
-        l$packages <- lapply(strsplit(l$packages, ','), trim.space)[[1]]
-        l$packages <- setdiff(l$packages, pkg.dep)
+    ## deprecated fields
+    ## dataRequired
+    if (!is.null(h$dataRequired)) {
+        h$dataRequired <- NULL
+        warning('"dataRequired" field is deprecated. You should remove it from the template.')
     }
-
-    ## examples
-    if (!is.null(l$example)){
-        ## select all "untagged" lines after Example: that contain rapport(<smth>) string
-        ## but it will not check if they're syntactically correct
-        ind.start <- grep('^Example:', header)
-        ind       <- adj.rle(grep("^[\t ]*rapport\\(.+\\)([\t ]*#*[[:print:]]*)?$", header))$values[[1]]
-            ind       <- ind[!ind %in% ind.start]
-        l$example <- c(l$example, header[ind])
-    }
-
-    structure(l, class = 'rp.meta')
+    
+    ## check metadata validity
+    meta.fields <- c('title', 'description', 'author', 'email', 'packages', 'example')
+    meta.required <- c('title', 'description', 'author')
+    meta.names <- names(h)
+    ## check required fields
+    if (!all(meta.required %in% meta.names))
+        stopf('Required metadata fields missing: %s', p(meta.required, wrap = "\""))
+    ## check unsupported fields
+    unsupported.meta <- meta.names[!meta.names %in% meta.fields]
+    if (length(unsupported.meta))
+        warningf('Unsupported metadata field(s) found: %s', p(unsupported.meta, wrap = "\""))
+    
+    structure(h, class = 'rp.meta')
 }
 
 
 #' Template Inputs
 #'
-#' Displays summary of template inputs from header section. \code{rp.inputs}-class object is returned invisibly.
+#' Displays summary for template inputs (if any). Note that as of version \code{0.5}, \code{rapport} template inputs should be defined using YAML syntax. See \code{deprecated-inputs} for details on old input syntax. The following sections describe new YAML input definition style.
 #'
-#' \strong{Input Specifications}
+#' \strong{Introduction}
 #'
-#' Apart from \emph{template metadata}, header also requires specification for template \emph{inputs}. In most cases, \emph{inputs} refer to variable names in provided dataset, but some inputs have special meaning inside \code{rapport}, and some of them don't have anything to do with provided dataset whatsoever. Most inputs can contain limit specification, and some inputs can also have a default value. At first we'll explain input specifications on the fly, and in following sections we'll discuss each part in thorough details. Let's start with a single dummy input specification:
+#' The full power of \code{rapport} comes into play with \emph{template inputs}. One can match inputs against dataset variables or custom \code{R} objects. The inputs provide means of assigning \code{R} objects to \code{symbol}s in the template evaluation environment. Inputs themselves do not handle only the template names, but also provide an extensive set of rules that each dataset variable/user-provided \code{R} object has to satisfy. The new YAML input specification takes advantage of \code{R} class system. The input attributes should resemble common \code{R} object attributes and methods.
 #'
-#' \code{*foo.bar | numeric[1,6] | Numeric variable | A set of up to 6 numeric variables}
-#'
-#' \strong{Required Inputs}
-#'
-#' Asterisk sign (\code{*}) in front of an input name indicates a mandatory input. So it is possible to omit input (unless it's required, of course), but you may want to use this feature carefully, as you may end up with ugly output. If an input isn't mandatory,\code{NULL}is assigned to provided input name, and the object is stored in transient evaluation environment.
-#'
-#' \strong{Input Name}
-#'
-#' \emph{rapport} has its own naming conventions which are compatible, but different from traditional \strong{R} naming conventions. Input name ("foo.bar" in previous example) must start with an alphabet letter, followed either by other alphabet letters or numbers, separated with \code{_} or \code{.}. For example, valid names are: \code{foo.bar}, \code{f00_bar}, or \code{Fo0_bar.input}. Input name length is limited on 30 characters by default. At any time you can check your desired input name with \code{check.name} function. Note that input names are case-sensitive, just like \code{symbol}s in \strong{R}.
-#'
-#' \strong{Input Type}
-#'
-#' \emph{Input type} is specified in the second input block. It is the most (read: "only") complex field in an input specification. It consists of \emph{type specification}, \emph{limit specification} and sometimes a \emph{default value specification}. Most input types are compatible with eponymous \strong{R} modes: \emph{character}, \emph{complex}, \emph{logical}, \emph{numeric}, or \strong{R} classes like \emph{factor}. Some are used as "wildcards", like \emph{variable}, and some do not refer to dataset variables at all: \emph{boolean}, \emph{number}, \emph{string} and \emph{option}. Here we'll discuss each input type thoroughly. We will use term \emph{variable} to denote a vector taken from a dataset (for more details see documentation for \code{is.variable}). All inputs can be divided into two groups, depending on whether they require a dataset or not:
+#' Inputs can be divided into two categories:
 #'
 #' \itemize{
-#'     \item \strong{dataset inputs}: \itemize{
-#'         \item \emph{character} - matches a character variable
-#'         \item \emph{complex} - matches a character variable
-#'         \item \emph{numeric} - matches a numeric variable
-#'         \item \emph{factor} - matches a factor variable (i.e. R object of \code{factor} class)
-#'         \item \emph{variable} - matches any variable of previously defined types
-#'     }
-#'     \item \strong{standalone inputs}: \itemize{
-#'         \item \emph{string} - accepts an atomic character vector
-#'         \item \emph{number} - accepts an atomic numeric vector
-#'         \item \emph{boolean} - accepts a logical value
-#'         \item \emph{option} - accepts a comma-separated list of values, that are to be matched with \code{\link{match.arg}}. The first value in a list is the default one.
-#'     }
+#'     \item \emph{dataset inputs}, i.e. the inputs that refer to named element of an |code{R} object provided in \code{data} argument in \code{rapport} call. Currently, \code{rapport} supports only \code{data.frame} objects, but that may change in the (near) future.
+#'     \item \emph{standalone inputs} - the inputs that do not depend on the dataset. The user can just provide an \code{R} object of an appropriate class (and other input attributes) to match a \emph{standalone} input.
 #' }
 #'
-#' Now we'll make a little digression and talk about \strong{input limits}. You may have noticed some additional stuff in type specification, e.g. \code{numeric[1,6]}. All dataset inputs, as well as *string* and *numeric standalone inputs* can contain \emph{limit specifications}. If you want to bundle several variables from dataset or provide a vector with several string/numeric values, you can apply some rules within square brackets in \code{[a,b]} format, where \code{[a,b]} stands for "from \code{a} to \code{b} inputs", e.g. \code{[1,6]} means "from 1 to 6 inputs". Limit specifications can be left out, but even in that case implicit limit rules are applied - for variables, as well as boolean and option inputs it's \code{[1,1]}, for strings \code{[1,256]} and for number inputs \code{[-Inf,Inf]}.
+#' \strong{General input attributes}
 #'
-#' \strong{Dataset inputs} will match one or more variables from a dataset, and check its mode and/or class. \code{variable} type is a bit different, since it matches any kind of variable (not to confuse with \code{Any} type), but it still refers to variable(s) from a provided dataset. Dataset inputs cannot have default value, but can be optional (just leave out \code{*} sign in front of input name). Note that if you provide more than one variable name in \code{rapport} function call, that input will be stored as a \code{data.frame}, otherwise, it will be stored as a \emph{variable} (atomic vector).
-#'
-#' \strong{Standalone inputs} are a bit different since they do not refer to any variables from a dataset. However, they are more complex than *dataset inputs*, especially because they can contain default values.
+#' Following attributes are available for all inputs:
+#' 
 #' \itemize{
-#'     \item \strong{number} and \strong{string} inputs are defined with \code{number} and \code{string} respectively. They can also contain limit specifications, but the limits are treated in a slightly different manner. \code{number[-2.58,3]} will match any number within an interval from -2.58 to 3. If the limit specification is ommited, an implicit ones are assigned (\code{[-Inf,Inf]}. Note that range input specifications are required for number inputs (providing only \code{number[5]} will throw an error). Limit specifications for string inputs define the range of characters that provided string can have, e.g. \code{string[1,6]} matches the string with at least 1 and at most 6 characters. If ommited, limit specifications for strings are implicitly set to \code{[1,256]}. \emph{number} and \emph{string} inputs can have \emph{default value}, which can be defined by placing \code{=} after type/limit specification followed by default value. For instance, \code{number[1,6]=3.14} sets value \code{3.14} as default. Note that for number inputs an additional check will be applied to ensure that provided default number belongs to an interval defined in the limit specification (\code{[1,6]=7} will throw an error). For string inputs, the default value \code{string=foo} sets "foo" as default string value (note that you don't have to specify quotes unless they are the part of the default string). Default value will be checked to ensure that its length falls within the interval provided in the limit specification.
-#'     \item \strong{boolean} inputs can contain either \code{TRUE} or \code{FALSE} values. The specified value is the default one. They cannot contain limit specification, but implicitly the limits are set to \code{[1,1]}.
-#'     \item \strong{option} inputs are nothing more than a comma-separated list of strings. Even if you specify numbers in a list, they will be coerced to strings once the list is parsed. Values in \emph{option} list will be placed in a character vector, and matched with \code{match.arg} function. That means that you could only choose one value from a list. Partial matches are allowed, and the first value in \emph{option} list is the default one. Just like in \code{boolean} inputs, limits are implicitly set to \code{[1,1]}.
+#'     \item \code{name} (character string, required) - input name. It acts as an identifier for a given input, and is required as such. Template cannot contain duplicate names. \code{rapport} inputs currently have custom naming conventions - see \code{\link{guess.input.name}} for details.
+#'     \item \code{label} (character string) - input label. It can be blank, but it's useful to provide input label as \code{rapport} helpers use that information in plot labels and/or exported HTML tables. Defaults to empty string.
+#'     \item \code{description} (character string) - similar to \code{label}, but should contain long description of given input.
+#'     \item \code{class} (character string) - defines an input class. Currently supported input classes are: \code{character}, \code{complex}, \code{factor}, \code{integer}, \code{logical}, \code{numeric} and \code{raw} (all atomic vector classes are supported). Class attribute should usually be provided, but it can also be \code{NULL} (default) - in that case the input class will be guessed based on matched \code{R} object's value.
+#'     \item \code{required} (logical value) - does the input require a value? Defaults to \code{FALSE}.
+#'     \item \code{standalone} (logical value) - indicates that the input depends on a dataset. Defaults to \code{FALSE}.
+#'     \item \code{length} (either an integer value or a named list with integer values) - provides a set of rules for input value's length. \code{length} attribute can be defined via:
+#'     \itemize{
+#'         \item an integer value, e.g. \code{length: 10}, which is identical to: \code{exactly: 10} nested within \code{length} attribute. In this case input length has to be equal to the provided integer value.
+#'         \item named list with \code{min} and/or \code{max} attributes nested under \code{length} attribute. This will define a range of values in which input length must must fall. Note that range limits are inclusive. Either \code{min} or \code{max} attribute can be omitted, and they will default to \code{1} and \code{Inf}, respectively.
+#'     }
+#'     \strong{IMPORTANT!} Note that \code{rapport} treats input length in a bit different manner. If you match a subset of 10 character vectors from the dataset, input length will be \code{10}, as you might expect. But if you select only one variable, length will be equal to \code{1}, and not to the number of vector elements. This stands both for standalone and dataset inputs. However, if you match a character vector against a standalone input, length will be stored correctly - as the number of vector elements.
+#'     \item \code{value} (a vector of an appropriate class). This attribute only exists for standalone inputs. Provided value must satisfy rules defined in \code{class} and \code{length} attributes, as well as any other class-specific rules (see below).
 #' }
 #'
-#' \strong{Input Label and Description}
+#' \strong{Class-specific attributes}
 #'
-#' Third block in input definition is an input label. While \emph{variable} can have its own label (see \code{rp.label}), you may want to use the one defined in input specifications. At last, fourth block contains input description, which should be a lengthy description of current input. Note that all the fields in input specification are mandatory. You can cheat, though, by providing a non-space character (e.g. a dot) as an input label and/or description, but please don't do that unless you're testing the template. Labels and descriptions are meant to be informative.
+#' \emph{character}
+#'
+#' \itemize{
+#'     \item \code{nchar} - restricts the number of characters of the input value. It accepts the same attribute format as \code{length}. If \code{NULL} (default), no checks will be performed.
+#'     \item \code{regexp} (character string) - contains a string with regular expression. If non-\code{NULL}, all strings in a character vector must match the given regular expression. Defaults to \code{NULL} - no checks are applied.
+#'     \item \code{matchable} (logical value) - if \code{TRUE}, \code{value} attribute must be provided. In that case, \code{value} will contain a set of values that will be passed to \code{link{match.arg}} function \code{choices} argument. Matching will be performed on the elements of user-specified vector, i.e. provided vector will be passed to \code{arg} argument. Multiple matches \code{several.ok} are allowed, and will be computed based on the \code{length} attribute.
+#' }
+#'
+#' \emph{numeric}, \emph{integer}
+#'
+#' \itemize{
+#'     \item \code{limit} - accepts the same format as \code{length} attribute, only that in this case it checks input values rather than input length. \code{limit} attribute is \code{NULL} by default and checks are performed only when \code{limit} is defined.
+#' }
+#'
+#' \emph{factor}
+#'
+#' \itemize{
+#'     \item \code{nlevels} - accepts the same format as \code{length} attribute, but the check is performed rather on the number of factor levels.
+#'     \item \code{matchable} - \emph{ibid} as in character inputs, but this time it's the factor levels that get passed to \code{arg} argument in \code{\link{match.arg}}.
+#' }
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param use.header a logical value indicating whether the header section is provided in \code{h} argument
-#' @return a list with variable info
 #' @export
-tpl.inputs <- function(fp, use.header = TRUE){
+tpl.inputs <- function(fp, use.header = FALSE){
 
     header <- tpl.find(fp)
 
-    if (!isTRUE(use.header))
+    if (!use.header)
         header <- tpl.header(header)
 
-    inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
+    ## Try with YAML first
+    inputs <- tryCatch(yaml.load(paste0(header, collapse = "\n")), error = function(e) e)
 
-    if (length(inputs.ind) == 0)
-        return (structure(NULL, class = 'rp.inputs'))
+    ## Old-style syntax
+    if (inherits(inputs, 'error')) {
+        inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
 
-    inputs.raw <- lapply(strsplit(header[inputs.ind], '|', fixed = TRUE), function(x) trim.space(x)) # "raw" as in "unchecked", split by | and trimmed for whitespace
+        if (length(inputs.ind) == 0)
+            return (structure(NULL, class = 'rp.inputs'))
 
-    if (!all(sapply(inputs.raw, length) == 4))
-        stop('input definition error: missing fields')
+        inputs.raw <- lapply(strsplit(header[inputs.ind], '|', fixed = TRUE), function(x) trim.space(x)) # "raw" as in "unchecked", split by | and trimmed for whitespace
 
-    chk.fn <- function(x, nms){
+        if (!all(sapply(inputs.raw, length) == 4))
+            stop('input definition error: missing fields')
 
-        i.name  <- x[1]
-        i.type  <- x[2]
-        i.label <- x[3]
-        i.desc  <- x[4]
+        inputs <- lapply(inputs.raw, function(x){
+            i.name  <- guess.input.name(x[1])
+            i.label <- guess.input.label(x[3])
+            i.desc  <- guess.input.description(x[4])
+            i.type  <- guess.old.input.type(x[2])
 
-        re.lbl <- "^[^\\|\n\r]*$" # to be used for variable label and description (allows 0 or more chars that aren't "|", carriage return or newline)
+            if (is.empty(i.label))
+                warningf('missing label for input "%s"', i.name)
+            if (is.empty(i.desc))
+                warningf('missing description for input "%s"', i.name)
+            
+            c(
+                name = i.name,
+                label = i.label,
+                description = i.desc,
+                i.type
+                )
+        })
+        warning("Oh, no! This template has outdated input definition! You can update it by running `tpl.renew`.")
+    } else
+        inputs <- lapply(inputs$inputs, guess.input)
 
-        ## 1st: check variable name
-        ## must begin with a letter, and can continue either with a letter or a digit, separated either by underscore or dot, e.g. 'var.90', or 'v90_alpha'.
-        if (!check.name(i.name))
-            stopf('invalid input name: "%s"', i.name)
+    ## check for duplicate names
+    nms <- sapply(inputs, function(x) x$name)
+    dupes <- duplicated(nms)
+    if (any(dupes))
+        stopf('template contains duplicate input names: %s', p(nms[dupes], wrap = "\""))
 
-        ## 2nd: check/get type
-        var.type <- check.type(i.type)
-
-        ## 3rd: check label
-        if (nchar(i.label) < 1)
-            warningf('label string for input "%s" was not provided', i.name)
-        if (!grepl(re.lbl, i.label))
-            stopf('invalid input label: "%s"', i.type)
-
-        ## 4th: check description
-        if (nchar(i.desc) < 1)
-            warningf('description string for input "%s" was not provided', i.desc)
-        if (!grepl(re.lbl, i.desc))
-            stopf('invalid input description: "%s"', i.desc)
-
-        c(name = i.name, label = i.label, var.type, desc = i.desc)
-    }
-
-    inputs <- lapply(inputs.raw, chk.fn)
     structure(inputs, class = 'rp.inputs')
 }
 
@@ -386,9 +381,11 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 
     if (examples.len > 1){
         if (is.null(index)){
-            opts  <- c(n.examples, 'all')
+            opts  <- c(n.examples)
             catn('Enter example ID from the list below:')
-            catn(sprintf('\n(%s)\t%s', opts, c(examples, 'Run all examples')))
+            catn(sprintf('\n(%s)\t%s', opts, c(examples)))
+            catn('(a)\tRun all examples')
+            catn()
             i     <- readline('Template ID> ')
             index <- unique(strsplit(gsub(' +', '', i), ',')[[1]])
         }
@@ -396,12 +393,10 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
         index <- 1
     }
 
-    if (length(index) == 0){
-        message('No example selected')
+    if (length(index) == 0 || tolower(index) == 'q')
         return(invisible(NULL))
-    }
 
-    if (length(index) == 1 && index == 'all')
+    if (length(index) == 1 && tolower(index) %in% c('a', 'all'))
         index <- n.examples
 
     old.index <- index
@@ -496,7 +491,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     b        <- tpl.body(txt)                     # template body
     e        <- new.env(parent = env)             # load/create evaluation environment
     i        <- list(...)                         # user inputs
-    data.required <- isTRUE(as.logical(meta$dataRequired)) # is data required
+    data.required <- any(sapply(inputs, function(x) !x$standalone))
     pkgs     <- meta$packages                                # required packages
     file.path <- gsub('\\', '/', file.path, fixed = TRUE)
 
@@ -508,10 +503,10 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             stopf('Following packages are required by the template, but were not loaded: %s', p(names(pk[nopkg]), wrap = '"'))
     }
 
-    ## no inputs provided
-    if (length(inputs) == 0){
+    ## template contains no inputs
+    if (length(inputs) == 0) {
         ## check if data is required
-        if (data.required){
+        if (data.required) {
             if (is.null(data))
                 stop('"data" argument is required by the template')
             else
@@ -519,166 +514,142 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         }
         ## inputs required, carry on...
     } else {
-        ## check mandatory inputs
-        input.mandatory <- sapply(inputs, function(x){
-            mand <- if (is.null(x$mandatory)) FALSE else x$mandatory
-            structure(mand, .Names = x$name) # mandatory inputs
-        })
-        input.names <- names(input.mandatory)
-        input.ok    <- input.names[input.mandatory] %in% names(i)
+        ## check required inputs (this will only check names)
+        ## this is silly!!! what if you have input = NULL?!?
+        input.required <- sapply(inputs, function(x) structure(x$required, .Names = x$name))
+        input.names    <- names(input.required)
+        input.ok       <- input.names[input.required] %in% names(i)
         ## take default inputs into account
         if (!all(input.ok))
-            stopf("you haven't provided a value for %s", p(input.names[input.mandatory], '"'))
+            stopf("you haven't provided a value for %s", p(input.names[input.required], '"'))
 
         ## data required
         if (data.required){
-
             if(is.null(data))
                 stop('"data" not provided, but is required')
-
             if (!inherits(data, c('data.frame', 'rp.data')))
                 stop('"data" should be a "data.frame" object')
-
             data.names <- names(data)          # variable names
             assign('rp.data', data, envir = e) # load data to eval environment
         }
 
         lapply(inputs, function(x){
 
-            name          <- x$name                # input name
-            input.type    <- x$type                # input type
-            input.value   <- i[[name]]             # input value (supplied by user)
-            input.len <- switch(input.type,
-                                string    = nchar(input.value),
-                                number    = input.value,
-                                boolean   = 1,
-                                option    =,
-                                character =,
-                                complex   =,
-                                factor    =,
-                                logical   =,
-                                numeric   =,
-                                variable  = length(input.value),
-                                stop('invalid input type'))
-            limit         <- x$limit               # input limits
-            input.default <- x$default             # default value (if any)
+            ## template inputs
+            input.name   <- x$name
+            input.class  <- x$class
+            input.length <- x$length
+            input.value  <- x$value
+            ## user inputs
+            user.input   <- i[[input.name]]
 
-            if (!is.null(input.value)){
-                ## check limits
-                if (input.len < limit$min || input.len > limit$max) {
-                    lims <- unlist(limit, use.names = FALSE)
-                    if (length(unique(lims)) == 1)
-                        lim.range <- lims[1]
-                    else
-                        lim.range <- paste("between", limit$min, "and", limit$max, sep = " ")
-                    len.diff <- diff(lims)
-                    limit.error.msg <- switch(input.type,
-                                              string = sprintf('string input "%s" (value: "%s") has %d character%s, and it should have %s', name, input.value, input.len, if (input.len > 1) 's' else '', lim.range),
-                                              number = sprintf('number input "%s" (value: %s) should fall in interval [%s, %s]', name, input.value, limit$min, limit$max),
-                                              boolean =,
-                                              option = sprintf('%s input "%s" allows only one input', input.type, name),
-                                              sprintf("%s input %s has %d variables and should have %d", input.type, name, input.type, lim.range)
-                                              )
-                    stop(limit.error.msg)
-                }
-            }
-
-            ## check type
-            type.fn <- switch(input.type,
-                              option    = , # CSV list of strings
-                              string    = is.string,
-                              character = is.character,
-                              complex   = is.complex,
-                              factor    = is.factor,
-                              boolean   = is.boolean,
-                              logical   = is.logical,
-                              number    = is.number,
-                              numeric   = is.numeric,
-                              variable  = is.variable,
-                              stopf('unknown type: "%s"', input.type)
-                              )
-
-            ## if any of our "custom" input types
-            ## values are not extracted from data.frame in this case
-            ## for custom types, default value is always assigned!!!
-            if (input.type %in% c('number', 'string', 'option', 'boolean')){
-
-                ## the ones specified in the template should take precedence
-                val <- if (is.null(input.value)) input.default[1] else input.value
-
-                ## check types
-                if (!is.null(val))
-                    if (!do.call(type.fn, list(val)))
-                        stopf('"%s" is not of "%s" type', val, input.type)
-
-                ## CSV input (allow multi match?)
-                if (input.type == 'option')
-                    val <- match.arg(input.value, input.default)
-
+            ## matchable inputs are kind-of special
+            if (isTRUE(x$matchable)) {
+                ## for factors, match from factor levels
+                if (input.class == 'factor')
+                    choices <- levels(input.value)
+                else
+                    choices <- input.value
+                ## matchable input values should have appropriate default length
+                arg <- if (is.null(user.input)) choices[1:(if (is.null(x$length$exactly)) x$length$min else x$length$exactly)] else as.character(user.input)
+                ## value mapped to matchable input should be a variable
+                val <- match.arg(arg, choices, several.ok = any(sapply(input.length, function(x) x > 1)))
+                if (input.class == 'factor')
+                    val <- as.factor(val)
             } else {
-                ## ain't a "custom" input type, so it should be extracted from data.frame
-
-                ## check if ALL variable names exist in data
-                if (!all(input.value %in% data.names))
-                    stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(input.value, data.names), '"'))
-
-                if (is.null(input.value)){
-                    val <- NULL
+                ## standalone input can now be atomic or recursive
+                if (x$standalone) {
+                    ## either a value provided in the rapport() call, or a template default, if any
+                    val <- if (is.null(user.input)) input.value else user.input
+                    val.length <- length(val)
                 } else {
+                    ## it's not standalone, so user must have provided a character string
+                    ## with names matching the ones in the data.frame
+                    if (!all(user.input %in% data.names))
+                        stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(user.input, data.names), '"'))
 
-                    val <- e$rp.data[, input.value] # variable value
-
-
-                    ## multiple variables supplied
-                    if (is.data.frame(val)){
-
-                        ## check types
-                        val.types <- sapply(val, type.fn)
-                        val.modes <- sapply(val, mode)
-                        if (!all(val.types == TRUE))
-                            stopf('error in "%s": %s should be %s! (provided: %s)', name, p(input.value[!val.types], '"'), input.type, p(val.modes[!val.types], '"'))
-
-                        ## check labels
-                        for (t in names(val)){
-                            if (rp.label(val[, t]) == 't')
-                                val[, t] <- structure(val[, t], label = t, name = t)
-                            else
-                                val[, t] <- structure(val[, t], name = t)
-                        }
-                    } else if (is.atomic(val)){
-                        ## only one variable extracted from data.frame
-
-                        ## check type
-                        val.types <- do.call(type.fn, list(val))
-                        val.modes <- mode(val)
-                        if (!val.types)
-                            stopf('error in "%s": "%s" should be %s! (provided: %s)', name, input.value, input.type, val.modes)
-
-                        ## check label
-                        if (rp.label(val) == 'val')
-                            val <- structure(val, label = input.value, name = input.value)
-                        else
-                            val <- structure(val, name = input.value)
-                    } else {
-                        stop('data extraction error') # you never know...
-                    }
+                    val <- e$rp.data[user.input]
+                    ## we use this as data.frame with 0 columns will not be NULL
+                    ## therefore the length check will not pass
+                    ## OR we can just change the check.input.value function
+                    ## and things will work like a charm
+                    if (!length(val))
+                        val <- NULL
+                    val.length <- length(val)
                 }
             }
 
+            ## class check
+            check.input.value.class(val, input.class, input.name)
+
+            ## check length (all inputs have length)
+            check.input.value(x, val, 'length')
+
+            if (!is.null(user.input)) {
+
+                ## coerce val to vector if it's only one input
+                if (!x$standalone && length(user.input) == 1)
+                    val <- val[, 1]
+
+                ## class-specific checks
+                if (!is.null(input.class))
+                    switch(input.class,
+                           character = {
+                               ## nchar check
+                               check.input.value(x, val, 'nchar')
+                               ## regexp check
+                               if (!is.null(x$regexp)) {
+                                   if (!all(grepl(x$regexp, val)))
+                                       stopf('%s input "%s" value is not matched with provided regular expression "%s"', input.name, val, x$regexp)
+                               }
+                           },
+                           factor = {
+                               check.input.value(x, val, 'nlevels')
+                           },
+                           integer = ,
+                           numeric = {
+                               if (!is.null(x$limit)) {
+                                   ## check limits
+                                   if (is.variable(val))
+                                       check.input.value(x, val, 'limit')
+                                   else {
+                                       if (!all(sapply(val, function(i) i > x$limit$min)) && all(sapply(val, function(i) i < x$limit$max)))
+                                           stopf('all values in %s input "%s" should fall between %s and %s', x$class, x$name, x$limit$min, x$limit$max)
+                                   }
+                               }
+                           })
+                
+                ## add labels
+                if (is.recursive(val)) {
+                    for (t in names(val)){
+                        if (rp.label(val[, t]) == 't')
+                            val[, t] <- structure(val[, t], label = t, name = t)
+                        else
+                            val[, t] <- structure(val[, t], name = t)
+                    }
+                } else {
+                    if (rp.label(val) == 'val')
+                        val <- structure(val, label = user.input, name = user.input)
+                    else
+                        val <- structure(val, name = user.input)
+                }
+            }
+            
             ## assign stuff
-            assign(name, val, envir = e)                             # value
-            assign(sprintf('%s.iname', name), name, envir = e)       # input name (the stuff)
-            assign(sprintf('%s.ilen', name), input.len, envir = e)   # input length
-            assign(sprintf('%s.ilabel', name), x$label, envir = e)   # input label
-            assign(sprintf('%s.idesc', name), x$desc, envir = e)     # input description
-            assign(sprintf('%s.name', name), input.value, envir = e) # variable name(s)
-            assign(sprintf('%s.len', name), length(val), envir = e)  # variable length
+            assign(input.name, val, envir = e)                                    # value
+            assign(sprintf('%s.iname', input.name), input.name, envir = e)        # input name
+            assign(sprintf('%s.ilen', input.name), length(user.input), envir = e) # input length
+            assign(sprintf('%s.ilabel', input.name), x$label, envir = e)          # input label
+            assign(sprintf('%s.idesc', input.name), x$description, envir = e)     # input description
+            assign(sprintf('%s.name', input.name), user.input, envir = e)         # variable name(s)
+            assign(sprintf('%s.len', input.name), length(val), envir = e)         # variable length
+            ## currently we support only data.frame and atomic vectos
             if (is.data.frame(val))
-                assign(sprintf('%s.label', name), sapply(val, rp.label), envir = e) # variable labels
+                assign(sprintf('%s.label', input.name), sapply(val, rp.label), envir = e) # variable labels
             else if (is.atomic(val))
-                assign(sprintf('%s.label', name), rp.label(val), envir = e) # variable label
+                assign(sprintf('%s.label', input.name), rp.label(val), envir = e) # variable label
             else
-                stopf('"%s" is not a "data.frame" or an atomic vector', name) # you never know...
+                stopf('"%s" is not a "data.frame" or an atomic vector', input.name) # you never know...
         })
     }
 

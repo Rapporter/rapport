@@ -2,31 +2,33 @@
 \alias{is.empty}
 \title{Empty Value}
 \usage{
-  is.empty(x, trim = FALSE, ...)
+  is.empty(x, trim = TRUE, ...)
 }
 \arguments{
-  \item{x}{an object to check}
+  \item{x}{an object to check its emptiness}
 
-  \item{trim}{trim whitespace? (by default removes only
-  trailing spaces)}
+  \item{trim}{trim whitespace? (\code{TRUE} by default)}
 
-  \item{...}{additional arguments for
-  \code{\link{trim.space}}}
+  \item{...}{additional arguments for \code{\link{sapply}}}
 }
 \description{
   Rails-inspired helper that checks if vector values are
-  "empty", i.e. if it's of \code{NULL}, \code{NA},
-  \code{NaN}, \code{FALSE}, empty string or \code{0}. Note
-  that unlike its `is.` siblings, `is.empty` is vectorised.
+  "empty", i.e. if it's: \code{NULL}, zero-length,
+  \code{NA}, \code{NaN}, \code{FALSE}, an empty string or
+  \code{0}. Note that unlike its native R
+  \code{is.<something>} sibling functions, \code{is.empty}
+  is vectorised (hence the "values").
 }
 \examples{
-is.empty(NULL)     # returns [1] TRUE
-is.empty(NA)       # returns [1] TRUE
-is.empty(NaN)      # returns [1] TRUE
-is.empty("")       # returns [1] TRUE
-is.empty(0)        # returns [1] TRUE
-is.empty(0.00)     # returns [1] TRUE
-is.empty("foobar") # returns [1] FALSE
-is.empty("    ")   # returns [1] FALSE
+is.empty(NULL)     # [1] TRUE
+is.empty(c())      # [1] TRUE
+is.empty(NA)       # [1] TRUE
+is.empty(NaN)      # [1] TRUE
+is.empty("")       # [1] TRUE
+is.empty(0)        # [1] TRUE
+is.empty(0.00)     # [1] TRUE
+is.empty("    ")   # [1] TRUE
+is.empty("foobar") # [1] FALSE
+is.empty("    ", trim = FALSE)   # [1] FALSE
 }
 

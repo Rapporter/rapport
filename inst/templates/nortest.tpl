@@ -1,16 +1,43 @@
 <!--head
-Title:          Normality Tests
-Author:         Aleksandar Blagotić
-Description:    Overview of several normality tests and diagnostic plots that can screen departures from normality.
-Packages:       nortest
-Data required:  TRUE
-Example:        rapport("nortest", ius2008, var = "leisure")
-                rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
-                rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
-
-var       | *numeric  | Test variables     | Variables to test for normality
-nc.plot   | TRUE      | Normal curve plot  | Plot normal curve?
-qq.line   | TRUE      | Q-Q plot line      | Add line to Q-Q plot?
+meta:
+  title: Normality Tests
+  author: Aleksandar Blagotić
+  email: ~
+  packages: nortest
+  example:
+  - rapport("nortest", ius2008, var = "leisure")
+  - rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
+  - rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
+  description: Overview of several normality tests and diagnostic plots that can screen
+    departures from normality.
+inputs:
+- name: var
+  label: Test variables
+  description: Variables to test for normality
+  class: numeric
+  length:
+    exactly: 1
+  value: ~
+  required: TRUE
+  standalone: FALSE
+- name: nc.plot
+  label: Normal curve plot
+  description: Plot normal curve?
+  class: logical
+  length:
+    exactly: 1
+  value: TRUE
+  required: FALSE
+  standalone: TRUE
+- name: qq.line
+  label: Q-Q plot line
+  description: Add line to Q-Q plot?
+  class: logical
+  length:
+    exactly: 1
+  value: TRUE
+  required: FALSE
+  standalone: TRUE
 head-->
 
 # Introduction

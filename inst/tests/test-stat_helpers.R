@@ -1,4 +1,4 @@
-## statistical helpers
+## test_file("inst/tests/test-stat_helpers.R")
 
 context('Skewness tests')
 

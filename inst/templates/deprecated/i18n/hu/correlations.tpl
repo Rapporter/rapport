@@ -1,0 +1,121 @@
+<!--head
+Title:          Korrelációs együtthatók
+Author:         Daróczi Gergely
+Email:          gergely@snowl.net
+Description:    Folytonos változók közötti lineáris összefüggések vizsgálata. ## TODO: update
+Data required:  TRUE
+Strict:         TRUE
+Example:        rapport('i18n/hu/correlations', data=ius2008, vars=c('age', 'edu'))
+                rapport('i18n/hu/correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
+                rapport('i18n/hu/correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
+
+vars        | *numeric[2,50]| Változók              | Folytonos változók
+cor.matrix  | TRUE          | Korrelációs mátrix    | Korrelációs mátrix hozzáadása
+cor.plot    | TRUE          | Pontdiagram           | Pontdiagram hozzáadása
+quick.plot  | TRUE          | Minta ábrázolása      | A teljes adatbázis helyett egy maximum 1000 fős minta kerül ábrázolásra.
+head-->
+
+<%
+## setting Hungarian locale and returning NULL not be exported to report
+options('p.copula' = 'és'); NULL
+%>
+
+# Változó-információk
+
+<%=length(vars)%> változó vizsgálata:
+
+<%=
+cm <- cor(vars, use = 'complete.obs')
+diag(cm) <- NA
+%>
+
+<%if (length(vars) >2 ) {%>
+A legmagasabb korrelációs együtthatót (<%=max(cm, na.rm=T)%>) a(z) <%=row.names(which(cm == max(cm, na.rm=T), arr.ind=T))[1:2]%>, és a legalacsonyabb értéket (<%=min(cm, na.rm=T)%>) a(z) <%=row.names(which(cm == min(cm, na.rm=T), arr.ind=T))[1:2]%> változók között találjuk. Úgy tűnik, hogy a legerősebb kapcsolat (r=<%=cm[which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T)][1]%>) a(z) <%=row.names(which(abs(cm) == max(abs(cm), na.rm=T), arr.ind=T))[1:2]%> változók között található.
+<%}%>
+
+<%
+cm[upper.tri(cm)] <- NA
+h <- which((cm > 0.7) | (cm < -0.7), arr.ind=T)
+if (nrow(h) > 0) {
+%>
+
+Erős összefüggést mutató (r < -0.7 or r > 0.7) változók:
+
+<%=paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i,1]], colnames(cm)[h[i,2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')%>
+
+<%} else {%>
+
+Nincsenek erős összefüggést mutató (r < -0.7 or r > 0.7) változók.
+<%}%>
+
+<%
+h <- which((cm < 0.2)&(cm > -0.2), arr.ind=T)
+if (nrow(h) > 0) {
+%>
+
+Korrelálatlan (-0.2 < r < 0.2) változók:
+
+<%=
+if (nrow(h) > 0)
+    paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i,1]], colnames(cm)[h[i,2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')
+%>
+
+<%} else {%>
+
+Nincsenek korrelálatlan (-0.2 < r < 0.2) változók.
+<%}%>
+
+## <%=if (cor.matrix) 'Korrelációs mátrix'%>
+
+<%=
+if (cor.matrix) {
+    set.caption('Correlation matrix')
+    cm <- round(cor(vars, use = 'complete.obs'), 4)
+    d <- attributes(cm)
+    for (row in attr(cm, 'dimnames')[[1]])
+	for (col in attr(cm, 'dimnames')[[2]]) {
+	    test.p <- cor.test(vars[, row], vars[, col])$p.value
+	    cm[row, col] <- paste(cm[row, col], ' ', ifelse(test.p > 0.05, '', ifelse(test.p > 0.01, ' *', ifelse(test.p > 0.001, ' * *', ' * * *'))), sep='')
+	}
+    diag(cm) <- ''
+    set.alignment('centre', 'right')
+    as.data.frame(cm)
+}
+%>
+
+Ahol a csillagok száma a [szignifikancia szintet](http://en.wikipedia.org/wiki/Statistical_significance) jelöli: egy csillag `0,05`, kettő `0,01` és három csillag `0.001` p értéknél.
+
+<%=
+if (cor.plot) {
+
+    labels <- lapply(vars, rp.name)
+
+    if (quick.plot)
+        if (nrow(vars) > 1000)
+            vars <- vars[sample(1:nrow(vars), size = 1000), ]
+
+    ## custom panels
+    panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...) {
+
+        ## forked from ?pairs
+        par(usr = c(0, 1, 0, 1))
+        r   <- cor(x, y, use = 'complete.obs')
+        txt <- format(c(r, 0.123456789), digits = digits)[1]
+        txt <- paste(prefix, txt, sep = "")
+        if(missing(cex.cor))
+            cex <- 0.8/strwidth(txt)
+        test <- cor.test(x,y)
+        Signif <- symnum(test$p.value, corr = FALSE, na = FALSE,
+                         cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
+                         symbols = c("***", "**", "*", ".", " "))
+        text(0.5, 0.5, txt, cex = cex * abs(r) * 1.5)
+        text(.8, .8, Signif, cex = cex, col = 2)
+    }
+
+    ## plot
+    set.caption(sprintf('Pontdiagram%s', ifelse(quick.plot, ' (n = 1000)', '')))
+    pairs(vars, lower.panel = 'panel.smooth', upper.panel = 'panel.cor', labels = labels)
+
+}
+%>
+

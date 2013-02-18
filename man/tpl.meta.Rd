@@ -14,54 +14,36 @@
 
   \item{use.header}{a logical value indicating if the
   character vector provided in \code{fp} argument contains
-  header data}
+  only header data and not the whole template}
 
   \item{trim.white}{a logical value indicating if the extra
   spaces should removed from header fields before
   extraction}
 }
 \value{
-  a list with template metadata
+  a named list with template metadata
 }
 \description{
   Displays summary of template metadata stored in a header
   section. This part of template header consists of several
-  \emph{key: value} pairs, which define some basic template
-  info, such as \emph{Title}, \emph{Example} etc. If you're
-  familiar with package development in R, you'll probably
-  find this approach very similar to \code{DESCRIPTION}
-  file.
+  YAML \code{key: value} pairs, which contain some basic
+  information about the template, just much like the
+  \code{DESCRIPTION} file in \code{R} packages does.
+  Current implementation supports following fields:
 }
 \details{
-  \strong{Mandatory Fields}
+  \itemize{ \item \code{title} - a template title
+  (required) \item \code{author} - author's (nick)name
+  (required) \item \code{description} - template
+  description (required) \item \code{email} - author's
+  email address \item \code{packages} - YAML list of
+  packages required by the template (if any) \item
+  \code{example} - example calls to \code{rapport}
+  function, including template data and inputs }
 
-  The following fields must be specified in the template
-  header and their size limits must be taken into account:
-
-  \itemize{ \item \emph{Title} - a template title (at most
-  500 characters) \item \emph{Author} - author's (nick)name
-  (at most 100 characters) \item \emph{Description} -
-  template description (at most 5000 characters) }
-
-  \strong{Optional Fields}
-
-  Some fields are not required by the template. However,
-  you should reconsider including them in the template, so
-  that the other users could get a better impression of
-  what your template does. These are currently supported
-  fields:
-
-  \itemize{ \item \emph{Email} - author's email address
-  (defaults to \code{NULL}) \item \emph{Packages} - a
-  comma-separated list of packages required by the template
-  (defaults to \code{NA}) \item \emph{Data required} - is
-  dataset required by a template? Field accepts \code{TRUE}
-  or \code{FALSE}, and defaults to \code{FALSE}.  \item
-  \emph{Example} - newline-separated example calls to
-  \code{rapport} function, including template data and
-  inputs (defaults to \code{NULL}) }
-
-  Upon successful execution, \code{rp.meta}-class object is
-  returned invisibly.
+  As of version \code{0.5}, \code{dataRequired} field is
+  deprecated. \code{rapport} function will automatically
+  detect if the template requires a dataset based on the
+  presence of \emph{standalone} inputs.
 }
 
