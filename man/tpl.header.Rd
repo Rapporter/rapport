@@ -25,9 +25,4 @@
   Returns \code{rapport} template header from provided path
   or a character vector.
 }
-\details{
-  Default parameters are read from \code{options}:
-
-  \itemize{ \item 'header.open', \item 'header.close'. }
-}
 

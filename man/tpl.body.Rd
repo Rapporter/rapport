@@ -17,11 +17,6 @@
   a character vector with template body contents
 }
 \description{
-  Returns contents of template body.
-}
-\details{
-  Default parameters are read from \code{options}:
-
-  \itemize{ \item 'header.close'. }
+  Returns contents of the template body.
 }
 
