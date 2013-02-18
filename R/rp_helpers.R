@@ -33,68 +33,32 @@ is.heading <- function(x){
 
 #' Convert Metadata to Character
 #'
-#' Converts template metadata to character vector.
+#' Converts template metadata to character vector with YAML strings.
 #' @param x template metadata object
 #' @param ... accepts \code{include.examples} which indicates that examples should be included in output (if any)
 #' @method as.character rp.meta
 #' @S3method as.character rp.meta
 #' @export
 as.character.rp.meta <- function(x, ...){
-
     if (!inherits(x, 'rp.meta'))
         stop("template metadata not provided")
-
     mc <- match.call()
-
-    meta.example <- x$example
-    other <- x[!names(x) %in% c('example')]
-    res <- sapply(other, function(x){
-        if (!is.null(x))
-            paste(x, collapse = ',')
-    })
-    res <- paste(tocamel(names(other), upper = TRUE), res, sep = ": ")
-    datareq.regex <- '^datarequired(\\:.+)$'
-    ind <- grepl(datareq.regex, res, ignore.case = TRUE)
-    res[ind]<- gsub(datareq.regex, "Data required\\1", res[ind], ignore.case = TRUE)
-    if (!is.null(meta.example) && isTRUE(mc$include.examples)) {
-        exmpl <- c(sprintf("Example: %s", meta.example[1]), meta.example[-1])
-        res <- c(res, exmpl)
-    }
-    res
+    as.yaml(x)
 }
 
 
 #' Convert Inputs to Character
 #'
-#' Converts template inputs to character vector.
+#' Converts template inputs to character vector with YAML strings.
 #' @param x template inputs object
 #' @param ... ignored
 #' @method as.character rp.inputs
 #' @S3method as.character rp.inputs
 #' @export
 as.character.rp.inputs <- function(x, ...){
-
     if (!inherits(x, 'rp.inputs'))
         stop("template inputs not provided")
-
-    unlist(sapply(x, function(x){
-        mandatory <- if (x$mandatory) "*" else ""
-        limits <- sprintf("[%s]", paste(x$limit, collapse = ","))
-        opts <- switch(x$type,
-                       boolean = x$default,
-                       number =,
-                       string = paste(mandatory, x$type, limits, if (is.null(x$default) || is.na(x$default)) "" else sprintf("=%s", x$default), sep = ""),
-                       option = paste(x$default, collapse = ","),
-                       character =,
-                       complex =,
-                       numeric =,
-                       logical =,
-                       factor =,
-                       variable = paste(mandatory, x$type, limits, sep = ""),
-                       stopf('Incorrect input type (%s)!', x$type)
-                       )
-        paste(x$name, opts, x$label, x$desc, sep = " | ")
-    }))
+    as.yaml(x)
 }
 
 

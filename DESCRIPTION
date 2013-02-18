@@ -9,7 +9,7 @@ Description: A package that facilitates creation of reproducible statistical
     converter backend.
 Author: Aleksandar Blagotić <aca.blagotic@gmail.com> and Gergely Daróczi
     <gergely@snowl.net>
-Version: 0.5
+Version: 0.50
 Date: 2012-08-15
 URL: http://rapport-package.info/
 BugReports: https://github.com/rapporter/rapport/issues

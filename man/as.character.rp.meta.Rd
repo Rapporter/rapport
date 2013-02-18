@@ -12,6 +12,7 @@
   any)}
 }
 \description{
-  Converts template metadata to character vector.
+  Converts template metadata to character vector with YAML
+  strings.
 }
 

@@ -190,12 +190,12 @@ guess.old.input.type <- function(x){
 tpl.renew <- function(fp, file = NULL) {
     h <- suppressWarnings(tpl.info(fp)) #header
     b <- tpl.body(fp)                   #body
-    new <- strsplit(as.yaml(h), '\n')[[1]]
-    tpl <- c('<!--head', new, 'head-->', b)
+    new <- as.yaml(h)
+    tpl <- paste0("<!--head\n", as.yaml(h), "head-->\n", paste0(b, collapse = "\n"), collapse = "")
     if (missing(file))
         return(tpl)
     else {
-        cat(tpl, sep = '\n', file = file)
+        cat(tpl, file = file)
         invisible(tpl)
     }
 }

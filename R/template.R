@@ -213,16 +213,16 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
         h <- append(h, list(description = h$desc), after = 2)
         h$desc <- NULL
 
-        ## deprecated fields
-        ## dataRequired
-        if (!is.null(h$dataRequired)) {
-            h$dataRequired <- NULL
-            warning('"dataRequired" field is deprecated. You should remove it from the template.')
-        }
-        
         h
     })
 
+    ## deprecated fields
+    ## dataRequired
+    if (!is.null(h$dataRequired)) {
+        h$dataRequired <- NULL
+        warning('"dataRequired" field is deprecated. You should remove it from the template.')
+    }
+    
     ## check metadata validity
     meta.fields <- c('title', 'description', 'author', 'email', 'packages', 'example')
     meta.required <- c('title', 'description', 'author')
