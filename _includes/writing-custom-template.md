@@ -21,7 +21,7 @@ Template metadata can contain following fields:
 
 If you're familiar with the package development in R, you'll probably find this specification similar to the `DESCRIPTION` file. Here's an example of metadata section:
 
-```{yaml}
+```
 meta:
   title: Custom template
   author: John Doe
@@ -58,12 +58,12 @@ Following options are available for all inputs:
  - `length` (integer value, or a specific `key: value` pair) - sets restrictions on the matched **R** object's `lenght` attribute. `length` input attribute can be defined in various ways:
    - an integer value, e.g. `length: 10`, which require all R object values to have the length of 10.
    - `exactly` tag - previous example (`length: 10`) will be interpreted as:
-   ```{yaml}
+   ```
    length:
      exactly: 10
    ```
    - `min` and/or `max` tags that define the range within which an input length must fall. Note that the range limits are inclusive - for instance: 
-   ```{yaml}
+   ```
    length:
      min: 2
 	 max: 10
@@ -71,14 +71,14 @@ Following options are available for all inputs:
    will accept all **R** objects with length of at least 2 and at most 10.
    Either `min` or `max` tag can be omitted, and they will default to `1` and `Inf`, respectively. For example:
    
-   ```{yaml}
+   ```
    length:
      min: 1
    ```
    
    is identical to:
    
-   ```{yaml}
+   ```
    length:
      min: 1
 	 max: Inf
@@ -86,20 +86,20 @@ Following options are available for all inputs:
    
    Similarly,
    
-   ```{yaml}
+   ```
    length:
      max: 10
    ```
    
    is identical to:
-   ```{yaml}
+   ```
    length:
      min: 1
 	 max: 10
    ```
    - if omitted (`NULL`) `length` will default to:
    
-   ```{yaml}
+   ```
    length:
 	 exactly: 10
    ```
