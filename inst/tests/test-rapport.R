@@ -20,7 +20,7 @@ for (template in tpl.list(path = system.file("templates/deprecated", package = "
 }
 
 
-context("Errors in example report chunks")
+context("Errors (or lack thereof) in example report chunks")
 
 for (template in tpl.list()) {
     ## example template contains errors

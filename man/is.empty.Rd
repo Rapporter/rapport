@@ -20,6 +20,7 @@
   is vectorised (hence the "values").
 }
 \examples{
+\dontrun{
 is.empty(NULL)     # [1] TRUE
 is.empty(c())      # [1] TRUE
 is.empty(NA)       # [1] TRUE
@@ -29,6 +30,10 @@ is.empty(0)        # [1] TRUE
 is.empty(0.00)     # [1] TRUE
 is.empty("    ")   # [1] TRUE
 is.empty("foobar") # [1] FALSE
-is.empty("    ", trim = FALSE)   # [1] FALSE
+is.empty("    ", trim = FALSE)    # [1] FALSE
+# is.empty is vectorised!
+all(is.empty(rep("", 10)))        # [1] TRUE
+all(is.empty(matrix(NA, 10, 10))) # [1] TRUE
+}
 }
 
