@@ -21,7 +21,7 @@ Template metadata can contain following fields:
 
 If you're familiar with the package development in R, you'll probably find this specification similar to the `DESCRIPTION` file. Here's an example of metadata section:
 
-```
+```{yaml}
 meta:
   title: Custom template
   author: John Doe
@@ -34,6 +34,7 @@ meta:
     - rapport("custom-template", mtcars, x = "wt")
 	- rapport("custom-template", mtcars, x = c("mpg", "hp"))
 ```
+
 As you can see, it depends on `lme4`, `nortest` and `ggplot2` packages, and it has 2 example calls to rapport.
 
 #### Template inputs
