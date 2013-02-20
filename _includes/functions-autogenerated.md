@@ -766,7 +766,11 @@ thanks to Gabor Grothendieck for this one!
  </tr>
 </table>
 ###### Returned value:
-<p>None (invisible ‘NULL’).</p>
+<p>
+ None (invisible
+ <code>NULL</code>
+ ).
+</p>
 <a id="is.boolean"> </a>
 ##### is.boolean: Boolean
 ###### Description:
@@ -801,10 +805,10 @@ boolean</p>
 <a id="is.empty"> </a>
 ##### is.empty: Empty Value
 ###### Description:
-<p>  Rails-inspired helper that checks if vector values are &quot;empty&quot;, i.e. if it&apos;s of  <code>NULL</code>  ,  <code>NA</code>  ,  <code>NaN</code>  ,  <code>FALSE</code>  , empty string or  <code>0</code>  . Note that unlike its &apos;is.&apos; siblings, &apos;is.empty&apos; is vectorised. </p>
+<p>  Rails-inspired helper that checks if vector values are &quot;empty&quot;, i.e. if it&apos;s:  <code>NULL</code>  , zero-length,  <code>NA</code>  ,  <code>NaN</code>  ,  <code>FALSE</code>  , an empty string or  <code>0</code>  . Note that unlike its native R  <code>is.&lt;something&gt;</code>  sibling functions,  <code>is.empty</code>  is vectorised (hence the &quot;values&quot;). </p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">is.empty(x, trim = FALSE, ...)</code></pre>
+	<pre><code class="r">is.empty(x, trim = TRUE, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -813,7 +817,7 @@ boolean</p>
    <code>x</code>
   </td>
   <td>
-   <p>an object to check</p>
+   <p>an object to check its emptiness</p>
   </td>
  </tr>
  <tr valign="top">
@@ -821,8 +825,11 @@ boolean</p>
    <code>trim</code>
   </td>
   <td>
-   <p>trim whitespace? (by default removes only
-trailing spaces)</p>
+   <p>
+    trim whitespace? (
+    <code>TRUE</code>
+    by default)
+   </p>
   </td>
  </tr>
  <tr valign="top">
@@ -832,20 +839,22 @@ trailing spaces)</p>
   <td>
    <p>
     additional arguments for
-    <code>trim.space</code>
+    <code>sapply</code>
    </p>
   </td>
  </tr>
 </table>
 ###### Examples:
-<div class="highlight"><pre><code class="r">is.empty(NULL)     # returns [1] TRUE
-is.empty(NA)       # returns [1] TRUE
-is.empty(NaN)      # returns [1] TRUE
-is.empty(&quot;&quot;)       # returns [1] TRUE
-is.empty(0)        # returns [1] TRUE
-is.empty(0.00)     # returns [1] TRUE
-is.empty(&quot;foobar&quot;) # returns [1] FALSE
-is.empty(&quot;    &quot;)   # returns [1] FALSE</code></pre>
+<div class="highlight"><pre><code class="r">is.empty(NULL)     # [1] TRUE
+is.empty(c())      # [1] TRUE
+is.empty(NA)       # [1] TRUE
+is.empty(NaN)      # [1] TRUE
+is.empty(&quot;&quot;)       # [1] TRUE
+is.empty(0)        # [1] TRUE
+is.empty(0.00)     # [1] TRUE
+is.empty(&quot;    &quot;)   # [1] TRUE
+is.empty(&quot;foobar&quot;) # [1] FALSE
+is.empty(&quot;    &quot;, trim = FALSE)   # [1] FALSE</code></pre>
 </div>
 
 <a id="is.number"> </a>
@@ -854,7 +863,7 @@ is.empty(&quot;    &quot;)   # returns [1] FALSE</code></pre>
 <p>Checks if provided object is a number, i.e. a length-one numeric vector.</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">is.number(x)</code></pre>
+	<pre><code class="r">is.number(x, integer = FALSE)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -864,6 +873,14 @@ is.empty(&quot;    &quot;)   # returns [1] FALSE</code></pre>
   </td>
   <td>
    <p>an object to check</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>integer</code>
+  </td>
+  <td>
+   <p>logical: check if number is integer</p>
   </td>
  </tr>
 </table>
@@ -1040,10 +1057,10 @@ to
 <a id="trim.space"> </a>
 ##### trim.space: Trim Spaces
 ###### Description:
-<p>  Removes leading and/or trailing space(s) from a character vector value. By default, it removes both leading and trailing spaces. In order to get fine-tune control on trailing, pass appropriate logical values to  <code>leading</code>  and  <code>trailing</code>  arguments. </p>
+<p>Removes leading and/or trailing space(s) from a character vector. By default, it removes both leading and trailing spaces.</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">trim.space(x, leading = TRUE, trailing = TRUE,    re = &quot;[:space:]&quot;, ...)</code></pre>
+	<pre><code class="r">trim.space(x,    what = c(&quot;both&quot;, &quot;leading&quot;, &quot;trailing&quot;, &quot;none&quot;),    space.regex = &quot;[:space:]&quot;, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -1058,37 +1075,28 @@ trimming</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>leading</code>
+   <code>what</code>
   </td>
   <td>
    <p>
-    a logical value indicating if leading
-spaces should be removed (defaults to
-    <code>FALSE</code>
-    )
+    which part of the string should be trimmed.
+Defaults to
+    <code>both</code>
+    which removes trailing and
+leading spaces. If
+    <code>none</code>
+    , no trimming will be
+performed.
    </p>
   </td>
  </tr>
  <tr valign="top">
   <td>
-   <code>trailing</code>
+   <code>space.regex</code>
   </td>
   <td>
-   <p>
-    a logical value indicating if trailing
-spaces should be removed (defaults to
-    <code>TRUE</code>
-    )
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>re</code>
-  </td>
-  <td>
-   <p>a character value containing a regex that
-defines a space character</p>
+   <p>a character value containing a regex
+that defines a space character</p>
   </td>
  </tr>
  <tr valign="top">
@@ -1105,7 +1113,7 @@ defines a space character</p>
  </tr>
 </table>
 ###### Returned value:
-<p>a character vector with removed spaces</p>
+<p>a character vector with (hopefully) trimmed spaces</p>
 <a id="vgsub"> </a>
 ##### vgsub: Vectorised String Replacement
 ###### Description:
@@ -1207,9 +1215,186 @@ thanks to user Jean-Robert for this one!
 </div>
 
 
+<a id="Generic-helpers-functions"> </a>
+#### Generic helpers functions
+
+<a id="is.tabular"> </a>
+##### is.tabular: Tabular Structure
+###### Description:
+<p>  Checks if object has &quot;tabular&quot; structure (not to confuse with  <code>table</code>  ) - in this particular case, that means  <code>matrix</code>  and  <code>data.frame</code>  objects only. </p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">is.tabular(x)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>an object to be checked for &quot;tabular&quot; format</p>
+  </td>
+ </tr>
+</table>
+###### Returned value:
+<p>a logical value indicating that provided object has
+tabular structure</p>
+###### Examples:
+<div class="highlight"><pre><code class="r">is.tabular(HairEyeColor[, , 1])  # [1] TRUE
+is.tabular(mtcars)               # [1] TRUE
+is.tabular(table(mtcars$cyl))    # [1] FALSE
+is.tabular(rnorm(100))           # [1] FALSE
+is.tabular(LETTERS)              # [1] FALSE
+is.tabular(pi)                   # [1] FALSE</code></pre>
+</div>
+
+<a id="is.variable"> </a>
+##### is.variable: Variables
+###### Description:
+<p>  From  <em>rapport</em>  &apos;s point of view, a  <code>variable</code>  is a non-  <code>NULL</code>  atomic vector that has no dimension attribute (see  <code>dim</code>  for details). This approach bypasses  <code>factor</code>  issues with  <code>is.vector</code>  , and also eliminates multidimensional vectors, such as matrices and arrays. </p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">is.variable(x)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>an object to be checked for &quot;variable&quot; format</p>
+  </td>
+ </tr>
+</table>
+###### Returned value:
+<p>a logical value indicating that provided object is a
+&quot;variable&quot;</p>
+###### Examples:
+<div class="highlight"><pre><code class="r">is.variable(rnorm(100))  # [1] TRUE
+is.variable(LETTERS)     # [1] TRUE
+is.variable(NULL)        # [1] FALSE
+is.variable(mtcars)      # [1] FALSE
+is.variable(HairEyeColor[, , 1])  # [1] FALSE
+is.variable(list())      # [1] FALSE</code></pre>
+</div>
+
+
 <a id="Generic-stat-functions"> </a>
 #### Generic stat functions
 
+<a id="fml"> </a>
+##### fml: Create Formula from Strings
+###### Description:
+<p>Takes multiple character arguments as left and right-hand side arguments of a formula, and concatenates them in a single string.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">fml(left, right, join.left = &quot; + &quot;, join.right = &quot; + &quot;)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>left</code>
+  </td>
+  <td>
+   <p>a string with left-hand side formula
+argument</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>right</code>
+  </td>
+  <td>
+   <p>a character vector with right-hand side
+formula arguments</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>join.left</code>
+  </td>
+  <td>
+   <p>
+    concatenation string for elements of
+character vector specified in
+    <code>left</code>
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>join.right</code>
+  </td>
+  <td>
+   <p>
+    concatenation string for elements of
+character vector specified in
+    <code>right</code>
+   </p>
+  </td>
+ </tr>
+</table>
+###### Examples:
+<div class="highlight"><pre><code class="r">fml(&quot;hp&quot;, c(&quot;am&quot;, &quot;cyl&quot;))    # &quot;hp ~ am + cyl&quot;</code></pre>
+</div>
+
+<a id="pct"> </a>
+##### pct: Percent
+###### Description:
+<p>  Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in  <code>decimals</code>  formal argument (defaults to value specified in  <code>panderOptions(&apos;digits&apos;)</code>  ). </p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">pct(x, digits = panderOptions(&quot;digits&quot;),    type = c(&quot;percent&quot;, &quot;%&quot;, &quot;proportion&quot;),    check.value = TRUE)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>a numeric value that is to be rendered to
+percent</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>digits</code>
+  </td>
+  <td>
+   <p>an integer value indicating number of
+decimal places</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>type</code>
+  </td>
+  <td>
+   <p>a character value indicating whether percent
+or proportion value was provided (partial match is
+allowed)</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>check.value</code>
+  </td>
+  <td>
+   <p>
+    perform a sanity check to see if
+provided numeric value is correct (defaults to
+    <code>TRUE</code>
+    )
+   </p>
+  </td>
+ </tr>
+</table>
+###### Returned value:
+<p>a character value with formatted percent</p>
 <a id="rp.desc"> </a>
 ##### rp.desc: Descriptive Statistics
 ###### Description:
@@ -2169,8 +2354,8 @@ computation?
  </tr>
 </table>
 ###### References:
-<p>Tenjović, L. (2000). Statistika u psihologiji -
-priručnik. Centar za primenjenu psihologiju.</p>
+<p>Tenjovic, L. (2000). Statistika u psihologiji -
+prirucnik. Centar za primenjenu psihologiju.</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">set.seed(0)
 x &lt;- rnorm(100)
@@ -2198,7 +2383,10 @@ rm(x)</code></pre>
    <p>
     a
     <code>table</code>
-    of two variables
+    of two variables or a
+    <code>data.frame</code>
+    representation of the cross-table of
+the two variables without marginals
    </p>
   </td>
  </tr>
@@ -2209,9 +2397,9 @@ rm(x)</code></pre>
   <td>
    <p>
     numeric value of
-    <code>c(0,1,2)</code>
-    where 1
-means the lambda value computed for row, 2 for columns
+    <code>c(0, 1, 2)</code>
+    where
+1 means the lambda value computed for row, 2 for columns
 and 0 for both
    </p>
   </td>
@@ -2219,8 +2407,37 @@ and 0 for both
 </table>
 ###### Returned value:
 <p>computed lambda value(s) for row/col of given table</p>
+###### References:
+<ul>
+ <li>
+  <p>
+   Goodman, L.A., Kruskal, W.H. (1954)
+Measures of association for cross classifications. Part
+I.
+   <em>Journal of the American Statistical Association</em>
+   <b>49</b>
+   , 732–764
+  </p>
+ </li>
+</ul>
 ###### Examples:
-<div class="highlight"><pre><code class="r">lambda.test(table(mtcars$am, mtcars$gear))
+<div class="highlight"><pre><code class="r">## quick example
+x &lt;- data.frame(x = c(5, 4, 3), y = c(9, 8, 7), z = c(7, 11, 22), zz = c(1, 15, 8))
+lambda.test(x)    # 0.1 and 0.18333
+lambda.test(t(x)) # 0.18333 and 0.1
+## historical data (see the references above: p. 744)
+men.hair.color &lt;- data.frame(
+b1 = c(1768, 946, 115),
+b2 = c(807, 1387, 438),
+b3 = c(189, 746, 288),
+b4 = c(47, 53, 16)
+)
+row.names(men.hair.color) &lt;- paste0(&apos;a&apos;, 1:3)
+lambda.test(men.hair.color)
+lambda.test(t(men.hair.color))
+## some examples on mtcars
+lambda.test(table(mtcars$am, mtcars$gear))
+lambda.test(table(mtcars$gear, mtcars$am))
 lambda.test(table(mtcars$am, mtcars$gear), 1)
 lambda.test(table(mtcars$am, mtcars$gear), 2)
 </code></pre>
@@ -2299,8 +2516,8 @@ computation?
  </tr>
 </table>
 ###### References:
-<p>Tenjović, L. (2000). Statistika u psihologiji -
-priručnik. Centar za primenjenu psihologiju.</p>
+<p>Tenjovic, L. (2000). Statistika u psihologiji -
+prirucnik. Centar za primenjenu psihologiju.</p>
 ###### Examples:
 <div class="highlight"><pre><code class="r">set.seed(0)
 x &lt;- rnorm(100)
@@ -2317,7 +2534,7 @@ rm(x)</code></pre>
 <a id="as.character.rp.inputs"> </a>
 ##### as.character.rp.inputs: Convert Inputs to Character
 ###### Description:
-<p>Converts template inputs to character vector.</p>
+<p>Converts template inputs to character vector with YAML strings.</p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">## S3 method for class &apos;rp.inputs&apos; as.character(x, ...)</code></pre>
@@ -2344,7 +2561,7 @@ rm(x)</code></pre>
 <a id="as.character.rp.meta"> </a>
 ##### as.character.rp.meta: Convert Metadata to Character
 ###### Description:
-<p>Converts template metadata to character vector.</p>
+<p>Converts template metadata to character vector with YAML strings.</p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">## S3 method for class &apos;rp.meta&apos; as.character(x, ...)</code></pre>
@@ -2364,157 +2581,127 @@ rm(x)</code></pre>
    <code>...</code>
   </td>
   <td>
+   <p>ignored</p>
+  </td>
+ </tr>
+</table>
+<a id="check.input.value.class"> </a>
+##### check.input.value.class: Check Input Value Class
+###### Description:
+<p>Checks the class of an input value.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">check.input.value.class(value,    class = c(&quot;character&quot;, &quot;complex&quot;, &quot;factor&quot;, &quot;integer&quot;, &quot;logical&quot;, &quot;numeric&quot;, &quot;raw&quot;),    input.name = NULL)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>value</code>
+  </td>
+  <td>
+   <p>input value</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>class</code>
+  </td>
+  <td>
    <p>
-    accepts
-    <code>include.examples</code>
-    which
-indicates that examples should be included in output (if
-any)
+    input class (defaults to
+    <code>NULL</code>
+    )
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>input.name</code>
+  </td>
+  <td>
+   <p>input name (used in messages)</p>
+  </td>
+ </tr>
+</table>
+<a id="check.input.value"> </a>
+##### check.input.value: Check input value
+###### Description:
+<p>  Validates input values, according to rules set in general input attributes (  <code>length</code>  ) or class-specific ones (  <code>nchar</code>  ,  <code>nlevels</code>  or  <code>limit</code>  ). </p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">check.input.value(input, value = NULL,    attribute.name = c(&quot;length&quot;, &quot;nchar&quot;, &quot;nlevels&quot;, &quot;limit&quot;))</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>input</code>
+  </td>
+  <td>
+   <p>input item</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>value</code>
+  </td>
+  <td>
+   <p>input value, either template-defined, or set
+by the user</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>attribute.name</code>
+  </td>
+  <td>
+   <p>
+    input attributes containing
+validation rules (defaults to
+    <code>length</code>
+    )
    </p>
   </td>
  </tr>
 </table>
-<a id="check.limit"> </a>
-##### check.limit: Input Limits
+<a id="check.report.chunks"> </a>
+##### check.report.chunks: Check Report Chunks
 ###### Description:
-<p>  Checks input limits based on provided string. If provided string is syntactically correct, a list with integers containing limit boundaries (minimum and maximum value) is returned. If provided input limit exceeds value specified in  <code>max.lim</code>  argument, it will be coerced to  <code>max.lim</code>  and warning will be returned. Default upper input limit is 50 (variables). </p>
+<p>Checks for warnings and errors in report chunks.</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">check.limit(x, max.lim = 50L)</code></pre>
+	<pre><code class="r">check.report.chunks(rp,    what = c(&quot;errors&quot;, &quot;warnings&quot;, &quot;messages&quot;))</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
  <tr valign="top">
   <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>a character string containing limit substring</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>max.lim</code>
-  </td>
-  <td>
-   <p>an integer containing upper input limit</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>
- a named list with
- <code>min</code>
- imal and
- <code>max</code>
- imal input
-limit
-</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">rapport:::check.limit(&quot;[1,20]&quot;)
-rapport:::check.limit(&quot;[1]&quot;)
-rapport:::check.limit(&quot;[1, 0]&quot;)  # will throw error
-</code></pre>
-</div>
-
-<a id="check.name"> </a>
-##### check.name: Naming Conventions
-###### Description:
-<p>Checks package-specific naming conventions: variables should start by a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.</p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">check.name(x, min.size = 1L, max.size = 30L, ...)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>a character vector to test names</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>min.size</code>
-  </td>
-  <td>
-   <p>an integer value that indicates minimum
-name length</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>max.size</code>
-  </td>
-  <td>
-   <p>an integer value that indicates maximum
-name length</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>...</code>
+   <code>rp</code>
   </td>
   <td>
    <p>
-    additional arguments to be passed to
-    <code>grepl</code>
-    function
+    <code>rapport</code>
+    object
    </p>
   </td>
  </tr>
-</table>
-###### Returned value:
-<p>a logical vector indicating which values satisfy the
-naming conventions</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">rapport:::check.name(&quot;foo&quot;)               # [1] TRUE
-rapport:::check.name(&quot;foo.bar&quot;)           # [1] TRUE
-rapport:::check.name(&quot;foo_bar&quot;)           # [1] TRUE
-rapport:::check.name(&quot;foo.bar.234&quot;)       # [1] TRUE
-rapport:::check.name(&quot;foo.bar.234_asdf&quot;)  # [1] TRUE
-rapport:::check.name(&quot;234.asdf&quot;)          # [1] FALSE
-rapport:::check.name(&quot;_asdf&quot;)             # [1] FALSE
-rapport:::check.name(&quot;.foo&quot;)              # [1] FALSE</code></pre>
-</div>
-
-<a id="check.type"> </a>
-##### check.type: Check Type
-###### Description:
-<p>Checks type of template input, based on provided sting. If input definition is syntactically correct, a list is returned, containing input type, size limits, and default value (for CSV options and boolean types only).</p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">check.type(x)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
  <tr valign="top">
   <td>
-   <code>x</code>
+   <code>what</code>
   </td>
   <td>
-   <p>a character string containing input definition</p>
+   <p>what fields to check. defaults to all</p>
   </td>
  </tr>
 </table>
-###### Examples:
-<div class="highlight"><pre><code class="r">rapport:::check.type(&quot;factor&quot;)
-rapport:::check.type(&quot;character[1,20]&quot;)
-rapport:::check.type(&quot;fee, fi, foo, fam&quot;)
-rapport:::check.type(&quot;FALSE&quot;)
-rapport:::check.type(&quot;number[3]=123.456&quot;)
-</code></pre>
-</div>
-
-<a id="extract_meta"> </a>
-##### extract_meta: Extract Template Metadata
+<a id="extract.meta"> </a>
+##### extract.meta: Extract Template Metadata
 ###### Description:
 <p>Check if template metadata field matches provided format, and return matched value in a list.</p>
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">extract_meta(x, title, regex, short = NULL,    trim.white = TRUE, mandatory = TRUE,    default.value = NULL, field.length = 1000, ...)</code></pre>
+	<pre><code class="r">extract.meta(x, title, regex, short = NULL,    trim.white = TRUE, mandatory = TRUE,    default.value = NULL, field.length = 1000, ...)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -2611,70 +2798,13 @@ non-mandatory field is not found/malformed</p>
 is not required
 </p>
 ###### Examples:
-<div class="highlight"><pre><code class="r">    rapport:::extract_meta(&quot;Name: John Smith&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
+<div class="highlight"><pre><code class="r">    rapport:::extract.meta(&quot;Name: John Smith&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
     ## $name
     ## [1] &quot;John Smith&quot;
-    rapport:::extract_meta(&quot;Name: John&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
+    rapport:::extract.meta(&quot;Name: John&quot;, &quot;Name&quot;, &quot;[[:alpha:]]+( [[:alpha:]]+)?&quot;)
     ## $name
     ## [1] &quot;John&quot;
 </code></pre>
-</div>
-
-<a id="fml"> </a>
-##### fml: Create Formula from Strings
-###### Description:
-<p>Takes multiple character arguments as left and right-hand side arguments of a formula, and concatenates them in a single string.</p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">fml(left, right, join.left = &quot; + &quot;, join.right = &quot; + &quot;)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>left</code>
-  </td>
-  <td>
-   <p>a string with left-hand side formula
-argument</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>right</code>
-  </td>
-  <td>
-   <p>a character vector with right-hand side
-formula arguments</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>join.left</code>
-  </td>
-  <td>
-   <p>
-    concatenation string for elements of
-character vector specified in
-    <code>left</code>
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>join.right</code>
-  </td>
-  <td>
-   <p>
-    concatenation string for elements of
-character vector specified in
-    <code>right</code>
-   </p>
-  </td>
- </tr>
-</table>
-###### Examples:
-<div class="highlight"><pre><code class="r">fml(&quot;hp&quot;, c(&quot;am&quot;, &quot;cyl&quot;))    # &quot;hp ~ am + cyl&quot;</code></pre>
 </div>
 
 <a id="get.tags"> </a>
@@ -2717,6 +2847,225 @@ get.tags(&quot;header.open&quot;)
 </code></pre>
 </div>
 
+<a id="guess.input.description"> </a>
+##### guess.input.description: Input Description
+###### Description:
+<p>Checks input description.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">guess.input.description(description, ...)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>description</code>
+  </td>
+  <td>
+   <p>a character string containing input
+description</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>...</code>
+  </td>
+  <td>
+   <p>
+    additional arguments to be passed to
+    <code>grepl</code>
+   </p>
+  </td>
+ </tr>
+</table>
+<a id="guess.input.label"> </a>
+##### guess.input.label: Input Label
+###### Description:
+<p>Checks input label.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">guess.input.label(label, ...)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>label</code>
+  </td>
+  <td>
+   <p>a character string containing input label</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>...</code>
+  </td>
+  <td>
+   <p>
+    additional arguments to be passed to
+    <code>grepl</code>
+   </p>
+  </td>
+ </tr>
+</table>
+<a id="guess.input.length"> </a>
+##### guess.input.length: Guess input length
+###### Description:
+<p>  Performs sanity checks on input  <code>length</code>  attribute. </p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">guess.input.length(len)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>len</code>
+  </td>
+  <td>
+   <p>eiher an integer value or a named list
+containing input length definition</p>
+  </td>
+ </tr>
+</table>
+<a id="guess.input.limit"> </a>
+##### guess.input.limit: Guess input limits
+###### Description:
+<p>  Guess input limits for  <code>integer</code>  and  <code>numeric</code>  inputs. </p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">guess.input.limit(input)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>input</code>
+  </td>
+  <td>
+   <p>a named list containing input definition</p>
+  </td>
+ </tr>
+</table>
+<a id="guess.input.name"> </a>
+##### guess.input.name: Input Name Validation
+###### Description:
+<p>  Checks  <code>rapport</code>  input naming conventions: input names should start with a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores. </p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">guess.input.name(x, min.size = 1L, max.size = 30L, ...)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>a character vector to test names</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>min.size</code>
+  </td>
+  <td>
+   <p>an integer value that indicates minimum
+name length</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>max.size</code>
+  </td>
+  <td>
+   <p>an integer value that indicates maximum
+name length</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>...</code>
+  </td>
+  <td>
+   <p>
+    additional arguments to be passed to
+    <code>grepl</code>
+    function
+   </p>
+  </td>
+ </tr>
+</table>
+###### Returned value:
+<p>a logical vector indicating which values satisfy the
+naming conventions</p>
+<a id="guess.input"> </a>
+##### guess.input: Guess Input
+###### Description:
+<p>Checks and returns valid input from YAML input definition.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">guess.input(input)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>input</code>
+  </td>
+  <td>
+   <p>a named list containing input definition</p>
+  </td>
+ </tr>
+</table>
+<a id="guess.old.input.length"> </a>
+##### guess.old.input.length: Deprecated input limits
+###### Description:
+<p>Guess deprecated input length.</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">guess.old.input.length(x, input.type)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>a character string containing input length
+definition</p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>input.type</code>
+  </td>
+  <td>
+   <p>a character string containing input
+type</p>
+  </td>
+ </tr>
+</table>
+<a id="guess.old.input.type"> </a>
+##### guess.old.input.type: Check Type
+###### Description:
+<p>Checks type of template input, based on provided sting. If input definition is syntactically correct, a list is returned, containing input type, size limits, and default value (for CSV options and boolean types only).</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">guess.old.input.type(x)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>x</code>
+  </td>
+  <td>
+   <p>a character string containing input definition</p>
+  </td>
+ </tr>
+</table>
 <a id="is.heading"> </a>
 ##### is.heading: Pandoc Heading
 ###### Description:
@@ -2789,118 +3138,6 @@ heading</p>
  <code>rp.heading</code>
  object
 </p>
-<a id="is.tabular"> </a>
-##### is.tabular: Tabular Structure
-###### Description:
-<p>  Checks if object has &quot;tabular&quot; structure (not to confuse with  <code>table</code>  ) - in this particular case, that means  <code>matrix</code>  and  <code>data.frame</code>  objects only. </p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">is.tabular(x)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>an object to be checked for &quot;tabular&quot; format</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>a logical value indicating that provided object has
-tabular structure</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">is.tabular(HairEyeColor[, , 1])  # [1] TRUE
-is.tabular(mtcars)               # [1] TRUE
-is.tabular(table(mtcars$cyl))    # [1] FALSE
-is.tabular(rnorm(100))           # [1] FALSE
-is.tabular(LETTERS)              # [1] FALSE
-is.tabular(pi)                   # [1] FALSE</code></pre>
-</div>
-
-<a id="is.variable"> </a>
-##### is.variable: Variables
-###### Description:
-<p>  From  <em>rapport</em>  &apos;s point of view, a  <code>variable</code>  is a non-  <code>NULL</code>  atomic vector that has no dimension attribute (see  <code>dim</code>  for details). This approach bypasses  <code>factor</code>  issues with  <code>is.vector</code>  , and also eliminates multidimensional vectors, such as matrices and arrays. </p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">is.variable(x)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>an object to be checked for &quot;variable&quot; format</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>a logical value indicating that provided object is a
-&quot;variable&quot;</p>
-###### Examples:
-<div class="highlight"><pre><code class="r">is.variable(rnorm(100))  # [1] TRUE
-is.variable(LETTERS)     # [1] TRUE
-is.variable(NULL)        # [1] FALSE
-is.variable(mtcars)      # [1] FALSE
-is.variable(HairEyeColor[, , 1])  # [1] FALSE
-is.variable(list())      # [1] FALSE</code></pre>
-</div>
-
-<a id="pct"> </a>
-##### pct: Percent
-###### Description:
-<p>  Appends a percent sign to provided numerical value. Rounding is carried out according to value passed in  <code>decimals</code>  formal argument (defaults to value specified in  <code>panderOptions(&apos;digits&apos;)</code>  ). </p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">pct(x, digits = panderOptions(&quot;digits&quot;),    type = c(&quot;percent&quot;, &quot;%&quot;, &quot;proportion&quot;),    check.value = TRUE)</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>x</code>
-  </td>
-  <td>
-   <p>a numeric value that is to be rendered to
-percent</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>digits</code>
-  </td>
-  <td>
-   <p>an integer value indicating number of
-decimal places</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>type</code>
-  </td>
-  <td>
-   <p>a character value indicating whether percent
-or proportion value was provided (partial match is
-allowed)</p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>check.value</code>
-  </td>
-  <td>
-   <p>perform a sanity check to see if
-provided numeric value is correct</p>
-  </td>
- </tr>
-</table>
-###### Returned value:
-<p>a character value with formatted percent</p>
 <a id="print.rapport"> </a>
 ##### print.rapport: Prints rapport
 ###### Description:
@@ -3361,6 +3598,45 @@ rapport(&apos;descriptives-multivar&apos;, data=ius2008, vars=c(&quot;gender&quo
 </code></pre>
 </div>
 
+<a id="rp.label-set"> </a>
+##### rp.label-set: Set Variable Label
+###### Description:
+<p>  This function sets a label to a variable, by storing a character string to its  <code>label</code>  attribute. </p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">rp.label(var) &lt;- value</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>var</code>
+  </td>
+  <td>
+   <p>
+    a variable (see
+    <code>is.variable</code>
+    for
+details)
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>value</code>
+  </td>
+  <td>
+   <p>a character value that is to be set as
+variable label</p>
+  </td>
+ </tr>
+</table>
+###### Examples:
+<div class="highlight"><pre><code class="r">rp.label(mtcars$mpg) &lt;- &quot;fuel consumption&quot;
+x &lt;- rnorm(100); ( rp.label(x) &lt;- &quot;pseudo-random normal variable&quot; )
+</code></pre>
+</div>
+
 <a id="rp.label"> </a>
 ##### rp.label: Get Variable Label
 ###### Description:
@@ -3416,45 +3692,6 @@ rp.label(sleep, FALSE)   # returns NA for each variable and issues a warning
 </code></pre>
 </div>
 
-<a id="rp.label-set"> </a>
-##### rp.label-set: Set Variable Label
-###### Description:
-<p>  This function sets a label to a variable, by storing a character string to its  <code>label</code>  attribute. </p>
-###### Usage:
-<div class="highlight">
-	<pre><code class="r">rp.label(var) &lt;- value</code></pre>
-</div>
-###### Arguments:
-<table summary="R argblock">
- <tr valign="top">
-  <td>
-   <code>var</code>
-  </td>
-  <td>
-   <p>
-    a variable (see
-    <code>is.variable</code>
-    for
-details)
-   </p>
-  </td>
- </tr>
- <tr valign="top">
-  <td>
-   <code>value</code>
-  </td>
-  <td>
-   <p>a character value that is to be set as
-variable label</p>
-  </td>
- </tr>
-</table>
-###### Examples:
-<div class="highlight"><pre><code class="r">rp.label(mtcars$mpg) &lt;- &quot;fuel consumption&quot;
-x &lt;- rnorm(100); ( rp.label(x) &lt;- &quot;pseudo-random normal variable&quot; )
-</code></pre>
-</div>
-
 <a id="rp.name"> </a>
 ##### rp.name: Variable Name
 ###### Description:
@@ -3486,10 +3723,7 @@ x &lt;- 1:10; rp.name(x)
 <a id="tpl.body"> </a>
 ##### tpl.body: Template Body
 ###### Description:
-<p>Returns contents of template body.</p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;header.close&apos;.</p>  </li> </ul> 
+<p>Returns contents of the template body.</p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">tpl.body(fp, htag = get.tags(&quot;header.close&quot;), ...)</code></pre>
@@ -3627,7 +3861,7 @@ tpl.export(tpl.example(&apos;crosstable&apos;))
 <p>  Please be sure to set  <code>&apos;tpl.user&apos;</code>  option with  <code>options()</code>  to get your name in the head of your generated reports! </p> 
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">tpl.export(rp = NULL, file, append = FALSE,    create = TRUE, open = TRUE,    date = pander.return(Sys.time()), desc = TRUE,    format = &quot;html&quot;, options = &quot;&quot;, logo = TRUE)</code></pre>
+	<pre><code class="r">tpl.export(rp = NULL, file, append = FALSE,    create = TRUE, open = TRUE,    date = pander.return(Sys.time()), description = TRUE,    format = &quot;html&quot;, options = &quot;&quot;, logo = TRUE)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -3698,14 +3932,14 @@ report. If not set, current time will be set.</p>
  </tr>
  <tr valign="top">
   <td>
-   <code>desc</code>
+   <code>description</code>
   </td>
   <td>
    <p>
     add
     <code>Description</code>
-    of the rapport class
-(template)? Default set to TRUE.
+    of the rapport
+class (template)? Default set to TRUE.
    </p>
   </td>
  </tr>
@@ -3828,9 +4062,6 @@ character vector with template contents.
 ##### tpl.header: Template Header
 ###### Description:
 <p>  Returns  <code>rapport</code>  template header from provided path or a character vector. </p>
-###### Details:
-<p>  Default parameters are read from  <code>options</code>  : </p>
-<ul>  <li>   <p>&apos;header.open&apos;,</p>  </li>  <li>   <p>&apos;header.close&apos;.</p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">tpl.header(fp, open.tag = get.tags(&quot;header.open&quot;),    close.tag = get.tags(&quot;header.close&quot;), ...)</code></pre>
@@ -3893,7 +4124,7 @@ value of user-defined
 <a id="tpl.info"> </a>
 ##### tpl.info: Template Info
 ###### Description:
-<p>Provides information about template metadata and/or inputs.</p>
+<p>  Provides information about template metadata and/or inputs. See  <code>tpl.meta</code>  and  <code>tpl.inputs</code>  for details. </p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">tpl.info(fp, meta = TRUE, inputs = TRUE)</code></pre>
@@ -3947,27 +4178,25 @@ tpl.info(&apos;correlations&apos;, meta = FALSE)  # return only template inputs
 <a id="tpl.inputs"> </a>
 ##### tpl.inputs: Template Inputs
 ###### Description:
-<p>  Displays summary of template inputs from header section.  <code>rp.inputs</code>  -class object is returned invisibly. </p>
+<p>  Displays summary for template inputs (if any). Note that as of version  <code>0.5</code>  ,  <code>rapport</code>  template inputs should be defined using YAML syntax. See  <code>deprecated-inputs</code>  for details on old input syntax. The following sections describe new YAML input definition style. </p>
 ###### Details:
-<p>  <strong>Input Specifications</strong> </p>
-<p>  Apart from  <em>template metadata</em>  , header also requires specification for template  <em>inputs</em>  . In most cases,  <em>inputs</em>  refer to variable names in provided dataset, but some inputs have special meaning inside  <code>rapport</code>  , and some of them don&apos;t have anything to do with provided dataset whatsoever. Most inputs can contain limit specification, and some inputs can also have a default value. At first we&apos;ll explain input specifications on the fly, and in following sections we&apos;ll discuss each part in thorough details. Let&apos;s start with a single dummy input specification: </p>
-<p>  <code>*foo.bar | numeric[1,6] | Numeric variable | A set   of up to 6 numeric variables</code> </p>
-<p>  <strong>Required Inputs</strong> </p>
-<p>  Asterisk sign (  <code>*</code>  ) in front of an input name indicates a mandatory input. So it is possible to omit input (unless it&apos;s required, of course), but you may want to use this feature carefully, as you may end up with ugly output. If an input isn&apos;t mandatory,  <code>NULL</code>  is assigned to provided input name, and the object is stored in transient evaluation environment. </p>
-<p>  <strong>Input Name</strong> </p>
-<p>  <em>rapport</em>  has its own naming conventions which are compatible, but different from traditional  <strong>R</strong>  naming conventions. Input name (&quot;foo.bar&quot; in previous example) must start with an alphabet letter, followed either by other alphabet letters or numbers, separated with  <code>_</code>  or  <code>.</code>  . For example, valid names are:  <code>foo.bar</code>  ,  <code>f00_bar</code>  , or  <code>Fo0_bar.input</code>  . Input name length is limited on 30 characters by default. At any time you can check your desired input name with  <code>check.name</code>  function. Note that input names are case-sensitive, just like  <code>symbol</code>  s in  <strong>R</strong>  . </p>
-<p>  <strong>Input Type</strong> </p>
-<p>  <em>Input type</em>  is specified in the second input block. It is the most (read: &quot;only&quot;) complex field in an input specification. It consists of  <em>type specification</em>  ,  <em>limit specification</em>  and sometimes a  <em>default value specification</em>  . Most input types are compatible with eponymous  <strong>R</strong>  modes:  <em>character</em>  ,  <em>complex</em>  ,  <em>logical</em>  ,  <em>numeric</em>  , or  <strong>R</strong>  classes like  <em>factor</em>  . Some are used as &quot;wildcards&quot;, like  <em>variable</em>  , and some do not refer to dataset variables at all:  <em>boolean</em>  ,  <em>number</em>  ,  <em>string</em>  and  <em>option</em>  . Here we&apos;ll discuss each input type thoroughly. We will use term  <em>variable</em>  to denote a vector taken from a dataset (for more details see documentation for  <code>is.variable</code>  ). All inputs can be divided into two groups, depending on whether they require a dataset or not: </p>
-<ul>  <li>   <p>    <strong>dataset inputs</strong>    :   </p>   <ul>    <li>     <p>      <em>character</em>      - matches a character variable     </p>    </li>    <li>     <p>      <em>complex</em>      - matches a character variable     </p>    </li>    <li>     <p>      <em>numeric</em>      - matches a numeric variable     </p>    </li>    <li>     <p>      <em>factor</em>      - matches a factor variable (i.e. R object of      <code>factor</code>      class)     </p>    </li>    <li>     <p>      <em>variable</em>      - matches any variable of previously defined types     </p>    </li>   </ul>  </li>  <li>   <p>    <strong>standalone inputs</strong>    :   </p>   <ul>    <li>     <p>      <em>string</em>      - accepts an atomic character vector     </p>    </li>    <li>     <p>      <em>number</em>      - accepts an atomic numeric vector     </p>    </li>    <li>     <p>      <em>boolean</em>      - accepts a logical value     </p>    </li>    <li>     <p>      <em>option</em>      - accepts a comma-separated list of values, that are to be matched with      <code>match.arg</code>      . The first value in a list is the default one.     </p>    </li>   </ul>  </li> </ul>
-<p>  Now we&apos;ll make a little digression and talk about  <strong>input limits</strong>  . You may have noticed some additional stuff in type specification, e.g.  <code>numeric[1,6]</code>  . All dataset inputs, as well as *string* and *numeric standalone inputs* can contain  <em>limit specifications</em>  . If you want to bundle several variables from dataset or provide a vector with several string/numeric values, you can apply some rules within square brackets in  <code>[a,b]</code>  format, where  <code>[a,b]</code>  stands for &quot;from  <code>a</code>  to  <code>b</code>  inputs&quot;, e.g.  <code>[1,6]</code>  means &quot;from 1 to 6 inputs&quot;. Limit specifications can be left out, but even in that case implicit limit rules are applied, with  <code>a</code>  and  <code>b</code>  being set to 1. </p>
-<p>  <strong>Dataset inputs</strong>  will match one or more variables from a dataset, and check its mode and/or class.  <code>variable</code>  type is a bit different, since it matches any kind of variable (not to confuse with  <code>Any</code>  type), but it still refers to variable(s) from a provided dataset. Dataset inputs cannot have default value, but can be optional (just leave out  <code>*</code>  sign in front of input name). Note that if you provide more than one variable name in  <code>rapport</code>  function call, that input will be stored as a  <code>data.frame</code>  , otherwise, it will be stored as a  <em>variable</em>  (atomic vector). </p>
-<p>  <strong>Standalone inputs</strong>  are a bit different since they do not refer to any variables from a dataset. However, they are more complex than *dataset inputs*, especially because they can contain default values. </p>
-<ul>  <li>   <p>    <strong>number</strong>    and    <strong>string</strong>    inputs are defined with    <code>number</code>    and    <code>string</code>    declaration, respectively. They can also contain limit specifications, e.g.    <code>number[1,6]</code>    accepts numeric vector with at least 1 and at most 6 elements. Of course, you can pass the same specification to string inputs:    <code>string[1,6]</code>    . In this case, you&apos;re setting length limits to a character vector.    <em>number</em>    and    <em>string</em>    inputs can have    <em>default value</em>    , which can be defined by placing    <code>=</code>    after type/limit specification followed by default value. For instance,    <code>number[1,6]=3.14</code>    sets value    <code>3.14</code>    as default. Same stands for string inputs: default value can be defined in the same manner:    <code>string=foo</code>    sets &quot;foo&quot; as default string value (note that you don&apos;t have to specify quotes unless they are the part of the default string).   </p>  </li>  <li>   <p>    <strong>boolean</strong>    inputs can contain either    <code>TRUE</code>    or    <code>FALSE</code>    values. The specified value is the default one. They cannot contain limit specification.   </p>  </li>  <li>   <p>    <strong>option</strong>    inputs are nothing more than a comma-separated list of strings. Even if you specify numbers in a list, they will be coerced to strings once the list is parsed. Values in    <em>option</em>    list will be placed in a character vector, and matched with    <code>match.arg</code>    function. That means that you could only choose one value from a list. Partial matches are allowed, and the first value in    <em>option</em>    list is the default one.   </p>  </li> </ul>
-<p>  <strong>Input Label and Description</strong> </p>
-<p>  Third block in input definition is an input label. While  <em>variable</em>  can have its own label (see  <code>rp.label</code>  ), you may want to use the one defined in input specifications. At last, fourth block contains input description, which should be a lengthy description of current input. Note that all the fields in input specification are mandatory. You can cheat, though, by providing a non-space character (e.g. a dot) as an input label and/or description, but please don&apos;t do that unless you&apos;re testing the template. Labels and descriptions are meant to be informative. </p> 
+<p>  <strong>Introduction</strong> </p>
+<p>  The full power of  <code>rapport</code>  comes into play with  <em>template inputs</em>  . One can match inputs against dataset variables or custom  <code>R</code>  objects. The inputs provide means of assigning  <code>R</code>  objects to  <code>symbol</code>  s in the template evaluation environment. Inputs themselves do not handle only the template names, but also provide an extensive set of rules that each dataset variable/user-provided  <code>R</code>  object has to satisfy. The new YAML input specification takes advantage of  <code>R</code>  class system. The input attributes should resemble common  <code>R</code>  object attributes and methods. </p>
+<p>Inputs can be divided into two categories:</p>
+<ul>  <li>   <p>    <em>dataset inputs</em>    , i.e. the inputs that refer to named element of an |codeR object provided in    <code>data</code>    argument in    <code>rapport</code>    call. Currently,    <code>rapport</code>    supports only    <code>data.frame</code>    objects, but that may change in the (near) future.   </p>  </li>  <li>   <p>    <em>standalone inputs</em>    - the inputs that do not depend on the dataset. The user can just provide an    <code>R</code>    object of an appropriate class (and other input attributes) to match a    <em>standalone</em>    input.   </p>  </li> </ul>
+<p>  <strong>General input attributes</strong> </p>
+<p>Following attributes are available for all inputs:</p>
+<ul>  <li>   <p>    <code>name</code>    (character string, required) - input name. It acts as an identifier for a given input, and is required as such. Template cannot contain duplicate names.    <code>rapport</code>    inputs currently have custom naming conventions - see    <code>guess.input.name</code>    for details.   </p>  </li>  <li>   <p>    <code>label</code>    (character string) - input label. It can be blank, but it&apos;s useful to provide input label as    <code>rapport</code>    helpers use that information in plot labels and/or exported HTML tables. Defaults to empty string.   </p>  </li>  <li>   <p>    <code>description</code>    (character string) - similar to    <code>label</code>    , but should contain long description of given input.   </p>  </li>  <li>   <p>    <code>class</code>    (character string) - defines an input class. Currently supported input classes are:    <code>character</code>    ,    <code>complex</code>    ,    <code>factor</code>    ,    <code>integer</code>    ,    <code>logical</code>    ,    <code>numeric</code>    and    <code>raw</code>    (all atomic vector classes are supported). Class attribute should usually be provided, but it can also be    <code>NULL</code>    (default) - in that case the input class will be guessed based on matched    <code>R</code>    object&apos;s value.   </p>  </li>  <li>   <p>    <code>required</code>    (logical value) - does the input require a value? Defaults to    <code>FALSE</code>    .   </p>  </li>  <li>   <p>    <code>standalone</code>    (logical value) - indicates that the input depends on a dataset. Defaults to    <code>FALSE</code>    .   </p>  </li>  <li>   <p>    <code>length</code>    (either an integer value or a named list with integer values) - provides a set of rules for input value&apos;s length.    <code>length</code>    attribute can be defined via:   </p>   <ul>    <li>     <p>      an integer value, e.g.      <code>length: 10</code>      , which is identical to:      <code>exactly:   10</code>      nested within      <code>length</code>      attribute. In this case input length has to be equal to the provided integer value.     </p>    </li>    <li>     <p>      named list with      <code>min</code>      and/or      <code>max</code>      attributes nested under      <code>length</code>      attribute. This will define a range of values in which input length must must fall. Note that range limits are inclusive. Either      <code>min</code>      or      <code>max</code>      attribute can be omitted, and they will default to      <code>1</code>      and      <code>Inf</code>      , respectively.     </p>    </li>   </ul>   <p>    <strong>IMPORTANT!</strong>    Note that    <code>rapport</code>    treats input length in a bit different manner. If you match a subset of 10 character vectors from the dataset, input length will be    <code>10</code>    , as you might expect. But if you select only one variable, length will be equal to    <code>1</code>    , and not to the number of vector elements. This stands both for standalone and dataset inputs. However, if you match a character vector against a standalone input, length will be stored correctly - as the number of vector elements.   </p>  </li>  <li>   <p>    <code>value</code>    (a vector of an appropriate class). This attribute only exists for standalone inputs. Provided value must satisfy rules defined in    <code>class</code>    and    <code>length</code>    attributes, as well as any other class-specific rules (see below).   </p>  </li> </ul>
+<p>  <strong>Class-specific attributes</strong> </p>
+<p>  <em>character</em> </p>
+<ul>  <li>   <p>    <code>nchar</code>    - restricts the number of characters of the input value. It accepts the same attribute format as    <code>length</code>    . If    <code>NULL</code>    (default), no checks will be performed.   </p>  </li>  <li>   <p>    <code>regexp</code>    (character string) - contains a string with regular expression. If non-    <code>NULL</code>    , all strings in a character vector must match the given regular expression. Defaults to    <code>NULL</code>    - no checks are applied.   </p>  </li>  <li>   <p>    <code>matchable</code>    (logical value) - if    <code>TRUE</code>    ,    <code>value</code>    attribute must be provided. In that case,    <code>value</code>    will contain a set of values that will be passed to    <code>link{match.arg}</code>    function    <code>choices</code>    argument. Matching will be performed on the elements of user-specified vector, i.e. provided vector will be passed to    <code>arg</code>    argument. Multiple matches    <code>several.ok</code>    are allowed, and will be computed based on the    <code>length</code>    attribute.   </p>  </li> </ul>
+<p>  <em>numeric</em>  ,  <em>integer</em> </p>
+<ul>  <li>   <p>    <code>limit</code>    - accepts the same format as    <code>length</code>    attribute, only that in this case it checks input values rather than input length.    <code>limit</code>    attribute is    <code>NULL</code>    by default and checks are performed only when    <code>limit</code>    is defined.   </p>  </li> </ul>
+<p>  <em>factor</em> </p>
+<ul>  <li>   <p>    <code>nlevels</code>    - accepts the same format as    <code>length</code>    attribute, but the check is performed rather on the number of factor levels.   </p>  </li>  <li>   <p>    <code>matchable</code>    -    <em>ibid</em>    as in character inputs, but this time it&apos;s the factor levels that get passed to    <code>arg</code>    argument in    <code>match.arg</code>    .   </p>  </li> </ul> 
 ###### Usage:
 <div class="highlight">
-	<pre><code class="r">tpl.inputs(fp, use.header = TRUE)</code></pre>
+	<pre><code class="r">tpl.inputs(fp, use.header = FALSE)</code></pre>
 </div>
 ###### Arguments:
 <table summary="R argblock">
@@ -3997,12 +4226,10 @@ header section is provided in
   </td>
  </tr>
 </table>
-###### Returned value:
-<p>a list with variable info</p>
 <a id="tpl.list"> </a>
 ##### tpl.list: Package Templates
 ###### Description:
-<p>Lists all templates bundled with current package build.</p>
+<p>  Lists all templates bundled with current package build. By default, it will search for all  <code>.tpl</code>  files in current directory, path specified in  <code>tpl.paths</code>  option and package library path. </p>
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">tpl.list(...)</code></pre>
@@ -4027,15 +4254,10 @@ header section is provided in
 <a id="tpl.meta"> </a>
 ##### tpl.meta: Header Metadata
 ###### Description:
-<p>  Displays summary of template metadata stored in a header section. This part of template header consists of several  <em>key: value</em>  pairs, which define some basic template info, such as  <em>Title</em>  ,  <em>Example</em>  etc. If you&apos;re familiar with package development in R, you&apos;ll probably find this approach very similar to  <code>DESCRIPTION</code>  file. </p>
+<p>  Displays summary of template metadata stored in a header section. This part of template header consists of several YAML  <code>key: value</code>  pairs, which contain some basic information about the template, just much like the  <code>DESCRIPTION</code>  file in  <code>R</code>  packages does. Current implementation supports following fields: </p>
 ###### Details:
-<p>  <strong>Mandatory Fields</strong> </p>
-<p>The following fields must be specified in the template header and their size limits must be taken into account:</p>
-<ul>  <li>   <p>    <em>Title</em>    - a template title (at most 500 characters)   </p>  </li>  <li>   <p>    <em>Author</em>    - author&apos;s (nick)name (at most 100 characters)   </p>  </li>  <li>   <p>    <em>Description</em>    - template description (at most 5000 characters)   </p>  </li> </ul>
-<p>  <strong>Optional Fields</strong> </p>
-<p>Some fields are not required by the template. However, you should reconsider including them in the template, so that the other users could get a better impression of what your template does. These are currently supported fields:</p>
-<ul>  <li>   <p>    <em>Email</em>    - author&apos;s email address (defaults to    <code>NULL</code>    )   </p>  </li>  <li>   <p>    <em>Packages</em>    - a comma-separated list of packages required by the template (defaults to    <code>NA</code>    )   </p>  </li>  <li>   <p>    <em>Data required</em>    - is dataset required by a template? Field accepts    <code>TRUE</code>    or    <code>FALSE</code>    , and defaults to    <code>FALSE</code>    .   </p>  </li>  <li>   <p>    <em>Example</em>    - newline-separated example calls to    <code>rapport</code>    function, including template data and inputs (defaults to    <code>NULL</code>    )   </p>  </li> </ul>
-<p>  Upon successful execution,  <code>rp.meta</code>  -class object is returned invisibly. </p> 
+<ul>  <li>   <p>    <code>title</code>    - a template title (required)   </p>  </li>  <li>   <p>    <code>author</code>    - author&apos;s (nick)name (required)   </p>  </li>  <li>   <p>    <code>description</code>    - template description (required)   </p>  </li>  <li>   <p>    <code>email</code>    - author&apos;s email address   </p>  </li>  <li>   <p>    <code>packages</code>    - YAML list of packages required by the template (if any)   </p>  </li>  <li>   <p>    <code>example</code>    - example calls to    <code>rapport</code>    function, including template data and inputs   </p>  </li> </ul>
+<p>  As of version  <code>0.5</code>  ,  <code>dataRequired</code>  field is deprecated.  <code>rapport</code>  function will automatically detect if the template requires a dataset based on the presence of  <em>standalone</em>  inputs. </p> 
 ###### Usage:
 <div class="highlight">
 	<pre><code class="r">tpl.meta(fp, fields = NULL, use.header = FALSE,    trim.white = TRUE)</code></pre>
@@ -4073,7 +4295,7 @@ pairs of field titles and corresponding regexes</p>
 character vector provided in
     <code>fp</code>
     argument contains
-header data
+only header data and not the whole template
    </p>
   </td>
  </tr>
@@ -4089,7 +4311,7 @@ extraction</p>
  </tr>
 </table>
 ###### Returned value:
-<p>a list with template metadata</p>
+<p>a named list with template metadata</p>
 <a id="tpl.paths.add"> </a>
 ##### tpl.paths.add: Add Template Path
 ###### Description:
@@ -4179,6 +4401,42 @@ tpl.paths.remove(&apos;/root&apos;)
 </code></pre>
 </div>
 
+<a id="tpl.renew"> </a>
+##### tpl.renew: Renew deprecated template
+###### Description:
+<p>Convert old-style template to new-style one (what we really do is just replacing old header syntax with YAML one).</p>
+###### Usage:
+<div class="highlight">
+	<pre><code class="r">tpl.renew(fp, file = NULL)</code></pre>
+</div>
+###### Arguments:
+<table summary="R argblock">
+ <tr valign="top">
+  <td>
+   <code>fp</code>
+  </td>
+  <td>
+   <p>
+    pointer to an old template (see
+    <code>tpl.find</code>
+    for details)
+   </p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td>
+   <code>file</code>
+  </td>
+  <td>
+   <p>
+    a path to output file. If
+    <code>NULL</code>
+    , result
+will be flushed to stdout.
+   </p>
+  </td>
+ </tr>
+</table>
 <a id="tpl.rerun"> </a>
 ##### tpl.rerun: Reproduce Template
 ###### Description:
