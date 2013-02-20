@@ -33,7 +33,7 @@ meta:
   example:
     - rapport("custom-template", mtcars, x = "wt")
 	- rapport("custom-template", mtcars, x = c("mpg", "hp"))
-```
+{% endhighlight %}
 
 As you can see, it depends on `lme4`, `nortest` and `ggplot2` packages, and it has 2 example calls to rapport.
 
