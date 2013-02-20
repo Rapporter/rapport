@@ -61,7 +61,7 @@ Following options are available for all inputs:
     - `exactly` tag - previous example (`length: 10`) will be interpreted as:
 	<div class="highlight"><pre><code class="yaml">
 	length:
-      exactly: 10
+    &nbsp;&nbsp;exactly: 10
 	</code></pre></div>
     - `min` and/or `max` tags that define the range within which an input length must fall. Note that the range limits are inclusive - for instance: 
     <pre><code class="yaml">
