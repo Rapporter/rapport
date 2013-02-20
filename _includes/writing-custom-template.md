@@ -62,18 +62,19 @@ Following options are available for all inputs:
         length:
           exactly: 10
     - `min` and/or `max` tags that define the range within which an input length must fall. Note that the range limits are inclusive - for instance: 
+
         length:
           min: 2
           max: 10
+
     will accept all **R** objects with length of at least 2 and at most 10.
 	
     Either `min` or `max` tag can be omitted, and they will default to `1` and `Inf`, respectively. For example:
 	
-    {% highlight yaml %}
-    length:
-      min: 1{% endhighlight %}
+        length:
+          min: 1
 	
-   is identical to:
+    is identical to:
 	
     {% highlight yaml %}
     length:
