@@ -1,14 +1,13 @@
 <!--head
 meta:
   title: ANOVA Template
-  author: Aleksandar Blagotić
-  email: ~
+  author: Aleksandar Blagotić, Dániel Nagy
+  description: An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific
+    statistics.
   packages: nortest
   example:
   - 'rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way'
   - 'rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way'
-  description: An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific
-    statistics.
 inputs:
 - name: resp
   label: Response variable
@@ -83,8 +82,6 @@ Before we carry out ANOVA, we'd like to check some basic assumptions. For those 
 
 ### Univariate Normality
 
-We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<%= p(resp.label) %>).
-
 <%=
 if (length(resp) < 5000) {
     ntest <- htest(resp, shapiro.test, lillie.test, ad.test)
@@ -92,10 +89,19 @@ if (length(resp) < 5000) {
     ntest <- htest(resp, lillie.test, ad.test)
 }
 ntest
+k<-0
+l<-0
+m<-0
+n<-0
+if (ntest$p[1]<0.05){l<-k+1}
+if (ntest$p[2]<0.05){m<-l+1}
+if (ntest$p[3]<0.05){n<-m+1}
 %>
 
+We will use <%=ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
 
-As you can see, applied tests <%= ifelse(all(ntest$p < .05), "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.") %>.
+<%= if (n>0) 
+sprintf("As you can see, the applied tests %s.", ifelse(n>1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) else sprintf("reject departures from normality") %>
 
 ### Homoscedascity
 

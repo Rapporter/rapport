@@ -239,7 +239,7 @@ messagef <- function(s, ...){
 #' @param x an object to check its emptiness
 #' @param trim trim whitespace? (\code{TRUE} by default)
 #' @param ... additional arguments for \code{\link{sapply}}
-#' @examples
+#' @examples \dontrun{
 #' is.empty(NULL)     # [1] TRUE
 #' is.empty(c())      # [1] TRUE
 #' is.empty(NA)       # [1] TRUE
@@ -249,7 +249,11 @@ messagef <- function(s, ...){
 #' is.empty(0.00)     # [1] TRUE
 #' is.empty("    ")   # [1] TRUE
 #' is.empty("foobar") # [1] FALSE
-#' is.empty("    ", trim = FALSE)   # [1] FALSE
+#' is.empty("    ", trim = FALSE)    # [1] FALSE
+#' # is.empty is vectorised!
+#' all(is.empty(rep("", 10)))        # [1] TRUE
+#' all(is.empty(matrix(NA, 10, 10))) # [1] TRUE
+#' }
 #' @export
 is.empty <- function(x, trim = TRUE, ...) {
     if (length(x) <= 1) {
@@ -267,5 +271,5 @@ is.empty <- function(x, trim = TRUE, ...) {
             return (TRUE)
         return (FALSE)
     } else
-        sapply(x, is.empty, ...)
+        sapply(x, is.empty, trim = trim, ...)
 }

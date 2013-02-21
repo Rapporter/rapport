@@ -28,3 +28,39 @@ test_that('should trim leading spaces (vectorised)', {
 
 
 context('is.empty')
+
+test_that('should be empty', {
+    expect_true(is.empty(NULL))
+    expect_true(is.empty(c()))
+    expect_true(is.empty(list()))
+    expect_true(is.empty(NA))
+    expect_true(is.empty(NaN))
+    expect_true(is.empty(""))
+    expect_true(is.empty(0L))
+    expect_true(is.empty(0.0))
+    expect_true(is.empty("      "))
+    expect_true(is.empty("\t \t"))
+})
+
+test_that('should NOT be empty', {
+    expect_false(is.empty("foobar"))
+    expect_false(is.empty("\t \t", trim = FALSE))
+})
+
+test_that('should be empty (vectorised)', {
+    expect_true(all(is.empty(c(NULL, NULL, NULL, NULL))))
+    expect_true(all(is.empty(list(character(), complex(), integer(), logical(), numeric(), raw()))))
+    expect_true(all(is.empty(rep(NA, 10))))
+    expect_true(all(is.empty(rep(NaN, 10))))
+    expect_true(all(is.empty(matrix(NA, 10, 10))))
+    expect_true(all(is.empty(rep("", 10))))
+    expect_true(all(is.empty(rep(0L, 10))))
+    expect_true(all(is.empty(rep(0.0, 10))))
+    expect_true(all(is.empty(rep("      ", 10))))
+    expect_true(all(is.empty(rep("\t \t", 10))))
+})
+
+test_that('should NOT be empty (vectorised)', {
+    expect_false(all(is.empty(rep("foobar", 10))))
+    expect_false(all(is.empty(rep("\t \t", 10), trim = FALSE)))
+})
