@@ -12,8 +12,8 @@ meta:
     departures from normality.
 inputs:
 - name: var
-  label: Test variables
-  description: Variables to test for normality
+  label: Test variable
+  description: Variable to test for normality
   class: numeric
   length:
     exactly: 1
