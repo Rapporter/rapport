@@ -13,8 +13,7 @@ inputs:
   label: Response variable
   description: Dependent (response) variable
   class: numeric
-  length:
-    exactly: 1
+  length: 1
   value: ~
   required: TRUE
   standalone: FALSE
@@ -32,8 +31,7 @@ inputs:
   label: Factor interaction
   description: Include factor interaction
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: TRUE
   required: FALSE
   standalone: TRUE

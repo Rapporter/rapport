@@ -14,16 +14,14 @@ inputs:
   label: X variable
   description: Dependent (response) variable
   class: numeric
-  length:
-    exactly: 1
+  length: 1
   value: ~
   required: TRUE
   standalone: FALSE
 - name: y
   label: Y variable
   description: Independent variable (factor, or another numeric)
-  length:
-    exactly: 1
+  length: 1
   value: ~
   required: FALSE
   standalone: FALSE
@@ -31,8 +29,7 @@ inputs:
   label: Alternative hypothesis
   description: Whether two-sided, greater or less variant will be applied
   class: character
-  length:
-    exactly: 1
+  length: 1
   value:
   - two.sided
   - less
@@ -44,8 +41,7 @@ inputs:
   label: Mean value
   description: Mean value for one-sample t-test
   class: numeric
-  length:
-    exactly: 1
+  length: 1
   value: ~
   limit:
     min: -Inf
@@ -56,8 +52,7 @@ inputs:
   label: Paired t-test
   description: Carry out paired t-test or not
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: FALSE
   required: FALSE
   standalone: TRUE
@@ -65,8 +60,7 @@ inputs:
   label: Variance equality
   description: 'Equal variances assumed: choose automatically or not'
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: FALSE
   required: FALSE
   standalone: TRUE
@@ -74,8 +68,7 @@ inputs:
   label: Confidence interval
   description: Confidence interval level
   class: numeric
-  length:
-    exactly: 1
+  length: 1
   value: 0.95
   limit:
     min: 0.0

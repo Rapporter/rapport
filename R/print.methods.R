@@ -48,9 +48,9 @@ print.rp.inputs <- function(x, ...){
             ## length
             input.item.txt <- ifelse(x$class == 'option', 'option', ifelse(x$standalone, 'value', 'vector'))
             len <- x$length
-            ## exactly
-            if (!is.null(len$exactly))
-                len.txt <- sprintf('exactly %d %s%s', len$exactly, input.item.txt, ifelse(len$exactly > 1, 's', ''))
+            ## min == max
+            if (len$min == len$max)
+                len.txt <- sprintf('exactly %d %s%s', len$min, input.item.txt, ifelse(len$min > 1, 's', ''))
             else
                 len.txt <- sprintf('from %s to %s %ss', len$min, len$max, input.item.txt)
 
@@ -72,8 +72,8 @@ print.rp.inputs <- function(x, ...){
                        ## nchar
                        if (!is.null(x$nchar)) {
                            chars <- x$nchar
-                           if (!is.null(chars$exactly))
-                               nchar.txt <- sprintf('exactly %d character%s', chars$exactly, if (length(chars$exactly) > 1) 's' else '')
+                           if (len$min == len$max)
+                               nchar.txt <- sprintf('exactly %d character%s', chars$min, if (length(chars$min) > 1) 's' else '')
                            else
                                nchar.txt <- sprintf('from %d to %d characters', chars$min, chars$max)
                            res <- c(res, sprintf('  - nchar:\t\t%s\n', nchar.txt))
@@ -87,8 +87,8 @@ print.rp.inputs <- function(x, ...){
                    ## nlevels
                    factor = {
                        if (!is.null(x$nlevels)) {
-                           if (!is.null(x$nlevels$exactly))
-                               s <- sprintf('exactly %d level%s', x$nlevels$exactly, if (x$nlevels$exactly > 1) 's' else '')
+                           if (x$nlevels$min == x$nlevels$max)
+                               s <- sprintf('exactly %d level%s', x$nlevels$min, if (x$nlevels$min > 1) 's' else '')
                            else
                                s <- sprintf('from %d to %d levels', x$nlevels$min, x$nlevels$max)
                            res <- c(res, sprintf('  - nlevels:\t\t%s\n', s))

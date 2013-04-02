@@ -25,8 +25,7 @@ inputs:
   label: Correlation matrix
   description: Show correlation matrix (numbers)?
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: TRUE
   required: FALSE
   standalone: TRUE
@@ -34,8 +33,7 @@ inputs:
   label: Scatterplot matrix
   description: Show scatterplot matrix (image)?
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: TRUE
   required: FALSE
   standalone: TRUE
@@ -44,8 +42,7 @@ inputs:
   description: If set to TRUE, the scatterplot matrix will be drawn on a sample size
     of max. 1000 cases not to render millions of points.
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: TRUE
   required: FALSE
   standalone: TRUE

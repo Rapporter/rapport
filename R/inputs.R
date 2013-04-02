@@ -56,27 +56,31 @@ guess.input.description <- function(description, ...) {
 #' @param len eiher an integer value or a named list containing input length definition
 guess.input.length <- function(len) {
     
-    ## only "min", "max" and "exactly"
+    ## only "min", "max" or both
     ## if NULL, set some defaults:
     ## - like... 1?
     ## if non-NULL, it can be:
-    ## - an integer, which is equivalent to "exactly: x"
+    ## - an integer, which is equivalent to "min: x, max: x"
     ## - a named list with integer vectors:
-    ##   - "min", "max" or "exactly" attribute
-    ##     - "min", "max" and "exactly" should be length-one integers
+    ##   - "min", "max" or both
+    ##     - "min" and "max" should be length-one integers
     ##   - both "min" and "max" attributes supplied
     ##     - they should both be length-one integers
 
     if (is.null(len))
-        return (list(exactly = 1L))
-    else if (is.number(len))
-        return (list(exactly = as.integer(len)))
-    else if (is.list(len)) {
+        return (list(min = 1L, max = 1L))
+    else if (is.number(len)) {
+        if (!isTRUE(is.integer(len))) {
+            len <- floor(len)
+            warning('length value "%s" was floored to integer')
+        }
+        return (list(min = len, max = len))
+    } else if (is.list(len)) {
         l.names  <- names(len)
         l.length <- length(len)
         
         ## check names
-        stopifnot(all(l.names %in% c('min', 'max', 'exactly')))
+        stopifnot(all(l.names %in% c('min', 'max')))
         ## coerce to numeric
         len <- lapply(len, function(x){
             x <- suppressWarnings(as.numeric(x))
@@ -116,9 +120,6 @@ guess.input.length <- function(len) {
                           max = {
                               len <- list(min = 1L, max = len$max)
                           },
-                          exactly = {
-                              ## just don't fall through =P
-                          },
                           stopf('invalid length attribute: "%s"', l.names)
                           )
                },
@@ -127,12 +128,6 @@ guess.input.length <- function(len) {
                    if (!setequal(l.names, c('min', 'max')))
                        stop('only "min" and "max" should be provided')
                    len <- check.len.int(len)
-                   ## check if "min" == "max"
-                   len.u <- unique(unlist(len))
-                   if (length(len.u) == 1) {
-                       lim <- list(exactly = len.u)
-                       warningf('"min" and "max" are both equal to %d: coercing to "exactly"', len.u)
-                   }
                },
                ## because it's lame to halt with "invalid length length" =P
                stop('invalid length specification')
@@ -357,24 +352,14 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
 
         ## matchables should be checked to see if they contain less options then provided in limits
         if (isTRUE(input$matchable)) {
-            if (is.null(len$exactly)) {
-                len.ok  <- all(val.len >= len$min)
-                err.len <- len$min
-            } else {
-                len.ok  <- all(val.len >= len$exactly)
-                err.len <- len$exactly
-            }
+            len.ok  <- all(val.len >= len$min)
+            err.len <- len$min
             err.msg <- sprintf('matchable %s input "%s" should have at least %d inputs (and it has %d)', input$class, input$name, err.len, val.len)
             ## non-matchables
         } else {
             ## check if value is within length interval
-            if (is.null(len$exactly)) {
-                len.ok <- all(val.len >= len$min && val.len <= len$max)
-                err.msg <- sprintf('%s input "%s" %s attribute should fall between %s and %s (and it\'s %s)', input$class, input$name, a, len$min, len$max, val.len)
-            } else {
-                len.ok <- all(val.len == len$exactly)
-                err.msg <- sprintf('%s input "%s" %s attribute should be %s (and it\'s %s)', input$class, input$name, a, len$exactly, val.len)
-            }
+            len.ok <- all(val.len >= len$min && val.len <= len$max)
+            err.msg <- sprintf('%s input "%s" %s attribute should fall between %s and %s (and it\'s %s)', input$class, input$name, a, len$min, len$max, val.len)
         }
         if (!len.ok)
             stop(err.msg)

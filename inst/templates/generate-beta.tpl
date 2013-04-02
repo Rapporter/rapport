@@ -9,8 +9,7 @@ inputs:
   label: Observations
   description: Number of observations
   class: numeric
-  length:
-    exactly: 1
+  length: 1
   value: 100.0
   limit:
     min: 1.0
@@ -21,8 +20,7 @@ inputs:
   label: Alpha
   description: First parameter of the Beta distribution
   class: numeric
-  length:
-    exactly: 1
+  length: 1
   value: 0.1
   limit:
     min: 0.0
@@ -33,8 +31,7 @@ inputs:
   label: Beta
   description: Second parameter of the Beta distribution
   class: numeric
-  length:
-    exactly: 1
+  length: 1
   value: 0.1
   limit:
     min: 0.0
