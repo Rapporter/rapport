@@ -42,7 +42,7 @@ head-->
 d <- structure(data.frame(resp, fac), .Names = c(resp.iname, fac.name))
 f.int <- fml(resp.iname, fac.name, join.right = "*")
 f.nonint <- fml(resp.iname, fac.name, join.right = "+")
-fit <- lm(ifelse(fac.intr, f.int, f.nonint), data = d)
+fit <- lm(ifelse(isTRUE(fac.intr), f.int, f.nonint), data = d)
 fac.plu <- switch(fac.ilen, '', 's')
 %>
 
@@ -129,7 +129,7 @@ Here you can see several diagnostic plots for ANOVA model:
 
 <%=
 par(mfrow = c(2, 2))
-+plot(fit)
+plot(fit)
 %>
 
 # ANOVA Summary
