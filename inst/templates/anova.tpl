@@ -144,4 +144,4 @@ a.fp <- a.p < .05
 data.frame(a)
 %>
 
-_F-test_ for <%= p(fac.label[1]) %> is <%= ifelse(a.fp[1], "", "not") %> statistically significant, which implies that there is <%= ifelse(a.fp[1], "an", "no") %> <%= fac.label[1] %> effect on response variable. <%= if (fac.ilen == 2) sprintf("Effect of %s on response variable is %s significant. ", p(fac.label[2]), ifelse(a.fp[2], "", "not")) else "" %><%= if (fac.ilen == 2 & fac.intr) sprintf("Interaction between levels of %s %s found significant (p = %.3f).", p(fac.label), ifelse(a.fp[3], "was", "wasn't"), a.p[3]) else "" %>
+_F-test_ for <%= p(fac.label[1]) %> is <%= ifelse(a.fp[1], "", "not") %> statistically significant, which implies that there is <%= ifelse(a.fp[1], "an", "no") %> <%= fac.label[1] %> effect on response variable. <%= if (fac.ilen == 2) sprintf("Effect of %s on response variable is %s significant. ", p(fac.label[2]), ifelse(a.fp[2], "", "not")) else "" %><%= if (fac.ilen == 2 & fac.intr) sprintf("Effect of the interaction between levels of %s %s found significant (p = %.3f).", p(fac.label), ifelse(a.fp[3], "was", "wasn't"), a.p[3]) else "" %>
