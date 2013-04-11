@@ -11,3 +11,5 @@ inst/templates/test.tpl
 ^test.*r$
 ^test.*tpl$
 ^notes.*$
+.travis.yml
+Makefile
