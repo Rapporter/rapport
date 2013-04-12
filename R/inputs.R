@@ -50,23 +50,94 @@ guess.input.description <- function(description, ...) {
 }
 
 
+##' Guess length-like fields
+##'
+##' Since length, nchar, nlevels and limit have (almost) same format, 
+##' @param len length field value, either a number or a named list
+##' @param type type of length-like field
+##' @param input.name input name
+##' @param limit.class input class to perform limit-specific checks
+guess.l <- function(len, type = c('length', 'nchar', 'nlevels', 'limit'), input.name = NULL, limit.class = c('numeric', 'integer')) {
+    type <- match.arg(type)
+
+    ## only length is mandatory, the others can be NULL
+    if (is.null(len)) {
+        if (type == 'length')
+            return (list(min = 1L, max = 1L))
+        else
+            return ()
+    }
+
+    ## now perform format checks
+    nms <- names(len)
+    ## input.name <- if (is.null(input.name)) "" else paste0(" ", input.name)
+
+    ## length-like attribute can either be:
+    ## - a length-one integer/numeric
+    ## - a list with length-one numeric values (either min or max)
+    if (!((is.number(len) && type != "limit") || (is.list(len) && all(sapply(len, length) == 1) && (length(nms) && all(nms %in% c("min", "max"))))))
+        stopf('"%s" attribute has invalid format', type)
+
+    ## limit can be float
+    if (type != 'limit' || (type == 'limit' && limit.class == 'integer')) {
+        if (!all(sapply(len, alike.integer)))
+            warningf('"%s" value(s) contain float values.\nI will floor them down, but you better change them...', type)
+        len <- sapply(len, floor, simplify = !is.list(len))
+    }
+
+    ## we may get a number or a list with either min, max or both
+    ## all of which contain floored floats (it's okay, they're enough integer-like)
+    
+    ## and now check min/max values and other stuff
+    switch(type,
+           length = {
+               l.min <- 1
+               l.max <- Inf
+           },
+           nlevels = {
+               l.min <- 1
+               l.max <- Inf
+           },
+           nchar = {
+               l.min <- 0
+               l.max <- Inf
+           },
+           limit = {
+               ## note that in the previous version I've put
+               ## -.Machine$integer.max instead of -Inf
+               ## was that for the sake of going native or what?
+               ## -Inf will be just fine for integer-likes
+               l.min <- -Inf
+               l.max <- Inf
+           })
+
+    ## result placeholder
+    if (is.number(len))
+        res <- list(min = len, max = len)
+    else {
+        res <- list(min = len$min, max = len$max)
+        if (is.null(res$min))
+            res$min <- l.min
+        if (is.null(res$max))
+            res$max <- l.max
+    }
+
+    if (res$min > res$max)
+        stopf('"%s" attribute\'s "min" value cannot be larger than "max"', type)
+    
+    if (res$min < l.min || res$max > l.max)
+        stopf('"%s" attribute has to fall between %s and %s', type, res$min, res$max)
+
+    return (res)
+}
+
+
 #' Guess input length
 #'
 #' Performs sanity checks on input \code{length} attribute.
 #' @param len eiher an integer value or a named list containing input length definition
 guess.input.length <- function(len) {
     
-    ## only "min", "max" or both
-    ## if NULL, set some defaults:
-    ## - like... 1?
-    ## if non-NULL, it can be:
-    ## - an integer, which is equivalent to "min: x, max: x"
-    ## - a named list with integer vectors:
-    ##   - "min", "max" or both
-    ##     - "min" and "max" should be length-one integers
-    ##   - both "min" and "max" attributes supplied
-    ##     - they should both be length-one integers
-
     if (is.null(len))
         return (list(min = 1L, max = 1L))
     else if (is.number(len)) {
@@ -101,18 +172,22 @@ guess.input.length <- function(len) {
                             warning('coercing number to integer')
                             floor(x)
                         } else if (x < 1)
-                            stop('only positive integers can be provided')
+                            stop('only positive integers can be provided in length attribute')
                         else
                             x
                     }
             } else
                 lapply(x, check.len.int)
         }
+
+        len <- check.len.int(len)
         
         switch(l.length,
                ## length-one list
                {
-                   len <- check.len.int(len)
+                   if (!l.names %in% c('min', 'max'))
+                       stop('either "min" or "max" should be provided')
+
                    switch(l.names,
                           min = {
                               len <- list(min = len$min, max = Inf)
@@ -127,7 +202,6 @@ guess.input.length <- function(len) {
                {
                    if (!setequal(l.names, c('min', 'max')))
                        stop('only "min" and "max" should be provided')
-                   len <- check.len.int(len)
                },
                ## because it's lame to halt with "invalid length length" =P
                stop('invalid length specification')
@@ -212,7 +286,7 @@ guess.input <- function(input) {
     if (is.empty(description))
         warningf('missing description for input "%s"', name)
     required    <- input$required    <- isTRUE(as.logical(input$required))
-    len         <- input$length      <- guess.input.length(input$length)
+    len         <- input$length      <- guess.l(input$length, input.name = name)
     value       <- input$value
     lim         <- input$limit
     ## inputs are standalone by default
@@ -261,9 +335,9 @@ guess.input <- function(input) {
                            warningf('regexp field for "%s" input is not a character string - coerced to NULL', name)
                        }
                    }
-                   ## nchar (same format as length)
+                   ## nchar (same format as length, BUT accepts 0 as min)
                    if (!is.null(input$nchar)) {
-                       chars <- input$nchar <- guess.input.length(input$nchar)
+                       chars <- input$nchar <- guess.l(input$nchar, 'nchar', name)
                        check.input.value(input, attribute.name = 'nchar')
                    }
                    ## check value (if any)
@@ -280,7 +354,7 @@ guess.input <- function(input) {
                    fields <- c(fields, 'nlevels', 'matchable')
                    ## nlevels
                    if (!is.null(input$nlevels)) {
-                       nlevels <- input$nlevels <- guess.input.length(input$nlevels)
+                       nlevels <- input$nlevels <- guess.l(input$nlevels, 'nlevels', name, cls)
                        ## check values
                    }
                },
@@ -288,9 +362,9 @@ guess.input <- function(input) {
                numeric   = {
                    fields <- c(fields, 'limit')
                    ## limits
-                   input$limit <- guess.input.limit(input)
+                   input$limit <- guess.l(input$null, 'limit', name, cls)
                    ## check limits
-                   if (!is.null(input$limit)){
+                   if (!is.null(input$limit)) {
                        if (is.variable(value))
                            stopifnot(all(value >= input$limit$min) && all(value <= input$limit$max))
                        else
