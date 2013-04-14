@@ -18,7 +18,7 @@ inputs:
   value: ~
   required: TRUE
   standalone: FALSE
-- name: y
+- name: "y"
   label: Y variable
   description: Independent variable (factor, or another numeric)
   length: 1

@@ -306,9 +306,9 @@ tpl.inputs <- function(fp, use.header = FALSE){
     if (!use.header)
         header <- tpl.header(header)
 
-    ## Try with YAML first
+    ## Try with YAML first ("inputs" is actually decoded header)
     inputs <- tryCatch(yaml.load(paste0(header, collapse = "\n")), error = function(e) e)
-
+    
     ## Old-style syntax
     if (inherits(inputs, 'error')) {
         inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
@@ -340,8 +340,9 @@ tpl.inputs <- function(fp, use.header = FALSE){
                 )
         })
         warning("Oh, no! This template has outdated input definition! You can update it by running `tpl.renew`.")
-    } else
+    } else {
         inputs <- lapply(inputs$inputs, guess.input)
+    }
 
     ## check for duplicate names
     nms <- sapply(inputs, function(x) x$name)
@@ -534,7 +535,6 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         }
 
         lapply(inputs, function(x){
-
             ## template inputs
             input.name   <- x$name
             input.class  <- x$class
@@ -634,7 +634,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                         val <- structure(val, name = user.input)
                 }
             }
-            
+
             ## assign stuff
             assign(input.name, val, envir = e)                                    # value
             assign(sprintf('%s.iname', input.name), input.name, envir = e)        # input name

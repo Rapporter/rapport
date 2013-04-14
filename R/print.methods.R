@@ -46,7 +46,7 @@ print.rp.inputs <- function(x, ...){
     } else {
         sapply(x, function(x) {
             ## length
-            input.item.txt <- ifelse(x$class == 'option', 'option', ifelse(x$standalone, 'value', 'vector'))
+            input.item.txt <- ifelse(isTRUE(x$class == 'option'), 'option', ifelse(x$standalone, 'value', 'vector'))
             len <- x$length
             ## min == max
             if (len$min == len$max)
@@ -67,41 +67,43 @@ print.rp.inputs <- function(x, ...){
                     sprintf('  - value%s:\t\t%s\n', ifelse(length(x$value) > 1, 's', ''), p(x$value, wrap = val.wrap))
                 })
             ## class specific options
-            switch(x$class,
-                   character = {
-                       ## nchar
-                       if (!is.null(x$nchar)) {
-                           chars <- x$nchar
-                           if (len$min == len$max)
-                               nchar.txt <- sprintf('exactly %d character%s', chars$min, if (length(chars$min) > 1) 's' else '')
-                           else
-                               nchar.txt <- sprintf('from %d to %d characters', chars$min, chars$max)
-                           res <- c(res, sprintf('  - nchar:\t\t%s\n', nchar.txt))
-                       }
-                       ## regexp
-                       if (!is.null(x$regexp))
-                           res <- c(res, sprintf('  - regexp:\t\t"%s"\n', x$regexp))
-                       ## matchable
-                       res <- c(res, sprintf('  - matchable:\t\t%s\n', x$matchable))
-                   },
-                   ## nlevels
-                   factor = {
-                       if (!is.null(x$nlevels)) {
-                           if (x$nlevels$min == x$nlevels$max)
-                               s <- sprintf('exactly %d level%s', x$nlevels$min, if (x$nlevels$min > 1) 's' else '')
-                           else
-                               s <- sprintf('from %d to %d levels', x$nlevels$min, x$nlevels$max)
-                           res <- c(res, sprintf('  - nlevels:\t\t%s\n', s))
-                       }
-                       ## matchable
-                       res <- c(res, sprintf('  - matchable:\t\t%s\n', x$matchable))
-                   },
-                   ## limits
-                   numeric = ,
-                   integer = {
-                       if (!is.null(x$limit))
-                           res <- c(res, sprintf('  - limits:\t\t%s <= x <= %s\n', x$limit$min, x$limit$max))
-                   })
+            ## (only if class is specified)
+            if (!is.null(x$class))
+                switch(x$class,
+                       character = {
+                           ## nchar
+                           if (!is.null(x$nchar)) {
+                               chars <- x$nchar
+                               if (len$min == len$max)
+                                   nchar.txt <- sprintf('exactly %d character%s', chars$min, if (length(chars$min) > 1) 's' else '')
+                               else
+                                   nchar.txt <- sprintf('from %d to %d characters', chars$min, chars$max)
+                               res <- c(res, sprintf('  - nchar:\t\t%s\n', nchar.txt))
+                           }
+                           ## regexp
+                           if (!is.null(x$regexp))
+                               res <- c(res, sprintf('  - regexp:\t\t"%s"\n', x$regexp))
+                           ## matchable
+                           res <- c(res, sprintf('  - matchable:\t\t%s\n', x$matchable))
+                       },
+                       ## nlevels
+                       factor = {
+                           if (!is.null(x$nlevels)) {
+                               if (x$nlevels$min == x$nlevels$max)
+                                   s <- sprintf('exactly %d level%s', x$nlevels$min, if (x$nlevels$min > 1) 's' else '')
+                               else
+                                   s <- sprintf('from %d to %d levels', x$nlevels$min, x$nlevels$max)
+                               res <- c(res, sprintf('  - nlevels:\t\t%s\n', s))
+                           }
+                           ## matchable
+                           res <- c(res, sprintf('  - matchable:\t\t%s\n', x$matchable))
+                       },
+                       ## limits
+                       numeric = ,
+                       integer = {
+                           if (!is.null(x$limit))
+                               res <- c(res, sprintf('  - limits:\t\t%s <= x <= %s\n', x$limit$min, x$limit$max))
+                       })
             catn(res)
         })                              # end sapply
     }                                   # end if (length(x) == 0)

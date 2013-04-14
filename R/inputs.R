@@ -276,7 +276,7 @@ guess.input <- function(input) {
         if (!cls %in% allowed.classes)
             stopf('unsupported class "%s"', cls)
     }
-
+    
     ## common fields
     name        <- input$name        <- guess.input.name(input$name)
     label       <- input$label       <- trim.space(guess.input.label(input$label))
@@ -302,7 +302,7 @@ guess.input <- function(input) {
         if (!standalone)
             stopf('"value" attribute assigned to dataset input "%s"', name)
         ## coerce factor values
-        if (cls == 'factor'){
+        if (isTRUE(cls == 'factor')) {
             value <- input$value <- as.factor(value)
         } else {
             ## length (don't check for options, do that in rapport() call)

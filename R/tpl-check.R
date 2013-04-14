@@ -41,7 +41,6 @@ tpl.check <- function(fp) {
 #' @export 
 check.report.chunks <- function(rp, what = c('errors', 'warnings', 'messages')) {
     stopifnot(is.rapport(rp))
-    ## browser()
     msg.type <- match.arg(what, several.ok = TRUE)
     chunks <- lapply(rp$report, function(chunk) {
         res <- list(
