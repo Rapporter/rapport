@@ -160,12 +160,16 @@ tocamel <- function(x, delim = '[^[:alnum:]]', upper = FALSE, sep = '', ...){
 
     ## TODO: first.case = FALSE by default
     sapply(s, function(y){
-        first <- substring(y, 1, 1)
-        if (isTRUE(upper))
-            first <- toupper(first)
-        else
-            first[-1] <- toupper(first[-1])
-        paste(first, substring(y, 2), sep = '', collapse = sep)
+        if (any(is.na(y))) {
+            y
+        } else {
+            first <- substring(y, 1, 1)
+            if (isTRUE(upper))
+                first <- toupper(first)
+            else
+                first[-1] <- toupper(first[-1])
+            paste(first, substring(y, 2), sep = '', collapse = sep)
+        }
     })
 }
 
