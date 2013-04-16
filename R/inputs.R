@@ -132,138 +132,6 @@ guess.l <- function(len, type = c('length', 'nchar', 'nlevels', 'limit'), input.
 }
 
 
-#' Guess input length
-#'
-#' Performs sanity checks on input \code{length} attribute.
-#' @param len eiher an integer value or a named list containing input length definition
-guess.input.length <- function(len) {
-    
-    if (is.null(len))
-        return (list(min = 1L, max = 1L))
-    else if (is.number(len)) {
-        if (!isTRUE(is.integer(len))) {
-            len <- floor(len)
-            warning('length value "%s" was floored to integer')
-        }
-        return (list(min = len, max = len))
-    } else if (is.list(len)) {
-        l.names  <- names(len)
-        l.length <- length(len)
-        
-        ## check names
-        stopifnot(all(l.names %in% c('min', 'max')))
-        ## coerce to numeric
-        len <- lapply(len, function(x){
-            x <- suppressWarnings(as.numeric(x))
-            if (any(is.na(x)))
-                stop('cannot coerce length to numeric')
-            x
-        })
-
-        check.len.int <- function(x) {
-            if (!is.recursive(x)){
-                if (is.null(x))
-                    return(1L)
-                else
-                    if (length(x) != 1)
-                        stop('length attributes "min" and "max" must be length-one integers')
-                    else {
-                        if (floor(x) != x) {
-                            warning('coercing number to integer')
-                            floor(x)
-                        } else if (x < 1)
-                            stop('only positive integers can be provided in length attribute')
-                        else
-                            x
-                    }
-            } else
-                lapply(x, check.len.int)
-        }
-
-        len <- check.len.int(len)
-        
-        switch(l.length,
-               ## length-one list
-               {
-                   if (!l.names %in% c('min', 'max'))
-                       stop('either "min" or "max" should be provided')
-
-                   switch(l.names,
-                          min = {
-                              len <- list(min = len$min, max = Inf)
-                          },
-                          max = {
-                              len <- list(min = 1L, max = len$max)
-                          },
-                          stopf('invalid length attribute: "%s"', l.names)
-                          )
-               },
-               ## length-two list ("min", "max")
-               {
-                   if (!setequal(l.names, c('min', 'max')))
-                       stop('only "min" and "max" should be provided')
-               },
-               ## because it's lame to halt with "invalid length length" =P
-               stop('invalid length specification')
-               )
-    } else
-        stop('invalid length type')
-
-    if (length(len) == 2 && len$min > len$max)
-        stop('"min" value cannot be smaller than "max" value')
-
-    return(len)
-}
-
-
-#' Guess input limits
-#'
-#' Guess input limits for \code{integer} and \code{numeric} inputs.
-#' @param input a named list containing input definition
-guess.input.limit <- function(input) {
-    if (!input$class %in% c('integer', 'numeric'))
-        stop('limits are available only for "numeric" and "integer" inputs')
-    ## if NULL, leave as such (no checks will be performed)
-    if (is.null(input$limit))
-        return (NULL)
-    else {
-        cls         <- input$class
-        limit       <- input$limit
-        limit.names <- names(limit)
-        limit.len   <- length(limit)
-        ## if both "min" and "max" are NULL, return NULL
-        if (all(sapply(limit, is.null)))
-            return (NULL)
-        
-        stopifnot(limit.len %in% 1:2)
-        stopifnot(all(limit.names %in% c('min', 'max')))
-        ## length-one integers or numerics
-        limit <- lapply(limit, function(x) {
-            if (!is.null(x)) {
-                stopifnot(length(x) == 1)
-                if (cls == 'integer') {
-                    x <- suppressWarnings(as.integer(x))
-                    if (is.na(x))
-                        stop('integer coercion failed')
-                }
-                x
-            }
-        })
-        
-        ## check length ("min", "max" or both)
-        if (is.null(limit$min))
-            limit$min <- ifelse(cls == 'integer', -.Machine$integer.max, -Inf)
-        if (is.null(limit$max))
-            limit$max <- ifelse(cls == 'integer', .Machine$integer.max, Inf)
-
-        if (limit$min > limit$max)
-            stop('"min" limit cannot be larger than "max" limit')
-        
-        return (limit)
-    }
-}
-
-
 #' Guess Input
 #'
 #' Checks and returns valid input from YAML input definition.
@@ -400,7 +268,7 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
     if (!(is.null(val) || is.null(len))) {
         switch(a,
                length = {
-                   ## length shouldn't be NULL as this function should be called after guess.input.length
+                   ## length shouldn't be NULL as this function should be called after guess.l
                    ## BUT, you never know...
                    if (is.null(len))
                        stopf('length attribute for %s input "%s" is missing', input$class, input$name)

@@ -79,11 +79,9 @@
   list with integer values) - provides a set of rules for
   input value's length. \code{length} attribute can be
   defined via: \itemize{ \item an integer value, e.g.
-  \code{length: 10}, which is identical to: \code{exactly:
-  10} nested within \code{length} attribute. In this case
-  input length has to be equal to the provided integer
-  value.  \item named list with \code{min} and/or
-  \code{max} attributes nested under \code{length}
+  \code{length: 10}, which sets restriction to exactly 10
+  vectors or values.  \item named list with \code{min}
+  and/or \code{max} attributes nested under \code{length}
   attribute. This will define a range of values in which
   input length must must fall. Note that range limits are
   inclusive. Either \code{min} or \code{max} attribute can
@@ -128,11 +126,13 @@
 
   \emph{numeric}, \emph{integer}
 
-  \itemize{ \item \code{limit} - accepts the same format as
-  \code{length} attribute, only that in this case it checks
-  input values rather than input length. \code{limit}
-  attribute is \code{NULL} by default and checks are
-  performed only when \code{limit} is defined. }
+  \itemize{ \item \code{limit} - similar to \code{length}
+  attribute, but allows only \code{min} and \code{max}
+  nested attributes. Unlike \code{length} attribute,
+  \code{limit} checks input values rather than input
+  length. \code{limit} attribute is \code{NULL} by default
+  and the checks are performed only when \code{limit} is
+  defined (non-\code{NULL}). }
 
   \emph{factor}
 

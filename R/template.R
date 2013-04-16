@@ -267,7 +267,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #'     \item \code{standalone} (logical value) - indicates that the input depends on a dataset. Defaults to \code{FALSE}.
 #'     \item \code{length} (either an integer value or a named list with integer values) - provides a set of rules for input value's length. \code{length} attribute can be defined via:
 #'     \itemize{
-#'         \item an integer value, e.g. \code{length: 10}, which is identical to: \code{exactly: 10} nested within \code{length} attribute. In this case input length has to be equal to the provided integer value.
+#'         \item an integer value, e.g. \code{length: 10}, which sets restriction to exactly 10 vectors or values.
 #'         \item named list with \code{min} and/or \code{max} attributes nested under \code{length} attribute. This will define a range of values in which input length must must fall. Note that range limits are inclusive. Either \code{min} or \code{max} attribute can be omitted, and they will default to \code{1} and \code{Inf}, respectively.
 #'     }
 #'     \strong{IMPORTANT!} Note that \code{rapport} treats input length in a bit different manner. If you match a subset of 10 character vectors from the dataset, input length will be \code{10}, as you might expect. But if you select only one variable, length will be equal to \code{1}, and not to the number of vector elements. This stands both for standalone and dataset inputs. However, if you match a character vector against a standalone input, length will be stored correctly - as the number of vector elements.
@@ -287,7 +287,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #' \emph{numeric}, \emph{integer}
 #'
 #' \itemize{
-#'     \item \code{limit} - accepts the same format as \code{length} attribute, only that in this case it checks input values rather than input length. \code{limit} attribute is \code{NULL} by default and checks are performed only when \code{limit} is defined.
+#'     \item \code{limit} - similar to \code{length} attribute, but allows only \code{min} and \code{max} nested attributes. Unlike \code{length} attribute, \code{limit} checks input values rather than input length. \code{limit} attribute is \code{NULL} by default and the checks are performed only when \code{limit} is defined (non-\code{NULL}).
 #' }
 #'
 #' \emph{factor}
