@@ -64,7 +64,7 @@ print.rp.inputs <- function(x, ...){
                 ## value
                 if (x$standalone && !is.null(x$value)) {
                     val.wrap <- ifelse(x$class %in% c('character', 'option'), '"', '')
-                    sprintf('  - value%s:\t\t%s\n', ifelse(length(x$value) > 1, 's', ''), p(x$value, wrap = val.wrap))
+                    sprintf('  - value%s:\t\t%s\n', ifelse(length(x$value) > 1, 's', ''), p(as.character(x$value), wrap = val.wrap))
                 })
             ## class specific options
             ## (only if class is specified)

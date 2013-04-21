@@ -157,31 +157,41 @@ guess.input <- function(input) {
     len         <- input$length      <- guess.l(input$length, input.name = name)
     value       <- input$value
     lim         <- input$limit
-    ## inputs are standalone by default
+    ## inputs are standalone by default!!!
     if (is.null(input$standalone))
         standalone  <- TRUE
     else
         standalone  <- isTRUE(as.logical(input$standalone))
     input$standalone <- standalone
     fields <- c('name', 'label', 'description', 'class', 'required', 'standalone', 'length', 'value')
+    matchable <- isTRUE(as.logical(input$matchable))
 
     ## check value class/length
     if (!is.null(value)) {
+        if (matchable && !standalone)
+            stopf('matchable inputs (like "%s") can only be standalone', name)
         if (!standalone)
             stopf('"value" attribute assigned to dataset input "%s"', name)
-        ## coerce factor values
-        if (isTRUE(cls == 'factor')) {
-            value <- input$value <- as.factor(value)
-        } else {
-            ## length (don't check for options, do that in rapport() call)
-            check.input.value(input, attribute.name = 'length')
-        }
+        ## coerce values if needed
+        value <- input$value <- switch(cls,
+                                       factor = {
+                                           value <- input$value <- as.factor(value)
+                                       },
+                                       complex = {
+                                           value <- input$value <- as.complex(value)
+                                       },
+                                       raw = {
+                                           value <- input$value <- as.raw(value)
+                                       },
+                                       {
+                                       check.input.value(input, attribute.name = 'length')
+                                       value
+                                       })
         ## class check
         check.input.value.class(value, cls, name)
     }
 
     ## matchable
-    matchable <- isTRUE(as.logical(input$matchable))
     if (matchable) {
         input$matchable <- matchable
         ## only avaialable for "character" and "factor" class inputs
@@ -246,14 +256,14 @@ guess.input <- function(input) {
     nms <- names(input)
     unsupported.fields <- nms[!nms %in% fields]
     if (length(unsupported.fields))
-        warningf('Unsupported fields found in %s input "%s": %s', input$class, input$name, p(unsupported.fields, wrap = "\""))
+        warningf('Unsupported fields found in input "%s": %s', input$name, p(unsupported.fields, wrap = "\""))
     input
 }
 
 
 #' Check input value
 #'
-#' Validates input values, according to rules set in general input attributes (\code{length}) or class-specific ones (\code{nchar}, \code{nlevels} or \code{limit}).
+#' A bit misleading title/function name - it validates input values, according to rules set in general input attributes (\code{length}) or class-specific ones (\code{nchar}, \code{nlevels} or \code{limit}).
 #' @param input input item
 #' @param value input value, either template-defined, or set by the user
 #' @param attribute.name input attributes containing validation rules (defaults to \code{length})
