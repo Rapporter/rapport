@@ -240,7 +240,7 @@ guess.input <- function(input) {
                numeric   = {
                    fields <- c(fields, 'limit')
                    ## limits
-                   input$limit <- guess.l(input$null, 'limit', name, cls)
+                   input$limit <- guess.l(input$limit, 'limit', name, cls)
                    ## check limits
                    if (!is.null(input$limit)) {
                        if (is.variable(value))
