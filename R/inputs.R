@@ -329,13 +329,16 @@ check.input.value.class <- function(value, class = c('character', 'complex', 'fa
     if (is.null(value))
         return(NULL)
     else {
-        if (is.empty(class)) {
+        if (is.null(class)) {
             cls <- NULL
             cls.name <- 'vector'
             check.fn <- is.variable
         } else {
             cls <- cls.name <- match.arg(class)
-            check.fn <- sprintf('is.%s', cls)
+            if (class == "integer")
+                check.fn <- alike.integer
+            else
+                check.fn <- sprintf('is.%s', cls)
         }
         
         input.name.txt <- if (is.string(input.name)) sprintf('"%s" ', input.name) else ''
