@@ -152,7 +152,22 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 
     ## check if header is defined in YAML
     h <- tryCatch({
-        y <- yaml.load(paste0(header, collapse = "\n"))
+        y <- yaml.load(
+            string = paste0(header, collapse = "\n"),
+            handlers = list(
+                'bool#yes' = function(x) {
+                    if (grepl('^(yes|y)$', x, ignore.case = TRUE))
+                        x
+                    else
+                        TRUE
+                },
+                'bool#no' = function(x) {
+                    if (grepl('^(no|n)$', x, ignore.case = TRUE))
+                        x
+                    else
+                        FALSE
+                })
+            )
         y$meta
     }, error = function(e) {
         ## either something went bad or it's the old header (hopefully)
@@ -307,8 +322,25 @@ tpl.inputs <- function(fp, use.header = FALSE){
         header <- tpl.header(header)
 
     ## Try with YAML first ("inputs" is actually decoded header)
-    inputs <- tryCatch(yaml.load(paste0(header, collapse = "\n")), error = function(e) e)
-    
+    inputs <- tryCatch(
+        yaml.load(
+            string = paste0(header, collapse = "\n"),
+            handlers = list(
+                'bool#yes' = function(x) {
+                    if (grepl('^(yes|y)$', x, ignore.case = TRUE))
+                        x
+                    else
+                        TRUE
+                },
+                'bool#no' = function(x) {
+                    if (grepl('^(no|n)$', x, ignore.case = TRUE))
+                        x
+                    else
+                        FALSE
+                })
+            ),
+        error = function(e) e)
+
     ## Old-style syntax
     if (inherits(inputs, 'error')) {
         inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
