@@ -15,8 +15,9 @@
   validation rules (defaults to \code{length})}
 }
 \description{
-  Validates input values, according to rules set in general
-  input attributes (\code{length}) or class-specific ones
+  A bit misleading title/function name - it validates input
+  values, according to rules set in general input
+  attributes (\code{length}) or class-specific ones
   (\code{nchar}, \code{nlevels} or \code{limit}).
 }
 

@@ -156,13 +156,13 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
             string = paste0(header, collapse = "\n"),
             handlers = list(
                 'bool#yes' = function(x) {
-                    if (grepl('^(yes|y)$', x, ignore.case = TRUE))
+                    if (grepl('^(y|yes|true|on)$', x, ignore.case = TRUE))
                         x
                     else
                         TRUE
                 },
                 'bool#no' = function(x) {
-                    if (grepl('^(no|n)$', x, ignore.case = TRUE))
+                    if (grepl('^(n|no|false|off)$', x, ignore.case = TRUE))
                         x
                     else
                         FALSE
@@ -327,13 +327,13 @@ tpl.inputs <- function(fp, use.header = FALSE){
             string = paste0(header, collapse = "\n"),
             handlers = list(
                 'bool#yes' = function(x) {
-                    if (grepl('^(yes|y)$', x, ignore.case = TRUE))
+                    if (grepl('^(y|yes|true|on)$', x, ignore.case = TRUE))
                         x
                     else
                         TRUE
                 },
                 'bool#no' = function(x) {
-                    if (grepl('^(no|n)$', x, ignore.case = TRUE))
+                    if (grepl('^(n|no|false|off)$', x, ignore.case = TRUE))
                         x
                     else
                         FALSE

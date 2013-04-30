@@ -132,6 +132,19 @@ guess.l <- function(len, type = c('length', 'nchar', 'nlevels', 'limit'), input.
 }
 
 
+##' Convert YAML booleans to R ones
+##'
+##' We need this because of the silly R/YAML bug. Chillax, it's for internal use only, and since we're about to call it on bunch of places, we needed a function.
+##' @param x a character vector with YAML booleans
+as.yaml.bool <- function(x) {
+    yesses <- grepl('^(y|yes|true|on)$', x, ignore.case = TRUE)
+    noes <- grepl('^(n|no|false|off)$', x, ignore.case = TRUE)
+    x[yesses] <- TRUE
+    x[noes] <- FALSE
+    as.logical(x)
+}
+
+
 #' Guess Input
 #'
 #' Checks and returns valid input from YAML input definition.
@@ -144,7 +157,7 @@ guess.input <- function(input) {
         if (!cls %in% allowed.classes)
             stopf('unsupported class "%s"', cls)
     }
-    
+
     ## common fields
     name        <- input$name        <- guess.input.name(input$name)
     label       <- input$label       <- trim.space(guess.input.label(input$label))
@@ -153,7 +166,7 @@ guess.input <- function(input) {
     description <- input$description <- trim.space(guess.input.description(input$desc))
     if (is.empty(description))
         warningf('missing description for input "%s"', name)
-    required    <- input$required    <- isTRUE(as.logical(input$required))
+    required    <- input$required    <- isTRUE(as.yaml.bool(input$required))
     len         <- input$length      <- guess.l(input$length, input.name = name)
     value       <- input$value
     lim         <- input$limit
@@ -161,10 +174,10 @@ guess.input <- function(input) {
     if (is.null(input$standalone))
         standalone  <- TRUE
     else
-        standalone  <- isTRUE(as.logical(input$standalone))
+        standalone  <- isTRUE(as.yaml.bool(input$standalone))
     input$standalone <- standalone
     fields <- c('name', 'label', 'description', 'class', 'required', 'standalone', 'length', 'value')
-    matchable <- isTRUE(as.logical(input$matchable))
+    matchable <- isTRUE(as.yaml.bool(input$matchable))
 
     ## check value class/length
     if (!is.null(value)) {
@@ -175,13 +188,16 @@ guess.input <- function(input) {
         ## coerce values if needed
         value <- input$value <- switch(cls,
                                        factor = {
-                                           value <- input$value <- as.factor(value)
+                                           as.factor(value)
                                        },
                                        complex = {
-                                           value <- input$value <- as.complex(value)
+                                           as.complex(value)
+                                       },
+                                       logical = {
+                                           as.yaml.bool(value)
                                        },
                                        raw = {
-                                           value <- input$value <- as.raw(value)
+                                           as.raw(value)
                                        },
                                        {
                                        check.input.value(input, attribute.name = 'length')
