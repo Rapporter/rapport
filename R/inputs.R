@@ -177,7 +177,8 @@ guess.input <- function(input) {
         standalone  <- isTRUE(as.yaml.bool(input$standalone))
     input$standalone <- standalone
     fields <- c('name', 'label', 'description', 'class', 'required', 'standalone', 'length', 'value')
-    matchable <- isTRUE(as.yaml.bool(input$matchable))
+    matchable <- input$matchable <- isTRUE(as.yaml.bool(input$matchable))
+    matchable.opts <- input$options <- as.character(unname(unlist(input$options)))
 
     ## check value class/length
     if (!is.null(value)) {
@@ -200,22 +201,29 @@ guess.input <- function(input) {
                                            as.raw(value)
                                        },
                                        {
-                                       check.input.value(input, attribute.name = 'length')
-                                       value
+                                           check.input.value(input, attribute.name = 'length')
+                                           value
                                        })
         ## class check
         check.input.value.class(value, cls, name)
     }
 
-    ## matchable
+    ## matchable inputs
     if (matchable) {
-        input$matchable <- matchable
+        fields <- c(fields, 'options')
         ## only avaialable for "character" and "factor" class inputs
         if (!cls %in% c('character', 'factor'))
             stop('"matchable" attribute only available for "character" and "factor" inputs')
-        ## matchable inputs should always contain a default value!!!
+        ## check for "options" attribute
+        if (!length(matchable.opts))
+            stopf('matchable input "%s" must contain "options" attribute with at least one option', name)
+        ## check for "value" (and assign one?)
         if (is.null(value))
-            stopf('"matchable" input "%s" must contain a value', name)
+            stopf('"matchable" input "%s" must contain a (default) value', name)
+    } else {
+        input$matchable <- NULL
+        if (!is.null(matchable.opts))
+            stopf('"options" attribute provided for non-matchable input "%s"', name)
     }
 
     if (!is.null(cls))
