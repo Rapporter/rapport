@@ -577,15 +577,9 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
             ## matchable inputs are kind-of special
             if (isTRUE(x$matchable)) {
-                ## for factors, match from factor levels
-                if (input.class == 'factor')
-                    choices <- levels(input.value)
-                else
-                    choices <- input.value
-                ## matchable input values should have appropriate default length
-                arg <- if (is.null(user.input)) choices[1:x$length$min] else as.character(user.input)
+                arg <- if (is.null(user.input)) x$value else as.character(user.input)
                 ## value mapped to matchable input should be a variable
-                val <- match.arg(arg, choices, several.ok = any(sapply(input.length, function(x) x > 1)))
+                val <- match.arg(arg, x$options, several.ok = x$multiple)
                 if (input.class == 'factor')
                     val <- as.factor(val)
             } else {

@@ -180,6 +180,7 @@ guess.input <- function(input) {
     ## how about defining matchable via presence of "options" attribute?
     matchable <- isTRUE(as.yaml.bool(input$matchable))
     matchable.opts <- as.character(unname(unlist(input$options)))
+    matchable.multiple <- isTRUE(as.yaml.bool(input$multiple))
 
     ## check value class/length
     if (!is.null(value)) {
@@ -212,19 +213,27 @@ guess.input <- function(input) {
     ## matchable inputs
     if (matchable) {
         input$matchable <- matchable
-        input$options <- matchable.opts
-        fields <- c(fields, 'options')
+        input$options   <- matchable.opts
+        input$multiple  <- matchable.multiple
+        fields <- c(fields, 'options', 'multiple')
         ## only avaialable for "character" and "factor" class inputs
         if (!cls %in% c('character', 'factor'))
             stop('"matchable" attribute only available for "character" and "factor" inputs')
         ## check for "options" attribute
-        if (!length(matchable.opts))
-            stopf('matchable input "%s" must contain "options" attribute with at least one option', name)
-        ## one may opt not to set (default) value
-        if (length(value))
+        if (is.null(matchable.opts))
+            stopf('matchable input "%s" must contain "options" attribute with at east one option', name)
+        ## value is the "default" value
+        if (!is.null(value)) {
             ## check if value is specified in options
-            if (!all(value %in% matchable.opts))
-                stopf('value did not match given options for input "%s"', name)
+            matches <- value %in% matchable.opts
+            if (!all(matches))
+                stopf('matchable input "%s" contains values that are not in the options list: %s', name, p(value[!matches], wrap = '"'))
+            if (!matchable.multiple) {
+                ## in this case, check if all provided values are contained only ones
+                if (!all(as.numeric(table(value)) == 1))
+                    stopf('all provided values in matchable input "%s" should be contained only once in option list (or set `multiple: TRUE` in input definition)', name)
+            }
+        }
     } else {
         input$matchable <- NULL
         if (length(matchable.opts))
@@ -340,7 +349,8 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
         } else {
             ## check if value is within length interval
             len.ok <- all(val.len >= len$min && val.len <= len$max)
-            err.msg <- sprintf('%s input "%s" %s attribute should fall between %s and %s (and it\'s %s)', input$class, input$name, a, len$min, len$max, val.len)
+            len.range.msg <- ifelse(len$min == len$max, paste0('be ', len$min), sprintf('fall between %s and %s', len$min, len$max))
+            err.msg <- sprintf('%s input "%s" %s attribute should %s (and it\'s %s)', input$class, input$name, a, len.range.msg, val.len)
         }
         if (!len.ok)
             stop(err.msg)
