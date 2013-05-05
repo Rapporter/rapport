@@ -574,12 +574,23 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             input.value  <- x$value
             ## user inputs
             user.input   <- i[[input.name]]
-
+            
             ## matchable inputs are kind-of special
             if (isTRUE(x$matchable)) {
-                arg <- if (is.null(user.input)) x$value else as.character(user.input)
-                ## value mapped to matchable input should be a variable
-                val <- match.arg(arg, x$options, several.ok = x$multiple)
+                v <- if (is.null(user.input)) x$value else as.character(user.input)
+                ## strict matching
+                if (x$match_options$strict) {
+                    ## multiple match
+                    if (x$match_options$multiple)
+                        val <- v[v %in% x$options]
+                    else {
+                        ## issue a warning if matched multiple times
+                        if (!all(as.numeric(table(v)) == 1))
+                            warning('multiple occurances found in provided value')
+                        val <- x$options[x$options %in% v]
+                    }
+                } else
+                    val <- match.arg(v, x$options, several.ok = x$match_options$multiple)
                 if (input.class == 'factor')
                     val <- as.factor(val)
             } else {

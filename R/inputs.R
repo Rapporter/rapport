@@ -177,10 +177,7 @@ guess.input <- function(input) {
         standalone  <- isTRUE(as.yaml.bool(input$standalone))
     input$standalone <- standalone
     fields <- c('name', 'label', 'description', 'class', 'required', 'standalone', 'length', 'value')
-    ## how about defining matchable via presence of "options" attribute?
-    matchable <- isTRUE(as.yaml.bool(input$matchable))
-    matchable.opts <- as.character(unname(unlist(input$options)))
-    matchable.multiple <- isTRUE(as.yaml.bool(input$multiple))
+    matchable          <- isTRUE(as.yaml.bool(input$matchable))
 
     ## check value class/length
     if (!is.null(value)) {
@@ -213,9 +210,22 @@ guess.input <- function(input) {
     ## matchable inputs
     if (matchable) {
         input$matchable <- matchable
-        input$options   <- matchable.opts
-        input$multiple  <- matchable.multiple
-        fields <- c(fields, 'options', 'multiple')
+        matchable.opts <- input$options <- as.character(unname(unlist(input$options)))
+        unique.opts <- unique(matchable.opts)
+        if (!identical(unique.opts, matchable.opts))
+            matchable.opts <- input$options <- unique.opts
+        if (!is.null(input$match_options)) {
+            ## check names (multiple, strict)
+            ## check this in the end, see if you can recurse and compare list names
+            matchable.multiple <- input$match_options$multiple <- isTRUE(as.yaml.bool(input$match_options$multiple))
+            matchable.strict <- input$match_options$strict <- isTRUE(as.yaml.bool(input$match_options$strict))
+        } else {
+            input$match_options <- list(
+                multiple = FALSE,
+                strict = TRUE
+                )
+        }
+        fields <- c(fields, 'matchable', 'options', 'match_options')
         ## only avaialable for "character" and "factor" class inputs
         if (!cls %in% c('character', 'factor'))
             stop('"matchable" attribute only available for "character" and "factor" inputs')
@@ -224,14 +234,24 @@ guess.input <- function(input) {
             stopf('matchable input "%s" must contain "options" attribute with at east one option', name)
         ## value is the "default" value
         if (!is.null(value)) {
-            ## check if value is specified in options
-            matches <- value %in% matchable.opts
-            if (!all(matches))
-                stopf('matchable input "%s" contains values that are not in the options list: %s', name, p(value[!matches], wrap = '"'))
-            if (!matchable.multiple) {
-                ## in this case, check if all provided values are contained only ones
-                if (!all(as.numeric(table(value)) == 1))
-                    stopf('all provided values in matchable input "%s" should be contained only once in option list (or set `multiple: TRUE` in input definition)', name)
+            ## check strict option matching
+            if (matchable.strict) {
+                ## check if value is specified in options
+                matches <- value %in% matchable.opts
+                if (!all(matches))
+                    stopf('matchable input "%s" contains values that are not in the options list: %s', name, p(value[!matches], wrap = '"'))
+                if (!matchable.multiple) {
+                    ## in this case, check if all provided values are contained only ones
+                    if (!all(as.numeric(table(value)) == 1))
+                        stopf('all provided values in matchable input "%s" should be contained only once in option list (or set `multiple: TRUE` in input definition)', name)
+                }
+            } else {
+                ## non-strict matching
+                tryCatch(
+                    match.arg(value, input$options, several.ok = matchable.multiple),
+                    error = function(e) {
+                        stopf('matchable input "%s" value cannot be matched against provided options: %s', name, e$message)
+                    })
             }
         }
     } else {
@@ -243,7 +263,7 @@ guess.input <- function(input) {
     if (!is.null(cls))
         switch(cls,
                character = {
-                   fields <- c(fields, 'regexp', 'nchar', 'matchable')
+                   fields <- c(fields, 'regexp', 'nchar')
                    ## regexp
                    if (!is.empty(input$regexp)) {
                        if (!is.string(input$regexp)) {
@@ -267,7 +287,7 @@ guess.input <- function(input) {
                ## what should we ever check for complex?!
                complex   = {},
                factor    = {
-                   fields <- c(fields, 'nlevels', 'matchable')
+                   fields <- c(fields, 'nlevels')
                    ## nlevels
                    if (!is.null(input$nlevels)) {
                        nlevels <- input$nlevels <- guess.l(input$nlevels, 'nlevels', name, cls)
