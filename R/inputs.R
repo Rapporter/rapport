@@ -178,7 +178,6 @@ guess.input <- function(input) {
     input$standalone <- standalone
     fields <- c('name', 'label', 'description', 'class', 'required', 'standalone', 'length', 'value')
     matchable          <- isTRUE(as.yaml.bool(input$matchable))
-    matchable.opts <- input$options <- unique(as.character(unname(unlist(input$options))))
     
     ## check value class/length
     if (!is.null(value)) {
@@ -211,6 +210,7 @@ guess.input <- function(input) {
     ## matchable inputs
     if (matchable) {
         input$matchable <- matchable
+        matchable.opts <- input$options <- unique(as.character(unname(unlist(input$options))))
         if (!is.null(input$match_options)) {
             ## check names (multiple, strict)
             ## check this in the end, see if you can recurse and compare list names
@@ -223,6 +223,7 @@ guess.input <- function(input) {
                 )
         }
         fields <- c(fields, 'matchable', 'options', 'match_options')
+        
         ## only avaialable for "character" and "factor" class inputs
         if (!cls %in% c('character', 'factor'))
             stop('"matchable" attribute only available for "character" and "factor" inputs')
@@ -253,7 +254,7 @@ guess.input <- function(input) {
         }
     } else {
         input$matchable <- NULL
-        if (length(matchable.opts))
+        if (!is.null(input$options))
             stopf('"options" attribute provided for non-matchable input "%s"', name)
     }
 
