@@ -30,11 +30,16 @@ inputs:
   description: Whether two-sided, greater or less variant will be applied
   class: character
   length: 1
-  value:
+  options:
   - two.sided
   - less
   - greater
+  value:
+  - two.sided
   matchable: TRUE
+  match_options:
+    strict: FALSE
+    multiple: FALSE
   required: FALSE
   standalone: TRUE
 - name: mu

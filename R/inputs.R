@@ -178,7 +178,8 @@ guess.input <- function(input) {
     input$standalone <- standalone
     fields <- c('name', 'label', 'description', 'class', 'required', 'standalone', 'length', 'value')
     matchable          <- isTRUE(as.yaml.bool(input$matchable))
-
+    matchable.opts <- input$options <- unique(as.character(unname(unlist(input$options))))
+    
     ## check value class/length
     if (!is.null(value)) {
         if (matchable && !standalone)
@@ -210,10 +211,6 @@ guess.input <- function(input) {
     ## matchable inputs
     if (matchable) {
         input$matchable <- matchable
-        matchable.opts <- input$options <- as.character(unname(unlist(input$options)))
-        unique.opts <- unique(matchable.opts)
-        if (!identical(unique.opts, matchable.opts))
-            matchable.opts <- input$options <- unique.opts
         if (!is.null(input$match_options)) {
             ## check names (multiple, strict)
             ## check this in the end, see if you can recurse and compare list names
@@ -222,7 +219,7 @@ guess.input <- function(input) {
         } else {
             input$match_options <- list(
                 multiple = FALSE,
-                strict = TRUE
+                strict = FALSE
                 )
         }
         fields <- c(fields, 'matchable', 'options', 'match_options')
