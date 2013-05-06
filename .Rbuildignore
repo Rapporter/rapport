@@ -13,3 +13,4 @@ inst/templates/test.tpl
 ^notes.*$
 .travis.yml
 Makefile
+.ackrc

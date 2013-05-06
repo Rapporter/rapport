@@ -118,15 +118,13 @@
   \code{options} attribute must be provided, while
   \code{value} is optional, though recommended.
   \code{options} should contain values to be chosen from,
-  similar to \code{<option>} atag in \code{<select>} HTML
-  tag, while \code{value} must contain a value from
-  \code{options} or it can be omitted (\code{NULL}).
-  \code{allow_multiple} will allow values from
-  \code{options} list to be matched multiple times. Note
-  that unlike previous versions of \code{rapport}, partial
-  matching is not performed, as the matching itself is not
-  carried out via \code{match.arg}, but \code{%in%} and
-  some indexing operators. }
+  just like \code{<option>} tag does when nested in
+  \code{<select>} HTML tag, while \code{value} must contain
+  a value from \code{options} or it can be omitted
+  (\code{NULL}). \code{allow_multiple} will allow values
+  from \code{options} list to be matched multiple times.
+  Note that unlike previous versions of \code{rapport},
+  partial matching is not performed. }
 
   \emph{numeric}, \emph{integer}
 
