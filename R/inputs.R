@@ -52,7 +52,7 @@ guess.input.description <- function(description, ...) {
 
 ##' Guess length-like fields
 ##'
-##' Since length, nchar, nlevels and limit have (almost) same format, 
+##' Since length, nchar, nlevels and limit have (almost) same format,
 ##' @param len length field value, either a number or a named list
 ##' @param type type of length-like field
 ##' @param input.name input name
@@ -87,7 +87,7 @@ guess.l <- function(len, type = c('length', 'nchar', 'nlevels', 'limit'), input.
 
     ## we may get a number or a list with either min, max or both
     ## all of which contain floored floats (it's okay, they're enough integer-like)
-    
+
     ## and now check min/max values and other stuff
     switch(type,
            length = {
@@ -124,7 +124,7 @@ guess.l <- function(len, type = c('length', 'nchar', 'nlevels', 'limit'), input.
 
     if (res$min > res$max)
         stopf('"%s" attribute\'s "min" value cannot be larger than "max"', type)
-    
+
     if (res$min < l.min || res$max > l.max)
         stopf('"%s" attribute has to fall between %s and %s', type, res$min, res$max)
 
@@ -178,7 +178,7 @@ guess.input <- function(input) {
     input$standalone <- standalone
     fields <- c('name', 'label', 'description', 'class', 'required', 'standalone', 'length', 'value')
     matchable          <- isTRUE(as.yaml.bool(input$matchable))
-    
+
     ## check value class/length
     if (!is.null(value)) {
         if (matchable && !standalone)
@@ -209,47 +209,33 @@ guess.input <- function(input) {
 
     ## matchable inputs
     if (matchable) {
-        input$matchable <- matchable
-        matchable.opts <- input$options <- unique(as.character(unname(unlist(input$options))))
-        if (!is.null(input$match_options)) {
-            ## check names (multiple, strict)
-            ## check this in the end, see if you can recurse and compare list names
-            matchable.multiple <- input$match_options$multiple <- isTRUE(as.yaml.bool(input$match_options$multiple))
-            matchable.strict <- input$match_options$strict <- isTRUE(as.yaml.bool(input$match_options$strict))
-        } else {
-            input$match_options <- list(
-                multiple = FALSE,
-                strict = FALSE
-                )
-        }
-        fields <- c(fields, 'matchable', 'options', 'match_options')
-        
+        input$matchable    <- matchable
+        matchable.opts     <- input$options <- as.character(unname(unlist(input$options)))
+        matchable.multiple <- input$allow_multiple <- isTRUE(as.yaml.bool(input$allow_multiple))
+        fields             <- c(fields, 'matchable', 'options', 'allow_multiple')
+
         ## only avaialable for "character" and "factor" class inputs
         if (!cls %in% c('character', 'factor'))
             stop('"matchable" attribute only available for "character" and "factor" inputs')
         ## check for "options" attribute
         if (is.null(matchable.opts))
             stopf('matchable input "%s" must contain "options" attribute with at east one option', name)
+        ## option item contained multiple times - issue a warning and unique()-ify it
+        opts.unique <- unique(matchable.opts)
+        if (!identical(opts.unique, matchable.opts)) {
+            warningf('matchable input "%s" contains option items that occur multiple times', name)
+            matchable.opts <- input$options <- opts.unique
+        }
+
         ## value is the "default" value
         if (!is.null(value)) {
-            ## check strict option matching
-            if (matchable.strict) {
-                ## check if value is specified in options
-                matches <- value %in% matchable.opts
-                if (!all(matches))
-                    stopf('matchable input "%s" contains values that are not in the options list: %s', name, p(value[!matches], wrap = '"'))
-                if (!matchable.multiple) {
-                    ## in this case, check if all provided values are contained only ones
-                    if (!all(as.numeric(table(value)) == 1))
-                        stopf('all provided values in matchable input "%s" should be contained only once in option list (or set `multiple: TRUE` in input definition)', name)
-                }
-            } else {
-                ## non-strict matching
-                tryCatch(
-                    match.arg(value, input$options, several.ok = matchable.multiple),
-                    error = function(e) {
-                        stopf('matchable input "%s" value cannot be matched against provided options: %s', name, e$message)
-                    })
+            ## check if value is specified in options
+            matches <- value %in% matchable.opts
+            if (!all(matches))
+                stopf('matchable input "%s" contains values that are not in the options list: %s', name, p(value[!matches], wrap = '"'))
+            if (!matchable.multiple) {
+                if (!all(as.numeric(table(value)) == 1))
+                    stopf('all provided values in matchable input "%s" should be contained only once in option list (or set `multiple: TRUE` in input definition)', name)
             }
         }
     } else {
@@ -397,7 +383,7 @@ check.input.value.class <- function(value, class = c('character', 'complex', 'fa
             else
                 check.fn <- sprintf('is.%s', cls)
         }
-        
+
         input.name.txt <- if (is.string(input.name)) sprintf('"%s" ', input.name) else ''
 
         if (is.variable(value)) {

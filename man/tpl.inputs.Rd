@@ -115,14 +115,18 @@
   character vector must match the given regular expression.
   Defaults to \code{NULL} - no checks are applied.  \item
   \code{matchable} (logical value) - if \code{TRUE},
-  \code{value} attribute must be provided. In that case,
-  \code{value} will contain a set of values that will be
-  passed to \code{link{match.arg}} function \code{choices}
-  argument. Matching will be performed on the elements of
-  user-specified vector, i.e. provided vector will be
-  passed to \code{arg} argument. Multiple matches
-  \code{several.ok} are allowed, and will be computed based
-  on the \code{length} attribute. }
+  \code{options} attribute must be provided, while
+  \code{value} is optional, though recommended.
+  \code{options} should contain values to be chosen from,
+  similar to \code{<option>} atag in \code{<select>} HTML
+  tag, while \code{value} must contain a value from
+  \code{options} or it can be omitted (\code{NULL}).
+  \code{allow_multiple} will allow values from
+  \code{options} list to be matched multiple times. Note
+  that unlike previous versions of \code{rapport}, partial
+  matching is not performed, as the matching itself is not
+  carried out via \code{match.arg}, but \code{%in%} and
+  some indexing operators. }
 
   \emph{numeric}, \emph{integer}
 
@@ -139,8 +143,10 @@
   \itemize{ \item \code{nlevels} - accepts the same format
   as \code{length} attribute, but the check is performed
   rather on the number of factor levels.  \item
-  \code{matchable} - \emph{ibid} as in character inputs,
-  but this time it's the factor levels that get passed to
-  \code{arg} argument in \code{\link{match.arg}}. }
+  \code{matchable} - \emph{ibid} as in character inputs
+  (note that in previous versions of \code{rapport}
+  matching was performed against factor levels - well, not
+  any more, now we match against values to make it
+  consistent with \code{character} inputs). }
 }
 

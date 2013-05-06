@@ -212,7 +212,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
         if (!is.null(h$packages))
             if (is.string(h$packages))
                 h$packages <- strsplit(h$packages, " *, *")[[1]]
-        
+
         ## examples
         ## TODO: change to "examples" at some point (easy does it)
         if (!is.null(h$example)){
@@ -237,7 +237,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
         h$dataRequired <- NULL
         warning('"dataRequired" field is deprecated. You should remove it from the template.')
     }
-    
+
     ## check metadata validity
     meta.fields <- c('title', 'description', 'author', 'email', 'packages', 'example')
     meta.required <- c('title', 'description', 'author')
@@ -249,7 +249,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
     unsupported.meta <- meta.names[!meta.names %in% meta.fields]
     if (length(unsupported.meta))
         warningf('Unsupported metadata field(s) found: %s', p(unsupported.meta, wrap = "\""))
-    
+
     structure(h, class = 'rp.meta')
 }
 
@@ -272,7 +272,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #' \strong{General input attributes}
 #'
 #' Following attributes are available for all inputs:
-#' 
+#'
 #' \itemize{
 #'     \item \code{name} (character string, required) - input name. It acts as an identifier for a given input, and is required as such. Template cannot contain duplicate names. \code{rapport} inputs currently have custom naming conventions - see \code{\link{guess.input.name}} for details.
 #'     \item \code{label} (character string) - input label. It can be blank, but it's useful to provide input label as \code{rapport} helpers use that information in plot labels and/or exported HTML tables. Defaults to empty string.
@@ -296,7 +296,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #' \itemize{
 #'     \item \code{nchar} - restricts the number of characters of the input value. It accepts the same attribute format as \code{length}. If \code{NULL} (default), no checks will be performed.
 #'     \item \code{regexp} (character string) - contains a string with regular expression. If non-\code{NULL}, all strings in a character vector must match the given regular expression. Defaults to \code{NULL} - no checks are applied.
-#'     \item \code{matchable} (logical value) - if \code{TRUE}, \code{value} attribute must be provided. In that case, \code{value} will contain a set of values that will be passed to \code{link{match.arg}} function \code{choices} argument. Matching will be performed on the elements of user-specified vector, i.e. provided vector will be passed to \code{arg} argument. Multiple matches \code{several.ok} are allowed, and will be computed based on the \code{length} attribute.
+#'     \item \code{matchable} (logical value) - if \code{TRUE}, \code{options} attribute must be provided, while \code{value} is optional, though recommended. \code{options} should contain values to be chosen from, similar to \code{<option>} atag in \code{<select>} HTML tag, while \code{value} must contain a value from \code{options} or it can be omitted (\code{NULL}). \code{allow_multiple} will allow values from \code{options} list to be matched multiple times. Note that unlike previous versions of \code{rapport}, partial matching is not performed, as the matching itself is not carried out via \code{match.arg}, but \code{%in%} and some indexing operators.
 #' }
 #'
 #' \emph{numeric}, \emph{integer}
@@ -309,7 +309,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #'
 #' \itemize{
 #'     \item \code{nlevels} - accepts the same format as \code{length} attribute, but the check is performed rather on the number of factor levels.
-#'     \item \code{matchable} - \emph{ibid} as in character inputs, but this time it's the factor levels that get passed to \code{arg} argument in \code{\link{match.arg}}.
+#'     \item \code{matchable} - \emph{ibid} as in character inputs (note that in previous versions of \code{rapport} matching was performed against factor levels - well, not any more, now we match against values to make it consistent with \code{character} inputs).
 #' }
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param use.header a logical value indicating whether the header section is provided in \code{h} argument
@@ -363,7 +363,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
                 warningf('missing label for input "%s"', i.name)
             if (is.empty(i.desc))
                 warningf('missing description for input "%s"', i.name)
-            
+
             c(
                 name = i.name,
                 label = i.label,
@@ -574,23 +574,25 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             input.value  <- x$value
             ## user inputs
             user.input   <- i[[input.name]]
-            
+
             ## matchable inputs are kind-of special
             if (isTRUE(x$matchable)) {
                 v <- if (is.null(user.input)) x$value else as.character(user.input)
-                ## strict matching
-                if (x$match_options$strict) {
-                    ## multiple match
-                    if (x$match_options$multiple)
-                        val <- v[v %in% x$options]
-                    else {
-                        ## issue a warning if matched multiple times
-                        if (!all(as.numeric(table(v)) == 1))
-                            warning('multiple occurances found in provided value')
-                        val <- x$options[x$options %in% v]
-                    }
-                } else
-                    val <- match.arg(v, x$options, several.ok = x$match_options$multiple)
+                matchable.err.msg <- sprintf('provided value `%s` not found in option list for matchable input "%s"', p(v, wrap = '"'), input.name)
+                ## multiple match
+                if (x$allow_multiple) {
+                    v.ind <- v %in% x$options
+                    if (!any(v.ind))
+                        stop(matchable.err.msg)
+                    val <- v[v.ind]
+                } else {
+                    ## issue a warning if matched multiple times
+                    if (!all(as.numeric(table(v)) == 1))
+                        warning('multiple occurances found in provided value')
+                    val <- x$options[x$options %in% v]
+                    if (!length(val))
+                        stop(matchable.err.msg)
+                }
                 if (input.class == 'factor')
                     val <- as.factor(val)
             } else {
@@ -655,7 +657,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                                    }
                                }
                            })
-                
+
                 ## add labels
                 if (is.recursive(val)) {
                     for (t in names(val)){

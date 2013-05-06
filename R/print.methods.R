@@ -6,7 +6,6 @@
 #' @method print rp.meta
 #' @S3method print rp.meta
 print.rp.meta <- function(x, ...){
-
     .x <- x                             # backup object
     ind <- c('title', 'author', 'email', 'description', 'example')
     email <- if (is.null(x$email)) '' else sprintf(' (%s)', x$email) # show email if any
@@ -38,7 +37,6 @@ print.rp.meta <- function(x, ...){
 #' @method print rp.inputs
 #' @S3method print rp.inputs
 print.rp.inputs <- function(x, ...){
-
     catn('\n Inputs\n')
 
     if (length(x) == 0){
@@ -63,7 +61,7 @@ print.rp.inputs <- function(x, ...){
                 sprintf('  - length:\t\t%s\n', len.txt))
             if (isTRUE(x$matchable)) {
                 res <- c(res,
-                         '  - matchable:\t\tTRUE\n',
+                         paste0('  - matchable:\t\tTRUE', ifelse(x$allow_multiple, ' (multiple matches allowed)', ''), '\n'),
                          paste0('  - options:\t\t', p(x$options, wrap = '"'), '\n')
                          )
             }

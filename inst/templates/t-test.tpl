@@ -37,9 +37,6 @@ inputs:
   value:
   - two.sided
   matchable: TRUE
-  match_options:
-    strict: FALSE
-    multiple: FALSE
   required: FALSE
   standalone: TRUE
 - name: mu

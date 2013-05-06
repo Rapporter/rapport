@@ -1,3 +1,14 @@
+rapport 0.51 (2013-05-06)
+----------------------------------------------------------------
+
+CHANGES
+
+  * matchable inputs do not use `match.arg` for matching any more. Instead, a simple `%in%` with indexing is used, so exact match is required.
+  * `value` attribute is not used to store values that you choose from - `options` attribute is used instead, with `value` holding the (default) value(s) from the `options` list.
+  * new attribute `allow_multiple` was introduced in matchable inputs. If `TRUE`, it will allow one to match values from `options` list multiple times. Defaults to `FALSE`.
+  * for factor matchable inputs, matching is not performed on factor levels, but on values (just like in character inputs).
+
+
 rapport 0.5 (2013-02-18)
 ----------------------------------------------------------------
 
@@ -61,7 +72,7 @@ NEW FEATURES
  * New global options:
     * to specify exported documents and generated images (dynamic) name and path
     * to generate "portable" HTML files
- * raw pandoc/asciidoc etc. outputs are also saved with appropriate extension 
+ * raw pandoc/asciidoc etc. outputs are also saved with appropriate extension
 
 CHANGES
 
@@ -92,7 +103,7 @@ NEW FEATURES
 * Introduced own `skewness()` and `kurtosis()` functions to get rid of `moments` dependency.
 * Option (default set to FALSE) to view generated plots without exporting (`replayPlot`)
 * Same option let users resize generated (and saved) images on the fly while printing rapport classes
-  and later exporting   
+  and later exporting
 
 CHANGES
 
