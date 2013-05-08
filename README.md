@@ -8,6 +8,11 @@ Several [predefined templates](http://rapport-package.info#templates ) come bund
 
 The most recent version of this package is hosted on [GitHub](https://github.com/rapporter/rapport), but we also submit stable versions to [CRAN](cran.r-project.org) from time to time (read:  once in a blue moon).
 
+Build status:
+
+  * Development branch: [![Build Status for Development branch](https://travis-ci.org/Rapporter/rapport.png?branch=development)](https://travis-ci.org/Rapporter/rapport)
+  * Master branch: [![Build Status for Master branch](https://travis-ci.org/Rapporter/rapport.png?branch=master)](https://travis-ci.org/Rapporter/rapport)
+
 We encourage everyone to install `rapport` via the nifty function from `devtools` package:
 
 ```

@@ -14,8 +14,7 @@ inputs:
   label: Row variable
   description: A categorical variable.
   class: factor
-  length:
-    exactly: 1
+  length: 1
   value: ~
   required: TRUE
   standalone: FALSE
@@ -23,8 +22,7 @@ inputs:
   label: Column variable
   description: A categorical variable.
   class: factor
-  length:
-    exactly: 1
+  length: 1
   value: ~
   required: TRUE
   standalone: FALSE
@@ -32,8 +30,7 @@ inputs:
   label: Annotation
   description: Should textual annotations be added to the report?
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: TRUE
   required: FALSE
   standalone: TRUE

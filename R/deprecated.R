@@ -70,7 +70,7 @@ guess.old.input.length <- function(x, input.type) {
 
     ## skip checks for boolean inputs
     if (input.type == 'boolean')
-        return (list(exactly = 1L))
+        return (list(min = 1L, max = 1L))
     
     ## make a bitchy regex that will cover all allowed formats
     ## if (!grepl("^(\\[-?\\d+(\\.\\d+)?(,\\s*-?\\d+(\\.\\d+)?)?\\]|\\[\\]|)$", x))
@@ -99,14 +99,16 @@ guess.old.input.length <- function(x, input.type) {
                    stop('decimal and/or less than 1 limit values are not allowed for variable inputs')
                ## length checks
                if (len == 0)
-                   lim <- list(exactly = 1L)
-               else if (len == 1)
-                   lim <- list(exactly = as.integer(lim))
-               else
-                   if (length(unique(lim)) == 1)
-                       lim <- list(exactly = as.integer(lim[1]))
-                   else
-                       lim <- list(min = as.integer(lim[1]), max = as.integer(lim[2]))
+                   lim <- list(min = 1L, max = 1L)
+               else if (len == 1) {
+                   lim <- floor(lim)
+                   lim <- list(min = lim, max = lim)
+               } else
+                   if (length(unique(lim)) == 1) {
+                       lim <- floor(lim[1])
+                       lim <- list(min = lim, max = lim)
+                   } else
+                       lim <- list(min = floor(lim[1]), max = floor(lim[2]))
            },
            ## standalone inputs
            string = {
@@ -116,11 +118,12 @@ guess.old.input.length <- function(x, input.type) {
                ## length checks
                if (len == 0)
                    lim <- list(min = 1L, max = 256L)
-               ## only one limit = exactly
-               else if (len == 1)
-                   lim <- list(exactly = as.integer(lim))
-               else
-                   lim <- list(min = as.integer(lim[1]), max = as.integer(lim[2]))
+               ## only one limit
+               else if (len == 1) {
+                   lim <- floor(lim)
+                   lim <- list(min = lim, max = lim)
+               } else
+                   lim <- list(min = floor(lim[1]), max = floor(lim[2]))
            },
            number = {
                ## not a length check, but limit, so it's min/max
@@ -182,7 +185,7 @@ guess.old.input.type <- function(x){
            "TRUE"  = ,
            "FALSE" = list(
                class      = 'logical',
-               length     = list(exactly = 1L),
+               length     = list(min = 1L, max = 1L),
                value      = as.logical(input.type),
                required   = FALSE,
                standalone = TRUE
@@ -201,7 +204,7 @@ guess.old.input.type <- function(x){
                ## response
                list(
                    class      = 'numeric',
-                   length     = list(exactly = 1L),
+                   length     = list(min = 1L, max = 1L),
                    value      = default,
                    limit      = limit,
                    required   = mandatory,
@@ -216,7 +219,7 @@ guess.old.input.type <- function(x){
 
                list(
                    class      = 'character',
-                   length     = list(exactly = 1L),
+                   length     = list(min = 1L, max = 1L),
                    value      = default,
                    nchar      = chars,
                    required   = mandatory,
@@ -228,7 +231,7 @@ guess.old.input.type <- function(x){
                if (grepl(csv.regex, x))
                    list(
                        class      = 'character',
-                       length     = list(exactly = 1L),
+                       length     = list(min = 1L, max = 1L),
                        value      = strsplit(x, ' *, *')[[1]],
                        matchable  = TRUE,
                        required   = FALSE,

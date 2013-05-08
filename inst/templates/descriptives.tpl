@@ -12,10 +12,8 @@ meta:
 inputs:
 - name: var
   label: Variable
-  description: Categorical or numerical variable. This template will determine the
-    measurement level of the given variable.
-  length:
-    exactly: 1
+  description: Categorical or numerical variable. This template will determine the measurement level of the given variable.
+  length: 1
   value: ~
   required: TRUE
   standalone: FALSE

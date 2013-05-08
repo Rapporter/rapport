@@ -50,148 +50,98 @@ guess.input.description <- function(description, ...) {
 }
 
 
-#' Guess input length
-#'
-#' Performs sanity checks on input \code{length} attribute.
-#' @param len eiher an integer value or a named list containing input length definition
-guess.input.length <- function(len) {
-    
-    ## only "min", "max" and "exactly"
-    ## if NULL, set some defaults:
-    ## - like... 1?
-    ## if non-NULL, it can be:
-    ## - an integer, which is equivalent to "exactly: x"
-    ## - a named list with integer vectors:
-    ##   - "min", "max" or "exactly" attribute
-    ##     - "min", "max" and "exactly" should be length-one integers
-    ##   - both "min" and "max" attributes supplied
-    ##     - they should both be length-one integers
+##' Guess length-like fields
+##'
+##' Since length, nchar, nlevels and limit have (almost) same format,
+##' @param len length field value, either a number or a named list
+##' @param type type of length-like field
+##' @param input.name input name
+##' @param limit.class input class to perform limit-specific checks
+guess.l <- function(len, type = c('length', 'nchar', 'nlevels', 'limit'), input.name = NULL, limit.class = c('numeric', 'integer')) {
+    type <- match.arg(type)
 
-    if (is.null(len))
-        return (list(exactly = 1L))
-    else if (is.number(len))
-        return (list(exactly = as.integer(len)))
-    else if (is.list(len)) {
-        l.names  <- names(len)
-        l.length <- length(len)
-        
-        ## check names
-        stopifnot(all(l.names %in% c('min', 'max', 'exactly')))
-        ## coerce to numeric
-        len <- lapply(len, function(x){
-            x <- suppressWarnings(as.numeric(x))
-            if (any(is.na(x)))
-                stop('cannot coerce length to numeric')
-            x
-        })
+    ## only length is mandatory, the others can be NULL
+    if (is.null(len)) {
+        if (type == 'length')
+            return (list(min = 1L, max = 1L))
+        else
+            return ()
+    }
 
-        check.len.int <- function(x) {
-            if (!is.recursive(x)){
-                if (is.null(x))
-                    return(1L)
-                else
-                    if (length(x) != 1)
-                        stop('length attributes "min" and "max" must be length-one integers')
-                    else {
-                        if (floor(x) != x) {
-                            warning('coercing number to integer')
-                            floor(x)
-                        } else if (x < 1)
-                            stop('only positive integers can be provided')
-                        else
-                            x
-                    }
-            } else
-                lapply(x, check.len.int)
-        }
-        
-        switch(l.length,
-               ## length-one list
-               {
-                   len <- check.len.int(len)
-                   switch(l.names,
-                          min = {
-                              len <- list(min = len$min, max = Inf)
-                          },
-                          max = {
-                              len <- list(min = 1L, max = len$max)
-                          },
-                          exactly = {
-                              ## just don't fall through =P
-                          },
-                          stopf('invalid length attribute: "%s"', l.names)
-                          )
-               },
-               ## length-two list ("min", "max")
-               {
-                   if (!setequal(l.names, c('min', 'max')))
-                       stop('only "min" and "max" should be provided')
-                   len <- check.len.int(len)
-                   ## check if "min" == "max"
-                   len.u <- unique(unlist(len))
-                   if (length(len.u) == 1) {
-                       lim <- list(exactly = len.u)
-                       warningf('"min" and "max" are both equal to %d: coercing to "exactly"', len.u)
-                   }
-               },
-               ## because it's lame to halt with "invalid length length" =P
-               stop('invalid length specification')
-               )
-    } else
-        stop('invalid length type')
+    ## now perform format checks
+    nms <- names(len)
+    ## input.name <- if (is.null(input.name)) "" else paste0(" ", input.name)
 
-    if (length(len) == 2 && len$min > len$max)
-        stop('"min" value cannot be smaller than "max" value')
+    ## length-like attribute can either be:
+    ## - a length-one integer/numeric
+    ## - a list with length-one numeric values (either min or max)
+    if (!((is.number(len) && type != "limit") || (is.list(len) && all(sapply(len, length) == 1) && (length(nms) && all(nms %in% c("min", "max"))))))
+        stopf('"%s" attribute has invalid format', type)
 
-    return(len)
+    ## limit can be float
+    if (type != 'limit' || (type == 'limit' && limit.class == 'integer')) {
+        if (!all(sapply(len, alike.integer)))
+            warningf('"%s" value(s) contain float values.\nI will floor them down, but you better change them...', type)
+        len <- sapply(len, floor, simplify = !is.list(len))
+    }
+
+    ## we may get a number or a list with either min, max or both
+    ## all of which contain floored floats (it's okay, they're enough integer-like)
+
+    ## and now check min/max values and other stuff
+    switch(type,
+           length = {
+               l.min <- 1
+               l.max <- Inf
+           },
+           nlevels = {
+               l.min <- 1
+               l.max <- Inf
+           },
+           nchar = {
+               l.min <- 0
+               l.max <- Inf
+           },
+           limit = {
+               ## note that in the previous version I've put
+               ## -.Machine$integer.max instead of -Inf
+               ## was that for the sake of going native or what?
+               ## -Inf will be just fine for integer-likes
+               l.min <- -Inf
+               l.max <- Inf
+           })
+
+    ## result placeholder
+    if (is.number(len))
+        res <- list(min = len, max = len)
+    else {
+        res <- list(min = len$min, max = len$max)
+        if (is.null(res$min))
+            res$min <- l.min
+        if (is.null(res$max))
+            res$max <- l.max
+    }
+
+    if (res$min > res$max)
+        stopf('"%s" attribute\'s "min" value cannot be larger than "max"', type)
+
+    if (res$min < l.min || res$max > l.max)
+        stopf('"%s" attribute has to fall between %s and %s', type, res$min, res$max)
+
+    return (res)
 }
 
 
-#' Guess input limits
-#'
-#' Guess input limits for \code{integer} and \code{numeric} inputs.
-#' @param input a named list containing input definition
-guess.input.limit <- function(input) {
-    if (!input$class %in% c('integer', 'numeric'))
-        stop('limits are available only for "numeric" and "integer" inputs')
-    ## if NULL, leave as such (no checks will be performed)
-    if (is.null(input$limit))
-        return (NULL)
-    else {
-        cls         <- input$class
-        limit       <- input$limit
-        limit.names <- names(limit)
-        limit.len   <- length(limit)
-        ## if both "min" and "max" are NULL, return NULL
-        if (all(sapply(limit, is.null)))
-            return (NULL)
-        
-        stopifnot(limit.len %in% 1:2)
-        stopifnot(all(limit.names %in% c('min', 'max')))
-        ## length-one integers or numerics
-        limit <- lapply(limit, function(x) {
-            if (!is.null(x)) {
-                stopifnot(length(x) == 1)
-                if (cls == 'integer') {
-                    x <- suppressWarnings(as.integer(x))
-                    if (is.na(x))
-                        stop('integer coercion failed')
-                }
-                x
-            }
-        })
-        
-        ## check length ("min", "max" or both)
-        if (is.null(limit$min))
-            limit$min <- ifelse(cls == 'integer', -.Machine$integer.max, -Inf)
-        if (is.null(limit$max))
-            limit$max <- ifelse(cls == 'integer', .Machine$integer.max, Inf)
-
-        if (limit$min > limit$max)
-            stop('"min" limit cannot be larger than "max" limit')
-        
-        return (limit)
-    }
+##' Convert YAML booleans to R ones
+##'
+##' We need this because of the silly R/YAML bug. Chillax, it's for internal use only, and since we're about to call it on bunch of places, we needed a function.
+##' @param x a character vector with YAML booleans
+as.yaml.bool <- function(x) {
+    yesses <- grepl('^(y|yes|true|on)$', x, ignore.case = TRUE)
+    noes <- grepl('^(n|no|false|off)$', x, ignore.case = TRUE)
+    x[yesses] <- TRUE
+    x[noes] <- FALSE
+    as.logical(x)
 }
 
 
@@ -216,49 +166,88 @@ guess.input <- function(input) {
     description <- input$description <- trim.space(guess.input.description(input$desc))
     if (is.empty(description))
         warningf('missing description for input "%s"', name)
-    required    <- input$required    <- isTRUE(as.logical(input$required))
-    len         <- input$length      <- guess.input.length(input$length)
+    required    <- input$required    <- isTRUE(as.yaml.bool(input$required))
+    len         <- input$length      <- guess.l(input$length, input.name = name)
     value       <- input$value
     lim         <- input$limit
-    ## inputs are standalone by default
+    ## inputs are standalone by default!!!
     if (is.null(input$standalone))
         standalone  <- TRUE
     else
-        standalone  <- isTRUE(as.logical(input$standalone))
+        standalone  <- isTRUE(as.yaml.bool(input$standalone))
     input$standalone <- standalone
     fields <- c('name', 'label', 'description', 'class', 'required', 'standalone', 'length', 'value')
+    matchable          <- isTRUE(as.yaml.bool(input$matchable))
 
     ## check value class/length
     if (!is.null(value)) {
+        if (matchable && !standalone)
+            stopf('matchable inputs (like "%s") can only be standalone', name)
         if (!standalone)
             stopf('"value" attribute assigned to dataset input "%s"', name)
-        ## coerce factor values
-        if (cls == 'factor'){
-            value <- input$value <- as.factor(value)
-        } else {
-            ## length (don't check for options, do that in rapport() call)
-            check.input.value(input, attribute.name = 'length')
-        }
+        ## coerce values if needed
+        value <- input$value <- switch(cls,
+                                       factor = {
+                                           as.factor(value)
+                                       },
+                                       complex = {
+                                           as.complex(value)
+                                       },
+                                       logical = {
+                                           as.yaml.bool(value)
+                                       },
+                                       raw = {
+                                           as.raw(value)
+                                       },
+                                       {
+                                           check.input.value(input, attribute.name = 'length')
+                                           value
+                                       })
         ## class check
         check.input.value.class(value, cls, name)
     }
 
-    ## matchable
-    matchable <- isTRUE(as.logical(input$matchable))
+    ## matchable inputs
     if (matchable) {
-        input$matchable <- matchable
+        input$matchable    <- matchable
+        matchable.opts     <- input$options <- as.character(unname(unlist(input$options)))
+        matchable.multiple <- input$allow_multiple <- isTRUE(as.yaml.bool(input$allow_multiple))
+        fields             <- c(fields, 'matchable', 'options', 'allow_multiple')
+
         ## only avaialable for "character" and "factor" class inputs
         if (!cls %in% c('character', 'factor'))
             stop('"matchable" attribute only available for "character" and "factor" inputs')
-        ## matchable inputs should always contain a default value!!!
-        if (is.null(value))
-            stopf('"matchable" input "%s" must contain a value', name)
+        ## check for "options" attribute
+        if (is.null(matchable.opts))
+            stopf('matchable input "%s" must contain "options" attribute with at east one option', name)
+        ## option item contained multiple times - issue a warning and unique()-ify it
+        opts.unique <- unique(matchable.opts)
+        if (!identical(opts.unique, matchable.opts)) {
+            warningf('matchable input "%s" contains option items that occur multiple times', name)
+            matchable.opts <- input$options <- opts.unique
+        }
+
+        ## value is the "default" value
+        if (!is.null(value)) {
+            ## check if value is specified in options
+            matches <- value %in% matchable.opts
+            if (!all(matches))
+                stopf('matchable input "%s" contains values that are not in the options list: %s', name, p(value[!matches], wrap = '"'))
+            if (!matchable.multiple) {
+                if (!all(as.numeric(table(value)) == 1))
+                    stopf('all provided values in matchable input "%s" should be contained only once in option list (or set `multiple: TRUE` in input definition)', name)
+            }
+        }
+    } else {
+        input$matchable <- NULL
+        if (!is.null(input$options))
+            stopf('"options" attribute provided for non-matchable input "%s"', name)
     }
 
     if (!is.null(cls))
         switch(cls,
                character = {
-                   fields <- c(fields, 'regexp', 'nchar', 'matchable')
+                   fields <- c(fields, 'regexp', 'nchar')
                    ## regexp
                    if (!is.empty(input$regexp)) {
                        if (!is.string(input$regexp)) {
@@ -266,9 +255,9 @@ guess.input <- function(input) {
                            warningf('regexp field for "%s" input is not a character string - coerced to NULL', name)
                        }
                    }
-                   ## nchar (same format as length)
+                   ## nchar (same format as length, BUT accepts 0 as min)
                    if (!is.null(input$nchar)) {
-                       chars <- input$nchar <- guess.input.length(input$nchar)
+                       chars <- input$nchar <- guess.l(input$nchar, 'nchar', name)
                        check.input.value(input, attribute.name = 'nchar')
                    }
                    ## check value (if any)
@@ -282,10 +271,10 @@ guess.input <- function(input) {
                ## what should we ever check for complex?!
                complex   = {},
                factor    = {
-                   fields <- c(fields, 'nlevels', 'matchable')
+                   fields <- c(fields, 'nlevels')
                    ## nlevels
                    if (!is.null(input$nlevels)) {
-                       nlevels <- input$nlevels <- guess.input.length(input$nlevels)
+                       nlevels <- input$nlevels <- guess.l(input$nlevels, 'nlevels', name, cls)
                        ## check values
                    }
                },
@@ -293,9 +282,9 @@ guess.input <- function(input) {
                numeric   = {
                    fields <- c(fields, 'limit')
                    ## limits
-                   input$limit <- guess.input.limit(input)
+                   input$limit <- guess.l(input$limit, 'limit', name, cls)
                    ## check limits
-                   if (!is.null(input$limit)){
+                   if (!is.null(input$limit)) {
                        if (is.variable(value))
                            stopifnot(all(value >= input$limit$min) && all(value <= input$limit$max))
                        else
@@ -309,14 +298,14 @@ guess.input <- function(input) {
     nms <- names(input)
     unsupported.fields <- nms[!nms %in% fields]
     if (length(unsupported.fields))
-        warningf('Unsupported fields found in %s input "%s": %s', input$class, input$name, p(unsupported.fields, wrap = "\""))
+        warningf('Unsupported fields found in input "%s": %s', input$name, p(unsupported.fields, wrap = "\""))
     input
 }
 
 
 #' Check input value
 #'
-#' Validates input values, according to rules set in general input attributes (\code{length}) or class-specific ones (\code{nchar}, \code{nlevels} or \code{limit}).
+#' A bit misleading title/function name - it validates input values, according to rules set in general input attributes (\code{length}) or class-specific ones (\code{nchar}, \code{nlevels} or \code{limit}).
 #' @param input input item
 #' @param value input value, either template-defined, or set by the user
 #' @param attribute.name input attributes containing validation rules (defaults to \code{length})
@@ -331,7 +320,7 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
     if (!(is.null(val) || is.null(len))) {
         switch(a,
                length = {
-                   ## length shouldn't be NULL as this function should be called after guess.input.length
+                   ## length shouldn't be NULL as this function should be called after guess.l
                    ## BUT, you never know...
                    if (is.null(len))
                        stopf('length attribute for %s input "%s" is missing', input$class, input$name)
@@ -357,24 +346,15 @@ check.input.value <- function(input, value = NULL, attribute.name = c('length', 
 
         ## matchables should be checked to see if they contain less options then provided in limits
         if (isTRUE(input$matchable)) {
-            if (is.null(len$exactly)) {
-                len.ok  <- all(val.len >= len$min)
-                err.len <- len$min
-            } else {
-                len.ok  <- all(val.len >= len$exactly)
-                err.len <- len$exactly
-            }
+            len.ok  <- all(val.len >= len$min)
+            err.len <- len$min
             err.msg <- sprintf('matchable %s input "%s" should have at least %d inputs (and it has %d)', input$class, input$name, err.len, val.len)
             ## non-matchables
         } else {
             ## check if value is within length interval
-            if (is.null(len$exactly)) {
-                len.ok <- all(val.len >= len$min && val.len <= len$max)
-                err.msg <- sprintf('%s input "%s" %s attribute should fall between %s and %s (and it\'s %s)', input$class, input$name, a, len$min, len$max, val.len)
-            } else {
-                len.ok <- all(val.len == len$exactly)
-                err.msg <- sprintf('%s input "%s" %s attribute should be %s (and it\'s %s)', input$class, input$name, a, len$exactly, val.len)
-            }
+            len.ok <- all(val.len >= len$min && val.len <= len$max)
+            len.range.msg <- ifelse(len$min == len$max, paste0('be ', len$min), sprintf('fall between %s and %s', len$min, len$max))
+            err.msg <- sprintf('%s input "%s" %s attribute should %s (and it\'s %s)', input$class, input$name, a, len.range.msg, val.len)
         }
         if (!len.ok)
             stop(err.msg)
@@ -392,15 +372,18 @@ check.input.value.class <- function(value, class = c('character', 'complex', 'fa
     if (is.null(value))
         return(NULL)
     else {
-        if (is.empty(class)) {
+        if (is.null(class)) {
             cls <- NULL
             cls.name <- 'vector'
             check.fn <- is.variable
         } else {
             cls <- cls.name <- match.arg(class)
-            check.fn <- sprintf('is.%s', cls)
+            if (class == "integer")
+                check.fn <- alike.integer
+            else
+                check.fn <- sprintf('is.%s', cls)
         }
-        
+
         input.name.txt <- if (is.string(input.name)) sprintf('"%s" ', input.name) else ''
 
         if (is.variable(value)) {

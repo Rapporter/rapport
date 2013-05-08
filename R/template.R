@@ -152,7 +152,22 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 
     ## check if header is defined in YAML
     h <- tryCatch({
-        y <- yaml.load(paste0(header, collapse = "\n"))
+        y <- yaml.load(
+            string = paste0(header, collapse = "\n"),
+            handlers = list(
+                'bool#yes' = function(x) {
+                    if (grepl('^(y|yes|true|on)$', x, ignore.case = TRUE))
+                        x
+                    else
+                        TRUE
+                },
+                'bool#no' = function(x) {
+                    if (grepl('^(n|no|false|off)$', x, ignore.case = TRUE))
+                        x
+                    else
+                        FALSE
+                })
+            )
         y$meta
     }, error = function(e) {
         ## either something went bad or it's the old header (hopefully)
@@ -197,7 +212,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
         if (!is.null(h$packages))
             if (is.string(h$packages))
                 h$packages <- strsplit(h$packages, " *, *")[[1]]
-        
+
         ## examples
         ## TODO: change to "examples" at some point (easy does it)
         if (!is.null(h$example)){
@@ -222,7 +237,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
         h$dataRequired <- NULL
         warning('"dataRequired" field is deprecated. You should remove it from the template.')
     }
-    
+
     ## check metadata validity
     meta.fields <- c('title', 'description', 'author', 'email', 'packages', 'example')
     meta.required <- c('title', 'description', 'author')
@@ -234,7 +249,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
     unsupported.meta <- meta.names[!meta.names %in% meta.fields]
     if (length(unsupported.meta))
         warningf('Unsupported metadata field(s) found: %s', p(unsupported.meta, wrap = "\""))
-    
+
     structure(h, class = 'rp.meta')
 }
 
@@ -257,7 +272,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #' \strong{General input attributes}
 #'
 #' Following attributes are available for all inputs:
-#' 
+#'
 #' \itemize{
 #'     \item \code{name} (character string, required) - input name. It acts as an identifier for a given input, and is required as such. Template cannot contain duplicate names. \code{rapport} inputs currently have custom naming conventions - see \code{\link{guess.input.name}} for details.
 #'     \item \code{label} (character string) - input label. It can be blank, but it's useful to provide input label as \code{rapport} helpers use that information in plot labels and/or exported HTML tables. Defaults to empty string.
@@ -267,7 +282,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #'     \item \code{standalone} (logical value) - indicates that the input depends on a dataset. Defaults to \code{FALSE}.
 #'     \item \code{length} (either an integer value or a named list with integer values) - provides a set of rules for input value's length. \code{length} attribute can be defined via:
 #'     \itemize{
-#'         \item an integer value, e.g. \code{length: 10}, which is identical to: \code{exactly: 10} nested within \code{length} attribute. In this case input length has to be equal to the provided integer value.
+#'         \item an integer value, e.g. \code{length: 10}, which sets restriction to exactly 10 vectors or values.
 #'         \item named list with \code{min} and/or \code{max} attributes nested under \code{length} attribute. This will define a range of values in which input length must must fall. Note that range limits are inclusive. Either \code{min} or \code{max} attribute can be omitted, and they will default to \code{1} and \code{Inf}, respectively.
 #'     }
 #'     \strong{IMPORTANT!} Note that \code{rapport} treats input length in a bit different manner. If you match a subset of 10 character vectors from the dataset, input length will be \code{10}, as you might expect. But if you select only one variable, length will be equal to \code{1}, and not to the number of vector elements. This stands both for standalone and dataset inputs. However, if you match a character vector against a standalone input, length will be stored correctly - as the number of vector elements.
@@ -281,20 +296,20 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #' \itemize{
 #'     \item \code{nchar} - restricts the number of characters of the input value. It accepts the same attribute format as \code{length}. If \code{NULL} (default), no checks will be performed.
 #'     \item \code{regexp} (character string) - contains a string with regular expression. If non-\code{NULL}, all strings in a character vector must match the given regular expression. Defaults to \code{NULL} - no checks are applied.
-#'     \item \code{matchable} (logical value) - if \code{TRUE}, \code{value} attribute must be provided. In that case, \code{value} will contain a set of values that will be passed to \code{link{match.arg}} function \code{choices} argument. Matching will be performed on the elements of user-specified vector, i.e. provided vector will be passed to \code{arg} argument. Multiple matches \code{several.ok} are allowed, and will be computed based on the \code{length} attribute.
+#'     \item \code{matchable} (logical value) - if \code{TRUE}, \code{options} attribute must be provided, while \code{value} is optional, though recommended. \code{options} should contain values to be chosen from, just like \code{<option>} tag does when nested in \code{<select>} HTML tag, while \code{value} must contain a value from \code{options} or it can be omitted (\code{NULL}). \code{allow_multiple} will allow values from \code{options} list to be matched multiple times. Note that unlike previous versions of \code{rapport}, partial matching is not performed.
 #' }
 #'
 #' \emph{numeric}, \emph{integer}
 #'
 #' \itemize{
-#'     \item \code{limit} - accepts the same format as \code{length} attribute, only that in this case it checks input values rather than input length. \code{limit} attribute is \code{NULL} by default and checks are performed only when \code{limit} is defined.
+#'     \item \code{limit} - similar to \code{length} attribute, but allows only \code{min} and \code{max} nested attributes. Unlike \code{length} attribute, \code{limit} checks input values rather than input length. \code{limit} attribute is \code{NULL} by default and the checks are performed only when \code{limit} is defined (non-\code{NULL}).
 #' }
 #'
 #' \emph{factor}
 #'
 #' \itemize{
 #'     \item \code{nlevels} - accepts the same format as \code{length} attribute, but the check is performed rather on the number of factor levels.
-#'     \item \code{matchable} - \emph{ibid} as in character inputs, but this time it's the factor levels that get passed to \code{arg} argument in \code{\link{match.arg}}.
+#'     \item \code{matchable} - \emph{ibid} as in character inputs (note that in previous versions of \code{rapport} matching was performed against factor levels - well, not any more, now we match against values to make it consistent with \code{character} inputs).
 #' }
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param use.header a logical value indicating whether the header section is provided in \code{h} argument
@@ -306,8 +321,25 @@ tpl.inputs <- function(fp, use.header = FALSE){
     if (!use.header)
         header <- tpl.header(header)
 
-    ## Try with YAML first
-    inputs <- tryCatch(yaml.load(paste0(header, collapse = "\n")), error = function(e) e)
+    ## Try with YAML first ("inputs" is actually decoded header)
+    inputs <- tryCatch(
+        yaml.load(
+            string = paste0(header, collapse = "\n"),
+            handlers = list(
+                'bool#yes' = function(x) {
+                    if (grepl('^(y|yes|true|on)$', x, ignore.case = TRUE))
+                        x
+                    else
+                        TRUE
+                },
+                'bool#no' = function(x) {
+                    if (grepl('^(n|no|false|off)$', x, ignore.case = TRUE))
+                        x
+                    else
+                        FALSE
+                })
+            ),
+        error = function(e) e)
 
     ## Old-style syntax
     if (inherits(inputs, 'error')) {
@@ -331,7 +363,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
                 warningf('missing label for input "%s"', i.name)
             if (is.empty(i.desc))
                 warningf('missing description for input "%s"', i.name)
-            
+
             c(
                 name = i.name,
                 label = i.label,
@@ -340,8 +372,9 @@ tpl.inputs <- function(fp, use.header = FALSE){
                 )
         })
         warning("Oh, no! This template has outdated input definition! You can update it by running `tpl.renew`.")
-    } else
+    } else {
         inputs <- lapply(inputs$inputs, guess.input)
+    }
 
     ## check for duplicate names
     nms <- sapply(inputs, function(x) x$name)
@@ -534,7 +567,6 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         }
 
         lapply(inputs, function(x){
-
             ## template inputs
             input.name   <- x$name
             input.class  <- x$class
@@ -545,15 +577,22 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
             ## matchable inputs are kind-of special
             if (isTRUE(x$matchable)) {
-                ## for factors, match from factor levels
-                if (input.class == 'factor')
-                    choices <- levels(input.value)
-                else
-                    choices <- input.value
-                ## matchable input values should have appropriate default length
-                arg <- if (is.null(user.input)) choices[1:(if (is.null(x$length$exactly)) x$length$min else x$length$exactly)] else as.character(user.input)
-                ## value mapped to matchable input should be a variable
-                val <- match.arg(arg, choices, several.ok = any(sapply(input.length, function(x) x > 1)))
+                v <- if (is.null(user.input)) x$value else as.character(user.input)
+                matchable.err.msg <- sprintf('provided value `%s` not found in option list for matchable input "%s"', p(v, wrap = '"'), input.name)
+                ## multiple match
+                if (x$allow_multiple) {
+                    v.ind <- v %in% x$options
+                    if (!any(v.ind))
+                        stop(matchable.err.msg)
+                    val <- v[v.ind]
+                } else {
+                    ## issue a warning if matched multiple times
+                    if (!all(as.numeric(table(v)) == 1))
+                        warning('multiple occurances found in provided value')
+                    val <- x$options[x$options %in% v]
+                    if (!length(val))
+                        stop(matchable.err.msg)
+                }
                 if (input.class == 'factor')
                     val <- as.factor(val)
             } else {
@@ -618,7 +657,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                                    }
                                }
                            })
-                
+
                 ## add labels
                 if (is.recursive(val)) {
                     for (t in names(val)){
@@ -634,7 +673,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                         val <- structure(val, name = user.input)
                 }
             }
-            
+
             ## assign stuff
             assign(input.name, val, envir = e)                                    # value
             assign(sprintf('%s.iname', input.name), input.name, envir = e)        # input name

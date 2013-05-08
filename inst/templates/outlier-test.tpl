@@ -15,8 +15,7 @@ inputs:
   label: Variable
   description: Numerical variable
   class: numeric
-  length:
-    exactly: 1
+  length: 1
   value: ~
   required: TRUE
   standalone: FALSE
@@ -24,8 +23,7 @@ inputs:
   label: Residuals
   description: Return Lund's residuals?
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: FALSE
   required: FALSE
   standalone: TRUE
@@ -33,8 +31,7 @@ inputs:
   label: References
   description: Print references?
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: TRUE
   required: FALSE
   standalone: TRUE
@@ -42,8 +39,7 @@ inputs:
   label: Grubb's test
   description: Show Grubb's test?
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: TRUE
   required: FALSE
   standalone: TRUE
@@ -51,8 +47,7 @@ inputs:
   label: Dixon's test
   description: Show Dixon's test?
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: TRUE
   required: FALSE
   standalone: TRUE

@@ -2,17 +2,20 @@
 \alias{tocamel}
 \title{CamelCase}
 \usage{
-  tocamel(x, sep = "[^[:alnum:]]", upper = FALSE, ...)
+  tocamel(x, delim = "[^[:alnum:]]", upper = FALSE,
+    sep = "", ...)
 }
 \arguments{
   \item{x}{a character vector to be converted to camelcase}
 
-  \item{sep}{a string containing regular expression word
+  \item{delim}{a string containing regular expression word
   delimiter}
 
   \item{upper}{a logical value indicating if the first
   letter of the first word should be capitalised (defaults
   to \code{FALSE})}
+
+  \item{sep}{a string to separate words}
 
   \item{...}{additional arguments to be passed to
   \code{strsplit}}

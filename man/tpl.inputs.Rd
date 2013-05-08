@@ -79,11 +79,9 @@
   list with integer values) - provides a set of rules for
   input value's length. \code{length} attribute can be
   defined via: \itemize{ \item an integer value, e.g.
-  \code{length: 10}, which is identical to: \code{exactly:
-  10} nested within \code{length} attribute. In this case
-  input length has to be equal to the provided integer
-  value.  \item named list with \code{min} and/or
-  \code{max} attributes nested under \code{length}
+  \code{length: 10}, which sets restriction to exactly 10
+  vectors or values.  \item named list with \code{min}
+  and/or \code{max} attributes nested under \code{length}
   attribute. This will define a range of values in which
   input length must must fall. Note that range limits are
   inclusive. Either \code{min} or \code{max} attribute can
@@ -117,30 +115,36 @@
   character vector must match the given regular expression.
   Defaults to \code{NULL} - no checks are applied.  \item
   \code{matchable} (logical value) - if \code{TRUE},
-  \code{value} attribute must be provided. In that case,
-  \code{value} will contain a set of values that will be
-  passed to \code{link{match.arg}} function \code{choices}
-  argument. Matching will be performed on the elements of
-  user-specified vector, i.e. provided vector will be
-  passed to \code{arg} argument. Multiple matches
-  \code{several.ok} are allowed, and will be computed based
-  on the \code{length} attribute. }
+  \code{options} attribute must be provided, while
+  \code{value} is optional, though recommended.
+  \code{options} should contain values to be chosen from,
+  just like \code{<option>} tag does when nested in
+  \code{<select>} HTML tag, while \code{value} must contain
+  a value from \code{options} or it can be omitted
+  (\code{NULL}). \code{allow_multiple} will allow values
+  from \code{options} list to be matched multiple times.
+  Note that unlike previous versions of \code{rapport},
+  partial matching is not performed. }
 
   \emph{numeric}, \emph{integer}
 
-  \itemize{ \item \code{limit} - accepts the same format as
-  \code{length} attribute, only that in this case it checks
-  input values rather than input length. \code{limit}
-  attribute is \code{NULL} by default and checks are
-  performed only when \code{limit} is defined. }
+  \itemize{ \item \code{limit} - similar to \code{length}
+  attribute, but allows only \code{min} and \code{max}
+  nested attributes. Unlike \code{length} attribute,
+  \code{limit} checks input values rather than input
+  length. \code{limit} attribute is \code{NULL} by default
+  and the checks are performed only when \code{limit} is
+  defined (non-\code{NULL}). }
 
   \emph{factor}
 
   \itemize{ \item \code{nlevels} - accepts the same format
   as \code{length} attribute, but the check is performed
   rather on the number of factor levels.  \item
-  \code{matchable} - \emph{ibid} as in character inputs,
-  but this time it's the factor levels that get passed to
-  \code{arg} argument in \code{\link{match.arg}}. }
+  \code{matchable} - \emph{ibid} as in character inputs
+  (note that in previous versions of \code{rapport}
+  matching was performed against factor levels - well, not
+  any more, now we match against values to make it
+  consistent with \code{character} inputs). }
 }
 

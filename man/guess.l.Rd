@@ -1,0 +1,25 @@
+\name{guess.l}
+\alias{guess.l}
+\title{Guess length-like fields}
+\usage{
+  guess.l(len,
+    type = c("length", "nchar", "nlevels", "limit"),
+    input.name = NULL,
+    limit.class = c("numeric", "integer"))
+}
+\arguments{
+  \item{len}{length field value, either a number or a named
+  list}
+
+  \item{type}{type of length-like field}
+
+  \item{input.name}{input name}
+
+  \item{limit.class}{input class to perform limit-specific
+  checks}
+}
+\description{
+  Since length, nchar, nlevels and limit have (almost) same
+  format,
+}
+

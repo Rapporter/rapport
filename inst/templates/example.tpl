@@ -15,8 +15,7 @@ inputs:
 - name: v
   label: Variable
   description: A variable
-  length:
-    exactly: 1
+  length: 1
   value: ~
   required: TRUE
   standalone: FALSE
@@ -24,8 +23,7 @@ inputs:
   label: Pacman
   description: Show Pacman in the results?
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: TRUE
   required: FALSE
   standalone: TRUE
@@ -33,8 +31,7 @@ inputs:
   label: A string
   description: Any character value to be printed at the end of the report
   class: character
-  length:
-    exactly: 1.0
+  length: 1.0
   value: Bye!
   nchar:
     min: 1

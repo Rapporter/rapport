@@ -136,8 +136,9 @@ vgsub <- function(pattern, replacement, x, ...){
 #'
 #' Convert character vector to camelcase - capitalise first letter of each word.
 #' @param x a character vector to be converted to camelcase
-#' @param sep a string containing regular expression word delimiter
+#' @param delim a string containing regular expression word delimiter
 #' @param upper a logical value indicating if the first letter of the first word should be capitalised (defaults to \code{FALSE})
+#' @param sep a string to separate words
 #' @param ... additional arguments to be passed to \code{strsplit}
 #' @return a character vector with strings put in camelcase
 #' @examples
@@ -150,21 +151,25 @@ vgsub <- function(pattern, replacement, x, ...){
 #'     tocamel(c("foobar", "foo.bar", "camel_case", "a.b.c.d"))
 #'     ## [1] "foobar"    "fooBar"    "camelCase" "aBCD"
 #' @export
-tocamel <- function(x, sep = '[^[:alnum:]]', upper = FALSE, ...){
+tocamel <- function(x, delim = '[^[:alnum:]]', upper = FALSE, sep = '', ...){
 
     stopifnot(is.character(x))
-    stopifnot(is.string(sep))
+    stopifnot(is.string(delim))
 
-    s <- strsplit(x, sep, ...)
+    s <- strsplit(x, delim, ...)
 
     ## TODO: first.case = FALSE by default
     sapply(s, function(y){
-        first <- substring(y, 1, 1)
-        if (isTRUE(upper))
-            first <- toupper(first)
-        else
-            first[-1] <- toupper(first[-1])
-        paste(first, substring(y, 2), sep = '', collapse = '')
+        if (any(is.na(y))) {
+            y
+        } else {
+            first <- substring(y, 1, 1)
+            if (isTRUE(upper))
+                first <- toupper(first)
+            else
+                first[-1] <- toupper(first[-1])
+            paste(first, substring(y, 2), sep = '', collapse = sep)
+        }
     })
 }
 

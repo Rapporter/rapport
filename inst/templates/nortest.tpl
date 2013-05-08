@@ -12,11 +12,10 @@ meta:
     departures from normality.
 inputs:
 - name: var
-  label: Test variables
-  description: Variables to test for normality
+  label: Test variable
+  description: Variable to test for normality
   class: numeric
-  length:
-    exactly: 1
+  length: 1
   value: ~
   required: TRUE
   standalone: FALSE
@@ -24,8 +23,7 @@ inputs:
   label: Normal curve plot
   description: Plot normal curve?
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: TRUE
   required: FALSE
   standalone: TRUE
@@ -33,8 +31,7 @@ inputs:
   label: Q-Q plot line
   description: Add line to Q-Q plot?
   class: logical
-  length:
-    exactly: 1
+  length: 1
   value: TRUE
   required: FALSE
   standalone: TRUE
