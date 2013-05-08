@@ -1,0 +1,94 @@
+h2. Description
+
+This template demonstrates the basic features of rapport. We all hope you will like it!
+
+h3. Début
+
+Hello, world!
+
+I have just specified a _Variable_ in this template named to *leisure*. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
+
+And wow, the mean of _leisure_ is _3.199_!
+
+By checking out the "sources of this template":https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl, you could see that we used all @BRCATCODE@s above from @brew@ syntax. @BRCODE@ tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if @desc@ input equals to @TRUE@, then the resulting report would have that chunk, if set to @FALSE@, it would be left our.
+
+h4. Descriptive statistics
+
+<table>
+<col width="9%" />
+<col width="13%" />
+<col width="12%" />
+<col width="9%" />
+<col width="13%" />
+<col width="9%" />
+<col width="9%" />
+<thead>
+<tr class="header">
+<th align="left">Min.</th>
+<th align="left">1st Qu.</th>
+<th align="left">Median</th>
+<th align="left">Mean</th>
+<th align="left">3rd Qu.</th>
+<th align="left">Max.</th>
+<th align="left">NA's</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0.000</td>
+<td align="left">2.000</td>
+<td align="left">3.000</td>
+<td align="left">3.199</td>
+<td align="left">4.000</td>
+<td align="left">12.000</td>
+<td align="left">37</td>
+</tr>
+</tbody>
+</table>
+
+The 5 highest values are: _12_, _12_, _10_, _10_ and _10_.
+
+h2. Description
+
+This template demonstrates the basic features of rapport. We all hope you will like it!
+
+h3. Début
+
+Hello, world!
+
+I have just specified a _Variable_ in this template named to *leisure*. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
+
+And wow, the mean of _leisure_ is _3.199_!
+
+*For more detailed statistics, you should have set @desc=TRUE@!*
+
+By checking out the "sources of this template":https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl, you could see that we used all @BRCATCODE@s above from @brew@ syntax. @BRCODE@ tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if @desc@ input equals to @TRUE@, then the resulting report would have that chunk, if set to @FALSE@, it would be left our.
+
+h2. Description
+
+This template demonstrates the basic features of rapport. We all hope you will like it!
+
+h3. Début
+
+Hello, world!
+
+I have just specified a _Variable_ in this template named to *leisure*. The label of this variable is &quot;Internet usage in leisure time (hours per day)&quot;.
+
+And wow, the mean of _leisure_ is _3.199_!
+
+*For more detailed statistics, you should have set @desc=TRUE@!*
+
+By checking out the "sources of this template":https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl, you could see that we used all @BRCATCODE@s above from @brew@ syntax. @BRCODE@ tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if @desc@ input equals to @TRUE@, then the resulting report would have that chunk, if set to @FALSE@, it would be left our.
+
+h4. Histogram
+
+For demonstartion purposes you can find a histogram below:
+
+"!plots/example-1.png(A nice histogram)!":plots/example-1-hires.png
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (2.15.1) and "rapport":http://rapport-package.info/ (0.4) in _0.559_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

@@ -1,0 +1,470 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Correlations" />
+  <title>Rapport package team</title>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Correlations</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#variable-description">Variable description</a><ul>
+<li><a href="#correlation-matrix">Correlation matrix</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#variable-description-1">Variable description</a><ul>
+<li><a href="#correlation-matrix-1">Correlation matrix</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#variable-description-2">Variable description</a><ul>
+<li><a href="#correlation-matrix-2">Correlation matrix</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#TOC">Description</a></h2>
+<p>This template will return the correlation matrix of supplied numerical variables.</p>
+<h3 id="variable-description"><a href="#TOC">Variable description</a></h3>
+<p><em>2</em> variables provided.</p>
+<p>There are no highly correlated (r &lt; -0.7 or r &gt; 0.7) variables.</p>
+<p>There are no uncorrelated correlated (r &lt; -0.2 or r &gt; 0.2) variables.</p>
+<h4 id="correlation-matrix"><a href="#TOC">Correlation matrix</a></h4>
+<table>
+<caption>Correlation matrix</caption>
+<col width="13%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">age</th>
+<th align="center">edu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><strong>age</strong></td>
+<td align="center"></td>
+<td align="center">0.2185 ★★★</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>edu</strong></td>
+<td align="center">0.2185 ★★★</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Where the stars represent the <a href="http://en.wikipedia.org/wiki/Statistical_significance">significance levels</a> of the bivariate correlation coefficients: one star for <code>0.05</code>, two for <code>0.01</code> and three for <code>0.001</code>.</p>
+<p><a href="plots/correlations-1-hires.png"><img src="plots/correlations-1.png" alt="Scatterplot matrix (based on a sample size of 1000)" /></a></p>
+<h2 id="description-1"><a href="#TOC">Description</a></h2>
+<p>This template will return the correlation matrix of supplied numerical variables.</p>
+<h3 id="variable-description-1"><a href="#TOC">Variable description</a></h3>
+<p><em>3</em> variables provided.</p>
+<p>The highest correlation coefficient (<em>0.2273</em>) is between edu age and the lowest (<em>-0.03377</em>) is between leisure age. It seems that the strongest association (r=<em>0.2273</em>) is between edu age.</p>
+<p>There are no highly correlated (r &lt; -0.7 or r &gt; 0.7) variables.</p>
+<p>Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:</p>
+<ul>
+<li><em>leisure</em> and <em>age</em> (-0.03)</li>
+<li><em>leisure</em> and <em>edu</em> (0.17)</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+<h4 id="correlation-matrix-1"><a href="#TOC">Correlation matrix</a></h4>
+<table>
+<caption>Correlation matrix</caption>
+<col width="19%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">age</th>
+<th align="center">edu</th>
+<th align="center">leisure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><strong>age</strong></td>
+<td align="center"></td>
+<td align="center">0.2273 ★★★</td>
+<td align="center">-0.0338</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>edu</strong></td>
+<td align="center">0.2273 ★★★</td>
+<td align="center"></td>
+<td align="center">0.1732 ★★★</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>leisure</strong></td>
+<td align="center">-0.0338</td>
+<td align="center">0.1732 ★★★</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Where the stars represent the <a href="http://en.wikipedia.org/wiki/Statistical_significance">significance levels</a> of the bivariate correlation coefficients: one star for <code>0.05</code>, two for <code>0.01</code> and three for <code>0.001</code>.</p>
+<p><a href="plots/correlations-2-hires.png"><img src="plots/correlations-2.png" alt="Scatterplot matrix (based on a sample size of 1000)" /></a></p>
+<h2 id="description-2"><a href="#TOC">Description</a></h2>
+<p>This template will return the correlation matrix of supplied numerical variables.</p>
+<h3 id="variable-description-2"><a href="#TOC">Variable description</a></h3>
+<p><em>11</em> variables provided.</p>
+<p>The highest correlation coefficient (<em>0.902</em>) is between disp cyl and the lowest (<em>-0.8677</em>) is between wt mpg. It seems that the strongest association (r=<em>0.902</em>) is between disp cyl.</p>
+<p>Highly correlated (r &lt; -0.7 or r &gt; 0.7) variables:</p>
+<ul>
+<li><em>cyl</em> and <em>mpg</em> (-0.85)</li>
+<li><em>disp</em> and <em>mpg</em> (-0.85)</li>
+<li><em>hp</em> and <em>mpg</em> (-0.78)</li>
+<li><em>wt</em> and <em>mpg</em> (-0.87)</li>
+<li><em>disp</em> and <em>cyl</em> (0.9)</li>
+<li><em>hp</em> and <em>cyl</em> (0.83)</li>
+<li><em>wt</em> and <em>cyl</em> (0.78)</li>
+<li><em>vs</em> and <em>cyl</em> (-0.81)</li>
+<li><em>hp</em> and <em>disp</em> (0.79)</li>
+<li><em>drat</em> and <em>disp</em> (-0.71)</li>
+<li><em>wt</em> and <em>disp</em> (0.89)</li>
+<li><em>vs</em> and <em>disp</em> (-0.71)</li>
+<li><em>qsec</em> and <em>hp</em> (-0.71)</li>
+<li><em>vs</em> and <em>hp</em> (-0.72)</li>
+<li><em>carb</em> and <em>hp</em> (0.75)</li>
+<li><em>wt</em> and <em>drat</em> (-0.71)</li>
+<li><em>am</em> and <em>drat</em> (0.71)</li>
+<li><em>vs</em> and <em>qsec</em> (0.74)</li>
+<li><em>gear</em> and <em>am</em> (0.79)</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+<p>Uncorrelated (-0.2 &lt; r &lt; 0.2) variables:</p>
+<ul>
+<li><em>gear</em> and <em>hp</em> (-0.13)</li>
+<li><em>qsec</em> and <em>drat</em> (0.09)</li>
+<li><em>carb</em> and <em>drat</em> (-0.09)</li>
+<li><em>qsec</em> and <em>wt</em> (-0.17)</li>
+<li><em>am</em> and <em>vs</em> (0.17)</li>
+<li><em>carb</em> and <em>am</em> (0.06)</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+<h4 id="correlation-matrix-2"><a href="#TOC">Correlation matrix</a></h4>
+<table>
+<caption>Correlation matrix (continued below)</caption>
+<col width="15%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+<th align="right">hp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><strong>mpg</strong></td>
+<td align="right"></td>
+<td align="right">-0.8522 ★★★</td>
+<td align="right">-0.8476 ★★★</td>
+<td align="right">-0.7762 ★★★</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>cyl</strong></td>
+<td align="right">-0.8522 ★★★</td>
+<td align="right"></td>
+<td align="right">0.902 ★★★</td>
+<td align="right">0.8324 ★★★</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>disp</strong></td>
+<td align="right">-0.8476 ★★★</td>
+<td align="right">0.902 ★★★</td>
+<td align="right"></td>
+<td align="right">0.7909 ★★★</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>hp</strong></td>
+<td align="right">-0.7762 ★★★</td>
+<td align="right">0.8324 ★★★</td>
+<td align="right">0.7909 ★★★</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>drat</strong></td>
+<td align="right">0.6812 ★★★</td>
+<td align="right">-0.6999 ★★★</td>
+<td align="right">-0.7102 ★★★</td>
+<td align="right">-0.4488 ★★</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>wt</strong></td>
+<td align="right">-0.8677 ★★★</td>
+<td align="right">0.7825 ★★★</td>
+<td align="right">0.888 ★★★</td>
+<td align="right">0.6587 ★★★</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>qsec</strong></td>
+<td align="right">0.4187 ★</td>
+<td align="right">-0.5912 ★★★</td>
+<td align="right">-0.4337 ★</td>
+<td align="right">-0.7082 ★★★</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>vs</strong></td>
+<td align="right">0.664 ★★★</td>
+<td align="right">-0.8108 ★★★</td>
+<td align="right">-0.7104 ★★★</td>
+<td align="right">-0.7231 ★★★</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>am</strong></td>
+<td align="right">0.5998 ★★★</td>
+<td align="right">-0.5226 ★★</td>
+<td align="right">-0.5912 ★★★</td>
+<td align="right">-0.2432</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>gear</strong></td>
+<td align="right">0.4803 ★★</td>
+<td align="right">-0.4927 ★★</td>
+<td align="right">-0.5556 ★★★</td>
+<td align="right">-0.1257</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>carb</strong></td>
+<td align="right">-0.5509 ★★</td>
+<td align="right">0.527 ★★</td>
+<td align="right">0.395 ★</td>
+<td align="right">0.7498 ★★★</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="15%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">drat</th>
+<th align="center">wt</th>
+<th align="center">qsec</th>
+<th align="center">vs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>mpg</strong></td>
+<td align="center">0.6812 ★★★</td>
+<td align="center">-0.8677 ★★★</td>
+<td align="center">0.4187 ★</td>
+<td align="center">0.664 ★★★</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>cyl</strong></td>
+<td align="center">-0.6999 ★★★</td>
+<td align="center">0.7825 ★★★</td>
+<td align="center">-0.5912 ★★★</td>
+<td align="center">-0.8108 ★★★</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>disp</strong></td>
+<td align="center">-0.7102 ★★★</td>
+<td align="center">0.888 ★★★</td>
+<td align="center">-0.4337 ★</td>
+<td align="center">-0.7104 ★★★</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>hp</strong></td>
+<td align="center">-0.4488 ★★</td>
+<td align="center">0.6587 ★★★</td>
+<td align="center">-0.7082 ★★★</td>
+<td align="center">-0.7231 ★★★</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>drat</strong></td>
+<td align="center"></td>
+<td align="center">-0.7124 ★★★</td>
+<td align="center">0.0912</td>
+<td align="center">0.4403 ★</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>wt</strong></td>
+<td align="center">-0.7124 ★★★</td>
+<td align="center"></td>
+<td align="center">-0.1747</td>
+<td align="center">-0.5549 ★★★</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>qsec</strong></td>
+<td align="center">0.0912</td>
+<td align="center">-0.1747</td>
+<td align="center"></td>
+<td align="center">0.7445 ★★★</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>vs</strong></td>
+<td align="center">0.4403 ★</td>
+<td align="center">-0.5549 ★★★</td>
+<td align="center">0.7445 ★★★</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>am</strong></td>
+<td align="center">0.7127 ★★★</td>
+<td align="center">-0.6925 ★★★</td>
+<td align="center">-0.2299</td>
+<td align="center">0.1683</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>gear</strong></td>
+<td align="center">0.6996 ★★★</td>
+<td align="center">-0.5833 ★★★</td>
+<td align="center">-0.2127</td>
+<td align="center">0.206</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>carb</strong></td>
+<td align="center">-0.0908</td>
+<td align="center">0.4276 ★</td>
+<td align="center">-0.6562 ★★★</td>
+<td align="center">-0.5696 ★★★</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="15%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">am</th>
+<th align="center">gear</th>
+<th align="center">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>mpg</strong></td>
+<td align="center">0.5998 ★★★</td>
+<td align="center">0.4803 ★★</td>
+<td align="center">-0.5509 ★★</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>cyl</strong></td>
+<td align="center">-0.5226 ★★</td>
+<td align="center">-0.4927 ★★</td>
+<td align="center">0.527 ★★</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>disp</strong></td>
+<td align="center">-0.5912 ★★★</td>
+<td align="center">-0.5556 ★★★</td>
+<td align="center">0.395 ★</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>hp</strong></td>
+<td align="center">-0.2432</td>
+<td align="center">-0.1257</td>
+<td align="center">0.7498 ★★★</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>drat</strong></td>
+<td align="center">0.7127 ★★★</td>
+<td align="center">0.6996 ★★★</td>
+<td align="center">-0.0908</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>wt</strong></td>
+<td align="center">-0.6925 ★★★</td>
+<td align="center">-0.5833 ★★★</td>
+<td align="center">0.4276 ★</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>qsec</strong></td>
+<td align="center">-0.2299</td>
+<td align="center">-0.2127</td>
+<td align="center">-0.6562 ★★★</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>vs</strong></td>
+<td align="center">0.1683</td>
+<td align="center">0.206</td>
+<td align="center">-0.5696 ★★★</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>am</strong></td>
+<td align="center"></td>
+<td align="center">0.7941 ★★★</td>
+<td align="center">0.0575</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>gear</strong></td>
+<td align="center">0.7941 ★★★</td>
+<td align="center"></td>
+<td align="center">0.2741</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>carb</strong></td>
+<td align="center">0.0575</td>
+<td align="center">0.2741</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Where the stars represent the <a href="http://en.wikipedia.org/wiki/Statistical_significance">significance levels</a> of the bivariate correlation coefficients: one star for <code>0.05</code>, two for <code>0.01</code> and three for <code>0.001</code>.</p>
+<p><a href="plots/correlations-3-hires.png"><img src="plots/correlations-3.png" alt="Scatterplot matrix (based on a sample size of 1000)" /></a></p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="http://rapport-package.info/">rapport</a> (0.4) in <em>2.209</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" /><p class="caption"></p>
+</div>
+</body>
+</html>

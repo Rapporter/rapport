@@ -1,0 +1,151 @@
+h2. Description
+
+This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
+
+h3. _gender_ (&quot;Gender&quot;)
+
+The dataset has _709_ observations with _673_ valid values (missing: _36_).
+
+<table>
+<caption>Frequency table: Gender</caption>
+<col width="12%" />
+<col width="5%" />
+<col width="9%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="left">gender</th>
+<th align="left">N</th>
+<th align="left">%</th>
+<th align="left">Cumul. N</th>
+<th align="left">Cumul. %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">410</td>
+<td align="left">60.92</td>
+<td align="left">410</td>
+<td align="left">60.92</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">263</td>
+<td align="left">39.08</td>
+<td align="left">673</td>
+<td align="left">100.00</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">673</td>
+<td align="left">100.00</td>
+<td align="left">673</td>
+<td align="left">100.00</td>
+</tr>
+</tbody>
+</table>
+
+The most frequent value is _male_.
+
+h4. Charts
+
+"!plots/descriptives-1.png(Barplot: Gender)!":plots/descriptives-1-hires.png
+
+It seems that the highest value is _2_ which is exactly _2_ times higher than the smallest value (_1_).
+
+h2. Description
+
+This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
+
+h3. _age_ (&quot;Age&quot;)
+
+The dataset has _709_ observations with _677_ valid values (missing: _32_).
+
+h4. Base statistics
+
+<table>
+<caption>Descriptives: Age</caption>
+<col width="15%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">mean</th>
+<th align="left">sd</th>
+<th align="left">var</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Age</td>
+<td align="left">24.57</td>
+<td align="left">6.849</td>
+<td align="left">46.91</td>
+</tr>
+</tbody>
+</table>
+
+The standard deviation is _6.849_ (variance: _46.91_). The expected value is around _24.57_, somewhere between _24.06_ and _25.09_ with the standard error of _0.2632_.
+
+h4. Charts
+
+"!plots/descriptives-2.png(Histogram: Age)!":plots/descriptives-2-hires.png
+
+It seems that the highest value is _58_ which is exactly _3.625_ times higher than the smallest value (_16_).
+
+If we _suppose_ that _Age_ is not near to a normal distribution (skewness: _1.925_, kurtosis: _4.463_), checking the median (_23_) might be a better option instead of the mean. The interquartile range (_6_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+h2. Description
+
+This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
+
+h3. _hp_
+
+The dataset has _32_ observations with _32_ valid values (missing: _0_).
+
+h4. Base statistics
+
+<table>
+<caption>Descriptives: hp</caption>
+<col width="15%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">mean</th>
+<th align="left">sd</th>
+<th align="left">var</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">hp</td>
+<td align="left">146.7</td>
+<td align="left">68.56</td>
+<td align="left">4701</td>
+</tr>
+</tbody>
+</table>
+
+The standard deviation is _68.56_ (variance: _4701_). The expected value is around _146.7_, somewhere between _122.9_ and _170.4_ with the standard error of _12.12_.
+
+h4. Charts
+
+"!plots/descriptives-3.png(Histogram: hp)!":plots/descriptives-3-hires.png
+
+It seems that the highest value is _335_ which is exactly _6.442_ times higher than the smallest value (_52_).
+
+If we _suppose_ that _hp_ is not near to a normal distribution (skewness: _0.726_, kurtosis: _-0.1356_), checking the median (_123_) might be a better option instead of the mean. The interquartile range (_83.5_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (2.15.1) and "rapport":http://rapport-package.info/ (0.4) in _1.258_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

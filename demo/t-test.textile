@@ -1,0 +1,321 @@
+h2. Description
+
+A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
+
+h3. Introduction
+
+In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows "_t-distribution_":https://en.wikipedia.org/wiki/Student%27s_t-distribution can be considered a _t-test_. The most common usage of _t-test_ is to:
+
+* compare the mean of a variable with given test mean value - *one-sample _t-test_*
+* compare means of two variables from independent samples - *independent samples _t-test_*
+* compare means of two variables from dependent samples - *paired-samples _t-test_*
+
+h3. Overview
+
+Independent samples _t-test_ is carried out with _Internet usage in leisure time (hours per day)_ as dependent variable, and _Gender_ as independent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.
+
+h3. Descriptives
+
+In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
+
+<table>
+<col width="12%" />
+<col width="8%" />
+<col width="8%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<col width="12%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="left">Gender</th>
+<th align="left">min</th>
+<th align="left">max</th>
+<th align="left">mean</th>
+<th align="left">sd</th>
+<th align="left">var</th>
+<th align="left">median</th>
+<th align="left">IQR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">male</td>
+<td align="left">0</td>
+<td align="left">12</td>
+<td align="left">3.270</td>
+<td align="left">1.953</td>
+<td align="left">3.816</td>
+<td align="left">3</td>
+<td align="left">3</td>
+</tr>
+<tr class="even">
+<td align="left">female</td>
+<td align="left">0</td>
+<td align="left">12</td>
+<td align="left">3.064</td>
+<td align="left">2.355</td>
+<td align="left">5.544</td>
+<td align="left">2</td>
+<td align="left">3</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="left">skewness</th>
+<th align="left">kurtosis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0.9443</td>
+<td align="left">0.9858</td>
+</tr>
+<tr class="even">
+<td align="left">1.3979</td>
+<td align="left">1.8696</td>
+</tr>
+</tbody>
+</table>
+
+h3. Diagnostics
+
+Since _t-test_ is a parametric technique, it sets some basic assumptions on distribution shape: it has to be _normal_ (or approximately normal). A few normality test are to be applied, in order to screen possible departures from normality.
+
+h4. Normality Tests
+
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_).
+
+<table>
+<col width="38%" />
+<col width="11%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left">N</th>
+<th align="left">p</th>
+<th align="left">NA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk normality test</td>
+<td align="left">0.9001</td>
+<td align="left">1.617e-20</td>
+</tr>
+<tr class="even">
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="left">0.1680</td>
+<td align="left">3.000e-52</td>
+</tr>
+<tr class="odd">
+<td align="left">Anderson-Darling normality test</td>
+<td align="left">18.7530</td>
+<td align="left">7.261e-44</td>
+</tr>
+</tbody>
+</table>
+
+As you can see, applied tests yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most..
+
+h3. Results
+
+Welch Two Sample t-test was applied, and significant differences were found.
+
+<table>
+<col width="11%" />
+<col width="16%" />
+<col width="8%" />
+<col width="9%" />
+<col width="16%" />
+<col width="16%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">statistic</th>
+<th align="left">df</th>
+<th align="left">p</th>
+<th align="left">CI(lower)</th>
+<th align="left">CI(upper)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">*t*</td>
+<td align="left">1.148</td>
+<td align="left">457.9</td>
+<td align="left">0.2514</td>
+<td align="left">-0.1463</td>
+<td align="left">0.5576</td>
+</tr>
+</tbody>
+</table>
+
+h2. Description
+
+A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
+
+h3. Introduction
+
+In a nutshell, _t-test_ is a statistical test that assesses hypothesis of equality of two means. But in theory, any hypothesis test that yields statistic which follows "_t-distribution_":https://en.wikipedia.org/wiki/Student%27s_t-distribution can be considered a _t-test_. The most common usage of _t-test_ is to:
+
+* compare the mean of a variable with given test mean value - *one-sample _t-test_*
+* compare means of two variables from independent samples - *independent samples _t-test_*
+* compare means of two variables from dependent samples - *paired-samples _t-test_*
+
+h3. Overview
+
+One-sample _t-test_ is carried out with _Internet usage in leisure time (hours per day)_ as dependent variable. Confidence interval is set to 95%. Equality of variances wasn't assumed.
+
+h3. Descriptives
+
+In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
+
+<table>
+<col width="65%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">NA</th>
+<th align="left">NA</th>
+<th align="left">NA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Internet usage in leisure time (hours per day)</td>
+<td align="left">0</td>
+<td align="left">12</td>
+<td align="left">3.199</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="left">NA</th>
+<th align="left">NA</th>
+<th align="left">NA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2.144</td>
+<td align="left">4.595</td>
+<td align="left">3</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="6%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="left">NA</th>
+<th align="left">NA</th>
+<th align="left">NA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2</td>
+<td align="left">1.185</td>
+<td align="left">1.533</td>
+</tr>
+</tbody>
+</table>
+
+h3. Diagnostics
+
+Since _t-test_ is a parametric technique, it sets some basic assumptions on distribution shape: it has to be _normal_ (or approximately normal). A few normality test are to be applied, in order to screen possible departures from normality.
+
+h4. Normality Tests
+
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (_Internet usage in leisure time (hours per day)_).
+
+<table>
+<col width="38%" />
+<col width="11%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left">N</th>
+<th align="left">p</th>
+<th align="left">NA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk normality test</td>
+<td align="left">0.9001</td>
+<td align="left">1.617e-20</td>
+</tr>
+<tr class="even">
+<td align="left">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="left">0.1680</td>
+<td align="left">3.000e-52</td>
+</tr>
+<tr class="odd">
+<td align="left">Anderson-Darling normality test</td>
+<td align="left">18.7530</td>
+<td align="left">7.261e-44</td>
+</tr>
+</tbody>
+</table>
+
+As you can see, applied tests yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most..
+
+h3. Results
+
+One Sample t-test was applied, and significant differences were found.
+
+<table>
+<col width="11%" />
+<col width="16%" />
+<col width="6%" />
+<col width="9%" />
+<col width="16%" />
+<col width="16%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">statistic</th>
+<th align="left">df</th>
+<th align="left">p</th>
+<th align="left">CI(lower)</th>
+<th align="left">CI(upper)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">*t*</td>
+<td align="left">-0.007198</td>
+<td align="left">671</td>
+<td align="left">0.9943</td>
+<td align="left">3.037</td>
+<td align="left">3.362</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (2.15.1) and "rapport":http://rapport-package.info/ (0.4) in _1.012_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

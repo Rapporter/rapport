@@ -1,12 +1,9 @@
 *~
 *#
-*.r
-*.Rcheck/
-.Rpackages
+_site/*
+.RData
 .Rhistory
 .Rprofile
-.RData
-rapport-Ex.R
-inst/templates/test.tpl
+*.Rcheck
 rapport_*.tar.gz
 .ackrc

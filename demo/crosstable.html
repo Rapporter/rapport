@@ -1,0 +1,880 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Crosstable" />
+  <title>Rapport package team</title>
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  
+  <link rel="stylesheet" href="stylesheets/base.css" />
+  <link rel="stylesheet" href="stylesheets/skeleton.css" />
+  <link rel="stylesheet" href="stylesheets/layout.css" />
+  <link rel="stylesheet" href="stylesheets/fonts.css" />
+  <link rel="stylesheet" href="stylesheets/colorbox.css" />
+  <link rel="stylesheet" href="stylesheets/custom.css" />
+  
+  <link rel="shortcut icon" href="images/favicon.gif" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+  
+  <script type="text/javascript" src="javascripts/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="javascripts/tabs.js"></script>  <!--remove-->
+  <script type="text/javascript" src="javascripts/custom.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.colorbox.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Crosstable</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<h2 id="description">Description</h2>
+<p>Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.</p>
+<h3 id="variable-description">Variable description</h3>
+<p>Two variables specified:</p>
+<ul>
+<li>&quot;gender&quot; (&quot;Gender&quot;) with <em>673</em> and</li>
+<li>&quot;dwell&quot; (&quot;Dwelling&quot;) with <em>662</em> valid values.</li>
+</ul>
+<h3 id="counts">Counts</h3>
+<table>
+<caption>Counted values</caption>
+<col width="19%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">city</th>
+<th align="left">small town</th>
+<th align="left">village</th>
+<th align="left">Missing</th>
+<th align="left">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>male</strong></td>
+<td align="left">338</td>
+<td align="left">28</td>
+<td align="left">19</td>
+<td align="left">25</td>
+<td align="left">410</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>female</strong></td>
+<td align="left">234</td>
+<td align="left">3</td>
+<td align="left">9</td>
+<td align="left">17</td>
+<td align="left">263</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Missing</strong></td>
+<td align="left">27</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">36</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Sum</strong></td>
+<td align="left">599</td>
+<td align="left">33</td>
+<td align="left">30</td>
+<td align="left">47</td>
+<td align="left">709</td>
+</tr>
+</tbody>
+</table>
+<p>Most of the cases (338) can be found in &quot;male-city&quot; categories. Row-wise &quot;male&quot; holds the highest number of cases (410) while column-wise &quot;city&quot; has the utmost cases (599).</p>
+<h3 id="percentages">Percentages</h3>
+<table>
+<caption>Total percentages</caption>
+<col width="19%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">city</th>
+<th align="left">small town</th>
+<th align="left">village</th>
+<th align="left">Missing</th>
+<th align="left">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>male</strong></td>
+<td align="left">47.67</td>
+<td align="left">3.95</td>
+<td align="left">2.68</td>
+<td align="left">3.53</td>
+<td align="left">57.83</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>female</strong></td>
+<td align="left">33.00</td>
+<td align="left">0.42</td>
+<td align="left">1.27</td>
+<td align="left">2.40</td>
+<td align="left">37.09</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Missing</strong></td>
+<td align="left">3.81</td>
+<td align="left">0.28</td>
+<td align="left">0.28</td>
+<td align="left">0.71</td>
+<td align="left">5.08</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Sum</strong></td>
+<td align="left">84.49</td>
+<td align="left">4.65</td>
+<td align="left">4.23</td>
+<td align="left">6.63</td>
+<td align="left">100.00</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Row percentages</caption>
+<col width="19%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">city</th>
+<th align="left">small town</th>
+<th align="left">village</th>
+<th align="left">Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>male</strong></td>
+<td align="left">82.44</td>
+<td align="left">6.83</td>
+<td align="left">4.63</td>
+<td align="left">6.10</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>female</strong></td>
+<td align="left">88.97</td>
+<td align="left">1.14</td>
+<td align="left">3.42</td>
+<td align="left">6.46</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Missing</strong></td>
+<td align="left">75.00</td>
+<td align="left">5.56</td>
+<td align="left">5.56</td>
+<td align="left">13.89</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Sum</strong></td>
+<td align="left">84.49</td>
+<td align="left">4.65</td>
+<td align="left">4.23</td>
+<td align="left">6.63</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Column percentages</caption>
+<col width="19%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">city</th>
+<th align="left">small town</th>
+<th align="left">village</th>
+<th align="left">Missing</th>
+<th align="left">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>male</strong></td>
+<td align="left">56.43</td>
+<td align="left">84.85</td>
+<td align="left">63.33</td>
+<td align="left">53.19</td>
+<td align="left">57.83</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>female</strong></td>
+<td align="left">39.07</td>
+<td align="left">9.09</td>
+<td align="left">30.00</td>
+<td align="left">36.17</td>
+<td align="left">37.09</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Missing</strong></td>
+<td align="left">4.51</td>
+<td align="left">6.06</td>
+<td align="left">6.67</td>
+<td align="left">10.64</td>
+<td align="left">5.08</td>
+</tr>
+</tbody>
+</table>
+<h3 id="chi-squared-test">Chi-squared test</h3>
+<table>
+<caption>Pearson's Chi-squared test: <code>table</code></caption>
+<col width="23%" />
+<col width="6%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">df</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">16.18</td>
+<td align="center">6</td>
+<td align="center">0.01282</td>
+</tr>
+</tbody>
+</table>
+<p>It seems that a real association can be pointed out between <em>gender</em> and <em>dwell</em> by the <em>Pearson's Chi-squared test</em> (χ=<em>16.18</em> at the degree of freedom being <em>6</em>) at the significance level of <em>0.01282</em>. Based on Goodman and Kruskal's lambda it seems that <em>dwell</em> (λ=<em>0.6321</em>) has an effect on <em>gender</em> (λ=<em>0</em>) if we assume both variables to be nominal. The association between the two variables seems to be weak based on Cramer's V (<em>0.08722</em>).</p>
+<table>
+<caption>Pearson's residuals</caption>
+<col width="18%" />
+<col width="9%" />
+<col width="18%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">city</th>
+<th align="left">small town</th>
+<th align="left">village</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>male</strong></td>
+<td align="left">-3.08</td>
+<td align="left">3.43</td>
+<td align="left">0.76</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>female</strong></td>
+<td align="left">3.08</td>
+<td align="left">-3.43</td>
+<td align="left">-0.76</td>
+</tr>
+</tbody>
+</table>
+<p>Based on Pearson's resuals the following cells seems interesting (with values higher then <code>2</code> or lower then <code>-2</code>):</p>
+<ul>
+<li>&quot;male - city&quot;</li>
+<li>&quot;female - city&quot;</li>
+<li>&quot;male - small town&quot;</li>
+<li>&quot;female - small town&quot;</li>
+</ul>
+<h3 id="charts">Charts</h3>
+<p><a href="plots/crosstable-1-hires.png"><img src="plots/crosstable-1.png" alt="Mosaic chart" /></a></p>
+<h2 id="description-1">Description</h2>
+<p>Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.</p>
+<h3 id="variable-description-1">Variable description</h3>
+<p>Two variables specified:</p>
+<ul>
+<li>&quot;email&quot; (&quot;Email usage&quot;) with <em>672</em> and</li>
+<li>&quot;dwell&quot; (&quot;Dwelling&quot;) with <em>662</em> valid values.</li>
+</ul>
+<h3 id="counts-1">Counts</h3>
+<table>
+<caption>Counted values (continued below)</caption>
+<col width="25%" />
+<col width="9%" />
+<col width="18%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">city</th>
+<th align="left">small town</th>
+<th align="left">village</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>never</strong></td>
+<td align="left">12</td>
+<td align="left">0</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very rarely</strong></td>
+<td align="left">30</td>
+<td align="left">1</td>
+<td align="left">3</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>rarely</strong></td>
+<td align="left">41</td>
+<td align="left">3</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>sometimes</strong></td>
+<td align="left">67</td>
+<td align="left">4</td>
+<td align="left">8</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>often</strong></td>
+<td align="left">101</td>
+<td align="left">10</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very often</strong></td>
+<td align="left">88</td>
+<td align="left">5</td>
+<td align="left">5</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>always</strong></td>
+<td align="left">226</td>
+<td align="left">9</td>
+<td align="left">7</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Missing</strong></td>
+<td align="left">34</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Sum</strong></td>
+<td align="left">599</td>
+<td align="left">33</td>
+<td align="left">30</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="25%" />
+<col width="13%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">Missing</th>
+<th align="left">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>never</strong></td>
+<td align="left">1</td>
+<td align="left">13</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very rarely</strong></td>
+<td align="left">2</td>
+<td align="left">36</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>rarely</strong></td>
+<td align="left">1</td>
+<td align="left">46</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>sometimes</strong></td>
+<td align="left">8</td>
+<td align="left">87</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>often</strong></td>
+<td align="left">7</td>
+<td align="left">123</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very often</strong></td>
+<td align="left">10</td>
+<td align="left">108</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>always</strong></td>
+<td align="left">17</td>
+<td align="left">259</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Missing</strong></td>
+<td align="left">1</td>
+<td align="left">37</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Sum</strong></td>
+<td align="left">47</td>
+<td align="left">709</td>
+</tr>
+</tbody>
+</table>
+<p>Most of the cases (226) can be found in &quot;always-city&quot; categories. Row-wise &quot;always&quot; holds the highest number of cases (259) while column-wise &quot;city&quot; has the utmost cases (599).</p>
+<h3 id="percentages-1">Percentages</h3>
+<table>
+<caption>Total percentages (continued below)</caption>
+<col width="25%" />
+<col width="9%" />
+<col width="18%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">city</th>
+<th align="left">small town</th>
+<th align="left">village</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>never</strong></td>
+<td align="left">1.69</td>
+<td align="left">0.00</td>
+<td align="left">0.00</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very rarely</strong></td>
+<td align="left">4.23</td>
+<td align="left">0.14</td>
+<td align="left">0.42</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>rarely</strong></td>
+<td align="left">5.78</td>
+<td align="left">0.42</td>
+<td align="left">0.14</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>sometimes</strong></td>
+<td align="left">9.45</td>
+<td align="left">0.56</td>
+<td align="left">1.13</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>often</strong></td>
+<td align="left">14.25</td>
+<td align="left">1.41</td>
+<td align="left">0.71</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very often</strong></td>
+<td align="left">12.41</td>
+<td align="left">0.71</td>
+<td align="left">0.71</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>always</strong></td>
+<td align="left">31.88</td>
+<td align="left">1.27</td>
+<td align="left">0.99</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Missing</strong></td>
+<td align="left">4.80</td>
+<td align="left">0.14</td>
+<td align="left">0.14</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Sum</strong></td>
+<td align="left">84.49</td>
+<td align="left">4.65</td>
+<td align="left">4.23</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="25%" />
+<col width="13%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">Missing</th>
+<th align="left">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>never</strong></td>
+<td align="left">0.14</td>
+<td align="left">1.83</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very rarely</strong></td>
+<td align="left">0.28</td>
+<td align="left">5.08</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>rarely</strong></td>
+<td align="left">0.14</td>
+<td align="left">6.49</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>sometimes</strong></td>
+<td align="left">1.13</td>
+<td align="left">12.27</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>often</strong></td>
+<td align="left">0.99</td>
+<td align="left">17.35</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very often</strong></td>
+<td align="left">1.41</td>
+<td align="left">15.23</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>always</strong></td>
+<td align="left">2.40</td>
+<td align="left">36.53</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Missing</strong></td>
+<td align="left">0.14</td>
+<td align="left">5.22</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Sum</strong></td>
+<td align="left">6.63</td>
+<td align="left">100.00</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Row percentages</caption>
+<col width="25%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">city</th>
+<th align="left">small town</th>
+<th align="left">village</th>
+<th align="left">Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>never</strong></td>
+<td align="left">92.31</td>
+<td align="left">0.00</td>
+<td align="left">0.00</td>
+<td align="left">7.69</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very rarely</strong></td>
+<td align="left">83.33</td>
+<td align="left">2.78</td>
+<td align="left">8.33</td>
+<td align="left">5.56</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>rarely</strong></td>
+<td align="left">89.13</td>
+<td align="left">6.52</td>
+<td align="left">2.17</td>
+<td align="left">2.17</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>sometimes</strong></td>
+<td align="left">77.01</td>
+<td align="left">4.60</td>
+<td align="left">9.20</td>
+<td align="left">9.20</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>often</strong></td>
+<td align="left">82.11</td>
+<td align="left">8.13</td>
+<td align="left">4.07</td>
+<td align="left">5.69</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very often</strong></td>
+<td align="left">81.48</td>
+<td align="left">4.63</td>
+<td align="left">4.63</td>
+<td align="left">9.26</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>always</strong></td>
+<td align="left">87.26</td>
+<td align="left">3.47</td>
+<td align="left">2.70</td>
+<td align="left">6.56</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Missing</strong></td>
+<td align="left">91.89</td>
+<td align="left">2.70</td>
+<td align="left">2.70</td>
+<td align="left">2.70</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Sum</strong></td>
+<td align="left">84.49</td>
+<td align="left">4.65</td>
+<td align="left">4.23</td>
+<td align="left">6.63</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Column percentages (continued below)</caption>
+<col width="25%" />
+<col width="9%" />
+<col width="18%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">city</th>
+<th align="left">small town</th>
+<th align="left">village</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>never</strong></td>
+<td align="left">2.00</td>
+<td align="left">0.00</td>
+<td align="left">0.00</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very rarely</strong></td>
+<td align="left">5.01</td>
+<td align="left">3.03</td>
+<td align="left">10.00</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>rarely</strong></td>
+<td align="left">6.84</td>
+<td align="left">9.09</td>
+<td align="left">3.33</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>sometimes</strong></td>
+<td align="left">11.19</td>
+<td align="left">12.12</td>
+<td align="left">26.67</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>often</strong></td>
+<td align="left">16.86</td>
+<td align="left">30.30</td>
+<td align="left">16.67</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very often</strong></td>
+<td align="left">14.69</td>
+<td align="left">15.15</td>
+<td align="left">16.67</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>always</strong></td>
+<td align="left">37.73</td>
+<td align="left">27.27</td>
+<td align="left">23.33</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Missing</strong></td>
+<td align="left">5.68</td>
+<td align="left">3.03</td>
+<td align="left">3.33</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="25%" />
+<col width="13%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">Missing</th>
+<th align="left">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>never</strong></td>
+<td align="left">2.13</td>
+<td align="left">1.83</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very rarely</strong></td>
+<td align="left">4.26</td>
+<td align="left">5.08</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>rarely</strong></td>
+<td align="left">2.13</td>
+<td align="left">6.49</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>sometimes</strong></td>
+<td align="left">17.02</td>
+<td align="left">12.27</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>often</strong></td>
+<td align="left">14.89</td>
+<td align="left">17.35</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very often</strong></td>
+<td align="left">21.28</td>
+<td align="left">15.23</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>always</strong></td>
+<td align="left">36.17</td>
+<td align="left">36.53</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Missing</strong></td>
+<td align="left">2.13</td>
+<td align="left">5.22</td>
+</tr>
+</tbody>
+</table>
+<h3 id="chi-squared-test-1">Chi-squared test</h3>
+<table>
+<caption>Pearson's Chi-squared test: <code>table</code></caption>
+<col width="23%" />
+<col width="6%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">df</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">20.63</td>
+<td align="center">21</td>
+<td align="center">0.4818</td>
+</tr>
+</tbody>
+</table>
+<p>It seems that no real association can be pointed out between <em>email</em> and <em>dwell</em> by the <em>Pearson's Chi-squared test</em> (χ=<em>20.63</em> at the degree of freedom being <em>21</em>) at the significance level of <em>0.4818</em>. For this end no other statistical tests were performed.</p>
+<table>
+<caption>Pearson's residuals</caption>
+<col width="25%" />
+<col width="9%" />
+<col width="18%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">city</th>
+<th align="left">small town</th>
+<th align="left">village</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>never</strong></td>
+<td align="left">1.15</td>
+<td align="left">-0.81</td>
+<td align="left">-0.77</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very rarely</strong></td>
+<td align="left">-0.41</td>
+<td align="left">-0.59</td>
+<td align="left">1.20</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>rarely</strong></td>
+<td align="left">0.20</td>
+<td align="left">0.49</td>
+<td align="left">-0.80</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>sometimes</strong></td>
+<td align="left">-1.75</td>
+<td align="left">-0.02</td>
+<td align="left">2.49</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>often</strong></td>
+<td align="left">-1.28</td>
+<td align="left">1.90</td>
+<td align="left">-0.18</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>very often</strong></td>
+<td align="left">-0.17</td>
+<td align="left">0.00</td>
+<td align="left">0.24</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>always</strong></td>
+<td align="left">2.10</td>
+<td align="left">-1.26</td>
+<td align="left">-1.64</td>
+</tr>
+</tbody>
+</table>
+<p>Based on Pearson's resuals the following cells seems interesting (with values higher then <code>2</code> or lower then <code>-2</code>):</p>
+<ul>
+<li>&quot;always - city&quot;</li>
+<li>&quot;sometimes - village&quot;</li>
+</ul>
+<h3 id="charts-1">Charts</h3>
+<p><a href="plots/crosstable-2-hires.png"><img src="plots/crosstable-2.png" alt="Mosaic chart" /></a></p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="http://rapport-package.info/">rapport</a> (0.4) in <em>1.608</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" /><p class="caption"></p>
+</div>
+<p>
+  Logo and design: &copy; 2012 <i>rapport</i> Development Team | License (<a href="http://www.gnu.org/licenses/agpl.html" target="_blank">AGPL3</a>) | Fork on <a href="https://github.com/aL3xa/rapport" target="_blank">GitHub</a> | Styled with <a href="http://www.getskeleton.com/" target="_blank">skeleton</a>
+</p>
+</body>
+</html>

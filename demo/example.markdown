@@ -1,0 +1,113 @@
+% Rapport package team
+% Example template
+% 2011-04-26 20:25 CET
+
+-   Description
+    -   Début
+        -   Descriptive statistics
+
+-   Description
+    -   Début
+
+-   Description
+    -   Début
+        -   Histogram
+
+
+Description
+-----------
+
+This template demonstrates the basic features of rapport. We all hope
+you will like it!
+
+### Début
+
+Hello, world!
+
+I have just specified a *Variable* in this template named to
+**leisure**. The label of this variable is "Internet usage in leisure
+time (hours per day)".
+
+And wow, the mean of *leisure* is *3.199*!
+
+By checking out the [sources of this
+template](https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl),
+you could see that we used all `BRCATCODE`s above from `brew` syntax.
+`BRCODE` tags are useful when you want to loop through something or
+optionally add or remove a part of the template. A really easy example
+of this: if `desc` input equals to `TRUE`, then the resulting report
+would have that chunk, if set to `FALSE`, it would be left our.
+
+#### Descriptive statistics
+
+  Min.    1st Qu.    Median    Mean    3rd Qu.    Max.    NA's
+  ------- ---------- --------- ------- ---------- ------- -------
+  0.000   2.000      3.000     3.199   4.000      12.000  37
+
+The 5 highest values are: *12*, *12*, *10*, *10* and *10*.
+
+Description
+-----------
+
+This template demonstrates the basic features of rapport. We all hope
+you will like it!
+
+### Début
+
+Hello, world!
+
+I have just specified a *Variable* in this template named to
+**leisure**. The label of this variable is "Internet usage in leisure
+time (hours per day)".
+
+And wow, the mean of *leisure* is *3.199*!
+
+**For more detailed statistics, you should have set `desc=TRUE`!**
+
+By checking out the [sources of this
+template](https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl),
+you could see that we used all `BRCATCODE`s above from `brew` syntax.
+`BRCODE` tags are useful when you want to loop through something or
+optionally add or remove a part of the template. A really easy example
+of this: if `desc` input equals to `TRUE`, then the resulting report
+would have that chunk, if set to `FALSE`, it would be left our.
+
+Description
+-----------
+
+This template demonstrates the basic features of rapport. We all hope
+you will like it!
+
+### Début
+
+Hello, world!
+
+I have just specified a *Variable* in this template named to
+**leisure**. The label of this variable is "Internet usage in leisure
+time (hours per day)".
+
+And wow, the mean of *leisure* is *3.199*!
+
+**For more detailed statistics, you should have set `desc=TRUE`!**
+
+By checking out the [sources of this
+template](https://github.com/aL3xa/rapport/blob/master/inst/templates/example.tpl),
+you could see that we used all `BRCATCODE`s above from `brew` syntax.
+`BRCODE` tags are useful when you want to loop through something or
+optionally add or remove a part of the template. A really easy example
+of this: if `desc` input equals to `TRUE`, then the resulting report
+would have that chunk, if set to `FALSE`, it would be left our.
+
+#### Histogram
+
+For demonstartion purposes you can find a histogram below:
+
+[![A nice histogram](plots/example-1.png)](plots/example-1-hires.png)
+
+* * * * *
+
+This report was generated with [R](http://www.r-project.org/) (2.15.1)
+and [rapport](http://rapport-package.info/) (0.4) in *0.559* sec on
+x86\_64-unknown-linux-gnu platform.
+
+![](images/logo.png)
