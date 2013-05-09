@@ -353,7 +353,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
         if (!all(sapply(inputs.raw, length) == 4))
             stop('input definition error: missing fields')
 
-        inputs <- lapply(inputs.raw, function(x){
+        inputs <- lapply(inputs.raw, function(x) {
             i.name  <- guess.input.name(x[1])
             i.label <- guess.input.label(x[3])
             i.desc  <- guess.input.description(x[4])

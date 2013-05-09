@@ -4,6 +4,7 @@ meta:
   author: Aleksandar Blagotić, Dániel Nagy
   description: An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific
     statistics.
+  email: ~
   packages: nortest
   example:
   - 'rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way'
@@ -13,28 +14,32 @@ inputs:
   label: Response variable
   description: Dependent (response) variable
   class: numeric
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: ~
-  required: TRUE
-  standalone: FALSE
+  required: yes
+  standalone: no
 - name: fac
   label: Factor variables
   description: Independent variables (factors)
   class: factor
   length:
-    min: 1
-    max: 2
+    min: 1.0
+    max: 2.0
   value: ~
-  required: TRUE
-  standalone: FALSE
+  required: yes
+  standalone: no
 - name: fac.intr
   label: Factor interaction
   description: Include factor interaction
   class: logical
-  length: 1
-  value: TRUE
-  required: FALSE
-  standalone: TRUE
+  length:
+    min: 1.0
+    max: 1.0
+  value: yes
+  required: no
+  standalone: yes
 head-->
 <%=
 d <- structure(data.frame(resp, fac), .Names = c(resp.iname, fac.name))

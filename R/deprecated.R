@@ -70,8 +70,8 @@ guess.old.input.length <- function(x, input.type) {
 
     ## skip checks for boolean inputs
     if (input.type == 'boolean')
-        return (list(min = 1L, max = 1L))
-    
+        return (list(min = 1, max = 1))
+
     ## make a bitchy regex that will cover all allowed formats
     ## if (!grepl("^(\\[-?\\d+(\\.\\d+)?(,\\s*-?\\d+(\\.\\d+)?)?\\]|\\[\\]|)$", x))
     ##     stop('invalid limit string')
@@ -81,10 +81,10 @@ guess.old.input.length <- function(x, input.type) {
 
     if (any(is.na(lim)) || !len %in% 0:2)
         stop('invalid limit definition')
-    
+
     if (all(lim == 0) && len)
         stop('limits cannot be zero')
-    
+
     if (len > 1 && diff(lim) < 0)
         stop('minimum limit cannot be greater than maximum limit')
 
@@ -99,7 +99,7 @@ guess.old.input.length <- function(x, input.type) {
                    stop('decimal and/or less than 1 limit values are not allowed for variable inputs')
                ## length checks
                if (len == 0)
-                   lim <- list(min = 1L, max = 1L)
+                   lim <- list(min = 1, max = 1)
                else if (len == 1) {
                    lim <- floor(lim)
                    lim <- list(min = lim, max = lim)
@@ -117,7 +117,7 @@ guess.old.input.length <- function(x, input.type) {
                    stop('decimal and/or negative limit values are not allowed for string inputs')
                ## length checks
                if (len == 0)
-                   lim <- list(min = 1L, max = 256L)
+                   lim <- list(min = 1, max = 256)
                ## only one limit
                else if (len == 1) {
                    lim <- floor(lim)
@@ -176,7 +176,7 @@ guess.old.input.type <- function(x){
                standalone = FALSE
                ),
            variable  = list(
-               class      = NULL,
+               ## class      = NULL,
                length     = guess.old.input.length(limit.text, input.type),
                value      = NULL,
                required   = mandatory,
@@ -185,7 +185,7 @@ guess.old.input.type <- function(x){
            "TRUE"  = ,
            "FALSE" = list(
                class      = 'logical',
-               length     = list(min = 1L, max = 1L),
+               length     = list(min = 1, max = 1),
                value      = as.logical(input.type),
                required   = FALSE,
                standalone = TRUE
@@ -204,7 +204,7 @@ guess.old.input.type <- function(x){
                ## response
                list(
                    class      = 'numeric',
-                   length     = list(min = 1L, max = 1L),
+                   length     = list(min = 1, max = 1),
                    value      = default,
                    limit      = limit,
                    required   = mandatory,
@@ -213,13 +213,13 @@ guess.old.input.type <- function(x){
            },
            string = {
                chars <- guess.old.input.length(limit.text, input.type)
-               
+
                if (!is.null(default) && (nchar(default) < chars$min || nchar(default) > chars$max))
                    stopf('default string value "%s" must have at least %d and at most %d characters', default, limit$min, limit$max)
 
                list(
                    class      = 'character',
-                   length     = list(min = 1L, max = 1L),
+                   length     = list(min = 1, max = 1),
                    value      = default,
                    nchar      = chars,
                    required   = mandatory,
@@ -228,16 +228,19 @@ guess.old.input.type <- function(x){
            },
            ## this may be matchable input
            (function(){
-               if (grepl(csv.regex, x))
+               if (grepl(csv.regex, x)) {
+                   opts <- strsplit(x, ' *, *')[[1]]
                    list(
-                       class      = 'character',
-                       length     = list(min = 1L, max = 1L),
-                       value      = strsplit(x, ' *, *')[[1]],
-                       matchable  = TRUE,
-                       required   = FALSE,
-                       standalone = TRUE
+                       class          = 'character',
+                       length         = list(min = 1, max = 1),
+                       options        = opts,
+                       value          = opts[1],
+                       matchable      = TRUE,
+                       allow_multiple = FALSE,
+                       required       = FALSE,
+                       standalone     = TRUE
                        )
-               else
+               } else
                    stop('invalid input type')
            })()
            )
@@ -249,7 +252,7 @@ guess.old.input.type <- function(x){
 #' Convert old-style template to new-style one (what we really do is just replacing old header syntax with YAML one).
 #' @param fp pointer to an old template (see \code{\link{tpl.find}} for details)
 #' @param file a path to output file. If \code{NULL}, result will be flushed to stdout.
-#' @export 
+#' @export
 tpl.renew <- function(fp, file = NULL) {
     h <- suppressWarnings(tpl.info(fp)) #header
     b <- tpl.body(fp)                   #body
@@ -265,7 +268,7 @@ tpl.renew <- function(fp, file = NULL) {
 
 
 #' Deprecated Input Definition
-#' 
+#'
 #' As of version \code{0.5}, \code{rapport} relies on YAML syntax to define inputs. The following sections describe deprecated input definition syntax.
 #'
 #' \strong{Input Specifications}

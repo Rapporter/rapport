@@ -2,81 +2,95 @@
 meta:
   title: t-test Template
   author: Aleksandar Blagotić
+  description: A t-test report with table of descriptives, diagnostic tests and t-test
+    specific statistics.
   email: ~
   packages: nortest
   example:
   - rapport("t-test", ius2008, x = "leisure", y = "gender")
   - rapport("t-test", ius2008, x = "leisure", mu = 3.2)
-  description: A t-test report with table of descriptives, diagnostic tests and t-test
-    specific statistics.
 inputs:
 - name: x
   label: X variable
   description: Dependent (response) variable
   class: numeric
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: ~
-  required: TRUE
-  standalone: FALSE
-- name: "y"
+  required: yes
+  standalone: no
+- name: 'y'
   label: Y variable
   description: Independent variable (factor, or another numeric)
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: ~
-  required: FALSE
-  standalone: FALSE
+  required: no
+  standalone: no
 - name: alter
   label: Alternative hypothesis
   description: Whether two-sided, greater or less variant will be applied
   class: character
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   options:
   - two.sided
   - less
   - greater
-  value:
-  - two.sided
-  matchable: TRUE
-  required: FALSE
-  standalone: TRUE
+  value: two.sided
+  matchable: yes
+  allow_multiple: no
+  required: no
+  standalone: yes
 - name: mu
   label: Mean value
   description: Mean value for one-sample t-test
   class: numeric
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: ~
   limit:
-    min: -Inf
-    max: Inf
-  required: FALSE
-  standalone: TRUE
+    min: -.inf
+    max: .inf
+  required: no
+  standalone: yes
 - name: paired
   label: Paired t-test
   description: Carry out paired t-test or not
   class: logical
-  length: 1
-  value: FALSE
-  required: FALSE
-  standalone: TRUE
+  length:
+    min: 1.0
+    max: 1.0
+  value: no
+  required: no
+  standalone: yes
 - name: var.equal
   label: Variance equality
   description: 'Equal variances assumed: choose automatically or not'
   class: logical
-  length: 1
-  value: FALSE
-  required: FALSE
-  standalone: TRUE
+  length:
+    min: 1.0
+    max: 1.0
+  value: no
+  required: no
+  standalone: yes
 - name: ci.level
   label: Confidence interval
   description: Confidence interval level
   class: numeric
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: 0.95
   limit:
     min: 0.0
     max: 1.0
-  required: FALSE
-  standalone: TRUE
+  required: no
+  standalone: yes
 head-->
 <%=
 

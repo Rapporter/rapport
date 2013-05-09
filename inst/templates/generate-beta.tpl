@@ -2,42 +2,50 @@
 meta:
   title: Generate beta distribution
   author: Rapporter Team (@rapporter)
-  packages: nortest
   description: Random generation for the Beta distribution with parameters.
+  email: ~
+  packages: nortest
+  example: ~
 inputs:
-- name: n
+- name: 'n'
   label: Observations
   description: Number of observations
   class: numeric
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: 100.0
   limit:
     min: 1.0
-    max: Inf
-  required: TRUE
-  standalone: TRUE
+    max: .inf
+  required: yes
+  standalone: yes
 - name: shape1
   label: Alpha
   description: First parameter of the Beta distribution
   class: numeric
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: 0.1
   limit:
     min: 0.0
     max: 100.0
-  required: TRUE
-  standalone: TRUE
+  required: yes
+  standalone: yes
 - name: shape2
   label: Beta
   description: Second parameter of the Beta distribution
   class: numeric
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: 0.1
   limit:
     min: 0.0
     max: 100.0
-  required: TRUE
-  standalone: TRUE
+  required: yes
+  standalone: yes
 head-->
 # Histogram
 
@@ -115,4 +123,3 @@ _Kernel density plot_ is a plot of smoothed _empirical distribution function_. A
 set.caption('Kernel Density Plot')
 rp.densityplot(g)
 %>
-

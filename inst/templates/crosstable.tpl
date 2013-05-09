@@ -2,38 +2,44 @@
 meta:
   title: Crosstable
   author: Gergely Daróczi
+  description: Returning the Chi-squared test of two given variables with count, percentages
+    and Pearson's residuals table.
   email: gergely@snowl.net
   packages: descr
   example:
   - rapport('crosstable', data=ius2008, row='gender', col='dwell')
   - rapport('crosstable', data=ius2008, row='email', col='dwell')
-  description: Returning the Chi-squared test of two given variables with count, percentages
-    and Pearson's residuals table.
 inputs:
 - name: row
   label: Row variable
   description: A categorical variable.
   class: factor
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: ~
-  required: TRUE
-  standalone: FALSE
+  required: yes
+  standalone: no
 - name: col
   label: Column variable
   description: A categorical variable.
   class: factor
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: ~
-  required: TRUE
-  standalone: FALSE
+  required: yes
+  standalone: no
 - name: annotation
   label: Annotation
   description: Should textual annotations be added to the report?
   class: logical
-  length: 1
-  value: TRUE
-  required: FALSE
-  standalone: TRUE
+  length:
+    min: 1.0
+    max: 1.0
+  value: yes
+  required: no
+  standalone: yes
 head-->
 
 # Variable description

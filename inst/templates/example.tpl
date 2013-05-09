@@ -2,42 +2,50 @@
 meta:
   title: Example template
   author: Gergely Daróczi
+  description: This template demonstrates the basic features of rapport. We all hope
+    you will like it!
+  email: ~
   packages:
+  - lattice
   - ggplot2
   - xtable
   example:
   - rapport("example", ius2008, v='age')
   - rapport("example", ius2008, v='gender', pacman=FALSE)
   - rapport("example", ius2008, v='age', s='FOO BAR')
-  description: This template demonstrates the basic features of rapport. We all hope
-    you will like it!
 inputs:
 - name: v
   label: Variable
   description: A variable
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: ~
-  required: TRUE
-  standalone: FALSE
+  required: yes
+  standalone: no
 - name: pacman
   label: Pacman
   description: Show Pacman in the results?
   class: logical
-  length: 1
-  value: TRUE
-  required: FALSE
-  standalone: TRUE
+  length:
+    min: 1.0
+    max: 1.0
+  value: yes
+  required: no
+  standalone: yes
 - name: s
   label: A string
   description: Any character value to be printed at the end of the report
   class: character
-  length: 1.0
+  length:
+    min: 1.0
+    max: 1.0
   value: Bye!
   nchar:
-    min: 1
-    max: 256
-  required: FALSE
-  standalone: TRUE
+    min: 1.0
+    max: 256.0
+  required: no
+  standalone: yes
 head-->
 
 # Hello, world!
@@ -81,17 +89,13 @@ Loops and `if` conditionals without the curly braces do not work between the `BR
 
 What happens if you have an error in your document?
 
-<%=
-mean(foobar)
-%>
+<%=mean(foobar)%>
 
 Which is possible even inline too: <%=foo%> and <%=bar%> beside a normal chunk showing $\pi$ (<%=pi%>).
 
 And how do warnings show up?
 
-<%=
-chisq.test(mtcars$am, mtcars$gear)
-%>
+<%=chisq.test(mtcars$am, mtcars$gear)%>
 
 # Control-flow
 
