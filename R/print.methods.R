@@ -39,8 +39,8 @@ print.rp.meta <- function(x, ...){
 print.rp.inputs <- function(x, ...){
     catn('\n Inputs\n')
 
-    if (length(x) == 0){
-        catn('Template contains no inputs.')
+    if (length(x) == 0) {
+        catn(" Template contains no inputs. :-(\n")
     } else {
         sapply(x, function(x) {
             ## length

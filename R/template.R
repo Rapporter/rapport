@@ -51,7 +51,7 @@ tpl.find <- function(fp){
 #' @return a character vector with template header contents
 tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
     txt <- tpl.find(fp)                 # split by newlines
-
+    b <- tpl.body(fp)                   # check body
     ## get header tag indices
     hopen.ind  <- grep(open.tag, txt, ...)  # opening tag
     hclose.ind <- grep(close.tag, txt, ...) # closing tag
@@ -90,10 +90,11 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 tpl.body <- function(fp, htag = get.tags('header.close'), ...){
     txt   <- tpl.find(fp)
     h.end <- grep(htag, txt, ...)
-    if (h.end == length(txt))
-        structure('', class = 'rp.body')
+    b <- txt[(h.end + 1):length(txt)]
+    if (h.end == length(txt) || all(sapply(trim.space(b), function(x) x == '')))
+        stop('what good is a template if it has no body? http://youtu.be/CodmlmxpZeQ?t=35s')
     else
-        structure(txt[(h.end + 1):length(txt)], class = 'rp.body')
+        structure(b, class = 'rp.body')
 }
 
 
