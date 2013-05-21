@@ -92,7 +92,7 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
     h.end <- grep(htag, txt, ...)
     b <- txt[(h.end + 1):length(txt)]
     if (h.end == length(txt) || all(sapply(trim.space(b), function(x) x == '')))
-        stop('what good is a template if it has no body? http://youtu.be/CodmlmxpZeQ?t=35s')
+        stop('what good is a template if it has no body? http://bit.ly/11E5BQM')
     else
         structure(b, class = 'rp.body')
 }
