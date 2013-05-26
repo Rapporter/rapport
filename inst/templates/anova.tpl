@@ -4,6 +4,7 @@ meta:
   author: Aleksandar Blagotić, Dániel Nagy
   description: An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific
     statistics.
+  email: ~
   packages: nortest
   example:
   - 'rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way'
@@ -13,28 +14,32 @@ inputs:
   label: Response variable
   description: Dependent (response) variable
   class: numeric
-  length: 1
+  length:
+    min: 1.0
+    max: 1.0
   value: ~
-  required: TRUE
-  standalone: FALSE
+  required: yes
+  standalone: no
 - name: fac
   label: Factor variables
   description: Independent variables (factors)
   class: factor
   length:
-    min: 1
-    max: 2
+    min: 1.0
+    max: 2.0
   value: ~
-  required: TRUE
-  standalone: FALSE
+  required: yes
+  standalone: no
 - name: fac.intr
   label: Factor interaction
   description: Include factor interaction
   class: logical
-  length: 1
-  value: TRUE
-  required: FALSE
-  standalone: TRUE
+  length:
+    min: 1.0
+    max: 1.0
+  value: yes
+  required: no
+  standalone: yes
 head-->
 <%=
 d <- structure(data.frame(resp, fac), .Names = c(resp.iname, fac.name))
@@ -98,7 +103,7 @@ if (ntest$p[3]<0.05){n<-m+1}
 
 We will use <%=ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
 
-<%= if (n>0) 
+<%= if (n>0)
 sprintf("As you can see, the applied tests %s.", ifelse(n>1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) else sprintf("reject departures from normality") %>
 
 ### Homoscedascity
@@ -142,4 +147,4 @@ a.fp <- a.p < .05
 data.frame(a)
 %>
 
-_F-test_ for <%= p(fac.label[1]) %> is <%= ifelse(a.fp[1], "", "not") %> statistically significant, which implies that there is <%= ifelse(a.fp[1], "an", "no") %> <%= fac.label[1] %> effect on response variable. <%= if (fac.ilen == 2) sprintf("Effect of %s on response variable is %s significant. ", p(fac.label[2]), ifelse(a.fp[2], "", "not")) else "" %><%= if (fac.ilen == 2 & fac.intr) sprintf("Effect of the interaction between levels of %s %s found significant (p = %.3f).", p(fac.label), ifelse(a.fp[3], "was", "wasn't"), a.p[3]) else "" %>
+_F-test_ for <%= p(fac.label[1]) %> is <%= ifelse(a.fp[1], "", "not") %> statistically significant, which implies that there is <%= ifelse(a.fp[1], "an", "no") %> <%= fac.label[1] %> effect on response variable. <%= if (fac.ilen == 2) sprintf("Effect of %s on response variable is %s significant. ", p(fac.label[2]), ifelse(a.fp[2], "", "not")) else "" %><%= if (fac.ilen == 2 & fac.intr) sprintf("Interaction between levels of %s %s found significant (p = %.3f).", p(fac.label), ifelse(a.fp[3], "was", "wasn't"), a.p[3]) else "" %>

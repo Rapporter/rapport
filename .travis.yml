@@ -17,10 +17,10 @@ install:
   - "[ ! -d ~/R ] && mkdir ~/R"
   - R --version
   - R -e '.libPaths(); sessionInfo()'
-  - Rscript -e 'install.packages("testthat", dep = TRUE, repos = "http://cran.rapporter.net")'
-  - Rscript -e 'install.packages("yaml", dep = TRUE, repos = "http://cran.rapporter.net")'
-  - Rscript -e 'install.packages(c("nortest", "descr", "ggplot2", "xtable", "outliers"), dep = TRUE, repos = "http://cran.rapporter.net")'
-  - Rscript -e 'install.packages("rapport", dep = TRUE, repos = "http://cran.rapporter.net")'
+  - Rscript -e 'install.packages("testthat", dep = TRUE, repos = "http://cran.r-project.org")'
+  - Rscript -e 'install.packages("yaml", dep = TRUE, repos = "http://cran.r-project.org")'
+  - Rscript -e 'install.packages(c("nortest", "descr", "ggplot2", "xtable", "outliers"), dep = TRUE, repos = "http://cran.r-project.org")'
+  - Rscript -e 'install.packages("rapport", dep = TRUE, repos = "http://cran.r-project.org")'
 
 # run tests
 script:

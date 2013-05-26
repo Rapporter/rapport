@@ -1,4 +1,4 @@
-## test_file("inst/tests/test-inputs-deprecated.R")
+## test_file("inst/tests/test-deprecated.R")
 
 context('Deprecated input specifications')
 
@@ -49,10 +49,26 @@ test_that('should provide correct input definition', {
     expect_that(rapport:::guess.old.input.type("factor"), equals(list(class = 'factor', length = list(min = 1, max = 1), value = NULL, required = FALSE, standalone = FALSE)))
     expect_that(rapport:::guess.old.input.type("logical"), equals(list(class = 'logical', length = list(min = 1, max = 1), value = NULL, required = FALSE, standalone = FALSE)))
     expect_that(rapport:::guess.old.input.type("numeric"), equals(list(class = 'numeric', length = list(min = 1, max = 1), value = NULL, required = FALSE, standalone = FALSE)))
-    expect_that(rapport:::guess.old.input.type("variable"), equals(list(class = NULL, length = list(min = 1, max = 1), value = NULL, required = FALSE, standalone = FALSE)))
+    expect_that(rapport:::guess.old.input.type("variable"), equals(list(length = list(min = 1, max = 1), value = NULL, required = FALSE, standalone = FALSE)))
     expect_that(rapport:::guess.old.input.type("TRUE"), equals(list(class = 'logical', length = list(min = 1, max = 1), value = TRUE, required = FALSE, standalone = TRUE)))
     expect_that(rapport:::guess.old.input.type("FALSE"), equals(list(class = 'logical', length = list(min = 1, max = 1), value = FALSE, required = FALSE, standalone = TRUE)))
     expect_that(rapport:::guess.old.input.type("number"), equals(list(class = 'numeric', length = list(min = 1, max = 1), value = NULL, limit = list(min = -Inf, max = Inf), required = FALSE, standalone = TRUE)))
     expect_that(rapport:::guess.old.input.type("string"), equals(list(class = 'character', length = list(min = 1, max = 1), value = NULL, nchar = list(min = 1, max = 256), required = FALSE, standalone = TRUE)))
-    expect_that(rapport:::guess.old.input.type("fee, fi, foo, fam"), equals(list(class = 'character', length = list(min = 1, max = 1), value = c("fee", "fi", "foo", "fam"), matchable = TRUE, required = FALSE, standalone = TRUE)))
+    expect_that(rapport:::guess.old.input.type("fee, fi, foo, fam"), equals(list(class = 'character', length = list(min = 1, max = 1), options = c("fee", "fi", "foo", "fam"), value = "fee", matchable = TRUE, allow_multiple = FALSE, required = FALSE, standalone = TRUE)))
+})
+
+context('Bundled templates backwards compatibility')
+
+oldies <- tpl.list(path = system.file("templates/deprecated", package = "rapport"), full.names = TRUE)
+sapply(oldies, function(x) {
+    new.path <- system.file(file.path("templates", basename(x)), package = "rapport")
+    expect_that(suppressWarnings(tpl.info(x)), is_identical_to(tpl.info(new.path)))
+})
+
+context('Renew function')
+
+sapply(oldies, function(x) {
+    bn <- basename(x)
+    new.path <- system.file(file.path("templates", basename(x)), package = "rapport")
+    expect_that(suppressWarnings(tpl.info(x)), is_identical_to(tpl.info(strsplit(tpl.renew(x), "\n")[[1]])))
 })

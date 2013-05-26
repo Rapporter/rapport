@@ -51,7 +51,7 @@ tpl.find <- function(fp){
 #' @return a character vector with template header contents
 tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
     txt <- tpl.find(fp)                 # split by newlines
-
+    b <- tpl.body(fp)                   # check body
     ## get header tag indices
     hopen.ind  <- grep(open.tag, txt, ...)  # opening tag
     hclose.ind <- grep(close.tag, txt, ...) # closing tag
@@ -90,10 +90,11 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 tpl.body <- function(fp, htag = get.tags('header.close'), ...){
     txt   <- tpl.find(fp)
     h.end <- grep(htag, txt, ...)
-    if (h.end == length(txt))
-        structure('', class = 'rp.body')
+    b <- txt[(h.end + 1):length(txt)]
+    if (h.end == length(txt) || all(sapply(trim.space(b), function(x) x == '')))
+        stop('what good is a template if it has no body? http://bit.ly/11E5BQM')
     else
-        structure(txt[(h.end + 1):length(txt)], class = 'rp.body')
+        structure(b, class = 'rp.body')
 }
 
 
@@ -353,7 +354,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
         if (!all(sapply(inputs.raw, length) == 4))
             stop('input definition error: missing fields')
 
-        inputs <- lapply(inputs.raw, function(x){
+        inputs <- lapply(inputs.raw, function(x) {
             i.name  <- guess.input.name(x[1])
             i.label <- guess.input.label(x[3])
             i.desc  <- guess.input.description(x[4])

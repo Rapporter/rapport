@@ -2,50 +2,57 @@
 meta:
   title: Correlations
   author: Daróczi Gergely, Nagy Dániel
+  description: This template will return the correlation matrix of supplied numerical
+    variables.
   email: gergely@snowl.net
+  packages: ~
   example:
   - rapport('correlations', data=ius2008, vars=c('age', 'edu'))
   - rapport('correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
   - rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat',
     'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
-  description: This template will return the correlation matrix of supplied numerical
-    variables.
 inputs:
 - name: vars
   label: Variable
   description: Numerical variables
   class: numeric
   length:
-    min: 2
-    max: 50
+    min: 2.0
+    max: 50.0
   value: ~
-  required: TRUE
-  standalone: FALSE
+  required: yes
+  standalone: no
 - name: cor.matrix
   label: Correlation matrix
   description: Show correlation matrix (numbers)?
   class: logical
-  length: 1
-  value: TRUE
-  required: FALSE
-  standalone: TRUE
+  length:
+    min: 1.0
+    max: 1.0
+  value: yes
+  required: no
+  standalone: yes
 - name: cor.plot
   label: Scatterplot matrix
   description: Show scatterplot matrix (image)?
   class: logical
-  length: 1
-  value: TRUE
-  required: FALSE
-  standalone: TRUE
+  length:
+    min: 1.0
+    max: 1.0
+  value: yes
+  required: no
+  standalone: yes
 - name: quick.plot
   label: Using a sample for plotting
   description: If set to TRUE, the scatterplot matrix will be drawn on a sample size
     of max. 1000 cases not to render millions of points.
   class: logical
-  length: 1
-  value: TRUE
-  required: FALSE
-  standalone: TRUE
+  length:
+    min: 1.0
+    max: 1.0
+  value: yes
+  required: no
+  standalone: yes
 head-->
 
 # Introduction

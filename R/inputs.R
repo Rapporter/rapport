@@ -178,6 +178,8 @@ guess.input <- function(input) {
     input$standalone <- standalone
     fields <- c('name', 'label', 'description', 'class', 'required', 'standalone', 'length', 'value')
     matchable          <- isTRUE(as.yaml.bool(input$matchable))
+    if (matchable && is.null(cls))
+        stop('you have to provide the class for matchable inputs')
 
     ## check value class/length
     if (!is.null(value)) {
