@@ -2,8 +2,9 @@
 #'
 #' Reads file either from template name in system folder, file path or remote URL, and splits it into lines for easier handling by \emph{rapport} internal parser. "find" in \code{tpl.find} is borrowed from Emacs parlance - this function actually reads the template.
 #' @param fp a character string containing a template path, a template name (for package-bundled templates only), template contents separated by newline (\code{\\n}), or a character vector with template contents.
+#' @param ... additional params for header tag matching (see \code{\link{grep}})
 #' @return a character vector with template contents
-tpl.find <- function(fp){
+tpl.find <- function(fp, ...){
     if (missing(fp))
         stop('file pointer not provided')
     stopifnot(is.character(fp))
@@ -29,7 +30,7 @@ tpl.find <- function(fp){
             }
         }
         txt <- readLines(fp, warn = FALSE) # load template from file path
-    } else if (l > 1){
+    } else if (l > 1) {
         ## then it's a character vector
         con <- textConnection(fp)
         txt <- readLines(con, warn = FALSE)
@@ -37,6 +38,7 @@ tpl.find <- function(fp){
     } else {
         stop('file pointer error')      # you never know...
     }
+    check.tpl(txt, ...)
     return(txt)
 }
 
@@ -51,30 +53,10 @@ tpl.find <- function(fp){
 #' @return a character vector with template header contents
 tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
     txt <- tpl.find(fp)                 # split by newlines
-    b <- tpl.body(fp)                   # check body
     ## get header tag indices
-    hopen.ind  <- grep(open.tag, txt, ...)  # opening tag
-    hclose.ind <- grep(close.tag, txt, ...) # closing tag
-
-    ## check header indices
-    if (hopen.ind != 1)
-        stop('opening header tag not found in first line')
-
-    ## only ONE header tag pairs required
-    if (!(length(hopen.ind) == 1 & length(hclose.ind) == 1))
-        stop('header tag error')
-
+    hopen.ind  <- grep(open.tag, txt, ...)[1]  # opening tag
+    hclose.ind <- grep(close.tag, txt, ...)[1] # closing tag
     hsection <- txt[(hopen.ind + 1):(hclose.ind - 1)] # get header
-
-    if (
-        length(hsection) < 1            # blank header
-        |
-        all(grepl('^[[:space:]]+$', hsection)) # only whitespace
-        |
-        all(nchar(hsection) == 0)       # only newlines
-        )
-        stop('template header empty')
-
     return(hsection)
 }
 
@@ -88,13 +70,10 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 #' @return a character vector with template body contents
 #' @export
 tpl.body <- function(fp, htag = get.tags('header.close'), ...){
-    txt   <- tpl.find(fp)
+    txt   <- tpl.find(fp, ...)
     h.end <- grep(htag, txt, ...)
     b <- txt[(h.end + 1):length(txt)]
-    if (h.end == length(txt) || all(sapply(trim.space(b), function(x) x == '')))
-        stop('what good is a template if it has no body? http://bit.ly/11E5BQM')
-    else
-        structure(b, class = 'rp.body')
+    structure(b, class = 'rp.body')
 }
 
 
@@ -111,14 +90,14 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 #' }
 #' @export
 tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
-    h <- tpl.header(fp)
+    txt <- tpl.find(fp)
     if (!meta & !inputs)
         stop('Either "meta" or "inputs" should be set to TRUE')
     res <- list()
     if (meta)
-        res$meta <- tpl.meta(h, use.header = TRUE)
+        res$meta <- tpl.meta(h)
     if (inputs)
-        res$inputs <- tpl.inputs(h, use.header = TRUE)
+        res$inputs <- tpl.inputs(h)
     class(res) <- 'rp.info'
     return(res)
 }
@@ -140,17 +119,14 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 #' As of version \code{0.5}, \code{dataRequired} field is deprecated. \code{rapport} function will automatically detect if the template requires a dataset based on the presence of \emph{standalone} inputs.
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param fields a list of named lists containing key-value pairs of field titles and corresponding regexes
-#' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains only header data and not the whole template
+#' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains only the header data (not the whole template)
 #' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
 #' @return a named list with template metadata
 #' @export
 tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
-
     header <- tpl.find(fp)
-
     if (!use.header)
         header <- tpl.header(header)
-
     ## check if header is defined in YAML
     h <- tryCatch({
         y <- yaml.load(
@@ -316,12 +292,9 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #' @param use.header a logical value indicating whether the header section is provided in \code{h} argument
 #' @export
 tpl.inputs <- function(fp, use.header = FALSE){
-
     header <- tpl.find(fp)
-
     if (!use.header)
         header <- tpl.header(header)
-
     ## Try with YAML first ("inputs" is actually decoded header)
     inputs <- tryCatch(
         yaml.load(
