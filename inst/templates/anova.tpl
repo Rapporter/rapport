@@ -45,7 +45,7 @@ head-->
 d <- structure(data.frame(resp, fac), .Names = c(resp.iname, fac.name))
 f.int <- fml(resp.iname, fac.name, join.right = "*")
 f.nonint <- fml(resp.iname, fac.name, join.right = "+")
-fit <- lm(ifelse(fac.intr, f.int, f.nonint), data = d)
+fit <- lm(ifelse(isTRUE(fac.intr), f.int, f.nonint), data = d)
 fac.plu <- switch(fac.ilen, '', 's')
 %>
 
@@ -71,7 +71,7 @@ Below lies a frequency table for factors in ANOVA model. Note that the missing v
 
 ## Descriptive Statistics
 
-The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left hand side, while the corresponding statistics for response variable are given on the right-hand side.
+The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left-hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
 <%=
 (desc <- rp.desc(resp, fac, c(Min = min, Max = max, Mean = mean, Std.Dev. = sd, Median = median, IQR, Skewness = skewness, Kurtosis = kurtosis)))
@@ -103,7 +103,7 @@ if (ntest$p[3]<0.05){n<-m+1}
 
 We will use <%=ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
 
-<%= if (n>0) 
+<%= if (n>0)
 sprintf("As you can see, the applied tests %s.", ifelse(n>1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) else sprintf("reject departures from normality") %>
 
 ### Homoscedascity

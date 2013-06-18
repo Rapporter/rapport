@@ -190,10 +190,8 @@ table caption {
 
 th {
     padding: 4px 10px;
-}
-
-th * {
     color: #FFFFFF;
+    font-weight: bold;
 }
 
 tbody tr:nth-child(even) {
