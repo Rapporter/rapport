@@ -95,9 +95,9 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
         stop('Either "meta" or "inputs" should be set to TRUE')
     res <- list()
     if (meta)
-        res$meta <- tpl.meta(h)
+        res$meta <- tpl.meta(txt)
     if (inputs)
-        res$inputs <- tpl.inputs(h)
+        res$inputs <- tpl.inputs(txt)
     class(res) <- 'rp.info'
     return(res)
 }
