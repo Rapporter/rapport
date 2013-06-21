@@ -183,11 +183,8 @@ tocamel <- function(x, delim = '[^[:alnum:]]', upper = FALSE, sep = '', ...){
 #' capitalise(c("foo", "bar")) # [1] "Foo" "Bar"
 #' @export
 capitalise <- function(x){
-
     stopifnot(is.character(x))
-
     s <- strsplit(x, '', '')
-
     sapply(s, function(x){
         paste(toupper(x[1]), paste(x[2:length(x)], collapse = ''), collapse = '', sep = '')
     })
