@@ -22,10 +22,8 @@ is.rp.heading <- function(x)  inherits(x, 'rp.heading')
 #' @return a logical value indicating the string is (not) a pandoc heading
 #' @export
 is.heading <- function(x){
-
     if (missing(x))
         stop('no character value to test pandoc heading')
-
     re.head <- '^#{1,6}([ \t]+)?[[:print:]]+$'
     grepl(re.head, x)
 }
@@ -290,6 +288,33 @@ get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment
 purge.comments <- function(x, comment.open = get.tags('comment.open'), comment.close = get.tags('comment.close')){
     stopifnot(is.string(x))
     sub(sprintf('%s.*?%s', comment.open, comment.close), '', x)
+}
+
+
+##' Check template validity
+##'
+##' Throw error
+##' @param txt character vector with template contents
+##' @param open.tag opening tag regexp
+##' @param close.tag closing tag regexp
+##' @param ... additional params for tag matching (see \code{\link{grep}})
+check.tpl <- function(txt, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...) {
+    ## get header tag indices
+    hopen.ind  <- grep(open.tag, txt, ...)[1]  # opening tag
+    hclose.ind <- grep(close.tag, txt, ...)[1] # closing tag
+    ## check header indices
+    if (!isTRUE(hopen.ind == 1L))
+        stop('opening header tag not found in first line')
+    if (is.na(hclose.ind))
+        stop('closing header tag not found')
+    if (hclose.ind - hopen.ind <= 1)
+        stop('template header not found')
+    h <- txt[(hopen.ind + 1):(hclose.ind - 1)] # get header
+    if (all(trim.space(h) == ''))
+        stop('template header is empty')
+    b <- txt[(hclose.ind + 1):length(txt)]
+    if (hclose.ind == length(txt) || all(sapply(trim.space(b), function(x) x == '')))
+        stop('what good is a template if it has no body? http://bit.ly/11E5BQM')
 }
 
 

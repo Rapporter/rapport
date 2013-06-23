@@ -14,7 +14,7 @@
 
   \item{use.header}{a logical value indicating if the
   character vector provided in \code{fp} argument contains
-  only header data and not the whole template}
+  only the header data (not the whole template)}
 
   \item{trim.white}{a logical value indicating if the extra
   spaces should removed from header fields before

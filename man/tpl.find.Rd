@@ -2,13 +2,16 @@
 \alias{tpl.find}
 \title{Read Template}
 \usage{
-  tpl.find(fp)
+  tpl.find(fp, ...)
 }
 \arguments{
   \item{fp}{a character string containing a template path,
   a template name (for package-bundled templates only),
   template contents separated by newline (\code{\\n}), or a
   character vector with template contents.}
+
+  \item{...}{additional params for header tag matching (see
+  \code{\link{grep}})}
 }
 \value{
   a character vector with template contents
