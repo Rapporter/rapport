@@ -14,3 +14,5 @@ inst/templates/test.tpl
 .travis.yml
 Makefile
 .ackrc
+^.*\.Rproj$
+^\.Rproj\.user$
