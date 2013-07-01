@@ -29,9 +29,10 @@
   YAML \code{key: value} pairs, which contain some basic
   information about the template, just much like the
   \code{DESCRIPTION} file in \code{R} packages does.
-  Current implementation supports following fields:
 }
 \details{
+  Current implementation supports following fields:
+
   \itemize{ \item \code{title} - a template title
   (required) \item \code{author} - author's (nick)name
   (required) \item \code{description} - template
@@ -45,5 +46,8 @@
   deprecated. \code{rapport} function will automatically
   detect if the template requires a dataset based on the
   presence of \emph{standalone} inputs.
+}
+\seealso{
+  { \code{\link{tpl.inputs}} \code{\link{tpl.info}} }
 }
 

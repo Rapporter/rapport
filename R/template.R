@@ -88,6 +88,10 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 #' tpl.info('crosstable', inputs = FALSE)  # return only template metadata
 #' tpl.info('correlations', meta = FALSE)  # return only template inputs
 #' }
+#' @seealso {
+#' \code{\link{tpl.meta}}
+#' \code{\link{tpl.inputs}}
+#' }
 #' @export
 tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
     txt <- tpl.find(fp)
@@ -105,7 +109,9 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 
 #' Header Metadata
 #'
-#' Displays summary of template metadata stored in a header section. This part of template header consists of several YAML \code{key: value} pairs, which contain some basic information about the template, just much like the \code{DESCRIPTION} file in \code{R} packages does. Current implementation supports following fields:
+#' Displays summary of template metadata stored in a header section. This part of template header consists of several YAML \code{key: value} pairs, which contain some basic information about the template, just much like the \code{DESCRIPTION} file in \code{R} packages does.
+#'
+#' Current implementation supports following fields:
 #'
 #' \itemize{
 #'     \item \code{title} - a template title (required)
@@ -122,6 +128,10 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 #' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains only the header data (not the whole template)
 #' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
 #' @return a named list with template metadata
+#' @seealso {
+#' \code{\link{tpl.inputs}}
+#' \code{\link{tpl.info}}
+#' }
 #' @export
 tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
     header <- tpl.find(fp)
@@ -290,6 +300,10 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #' }
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param use.header a logical value indicating whether the header section is provided in \code{h} argument
+#' @seealso {
+#' \code{\link{tpl.meta}}
+#' \code{\link{tpl.info}}
+#' }
 #' @export
 tpl.inputs <- function(fp, use.header = FALSE){
     header <- tpl.find(fp)

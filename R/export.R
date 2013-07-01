@@ -200,6 +200,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
 #'
 #' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
 #' @param ... parameters passed directly to \code{\link{rapport}}
+#' @seealso \code{\link{tpl.export}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}
 #' @export
 rapport.html <- function(...)
     tpl.export(rapport(...))
@@ -209,6 +210,7 @@ rapport.html <- function(...)
 #'
 #' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
 #' @param ... parameters passed directly to \code{\link{rapport}}
+#' @seealso \code{\link{tpl.export}} \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.docx}}
 #' @export
 rapport.odt <- function(...)
     tpl.export(rapport(...), format='odt')
@@ -218,6 +220,7 @@ rapport.odt <- function(...)
 #'
 #' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
 #' @param ... parameters passed directly to \code{\link{rapport}}
+#' @seealso \code{\link{tpl.export}} \code{\link{rapport.html}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}
 #' @export
 rapport.pdf <- function(...)
     tpl.export(rapport(...), format='pdf')
@@ -227,6 +230,7 @@ rapport.pdf <- function(...)
 #'
 #' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
 #' @param ... parameters passed directly to \code{\link{rapport}}
+#' @seealso \code{\link{tpl.export}} \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}}
 #' @export
 rapport.docx <- function(...)
     tpl.export(rapport(...), format='docx')

@@ -26,4 +26,7 @@ tpl.info('crosstable', inputs = FALSE)  # return only template metadata
 tpl.info('correlations', meta = FALSE)  # return only template inputs
 }
 }
+\seealso{
+  { \code{\link{tpl.meta}} \code{\link{tpl.inputs}} }
+}
 
