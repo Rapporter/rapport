@@ -512,7 +512,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     b        <- tpl.body(txt)                     # template body
     e        <- new.env(parent = env)             # load/create evaluation environment
     i        <- list(...)                         # user inputs
-    data.required <- any(sapply(inputs, function(x) !x$standalone)) | !is.null(data)
+    data.required <- any(sapply(inputs, function(x) !x$standalone)) | !is.empty(data)
     pkgs     <- meta$packages                                # required packages
     file.path <- gsub('\\', '/', file.path, fixed = TRUE)
 
