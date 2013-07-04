@@ -95,7 +95,7 @@ rot
 %>
 
 The cells written in bold shows which components explain the most variances of the variables, with the help of them we can draw the following conclusion:
-<%=paste(colnames(rot)[which(abs(rot) > 0.3, arr.ind = TRUE)[,2]],rp.name(vars)[which(abs(rot) > 0.3, arr.ind = TRUE)[,1]],sep=" is a latent factor of ")%>.
+<%=paste(colnames(rot)[which(abs(rot) > 0.3, arr.ind = TRUE)[,2]],rp.name(vars)[which(abs(rot) > 0.3, arr.ind = TRUE)[,1]],sep=" is a principal component of ")%>.
 
 <% if (length(which(rot > 0.3)) != length(which(abs(rot) > 0.3))) { %>
 
