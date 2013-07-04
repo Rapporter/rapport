@@ -62,7 +62,11 @@ head-->
 
 # Introduction
 
-[Multidimensional-scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) is a technique which gives us a visual representation about the distances between the observations. Below you can see the plot, that presents you the distance between the observations, which was calculated based on <%=rp.label(vars)%>.
+[Multidimensional-scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) is a technique which gives us a visual representation about the distances between the observations. 
+
+# MDS
+
+Below you can see a plot, that presents you the distance between the observations, which was calculated based on <%=rp.label(vars)%>.
 
 <%=
 variables <- scale(na.omit(vars))
@@ -80,6 +84,8 @@ distance <- as.matrix(d)
 maxind <- which(distance == max(distance), arr.ind = TRUE)
 minind <- which(distance == min(distance[distance!=min(distance)]), arr.ind = TRUE)
 %>
+
+### What can be seen here?
 
 <%=colnames(distance)[which(colSums(distance) == max(colSums(distance)))] %> differs the most from the others, and <%=colnames(distance)[which(colSums(distance) == min(colSums(distance)))]%> seems to be the most "common" observation.
 
@@ -102,7 +108,7 @@ paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(distance)[
 
 <%} else {%>
 
-There are <%=nrow(h)%> observations which are the most similar, that is a higher number than the wanted <%=max.dist.num%>, thus will not be reported one-by-one. Set <%=nrow(h)%> as parameter <%=rp.name(max.dist.num)%> to check the pairs if you are interested.
+There are <%=nrow(h)%> observations which are the most similar, and equal in the same time, that is a higher number than the wanted <%=max.dist.num%>, thus will not be reported one-by-one. Set <%=nrow(h)%> as parameter <%=rp.name(max.dist.num)%> to check the pairs if you are interested.
 <%}%>
 
 <%=
