@@ -5,7 +5,6 @@ meta:
   description: In this template Rapporter will present you GLM.
   email: ~
   packages: ~
-  dataRequired:  TRUE
   example:
   - rapport
 inputs:
@@ -30,7 +29,7 @@ inputs:
 - name: indep.inter
   label : Interaction
   description: Interaction between the independent variables
-  class:logical
+  class: logical
   length:
     min: 1.0
     max: 1.0
@@ -51,10 +50,15 @@ inputs:
   - poisson
   value: binomial
   matchable: yes
-  allow.multiple: no
-  required: yes
+  allow_multiple: no
+  required: no
   standalone: yes
-head-->  
+head-->
+
+
+# Introduction
+
+[Generalized Linear Model (GLM)](http://en.wikipedia.org/wiki/Generalized_linear_model) is a generalization of the ordinary [Linear Regression](http://en.wikipedia.org/wiki/Linear_regression). While using GLM we don't need the assumption of normality for response variables. There are two basic idea of the model: It allows the linear model to be related to the response variable via a link function and the magnitude of the variance of each measurement to be a function of its predicted value.An extinsion to the GLM is the [Hierarchical generalized linear model](https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model).
 
 
 
