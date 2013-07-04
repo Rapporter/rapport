@@ -5,7 +5,6 @@ meta:
   description: In this template Rapporter will present you Wilcoxon test.
   email: ~
   packages: ~
-  dataRequired:  TRUE
   example:
   - rapport
 inputs:
@@ -49,9 +48,18 @@ inputs:
   allow.multiple: no
   required: no
   standalone: yes
-head-->    
+head-->
 
-Wilcoxon test (wilcox.test) t-test-ből átcsatornázni,ha nem teljesül a normalitás
+# Introduction
 
-	
+[Wilcoxon test](http://en.wikipedia.org/wiki/Wilcoxon_test) is a non-parametric statistical test which can be an alternative of the  paired Student's t-test, t-test for matched pairs, or the t-test for dependent samples when the population cannot be assumed to be normally distributed.
+
+<%=
+wilc <- wilcox.test(dep,indep,alter)
+wilc
+p.v <- wilc$p.value
+%>
+
+As you can see in the table the the p-value of the Wilcoxon test is <%=p.v%>, thus we can <%= ifelse(p.v < 0.05,"reject", "accept")%> the assumption of the null hypothesis.
+
 
