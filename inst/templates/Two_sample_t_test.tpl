@@ -5,7 +5,6 @@ meta:
   description: In this template Rapporter will present you Two sample t-test.
   email: ~
   packages: ~
-  dataRequired:  TRUE
   example:
   - rapport
 inputs:
@@ -60,7 +59,7 @@ inputs:
   - greater
   value: two.sided
   matchable: yes
-  allow.multiple: no
+  allow_multiple: no
   required: no
   standalone: yes
 - name: ci.level
@@ -98,22 +97,22 @@ if (length(x) > 5000) {
 }
 p <- .05
 h
--%>
+%>
 
 So, let's draw some conclusions based on applied normality test:
 
-<% if (!is.na(h[1, 3])) { -%>
+<% # if (!is.na(h[1, 3])) { %>
  - based on _Lilliefors test_, distribution of _<%= var.label %>_ is <%= ifelse(h[1, 3] < p, "not normal", "normal") %>
-<% } -%>
-<% if (!is.na(h[2, 3])) { -%>
- - _Anderson-Darling test_ confirms <%= ifelse(h[2, 3] < p, "violation of", "") %> normality assumption
-<% } -%>
-<% if (!is.na(h[3, 3])) { -%>
- - _Pearson's $\chi^2$ test_ classifies the underlying distribution as <%= ifelse(h[3, 3] < p, "non-normal", "normal") %>
-<% } -%>
-<% if (!is.na(h[4, 3])) { -%>
- - according to _Shapiro-Wilk test_, the distribution of _<%= var.label %>_ is <%= ifelse(h[4, 3] < p, "not", "") %> normal.
-<% } -%>
+#<% #} %>
+#<% # if (!is.na(h[2, 3])) { %>
+# - _Anderson-Darling test_ confirms <%= ifelse(h[2, 3] < p, "violation of", "") %> normality assumption
+#<% #} %>
+#<% #if (!is.na(h[3, 3])) { %>
+# - _Pearson's $\chi^2$ test_ classifies the underlying distribution as <%= ifelse(h[3, 3] < p, "non-normal", "normal") %>
+#<% #} %>
+#<% #if (!is.na(h[4, 3])) { %>
+# - according to _Shapiro-Wilk test_, the distribution of _<%= var.label %>_ is <%= ifelse(h[4, 3] < p, "not", "") %> normal.
+#<% #} %>
 
 
 <%=
@@ -121,4 +120,7 @@ So, let's draw some conclusions based on applied normality test:
 %>
 
 As you can see, applied tests <%= ifelse(all(ntest$p < .05), "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.") %>.
+
+
+
 
