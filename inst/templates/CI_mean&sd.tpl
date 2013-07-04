@@ -5,7 +5,6 @@ meta:
   description: In this template Rapporter will present you Confidence Interval.
   email: ~
   packages: ~
-  dataRequired:  TRUE
   example:
   - rapport
 inputs:
@@ -32,19 +31,28 @@ inputs:
   limit:
     min: 0.0
     max: 1.0
-  required: yes
+  required: no
   standalone: yes
-- name: plot
-  label : Plot of the result
+- name: res.plot
+  label: Plot of the result
   description: rapport csomagon belül rp.hist,rp.density...
-  class:logical
+  class: logical
   length:
     min: 1.0
     max: 1.0
   value: yes
   required: no
   standalone: yes
-head-->  
+head-->
 
 
+
+function: confint
+<%=
+confidence <- confint(vars,level=ci.level)
+if (res.plot) {
+rp.hist(confidence)
+rp.density(confidence)
+}
+%>
 
