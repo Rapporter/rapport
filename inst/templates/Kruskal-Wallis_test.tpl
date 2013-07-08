@@ -24,11 +24,12 @@ head-->
 
 # Introduction
 
-[Kruskal-Wallis test](http://en.wikipedia.org/wiki/Kruskal-Wallis) is a non-parametric statistical test that assesses hypothesis of equality of two independent sample's/variabels' variances. Most of the time it's being used beacuse the normality assumptions didn't met for the samples/variables, but we need the assumption of the equal variances, so it can be an alternative of the Two-sample t-test.
+[Kruskal-Wallis test](http://en.wikipedia.org/wiki/Kruskal-Wallis) is a non-parametric statistical test that assesses hypothesis of equality of two independent sample's/variabels' variances. Most of the time it's being used beacuse the normality assumptions didn't meet for the samples/variables, but we need the assumption of the equal variances, so it can be an alternative of the Two-sample t-test.
 Significant result means difference between the samples/variables.
 
 
 <%=
+set.caption(sprintf('Kruskal-Wallis test for %s', p(vars.name)))
 krusk <- kruskal.test(vars)
 krusk
 p.v <- krusk$p.value
