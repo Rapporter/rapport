@@ -83,10 +83,11 @@ The [interaction](http://en.wikipedia.org/wiki/Interaction) between the independ
 <%=
 set.caption(sprintf('Fitting General Linear Model: %s based on %s', dep.name, p(indep.name)))
 fit
-summary(fit)$coefficients[,4]
-suppressMessages(confint(fit))
-plot(fit)
+p_val <- summary(fit)$coefficients[,4]
 %>
+
+From the table one can see that <%= paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val,3),sep=" has significant effect on the dependent variable, the p-value of that is ")%>
+
 
 <% } %>
 
