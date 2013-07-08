@@ -46,7 +46,7 @@ inputs:
   options:
   - gaussian
   - binomial
-  - gamma
+  - Gamma
   - poisson
   value: binomial
   matchable: yes
@@ -54,6 +54,11 @@ inputs:
   required: no
   standalone: yes
 head-->
+
+<% if (indep < 0 | indep > 1 & family == "binomial") { %>
+Values of the independent variables must be between 0 and 1 when binomial used as link function. Please change parameter family to one that is usable or switch the independent variable to meet the assumptions.
+
+<% } else { %>
 
 
 # Introduction
@@ -79,9 +84,8 @@ The [interaction](http://en.wikipedia.org/wiki/Interaction) between the independ
 set.caption(sprintf('Fitting General Linear Model: %s based on %s', dep.name, p(indep.name)))
 fit
 fit$coefficients
-fit$df.null
-
+plot(fit)
 %>
 
-
+<% } %>
 
