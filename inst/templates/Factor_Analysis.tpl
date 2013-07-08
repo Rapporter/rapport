@@ -94,10 +94,10 @@ From them in the case<%=ifelse(length(neg.comp) > 1, "s", "")%> of the <%=paste(
 <% } else { %>
 We can say that <%=ifelse(length(which(abs(FA_loadings) > 0.3)), "none of these impacts are negative", "this impact is positive")%>. 
 
-<% } %>
+<% }%>
 
 
-<% if (obs.plot) { %>
+<% if (obs.plot & length(rownames(FA$scores)) > 0 & nrow(vars) < 10) { %>
 ## Plot about the distribution of the observations
 
 Now let's check how the observations distribute among the <%= ifelse(fact.num < 2, "factor", "first and the second factors")%>.
@@ -105,7 +105,9 @@ Now let's check how the observations distribute among the <%= ifelse(fact.num < 
 plot(FA_scores)
 +text(FA_scores,labels=rownames(fact.matrix),cex=1)
 %>
-<% } else {} %>
+<% } else { %>
+<%=ifelse(length(rownames(FA$scores)) > 0,"Excuse us, but the data does not contain names for the observations. Plot would not be informative without labels, thus we do not present that.", "On the plot we would show at least 100 observations, which would make that chaotic, so it will not be presented.") %>
+<% } %>
 
 ## Uniquenesses
 
