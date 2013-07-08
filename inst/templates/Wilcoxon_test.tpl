@@ -55,6 +55,7 @@ head-->
 [Wilcoxon test](http://en.wikipedia.org/wiki/Wilcoxon_test) is a non-parametric statistical test which can be an alternative of the  paired Student's t-test, t-test for matched pairs, or the t-test for dependent samples when the population cannot be assumed to be normally distributed.
 
 <%=
+set.caption(sprintf('Wilcoxon rank sum test with continuity correction %s and %s', dep.name, indep.name))
 wilc <- wilcox.test(dep,indep,alter)
 wilc
 p.v <- wilc$p.value
