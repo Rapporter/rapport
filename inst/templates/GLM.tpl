@@ -83,7 +83,8 @@ The [interaction](http://en.wikipedia.org/wiki/Interaction) between the independ
 <%=
 set.caption(sprintf('Fitting General Linear Model: %s based on %s', dep.name, p(indep.name)))
 fit
-fit$coefficients
+summary(fit)$coefficients[,4]
+suppressMessages(confint(fit))
 plot(fit)
 %>
 
