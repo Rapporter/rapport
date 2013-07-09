@@ -1,33 +1,26 @@
 #' Input Name Validation
 #'
-#' Checks \code{rapport} input naming conventions: input names should start with a letter, followed either by a letter or a digit, while the words should be separated with dots or underscores.
-#' @param x a character vector to test names
-#' @param min.size an integer value that indicates minimum name length
-#' @param max.size an integer value that indicates maximum name length
-#' @param ... additional arguments to be passed to \code{\link{grepl}} function
-#' @return a logical vector indicating which values satisfy the naming conventions
-guess.input.name <- function(x, min.size = 1L, max.size = 30L, ...){
-    ## must begin with a letter, and can continue either with a letter or a digit, separated either by underscore or dot, e.g. 'var.90', or 'v90_alpha'.
-    re.name <- '^[[:alpha:]]+(([[:digit:]]+)?((\\.|_)?[[:alnum:]]+)+)?$'
-    len <- nchar(x)
-    if (len < min.size || len > max.size)
-        stopf('input name has %d, and should have at least %d and at most %d characters', len, min.size, max.size)
-    if (!grepl(re.name, x))
-        stopf('invalid input name: "%s"', x)
-    x
+#' From v.\code{0.51} one or more characters that are not newline should do the trick. Note that white spaces will be trimmed from both ends in resulting string.
+#' @param name a character value with input name
+guess.input.name <- function(name){
+    stopifnot(is.string(name))
+    name <- trim.space(name)
+    re.name <- '^.+$'
+    if (!grepl(re.name, name))
+        stopf('invalid input name: "%s"', name)
+    name
 }
 
 
 #' Input Label
 #'
-#' Checks input label.
+#' Checks and returns input label.
 #' @param label a character string containing input label
-#' @param ... additional arguments to be passed to \code{\link{grepl}}
-guess.input.label <- function(label, ...) {
+guess.input.label <- function(label) {
     if (!is.empty(label)) {
         stopifnot(is.string(label))
-        re.label <- "^[^\\|\n\r]*$" # allows 0 or more chars that aren't "|", carriage return or newline
-        if (!grepl(re.label, label, ...))
+        re.label <- "^.*$"
+        if (!grepl(re.label, label))
             stopf('invalid input label: "%s"', label)
         return (label)
     }
@@ -36,14 +29,13 @@ guess.input.label <- function(label, ...) {
 
 #' Input Description
 #'
-#' Checks input description.
+#' Checks and returns input description.
 #' @param description a character string containing input description
-#' @param ... additional arguments to be passed to \code{\link{grepl}}
-guess.input.description <- function(description, ...) {
+guess.input.description <- function(description) {
     if (!is.empty(description)) {
         stopifnot(is.string(description))
         re.desc <- "^.*$"
-        if (!grepl(re.desc, description, ...))
+        if (!grepl(re.desc, description))
             stopf('invalid input description: "%s"', description)
         return (description)
     }

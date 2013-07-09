@@ -46,4 +46,4 @@ demo(rapport)
 
 For more info head over to [package homepage](http://rapport-package.info).
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/daa9a09d617573cbfb02b2d3903181cf "githalytics.com")](http://githalytics.com/Rapporter/rapport)
+[![githalytics.com alpha](https://cruel-carlota.gopagoda.com/daa9a09d617573cbfb02b2d3903181cf "githalytics.com")](http://githalytics.com/Rapporter/rapport)
