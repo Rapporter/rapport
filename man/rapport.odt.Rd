@@ -14,4 +14,8 @@
   \code{\link{rapport}} but the returned class is exported
   at one go.
 }
+\seealso{
+  \code{\link{tpl.export}} \code{\link{rapport.html}}
+  \code{\link{rapport.pdf}} \code{\link{rapport.docx}}
+}
 

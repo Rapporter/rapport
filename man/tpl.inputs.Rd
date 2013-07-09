@@ -147,4 +147,7 @@
   any more, now we match against values to make it
   consistent with \code{character} inputs). }
 }
+\seealso{
+  { \code{\link{tpl.meta}} \code{\link{tpl.info}} }
+}
 
