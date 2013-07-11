@@ -17,10 +17,30 @@ inputs:
     max: 1.0
   required: yes
   standalone: no
+- name: main.lab
+  label: Main name of the plot
+  description: This is good to set the main name of the plot.
+  class: character
+  value: default
+  matchable: no
+  allow_multiple: no
+  required: no
+  standalone: yes
+- name: x.lab
+  label: X label
+  description: This is the name of the X label on the plot.
+  class: character
+  value: default
+  matchable: no
+  allow_multiple: no
+  required: no
+  standalone: yes
 head-->
 
-
 <%=
+if (main.lab == "default")  main_lab <- sprintf('Histogram of %s',var.name)
+if (x.lab == "default")  x_lab <- sprintf(var.label)
+
 vars <- na.omit(var)
-hist(var, main = sprintf('Histogram of %s',var.name), xlab=sprintf(var.label)) 
+hist(var, main = ifelse(main.lab == "default", main_lab, main.lab), xlab = ifelse(x.lab == "default", x_lab, x.lab)) 
 %>
