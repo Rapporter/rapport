@@ -48,8 +48,13 @@ inputs:
   label: Family of the font
   description: Specifying the font family to be used in images
   class: character
+  options:
+  - serif
+  - sans
+  - mono
+  - symbol
   value: sans
-  matchable: no
+  matchable: yes
   allow_multiple: no
   required: no
   standalone: yes
@@ -102,8 +107,16 @@ inputs:
   label: Line type of the grid
   description: Specifying the line type of grid
   class: character
+  options:
+  - blank
+  - solid
+  - dashed
+  - dotted
+  - dotdash
+  - longdash
+  - twodash
   value: dashed
-  matchable: no
+  matchable: yes
   allow_multiple: no
   required: no
   standalone: yes
@@ -120,8 +133,13 @@ inputs:
   label: Position of the legend
   description: Specifying the position of the legend
   class: character
+  options:
+  - top
+  - right
+  - bottom
+  - left
   value: right
-  matchable: no
+  matchable: yes
   allow_multiple: no
   required: no
   standalone: yes
@@ -130,15 +148,6 @@ inputs:
   description: Specifying the plots main background's color
   class: character
   value: white
-  matchable: no
-  allow_multiple: no
-  required: no
-  standalone: yes
-- name: panel.background
-  label: Panel background
-  description: Specifying the plot's main panel background
-  class: character
-  value: transparent
   matchable: no
   allow_multiple: no
   required: no
@@ -156,7 +165,10 @@ inputs:
   label: Angle of the axes
   description: Specifying the angle of axes' labels
   class: integer
-  value: 1
+  limit:
+    min: 1.0
+    max: 4.0
+  value: 1.0
   matchable: no
   allow_multiple: no
   required: no
@@ -184,7 +196,6 @@ if (nomargin != "dashed") panderOptions('graph.grid.lty', grid.lty)
 if (nomargin != FALSE) panderOptions('graph.boxes', boxes)
 if (nomargin != "right") panderOptions('graph.legend.position', legend.position)
 if (nomargin != "white") panderOptions('graph.background', background)
-if (nomargin != "transparent") panderOptions('graph.panel.background', panel.background)
 if (nomargin != FALSE) panderOptions('graph.color.rnd', color.rnd)
 if (nomargin != 1) panderOptions('graph.axis.angle', axis.angle)
 if (nomargin != 1) panderOptions('graph.symbol', symbol)
