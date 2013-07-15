@@ -5,8 +5,6 @@ meta:
   description: In this template Rapporter will present you boxplot.
   email: ~
   packages: ~
-  example:
-  - rapport
 inputs:
 - name: var
   label: Used Variables
@@ -169,7 +167,7 @@ inputs:
     min: 1.0
     max: 4.0
   value: 1.0
-  matchable: no
+  matchable: yes
   allow_multiple: no
   required: no
   standalone: yes
@@ -204,7 +202,7 @@ if (symbol != 1) panderOptions('graph.symbol', symbol)
 if (main.lab == "default")  main_lab <- sprintf('Boxplot of %s',var.name)
 if (y.lab == "default")  y_lab <- sprintf(var.label)
 
-vars <- na.omit(var)
+var <- na.omit(var)
 boxplot(var, main = ifelse(main.lab == "default", main_lab, main.lab), ylab = ifelse(y.lab == "default", y_lab, y.lab)) 
 %>
 
