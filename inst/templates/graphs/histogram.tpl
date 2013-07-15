@@ -35,6 +35,14 @@ inputs:
   allow_multiple: no
   required: no
   standalone: yes
+- name: fre
+  label: Frequencies or percentages
+  description: If TRUE, the histogram graphic is a representation of frequencies
+  class: logical
+  value: TRUE
+  matchable: no
+  required: no
+  standalone: yes
 - name: nomargin
   label: Graph no margin
   description: if trying to keep plots' margins at minimal
@@ -204,5 +212,5 @@ if (main.lab == "default")  main_lab <- sprintf('Histogram of %s',var.name)
 if (x.lab == "default")  x_lab <- sprintf(var.label)
 
 vars <- na.omit(var)
-hist(var, main = ifelse(main.lab == "default", main_lab, main.lab), xlab = ifelse(x.lab == "default", x_lab, x.lab)) 
+hist(var, main = ifelse(main.lab == "default", main_lab, main.lab), xlab = ifelse(x.lab == "default", x_lab, x.lab), freq=fre) 
 %>
