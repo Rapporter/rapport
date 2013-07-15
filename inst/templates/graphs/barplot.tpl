@@ -6,8 +6,9 @@ meta:
   email: ~
   packages:
   - grDevices
+  - RColorBrewer
   example:
-  - rapport
+  - 'rapport("barplot.tpl", data=ius2008, var="edu",plot.title.pos="outside the plot",horizontal=T)'
 inputs:
 - name: var
   label: Used Variable
@@ -18,31 +19,101 @@ inputs:
     max: 1.0
   required: yes
   standalone: no
-- name: main.lab
-  label: Main name of the plot
-  description: This is good to set the main name of the plot.
+- name: plot.title.pos
+  label: Position of the title of the plot
+  description: Specifying the position of the title of the plot
   class: character
-  value: default
-  matchable: no
+  options:
+  - on the plot
+  - outside the plot
+  - nowhere
+  value: nowhere
+  matchable: yes
   allow_multiple: no
   required: no
   standalone: yes
-- name: y.lab
-  label: Y label
-  description: This is the name of the Y label on the plot.
+- name: plot.title
+  label: Title of the plot
+  description: This is good to set the title of the plot.
   class: character
   value: default
   matchable: no
-  allow_multiple: no
+  required: no
+  standalone: yes
+- name: log.scale
+  label: Is the variable's scale logarithmic
+  description: Is the variable's scale logarithmic?
+  class: logical
+  value: FALSE
+  matchable: no
+  required: no
+  standalone: yes
+- name: var.lab
+  label: Label of the axis
+  description: This is the label of the axis on the plot.
+  class: character
+  value: default
+  matchable: no
+  required: no
+  standalone: yes
+- name: horizontal
+  label: Horizontal bars
+  description: If TRUE, the bars are drawn horizontally with the first at the bottom
+  class: logical
+  value: FALSE
+  matchable: no
   required: no
   standalone: yes
 - name: col.bar
-  label: Color's of Bar's
+  label: Colors of Bars
   description: The color of the bars on the plot
   class: character
   value: red
   matchable: no
+  required: no
+  standalone: yes
+- name: bar.text.type
+  label: Type of the text of the bar
+  description: Specifying the type of the text of the bar (frequency or percentage)
+  class: character
+  options:
+  - frequency
+  - percentage
+  value: frequency
+  matchable: yes
   allow_multiple: no
+  required: no
+  standalone: yes
+- name: bar.text.pos
+  label: Position of the text of the bar
+  description: Specifying the position of the text which shows the height of the bar
+  class: character
+  options:
+  - under the top of the bar
+  - on the right side of the bar
+  - above the top of the bar
+  - on the left side of the bar
+  value: above the top of the bar
+  matchable: yes
+  required: no
+  standalone: yes
+- name: bar.text.col
+  label: Bar text's color
+  description: Specifying the bar's text's color
+  class: character
+  value: black
+  matchable: no
+  required: no
+  standalone: yes
+- name: bar.space
+  label: Space between bars
+  description: Specifying the space between the bars
+  class: numeric
+  limit:
+    min: 0.0
+    max: 1000
+  value: 0.2
+  matchable: no
   required: no
   standalone: yes
 - name: nomargin
@@ -51,7 +122,6 @@ inputs:
   class: logical
   value: TRUE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: fontfamily
@@ -74,7 +144,6 @@ inputs:
   class: character
   value: black
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: fontsize
@@ -83,7 +152,6 @@ inputs:
   class: integer
   value: 12
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid
@@ -92,7 +160,6 @@ inputs:
   class: logical
   value: TRUE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.minor
@@ -101,7 +168,6 @@ inputs:
   class: logical
   value: TRUE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.color
@@ -110,7 +176,6 @@ inputs:
   class: character
   value: grey
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.lty
@@ -136,7 +201,6 @@ inputs:
   class: logical
   value: FALSE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: legend.position
@@ -159,16 +223,62 @@ inputs:
   class: character
   value: white
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
+- name: colp
+  label: Color palette
+  description: Color paletter from colorbrewer.com
+  required: no
+  class: character
+  value: Set1
+  length:
+    min: 1.0
+    max: 1.0  
+  matchable: yes
+  standalone: yes
+  options:
+  - BrBG
+  - PiYG
+  - PRGn
+  - PuOr
+  - RdBu
+  - RdGy
+  - RdYlBu
+  - RdYlGn
+  - Spectral
+  - Accent
+  - Dark2
+  - Paired
+  - Pastel1
+  - Pastel2
+  - Set1
+  - Set2
+  - Set3
+  - Blues
+  - BuGn
+  - BuPu
+  - GnBu
+  - Greens
+  - Greys
+  - Oranges
+  - OrRd
+  - PuBu
+  - PuBuGn
+  - PuRd
+  - Purples
+  - RdPu
+  - Reds
+  - YlGn
+  - YlGnBu
+  - YlOrBr
+  - YlOrRd
+  allow_multiple: no
 - name: color.rnd
   label: Reordered colors
   description: Specifying if the palette should be reordered randomly before rendering each plot to get colorful images
   class: logical
   value: FALSE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: axis.angle
@@ -180,16 +290,14 @@ inputs:
     max: 4.0
   value: 1.0
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: symbol
-  label: Angle of the axis
+  label: Specifying a symbol
   description: Specifying a symbol
   class: integer
   value: 1
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 head-->
@@ -211,23 +319,40 @@ if (color.rnd != FALSE) panderOptions('graph.color.rnd', color.rnd)
 if (axis.angle != 1) panderOptions('graph.axis.angle', axis.angle)
 if (symbol != 1) panderOptions('graph.symbol', symbol)
 
-# if (nomargin != "transparent") panderOptions('graph.panel.background', panel.background) didnt find the other possibilities so redundant to parameterize
-# if (nomargin != TRUE) panderOptions('graph.colors') would need character vector/palette
+cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], colp)
+if (colp != "Set1") panderOptions('graph.colors', cs)
+
 
 var <- as.vector(na.omit(var))
 
-if (main.lab == "default")  main_lab <- sprintf('Barplot of %s',var.name)
-if (y.lab == "default")  y_lab <- sprintf(var.label)
-if (min(var) >= 0)  {
-y_min <- 0
-} else {
-y_min <- min(var)*1.1
-}
-y_max <- max(var)*1.1
+if (plot.title == "default")  main_lab <- sprintf('Barplot of %s',var.name)
+if (var.lab == "default")  var_lab <- sprintf(var.label)
 
-bp <- barplot(var, main = ifelse(main.lab == "default", main_lab, main.lab), ylab = ifelse(y.lab == "default", y_lab, y.lab), xlim= c(0,length(var)), ylim = c(y_min,y_max))
-+lines(var, bp, type = "h", col = col.bar, lwd = 3)
+if (bar.text.type == "frequency"){
+labels <- table(var)
+} else {
+labels <- paste(round(table(var)/length(var),4)*100, "%")
+}
+
+if(bar.text.pos == "under the top of the bar") bar.text.pos <- 1
+if(bar.text.pos == "on the left side of the bar") bar.text.pos <- 2
+if(bar.text.pos == "above the top of the bar") bar.text.pos <- 3
+if(bar.text.pos == "on the right side of the bar") bar.text.pos <- 4
 %>
 
+<%
+if (horizontal) { %>
 
+<%=set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
+bp <- barplot(table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), ylab = ifelse(var.lab == "default", var_lab, var.lab), space=bar.space, log=ifelse(log.scale,"x",""), horiz=horizontal)
++text(as.numeric(table(var)), bp, labels=labels, pos=bar.text.pos, offset=0.5, col=bar.text.col) 
+%>
+
+<% } else { %>
+
+<%=
+set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
+bp <- barplot(table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var.lab == "default", var_lab, var.lab), space=bar.space, log=ifelse(log.scale,"x",""),horiz=horizontal)
++text(bp, as.numeric(table(var)), labels=labels, pos=bar.text.pos, offset=0.5, col=bar.text.col) %>
+<% } %>
 
