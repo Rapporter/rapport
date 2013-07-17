@@ -321,26 +321,6 @@ if(bar.text.pos == "on the left side of the bar") bar.text.pos <- 2
 if(bar.text.pos == "above the top of the bar") bar.text.pos <- 3
 if(bar.text.pos == "on the right side of the bar") bar.text.pos <- 4
 
-
-
-#if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
-#if (fontfamily != "sans") panderOptions('graph.fontfamily', fontfamily)
-#if (fontcolor != "black") panderOptions('graph.fontcolor', fontcolor)
-#if (fontsize != 12) panderOptions('graph.fontsize', fontsize)
-#if (grid != TRUE) panderOptions('graph.grid', grid)
-#if (grid.minor != TRUE) panderOptions('graph.grid.minor', grid.minor)
-#if (grid.color != "grey") panderOptions('graph.grid.color', grid.color)
-#if (grid.lty != "dashed") panderOptions('graph.grid.lty', grid.lty)
-#if (boxes != FALSE) panderOptions('graph.boxes', boxes)
-#if (legend.position != "right") panderOptions('graph.legend.position', legend.position)
-#if (background != "white") panderOptions('graph.background', background)
-#if (color.rnd != FALSE) panderOptions('graph.color.rnd', color.rnd)
-#if (axis.angle != 1) panderOptions('graph.axis.angle', axis.angle)
-#if (symbol != 1) panderOptions('graph.symbol', symbol)
-
-#if (colp != "Set1") panderOptions('graph.colors', cs)
-
-
 fc  <- fontcolor
 fbs <- fontsize
 bc  <- background
