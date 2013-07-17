@@ -7,8 +7,6 @@ meta:
   packages:
   - grDevices
   - RColorBrewer
-  example:
-  - 'rapport("barplot.tpl", data=ius2008, var="edu",plot.title.pos="outside the plot",horizontal=T)'
 inputs:
 - name: var
   label: Used Variable
@@ -302,27 +300,11 @@ inputs:
   standalone: yes
 head-->
 
+<%=
+evalsOptions('graph.unify', FALSE)
+%>
 
 <%=
-if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
-if (fontfamily != "sans") panderOptions('graph.fontfamily', fontfamily)
-if (fontcolor != "black") panderOptions('graph.fontcolor', fontcolor)
-if (fontsize != 12) panderOptions('graph.fontsize', fontsize)
-if (grid != TRUE) panderOptions('graph.grid', grid)
-if (grid.minor != TRUE) panderOptions('graph.grid.minor', grid.minor)
-if (grid.color != "grey") panderOptions('graph.grid.color', grid.color)
-if (grid.lty != "dashed") panderOptions('graph.grid.lty', grid.lty)
-if (boxes != FALSE) panderOptions('graph.boxes', boxes)
-if (legend.position != "right") panderOptions('graph.legend.position', legend.position)
-if (background != "white") panderOptions('graph.background', background)
-if (color.rnd != FALSE) panderOptions('graph.color.rnd', color.rnd)
-if (axis.angle != 1) panderOptions('graph.axis.angle', axis.angle)
-if (symbol != 1) panderOptions('graph.symbol', symbol)
-
-cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], colp)
-if (colp != "Set1") panderOptions('graph.colors', cs)
-
-
 var <- as.vector(na.omit(var))
 
 if (plot.title == "default")  main_lab <- sprintf('Barplot of %s',var.name)
@@ -338,21 +320,67 @@ if(bar.text.pos == "under the top of the bar") bar.text.pos <- 1
 if(bar.text.pos == "on the left side of the bar") bar.text.pos <- 2
 if(bar.text.pos == "above the top of the bar") bar.text.pos <- 3
 if(bar.text.pos == "on the right side of the bar") bar.text.pos <- 4
-%>
 
-<%
-if (horizontal) { %>
 
-<%=set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bp <- barplot(table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), ylab = ifelse(var.lab == "default", var_lab, var.lab), space=bar.space, log=ifelse(log.scale,"x",""), horiz=horizontal)
-+text(as.numeric(table(var)), bp, labels=labels, pos=bar.text.pos, offset=0.5, col=bar.text.col) 
-%>
 
-<% } else { %>
+#if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
+#if (fontfamily != "sans") panderOptions('graph.fontfamily', fontfamily)
+#if (fontcolor != "black") panderOptions('graph.fontcolor', fontcolor)
+#if (fontsize != 12) panderOptions('graph.fontsize', fontsize)
+#if (grid != TRUE) panderOptions('graph.grid', grid)
+#if (grid.minor != TRUE) panderOptions('graph.grid.minor', grid.minor)
+#if (grid.color != "grey") panderOptions('graph.grid.color', grid.color)
+#if (grid.lty != "dashed") panderOptions('graph.grid.lty', grid.lty)
+#if (boxes != FALSE) panderOptions('graph.boxes', boxes)
+#if (legend.position != "right") panderOptions('graph.legend.position', legend.position)
+#if (background != "white") panderOptions('graph.background', background)
+#if (color.rnd != FALSE) panderOptions('graph.color.rnd', color.rnd)
+#if (axis.angle != 1) panderOptions('graph.axis.angle', axis.angle)
+#if (symbol != 1) panderOptions('graph.symbol', symbol)
 
-<%=
+#if (colp != "Set1") panderOptions('graph.colors', cs)
+
+
+fc  <- fontcolor
+fbs <- fontsize
+bc  <- background
+gc  <- grid.color
+cex <- fbs/12
+cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], colp)
+if (color.rnd) {cs  <- sample(cs) }
+cb  <- cs[1]
+
+
+par(
+    family   = fontfamily,
+    cex      = cex, cex.axis = cex * 0.8, cex.lab = cex, cex.main = cex * 1.2, cex.sub = cex,
+    bg       = bc, 
+    las      = axis.angle,
+    lwd      = 2,
+    pch      = symbol,
+    col.axis = fc, col.lab = fc, col.main = fc, col.sub = fc)
++if (nomargin) {
+            par(mar = c(4.1, 4.3, 2.1, 0.1))
+        }
++if (boxes) {
+par(fg = background)
+}
++if (horizontal) {
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bp <- barplot(table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var.lab == "default", var_lab, var.lab), space=bar.space, log=ifelse(log.scale,"x",""),horiz=horizontal)
-+text(bp, as.numeric(table(var)), labels=labels, pos=bar.text.pos, offset=0.5, col=bar.text.col) %>
-<% } %>
+bp <- barplot(table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), ylab = ifelse(var.lab == "default", var_lab, var.lab), space=bar.space, log=ifelse(log.scale,"x",""), horiz=horizontal, plot=FALSE)
+barplot(table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), ylab = ifelse(var.lab == "default", var_lab, var.lab), space=bar.space, log=ifelse(log.scale,"x",""), horiz=horizontal, col=cb)
+text(as.numeric(table(var)), bp, labels=labels, pos=bar.text.pos, offset=0.5, col=bar.text.col) 
+} else {
+set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
+bp <- barplot(table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var.lab == "default", var_lab, var.lab), space=bar.space, log=ifelse(log.scale,"x",""),horiz=horizontal,  plot=FALSE)
+barplot(table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var.lab == "default", var_lab, var.lab), space=bar.space, log=ifelse(log.scale,"x",""),horiz=horizontal, col=cb)
+text(bp, as.numeric(table(var)), labels=labels, pos=bar.text.pos, offset=0.5, col=bar.text.col) 
+ }
++if (grid){
+grid(lty = grid.lty, col = grid.color, lwd = 0.5)
+}
++if (grid.minor) {
+pander:::add.minor.ticks(2, 2, grid = TRUE)
+}
 
+%>
