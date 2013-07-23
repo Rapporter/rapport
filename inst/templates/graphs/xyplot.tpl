@@ -4,9 +4,8 @@ meta:
   author: Rapporter team
   description: In this template Rapporter will present you a qqplot.
   email: ~
-  packages: ~
-  example:
-  - rapport
+  packages:
+  - RColorBrewer
 inputs:
 - name: x
   label: Used Variable
@@ -26,15 +25,26 @@ inputs:
     max: 1.0
   required: no
   standalone: no
-- name: main.lab
-  label: Main name of the plot
-  description: This is good to set the main name of the plot.
+- name: plot.title.pos
+  label: Position of the title of the plot
+  description: Specifying the position of the title of the plot
   class: character
-  value: default
-  matchable: no
+  options:
+  - on the plot
+  - outside the plot
+  - nowhere
+  value: nowhere
+  matchable: yes
   allow_multiple: no
   required: no
   standalone: yes
+- name: plot.title
+  label: Title of the plot
+  description: This is good to set the title of the plot.
+  class: character
+  value: default
+  matchable: no
+  required: no
 - name: x.lab
   label: X label
   description: This is the name of the X label on the plot.
@@ -219,12 +229,17 @@ if (color.rnd != FALSE) panderOptions('graph.color.rnd', color.rnd)
 if (axis.angle != 1) panderOptions('graph.axis.angle', axis.angle)
 if (symbol != 1) panderOptions('graph.symbol', symbol)
 
-if (main.lab == "default")  main_lab <- sprintf('Scatterplot of %s and %s',x.name, y.name)
+if (plot.title == "default") {
+main_lab <- sprintf('Scatterplot of %s and %s',x.name, y.name)
+} else {
+main_lab <- plot.title
+}
 if (x.lab == "default")  x_lab <- sprintf(x.label)
 if (y.lab == "default")  y_lab <- sprintf(y.label)
 
 x <- na.omit(x)
 y <- na.omit(y)
-xyplot(x ~ y, main = ifelse(main.lab == "default", main_lab, main.lab), ylab = ifelse(x.lab == "default", x_lab, x.lab), xlab = ifelse(y.lab == "default", y_lab, y.lab))
+set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
+xyplot(x ~ y, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), ylab = ifelse(x.lab == "default", x_lab, x.lab), xlab = ifelse(y.lab == "default", y_lab, y.lab))
 
 %>
