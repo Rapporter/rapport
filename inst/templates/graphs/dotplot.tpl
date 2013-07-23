@@ -8,7 +8,7 @@ meta:
   example:
   - rapport
 inputs:
-- name: var
+- name: var1
   label: Used Variable
   description: This is the variable that you will use here
   class: numeric
@@ -17,13 +17,18 @@ inputs:
     max: 3.0
   required: yes
   standalone: no
+- name: var2
+  label: Used Variable
+  description: This is the variable that you will use here
+  class: factor
+  required: yes
+  standalone: no
 - name: nomargin
   label: Graph no margin
   description: if trying to keep plots' margins at minimal
   class: logical
   value: TRUE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: fontfamily
@@ -46,7 +51,6 @@ inputs:
   class: character
   value: black
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: fontsize
@@ -55,7 +59,6 @@ inputs:
   class: integer
   value: 12
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid
@@ -64,7 +67,6 @@ inputs:
   class: logical
   value: TRUE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.minor
@@ -73,7 +75,6 @@ inputs:
   class: logical
   value: TRUE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.color
@@ -82,7 +83,6 @@ inputs:
   class: character
   value: grey
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.lty
@@ -108,7 +108,6 @@ inputs:
   class: logical
   value: FALSE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: legend.position
@@ -131,16 +130,62 @@ inputs:
   class: character
   value: white
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
+- name: colp
+  label: Color palette
+  description: Color paletter from colorbrewer.com
+  required: no
+  class: character
+  value: Set1
+  length:
+    min: 1.0
+    max: 1.0  
+  matchable: yes
+  standalone: yes
+  options:
+  - BrBG
+  - PiYG
+  - PRGn
+  - PuOr
+  - RdBu
+  - RdGy
+  - RdYlBu
+  - RdYlGn
+  - Spectral
+  - Accent
+  - Dark2
+  - Paired
+  - Pastel1
+  - Pastel2
+  - Set1
+  - Set2
+  - Set3
+  - Blues
+  - BuGn
+  - BuPu
+  - GnBu
+  - Greens
+  - Greys
+  - Oranges
+  - OrRd
+  - PuBu
+  - PuBuGn
+  - PuRd
+  - Purples
+  - RdPu
+  - Reds
+  - YlGn
+  - YlGnBu
+  - YlOrBr
+  - YlOrRd
+  allow_multiple: no
 - name: color.rnd
   label: Reordered colors
   description: Specifying if the palette should be reordered randomly before rendering each plot to get colorful images
   class: logical
   value: FALSE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: axis.angle
@@ -152,16 +197,14 @@ inputs:
     max: 4.0
   value: 1.0
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: symbol
-  label: Angle of the axis
+  label: Specifying a symbol
   description: Specifying a symbol
   class: integer
   value: 1
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 head-->
@@ -182,8 +225,11 @@ if (background != "white") panderOptions('graph.background', background)
 if (color.rnd != FALSE) panderOptions('graph.color.rnd', color.rnd)
 if (axis.angle != 1) panderOptions('graph.axis.angle', axis.angle)
 if (symbol != 1) panderOptions('graph.symbol', symbol)
+cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], colp)
+if (colp != "Set1") panderOptions('graph.colors', cs)
 
-vars <- na.omit(var)
-dotplot(var) 
+
+# vars <- na.omit(var) msik megoldás ez, mikor c-vel összekötök 2 db változót és azokat ábrázolom, úgy értelmesebb dolog jön ki
+dotplot(~var1|var2) 
 %>
 
