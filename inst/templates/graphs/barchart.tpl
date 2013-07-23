@@ -39,15 +39,15 @@ inputs:
   required: no
   standalone: yes
 - name: log.scale
-  label: Is the variable's scale logarithmic?
-  description: Is the variable's scale logarithmic?
+  label: Logarithmic scale?
+  description: Should be the variable presented on a logarithmic scale?
   class: logical
   value: FALSE
   required: no
   standalone: yes
 - name: log.num
   label: number of log
-  description: Number of the logarithm of the scale in the data
+  description: Number of the logarithmical scale
   class: integer
   value: 10
   required: no
@@ -338,65 +338,41 @@ cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], co
 if (colp != "Set1") panderOptions('graph.colors', cs)
 
 
+
 if (horizontal) {
+formula <- as.formula(fml("rownames(table(var))", "table(var)"))
+ylab <- ifelse(var.lab == "default", var_lab, var.lab)
+xlab <- bar.text.type
+pos <- 4
+} else {
+formula <- as.formula(fml("table(var)", "rownames(table(var))"))
+xlab <- ifelse(var.lab == "default", var_lab, var.lab)
+ylab <- bar.text.type
+pos <- 3
+}
+
 if (bar.text) {
-if (log.scale) {
-set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bc <- barchart(as.numeric(rownames(table(var))) ~ table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab=bar.text.type, ylab = ifelse(var.lab == "default", var_lab, var.lab), scales=list(x = list(log = log.num)), space=bar.space, horiz=horizontal, panel = function(...) {
+bar_text <- function(...) {
 args <- list(...)
-panel.text(args$x, args$y, labels=labels, pos=4, offset=0.5, col=bar.text.col)
-panel.barchart(...)
-})
-bc
-} else { # log.scale
-set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bc <- barchart(as.numeric(rownames(table(var))) ~ table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab=bar.text.type, ylab = ifelse(var.lab == "default", var_lab, var.lab), space=bar.space, horiz=horizontal, panel = function(...) {
-args <- list(...)
-panel.text(args$x, args$y, labels=labels, pos=4, offset=0.5, col=bar.text.col)
-panel.barchart(...)
-})
-bc
-} # log.scale
-} else { # bar.text
-if (log.scale){
-set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bc <- barchart(as.numeric(rownames(table(var))) ~ table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab=bar.text.type, ylab = ifelse(var.lab == "default", var_lab, var.lab), scales=list(x = list(log = log.num)), space=bar.space, horiz=horizontal)
-bc
+panel.text(args$x, args$y, labels=labels, pos=pos, offset=0.5, col=bar.text.col)
+panel.barchart(...) }
 } else {
-set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bc <- barchart(as.numeric(rownames(table(var))) ~ table(var), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab=bar.text.type, ylab = ifelse(var.lab == "default", var_lab, var.lab), space=bar.space, horiz=horizontal)
-bc
-} # log.scale
-} # bar.text
-} else { # horizontal
-if (bar.text) {
+bar_text <- lattice.getOption("panel.barchart")
+}
+
 if (log.scale) {
+if (horizontal) {
+log_axis <- list(x = list(log = log.num))
+} else {
+log_axis <- list(y = list(log = log.num))
+}
+} else {
+log_axis <- list()
+}
+
+
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bc <- barchart(table(var) ~ as.numeric(rownames(table(var))), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var.lab == "default", var_lab, var.lab), ylab=bar.text.type, scales=list(x = list(log = log.num)), space=bar.space, horiz=horizontal, panel = function(...) {
-args <- list(...)
-panel.text(args$x, args$y, labels=labels, pos=3, offset=0.5, col=bar.text.col)
-panel.barchart(...)
-})
+bc <- barchart(formula, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = xlab, ylab=ylab, scales=log_axis, space=bar.space, horiz=horizontal, panel = bar_text)
 bc
-} else {
-set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bc <- barchart(table(var) ~ as.numeric(rownames(table(var))), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var.lab == "default", var_lab, var.lab), ylab=bar.text.type, space=bar.space, horiz=horizontal, panel = function(...) {
-args <- list(...)
-panel.text(args$x, args$y, labels=labels, pos=3, offset=0.5, col=bar.text.col)
-panel.barchart(...)
-})
-bc 
-} # log.scale
-} else { # bar.text
-if (log.scale) {
-set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bc <- barchart(table(var) ~ as.numeric(rownames(table(var))), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var.lab == "default", var_lab, var.lab), ylab=bar.text.type, scales=list(x = list(log = log.num)), space=bar.space, horiz=horizontal)
-bc 
-} else {
-set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bc <- barchart(table(var) ~ as.numeric(rownames(table(var))), main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var.lab == "default", var_lab, var.lab), ylab=bar.text.type, space=bar.space, horiz=horizontal)
-bc 
-} # log.scale
-} # bar.text
-} # horizontal
+
 %>
