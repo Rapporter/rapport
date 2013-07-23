@@ -17,6 +17,45 @@ inputs:
     max: 1.0
   required: yes
   standalone: no
+- name: x.from
+  label: Start of X axis
+  description: This is the starting point of the X axis
+  class: numeric
+  length:
+    min: 1.0
+    max: 1.0
+  required: no
+  standalone: yes
+- name: x.to
+  label: End point of X axis
+  description: This is the end point of the X axis
+  class: numeric
+  length:
+    min: 1.0
+    max: 1.0
+  required: no
+  standalone: yes
+- name: extend
+  label: extend the X axis
+  description: How much you want to extend the X axis? (With the values of the used variable)
+  class: numeric
+  length:
+    min: 1.0
+    max: 1.0
+  required: no
+  standalone: yes
+- name: hist.type
+  label: Type of the histogram
+  description: Indicating the type of histogram that is to be drawn
+  class: character
+  options:
+  - percent
+  - count
+  - density
+  value: percent
+  matchable: yes
+  required: no
+  standalone: yes
 - name: main.lab
   label: Main name of the plot
   description: This is good to set the main name of the plot.
@@ -49,7 +88,6 @@ inputs:
   class: logical
   value: TRUE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: fontfamily
@@ -72,7 +110,6 @@ inputs:
   class: character
   value: black
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: fontsize
@@ -81,7 +118,6 @@ inputs:
   class: integer
   value: 12
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid
@@ -90,7 +126,6 @@ inputs:
   class: logical
   value: TRUE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.minor
@@ -99,7 +134,6 @@ inputs:
   class: logical
   value: TRUE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.color
@@ -108,7 +142,6 @@ inputs:
   class: character
   value: grey
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.lty
@@ -134,7 +167,6 @@ inputs:
   class: logical
   value: FALSE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: legend.position
@@ -157,16 +189,62 @@ inputs:
   class: character
   value: white
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
+- name: colp
+  label: Color palette
+  description: Color paletter from colorbrewer.com
+  required: no
+  class: character
+  value: Set1
+  length:
+    min: 1.0
+    max: 1.0  
+  matchable: yes
+  standalone: yes
+  options:
+  - BrBG
+  - PiYG
+  - PRGn
+  - PuOr
+  - RdBu
+  - RdGy
+  - RdYlBu
+  - RdYlGn
+  - Spectral
+  - Accent
+  - Dark2
+  - Paired
+  - Pastel1
+  - Pastel2
+  - Set1
+  - Set2
+  - Set3
+  - Blues
+  - BuGn
+  - BuPu
+  - GnBu
+  - Greens
+  - Greys
+  - Oranges
+  - OrRd
+  - PuBu
+  - PuBuGn
+  - PuRd
+  - Purples
+  - RdPu
+  - Reds
+  - YlGn
+  - YlGnBu
+  - YlOrBr
+  - YlOrRd
+  allow_multiple: no
 - name: color.rnd
   label: Reordered colors
   description: Specifying if the palette should be reordered randomly before rendering each plot to get colorful images
   class: logical
   value: FALSE
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: axis.angle
@@ -178,16 +256,14 @@ inputs:
     max: 4.0
   value: 1.0
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: symbol
-  label: Angle of the axis
+  label: Specifying a symbol
   description: Specifying a symbol
   class: integer
   value: 1
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 head-->
@@ -207,10 +283,13 @@ if (background != "white") panderOptions('graph.background', background)
 if (color.rnd != FALSE) panderOptions('graph.color.rnd', color.rnd)
 if (axis.angle != 1) panderOptions('graph.axis.angle', axis.angle)
 if (symbol != 1) panderOptions('graph.symbol', symbol)
+cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], colp)
+if (colp != "Set1") panderOptions('graph.colors', cs)
+
 
 if (main.lab == "default")  main_lab <- sprintf('Histogram of %s',var.name)
 if (x.lab == "default")  x_lab <- sprintf(var.label)
 
 vars <- na.omit(var)
-hist(var, main = ifelse(main.lab == "default", main_lab, main.lab), xlab = ifelse(x.lab == "default", x_lab, x.lab), freq=fre) 
+histogram(var, from=x.from, to=x.to, cut=extend, main = ifelse(main.lab == "default", main_lab, main.lab), xlab = ifelse(x.lab == "default", x_lab, x.lab), freq=fre) 
 %>
