@@ -15,24 +15,6 @@ inputs:
     max: 1.0
   required: yes
   standalone: no
-- name: x.from
-  label: Start of X axis
-  description: This is the starting point of the X axis
-  class: numeric
-  length:
-    min: 1.0
-    max: 1.0
-  required: no
-  standalone: yes
-- name: x.to
-  label: End point of X axis
-  description: This is the end point of the X axis
-  class: numeric
-  length:
-    min: 1.0
-    max: 1.0
-  required: no
-  standalone: yes
 - name: extend
   label: extend the X axis
   description: How much you want to extend the X axis? (With the values of the used variable)
@@ -270,6 +252,6 @@ if (main.lab == "default")  main_lab <- sprintf('Densityplot of %s',var.name)
 if (x.lab == "default")  x_lab <- sprintf(var.label)
 
 vars <- na.omit(var)
-densityplot(var, from=x.from, to=x.to, cut=extend, main = ifelse(main.lab == "default", main_lab, main.lab), xlab = ifelse(x.lab == "default", x_lab, x.lab)) 
+densityplot(var, cut=extend, main = ifelse(main.lab == "default", main_lab, main.lab), xlab = ifelse(x.lab == "default", x_lab, x.lab)) 
 
 %>
