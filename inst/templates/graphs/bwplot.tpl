@@ -4,7 +4,8 @@ meta:
   author: Rapporter team
   description: In this template Rapporter will present you boxplot.
   email: ~
-  packages: ~
+  packages:
+  - RColorBrewer
 inputs:
 - name: var1
   label: Used Variable 1
@@ -24,13 +25,25 @@ inputs:
     max: 1.0
   required: no
   standalone: no
-- name: main.lab
-  label: Main name of the plot
-  description: This is good to set the main name of the plot.
+- name: plot.title.pos
+  label: Position of the title of the plot
+  description: Specifying the position of the title of the plot
+  class: character
+  options:
+  - on the plot
+  - outside the plot
+  - nowhere
+  value: nowhere
+  matchable: yes
+  allow_multiple: no
+  required: no
+  standalone: yes
+- name: plot.title
+  label: Title of the plot
+  description: This is good to set the title of the plot.
   class: character
   value: default
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: x.lab
@@ -260,18 +273,29 @@ if (colp != "Set1") panderOptions('graph.colors', cs)
 var1 <- na.omit(var1)
 if (x.lab == "default")  x_lab <- sprintf(var1.label)
 
+
 if (length(var2) == 0) {
-if (main.lab == "default")  main_lab <- sprintf('Bwplot of %s',var1.name)
+if (plot.title == "default")  {
+main_lab <- sprintf('Boxplot of %s',var.name)
 } else {
-if (main.lab == "default") main_lab <- sprintf('Bwplot of %s and %s',var1.name, var2.name)
+main_lab <- plot.title
+}
+} else {
+if (plot.title == "default") { 
+main_lab <- sprintf('Bwplot of %s and %s',var1.name, var2.name)
+} else {
+main_lab <- plot.title
+}
 var2 <- na.omit(var2)
 if (y.lab == "default")  y_lab <- sprintf(var2.label)
 }
 
 if (length(var2) == 0) {
-suppressWarnings(bwplot(var1, main = ifelse(main.lab == "default", main_lab, main.lab), xlab = ifelse(y.lab == "default", x_lab, x.lab)))
+set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
+suppressWarnings(bwplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(y.lab == "default", x_lab, x.lab)))
 } else {
-suppressWarnings(bwplot(var1 ~ var2, main = ifelse(main.lab == "default", main_lab, main.lab), xlab = ifelse(y.lab == "default", y_lab, y.lab), ylab = ifelse(x.lab == "default", x_lab, x.lab)))
+set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
+suppressWarnings(bwplot(var1 ~ var2, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(y.lab == "default", y_lab, y.lab), ylab = ifelse(x.lab == "default", x_lab, x.lab)))
 }
 %>
 
