@@ -4,9 +4,8 @@ meta:
   author: Rapporter team
   description: In this template Rapporter will present you densityplot.
   email: ~
-  packages: ~
-  example:
-  - rapport
+  packages:
+  - RColorBrewer
 inputs:
 - name: var1
   label: Used Variable
@@ -23,6 +22,27 @@ inputs:
   class: factor
   required: yes
   standalone: no
+- name: plot.title.pos
+  label: Position of the title of the plot
+  description: Specifying the position of the title of the plot
+  class: character
+  options:
+  - on the plot
+  - outside the plot
+  - nowhere
+  value: nowhere
+  matchable: yes
+  allow_multiple: no
+  required: no
+  standalone: yes
+- name: plot.title
+  label: Title of the plot
+  description: This is good to set the title of the plot.
+  class: character
+  value: default
+  matchable: no
+  required: no
+  standalone: yes
 - name: nomargin
   label: Graph no margin
   description: if trying to keep plots' margins at minimal
@@ -228,8 +248,14 @@ if (symbol != 1) panderOptions('graph.symbol', symbol)
 cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], colp)
 if (colp != "Set1") panderOptions('graph.colors', cs)
 
+if (plot.title == "default")  {
+main_lab <- sprintf('Dotplot of %s and %s',var1.name, var2.name)
+} else {
+main_lab <- plot.title
+}
 
 # vars <- na.omit(var) msik megoldás ez, mikor c-vel összekötök 2 db változót és azokat ábrázolom, úgy értelmesebb dolog jön ki
-dotplot(~var1|var2) 
+set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
+dotplot(~var1|var2, main = ifelse(plot.title.pos == "on the plot", main_lab, "")) 
 %>
 
