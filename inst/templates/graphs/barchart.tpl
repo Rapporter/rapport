@@ -399,9 +399,4 @@ bc
 } # log.scale
 } # bar.text
 } # horizontal
-
-# Without plot:
-# tpl.export(rapport('barchart130721.tpl', data=ius2008, var='age', bar.text.type="Percentage", horizontal=F, bar.text=T, log.scale=T))
-# meg 
-# tpl.export(rapport('barchart130721.tpl', data=ius2008, var='age', bar.text.type="Percentage", horizontal=F, bar.text=F, log.scale=T))
 %>
