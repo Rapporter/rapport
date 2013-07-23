@@ -4,7 +4,8 @@ meta:
   author: Rapporter team
   description: In this template Rapporter will present you densityplot.
   email: ~
-  packages: ~
+  packages:
+  - RColorBrewer
 inputs:
 - name: var
   label: Used Variable
@@ -24,13 +25,25 @@ inputs:
     max: 1.0
   required: no
   standalone: yes
-- name: main.lab
-  label: Main name of the plot
-  description: This is good to set the main name of the plot.
+- name: plot.title.pos
+  label: Position of the title of the plot
+  description: Specifying the position of the title of the plot
+  class: character
+  options:
+  - on the plot
+  - outside the plot
+  - nowhere
+  value: nowhere
+  matchable: yes
+  allow_multiple: no
+  required: no
+  standalone: yes
+- name: plot.title
+  label: Title of the plot
+  description: This is good to set the title of the plot.
   class: character
   value: default
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: x.lab
@@ -248,10 +261,15 @@ cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], co
 if (colp != "Set1") panderOptions('graph.colors', cs)
 
 
-if (main.lab == "default")  main_lab <- sprintf('Densityplot of %s',var.name)
+if (plot.title == "default")  {
+main_lab <- sprintf('Densityplot of %s',var.name)
+} else {
+main_lab <- plot.title
+}
 if (x.lab == "default")  x_lab <- sprintf(var.label)
 
 vars <- na.omit(var)
-densityplot(var, cut=extend, main = ifelse(main.lab == "default", main_lab, main.lab), xlab = ifelse(x.lab == "default", x_lab, x.lab)) 
+set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
+densityplot(var, cut=extend, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab)) 
 
 %>
