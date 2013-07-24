@@ -10,15 +10,6 @@ inputs:
 - name: var1
   label: Used Variable
   description: This is the variable that you will use here
-  class: numeric
-  length:
-    min: 1.0
-    max: 3.0
-  required: yes
-  standalone: no
-- name: var2
-  label: Used Variable
-  description: This is the variable that you will use here
   class: factor
   required: yes
   standalone: no
@@ -41,6 +32,20 @@ inputs:
   class: character
   value: default
   matchable: no
+  required: no
+  standalone: yes
+- name: log.scale
+  label: Logarithmic scale?
+  description: Should be the variable presented on a logarithmic scale?
+  class: logical
+  value: FALSE
+  required: no
+  standalone: yes
+- name: log.num
+  label: number of log
+  description: Number of the logarithmical scale
+  class: integer
+  value: 10
   required: no
   standalone: yes
 - name: nomargin
@@ -249,13 +254,18 @@ cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], co
 if (colp != "Set1") panderOptions('graph.colors', cs)
 
 if (plot.title == "default")  {
-main_lab <- sprintf('Dotplot of %s and %s',var1.name, var2.name)
+main_lab <- sprintf('Dotplot of %s',var1.name)
 } else {
 main_lab <- plot.title
 }
 
-# vars <- na.omit(var) msik megoldás ez, mikor c-vel összekötök 2 db változót és azokat ábrázolom, úgy értelmesebb dolog jön ki
+if (log.scale) {
+log_axis <- list(x = list(log = log.num))
+} else {
+log_axis <- list()
+}
+
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-dotplot(~var1|var2, main = ifelse(plot.title.pos == "on the plot", main_lab, "")) 
+dotplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), scales=log_axis) 
 %>
 
