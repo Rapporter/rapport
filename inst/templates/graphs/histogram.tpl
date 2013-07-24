@@ -16,6 +16,12 @@ inputs:
     max: 1.0
   required: yes
   standalone: no
+- name: col.num
+  labels: Number of columns
+  description: You can set here the number of the columns will be produced
+  class: integer
+  required: no
+  standalone: yes
 - name: extend
   label: extend the X axis
   description: How much you want to extend the X axis? (With the values of the used variable)
@@ -76,11 +82,11 @@ inputs:
   allow_multiple: no
   required: no
   standalone: yes
-- name: fre
-  label: Frequencies or percentages
-  description: If TRUE, the histogram graphic is a representation of frequencies
+- name: horizontal
+  label: Horizontal bars
+  description: If TRUE, the bars are drawn horizontally with the first at the bottom
   class: logical
-  value: TRUE
+  value: FALSE
   matchable: no
   required: no
   standalone: yes
@@ -298,5 +304,6 @@ if (x.lab == "default")  x_lab <- sprintf(var.label)
 
 vars <- na.omit(var)
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-histogram(var, cut=extend, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab), freq=fre) 
+suppressWarnings(histogram(var, breaks=col.num, cut=extend, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab), type=hist.type))
+
 %>
