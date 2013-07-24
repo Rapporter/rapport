@@ -46,22 +46,36 @@ inputs:
   matchable: no
   required: no
   standalone: yes
-- name: x.lab
-  label: X label
-  description: This is the name of the X label on the plot.
+- name: var1.lab
+  label: var1 label
+  description: This is the name of the var1 label on the plot.
   class: character
   value: default
   matchable: no
   allow_multiple: no
   required: no
   standalone: yes
-- name: y.lab
-  label: Y label
-  description: This is the name of the Y label on the plot.
+- name: var2.lab
+  label: var2 label
+  description: This is the name of the var2 label on the plot.
   class: character
   value: default
   matchable: no
   allow_multiple: no
+  required: no
+  standalone: yes
+- name: log.scale
+  label: Logarithmic scale?
+  description: Should be the variable 2 presented on a logarithmic scale?
+  class: logical
+  value: FALSE
+  required: no
+  standalone: yes
+- name: log.num
+  label: number of log
+  description: Number of the logarithmical scale
+  class: integer
+  value: 10
   required: no
   standalone: yes
 - name: nomargin
@@ -271,12 +285,12 @@ if (colp != "Set1") panderOptions('graph.colors', cs)
 
 
 var1 <- na.omit(var1)
-if (x.lab == "default")  x_lab <- sprintf(var1.label)
+if (var1.lab == "default")  var1_lab <- sprintf(var1.label)
 
 
 if (length(var2) == 0) {
 if (plot.title == "default")  {
-main_lab <- sprintf('Boxplot of %s',var.name)
+main_lab <- sprintf('Boxplot of %s',var1.name)
 } else {
 main_lab <- plot.title
 }
@@ -287,15 +301,21 @@ main_lab <- sprintf('Bwplot of %s and %s',var1.name, var2.name)
 main_lab <- plot.title
 }
 var2 <- na.omit(var2)
-if (y.lab == "default")  y_lab <- sprintf(var2.label)
+if (var2.lab == "default")  var2_lab <- sprintf(var2.label)
+}
+
+if (log.scale) {
+log_axis <- list(x = list(log = log.num))
+} else {
+log_axis <- list()
 }
 
 if (length(var2) == 0) {
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-suppressWarnings(bwplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(y.lab == "default", x_lab, x.lab)))
+suppressWarnings(bwplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var1_lab, var1.lab), scales=log_axis))
 } else {
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-suppressWarnings(bwplot(var1 ~ var2, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(y.lab == "default", y_lab, y.lab), ylab = ifelse(x.lab == "default", x_lab, x.lab)))
+suppressWarnings(bwplot(var1 ~ var2, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var2_lab, var2.lab), ylab = ifelse(var1.lab == "default", var1_lab, var1.lab), scales=log_axis))
 }
 %>
 
