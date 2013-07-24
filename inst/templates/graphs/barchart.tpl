@@ -342,12 +342,12 @@ if (colp != "Set1") panderOptions('graph.colors', cs)
 if (horizontal) {
 formula <- as.formula(fml("rownames(table(var))", "table(var)"))
 ylab <- ifelse(var.lab == "default", var_lab, var.lab)
-xlab <- bar.text.type
+xlab <- "Frequency"
 pos <- 4
 } else {
 formula <- as.formula(fml("table(var)", "rownames(table(var))"))
 xlab <- ifelse(var.lab == "default", var_lab, var.lab)
-ylab <- bar.text.type
+ylab <- "Frequency"
 pos <- 3
 }
 
