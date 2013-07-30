@@ -5,40 +5,29 @@ meta:
   description: In this template Rapporter will present you Wilcoxon test.
   email: ~
   packages: ~
-  example:
-  - rapport
 inputs:
-- name: dep
-  label: Dependent Variable
-  description: This is the dependent variable which will be used here
+- name: X
+  label: X Variable
+  description: This is the first variable which will be used here
   class: numeric
   length:
     min: 1.0
-    max: 50.0
-  limit:
-    min: 1.0
-    max: 50.0
+    max: 1.0
   required: yes
   standalone: no
-- name: indep
+- name: Y
   label: Independent Variable
-  description: This is the independent variable which will be used here
+  description: This is the second variable which will be used here
   class: numeric
   length:
     min: 1.0
-    max: 50.0
-  limit:
-    min: 1.0
-    max: 50.0
+    max: 1.0
   required: yes
   standalone: no
 - name: alter
   label: Alternative hypothesis
   description: 
   class: character
-  length:
-    min: 1.0
-    max: 1.0
   options:
   - two.sided
   - less
@@ -52,15 +41,16 @@ head-->
 
 # Introduction
 
-[Wilcoxon test](http://en.wikipedia.org/wiki/Wilcoxon_test) is a non-parametric statistical test which can be an alternative of the  paired Student's t-test, t-test for matched pairs, or the t-test for dependent samples when the population cannot be assumed to be normally distributed.
+[Wilcoxon test](http://en.wikipedia.org/wiki/Wilcoxon_test) (or its equivalent 
+the Mann-Whitney U test)  is a non-parametric statistical test which can be an alternative of the  paired Student's t-test, t-test for matched pairs, or the t-test for dependent samples. When the Wilcoxon test is used to compare two samples of values which are not paired, it makes no assumption about the shape of the distribution, only that (as null hypothesis) the distribution from which X is sampled is the same as the distribution from which Y is sampled. The null hypothesis states that the variances of the variables are equal.
 
 <%=
-set.caption(sprintf('Wilcoxon rank sum test with continuity correction %s and %s', dep.name, indep.name))
-wilc <- wilcox.test(dep,indep,alter)
+set.caption(sprintf('Wilcoxon rank sum test with continuity correction %s and %s', X.label, Y.label))
+suppressWarnings(wilc <- wilcox.test(X,Y,alter))
 wilc
 p.v <- wilc$p.value
 %>
 
-As you can see in the table the the p-value of the Wilcoxon test is <%=p.v%>, thus we can <%= ifelse(p.v < 0.05,"reject", "accept")%> the assumption of the null hypothesis.
+As you can see in the table the the p-value of the Wilcoxon test is <%=p.v%>, thus we can <%= ifelse(p.v > 0.05,"reject", "accept")%> the assumption of the null hypothesis, so we can say that statistically the variances are<%= ifelse(p.v > 0.05," not", "")%> equal.
 
 
