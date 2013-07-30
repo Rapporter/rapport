@@ -25,6 +25,44 @@ inputs:
     max: 1.0
   required: no
   standalone: no
+- name: x.lab
+  label: X label
+  description: This is the name of the X label on the plot.
+  class: character
+  value: default
+  matchable: no
+  allow_multiple: no
+  required: no
+  standalone: yes
+- name: y.lab
+  label: Y label
+  description: This is the name of the Y label on the plot.
+  class: character
+  value: default
+  matchable: no
+  allow_multiple: no
+  required: no
+  standalone: yes
+- name: plot.title
+  label: Title of the plot
+  description: This is good to set the title of the plot.
+  class: character
+  value: default
+  matchable: no
+  required: no
+- name: plot.title.pos
+  label: Position of the title of the plot
+  description: Specifying the position of the title of the plot
+  class: character
+  options:
+  - on the plot
+  - outside the plot
+  - nowhere
+  value: on the plot
+  matchable: yes
+  allow_multiple: no
+  required: no
+  standalone: yes
 - name: lmline
   label: Regression line
   description: Should be a regression line written on the plot?
@@ -49,8 +87,8 @@ inputs:
   required: no
   standalone: yes
 - name: log.num.x
-  label: number of log x
-  description: Number of the logarithmical scale of x
+  label: power of log x
+  description: Power of the logarithmical scale of x
   class: integer
   value: 10
   required: no
@@ -63,48 +101,10 @@ inputs:
   required: no
   standalone: yes
 - name: log.num.y
-  label: number of log y
-  description: Number of the logarithmical scale of y
+  label: power of log y
+  description: Power of the logarithmical scale of y
   class: integer
   value: 10
-  required: no
-  standalone: yes
-- name: plot.title.pos
-  label: Position of the title of the plot
-  description: Specifying the position of the title of the plot
-  class: character
-  options:
-  - on the plot
-  - outside the plot
-  - nowhere
-  value: nowhere
-  matchable: yes
-  allow_multiple: no
-  required: no
-  standalone: yes
-- name: plot.title
-  label: Title of the plot
-  description: This is good to set the title of the plot.
-  class: character
-  value: default
-  matchable: no
-  required: no
-- name: x.lab
-  label: X label
-  description: This is the name of the X label on the plot.
-  class: character
-  value: default
-  matchable: no
-  allow_multiple: no
-  required: no
-  standalone: yes
-- name: y.lab
-  label: Y label
-  description: This is the name of the Y label on the plot.
-  class: character
-  value: default
-  matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: nomargin
@@ -112,8 +112,6 @@ inputs:
   description: if trying to keep plots' margins at minimal
   class: logical
   value: TRUE
-  matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: fontfamily
@@ -136,7 +134,6 @@ inputs:
   class: character
   value: black
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: fontsize
@@ -145,7 +142,6 @@ inputs:
   class: integer
   value: 12
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid
@@ -153,8 +149,6 @@ inputs:
   description: If a grid should be added to the plot
   class: logical
   value: TRUE
-  matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.minor
@@ -162,8 +156,6 @@ inputs:
   description: If a miner grid should be also rendered
   class: logical
   value: TRUE
-  matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.color
@@ -172,7 +164,6 @@ inputs:
   class: character
   value: grey
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: grid.lty
@@ -197,8 +188,6 @@ inputs:
   description: If to render a border around of plot (and e.g. around strip)
   class: logical
   value: FALSE
-  matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: legend.position
@@ -221,16 +210,61 @@ inputs:
   class: character
   value: white
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
+- name: colp
+  label: Color palette
+  description: Color paletter from colorbrewer.com
+  required: no
+  class: character
+  value: Set1
+  length:
+    min: 1.0
+    max: 1.0  
+  matchable: yes
+  standalone: yes
+  options:
+  - BrBG
+  - PiYG
+  - PRGn
+  - PuOr
+  - RdBu
+  - RdGy
+  - RdYlBu
+  - RdYlGn
+  - Spectral
+  - Accent
+  - Dark2
+  - Paired
+  - Pastel1
+  - Pastel2
+  - Set1
+  - Set2
+  - Set3
+  - Blues
+  - BuGn
+  - BuPu
+  - GnBu
+  - Greens
+  - Greys
+  - Oranges
+  - OrRd
+  - PuBu
+  - PuBuGn
+  - PuRd
+  - Purples
+  - RdPu
+  - Reds
+  - YlGn
+  - YlGnBu
+  - YlOrBr
+  - YlOrRd
+  allow_multiple: no
 - name: color.rnd
   label: Reordered colors
   description: Specifying if the palette should be reordered randomly before rendering each plot to get colorful images
   class: logical
   value: FALSE
-  matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: axis.angle
@@ -242,16 +276,14 @@ inputs:
     max: 4.0
   value: 1.0
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: symbol
-  label: Angle of the axis
+  label: Specifying a symbol
   description: Specifying a symbol
   class: integer
   value: 1
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 head-->
@@ -294,8 +326,9 @@ log_axis <- list()
 
 if (lmline) {
 lm_line <- function(...) {
-                 panel.xyplot(...)
-                 panel.lmline(..., col=lmline.col) }
+panel.xyplot(...)
+panel.lmline(..., col=lmline.col) 
+}
 } else {
 lm_line <- lattice.getOption("panel.xyplot")
 }

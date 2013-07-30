@@ -25,6 +25,14 @@ inputs:
     max: 1.0
   required: no
   standalone: yes
+- name: plot.title
+  label: Title of the plot
+  description: This is good to set the title of the plot.
+  class: character
+  value: default
+  matchable: no
+  required: no
+  standalone: yes
 - name: plot.title.pos
   label: Position of the title of the plot
   description: Specifying the position of the title of the plot
@@ -33,17 +41,9 @@ inputs:
   - on the plot
   - outside the plot
   - nowhere
-  value: nowhere
+  value: on the plot
   matchable: yes
   allow_multiple: no
-  required: no
-  standalone: yes
-- name: plot.title
-  label: Title of the plot
-  description: This is good to set the title of the plot.
-  class: character
-  value: default
-  matchable: no
   required: no
   standalone: yes
 - name: x.lab
@@ -60,7 +60,6 @@ inputs:
   description: if trying to keep plots' margins at minimal
   class: logical
   value: TRUE
-  matchable: no
   required: no
   standalone: yes
 - name: fontfamily
@@ -98,7 +97,6 @@ inputs:
   description: If a grid should be added to the plot
   class: logical
   value: TRUE
-  matchable: no
   required: no
   standalone: yes
 - name: grid.minor
@@ -106,7 +104,6 @@ inputs:
   description: If a miner grid should be also rendered
   class: logical
   value: TRUE
-  matchable: no
   required: no
   standalone: yes
 - name: grid.color
@@ -139,7 +136,6 @@ inputs:
   description: If to render a border around of plot (and e.g. around strip)
   class: logical
   value: FALSE
-  matchable: no
   required: no
   standalone: yes
 - name: legend.position
@@ -217,7 +213,6 @@ inputs:
   description: Specifying if the palette should be reordered randomly before rendering each plot to get colorful images
   class: logical
   value: FALSE
-  matchable: no
   required: no
   standalone: yes
 - name: axis.angle
