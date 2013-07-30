@@ -6,8 +6,6 @@ meta:
   email: ~
   packages:
   - mclust
-  example:
-  - rapport
 inputs:
 - name: vars
   label: Used Variables
@@ -21,16 +19,6 @@ inputs:
     max: 50.0
   required: yes
   standalone: no
-- name: dist
-  label : Distance matrix
-  description: Is the data a distance matrix?
-  class: logical
-  length:
-    min: 1.0
-    max: 1.0
-  value: no
-  required: no
-  standalone: yes
 - name: dist.mat
   label : Distance Matrix
   description: Is your data a Distance matrix?
@@ -96,18 +84,16 @@ plclust(HCA, labels=F, main="HCA", xlab="Hierarchical Cluster Analysis",sub="")
 We can say that <%=length(which(HCA$height == 0))%> observations have the same values on the used variables, so they were joined in the first <%=length(which(HCA$height == 0))%> round. After that <%=which(HCA$merge[,1] >= 0)[1]-length(which(HCA$height == 0))%> times there were only made clusters with 2 observations, the first cluster that contain 3 was made in the round <%=which(HCA$merge[,1] >= 0)[1]%>.
 
 
-<%=options(show.error.messages = FALSE)
-try(mod1 <-  Mclust(d))%>
+<%= mod1 <-  suppressWarnings(Mclust(variables))%>
 
 According to the BIC for EM initialized by hierarchical clustering for parameterized Gaussian mixture models, the optimum numbers of the clusters are <%=summary(mod1)$G%>.
 
 <% if (summary(mod1)$G != clust.num) { %>
-Let's see how the Dendogram looks like when we the optimal number of the clusters plotted in it.
+  Let's see how the Dendogram looks like when we the optimal number of the clusters plotted in it.
 <%=plclust(HCA, labels=F, main="HCA", xlab="Hierarchical Cluster Analysis",sub="")
 +rect.hclust(HCA, k=summary(mod1)$G, border="red")%>
 
 <% } %>
-
 
 
 
