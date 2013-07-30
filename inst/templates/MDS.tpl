@@ -5,9 +5,6 @@ meta:
   description: In this template Rapporter will present you Multidimensional Scaling.
   email: ~
   packages: ~
-  dataRequired:  TRUE
-  example:
-  - rapport
 inputs:
 - name: vars
   label: Used Variables
@@ -16,14 +13,17 @@ inputs:
   length:
     min: 1.0
     max: 10.0
-  limit:
-    min: 1.0
-    max: 50.0
   required: yes
+  standalone: no
+- name: id
+  label: Labels of the cases
+  description: On the plot, these names will be shown as the labels of the cases
+  class: ~
+  required: no
   standalone: no
 - name: dist.mat
   label : Distance Matrix
-  description: Is your data a Distance matrix?
+  description: Do you need to transform your data to a Distance matrix?
   class: logical
   length:
     min: 1.0
@@ -68,7 +68,15 @@ head-->
 
 Below you can see a plot, that presents you the distance between the observations, which was calculated based on <%=rp.label(vars)%>.
 
-<%=
+<%= if (!is.null(id)) {
+id <- as.character(id)
+id[which(is.na(id))] <- "noname"
+dd <- duplicated(id)
+whichisduplicated <- apply(data.frame(need = names(table(id[dd]))), 1, function(i) which(id==i))
+if (class(whichisduplicated)!="list") whichisduplicated <- list('1'=whichisduplicated)
+lapply(whichisduplicated, function(i) id[i] <<- paste(id[i], 1:length(i), sep="_") )
+rownames(vars) <- id
+}
 variables <- scale(na.omit(vars))
 if (dist.mat) {
 d <- dist(variables) 
@@ -89,15 +97,15 @@ minind <- which(distance == min(distance[distance!=min(distance)]), arr.ind = TR
 
 <%=colnames(distance)[which(colSums(distance) == max(colSums(distance)))] %> differs the most from the others, and <%=colnames(distance)[which(colSums(distance) == min(colSums(distance)))]%> seems to be the most "common" observation.
 
-
-<%=rownames(distance)[c(maxind[1],maxind[2])]%> are the "furthest", <%=rownames(distance)[c(minind[1],minind[2])]%> are the "nearest" to each other.
-
-They are the extreme outsiders, now let's see which observations can be said statistically far/similar to each other in general. In the brackets you can see the amount of the standard deviations of the distance between two observations. The <%=max.dist.num%> pairs with the biggest difference and the <%=min.dist.num%> pairs with the smallest difference will be presented.
-
 <%=
 distance[upper.tri(distance, diag = T)] <- NA
 h <- which(distance >= sort(distance,decreasing=T)[max.dist.num],arr.ind=T)
+j <- which(distance <= sort(distance,decreasing=F)[min.dist.num], arr.ind=T)
 %>
+
+<%=paste0(p(c(rownames(distance)[h[1,1]], colnames(distance)[h[1,2]])), ' (', round(distance[h[1, 1], h[1, 2]], 2), ')')%> are the "furthest", <%=paste0(p(c(rownames(distance)[j[1,1]], colnames(distance)[j[1,2]])), ' (', round(distance[j[1, 1], j[1, 2]], 2), ')') %> are the "nearest" to each other.
+
+They are the extreme outsiders, now let's see which observations can be said statistically far/similar to each other in general. In the brackets you can see the amount of the standard deviations of the distance between two observations. The <%=max.dist.num%> pairs with the biggest difference and the <%=min.dist.num%> pairs with the smallest difference will be presented.
 
 <%if (nrow(h) <= max.dist.num) { %>
 
@@ -111,21 +119,18 @@ paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(distance)[
 There are <%=nrow(h)%> observations which are the most similar, and equal in the same time, that is a higher number than the wanted <%=max.dist.num%>, thus will not be reported one-by-one. Set <%=nrow(h)%> as parameter <%=rp.name(max.dist.num)%> to check the pairs if you are interested.
 <%}%>
 
-<%=
-h <- which(distance <= sort(distance,decreasing=F)[min.dist.num], arr.ind=T)
-%>
  
-<%if (nrow(h) <= min.dist.num) { %>
+<%if (nrow(j) <= min.dist.num) { %>
 
 According to the used variables (<%=rp.name(vars)%>) the <%=min.dist.num%> nearest pair of observations are:
 
 <%=
-paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(distance)[h[i,1]], colnames(distance)[h[i,2]])), ' (', round(distance[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')
+paste(pander.return(lapply(1:nrow(j), function(i) paste0(p(c(rownames(distance)[j[i,1]], colnames(distance)[j[i,2]])), ' (', round(distance[j[i, 1], j[i, 2]], 2), ')'))), collapse = '\n')
 %>
 
 <%} else {%>
 
-There are <%=nrow(h)%> observations which are the most similar and equal in the same time, that is a higher number than the wanted <%=min.dist.num%>, thus will not be reported one-by-one. Set <%=nrow(h)%> as parameter (<%=rp.name(min.dist.num)%>) to check the pairs if you are interested.
+There are <%=nrow(j)%> observations which are the most similar and equal in the same time, that is a higher number than the wanted <%=min.dist.num%>, thus will not be reported one-by-one. Set <%=nrow(j)%> as parameter (<%=rp.name(min.dist.num)%>) to check the pairs if you are interested.
 <%}%>
 
 
