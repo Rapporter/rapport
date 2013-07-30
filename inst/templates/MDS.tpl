@@ -5,6 +5,8 @@ meta:
   description: In this template Rapporter will present you Multidimensional Scaling.
   email: ~
   packages: ~
+  example:
+  - rapport('MDS.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=16)
 inputs:
 - name: vars
   label: Used Variables
@@ -12,7 +14,7 @@ inputs:
   class: numeric
   length:
     min: 1.0
-    max: 10.0
+    max: 100.0
   required: yes
   standalone: no
 - name: id
@@ -23,12 +25,9 @@ inputs:
   standalone: no
 - name: dist.mat
   label : Distance Matrix
-  description: Do you need to transform your data to a Distance matrix?
+  description: Is your data a Distance matrix?
   class: logical
-  length:
-    min: 1.0
-    max: 1.0
-  value: yes
+  value: no
   required: no
   standalone: yes
 - name: max.dist.num
@@ -78,7 +77,7 @@ lapply(whichisduplicated, function(i) id[i] <<- paste(id[i], 1:length(i), sep="_
 rownames(vars) <- id
 }
 variables <- scale(na.omit(vars))
-if (dist.mat) {
+if (!dist.mat) {
 d <- dist(variables) 
 } else { 
 d <- variables
@@ -100,7 +99,7 @@ minind <- which(distance == min(distance[distance!=min(distance)]), arr.ind = TR
 furthest <- colnames(distance)[which(colSums(distance) == max(colSums(distance)))]
 nearest <- colnames(distance)[which(colSums(distance) == min(colSums(distance)))]%>
 
-<%=furthest %> differ<%= ifelse(length(furthest)>1, "","s")%> the most from the others, and <%=nearest%> seem<%= (ifelse (length(nearest)>1,"","s"))%> to be the most "common" observation<%= (ifelse (length(nearest)>1,"s",""))%>, which <%=ifelse(length(nearest)>1, "lies", lie) %> nearest to all other observations.
+<%=furthest %> differ<%= ifelse(length(furthest)>1, "","s")%> the most from the others, and <%=nearest%> seem<%= (ifelse (length(nearest)>1,"","s"))%> to be the most "common" observation<%= (ifelse (length(nearest)>1,"s",""))%>, which <%=ifelse(length(nearest)>1, "lies", "lie") %> nearest to all other observations.
 
 <%=
 distance[upper.tri(distance, diag = T)] <- NA

@@ -5,6 +5,8 @@ meta:
   description: In this template Rapporter will present you Kruskal Wallis test.
   email: ~
   packages: ~
+  example:
+  - rapport('Kruskal-Wallis_test.tpl', data=ius2008, var1='age', var2='edu')
 inputs:
 - name: var1
   label: First Used Variable

@@ -7,6 +7,8 @@ meta:
   packages: 
   - psych
   - GPArotation
+  example:
+  - rapport('PCA.tpl', data=mtcars, vars=c('carb', 'mpg', 'cyl', 'drat'), components=3)
 inputs:
 - name: vars
   label: Used Variables
@@ -14,7 +16,7 @@ inputs:
   class: numeric
   length:
     min: 1.0
-    max: 50.0
+    max: 100.0
   required: yes
   standalone: no
 - name: components
@@ -23,7 +25,7 @@ inputs:
   class: integer
   length:
     min: 1.0
-    max: 10.0
+    max: 99.0
   required: yes
   standalone: yes
 - name: rot.matrix

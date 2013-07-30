@@ -7,6 +7,8 @@ meta:
   packages:
   - psych
   - nFactors
+  example:
+  - rapport('Factor_Analysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl', 'drat'), fact.num=2, rot.method="varimax")
 inputs:
 - name: vars
   label: Used Variables
@@ -55,9 +57,6 @@ inputs:
   label : Observation plot
   description: Would you check the plot about the distribution among the factors?
   class: logical
-  length:
-    min: 1.0
-    max: 1.0
   value: yes
   required: no
   standalone: yes

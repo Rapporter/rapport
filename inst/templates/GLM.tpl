@@ -6,7 +6,7 @@ meta:
   email: ~
   packages: ~
   example:
-  - rapport
+  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), family='poisson')
 inputs:
 - name: dep
   label: Dependent Variable
@@ -14,7 +14,7 @@ inputs:
   class: numeric
   length:
     min: 1.0
-    max: 50.0
+    max: 100.0
   required: yes
   standalone: no
 - name: indep
@@ -23,7 +23,7 @@ inputs:
   class: numeric
   length:
     min: 1.0
-    max: 50.0
+    max: 100.0
   required: yes
   standalone: no
 - name: indep.inter

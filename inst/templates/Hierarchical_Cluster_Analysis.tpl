@@ -6,6 +6,8 @@ meta:
   email: ~
   packages:
   - mclust
+  example:
+  - rapport('Hierarchical_Cluster_Analysis.tpl', data=ius2008, vars=c('age', 'edu'))
 inputs:
 - name: vars
   label: Used Variables
@@ -13,20 +15,14 @@ inputs:
   class: numeric
   length:
     min: 1.0
-    max: 50.0
-  limit:
-    min: 1.0
-    max: 50.0
+    max: 500.0
   required: yes
   standalone: no
 - name: dist.mat
   label : Distance Matrix
   description: Is your data a Distance matrix?
   class: logical
-  length:
-    min: 1.0
-    max: 1.0
-  value: yes
+  value: no
   required: no
   standalone: yes
 - name: method
@@ -71,7 +67,7 @@ Below you can see on the plot how the clusters were made, how the observations w
 
 <%=
 variables <- scale(na.omit(vars))
-if (dist.mat) {
+if (!dist.mat) {
 d <- dist(variables) 
 } else { 
 d <- variables
