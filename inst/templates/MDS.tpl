@@ -95,21 +95,32 @@ minind <- which(distance == min(distance[distance!=min(distance)]), arr.ind = TR
 
 ### What can be seen here?
 
-<%=colnames(distance)[which(colSums(distance) == max(colSums(distance)))] %> differs the most from the others, and <%=colnames(distance)[which(colSums(distance) == min(colSums(distance)))]%> seems to be the most "common" observation.
+#### Outsiders
+<%=
+furthest <- colnames(distance)[which(colSums(distance) == max(colSums(distance)))]
+nearest <- colnames(distance)[which(colSums(distance) == min(colSums(distance)))]%>
+
+<%=furthest %> differ<%= ifelse(length(furthest)>1, "","s")%> the most from the others, and <%=nearest%> seem<%= (ifelse (length(nearest)>1,"","s"))%> to be the most "common" observation<%= (ifelse (length(nearest)>1,"s",""))%>, which <%=ifelse(length(nearest)>1, "lies", lie) %> nearest to all other observations.
 
 <%=
 distance[upper.tri(distance, diag = T)] <- NA
-h <- which(distance >= sort(distance,decreasing=T)[max.dist.num],arr.ind=T)
-j <- which(distance <= sort(distance,decreasing=F)[min.dist.num], arr.ind=T)
+h <- NULL
+notneeded <- apply(data.frame(unique(as.vector(sort(distance[lower.tri(distance)],decreasing=T))[1:max.dist.num])), 1, function(i) h <<- rbind(h, which(distance==i,arr.ind=T)))
+j <- NULL
+notneeded <- apply(data.frame(unique(as.vector(sort(distance[lower.tri(distance)],decreasing=F))[1:min.dist.num])), 1, function(i) j <<- rbind(j, which(distance==i,arr.ind=T)))
 %>
+
+#### Outsider Pairs
 
 <%=paste0(p(c(rownames(distance)[h[1,1]], colnames(distance)[h[1,2]])), ' (', round(distance[h[1, 1], h[1, 2]], 2), ')')%> are the "furthest", <%=paste0(p(c(rownames(distance)[j[1,1]], colnames(distance)[j[1,2]])), ' (', round(distance[j[1, 1], j[1, 2]], 2), ')') %> are the "nearest" to each other.
 
-They are the extreme outsiders, now let's see which observations can be said statistically far/similar to each other in general. In the brackets you can see the amount of the standard deviations of the distance between two observations. The <%=max.dist.num%> pairs with the biggest difference and the <%=min.dist.num%> pairs with the smallest difference will be presented.
+#### In General
+
+Now let's see which observations can be said statistically far/similar to each other in general. The <%=max.dist.num%> pairs with the biggest differences and the <%=min.dist.num%> pairs with the smallest differences will be presented. In the brackets you can see the amount of the distances between two observations.
 
 <%if (nrow(h) <= max.dist.num) { %>
 
-According to the used variables (<%=rp.name(vars)%>) the <%=max.dist.num%> furthest pair of observations are:
+According to the used variables (<%=rp.label(vars)%>) the <%=max.dist.num%> furthest pair of observations are:
 
 <%=
 paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(distance)[h[i,1]], colnames(distance)[h[i,2]])), ' (', round(distance[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')%>
@@ -122,7 +133,7 @@ There are <%=nrow(h)%> observations which are the most similar, and equal in the
  
 <%if (nrow(j) <= min.dist.num) { %>
 
-According to the used variables (<%=rp.name(vars)%>) the <%=min.dist.num%> nearest pair of observations are:
+According to the used variables (<%=rp.label(vars)%>) the <%=min.dist.num%> nearest pair of observations are:
 
 <%=
 paste(pander.return(lapply(1:nrow(j), function(i) paste0(p(c(rownames(distance)[j[i,1]], colnames(distance)[j[i,2]])), ' (', round(distance[j[i, 1], j[i, 2]], 2), ')'))), collapse = '\n')
