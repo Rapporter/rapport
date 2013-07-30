@@ -5,19 +5,23 @@ meta:
   description: In this template Rapporter will present you Kruskal Wallis test.
   email: ~
   packages: ~
-  example:
-  - rapport
 inputs:
-- name: vars
-  label: Used Variables
-  description: These are the variables which will be used here
+- name: var1
+  label: First Used Variable
+  description: This is the first variable which will be used here
   class: numeric
   length:
     min: 1.0
-    max: 50.0
-  limit:
+    max: 1.0
+  required: yes
+  standalone: no
+- name: var2
+  label: Second Used Variable
+  description: This is the second variable which will be used here
+  class: numeric
+  length:
     min: 1.0
-    max: 50.0
+    max: 1.0
   required: yes
   standalone: no
 head-->
@@ -29,8 +33,8 @@ Significant result means difference between the samples/variables.
 
 
 <%=
-set.caption(sprintf('Kruskal-Wallis test for %s', p(vars.name)))
-krusk <- kruskal.test(vars)
+set.caption(sprintf('Kruskal-Wallis test for %s and %s', p(var1.label), p(var2.label)))
+krusk <- kruskal.test(list(var1,var2))
 krusk
 p.v <- krusk$p.value
 sta <- krusk$statistic
