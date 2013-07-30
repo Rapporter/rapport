@@ -7,8 +7,6 @@ meta:
   packages: 
   - psych
   - GPArotation
-  example:
-  - rapport
 inputs:
 - name: vars
   label: Used Variables
@@ -74,7 +72,7 @@ From the table above one can see that the first <%=components%> Principal Compon
 
 ### Visual representation
 
-It could be informative to see visually how the observations lies on these components. On that two dimensional plot below, where the axes are the components which contains the two most variances, you can see (the red vectors) the effect of the variables as well.
+It could be informative to see visually how the observations lies on these components. On that two dimensional plot below, where the axes are the components which contains the two most variances, you can see (the red vectors) the effect of the variables as well. <% if(ncol(vars) >5) { %> In the case we have several variables, the plot could be a little bit confusing but it still helps us to explore the number of the Principal Components. <% } %>
 
 <%= 
 biplot(prcomp(vars)) 
