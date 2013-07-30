@@ -6,8 +6,7 @@ meta:
   email: ~
   packages:
   - psych
-  example:
-  - rapport
+  - nFactors
 inputs:
 - name: vars
   label: Used Variables
@@ -15,7 +14,7 @@ inputs:
   class: numeric
   length:
     min: 1.0
-    max: 50.0
+    max: 5000.0
   required: yes
   standalone: no
 - name: fact.num
@@ -24,8 +23,8 @@ inputs:
   class: integer
   length:
     min: 1.0
-    max: 10.0
-  required: yes
+    max: 4999.0
+  required: no
   standalone: yes
 - name: rot.method
   label: Method of Rotation
@@ -68,11 +67,30 @@ head-->
 
 [Factor Analysis](http://en.wikipedia.org/wiki/Factor_analysis) is applied as a data reduction or structure detection method. There are two main applications of it: reducing the number of variables and detecting structure in the relationships between variables, thus explore latent structure behind the data, classify variables.
 
+<% if (is.null(fact.num)) { %>
+####Determining the number of the factors
+<% } %>
+
 <%= 
 fact.matrix <- na.omit(scale(vars))
+if (!is.null(fact.num)) {
 FA <- factanal(fact.matrix, factors=fact.num, scores=fa.scores, rotation=rot.method)
+auto.fact <- FALSE
+} else {
+ev <- eigen(cor(fact.matrix))
+ap <- parallel(subject=nrow(fact.matrix),var=ncol(fact.matrix),
+  rep=100,cent=.05)
+nS <- nScree(x=ev$values, aparallel=ap$eigen$qevpea)
+plotnScree(nS)
+fact.num <- max(which(ev$values >= 1))
+auto.fact <- TRUE
+FA <- factanal(fact.matrix, factors=fact.num, scores=fa.scores, rotation=rot.method)
+}
 %>
-
+<% if (auto.fact) { %>
+As you haven't provided value for the number of the factors, we calculated that automatically based on the eigenvalues, thus it is equal: <%=max(which(ev$values >= 1))%>. The eigenvalues you can find in the following table:
+<%=cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)%>
+<% } %>
 
 ## Factor loadings
 
@@ -117,7 +135,5 @@ uni
 %>
 
 We can see from the table that variable <%=rownames(uni)[which(max(uni) == uni)]%> has the highest Uniqueness, so could be explained the least by the factors and variable <%= rownames(uni)[which(min(uni) == uni)]%> variance's was explained the most, because it has the lowest Uniqueness.
-
-
 
 
