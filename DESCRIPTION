@@ -21,6 +21,7 @@ Depends:
     lattice,
     plyr,
     pander,
+    stringr,
     yaml
 Imports:
     grDevices,
