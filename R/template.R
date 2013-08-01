@@ -46,11 +46,11 @@ tpl.find <- function(fp, ...){
 ##' Extract template chunk contents
 ##'
 ##' \code{rapport}'s alternative to \code{\link{Stangle}} - extracts contents of template chunks.
-##' @param fp template file pointer
-##' @param file output file - if \code{NULL} (default), output is flushed to \code{stdout}.
+##' @param fp template file pointer (see \code{\link{tpl.find}} for details)
+##' @param file output file - if empty string (default), output is flushed to \code{stdout}.
 ##' @param show.inline.chunks extract contents of inline chunks as well? (defaults to \code{FALSE})
 ##' @export
-tpl.tangle <- function(fp, file = NULL, show.inline.chunks = FALSE) {
+tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
     b <- tpl.body(tpl.find(fp))
 
     re.block.open    <- "^<%=?$"
@@ -73,31 +73,51 @@ tpl.tangle <- function(fp, file = NULL, show.inline.chunks = FALSE) {
     }
 
     block.ind <- mapply(seq, from = ind.block.open, to = ind.block.close)
-    chunk.ind <- mapply(seq, from = ind.inline.open, to = ind.inline.close)
-    chunk.ind <- lapply(chunk.ind, function(x){
-        attr(x, "chunk.type") <- "inline"
-        x
-    })
+    if (show.inline.chunks)
+        chunk.ind <- mapply(seq, from = ind.inline.open, to = ind.inline.close)
+    else
+        chunk.ind <- block.ind
 
-    chunk.ind[chunk.ind %in% block.ind] <- lapply(chunk.ind[chunk.ind %in% block.ind], function(x){
+    chunk.ind <- lapply(chunk.ind, function(x){
         attr(x, "chunk.type") <- "block"
         x
     })
 
+    if (show.inline.chunks) {
+        chunk.ind[!chunk.ind %in% block.ind] <- lapply(chunk.ind[!chunk.ind %in% block.ind], function(x) {
+            attr(x, "chunk.type") <- "inline"
+            x
+        })
+    }
+
+    out <- c()
+
     res <- lapply(chunk.ind, function(x) {
         cc <- b[x]
         ct <- attr(x, "chunk.type")
-        catn("## ", ct, " chunk")
         if (ct == "block") {
-            cc <- paste0(cc[2:(length(cc) - 1)], collapse = "\n")
+            cc <- trim.space(paste0(cc[2:(length(cc) - 1)], collapse = "\n"))
+            out <<- c(out, "#################")
+            out <<- c(out, "## block chunk ##")
+            out <<- c(out, "#################")
+            out <<- c(out, "", cc, "")
         } else {
             cc <- trim.space(vgsub("(<%=?|%>)", "", str_extract_all(cc, "<%=?[^%>]+%>")[[1]]))
+            sapply(cc, function(x){
+                out <<- c(out, "##################")
+                out <<- c(out, "## inline chunk ##")
+                out <<- c(out, "##################")
+                out <<- c(out, "", x, "")
+            })
         }
         attr(cc, "chunk.type") <- ct
         cc
     })
 
-    res
+    out <- paste0(out, collapse = "\n")
+    cat(out, file = file)
+
+    invisible(res)
 }
 
 
