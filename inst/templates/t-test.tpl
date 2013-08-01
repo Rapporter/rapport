@@ -94,7 +94,7 @@ inputs:
 head-->
 <%=
 
-if (is.null(y)){
+if (!exists('y') || is.null(y)) {
 
     ## if y is NULL, you're stuck with one-sample t-test
     arg.list <- list(x = x, mu = mu, alternative = alter, conf.level = ci.level)

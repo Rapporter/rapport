@@ -93,10 +93,10 @@ tpl.tangle <- function(fp, file = NULL, show.inline.chunks = FALSE) {
             cc <- trim.space(vgsub("(<%=?|%>)", "", str_extract_all(b[79], "<%=?[^%>]+%>")[[1]]))
         }
         attr(cc, "chunk.type") <- ct
-        cc
+        cat(cc, append = TRUE)
     })
 
-    res
+    invisible(res)
 }
 
 
@@ -598,9 +598,8 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         ## this is silly!!! what if you have input = NULL?!?
         input.required <- sapply(inputs, function(x) structure(x$required, .Names = x$name))
         input.names    <- names(input.required)
-        input.ok       <- input.names[input.required] %in% names(i)
         ## take default inputs into account
-        if (!all(input.ok))
+        if (!all(input.names[input.required] %in% names(i)))
             stopf("you haven't provided a value for %s", p(input.names[input.required], '"'))
 
         ## data required
@@ -721,15 +720,19 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                 }
             }
 
+            input.exists <- (!input.name %in% i.names && !x$required && x$standalone && length(val)) || input.name %in% i.names || !x$standalone
+
             ## assign stuff
-            ## assign input value and that silly input-related stuff
-            assign(input.name, val, envir = e)                                    # value
-            assign(sprintf('%s.iname', input.name), input.name, envir = e)        # input name
-            assign(sprintf('%s.ilen', input.name), length(user.input), envir = e) # input length
-            assign(sprintf('%s.ilabel', input.name), x$label, envir = e)          # input label
-            assign(sprintf('%s.idesc', input.name), x$description, envir = e)     # input description
-            assign(sprintf('%s.name', input.name), user.input, envir = e)         # variable name(s)
-            assign(sprintf('%s.len', input.name), length(val), envir = e)         # variable length
+            if (input.exists) {
+                ## assign input value and that silly input-related stuff
+                assign(input.name, val, envir = e)                                    # value
+                assign(sprintf('%s.iname', input.name), input.name, envir = e)        # input name
+                assign(sprintf('%s.ilen', input.name), length(user.input), envir = e) # input length
+                assign(sprintf('%s.ilabel', input.name), x$label, envir = e)          # input label
+                assign(sprintf('%s.idesc', input.name), x$description, envir = e)     # input description
+                assign(sprintf('%s.name', input.name), user.input, envir = e)         # variable name(s)
+                assign(sprintf('%s.len', input.name), length(val), envir = e)         # variable length
+            }
 
             ## currently we support only data.frame and atomic vectos
             if (is.data.frame(val))
