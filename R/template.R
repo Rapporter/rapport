@@ -87,16 +87,17 @@ tpl.tangle <- function(fp, file = NULL, show.inline.chunks = FALSE) {
     res <- lapply(chunk.ind, function(x) {
         cc <- b[x]
         ct <- attr(x, "chunk.type")
+        catn("## ", ct, " chunk")
         if (ct == "block") {
-            cc <- cc[2:(length(cc) - 1)]
+            cc <- paste0(cc[2:(length(cc) - 1)], collapse = "\n")
         } else {
-            cc <- trim.space(vgsub("(<%=?|%>)", "", str_extract_all(b[79], "<%=?[^%>]+%>")[[1]]))
+            cc <- trim.space(vgsub("(<%=?|%>)", "", str_extract_all(cc, "<%=?[^%>]+%>")[[1]]))
         }
         attr(cc, "chunk.type") <- ct
-        cat(cc, append = TRUE)
+        cc
     })
 
-    invisible(res)
+    res
 }
 
 
