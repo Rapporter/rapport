@@ -2,19 +2,25 @@
 \alias{tpl.tangle}
 \title{Extract template chunk contents}
 \usage{
-  tpl.tangle(fp, file = NULL, show.inline.chunks = TRUE)
+  tpl.tangle(fp, file = "", show.inline.chunks = FALSE)
 }
 \arguments{
-  \item{fp}{template file pointer}
+  \item{fp}{template file pointer (see
+  \code{\link{tpl.find}} for details)}
 
-  \item{file}{output file - if \code{NULL} (default),
-  output is flushed to \code{stdout}.}
+  \item{file}{see \code{file} argument in \code{\link{cat}}
+  function documentation}
 
   \item{show.inline.chunks}{extract contents of inline
-  chunks as well? (defaults to \code{TRUE})}
+  chunks as well? (defaults to \code{FALSE})}
+}
+\value{
+  (invisibly) a list with either inline or block chunk
+  contents
 }
 \description{
   \code{rapport}'s alternative to \code{\link{Stangle}} -
-  extracts contents of template chunks.
+  extracts contents of template chunks. If \code{file}
+  argument
 }
 

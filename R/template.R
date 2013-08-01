@@ -45,10 +45,11 @@ tpl.find <- function(fp, ...){
 
 ##' Extract template chunk contents
 ##'
-##' \code{rapport}'s alternative to \code{\link{Stangle}} - extracts contents of template chunks.
+##' \code{rapport}'s alternative to \code{\link{Stangle}} - extracts contents of template chunks. If \code{file} argument
 ##' @param fp template file pointer (see \code{\link{tpl.find}} for details)
-##' @param file output file - if empty string (default), output is flushed to \code{stdout}.
+##' @param file see \code{file} argument in \code{\link{cat}} function documentation
 ##' @param show.inline.chunks extract contents of inline chunks as well? (defaults to \code{FALSE})
+##' @return (invisibly) a list with either inline or block chunk contents
 ##' @export
 tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
     b <- tpl.body(tpl.find(fp))
@@ -91,7 +92,6 @@ tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
     }
 
     out <- c()
-
     res <- lapply(chunk.ind, function(x) {
         cc <- b[x]
         ct <- attr(x, "chunk.type")
