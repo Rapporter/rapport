@@ -1,14 +1,12 @@
 <!--head
 meta:
   title: Principal Component Analysis
-  author: Rapporter team
+  author: Daniel Nagy
   description: In this template Rapporter will present you Principal Component Analysis.
   email: ~
   packages: 
   - psych
   - GPArotation
-  example:
-  - rapport('PCA.tpl', data=mtcars, vars=c('carb', 'mpg', 'cyl', 'drat'), components=3)
 inputs:
 - name: vars
   label: Used Variables

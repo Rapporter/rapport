@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Three-way crosstable
-  author: Rapporter team
+  author: Daniel Nagy
   description: In this template Rapporter will present you Three-way crosstable.
   email: ~
   packages: ~
