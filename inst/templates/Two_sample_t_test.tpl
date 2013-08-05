@@ -1,12 +1,11 @@
 <!--head
 meta:
   title: Two sample t-test
-  author: Rapporter team
+  author: Daniel Nagy
   description: In this template Rapporter will present you Two sample t-test.
   email: ~
-  packages: ~
-  example:
-  - rapport
+  packages:
+  - nortest
 inputs:
 - name: x
   label: X Variable
@@ -76,9 +75,6 @@ inputs:
   required: no
   standalone: yes
 head-->
-
-function: t.test
-
 
 # Diagnostics
 
