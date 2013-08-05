@@ -99,7 +99,7 @@ head-->
 
 [Factor Analysis](http://en.wikipedia.org/wiki/Factor_analysis) is applied as a data reduction or structure detection method. There are two main applications of it: reducing the number of variables and detecting structure in the relationships between variables, thus explore latent structure behind the data, classify variables.
 
-<% if (is.null(fact.num)) { %>
+<% if (is.exnull(fact.num)) { %>
 #### Determining the number of the factors
 <% } %>
 
@@ -113,7 +113,7 @@ if (method=="minimize the sample size weighted chi square") { method <- "minchi"
 
 fact.matrix <- na.omit(scale(vars))
 
-if (!is.null(fact.num)) {
+if (!is.exnull(fact.num)) {
 FA <- fa(fact.matrix, factors=fact.num, scores=fa.scores, rotation=rot.method, fm=method, max.iter=max.iter, warnings=TRUE)
 auto.fact <- FALSE
 } else {

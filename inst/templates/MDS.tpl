@@ -67,7 +67,7 @@ head-->
 
 Below you can see a plot, that presents you the distance between the observations, which was calculated based on <%=rp.label(vars)%>.
 
-<%= if (!is.null(id)) {
+<%= if (!is.exnull(id)) {
 id <- as.character(id)
 id[which(is.na(id))] <- "noname"
 dd <- duplicated(id)
