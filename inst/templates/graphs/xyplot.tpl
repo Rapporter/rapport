@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Graphing
-  author: Rapporter team
+  author: Daniel Nagy
   description: In this template Rapporter will present you a qqplot.
   email: ~
   packages:

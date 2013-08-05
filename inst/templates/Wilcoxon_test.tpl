@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Wilcoxon test
-  author: Rapporter team
+  author: Daniel Nagy
   description: In this template Rapporter will present you Wilcoxon test.
   email: ~
   packages: ~

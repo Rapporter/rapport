@@ -1,14 +1,12 @@
 <!--head
 meta:
   title: Graphing
-  author: Rapporter team
+  author: Daniel Nagy
   description: In this template Rapporter will present you a barchart.
   email: ~
   packages:
   - grDevices
   - RColorBrewer
-  example:
-  - rapport('barchart.tpl', data=ius2008, var='age', bar.text.type="Percentage", horizontal=T, bar.text=T, log.scale=T)
 inputs:
 - name: var
   label: Used Variable

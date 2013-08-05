@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Factor Analysis
-  author: Rapporter team
+  author: Daniel Nagy
   description: In this template Rapporter will present you Factor Analysis.
   email: ~
   packages:

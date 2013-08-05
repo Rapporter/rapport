@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Kruskal Wallis test
-  author: Rapporter team
+  author: Daniel Nagy
   description: In this template Rapporter will present you Kruskal Wallis test.
   email: ~
   packages: ~

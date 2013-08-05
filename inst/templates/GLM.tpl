@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: GLM
-  author: Rapporter team
+  author: Daniel Nagy
   description: In this template Rapporter will present you GLM.
   email: ~
   packages: ~
