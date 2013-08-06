@@ -76,11 +76,11 @@ Various hypothesis tests can be applied in order to test if the distribution of 
 
 Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
 
-We will use <%=ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable. <%=ifelse(length(resp) > 5000, "_Shapiro-Wilk_ test can only be used with samples below 5000 cases, now we have more.", "")%>
+We will use <%=ifelse(length(var) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable. <%=ifelse(length(var) > 5000, "_Shapiro-Wilk_ test can only be used with samples below 5000 cases, now we have more.", "")%>
 
-<% if (length(resp) < 5000) { %>
+<% if (length(var) < 5000) { %>
 
-<%= ntest <- htest(resp, lillie.test, ad.test, shapiro.test)
+<%= ntest <- htest(var, lillie.test, ad.test, shapiro.test)
 k <- 0
 l <- 0
 m <- 0
@@ -93,14 +93,14 @@ ntest
 %>
 So, the conclusions we can draw with the help of test statistics: 
    
- - based on _Lilliefors test_, distribution of _<%= resp.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
+ - based on _Lilliefors test_, distribution of _<%= var.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
    
  - _Anderson-Darling test_ confirms<%= ifelse(ntest[2, 3] < p, " violation of", "") %> normality assumption
 
- - according to _Shapiro-Wilk test_, the distribution of _<%= resp.label %>_ is<%= ifelse(ntest[3, 3] < p, " not", "") %> normal
+ - according to _Shapiro-Wilk test_, the distribution of _<%= var.label %>_ is<%= ifelse(ntest[3, 3] < p, " not", "") %> normal
  
 <% } else { %>
-<%= ntest <- htest(resp, lillie.test, ad.test)
+<%= ntest <- htest(var, lillie.test, ad.test)
 k <- 0
 l <- 0
 m <- 0
@@ -113,7 +113,7 @@ ntest
 
 So, the conclusions we can draw with the help of test statistics: 
    
- - based on _Lilliefors test_, distribution of _<%= resp.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
+ - based on _Lilliefors test_, distribution of _<%= var.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
    
  - _Anderson-Darling test_ confirms<%= ifelse(ntest[2, 3] < p, " violation of", "") %> normality assumption
 <% } %>
