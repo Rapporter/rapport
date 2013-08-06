@@ -43,6 +43,84 @@ tpl.find <- function(fp, ...){
 }
 
 
+##' Extract template chunk contents
+##'
+##' \code{rapport}'s alternative to \code{\link{Stangle}} - extracts contents of template chunks. If \code{file} argument
+##' @param fp template file pointer (see \code{\link{tpl.find}} for details)
+##' @param file see \code{file} argument in \code{\link{cat}} function documentation
+##' @param show.inline.chunks extract contents of inline chunks as well? (defaults to \code{FALSE})
+##' @return (invisibly) a list with either inline or block chunk contents
+##' @export
+tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
+    b <- tpl.body(tpl.find(fp))
+
+    re.block.open    <- "^<%=?$"
+    re.block.close   <- "^%>$"
+    re.inline.open   <- "<%=?"
+    re.inline.close  <- "%>"
+
+    ind.block.open   <- grep(re.block.open, b)
+    ind.block.close  <- grep(re.block.close, b)
+    ind.inline.open  <- grep(re.inline.open, b)
+    ind.inline.close <- grep(re.inline.close, b)
+
+    ## check for unmatched tags
+    if (show.inline.chunks) {
+        if (length(ind.inline.open) != length(ind.inline.close))
+            stop("unmatched chunk tag(s)")
+    } else {
+        if (length(ind.block.open) != length(ind.block.close))
+            stop("unmatched block chunk tag(s)")
+    }
+
+    block.ind <- mapply(seq, from = ind.block.open, to = ind.block.close)
+    if (show.inline.chunks)
+        chunk.ind <- mapply(seq, from = ind.inline.open, to = ind.inline.close)
+    else
+        chunk.ind <- block.ind
+
+    chunk.ind <- lapply(chunk.ind, function(x){
+        attr(x, "chunk.type") <- "block"
+        x
+    })
+
+    if (show.inline.chunks) {
+        chunk.ind[!chunk.ind %in% block.ind] <- lapply(chunk.ind[!chunk.ind %in% block.ind], function(x) {
+            attr(x, "chunk.type") <- "inline"
+            x
+        })
+    }
+
+    out <- c()
+    res <- lapply(chunk.ind, function(x) {
+        cc <- b[x]
+        ct <- attr(x, "chunk.type")
+        if (ct == "block") {
+            cc <- trim.space(paste0(cc[2:(length(cc) - 1)], collapse = "\n"))
+            out <<- c(out, "#################")
+            out <<- c(out, "## block chunk ##")
+            out <<- c(out, "#################")
+            out <<- c(out, "", cc, "")
+        } else {
+            cc <- trim.space(vgsub("(<%=?|%>)", "", str_extract_all(cc, "<%=?[^%>]+%>")[[1]]))
+            sapply(cc, function(x){
+                out <<- c(out, "##################")
+                out <<- c(out, "## inline chunk ##")
+                out <<- c(out, "##################")
+                out <<- c(out, "", x, "")
+            })
+        }
+        attr(cc, "chunk.type") <- ct
+        cc
+    })
+
+    out <- paste0(out, collapse = "\n")
+    cat(out, file = file)
+
+    invisible(res)
+}
+
+
 #' Template Header
 #'
 #' Returns \code{rapport} template header from provided path or a character vector.
@@ -504,17 +582,19 @@ tpl.rerun <- function(tpl){
 #' @export
 rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evalsOptions('graph.output'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = evalsOptions('width'), graph.height = evalsOptions('height'), graph.res = evalsOptions('res'), graph.hi.res = evalsOptions('hi.res'), graph.replay = evalsOptions('graph.recordplot')) {
 
-    timer    <- proc.time()                       # start timer
-    txt      <- tpl.find(fp)                      # split file to text
-    h        <- tpl.info(txt)                     # template header
-    meta     <- h$meta                            # header metadata
-    inputs   <- h$inputs                          # header inputs
-    b        <- tpl.body(txt)                     # template body
-    e        <- new.env(parent = env)             # load/create evaluation environment
-    i        <- list(...)                         # user inputs
+    timer         <- proc.time()                        # start timer
+    txt           <- tpl.find(fp)                       # split file to text
+    h             <- tpl.info(txt)                      # template header
+    meta          <- h$meta                             # header metadata
+    inputs        <- h$inputs                           # header inputs
+    inputs.names  <- sapply(inputs, function(x) x$name) # input names
+    b             <- tpl.body(txt)                      # template body
+    e             <- new.env(parent = env)              # load/create evaluation environment
+    i             <- list(...)                          # user inputs
+    i.names       <- names(i)                           # user input names
     data.required <- any(sapply(inputs, function(x) !x$standalone)) | !is.empty(data)
-    pkgs     <- meta$packages                                # required packages
-    file.path <- gsub('\\', '/', file.path, fixed = TRUE)
+    pkgs          <- meta$packages                      # required packages
+    file.path     <- gsub('\\', '/', file.path, fixed = TRUE)
 
     ## load required packages (if any)
     if (!is.null(pkgs)){
@@ -539,9 +619,8 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         ## this is silly!!! what if you have input = NULL?!?
         input.required <- sapply(inputs, function(x) structure(x$required, .Names = x$name))
         input.names    <- names(input.required)
-        input.ok       <- input.names[input.required] %in% names(i)
         ## take default inputs into account
-        if (!all(input.ok))
+        if (!all(input.names[input.required] %in% names(i)))
             stopf("you haven't provided a value for %s", p(input.names[input.required], '"'))
 
         ## data required
@@ -662,14 +741,20 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                 }
             }
 
+            input.exists <- (!input.name %in% i.names && !x$required && x$standalone && length(val)) || input.name %in% i.names || !x$standalone
+
             ## assign stuff
-            assign(input.name, val, envir = e)                                    # value
-            assign(sprintf('%s.iname', input.name), input.name, envir = e)        # input name
-            assign(sprintf('%s.ilen', input.name), length(user.input), envir = e) # input length
-            assign(sprintf('%s.ilabel', input.name), x$label, envir = e)          # input label
-            assign(sprintf('%s.idesc', input.name), x$description, envir = e)     # input description
-            assign(sprintf('%s.name', input.name), user.input, envir = e)         # variable name(s)
-            assign(sprintf('%s.len', input.name), length(val), envir = e)         # variable length
+            if (input.exists) {
+                ## assign input value and that silly input-related stuff
+                assign(input.name, val, envir = e)                                    # value
+                assign(sprintf('%s.iname', input.name), input.name, envir = e)        # input name
+                assign(sprintf('%s.ilen', input.name), length(user.input), envir = e) # input length
+                assign(sprintf('%s.ilabel', input.name), x$label, envir = e)          # input label
+                assign(sprintf('%s.idesc', input.name), x$description, envir = e)     # input description
+                assign(sprintf('%s.name', input.name), user.input, envir = e)         # variable name(s)
+                assign(sprintf('%s.len', input.name), length(val), envir = e)         # variable length
+            }
+
             ## currently we support only data.frame and atomic vectos
             if (is.data.frame(val))
                 assign(sprintf('%s.label', input.name), sapply(val, rp.label), envir = e) # variable labels
