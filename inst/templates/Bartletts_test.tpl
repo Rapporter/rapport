@@ -42,43 +42,54 @@ Homogeneity is useful to being tested, because that is an assumption of the One-
 
 The Bartlett's test has an assumption of normality, thus one should obtain the information if the distribution of the tested variable had a normal distribution.
 
-The Shapiro-Wilk, the Lilliefors, the Anderson-Darling and the Pearson's Chi-square tests help us to do that.
+We will use <%=ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
 
-<%=
-if (length(resp) > 5000) {
-    h <- htest(resp, lillie.test, ad.test, pearson.test)
-} else {
-    h <- htest(resp, lillie.test, ad.test, pearson.test, shapiro.test)
-}
-p <- .05
-h
+<% if (length(resp) < 5000) { %>
+
+<%= ntest <- htest(resp, lillie.test, ad.test, shapiro.test)
+k <- 0
+l <- 0
+m <- 0
+n <- 0
+p <- 0.05
+if (ntest$p[1] < 0.05) {l <- k + 1}
+if (ntest$p[2] < 0.05) {m <- l + 1}
+if (ntest$p[3] < 0.05) {n <- m + 1}
+ntest
+%>
+So, the conclusions we can draw with the help of test statistics: 
+   
+ - based on _Lilliefors test_, distribution of _<%= resp.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
+   
+ - _Anderson-Darling test_ confirms<%= ifelse(ntest[2, 3] < p, " violation of", "") %> normality assumption
+
+ - according to _Shapiro-Wilk test_, the distribution of _<%= resp.label %>_ is<%= ifelse(ntest[3, 3] < p, " not", "") %> normal
+ 
+<% } else { %>
+<%= ntest <- htest(resp, lillie.test, ad.test)
+k <- 0
+l <- 0
+m <- 0
+n <- 0
+p <- 0.05
+if (ntest$p[1] < 0.05) {l <- k + 1}
+if (ntest$p[2] < 0.05) {n <- l + 1}
+ntest
 %>
 
-So, the conclusions we can draw with the help of test statistics:
-
-<% if (length(resp) <= 5000 & !is.na(h[4, 3])) { %>
- - according to _Shapiro-Wilk test_, the distribution of _<%= resp.label %>_ is<%= ifelse(h[4, 3] < p, " not", "") %> normal
-<% }
-if (!is.na(h[1, 3])) { %>
- - based on _Lilliefors test_, distribution of _<%= resp.label %>_ is <%= ifelse(h[1, 3] < p, "not normal", "normal") %>
-<% }
-if (!is.na(h[2, 3])) { %>
- - _Anderson-Darling test_ confirms<%= ifelse(h[2, 3] < p, " violation of", "") %> normality assumption
-<% }
-if (!is.na(h[3, 3])) { %>
- - _Pearson's Chi-square test_ classifies the underlying distribution as <%= ifelse(h[3, 3] < p, "non-normal", "normal") %>
+So, the conclusions we can draw with the help of test statistics: 
+   
+ - based on _Lilliefors test_, distribution of _<%= resp.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
+   
+ - _Anderson-Darling test_ confirms<%= ifelse(ntest[2, 3] < p, " violation of", "") %> normality assumption
 <% } %>
 
-<%=
-o <- sum((h[1, 3] < p), (h[2, 3] < p), (h[3, 3] < p), na.rm = TRUE)
-if (length(resp) > 5000) {
-    o <- sum(o, (h[4, 3] < p), na.rm = TRUE)
-}
+<%= if (n > 0) {
+sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
+} else { 
+sprintf("reject departures from normality") 
+} 
 %>
-
-As a result we can<%= ifelse(o < 1, "", " not") %> assume, that the distribution of _<%= resp.label %>_ is statistically normal.
-
-In this case the <%= ifelse(o < 1, " Bartlett's test is advisable to use", "Brown-Forsyth test is more advisable to use.") %>
 
 # Test results
 

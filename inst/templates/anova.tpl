@@ -85,26 +85,53 @@ Before we carry out ANOVA, we'd like to check some basic assumptions. For those 
 
 ### Univariate Normality
 
-<%=
-if (length(resp) < 5000) {
-    ntest <- htest(resp, shapiro.test, lillie.test, ad.test)
-} else {
-    ntest <- htest(resp, lillie.test, ad.test)
-}
-ntest
+<% if (length(resp) < 5000) { %>
+
+<%= ntest <- htest(resp, lillie.test, ad.test, shapiro.test)
 k <- 0
 l <- 0
 m <- 0
 n <- 0
+p <- 0.05
 if (ntest$p[1] < 0.05) {l <- k + 1}
 if (ntest$p[2] < 0.05) {m <- l + 1}
 if (ntest$p[3] < 0.05) {n <- m + 1}
+ntest
+%>
+So, the conclusions we can draw with the help of test statistics: 
+   
+ - based on _Lilliefors test_, distribution of _<%= resp.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
+   
+ - _Anderson-Darling test_ confirms<%= ifelse(ntest[2, 3] < p, " violation of", "") %> normality assumption
+
+ - according to _Shapiro-Wilk test_, the distribution of _<%= resp.label %>_ is<%= ifelse(ntest[3, 3] < p, " not", "") %> normal
+ 
+<% } else { %>
+<%= ntest <- htest(resp, lillie.test, ad.test)
+k <- 0
+l <- 0
+m <- 0
+n <- 0
+p <- 0.05
+if (ntest$p[1] < 0.05) {l <- k + 1}
+if (ntest$p[2] < 0.05) {n <- l + 1}
+ntest
 %>
 
-We will use <%=ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
+So, the conclusions we can draw with the help of test statistics: 
+   
+ - based on _Lilliefors test_, distribution of _<%= resp.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
+   
+ - _Anderson-Darling test_ confirms<%= ifelse(ntest[2, 3] < p, " violation of", "") %> normality assumption
+<% } %>
 
 <%= if (n > 0) {
-sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) else sprintf("reject departures from normality") } %>
+sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
+} else { 
+sprintf("reject departures from normality") 
+} 
+%>
+
 
 ### Homoscedascity
 
