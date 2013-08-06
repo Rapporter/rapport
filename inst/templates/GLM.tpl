@@ -86,7 +86,7 @@ fit
 p_val <- summary(fit)$coefficients[, 4]
 %>
 
-From the table one can see that <%= paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val, 3),sep = " has significant effect on the dependent variable, the p-value of that is ")%>
+From the table one can see that <%= paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val, 3)[which(p_val < 0.05)], sep = " has significant effect on the dependent variable, the p-value of that is ")%>
 
 
 <% } %>
