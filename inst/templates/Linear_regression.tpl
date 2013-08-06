@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Linear Regression
-  author: Daniel Nagy
+  author: Gergely Daróczi, Daniel Nagy
   description: This template will run a linear regression
   email: ~
   packages:
@@ -54,12 +54,12 @@ gvmodel <- tryCatch(gvlma(fit), error = function(e) e)
 
 # Introduction
 
-With the help of the [linear regression](http://en.wikipedia.org/wiki/Linear_regression) we can investigate the relationship <%=ifelse(indep.ilen==1,'between two variables','between the variables')%>. More punctually we can observe if one of the variables, the so-called [dependent](http://en.wikipedia.org/wiki/Dependent_variable) variable, significantly depended on the other variable<%=indep.plu%>, if an increase/decrease on the dependent variable's values made an increase/decrease on the independent variable<%=indep.plu%>.
-In this case we only observe linear relationships. <%=ifelse(indep.ilen==1,'','As we use in the model more than 1 independent variables, we call the method [multivariate regression](http://en.wikipedia.org/wiki/Multivariate_regression_model).')%>
+With the help of the [linear regression](http://en.wikipedia.org/wiki/Linear_regression) we can investigate the relationship <%=ifelse(indep.ilen == 1, 'between two variables', 'between the variables')%>. More punctually we can observe if one of the variables, the so-called [dependent](http://en.wikipedia.org/wiki/Dependent_variable) variable, significantly depended on the other variable<%=indep.plu%>, if an increase/decrease on the dependent variable's values made an increase/decrease on the independent variable<%=indep.plu%>.
+In this case we only observe linear relationships. <%=ifelse(indep.ilen == 1, '', 'As we use in the model more than 1 independent variables, we call the method [multivariate regression](http://en.wikipedia.org/wiki/Multivariate_regression_model).')%>
 
 #Overview
 
-<%= ifelse(indep.ilen==1, '', 'Multivariate-') %>Linear Regression was carried out, with <%= p(indep.label) %> as independent variable<%= indep.plu %>, and <%= p(dep.label) %> as a dependent variable.
+<%= ifelse(indep.ilen == 1, '', 'Multivariate-') %>Linear Regression was carried out, with <%= p(indep.label) %> as independent variable<%= indep.plu %>, and <%= p(dep.label) %> as a dependent variable.
 The [interaction](http://en.wikipedia.org/wiki/Interaction) between the independent variables was<%=ifelse(indep.inter, "", "n't")%> taken into account.
 
 # Assumptions
@@ -70,7 +70,7 @@ In order to have reliable results, we have to check if the assumptions of the li
 <%=
 (summary(gvmodel))
 decision <- (gvmodel$Decision)
-decision <- summary(gvmodel)[,3]
+decision <- summary(gvmodel)[, 3]
 decision1 <- (decision[1] == 'Assumptions NOT satisfied!')
 decision2 <- (decision[2] == 'Assumptions NOT satisfied!')
 decision3 <- (decision[3] == 'Assumptions NOT satisfied!')
@@ -86,17 +86,17 @@ As a generally accepted thumb-rule we use the critical [p-value](http://en.wikip
 
 So let's see the results, which the test gave us:
 
- - The general statistic tells us about the linear model, that it <%= ifelse(decision1,"does not fit to our data","can fit to our data")%>.
+ - The general statistic tells us about the linear model, that it <%= ifelse(decision1, "does not fit to our data", "can fit to our data")%>.
 
- - According to the GVLMA the residuals of our model's skewness<%= ifelse(decision2,""," does not")%> differs significantly from the normal distribution's skewness.
+ - According to the GVLMA the residuals of our model's skewness<%= ifelse(decision2, "", " does not")%> differs significantly from the normal distribution's skewness.
 
- - The residuals of our model's kurtosis<%= ifelse(decision3,""," does not")%> differs significantly from the normal distribution's kurtosis, based on the result of the GVLMA.
+ - The residuals of our model's kurtosis<%= ifelse(decision3, "", " does not")%> differs significantly from the normal distribution's kurtosis, based on the result of the GVLMA.
 
- - In the row of the link function we can read that the linearity assumption of our model was <%=ifelse(decision4,"rejected","accepted")%>.
+ - In the row of the link function we can read that the linearity assumption of our model was <%=ifelse(decision4, "rejected", "accepted")%>.
 
  - At last but not least GVLMA confirms<%= ifelse(decision5, " the violation of", "") %> homoscedasticity.
 
-In summary: We can<%=ifelse(decision.any," 't","")%> be sure that the linear model used here fits to the data.
+In summary: We can<%=ifelse(decision.any, " 't", "")%> be sure that the linear model used here fits to the data.
 
 References:
 

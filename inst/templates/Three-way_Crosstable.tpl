@@ -70,12 +70,12 @@ Three-way crosstables
   
 
 <%=
-naomitmatrix <- na.omit(cbind(var1,var2,var3))
-var1 <- naomitmatrix[,1]
-var2 <- naomitmatrix[,2]
-var3 <- naomitmatrix[,3]
+naomitmatrix <- na.omit(cbind(var1, var2, var3))
+var1 <- naomitmatrix[, 1]
+var2 <- naomitmatrix[, 2]
+var3 <- naomitmatrix[, 3]
 
-ftable(c(var1,var2,var3))
+ftable(c(var1, var2, var3))
 %>
 
 

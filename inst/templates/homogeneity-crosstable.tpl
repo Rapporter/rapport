@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Homogeneity test of factor variables
-  author: Daniel Nagy
+  author: Gergely Daróczi, Daniel Nagy
   description: Test of homogeneity of a given factor variable split by another factor.
   packages: 
   - descr
@@ -33,7 +33,7 @@ head-->
 
 # Variable description
 
-Analysing "<%=rp.name(var)%>"<%=ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%> with <%=rp.valid(as.numeric(var))%> valid values whether frequency counts are distributed equally across different categories of "<%=rp.name(split)%>"<%=ifelse(rp.label(split)==rp.name(split), '', sprintf(' ("%s")', rp.label(split)))%>.
+Analysing "<%=rp.name(var)%>"<%=ifelse(rp.label(var) == rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%> with <%=rp.valid(as.numeric(var))%> valid values whether frequency counts are distributed equally across different categories of "<%=rp.name(split)%>"<%=ifelse(rp.label(split) == rp.name(split), '', sprintf(' ("%s")', rp.label(split)))%>.
 
 "<%=rp.name(split)%>" has <%=split.cat <- names(table(split)); length(split.cat)%> categories:
 <%=as.list(split.cat)%>
@@ -41,7 +41,7 @@ Analysing "<%=rp.name(var)%>"<%=ifelse(rp.label(var)==rp.name(var), '', sprintf(
 # Counts
 
 <%=
-table		<- table(split, var, deparse.level = 0, useNA = 'ifany')
+table	<- table(split, var, deparse.level = 0, useNA = 'ifany')
 if (length(which(is.na(rownames(table)))) > 0)
     rownames(table)[which(is.na(rownames(table)))] <- 'Missing'
 if (length(which(is.na(colnames(table)))) > 0)

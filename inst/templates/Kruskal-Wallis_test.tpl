@@ -36,7 +36,7 @@ Significant result means difference between the samples/variables.
 
 <%=
 set.caption(sprintf('Kruskal-Wallis test for %s and %s', p(var1.label), p(var2.label)))
-krusk <- kruskal.test(list(var1,var2))
+krusk <- kruskal.test(list(var1, var2))
 krusk
 p.v <- krusk$p.value
 sta <- krusk$statistic

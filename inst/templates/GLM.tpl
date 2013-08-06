@@ -69,13 +69,13 @@ Values of the independent variables must be between 0 and 1 when binomial used a
 d <- structure(na.omit(data.frame(dep, indep)), .Names = c(dep.name, indep.name))
 indep.int <- fml(dep.name, indep.name, join.right = "*")
 indep.nonint <- fml(dep.name, indep.name, join.right = "+")
-fit <- glm(ifelse(indep.inter, indep.int, indep.nonint), data = d,family=family)
+fit <- glm(ifelse(indep.inter, indep.int, indep.nonint), data = d, family = family)
 indep.plu <- switch(indep.ilen, '', 's')
 %>
 
 #Overview
 
-<%= ifelse(indep.ilen==1, '', 'Multivariate-') %>General Linear Model was carried out, with <%= p(indep.label) %> as independent variable<%= indep.plu %>, and <%= p(dep.label) %> as a dependent variable.
+<%= ifelse(indep.ilen == 1, '', 'Multivariate-') %>General Linear Model was carried out, with <%= p(indep.label) %> as independent variable<%= indep.plu %>, and <%= p(dep.label) %> as a dependent variable.
 The [interaction](http://en.wikipedia.org/wiki/Interaction) between the independent variables was<%=ifelse(indep.inter, "", "n't")%> taken into account.
 
 
@@ -83,10 +83,10 @@ The [interaction](http://en.wikipedia.org/wiki/Interaction) between the independ
 <%=
 set.caption(sprintf('Fitting General Linear Model: %s based on %s', dep.name, p(indep.name)))
 fit
-p_val <- summary(fit)$coefficients[,4]
+p_val <- summary(fit)$coefficients[, 4]
 %>
 
-From the table one can see that <%= paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val,3),sep=" has significant effect on the dependent variable, the p-value of that is ")%>
+From the table one can see that <%= paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val, 3),sep = " has significant effect on the dependent variable, the p-value of that is ")%>
 
 
 <% } %>

@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Bartlett's test
-  author: Daniel Nagy
+  author: Gergely Daróczi, Daniel Nagy
   description: This template will run the Bartlett's test to check the equality of variances between groups.
   email: ~
   packages:
@@ -60,19 +60,19 @@ So, the conclusions we can draw with the help of test statistics:
  - according to _Shapiro-Wilk test_, the distribution of _<%= resp.label %>_ is<%= ifelse(h[4, 3] < p, " not", "") %> normal
 <% }
 if (!is.na(h[1, 3])) { %>
- - based on _Lilliefors test_, distribution of _<%= resp.label %>_ is <%= ifelse(h[1, 3]<p, "not normal", "normal") %>
+ - based on _Lilliefors test_, distribution of _<%= resp.label %>_ is <%= ifelse(h[1, 3] < p, "not normal", "normal") %>
 <% }
 if (!is.na(h[2, 3])) { %>
  - _Anderson-Darling test_ confirms<%= ifelse(h[2, 3] < p, " violation of", "") %> normality assumption
 <% }
 if (!is.na(h[3, 3])) { %>
- - _Pearson's Chi-square test_ classifies the underlying distribution as <%= ifelse(h[3, 3]<p, "non-normal", "normal") %>
+ - _Pearson's Chi-square test_ classifies the underlying distribution as <%= ifelse(h[3, 3] < p, "non-normal", "normal") %>
 <% } %>
 
 <%=
-o <- sum((h[1,3]<p), (h[2,3]<p), (h[3,3]<p), na.rm = TRUE)
+o <- sum((h[1, 3] < p), (h[2, 3] < p), (h[3, 3] < p), na.rm = TRUE)
 if (length(resp) > 5000)
-    o <- sum(o, (h[4,3]<p), na.rm = TRUE)
+    o <- sum(o, (h[4, 3] < p), na.rm = TRUE)
 %>
 
 As a result we can<%= ifelse(o < 1, "", " not") %> assume, that the distribution of _<%= resp.label %>_ is statistically normal.
@@ -92,5 +92,5 @@ p <- .05
 
 According to the _Bartlett's test_, the variance of the _<%= resp.label %>_ across the groups of _<%= group.label %>_ <%= ifelse(h[1, 3] < p, "significantly differs", "does not differs significantly") %>.
 
-We can conclude that, because <%= ifelse(h[1,3]<p,"the p-value is smaller than 0.05.","the p-value is higher than 0.05.")%>
+We can conclude that, because <%= ifelse(h[1, 3] < p,"the p-value is smaller than 0.05.","the p-value is higher than 0.05.")%>
 

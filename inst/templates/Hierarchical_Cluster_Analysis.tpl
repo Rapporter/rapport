@@ -73,11 +73,11 @@ d <- dist(variables)
 d <- variables
 }
 HCA <- hclust(d,method)
-plclust(HCA, labels=F, main="HCA", xlab="Hierarchical Cluster Analysis",sub="")
-+rect.hclust(HCA, k=clust.num, border="red")
+plclust(HCA, labels = F, main = "HCA", xlab = "Hierarchical Cluster Analysis", sub = "")
++rect.hclust(HCA, k = clust.num, border = "red")
 %>
 
-We can say that <%=length(which(HCA$height == 0))%> observations have the same values on the used variables, so they were joined in the first <%=length(which(HCA$height == 0))%> round. After that <%=which(HCA$merge[,1] >= 0)[1]-length(which(HCA$height == 0))%> times there were only made clusters with 2 observations, the first cluster that contain 3 was made in the round <%=which(HCA$merge[,1] >= 0)[1]%>.
+We can say that <%=length(which(HCA$height == 0))%> observations have the same values on the used variables, so they were joined in the first <%=length(which(HCA$height == 0))%> round. After that <%=which(HCA$merge[, 1] >= 0)[1]-length(which(HCA$height == 0))%> times there were only made clusters with 2 observations, the first cluster that contain 3 was made in the round <%=which(HCA$merge[, 1] >= 0)[1]%>.
 
 
 ### Optimal number of clusters
@@ -88,8 +88,8 @@ According to the BIC for EM initialized by hierarchical clustering for parameter
 
 <% if (summary(mod1)$G != clust.num) { %>
 Let's see how the Dendogram looks like when we the optimal number of the clusters plotted in it.
-<%=plclust(HCA, labels=F, main="HCA", xlab="Hierarchical Cluster Analysis",sub="")
-+rect.hclust(HCA, k=summary(mod1)$G, border="red")%>
+<%=plclust(HCA, labels = F, main = "HCA", xlab = "Hierarchical Cluster Analysis",sub = "")
++rect.hclust(HCA, k = summary(mod1)$G, border = "red")%>
 
 <% } %>
 

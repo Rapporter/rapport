@@ -75,8 +75,8 @@ if (any(dd)) {
 warning("Among labels some of them are duplicated. Possibly there is a better way to label, please consider other options. In this report duplications will be distinguished by following '_' and numbers after them.")
 }
 whichisduplicated <- apply(data.frame(need = names(table(id[dd]))), 1, function(i) which(id==i))
-if (class(whichisduplicated)!="list") whichisduplicated <- list('1'=whichisduplicated)
-lapply(whichisduplicated, function(i) id[i] <<- paste(id[i], 1:length(i), sep="_") )
+if (class(whichisduplicated) != "list") whichisduplicated <- list('1' = whichisduplicated)
+lapply(whichisduplicated, function(i) id[i] <<- paste(id[i], 1:length(i), sep = "_") )
 rownames(vars) <- id
 }
 variables <- scale(na.omit(vars))
@@ -85,14 +85,14 @@ d <- dist(variables)
 } else { 
 d <- variables
 }
-fit <- cmdscale(d, eig=TRUE, k = 2)
+fit <- cmdscale(d, eig = TRUE, k = 2)
 x <- fit$points[, 1]
 y <- fit$points[, 2]
-plot(x, y, xlab="Coordinate 1", ylab="Coordinate 2", main="Metric  MDS",   type="n")
-+text(x, y, labels = row.names(variables), cex=0.7, col=panderOptions("graph.colors")[4]) 
+plot(x, y, xlab="Coordinate 1", ylab = "Coordinate 2", main = "Metric  MDS",   type = "n")
++text(x, y, labels = row.names(variables), cex = 0.7, col = panderOptions("graph.colors")[4]) 
 distance <- as.matrix(d)
 maxind <- which(distance == max(distance), arr.ind = TRUE)
-minind <- which(distance == min(distance[distance!=min(distance)]), arr.ind = TRUE)
+minind <- which(distance == min(distance[distance != min(distance)]), arr.ind = TRUE)
 %>
 
 ### What can be seen here?
@@ -102,19 +102,19 @@ minind <- which(distance == min(distance[distance!=min(distance)]), arr.ind = TR
 furthest <- colnames(distance)[which(colSums(distance) == max(colSums(distance)))]
 nearest <- colnames(distance)[which(colSums(distance) == min(colSums(distance)))]%>
 
-<%=furthest %> differ<%= ifelse(length(furthest)>1, "","s")%> the most from the others, and <%=nearest%> seem<%= (ifelse (length(nearest)>1,"","s"))%> to be the most "common" observation<%= (ifelse (length(nearest)>1,"s",""))%>, which <%=ifelse(length(nearest)>1, "lies", "lie") %> nearest to all other observations.
+<%=furthest %> differ<%= ifelse(length(furthest) > 1, "", "s")%> the most from the others, and <%=nearest%> seem<%= (ifelse (length(nearest) > 1, "", "s"))%> to be the most "common" observation<%= (ifelse (length(nearest) > 1, "s", ""))%>, which <%=ifelse(length(nearest) > 1, "lies", "lie") %> nearest to all other observations.
 
 <%=
 distance[upper.tri(distance, diag = T)] <- NA
 h <- NULL
-notneeded <- apply(data.frame(unique(as.vector(sort(distance[lower.tri(distance)],decreasing=T))[1:max.dist.num])), 1, function(i) h <<- rbind(h, which(distance==i,arr.ind=T)))
+notneeded <- apply(data.frame(unique(as.vector(sort(distance[lower.tri(distance)], decreasing = T))[1:max.dist.num])), 1, function(i) h <<- rbind(h, which(distance == i, arr.ind = T)))
 j <- NULL
-notneeded <- apply(data.frame(unique(as.vector(sort(distance[lower.tri(distance)],decreasing=F))[1:min.dist.num])), 1, function(i) j <<- rbind(j, which(distance==i,arr.ind=T)))
+notneeded <- apply(data.frame(unique(as.vector(sort(distance[lower.tri(distance)], decreasing = F))[1:min.dist.num])), 1, function(i) j <<- rbind(j, which(distance == i, arr.ind = T)))
 %>
 
 #### Outsider Pairs
 
-<%=paste0(p(c(rownames(distance)[h[1,1]], colnames(distance)[h[1,2]])), ' (', round(distance[h[1, 1], h[1, 2]], 2), ')')%> are the "furthest", <%=paste0(p(c(rownames(distance)[j[1,1]], colnames(distance)[j[1,2]])), ' (', round(distance[j[1, 1], j[1, 2]], 2), ')') %> are the "nearest" to each other.
+<%=paste0(p(c(rownames(distance)[h[1, 1]], colnames(distance)[h[1, 2]])), ' (', round(distance[h[1, 1], h[1, 2]], 2), ')')%> are the "furthest", <%=paste0(p(c(rownames(distance)[j[1, 1]], colnames(distance)[j[1, 2]])), ' (', round(distance[j[1, 1], j[1, 2]], 2), ')') %> are the "nearest" to each other.
 
 #### In General
 
@@ -125,9 +125,9 @@ Now let's see which observations can be said statistically far/similar to each o
 According to the used variables (<%=rp.label(vars)%>) the <%=max.dist.num%> furthest pair of observations are:
 
 <%=
-paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(distance)[h[i,1]], colnames(distance)[h[i,2]])), ' (', round(distance[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')%>
+paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(distance)[h[i, 1]], colnames(distance)[h[i, 2]])), ' (', round(distance[h[i, 1], h[i,, 2]], 2), ')'))), collapse = '\n')%>
 
-<%} else {%>
+<% } else { %>
 
 There are <%=nrow(h)%> observations which are the most similar, and equal in the same time, that is a higher number than the wanted <%=max.dist.num%>, thus will not be reported one-by-one. Set <%=nrow(h)%> as parameter <%=rp.name(max.dist.num)%> to check the pairs if you are interested.
 <%}%>
@@ -138,10 +138,10 @@ There are <%=nrow(h)%> observations which are the most similar, and equal in the
 According to the used variables (<%=rp.label(vars)%>) the <%=min.dist.num%> nearest pair of observations are:
 
 <%=
-paste(pander.return(lapply(1:nrow(j), function(i) paste0(p(c(rownames(distance)[j[i,1]], colnames(distance)[j[i,2]])), ' (', round(distance[j[i, 1], j[i, 2]], 2), ')'))), collapse = '\n')
+paste(pander.return(lapply(1:nrow(j), function(i) paste0(p(c(rownames(distance)[j[i, 1]], colnames(distance)[j[i, 2]])), ' (', round(distance[j[i, 1], j[i, 2]], 2), ')'))), collapse = '\n')
 %>
 
-<%} else {%>
+<% } else { %>
 
 There are <%=nrow(j)%> observations which are the most similar and equal in the same time, that is a higher number than the wanted <%=min.dist.num%>, thus will not be reported one-by-one. Set <%=nrow(j)%> as parameter (<%=rp.name(min.dist.num)%>) to check the pairs if you are interested.
 <%}%>

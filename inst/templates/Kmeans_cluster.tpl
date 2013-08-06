@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: K-means cluster
-  author: Daniel Nagy
+  author: Gergely Daróczi, Daniel Nagy
   description: K-means clustering with automatically estimated number of clusters
   email: ~
   packages:
@@ -41,7 +41,7 @@ wss <- (nrow(varsScaled) - 1) * sum(apply(varsScaled, 2, var))
 for (i in 2:15) {
     wss[i] <- sum(kmeans(varsScaled, centers = i)$withinss)
 }
-plot(1:15, wss, type="b", xlab="Number of Clusters",  ylab="Within groups sum of squares")
+plot(1:15, wss, type = "b", xlab = "Number of Clusters",  ylab = "Within groups sum of squares")
 cn <- tryCatch(pamk(varsScaled), error = function(e) e)
 %>
 

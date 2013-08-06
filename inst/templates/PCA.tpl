@@ -67,12 +67,12 @@ head-->
  
 <%=
 vars <- na.omit(vars)
-summary(prcomp(vars))$importance[,1:components]%>
-From the table above one can see that the first <%=components%> Principal Component<%=ifelse(components==1,'','s')%> contains the <%=paste(summary(prcomp(vars))$importance[2,1:components]*100,"%")%> of the variance<%=ifelse(components==1,'','s')%>, so together the <%=paste(sum(summary(prcomp(vars))$importance[2,1:components]*100),"%")%> of that.
+summary(prcomp(vars))$importance[, 1:components]%>
+From the table above one can see that the first <%=components%> Principal Component<%=ifelse(components == 1, '', 's')%> contains the <%=paste(summary(prcomp(vars))$importance[2, 1:components] * 100, "%")%> of the variance<%=ifelse(components == 1, '', 's')%>, so together the <%=paste(sum(summary(prcomp(vars))$importance[2, 1:components] * 100), "%")%> of that.
 
 ### Visual representation
 
-It could be informative to see visually how the observations lies on these components. On that two dimensional plot below, where the axes are the components which contains the two most variances, you can see (the red vectors) the effect of the variables as well. <% if(ncol(vars) >5) { %> In the case we have several variables, the plot could be a little bit confusing but it still helps us to explore the number of the Principal Components. <% } %>
+It could be informative to see visually how the observations lies on these components. On that two dimensional plot below, where the axes are the components which contains the two most variances, you can see (the red vectors) the effect of the variables as well. <% if(ncol(vars) > 5) { %> In the case we have several variables, the plot could be a little bit confusing but it still helps us to explore the number of the Principal Components. <% } %>
 
 <%= 
 biplot(prcomp(vars)) 
@@ -89,17 +89,17 @@ if (rot.matrix) {
 rot <- prcomp(vars)$rotation[,1:components]
 emphasize.strong.cells(which(abs(rot) > 0.3, arr.ind = TRUE))
 rot
-} else {}
+} else { }
 %>
 
 The cells written in bold shows which components explain the most variances of the variables, with the help of them we can draw the following conclusion:
-<%=paste(colnames(rot)[which(abs(rot) > 0.3, arr.ind = TRUE)[,2]],rp.name(vars)[which(abs(rot) > 0.3, arr.ind = TRUE)[,1]],sep=" is a principal component of ")%>.
+<%=paste(colnames(rot)[which(abs(rot) > 0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(abs(rot) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a principal component of ")%>.
 
 <% if (length(which(rot > 0.3)) != length(which(abs(rot) > 0.3))) { %>
 
-<%=neg.comp <- colnames(rot)[which(rot < -0.3, arr.ind = TRUE)[,2]]%>
+<%=neg.comp <- colnames(rot)[which(rot < -0.3, arr.ind = TRUE)[, 2]]%>
 
-From them in the case<%=ifelse(neg.comp < 1, "s", "")%> of the <%=paste(colnames(rot)[which(rot < -0.3, arr.ind = TRUE)[,2]],rp.name(vars)[which(rot < -0.3, arr.ind = TRUE)[,1]],sep="'s impact on ")%>, we can say <%=ifelse(neg.comp < 1, "they are", "that is")%> negative.
+From them in the case<%=ifelse(neg.comp < 1, "s", "")%> of the <%=paste(colnames(rot)[which(rot < -0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(rot < -0.3, arr.ind = TRUE)[, 1]], sep = "'s impact on ")%>, we can say <%=ifelse(neg.comp < 1, "they are", "that is")%> negative.
 		
 <% } else { %>
 We can say that <%=ifelse(length(which(abs(rot) > 0.3)), "none of these impacts are negative", "this impact is positive")%>. 

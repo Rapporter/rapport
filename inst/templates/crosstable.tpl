@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Crosstable
-  author: Daniel Nagy
+  author: Gergely Daróczi, Daniel Nagy
   description: Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
   packages: 
   - descr
@@ -57,7 +57,7 @@ In the last part there are some *charts* presented, with that one can visually o
 # Counts
 
 <%=
-table  	<- table(row, col, deparse.level = 0, useNA = 'ifany')
+table <- table(row, col, deparse.level = 0, useNA = 'ifany')
 if (length(which(is.na(rownames(table)))) > 0)
     rownames(table)[which(is.na(rownames(table)))] <- 'Missing'
 if (length(which(is.na(colnames(table)))) > 0)
@@ -72,28 +72,28 @@ fulltable
 table.max <- which(table == max(table), arr.ind = TRUE)
 %>
 
-Most of the cases (<%=table[table.max]%>) can be found in "<%=paste(rownames(table)[table.max[,1]], colnames(table)[table.max[,2]], sep = '-')%>" categories. Row-wise "<%=names(which.max(rowSums(table)))%>" holds the highest number of cases (<%=max(rowSums(table))%>) while column-wise "<%=names(which.max(colSums(table)))%>" has the utmost cases (<%=max(colSums(table))%>).
+Most of the cases (<%=table[table.max]%>) can be found in "<%=paste(rownames(table)[table.max[, 1]], colnames(table)[table.max[, 2]], sep = '-')%>" categories. Row-wise "<%=names(which.max(rowSums(table)))%>" holds the highest number of cases (<%=max(rowSums(table))%>) while column-wise "<%=names(which.max(colSums(table)))%>" has the utmost cases (<%=max(colSums(table))%>).
 
 # Percentages
 
 <%=
 set.caption(sprintf('Total percentages: "%s" and "%s"', rp.name(row), rp.name(col)))
 set.alignment(row.names = "right")
-fulltable <- round(addmargins(prop.table(table)*100), 2)
+fulltable <- round(addmargins(prop.table(table) * 100), 2)
 fulltable
 %>
 
 <%=
 set.caption(sprintf('Row percentages: "%s" and "%s"', rp.name(row), rp.name(col)))
 set.alignment(row.names = "right")
-fulltable <- round(prop.table(addmargins(table, 1), 1)*100, 2)
+fulltable <- round(prop.table(addmargins(table, 1), 1) * 100, 2)
 fulltable
 %>
 
 <%=
 set.caption(sprintf('Column percentages: "%s" and "%s"', rp.name(row), rp.name(col)))
 set.alignment(row.names = "right")
-fulltable <- round(prop.table(addmargins(table,2 ), 2)*100, 2)
+fulltable <- round(prop.table(addmargins(table, 2), 2) * 100, 2)
 fulltable
 %>
 
@@ -124,23 +124,23 @@ t      <- suppressWarnings(chisq.test(table))
 lambda <- lambda.test(table)
 cramer <- sqrt(as.numeric(t$statistic) / (sum(table) * min(dim(table))))
 o <- t$expected
-num<- nrow(o)*ncol(o)
+num <- nrow(o) * ncol(o)
 k <- 0
 l <- 0
 for (i in 1:nrow(o))
 for (j in 1:ncol(o))
 {
-if (o[i,j]<5) {k <- k+1}
-if (o[i,j]<1) {l <- l+1}
+if (o[i, j] < 5) {k <- k + 1}
+if (o[i, j] < 1) {l <- l + 1}
 }
 %>
 Let's look at on expected values then:
 <%=
 o
 crit <- 0
-if (l>0) {crit <- crit+1}
-if (k<num/5)  {crit <- crit+1}
-ifelse(crit>0,"We can see that the Chi-squared test met the requirements.", "We can see that using the Chi-squared test is not advisable in this case, so you should be careful with the interpretation.")
+if (l>0) {crit <- crit + 1}
+if (k<num/5)  {crit <- crit + 1}
+ifelse(crit > 0,"We can see that the Chi-squared test met the requirements.", "We can see that using the Chi-squared test is not advisable in this case, so you should be careful with the interpretation.")
 %>
 
 So now check the result of the test:
@@ -155,7 +155,7 @@ To each degrees of freedom there is denoted a [critical value](http://en.wikiped
 The requirements of the chi-squared test was not met, so [Yates's correction for continuity](http://en.wikipedia.org/wiki/Yates%27s_correction_for_continuity) applied. The approximation may be incorrect.
 <% } %>
 
-<%if (!is.na(cramer)) {%>
+<%if (!is.na(cramer)) { %>
 <%if (t$p.value < 0.05) { %>
 
 It seems that a real association can be pointed out between *<%=rp.name(row)%>* and *<%=rp.name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%> at the [degree of freedom](http://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)) being <%=as.numeric(t$parameter)%> at the [significance level](http://en.wikipedia.org/wiki/Statistical_significance) of <%=add.significance.stars(t$p.value)%>.
@@ -271,7 +271,7 @@ table2$Freq <- as.data.frame(t(table.res))$Freq
 names(table2) <- c("x", "y", "result")
 table2 <- transform(table2, x = as.factor(x), y = as.factor(y), freq = result)
 ceiling <- max(table2$freq, na.rm = TRUE)
-ggplot(table2, aes_string(x = "x", y = "y", fill = "freq")) + geom_tile(colour = "grey50") + scale_fill_gradient2('Std. adj. res.', limits = c(-max(abs(range(table2$freq))), max(abs(range(table2$freq)))), midpoint=0, low = "red", mid="white", high = "green")
+ggplot(table2, aes_string(x = "x", y = "y", fill = "freq")) + geom_tile(colour = "grey50") + scale_fill_gradient2('Std. adj. res.', limits = c(-max(abs(range(table2$freq))), max(abs(range(table2$freq)))), midpoint = 0, low = "red", mid = "white", high = "green")
 %>
 
 In front of the heat map, on the *mosaic charts*, not only the colours are important. The size of the cells shows the amount of the counts one cell has.
@@ -283,14 +283,14 @@ set.caption('Mosaic chart')
 glp      <- panderOptions('graph.legend.position')
 panderOptions('graph.legend.position', 'top')
 t        <- melt(table)
-t$x      <- rowSums(table)/sum(table) * 100
-t$xmax   <- cumsum(rowSums(table))/sum(table) * 100
+t$x      <- rowSums(table) / sum(table) * 100
+t$xmax   <- cumsum(rowSums(table)) / sum(table) * 100
 t$xmin   <- t$xmax - t$x
 t$y      <- t$value / rep(rowSums(table), ncol(table)) * 100
 t        <- t[with(t, order(Var.1)), ]
 t$ymax   <- cumsum(t$y) - as.vector(sapply(1:nrow(table) - 1, rep, ncol(table))) * 100
 t$ymin   <- t$ymax - t$y
-t$xxtext <- with(t, xmin + (xmax - xmin)/2)
+t$xxtext <- with(t, xmin + (xmax - xmin) / 2)
 t$xytext <- as.vector(sapply(rep(c(103, -3), length.out = nrow(table)), rep, ncol(table)))
 ggplot(t, aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = Var.2)) + geom_rect() + geom_rect(colour = 'white', show_guide = FALSE) + geom_text(aes(x = xxtext, y = xytext, label = Var.1), size = 4) + xlab('') + ylab('') + theme(legend.position = 'top') + labs(fill = '')
 panderOptions('graph.legend.position', glp)

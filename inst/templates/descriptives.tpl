@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Descriptive statistics
-  author: Daniel Nagy
+  author: Gergely Daróczi, Daniel Nagy
   description: This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
   packages: ~
   example:
@@ -21,7 +21,7 @@ inputs:
   standalone: no
 head-->
 
-# *<%=rp.name(var)%>*<%=ifelse(rp.label(var)==rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>
+# *<%=rp.name(var)%>*<%=ifelse(rp.label(var) == rp.name(var), '', sprintf(' ("%s")', rp.label(var)))%>
 
 The dataset has <%=nvar<-as.numeric(var); length(nvar)%> observations with <%=rp.valid(nvar)%> valid values (missing: <%=rp.missing(nvar)%>).
 
@@ -33,9 +33,9 @@ set.caption(sprintf('Descriptives: %s', rp.label(var)))
 rp.desc(rp.name(var), NULL, c('mean', 'sd', 'var'), rp.data)
 %>
 
-The [standard deviation](http://en.wikipedia.org/wiki/Standard_deviation) equals to  <%=rp.sd(var)%> (variance: <%=rp.var(var)%>), which shows the unstandardized degree of [homogenity](http://en.wikipedia.org/wiki/Homogeneity_(statistics)): how much variation exists from the average. The [expected value](http://en.wikipedia.org/wiki/Mean) is around <%=rp.mean(var)%>, somewhere between <%=rp.mean(var)-1.96*rp.se.mean(var)%> and <%=rp.mean(var)+1.96*rp.se.mean(var)%> with the standard error of <%=rp.se.mean(var)%>.
+The [standard deviation](http://en.wikipedia.org/wiki/Standard_deviation) equals to  <%=rp.sd(var)%> (variance: <%=rp.var(var)%>), which shows the unstandardized degree of [homogenity](http://en.wikipedia.org/wiki/Homogeneity_(statistics)): how much variation exists from the average. The [expected value](http://en.wikipedia.org/wiki/Mean) is around <%=rp.mean(var)%>, somewhere between <%=rp.mean(var)-1.96*rp.se.mean(var)%> and <%=rp.mean(var) + 1.96 * rp.se.mean(var)%> with the standard error of <%=rp.se.mean(var)%>.
 
-The highest value found in the dataset is <%=rp.max(var)%>, which is exactly <%=rp.max(var)/rp.min(var)%> times higher than the minimum (<%=rp.min(var)%>). The difference between the two is described by the [range](http://en.wikipedia.org/wiki/Range_(statistics)): <%=diff(range(var, na.rm = TRUE))%>.
+The highest value found in the dataset is <%=rp.max(var)%>, which is exactly <%=rp.max(var) / rp.min(var)%> times higher than the minimum (<%=rp.min(var)%>). The difference between the two is described by the [range](http://en.wikipedia.org/wiki/Range_(statistics)): <%=diff(range(var, na.rm = TRUE))%>.
 
 ## Chart
 
@@ -55,7 +55,7 @@ set.caption(sprintf('Frequency table: %s', rp.label(var)))
 rp.freq(rp.name(var), rp.data, na.rm = FALSE, include.na = TRUE)
 %>
 
-The most frequent value is *<%=t <- table(var); names(t[t==max(t)])%>*.
+The most frequent value is *<%=t <- table(var); names(t[t == max(t)])%>*.
 
 ## Charts
 

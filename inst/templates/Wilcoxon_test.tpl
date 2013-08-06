@@ -48,11 +48,11 @@ the Mann-Whitney U test)  is a non-parametric statistical test which can be an a
 
 <%=
 set.caption(sprintf('Wilcoxon rank sum test with continuity correction %s and %s', var1.label, var2.label))
-suppressWarnings(wilc <- wilcox.test(var1,var2,alter))
+suppressWarnings(wilc <- wilcox.test(var1, var2, alter))
 wilc
 p.v <- wilc$p.value
 %>
 
-As you can see in the table the the p-value of the Wilcoxon test is <%=p.v%>, thus we can <%= ifelse(p.v > 0.05,"reject", "accept")%> the assumption of the null hypothesis, so we can say that statistically the variances are<%= ifelse(p.v > 0.05," not", "")%> equal.
+As you can see in the table the the p-value of the Wilcoxon test is <%=p.v%>, thus we can <%= ifelse(p.v > 0.05, "reject", "accept")%> the assumption of the null hypothesis, so we can say that statistically the variances are<%= ifelse(p.v > 0.05, " not", "")%> equal.
 
 

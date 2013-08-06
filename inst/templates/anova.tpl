@@ -103,8 +103,8 @@ if (ntest$p[3]<0.05){n<-m+1}
 
 We will use <%=ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
 
-<%= if (n>0)
-sprintf("As you can see, the applied tests %s.", ifelse(n>1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) else sprintf("reject departures from normality") %>
+<%= if (n > 0)
+sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) else sprintf("reject departures from normality") %>
 
 ### Homoscedascity
 

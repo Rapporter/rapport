@@ -114,16 +114,16 @@ if (method=="minimize the sample size weighted chi square") { method <- "minchi"
 fact.matrix <- na.omit(scale(vars))
 
 if (!is.exnull(fact.num)) {
-FA <- fa(fact.matrix, factors=fact.num, scores=fa.scores, rotation=rot.method, fm=method, max.iter=max.iter, warnings=TRUE)
+FA <- fa(fact.matrix, factors = fact.num, scores = fa.scores, rotation = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
 auto.fact <- FALSE
 } else {
 ev <- eigen(cor(fact.matrix))
-ap <- parallel(subject=nrow(fact.matrix),var=ncol(fact.matrix), rep=100,cent=.05)
-nS <- nScree(x=ev$values, aparallel=ap$eigen$qevpea)
+ap <- parallel(subject=nrow(fact.matrix), var = ncol(fact.matrix), rep = 100, cent=.05)
+nS <- nScree(x = ev$values, aparallel = ap$eigen$qevpea)
 plotnScree(nS)
 fact.num <- max(which(ev$values >= 1))
 auto.fact <- TRUE
-FA <- fa(fact.matrix, factors=fact.num, scores=fa.scores, rotation=rot.method, fm=method, max.iter=max.iter, warnings=TRUE)
+FA <- fa(fact.matrix, factors = fact.num, scores = fa.scores, rotation = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
 }
 %>
 
@@ -147,13 +147,13 @@ emphasize.strong.cells(which(abs(FA_loadings) > 0.3, arr.ind = TRUE))
 FA_loadings
 %>
 
-So it can be said that <%=paste(colnames(FA_loadings)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[,2]],rp.name(vars)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[,1]],sep=" is a latent factor of ")%>.
+So it can be said that <%=paste(colnames(FA_loadings)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a latent factor of ")%>.
 
 <% if (length(which(FA_loadings > 0.3)) != length(which(abs(FA_loadings) > 0.3))) { %>
 
-<%=neg.comp <- colnames(FA_loadings)[which(FA_loadings < -0.3, arr.ind = TRUE)[,2]]%>
+<%=neg.comp <- colnames(FA_loadings)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 2]]%>
 
-From them in the case<%=ifelse(length(neg.comp) > 1, "s", "")%> of the <%=paste(colnames(FA_loadings)[which(FA_loadings < -0.3, arr.ind = TRUE)[,2]],rp.name(vars)[which(FA_loadings < -0.3, arr.ind = TRUE)[,1]],sep="'s impact on ")%>, we can say <%=ifelse(length(neg.comp) > 1, "they are", "that is")%> negative effects.
+From them in the case<%=ifelse(length(neg.comp) > 1, "s", "")%> of the <%=paste(colnames(FA_loadings)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 2]], rp.name(vars)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 1]], sep = "'s impact on ")%>, we can say <%=ifelse(length(neg.comp) > 1, "they are", "that is")%> negative effects.
     
 <% } else { %>
 We can say that <%=ifelse(length(which(abs(FA_loadings) > 0.3)), "none of these impacts are negative", "this impact is positive")%>. 
@@ -167,7 +167,7 @@ We can say that <%=ifelse(length(which(abs(FA_loadings) > 0.3)), "none of these 
 Now let's check how the observations distribute among the <%= ifelse(fact.num < 2, "factor", "first and the second factors")%>.
 <%= FA_scores <- FA$scores
 plot(FA_scores)
-+text(FA_scores,labels=rownames(fact.matrix),cex=1)
++text(FA_scores, labels = rownames(fact.matrix), cex = 1)
 %>
 <% } else { %>
 <%=ifelse(length(rownames(FA$scores)) > 0,"Excuse us, but the data does not contain names for the observations. Plot would not be informative without labels, thus we do not present that.", "On the plot we would show at least 100 observations, which would make that chaotic, so it will not be presented.") %>

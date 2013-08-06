@@ -1,7 +1,7 @@
 <!--head
 meta:
   title: Brown–Forsyth test
-  author: Daniel Nagy
+  author: Gergely Daróczi, Daniel Nagy
   description: This template will run a Brown–Forsyth test to check the equality of variances among groups.
   email: ~
   packages:
@@ -51,7 +51,7 @@ p <- .05
 
 According to the _Brown–Forsyth test_, the variances of the _<%= resp.label %>_ across the groups of _<%= group.label %>_ <%= ifelse(h[1, 3] < p, "significantly differs", "does not differs significantly") %>.
 
-We can conclude that, because <%= ifelse(h[1,3]<p,"the p-value is smaller than 0.05","the p-value is higher than 0.05")%>
+We can conclude that, because <%= ifelse(h[1, 3] < p,"the p-value is smaller than 0.05","the p-value is higher than 0.05")%>
 
 ## References
 
