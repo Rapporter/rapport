@@ -34,13 +34,13 @@ head-->
 
 ## Distributions
 
-Before we use the K-S test to look at the possible statistical differences, it could be useful to see visually the distributions we want to observe. Below lie the [histograms](http://en.wikipedia.org/wiki/Histogram) of the variables we compared:
+Before we use the K-S test to look at the possible statistical differences, it could be useful to see visually the distributions we want to observe. Below lie the [Cumulative Distribution Functions](http://en.wikipedia.org/wiki/Cumulative_distribution_function) of the variables we compared:
 
 <%=
 set.caption(sprintf('Histogram of %s', xvar.label))
-hist(xvar)
+plot(ecdf(xvar))
 set.caption(sprintf('Histogram of %s', yvar.label))
-hist(yvar)
+plot(ecdf(yvar))
 %>
 
 ## Test results
