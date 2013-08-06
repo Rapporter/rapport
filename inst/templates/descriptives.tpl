@@ -25,7 +25,7 @@ head-->
 
 The dataset has <%=nvar<-as.numeric(var); length(nvar)%> observations with <%=rp.valid(nvar)%> valid values (missing: <%=rp.missing(nvar)%>).
 
-<%if (is.numeric(var)) {%>
+<% if (is.numeric(var)) { %>
 ## Base statistics
 
 <%=

@@ -75,7 +75,8 @@ if (any(dd)) {
 warning("Among labels some of them are duplicated. Possibly there is a better way to label, please consider other options. In this report duplications will be distinguished by following '_' and numbers after them.")
 }
 whichisduplicated <- apply(data.frame(need = names(table(id[dd]))), 1, function(i) which(id==i))
-if (class(whichisduplicated) != "list") whichisduplicated <- list('1' = whichisduplicated)
+if (class(whichisduplicated) != "list") {
+  whichisduplicated <- list('1' = whichisduplicated) }
 lapply(whichisduplicated, function(i) id[i] <<- paste(id[i], 1:length(i), sep = "_") )
 rownames(vars) <- id
 }

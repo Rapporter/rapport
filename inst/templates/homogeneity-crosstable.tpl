@@ -42,10 +42,10 @@ Analysing "<%=rp.name(var)%>"<%=ifelse(rp.label(var) == rp.name(var), '', sprint
 
 <%=
 table	<- table(split, var, deparse.level = 0, useNA = 'ifany')
-if (length(which(is.na(rownames(table)))) > 0)
-    rownames(table)[which(is.na(rownames(table)))] <- 'Missing'
-if (length(which(is.na(colnames(table)))) > 0)
-    colnames(table)[which(is.na(colnames(table)))] <- 'Missing'
+if (length(which(is.na(rownames(table)))) > 0) {
+    rownames(table)[which(is.na(rownames(table)))] <- 'Missing' }
+if (length(which(is.na(colnames(table)))) > 0) {
+    colnames(table)[which(is.na(colnames(table)))] <- 'Missing' }
 fulltable	<- addmargins(table)
 set.caption(sprintf('Counted values: "%s" and "%s"', rp.name(split), rp.name(var)))
 set.alignment(row.names = "right")

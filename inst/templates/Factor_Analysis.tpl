@@ -104,12 +104,12 @@ head-->
 <% } %>
 
 <%= 
-if (method=="minimum residual (OLS)") { method <- "minres"}
-if (method=="weighted least squares (WLS)") { method <- "wls"}
-if (method=="generalized weighted least squares (GLS)") { method <- "gls"}
-if (method=="principal factor solution") { method <- "pa"}
-if (method=="maximum likelihood") { method <- "ml"}
-if (method=="minimize the sample size weighted chi square") { method <- "minchi"}
+if (method=="minimum residual (OLS)") { method <- "minres" }
+if (method=="weighted least squares (WLS)") { method <- "wls" }
+if (method=="generalized weighted least squares (GLS)") { method <- "gls" }
+if (method=="principal factor solution") { method <- "pa" }
+if (method=="maximum likelihood") { method <- "ml" }
+if (method=="minimize the sample size weighted chi square") { method <- "minchi" }
 
 fact.matrix <- na.omit(scale(vars))
 

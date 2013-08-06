@@ -45,9 +45,9 @@ cm <- cor(vars, use = 'complete.obs')
 diag(cm) <- NA
 %>
 
-<%if (length(vars) > 2) { %>
+<% if (length(vars) > 2) { %>
 The highest correlation coefficient (<%=max(cm, na.rm = T)%>) is between <%=row.names(which(cm == max(cm, na.rm = T), arr.ind = T))[1:2]%> and the lowest (<%=min(cm, na.rm = T)%>) is between <%=row.names(which(cm == min(cm, na.rm = T), arr.ind = T))[1:2]%>. It seems that the strongest association (r=<%=cm[which(abs(cm) == max(abs(cm), na.rm = T), arr.ind = T)][1]%>) is between <%=row.names(which(abs(cm) == max(abs(cm), na.rm = T), arr.ind = T))[1:2]%>.
-<%}%>
+<% } %>
 
 <%
 cm[upper.tri(cm)] <- NA
@@ -72,8 +72,9 @@ if (nrow(h) > 0) {
 Uncorrelated (-0.2 < r < 0.2) variables:
 
 <%=
-if (nrow(h) > 0)
+if (nrow(h) > 0) {
     paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i, 1]], colnames(cm)[h[i, 2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')
+}
 %>
 
 <%} else {%>
@@ -117,9 +118,8 @@ panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...) {
     r   <- cor(x, y, use = 'complete.obs')
     txt <- format(c(r, 0.123456789), digits = digits, decimal.mark = panderOptions('decimal.mark'))[1]
     txt <- paste(prefix, txt, sep = "")
-    if(missing(cex.cor))
-        cex <- 0.8/strwidth(txt)
-    test <- cor.test(x,y)
+    if(missing(cex.cor)) { cex <- 0.8/strwidth(txt) }
+    test <- cor.test(x, y)
     Signif <- symnum(test$p.value, corr = FALSE, na = FALSE,
         cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
         symbols = c("***", "**", "*", ".", " "))

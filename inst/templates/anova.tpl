@@ -92,19 +92,19 @@ if (length(resp) < 5000) {
     ntest <- htest(resp, lillie.test, ad.test)
 }
 ntest
-k<-0
-l<-0
-m<-0
-n<-0
-if (ntest$p[1]<0.05){l<-k+1}
-if (ntest$p[2]<0.05){m<-l+1}
-if (ntest$p[3]<0.05){n<-m+1}
+k <- 0
+l <- 0
+m <- 0
+n <- 0
+if (ntest$p[1] < 0.05) {l <- k + 1}
+if (ntest$p[2] < 0.05) {m <- l + 1}
+if (ntest$p[3] < 0.05) {n <- m + 1}
 %>
 
 We will use <%=ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
 
-<%= if (n > 0)
-sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) else sprintf("reject departures from normality") %>
+<%= if (n > 0) {
+sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) else sprintf("reject departures from normality") } %>
 
 ### Homoscedascity
 
@@ -119,7 +119,7 @@ hsced
 %>
 
 
-When it comes to equality of variances, applied tests yield <%= ifelse(hcons, "consistent", "inconsistent") %> results. <%= if (hcons) sprintf("Homoscedascity assumption is %s.", ifelse(hp.all, "rejected", "confirmed")) else sprintf("While _Fligner-Kileen test_ %s the hypotheses of homoscedascity, _Bartlett's test_ %s it.", ifelse(hp[1] < .05, "rejected", "confirmed"), ifelse(hp[2] < .05, "rejected", "confirmed")) %>
+When it comes to equality of variances, applied tests yield <%= ifelse(hcons, "consistent", "inconsistent") %> results. <%= if (hcons) { sprintf("Homoscedascity assumption is %s.", ifelse(hp.all, "rejected", "confirmed")) } else { sprintf("While _Fligner-Kileen test_ %s the hypotheses of homoscedascity, _Bartlett's test_ %s it.", ifelse(hp[1] < .05, "rejected", "confirmed"), ifelse(hp[2] < .05, "rejected", "confirmed")) } %>
 
 ## Diagnostic Plots
 
@@ -147,4 +147,4 @@ a.fp <- a.p < .05
 data.frame(a)
 %>
 
-_F-test_ for <%= p(fac.label[1]) %> is <%= ifelse(a.fp[1], "", "not") %> statistically significant, which implies that there is <%= ifelse(a.fp[1], "an", "no") %> <%= fac.label[1] %> effect on response variable. <%= if (fac.ilen == 2) sprintf("Effect of %s on response variable is %s significant. ", p(fac.label[2]), ifelse(a.fp[2], "", "not")) else "" %><%= if (fac.ilen == 2 & fac.intr) sprintf("Interaction between levels of %s %s found significant (p = %.3f).", p(fac.label), ifelse(a.fp[3], "was", "wasn't"), a.p[3]) else "" %>
+_F-test_ for <%= p(fac.label[1]) %> is <%= ifelse(a.fp[1], "", "not") %> statistically significant, which implies that there is <%= ifelse(a.fp[1], "an", "no") %> <%= fac.label[1] %> effect on response variable. <%= if (fac.ilen == 2) { sprintf("Effect of %s on response variable is %s significant. ", p(fac.label[2]), ifelse(a.fp[2], "", "not")) } else { "" } %><%= if (fac.ilen == 2 & fac.intr) { sprintf("Interaction between levels of %s %s found significant (p = %.3f).", p(fac.label), ifelse(a.fp[3], "was", "wasn't"), a.p[3]) } else { "" } %>

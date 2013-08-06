@@ -71,8 +71,9 @@ if (!is.na(h[3, 3])) { %>
 
 <%=
 o <- sum((h[1, 3] < p), (h[2, 3] < p), (h[3, 3] < p), na.rm = TRUE)
-if (length(resp) > 5000)
+if (length(resp) > 5000) {
     o <- sum(o, (h[4, 3] < p), na.rm = TRUE)
+}
 %>
 
 As a result we can<%= ifelse(o < 1, "", " not") %> assume, that the distribution of _<%= resp.label %>_ is statistically normal.

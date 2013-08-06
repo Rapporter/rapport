@@ -66,8 +66,8 @@ if (!is.na(h[3, 3])) { %>
 <% }
 
 o <- sum((h[1, 3] < p), (h[2, 3] < p), (h[3, 3] < p), na.rm = TRUE)
-if (length(xvar) > 5000)
-    o <- sum(o, (h[4, 3] < p), na.rm = TRUE)
+if (length(xvar) > 5000) {
+    o <- sum(o, (h[4, 3] < p), na.rm = TRUE) }
 %>
 
 In summary we can<%= ifelse(o < 1, "", " not") %> assume, that the distribution of _<%= xvar.label %>_ is statistically normal.
@@ -99,15 +99,15 @@ if (!is.na(j[3, 3])) { %>
 <% }
 
 u <- sum((j[1, 3] < p), (j[2, 3] < p), (j[3, 3] < p), na.rm = TRUE)
-if (length(yvar) > 5000)
-u <- sum(u, (j[4, 3] < p), na.rm = TRUE)
+if (length(yvar) > 5000) {
+  u <- sum(u, (j[4, 3] < p), na.rm = TRUE) }
 %>
 
 In summary we can<%= ifelse(u < 1, "", " not") %> assume, that the distribution of _<%= yvar.label %>_ is statistically normal.
 
 ## Summary of the assumption testing
 
-We<%= ifelse(o+u < 1, " are able to", " should not") %> use the F test<%= ifelse(o + u < 1, ", because all the used variables seem to be normally distributed.", ", because we cannot be sure all the variables are normally distributed.") %>
+We<%= ifelse(o + u < 1, " are able to", " should not") %> use the F test<%= ifelse(o + u < 1, ", because all the used variables seem to be normally distributed.", ", because we cannot be sure all the variables are normally distributed.") %>
 
 <% if(o + u < 1) { %>
 
