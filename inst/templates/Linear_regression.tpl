@@ -57,7 +57,7 @@ gvmodel <- tryCatch(gvlma(fit), error = function(e) e)
 With the help of the [linear regression](http://en.wikipedia.org/wiki/Linear_regression) we can investigate the relationship <%=ifelse(indep.ilen == 1, 'between two variables', 'between the variables')%>. More punctually we can observe if one of the variables, the so-called [dependent](http://en.wikipedia.org/wiki/Dependent_variable) variable, significantly depended on the other variable<%=indep.plu%>, if an increase/decrease on the dependent variable's values made an increase/decrease on the independent variable<%=indep.plu%>.
 In this case we only observe linear relationships. <%=ifelse(indep.ilen == 1, '', 'As we use in the model more than 1 independent variables, we call the method [multivariate regression](http://en.wikipedia.org/wiki/Multivariate_regression_model).')%>
 
-#Overview
+# Overview
 
 <%= ifelse(indep.ilen == 1, '', 'Multivariate-') %>Linear Regression was carried out, with <%= p(indep.label) %> as independent variable<%= indep.plu %>, and <%= p(dep.label) %> as a dependent variable.
 The [interaction](http://en.wikipedia.org/wiki/Interaction) between the independent variables was<%=ifelse(indep.inter, "", "n't")%> taken into account.
@@ -115,7 +115,7 @@ Next to the test statistic of the GVLMA it is advisable to use a graphical devic
 
 <%=
 fit.nonint <- lm(indep.nonint, data = d)
-crPlots(fit.nonint)
+suppressWarnings(crPlots(fit.nonint))
 %>
 
 Here comes the question: What do we see on the plot?
@@ -129,6 +129,21 @@ par(mfrow = c(2, 2))
 +plot(fit)
 %>
 
+<% if (ncol(d) > 2) { %>
+
+### Multicollinearity
+
+<%=
+mcoll <- as.table(matrix(c(vif(fit), 1 / vif(fit)), ncol(d)-1, 2))
+colnames(mcoll) <- c("VIF", "Tolerance")
+rownames(mcoll) <- c(indep.name)
+mcoll 
+CNM <- as.table(kappa(fit))
+row.names(CNM) <- "The Condition Number of a Matrix"
+CNM
+%>
+<% } else { } %>
+
 # Results
 
 After successfully checked the assumptions we can finally turn to the main part of the interest, the results of the Linear Regression Model.
@@ -137,6 +152,15 @@ From the table we can read the variables <%=ifelse(indep.inter,'and interactions
 <%=
 set.caption(sprintf('Fitting linear model: %s based on %s', dep.name, p(indep.name)))
 fit
+gof <- as.table(c(nrow(d), summary(fit)$adj.r.squared, AIC(fit), BIC(fit)),1,4)
+rownames(gof) <- c("Number of Cases", "Adjusted R Squared", "AIC", "BIC")
+gof
+p_val <- summary(fit)$coefficients[, 4]
 %>
+
+From the table one can see that <%= paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val, 3)[which(p_val < 0.05)], sep = " has significant effect on the dependent variable, the p-value of that is ")%>
+
+The model <%= sprintf("%s %s well", ifelse(gof[2] > 0.2, "fits", "does not fit"), ifelse(gof[2] > 0.4, "very", "")) %>, because the Adjusted R Square is <%=gof[2]%>.
+
 
 
