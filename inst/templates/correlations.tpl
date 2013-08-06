@@ -38,7 +38,7 @@ Please note that [correlation has nothing to do with causal models](http://en.wi
 
 # Variable description
 
-<%=length(vars)%> variables provided.
+<%=dim(vars)[1]%> variables with <%=dim(vars)[2]%> cases provided.
 
 <%=
 cm <- cor(vars, use = 'complete.obs')
