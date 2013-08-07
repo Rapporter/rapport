@@ -41,7 +41,9 @@ inputs:
   required: no
   standalone: yes
 head-->
+
 <%=
+panderOptions('table.split.table', Inf)
 d <- structure(data.frame(resp, fac), .Names = c(resp.iname, fac.name))
 f.int <- fml(resp.iname, fac.name, join.right = "*")
 f.nonint <- fml(resp.iname, fac.name, join.right = "+")
