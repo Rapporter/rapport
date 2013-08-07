@@ -6,6 +6,8 @@ meta:
   email: ~
   packages:
   - RColorBrewer
+  example:
+  - rapport('densityplot.tpl', data=ius2008, var='age')
 inputs:
 - name: var
   label: Used Variable

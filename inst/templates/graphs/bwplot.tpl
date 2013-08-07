@@ -6,6 +6,8 @@ meta:
   email: ~
   packages:
   - RColorBrewer
+  example:
+  - rapport('bwplot.tpl', data=ius2008, var1='age', var2='edu')
 inputs:
 - name: var1
   label: Used Variable 1

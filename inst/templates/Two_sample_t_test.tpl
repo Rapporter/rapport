@@ -6,6 +6,8 @@ meta:
   email: ~
   packages:
   - nortest
+  example:
+  - rapport('Two_sample_t_test.tpl', data=ius2008, x='age', y=('edu'))
 inputs:
 - name: x
   label: X Variable

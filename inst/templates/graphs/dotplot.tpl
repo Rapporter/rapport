@@ -6,6 +6,8 @@ meta:
   email: ~
   packages:
   - RColorBrewer
+  example:
+  - rapport('dotplot.tpl', data=ius2008, var1='game')
 inputs:
 - name: var1
   label: Used Variable

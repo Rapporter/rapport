@@ -6,6 +6,8 @@ meta:
   email: ~
   packages:
   - RColorBrewer
+  example:
+  - rapport('xyplot.tpl', data=ius2008, x='edu',y='age')
 inputs:
 - name: x
   label: Used Variable

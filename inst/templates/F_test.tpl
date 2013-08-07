@@ -6,6 +6,8 @@ meta:
   email: ~
   packages:
   - nortest
+  example:
+  - rapport('ftest', data=ius2008, xvar='edu', yvar='age')
 inputs:
 - name: xvar
   label: X Variable(s)

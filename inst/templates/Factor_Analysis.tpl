@@ -7,6 +7,8 @@ meta:
   packages:
   - psych
   - nFactors
+  example:
+  - rapport('Factor_Analysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl'), rot.method="varimax")
 inputs:
 - name: vars
   label: Used Variables

@@ -6,6 +6,8 @@ meta:
   email: ~
   packages:
   - HH
+  example:
+  - rapport('Brown_Forsyth_test.tpl', data=ius2008, resp='age', group='gender')
 inputs:
 - name: resp
   label: Response Variable

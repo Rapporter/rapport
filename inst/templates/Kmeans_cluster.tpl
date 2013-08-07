@@ -7,6 +7,8 @@ meta:
   packages:
   - cluster
   - fpc
+  example:
+  - rapport('Kmeans_cluster.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'))
 inputs:
 - name: vars
   label: Input variables
