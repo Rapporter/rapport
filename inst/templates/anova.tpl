@@ -177,3 +177,52 @@ data.frame(a)
 %>
 
 _F-test_ for <%= p(fac.label[1]) %> is <%= ifelse(a.fp[1], "", "not") %> statistically significant, which implies that there is <%= ifelse(a.fp[1], "an", "no") %> <%= fac.label[1] %> effect on response variable. <%= if (fac.ilen == 2) { sprintf("Effect of %s on response variable is %s significant. ", p(fac.label[2]), ifelse(a.fp[2], "", "not")) } else { "" } %><%= if (fac.ilen == 2 & fac.intr) { sprintf("Interaction between levels of %s %s found significant (p = %.3f).", p(fac.label), ifelse(a.fp[3], "was", "wasn't"), a.p[3]) } else { "" } %>
+
+## Post Hoc test
+
+### Results
+
+After getting the results of the ANOVA, usually it is advisable to run a [post hoc test](http://en.wikipedia.org/wiki/Post-hoc_analysis) to explore patterns that were not specified a priori. Now we are presenting [Tukey's HSD test](http://en.wikipedia.org/wiki/Tukey%27s_range_test).
+
+<%= 
+aovfit <- aov(fit)
+Tukey <- TukeyHSD(aovfit) 
+%>
+
+<% for (v in names(Tukey)) { %>
+
+#### <%= v %>
+
+<%=  posthoc <- round(Tukey[[v]],3)
+colnames(posthoc) <- c("Difference", "Lower Bound", "Upper Bound", "P value") 
+is.signif <- length(posthoc[,4][which(abs(posthoc[,4]) < 0.05)]) > 0
+length.signif <- length(posthoc[,4][which(abs(posthoc[,4]) < 0.05)])
+if (is.signif) {
+post.signif <- paste(pander.return(lapply(1:length.signif, function(i) paste0(p(c(rownames(posthoc)[which(abs(posthoc[,4]) < 0.05)][i])), ' (', round(posthoc[,4][which(abs(posthoc[,4]) < 0.05)][i], 3), ')'))), collapse = '\n')
+} else {
+post.signif <- NULL
+}
+
+posthoc[,4] <- add.significance.stars(posthoc[,4])
+posthoc
+%>
+
+<% if (is.signif) { %>
+The following categories differ significantly (in the brackets you can see the p-value):
+<% } else { %>
+There are no categories which differ significantly here.
+<% } %>
+<%=
+post.signif
+%>
+
+<% } %>
+
+### Plot
+
+Below you can see the result of the post hoc test on a plot.
+
+<%= Tukey_plot <- plot(TukeyHSD(aovfit)) %>
+
+
+
