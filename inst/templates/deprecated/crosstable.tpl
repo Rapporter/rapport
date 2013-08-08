@@ -3,7 +3,7 @@ Title:          Crosstable
 Author:         Gergely Daróczi, Daniel Nagy
 Email:          gergely@snowl.net
 Description:    Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
-Packages:       descr
+Packages:       descr, ggplot2, reshape
 Data required:  TRUE
 Example:        rapport('crosstable', data=ius2008, row='gender', col='dwell')
 		rapport('crosstable', data=ius2008, row='email', col='dwell')
