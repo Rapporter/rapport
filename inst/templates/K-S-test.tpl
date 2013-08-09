@@ -40,10 +40,10 @@ head-->
 Before we use the K-S test to look at the possible statistical differences, it could be useful to see visually the distributions we want to observe. Below lie the [Cumulative Distribution Functions](http://en.wikipedia.org/wiki/Cumulative_distribution_function) of the variables we compared:
 
 <%=
-set.caption(sprintf('Histogram of %s', xvar.label))
-plot(ecdf(xvar))
-set.caption(sprintf('Histogram of %s', yvar.label))
-plot(ecdf(yvar))
+plot(ecdf(xvar), main = sprintf('Cumulative Distribution of %s', xvar.label))
+
+
+plot(ecdf(yvar), main = sprintf('Cumulative Distribution of %s', xvar.label))
 %>
 
 ## Test results

@@ -116,7 +116,7 @@ if (method=="minimize the sample size weighted chi square") { method <- "minchi"
 fact.matrix <- na.omit(scale(vars))
 ev <- eigen(cor(fact.matrix))
 
-if (if (exists('fact.num') && !is.null(fact.num) && fact.num > 0)) {
+if (exists('fact.num') && !is.null(fact.num) && fact.num > 0) {
 FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotate = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
 } else {
 ap <- parallel(subject=nrow(fact.matrix), var = ncol(fact.matrix), rep = 100, cent=.05)
