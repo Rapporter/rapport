@@ -50,19 +50,18 @@ J. B. MacQueen (1967). _"Some Methods for classification and Analysis of Multiva
 
 As it was mentioned above, the speciality of the K-means Cluster method is to set the number of groups we want to produce. 
 
-
 <% if (exists('clust_num') && !is.null(clust_num) && clust_num > 0) { %>
 
-As you set, there will be a <%=clust_num%>-means cluster analysis produced.
+As you set, there will be a <%=clust_num%>-means cluster analysis provided.
 
 <%= 
-cn <- tryCatch(pam(varsScaled, clust_num), error = function(e) e)
+cn <- tryCatch(pam(vars, clust_num), error = function(e) e)
 fit <- kmeans(varsScaled, clust_num)
 %>
 
 <% } else { %>
 <%=
-cn <- tryCatch(pamk(varsScaled), error = function(e) e)
+cn <- tryCatch(pamk(vars), error = function(e) e)
 fit <- kmeans(varsScaled, cn$nc)
 cn <- cn$pamobject
 %>
@@ -112,8 +111,16 @@ The size of the above clusters are: <%=fit$size%>.
 On the chart below we can see the produced groups. To distinct which observation is related to which cluster each of the objects from the same groups have the same figure and there is a circle which shows the border of the clusters.
 
 <%=
+if (exists('clust_num') && !is.null(clust_num) && clust_num > 0) {
+cn <- tryCatch(pam(vars, clust_num), error = function(e) e)
+fit <- kmeans(varsScaled, clust_num)
+} else {
+cn <- tryCatch(pamk(vars), error = function(e) e)
+fit <- kmeans(varsScaled, cn$nc)
+cn <- cn$pamobject
+}
 if (ncol(res) > 1) {
-    clusplot(cn$pamobject, fit$cluster, color = TRUE, shade = TRUE, labels = ifelse(nrow(vars) < 100, 2, 4), lines = 1, main = '', col.p = 'black', col.clus = panderOptions('graph.colors'))
+clusplot(cn, fit$cluster, color = TRUE, shade = TRUE, labels = ifelse(nrow(vars) < 100, 2, 4), lines = 1, main = '', col.p = 'black', col.clus = panderOptions('graph.colors'))
 } else {
     warning('Only one variable provided, so there is no sense drawing a 2D plot here.')
 }
