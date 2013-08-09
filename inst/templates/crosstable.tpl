@@ -2,8 +2,8 @@
 meta:
   title: Crosstable
   author: Gergely Daróczi, Daniel Nagy
-  email: gergely@snowl.net
   description: Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
+  email: gergely@snowl.net
   packages: 
   - descr
   - ggplot2

@@ -1,12 +1,12 @@
 <!--head
 Title:          Crosstable
 Author:         Gergely Daróczi, Daniel Nagy
-Email:          gergely@snowl.net
 Description:    Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
+Email:          gergely@snowl.net
 Packages:       descr, ggplot2, reshape
 Data required:  TRUE
 Example:        rapport('crosstable', data=ius2008, row='gender', col='dwell')
-		rapport('crosstable', data=ius2008, row='email', col='dwell')
+  rapport('crosstable', data=ius2008, row='email', col='dwell')
 
 row             | *factor | Row variable        | A categorical variable.
 col             | *factor | Column variable     | A categorical variable.

@@ -2,8 +2,8 @@
 meta:
   title: Descriptive statistics
   author: Gergely Daróczi, Daniel Nagy
-  email: gergely@snowl.net
   description: This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
+  email: gergely@snowl.net
   packages: ~
   example:
   - rapport('descriptives', data=ius2008, var='gender')
