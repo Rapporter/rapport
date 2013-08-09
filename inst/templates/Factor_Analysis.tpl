@@ -102,7 +102,7 @@ head-->
 
 [Factor Analysis](http://en.wikipedia.org/wiki/Factor_analysis) is applied as a data reduction or structure detection method. There are two main applications of it: reducing the number of variables and detecting structure in the relationships between variables, thus explore latent structure behind the data, classify variables.
 
-<% if (if (exists('fact.num') && !is.null(fact.num) && fact.num > 0)) { %>
+<% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0) { %>
 #### Determining the number of the factors
 <% } %>
 
@@ -129,7 +129,7 @@ FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotate = rot.meth
 
 #### Eigenvalues
 
-<% if (is.exnull(fact.num)) { %>
+<% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0) { %>
 As you haven't provided value for the number of the factors, we calculated that automatically based on the eigenvalues, thus it is: <%=max(which(ev$values >= 1))%>. The eigenvalues you can find in the following table:
 <%=
 emphasize.strong.rows(1:max(which(ev$values >= 1)))
