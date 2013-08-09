@@ -9,6 +9,8 @@ meta:
   - fpc
   example:
   - rapport('Kmeans_cluster.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'))
+  - rapport('Kmeans_cluster.tpl', data=mtcars, vars=c('drat', 'cyl', 'wt', 'mpg'))
+  - rapport('Kmeans_cluster.tpl', data=mtcars, vars=c('drat', 'cyl', 'wt', 'mpg'), clust_num=7)
 inputs:
 - name: vars
   label: Input variables
@@ -19,6 +21,16 @@ inputs:
     max: 1000.0
   required: yes
   standalone: no
+- name: clust_num
+  class: integer
+  label: Number of Clusters
+  description: One can set the Number of the Clusters for the K-Mean Clustering
+  standalone: yes
+  value: ~
+  length:
+    min: 1.0
+    max: 1.0
+  required: no
 head-->
 
 <%=
@@ -36,7 +48,26 @@ J. B. MacQueen (1967). _"Some Methods for classification and Analysis of Multiva
 
 ## Determining the number of clusters
 
-As it was mentioned above, the speciality of the K-means Cluster method is to set the number of groups we want to produce. Let's see how to decide which is the ideal number of them!
+As it was mentioned above, the speciality of the K-means Cluster method is to set the number of groups we want to produce. 
+
+
+<% if (!is.exnull(clust_num)) { %>
+
+As you set, there will be a <%=clust_num%>-means cluster analysis produced.
+
+<%= 
+cn <- tryCatch(pam(varsScaled, clust_num), error = function(e) e)
+fit <- kmeans(varsScaled, clust_num)
+%>
+
+<% } else { %>
+<%=
+cn <- tryCatch(pamk(varsScaled), error = function(e) e)
+fit <- kmeans(varsScaled, cn$nc)
+cn <- cn$pamobject
+%>
+
+Let's see how to decide which is the ideal number of them!
 
 <%=
 wss <- (nrow(varsScaled) - 1) * sum(apply(varsScaled, 2, var))
@@ -51,12 +82,14 @@ We can figure out that, as we see how much the Within groups sum of squares decr
 
 <% if (inherits(cn, 'error')) { %>
 <%=
-nc = sample(2:5, 1)
+nc <-  sample(2:5, 1)
 cn <- list(pamobject = pam(varsScaled, nc), nc = nc)
 stop(paste0('Unable to identify the ideal number of clusters, using a random number between 2 and 5: ', cn$nc))
 %>
 <% } else { %>
 The ideal number of clusters seems to be <%=cn$nc%>.
+<% } %>
+
 <% } %>
 
 ## Cluster means
@@ -66,9 +99,8 @@ The method of the K-means clustering starts with the step to set k number of cen
 The centroids are the observations which are the nearest in average to all the other observations of their group. But it could be also interesting which are the typical values of the clusters! One way to figure out these typical values is to see the group means. The <%=cn$nc%> cluster averages are:
 
 <%=
-fit <- kmeans(vars, cn$nc)
 res <- fit$centers
-row.names(res) <- paste0(1:nrow(res), '.')
+row.names(res) <- paste0(1:nrow(res), '.', 'Cluster')
 set.alignment(rep('centre', ncol(res)), 'right')
 res
 %>
