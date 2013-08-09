@@ -8,6 +8,8 @@ meta:
   - nortest
   example:
   - rapport('F_test', data=ius2008, xvar='edu', yvar='age')
+  - rapport('F_test', data=ius2008, xvar='edu', yvar='age', norm.check=F)
+  - rapport('F_test', data=mtcars, xvar='cyl', yvar='drat', norm.check=F)
 inputs:
 - name: xvar
   label: X Variable(s)

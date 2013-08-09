@@ -7,7 +7,9 @@ meta:
   packages:
   - mclust
   example:
-  - rapport('Hierarchical_Cluster_Analysis.tpl', data=ius2008, vars=c('age', 'edu'))
+  - rapport('Hierarchical_Cluster_Analysis.tpl', data = ius2008, vars = c('age', 'edu'))
+  - tpl.export(rapport('Hierarchical_Cluster_Analysis.tpl', data=ius2008, vars = c('age', 'edu'), clust.num = 30))
+  - tpl.export(rapport('Hierarchical_Cluster_Analysis.tpl', data = mtcars, vars = c('drat', 'cyl', 'mpg'), clust.num = 30, method = "average"))
 inputs:
 - name: vars
   label: Used Variables
@@ -51,7 +53,7 @@ inputs:
   class: integer
   length:
     min: 1.0
-    max: 30.0
+    max: 1000.0
   value: 5.0
   required: no
   standalone: yes

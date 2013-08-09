@@ -11,6 +11,8 @@ meta:
   - gvlma
   example:
   - rapport('Linear_regression.tpl', data=ius2008, dep='age', indep='edu', indep.inter=F)
+  - rapport('Linear_regression.tpl', data=ius2008, dep='age', indep='edu', indep.inter=T)
+  - rapport('Linear_regression.tpl', data=mtcars, dep='carb', indep='cyl', indep.inter=F)
 inputs:
 - name: dep
   label: Dependent Variable

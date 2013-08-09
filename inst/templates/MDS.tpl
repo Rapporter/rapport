@@ -7,6 +7,8 @@ meta:
   packages: ~
   example:
   - rapport('MDS.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=16)
+  - rapport('MDS.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=17, min.dist.num=30, id='game')
+  - rapport('MDS.tpl', data=mtcars, vars=c('drat', 'cyl', 'mpg'), max.dist.num=17, min.dist.num=30)
 inputs:
 - name: vars
   label: Used Variables
@@ -126,11 +128,12 @@ Now let's see which observations can be said statistically far/similar to each o
 According to the used variables (<%=rp.label(vars)%>) the <%=max.dist.num%> furthest pair of observations are:
 
 <%=
-paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(distance)[h[i, 1]], colnames(distance)[h[i, 2]])), ' (', round(distance[h[i, 1], h[i,, 2]], 2), ')'))), collapse = '\n')%>
+paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(distance)[h[i, 1]], colnames(distance)[h[i, 2]])), ' (', round(distance[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')
+%>
 
 <% } else { %>
 
-There are <%=nrow(h)%> observations which are the most similar, and equal in the same time, that is a higher number than the wanted <%=max.dist.num%>, thus will not be reported one-by-one. Set <%=nrow(h)%> as parameter <%=rp.name(max.dist.num)%> to check the pairs if you are interested.
+There are <%=nrow(h)%> observations which are the most similar, and equal in the same time, that is a higher number than the wanted <%=max.dist.num%>, thus will not be reported one-by-one. Set <%=nrow(h)%> as parameter _max.dist.num_ to check the pairs if you are interested.
 <%}%>
 
  
@@ -144,7 +147,7 @@ paste(pander.return(lapply(1:nrow(j), function(i) paste0(p(c(rownames(distance)[
 
 <% } else { %>
 
-There are <%=nrow(j)%> observations which are the most similar and equal in the same time, that is a higher number than the wanted <%=min.dist.num%>, thus will not be reported one-by-one. Set <%=nrow(j)%> as parameter (<%=rp.name(min.dist.num)%>) to check the pairs if you are interested.
+There are <%=nrow(j)%> observations which are the most similar and equal in the same time, that is a higher number than the wanted <%=min.dist.num%>, thus will not be reported one-by-one. Set <%=nrow(j)%> as parameter _min.dist.num_ to check the pairs if you are interested.
 <%}%>
 
 
