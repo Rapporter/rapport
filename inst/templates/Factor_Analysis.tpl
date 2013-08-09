@@ -8,7 +8,9 @@ meta:
   - psych
   - nFactors
   example:
-  - rapport('Factor_Analysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl'), rot.method="varimax")
+  - rapport('Factor_Analysis.tpl', data = mtcars, vars = c('carb', 'gear', 'mpg', 'cyl'), rot.method = "varimax")
+  - rapport('Factor_Analysis.tpl', data = mtcars, vars = c('carb', 'gear', 'mpg', 'cyl'), rot.method = "cluster", fact.num = 2)
+  - rapport('Factor_Analysis.tpl', data = ius2008, vars = c('age', 'edu', 'leisure'), rot.method = "cluster", method = 'minimize the sample size weighted chi square', fact.num = 2)
 inputs:
 - name: vars
   label: Used Variables
@@ -36,7 +38,6 @@ inputs:
   - minimum residual (OLS)
   - weighted least squares (WLS)
   - generalized weighted least squares (GLS)
-  - principal factor solution
   - maximum likelihood
   - minimize the sample size weighted chi square
   value: maximum likelihood
@@ -109,7 +110,6 @@ head-->
 if (method=="minimum residual (OLS)") { method <- "minres" }
 if (method=="weighted least squares (WLS)") { method <- "wls" }
 if (method=="generalized weighted least squares (GLS)") { method <- "gls" }
-if (method=="principal factor solution") { method <- "pa" }
 if (method=="maximum likelihood") { method <- "ml" }
 if (method=="minimize the sample size weighted chi square") { method <- "minchi" }
 
@@ -117,21 +117,19 @@ fact.matrix <- na.omit(scale(vars))
 ev <- eigen(cor(fact.matrix))
 
 if (!is.exnull(fact.num)) {
-FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotation = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
-auto.fact <- FALSE
+FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotate = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
 } else {
 ap <- parallel(subject=nrow(fact.matrix), var = ncol(fact.matrix), rep = 100, cent=.05)
 nS <- nScree(x = ev$values, aparallel = ap$eigen$qevpea)
 plotnScree(nS)
 fact.num <- max(which(ev$values >= 1))
-auto.fact <- TRUE
-FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotation = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
+FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotate = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
 }
 %>
 
 #### Eigenvalues
 
-<% if (auto.fact) { %>
+<% if (is.exnull(fact.num)) { %>
 As you haven't provided value for the number of the factors, we calculated that automatically based on the eigenvalues, thus it is: <%=max(which(ev$values >= 1))%>. The eigenvalues you can find in the following table:
 <%=
 emphasize.strong.rows(1:max(which(ev$values >= 1)))
