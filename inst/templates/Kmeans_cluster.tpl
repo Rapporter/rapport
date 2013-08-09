@@ -51,7 +51,7 @@ J. B. MacQueen (1967). _"Some Methods for classification and Analysis of Multiva
 As it was mentioned above, the speciality of the K-means Cluster method is to set the number of groups we want to produce. 
 
 
-<% if (!is.exnull(clust_num)) { %>
+<% if (exists('clust_num') && !is.null(clust_num) && clust_num > 0) { %>
 
 As you set, there will be a <%=clust_num%>-means cluster analysis produced.
 
