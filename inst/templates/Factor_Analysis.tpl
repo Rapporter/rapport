@@ -114,34 +114,41 @@ if (method=="maximum likelihood") { method <- "ml" }
 if (method=="minimize the sample size weighted chi square") { method <- "minchi" }
 
 fact.matrix <- na.omit(scale(vars))
+ev <- eigen(cor(fact.matrix))
 
 if (!is.exnull(fact.num)) {
-FA <- fa(fact.matrix, factors = fact.num, scores = fa.scores, rotation = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
+FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotation = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
 auto.fact <- FALSE
 } else {
-ev <- eigen(cor(fact.matrix))
 ap <- parallel(subject=nrow(fact.matrix), var = ncol(fact.matrix), rep = 100, cent=.05)
 nS <- nScree(x = ev$values, aparallel = ap$eigen$qevpea)
 plotnScree(nS)
 fact.num <- max(which(ev$values >= 1))
 auto.fact <- TRUE
-FA <- fa(fact.matrix, factors = fact.num, scores = fa.scores, rotation = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
+FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotation = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
 }
 %>
 
 #### Eigenvalues
 
 <% if (auto.fact) { %>
-As you haven't provided value for the number of the factors, we calculated that automatically based on the eigenvalues, thus it is equal: <%=max(which(ev$values >= 1))%>. The eigenvalues you can find in the following table:
+As you haven't provided value for the number of the factors, we calculated that automatically based on the eigenvalues, thus it is: <%=max(which(ev$values >= 1))%>. The eigenvalues you can find in the following table:
+<%=
+emphasize.strong.rows(1:max(which(ev$values >= 1)))
+cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)
+%>
 <% } else { %>
 You can find the eigenvalues of the possible factors in the following table (<%=fact.num%> factors were produced as you set):
+<%=
+emphasize.strong.rows(1:fact.num)
+cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)
+%>
 <% } %>
-<%=cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)%>
 
 
 ## Factor loadings
 
-At first step let's check the factor loadings. They mean that how deep the impact of a factor for the variables<%= ifelse(rot.method != "none",""," (Keep in mind that these are the results without rotation, please set the parameter rot.method to see the rotated ones)")%>. We emphasized the cells when the explained is higher than 30% of the whole variance.
+At the next step let's check the factor loadings. They mean that how deep the impact of a factor for the variables<%= ifelse(rot.method != "none",""," (Keep in mind that these are the results without rotation, please set the parameter rot.method to see the rotated ones)")%>. We emphasized the cells when the explained is higher than 30% of the whole variance.
 <%= 
 FA_loadings <- FA$loadings
 class(FA_loadings) <- "matrix"
@@ -172,14 +179,18 @@ plot(FA_scores)
 +text(FA_scores, labels = rownames(fact.matrix), cex = 1)
 %>
 <% } else { %>
-<%=ifelse(length(rownames(FA$scores)) > 0,"Excuse us, but the data does not contain names for the observations. Plot would not be informative without labels, thus we do not present that.", "On the plot we would show at least 100 observations, which would make that chaotic, so it will not be presented.") %>
 <% } %>
 
 ## Uniquenesses
 
-At last but not least let us say some words about the not explained part of the variables. There are two statistics which help us quantifying this concept: Communality and Uniquness. They are in a really strong relationship, because Uniqueness is the variability of a variable minus its Communality. The following table contains the Uniqunesses of the variables:
-<%= uni <- as.matrix(FA$uniquenesses)
-uni
+At last but not least let us say some words about the not explained part of the variables. There are two statistics which help us quantifying this concept: Communality and Uniqueness. They are in a really strong relationship, because Uniqueness is the variability of a variable minus its Communality. The first table contains the Uniqunesses, the second the Communalities of the variables:
+<%= 
+uni <- as.matrix(FA$uniquenesses)
+comm <- as.matrix(FA$communality)
+table <- cbind(uni,comm)
+colnames(table) <- c("Uniqunesses", "Communalities")
+table
 %>
 
-We can see from the table that variable <%=rownames(uni)[which(max(uni) == uni)]%> has the highest Uniqueness, so could be explained the least by the factors and variable <%= rownames(uni)[which(min(uni) == uni)]%> variance's was explained the most, because it has the lowest Uniqueness.
+We can see from the table that variable <%=rownames(uni)[which(max(uni) == uni)]%> has the highest Uniqueness, so could be explained the least by the factors and variable <%= rownames(uni)[which(min(uni) == uni)]%> variance's was explained the most, because it has the lowest Uniqueness. From the communalities we can draw the same conclusion.
+
