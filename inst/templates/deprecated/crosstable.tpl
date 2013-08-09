@@ -95,7 +95,7 @@ Before analyzing the result of the Chi-squared test, we have to check if our dat
 The two criteria are:
 
   - none of the expected cells could be lower than 1
-  - 20% of the expected cells have to be at least 5
+  - 80% of the expected cells have to be at least 5
 
 <%=
 table  <- table(row, col, deparse.level = 0) # no need for NAs from here
@@ -137,7 +137,7 @@ The requirements of the chi-squared test was not met, so [Yates's correction for
 <%if (!is.na(cramer)) { %>
 <%if (t$p.value < 0.05) { %>
 
-It seems that a real association can be pointed out between *<%=rp.name(row)%>* and *<%=rp.name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%> at the [degree of freedom](http://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)) being <%=as.numeric(t$parameter)%> at the [significance level](http://en.wikipedia.org/wiki/Statistical_significance) of <%=add.significance.stars(t$p.value)%>.
+It seems that a real association can be pointed out between *<%=rp.name(row)%>* and *<%=rp.name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%>) at the [degree of freedom](http://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)) being <%=as.numeric(t$parameter)%> at the [significance level](http://en.wikipedia.org/wiki/Statistical_significance) of <%=add.significance.stars(t$p.value)%>.
 
 The association between the two variables seems to be <%=ifelse(cramer < 0.2, "weak", "strong")%> based on [Cramer's V](http://en.wikipedia.org/wiki/Cram%C3%A9r%27s_V) (<%=cramer%>).
 
@@ -154,7 +154,7 @@ It seems that no real association can be pointed out between *<%=rp.name(row)%>*
 
 ### Adjusted standardized residuals
 
-The residuals show the contribution to rejecting the null hypothesis at a cell level. An extremely high or low value indicates that the given cell had a major effect on the resulting chi-square, so thus helps understanding the association in the crosstable.
+The residuals show the contribution to reject the null hypothesis at a cell level. An extremely high or low value indicates that the given cell had a major effect on the resulting chi-square, so thus helps understanding the association in the crosstable.
 
 <%=
 set.caption(sprintf('Residuals: "%s" and "%s"', rp.name(row), rp.name(col)))
@@ -167,7 +167,7 @@ table.res
 
 <%=
 if (nrow(table.res.highlow) > 0) {
-    sprintf('Based on Pearson\'s residuals the following cells seems interesting (with values higher then `2` or lower then `-2`):\n%s', paste(sapply(1:nrow(table.res.highlow), function(i) sprintf('\n * "%s - %s"', rownames(table)[table.res.highlow[i, 1]], colnames(table)[table.res.highlow[i, 2]])), collapse = ''))
+    sprintf('Based on Pearson\'s residuals the following cells seems interesting (with values higher than `2` or lower than `-2`):\n%s', paste(sapply(1:nrow(table.res.highlow), function(i) sprintf('\n * "%s - %s"', rownames(table)[table.res.highlow[i, 1]], colnames(table)[table.res.highlow[i, 2]])), collapse = ''))
 } else {
     sprintf('No interesting (higher then `2` or lower then `-2`) values found based on Pearson\'s residuals.')
 }
@@ -232,6 +232,8 @@ Moreover: **it seems that the provided variables do not fit a real crosstable**.
 
 If one would like to investigate the relationships rather visually than in a crosstable form, there are several possibilities to do that.
 
+#### Heat map
+
 At first we can have a look at on the so-called [heat map](http://en.wikipedia.org/wiki/Heat_map). This kind of chart uses the same amount of cells and a similar form as the crosstable does, but instead of the numbers there are colours to show which cell contains the most counts (or likewise the highest total percentages).
 
 The darker colour is one cell painted, the most counts/the higher total percentage it has.
@@ -241,7 +243,7 @@ set.caption('Heatmap')
 suppressWarnings(suppressMessages(ggfluctuation(table, type = 'colour') + geom_tile() + xlab('') + ylab('') + labs(fill = 'Count'))) # TODO: drop ggfluctuation
 %>
 
-There can be also shown the standardized adjusted residual of each cell:
+There can be also shown the standardized adjusted residual of each cells:
 
 <%=
 set.caption('Heatmap of residuals')
@@ -252,6 +254,8 @@ table2 <- transform(table2, x = as.factor(x), y = as.factor(y), freq = result)
 ceiling <- max(table2$freq, na.rm = TRUE)
 ggplot(table2, aes_string(x = "x", y = "y", fill = "freq")) + geom_tile(colour = "grey50") + scale_fill_gradient2('Std. adj. res.', limits = c(-max(abs(range(table2$freq))), max(abs(range(table2$freq)))), midpoint = 0, low = "red", mid = "white", high = "green")
 %>
+
+#### Mosaic chart
 
 In front of the heat map, on the *mosaic charts*, not only the colours are important. The size of the cells shows the amount of the counts one cell has.
 
@@ -275,9 +279,11 @@ ggplot(t, aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = Var.2))
 panderOptions('graph.legend.position', glp)
 %>
 
+#### Fluctuation diagram
+
 At last but not least have a glance on the *fluctuation diagram*. Unlike the above two charts, here the colours does not have influence on the chart, but the sizes of the boxes, which obviously demonstrates here as well the cells of the crosstable.
 
-The bigger one box the higher the number of the counts/the total percentages, which that box denotes.
+The bigger are the boxes the higher are the numbers of the counts/the total percentages, which that boxes denote.
 
 
 <%=

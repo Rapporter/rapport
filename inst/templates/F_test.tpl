@@ -47,7 +47,7 @@ We should be careful, while using the F test, because of the strict normality as
 
 # Normality assumption check (<%=p(xvar.label)%>)
 
-The <%=ifelse(length(xvar) < 5000, "[_Shapiro-Wilk test_](http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test), the", "")%> [_Lilliefors test_](http://en.wikipedia.org/wiki/Lilliefors_test) and the [_Anderson-Darling test_](http://en.wikipedia.org/wiki/Anderson_Darling_test) help us to decide if the above-mentioned assumption can be accepted.
+The <%=ifelse(length(xvar) < 5000, "[_Shapiro-Wilk test_](http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test), the", "")%> [_Lilliefors test_](http://en.wikipedia.org/wiki/Lilliefors_test) and the [_Anderson-Darling test_](http://en.wikipedia.org/wiki/Anderson_Darling_test) help us to decide if the above-mentioned assumption can be accepted of the <%=p(xvar.label)%>.
 
 <% if (length(xvar) < 5000) { %>
 
@@ -98,7 +98,7 @@ sprintf("reject departures from normality")
 
 # Normality assumption check (<%=p(yvar.label)%>)
 
-The <%=ifelse(length(yvar) < 5000, "[_Shapiro-Wilk test_](http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test), the", "")%> [_Lilliefors test_](http://en.wikipedia.org/wiki/Lilliefors_test) and the [_Anderson-Darling test_](http://en.wikipedia.org/wiki/Anderson_Darling_test) help us to decide if the above-mentioned assumption can be accepted.
+The <%=ifelse(length(yvar) < 5000, "[_Shapiro-Wilk test_](http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test), the", "")%> [_Lilliefors test_](http://en.wikipedia.org/wiki/Lilliefors_test) and the [_Anderson-Darling test_](http://en.wikipedia.org/wiki/Anderson_Darling_test) help us to decide if the above-mentioned assumption can be accepted of the <%=p(xvar.label)%>.
 
 <% if (length(yvar) < 5000) { %>
 
