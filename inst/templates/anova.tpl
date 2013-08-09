@@ -73,7 +73,7 @@ Below lies a frequency table for factors in ANOVA model. Note that the missing v
 
 ## Descriptive Statistics
 
-The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left-hand side, while the corresponding statistics for response variable are given on the right-hand side.
+The following table displays the descriptive statistics of ANOVA model. Factor levels <%=ifelse(ncol(fac) > 1, "and their combinations", "")%> lie on the left-hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
 <%=
 (desc <- rp.desc(resp, fac, c(Min = min, Max = max, Mean = mean, Std.Dev. = sd, Median = median, IQR, Skewness = skewness, Kurtosis = kurtosis)))
@@ -128,7 +128,7 @@ So, the conclusions we can draw with the help of test statistics:
 <% } %>
 
 <%= if (n > 0) {
-sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
+sprintf("As you can see, the applied tests %s of the %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most in the case"), resp.label) 
 } else { 
 sprintf("reject departures from normality") 
 } 

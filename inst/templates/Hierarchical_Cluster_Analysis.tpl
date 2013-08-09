@@ -8,8 +8,8 @@ meta:
   - mclust
   example:
   - rapport('Hierarchical_Cluster_Analysis.tpl', data = ius2008, vars = c('age', 'edu'))
-  - tpl.export(rapport('Hierarchical_Cluster_Analysis.tpl', data=ius2008, vars = c('age', 'edu'), clust.num = 30))
-  - tpl.export(rapport('Hierarchical_Cluster_Analysis.tpl', data = mtcars, vars = c('drat', 'cyl', 'mpg'), clust.num = 30, method = "average"))
+  - rapport('Hierarchical_Cluster_Analysis.tpl', data=ius2008, vars = c('age', 'edu'), clust.num = 30)
+  - rapport('Hierarchical_Cluster_Analysis.tpl', data = mtcars, vars = c('drat', 'cyl', 'mpg'), clust.num = 30, method = "average")
 inputs:
 - name: vars
   label: Used Variables
