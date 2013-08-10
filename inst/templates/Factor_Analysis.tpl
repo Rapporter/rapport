@@ -103,6 +103,7 @@ head-->
 [Factor Analysis](http://en.wikipedia.org/wiki/Factor_analysis) is applied as a data reduction or structure detection method. There are two main applications of it: reducing the number of variables and detecting structure in the relationships between variables, thus explore latent structure behind the data, classify variables.
 
 <% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0) { %>
+<% } else { %>
 #### Determining the number of the factors
 <% } %>
 
@@ -117,13 +118,13 @@ fact.matrix <- na.omit(scale(vars))
 ev <- eigen(cor(fact.matrix))
 
 if (exists('fact.num') && !is.null(fact.num) && fact.num > 0) {
-FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotate = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
+suppressMessages(FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotate = rot.method, fm = method, max.iter = max.iter, warnings = TRUE))
 } else {
 ap <- parallel(subject=nrow(fact.matrix), var = ncol(fact.matrix), rep = 100, cent=.05)
 nS <- nScree(x = ev$values, aparallel = ap$eigen$qevpea)
 plotnScree(nS)
 fact.num <- max(which(ev$values >= 1))
-FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotate = rot.method, fm = method, max.iter = max.iter, warnings = TRUE)
+suppressMessages(FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, rotate = rot.method, fm = method, max.iter = max.iter, warnings = TRUE))
 }
 %>
 
