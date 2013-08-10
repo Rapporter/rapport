@@ -10,3 +10,5 @@ rapport-Ex.R
 inst/templates/test.tpl
 rapport_*.tar.gz
 .ackrc
+.Rproj.user
+rapport.Rproj

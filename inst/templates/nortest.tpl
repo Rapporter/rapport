@@ -71,36 +71,59 @@ Various hypothesis tests can be applied in order to test if the distribution of 
  - **Shapiro-Wilk test** is a powerful normality test appropriate for small samples. In R, it's implemented in `shapiro.test` function available in `stats` package.
  - **Lilliefors test** is a modification of _Kolmogorov-Smirnov test_ appropriate for testing normality when parameters or normal distribution ($\mu$, $\sigma^2$) are not known. `lillie.test` function is located in `nortest` package.
  - **Anderson-Darling test** is one of the most powerful normality tests as it will detect the most of departures from normality. You can find `ad.test` function in `nortest` package.
- - **Pearson $\chi^2$ test** is another normality test which takes more "traditional" approach in normality testing. `pearson.test` is located in `nortest` package.
 
 ## Results
 
 Here you can see the results of applied normality tests (_p-values_ less than 0.05 indicate significant discrepancies):
 
-<%=
-if (length(var) > 5000) {
-    h <- htest(var, lillie.test, ad.test, pearson.test)
-} else {
-    h <- htest(var, shapiro.test, lillie.test, ad.test, pearson.test)
-}
-p <- .05
-h
--%>
+We will use <%=ifelse(length(var) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable. <%=ifelse(length(var) > 5000, "_Shapiro-Wilk_ test can only be used with samples below 5000 cases, now we have more.", "")%>
 
-So, let's draw some conclusions based on applied normality test:
+<% if (length(var) < 5000) { %>
 
-<% if (!is.na(h[1, 3])) { -%>
- - based on _Lilliefors test_, distribution of _<%= var.label %>_ is <%= ifelse(h[1, 3] < p, "not normal", "normal") %>
-<% } -%>
-<% if (!is.na(h[2, 3])) { -%>
- - _Anderson-Darling test_ confirms <%= ifelse(h[2, 3] < p, "violation of", "") %> normality assumption
-<% } -%>
-<% if (!is.na(h[3, 3])) { -%>
- - _Pearson's $\chi^2$ test_ classifies the underlying distribution as <%= ifelse(h[3, 3] < p, "non-normal", "normal") %>
-<% } -%>
-<% if (!is.na(h[4, 3])) { -%>
- - according to _Shapiro-Wilk test_, the distribution of _<%= var.label %>_ is <%= ifelse(h[4, 3] < p, "not", "") %> normal.
-<% } -%>
+<%= ntest <- htest(var, lillie.test, ad.test, shapiro.test)
+k <- 0
+l <- 0
+m <- 0
+n <- 0
+p <- 0.05
+if (ntest$p[1] < 0.05) {l <- k + 1}
+if (ntest$p[2] < 0.05) {m <- l + 1}
+if (ntest$p[3] < 0.05) {n <- m + 1}
+ntest
+%>
+So, the conclusions we can draw with the help of test statistics: 
+   
+ - based on _Lilliefors test_, distribution of _<%= var.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
+   
+ - _Anderson-Darling test_ confirms<%= ifelse(ntest[2, 3] < p, " violation of", "") %> normality assumption
+
+ - according to _Shapiro-Wilk test_, the distribution of _<%= var.label %>_ is<%= ifelse(ntest[3, 3] < p, " not", "") %> normal
+ 
+<% } else { %>
+<%= ntest <- htest(var, lillie.test, ad.test)
+k <- 0
+l <- 0
+m <- 0
+n <- 0
+p <- 0.05
+if (ntest$p[1] < 0.05) {l <- k + 1}
+if (ntest$p[2] < 0.05) {n <- l + 1}
+ntest
+%>
+
+So, the conclusions we can draw with the help of test statistics: 
+   
+ - based on _Lilliefors test_, distribution of _<%= var.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
+   
+ - _Anderson-Darling test_ confirms<%= ifelse(ntest[2, 3] < p, " violation of", "") %> normality assumption
+<% } %>
+
+<%= if (n > 0) {
+sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
+} else { 
+sprintf("reject departures from normality") 
+} 
+%>
 
 
 # Diagnostic Plots
