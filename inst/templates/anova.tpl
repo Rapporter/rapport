@@ -41,7 +41,9 @@ inputs:
   required: no
   standalone: yes
 head-->
+
 <%=
+panderOptions('table.split.table', Inf)
 d <- structure(data.frame(resp, fac), .Names = c(resp.iname, fac.name))
 f.int <- fml(resp.iname, fac.name, join.right = "*")
 f.nonint <- fml(resp.iname, fac.name, join.right = "+")
@@ -71,7 +73,7 @@ Below lies a frequency table for factors in ANOVA model. Note that the missing v
 
 ## Descriptive Statistics
 
-The following table displays the descriptive statistics of ANOVA model. Factor levels and/or their combinations lie on the left-hand side, while the corresponding statistics for response variable are given on the right-hand side.
+The following table displays the descriptive statistics of ANOVA model. Factor levels <%=ifelse(ncol(fac) > 1, "and their combinations", "")%> lie on the left-hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
 <%=
 (desc <- rp.desc(resp, fac, c(Min = min, Max = max, Mean = mean, Std.Dev. = sd, Median = median, IQR, Skewness = skewness, Kurtosis = kurtosis)))
@@ -85,26 +87,53 @@ Before we carry out ANOVA, we'd like to check some basic assumptions. For those 
 
 ### Univariate Normality
 
-<%=
-if (length(resp) < 5000) {
-    ntest <- htest(resp, shapiro.test, lillie.test, ad.test)
-} else {
-    ntest <- htest(resp, lillie.test, ad.test)
-}
+<% if (length(resp) < 5000) { %>
+
+<%= ntest <- htest(resp, lillie.test, ad.test, shapiro.test)
+k <- 0
+l <- 0
+m <- 0
+n <- 0
+p <- 0.05
+if (ntest$p[1] < 0.05) {l <- k + 1}
+if (ntest$p[2] < 0.05) {m <- l + 1}
+if (ntest$p[3] < 0.05) {n <- m + 1}
 ntest
-k<-0
-l<-0
-m<-0
-n<-0
-if (ntest$p[1]<0.05){l<-k+1}
-if (ntest$p[2]<0.05){m<-l+1}
-if (ntest$p[3]<0.05){n<-m+1}
+%>
+So, the conclusions we can draw with the help of test statistics: 
+   
+ - based on _Lilliefors test_, distribution of _<%= resp.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
+   
+ - _Anderson-Darling test_ confirms<%= ifelse(ntest[2, 3] < p, " violation of", "") %> normality assumption
+
+ - according to _Shapiro-Wilk test_, the distribution of _<%= resp.label %>_ is<%= ifelse(ntest[3, 3] < p, " not", "") %> normal
+ 
+<% } else { %>
+<%= ntest <- htest(resp, lillie.test, ad.test)
+k <- 0
+l <- 0
+m <- 0
+n <- 0
+p <- 0.05
+if (ntest$p[1] < 0.05) {l <- k + 1}
+if (ntest$p[2] < 0.05) {n <- l + 1}
+ntest
 %>
 
-We will use <%=ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
+So, the conclusions we can draw with the help of test statistics: 
+   
+ - based on _Lilliefors test_, distribution of _<%= resp.label %>_ is <%= ifelse(ntest[1, 3] < p, "not normal", "normal") %>
+   
+ - _Anderson-Darling test_ confirms<%= ifelse(ntest[2, 3] < p, " violation of", "") %> normality assumption
+<% } %>
 
-<%= if (n>0)
-sprintf("As you can see, the applied tests %s.", ifelse(n>1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) else sprintf("reject departures from normality") %>
+<%= if (n > 0) {
+sprintf("As you can see, the applied tests %s of the %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most in the case"), resp.label) 
+} else { 
+sprintf("reject departures from normality") 
+} 
+%>
+
 
 ### Homoscedascity
 
@@ -119,7 +148,7 @@ hsced
 %>
 
 
-When it comes to equality of variances, applied tests yield <%= ifelse(hcons, "consistent", "inconsistent") %> results. <%= if (hcons) sprintf("Homoscedascity assumption is %s.", ifelse(hp.all, "rejected", "confirmed")) else sprintf("While _Fligner-Kileen test_ %s the hypotheses of homoscedascity, _Bartlett's test_ %s it.", ifelse(hp[1] < .05, "rejected", "confirmed"), ifelse(hp[2] < .05, "rejected", "confirmed")) %>
+When it comes to equality of variances, applied tests yield <%= ifelse(hcons, "consistent", "inconsistent") %> results. <%= if (hcons) { sprintf("Homoscedascity assumption is %s.", ifelse(hp.all, "rejected", "confirmed")) } else { sprintf("While _Fligner-Kileen test_ %s the hypotheses of homoscedascity, _Bartlett's test_ %s it.", ifelse(hp[1] < .05, "rejected", "confirmed"), ifelse(hp[2] < .05, "rejected", "confirmed")) } %>
 
 ## Diagnostic Plots
 
@@ -147,4 +176,53 @@ a.fp <- a.p < .05
 data.frame(a)
 %>
 
-_F-test_ for <%= p(fac.label[1]) %> is <%= ifelse(a.fp[1], "", "not") %> statistically significant, which implies that there is <%= ifelse(a.fp[1], "an", "no") %> <%= fac.label[1] %> effect on response variable. <%= if (fac.ilen == 2) sprintf("Effect of %s on response variable is %s significant. ", p(fac.label[2]), ifelse(a.fp[2], "", "not")) else "" %><%= if (fac.ilen == 2 & fac.intr) sprintf("Interaction between levels of %s %s found significant (p = %.3f).", p(fac.label), ifelse(a.fp[3], "was", "wasn't"), a.p[3]) else "" %>
+_F-test_ for <%= p(fac.label[1]) %> is <%= ifelse(a.fp[1], "", "not") %> statistically significant, which implies that there is <%= ifelse(a.fp[1], "an", "no") %> <%= fac.label[1] %> effect on response variable. <%= if (fac.ilen == 2) { sprintf("Effect of %s on response variable is %s significant. ", p(fac.label[2]), ifelse(a.fp[2], "", "not")) } else { "" } %><%= if (fac.ilen == 2 & fac.intr) { sprintf("Interaction between levels of %s %s found significant (p = %.3f).", p(fac.label), ifelse(a.fp[3], "was", "wasn't"), a.p[3]) } else { "" } %>
+
+## Post Hoc test
+
+### Results
+
+After getting the results of the ANOVA, usually it is advisable to run a [post hoc test](http://en.wikipedia.org/wiki/Post-hoc_analysis) to explore patterns that were not specified a priori. Now we are presenting [Tukey's HSD test](http://en.wikipedia.org/wiki/Tukey%27s_range_test).
+
+<%= 
+aovfit <- aov(fit)
+Tukey <- TukeyHSD(aovfit) 
+%>
+
+<% for (v in names(Tukey)) { %>
+
+#### <%= v %>
+
+<%=  posthoc <- round(Tukey[[v]],3)
+colnames(posthoc) <- c("Difference", "Lower Bound", "Upper Bound", "P value") 
+is.signif <- length(posthoc[,4][which(abs(posthoc[,4]) < 0.05)]) > 0
+length.signif <- length(posthoc[,4][which(abs(posthoc[,4]) < 0.05)])
+if (is.signif) {
+post.signif <- paste(pander.return(lapply(1:length.signif, function(i) paste0(p(c(rownames(posthoc)[which(abs(posthoc[,4]) < 0.05)][i])), ' (', round(posthoc[,4][which(abs(posthoc[,4]) < 0.05)][i], 3), ')'))), collapse = '\n')
+} else {
+post.signif <- NULL
+}
+
+posthoc[,4] <- add.significance.stars(posthoc[,4])
+posthoc
+%>
+
+<% if (is.signif) { %>
+The following categories differ significantly (in the brackets you can see the p-value):
+<% } else { %>
+There are no categories which differ significantly here.
+<% } %>
+<%=
+post.signif
+%>
+
+<% } %>
+
+### Plot
+
+Below you can see the result of the post hoc test on a plot.
+
+<%= Tukey_plot <- plot(TukeyHSD(aovfit)) %>
+
+
+
