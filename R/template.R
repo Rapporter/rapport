@@ -33,7 +33,7 @@ tpl.find <- function(fp, ...){
     } else if (l > 1) {
         ## then it's a character vector
         con <- textConnection(fp)
-        txt <- readLines(con, warn = FALSE)
+        txt <- readLines(con, warn = FALSE, encoding = 'UTF-8')
         close(con)
     } else {
         stop('file pointer error')      # you never know...
