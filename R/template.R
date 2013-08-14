@@ -29,7 +29,7 @@ tpl.find <- function(fp, ...){
                 warning(sprintf('Multiple templates found with given name, using: %s', fp))
             }
         }
-        txt <- readLines(fp, warn = FALSE) # load template from file path
+        txt <- readLines(fp, warn = FALSE, encoding = 'UTF-8') # load template from file path
     } else if (l > 1) {
         ## then it's a character vector
         con <- textConnection(fp)
