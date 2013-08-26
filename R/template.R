@@ -590,7 +590,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     e             <- new.env(parent = env)              # load/create evaluation environment
     i             <- list(...)                          # user inputs
     i.names       <- names(i)                           # user input names
-    data.required <- any(sapply(inputs, function(x) !x$standalone)) | !is.empty(data)
+    data.required <- any(sapply(inputs, function(x) !x$standalone)) || (!is.null(data) && !identical(data, ''))
     pkgs          <- meta$packages                      # required packages
     file.path     <- gsub('\\', '/', file.path, fixed = TRUE)
 
