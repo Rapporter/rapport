@@ -18,15 +18,6 @@ inputs:
     max: 1.0
   required: yes
   standalone: no
-- name: extend
-  label: extend the X axis
-  description: How much you want to extend the X axis? (With the values of the used variable)
-  class: numeric
-  length:
-    min: 1.0
-    max: 1.0
-  required: no
-  standalone: yes
 - name: plot.title
   label: Title of the plot
   description: This is good to set the title of the plot.
@@ -267,6 +258,6 @@ if (x.lab == "default")  x_lab <- sprintf(var.label)
 
 vars <- na.omit(var)
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-densityplot(var, cut=extend, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab)) 
+densityplot(var, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab)) 
 
 %>

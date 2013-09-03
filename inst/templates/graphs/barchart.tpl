@@ -8,12 +8,12 @@ meta:
   - grDevices
   - RColorBrewer
   example:
-  - rapport('barchart.tpl', data=ius2008, var='age', bar.text.type="Percentage", horizontal=T, bar.text=T, log.scale=T)
+  - rapport('barchart.tpl', data=ius2008, var='age', bar.text.type="Percentage", horizontal=T, bar.text=T)
 inputs:
 - name: var
   label: Used Variable
   description: This is the variable that you will use here
-  class: numeric
+  class: factor
   length:
     min: 1.0
     max: 1.0
@@ -38,13 +38,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  required: no
-  standalone: yes
-- name: log.scale
-  label: Logarithmic scale?
-  description: Should be the variable presented on a logarithmic scale?
-  class: logical
-  value: FALSE
   required: no
   standalone: yes
 - name: log.num
@@ -356,7 +349,7 @@ panel.barchart(...) }
 bar_text <- lattice.getOption("panel.barchart")
 }
 
-if (log.scale) {
+if (exists('log.num') && !is.null(log.num) && log.num > 0) {
 if (horizontal) {
 log_axis <- list(x = list(log = log.num))
 } else {

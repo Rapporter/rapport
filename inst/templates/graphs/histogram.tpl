@@ -22,15 +22,9 @@ inputs:
   labels: Number of columns
   description: You can set here the number of the columns will be produced
   class: integer
-  required: no
-  standalone: yes
-- name: extend
-  label: extend the X axis
-  description: How much you want to extend the X axis? (With the values of the used variable)
-  class: numeric
-  length:
+  limit:
     min: 1.0
-    max: 1.0
+    max: +Inf
   required: no
   standalone: yes
 - name: plot.title
@@ -297,9 +291,16 @@ main_lab <- sprintf('Histogram of %s',var.name)
 main_lab <- plot.title
 }
 if (x.lab == "default")  x_lab <- sprintf(var.label)
+%>
 
+<% if (col.num > length(unique(var))) { %> 
+The numbers of the columns you set (<%=col.num%>) is higher than the unique cases (<%=length(unique(var))%>). There will be produced the same number of columns as the number of the unique cases (<%=length(unique(var))%>).
+<%= col.num <- length(unique(var)) %>
+<% } %>
+
+<%=
 vars <- na.omit(var)
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-suppressWarnings(histogram(var, breaks=col.num, cut=extend, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab), type=hist.type))
+suppressWarnings(histogram(var, breaks = col.num - 1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab), type=hist.type))
 
 %>
