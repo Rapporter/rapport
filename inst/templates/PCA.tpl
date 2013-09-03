@@ -24,7 +24,7 @@ inputs:
   label: Number of Components
   description: How many Principal Components you want to use?
   class: integer
-  length:
+  limit:
     min: 1.0
     max: 99.0
   required: yes
@@ -60,6 +60,13 @@ inputs:
   required: no
   standalone: yes
 head-->
+
+<% if (components > ncol(vars)) { %>
+
+Your request cannot be implemented, because there are more components (<%= components %>) than the number of the used variables (<%= ncol(vars) %>). Please set the number of the components to <%= ncol(vars) - 1 %> with the same number of the variables or extend the number of those variables to <%= components + 1 %>
+
+<% } else { %>
+
 
 # Introduction
  
@@ -107,5 +114,5 @@ From them in the case<%=ifelse(neg.comp < 1, "s", "")%> of the <%=paste(colnames
 <% } else { %>
 We can say that <%=ifelse(length(which(abs(rot) > 0.3)), "none of these impacts are negative", "this impact is positive")%>. 
 
-<% }} %>
+<% }}} %>
 

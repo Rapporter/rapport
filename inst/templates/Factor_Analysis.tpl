@@ -7,17 +7,14 @@ meta:
   packages:
   - psych
   - nFactors
-  example:
-  - rapport('Factor_Analysis.tpl', data = mtcars, vars = c('carb', 'gear', 'mpg', 'cyl'), rot.method = "varimax")
-  - rapport('Factor_Analysis.tpl', data = mtcars, vars = c('carb', 'gear', 'mpg', 'cyl'), rot.method = "cluster", fact.num = 2)
-  - rapport('Factor_Analysis.tpl', data = ius2008, vars = c('age', 'edu', 'leisure'), rot.method = "cluster", method = 'minimize the sample size weighted chi square', fact.num = 2)
+  example: ~
 inputs:
 - name: vars
   label: Used Variables
   description: The Variables that will be used in Factor Analysis
   class: numeric
   length:
-    min: 1.0
+    min: 2.0
     max: 500.0
   required: yes
   standalone: no
@@ -98,6 +95,12 @@ inputs:
   standalone: yes
 head-->
 
+<% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0 && components > ncol(vars)) { %>
+
+Your request cannot be implemented, because there are more factors (<%= fact.num %>) than the number of the used variables (<%= ncol(vars) %>). Please set the number of the factors to <%= ncol(vars) - 1 %> with the same number of the variables or extend the number of those variables to <%= fact.num + 1 %>
+
+<% } else { %>
+
 # Introduction
 
 [Factor Analysis](http://en.wikipedia.org/wiki/Factor_analysis) is applied as a data reduction or structure detection method. There are two main applications of it: reducing the number of variables and detecting structure in the relationships between variables, thus explore latent structure behind the data, classify variables.
@@ -131,15 +134,15 @@ suppressMessages(FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, 
 #### Eigenvalues
 
 <% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0) { %>
-As you haven't provided value for the number of the factors, we calculated that automatically based on the eigenvalues, thus it is: <%=max(which(ev$values >= 1))%>. The eigenvalues you can find in the following table:
-<%=
-emphasize.strong.rows(1:max(which(ev$values >= 1)))
-cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)
-%>
-<% } else { %>
 You can find the eigenvalues of the possible factors in the following table (<%=fact.num%> factors were produced as you set):
 <%=
 emphasize.strong.rows(1:fact.num)
+cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)
+%>
+<% } else { %>
+As you haven't provided value for the number of the factors, we calculated that automatically based on the eigenvalues, thus it is: <%=max(which(ev$values >= 1))%>. The eigenvalues you can find in the following table:
+<%=
+emphasize.strong.rows(1:max(which(ev$values >= 1)))
 cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)
 %>
 <% } %>
@@ -192,4 +195,6 @@ table
 %>
 
 We can see from the table that variable <%=rownames(uni)[which(max(uni) == uni)]%> has the highest Uniqueness, so could be explained the least by the factors and variable <%= rownames(uni)[which(min(uni) == uni)]%> variance's was explained the most, because it has the lowest Uniqueness. From the communalities we can draw the same conclusion.
+
+<% } %>
 

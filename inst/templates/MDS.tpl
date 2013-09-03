@@ -15,7 +15,7 @@ inputs:
   description: These are the variables which MDS use to differentiate between values
   class: numeric
   length:
-    min: 1.0
+    min: 2.0
     max: 100.0
   required: yes
   standalone: no

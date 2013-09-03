@@ -16,8 +16,8 @@ inputs:
   description:
   class: numeric
   length:
-    min: 1.0
-    max: 500.0
+    min: 2.0
+    max: 5000.0
   required: yes
   standalone: no
 - name: dist.mat
@@ -49,12 +49,11 @@ inputs:
   standalone: yes
 - name: clust.num
   label: Number of Clusters
-  description: How many lusters you want to check on the Dendogram?
+  description: How many clusters you want to check on the Dendogram?
   class: integer
   length:
-    min: 1.0
-    max: 1000.0
-  value: 5.0
+    min: 2.0
+    max: +Inf
   required: no
   standalone: yes
 head-->

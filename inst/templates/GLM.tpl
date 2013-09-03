@@ -57,6 +57,13 @@ inputs:
   standalone: yes
 head-->
 
+
+<% if (isTRUE(any(indep.name == dep.name)) { %>
+
+You provided  the same variable as a dependent and as an independent variable. In this case the model does not make sense, please replace the duplicated variables in order to run the GLM.
+
+<% } else { %>
+
 <% if (indep < 0 | indep > 1 & family == "binomial") { %>
 Values of the independent variables must be between 0 and 1 when binomial used as link function. Please change parameter family to one that is usable or switch the independent variable to meet the assumptions.
 
@@ -91,5 +98,5 @@ p_val <- summary(fit)$coefficients[, 4]
 From the table one can see that <%= paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val, 3)[which(p_val < 0.05)], sep = " has significant effect on the dependent variable, the p-value of that is ")%>
 
 
-<% } %>
+<% }} %>
 
