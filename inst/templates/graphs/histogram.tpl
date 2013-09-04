@@ -1,13 +1,12 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Histogram)
   author: Daniel Nagy
   description: In this template Rapporter will present you a histogram.
   email: ~
   packages:
   - RColorBrewer
-  example:
-  - rapport('histogram.tpl', data=ius2008, var='edu')
+  example: ~
 inputs:
 - name: var
   label: Used Variable
@@ -24,7 +23,7 @@ inputs:
   class: integer
   limit:
     min: 1.0
-    max: +Inf
+    max: 9999999
   required: no
   standalone: yes
 - name: plot.title
@@ -293,14 +292,25 @@ main_lab <- plot.title
 if (x.lab == "default")  x_lab <- sprintf(var.label)
 %>
 
+
+<% if (exists('col.num') && !is.null(col.num) && col.num > 0) { %>
+<%= breaks <- col.num - 1 %>
 <% if (col.num > length(unique(var))) { %> 
 The numbers of the columns you set (<%=col.num%>) is higher than the unique cases (<%=length(unique(var))%>). There will be produced the same number of columns as the number of the unique cases (<%=length(unique(var))%>).
-<%= col.num <- length(unique(var)) %>
+<%= 
+col.num <- length(unique(var)) 
+breaks <- col.num - 1
+%>
+<% } %>
+<% } else { %>
+<%= 
+breaks <- NULL
+%>
 <% } %>
 
 <%=
 vars <- na.omit(var)
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-suppressWarnings(histogram(var, breaks = col.num - 1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab), type=hist.type))
+suppressWarnings(histogram(var, breaks = breaks, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab), type=hist.type))
 
 %>

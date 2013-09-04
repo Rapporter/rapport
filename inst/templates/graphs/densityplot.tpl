@@ -1,6 +1,6 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Densityplot)
   author: Daniel Nagy
   description: In this template Rapporter will present you densityplot.
   email: ~

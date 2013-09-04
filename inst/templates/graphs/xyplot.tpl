@@ -1,8 +1,8 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Scatterplot)
   author: Daniel Nagy
-  description: In this template Rapporter will present you a qqplot.
+  description: In this template Rapporter will present you a Scatterplot.
   email: ~
   packages:
   - RColorBrewer
@@ -81,32 +81,16 @@ inputs:
   allow_multiple: no
   required: no
   standalone: yes
-- name: log.scale.x
-  label: Logarithmic scale of X?
-  description: Should be the x variable presented on a logarithmic scale?
-  class: logical
-  value: FALSE
-  required: no
-  standalone: yes
 - name: log.num.x
   label: power of log x
   description: Power of the logarithmical scale of x
   class: integer
-  value: 10
-  required: no
-  standalone: yes
-- name: log.scale.y
-  label: Logarithmic scale of y?
-  description: Should be the y variable presented on a logarithmic scale?
-  class: logical
-  value: FALSE
   required: no
   standalone: yes
 - name: log.num.y
   label: power of log y
   description: Power of the logarithmical scale of y
   class: integer
-  value: 10
   required: no
   standalone: yes
 - name: nomargin
@@ -315,6 +299,17 @@ main_lab <- plot.title
 if (x.lab == "default")  x_lab <- sprintf(x.label)
 if (y.lab == "default")  y_lab <- sprintf(y.label)
 
+
+if (exists('log.num.x') && !is.null(log.num.x) && log.num.x > 0) {
+log.scale.x <- TRUE
+} else {
+log.scale.x <- FALSE
+}
+if (exists('log.num.y') && !is.null(log.num.y) && log.num.y > 0)  {
+log.scale.y <- TRUE
+} else {
+log.scale.y <- FALSE
+}
 
 if (log.scale.x & !log.scale.y) {
 log_axis <- list(x = list(log = log.num.x))

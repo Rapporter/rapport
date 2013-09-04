@@ -1,6 +1,6 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Boxplot)
   author: Daniel Nagy
   description: In this template Rapporter will present you boxplot.
   email: ~
@@ -66,18 +66,10 @@ inputs:
   allow_multiple: no
   required: no
   standalone: yes
-- name: log.scale
-  label: Logarithmic scale?
-  description: Should be the variable 2 presented on a logarithmic scale?
-  class: logical
-  value: FALSE
-  required: no
-  standalone: yes
 - name: log.num
   label: power of log
   description: Power of the logarithmical scale
   class: integer
-  value: 10
   required: no
   standalone: yes
 - name: nomargin
@@ -293,7 +285,7 @@ main_lab <- plot.title
 }
 } else {
 if (plot.title == "default") { 
-main_lab <- sprintf('Bwplot of %s and %s',var1.name, var2.name)
+main_lab <- sprintf('Boxplot of %s and %s',var1.name, var2.name)
 } else {
 main_lab <- plot.title
 }
@@ -301,7 +293,7 @@ var2 <- na.omit(var2)
 if (var2.lab == "default")  var2_lab <- sprintf(var2.label)
 }
 
-if (log.scale) {
+if (exists('log.num') && !is.null(log.num) && log.num > 0) {
 log_axis <- list(x = list(log = log.num))
 } else {
 log_axis <- list()

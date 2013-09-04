@@ -1,8 +1,8 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Dotplot)
   author: Daniel Nagy
-  description: In this template Rapporter will present you densityplot.
+  description: In this template Rapporter will present you dotplot.
   email: ~
   packages:
   - RColorBrewer
@@ -36,18 +36,10 @@ inputs:
   allow_multiple: no
   required: no
   standalone: yes
-- name: log.scale
-  label: Logarithmic scale?
-  description: Should be the variable presented on a logarithmic scale?
-  class: logical
-  value: FALSE
-  required: no
-  standalone: yes
 - name: log.num
   label: power of log
   description: Power of the logarithmical scale
   class: integer
-  value: 10
   required: no
   standalone: yes
 - name: nomargin
@@ -256,7 +248,7 @@ main_lab <- sprintf('Dotplot of %s',var1.name)
 main_lab <- plot.title
 }
 
-if (log.scale) {
+if (exists('log.num') && !is.null(log.num) && log.num > 0) {
 log_axis <- list(x = list(log = log.num))
 } else {
 log_axis <- list()

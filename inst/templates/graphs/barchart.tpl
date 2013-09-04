@@ -1,14 +1,13 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Barchart)
   author: Daniel Nagy
   description: In this template Rapporter will present you a barchart.
   email: ~
   packages:
   - grDevices
   - RColorBrewer
-  example:
-  - rapport('barchart.tpl', data=ius2008, var='age', bar.text.type="Percentage", horizontal=T, bar.text=T)
+  example: ~
 inputs:
 - name: var
   label: Used Variable
@@ -44,7 +43,6 @@ inputs:
   label: Power of log
   description: Power of the logarithmical scale
   class: integer
-  value: 10
   required: no
   standalone: yes
 - name: var.lab
