@@ -22,7 +22,7 @@ inputs:
   label: Number of Factors
   description: How many Factors you want to use?
   class: integer
-  length:
+  limit:
     min: 1.0
     max: 499.0
   required: no
@@ -95,11 +95,20 @@ inputs:
   standalone: yes
 head-->
 
-<% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0 && components > ncol(vars)) { %>
+<% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0 && fact.num >= ncol(vars)) { %>
 
-Your request cannot be implemented, because there are more factors (<%= fact.num %>) than the number of the used variables (<%= ncol(vars) %>). Please set the number of the factors to <%= ncol(vars) - 1 %> with the same number of the variables or extend the number of those variables to <%= fact.num + 1 %>
+Your request cannot be implemented, because there are not more variables (<%= ncol(vars) %>) than the number of the requested factors (<%= fact.num %>) . Please set the number of the factors to maximum <%= ncol(vars) - 1 %> with the same number of the variables or extend the number of those variables at least to <%= fact.num + 1 %>.
 
 <% } else { %>
+
+<% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0) { %>
+<% } else { %>
+<% if (ncol(vars) < 3) { %>
+Your request to automatically calculate the number of the clusters cannot be implemented, because there are not enough variables. Please set at least 3 variables in order to use that automatic function or set the number of the factors (obviously to less than the number of the used variables). Now we are using a 1 factor case.
+<%= 
+fact.num <- 1 
+%>
+<% }} %>
 
 # Introduction
 
@@ -158,6 +167,7 @@ emphasize.strong.cells(which(abs(FA_loadings) > 0.3, arr.ind = TRUE))
 FA_loadings
 %>
 
+
 So it can be said that <%=paste(colnames(FA_loadings)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a latent factor of ")%>.
 
 <% if (length(which(FA_loadings > 0.3)) != length(which(abs(FA_loadings) > 0.3))) { %>
@@ -197,4 +207,3 @@ table
 We can see from the table that variable <%=rownames(uni)[which(max(uni) == uni)]%> has the highest Uniqueness, so could be explained the least by the factors and variable <%= rownames(uni)[which(min(uni) == uni)]%> variance's was explained the most, because it has the lowest Uniqueness. From the communalities we can draw the same conclusion.
 
 <% } %>
-

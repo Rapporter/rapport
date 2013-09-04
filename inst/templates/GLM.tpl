@@ -5,10 +5,7 @@ meta:
   description: In this template Rapporter will present you GLM.
   email: ~
   packages: ~
-  example:
-  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), family='poisson')
-  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=F, family='poisson')
-  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=F, family='binomial')
+  example: ~
 inputs:
 - name: dep
   label: Dependent Variable
@@ -50,7 +47,7 @@ inputs:
   - binomial
   - Gamma
   - poisson
-  value: binomial
+  value: gaussian
   matchable: yes
   allow_multiple: no
   required: no
@@ -58,7 +55,7 @@ inputs:
 head-->
 
 
-<% if (isTRUE(any(indep.name == dep.name)) { %>
+<% if (isTRUE(any(indep.name == dep.name))) { %>
 
 You provided  the same variable as a dependent and as an independent variable. In this case the model does not make sense, please replace the duplicated variables in order to run the GLM.
 
@@ -78,7 +75,7 @@ Values of the independent variables must be between 0 and 1 when binomial used a
 d <- structure(na.omit(data.frame(dep, indep)), .Names = c(dep.name, indep.name))
 indep.int <- fml(dep.name, indep.name, join.right = "*")
 indep.nonint <- fml(dep.name, indep.name, join.right = "+")
-fit <- glm(ifelse(indep.inter, indep.int, indep.nonint), data = d, family = family)
+suppressWarnings(fit <- glm(ifelse(indep.inter, indep.int, indep.nonint), data = d, family = family))
 indep.plu <- switch(indep.ilen, '', 's')
 %>
 

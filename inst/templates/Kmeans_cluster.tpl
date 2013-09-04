@@ -30,6 +30,9 @@ inputs:
   length:
     min: 1.0
     max: 1.0
+  limit:
+    min: 2.0
+    max: 9999.0
   required: no
 head-->
 
