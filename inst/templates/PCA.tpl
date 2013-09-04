@@ -7,7 +7,9 @@ meta:
   packages: 
   - psych
   - GPArotation
-  example: ~
+  example:
+  - rapport('PCA.tpl', data=mtcars, vars=c('carb', 'mpg', 'cyl', 'drat'), components=3)
+  - rapport('PCA.tpl', data=mtcars, vars=c('carb', 'mpg', 'cyl', 'drat'), components=3, rot.method="oblimin")
 inputs:
 - name: vars
   label: Used Variables

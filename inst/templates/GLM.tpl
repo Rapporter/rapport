@@ -5,7 +5,10 @@ meta:
   description: In this template Rapporter will present you GLM.
   email: ~
   packages: ~
-  example: ~
+  example:
+  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), family='poisson')
+  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='poisson')
+  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='binomial')
 inputs:
 - name: dep
   label: Dependent Variable
