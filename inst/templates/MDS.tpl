@@ -88,7 +88,12 @@ d <- dist(variables)
 } else { 
 d <- variables
 }
+try(fit <- cmdscale(d, eig = TRUE, k = 2))
+if (exists('fit') && !is.null(fit)) { 
+} else {
+d <- dist(variables)
 fit <- cmdscale(d, eig = TRUE, k = 2)
+}
 x <- fit$points[, 1]
 y <- fit$points[, 2]
 plot(x, y, xlab="Coordinate 1", ylab = "Coordinate 2", main = "Metric  MDS",   type = "n")
