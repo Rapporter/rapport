@@ -80,4 +80,4 @@ rp.desc("edu", "student", c(min, max, mean, sd), ius2008)
 %>
 {% endhighlight %}
 
-and run `tpl.export(rapport(<file path>, <data>, <inputs>))`.
+and run `rapport.html(<file path>, <data>, <inputs>)`.
