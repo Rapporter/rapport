@@ -7,3 +7,4 @@ _site/*
 *.Rcheck
 rapport_*.tar.gz
 .ackrc
+.Rproj.user
