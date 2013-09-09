@@ -4,7 +4,7 @@ Writing a custom _rapport_ template or modifying an existing one is not trickier
 
 **Recent changes**
 
-As of version 0.50, _rapport_ is using the new header specification that relies solely on [YAML syntax](yaml.org). The old syntax is deprecated, though kept in the package for backwards compatibility.
+As of version 0.50, _rapport_ is using the new header specification that relies solely on [YAML syntax](https://yaml.org). The old syntax is deprecated, though kept in the package for backwards compatibility.
 
 In order to define a valid _rapport_ template, you'll have to specify some info at the beginning of the document, in the so-called _template header_. The header itself is nothing but a YAML syntax placed within custom HTML comment tags: `<!--head` and `head-->`. It consists of metadata and inputs sections defined under `meta` and `inputs` YAML keys, respectively.
 
