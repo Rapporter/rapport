@@ -72,7 +72,7 @@ Values of the independent variables must be between 0 and 1 when binomial used a
 
 # Introduction
 
-[Generalized Linear Model (GLM)](http://en.wikipedia.org/wiki/Generalized_linear_model) is a generalization of the ordinary [Linear Regression](http://en.wikipedia.org/wiki/Linear_regression). While using GLM we don't need the assumption of normality for response variables. There are two basic idea of the model: It allows the linear model to be related to the response variable via a link function and the magnitude of the variance of each measurement to be a function of its predicted value. An extinsion to the GLM is the [Hierarchical generalized linear model](https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model).
+[Generalized Linear Model (GLM)](http://en.wikipedia.org/wiki/Generalized_linear_model) is a generalization of the ordinary [Linear Regression](http://en.wikipedia.org/wiki/Linear_regression). While using GLM we don't need the assumption of normality for response variables. There are two basic ideas of the model: It allows the linear model to be related to the response variable via a link function and the magnitude of the variance of each measurement to be a function of its predicted value. An extinsion to the GLM is the [Hierarchical generalized linear model](https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model).
 
 <%=
 d <- structure(na.omit(data.frame(dep, indep)), .Names = c(dep.name, indep.name))
