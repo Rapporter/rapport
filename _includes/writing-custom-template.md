@@ -28,10 +28,10 @@ meta:
   description: Just a custom template
   packages:
 	- lme4
-    - nortest
+  - nortest
 	- ggplot2
   example:
-    - rapport("custom-template", mtcars, x = "wt")
+  - rapport("custom-template", mtcars, x = "wt")
 	- rapport("custom-template", mtcars, x = c("mpg", "hp"))
 {% endhighlight %}
 
