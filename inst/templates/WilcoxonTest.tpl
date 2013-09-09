@@ -44,7 +44,7 @@ head-->
 # Introduction
 
 [Wilcoxon test](http://en.wikipedia.org/wiki/Wilcoxon_test) (or its equivalent 
-the Mann-Whitney U test)  is a non-parametric statistical test which can be an alternative of the  paired Student's t-test, t-test for matched pairs, or the t-test for dependent samples. When the Wilcoxon test is used to compare two samples of values which are not paired, it makes no assumption about the shape of the distribution, only that (as null hypothesis) the distribution from which <%=var1.label%> is sampled is the same as the distribution from which <%=var2.label%> is sampled. The null hypothesis states that the variances of the variables are equal.
+the Mann-Whitney U test)  is a non-parametric statistical test which can be an alternative of the  paired Student's t-test, t-test for matched pairs, or the t-test for dependent samples. When the Wilcoxon test is used to compare two samples of values which are not paired, it makes no assumption about the shape of the distribution, only that (as null hypothesis) the distribution from which <%=var1.label%> was sampled is the same as the distribution from which <%=var2.label%> was sampled. The null hypothesis states that the variances of the variables are equal.
 
 <%=
 set.caption(sprintf('Wilcoxon rank sum test with continuity correction %s and %s', var1.label, var2.label))
