@@ -58,13 +58,14 @@ inputs:
   standalone: yes
 head-->
 
+
 # Introduction
 
 [Hierarchical Cluster Analysis](http://en.wikipedia.org/wiki/Hierarchical_clustering) is a data mining method which seeks to build a hierarchy of clusters. Clusters are calculated based on the distances between the observations. At the beginning each observation is assigned to be a single cluster, later in every round the most similar clusters will be joined until all observations are in one cluster. One should not mix it up with [K-means Cluster Analysis](http://en.wikipedia.org/wiki/K-means_clustering), which calculates the clusters based on the final numbers of them.
 
 # HCA
 
-Below you can see on the plot how the clusters were made, how the observations were paired with each other. The horizontal linkage between the vertical lines indicate the stage where two clusters joined to each other. In the bottom of the plot you can see the clustering process in an other way, for each observations the shorter lines indicate later clustering. <%=ifelse(exists('clust.num') && !is.null(clust.num) && clust.num > 0, paste("The red boxes shows the last", clust.num, "clusters, as you provided"), "")%>.
+Below you can see on the plot how the clusters were made, how the observations were paired with each other. The horizontal linkage between the vertical lines indicates the stage where two clusters joined to each other. In the bottom of the plot you can see the clustering process in an other way, for each observations the shorter lines indicate later clustering. 
 
 <%=
 variables <- scale(na.omit(vars))
@@ -73,10 +74,21 @@ d <- dist(variables)
 } else { 
 d <- variables
 }
-HCA <- hclust(d,method) %>
+try(HCA <- hclust(d,method))
+if (exists('HCA') && !is.null(HCA)) { 
+} else {
+d <- dist(variables)
+HCA <- hclust(d,method)
+}
+%>
 
 <% if (exists('clust.num') && !is.null(clust.num) && clust.num > 0) { %>
-<%= 
+<% if (length(HCA$order) <= clust.num) { %>
+The number of the clusters cannot be equal or higher than the unique cases (<%=length(HCA$order)%>), which you set (<%=clust.num%>), was <%=ifelse(length(HCA$order) == clust.num, "equal", "higher")%>. In the following, we will use the maximum available number of the clusters (<%=length(HCA$order) -1%>).
+<%= clust.num <- length(HCA$order) -1 %>
+<% } %>
+<%=paste("The red boxes shows the last", clust.num, "clusters.") %>
+<%=
 plclust(HCA, labels = F, main = "HCA", xlab = "Hierarchical Cluster Analysis", sub = "")
 +rect.hclust(HCA, k = clust.num, border = "red")
 %>
@@ -86,7 +98,7 @@ plclust(HCA, labels = F, main = "HCA", xlab = "Hierarchical Cluster Analysis", s
 %>
 <% } %>
 
-We can say that <%=length(which(HCA$height == 0))%> observations have the same values on the used variables, so they were joined in the first <%=length(which(HCA$height == 0))%> round. After that <%=which(HCA$merge[, 1] >= 0)[1]-length(which(HCA$height == 0))%> times there were only made clusters with 2 observations, the first cluster that contain 3 was made in the round <%=which(HCA$merge[, 1] >= 0)[1]%>.
+We can say that <%=length(which(HCA$height == 0))%> observations have the same values on the used variables, so they were joined in the first <%=length(which(HCA$height == 0))%> round. After that <%=which(HCA$merge[, 1] >= 0)[1]-length(which(HCA$height == 0))%> times there were only made clusters with 2 observations, the first cluster that contains 3 was made in the round <%=which(HCA$merge[, 1] >= 0)[1]%>.
 
 
 ### Optimal number of clusters

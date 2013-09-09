@@ -36,9 +36,11 @@ inputs:
   required: no
 head-->
 
+
 <%=
 vars <- na.omit(vars)
 varsScaled <- scale(vars)
+maxclust <- nrow(varsScaled) - 1
 %>
 
 ## Introduction
@@ -54,9 +56,12 @@ J. B. MacQueen (1967). _"Some Methods for classification and Analysis of Multiva
 As it was mentioned above, the speciality of the K-means Cluster method is to set the number of groups we want to produce. 
 
 <% if (exists('clust_num') && !is.null(clust_num) && clust_num > 0) { %>
-
+<% if (clust_num >= maxclust) { %>
+The number of the clusters cannot be equal or higher than the unique cases (<%=maxclust + 1%>), which you set (<%=clust_num%>), was <%=ifelse(maxclust +1 == clust_num, "equal", "higher")%>. In the following, we will use two clusters.
+<%= clust_num <- 2 %>
+<% } else { %>
 As you set, there will be a <%=clust_num%>-means cluster analysis provided.
-
+<% } %>
 <%= 
 cn <- tryCatch(pam(vars, clust_num), error = function(e) e)
 fit <- kmeans(varsScaled, clust_num)
@@ -128,5 +133,3 @@ clusplot(cn, fit$cluster, color = TRUE, shade = TRUE, labels = ifelse(nrow(vars)
     warning('Only one variable provided, so there is no sense drawing a 2D plot here.')
 }
 %>
-
-
