@@ -35,7 +35,9 @@ meta:
 	- rapport("custom-template", mtcars, x = c("mpg", "hp"))
 {% endhighlight %}
 
-As you can see, it depends on `lme4`, `nortest` and `ggplot2` packages, and it has 2 example calls to rapport.
+As you can see, it depends on `lme4`, `nortest` and `ggplot2` packages, and it has 2 example calls to rapport. 
+
+Just a reminder about the technical details: One should not forget to type in the accurate number of the 'spaces' in the beginning of the lines! Before each fields two 'spaces' are required, next to them the exact packages and the examples have a hyphen and an other 'space' in their front.
 
 #### Template inputs
 
