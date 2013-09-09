@@ -20,8 +20,8 @@ inputs:
   standalone: no
 - name: var2
   label: Used Variable 2
-  description: This is the second variable that you will use here
-  class: numeric
+  description: This is the factor variable that you will use here
+  class: factor
   length:
     min: 1.0
     max: 1.0
@@ -70,6 +70,8 @@ inputs:
   label: power of log
   description: Power of the logarithmical scale
   class: integer
+  limit:
+    min: 2.0
   required: no
   standalone: yes
 - name: nomargin
@@ -106,6 +108,9 @@ inputs:
   description: Specifying the base font size in pixels
   class: integer
   value: 12
+  limit:
+    min: 1.0
+    max: 50.0
   matchable: no
   required: no
   standalone: yes

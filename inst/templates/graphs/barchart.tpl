@@ -43,6 +43,8 @@ inputs:
   label: Power of log
   description: Power of the logarithmical scale
   class: integer
+  limit:
+    min: 2.0
   required: no
   standalone: yes
 - name: var.lab
@@ -140,6 +142,9 @@ inputs:
   description: Specifying the base font size in pixels
   class: integer
   value: 12
+  limit:
+    min: 1.0
+    max: 50.0
   matchable: no
   required: no
   standalone: yes

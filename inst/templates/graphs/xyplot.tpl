@@ -85,12 +85,16 @@ inputs:
   label: power of log x
   description: Power of the logarithmical scale of x
   class: integer
+  limit:
+    min: 2.0
   required: no
   standalone: yes
 - name: log.num.y
   label: power of log y
   description: Power of the logarithmical scale of y
   class: integer
+  limit:
+    min: 2.0
   required: no
   standalone: yes
 - name: nomargin
@@ -127,6 +131,9 @@ inputs:
   description: Specifying the base font size in pixels
   class: integer
   value: 12
+  limit:
+    min: 1.0
+    max: 50.0
   matchable: no
   required: no
   standalone: yes
