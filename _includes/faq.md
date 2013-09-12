@@ -30,14 +30,6 @@ _rapport_ relies on some [predefined](#templates)/[custom](#custom) templates, w
 
 Read sections on [usage](#usage) and/or [writing custom templates](#custom).
 
-#### I get an error message while trying to export a template. What went wrong?
-
-{% highlight r %}
-... : error running command
-{% endhighlight %}
-
-Yup, that is the normal behaviour if you do not have [Pandoc](http://johnmacfarlane.net/pandoc/index.html) installed. Please read the [manual](#install)!
-
 #### I found a bug. What should I do?
 
 Please join our [discussion list](#discuss) or [file an issue on Github](https://github.com/rapporter/rapport/issues) tagged as `bug`!
@@ -88,4 +80,4 @@ rp.desc("edu", "student", c(min, max, mean, sd), ius2008)
 %>
 {% endhighlight %}
 
-and run `tpl.export(rapport(<file path>, <data>, <inputs>))`.
+and run `rapport.html(<file path>, <data>, <inputs>)`.

@@ -4,7 +4,7 @@ Writing a custom _rapport_ template or modifying an existing one is not trickier
 
 **Recent changes**
 
-As of version 0.50, _rapport_ is using the new header specification that relies solely on YAML syntax. The old syntax is deprecated, though kept in the package for backwards compatibility.
+As of version 0.50, _rapport_ is using the new header specification that relies solely on [YAML syntax](https://yaml.org). The old syntax is deprecated, though kept in the package for backwards compatibility.
 
 In order to define a valid _rapport_ template, you'll have to specify some info at the beginning of the document, in the so-called _template header_. The header itself is nothing but a YAML syntax placed within custom HTML comment tags: `<!--head` and `head-->`. It consists of metadata and inputs sections defined under `meta` and `inputs` YAML keys, respectively.
 
@@ -28,14 +28,16 @@ meta:
   description: Just a custom template
   packages:
 	- lme4
-    - nortest
+  - nortest
 	- ggplot2
   example:
-    - rapport("custom-template", mtcars, x = "wt")
+  - rapport("custom-template", mtcars, x = "wt")
 	- rapport("custom-template", mtcars, x = c("mpg", "hp"))
 {% endhighlight %}
 
-As you can see, it depends on `lme4`, `nortest` and `ggplot2` packages, and it has 2 example calls to rapport.
+As you can see, it depends on `lme4`, `nortest` and `ggplot2` packages, and it has 2 example calls to rapport. 
+
+Just a reminder about the technical details: One should not forget to type in the accurate number of the 'spaces' in the beginning of the lines! Before each fields two 'spaces' are required, next to them the exact packages and the examples have a hyphen and an other 'space' in their front.
 
 #### Template inputs
 
