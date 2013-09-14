@@ -278,8 +278,16 @@ cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], co
 if (colp != "Set1") panderOptions('graph.colors', cs)
 
 
+if (length(var2) == 0) {
 var1 <- na.omit(var1)
 if (var1.lab == "default")  var1_lab <- sprintf(var1.label)
+} else {
+NAs <- which(is.na(var1) | is.na(var2))
+var1 <- var1[-NAs]
+var2 <- var2[-NAs]
+if (var1.lab == "default")  var1_lab <- sprintf(var1.label)
+if (var2.lab == "default")  var2_lab <- sprintf(var2.label)
+}
 
 
 if (length(var2) == 0) {
@@ -293,10 +301,7 @@ if (plot.title == "default") {
 main_lab <- sprintf('Boxplot of %s and %s',var1.name, var2.name)
 } else {
 main_lab <- plot.title
-}
-var2 <- na.omit(var2)
-if (var2.lab == "default")  var2_lab <- sprintf(var2.label)
-}
+}}
 
 if (exists('log.num') && !is.null(log.num) && log.num > 0) {
 log_axis <- list(x = list(log = log.num))

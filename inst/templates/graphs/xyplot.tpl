@@ -337,8 +337,10 @@ panel.lmline(..., col=lmline.col)
 lm_line <- lattice.getOption("panel.xyplot")
 }
 
-x <- na.omit(x)
-y <- na.omit(y)
+NAs <- which(is.na(x) | is.na(y))
+x <- x[-NAs]
+y <- y[-NAs]
+
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
 xyplot(x ~ y, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), ylab = ifelse(x.lab == "default", x_lab, x.lab), xlab = ifelse(y.lab == "default", y_lab, y.lab), scales=log_axis, panel = lm_line)
 
