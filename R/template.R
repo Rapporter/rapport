@@ -6,7 +6,7 @@
 #' @return a character vector with template contents
 tpl.find <- function(fp, ...){
     if (missing(fp))
-        stop('file pointer not provided')
+        stop('Template file pointer not provided!')
     stopifnot(is.character(fp))
     l <- length(fp)
     ## maybe it's file path?
@@ -14,7 +14,7 @@ tpl.find <- function(fp, ...){
         ## is it URL?
         if (grepl('^(ftp|http(s)?)://.+$', fp)) {
             if (download.file(fp, tmp.fp <- tempfile(), method = 'wget') != 0)
-                stop('remote file not found')
+                stop('Remote template file not found!')
             file <- tmp.fp
         } else {
             ## is it local file found in working, package or custom \code{getOption('tpl.paths')} directory?
@@ -23,7 +23,7 @@ tpl.find <- function(fp, ...){
             fp <- c(fp, unlist(lapply(fp, function(file) file.path(getOption('tpl.paths'), file))), system.file('templates', fp, package = 'rapport'))
             fp <- fp[file.exists(fp)]
             if (length(fp) == 0)
-                stop('File not found!')
+                stop('Template file not found!')
             if (length(fp) > 1) {
                 fp <- fp[1]
                 warning(sprintf('Multiple templates found with given name, using: %s', fp))
@@ -34,7 +34,7 @@ tpl.find <- function(fp, ...){
         ## then it's a character vector
         txt <- fp
     } else {
-        stop('file pointer error')      # you never know...
+        stop('Template file pointer error :O')      # you never know...
     }
     check.tpl(txt, ...)
     return(txt)
