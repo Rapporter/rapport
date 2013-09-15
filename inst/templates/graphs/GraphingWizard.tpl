@@ -39,7 +39,8 @@ intint2 <-FALSE
 intnum2 <-FALSE
 numint2 <-FALSE
 numnum2 <-FALSE
-cha2 <-FALSE
+facfac2 <-FALSE
+raw2 <-FALSE
 com2 <-FALSE
 
 
@@ -48,17 +49,20 @@ if (ncol(var.dat) == 1 && class(variables) == "factor") fac1 <- TRUE
 if (ncol(var.dat) == 1 && class(variables) == "logical") log1 <- TRUE
 if (ncol(var.dat) == 1 && class(variables) == "numeric") num1 <- TRUE
 if (ncol(var.dat) == 1 && class(variables) == "integer") int1 <- TRUE
-if (ncol(var.dat) == 1 && class(variables) == "character") cha1 <- TRUE
 if (ncol(var.dat) == 1 && class(variables) == "complex") com1 <- TRUE
+if (ncol(var.dat) == 1 && class(variables) == "raw") raw1 <- TRUE
+
+if (ncol(var.dat) == 1 && class(variables) == "character") {
+  cha1 <- TRUE
+  class(variables) <- "factor"
+}
 
 
-if (ncol(var.dat) == 2 && length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && class(var.dat[,2]) == "character") cha2 <- TRUE
 if (ncol(var.dat) == 2 && length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && class(var.dat[,2]) == "complex") com2 <- TRUE
 if (ncol(var.dat) == 2 && length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && class(var.dat[,2]) == "integer") facint2 <- TRUE
 if (ncol(var.dat) == 2 && length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && class(var.dat[,2]) == "numeric") facnum2 <- TRUE
 if (ncol(var.dat) == 2 && length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && class(var.dat[,2]) == "logical") faclog2 <- TRUE
 
-if (ncol(var.dat) == 2 && length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor" && class(var.dat[,1]) == "character") cha2 <- TRUE
 if (ncol(var.dat) == 2 && length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor" && class(var.dat[,1]) == "complex") com2 <- TRUE
 if (ncol(var.dat) == 2 && length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor" && class(var.dat[,1]) == "integer") intfac2 <- TRUE
 if (ncol(var.dat) == 2 && length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor" && class(var.dat[,1]) == "numeric") numfac2 <- TRUE
@@ -85,10 +89,26 @@ if (ncol(var.dat) == 2 && class(var.dat[,1]) == "integer" && class(var.dat[,2]) 
 if (ncol(var.dat) == 2 && class(var.dat[,1]) == "logical" && class(var.dat[,2]) == "logical") logint2 <- TRUE
 
 
-if (ncol(var.dat) == 2 && class(var.dat[,1]) == "character") cha2 <- TRUE
+
 if (ncol(var.dat) == 2 && class(var.dat[,1]) == "complex") com2 <- TRUE
-if (ncol(var.dat) == 2 && class(var.dat[,2]) == "character") cha2 <- TRUE
 if (ncol(var.dat) == 2 && class(var.dat[,2]) == "complex") com2 <- TRUE
+
+if (ncol(var.dat) == 2 && class(var.dat[,1]) == "raw") raw2 <- TRUE
+if (ncol(var.dat) == 2 && class(var.dat[,2]) == "raw") raw2 <- TRUE
+
+
+if (ncol(var.dat) == 2 && class(var.dat[,1]) == "character") {
+  class(var.dat[,1]) <- "factor"
+  if (class(var.dat[,2]) == "integer") intfac2 <- TRUE
+  if (class(var.dat[,2]) == "numeric") numfac2 <- TRUE
+  if (class(var.dat[,2]) == "logical") logfac2 <- TRUE
+}
+if (ncol(var.dat) == 2 && class(var.dat[,2]) == "character") {
+  class(var.dat[,2]) <- "factor"
+  if (class(var.dat[,1]) == "integer") intfac2 <- TRUE
+  if (class(var.dat[,1]) == "numeric") numfac2 <- TRUE
+  if (class(var.dat[,1]) == "logical") logfac2 <- TRUE
+}
 
 
 if (fac1 | log1) {
@@ -98,21 +118,23 @@ if (fac1 | log1) {
   rapport('graphs/histogram.tpl', data=rp.data, var=variables.name)
   rapport('graphs/densityplot.tpl', data=rp.data, var=variables.name)
 } else if (cha1) {
-  paste("It doesnt make sense to show visually this variable, because it is a character vector") 
+  rapport('graphs/barchart.tpl', data=rp.data, var=variables.name)
 } else if (com1) {
-  paste("This variable cannot be shown visually, because the class of that is complex") 
+  paste("To show visually this variable is not supported, because the class of that is complex. Please select an other variable.") 
+} else if (raw1) {
+  paste("To show visually this variable is not supported, because the class of that is raw. Please select an other variable.") 
 } else if (facint2 | facnum2 | logint2 | lognum2) {
   rapport('graphs/bwplot.tpl', data=rp.data, var1=variables.name[2], var2=variables.name[1])
 } else if (intfac2 | numfac2 | intlog2 | numlog2) {
   rapport('graphs/bwplot.tpl', data=rp.data, var1=variables.name[1], var2=variables.name[2])
 } else if (intint2 | intnum2 | numint2 | numnum2) {
   rapport('graphs/xyplot.tpl', data=rp.data, x = variables.name[1], y = variables.name[2])
-} else if (cha2) {
-  paste("To show visually the relation between these variables is not supported, because at least one of them is a character vector. Please select two other variables.") 
+} else if (facfac2) {
+  rapport('graphs/barchart.tpl', data=rp.data, var=variables.name)
 } else if (com2) {
   paste("To show visually the relation between these variables is not supported, because the class of at least one of that is complex. Please select two other variables.") 
-} else if (facfac2) {
-  paste("To visually show the relation between two factor variables is not supported. Please select two other variables.")
+} else if (raw2) {
+  paste("To show visually the relation between these variables is not supported, because the class of at least one of that is raw. Please select two other variables.") 
 } else if (loglog2) {
   paste("To visually show the relation between two logical variables is not supported. Please select two other variables.")
 } else {
