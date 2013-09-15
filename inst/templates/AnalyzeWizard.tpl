@@ -35,7 +35,8 @@ intint2 <-FALSE
 intnum2 <-FALSE
 numint2 <-FALSE
 numnum2 <-FALSE
-cha2 <-FALSE
+facfac2 <-FALSE
+raw2 <-FALSE
 com2 <-FALSE
 
 if (length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && class(var.dat[,2]) == "character") cha2 <- TRUE
@@ -71,18 +72,42 @@ if (class(var.dat[,1]) == "integer" && class(var.dat[,2]) == "logical") intlog2 
 if (class(var.dat[,1]) == "logical" && class(var.dat[,2]) == "logical") logint2 <- TRUE
 
 
-if (class(var.dat[,1]) == "character") cha2 <- TRUE
 if (class(var.dat[,1]) == "complex") com2 <- TRUE
-if (class(var.dat[,2]) == "character") cha2 <- TRUE
 if (class(var.dat[,2]) == "complex") com2 <- TRUE
 
+
+
+if (class(var.dat[,1]) == "raw") raw2 <- TRUE
+if (class(var.dat[,2]) == "raw") raw2 <- TRUE
+
+
+if (class(var.dat[,1]) == "character") {
+  class(var.dat[,1]) <- "factor"
+  if (class(var.dat[,2]) == "integer") intfac2 <- TRUE
+  if (class(var.dat[,2]) == "numeric") numfac2 <- TRUE
+  if (class(var.dat[,2]) == "logical") logfac2 <- TRUE
+}
+if (class(var.dat[,2]) == "character") {
+  class(var.dat[,2]) <- "factor"
+  if (class(var.dat[,1]) == "integer") intfac2 <- TRUE
+  if (class(var.dat[,1]) == "numeric") numfac2 <- TRUE
+  if (class(var.dat[,1]) == "logical") logfac2 <- TRUE
+}
+
+if (class(var.dat[,1]) == "character" && class(var.dat[,2]) == "character") {
+  class(var.dat[,1]) <- "factor"
+  class(var.dat[,2]) <- "factor"
+  facfac2 <- TRUE
+}
+
 if (numint2 | intnum2 | numnum2 | intint2) {
-rapport('LinearRegression.tpl', data=rp.data, dep=variables.name[1], indep=variables.name[2], indep.inter=F)
 rapport('Correlation.tpl', data=rp.data, vars=variables.name)
 } else if (numfac2 | intfac2 | numlog2 | intlog2) {
 rapport("anova", data=rp.data, resp = variables.name[1], fac = variables.name[2])
 } else if (facnum2 | facint2 | lognum2 | logint2) {
 rapport("anova", data=rp.data, resp = variables.name[2], fac = variables.name[1])
+} else if (facfac2) {
+rapport('crosstable', data=ius2008, row='email', col='dwell')
 } else if (com2) {
 paste("To show the relation between these variables is not supported, because at least one of them is a complex vector. Please select two other variables.")
 }
