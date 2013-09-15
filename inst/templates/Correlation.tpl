@@ -6,9 +6,9 @@ meta:
   email: gergely@snowl.net
   packages: ~
   example:
-  - rapport('correlations', data=ius2008, vars=c('age', 'edu'))
-  - rapport('correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
-  - rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
+  - rapport('Correlation', data=ius2008, vars=c('age', 'edu'))
+  - rapport('Correlation', data=ius2008, vars=c('age', 'edu', 'leisure'))
+  - rapport('Correlation', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
 inputs:
 - name: vars
   label: Variable
