@@ -27,6 +27,7 @@ num1 <-FALSE
 int1 <-FALSE
 cha1 <-FALSE
 com1 <-FALSE
+raw1 <-FALSE
 facint2 <-FALSE
 facnum2 <-FALSE
 logint2 <-FALSE
@@ -110,6 +111,11 @@ if (ncol(var.dat) == 2 && class(var.dat[,2]) == "character") {
   if (class(var.dat[,1]) == "logical") logfac2 <- TRUE
 }
 
+if (ncol(var.dat) == 2 && class(var.dat[,1]) == "character" && class(var.dat[,2]) == "character") {
+  class(var.dat[,1]) <- "factor"
+  class(var.dat[,2]) <- "factor"
+  facfac2 <- TRUE
+}
 
 if (fac1 | log1) {
   rapport('graphs/barchart.tpl', data=rp.data, var=variables.name)
@@ -130,7 +136,7 @@ if (fac1 | log1) {
 } else if (intint2 | intnum2 | numint2 | numnum2) {
   rapport('graphs/xyplot.tpl', data=rp.data, x = variables.name[1], y = variables.name[2])
 } else if (facfac2) {
-  rapport('graphs/barchart.tpl', data=rp.data, var=variables.name)
+  #rapport('graphs/barchart.tpl', data=rp.data, var=variables.name)
 } else if (com2) {
   paste("To show visually the relation between these variables is not supported, because the class of at least one of that is complex. Please select two other variables.") 
 } else if (raw2) {
