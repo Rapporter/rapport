@@ -38,6 +38,7 @@ if (ncol(var.dat) == 1 && class(variables) == "raw") raw1 <- TRUE
 if (ncol(var.dat) == 1 && class(variables) == "character") {
   cha1 <- TRUE
   class(variables) <- "factor"
+  variables <- factor(variables)
 }
 
 
@@ -81,21 +82,21 @@ if (ncol(var.dat) == 2 && class(var.dat[,2]) == "raw") raw2 <- TRUE
 
 
 if (ncol(var.dat) == 2 && class(var.dat[,1]) == "character") {
-  class(var.dat[,1]) <- "factor"
+  var.dat[,1] <- factor(var.dat[,1])
   if (class(var.dat[,2]) == "integer") intfac2 <- TRUE
   if (class(var.dat[,2]) == "numeric") numfac2 <- TRUE
   if (class(var.dat[,2]) == "logical") logfac2 <- TRUE
 }
 if (ncol(var.dat) == 2 && class(var.dat[,2]) == "character") {
-  class(var.dat[,2]) <- "factor"
+  var.dat[,2] <- factor(var.dat[,2])
   if (class(var.dat[,1]) == "integer") intfac2 <- TRUE
   if (class(var.dat[,1]) == "numeric") numfac2 <- TRUE
   if (class(var.dat[,1]) == "logical") logfac2 <- TRUE
 }
 
 if (ncol(var.dat) == 2 && class(var.dat[,1]) == "character" && class(var.dat[,2]) == "character") {
-  class(var.dat[,1]) <- "factor"
-  class(var.dat[,2]) <- "factor"
+  var.dat[,1] <- factor(var.dat[,1])
+  var.dat[,2] <- factor(var.dat[,2])
   facfac2 <- TRUE
 }
 
