@@ -5,7 +5,10 @@ meta:
   description: In this template Rapporter will present you a graphing wizard template, where we will show you a visual representation.
   email: ~
   packages: ~
-  example: ~
+  example:
+  - rapport('GraphingWizard.tpl', data=ius2008, variables='student')
+  - rapport('GraphingWizard.tpl', data=ius2008, variables=c('edu', 'game'))
+  - rapport('GraphingWizard.tpl', data=ius2008, variables=c('game', 'gender'))
 inputs:
 - name: variables
   label: Used Variables
@@ -21,28 +24,7 @@ head-->
 var.dat <- as.data.frame(variables)
 variables <- na.omit(variables)
 
-fac1 <-FALSE
-log1 <-FALSE
-num1 <-FALSE
-int1 <-FALSE
-cha1 <-FALSE
-com1 <-FALSE
-raw1 <-FALSE
-facint2 <-FALSE
-facnum2 <-FALSE
-logint2 <-FALSE
-lognum2 <-FALSE
-intfac2 <-FALSE
-numfac2 <-FALSE
-intlog2 <-FALSE
-numlog2 <-FALSE
-intint2 <-FALSE
-intnum2 <-FALSE
-numint2 <-FALSE
-numnum2 <-FALSE
-facfac2 <-FALSE
-raw2 <-FALSE
-com2 <-FALSE
+fac1 <- log1 <- num1 <- int1 <- cha1 <- com1 <- raw1 <- facint2 <- facnum2 <- logint2 <- lognum2 <- intfac2 <- numfac2 <- intlog2 <- numlog2 <- intint2 <- intnum2 <- numint2 <- numnum2 <- facfac2 <- raw2 <- com2 <-FALSE
 
 
 if (ncol(var.dat) == 1 && length(class(variables)) == 2 && class(variables)[2] == "factor") fac1 <- TRUE
