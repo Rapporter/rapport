@@ -8,7 +8,7 @@ meta:
   example:
   - rapport.html('AnalyzeWizard.tpl', data=ius2008, variables=c('edu', 'game'))
   - rapport.html('AnalyzeWizard.tpl', data=ius2008, variables=c('gender', 'game'))
-  - rapport.html('AnalyzeWizard.tpl', data=ius2008, variables=c('partner', 'net.pay'))
+  - rapport.html('AnalyzeWizard.tpl', data=ius2008, variables=c('edu', 'age'))
 inputs:
 - name: variables
   label: Used Variables

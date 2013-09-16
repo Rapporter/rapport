@@ -7,8 +7,11 @@ meta:
   packages: ~
   example:
   - rapport('GraphingWizard.tpl', data=ius2008, variables='student')
+  - rapport('GraphingWizard.tpl', data=ius2008, variables='edu')
+  - rapport('GraphingWizard.tpl', data=ius2008, variables='socnet')
   - rapport('GraphingWizard.tpl', data=ius2008, variables=c('edu', 'game'))
   - rapport('GraphingWizard.tpl', data=ius2008, variables=c('game', 'gender'))
+  - rapport('GraphingWizard.tpl', data=ius2008, variables=c('edu', 'age'))
 inputs:
 - name: variables
   label: Used Variables
