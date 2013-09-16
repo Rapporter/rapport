@@ -6,7 +6,8 @@ meta:
   email: ~
   packages:
   - RColorBrewer
-  example: ~
+  example:
+  - rapport('Histogram.tpl', data=ius2008, var='edu')
 inputs:
 - name: var
   label: Used Variable

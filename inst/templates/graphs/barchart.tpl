@@ -7,7 +7,10 @@ meta:
   packages:
   - grDevices
   - RColorBrewer
-  example: ~
+  example:
+  - rapport('Barchart.tpl', data=ius2008, var='gender', 
+            bar.text.type="Percentage", horizontal=T, 
+            bar.text=T, log.scale=T)
 inputs:
 - name: var
   label: Used Variable

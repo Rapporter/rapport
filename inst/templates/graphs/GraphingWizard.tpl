@@ -101,25 +101,23 @@ if (ncol(var.dat) == 2 && class(var.dat[,1]) == "character" && class(var.dat[,2]
 }
 
 if (fac1 | log1) {
-  rapport('graphs/barchart.tpl', data=rp.data, var=variables.name)
-  #rapport('graphs/dotplot.tpl', data=rp.data, var1=variables.name)
+  rapport('graphs/Barchart.tpl', data=rp.data, var=variables.name)
 } else if (num1 | int1) {
-  rapport('graphs/histogram.tpl', data=rp.data, var=variables.name)
-  rapport('graphs/densityplot.tpl', data=rp.data, var=variables.name)
+  rapport('graphs/Densityplot.tpl', data=rp.data, var=variables.name)
 } else if (cha1) {
-  rapport('graphs/barchart.tpl', data=rp.data, var=variables.name)
+  rapport('graphs/Barchart.tpl', data=rp.data, var=variables.name)
 } else if (com1) {
   paste("To show visually this variable is not supported, because the class of that is complex. Please select an other variable.") 
 } else if (raw1) {
   paste("To show visually this variable is not supported, because the class of that is raw. Please select an other variable.") 
 } else if (facint2 | facnum2 | logint2 | lognum2) {
-  rapport('graphs/bwplot.tpl', data=rp.data, var1=variables.name[2], var2=variables.name[1])
+  rapport('graphs/Boxplot.tpl', data=rp.data, var1=variables.name[2], var2=variables.name[1])
 } else if (intfac2 | numfac2 | intlog2 | numlog2) {
-  rapport('graphs/bwplot.tpl', data=rp.data, var1=variables.name[1], var2=variables.name[2])
+  rapport('graphs/Boxplot.tpl', data=rp.data, var1=variables.name[1], var2=variables.name[2])
 } else if (intint2 | intnum2 | numint2 | numnum2) {
-  rapport('graphs/xyplot.tpl', data=rp.data, x = variables.name[1], y = variables.name[2])
+  rapport('graphs/Scatterplot.tpl', data=rp.data, x = variables.name[1], y = variables.name[2])
 } else if (facfac2) {
-  #rapport('graphs/barchart.tpl', data=rp.data, var=variables.name)
+  #rapport('graphs/Barchart.tpl', data=rp.data, var=variables.name)
 } else if (com2) {
   paste("To show visually the relation between these variables is not supported, because the class of at least one of that is complex. Please select two other variables.") 
 } else if (raw2) {
