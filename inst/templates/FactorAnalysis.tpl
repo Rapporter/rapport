@@ -7,7 +7,13 @@ meta:
   packages:
   - psych
   - nFactors
-  example: ~
+  example:
+  - rapport('FactorAnalysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl'),
+            rot.method="varimax")
+  - rapport('FactorAnalysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl'),
+            rot.method="varimax", fact.num = 3)
+  - rapport('FactorAnalysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl', 
+            'drat'), rot.method="varimax", fact.num = 5)
 inputs:
 - name: vars
   label: Used Variables
@@ -77,13 +83,6 @@ inputs:
   allow_multiple: no
   required: no
   standalone: yes
-- name: obs.plot
-  label : Observation plot
-  description: Would you check the plot about the distribution among the factors?
-  class: logical
-  value: yes
-  required: no
-  standalone: yes
 - name: max.iter
   label : Maximum iterations
   description: Maximum number of iterations for convergence
@@ -97,7 +96,7 @@ head-->
 
 <% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0 && fact.num >= ncol(vars)) { %>
 
-Your request cannot be implemented, because there are not more variables (<%= ncol(vars) %>) than the number of the requested factors (<%= fact.num %>) . Please set the number of the factors to maximum <%= ncol(vars) - 1 %> with the same number of the variables or extend the number of those variables at least to <%= fact.num + 1 %>.
+Your request cannot be implemented, because there are <%=ifelse(ncol(vars) == fact.num, "the same number of variables", "less variables")%> (<%= ncol(vars) %>) <%=ifelse(ncol(vars) == fact.num, "like", "than")%> the number of the requested factors (<%= fact.num %>) . Please set the number of the factors to maximum <%= ncol(vars) - 1 %> with the same number of the variables or extend the number of those variables at least to <%= fact.num + 1 %>.
 
 <% } else { %>
 
@@ -168,7 +167,7 @@ FA_loadings
 %>
 
 
-So it can be said that <%=paste(colnames(FA_loadings)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a latent factor of ")%>.
+So it can be said that <%=paste(pandoc.list.return(paste(colnames(FA_loadings)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a latent factor of ")), collapse = '\n')%>
 
 <% if (length(which(FA_loadings > 0.3)) != length(which(abs(FA_loadings) > 0.3))) { %>
 
@@ -182,7 +181,8 @@ We can say that <%=ifelse(length(which(abs(FA_loadings) > 0.3)), "none of these 
 <% }%>
 
 
-<% if (obs.plot & length(rownames(FA$scores)) > 0 & nrow(vars) < 10) { %>
+<% if (length(rownames(FA$scores)) > 0 & nrow(vars) < 10) { %>
+
 ## Plot about the distribution of the observations
 
 Now let's check how the observations distribute among the <%= ifelse(fact.num < 2, "factor", "first and the second factors")%>.

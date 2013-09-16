@@ -8,7 +8,7 @@ meta:
   example:
   - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), family='poisson')
   - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='poisson')
-  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='binomial')
+  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='Gamma')
 inputs:
 - name: dep
   label: Dependent Variable
@@ -95,8 +95,8 @@ fit
 p_val <- summary(fit)$coefficients[, 4]
 %>
 
-From the table one can see that <%= paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val, 3)[which(p_val < 0.05)], sep = " has significant effect on the dependent variable, the p-value of that is ")%>
-
+From the table one can see that <%= paste(pandoc.list.return(paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val, 3)[which(p_val < 0.05)], sep = " has significant effect on the dependent variable, the p-value of that is ")), collapse = '\n')
+%>
 
 <% }} %>
 
