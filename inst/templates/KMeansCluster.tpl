@@ -36,6 +36,9 @@ inputs:
   required: no
 head-->
 
+<%=
+evalsOptions('graph.unify', FALSE)
+%>
 
 <%=
 vars <- na.omit(vars)
