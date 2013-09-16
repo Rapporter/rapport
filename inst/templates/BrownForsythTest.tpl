@@ -7,7 +7,9 @@ meta:
   packages:
   - HH
   example:
-  - rapport('Brown_Forsyth_test.tpl', data=ius2008, resp='age', group='gender')
+  - rapport('BrownForsythTest.tpl', data=ius2008, resp='age', group='gender')
+  - rapport('BrownForsythTest.tpl', data=ius2008, resp='edu', group='gender')
+  - rapport('BrownForsythTest.tpl', data=ius2008, resp='edu', group='net.required')
 inputs:
 - name: resp
   label: Response Variable

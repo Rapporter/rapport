@@ -6,9 +6,9 @@ meta:
   email: gergely@snowl.net
   packages: outliers
   example:
-  - rapport('outlier-test', data=ius2008, var='edu')
-  - rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE)
-  - rapport('outlier-test', data=ius2008, var='edu', lund.res=FALSE, references=FALSE,
+  - rapport('OutlierTest', data=ius2008, var='edu')
+  - rapport('OutlierTest', data=ius2008, var='edu', lund.res=FALSE)
+  - rapport('OutlierTest', data=ius2008, var='edu', lund.res=FALSE, references=FALSE,
     grubb=FALSE, dixon=FALSE)
 inputs:
 - name: var

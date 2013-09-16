@@ -8,9 +8,9 @@ meta:
   - cluster
   - fpc
   example:
-  - rapport('Kmeans_cluster.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'))
-  - rapport('Kmeans_cluster.tpl', data=mtcars, vars=c('drat', 'cyl', 'wt', 'mpg'))
-  - rapport('Kmeans_cluster.tpl', data=mtcars, vars=c('drat', 'cyl', 'wt', 'mpg'), clust_num=7)
+  - rapport('KMeansCluster.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'))
+  - rapport('KMeansCluster.tpl', data=mtcars, vars=c('drat', 'cyl', 'wt', 'mpg'))
+  - rapport('KMeansCluster.tpl', data=mtcars, vars=c('drat', 'cyl', 'wt', 'mpg'), clust_num=7)
 inputs:
 - name: vars
   label: Input variables

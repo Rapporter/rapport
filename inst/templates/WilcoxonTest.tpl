@@ -6,7 +6,7 @@ meta:
   email: ~
   packages: ~
   example:
-  - rapport('Wilcoxon_test.tpl', data=mtcars, var1='mpg', var2='cyl')
+  - rapport('WilcoxonTest.tpl', data=mtcars, var1='mpg', var2='cyl')
 inputs:
 - name: var1
   label: Variable1

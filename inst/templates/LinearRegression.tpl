@@ -2,7 +2,7 @@
 meta:
   title: Linear Regression
   author: Gergely Daróczi, Daniel Nagy
-  description: This template will run a linear regression
+  description: This template will run a Linear Regression
   email: ~
   packages:
   - HH
@@ -10,9 +10,9 @@ meta:
   - nortest
   - gvlma
   example:
-  - rapport('Linear_regression.tpl', data=ius2008, dep='age', indep='edu', indep.inter=F)
-  - rapport('Linear_regression.tpl', data=ius2008, dep='age', indep='edu', indep.inter=T)
-  - rapport('Linear_regression.tpl', data=mtcars, dep='carb', indep='cyl', indep.inter=F)
+  - rapport('LinearRegression.tpl', data=ius2008, dep='age', indep='edu', indep.inter=F)
+  - rapport('LinearRegression.tpl', data=ius2008, dep='age', indep='edu', indep.inter=T)
+  - rapport('LinearRegression.tpl', data=mtcars, dep='carb', indep='cyl', indep.inter=F)
 inputs:
 - name: dep
   label: Dependent Variable

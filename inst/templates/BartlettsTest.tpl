@@ -7,7 +7,9 @@ meta:
   packages:
   - nortest
   example:
-  - rapport('Bartletts_test.tpl', data=ius2008, resp='age', group='gender')
+  - rapport('BartlettsTest.tpl', data=ius2008, resp='age', group='gender')
+  - rapport('BartlettsTest.tpl', data=ius2008, resp='edu', group='student')
+  - rapport('BartlettsTest.tpl', data=ius2008, resp='age', group='net.required')
 inputs:
 - name: resp
   label: Response Variable

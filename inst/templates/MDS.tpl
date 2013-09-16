@@ -7,7 +7,7 @@ meta:
   packages: ~
   example:
   - rapport('MDS.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=16)
-  - rapport('MDS.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=17, min.dist.num=30, id='game')
+  - rapport('MDS.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=17, min.dist.num=30)
   - rapport('MDS.tpl', data=mtcars, vars=c('drat', 'cyl', 'mpg'), max.dist.num=17, min.dist.num=30)
 inputs:
 - name: vars

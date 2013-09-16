@@ -7,9 +7,9 @@ meta:
   email: ~
   packages: nortest
   example:
-  - rapport("nortest", ius2008, var = "leisure")
-  - rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
-  - rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
+  - rapport("NormalityTest", ius2008, var = "leisure")
+  - rapport("NormalityTest", ius2008, var = "leisure", nc.plot = FALSE)
+  - rapport("NormalityTest", ius2008, var = "leisure", qq.line = FALSE)
 inputs:
 - name: var
   label: Test variables
