@@ -5,7 +5,10 @@ meta:
   description: In this template Rapporter will present you an analyzing wizard template, where we will show you the most important statistics between any kind of variables.
   email: ~
   packages: ~
-  example: ~
+  example:
+  - rapport.html('AnalyzeWizard.tpl', data=ius2008, variables=c('edu', 'game'))
+  - rapport.html('AnalyzeWizard.tpl', data=ius2008, variables=c('gender', 'game'))
+  - rapport.html('AnalyzeWizard.tpl', data=ius2008, variables=c('partner', 'net.pay'))
 inputs:
 - name: variables
   label: Used Variables
@@ -23,21 +26,8 @@ head-->
 variables <- na.omit(variables)
 var.dat <- as.data.frame(variables)
 
-facint2 <-FALSE
-facnum2 <-FALSE
-logint2 <-FALSE
-lognum2 <-FALSE
-intfac2 <-FALSE
-numfac2 <-FALSE
-intlog2 <-FALSE
-numlog2 <-FALSE
-intint2 <-FALSE
-intnum2 <-FALSE
-numint2 <-FALSE
-numnum2 <-FALSE
-facfac2 <-FALSE
-raw2 <-FALSE
-com2 <-FALSE
+facint2 <- facnum2 <- logint2 <- lognum2 <- intfac2 <- numfac2 <- intlog2 <- numlog2 <- intint2 <- intnum2 <- numint2 <- numnum2 <- facfac2 <- raw2 <- com2 <-FALSE
+
 
 if (length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && class(var.dat[,2]) == "character") cha2 <- TRUE
 if (length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && class(var.dat[,2]) == "complex") com2 <- TRUE
@@ -51,10 +41,10 @@ if (length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor" && clas
 if (length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor" && class(var.dat[,1]) == "numeric") numfac2 <- TRUE
 if (length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor" && class(var.dat[,1]) == "logical") logfac2 <- TRUE
 
-try(if (length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && length(class(var.dat[,2])) && class(var.dat[,2])[2] == "factor") facfac2 <- TRUE)
-try(if (class(var.dat[,1]) == "factor" && length(class(var.dat[,2])) && class(var.dat[,2])[2] == "factor") facfac2 <- TRUE)
-try(if (length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && class(var.dat[,2]) == "factor") facfac2 <- TRUE)
-
+if (length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor") facfac2 <- TRUE
+if (length(class(var.dat[,1])) == 1 && class(var.dat[,1]) == "factor" && length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor") facfac2 <- TRUE
+if (length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && length(class(var.dat[,2])) == 1 && class(var.dat[,2]) == "factor") facfac2 <- TRUE
+if (length(class(var.dat[,1])) == 1 && class(var.dat[,1]) == "factor" && length(class(var.dat[,2])) == 1 && class(var.dat[,2]) == "factor") facfac2 <- TRUE
 
 if (class(var.dat[,1]) == "integer" && class(var.dat[,2]) == "integer") intint2 <- TRUE
 if (class(var.dat[,1]) == "numeric" && class(var.dat[,2]) == "integer") numint2 <- TRUE
@@ -72,22 +62,22 @@ if (class(var.dat[,1]) == "integer" && class(var.dat[,2]) == "logical") intlog2 
 if (class(var.dat[,1]) == "logical" && class(var.dat[,2]) == "logical") logint2 <- TRUE
 
 
-if (class(var.dat[,1]) == "complex") com2 <- TRUE
-if (class(var.dat[,2]) == "complex") com2 <- TRUE
+if (length(class(var.dat[,1])) == 1 && class(var.dat[,1]) == "complex") com2 <- TRUE
+if (length(class(var.dat[,2])) == 1 && class(var.dat[,2]) == "complex") com2 <- TRUE
 
 
 
-if (class(var.dat[,1]) == "raw") raw2 <- TRUE
-if (class(var.dat[,2]) == "raw") raw2 <- TRUE
+if (length(class(var.dat[,1])) == 1 && class(var.dat[,1]) == "raw") raw2 <- TRUE
+if (length(class(var.dat[,2])) == 1 && class(var.dat[,2]) == "raw") raw2 <- TRUE
 
 
-if (class(var.dat[,1]) == "character") {
+if (length(class(var.dat[,1])) == 1 && class(var.dat[,1]) == "character") {
   class(var.dat[,1]) <- "factor"
   if (class(var.dat[,2]) == "integer") intfac2 <- TRUE
   if (class(var.dat[,2]) == "numeric") numfac2 <- TRUE
   if (class(var.dat[,2]) == "logical") logfac2 <- TRUE
 }
-if (class(var.dat[,2]) == "character") {
+if (length(class(var.dat[,2])) == 1 && class(var.dat[,2]) == "character") {
   class(var.dat[,2]) <- "factor"
   if (class(var.dat[,1]) == "integer") intfac2 <- TRUE
   if (class(var.dat[,1]) == "numeric") numfac2 <- TRUE
