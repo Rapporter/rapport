@@ -7,7 +7,9 @@ meta:
   packages:
   - RColorBrewer
   example:
-  - rapport('dotplot.tpl', data=ius2008, var1='game')
+  - rapport('Dotplot.tpl', data=ius2008, var1='game')
+  - rapport('Dotplot.tpl', data=ius2008, var1='net.required', 
+            grid.color = "darkblue")
 inputs:
 - name: var1
   label: Used Variable
@@ -34,14 +36,6 @@ inputs:
   value: on the plot
   matchable: yes
   allow_multiple: no
-  required: no
-  standalone: yes
-- name: log.num
-  label: power of log
-  description: Power of the logarithmical scale
-  class: integer
-  limit:
-    min: 2.0
   required: no
   standalone: yes
 - name: nomargin
@@ -253,13 +247,7 @@ main_lab <- sprintf('Dotplot of %s',var1.name)
 main_lab <- plot.title
 }
 
-if (exists('log.num') && !is.null(log.num) && log.num > 0) {
-log_axis <- list(x = list(log = log.num))
-} else {
-log_axis <- list()
-}
-
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-dotplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), scales=log_axis) 
+dotplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, "")) 
 %>
 

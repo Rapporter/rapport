@@ -7,7 +7,11 @@ meta:
   packages:
   - RColorBrewer
   example:
-  - rapport('Boxplot.tpl', data=ius2008, var1='age', var2='edu')
+  - rapport('Boxplot.tpl', data=ius2008, var1='age', var2='gender')
+  - rapport('Boxplot.tpl', data=ius2008, var1='age', var2='gender', 
+            plot.title.pos = "nowhere", var1.lab = "Years of age", 
+            var2.lab = "Male or Female?", fontfamily = "symbol", 
+            fontcolor = "purple", fontsize = 13, background = "grey")
 inputs:
 - name: var1
   label: Used Variable 1
@@ -54,7 +58,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: var2.lab
@@ -63,15 +66,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  allow_multiple: no
-  required: no
-  standalone: yes
-- name: log.num
-  label: power of log
-  description: Power of the logarithmical scale
-  class: integer
-  limit:
-    min: 2.0
   required: no
   standalone: yes
 - name: nomargin
@@ -303,18 +297,13 @@ main_lab <- sprintf('Boxplot of %s and %s',var1.name, var2.name)
 main_lab <- plot.title
 }}
 
-if (exists('log.num') && !is.null(log.num) && log.num > 0) {
-log_axis <- list(x = list(log = log.num))
-} else {
-log_axis <- list()
-}
 
 if (length(var2) == 0) {
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-suppressWarnings(bwplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var1_lab, var1.lab), scales=log_axis))
+suppressWarnings(bwplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var1_lab, var1.lab)))
 } else {
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-suppressWarnings(bwplot(var1 ~ var2, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var2_lab, var2.lab), ylab = ifelse(var1.lab == "default", var1_lab, var1.lab), scales=log_axis))
+suppressWarnings(bwplot(var1 ~ var2, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var2_lab, var2.lab), ylab = ifelse(var1.lab == "default", var1_lab, var1.lab)))
 }
 %>
 

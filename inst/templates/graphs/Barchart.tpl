@@ -10,7 +10,11 @@ meta:
   example:
   - rapport('Barchart.tpl', data=ius2008, var='gender', 
             bar.text.type="Percentage", horizontal=T, 
-            bar.text=T, log.scale=T)
+            bar.text=T)
+  - rapport('Barchart.tpl', data=ius2008, var='net.required', 
+            bar.text.type="Percentage", horizontal=T, bar.text=T, 
+            bar.text.type = "Percentage", bar.text.col = "red", 
+            grid.color = "darkblue")
 inputs:
 - name: var
   label: Used Variable
@@ -40,14 +44,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  required: no
-  standalone: yes
-- name: log.num
-  label: Power of log
-  description: Power of the logarithmical scale
-  class: integer
-  limit:
-    min: 2.0
   required: no
   standalone: yes
 - name: var.lab
@@ -355,19 +351,9 @@ panel.barchart(...) }
 bar_text <- lattice.getOption("panel.barchart")
 }
 
-if (exists('log.num') && !is.null(log.num) && log.num > 0) {
-if (horizontal) {
-log_axis <- list(x = list(log = log.num))
-} else {
-log_axis <- list(y = list(log = log.num))
-}
-} else {
-log_axis <- list()
-}
-
 
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bc <- barchart(formula, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = xlab, ylab=ylab, scales=log_axis, space=bar.space, horiz=horizontal, panel = bar_text)
+bc <- barchart(formula, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = xlab, ylab=ylab, space=bar.space, horiz=horizontal, panel = bar_text)
 bc
 
 %>

@@ -8,6 +8,11 @@ meta:
   - RColorBrewer
   example:
   - rapport('Histogram.tpl', data=ius2008, var='edu')
+  - rapport('Histogram.tpl', data=ius2008, var='edu', 
+            plot.title = "My histogram", 
+            plot.title.pos = "outside the plot", hist.type="count", 
+            horizontal = TRUE, fontcolor = "darkblue", fontsize = 10, 
+            grid.color = "pink", grid.lty = "dotted")
 inputs:
 - name: var
   label: Used Variable
@@ -66,7 +71,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: x.lab
@@ -75,7 +79,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: horizontal

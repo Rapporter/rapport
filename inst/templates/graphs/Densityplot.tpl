@@ -7,7 +7,12 @@ meta:
   packages:
   - RColorBrewer
   example:
-  - rapport('densityplot.tpl', data=ius2008, var='age')
+  - rapport('Densityplot.tpl', data=ius2008, var='age')
+  - rapport('Densityplot.tpl', data=ius2008, var='age', 
+            plot.title = "My histogram", 
+            plot.title.pos = "outside the plot", horizontal = TRUE, 
+            fontcolor = "darkblue", fontsize = 10, 
+            grid.color = "darkblue", grid.lty = "dotted")
 inputs:
 - name: var
   label: Used Variable
@@ -45,7 +50,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: nomargin

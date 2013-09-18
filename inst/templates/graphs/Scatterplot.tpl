@@ -8,6 +8,11 @@ meta:
   - RColorBrewer
   example:
   - rapport('Scatterplot.tpl', data=ius2008, x='edu',y='age')
+  - rapport('Scatterplot.tpl', data=ius2008, x='edu',y='age', 
+            x.lab = "Years of education", y.lab = "Years of age", 
+            plot.title = "This is my 'pretty' scatterplot",
+            lmline = TRUE, lmline.col = "yellow", fontcolor = "red", 
+            grid = FALSE, boxes = TRUE)
 inputs:
 - name: x
   label: Used Variable
@@ -33,7 +38,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: y.lab
@@ -42,7 +46,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: plot.title
@@ -78,7 +81,6 @@ inputs:
   class: character
   value: black
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: log.num.x
