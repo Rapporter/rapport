@@ -124,32 +124,31 @@ Brew syntaxes basically have two parts:
 
 The special tags have two types:
  - '<% command %>' running R command
- - '<%= command %>' next to running an R command, applies pander to the returning R object, thus it will appear in a nice Pandoc markdown format.
+ - '<%= command %>' next to running an R command, applies `pander` to the returning R object, thus it will appear in a nice Pandoc markdown format.
  
 These two codes look pretty the same and actually doesn't differ too much, but still in a crucial way. Both of them are good for running R commands, but:
  - the code in the belly of the first tag is good for unprinted results and mostly for conditional statements or loops
  - the second will run each expression after each other and send the markdown format result to the interface.
 
-Let us show you some basic examples to show how they work and the difference between them. The [Internet Usage Survey in 2008 dataset](http://rapport-package.info/functions#ius2008), which is built-in the rapport package will give a helping hand for that.
+Let us show you some basic examples to show how they work and the difference between them!
 
 Tags without equal sign:
 
-'<%if (colnames(ius2008[1])=="gender") { %>
-The first variable of the ius2008 database contains the responder's gender.
+'<% if (2 > 1) { %>
+Math works, 2 is more than 1!
 <% } %>
-The following sentence will be written on the interface we use: "The first variable of the ius2008 database contains the responder's gender."
+The following sentence will be written on the interface we use: "Math works, 2 is more than 1!"
 
 Tags with the equal sign:
 '<%=
-data(ius2008)
-colnames(ius2008[1])
+2 > 1
 %>'
-That was not more complicated than just producing a string "gender".
+That was not more complicated than just create a logical value with comparing two integer.
 
 And obviously you can mix the two types as well:
 
-'<%if (colnames(ius2008[1])=="gender") { %>
-The first variable of the ius2008 database contains the responder's <%=colnames(ius2008[1])%>.
+'<% if (2 > 1) { %>
+Math works? Is 2 really more than 1? Yeah, that's <%= 2 > 1 %>.
 <% } %> '
 That will produce the same sentence like in the first example.
 
