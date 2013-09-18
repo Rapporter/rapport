@@ -11,7 +11,6 @@ meta:
   - rapport("Minimal", ius2008, var='leisure') 
   - rapport("Minimal", ius2008, var='leisure', desc=FALSE) 
   - rapport("Minimal", ius2008, var='leisure', desc=FALSE, histogram=T) 
-  - rapport("Minimal", ius2008, var='leisure', desc=FALSE, histogram=T, color='green')  
 inputs:
 - name: var
   label: Variable
@@ -32,17 +31,6 @@ inputs:
   label: Histogram
   description: Histogram
   class: logical
-  value: ~
-  required: FALSE
-  standalone: TRUE
-- name: color
-  label: color
-  description: Color of the Histogram
-  class: character
-  options:
-  - red
-  - white
-  - green
   value: ~
   required: FALSE
   standalone: TRUE
@@ -75,7 +63,7 @@ if (desc) sprintf('The 5 highest value are: %s.', p(sort(var, decreasing = TRUE)
 <%
 if (hist)
     if (require(lattice)) {
-        histogram(rp.data[, rp.name(var)], col=color)
+        histogram(rp.data[, rp.name(var)])
     } else
-        hist(rp.data[, rp.name(var)], col=color)
+        hist(rp.data[, rp.name(var)])
 %>
