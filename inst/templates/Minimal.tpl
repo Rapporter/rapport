@@ -1,0 +1,81 @@
+<!--head
+meta:
+  title: Minimal template
+  author: Gergely Daróczi
+  description: This template demonstrates the basic features of rapport. We all hope
+    you will like it!
+  packages:
+  - ggplot2
+  - xtable
+  example:
+  - rapport("Minimal", ius2008, var='leisure') 
+  - rapport("Minimal", ius2008, var='leisure', desc=FALSE) 
+  - rapport("Minimal", ius2008, var='leisure', desc=FALSE, histogram=T) 
+  - rapport("Minimal", ius2008, var='leisure', desc=FALSE, histogram=T, color='green')  
+inputs:
+- name: var
+  label: Variable
+  description: A variable
+  class: numeric
+  length: 1
+  value: ~
+  required: TRUE
+  standalone: FALSE
+- name: desc
+  label: Descriptives
+  description: Table of the descriptive statistics
+  class: logical
+  value: ~
+  required: FALSE
+  standalone: TRUE
+- name: histogram
+  label: Histogram
+  description: Histogram
+  class: logical
+  value: ~
+  required: FALSE
+  standalone: TRUE
+- name: color
+  label: color
+  description: Color of the Histogram
+  class: character
+  options:
+  - red
+  - white
+  - green
+  value: ~
+  required: FALSE
+  standalone: TRUE
+head-->
+
+# Début
+
+
+Hello, world!
+
+I have just specified a *Variable* in this template named to **<%rp.name(var)%>**. The label of this variable is "<%rp.label(var)%>".
+
+And wow, the mean of *<%rp.name(var)%>* is <%rp.mean(var)%>!
+<%
+if (!desc) '**For more detailed statistics, you should have set `desc=TRUE`!**'
+ %>
+
+
+## <%if (desc) 'Descriptive statistics'%>
+
+
+if (desc) summary(var)
+ %>
+
+if (desc) sprintf('The 5 highest value are: %s.', p(sort(var, decreasing = TRUE)[1:5]))
+ %>
+
+## <%if (hist) 'Histogram'%>
+
+<%
+if (hist)
+    if (require(lattice)) {
+        histogram(rp.data[, rp.name(var)], col=color)
+    } else
+        hist(rp.data[, rp.name(var)], col=color)
+%>
