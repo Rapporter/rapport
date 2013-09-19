@@ -1,50 +1,28 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Densityplot)
   author: Daniel Nagy
-  description: In this template Rapporter will present you a qqplot.
+  description: In this template Rapporter will present you densityplot.
   email: ~
   packages:
   - RColorBrewer
   example:
-  - rapport('xyplot.tpl', data=ius2008, x='edu',y='age')
+  - rapport('Densityplot.tpl', data=ius2008, var='age')
+  - rapport('Densityplot.tpl', data=ius2008, var='age', 
+            plot.title = "My histogram", 
+            plot.title.pos = "outside the plot", horizontal = TRUE, 
+            fontcolor = "darkblue", fontsize = 10, 
+            grid.color = "darkblue", grid.lty = "dotted")
 inputs:
-- name: x
+- name: var
   label: Used Variable
-  description: This is the x variable that you will use here
+  description: This is the variable that you will use here
   class: numeric
   length:
     min: 1.0
     max: 1.0
   required: yes
   standalone: no
-- name: y
-  label: Used Variable
-  description: This is the y variable that you will use here
-  class: numeric
-  length:
-    min: 1.0
-    max: 1.0
-  required: no
-  standalone: no
-- name: x.lab
-  label: X label
-  description: This is the name of the X label on the plot.
-  class: character
-  value: default
-  matchable: no
-  allow_multiple: no
-  required: no
-  standalone: yes
-- name: y.lab
-  label: Y label
-  description: This is the name of the Y label on the plot.
-  class: character
-  value: default
-  matchable: no
-  allow_multiple: no
-  required: no
-  standalone: yes
 - name: plot.title
   label: Title of the plot
   description: This is good to set the title of the plot.
@@ -52,6 +30,7 @@ inputs:
   value: default
   matchable: no
   required: no
+  standalone: yes
 - name: plot.title.pos
   label: Position of the title of the plot
   description: Specifying the position of the title of the plot
@@ -65,48 +44,12 @@ inputs:
   allow_multiple: no
   required: no
   standalone: yes
-- name: lmline
-  label: Regression line
-  description: Should be a regression line written on the plot?
-  class: logical
-  value: FALSE
-  required: no
-  standalone: yes
-- name: lmline.col
-  label: Color of the regression line
-  description: Specifying the color of the possible regression line
+- name: x.lab
+  label: X label
+  description: This is the name of the X label on the plot.
   class: character
-  value: black
+  value: default
   matchable: no
-  allow_multiple: no
-  required: no
-  standalone: yes
-- name: log.scale.x
-  label: Logarithmic scale of X?
-  description: Should be the x variable presented on a logarithmic scale?
-  class: logical
-  value: FALSE
-  required: no
-  standalone: yes
-- name: log.num.x
-  label: power of log x
-  description: Power of the logarithmical scale of x
-  class: integer
-  value: 10
-  required: no
-  standalone: yes
-- name: log.scale.y
-  label: Logarithmic scale of y?
-  description: Should be the y variable presented on a logarithmic scale?
-  class: logical
-  value: FALSE
-  required: no
-  standalone: yes
-- name: log.num.y
-  label: power of log y
-  description: Power of the logarithmical scale of y
-  class: integer
-  value: 10
   required: no
   standalone: yes
 - name: nomargin
@@ -143,6 +86,9 @@ inputs:
   description: Specifying the base font size in pixels
   class: integer
   value: 12
+  limit:
+    min: 1.0
+    max: 50.0
   matchable: no
   required: no
   standalone: yes
@@ -290,8 +236,8 @@ inputs:
   standalone: yes
 head-->
 
-
 <%=
+
 if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
 if (fontfamily != "sans") panderOptions('graph.fontfamily', fontfamily)
 if (fontcolor != "black") panderOptions('graph.fontcolor', fontcolor)
@@ -306,38 +252,19 @@ if (background != "white") panderOptions('graph.background', background)
 if (color.rnd != FALSE) panderOptions('graph.color.rnd', color.rnd)
 if (axis.angle != 1) panderOptions('graph.axis.angle', axis.angle)
 if (symbol != 1) panderOptions('graph.symbol', symbol)
+cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], colp)
+if (colp != "Set1") panderOptions('graph.colors', cs)
 
-if (plot.title == "default") {
-main_lab <- sprintf('Scatterplot of %s and %s',x.name, y.name)
+
+if (plot.title == "default")  {
+main_lab <- sprintf('Densityplot of %s',var.name)
 } else {
 main_lab <- plot.title
 }
-if (x.lab == "default")  x_lab <- sprintf(x.label)
-if (y.lab == "default")  y_lab <- sprintf(y.label)
+if (x.lab == "default")  x_lab <- sprintf(var.label)
 
-
-if (log.scale.x & !log.scale.y) {
-log_axis <- list(x = list(log = log.num.x))
-} else if (log.scale.y & !log.scale.x) {
-log_axis <- list(y = list(log = log.num.y))
-} else if (log.scale.x & log.scale.y) {
-log_axis <- list(x = list(log = log.num.x), y = list(log = log.num.y))
-} else {
-log_axis <- list()
-}
-
-if (lmline) {
-lm_line <- function(...) {
-panel.xyplot(...)
-panel.lmline(..., col=lmline.col) 
-}
-} else {
-lm_line <- lattice.getOption("panel.xyplot")
-}
-
-x <- na.omit(x)
-y <- na.omit(y)
+vars <- na.omit(var)
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-xyplot(x ~ y, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), ylab = ifelse(x.lab == "default", x_lab, x.lab), xlab = ifelse(y.lab == "default", y_lab, y.lab), scales=log_axis, panel = lm_line)
+densityplot(var, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab)) 
 
 %>

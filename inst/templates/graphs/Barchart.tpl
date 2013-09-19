@@ -1,6 +1,6 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Barchart)
   author: Daniel Nagy
   description: In this template Rapporter will present you a barchart.
   email: ~
@@ -8,12 +8,18 @@ meta:
   - grDevices
   - RColorBrewer
   example:
-  - rapport('barchart.tpl', data=ius2008, var='age', bar.text.type="Percentage", horizontal=T, bar.text=T, log.scale=T)
+  - rapport('Barchart.tpl', data=ius2008, var='gender', 
+            bar.text.type="Percentage", horizontal=T, 
+            bar.text=T)
+  - rapport('Barchart.tpl', data=ius2008, var='net.required', 
+            bar.text.type="Percentage", horizontal=T, bar.text=T, 
+            bar.text.type = "Percentage", bar.text.col = "red", 
+            grid.color = "darkblue")
 inputs:
 - name: var
   label: Used Variable
   description: This is the variable that you will use here
-  class: numeric
+  class: factor
   length:
     min: 1.0
     max: 1.0
@@ -38,20 +44,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  required: no
-  standalone: yes
-- name: log.scale
-  label: Logarithmic scale?
-  description: Should be the variable presented on a logarithmic scale?
-  class: logical
-  value: FALSE
-  required: no
-  standalone: yes
-- name: log.num
-  label: Power of log
-  description: Power of the logarithmical scale
-  class: integer
-  value: 10
   required: no
   standalone: yes
 - name: var.lab
@@ -149,6 +141,9 @@ inputs:
   description: Specifying the base font size in pixels
   class: integer
   value: 12
+  limit:
+    min: 1.0
+    max: 50.0
   matchable: no
   required: no
   standalone: yes
@@ -356,19 +351,9 @@ panel.barchart(...) }
 bar_text <- lattice.getOption("panel.barchart")
 }
 
-if (log.scale) {
-if (horizontal) {
-log_axis <- list(x = list(log = log.num))
-} else {
-log_axis <- list(y = list(log = log.num))
-}
-} else {
-log_axis <- list()
-}
-
 
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-bc <- barchart(formula, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = xlab, ylab=ylab, scales=log_axis, space=bar.space, horiz=horizontal, panel = bar_text)
+bc <- barchart(formula, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = xlab, ylab=ylab, space=bar.space, horiz=horizontal, panel = bar_text)
 bc
 
 %>

@@ -1,38 +1,22 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Dotplot)
   author: Daniel Nagy
-  description: In this template Rapporter will present you a histogram.
+  description: In this template Rapporter will present you dotplot.
   email: ~
   packages:
   - RColorBrewer
   example:
-  - rapport('histogram.tpl', data=ius2008, var='edu')
+  - rapport('Dotplot.tpl', data=ius2008, var1='game')
+  - rapport('Dotplot.tpl', data=ius2008, var1='net.required', 
+            grid.color = "darkblue")
 inputs:
-- name: var
+- name: var1
   label: Used Variable
   description: This is the variable that you will use here
-  class: numeric
-  length:
-    min: 1.0
-    max: 1.0
+  class: factor
   required: yes
   standalone: no
-- name: col.num
-  labels: Number of columns
-  description: You can set here the number of the columns will be produced
-  class: integer
-  required: no
-  standalone: yes
-- name: extend
-  label: extend the X axis
-  description: How much you want to extend the X axis? (With the values of the used variable)
-  class: numeric
-  length:
-    min: 1.0
-    max: 1.0
-  required: no
-  standalone: yes
 - name: plot.title
   label: Title of the plot
   description: This is good to set the title of the plot.
@@ -52,43 +36,6 @@ inputs:
   value: on the plot
   matchable: yes
   allow_multiple: no
-  required: no
-  standalone: yes
-- name: hist.type
-  label: Type of the histogram
-  description: Indicating the type of histogram that is to be drawn
-  class: character
-  options:
-  - percent
-  - count
-  - density
-  value: percent
-  matchable: yes
-  required: no
-  standalone: yes
-- name: main.lab
-  label: Main name of the plot
-  description: This is good to set the main name of the plot.
-  class: character
-  value: default
-  matchable: no
-  allow_multiple: no
-  required: no
-  standalone: yes
-- name: x.lab
-  label: X label
-  description: This is the name of the X label on the plot.
-  class: character
-  value: default
-  matchable: no
-  allow_multiple: no
-  required: no
-  standalone: yes
-- name: horizontal
-  label: Horizontal bars
-  description: If TRUE, the bars are drawn horizontally with the first at the bottom
-  class: logical
-  value: FALSE
   required: no
   standalone: yes
 - name: nomargin
@@ -125,6 +72,9 @@ inputs:
   description: Specifying the base font size in pixels
   class: integer
   value: 12
+  limit:
+    min: 1.0
+    max: 50.0
   matchable: no
   required: no
   standalone: yes
@@ -272,6 +222,7 @@ inputs:
   standalone: yes
 head-->
 
+
 <%=
 if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
 if (fontfamily != "sans") panderOptions('graph.fontfamily', fontfamily)
@@ -290,16 +241,13 @@ if (symbol != 1) panderOptions('graph.symbol', symbol)
 cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], colp)
 if (colp != "Set1") panderOptions('graph.colors', cs)
 
-
 if (plot.title == "default")  {
-main_lab <- sprintf('Histogram of %s',var.name)
+main_lab <- sprintf('Dotplot of %s',var1.name)
 } else {
 main_lab <- plot.title
 }
-if (x.lab == "default")  x_lab <- sprintf(var.label)
 
-vars <- na.omit(var)
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-suppressWarnings(histogram(var, breaks=col.num, cut=extend, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab), type=hist.type))
-
+dotplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, "")) 
 %>
+

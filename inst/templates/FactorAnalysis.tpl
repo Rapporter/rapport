@@ -8,16 +8,19 @@ meta:
   - psych
   - nFactors
   example:
-  - rapport('Factor_Analysis.tpl', data = mtcars, vars = c('carb', 'gear', 'mpg', 'cyl'), rot.method = "varimax")
-  - rapport('Factor_Analysis.tpl', data = mtcars, vars = c('carb', 'gear', 'mpg', 'cyl'), rot.method = "cluster", fact.num = 2)
-  - rapport('Factor_Analysis.tpl', data = ius2008, vars = c('age', 'edu', 'leisure'), rot.method = "cluster", method = 'minimize the sample size weighted chi square', fact.num = 2)
+  - rapport('FactorAnalysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl'),
+            rot.method="varimax")
+  - rapport('FactorAnalysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl'),
+            rot.method="varimax", fact.num = 3)
+  - rapport('FactorAnalysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl', 
+            'drat'), rot.method="varimax", fact.num = 5)
 inputs:
 - name: vars
   label: Used Variables
   description: The Variables that will be used in Factor Analysis
   class: numeric
   length:
-    min: 1.0
+    min: 2.0
     max: 500.0
   required: yes
   standalone: no
@@ -25,7 +28,7 @@ inputs:
   label: Number of Factors
   description: How many Factors you want to use?
   class: integer
-  length:
+  limit:
     min: 1.0
     max: 499.0
   required: no
@@ -80,13 +83,6 @@ inputs:
   allow_multiple: no
   required: no
   standalone: yes
-- name: obs.plot
-  label : Observation plot
-  description: Would you check the plot about the distribution among the factors?
-  class: logical
-  value: yes
-  required: no
-  standalone: yes
 - name: max.iter
   label : Maximum iterations
   description: Maximum number of iterations for convergence
@@ -97,6 +93,21 @@ inputs:
   required: no
   standalone: yes
 head-->
+
+<% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0 && fact.num >= ncol(vars)) { %>
+
+Your request cannot be implemented, because there are <%=ifelse(ncol(vars) == fact.num, "the same number of variables", "less variables")%> (<%= ncol(vars) %>) <%=ifelse(ncol(vars) == fact.num, "like", "than")%> the number of the requested factors (<%= fact.num %>) . Please set the number of the factors to maximum <%= ncol(vars) - 1 %> with the same number of the variables or extend the number of those variables at least to <%= fact.num + 1 %>.
+
+<% } else { %>
+
+<% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0) { %>
+<% } else { %>
+<% if (ncol(vars) < 3) { %>
+Your request to automatically calculate the number of the clusters cannot be implemented, because there are not enough variables. Please set at least 3 variables in order to use that automatic function or set the number of the factors (obviously to less than the number of the used variables). Now we are using a 1 factor case.
+<%= 
+fact.num <- 1 
+%>
+<% }} %>
 
 # Introduction
 
@@ -131,15 +142,15 @@ suppressMessages(FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, 
 #### Eigenvalues
 
 <% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0) { %>
-As you haven't provided value for the number of the factors, we calculated that automatically based on the eigenvalues, thus it is: <%=max(which(ev$values >= 1))%>. The eigenvalues you can find in the following table:
-<%=
-emphasize.strong.rows(1:max(which(ev$values >= 1)))
-cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)
-%>
-<% } else { %>
 You can find the eigenvalues of the possible factors in the following table (<%=fact.num%> factors were produced as you set):
 <%=
 emphasize.strong.rows(1:fact.num)
+cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)
+%>
+<% } else { %>
+As you haven't provided value for the number of the factors, we calculated that automatically based on the eigenvalues, thus it is: <%=max(which(ev$values >= 1))%>. The eigenvalues you can find in the following table:
+<%=
+emphasize.strong.rows(1:max(which(ev$values >= 1)))
 cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)
 %>
 <% } %>
@@ -155,7 +166,8 @@ emphasize.strong.cells(which(abs(FA_loadings) > 0.3, arr.ind = TRUE))
 FA_loadings
 %>
 
-So it can be said that <%=paste(colnames(FA_loadings)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a latent factor of ")%>.
+
+So it can be said that <%=paste(pandoc.list.return(paste(colnames(FA_loadings)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a latent factor of ")), collapse = '\n')%>
 
 <% if (length(which(FA_loadings > 0.3)) != length(which(abs(FA_loadings) > 0.3))) { %>
 
@@ -169,7 +181,8 @@ We can say that <%=ifelse(length(which(abs(FA_loadings) > 0.3)), "none of these 
 <% }%>
 
 
-<% if (obs.plot & length(rownames(FA$scores)) > 0 & nrow(vars) < 10) { %>
+<% if (length(rownames(FA$scores)) > 0 & nrow(vars) < 10) { %>
+
 ## Plot about the distribution of the observations
 
 Now let's check how the observations distribute among the <%= ifelse(fact.num < 2, "factor", "first and the second factors")%>.
@@ -193,3 +206,4 @@ table
 
 We can see from the table that variable <%=rownames(uni)[which(max(uni) == uni)]%> has the highest Uniqueness, so could be explained the least by the factors and variable <%= rownames(uni)[which(min(uni) == uni)]%> variance's was explained the most, because it has the lowest Uniqueness. From the communalities we can draw the same conclusion.
 
+<% } %>

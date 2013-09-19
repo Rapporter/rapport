@@ -7,7 +7,7 @@ meta:
   packages: ~
   example:
   - rapport('MDS.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=16)
-  - rapport('MDS.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=17, min.dist.num=30, id='game')
+  - rapport('MDS.tpl', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=17, min.dist.num=30)
   - rapport('MDS.tpl', data=mtcars, vars=c('drat', 'cyl', 'mpg'), max.dist.num=17, min.dist.num=30)
 inputs:
 - name: vars
@@ -15,7 +15,7 @@ inputs:
   description: These are the variables which MDS use to differentiate between values
   class: numeric
   length:
-    min: 1.0
+    min: 2.0
     max: 100.0
   required: yes
   standalone: no
@@ -88,7 +88,12 @@ d <- dist(variables)
 } else { 
 d <- variables
 }
+try(fit <- cmdscale(d, eig = TRUE, k = 2))
+if (exists('fit') && !is.null(fit)) { 
+} else {
+d <- dist(variables)
 fit <- cmdscale(d, eig = TRUE, k = 2)
+}
 x <- fit$points[, 1]
 y <- fit$points[, 2]
 plot(x, y, xlab="Coordinate 1", ylab = "Coordinate 2", main = "Metric  MDS",   type = "n")

@@ -1,20 +1,37 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Histogram)
   author: Daniel Nagy
-  description: In this template Rapporter will present you densityplot.
+  description: In this template Rapporter will present you a histogram.
   email: ~
   packages:
   - RColorBrewer
   example:
-  - rapport('dotplot.tpl', data=ius2008, var1='game')
+  - rapport('Histogram.tpl', data=ius2008, var='edu')
+  - rapport('Histogram.tpl', data=ius2008, var='edu', 
+            plot.title = "My histogram", 
+            plot.title.pos = "outside the plot", hist.type="count", 
+            horizontal = TRUE, fontcolor = "darkblue", fontsize = 10, 
+            grid.color = "pink", grid.lty = "dotted")
 inputs:
-- name: var1
+- name: var
   label: Used Variable
   description: This is the variable that you will use here
-  class: factor
+  class: numeric
+  length:
+    min: 1.0
+    max: 1.0
   required: yes
   standalone: no
+- name: col.num
+  labels: Number of columns
+  description: You can set here the number of the columns will be produced
+  class: integer
+  limit:
+    min: 1.0
+    max: 9999999
+  required: no
+  standalone: yes
 - name: plot.title
   label: Title of the plot
   description: This is good to set the title of the plot.
@@ -36,18 +53,39 @@ inputs:
   allow_multiple: no
   required: no
   standalone: yes
-- name: log.scale
-  label: Logarithmic scale?
-  description: Should be the variable presented on a logarithmic scale?
-  class: logical
-  value: FALSE
+- name: hist.type
+  label: Type of the histogram
+  description: Indicating the type of histogram that is to be drawn
+  class: character
+  options:
+  - percent
+  - count
+  - density
+  value: percent
+  matchable: yes
   required: no
   standalone: yes
-- name: log.num
-  label: power of log
-  description: Power of the logarithmical scale
-  class: integer
-  value: 10
+- name: main.lab
+  label: Main name of the plot
+  description: This is good to set the main name of the plot.
+  class: character
+  value: default
+  matchable: no
+  required: no
+  standalone: yes
+- name: x.lab
+  label: X label
+  description: This is the name of the X label on the plot.
+  class: character
+  value: default
+  matchable: no
+  required: no
+  standalone: yes
+- name: horizontal
+  label: Horizontal bars
+  description: If TRUE, the bars are drawn horizontally with the first at the bottom
+  class: logical
+  value: FALSE
   required: no
   standalone: yes
 - name: nomargin
@@ -84,6 +122,9 @@ inputs:
   description: Specifying the base font size in pixels
   class: integer
   value: 12
+  limit:
+    min: 1.0
+    max: 50.0
   matchable: no
   required: no
   standalone: yes
@@ -231,7 +272,6 @@ inputs:
   standalone: yes
 head-->
 
-
 <%=
 if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
 if (fontfamily != "sans") panderOptions('graph.fontfamily', fontfamily)
@@ -250,19 +290,34 @@ if (symbol != 1) panderOptions('graph.symbol', symbol)
 cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], colp)
 if (colp != "Set1") panderOptions('graph.colors', cs)
 
+
 if (plot.title == "default")  {
-main_lab <- sprintf('Dotplot of %s',var1.name)
+main_lab <- sprintf('Histogram of %s',var.name)
 } else {
 main_lab <- plot.title
 }
-
-if (log.scale) {
-log_axis <- list(x = list(log = log.num))
-} else {
-log_axis <- list()
-}
-
-set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-dotplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), scales=log_axis) 
+if (x.lab == "default")  x_lab <- sprintf(var.label)
 %>
 
+
+<% if (exists('col.num') && !is.null(col.num) && col.num > 0) { %>
+<%= breaks <- col.num - 1 %>
+<% if (col.num > length(unique(var))) { %> 
+The numbers of the columns you set (<%=col.num%>) is higher than the unique cases (<%=length(unique(var))%>). There will be produced the same number of columns as the number of the unique cases (<%=length(unique(var))%>).
+<%= 
+col.num <- length(unique(var)) 
+breaks <- col.num - 1
+%>
+<% } %>
+<% } else { %>
+<%= 
+breaks <- NULL
+%>
+<% } %>
+
+<%=
+vars <- na.omit(var)
+set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
+suppressWarnings(histogram(var, breaks = breaks, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab), type=hist.type))
+
+%>

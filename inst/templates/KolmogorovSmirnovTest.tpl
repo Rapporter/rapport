@@ -7,8 +7,8 @@ meta:
   packages:
   - nortest
   example:
-  - rapport('K-S-test', data=ius2008, xvar='edu', yvar='age')
-  - rapport('K-S-test', data=mtcars, xvar='cyl', yvar='carb')
+  - rapport('KolmogorovSmirnovTest', data=ius2008, xvar='edu', yvar='age')
+  - rapport('KolmogorovSmirnovTest', data=mtcars, xvar='cyl', yvar='carb')
 inputs:
 - name: xvar
   label: X Variable

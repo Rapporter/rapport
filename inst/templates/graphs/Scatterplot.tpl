@@ -1,30 +1,51 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Scatterplot)
   author: Daniel Nagy
-  description: In this template Rapporter will present you densityplot.
+  description: In this template Rapporter will present you a Scatterplot.
   email: ~
   packages:
   - RColorBrewer
   example:
-  - rapport('densityplot.tpl', data=ius2008, var='age')
+  - rapport('Scatterplot.tpl', data=ius2008, x='edu',y='age')
+  - rapport('Scatterplot.tpl', data=ius2008, x='edu',y='age', 
+            x.lab = "Years of education", y.lab = "Years of age", 
+            plot.title = "This is my 'pretty' scatterplot",
+            lmline = TRUE, lmline.col = "yellow", fontcolor = "red", 
+            grid = FALSE, boxes = TRUE)
 inputs:
-- name: var
+- name: x
   label: Used Variable
-  description: This is the variable that you will use here
+  description: This is the x variable that you will use here
   class: numeric
   length:
     min: 1.0
     max: 1.0
   required: yes
   standalone: no
-- name: extend
-  label: extend the X axis
-  description: How much you want to extend the X axis? (With the values of the used variable)
+- name: y
+  label: Used Variable
+  description: This is the y variable that you will use here
   class: numeric
   length:
     min: 1.0
     max: 1.0
+  required: no
+  standalone: no
+- name: x.lab
+  label: X label
+  description: This is the name of the X label on the plot.
+  class: character
+  value: default
+  matchable: no
+  required: no
+  standalone: yes
+- name: y.lab
+  label: Y label
+  description: This is the name of the Y label on the plot.
+  class: character
+  value: default
+  matchable: no
   required: no
   standalone: yes
 - name: plot.title
@@ -34,7 +55,6 @@ inputs:
   value: default
   matchable: no
   required: no
-  standalone: yes
 - name: plot.title.pos
   label: Position of the title of the plot
   description: Specifying the position of the title of the plot
@@ -48,13 +68,35 @@ inputs:
   allow_multiple: no
   required: no
   standalone: yes
-- name: x.lab
-  label: X label
-  description: This is the name of the X label on the plot.
+- name: lmline
+  label: Regression line
+  description: Should be a regression line written on the plot?
+  class: logical
+  value: FALSE
+  required: no
+  standalone: yes
+- name: lmline.col
+  label: Color of the regression line
+  description: Specifying the color of the possible regression line
   class: character
-  value: default
+  value: black
   matchable: no
-  allow_multiple: no
+  required: no
+  standalone: yes
+- name: log.num.x
+  label: power of log x
+  description: Power of the logarithmical scale of x
+  class: integer
+  limit:
+    min: 2.0
+  required: no
+  standalone: yes
+- name: log.num.y
+  label: power of log y
+  description: Power of the logarithmical scale of y
+  class: integer
+  limit:
+    min: 2.0
   required: no
   standalone: yes
 - name: nomargin
@@ -91,6 +133,9 @@ inputs:
   description: Specifying the base font size in pixels
   class: integer
   value: 12
+  limit:
+    min: 1.0
+    max: 50.0
   matchable: no
   required: no
   standalone: yes
@@ -238,8 +283,8 @@ inputs:
   standalone: yes
 head-->
 
-<%=
 
+<%=
 if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
 if (fontfamily != "sans") panderOptions('graph.fontfamily', fontfamily)
 if (fontcolor != "black") panderOptions('graph.fontcolor', fontcolor)
@@ -254,19 +299,51 @@ if (background != "white") panderOptions('graph.background', background)
 if (color.rnd != FALSE) panderOptions('graph.color.rnd', color.rnd)
 if (axis.angle != 1) panderOptions('graph.axis.angle', axis.angle)
 if (symbol != 1) panderOptions('graph.symbol', symbol)
-cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], colp)
-if (colp != "Set1") panderOptions('graph.colors', cs)
 
-
-if (plot.title == "default")  {
-main_lab <- sprintf('Densityplot of %s',var.name)
+if (plot.title == "default") {
+main_lab <- sprintf('Scatterplot of %s and %s',x.name, y.name)
 } else {
 main_lab <- plot.title
 }
-if (x.lab == "default")  x_lab <- sprintf(var.label)
+if (x.lab == "default")  x_lab <- sprintf(x.label)
+if (y.lab == "default")  y_lab <- sprintf(y.label)
 
-vars <- na.omit(var)
+
+if (exists('log.num.x') && !is.null(log.num.x) && log.num.x > 0) {
+log.scale.x <- TRUE
+} else {
+log.scale.x <- FALSE
+}
+if (exists('log.num.y') && !is.null(log.num.y) && log.num.y > 0)  {
+log.scale.y <- TRUE
+} else {
+log.scale.y <- FALSE
+}
+
+if (log.scale.x & !log.scale.y) {
+log_axis <- list(x = list(log = log.num.x))
+} else if (log.scale.y & !log.scale.x) {
+log_axis <- list(y = list(log = log.num.y))
+} else if (log.scale.x & log.scale.y) {
+log_axis <- list(x = list(log = log.num.x), y = list(log = log.num.y))
+} else {
+log_axis <- list()
+}
+
+if (lmline) {
+lm_line <- function(...) {
+panel.xyplot(...)
+panel.lmline(..., col=lmline.col) 
+}
+} else {
+lm_line <- lattice.getOption("panel.xyplot")
+}
+
+NAs <- which(is.na(x) | is.na(y))
+x <- x[-NAs]
+y <- y[-NAs]
+
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-densityplot(var, cut=extend, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab)) 
+xyplot(x ~ y, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), ylab = ifelse(x.lab == "default", x_lab, x.lab), xlab = ifelse(y.lab == "default", y_lab, y.lab), scales=log_axis, panel = lm_line)
 
 %>

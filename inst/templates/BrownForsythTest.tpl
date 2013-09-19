@@ -1,13 +1,15 @@
 <!--head
 meta:
-  title: Brown–Forsyth test
+  title: Brown-Forsyth test
   author: Gergely Daróczi, Daniel Nagy
-  description: This template will run a Brown–Forsyth test to check the equality of variances among groups.
+  description: This template will run a Brown-Forsyth test to check the equality of variances among groups.
   email: ~
   packages:
   - HH
   example:
-  - rapport('Brown_Forsyth_test.tpl', data=ius2008, resp='age', group='gender')
+  - rapport('BrownForsythTest.tpl', data=ius2008, resp='age', group='gender')
+  - rapport('BrownForsythTest.tpl', data=ius2008, resp='edu', group='gender')
+  - rapport('BrownForsythTest.tpl', data=ius2008, resp='edu', group='net.required')
 inputs:
 - name: resp
   label: Response Variable
@@ -31,7 +33,7 @@ head-->
 
 # Introduction
 
-The Brown–Forsyth test is used for checking the equality of the variances among the groups of one variable, in other words it tests the homogeneity of the variances. Equality of group variances is an assumption of the one-way ANOVA test.
+The Brown-Forsyth test is used for checking the equality of the variances among the groups of one variable, in other words it tests the homogeneity of the variances. Equality of group variances is an assumption of the one-way ANOVA test.
 
 The base of the test is really similar to the Levene's test, but the Brown-Forsyth test uses the deviations from the group medians instead of the mean (what the Levene's does), thus the Brown-Forsyth test is called more robust.
 
@@ -39,7 +41,7 @@ This test has the advantage over the other tests, which are also being used to c
 
 ## References
 
-  * Brown, M.~B. and Forsyth, A.~B. (1974). Robust tests for equality of variances. _Journal of the American Statistical Association_, 69:364–367.
+  * Brown, M.~B. and Forsyth, A.~B. (1974). Robust tests for equality of variances. _Journal of the American Statistical Association_, 69:364-367.
 
 # Result
 
@@ -51,7 +53,7 @@ h
 p <- .05
 %>
 
-According to the _Brown–Forsyth test_, the variances of the _<%= resp.label %>_ across the groups of _<%= group.label %>_ <%= ifelse(h[1, 3] < p, "significantly differs", "does not differs significantly") %>.
+According to the _Brown-Forsyth test_, the variances of the _<%= resp.label %>_ across the groups of _<%= group.label %>_ <%= ifelse(h[1, 3] < p, "significantly differs", "does not differs significantly") %>.
 
 We can conclude that, because <%= ifelse(h[1, 3] < p,"the p-value is smaller than 0.05","the p-value is higher than 0.05")%>
 

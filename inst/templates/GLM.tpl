@@ -7,8 +7,8 @@ meta:
   packages: ~
   example:
   - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), family='poisson')
-  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=F, family='poisson')
-  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=F, family='binomial')
+  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='poisson')
+  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='Gamma')
 inputs:
 - name: dep
   label: Dependent Variable
@@ -50,12 +50,19 @@ inputs:
   - binomial
   - Gamma
   - poisson
-  value: binomial
+  value: gaussian
   matchable: yes
   allow_multiple: no
   required: no
   standalone: yes
 head-->
+
+
+<% if (isTRUE(any(indep.name == dep.name))) { %>
+
+You provided  the same variable as a dependent and as an independent variable. In this case the model does not make sense, please replace the duplicated variables in order to run the GLM.
+
+<% } else { %>
 
 <% if (indep < 0 | indep > 1 & family == "binomial") { %>
 Values of the independent variables must be between 0 and 1 when binomial used as link function. Please change parameter family to one that is usable or switch the independent variable to meet the assumptions.
@@ -65,13 +72,13 @@ Values of the independent variables must be between 0 and 1 when binomial used a
 
 # Introduction
 
-[Generalized Linear Model (GLM)](http://en.wikipedia.org/wiki/Generalized_linear_model) is a generalization of the ordinary [Linear Regression](http://en.wikipedia.org/wiki/Linear_regression). While using GLM we don't need the assumption of normality for response variables. There are two basic idea of the model: It allows the linear model to be related to the response variable via a link function and the magnitude of the variance of each measurement to be a function of its predicted value. An extinsion to the GLM is the [Hierarchical generalized linear model](https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model).
+[Generalized Linear Model (GLM)](http://en.wikipedia.org/wiki/Generalized_linear_model) is a generalization of the ordinary [Linear Regression](http://en.wikipedia.org/wiki/Linear_regression). While using GLM we don't need the assumption of normality for response variables. There are two basic ideas of the model: It allows the linear model to be related to the response variable via a link function and the magnitude of the variance of each measurement to be a function of its predicted value. An extinsion to the GLM is the [Hierarchical generalized linear model](https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model).
 
 <%=
 d <- structure(na.omit(data.frame(dep, indep)), .Names = c(dep.name, indep.name))
 indep.int <- fml(dep.name, indep.name, join.right = "*")
 indep.nonint <- fml(dep.name, indep.name, join.right = "+")
-fit <- glm(ifelse(indep.inter, indep.int, indep.nonint), data = d, family = family)
+suppressWarnings(fit <- glm(ifelse(indep.inter, indep.int, indep.nonint), data = d, family = family))
 indep.plu <- switch(indep.ilen, '', 's')
 %>
 
@@ -88,8 +95,8 @@ fit
 p_val <- summary(fit)$coefficients[, 4]
 %>
 
-From the table one can see that <%= paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val, 3)[which(p_val < 0.05)], sep = " has significant effect on the dependent variable, the p-value of that is ")%>
+From the table one can see that <%= paste(pandoc.list.return(paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val, 3)[which(p_val < 0.05)], sep = " has significant effect on the dependent variable, the p-value of that is ")), collapse = '\n')
+%>
 
-
-<% } %>
+<% }} %>
 

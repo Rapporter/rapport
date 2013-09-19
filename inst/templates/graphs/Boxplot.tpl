@@ -1,13 +1,17 @@
 <!--head
 meta:
-  title: Graphing
+  title: Graphing (Boxplot)
   author: Daniel Nagy
   description: In this template Rapporter will present you boxplot.
   email: ~
   packages:
   - RColorBrewer
   example:
-  - rapport('bwplot.tpl', data=ius2008, var1='age', var2='edu')
+  - rapport('Boxplot.tpl', data=ius2008, var1='age', var2='gender')
+  - rapport('Boxplot.tpl', data=ius2008, var1='age', var2='gender', 
+            plot.title.pos = "nowhere", var1.lab = "Years of age", 
+            var2.lab = "Male or Female?", fontfamily = "symbol", 
+            fontcolor = "purple", fontsize = 13, background = "grey")
 inputs:
 - name: var1
   label: Used Variable 1
@@ -20,8 +24,8 @@ inputs:
   standalone: no
 - name: var2
   label: Used Variable 2
-  description: This is the second variable that you will use here
-  class: numeric
+  description: This is the factor variable that you will use here
+  class: factor
   length:
     min: 1.0
     max: 1.0
@@ -54,7 +58,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  allow_multiple: no
   required: no
   standalone: yes
 - name: var2.lab
@@ -63,21 +66,6 @@ inputs:
   class: character
   value: default
   matchable: no
-  allow_multiple: no
-  required: no
-  standalone: yes
-- name: log.scale
-  label: Logarithmic scale?
-  description: Should be the variable 2 presented on a logarithmic scale?
-  class: logical
-  value: FALSE
-  required: no
-  standalone: yes
-- name: log.num
-  label: power of log
-  description: Power of the logarithmical scale
-  class: integer
-  value: 10
   required: no
   standalone: yes
 - name: nomargin
@@ -114,6 +102,9 @@ inputs:
   description: Specifying the base font size in pixels
   class: integer
   value: 12
+  limit:
+    min: 1.0
+    max: 50.0
   matchable: no
   required: no
   standalone: yes
@@ -281,8 +272,16 @@ cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], co
 if (colp != "Set1") panderOptions('graph.colors', cs)
 
 
+if (length(var2) == 0) {
 var1 <- na.omit(var1)
 if (var1.lab == "default")  var1_lab <- sprintf(var1.label)
+} else {
+NAs <- which(is.na(var1) | is.na(var2))
+var1 <- var1[-NAs]
+var2 <- var2[-NAs]
+if (var1.lab == "default")  var1_lab <- sprintf(var1.label)
+if (var2.lab == "default")  var2_lab <- sprintf(var2.label)
+}
 
 
 if (length(var2) == 0) {
@@ -293,26 +292,18 @@ main_lab <- plot.title
 }
 } else {
 if (plot.title == "default") { 
-main_lab <- sprintf('Bwplot of %s and %s',var1.name, var2.name)
+main_lab <- sprintf('Boxplot of %s and %s',var1.name, var2.name)
 } else {
 main_lab <- plot.title
-}
-var2 <- na.omit(var2)
-if (var2.lab == "default")  var2_lab <- sprintf(var2.label)
-}
+}}
 
-if (log.scale) {
-log_axis <- list(x = list(log = log.num))
-} else {
-log_axis <- list()
-}
 
 if (length(var2) == 0) {
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-suppressWarnings(bwplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var1_lab, var1.lab), scales=log_axis))
+suppressWarnings(bwplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var1_lab, var1.lab)))
 } else {
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-suppressWarnings(bwplot(var1 ~ var2, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var2_lab, var2.lab), ylab = ifelse(var1.lab == "default", var1_lab, var1.lab), scales=log_axis))
+suppressWarnings(bwplot(var1 ~ var2, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var2_lab, var2.lab), ylab = ifelse(var1.lab == "default", var1_lab, var1.lab)))
 }
 %>
 
