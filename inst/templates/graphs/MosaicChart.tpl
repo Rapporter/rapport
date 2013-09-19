@@ -6,7 +6,9 @@ meta:
   email: ~
   packages:
   - ggplot2
-  example: ~
+  example:
+  - rapport('MosaicChart.tpl', data=ius2008, x = 'game', y = "gender")
+  - rapport('MosaicChart.tpl', data=ius2008, x = 'game', y = "net.required")
 inputs:
 - name: x
   label: Used Variable
