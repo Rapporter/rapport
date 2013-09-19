@@ -1,8 +1,8 @@
 <!--head
 meta:
   title: Graphing (Mosaic Chart)
-  author: Daniel Nagy
-  description: In this template Rapporter will present you a Mosaic Chart.
+  author: Gergely Daróczi, Dániel Nagy
+  description: In this template we will present you a Mosaic Chart.
   email: ~
   packages:
   - ggplot2
@@ -11,8 +11,8 @@ meta:
   - rapport('MosaicChart.tpl', data=ius2008, x = 'game', y = "net.required")
 inputs:
 - name: x
-  label: Used Variable
-  description: This is the x variable that you will use here
+  label: Factor Variable on the X axis
+  description: This is the variable that you will be able to see presented on the X axis
   class: factor
   length:
     min: 1.0
@@ -20,8 +20,8 @@ inputs:
   required: yes
   standalone: no
 - name: y
-  label: Used Variable
-  description: This is the y variable that you will use here
+  label: Factor Variable on the Y axis
+  description: This is the variable that you will be able to see presented on the Y axis
   class: factor
   length:
     min: 1.0
