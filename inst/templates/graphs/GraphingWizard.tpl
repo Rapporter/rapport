@@ -121,8 +121,7 @@ if (fac1 | log1) {
 } else if (intint2 | intnum2 | numint2 | numnum2) {
   rapport('graphs/Scatterplot.tpl', data=rp.data, x = variables.name[1], y = variables.name[2])
 } else if (facfac2) {
-  #rapport('graphs/MosaicChart.tpl', data=rp.data, x = variables.name[1], y = variables.name[2])
-rapport('graphs/MosaicChart.tpl', data=ius2008, x = 'game', y = "gender")
+  rapport('graphs/MosaicChart.tpl', data=rp.data, x = variables.name[1], y = variables.name[2])
 } else if (com2) {
   paste("To show visually the relation between these variables is not supported, because the class of at least one of that is complex. Please select two other variables.") 
 } else if (raw2) {
