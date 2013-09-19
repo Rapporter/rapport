@@ -4,9 +4,9 @@ Author:         Gergely Daróczi, Daniel Nagy
 Description:    This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
 Email:          gergely@snowl.net
 Data required:  TRUE
-Example:        rapport('descriptives', data=ius2008, var='gender')
-                rapport('descriptives', data=ius2008, var='age')
-                rapport('descriptives', data=mtcars, var='hp')
+Example:        rapport('Descriptives', data=ius2008, var='gender')
+                rapport('Descriptives', data=ius2008, var='age')
+                rapport('Descriptives', data=mtcars, var='hp')
 
 var            | *variable[1]| Variable         | Categorical or numerical variable. This template will determine the measurement level of the given variable.
 head-->

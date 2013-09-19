@@ -5,8 +5,8 @@ Description:    Returning the Chi-squared test of two given variables with count
 Email:          gergely@snowl.net
 Packages:       descr, ggplot2, reshape
 Data required:  TRUE
-Example:        rapport('crosstable', data=ius2008, row='gender', col='dwell')
-  rapport('crosstable', data=ius2008, row='email', col='dwell')
+Example:        rapport('Crosstable', data=ius2008, row='gender', col='dwell')
+  rapport('Crosstable', data=ius2008, row='email', col='dwell')
 
 row             | *factor | Row variable        | A categorical variable.
 col             | *factor | Column variable     | A categorical variable.
