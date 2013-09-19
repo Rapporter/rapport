@@ -8,9 +8,9 @@ meta:
   - ggplot2
   - xtable
   example:
-  - rapport("Minimal", ius2008, var='leisure') 
-  - rapport("Minimal", ius2008, var='leisure', desc=FALSE) 
-  - rapport("Minimal", ius2008, var='leisure', desc=FALSE, histogram=T) 
+  - rapport("Minimal", data = ius2008, var='leisure') 
+  - rapport("Minimal", data = ius2008, var='leisure', desc=FALSE) 
+  - rapport("Minimal", data = ius2008, var='leisure', desc=FALSE, histogram=T) 
 inputs:
 - name: var
   label: Variable
