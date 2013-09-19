@@ -10,9 +10,9 @@ meta:
   - ggplot2
   - xtable
   example:
-  - rapport("Example", ius2008, v='age')
-  - rapport("Example", ius2008, v='gender', pacman=FALSE)
-  - rapport("Example", ius2008, v='age', s='FOO BAR')
+  - rapport("Example", data = ius2008, v='age')
+  - rapport("Example", data = ius2008, v='gender', pacman=FALSE)
+  - rapport("Example", data = ius2008, v='age', s='FOO BAR')
 inputs:
 - name: v
   label: Variable
@@ -123,3 +123,5 @@ par(mfrow = c(2, 1))
 ### H3 tag
 
 Oh, and by the way: <%=s%>
+
+
