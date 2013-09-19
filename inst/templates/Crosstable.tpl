@@ -9,8 +9,8 @@ meta:
   - ggplot2
   - reshape
   example:
-  - rapport('crosstable', data=ius2008, row='gender', col='dwell')
-  - rapport('crosstable', data=ius2008, row='email', col='dwell')
+  - rapport('Crosstable', data=ius2008, row='gender', col='dwell')
+  - rapport('Crosstable', data=ius2008, row='email', col='dwell')
 inputs:
 - name: row
   label: Row variable

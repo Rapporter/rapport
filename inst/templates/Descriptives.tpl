@@ -6,9 +6,9 @@ meta:
   email: gergely@snowl.net
   packages: ~
   example:
-  - rapport('descriptives', data=ius2008, var='gender')
-  - rapport('descriptives', data=ius2008, var='age')
-  - rapport('descriptives', data=mtcars, var='hp')
+  - rapport('Descriptives', data=ius2008, var='gender')
+  - rapport('Descriptives', data=ius2008, var='age')
+  - rapport('Descriptives', data=mtcars, var='hp')
 inputs:
 - name: var
   label: Variable

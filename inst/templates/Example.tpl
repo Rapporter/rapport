@@ -10,9 +10,9 @@ meta:
   - ggplot2
   - xtable
   example:
-  - rapport("example", ius2008, v='age')
-  - rapport("example", ius2008, v='gender', pacman=FALSE)
-  - rapport("example", ius2008, v='age', s='FOO BAR')
+  - rapport("Example", ius2008, v='age')
+  - rapport("Example", ius2008, v='gender', pacman=FALSE)
+  - rapport("Example", ius2008, v='age', s='FOO BAR')
 inputs:
 - name: v
   label: Variable
