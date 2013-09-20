@@ -22,6 +22,8 @@ The most obvious goal of this package is to easily reproduce a report by providi
 [25] "WilcoxonTest.tpl"       
 {% endhighlight %}
 
+#### Examples
+
 If you, find, say [`Minimal.tpl`](/functions#exampletpl) promising, you can check it out by calling [`tpl.example`](/functions#tpl.example) function which prints out the examples specified in the template, prompting you to choose one from the list:
 
 {% highlight r %}
@@ -146,6 +148,8 @@ Here instead of the known [`tpl.example`](/functions#tpl.example) we used direct
 
 Well, this is a quite rough way of checking out plots generated in a template :)
 
+#### Export
+
 There are a lot easier ways for that:
 
 - run [`rapport`](/functions#rapport) with [modified global options](#rapport-options): set `graph.record` and `graph.replay` to `TRUE`. This way you will see all generated plots pop-up while `print`ing a *rapport* class object. This way you can even resize the plots and later export the report with modified image dimension (see below).
@@ -192,6 +196,8 @@ By this method you might not find all handy functions, for example [`rapport.htm
 {% highlight r %}
 rapport.html('example', ius2008, var = 'leisure')
 {% endhighlight %}
+
+#### Other functions
 
 <a id="rapport-options"> </a>
 As you might have seen there are several general options in *rapport* which can be as handy as the [funtions](/functions) used while *rapporting*. [Above](#username-options) we have set the username, which affects the result of all run templates. Please see the (almost) full list of available options below:
