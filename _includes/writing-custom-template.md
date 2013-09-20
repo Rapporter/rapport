@@ -96,6 +96,8 @@ Following options are available for all inputs:
    It's worth noting that _rapport_ treats input length in a bit different manner. If you match a subset of, e.g. 10 character vectors from the dataset, the input length will be 10, as you might expect. But if you select only one variable, length will be equal to 1, and not equal to the number of vector elements. This stands both for standalone and dataset inputs. However, if you match a character vector against a standalone input, length will be stored correctly - as the number of vector elements.
 
  - `value` (vector(s) of an appropriate `class`) - this attribute only exists for standalone inputs. Provided value must satisfy rules defined in `class` and `length` attributes, as well as any other class-specific rules (see below).
+ 
+It worth to note, that the inputs with the possible outcome of a logical value (required, standalone) can be set with the TRUE/FALSE and the yes/no options as well.
 
 ##### Class-specific attributes
 
