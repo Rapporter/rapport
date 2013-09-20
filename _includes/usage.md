@@ -10,8 +10,16 @@ The most obvious goal of this package is to easily reproduce a report by providi
 
 {% highlight r %}
 > tpl.list()
-[1] "anova.tpl"        "correlations.tpl" "crosstable.tpl"   "descriptives.tpl"
-[5] "example.tpl"      "nortest.tpl"      "outlier-test.tpl" "t-test.tpl"      
+ [1] "AnalyzeWizard.tpl"      "ANOVA.tpl"           "BartlettsTest.tpl"              
+ [4] "BrownForsythTest.tpl"   "Correlation.tpl"     "Crosstable.tpl"                 
+ [7] "Descriptives.tpl"       "Example.tpl"         "FactorAnalysis.tpl"             
+[10] "FTest.tpl"              "GenerateBeta.tpl"    "GLM.tpl"                        
+[13] "HierarchicalClusterAnalysis.tpl"              "HomogeneityCrosstable.tpl"      
+[15] "KMeansCluster.tpl"      "KolmogorovSmirnovTest.tpl"      
+[17] "KruskalWallisTest.tpl"  "LinearRegression.tpl"           
+[19] "MDS.tpl"                "Minimal.tpl"         "NormalityTest.tpl"              
+[22] "OutlierTest.tpl"        "PCA.tpl"             "TTest.tpl"                      
+[25] "WilcoxonTest.tpl"       
 {% endhighlight %}
 
 If you, find, say [`Minimal.tpl`](/functions#exampletpl) promising, you can check it out by calling [`tpl.example`](/functions#tpl.example) function which prints out the examples specified in the template, prompting you to choose one from the list:
