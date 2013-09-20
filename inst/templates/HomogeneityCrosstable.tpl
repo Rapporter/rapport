@@ -6,8 +6,7 @@ meta:
   packages: 
   - descr
   example:
-  - rapport('crosstable', data=ius2008, row='gender', col='dwell')
-  - rapport('crosstable', data=ius2008, row='email', col='dwell')
+  - rapport('HomogeneityCrosstable', data=ius2008, var='gender', split='dwell')
 inputs:
 - name: var
   label: Variable to analyse

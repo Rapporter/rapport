@@ -55,9 +55,10 @@ if (ncol(var.dat) == 2 && length(class(var.dat[,2])) == 2 && class(var.dat[,2])[
 if (ncol(var.dat) == 2 && length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor" && class(var.dat[,1]) == "numeric") numfac2 <- TRUE
 if (ncol(var.dat) == 2 && length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor" && class(var.dat[,1]) == "logical") logfac2 <- TRUE
 
-try(if (ncol(var.dat) == 2 && length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && length(class(var.dat[,2])) && class(var.dat[,2])[2] == "factor") facfac2 <- TRUE)
-try(if (ncol(var.dat) == 2 && class(var.dat[,1]) == "factor" && length(class(var.dat[,2])) && class(var.dat[,2])[2] == "factor") facfac2 <- TRUE)
+try(if (ncol(var.dat) == 2 && length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor") facfac2 <- TRUE)
+try(if (ncol(var.dat) == 2 && class(var.dat[,1]) == "factor" && length(class(var.dat[,2])) == 2 && class(var.dat[,2])[2] == "factor") facfac2 <- TRUE)
 try(if (ncol(var.dat) == 2 && length(class(var.dat[,1])) == 2 && class(var.dat[,1])[2] == "factor" && class(var.dat[,2]) == "factor") facfac2 <- TRUE)
+try(if (ncol(var.dat) == 2 && class(var.dat[,1]) == "factor" &&  class(var.dat[,2]) == "factor") facfac2 <- TRUE)
 
 
 if (ncol(var.dat) == 2 && class(var.dat[,1]) == "integer" && class(var.dat[,2]) == "integer") intint2 <- TRUE
@@ -120,7 +121,7 @@ if (fac1 | log1) {
 } else if (intint2 | intnum2 | numint2 | numnum2) {
   rapport('graphs/Scatterplot.tpl', data=rp.data, x = variables.name[1], y = variables.name[2])
 } else if (facfac2) {
-  #rapport('graphs/Barchart.tpl', data=rp.data, var=variables.name)
+  rapport('graphs/MosaicChart.tpl', data=rp.data, x = variables.name[1], y = variables.name[2])
 } else if (com2) {
   paste("To show visually the relation between these variables is not supported, because the class of at least one of that is complex. Please select two other variables.") 
 } else if (raw2) {

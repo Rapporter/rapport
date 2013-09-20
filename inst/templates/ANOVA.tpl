@@ -7,8 +7,8 @@ meta:
   email: ~
   packages: nortest
   example:
-  - 'rapport("anova", ius2008, resp = "leisure", fac = "gender")  # one-way'
-  - 'rapport("anova", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way'
+  - 'rapport("ANOVA", ius2008, resp = "leisure", fac = "gender")  # one-way'
+  - 'rapport("ANOVA", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way'
 inputs:
 - name: resp
   label: Response variable

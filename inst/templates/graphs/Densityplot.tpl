@@ -9,7 +9,7 @@ meta:
   example:
   - rapport('Densityplot.tpl', data=ius2008, var='age')
   - rapport('Densityplot.tpl', data=ius2008, var='age', 
-            plot.title = "My histogram", 
+            plot.title = "My Densityplot", 
             plot.title.pos = "outside the plot", horizontal = TRUE, 
             fontcolor = "darkblue", fontsize = 10, 
             grid.color = "darkblue", grid.lty = "dotted")

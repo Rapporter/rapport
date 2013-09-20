@@ -7,8 +7,8 @@ meta:
   email: ~
   packages: nortest
   example:
-  - rapport("t-test", ius2008, x = "leisure", y = "gender")
-  - rapport("t-test", ius2008, x = "leisure", mu = 3.2)
+  - rapport("TTest", ius2008, x = "leisure", y = "gender")
+  - rapport("TTest", ius2008, x = "leisure", mu = 3.2)
 inputs:
 - name: x
   label: X variable

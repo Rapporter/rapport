@@ -4,9 +4,9 @@ Author:         Aleksandar Blagotić
 Description:    Overview of several normality tests and diagnostic plots that can screen departures from normality.
 Packages:       nortest
 Data required:  TRUE
-Example:        rapport("nortest", ius2008, var = "leisure")
-                rapport("nortest", ius2008, var = "leisure", nc.plot = FALSE)
-                rapport("nortest", ius2008, var = "leisure", qq.line = FALSE)
+Example:        rapport("NormalityTest", ius2008, var = "leisure")
+                rapport("NormalityTest", ius2008, var = "leisure", nc.plot = FALSE)
+                rapport("NormalityTest", ius2008, var = "leisure", qq.line = FALSE)
 
 var       | *numeric  | Test variables     | Variables to test for normality
 nc.plot   | TRUE      | Normal curve plot  | Plot normal curve?

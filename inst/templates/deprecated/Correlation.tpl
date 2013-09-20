@@ -4,9 +4,9 @@ Author:         Daróczi Gergely, Nagy Dániel
 Email:          gergely@snowl.net
 Description:    This template will return the correlation matrix of supplied numerical variables.
 Data required:  TRUE
-Example:        rapport('correlations', data=ius2008, vars=c('age', 'edu'))
-		rapport('correlations', data=ius2008, vars=c('age', 'edu', 'leisure'))
-		rapport('correlations', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
+Example:        rapport('Correlation', data=ius2008, vars=c('age', 'edu'))
+		rapport('Correlation', data=ius2008, vars=c('age', 'edu', 'leisure'))
+		rapport('Correlation', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
 
 vars            | *numeric[2,50] | Variable                      | Numerical variables
 head-->

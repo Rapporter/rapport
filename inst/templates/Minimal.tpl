@@ -8,9 +8,9 @@ meta:
   - ggplot2
   - xtable
   example:
-  - rapport("Minimal", ius2008, var='leisure') 
-  - rapport("Minimal", ius2008, var='leisure', desc=FALSE) 
-  - rapport("Minimal", ius2008, var='leisure', desc=FALSE, histogram=T) 
+  - rapport("Minimal", data = ius2008, var='leisure') 
+  - rapport("Minimal", data = ius2008, var='leisure', desc=FALSE) 
+  - rapport("Minimal", data = ius2008, var='leisure', desc=FALSE, histogram=T) 
 inputs:
 - name: var
   label: Variable
@@ -24,46 +24,51 @@ inputs:
   label: Descriptives
   description: Table of the descriptive statistics
   class: logical
-  value: ~
+  value: TRUE
   required: FALSE
   standalone: TRUE
 - name: histogram
   label: Histogram
   description: Histogram
   class: logical
-  value: ~
+  value: FALSE
   required: FALSE
   standalone: TRUE
 head-->
 
 # Début
 
-
 Hello, world!
 
-I have just specified a *Variable* in this template named to **<%rp.name(var)%>**. The label of this variable is "<%rp.label(var)%>".
+I have just specified a *Variable* in this template named to **<%=rp.name(var)%>**. The label of this *variable* is "<%=var.label%>".
 
-And wow, the mean of *<%rp.name(var)%>* is <%rp.mean(var)%>!
-<%
+And wow, the mean of *<%=var.name%>* is <%=mean(na.omit(var))%>!
+
+<%=
 if (!desc) '**For more detailed statistics, you should have set `desc=TRUE`!**'
  %>
 
+<% if (desc) { %>
+##  'Descriptive statistics'
+<% } %>
 
-## <%if (desc) 'Descriptive statistics'%>
-
-
+<%=
 if (desc) summary(var)
  %>
 
+
+<%=
 if (desc) sprintf('The 5 highest value are: %s.', p(sort(var, decreasing = TRUE)[1:5]))
  %>
 
-## <%if (hist) 'Histogram'%>
+ <% if (histogram) { %>
+## 'Histogram'
+<% } %>
 
-<%
-if (hist)
+<%=
+if (histogram)
     if (require(lattice)) {
-        histogram(rp.data[, rp.name(var)])
+        histogram(rp.data[, var.name])
     } else
-        hist(rp.data[, rp.name(var)])
+        hist(rp.data[, var.name])
 %>

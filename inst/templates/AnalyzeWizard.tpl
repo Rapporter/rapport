@@ -6,9 +6,9 @@ meta:
   email: ~
   packages: ~
   example:
-  - rapport.html('AnalyzeWizard.tpl', data=ius2008, variables=c('edu', 'game'))
-  - rapport.html('AnalyzeWizard.tpl', data=ius2008, variables=c('gender', 'game'))
-  - rapport.html('AnalyzeWizard.tpl', data=ius2008, variables=c('edu', 'age'))
+  - rapport('AnalyzeWizard.tpl', data=ius2008, variables=c('edu', 'game'))
+  - rapport('AnalyzeWizard.tpl', data=ius2008, variables=c('gender', 'game'))
+  - rapport('AnalyzeWizard.tpl', data=ius2008, variables=c('edu', 'age'))
 inputs:
 - name: variables
   label: Used Variables
@@ -93,11 +93,11 @@ if (class(var.dat[,1]) == "character" && class(var.dat[,2]) == "character") {
 if (numint2 | intnum2 | numnum2 | intint2) {
 rapport('Correlation.tpl', data=rp.data, vars=variables.name)
 } else if (numfac2 | intfac2 | numlog2 | intlog2) {
-rapport("anova", data=rp.data, resp = variables.name[1], fac = variables.name[2])
+rapport("ANOVA.tpl", data=rp.data, resp = variables.name[1], fac = variables.name[2])
 } else if (facnum2 | facint2 | lognum2 | logint2) {
-rapport("anova", data=rp.data, resp = variables.name[2], fac = variables.name[1])
+rapport("ANOVA.tpl", data=rp.data, resp = variables.name[2], fac = variables.name[1])
 } else if (facfac2) {
-rapport('crosstable', data=ius2008, row='email', col='dwell')
+rapport('Crosstable.tpl', data=ius2008, row='email', col='dwell')
 } else if (com2) {
 paste("To show the relation between these variables is not supported, because at least one of them is a complex vector. Please select two other variables.")
 }
