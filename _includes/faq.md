@@ -48,10 +48,6 @@ Check out [`tpl.path`](/functions#tpl.path) and [`tpl.path.add`](/functions#tpl.
 
 It would be a good practice to add a call to [`tpl.paths.add(...)`](/functions#tpl.paths.add) to your [`.Rprofile`](http://www.statmethods.net/interface/customizing.html), which would be evaluated on each R session startup.
 
-#### Can I use custom file extensions (`!= 'tpl'`) in custom path (`!=system.file("templates", package = "rapport")`')?
-
-Sure! [`tpl.find`](#tpl.find) (which is called from [`rapport`](/functions#rapport) too) will be able to deal with that, but bear in mind the fact that you will have to specify the full path of your custom template with extension while calling [`rapport`](/functions#rapport) or any other [template related function](#Template-related-functions).
-
 #### Why do you write such complex templates? Why not including those in [helpers](/functions) like `rp.anova`?
 
 It is based on a theory behind *rapport*: you can define a function at any part of your template and use it, or just load any library which is installed on your system - even your own, local packages. You might even include a `source` command in your local template, but bear in mind that this template will not be able to run on other computers!
