@@ -52,7 +52,7 @@ I have just specified a *Variable* in this template named to **leisure**. The la
 
 And wow, the mean of *leisure* is _3.199_!
 
-By checking out the [sources of this template](), you could see that we used all `BRCATCODE`s above from `brew` syntax. `BRCODE` tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if `desc` input equals to `TRUE`, then the resulting report would have that chunk, if set to `FALSE`, it would be left our.
+By checking out the [sources of this template](https://github.com/rapporter/rapport/blob/master/inst/templates/Minimal.tpl), you could see that we used all `BRCATCODE`s above from `brew` syntax. `BRCODE` tags are useful when you want to loop through something or optionally add or remove a part of the template. A really easy example of this: if `desc` input equals to `TRUE`, then the resulting report would have that chunk, if set to `FALSE`, it would be left our.
 
 ## Descriptive statistics
 
@@ -83,9 +83,8 @@ As you could see in the examples there are some other parameters of this templat
  
  Examples: 
  rapport("Minimal", ius2008, var='leisure') 
- rapport("example", ius2008, var='leisure', desc=FALSE) 
- rapport("example", ius2008, var='leisure', desc=FALSE, histogram=T) 
- rapport("minimal", ius2008, var='leisure', desc=FALSE, histogram=T, color='green') 
+ rapport("Minimal", ius2008, var='leisure', desc=FALSE) 
+ rapport("Minimal", ius2008, var='leisure', desc=FALSE, histogram=T) 
 
 Input parameters 
 
