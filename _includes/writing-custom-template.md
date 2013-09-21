@@ -1,12 +1,12 @@
-Writing a custom _rapport_ template or modifying an existing one is not trickier than writing an ordinary statistical report. It requires some basic **R** skills, and a familiarity with _rapport_ input specifications that we're about to cover thoroughly. Of course, sophisticated reports would require more proficiency in **R**.
+Writing a custom **rapport** template or modifying an existing one is not trickier than writing an ordinary statistical report. It requires some basic **R** skills, and a familiarity with **rapport** input specifications that we're about to cover thoroughly. Of course, sophisticated reports would require more proficiency in **R**.
 
 #### Input Header
 
 **Recent changes**
 
-As of version 0.50, _rapport_ is using the new header specification that relies solely on [YAML syntax](https://yaml.org). The old syntax is deprecated, though kept in the package for backwards compatibility.
+As of version 0.50, **rapport** is using the new header specification that relies solely on [YAML syntax](https://yaml.org). The old syntax is deprecated, though kept in the package for backwards compatibility.
 
-In order to define a valid _rapport_ template, you'll have to specify some info at the beginning of the document, in the so-called _template header_. The header itself is nothing but a YAML syntax placed within custom HTML comment tags: `<!--head` and `head-->`. It consists of metadata and inputs sections defined under `meta` and `inputs` YAML keys, respectively.
+In order to define a valid **rapport** template, you'll have to specify some info at the beginning of the document, in the so-called **template header**. The header itself is nothing but a YAML syntax placed within custom HTML comment tags: `<!--head` and `head-->`. It consists of metadata and inputs sections defined under `meta` and `inputs` YAML keys, respectively.
 
 ##### Template metadata
 
@@ -41,19 +41,19 @@ Just a reminder about the technical details: One should not forget to type in th
 
 #### Template inputs
 
-The template inputs are probably the most important feature of _rapport_. By using the template inputs, you can match a dataset variable or custom **R** object and assign it to a symbol in a template evaluation environment. That way you can use given input's name throughout the template. Since the version 0.50, we wanted to make inputs more familiar to **R** users, so we ditched previous input definition syntax as it was inconsistent with **R** conventions. New input specification relies on **R** class system and resembles all important methods and/or attributes of **R** objects.
+The template inputs are probably the most important feature of **rapport**. By using the template inputs, you can match a dataset variable or custom **R** object and assign it to a symbol in a template evaluation environment. That way you can use given input's name throughout the template. Since the version 0.50, we wanted to make inputs more familiar to **R** users, so we ditched previous input definition syntax as it was inconsistent with **R** conventions. New input specification relies on **R** class system and resembles all important methods and/or attributes of **R** objects.
 
 Template inputs can be divided into two categories:
 
- - _dataset inputs_ that hold names of the elements of the object provided in `data` argument in `rapport` function. This usually refers to a vector containing column names of a `data.frame` object, but it can be any **R** object that has named elements.
- - _standalone inputs_ do not depend on the object provided in the `data` argument. They usually accept an **R** object passed by the user, or the value of the `value` attribute provided in the input definition (see below).
+ - **dataset inputs** that hold names of the elements of the object provided in `data` argument in `rapport` function. This usually refers to a vector containing column names of a `data.frame` object, but it can be any **R** object that has named elements.
+ - **standalone inputs** do not depend on the object provided in the `data` argument. They usually accept an **R** object passed by the user, or the value of the `value` attribute provided in the input definition (see below).
 
 ##### General input attributes
 
 Following options are available for all inputs:
 
- - `name` (character string, required) - input name. It acts as an identifier for a given input, and is required as such. Template cannot contain duplicate input names. _rapport_ inputs currently have custom naming conventions - see `?guess.input.name` for details.
- - `label` (character string) - input label. It can be blank, but it's useful to provide an input label as _rapport_ helpers use that information in plot labels and/or exported HTML tables. Defaults to empty string.
+ - `name` (character string, required) - input name. It acts as an identifier for a given input, and is required as such. Template cannot contain duplicate input names. **rapport** inputs currently have custom naming conventions - see `?guess.input.name` for details.
+ - `label` (character string) - input label. It can be blank, but it's useful to provide an input label as **rapport** helpers use that information in plot labels and/or exported HTML tables. Defaults to empty string.
  - `description` (character string) - similar to `label`, but should contain long(er) description of given input.
  - `class` (character string) - defines an input class. Currently supported input classes are: `character`, `complex`, `factor`, `integer`, `logical`, `numeric` and `raw` (all atomic vector classes). Class attribute should usually be provided, but it can also be `NULL` (default) - in that case the input class will be guessed based on matched **R** object's value.
  - `required` (logical value) - does an input require a value? Defaults to `FALSE.`
@@ -93,7 +93,7 @@ Following options are available for all inputs:
     &nbsp;&nbsp;exactly: 10
 	</code></pre></div>
 
-   It's worth noting that _rapport_ treats input length in a bit different manner. If you match a subset of, e.g. 10 character vectors from the dataset, the input length will be 10, as you might expect. But if you select only one variable, length will be equal to 1, and not equal to the number of vector elements. This stands both for standalone and dataset inputs. However, if you match a character vector against a standalone input, length will be stored correctly - as the number of vector elements.
+   It's worth noting that **rapport** treats input length in a bit different manner. If you match a subset of, e.g. 10 character vectors from the dataset, the input length will be 10, as you might expect. But if you select only one variable, length will be equal to 1, and not equal to the number of vector elements. This stands both for standalone and dataset inputs. However, if you match a character vector against a standalone input, length will be stored correctly - as the number of vector elements.
 
  - `value` (vector(s) of an appropriate `class`) - this attribute only exists for standalone inputs. Provided value must satisfy rules defined in `class` and `length` attributes, as well as any other class-specific rules (see below).
  
@@ -114,15 +114,15 @@ It worth to note, that the inputs with the possible outcome of a logical value (
 ###### `factor`
 
  - `nlevels` - accepts the same format as `length` attribute, but the check is performed on the number of factor levels.
- - `matchable` - _ibid_ as in character inputs (note that in previous versions of `rapport` matching was performed against factor levels - well, not any more, now we match against values to make it consistent with `character` inputs).
+ - `matchable` - **ibid** as in character inputs (note that in previous versions of `rapport` matching was performed against factor levels - well, not any more, now we match against values to make it consistent with `character` inputs).
 
 #### Body
 
 The body of the template uses `brew` syntax with a forked back-end. Please check out [pander's documentation](http://rapporter.github.com/pander/#brew-to-pandoc) for details, in the followings the most important informations will be elaborated.
 
 Brew syntaxes basically have two parts:
- - _normal text_
- - _commands_ between special tags
+ - **normal text**
+ - **commands** between special tags
 
 The special tags have two types:
  - '<% command %>' running R command
