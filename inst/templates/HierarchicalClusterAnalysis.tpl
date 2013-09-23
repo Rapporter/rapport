@@ -6,10 +6,7 @@ meta:
   email: ~
   packages:
   - mclust
-  example:
-  - rapport('HierarchicalClusterAnalysis.tpl', data = ius2008, vars = c('age', 'edu'))
-  - rapport('HierarchicalClusterAnalysis.tpl', data=ius2008, vars = c('age', 'edu'), clust.num = 30)
-  - rapport('HierarchicalClusterAnalysis.tpl', data = mtcars, vars = c('drat', 'cyl', 'mpg'), clust.num = 30, method = "average")
+  example: ~
 inputs:
 - name: vars
   label: Used Variables
