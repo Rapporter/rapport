@@ -1,0 +1,168 @@
+h2(#description). Description
+
+This template will run an F-test to check if two continuous variables have the same means.
+
+h3(#introduction). Introduction
+
+F test compares the means of two continuous variables. In other words it shows if their means were statistically different. We should be careful, while using the F test, because of the strict normality assumption, where strict means approximately normal ditribution is not enough to satisfy that.
+
+h3(#normality-assumption-check-internet-usage-for-educational-purposes-hours-per-day). Normality assumption check (_Internet usage for educational purposes (hours per day)_)
+
+The "_Shapiro-Wilk test_":http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test, the "_Lilliefors test_":http://en.wikipedia.org/wiki/Lilliefors_test and the "_Anderson-Darling test_":http://en.wikipedia.org/wiki/Anderson_Darling_test help us to decide if the above-mentioned assumption can be accepted of the _Internet usage for educational purposes (hours per day)_.
+
+<table>
+<col width="38%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="center">0.2223</td>
+<td align="center">2.243e-92</td>
+</tr>
+<tr class="even">
+<td align="center">Anderson-Darling normality test</td>
+<td align="center">42.04</td>
+<td align="center">3.31e-90</td>
+</tr>
+<tr class="odd">
+<td align="center">Shapiro-Wilk normality test</td>
+<td align="center">0.7985</td>
+<td align="center">6.366e-28</td>
+</tr>
+</tbody>
+</table>
+
+So, the conclusions we can draw with the help of test statistics:
+
+* based on _Lilliefors test_, distribution of _Internet usage for educational purposes (hours per day)_ is not normal
+* _Anderson-Darling test_ confirms violation of normality assumption
+* according to _Shapiro-Wilk test_, the distribution of _Internet usage for educational purposes (hours per day)_ is not normal
+
+As you can see, the applied tests confirm departures from normality.
+
+h3(#normality-assumption-check-age). Normality assumption check (_Age_)
+
+The "_Shapiro-Wilk test_":http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test, the "_Lilliefors test_":http://en.wikipedia.org/wiki/Lilliefors_test and the "_Anderson-Darling test_":http://en.wikipedia.org/wiki/Anderson_Darling_test help us to decide if the above-mentioned assumption can be accepted of the _Internet usage for educational purposes (hours per day)_.
+
+<table>
+<col width="38%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="center">0.17</td>
+<td align="center">6.193e-54</td>
+</tr>
+<tr class="even">
+<td align="center">Anderson-Darling normality test</td>
+<td align="center">32.16</td>
+<td align="center">1.26e-71</td>
+</tr>
+<tr class="odd">
+<td align="center">Shapiro-Wilk normality test</td>
+<td align="center">0.8216</td>
+<td align="center">9.445e-27</td>
+</tr>
+</tbody>
+</table>
+
+So, the conclusions we can draw with the help of test statistics:
+
+* based on _Lilliefors test_, distribution of _Age_ is not normal
+* _Anderson-Darling test_ confirms violation of normality assumption
+* according to _Shapiro-Wilk test_, the distribution of _Age_ is not normal
+
+As you can see, the applied tests confirm departures from normality.
+
+_In this case it is advisable to run a more robust test, then the F-test._
+
+h2(#description-1). Description
+
+This template will run an F-test to check if two continuous variables have the same means.
+
+h3(#introduction-1). Introduction
+
+F test compares the means of two continuous variables. In other words it shows if their means were statistically different. We should be careful, while using the F test, because of the strict normality assumption, where strict means approximately normal ditribution is not enough to satisfy that.
+
+h3(#the-f-test). The F-test
+
+Here is the the result of the _F test_ to compare the means of _Internet usage for educational purposes (hours per day)_ and _Age_.
+
+<table>
+<col width="30%" />
+<col width="16%" />
+<col width="16%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">F test to compare two variances</td>
+<td align="center">0.08618</td>
+<td align="center">3.772e-180</td>
+</tr>
+</tbody>
+</table>
+
+We can see from the table (in the p-value coloumn) that there is a significant difference between the means of _Internet usage for educational purposes (hours per day)_ and _Age_.
+
+h2(#description-2). Description
+
+This template will run an F-test to check if two continuous variables have the same means.
+
+h3(#introduction-2). Introduction
+
+F test compares the means of two continuous variables. In other words it shows if their means were statistically different. We should be careful, while using the F test, because of the strict normality assumption, where strict means approximately normal ditribution is not enough to satisfy that.
+
+h3(#the-f-test-1). The F-test
+
+Here is the the result of the _F test_ to compare the means of _cyl_ and _drat_.
+
+<table>
+<col width="30%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">F test to compare two variances</td>
+<td align="center">11.16</td>
+<td align="center">1.461e-09</td>
+</tr>
+</tbody>
+</table>
+
+We can see from the table (in the p-value coloumn) that there is a significant difference between the means of _cyl_ and _drat_.
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (3.0.1) and "rapport":http://rapport-package.info/ (0.51) in _0.814_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

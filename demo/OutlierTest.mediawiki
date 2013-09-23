@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Outlier tests" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Outlier tests</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#charts">Charts</a></li>
+<li><a href="#lund-test">Lund test</a></li>
+<li><a href="#grubbs-test">Grubb's test</a></li>
+<li><a href="#dixons-test">Dixon's test</a></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#introduction-1">Introduction</a></li>
+<li><a href="#charts-1">Charts</a></li>
+<li><a href="#lund-test-1">Lund test</a></li>
+<li><a href="#grubbs-test-1">Grubb's test</a></li>
+<li><a href="#dixons-test-1">Dixon's test</a></li>
+</ul></li>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#introduction-2">Introduction</a></li>
+<li><a href="#charts-2">Charts</a></li>
+<li><a href="#lund-test-2">Lund test</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#description">Description</a></h2>
+<p>This template will check if provided variable has any outliers.</p>
+<h3 id="introduction"><a href="#introduction">Introduction</a></h3>
+<p>An outlying observation, or outlier, is one that appears to deviate markedly from other members of the sample in which it occurs. There are several ways to detect the outliers of our data. However, we cannot say one of them is the perfect method for that, thus it could be useful to take different methods into consideration. We present here four of them, one by a chart (a Box Plot based on IQR) and three by statistical descriptions (Lund Test, Grubb's test, Dixon's test).</p>
+<h4 id="references"><a href="#references">References</a></h4>
+<ul>
+<li>Grubbs, F. E.: 1969, Procedures for detecting outlying observations in samples. Technometrics 11, pp. 1-21.</li>
+</ul>
+<h3 id="charts"><a href="#charts">Charts</a></h3>
+<p>Among the graphical displays the Box plots are quite widespread, because of their several advantages. For example, one can easily get approximately punctual first impression from the data and one can visually see the positions of the (possible) outliers, with the help of them.</p>
+<p>The Box Plot we used here is based on IQR (Interquartile Range), which is the difference between the higher and the lower quartiles. On the chart the blue box shows the &quot;middle-half&quot; of the data, the so-called whiskers shows the border where from the possible values can be called outliers. The lower whisker is placed 1.5 times below the first quartile, similarly the higher whisker 1.5 times above the third quartile.</p>
+<p><a href="plots/OutlierTest-1-hires.png"><img src="plots/OutlierTest-1.png" alt="Boxplot: edu" /></a></p>
+<h4 id="references-1"><a href="#references-1">References</a></h4>
+<ul>
+<li>Chambers, John, William Cleveland, Beat Kleiner, and Paul Tukey, (1983), Graphical Methods for Data Analysis, Wadsworth.</li>
+<li>Upton, Graham; Cook, Ian (1996). Understanding Statistics. Oxford University Press. p. 55.</li>
+</ul>
+<h3 id="lund-test"><a href="#lund-test">Lund test</a></h3>
+<p>It seems that <em>4</em> extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: <em>10</em>, <em>0.5</em>, <em>1.5</em> and <em>0.5</em>.</p>
+<h4 id="explanation"><a href="#explanation">Explanation</a></h4>
+<p>The above test for outliers was based on <em>lm(edu ~ 1)</em>:</p>
+<table>
+<caption>Linear model: edu ~ 1</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">2.048</td>
+<td align="center">0.07797</td>
+<td align="center">26.27</td>
+<td align="center">7.939e-105</td>
+</tr>
+</tbody>
+</table>
+<h4 id="references-2"><a href="#references-2">References</a></h4>
+<ul>
+<li>Lund, R. E. 1975, &quot;Tables for An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 4, pp. 473-476.</li>
+<li>Prescott, P. 1975, &quot;An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 1, pp. 129-132.</li>
+</ul>
+<h3 id="grubbs-test"><a href="#grubbs-test">Grubb's test</a></h3>
+<p>Grubbs test for one outlier shows that highest value 12 is an outlier (p=<em>0.0001964</em>).</p>
+<h4 id="references-3"><a href="#references-3">References</a></h4>
+<ul>
+<li>Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.</li>
+</ul>
+<h3 id="dixons-test"><a href="#dixons-test">Dixon's test</a></h3>
+<p>chi-squared test for outlier shows that highest value 12 is an outlier (p=<em>7.441e-07</em>).</p>
+<h4 id="references-4"><a href="#references-4">References</a></h4>
+<ul>
+<li>Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.</li>
+</ul>
+<h2 id="description-1"><a href="#description-1">Description</a></h2>
+<p>This template will check if provided variable has any outliers.</p>
+<h3 id="introduction-1"><a href="#introduction-1">Introduction</a></h3>
+<p>An outlying observation, or outlier, is one that appears to deviate markedly from other members of the sample in which it occurs. There are several ways to detect the outliers of our data. However, we cannot say one of them is the perfect method for that, thus it could be useful to take different methods into consideration. We present here four of them, one by a chart (a Box Plot based on IQR) and three by statistical descriptions (Lund Test, Grubb's test, Dixon's test).</p>
+<h4 id="references-5"><a href="#references-5">References</a></h4>
+<ul>
+<li>Grubbs, F. E.: 1969, Procedures for detecting outlying observations in samples. Technometrics 11, pp. 1-21.</li>
+</ul>
+<h3 id="charts-1"><a href="#charts-1">Charts</a></h3>
+<p>Among the graphical displays the Box plots are quite widespread, because of their several advantages. For example, one can easily get approximately punctual first impression from the data and one can visually see the positions of the (possible) outliers, with the help of them.</p>
+<p>The Box Plot we used here is based on IQR (Interquartile Range), which is the difference between the higher and the lower quartiles. On the chart the blue box shows the &quot;middle-half&quot; of the data, the so-called whiskers shows the border where from the possible values can be called outliers. The lower whisker is placed 1.5 times below the first quartile, similarly the higher whisker 1.5 times above the third quartile.</p>
+<p><a href="plots/OutlierTest-1-hires.png"><img src="plots/OutlierTest-1.png" alt="Boxplot: edu" /></a></p>
+<h4 id="references-6"><a href="#references-6">References</a></h4>
+<ul>
+<li>Chambers, John, William Cleveland, Beat Kleiner, and Paul Tukey, (1983), Graphical Methods for Data Analysis, Wadsworth.</li>
+<li>Upton, Graham; Cook, Ian (1996). Understanding Statistics. Oxford University Press. p. 55.</li>
+</ul>
+<h3 id="lund-test-1"><a href="#lund-test-1">Lund test</a></h3>
+<p>It seems that <em>4</em> extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: <em>10</em>, <em>0.5</em>, <em>1.5</em> and <em>0.5</em>.</p>
+<h4 id="explanation-1"><a href="#explanation-1">Explanation</a></h4>
+<p>The above test for outliers was based on <em>lm(edu ~ 1)</em>:</p>
+<table>
+<caption>Linear model: edu ~ 1</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">2.048</td>
+<td align="center">0.07797</td>
+<td align="center">26.27</td>
+<td align="center">7.939e-105</td>
+</tr>
+</tbody>
+</table>
+<h4 id="references-7"><a href="#references-7">References</a></h4>
+<ul>
+<li>Lund, R. E. 1975, &quot;Tables for An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 4, pp. 473-476.</li>
+<li>Prescott, P. 1975, &quot;An Approximate Test for Outliers in Linear Models&quot;, Technometrics, vol. 17, no. 1, pp. 129-132.</li>
+</ul>
+<h3 id="grubbs-test-1"><a href="#grubbs-test-1">Grubb's test</a></h3>
+<p>Grubbs test for one outlier shows that highest value 12 is an outlier (p=<em>0.0001964</em>).</p>
+<h4 id="references-8"><a href="#references-8">References</a></h4>
+<ul>
+<li>Grubbs, F.E. (1950). Sample Criteria for testing outlying observations. Ann. Math. Stat. 21, 1, 27-58.</li>
+</ul>
+<h3 id="dixons-test-1"><a href="#dixons-test-1">Dixon's test</a></h3>
+<p>chi-squared test for outlier shows that highest value 12 is an outlier (p=<em>7.441e-07</em>).</p>
+<h4 id="references-9"><a href="#references-9">References</a></h4>
+<ul>
+<li>Dixon, W.J. (1950). Analysis of extreme values. Ann. Math. Stat. 21, 4, 488-506.</li>
+</ul>
+<h2 id="description-2"><a href="#description-2">Description</a></h2>
+<p>This template will check if provided variable has any outliers.</p>
+<h3 id="introduction-2"><a href="#introduction-2">Introduction</a></h3>
+<p>An outlying observation, or outlier, is one that appears to deviate markedly from other members of the sample in which it occurs. There are several ways to detect the outliers of our data. However, we cannot say one of them is the perfect method for that, thus it could be useful to take different methods into consideration. We present here four of them, one by a chart (a Box Plot based on IQR) and three by statistical descriptions (Lund Test, Grubb's test, Dixon's test).</p>
+<h4 id="references-10"><a href="#references-10">References</a></h4>
+<ul>
+<li>Grubbs, F. E.: 1969, Procedures for detecting outlying observations in samples. Technometrics 11, pp. 1-21.</li>
+</ul>
+<h3 id="charts-2"><a href="#charts-2">Charts</a></h3>
+<p>Among the graphical displays the Box plots are quite widespread, because of their several advantages. For example, one can easily get approximately punctual first impression from the data and one can visually see the positions of the (possible) outliers, with the help of them.</p>
+<p>The Box Plot we used here is based on IQR (Interquartile Range), which is the difference between the higher and the lower quartiles. On the chart the blue box shows the &quot;middle-half&quot; of the data, the so-called whiskers shows the border where from the possible values can be called outliers. The lower whisker is placed 1.5 times below the first quartile, similarly the higher whisker 1.5 times above the third quartile.</p>
+<p><a href="plots/OutlierTest-1-hires.png"><img src="plots/OutlierTest-1.png" alt="Boxplot: edu" /></a></p>
+<h4 id="references-11"><a href="#references-11">References</a></h4>
+<ul>
+<li>Chambers, John, William Cleveland, Beat Kleiner, and Paul Tukey, (1983), Graphical Methods for Data Analysis, Wadsworth.</li>
+<li>Upton, Graham; Cook, Ian (1996). Understanding Statistics. Oxford University Press. p. 55.</li>
+</ul>
+<h3 id="lund-test-2"><a href="#lund-test-2">Lund test</a></h3>
+<p>It seems that <em>4</em> extreme values can be found in &quot;Internet usage for educational purposes (hours per day)&quot;. These are: <em>10</em>, <em>0.5</em>, <em>1.5</em> and <em>0.5</em>.</p>
+<h4 id="explanation-2"><a href="#explanation-2">Explanation</a></h4>
+<p>The above test for outliers was based on <em>lm(edu ~ 1)</em>:</p>
+<table>
+<caption>Linear model: edu ~ 1</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">2.048</td>
+<td align="center">0.07797</td>
+<td align="center">26.27</td>
+<td align="center">7.939e-105</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>1.082</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" />
+</div>
+</body>
+</html>

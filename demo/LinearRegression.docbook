@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Linear Regression" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Linear Regression</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#assumptions">Assumptions</a></li>
+<li><a href="#results">Results</a></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#introduction-1">Introduction</a></li>
+<li><a href="#overview-1">Overview</a></li>
+<li><a href="#assumptions-1">Assumptions</a></li>
+<li><a href="#results-1">Results</a></li>
+</ul></li>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#introduction-2">Introduction</a></li>
+<li><a href="#overview-2">Overview</a></li>
+<li><a href="#assumptions-2">Assumptions</a></li>
+<li><a href="#results-2">Results</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#description">Description</a></h2>
+<p>This template will run a Linear Regression</p>
+<h3 id="introduction"><a href="#introduction">Introduction</a></h3>
+<p>With the help of the <a href="http://en.wikipedia.org/wiki/Linear_regression">linear regression</a> we can investigate the relationship between two variables. More punctually we can observe if one of the variables, the so-called <a href="http://en.wikipedia.org/wiki/Dependent_variable">dependent</a> variable, significantly depended on the other variable, if an increase/decrease on the dependent variable's values made an increase/decrease on the independent variable. In this case we only observe linear relationships.</p>
+<h3 id="overview"><a href="#overview">Overview</a></h3>
+<p>Linear Regression was carried out, with <em>Internet usage for educational purposes (hours per day)</em> as independent variable, and <em>Age</em> as a dependent variable.</p>
+<h3 id="assumptions"><a href="#assumptions">Assumptions</a></h3>
+<p>In order to have reliable results, we have to check if the assumptions of the linear regression met with the data we used.</p>
+<table>
+<caption>Table continues below</caption>
+<col width="34%" />
+<col width="11%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Value</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Global Stat</strong></td>
+<td align="center">875.9</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Skewness</strong></td>
+<td align="center">378.9</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Kurtosis</strong></td>
+<td align="center">490.7</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Link Function</strong></td>
+<td align="center">0.9379</td>
+<td align="center">0.3328</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Heteroscedasticity</strong></td>
+<td align="center">5.404</td>
+<td align="center">0.0201</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="34%" />
+<col width="36%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Global Stat</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Skewness</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Kurtosis</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Link Function</strong></td>
+<td align="center">Assumptions acceptable.</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Heteroscedasticity</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+</tbody>
+</table>
+<p>To check these assumptions the so-called GVLMA, the Global Validation of Linear Model Assumptions will help us. The result of that we can see in the table above.</p>
+<p>The GVLMA makes a thorough detection on the linear model, including tests generally about the fit, the shape of the distribution of the residuals (<a href="http://en.wikipedia.org/wiki/Skewness">skewness</a> and <a href="http://en.wikipedia.org/wiki/Kurtosis">kurtosis</a>), the linearity and the <a href="http://en.wikipedia.org/wiki/Homoscedasticity">homoskedasticity</a>. On the table we can see if our model met with the assumptions. As a generally accepted thumb-rule we use the critical <a href="http://en.wikipedia.org/wiki/P-value">p-value</a>=0.05.</p>
+<p>So let's see the results, which the test gave us:</p>
+<ul>
+<li><p>The general statistic tells us about the linear model, that it does not fit to our data.</p></li>
+<li><p>According to the GVLMA the residuals of our model's skewness differs significantly from the normal distribution's skewness.</p></li>
+<li><p>The residuals of our model's kurtosis differs significantly from the normal distribution's kurtosis, based on the result of the GVLMA.</p></li>
+<li><p>In the row of the link function we can read that the linearity assumption of our model was accepted.</p></li>
+<li><p>At last but not least GVLMA confirms the violation of homoscedasticity.</p></li>
+</ul>
+<p>In summary: We can 't be sure that the linear model used here fits to the data.</p>
+<p>References:</p>
+<ul>
+<li>Pena, EA and Slate, EH (2006): Global validation of linear model assumptions. <em>J. Amer. Statist. Assoc.</em> <strong>101</strong> (473):341-354.</li>
+</ul>
+<h5 id="nonlinearity"><a href="#nonlinearity">Nonlinearity</a></h5>
+<p>As we want to fit a linear regression model, it is advisable to see if the relationship between the used variables are linear indeed. Next to the test statistic of the GVLMA it is advisable to use a graphical device as well to check that linearity. Here we will use the so-called crPlots funtion to do that, which is an abbreviation of the Component + Residual Plot.</p>
+<p><a href="plots/LinearRegression.tpl-1-hires.png"><img src="plots/LinearRegression.tpl-1.png" /></a></p>
+<p>Here comes the question: What do we see on the plot? First of all we can see two lines and several circles. The red interrupted line is the best fitted linear line, which means that te square of the residuals are the least while fitting that line in the model. The green curved line is the best fitted line, which does not have to be straight, of all. The observations we investigate are the circles. We can talk about linearity if the green line did not lie too far from the red.</p>
+<p>Next to these options there is a possibility to have a glance on the so-called diagnostic plots, which on we can see the residuals in themselves and in standardized forms.</p>
+<p><a href="plots/LinearRegression.tpl-2-hires.png"><img src="plots/LinearRegression.tpl-2.png" /></a></p>
+<h3 id="results"><a href="#results">Results</a></h3>
+<p>After successfully checked the assumptions we can finally turn to the main part of the interest, the results of the Linear Regression Model. From the table we can read the variables which have significant effect on the dependent variable.</p>
+<table>
+<caption>Fitting linear model: age based on <em>edu</em></caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>edu</strong></td>
+<td align="center">0.7373</td>
+<td align="center">0.1307</td>
+<td align="center">5.643</td>
+<td align="center">2.521e-08</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">23.07</td>
+<td align="center">0.3771</td>
+<td align="center">61.17</td>
+<td align="center">2.273e-268</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="25%" />
+<col width="29%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="center">Number of Cases</th>
+<th align="center">Adjusted R Squared</th>
+<th align="center">AIC</th>
+<th align="center">BIC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">637</td>
+<td align="center">0.04625</td>
+<td align="center">4231</td>
+<td align="center">4244</td>
+</tr>
+</tbody>
+</table>
+<p>From the table one can see that <em>(Intercept) has significant effect on the dependent variable, the p-value of that is 0</em> and <em>edu has significant effect on the dependent variable, the p-value of that is 0</em></p>
+<p>The model does not fit well, because the Adjusted R Square is <em>0.04625</em>.</p>
+<h2 id="description-1"><a href="#description-1">Description</a></h2>
+<p>This template will run a Linear Regression</p>
+<h3 id="introduction-1"><a href="#introduction-1">Introduction</a></h3>
+<p>With the help of the <a href="http://en.wikipedia.org/wiki/Linear_regression">linear regression</a> we can investigate the relationship between two variables. More punctually we can observe if one of the variables, the so-called <a href="http://en.wikipedia.org/wiki/Dependent_variable">dependent</a> variable, significantly depended on the other variable, if an increase/decrease on the dependent variable's values made an increase/decrease on the independent variable. In this case we only observe linear relationships.</p>
+<h3 id="overview-1"><a href="#overview-1">Overview</a></h3>
+<p>Linear Regression was carried out, with <em>Internet usage for educational purposes (hours per day)</em> as independent variable, and <em>Age</em> as a dependent variable.</p>
+<h3 id="assumptions-1"><a href="#assumptions-1">Assumptions</a></h3>
+<p>In order to have reliable results, we have to check if the assumptions of the linear regression met with the data we used.</p>
+<table>
+<caption>Table continues below</caption>
+<col width="34%" />
+<col width="11%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Value</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Global Stat</strong></td>
+<td align="center">875.9</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Skewness</strong></td>
+<td align="center">378.9</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Kurtosis</strong></td>
+<td align="center">490.7</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Link Function</strong></td>
+<td align="center">0.9379</td>
+<td align="center">0.3328</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Heteroscedasticity</strong></td>
+<td align="center">5.404</td>
+<td align="center">0.0201</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="34%" />
+<col width="36%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Global Stat</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Skewness</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Kurtosis</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Link Function</strong></td>
+<td align="center">Assumptions acceptable.</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Heteroscedasticity</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+</tbody>
+</table>
+<p>To check these assumptions the so-called GVLMA, the Global Validation of Linear Model Assumptions will help us. The result of that we can see in the table above.</p>
+<p>The GVLMA makes a thorough detection on the linear model, including tests generally about the fit, the shape of the distribution of the residuals (<a href="http://en.wikipedia.org/wiki/Skewness">skewness</a> and <a href="http://en.wikipedia.org/wiki/Kurtosis">kurtosis</a>), the linearity and the <a href="http://en.wikipedia.org/wiki/Homoscedasticity">homoskedasticity</a>. On the table we can see if our model met with the assumptions. As a generally accepted thumb-rule we use the critical <a href="http://en.wikipedia.org/wiki/P-value">p-value</a>=0.05.</p>
+<p>So let's see the results, which the test gave us:</p>
+<ul>
+<li><p>The general statistic tells us about the linear model, that it does not fit to our data.</p></li>
+<li><p>According to the GVLMA the residuals of our model's skewness differs significantly from the normal distribution's skewness.</p></li>
+<li><p>The residuals of our model's kurtosis differs significantly from the normal distribution's kurtosis, based on the result of the GVLMA.</p></li>
+<li><p>In the row of the link function we can read that the linearity assumption of our model was accepted.</p></li>
+<li><p>At last but not least GVLMA confirms the violation of homoscedasticity.</p></li>
+</ul>
+<p>In summary: We can 't be sure that the linear model used here fits to the data.</p>
+<p>References:</p>
+<ul>
+<li>Pena, EA and Slate, EH (2006): Global validation of linear model assumptions. <em>J. Amer. Statist. Assoc.</em> <strong>101</strong> (473):341-354.</li>
+</ul>
+<h5 id="nonlinearity-1"><a href="#nonlinearity-1">Nonlinearity</a></h5>
+<p>As we want to fit a linear regression model, it is advisable to see if the relationship between the used variables are linear indeed. Next to the test statistic of the GVLMA it is advisable to use a graphical device as well to check that linearity. Here we will use the so-called crPlots funtion to do that, which is an abbreviation of the Component + Residual Plot.</p>
+<p><a href="plots/LinearRegression.tpl-3-hires.png"><img src="plots/LinearRegression.tpl-3.png" /></a></p>
+<p>Here comes the question: What do we see on the plot? First of all we can see two lines and several circles. The red interrupted line is the best fitted linear line, which means that te square of the residuals are the least while fitting that line in the model. The green curved line is the best fitted line, which does not have to be straight, of all. The observations we investigate are the circles. We can talk about linearity if the green line did not lie too far from the red.</p>
+<p>Next to these options there is a possibility to have a glance on the so-called diagnostic plots, which on we can see the residuals in themselves and in standardized forms.</p>
+<p><a href="plots/LinearRegression.tpl-4-hires.png"><img src="plots/LinearRegression.tpl-4.png" /></a></p>
+<h3 id="results-1"><a href="#results-1">Results</a></h3>
+<p>After successfully checked the assumptions we can finally turn to the main part of the interest, the results of the Linear Regression Model. From the table we can read the variables and interactions which have significant effect on the dependent variable.</p>
+<table>
+<caption>Fitting linear model: age based on <em>edu</em></caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>edu</strong></td>
+<td align="center">0.7373</td>
+<td align="center">0.1307</td>
+<td align="center">5.643</td>
+<td align="center">2.521e-08</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">23.07</td>
+<td align="center">0.3771</td>
+<td align="center">61.17</td>
+<td align="center">2.273e-268</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="25%" />
+<col width="29%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="center">Number of Cases</th>
+<th align="center">Adjusted R Squared</th>
+<th align="center">AIC</th>
+<th align="center">BIC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">637</td>
+<td align="center">0.04625</td>
+<td align="center">4231</td>
+<td align="center">4244</td>
+</tr>
+</tbody>
+</table>
+<p>From the table one can see that <em>(Intercept) has significant effect on the dependent variable, the p-value of that is 0</em> and <em>edu has significant effect on the dependent variable, the p-value of that is 0</em></p>
+<p>The model does not fit well, because the Adjusted R Square is <em>0.04625</em>.</p>
+<h2 id="description-2"><a href="#description-2">Description</a></h2>
+<p>This template will run a Linear Regression</p>
+<h3 id="introduction-2"><a href="#introduction-2">Introduction</a></h3>
+<p>With the help of the <a href="http://en.wikipedia.org/wiki/Linear_regression">linear regression</a> we can investigate the relationship between two variables. More punctually we can observe if one of the variables, the so-called <a href="http://en.wikipedia.org/wiki/Dependent_variable">dependent</a> variable, significantly depended on the other variable, if an increase/decrease on the dependent variable's values made an increase/decrease on the independent variable. In this case we only observe linear relationships.</p>
+<h3 id="overview-2"><a href="#overview-2">Overview</a></h3>
+<p>Linear Regression was carried out, with <em>cyl</em> as independent variable, and <em>carb</em> as a dependent variable.</p>
+<h3 id="assumptions-2"><a href="#assumptions-2">Assumptions</a></h3>
+<p>In order to have reliable results, we have to check if the assumptions of the linear regression met with the data we used.</p>
+<table>
+<caption>Table continues below</caption>
+<col width="34%" />
+<col width="11%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Value</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Global Stat</strong></td>
+<td align="center">19.91</td>
+<td align="center">0.0005211</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Skewness</strong></td>
+<td align="center">7.299</td>
+<td align="center">0.006899</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Kurtosis</strong></td>
+<td align="center">5.033</td>
+<td align="center">0.02486</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Link Function</strong></td>
+<td align="center">2.45</td>
+<td align="center">0.1175</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Heteroscedasticity</strong></td>
+<td align="center">5.124</td>
+<td align="center">0.0236</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="34%" />
+<col width="36%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Global Stat</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Skewness</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Kurtosis</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Link Function</strong></td>
+<td align="center">Assumptions acceptable.</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Heteroscedasticity</strong></td>
+<td align="center">Assumptions NOT satisfied!</td>
+</tr>
+</tbody>
+</table>
+<p>To check these assumptions the so-called GVLMA, the Global Validation of Linear Model Assumptions will help us. The result of that we can see in the table above.</p>
+<p>The GVLMA makes a thorough detection on the linear model, including tests generally about the fit, the shape of the distribution of the residuals (<a href="http://en.wikipedia.org/wiki/Skewness">skewness</a> and <a href="http://en.wikipedia.org/wiki/Kurtosis">kurtosis</a>), the linearity and the <a href="http://en.wikipedia.org/wiki/Homoscedasticity">homoskedasticity</a>. On the table we can see if our model met with the assumptions. As a generally accepted thumb-rule we use the critical <a href="http://en.wikipedia.org/wiki/P-value">p-value</a>=0.05.</p>
+<p>So let's see the results, which the test gave us:</p>
+<ul>
+<li><p>The general statistic tells us about the linear model, that it does not fit to our data.</p></li>
+<li><p>According to the GVLMA the residuals of our model's skewness differs significantly from the normal distribution's skewness.</p></li>
+<li><p>The residuals of our model's kurtosis differs significantly from the normal distribution's kurtosis, based on the result of the GVLMA.</p></li>
+<li><p>In the row of the link function we can read that the linearity assumption of our model was accepted.</p></li>
+<li><p>At last but not least GVLMA confirms the violation of homoscedasticity.</p></li>
+</ul>
+<p>In summary: We can 't be sure that the linear model used here fits to the data.</p>
+<p>References:</p>
+<ul>
+<li>Pena, EA and Slate, EH (2006): Global validation of linear model assumptions. <em>J. Amer. Statist. Assoc.</em> <strong>101</strong> (473):341-354.</li>
+</ul>
+<h5 id="nonlinearity-2"><a href="#nonlinearity-2">Nonlinearity</a></h5>
+<p>As we want to fit a linear regression model, it is advisable to see if the relationship between the used variables are linear indeed. Next to the test statistic of the GVLMA it is advisable to use a graphical device as well to check that linearity. Here we will use the so-called crPlots funtion to do that, which is an abbreviation of the Component + Residual Plot.</p>
+<p><a href="plots/LinearRegression.tpl-5-hires.png"><img src="plots/LinearRegression.tpl-5.png" /></a></p>
+<p>Here comes the question: What do we see on the plot? First of all we can see two lines and several circles. The red interrupted line is the best fitted linear line, which means that te square of the residuals are the least while fitting that line in the model. The green curved line is the best fitted line, which does not have to be straight, of all. The observations we investigate are the circles. We can talk about linearity if the green line did not lie too far from the red.</p>
+<p>Next to these options there is a possibility to have a glance on the so-called diagnostic plots, which on we can see the residuals in themselves and in standardized forms.</p>
+<p><a href="plots/LinearRegression.tpl-6-hires.png"><img src="plots/LinearRegression.tpl-6.png" /></a></p>
+<h3 id="results-2"><a href="#results-2">Results</a></h3>
+<p>After successfully checked the assumptions we can finally turn to the main part of the interest, the results of the Linear Regression Model. From the table we can read the variables which have significant effect on the dependent variable.</p>
+<table>
+<caption>Fitting linear model: carb based on <em>cyl</em></caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>cyl</strong></td>
+<td align="center">0.4766</td>
+<td align="center">0.1403</td>
+<td align="center">3.396</td>
+<td align="center">0.001942</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">-0.1365</td>
+<td align="center">0.9027</td>
+<td align="center">-0.1513</td>
+<td align="center">0.8808</td>
+</tr>
+</tbody>
+</table>
+<table>
+<col width="25%" />
+<col width="29%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="center">Number of Cases</th>
+<th align="center">Adjusted R Squared</th>
+<th align="center">AIC</th>
+<th align="center">BIC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">32</td>
+<td align="center">0.2536</td>
+<td align="center">116.1</td>
+<td align="center">120.5</td>
+</tr>
+</tbody>
+</table>
+<p>From the table one can see that cyl has significant effect on the dependent variable, the p-value of that is 0.002</p>
+<p>The model fits well, because the Adjusted R Square is <em>0.2536</em>.</p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>3.731</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="/usr/lib/R/library/rapport/includes/images/logo.png" />
+</div>
+</body>
+</html>

@@ -1,0 +1,614 @@
+% Rapport  package  team
+% Multidimensional Scaling
+% 2011-04-26 20:25 CET
+
+
+
+## Description
+
+
+
+In this template Rapporter will present you Multidimensional Scaling.
+
+
+
+
+
+
+
+
+### Introduction
+
+
+
+
+
+[Multidimensional-scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) is a technique which gives us a visual representation about the distances between the observations. 
+
+
+
+
+
+### MDS
+
+
+
+
+
+Below you can see a plot, that presents you the distance between the observations, which was calculated based on _Age_, _Internet usage for educational purposes (hours per day)_ and _Internet usage in leisure time (hours per day)_.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[![](plots/MDS.tpl-1.png)](plots/MDS.tpl-1-hires.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### What can be seen here?
+
+
+
+
+
+
+
+
+
+###### Outsiders
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+84 differs the most from the others, and 8 seems to be the most "common" observation, which lie nearest to all other observations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###### Outsider Pairs
+
+
+
+
+
+
+
+
+_284_ and _84_ (8.02) are the "furthest", _280_ and _1_ (0) are the "nearest" to each other.
+
+
+
+
+
+###### In General
+
+
+
+
+
+Now let's see which observations can be said statistically far/similar to each other in general. The _16_ pairs with the biggest differences and the _10_ pairs with the smallest differences will be presented. In the brackets you can see the amount of the distances between two observations.
+
+
+
+There are _17_ observations which are the most similar, and equal in the same time, that is a higher number than the wanted _16_, thus will not be reported one-by-one. Set _17_ as parameter _max.dist.num_ to check the pairs if you are interested.
+
+
+ 
+
+
+There are _318_ observations which are the most similar and equal in the same time, that is a higher number than the wanted _10_, thus will not be reported one-by-one. Set _318_ as parameter _min.dist.num_ to check the pairs if you are interested.
+
+
+
+
+
+
+
+
+## Description
+
+
+
+In this template Rapporter will present you Multidimensional Scaling.
+
+
+
+
+
+
+
+
+### Introduction
+
+
+
+
+
+[Multidimensional-scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) is a technique which gives us a visual representation about the distances between the observations. 
+
+
+
+
+
+### MDS
+
+
+
+
+
+Below you can see a plot, that presents you the distance between the observations, which was calculated based on _Age_, _Internet usage for educational purposes (hours per day)_ and _Internet usage in leisure time (hours per day)_.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[![](plots/MDS.tpl-1.png)](plots/MDS.tpl-1-hires.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### What can be seen here?
+
+
+
+
+
+
+
+
+
+###### Outsiders
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+84 differs the most from the others, and 8 seems to be the most "common" observation, which lie nearest to all other observations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###### Outsider Pairs
+
+
+
+
+
+
+
+
+_284_ and _84_ (8.02) are the "furthest", _280_ and _1_ (0) are the "nearest" to each other.
+
+
+
+
+
+###### In General
+
+
+
+
+
+Now let's see which observations can be said statistically far/similar to each other in general. The _17_ pairs with the biggest differences and the _30_ pairs with the smallest differences will be presented. In the brackets you can see the amount of the distances between two observations.
+
+
+
+According to the used variables (_Age_, _Internet usage for educational purposes (hours per day)_ and _Internet usage in leisure time (hours per day)_) the _17_ furthest pair of observations are:
+
+
+
+
+
+
+  * _284_ and _84_ (8.02)
+  * _224_ and _84_ (7.87)
+  * _230_ and _84_ (7.84)
+  * _84_ and _68_ (7.81)
+  * _463_ and _84_ (7.79)
+  * _583_ and _84_ (7.79)
+  * _582_ and _84_ (7.72)
+  * _122_ and _84_ (7.72)
+  * _460_ and _84_ (7.72)
+  * _606_ and _84_ (7.7)
+  * _607_ and _84_ (7.7)
+  * _128_ and _84_ (7.69)
+  * _253_ and _84_ (7.69)
+  * _84_ and _41_ (7.69)
+  * _269_ and _84_ (7.65)
+  * _376_ and _84_ (7.63)
+  * _506_ and _84_ (7.63)
+
+<!-- end of list -->
+
+
+
+
+
+
+
+ 
+
+
+There are _318_ observations which are the most similar and equal in the same time, that is a higher number than the wanted _30_, thus will not be reported one-by-one. Set _318_ as parameter _min.dist.num_ to check the pairs if you are interested.
+
+
+
+
+
+
+
+
+## Description
+
+
+
+In this template Rapporter will present you Multidimensional Scaling.
+
+
+
+
+
+
+
+
+### Introduction
+
+
+
+
+
+[Multidimensional-scaling](http://en.wikipedia.org/wiki/Multidimensional_scaling) is a technique which gives us a visual representation about the distances between the observations. 
+
+
+
+
+
+### MDS
+
+
+
+
+
+Below you can see a plot, that presents you the distance between the observations, which was calculated based on _drat_, _cyl_ and _mpg_.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[![](plots/MDS.tpl-2.png)](plots/MDS.tpl-2-hires.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### What can be seen here?
+
+
+
+
+
+
+
+
+
+###### Outsiders
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Honda Civic differs the most from the others, and Ferrari Dino seems to be the most "common" observation, which lie nearest to all other observations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###### Outsider Pairs
+
+
+
+
+
+
+
+
+_Honda Civic_ and _Cadillac Fleetwood_ (5.48) are the "furthest", _Mazda RX4 Wag_ and _Mazda RX4_ (0) are the "nearest" to each other.
+
+
+
+
+
+###### In General
+
+
+
+
+
+Now let's see which observations can be said statistically far/similar to each other in general. The _17_ pairs with the biggest differences and the _30_ pairs with the smallest differences will be presented. In the brackets you can see the amount of the distances between two observations.
+
+
+
+According to the used variables (_drat_, _cyl_ and _mpg_) the _17_ furthest pair of observations are:
+
+
+
+
+
+
+  * _Honda Civic_ and _Cadillac Fleetwood_ (5.48)
+  * _Honda Civic_ and _Lincoln Continental_ (5.39)
+  * _Dodge Challenger_ and _Honda Civic_ (5.25)
+  * _Toyota Corolla_ and _Cadillac Fleetwood_ (5.1)
+  * _Toyota Corolla_ and _Lincoln Continental_ (5.04)
+  * _Honda Civic_ and _Merc 450SLC_ (4.85)
+  * _Fiat 128_ and _Cadillac Fleetwood_ (4.79)
+  * _Honda Civic_ and _Merc 450SE_ (4.74)
+  * _Honda Civic_ and _Duster 360_ (4.74)
+  * _AMC Javelin_ and _Honda Civic_ (4.74)
+  * _Fiat 128_ and _Lincoln Continental_ (4.74)
+  * _Honda Civic_ and _Chrysler Imperial_ (4.68)
+  * _Honda Civic_ and _Valiant_ (4.68)
+  * _Honda Civic_ and _Merc 450SL_ (4.67)
+  * _Dodge Challenger_ and _Toyota Corolla_ (4.67)
+  * _Pontiac Firebird_ and _Honda Civic_ (4.52)
+  * _Honda Civic_ and _Hornet Sportabout_ (4.46)
+
+<!-- end of list -->
+
+
+
+
+
+
+
+ 
+
+
+According to the used variables (_drat_, _cyl_ and _mpg_) the _30_ nearest pair of observations are:
+
+
+
+
+
+
+  * _Mazda RX4 Wag_ and _Mazda RX4_ (0)
+  * _Chrysler Imperial_ and _Duster 360_ (0.08)
+  * _Merc 230_ and _Datsun 710_ (0.13)
+  * _Lincoln Continental_ and _Cadillac Fleetwood_ (0.13)
+  * _Merc 450SL_ and _Merc 450SE_ (0.15)
+  * _AMC Javelin_ and _Merc 450SLC_ (0.15)
+  * _Pontiac Firebird_ and _Hornet Sportabout_ (0.15)
+  * _AMC Javelin_ and _Chrysler Imperial_ (0.17)
+  * _AMC Javelin_ and _Duster 360_ (0.19)
+  * _Merc 450SLC_ and _Merc 450SE_ (0.2)
+  * _Merc 280C_ and _Merc 280_ (0.23)
+  * _AMC Javelin_ and _Merc 450SE_ (0.25)
+  * _Merc 450SL_ and _Hornet Sportabout_ (0.28)
+  * _Merc 280_ and _Mazda RX4_ (0.3)
+  * _Merc 280_ and _Mazda RX4 Wag_ (0.3)
+  * _Merc 450SLC_ and _Duster 360_ (0.3)
+  * _Chrysler Imperial_ and _Merc 450SLC_ (0.31)
+  * _Pontiac Firebird_ and _Merc 450SL_ (0.32)
+  * _Merc 450SLC_ and _Merc 450SL_ (0.35)
+  * _Toyota Corona_ and _Datsun 710_ (0.35)
+  * _Toyota Corolla_ and _Fiat 128_ (0.36)
+  * _AMC Javelin_ and _Merc 450SL_ (0.38)
+  * _Merc 240D_ and _Datsun 710_ (0.4)
+  * _Merc 450SE_ and _Hornet Sportabout_ (0.41)
+  * _Chrysler Imperial_ and _Merc 450SE_ (0.41)
+  * _Volvo 142E_ and _Merc 230_ (0.42)
+  * _Merc 450SE_ and _Duster 360_ (0.44)
+  * _Maserati Bora_ and _Camaro Z28_ (0.45)
+  * _Toyota Corona_ and _Merc 230_ (0.46)
+  * _Pontiac Firebird_ and _Merc 450SE_ (0.46)
+
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+
+-------
+This report was generated with [R](http://www.r-project.org/) (3.0.1) and [rapport](http://rapport-package.info/) (0.51) in _3.338_ sec on x86_64-unknown-linux-gnu platform.
+
+
+![](images/logo.png)

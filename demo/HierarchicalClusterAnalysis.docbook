@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Hierarchical Cluster Analysis" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Hierarchical Cluster Analysis</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#hca">HCA</a></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#introduction-1">Introduction</a></li>
+<li><a href="#hca-1">HCA</a></li>
+</ul></li>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#introduction-2">Introduction</a></li>
+<li><a href="#hca-2">HCA</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#description">Description</a></h2>
+<p>In this template Rapporter will present you Hierarchical Cluster Analysis.</p>
+<h3 id="introduction"><a href="#introduction">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Hierarchical_clustering">Hierarchical Cluster Analysis</a> is a data mining method which seeks to build a hierarchy of clusters. Clusters are calculated based on the distances between the observations. At the beginning each observation is assigned to be a single cluster, later in every round the most similar clusters will be joined until all observations are in one cluster. One should not mix it up with <a href="http://en.wikipedia.org/wiki/K-means_clustering">K-means Cluster Analysis</a>, which calculates the clusters based on the final numbers of them.</p>
+<h3 id="hca"><a href="#hca">HCA</a></h3>
+<p>Below you can see on the plot how the clusters were made, how the observations were paired with each other. The horizontal linkage between the vertical lines indicates the stage where two clusters joined to each other. In the bottom of the plot you can see the clustering process in an other way, for each observations the shorter lines indicate later clustering.</p>
+<p><a href="plots/HierarchicalClusterAnalysis.tpl-1-hires.png"><img src="plots/HierarchicalClusterAnalysis.tpl-1.png" /></a></p>
+<p>We can say that <em>438</em> observations have the same values on the used variables, so they were joined in the first <em>438</em> round. After that <em>40</em> times there were only made clusters with 2 observations, the first cluster that contains 3 was made in the round <em>478</em>.</p>
+<h5 id="optimal-number-of-clusters"><a href="#optimal-number-of-clusters">Optimal number of clusters</a></h5>
+<p>According to the BIC for EM initialized by hierarchical clustering for parameterized Gaussian mixture models, the optimum numbers of the clusters are <em>8</em>.</p>
+<p>Let's see how the Dendogram looks like when we the optimal number of the clusters (<em>8</em>) plotted in it.</p>
+<p><a href="plots/HierarchicalClusterAnalysis.tpl-2-hires.png"><img src="plots/HierarchicalClusterAnalysis.tpl-2.png" /></a></p>
+<h2 id="description-1"><a href="#description-1">Description</a></h2>
+<p>In this template Rapporter will present you Hierarchical Cluster Analysis.</p>
+<h3 id="introduction-1"><a href="#introduction-1">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Hierarchical_clustering">Hierarchical Cluster Analysis</a> is a data mining method which seeks to build a hierarchy of clusters. Clusters are calculated based on the distances between the observations. At the beginning each observation is assigned to be a single cluster, later in every round the most similar clusters will be joined until all observations are in one cluster. One should not mix it up with <a href="http://en.wikipedia.org/wiki/K-means_clustering">K-means Cluster Analysis</a>, which calculates the clusters based on the final numbers of them.</p>
+<h3 id="hca-1"><a href="#hca-1">HCA</a></h3>
+<p>Below you can see on the plot how the clusters were made, how the observations were paired with each other. The horizontal linkage between the vertical lines indicates the stage where two clusters joined to each other. In the bottom of the plot you can see the clustering process in an other way, for each observations the shorter lines indicate later clustering.</p>
+<p>The red boxes shows the last 30 clusters.</p>
+<p><a href="plots/HierarchicalClusterAnalysis.tpl-3-hires.png"><img src="plots/HierarchicalClusterAnalysis.tpl-3.png" /></a></p>
+<p>We can say that <em>438</em> observations have the same values on the used variables, so they were joined in the first <em>438</em> round. After that <em>40</em> times there were only made clusters with 2 observations, the first cluster that contains 3 was made in the round <em>478</em>.</p>
+<h5 id="optimal-number-of-clusters-1"><a href="#optimal-number-of-clusters-1">Optimal number of clusters</a></h5>
+<p>According to the BIC for EM initialized by hierarchical clustering for parameterized Gaussian mixture models, the optimum numbers of the clusters are <em>8</em>.</p>
+<p>Let's see how the Dendogram looks like when we the optimal number of the clusters plotted in it.</p>
+<p><a href="plots/HierarchicalClusterAnalysis.tpl-2-hires.png"><img src="plots/HierarchicalClusterAnalysis.tpl-2.png" /></a></p>
+<h2 id="description-2"><a href="#description-2">Description</a></h2>
+<p>In this template Rapporter will present you Hierarchical Cluster Analysis.</p>
+<h3 id="introduction-2"><a href="#introduction-2">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Hierarchical_clustering">Hierarchical Cluster Analysis</a> is a data mining method which seeks to build a hierarchy of clusters. Clusters are calculated based on the distances between the observations. At the beginning each observation is assigned to be a single cluster, later in every round the most similar clusters will be joined until all observations are in one cluster. One should not mix it up with <a href="http://en.wikipedia.org/wiki/K-means_clustering">K-means Cluster Analysis</a>, which calculates the clusters based on the final numbers of them.</p>
+<h3 id="hca-2"><a href="#hca-2">HCA</a></h3>
+<p>Below you can see on the plot how the clusters were made, how the observations were paired with each other. The horizontal linkage between the vertical lines indicates the stage where two clusters joined to each other. In the bottom of the plot you can see the clustering process in an other way, for each observations the shorter lines indicate later clustering.</p>
+<p>The red boxes shows the last 30 clusters.</p>
+<p><a href="plots/HierarchicalClusterAnalysis.tpl-4-hires.png"><img src="plots/HierarchicalClusterAnalysis.tpl-4.png" /></a></p>
+<p>We can say that <em>1</em> observations have the same values on the used variables, so they were joined in the first <em>1</em> round. After that <em>8</em> times there were only made clusters with 2 observations, the first cluster that contains 3 was made in the round <em>9</em>.</p>
+<h5 id="optimal-number-of-clusters-2"><a href="#optimal-number-of-clusters-2">Optimal number of clusters</a></h5>
+<p>According to the BIC for EM initialized by hierarchical clustering for parameterized Gaussian mixture models, the optimum numbers of the clusters are <em>7</em>.</p>
+<p>Let's see how the Dendogram looks like when we the optimal number of the clusters plotted in it.</p>
+<p><a href="plots/HierarchicalClusterAnalysis.tpl-5-hires.png"><img src="plots/HierarchicalClusterAnalysis.tpl-5.png" /></a></p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>4.12</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="/usr/lib/R/library/rapport/includes/images/logo.png" />
+</div>
+</body>
+</html>

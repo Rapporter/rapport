@@ -1,0 +1,141 @@
+#+TITLE: Rapport package team
+
+#+AUTHOR: Descriptive statistics
+#+DATE: 2011-04-26 20:25 CET
+
+** Description
+
+This template will return descriptive statistics of a numerical or
+frequency table of a categorical variable.
+
+*** /gender/ ("Gender")
+
+The dataset has /709/ observations with /673/ valid values (missing:
+/36/).
+
+| gender   | N     | %       | Cumul. N   | Cumul. %   |
+|----------+-------+---------+------------+------------|
+| male     | 410   | 60.92   | 410        | 60.92      |
+| female   | 263   | 39.08   | 673        | 100        |
+| Total    | 673   | 100     | 673        | 100        |
+#+CAPTION: Frequency table: Gender
+
+The most frequent value is /male/.
+
+**** Charts
+
+[[plots/Descriptives-1-hires.png][[[plots/Descriptives-1.png]]]]
+
+** Description
+
+This template will return descriptive statistics of a numerical or
+frequency table of a categorical variable.
+
+*** /age/ ("Age")
+
+The dataset has /709/ observations with /677/ valid values (missing:
+/32/).
+
+**** Base statistics
+
+| Variable   | mean    | sd      | var     |
+|------------+---------+---------+---------|
+| Age        | 24.57   | 6.849   | 46.91   |
+#+CAPTION: Descriptives: Age
+
+The [[http://en.wikipedia.org/wiki/Standard_deviation][standard
+deviation]] equals to /6.849/ (variance: /46.91/), which shows the
+unstandardized degree of
+[[http://en.wikipedia.org/wiki/Homogeneity_(statistics)][homogenity]]:
+how much variation exists from the average. The
+[[http://en.wikipedia.org/wiki/Mean][expected value]] is around /24.57/,
+somewhere between /24.06/ and /25.09/ with the standard error of
+/0.2632/.
+
+The highest value found in the dataset is /58/, which is exactly /3.625/
+times higher than the minimum (/16/). The difference between the two is
+described by the
+[[http://en.wikipedia.org/wiki/Range_(statistics)][range]]: /42/.
+
+**** Chart
+
+A [[http://en.wikipedia.org/wiki/Histogram][histogram]] visually shows
+the
+[[http://en.wikipedia.org/wiki/Probability_distribution][distribution]]
+of the dataset based on artificially allocated
+[[http://en.wikipedia.org/wiki/Statistical_frequency][frequencies]].
+Each bar represents a theoretical interval of the data, where the height
+shows the count or density.
+
+[[plots/Descriptives-2-hires.png][[[plots/Descriptives-2.png]]]]
+
+If we /suppose/ that /Age/ is not near to the
+[[http://en.wikipedia.org/wiki/Normal_distribution][normal
+distribution]] (see for example
+[[http://en.wikipedia.org/wiki/Skewness][skewness]]: /1.925/,
+[[http://en.wikipedia.org/wiki/Kurtosis][kurtosis]]: /4.463/), checking
+the median (/23/) might be a better option instead of the mean. The
+[[http://en.wikipedia.org/wiki/Interquartile_range][interquartile
+range]] (/6/) measures the statistics dispersion of the variable
+(similar to standard deviation) based on median.
+
+** Description
+
+This template will return descriptive statistics of a numerical or
+frequency table of a categorical variable.
+
+*** /hp/
+
+The dataset has /32/ observations with /32/ valid values (missing: /0/).
+
+**** Base statistics
+
+| Variable   | mean    | sd      | var    |
+|------------+---------+---------+--------|
+| hp         | 146.7   | 68.56   | 4701   |
+#+CAPTION: Descriptives: hp
+
+The [[http://en.wikipedia.org/wiki/Standard_deviation][standard
+deviation]] equals to /68.56/ (variance: /4701/), which shows the
+unstandardized degree of
+[[http://en.wikipedia.org/wiki/Homogeneity_(statistics)][homogenity]]:
+how much variation exists from the average. The
+[[http://en.wikipedia.org/wiki/Mean][expected value]] is around /146.7/,
+somewhere between /122.9/ and /170.4/ with the standard error of
+/12.12/.
+
+The highest value found in the dataset is /335/, which is exactly
+/6.442/ times higher than the minimum (/52/). The difference between the
+two is described by the
+[[http://en.wikipedia.org/wiki/Range_(statistics)][range]]: /283/.
+
+**** Chart
+
+A [[http://en.wikipedia.org/wiki/Histogram][histogram]] visually shows
+the
+[[http://en.wikipedia.org/wiki/Probability_distribution][distribution]]
+of the dataset based on artificially allocated
+[[http://en.wikipedia.org/wiki/Statistical_frequency][frequencies]].
+Each bar represents a theoretical interval of the data, where the height
+shows the count or density.
+
+[[plots/Descriptives-3-hires.png][[[plots/Descriptives-3.png]]]]
+
+If we /suppose/ that /hp/ is not near to the
+[[http://en.wikipedia.org/wiki/Normal_distribution][normal
+distribution]] (see for example
+[[http://en.wikipedia.org/wiki/Skewness][skewness]]: /0.726/,
+[[http://en.wikipedia.org/wiki/Kurtosis][kurtosis]]: /-0.1356/),
+checking the median (/123/) might be a better option instead of the
+mean. The
+[[http://en.wikipedia.org/wiki/Interquartile_range][interquartile
+range]] (/83.5/) measures the statistics dispersion of the variable
+(similar to standard deviation) based on median.
+
+--------------
+
+This report was generated with [[http://www.r-project.org/][R]] (3.0.1)
+and [[http://rapport-package.info/][rapport]] (0.51) in /1.105/ sec on
+x86\_64-unknown-linux-gnu platform.
+
+[[images/logo.png]]

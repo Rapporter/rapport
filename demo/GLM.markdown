@@ -1,0 +1,193 @@
+% Rapport package team
+% GLM
+% 2011-04-26 20:25 CET
+
+-   Description
+    -   Introduction
+
+-   Overview
+    -   Description
+        -   Introduction
+
+-   Overview
+    -   Description
+        -   Introduction
+
+-   Overview
+
+Description
+-----------
+
+In this template Rapporter will present you GLM.
+
+### Introduction
+
+[Generalized Linear Model
+(GLM)](http://en.wikipedia.org/wiki/Generalized_linear_model) is a
+generalization of the ordinary [Linear
+Regression](http://en.wikipedia.org/wiki/Linear_regression). While using
+GLM we don't need the assumption of normality for response variables.
+There are two basic ideas of the model: It allows the linear model to be
+related to the response variable via a link function and the magnitude
+of the variance of each measurement to be a function of its predicted
+value. An extinsion to the GLM is the [Hierarchical generalized linear
+model](https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model).
+
+Overview
+========
+
+Multivariate-General Linear Model was carried out, with *Internet usage
+in leisure time (hours per day)* and *Internet usage for educational
+purposes (hours per day)* as independent variables, and *Age* as a
+dependent variable. The
+[interaction](http://en.wikipedia.org/wiki/Interaction) between the
+independent variables was taken into account.
+
+                      Estimate    Std. Error    z value   Pr(\>|z|)
+  ------------------ ----------- ------------- ---------- ----------
+   **(Intercept)**      3.198       0.02122      150.7        0
+     **leisure**      -0.02021     0.005847      -3.457    0.000547
+       **edu**         0.01474     0.007586      1.944     0.05196
+   **leisure:edu**    0.004439     0.001795      2.472     0.01342
+
+  : Fitting General Linear Model: age based on *leisure* and *edu*
+
+From the table one can see that
+
+-   (Intercept) has significant effect on the dependent variable, the
+    p-value of that is 0
+-   leisure has significant effect on the dependent variable, the
+    p-value of that is 0.001
+-   leisure:edu has significant effect on the dependent variable, the
+    p-value of that is 0.013
+
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+In this template Rapporter will present you GLM.
+
+### Introduction
+
+[Generalized Linear Model
+(GLM)](http://en.wikipedia.org/wiki/Generalized_linear_model) is a
+generalization of the ordinary [Linear
+Regression](http://en.wikipedia.org/wiki/Linear_regression). While using
+GLM we don't need the assumption of normality for response variables.
+There are two basic ideas of the model: It allows the linear model to be
+related to the response variable via a link function and the magnitude
+of the variance of each measurement to be a function of its predicted
+value. An extinsion to the GLM is the [Hierarchical generalized linear
+model](https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model).
+
+Overview
+========
+
+Multivariate-General Linear Model was carried out, with *Internet usage
+in leisure time (hours per day)* and *Internet usage for educational
+purposes (hours per day)* as independent variables, and *Age* as a
+dependent variable. The
+[interaction](http://en.wikipedia.org/wiki/Interaction) between the
+independent variables wasn't taken into account.
+
+                      Estimate    Std. Error    z value   Pr(\>|z|)
+  ------------------ ----------- ------------- ---------- ----------
+   **(Intercept)**      3.163       0.01605      197.1        0
+     **leisure**       -0.0095     0.003888      -2.443    0.01455
+       **edu**         0.03071     0.003883       7.91    2.581e-15
+
+  : Fitting General Linear Model: age based on *leisure* and *edu*
+
+From the table one can see that
+
+-   (Intercept) has significant effect on the dependent variable, the
+    p-value of that is 0
+-   leisure has significant effect on the dependent variable, the
+    p-value of that is 0.015
+-   edu has significant effect on the dependent variable, the p-value of
+    that is 0
+
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+In this template Rapporter will present you GLM.
+
+### Introduction
+
+[Generalized Linear Model
+(GLM)](http://en.wikipedia.org/wiki/Generalized_linear_model) is a
+generalization of the ordinary [Linear
+Regression](http://en.wikipedia.org/wiki/Linear_regression). While using
+GLM we don't need the assumption of normality for response variables.
+There are two basic ideas of the model: It allows the linear model to be
+related to the response variable via a link function and the magnitude
+of the variance of each measurement to be a function of its predicted
+value. An extinsion to the GLM is the [Hierarchical generalized linear
+model](https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model).
+
+Overview
+========
+
+Multivariate-General Linear Model was carried out, with *Internet usage
+in leisure time (hours per day)* and *Internet usage for educational
+purposes (hours per day)* as independent variables, and *Age* as a
+dependent variable. The
+[interaction](http://en.wikipedia.org/wiki/Interaction) between the
+independent variables wasn't taken into account.
+
+                      Estimate    Std. Error    t value   Pr(\>|t|)
+  ------------------ ----------- ------------- ---------- ----------
+   **(Intercept)**     0.0422      0.0008599     49.08    4.612e-212
+     **leisure**      0.0003828    0.0002093     1.829     0.06785
+       **edu**        -0.001182    0.0001948     -6.065   2.332e-09
+
+  : Fitting General Linear Model: age based on *leisure* and *edu*
+
+From the table one can see that
+
+-   (Intercept) has significant effect on the dependent variable, the
+    p-value of that is 0
+-   edu has significant effect on the dependent variable, the p-value of
+    that is 0
+
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+* * * * *
+
+This report was generated with [R](http://www.r-project.org/) (3.0.1)
+and [rapport](http://rapport-package.info/) (0.51) in *0.681* sec on
+x86\_64-unknown-linux-gnu platform.
+
+![](images/logo.png)

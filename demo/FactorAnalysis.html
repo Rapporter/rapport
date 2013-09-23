@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Factor Analysis" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  
+  <link rel="stylesheet" href="stylesheets/base.css" />
+  <link rel="stylesheet" href="stylesheets/skeleton.css" />
+  <link rel="stylesheet" href="stylesheets/layout.css" />
+  <link rel="stylesheet" href="stylesheets/fonts.css" />
+  <link rel="stylesheet" href="stylesheets/colorbox.css" />
+  <link rel="stylesheet" href="stylesheets/custom.css" />
+  
+  <link rel="shortcut icon" href="images/favicon.gif" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+  
+  <script type="text/javascript" src="javascripts/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="javascripts/tabs.js"></script>  <!--remove-->
+  <script type="text/javascript" src="javascripts/custom.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.colorbox.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Factor Analysis</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<h2 id="description">Description</h2>
+<p>In this template Rapporter will present you Factor Analysis.</p>
+<h3 id="introduction">Introduction</h3>
+<p><a href="http://en.wikipedia.org/wiki/Factor_analysis">Factor Analysis</a> is applied as a data reduction or structure detection method. There are two main applications of it: reducing the number of variables and detecting structure in the relationships between variables, thus explore latent structure behind the data, classify variables.</p>
+<h6 id="determining-the-number-of-the-factors">Determining the number of the factors</h6>
+<p><a href="plots/FactorAnalysis.tpl-1-hires.png"><img src="plots/FactorAnalysis.tpl-1.png" /></a></p>
+<h6 id="eigenvalues">Eigenvalues</h6>
+<p>You can find the eigenvalues of the possible factors in the following table (<em>2</em> factors were produced as you set):</p>
+<table>
+<col width="22%" />
+<col width="18%" />
+<thead>
+<tr class="header">
+<th align="center">Factor Number</th>
+<th align="center">Eigenvalues</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>1</strong></td>
+<td align="center"><strong>2.461</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>2</strong></td>
+<td align="center"><strong>1.273</strong></td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">0.1485</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">0.1176</td>
+</tr>
+</tbody>
+</table>
+<h4 id="factor-loadings">Factor loadings</h4>
+<p>At the next step let's check the factor loadings. They mean that how deep the impact of a factor for the variables. We emphasized the cells when the explained is higher than 30% of the whole variance.</p>
+<table>
+<col width="15%" />
+<col width="16%" />
+<col width="16%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">ML1</th>
+<th align="center">ML2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>carb</strong></td>
+<td align="center"><strong>0.8723</strong></td>
+<td align="center"><strong>0.3756</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>gear</strong></td>
+<td align="center">-0.08811</td>
+<td align="center"><strong>0.9343</strong></td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>mpg</strong></td>
+<td align="center"><strong>-0.8197</strong></td>
+<td align="center"><strong>0.4368</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>cyl</strong></td>
+<td align="center"><strong>0.7988</strong></td>
+<td align="center"><strong>-0.452</strong></td>
+</tr>
+</tbody>
+</table>
+<p>So it can be said that</p>
+<ul>
+<li>ML1 is a latent factor of carb</li>
+<li>ML1 is a latent factor of mpg</li>
+<li>ML1 is a latent factor of cyl</li>
+<li>ML2 is a latent factor of carb</li>
+<li>ML2 is a latent factor of gear</li>
+<li>ML2 is a latent factor of mpg</li>
+<li>ML2 is a latent factor of cyl</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>From them in the cases of the <em>ML1's impact on mpg</em> and <em>ML2's impact on cyl</em>, we can say they are negative effects.</p>
+<h4 id="uniquenesses">Uniquenesses</h4>
+<p>At last but not least let us say some words about the not explained part of the variables. There are two statistics which help us quantifying this concept: Communality and Uniqueness. They are in a really strong relationship, because Uniqueness is the variability of a variable minus its Communality. The first table contains the Uniqunesses, the second the Communalities of the variables:</p>
+<table>
+<col width="15%" />
+<col width="19%" />
+<col width="20%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Uniqunesses</th>
+<th align="center">Communalities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>carb</strong></td>
+<td align="center">0.09805</td>
+<td align="center">0.902</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>gear</strong></td>
+<td align="center">0.1193</td>
+<td align="center">0.8807</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>mpg</strong></td>
+<td align="center">0.1374</td>
+<td align="center">0.8626</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>cyl</strong></td>
+<td align="center">0.1576</td>
+<td align="center">0.8424</td>
+</tr>
+</tbody>
+</table>
+<p>We can see from the table that variable cyl has the highest Uniqueness, so could be explained the least by the factors and variable carb variance's was explained the most, because it has the lowest Uniqueness. From the communalities we can draw the same conclusion.</p>
+<h2 id="description-1">Description</h2>
+<p>In this template Rapporter will present you Factor Analysis.</p>
+<h3 id="introduction-1">Introduction</h3>
+<p><a href="http://en.wikipedia.org/wiki/Factor_analysis">Factor Analysis</a> is applied as a data reduction or structure detection method. There are two main applications of it: reducing the number of variables and detecting structure in the relationships between variables, thus explore latent structure behind the data, classify variables.</p>
+<h6 id="eigenvalues-1">Eigenvalues</h6>
+<p>You can find the eigenvalues of the possible factors in the following table (<em>3</em> factors were produced as you set):</p>
+<table>
+<col width="22%" />
+<col width="18%" />
+<thead>
+<tr class="header">
+<th align="center">Factor Number</th>
+<th align="center">Eigenvalues</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>1</strong></td>
+<td align="center"><strong>2.461</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>2</strong></td>
+<td align="center"><strong>1.273</strong></td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>3</strong></td>
+<td align="center"><strong>0.1485</strong></td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">0.1176</td>
+</tr>
+</tbody>
+</table>
+<h4 id="factor-loadings-1">Factor loadings</h4>
+<p>At the next step let's check the factor loadings. They mean that how deep the impact of a factor for the variables. We emphasized the cells when the explained is higher than 30% of the whole variance.</p>
+<table>
+<col width="15%" />
+<col width="16%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">ML1</th>
+<th align="center">ML2</th>
+<th align="center">ML3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>carb</strong></td>
+<td align="center"><strong>0.8771</strong></td>
+<td align="center"><strong>0.3502</strong></td>
+<td align="center">-0.001772</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>gear</strong></td>
+<td align="center">-0.0595</td>
+<td align="center"><strong>0.9317</strong></td>
+<td align="center">-0.005685</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>mpg</strong></td>
+<td align="center"><strong>-0.8132</strong></td>
+<td align="center"><strong>0.4641</strong></td>
+<td align="center">0.0972</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>cyl</strong></td>
+<td align="center"><strong>0.7917</strong></td>
+<td align="center"><strong>-0.4774</strong></td>
+<td align="center">0.1361</td>
+</tr>
+</tbody>
+</table>
+<p>So it can be said that</p>
+<ul>
+<li>ML1 is a latent factor of carb</li>
+<li>ML1 is a latent factor of mpg</li>
+<li>ML1 is a latent factor of cyl</li>
+<li>ML2 is a latent factor of carb</li>
+<li>ML2 is a latent factor of gear</li>
+<li>ML2 is a latent factor of mpg</li>
+<li>ML2 is a latent factor of cyl</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>From them in the cases of the <em>ML1's impact on mpg</em> and <em>ML2's impact on cyl</em>, we can say they are negative effects.</p>
+<h4 id="uniquenesses-1">Uniquenesses</h4>
+<p>At last but not least let us say some words about the not explained part of the variables. There are two statistics which help us quantifying this concept: Communality and Uniqueness. They are in a really strong relationship, because Uniqueness is the variability of a variable minus its Communality. The first table contains the Uniqunesses, the second the Communalities of the variables:</p>
+<table>
+<col width="15%" />
+<col width="19%" />
+<col width="20%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Uniqunesses</th>
+<th align="center">Communalities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>carb</strong></td>
+<td align="center">0.1081</td>
+<td align="center">0.8919</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>gear</strong></td>
+<td align="center">0.1283</td>
+<td align="center">0.8717</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>mpg</strong></td>
+<td align="center">0.1138</td>
+<td align="center">0.8862</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>cyl</strong></td>
+<td align="center">0.1268</td>
+<td align="center">0.8732</td>
+</tr>
+</tbody>
+</table>
+<p>We can see from the table that variable gear has the highest Uniqueness, so could be explained the least by the factors and variable carb variance's was explained the most, because it has the lowest Uniqueness. From the communalities we can draw the same conclusion.</p>
+<h2 id="description-2">Description</h2>
+<p>In this template Rapporter will present you Factor Analysis.</p>
+<p>Your request cannot be implemented, because there are the same number of variables (<em>5</em>) like the number of the requested factors (<em>5</em>) . Please set the number of the factors to maximum <em>4</em> with the same number of the variables or extend the number of those variables at least to <em>6</em>.</p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>1.479</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" />
+</div>
+<p>
+  Logo and design: &copy; 2012 <i>rapport</i> Development Team | License (<a href="http://www.gnu.org/licenses/agpl.html" target="_blank">AGPL3</a>) | Fork on <a href="https://github.com/rapporter/rapport" target="_blank">GitHub</a> | Styled with <a href="http://www.getskeleton.com/" target="_blank">skeleton</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="K-means cluster" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  
+  <link rel="stylesheet" href="stylesheets/base.css" />
+  <link rel="stylesheet" href="stylesheets/skeleton.css" />
+  <link rel="stylesheet" href="stylesheets/layout.css" />
+  <link rel="stylesheet" href="stylesheets/fonts.css" />
+  <link rel="stylesheet" href="stylesheets/colorbox.css" />
+  <link rel="stylesheet" href="stylesheets/custom.css" />
+  
+  <link rel="shortcut icon" href="images/favicon.gif" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+  
+  <script type="text/javascript" src="javascripts/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="javascripts/tabs.js"></script>  <!--remove-->
+  <script type="text/javascript" src="javascripts/custom.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.colorbox.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">K-means cluster</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<h2 id="description">Description</h2>
+<p>K-means clustering with automatically estimated number of clusters</p>
+<h4 id="introduction">Introduction</h4>
+<p><a href="http://en.wikipedia.org/wiki/K-means_clustering">K-means Clustering</a> is a specific and one of the most widespread method of <a href="http://en.wikipedia.org/wiki/Cluster_analysis">clustering</a>. With clustering we want to divide our data into groups, which in the objects are similar to each other. K-means clustering is specified in the way, here we set the number of groups we want to make. In our case we will take into account the following variables: <em>Age</em>, <em>Internet usage for educational purposes (hours per day)</em> and <em>Internet usage in leisure time (hours per day)</em>, to find out which observations are the nearest to each other.</p>
+<h4 id="references">References</h4>
+<p>J. B. MacQueen (1967). <em>&quot;Some Methods for classification and Analysis of Multivariate Observations, Proceedings of 5-th Berkeley Symposium on Mathematical Statistics and Probability&quot;</em>. 1:281-297</p>
+<h4 id="determining-the-number-of-clusters">Determining the number of clusters</h4>
+<p>As it was mentioned above, the speciality of the K-means Cluster method is to set the number of groups we want to produce.</p>
+<p>Let's see how to decide which is the ideal number of them!</p>
+<p><a href="plots/KMeansCluster.tpl-1-hires.png"><img src="plots/KMeansCluster.tpl-1.png" /></a></p>
+<p>We can figure out that, as we see how much the Within groups sum of squares decreases if we set a higher number of the groups. So the smaller the difference the smaller the gain we can do with increasing the number of the clusters (thus in this case the larger decreasing means the bigger gain).</p>
+<p>The ideal number of clusters seems to be <em>2</em>.</p>
+<h4 id="cluster-means">Cluster means</h4>
+<p>The method of the K-means clustering starts with the step to set k number of centorids which could be the center of the groups we want to form. After that there comes several iterations, meanwhile the ideal centers are being calculated.</p>
+<p>The centroids are the observations which are the nearest in average to all the other observations of their group. But it could be also interesting which are the typical values of the clusters! One way to figure out these typical values is to see the group means. The <em>2</em> cluster averages are:</p>
+<table>
+<col width="22%" />
+<col width="11%" />
+<col width="9%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">age</th>
+<th align="center">edu</th>
+<th align="center">leisure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><strong>1.Cluster</strong></td>
+<td align="center">0.4092</td>
+<td align="center">1.285</td>
+<td align="center">0.9275</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>2.Cluster</strong></td>
+<td align="center">-0.1251</td>
+<td align="center">-0.393</td>
+<td align="center">-0.2837</td>
+</tr>
+</tbody>
+</table>
+<p>The size of the above clusters are: <em>141</em> and <em>461</em>.</p>
+<h4 id="results">Results</h4>
+<p>On the chart below we can see the produced groups. To distinct which observation is related to which cluster each of the objects from the same groups have the same figure and there is a circle which shows the border of the clusters.</p>
+<p><a href="plots/KMeansCluster.tpl-2-hires.png"><img src="plots/KMeansCluster.tpl-2.png" /></a></p>
+<h2 id="description-1">Description</h2>
+<p>K-means clustering with automatically estimated number of clusters</p>
+<h4 id="introduction-1">Introduction</h4>
+<p><a href="http://en.wikipedia.org/wiki/K-means_clustering">K-means Clustering</a> is a specific and one of the most widespread method of <a href="http://en.wikipedia.org/wiki/Cluster_analysis">clustering</a>. With clustering we want to divide our data into groups, which in the objects are similar to each other. K-means clustering is specified in the way, here we set the number of groups we want to make. In our case we will take into account the following variables: <em>drat</em>, <em>cyl</em>, <em>wt</em> and <em>mpg</em>, to find out which observations are the nearest to each other.</p>
+<h4 id="references-1">References</h4>
+<p>J. B. MacQueen (1967). <em>&quot;Some Methods for classification and Analysis of Multivariate Observations, Proceedings of 5-th Berkeley Symposium on Mathematical Statistics and Probability&quot;</em>. 1:281-297</p>
+<h4 id="determining-the-number-of-clusters-1">Determining the number of clusters</h4>
+<p>As it was mentioned above, the speciality of the K-means Cluster method is to set the number of groups we want to produce.</p>
+<p>Let's see how to decide which is the ideal number of them!</p>
+<p><a href="plots/KMeansCluster.tpl-3-hires.png"><img src="plots/KMeansCluster.tpl-3.png" /></a></p>
+<p>We can figure out that, as we see how much the Within groups sum of squares decreases if we set a higher number of the groups. So the smaller the difference the smaller the gain we can do with increasing the number of the clusters (thus in this case the larger decreasing means the bigger gain).</p>
+<p>The ideal number of clusters seems to be <em>2</em>.</p>
+<h4 id="cluster-means-1">Cluster means</h4>
+<p>The method of the K-means clustering starts with the step to set k number of centorids which could be the center of the groups we want to form. After that there comes several iterations, meanwhile the ideal centers are being calculated.</p>
+<p>The centroids are the observations which are the nearest in average to all the other observations of their group. But it could be also interesting which are the typical values of the clusters! One way to figure out these typical values is to see the group means. The <em>2</em> cluster averages are:</p>
+<table>
+<col width="22%" />
+<col width="11%" />
+<col width="9%" />
+<col width="11%" />
+<col width="11%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">drat</th>
+<th align="center">cyl</th>
+<th align="center">wt</th>
+<th align="center">mpg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><strong>1.Cluster</strong></td>
+<td align="center">0.838</td>
+<td align="center">-1.053</td>
+<td align="center">-0.8794</td>
+<td align="center">0.946</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>2.Cluster</strong></td>
+<td align="center">-0.4904</td>
+<td align="center">0.6649</td>
+<td align="center">0.3078</td>
+<td align="center">-0.5118</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>3.Cluster</strong></td>
+<td align="center">-1.016</td>
+<td align="center">1.015</td>
+<td align="center">2.169</td>
+<td align="center">-1.37</td>
+</tr>
+</tbody>
+</table>
+<p>The size of the above clusters are: <em>13</em>, <em>16</em> and <em>3</em>.</p>
+<h4 id="results-1">Results</h4>
+<p>On the chart below we can see the produced groups. To distinct which observation is related to which cluster each of the objects from the same groups have the same figure and there is a circle which shows the border of the clusters.</p>
+<p><a href="plots/KMeansCluster.tpl-4-hires.png"><img src="plots/KMeansCluster.tpl-4.png" /></a></p>
+<h2 id="description-2">Description</h2>
+<p>K-means clustering with automatically estimated number of clusters</p>
+<h4 id="introduction-2">Introduction</h4>
+<p><a href="http://en.wikipedia.org/wiki/K-means_clustering">K-means Clustering</a> is a specific and one of the most widespread method of <a href="http://en.wikipedia.org/wiki/Cluster_analysis">clustering</a>. With clustering we want to divide our data into groups, which in the objects are similar to each other. K-means clustering is specified in the way, here we set the number of groups we want to make. In our case we will take into account the following variables: <em>drat</em>, <em>cyl</em>, <em>wt</em> and <em>mpg</em>, to find out which observations are the nearest to each other.</p>
+<h4 id="references-2">References</h4>
+<p>J. B. MacQueen (1967). <em>&quot;Some Methods for classification and Analysis of Multivariate Observations, Proceedings of 5-th Berkeley Symposium on Mathematical Statistics and Probability&quot;</em>. 1:281-297</p>
+<h4 id="determining-the-number-of-clusters-2">Determining the number of clusters</h4>
+<p>As it was mentioned above, the speciality of the K-means Cluster method is to set the number of groups we want to produce.</p>
+<p>As you set, there will be a <em>7</em>-means cluster analysis provided.</p>
+<h4 id="cluster-means-2">Cluster means</h4>
+<p>The method of the K-means clustering starts with the step to set k number of centorids which could be the center of the groups we want to form. After that there comes several iterations, meanwhile the ideal centers are being calculated.</p>
+<p>The centroids are the observations which are the nearest in average to all the other observations of their group. But it could be also interesting which are the typical values of the clusters! One way to figure out these typical values is to see the group means. The cluster averages are:</p>
+<table>
+<col width="22%" />
+<col width="11%" />
+<col width="11%" />
+<col width="12%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">drat</th>
+<th align="center">cyl</th>
+<th align="center">wt</th>
+<th align="center">mpg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><strong>1.Cluster</strong></td>
+<td align="center">-1.265</td>
+<td align="center">-0.105</td>
+<td align="center">0.1229</td>
+<td align="center">-0.05652</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>2.Cluster</strong></td>
+<td align="center">-0.8294</td>
+<td align="center">1.015</td>
+<td align="center">0.8644</td>
+<td align="center">-0.837</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>3.Cluster</strong></td>
+<td align="center">0.3898</td>
+<td align="center">-1.225</td>
+<td align="center">-0.04829</td>
+<td align="center">0.5823</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>4.Cluster</strong></td>
+<td align="center">0.5925</td>
+<td align="center">0.08166</td>
+<td align="center">-0.1684</td>
+<td align="center">-0.1671</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>5.Cluster</strong></td>
+<td align="center">0.8247</td>
+<td align="center">-1.225</td>
+<td align="center">-1.376</td>
+<td align="center">1.81</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>6.Cluster</strong></td>
+<td align="center">2.026</td>
+<td align="center">-1.225</td>
+<td align="center">-1.369</td>
+<td align="center">1.346</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>7.Cluster</strong></td>
+<td align="center">0.5426</td>
+<td align="center">-1.225</td>
+<td align="center">-0.7109</td>
+<td align="center">0.3002</td>
+</tr>
+</tbody>
+</table>
+<p>The size of the above clusters are: <em>2</em>, <em>13</em>, <em>2</em>, <em>6</em>, <em>4</em>, <em>2</em> and <em>3</em>.</p>
+<h4 id="results-2">Results</h4>
+<p>On the chart below we can see the produced groups. To distinct which observation is related to which cluster each of the objects from the same groups have the same figure and there is a circle which shows the border of the clusters.</p>
+<p><a href="plots/KMeansCluster.tpl-5-hires.png"><img src="plots/KMeansCluster.tpl-5.png" /></a></p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>8.181</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" />
+</div>
+<p>
+  Logo and design: &copy; 2012 <i>rapport</i> Development Team | License (<a href="http://www.gnu.org/licenses/agpl.html" target="_blank">AGPL3</a>) | Fork on <a href="https://github.com/rapporter/rapport" target="_blank">GitHub</a> | Styled with <a href="http://www.getskeleton.com/" target="_blank">skeleton</a>
+</p>
+</body>
+</html>

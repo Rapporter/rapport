@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Principal Component Analysis" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  
+  <link rel="stylesheet" href="stylesheets/base.css" />
+  <link rel="stylesheet" href="stylesheets/skeleton.css" />
+  <link rel="stylesheet" href="stylesheets/layout.css" />
+  <link rel="stylesheet" href="stylesheets/fonts.css" />
+  <link rel="stylesheet" href="stylesheets/colorbox.css" />
+  <link rel="stylesheet" href="stylesheets/custom.css" />
+  
+  <link rel="shortcut icon" href="images/favicon.gif" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+  
+  <script type="text/javascript" src="javascripts/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="javascripts/tabs.js"></script>  <!--remove-->
+  <script type="text/javascript" src="javascripts/custom.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.colorbox.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Principal Component Analysis</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<h2 id="description">Description</h2>
+<p>In this template Rapporter will present you Principal Component Analysis.</p>
+<h3 id="introduction">Introduction</h3>
+<p><a href="https://en.wikipedia.org/wiki/Principal_component_analysis">Principal Component Analysis</a> is a dimension reduction method. It produces linearly independent principal components using the variances of the observations in a set of variables.</p>
+<h3 id="results">Results</h3>
+<table>
+<col width="40%" />
+<col width="9%" />
+<col width="11%" />
+<col width="11%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">PC1</th>
+<th align="center">PC2</th>
+<th align="center">PC3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Standard deviation</strong></td>
+<td align="center">6.298</td>
+<td align="center">1.35</td>
+<td align="center">0.9088</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Proportion of Variance</strong></td>
+<td align="center">0.9354</td>
+<td align="center">0.04298</td>
+<td align="center">0.01947</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Cumulative Proportion</strong></td>
+<td align="center">0.9354</td>
+<td align="center">0.9783</td>
+<td align="center">0.9978</td>
+</tr>
+</tbody>
+</table>
+<p>From the table above one can see that the first <em>3</em> Principal Components contains the <em>93.535 %</em>, <em>4.298 %</em> and <em>1.947 %</em> of the variances, so together the 99.78 % of that.</p>
+<h5 id="visual-representation">Visual representation</h5>
+<p>It could be informative to see visually how the observations lies on these components. On that two dimensional plot below, where the axes are the components which contains the two most variances, you can see (the red vectors) the effect of the variables as well.</p>
+<p><a href="plots/PCA.tpl-1-hires.png"><img src="plots/PCA.tpl-1.png" /></a></p>
+<h4 id="rotation">Rotation</h4>
+<p>As you wanted to check the Rotation matrix let us present that for you:</p>
+<table>
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">PC1</th>
+<th align="center">PC2</th>
+<th align="center">PC3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>carb</strong></td>
+<td align="center">-0.1486</td>
+<td align="center"><strong>0.9728</strong></td>
+<td align="center">-0.08587</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>mpg</strong></td>
+<td align="center"><strong>0.9557</strong></td>
+<td align="center">0.1614</td>
+<td align="center">0.2433</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>cyl</strong></td>
+<td align="center">-0.2476</td>
+<td align="center">0.07389</td>
+<td align="center"><strong>0.9502</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>drat</strong></td>
+<td align="center">0.05777</td>
+<td align="center">0.1488</td>
+<td align="center">-0.1745</td>
+</tr>
+</tbody>
+</table>
+<p>The cells written in bold shows which components explain the most variances of the variables, with the help of them we can draw the following conclusion:</p>
+<ul>
+<li>PC1 is a principal component of mpg</li>
+<li>PC2 is a principal component of carb</li>
+<li>PC3 is a principal component of cyl</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+<p>We can say that none of these impacts are negative.</p>
+<h2 id="description-1">Description</h2>
+<p>In this template Rapporter will present you Principal Component Analysis.</p>
+<h3 id="introduction-1">Introduction</h3>
+<p><a href="https://en.wikipedia.org/wiki/Principal_component_analysis">Principal Component Analysis</a> is a dimension reduction method. It produces linearly independent principal components using the variances of the observations in a set of variables.</p>
+<h3 id="results-1">Results</h3>
+<table>
+<col width="40%" />
+<col width="9%" />
+<col width="11%" />
+<col width="11%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">PC1</th>
+<th align="center">PC2</th>
+<th align="center">PC3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Standard deviation</strong></td>
+<td align="center">6.298</td>
+<td align="center">1.35</td>
+<td align="center">0.9088</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Proportion of Variance</strong></td>
+<td align="center">0.9354</td>
+<td align="center">0.04298</td>
+<td align="center">0.01947</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Cumulative Proportion</strong></td>
+<td align="center">0.9354</td>
+<td align="center">0.9783</td>
+<td align="center">0.9978</td>
+</tr>
+</tbody>
+</table>
+<p>From the table above one can see that the first <em>3</em> Principal Components contains the <em>93.535 %</em>, <em>4.298 %</em> and <em>1.947 %</em> of the variances, so together the 99.78 % of that.</p>
+<h5 id="visual-representation-1">Visual representation</h5>
+<p>It could be informative to see visually how the observations lies on these components. On that two dimensional plot below, where the axes are the components which contains the two most variances, you can see (the red vectors) the effect of the variables as well.</p>
+<p><a href="plots/PCA.tpl-1-hires.png"><img src="plots/PCA.tpl-1.png" /></a></p>
+<h4 id="rotation-1">Rotation</h4>
+<p>As you wanted to check the Rotation matrix let us present that for you:</p>
+<table>
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">PC1</th>
+<th align="center">PC2</th>
+<th align="center">PC3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>carb</strong></td>
+<td align="center">-0.1486</td>
+<td align="center"><strong>0.9728</strong></td>
+<td align="center">-0.08587</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>mpg</strong></td>
+<td align="center"><strong>0.9557</strong></td>
+<td align="center">0.1614</td>
+<td align="center">0.2433</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>cyl</strong></td>
+<td align="center">-0.2476</td>
+<td align="center">0.07389</td>
+<td align="center"><strong>0.9502</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>drat</strong></td>
+<td align="center">0.05777</td>
+<td align="center">0.1488</td>
+<td align="center">-0.1745</td>
+</tr>
+</tbody>
+</table>
+<p>The cells written in bold shows which components explain the most variances of the variables, with the help of them we can draw the following conclusion:</p>
+<ul>
+<li>PC1 is a principal component of mpg</li>
+<li>PC2 is a principal component of carb</li>
+<li>PC3 is a principal component of cyl</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+<p>We can say that none of these impacts are negative.</p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>0.891</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" />
+</div>
+<p>
+  Logo and design: &copy; 2012 <i>rapport</i> Development Team | License (<a href="http://www.gnu.org/licenses/agpl.html" target="_blank">AGPL3</a>) | Fork on <a href="https://github.com/rapporter/rapport" target="_blank">GitHub</a> | Styled with <a href="http://www.getskeleton.com/" target="_blank">skeleton</a>
+</p>
+</body>
+</html>

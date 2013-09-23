@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Multidimensional Scaling" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Multidimensional Scaling</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#mds">MDS</a></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#introduction-1">Introduction</a></li>
+<li><a href="#mds-1">MDS</a></li>
+</ul></li>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#introduction-2">Introduction</a></li>
+<li><a href="#mds-2">MDS</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#description">Description</a></h2>
+<p>In this template Rapporter will present you Multidimensional Scaling.</p>
+<h3 id="introduction"><a href="#introduction">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Multidimensional_scaling">Multidimensional-scaling</a> is a technique which gives us a visual representation about the distances between the observations.</p>
+<h3 id="mds"><a href="#mds">MDS</a></h3>
+<p>Below you can see a plot, that presents you the distance between the observations, which was calculated based on <em>Age</em>, <em>Internet usage for educational purposes (hours per day)</em> and <em>Internet usage in leisure time (hours per day)</em>.</p>
+<p><a href="plots/MDS.tpl-1-hires.png"><img src="plots/MDS.tpl-1.png" /></a></p>
+<h5 id="what-can-be-seen-here"><a href="#what-can-be-seen-here">What can be seen here?</a></h5>
+<h6 id="outsiders"><a href="#outsiders">Outsiders</a></h6>
+<p>84 differs the most from the others, and 8 seems to be the most &quot;common&quot; observation, which lie nearest to all other observations.</p>
+<h6 id="outsider-pairs"><a href="#outsider-pairs">Outsider Pairs</a></h6>
+<p><em>284</em> and <em>84</em> (8.02) are the &quot;furthest&quot;, <em>280</em> and <em>1</em> (0) are the &quot;nearest&quot; to each other.</p>
+<h6 id="in-general"><a href="#in-general">In General</a></h6>
+<p>Now let's see which observations can be said statistically far/similar to each other in general. The <em>16</em> pairs with the biggest differences and the <em>10</em> pairs with the smallest differences will be presented. In the brackets you can see the amount of the distances between two observations.</p>
+<p>There are <em>17</em> observations which are the most similar, and equal in the same time, that is a higher number than the wanted <em>16</em>, thus will not be reported one-by-one. Set <em>17</em> as parameter <em>max.dist.num</em> to check the pairs if you are interested.</p>
+<p>There are <em>318</em> observations which are the most similar and equal in the same time, that is a higher number than the wanted <em>10</em>, thus will not be reported one-by-one. Set <em>318</em> as parameter <em>min.dist.num</em> to check the pairs if you are interested.</p>
+<h2 id="description-1"><a href="#description-1">Description</a></h2>
+<p>In this template Rapporter will present you Multidimensional Scaling.</p>
+<h3 id="introduction-1"><a href="#introduction-1">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Multidimensional_scaling">Multidimensional-scaling</a> is a technique which gives us a visual representation about the distances between the observations.</p>
+<h3 id="mds-1"><a href="#mds-1">MDS</a></h3>
+<p>Below you can see a plot, that presents you the distance between the observations, which was calculated based on <em>Age</em>, <em>Internet usage for educational purposes (hours per day)</em> and <em>Internet usage in leisure time (hours per day)</em>.</p>
+<p><a href="plots/MDS.tpl-1-hires.png"><img src="plots/MDS.tpl-1.png" /></a></p>
+<h5 id="what-can-be-seen-here-1"><a href="#what-can-be-seen-here-1">What can be seen here?</a></h5>
+<h6 id="outsiders-1"><a href="#outsiders-1">Outsiders</a></h6>
+<p>84 differs the most from the others, and 8 seems to be the most &quot;common&quot; observation, which lie nearest to all other observations.</p>
+<h6 id="outsider-pairs-1"><a href="#outsider-pairs-1">Outsider Pairs</a></h6>
+<p><em>284</em> and <em>84</em> (8.02) are the &quot;furthest&quot;, <em>280</em> and <em>1</em> (0) are the &quot;nearest&quot; to each other.</p>
+<h6 id="in-general-1"><a href="#in-general-1">In General</a></h6>
+<p>Now let's see which observations can be said statistically far/similar to each other in general. The <em>17</em> pairs with the biggest differences and the <em>30</em> pairs with the smallest differences will be presented. In the brackets you can see the amount of the distances between two observations.</p>
+<p>According to the used variables (<em>Age</em>, <em>Internet usage for educational purposes (hours per day)</em> and <em>Internet usage in leisure time (hours per day)</em>) the <em>17</em> furthest pair of observations are:</p>
+<ul>
+<li><em>284</em> and <em>84</em> (8.02)</li>
+<li><em>224</em> and <em>84</em> (7.87)</li>
+<li><em>230</em> and <em>84</em> (7.84)</li>
+<li><em>84</em> and <em>68</em> (7.81)</li>
+<li><em>463</em> and <em>84</em> (7.79)</li>
+<li><em>583</em> and <em>84</em> (7.79)</li>
+<li><em>582</em> and <em>84</em> (7.72)</li>
+<li><em>122</em> and <em>84</em> (7.72)</li>
+<li><em>460</em> and <em>84</em> (7.72)</li>
+<li><em>606</em> and <em>84</em> (7.7)</li>
+<li><em>607</em> and <em>84</em> (7.7)</li>
+<li><em>128</em> and <em>84</em> (7.69)</li>
+<li><em>253</em> and <em>84</em> (7.69)</li>
+<li><em>84</em> and <em>41</em> (7.69)</li>
+<li><em>269</em> and <em>84</em> (7.65)</li>
+<li><em>376</em> and <em>84</em> (7.63)</li>
+<li><em>506</em> and <em>84</em> (7.63)</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+<p>There are <em>318</em> observations which are the most similar and equal in the same time, that is a higher number than the wanted <em>30</em>, thus will not be reported one-by-one. Set <em>318</em> as parameter <em>min.dist.num</em> to check the pairs if you are interested.</p>
+<h2 id="description-2"><a href="#description-2">Description</a></h2>
+<p>In this template Rapporter will present you Multidimensional Scaling.</p>
+<h3 id="introduction-2"><a href="#introduction-2">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Multidimensional_scaling">Multidimensional-scaling</a> is a technique which gives us a visual representation about the distances between the observations.</p>
+<h3 id="mds-2"><a href="#mds-2">MDS</a></h3>
+<p>Below you can see a plot, that presents you the distance between the observations, which was calculated based on <em>drat</em>, <em>cyl</em> and <em>mpg</em>.</p>
+<p><a href="plots/MDS.tpl-2-hires.png"><img src="plots/MDS.tpl-2.png" /></a></p>
+<h5 id="what-can-be-seen-here-2"><a href="#what-can-be-seen-here-2">What can be seen here?</a></h5>
+<h6 id="outsiders-2"><a href="#outsiders-2">Outsiders</a></h6>
+<p>Honda Civic differs the most from the others, and Ferrari Dino seems to be the most &quot;common&quot; observation, which lie nearest to all other observations.</p>
+<h6 id="outsider-pairs-2"><a href="#outsider-pairs-2">Outsider Pairs</a></h6>
+<p><em>Honda Civic</em> and <em>Cadillac Fleetwood</em> (5.48) are the &quot;furthest&quot;, <em>Mazda RX4 Wag</em> and <em>Mazda RX4</em> (0) are the &quot;nearest&quot; to each other.</p>
+<h6 id="in-general-2"><a href="#in-general-2">In General</a></h6>
+<p>Now let's see which observations can be said statistically far/similar to each other in general. The <em>17</em> pairs with the biggest differences and the <em>30</em> pairs with the smallest differences will be presented. In the brackets you can see the amount of the distances between two observations.</p>
+<p>According to the used variables (<em>drat</em>, <em>cyl</em> and <em>mpg</em>) the <em>17</em> furthest pair of observations are:</p>
+<ul>
+<li><em>Honda Civic</em> and <em>Cadillac Fleetwood</em> (5.48)</li>
+<li><em>Honda Civic</em> and <em>Lincoln Continental</em> (5.39)</li>
+<li><em>Dodge Challenger</em> and <em>Honda Civic</em> (5.25)</li>
+<li><em>Toyota Corolla</em> and <em>Cadillac Fleetwood</em> (5.1)</li>
+<li><em>Toyota Corolla</em> and <em>Lincoln Continental</em> (5.04)</li>
+<li><em>Honda Civic</em> and <em>Merc 450SLC</em> (4.85)</li>
+<li><em>Fiat 128</em> and <em>Cadillac Fleetwood</em> (4.79)</li>
+<li><em>Honda Civic</em> and <em>Merc 450SE</em> (4.74)</li>
+<li><em>Honda Civic</em> and <em>Duster 360</em> (4.74)</li>
+<li><em>AMC Javelin</em> and <em>Honda Civic</em> (4.74)</li>
+<li><em>Fiat 128</em> and <em>Lincoln Continental</em> (4.74)</li>
+<li><em>Honda Civic</em> and <em>Chrysler Imperial</em> (4.68)</li>
+<li><em>Honda Civic</em> and <em>Valiant</em> (4.68)</li>
+<li><em>Honda Civic</em> and <em>Merc 450SL</em> (4.67)</li>
+<li><em>Dodge Challenger</em> and <em>Toyota Corolla</em> (4.67)</li>
+<li><em>Pontiac Firebird</em> and <em>Honda Civic</em> (4.52)</li>
+<li><em>Honda Civic</em> and <em>Hornet Sportabout</em> (4.46)</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+<p>According to the used variables (<em>drat</em>, <em>cyl</em> and <em>mpg</em>) the <em>30</em> nearest pair of observations are:</p>
+<ul>
+<li><em>Mazda RX4 Wag</em> and <em>Mazda RX4</em> (0)</li>
+<li><em>Chrysler Imperial</em> and <em>Duster 360</em> (0.08)</li>
+<li><em>Merc 230</em> and <em>Datsun 710</em> (0.13)</li>
+<li><em>Lincoln Continental</em> and <em>Cadillac Fleetwood</em> (0.13)</li>
+<li><em>Merc 450SL</em> and <em>Merc 450SE</em> (0.15)</li>
+<li><em>AMC Javelin</em> and <em>Merc 450SLC</em> (0.15)</li>
+<li><em>Pontiac Firebird</em> and <em>Hornet Sportabout</em> (0.15)</li>
+<li><em>AMC Javelin</em> and <em>Chrysler Imperial</em> (0.17)</li>
+<li><em>AMC Javelin</em> and <em>Duster 360</em> (0.19)</li>
+<li><em>Merc 450SLC</em> and <em>Merc 450SE</em> (0.2)</li>
+<li><em>Merc 280C</em> and <em>Merc 280</em> (0.23)</li>
+<li><em>AMC Javelin</em> and <em>Merc 450SE</em> (0.25)</li>
+<li><em>Merc 450SL</em> and <em>Hornet Sportabout</em> (0.28)</li>
+<li><em>Merc 280</em> and <em>Mazda RX4</em> (0.3)</li>
+<li><em>Merc 280</em> and <em>Mazda RX4 Wag</em> (0.3)</li>
+<li><em>Merc 450SLC</em> and <em>Duster 360</em> (0.3)</li>
+<li><em>Chrysler Imperial</em> and <em>Merc 450SLC</em> (0.31)</li>
+<li><em>Pontiac Firebird</em> and <em>Merc 450SL</em> (0.32)</li>
+<li><em>Merc 450SLC</em> and <em>Merc 450SL</em> (0.35)</li>
+<li><em>Toyota Corona</em> and <em>Datsun 710</em> (0.35)</li>
+<li><em>Toyota Corolla</em> and <em>Fiat 128</em> (0.36)</li>
+<li><em>AMC Javelin</em> and <em>Merc 450SL</em> (0.38)</li>
+<li><em>Merc 240D</em> and <em>Datsun 710</em> (0.4)</li>
+<li><em>Merc 450SE</em> and <em>Hornet Sportabout</em> (0.41)</li>
+<li><em>Chrysler Imperial</em> and <em>Merc 450SE</em> (0.41)</li>
+<li><em>Volvo 142E</em> and <em>Merc 230</em> (0.42)</li>
+<li><em>Merc 450SE</em> and <em>Duster 360</em> (0.44)</li>
+<li><em>Maserati Bora</em> and <em>Camaro Z28</em> (0.45)</li>
+<li><em>Toyota Corona</em> and <em>Merc 230</em> (0.46)</li>
+<li><em>Pontiac Firebird</em> and <em>Merc 450SE</em> (0.46)</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>3.338</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="/usr/lib/R/library/rapport/includes/images/logo.png" />
+</div>
+</body>
+</html>

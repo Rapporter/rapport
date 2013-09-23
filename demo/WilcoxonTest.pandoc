@@ -1,0 +1,63 @@
+% Rapport  package  team
+% Wilcoxon test
+% 2011-04-26 20:25 CET
+
+
+
+## Description
+
+
+
+In this template Rapporter will present you Wilcoxon test.
+
+
+
+
+
+
+
+### Introduction
+
+
+
+
+
+[Wilcoxon test](http://en.wikipedia.org/wiki/Wilcoxon_test) (or its equivalent 
+the Mann-Whitney U test)  is a non-parametric statistical test which can be an alternative of the  paired Student's t-test, t-test for matched pairs, or the t-test for dependent samples. When the Wilcoxon test is used to compare two samples of values which are not paired, it makes no assumption about the shape of the distribution, only that (as null hypothesis) the distribution from which mpg was sampled is the same as the distribution from which cyl was sampled. The null hypothesis states that the variances of the variables are equal.
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------
+ Test statistic       P value       Alternative hypothesis 
+---------------- ----------------- ------------------------
+      1024       _4.306e-12_ * * *        two.sided        
+-----------------------------------------------------------
+
+Table: Wilcoxon rank sum test with continuity correction mpg and cyl
+
+
+
+
+
+
+
+
+As you can see in the table the the p-value of the Wilcoxon test is _4.306e-12_, thus we can accept the assumption of the null hypothesis, so we can say that statistically the variances are equal.
+
+
+
+
+
+-------
+This report was generated with [R](http://www.r-project.org/) (3.0.1) and [rapport](http://rapport-package.info/) (0.51) in _0.138_ sec on x86_64-unknown-linux-gnu platform.
+
+
+![](images/logo.png)

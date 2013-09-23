@@ -1,0 +1,140 @@
+% Rapport  package  team
+% Kruskal Wallis test
+% 2011-04-26 20:25 CET
+
+
+
+## Description
+
+
+
+In this template Rapporter will present you Kruskal Wallis test.
+
+
+
+
+
+
+
+### Introduction
+
+
+
+
+
+[Kruskal-Wallis test](http://en.wikipedia.org/wiki/Kruskal-Wallis) is a non-parametric statistical test that assesses hypothesis of equality of two independent sample's/variabels' variances. Most of the time it's being used beacuse the normality assumptions didn't meet for the samples/variables, but we need the assumption of the equal variances, so it can be an alternative of the Two-sample t-test.
+Significant result means difference between the samples/variables.
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------
+ Test statistic   df       P value      
+---------------- ---- ------------------
+      1010        1   _1.056e-221_ * * *
+----------------------------------------
+
+Table: Kruskal-Wallis test for _Age_ and _Internet usage for educational purposes (hours per day)_
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+As you can see in the table the test's degrees of freedom is _1_, the joint test-statistic is _1010_, so the p-value of the Kruskal-Wallis test is _1.056e-221_. Thus we can reject the assumption of the equal variances.
+
+
+
+
+
+
+
+
+
+
+
+## Description
+
+
+
+In this template Rapporter will present you Kruskal Wallis test.
+
+
+
+
+
+
+
+### Introduction
+
+
+
+
+
+[Kruskal-Wallis test](http://en.wikipedia.org/wiki/Kruskal-Wallis) is a non-parametric statistical test that assesses hypothesis of equality of two independent sample's/variabels' variances. Most of the time it's being used beacuse the normality assumptions didn't meet for the samples/variables, but we need the assumption of the equal variances, so it can be an alternative of the Two-sample t-test.
+Significant result means difference between the samples/variables.
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------
+ Test statistic   df      P value     
+---------------- ---- ----------------
+     47.28        1   _6.14e-12_ * * *
+--------------------------------------
+
+Table: Kruskal-Wallis test for _mpg_ and _drat_
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+As you can see in the table the test's degrees of freedom is _1_, the joint test-statistic is _47.28_, so the p-value of the Kruskal-Wallis test is _6.14e-12_. Thus we can reject the assumption of the equal variances.
+
+
+
+
+
+
+
+
+
+
+-------
+This report was generated with [R](http://www.r-project.org/) (3.0.1) and [rapport](http://rapport-package.info/) (0.51) in _0.267_ sec on x86_64-unknown-linux-gnu platform.
+
+
+![](images/logo.png)

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Kolmogorov-Smirnov-test" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Kolmogorov-Smirnov-test</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#description-1">Description</a></li>
+</ul>
+</div>
+<h2 id="description"><a href="#description">Description</a></h2>
+<p>This template will run a Kolmogorov-Smirnov-test</p>
+<h4 id="introduction"><a href="#introduction">Introduction</a></h4>
+<p><a href="http://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test">Kolmogorov-Smirnov test</a> is one of the most widely used <a href="http://en.wikipedia.org/wiki/Non-parametric_statistics">nonparametric tests</a>. With the help of that in this case we use to check if two continuous variables had the same distribution. We do not test that here, but there is a possibility to use that in the way to check if a sample/variable followed an expected distribution.</p>
+<h4 id="distributions"><a href="#distributions">Distributions</a></h4>
+<p>Before we use the K-S test to look at the possible statistical differences, it could be useful to see visually the distributions we want to observe. Below lie the <a href="http://en.wikipedia.org/wiki/Cumulative_distribution_function">Cumulative Distribution Functions</a> of the variables we compared:</p>
+<p><a href="plots/KolmogorovSmirnovTest-1-hires.png"><img src="plots/KolmogorovSmirnovTest-1.png" /></a></p>
+<p><a href="plots/KolmogorovSmirnovTest-2-hires.png"><img src="plots/KolmogorovSmirnovTest-2.png" /></a></p>
+<h4 id="test-results"><a href="#test-results">Test results</a></h4>
+<p>Now we will test if the Internet usage for educational purposes (hours per day) and the Age had statistically the same distribution.</p>
+<table>
+<caption>Two-sample Kolmogorov-Smirnov test on Internet usage for educational purposes (hours per day) and Age</caption>
+<col width="23%" />
+<col width="13%" />
+<col width="33%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">P value</th>
+<th align="center">Alternative hypothesis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center"><em>0</em> * * *</td>
+<td align="center">two-sided</td>
+</tr>
+</tbody>
+</table>
+<p>The requirements of the Kolmogorov-Smirnov Test test was not met, the approximation may be incorrect.</p>
+<p>So the variables do not follow the same distribution, according to the Kolmogorov-Smirnov test statistic.</p>
+<h2 id="description-1"><a href="#description-1">Description</a></h2>
+<p>This template will run a Kolmogorov-Smirnov-test</p>
+<h4 id="introduction-1"><a href="#introduction-1">Introduction</a></h4>
+<p><a href="http://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test">Kolmogorov-Smirnov test</a> is one of the most widely used <a href="http://en.wikipedia.org/wiki/Non-parametric_statistics">nonparametric tests</a>. With the help of that in this case we use to check if two continuous variables had the same distribution. We do not test that here, but there is a possibility to use that in the way to check if a sample/variable followed an expected distribution.</p>
+<h4 id="distributions-1"><a href="#distributions-1">Distributions</a></h4>
+<p>Before we use the K-S test to look at the possible statistical differences, it could be useful to see visually the distributions we want to observe. Below lie the <a href="http://en.wikipedia.org/wiki/Cumulative_distribution_function">Cumulative Distribution Functions</a> of the variables we compared:</p>
+<p><a href="plots/KolmogorovSmirnovTest-3-hires.png"><img src="plots/KolmogorovSmirnovTest-3.png" /></a></p>
+<p><a href="plots/KolmogorovSmirnovTest-4-hires.png"><img src="plots/KolmogorovSmirnovTest-4.png" /></a></p>
+<h4 id="test-results-1"><a href="#test-results-1">Test results</a></h4>
+<p>Now we will test if the cyl and the carb had statistically the same distribution.</p>
+<table>
+<caption>Two-sample Kolmogorov-Smirnov test on cyl and carb</caption>
+<col width="23%" />
+<col width="25%" />
+<col width="33%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">P value</th>
+<th align="center">Alternative hypothesis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.625</td>
+<td align="center"><em>7.453e-06</em> * * *</td>
+<td align="center">two-sided</td>
+</tr>
+</tbody>
+</table>
+<p>The requirements of the Kolmogorov-Smirnov Test test was not met, the approximation may be incorrect.</p>
+<p>So the variables do not follow the same distribution, according to the Kolmogorov-Smirnov test statistic.</p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>0.729</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="/usr/lib/R/library/rapport/includes/images/logo.png" />
+</div>
+</body>
+</html>

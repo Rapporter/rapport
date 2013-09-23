@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="F test" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">F test</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#normality-assumption-check-internet-usage-for-educational-purposes-hours-per-day">Normality assumption check (<em>Internet usage for educational purposes (hours per day)</em>)</a></li>
+<li><a href="#normality-assumption-check-age">Normality assumption check (<em>Age</em>)</a></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#introduction-1">Introduction</a></li>
+<li><a href="#the-f-test">The F-test</a></li>
+</ul></li>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#introduction-2">Introduction</a></li>
+<li><a href="#the-f-test-1">The F-test</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#description">Description</a></h2>
+<p>This template will run an F-test to check if two continuous variables have the same means.</p>
+<h3 id="introduction"><a href="#introduction">Introduction</a></h3>
+<p>F test compares the means of two continuous variables. In other words it shows if their means were statistically different. We should be careful, while using the F test, because of the strict normality assumption, where strict means approximately normal ditribution is not enough to satisfy that.</p>
+<h3 id="normality-assumption-check-internet-usage-for-educational-purposes-hours-per-day"><a href="#normality-assumption-check-internet-usage-for-educational-purposes-hours-per-day">Normality assumption check (<em>Internet usage for educational purposes (hours per day)</em>)</a></h3>
+<p>The <a href="http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test"><em>Shapiro-Wilk test</em></a>, the <a href="http://en.wikipedia.org/wiki/Lilliefors_test"><em>Lilliefors test</em></a> and the <a href="http://en.wikipedia.org/wiki/Anderson_Darling_test"><em>Anderson-Darling test</em></a> help us to decide if the above-mentioned assumption can be accepted of the <em>Internet usage for educational purposes (hours per day)</em>.</p>
+<table>
+<col width="38%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="center">0.2223</td>
+<td align="center">2.243e-92</td>
+</tr>
+<tr class="even">
+<td align="center">Anderson-Darling normality test</td>
+<td align="center">42.04</td>
+<td align="center">3.31e-90</td>
+</tr>
+<tr class="odd">
+<td align="center">Shapiro-Wilk normality test</td>
+<td align="center">0.7985</td>
+<td align="center">6.366e-28</td>
+</tr>
+</tbody>
+</table>
+<p>So, the conclusions we can draw with the help of test statistics:</p>
+<ul>
+<li><p>based on <em>Lilliefors test</em>, distribution of <em>Internet usage for educational purposes (hours per day)</em> is not normal</p></li>
+<li><p><em>Anderson-Darling test</em> confirms violation of normality assumption</p></li>
+<li><p>according to <em>Shapiro-Wilk test</em>, the distribution of <em>Internet usage for educational purposes (hours per day)</em> is not normal</p></li>
+</ul>
+<p>As you can see, the applied tests confirm departures from normality.</p>
+<h3 id="normality-assumption-check-age"><a href="#normality-assumption-check-age">Normality assumption check (<em>Age</em>)</a></h3>
+<p>The <a href="http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test"><em>Shapiro-Wilk test</em></a>, the <a href="http://en.wikipedia.org/wiki/Lilliefors_test"><em>Lilliefors test</em></a> and the <a href="http://en.wikipedia.org/wiki/Anderson_Darling_test"><em>Anderson-Darling test</em></a> help us to decide if the above-mentioned assumption can be accepted of the <em>Internet usage for educational purposes (hours per day)</em>.</p>
+<table>
+<col width="38%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="center">0.17</td>
+<td align="center">6.193e-54</td>
+</tr>
+<tr class="even">
+<td align="center">Anderson-Darling normality test</td>
+<td align="center">32.16</td>
+<td align="center">1.26e-71</td>
+</tr>
+<tr class="odd">
+<td align="center">Shapiro-Wilk normality test</td>
+<td align="center">0.8216</td>
+<td align="center">9.445e-27</td>
+</tr>
+</tbody>
+</table>
+<p>So, the conclusions we can draw with the help of test statistics:</p>
+<ul>
+<li><p>based on <em>Lilliefors test</em>, distribution of <em>Age</em> is not normal</p></li>
+<li><p><em>Anderson-Darling test</em> confirms violation of normality assumption</p></li>
+<li><p>according to <em>Shapiro-Wilk test</em>, the distribution of <em>Age</em> is not normal</p></li>
+</ul>
+<p>As you can see, the applied tests confirm departures from normality.</p>
+<p><em>In this case it is advisable to run a more robust test, then the F-test.</em></p>
+<h2 id="description-1"><a href="#description-1">Description</a></h2>
+<p>This template will run an F-test to check if two continuous variables have the same means.</p>
+<h3 id="introduction-1"><a href="#introduction-1">Introduction</a></h3>
+<p>F test compares the means of two continuous variables. In other words it shows if their means were statistically different. We should be careful, while using the F test, because of the strict normality assumption, where strict means approximately normal ditribution is not enough to satisfy that.</p>
+<h3 id="the-f-test"><a href="#the-f-test">The F-test</a></h3>
+<p>Here is the the result of the <em>F test</em> to compare the means of <em>Internet usage for educational purposes (hours per day)</em> and <em>Age</em>.</p>
+<table>
+<col width="30%" />
+<col width="16%" />
+<col width="16%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">F test to compare two variances</td>
+<td align="center">0.08618</td>
+<td align="center">3.772e-180</td>
+</tr>
+</tbody>
+</table>
+<p>We can see from the table (in the p-value coloumn) that there is a significant difference between the means of <em>Internet usage for educational purposes (hours per day)</em> and <em>Age</em>.</p>
+<h2 id="description-2"><a href="#description-2">Description</a></h2>
+<p>This template will run an F-test to check if two continuous variables have the same means.</p>
+<h3 id="introduction-2"><a href="#introduction-2">Introduction</a></h3>
+<p>F test compares the means of two continuous variables. In other words it shows if their means were statistically different. We should be careful, while using the F test, because of the strict normality assumption, where strict means approximately normal ditribution is not enough to satisfy that.</p>
+<h3 id="the-f-test-1"><a href="#the-f-test-1">The F-test</a></h3>
+<p>Here is the the result of the <em>F test</em> to compare the means of <em>cyl</em> and <em>drat</em>.</p>
+<table>
+<col width="30%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">F test to compare two variances</td>
+<td align="center">11.16</td>
+<td align="center">1.461e-09</td>
+</tr>
+</tbody>
+</table>
+<p>We can see from the table (in the p-value coloumn) that there is a significant difference between the means of <em>cyl</em> and <em>drat</em>.</p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>0.814</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" />
+</div>
+</body>
+</html>

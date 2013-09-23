@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Kruskal Wallis test" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Kruskal Wallis test</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#introduction-1">Introduction</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#description">Description</a></h2>
+<p>In this template Rapporter will present you Kruskal Wallis test.</p>
+<h3 id="introduction"><a href="#introduction">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Kruskal-Wallis">Kruskal-Wallis test</a> is a non-parametric statistical test that assesses hypothesis of equality of two independent sample's/variabels' variances. Most of the time it's being used beacuse the normality assumptions didn't meet for the samples/variables, but we need the assumption of the equal variances, so it can be an alternative of the Two-sample t-test. Significant result means difference between the samples/variables.</p>
+<table>
+<caption>Kruskal-Wallis test for <em>Age</em> and <em>Internet usage for educational purposes (hours per day)</em></caption>
+<col width="23%" />
+<col width="6%" />
+<col width="25%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">df</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1010</td>
+<td align="center">1</td>
+<td align="center"><em>1.056e-221</em> * * *</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see in the table the test's degrees of freedom is <em>1</em>, the joint test-statistic is <em>1010</em>, so the p-value of the Kruskal-Wallis test is <em>1.056e-221</em>. Thus we can reject the assumption of the equal variances.</p>
+<h2 id="description-1"><a href="#description-1">Description</a></h2>
+<p>In this template Rapporter will present you Kruskal Wallis test.</p>
+<h3 id="introduction-1"><a href="#introduction-1">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Kruskal-Wallis">Kruskal-Wallis test</a> is a non-parametric statistical test that assesses hypothesis of equality of two independent sample's/variabels' variances. Most of the time it's being used beacuse the normality assumptions didn't meet for the samples/variables, but we need the assumption of the equal variances, so it can be an alternative of the Two-sample t-test. Significant result means difference between the samples/variables.</p>
+<table>
+<caption>Kruskal-Wallis test for <em>mpg</em> and <em>drat</em></caption>
+<col width="23%" />
+<col width="6%" />
+<col width="22%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">df</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">47.28</td>
+<td align="center">1</td>
+<td align="center"><em>6.14e-12</em> * * *</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see in the table the test's degrees of freedom is <em>1</em>, the joint test-statistic is <em>47.28</em>, so the p-value of the Kruskal-Wallis test is <em>6.14e-12</em>. Thus we can reject the assumption of the equal variances.</p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>0.267</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="/usr/lib/R/library/rapport/includes/images/logo.png" />
+</div>
+</body>
+</html>

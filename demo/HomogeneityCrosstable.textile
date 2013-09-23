@@ -1,0 +1,115 @@
+h2(#description). Description
+
+Test of homogeneity of a given factor variable split by another factor.
+
+h3(#variable-description). Variable description
+
+Analysing &quot;gender&quot; (&quot;Gender&quot;) with _673_ valid values whether frequency counts are distributed equally across different categories of &quot;dwell&quot; (&quot;Dwelling&quot;).
+
+&quot;dwell&quot; has _3_ categories:
+
+* city
+* small town
+* village
+
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+h3(#counts). Counts
+
+<table>
+<caption>Counted values: &quot;dwell&quot; and &quot;gender&quot;</caption>
+<col width="23%" />
+<col width="9%" />
+<col width="12%" />
+<col width="13%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">male</th>
+<th align="center">female</th>
+<th align="center">Missing</th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*city*</td>
+<td align="center">338</td>
+<td align="center">234</td>
+<td align="center">27</td>
+<td align="center">599</td>
+</tr>
+<tr class="even">
+<td align="right">*small town*</td>
+<td align="center">28</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">33</td>
+</tr>
+<tr class="odd">
+<td align="right">*village*</td>
+<td align="center">19</td>
+<td align="center">9</td>
+<td align="center">2</td>
+<td align="center">30</td>
+</tr>
+<tr class="even">
+<td align="right">*Missing*</td>
+<td align="center">25</td>
+<td align="center">17</td>
+<td align="center">5</td>
+<td align="center">47</td>
+</tr>
+<tr class="odd">
+<td align="right">*Sum*</td>
+<td align="center">410</td>
+<td align="center">263</td>
+<td align="center">36</td>
+<td align="center">709</td>
+</tr>
+</tbody>
+</table>
+
+h3(#chi-squared-test). Chi-squared test
+
+Our "null hypothetis":http://en.wikipedia.org/wiki/Null_hypothesis says that the proportion of _gender_ is indentical in each categories of _dwell_.
+
+<table>
+<caption>Pearson's Chi-squared test: @table@</caption>
+<col width="23%" />
+<col width="6%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">df</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">16.18</td>
+<td align="center">6</td>
+<td align="center">_0.01282_ &#42;</td>
+</tr>
+</tbody>
+</table>
+
+The chi-squared test returned the value of _16.18_ with a degree of freedom being _6_. Based on the returned "p value":http://en.wikipedia.org/wiki/P-value (_0.01282_) we could state that the null hypothesis is rejected.
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (3.0.1) and "rapport":http://rapport-package.info/ (0.51) in _0.298_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

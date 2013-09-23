@@ -1,0 +1,1995 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \qc \f0 \sa180 \li0 \fi0 \b \fs36 Rapport package team\par}
+{\pard \qc \f0 \sa180 \li0 \fi0  Crosstable\par}
+{\pard \qc \f0 \sa180 \li0 \fi0  2011-04-26 20:25 CET\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Contents\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Description\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Variable description\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Counts\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Percentages\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Tests of Independence\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Direction of relationship\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Charts\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Description\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Variable description\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Counts\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Percentages\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Tests of Independence\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Charts\sa180\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Description\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Variable description\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Two variables specified:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab "gender" ("Gender") with {\i 673} valid values and\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab "dwell" ("Dwelling") with {\i 662} valid values.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs24 Introduction\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Cross_tabulation"}}{\fldrslt{\ul
+Crosstables
+}}}
+ are applicable to show the frequencies of categorical variables in a matrix form, with a table view.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 We will present four types of these crosstables. The first of them shows the {\i exact numbers of the observations}, ergo the number of the observations each of the variables' categories commonly have.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The second also shows the possessions each of these cells have, but not the exact numbers of the observations, rather the {\i percentages} of them from the total data.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The last two type of the crosstabs contain the so-called {\i row and column percentages} which demonstrate us the distribution of the frequencies if we concentrate only on one variable.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 After that we present the {\i tests} with which we can investigate the possible relationships, associations between the variables, like Chi-squared test, Fisher Exact Test, Goodman and Kruskal's lambda.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 In the last part there are some {\i charts} presented, with that one can visually observe the distribution of the frequencies.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Counts\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx1680\clbrdrb\brdrs\cellx2520\clbrdrb\brdrs\cellx4080\clbrdrb\brdrs\cellx5280\clbrdrb\brdrs\cellx6480\clbrdrb\brdrs\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Missing\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Sum\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b male}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 338\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 28\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 19\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 25\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 410\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b female}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 234\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 9\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 17\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 263\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Missing}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 27\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 36\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Sum}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 599\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 33\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 30\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 47\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 709\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Counted values: "gender" and "dwell"\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Most of the cases ({\i 338}) can be found in "male-city" categories. Row-wise "male" holds the highest number of cases ({\i 410}) while column-wise "city" has the utmost cases ({\i 599}).\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Percentages\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx1680\clbrdrb\brdrs\cellx2520\clbrdrb\brdrs\cellx4080\clbrdrb\brdrs\cellx5280\clbrdrb\brdrs\cellx6480\clbrdrb\brdrs\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Missing\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Sum\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b male}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 47.67\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.95\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.68\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.53\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 57.83\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b female}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 33\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.42\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.27\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.4\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 37.09\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Missing}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.81\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.28\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.28\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.71\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.08\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Sum}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 84.49\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.65\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.23\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.63\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 100\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Total percentages: "gender" and "dwell"\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx1680\clbrdrb\brdrs\cellx2520\clbrdrb\brdrs\cellx4080\clbrdrb\brdrs\cellx5280\clbrdrb\brdrs\cellx6480
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Missing\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b male}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 82.44\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.83\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.63\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.1\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b female}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 88.97\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.14\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.42\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.46\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Missing}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 75\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.56\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.56\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 13.89\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Sum}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 84.49\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.65\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.23\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.63\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Row percentages: "gender" and "dwell"\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx1680\clbrdrb\brdrs\cellx2520\clbrdrb\brdrs\cellx4080\clbrdrb\brdrs\cellx5280\clbrdrb\brdrs\cellx6480\clbrdrb\brdrs\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Missing\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Sum\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b male}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 56.43\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 84.85\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 63.33\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 53.19\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 57.83\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b female}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 39.07\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 9.09\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 30\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 36.17\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 37.09\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1680\cellx2520\cellx4080\cellx5280\cellx6480\cellx7080
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Missing}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.51\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.06\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.67\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 10.64\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.08\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Column percentages: "gender" and "dwell"\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Tests of Independence\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 In the below tests for {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Independence_(probability_theory)"}}{\fldrslt{\ul
+independece
+}}}
+ we assume that the row and column variables are independent of each other. If this {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Null_hypothesis"}}{\fldrslt{\ul
+null hypothesis
+}}}
+ would be rejected by the tests, then we can say that the assumption must have been wrong, so there is a good chance that the variables are associated.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs24 Chi-squared test\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 One of the most widespread independence test is the {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test"}}{\fldrslt{\ul
+Chi-squared test
+}}}
+. While using that we have the alternative hypothesis, that two variables have an association between each other, in opposite of the null hypothesis that the variables are independent.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 We use the cell frequencies from the crosstables to calculate the test statistic for that. The test statistic is based on the difference between this distribution and a theoretical distribution where the variables are independent of each other. The distribution of this test statistic follows a {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Chi-squared_distribution"}}{\fldrslt{\ul
+Chi-square distribution
+}}}
+.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The test was invented by Karl Pearson in 1900. It should be noted that the Chi-squared test has the disadvantage that it is sensitive to the sample size.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs20 Criteria\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Before analyzing the result of the Chi-squared test, we have to check if our data meets some requirements. There are two widely used criteria which have to take into consideration, both of them are related to the so-called expected counts. These expected counts are calculated from the marginal distributions and show how the crosstabs would look like if there were complete independency between the variables. The Chi-squared test calculates how different are the observed cells from the expected ones.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The two criteria are:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab none of the expected cells could be lower than 1\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 80% of the expected cells have to be at least 5\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Let's look at on expected values then:\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx1560\clbrdrb\brdrs\cellx2400\clbrdrb\brdrs\cellx3960\clbrdrb\brdrs\cellx5040
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1560\cellx2400\cellx3960\cellx5040
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 {\b male}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 349\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 18.91\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 17.08\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1560\cellx2400\cellx3960\cellx5040
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 {\b female}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 223\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 12.09\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 10.92\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 We can see that the Chi-squared test met the requirements.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 So now check the result of the test:\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2040\clbrdrb\brdrs\cellx2640\clbrdrb\brdrs\cellx4320
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Test statistic\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 df\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 P value\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2040\cellx2640\cellx4320
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 12.64\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 {\i 0.001804} * *\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Pearson's Chi-squared test: {\f1 table}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 To decide if the null or the alternative hypothesis could be accepted we need to calculate the number of degrees of freedom. The degrees of freedom is easy to calculate, we substract one from the number of the categories of both the row and the coloumn variables and multiply them with each other.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 To each degrees of freedom there is denoted a {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Critical_value#Statistics"}}{\fldrslt{\ul
+critical value
+}}}
+. The result of the Chi-square test have to be lower than that value to be able to accept the nullhypothesis.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 It seems that a real association can be pointed out between {\i gender} and {\i dwell} by the {\i Pearson's Chi-squared test} ({\i \u967?}={\i 12.64}) at the {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)"}}{\fldrslt{\ul
+degree of freedom
+}}}
+ being {\i 2} at the {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Statistical_significance"}}{\fldrslt{\ul
+significance level
+}}}
+ of {\i 0.001804} * *.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The association between the two variables seems to be weak based on {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Cram%C3%A9r%27s_V"}}{\fldrslt{\ul
+Cramer's V
+}}}
+ ({\i 0.1001}).\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs20 References\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Fisher, R. A. (1922): On the interpretation of chi-square from contingency tables, and the calculation of P. {\i Journal of the Royal Statistical Society} 85 (1): 87-94.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Fisher, R.A. (1954): {\i Statistical Methods for Research Workers}. Oliver and Boyd.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs20 Adjusted standardized residuals\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The residuals show the contribution to reject the null hypothesis at a cell level. An extremely high or low value indicates that the given cell had a major effect on the resulting chi-square, so thus helps understanding the association in the crosstable.\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx1560\clbrdrb\brdrs\cellx2400\clbrdrb\brdrs\cellx3960\clbrdrb\brdrs\cellx5040
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1560\cellx2400\cellx3960\cellx5040
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b male}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -3.08\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.43\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.76\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx1560\cellx2400\cellx3960\cellx5040
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b female}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.08\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -3.43\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -0.76\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Residuals: "gender" and "dwell"\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Based on Pearson's residuals the following cells seems interesting (with values higher than {\f1 2} or lower than {\f1 -2}):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab "male - city"\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab "female - city"\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab "male - small town"\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab "female - small town"\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs20 References\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Snedecor, George W. and Cochran, William G. (1989): {\i Statistical Methods}. Iowa State University Press.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Karl Pearson (1900): {\i Philosophical Magazine}, Series 5 50 (302): 157-175.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs24 Fisher Exact Test\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 An other test to check the possible association/independence between two variables, is the {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Fisher%27_exact_test"}}{\fldrslt{\ul
+Fisher exact test
+}}}
+. This test is especially useful with small samples, but could be used with bigger datasets as well.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 We have the advantage while using the Fisher's over the Chi-square test, that we could get an exact significance value not just a level of it, thus we can have an impression about the power of the test and the association.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The test was invented by, thus named after R.A. Fisher.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The variables seems to be dependent based on Fisher's exact test at the {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/P-value"}}{\fldrslt{\ul
+significance level
+}}}
+ of {\i 0.0008061} * * *.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Direction of relationship\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs24 Goodman and Kruskal's lambda\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 With the help of the {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Goodman_and_Kruskal%27s_lambda"}}{\fldrslt{\ul
+Goodman and Kruskal's lambda
+}}}
+ we can look for not only relationship on its own, which have directions if we set one variable as a predictor and the other as a criterion variable.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The computed value for {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Goodman_and_Kruskal%27s_lambda"}}{\fldrslt{\ul
+Goodman and Kruskal's lambda
+}}}
+ is the same for both directions: {\i 0}. For this end, we do not know the direction of the relationship.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Charts\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 If one would like to investigate the relationships rather visually than in a crosstable form, there are several possibilities to do that.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs16 Heat map\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 At first we can have a look at on the so-called {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Heat_map"}}{\fldrslt{\ul
+heat map
+}}}
+. This kind of chart uses the same amount of cells and a similar form as the crosstable does, but instead of the numbers there are colours to show which cell contains the most counts (or likewise the highest total percentages).\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The darker colour is one cell painted, the most counts/the higher total percentage it has.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "plots/Crosstable-1-hires.png"}}{\fldrslt{\ul
+{\pict\pngblip 89504e470d0a1a0a0000000d49484452000001e0000001e00802000000f2b629c2000000097048597300000b1200000b1201d2dd7efc000018e649444154789ceddd7d909565fdf8f1fb5e5896c32e06c812e3a282b93e41cbf890e998d4a835363e3148320186988a5a4d933a653561d31f1565235b3efe8136fe613928885b528ae80a7e11f3112d93692a92df1751575c1616967d38bf3f4ebf1d7ecb8a1ef670ce873dafd7ec3867ef73f6de8b4b7b7773ddd79e4db3d96c02403c15a51e4079d9bd7b77a987307898cc42e9eaeaeaeaea2af528e8874017d57befbd57ea210c1e26b350dadbdb77edda55ea51d00f8106082ab5065d4c1d1d1d555555a51ec52061320b25b7be3174e8d0520f84be041a20284b1c0041097451b9af554026b350dadbdbdbdbdb4b3d0afa61d5a9a8ec0c2b209359285d5d5d699a967a14f4c3153440506e1216958d070564320bc52e8eb0041a20284b1c0041097451d978504026b350ece208cbaa5351d978504026b350ece208cb153440506e1216958d070564320bc52e8eb0041a20284b1c0041097451d978504026b350ece208cbaa5351d978504026b350ece2086bf004faedb7dfeee9e929f5283ec27befbd575111fd6f2d7bf6ecc966b3f1efbf1d1293b963c78e9a9a9a528fe223ecdcb9334dd3b6b6b6520fe4238c183162d4a851a51e45510d9e9b8497dc7e49a98730782cbb7e59a9873078747677967a088344cb3b2d757575a51e455145bf0001285b020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d00041093440500712e8e5cb97673299952b570ef07ba7693ac033000c62430fe06b66cd9af5e0830f9e7ffef9051f0d00bdf2be824ed3b4b3b373c68c19699a3637374f9c3871e2c489ebd7afef7d76e1c285d5d5d58d8d8df3e7cfcf6432cb972fcf3db56ad5aafafafab163c7363636f639e7bee70120cd66b3797f4dfadfaf6a6868b8e38e3b7a7a7a6ebef9e675ebd6e59e5aba74e9e4c993a74c99f2c8238f747575cd9a356bcf9e3d49927476766ed9b2a5adad6ddab4692d2d2dfb3f4fce962d5b7a87575d5dbd73e7ce24490e3ffcf0aaaaaa24495a5a5a3a3a3a7a8f5c72fb25039e0dfe6bd9f5cb4a3d84c1a3b3bbb3d4431824defcdb9bb5b5b51f5680528feea01850a03399cceeddbb730fdadbdb734f757777575454a469dad3d393a669ef8b57ae5c79e79d77bef6da6b9b366dca1dd9cf790e8040179040179040174acb3b2d757575a51e45510d6817c7a44993d6ac59b371e3c6bdab5a51f1df73f6b907387bf6ecb973e7de7aebad1ff33c00656e40816e6c6c9c3d7bf671c71d77eeb9e77ee48b2fbef8e2abafbe7aef158c033b0f40993890258e982c711490258e02b2c451289638008842a00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a285fd96cf6f6db6f9f32654a269339e698637efef39f67b3d9829cf9c61b6f1cf849041a285f5ffffad71f78e081254b966cdbb6ed89279ee8ecec5cbc787141cefcdbdffe76e0271168a04c3df4d043cf3efbecaa55ab3efbd9cf0e1f3efc539ffad48f7ef4a3a79f7e3af7ec8a152b4e3cf1c41123469c77de796fbdf556eee077bef39d5ffef297b9c737de78e36db7dd967bf0f0c30fcf9831e388238e78e49147922449d3f4fdf7df4fd37480231468a04cdd75d75db7dc72cb881123f63eb862c58a2449d6af5f7fd55557dd76db6defbefbee69a79d76dd75d7e59e6d6e6e9e366d5aeef1ba75eb728fd7ad5bb774e9d21ffff8c7cdcdcd575c71457777f73ffff9cf638e3966e0ab2569a1165c4aee92db2f29f510068f65d72f2bf510068fceeece520f61906879a7a5aeaeae80271c356ad4ebafbf3e61c2847d9fbaf8e28bbffce52fe7badcd6d6565757b77dfbf6d6d6d6238f3cb2a5a5a5b2b2b2a3a3e3c8238fdcb2654b7777f7a851a35e7df5d5fafafab6b6b6d1a347b7b5b5fdee77bf7bfef9e7efbefbee018ed0153450a6bababac68e1ddbef536bd7ae9d316346ee716b6b6b656565eee0e9a79f9e7bfce28b2f9e7aeaa943860c79e9a5971a1a1aeaebeb932479e18517eaebeb3399cc534f3d75de79e70d7c84020d94a9e38f3ffe8d37ded8fbc88a152bce3ffffc244976eedcd9bbf4f1f0c30f9f79e69949923cfbecb3679f7d76eee0430f3d947bbc6eddbacf7dee73b983cf3fff7cee607373f339e79c33f0110a3450a6befbddefde78e38d6fbcf1466767e7d6ad5b7ffdeb5fdf74d34db7df7e7b9224679e79e62f7ef18b1d3b76fce10f7fb8e5965bbefffdef2749f2f7bfff7decd8b1efbffffef7bef7bdbbefbebb7701fa8c33cec89d70fdfaf5d3a64d7bfbedb7dbdbdb870d1b36f0110a3450a666cd9a75edb5d75e7ef9e5a3478f3ee59453366cd8b07af5ea638f3d3649927befbdb7b9b9b9b6b6f6873ffce1ef7ffffbb3ce3a2b4992af7ef5ab0b172e9c3a75ea09279c306edcb8d34f3f3de92fd0353535e3c68debbdd61e083709e9879b8405e42661a114fc26617caea00182126880a0041a20a8a1a51e0040b13dffafe717afcaef3d3786570ebff78a7b0fd2783e8c400365e77f5bfff70f1bfe90d7978c1836e2a35f54689638008272050d949d3449d324bfb79acbf7f505e10a1a283b69920ea91892efc7de67f8eb5fff7ae69967663299868686a79e7a2a4992952b578e1f3f7ef8f0e153a64c696a6aeaf748be041a283f695291bfbd4f3077eedc6f7ce31b1f7cf0c14f7ffad3d9b3672749b268d1a2458b16b5b4b42c58b020f7aefffb1ec997400365274dd221e9907c3ff63ec3cb2fbf3c77eedc9e9e9e9696963163c62449b261c386993367565757cf9b37ef95575ee9f748beac4103656778e5f02f1cff85dce3bffcfb2fbb3b777fd82b8f3efce8a3c61c952449e590ca3e4fb5b5b54d983061fbf6ed3ffbd9cf729f66329924496a6a6a5a5b5bfb3d922f8106ca4e77b67bf3b6cdb9c7d96cb6cffaf2deda76b7e55e595559d5e7a9912347b6b6b6ae5dbb76faf4e937df7cf3b871e376edda555d5ddddede7ed861872549b2ef917c59e200ca4e4f4fcfe66d9b731f3dd99e8ab4e2c33e7281debc6df3960fb6ec7d86134e3861eddab55d5d5dd96c76f4e8d14992343434343535edd9b367c58a1553a74eedf748be5c410365274dd3fd5c35f7abcfebefbffffe6baeb966e3c68d0d0d0d0f3ef86092240b162cb8f2ca2be7cc99535b5b7bdf7df7f57b245f020d949ddc36bbbcbea4cf2e8ed34f3fbdcf7dbfe9d3a74f9f3e7dff47f225d040d949d3b4cfae8c8f94efeb0b42a081b2730057d0f9bebe20041a283b035f832e0e8106ca51459adf1eb68a52ec791368a0ecb8820608ca1a3440507671000435f07dd0c521d040d9b1060d10549aa479efe2c8f3f50521d040d971050d1094400304658903202857d00041f9411580a8d2fcdf8bc312074011f8411580a00e640dda8f7a0314419a782f0e80900e955d1c2558550128ad5ca0f3fdd8fb0cebd6ad3bf9e4933399cc94295356af5e9d24c9ca952bc78f1f3f7cf8f02953a6343535f57b245f020d949ddc4dc28104fa8a2baef8c94f7ef2c1071f2c5cb8f0f2cb2f4f9264d1a2458b162d6a696959b060c1e2c58bfb3d922f8106cacec0afa0df7cf3cd8b2ebaa8aaaaea0b5ff8422693499264c3860d3367ceacaeae9e376fde2bafbcd2ef917c598306ca4e5565d5e78fff7ceef10bff7e6177e7ee0f7be551638e3aeaf0a3920ff99d843d3d3d37dd745363636392246d6d6db952d7d4d4b4b6b6f67b245f020d1c1adadada0a75aaceaecefff9c7fff47eba9f1f42d9bc6df3e66d9b9324193674d8573ffbd5bd9fdab56bd7b7bffded4b2fbdf4820b2e489264dcb871bb76edaaaeae6e6f6f3fecb0c3fa3d92afc113e8475f7db4d443183c5a76b4947a088347556555a98730488c1c39b250a71af82e8ed5ab57df72cb2df7dc73cf49279d943bd2d0d0d0d4d43463c68c152b564c9d3ab5df23f91a3c8106f89806fe5e1cf3e7cfffcf7ffe3379f2e4dca7d96c76c18205575e79e59c39736a6b6befbbefbe2449f63d922f8106cacec07f69eca64d9bfabc60faf4e9d3a74fdfff917c09345076bc9b1d4050699ae6fbe647de2c09a0180ee4bd381257d00007dfa1f25e1c020d949f34efe05ae20028066f370a10949b840041d9660710549aa67e692c4044aea00182b2cd0e202e4b1c0011b9820608ea00026d9b1d4031f8411580a02c7100047520dbec5c410314c1c07fa34a71083450760e951f5429c17d4980d2cabd5952bef63dcf1b6fbc316edcb8dce3952b578e1f3f7ef8f0e153a64c696a6aeaf748be041a283bb99b84f97ef439c90f7ef083cb2fbffcdd77dfcd7dba68d1a2458b16b5b4b42c58b060f1e2c5fd1ec99740036527b7c491d7c7be57d0c71f7ffcba75eb7a3fddb061c3cc9933abababe7cd9bf7ca2baff47b245fd6a081b23374c8d009a327e41ebfd3f64e774ff787bd72e4f0913555354992a469dae7a979f3e6edfd695b5b5b26934992a4a6a6a6b5b5b5df23798ff300be06e090d6d3d3b375fbd6de4ff7f33e1b3b3b76eeecd8997c8c9b84e3c68ddbb56b577575757b7bfb61871dd6ef917c59e200ca4e41d6a0fb686868686a6adab367cf8a152ba64e9ddaef917cb98206cacec1d866b760c1822bafbc72ce9c39b5b5b5f7dd775fbf47f21e67369b3d802f0b28bdbaef0a11076cebafb67ef48bf878aa2aab4a3d844162c7fb3beaeaea0a72aa77dbde7dfdffbc9ed7970ca91832edb86905f9ee1f9f2b68a0ec1c2a3fa822d040d9f166490071e5fb1b52f6dd665704020d949d0379c37ebff20aa008041a20a803f88d2a020d500caea001823a806d76020d500c699ae61b5c8106280657d000411dc01ab47dd00045e20755002272050d1094400304952679efe21068806270050d10d4016cb34b13810638f80ee007554a1268bf3416202857d040d949d3b4724865a947f1d1041a283b432b860ead3a04ea67890320288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa00182126880a0041a20288106084aa001822a76a0d3342df277043844b9820608aa00814ed374e1c285d5d5d58d8d8df3e7cfcf6432cb972fcf3db56ad5aafafafab163c7363636f6f9aae6e6e68913274e9c3871fdfaf5031f03c0e09366b3d9819e224d972e5d3a79f2e42953a63cf2c8235d5d5db366cddab3674f92249d9d9d5bb66c696b6b9b366d5a4b4b4beec5b9efd8d0d070c71d77f4f4f4dc7cf3cdebd6adebf7cc6fbdf556eff06a6a6a76ecd89124496d6d6d26934992e49d77ded9bd7b77ef91f46a8b2705b3f5575b4b3d84c1a3aab2aad4431824fef1b77fd4d6d67e58014a3dba83a23081eeeeeeaea8a848d3b4a7a7274dd3de0aaf5cb9f2ce3bef7cedb5d7366dda943bd2fb542693c94d6e2693696f6f1ff01f2411e80212e80212e842d9f1fe8ebababa528fa2a80ab3065d51f1dff3f4b907387bf6ecb973e7de7aebadfb7ec9a44993d6ac59b371e3c682d41960f039b837092fbef8e2abafbebadf158cc6c6c6d9b3671f77dc71e79e7bee411d03c021aa004b1c4158e228204b1c056489a3502c7100108540030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d1c1af6ecd953ea21145b9acd664b3d8632b279f3e6091326947a148384c92c94eddbb7a7693a72e4c8520f84be5c410304e50abaa83a3a3aaaaaaa4a3d8a41c264164a575757922443870e2df540e84ba00182b2c40110944017d57befbd57ea210c1e26b350dadbdbdbdbdb4b3d0afa61d5a9a876efde5dea210c1e26b350bababad2342df528e8872b6880a0dc242c2a1b0f0ac864168a5d1c61093440509638008212e8a2b2f1a0804c66a1d8c5119655a7a2b2f1a0804c66a1d8c511962b6880a0dc242c2a1b0f0ac864168a5d1c61093440509638008212e8a2b2f1a0804c66a1d8c5119655a7a2b2f1a0804c66a1d8c511964017959b5a0564320bc5edc1b0fc8b817267a74058025d541d1d1da51ec2e061320ba5bbbbdb12474c6e12020425d0004159e228aa4f7ce213a51ec2e061320ba5aaaaca12474c7e921020284b1c00410974f1f4fe2df2a69b6e2aed480e51bd13b8efdfc74de947da77f62c6bc46789a304d2d4b41f88de79db77024de9c7b79f69241a57d007cbead5ab274d9a3479f2e4e79e7b2e772477c1d2fbcfcf7ce6332fbcf04292242fbef8e269a79d56c2a116d3f2e5cb2b2b2bc78c1973edb5d7264992a6e9c2850bababab1b1b1be7cf9f9fc964962f5f9e7be5aa55abeaebebc78e1ddbd8d8b8ff73ee3db1ab56ad9a3061c251471df5d4534f2549327af4e81d3b76fce52f7f49d3f4f1c71fffe0830f468f1e9d7bf1ac59b36a6a6a7abfdd2073eaa9a7befcf2cb4992bcfcf2cba79c724ab2dfebe57da77af9f2e5871f7ef8f5d75fdffb55cdcdcd13274e9c3871e2faf5eb0ffef0f97fb21c1c279e78e2f2e5cbd7ae5d5b5f5f9f3bd23bdbb9074b962c993f7f7e369bbde69a6beeb9e79e528db3c88e3ffef88b2ebaa8b5b535f76992244b972efddbdffe565151f1e8a38f2e5bb6acb2b232f7d49e3d7b366ddaf4faebaf8f1933a6f7c57d1ef4ea3d3279f2e43ffef18f4d4d4d279d7452369b3df9e4935f7df5d5050b169c77de7973e6cc79e9a5974e39e594dceb9b9a9af6fe7683cc5d77ddf5cd6f7e339bcd7eeb5bdfbae38e3bb2fdcd5eef837da73a378d8f3efa68ef6b3efde94f3ff3cc334f3ffdf419679c51cc3f489913e88365d8b0611d1d1d7b1fe9f33f8cf6f6f6bababab7de7aeb88238e686b6b2bc1104b61e3c68dc71d77dc881123d6ac5993cd669324e9eeeece3de8e9e9c9ee354b8f3df6d885175e78f4d147efa72cbd7a8f0c1f3ebca3a363f7eeddc3860dcb66b3975e7ae9030f3c70f4d1476fddbab5b6b6f6fefbef9f397366eef55d5d5dfd9e6a70d8be7dfb8409135a5b5b274c98b06ddbb6ec7e03bdef54f74ee3de47729774994ca6a87f92f26689e36039f6d8639f7cf2c9679e79e6d8638fddf7d96ddbb6653299cb2ebbecb2cb2ebbf0c20b6b6a6a8a3fc292a8afaf7ff3cd37cf3aebace9d3a7e78e5454fcf73fc23e7f079f3d7bf6dcb9736fbdf5d68f79e66ddbb625493269d2a455ab563df9e493b9dc4c9a3469f1e2c5175c70c1b871e3bef8c52ffeea57bf9a346952eef543860c29c89f28a69123477ee94b5fbaeebaeb3efff9cf8f1a356aff2fde77aa274d9ab47af5ea55ab56ed7d64cd9a351b376ef4c6a44555eaff8718b4728df8e4273ff9d8638fe58ef4cef6d9679f3d62c4886c36fbe69b6f2649f2c20b2f946c944577dd75d7d5d4d45456562e5bb62cbbdfcbbaaf7ded6b23478ebce1861bf6f39a5ebd53fae73fffb9aeae6efcf8f1cdcdcdd96cf6ce3bef4c92e4a5975eca66b37ffad39f9224b9ebaebbf67faa412377f363f5ead5b94ff39aeaa6a6a6dadadaabaeba6ac89021b9238f3ffef891471e9924c939e79c53bc3f43d9731bb7949e7beeb96baeb966c3860da51e08fc7fc68e1dfbc4134ffceb5fffbae1861bfefdef7f977a38e5cb8f7a97d205175cb064c992528f02fa5ab264c957bef295f6f6f6dffce637a51e4b5973050d10949b84004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d109440030425d0004109344050020d10d4ff05e2ab005ddfae73da0000000049454e44ae426082}
+}}}
+\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 There can be also shown the standardized adjusted residual of each cells:\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "plots/Crosstable-2-hires.png"}}{\fldrslt{\ul
+{\pict\pngblip 89504e470d0a1a0a0000000d49484452000001e0000001e00802000000f2b629c2000000097048597300000b1200000b1201d2dd7efc00001a2249444154789ceddd7b5054f7dd80f1df8288eb6ebc006a148cd00a19959a45d38969229aa86895e23d347849686bd4365ec668a699ce98364c67e2041d379d90d8eab48933356d5289d26aab2b8826222d1a1b33126046e3052301341b751150cefbc7f1dd1040ea597639df5d9fcf309de5b07bf8eeafe1c9c939cb62d1344d0100e409337b801077e3c60db3470832ac9851ac580823d08155575767f608418615338a150b61041a0084b2700e3aa01a1b1b232323cd9e2298b06246b162218c400380509ce20000a10874607101c72856cc28562c8411e8c0e2255046b16246b162218c400380505c240c2caeb01bc58a19c58a8530020d0042718a03008422d081c51576a35831a358b11046a0038b2bec46b16246b162218c400380505c240c2caeb01bc58a19c58a8530020d0042718a03008422d081c51576a35831a358b11046a0038b2bec46b16246b16221ac87d903f8476d6d6d7373b3d95374a0aeae2e2c4ce2bf05af5dbb66b7dbcd9ea203ac985162574cd3b4d8d858b3a7086e217291d051eda88dad357b8a60927422a928e5a0d9530493130e87232fcfec298249b5db1d3b6d9ad953043789ffe2050028020d0062116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a00140285f029d9f9f6fb55af7eedddbc5ef6db158bab8070008613d7c784c6666e65ffef29769d3a6f97d1a008097e123688bc5d2dcdc3c67ce1c8bc5525c5c1c1f1f1f1f1f5f5a5aeafdeafaf5eb6d369bd3e9ccceceb65aadf9f9f9fa975c2e576262624c4c8cd3e96cb3cff6fb0100183e82d634cd62b1689aa6945ab162c5f6eddb5b5a5a56af5e5d5252a2df61f4e8d1656565c9c9c91f7cf041464646666666535393526ac28409070e1cb87af56a6a6aeaaa55ab5aefb3c3fd28a5bef8e20bfd1b29a56c36dbf5ebd79552d1d1d19191914aa9fafafac6c6467d8b6f4f1e40a0b5fe396dfd93dba74f1fbbdd6ef674d2f9728ac3abaaaa2a3535552965b55abd1be7cc99131616d6d2d2929e9eae1f6eebdb5d2e575e5edec993272f5fbe7c37fb514a0d1e3cb8f5a77dfbf66dfd295d06e46bff73ca4feeddebd2ab381212120e1f3e5c5959e9f178bed963d8ed7db6b906989595b570e1c2dcdcdcbbdc0f00dce3ba1468a7d39995959594943469d2a4ff79e78c8c8c254b96b43e83e1db7e00e01e61f19ee40d6a8e6a476d6cadd9530493a41349452907cd9e22989c70381c7979664f114caaddee585eebd535fca20a000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d00020148106101caaaaaaa64f9f6eb3d9faf5ebf7e31ffff8cb2fbfd4b7bff0c20bedef7ce6cc99a14387faf68dbc8f3d77ee5c5c5c9ccf03771d8106101c323333274f9e5c535373faf4e99898989ffef4a7faf63ffde94fedef5c5454f4e8a38ffaf68dbc8f7de081072e5cb8e0ebbc7e40a0010487f2f2f2458b16d9edf6a8a8a8575f7db5bebe5e2965b1582e5fbe6cb1589452c5c5c52929298989893b76ec70b95c770af4850b17a64e9d6ab7dbbffbddeffeed6f7fd33776f8d8d5ab57efd9b3a7fd1e344d4b4f4fdfbc79b3cd66fbf4d34ff7efdf9f929262b7dbd3d2d22e5ebca8dfe7f7bfff7d7474f4902143de7bef3d9f9f328106101cb2b2b2a64d9bf6d1471f29a5ec76fb9123479452a74f9ffece77bea369dac993279f7efae94d9b36959696befdf6db3b76ecb853a0b3b2b2d2d2d2eaeaeade79e79d254b9628a5eef4d8a3478f8e1d3bb6fd1ece9f3f7fe4c891fafafaafbefaaab9b979c18205afbefa6a4d4dcd638f3df6fcf3cfebf779f1c5175d2ed75ffffad7952b57fafc94093480e0b065cb96f9f3e7cf9e3d7bf6ecd9353535fac6a2a2a22953a628a55e79e595975e7ae989279e888a8a7af1c517232323c78c19d3e17e0a0a0a66cd9a75ead4a953a74ef5e9d3e74e8f6d6c6cacadad1d346850fb3d949797474747bff2ca2b11111139393939393953a74eb5d96cebd6ad2b2a2ad2ef3375ead4356bd6f4ead5eb8b2fbef0f929136800c1a1478f1ebffce52f2f5dba347af4e8679e7946df5854543479f264a5d4c18307e7ce9dab6fb4d96c63c68ce9d9b367fb9dbcfbeebb83060dcaccccccc9c9d9ba75ebf8f1e3eff4d8e3c78f2727277738497979797a7abaf7bccab265cb2c168bc562b1d96c4d4d4dfa7d76ecd8b16cd9b2c58b173b9d4e9f9f32810610047af7eeedf1789452616161ebd6adfbf0c30ff5edc5c5c54f3ef9a452cae3f1f4ebd74fdfb86fdfbe3b9ddf58b76e5d7171715959597e7e7e4444c4cc9933eff4d83b9ddf504a9597973b1c0efd76434343434383f6ffae5fbfae94eadfbfbfdbedceccccdcbf7fffaf7ffd6b9f9f35810610041e7df4d1b7df7edbe3f15cbf7efd0f7ff8436a6aaa52ead2a54b1e8f473f5276381c9b366dba74e9d2af7ef5abdffef6b7770a74636363535393dbedfec52f7ef1d1471f3df1c413777a6ce7817ef0c107f5dba9a9a91b376e6c6868282b2b73381cefbfffbe52ea073ff8c1ebafbfded0d070e8d0a1c18307fbfcac09348020b075ebd67dfbf6c5c6c60e1e3c58bf94a794b2dbed03070ed44f53bcf1c61befbefbeec48913870e1d6ab7dbc78d1bf7f9e79fb77f15f3a64d9b66cf9efdf0c30f272525454545e91bdb3f5629555a5a3a76ecd80e77525e5e9e9494a4df7eebadb7f6efdf1f1515b578f1e2975e7a69debc79fa0e8b8b8ba3a3a3376cd8b07dfbf60e7772372c9aa6f9f030691cd58edad85ab3a708264927928a520e9a3d453039e17038f2f2cc9e229854bbddb1d3a6993d852fdc6e775959d9f2e5cb2b2b2bcd9da487b9df1e00a479e49147eaebebb76edd6af620041a00beedb3cf3e337b84db38070d004271040d40bacd6af32975cad043a6a829f3d5fc00cdd36d083400e98ea96387d561430f19aa7c7c2b3b5138c5010042116800108a531c00a40b57e13d0cc62a2c248e3e093400e97aa81e3d5507ef7cd4f94302344c770a85e70020b4f910e870151ea061ba138106205d0fd5234245187a08810680eec01134000815a12238070d001271040d0042710e1a0084ba678fa043e1b5dc00429b7e046de8a34da04b4a4a525252ac566b7272726161a1594fc4288ea00148d7f523e8679f7d363737372d2d6dd7ae5d8b162daaaeaef6eb808142a001486755d67eaa9f52eaa6bad9a81a3bbfa7fe4bde6d825e5151a1df983871a2d56a0dd8a47e46a0014837440db12aab52ea6bf57595aaeae49ea3d428fd72a21ef4365a5a5ad6ae5deb743a0334a7df116800d2d5a89acfd4ed3f43d5f9cb39ca55b97e235a45b7f9524343c3aa55abe6ce9d3b63c68c400c1908041a80745d3f075d5858f8f2cb2f6fd9b265e4c8917e1d2db0083400e9bafe9b84d9d9d9e7ce9d1b356a94fea9a6697e1b2e90083400e9c25578177f51e5ecd9b37e9da89b106800d2f970041d1abfa842a00148d7f523e82045a00148c711340008c511340008c511340008c51f8d0500a17c783fe8b09078ab4e020d403a8ea00140288ea00140288ea00140a87bf64f5e116800d2f147630140288ea0bf3162c488e9d3a7fff0873f1c3f7e7c646464f7cf0400ad75fded46835407173a77efde3d6cd8b08d1b37c6c5c5cd9c39f3adb7de0ad277ea03101af45ff536f411b2afe2484c4c4c4c4c5cb972654d4d4d4e4ececa952b9b9b9b1d0e474e4e4e7a7a7af78f7837221b22632ec6983d4530e97dadf7c5c183cd9e22985cb5db2fbadd664f114cdc376ec4fa6957f7ec117407cfe1f4e9d37ffffbdf0b0a0a2a2a2aa64e9dba73e7cef1e3c7fffbdfff7efae9a7ebeaeaba7fc4bbb1735e636cadd0d9643a9114157bf10bb3a708268e1383f21c7dcd9e2298b8ab95bffeba14e7a0bf317dfaf4993367fee637bf19376e5c58d8edff4c9832658ad83a03086dbc8ae31b9f7df659f7cf01007772cf1e4187c2797400a14d3f8236f4d126d07bf7eebdfffefb7bf5ea959c9c5c505060d613318a4003904e3f8236f4d126d01b366cd8b061437d7dfdd2a54b376fde6cd613318a4003904e7f1587a18f36afe2f8e4934fe6cd9b67b3d99e79e69913274e98f5448c0a8557a200086de12abc8be794af5ebd6ab55a955276bbdd1d3c2f9724d000a4b3dcbca55a5a8c3d263c5c857fd3f4810307363434d86c368fc7d3a74f1f3fcf17309ce20020decd9baab9d9d8c7ad5bad77307af4e8828282a6a6a65dbb763df4d043663d0fa3388206209e1e6843c2be75f4b974e9d29ffce4270b162c183060c01ffff8477fce1648041a80783e043ae25bbfd8326bd6ac59b366f973a46e41a0018877f3a66a6a32f6909ec67eb14526020d40bce666c381fef639e82045a0018877eb96e1531c041a00ba0347d00020940fe7a009340074071f5ec541a001a03bf870047df3666046e956041a80789c830600a138070d0042710e1a0084e2081a0084e2081a0084e2081a0084e26576002014a7380040281f026df44f648944a00188c7290e00108a8b840020d4bd7a0e9abfea0d403cfd08dad0c71d025d525292929262b55a9393930b0b0bbbf97918c5113400f17c78b3a43b9c837ef6d967737373d3d2d276eddab568d1a2eaea6a3f8c1730041a80783efcc9ab3bbc8aa3a2a242bf3171e244abd5dac5b9028d4003106fe0401511a194525f7fadaaaa3abbe7e8d1b7ef69b77772af969696b56bd73a9d4e3fce1808041a807867cfaa53a7eeea9ec78eddbed1a74febcd168b4529a5699a52aaa1a161d5aa5573e7ce9d3163867fc7f43b020d40bc2ebf0e5a4fb352aab0b0f0e5975fdeb265cbc89123fd355de0106800e2f9ef6576d9d9d9e7ce9d1b356a94fea937dc32116800e2f9ef1755ce9e3deb8779ba0b810620debdfa8b2a041a8078fcaa37000845a00140284e710080501c41038050fe7b2f8ee042a00188c711340008c539680010ca8777b30b8940f386fd002014810600a138c50140bc871e5261068f26870f0fcc28dd8a4003106fed5ab3273007a738004028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a1ba3bd0168ba59bbf230004298ea00140283f04da62b1ac5fbfde66b3399dceecec6cabd59a9f9faf7fc9e572252626c6c4c4389dce368f2a2e2e8e8f8f8f8f8f2f2d2dedfa0c00107a7af8652fa3478f2e2b2b4b4e4efee0830f3232323233339b9a9a945213264c3870e0c0d5ab5753535357ad5ad5fa212b56acd8be7d7b4b4bcbead5ab4b4a4a3adcedf9f3e7354dd36fdbedf66bd7ae29a5060c1860b55a95525f7ef9e58d1b37f42d7e791600fcaef5cf69eb9fdc7efdfaf5e9d3c7ece9a4f34fa0e7cc99131616d6d2d2929e9e6eb1589a9b9bf5ed2e972b2f2fefe4c993972f5f6ef390aaaaaad4d454a594feff5987860e1ddafad3a8a8a8d69f0e1c38d02fc303089cf63fa7fce4de3dff9c830e0bbbbd9f36d700b3b2b2162e5c989b9bdbfe21090909870f1faeacacf4783c7e990100424c602f126664642c59b2a4c333184ea7332b2b2b292969d2a449019d01008294c57b9237a8553b1cb1b5b5664f114c4e2425a5141d347b8a60e238e1c873e4993d45307157bba7c54e337b8ae0c6cbec004028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a10834000845a0014028020d0042116800108a40038050041a008422d0002014810600a108340008d5c3ec01fcc3d3abd7c59818b3a708266ebb7df0c5c1664f114cfa7ed5d77dd16df614c1a4e14a838a357b882067d134cdec1942d9850b17e2e2e2cc9e2298b06246b162218c531c00201447d081d5d8d818191969f614c18415338a150b61041a0084e21407000845a003abaeaeceec11820c2b66142b16c2087460ddb871c3ec11820c2b66142b16c208340008c545c2c0e20abb51ac9851ac580823d0002014a738004028021d585c61378a15338a150b61043ab0b8c26e142b66142b16c208340008c545c2c0e20abb51ac9851ac580823d0002014a738004028021d585c61378a15338a150b61043ab0b8c26e142b66142b16c208746071f5c62856cc28562c84116800108a4007566363a3d923041956cc28562c84116800108a40038050043ab0faf6ed6bf608418615338a150b61fc26210008c51134000845a003c862b1e837d6ae5d6bee24c27917ca7bc38ba5d3b55fa2f66b85d0c3298eee60b1b0ce9df1ae4ffb8562e9dae864ad107a3882f69bc2c2c284848451a3461d3d7a54dfa21fe378fff7fbdfff7e59599952ead8b1630f3ffcb089a306427e7e7e4444445454d4b265cb9452168b65fdfaf5369bcde9746667675badd6fcfc7cfd9e2e972b3131312626c6e97476becfd60be872b9e2e2e21e78e081a2a222a554fffefdaf5dbbf69ffffcc762b1ecdbb7efabafbeeadfbfbf7ee7cccc4cbbddeefd76c168ecd8b11f7ffcb152eae38f3f1e33668ceaf478b9fd7ae6e7e7474747fffce73ff73eaab8b8383e3e3e3e3ebeb4b434f0e3c37f34f8c9881123f2f3f33ffcf0c3c4c4447d8b7779f51bdbb66dcbceced634edb9e79edbb2658b597306c8830f3ef8a31ffdc8ed76eb9f2aa5de7befbd53a74e858585eddebd7be7ce9d111111fa979a9a9ace9e3dfbe9a79f46454579efdce6869777cba851a3fef18f7f1414148c1c3952d3b4949494fffef7bf4b972e9d3c79f282050b8e1f3f3e66cc18fdfe050505adbf5d307af3cd379f7ffe794dd356ac58f1c61b6f681d2d91f746fbf5d4d76af7eedddefb7cef7bdf3b74e8d0c18307c78d1bd79d4f045d44a0fda667cf9e8d8d8dadb7b4f959f2783cb1b1b1e7cf9f1f3264c8d5ab574d1831902a2b2b9392927af7ee7df8f0614dd39452b76eddd26fb4b4b468ad5663cf9e3de9e9e9c3860deb243a5ede2dbd7af56a6c6cbc71e346cf9e3d354d9b3b77ee9ffffce761c386d5d4d40c1830e09d77de99376f9e7eff9b376f76b8ab20f2f5d75fc7c5c5b9ddeeb8b8b82b57ae689d06bafd7a7ad7aaf516fd80cc6ab576eb3341d7708ac36f860f1f7ee0c08143870e0d1f3ebcfd57af5cb962b55a9f7aeaa9a79e7a2a3d3ddd6eb777ff8401959898585151f1d8638fcd9a354bdf121676fb9fae36ff799e9595b570e1c2dcdcdcbbdcf3952b5794520909092e97ebc081037a89121212366fde3c63c68c8103074e993265e3c68d090909fafdc3c3c3fdf28c4c74df7df7a5a5a52d5fbe7cc28409fdfaf5ebfcceedd7332121a1b0b0d0e572b5de72f8f0e1caca4a8fc713a8a1110866ff1b2274e8ed183468d09e3d7bf42ddee51d3f7e7cefdebd354daba8a8504a959595993665c02c5fbedc6eb7474444ecdcb953ebf4886ff1e2c5f7dd77df9a356b3ab98f9777e9fef5af7fc5c6c6de7ffffdc5c5c59aa6e5e5e529a58e1f3fae69da3ffff94fa5d49b6fbed9f9ae828b7e25a3b0b050ffd4d07a1614140c1830e0673ffb597878b8be65dfbe7d43870e554a3df9e493ddf71cd0655c08ee56478f1e7deeb9e73ef9e413b30741288b8989d9bf7fff993367d6ac59f3f9e79f9b3d0e7cd7c3ec01ee2d3366ccd8b66d9bd95320c46ddbb66dfefcf91e8fe777bffb9dd9b3a04b38820600a1b848080042116800108a40038050041a524c9f3e5d7fe9eedebd7b333232cc1e07301f170921457979795656564949c9238f3cf2fefbef2726269a3d1160328ea021c58811231e7ffcf1c993274f9a34893a038a23688852555595949474e6cc99f8f878b36701ccc711340479fdf5d71f7ffcf1fff936a4c03d8240438af2f2f223478eb85caec2c242fd4d4b807b1c8186142fbcf0c2860d1b2223235f7bed35fdad7f807b1ce7a00140288ea0014028020d0042116800108a40038050ff079280b5d153e924390000000049454e44ae426082}
+}}}
+\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs16 Mosaic chart\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 In front of the heat map, on the {\i mosaic charts}, not only the colours are important. The size of the cells shows the amount of the counts one cell has.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The width on the axis of gender determinate one side and the height on the axis of the dwell gives the final shape of the box. The box which demonstrates a cell from the hypothetic crosstable. We can see on the top of the chart which category from the dwell draw the boxes what kind of colour.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "plots/Crosstable-3-hires.png"}}{\fldrslt{\ul
+{\pict\pngblip 89504e470d0a1a0a0000000d49484452000001e0000001e008030000004a0a4ea7000002c4504c5445000000009e730101010202020303030404040505050606060707070808080909090a0a0a0b0b0b0c0c0c0d0d0d0e0e0e0f0f0f1010101111111212121313131515151717171818181919191a1a1a1b1b1b1c1c1c1d1d1d1e1e1e1f1f1f2020202222222323232424242525252626262727272929292a2a2a2b2b2b2c2c2c2d2d2d2e2e2e2f2f2f3030303131313232323333333434343535353636363737373838383939393a3a3a3c3c3c3d3d3d3f3f3f4040404242424343434444444545454646464747474848484c4c4c4d4d4d4e4e4e51515153535354545456565656b4e95858585a5a5a5b5b5b5d5d5d5e5e5e5f5f5f6060606161616262626363636464646565656666666767676969696a6a6a6bc7ae6c6c6c6d6d6d7171717272727373737474747575757979797b7b7b7d7d7d80c7ef8282828787878ed4c19090909292929595959696969797979999999b9b9b9d9d9d9dd4f29f9f9fa0a0a0a0d5f2a2a2a2a4a4a4a6a6a6a7a7a7a7d8f4a8a8a8a9a9a9abababacacacadadadaeaeaeafafafb0b0b0b1e1d4b2b2b2b3b3b3b4b4b4b4def5b5b5b5b6b6b6b7b7b7b8b8b8b8e0f6b9b9b9babababbbbbbbbe5dabdbdbdbebebec0c0c0c1c1c1c2c2c2c3c3c3c4c4c4c5c5c5c6c6c6c7c7c7c8c8c8c9c9c9cacacacbcbcbcbe8f8cccccccececed1d1d1d2d2d2d2eee6d4d4d4d5d5d5d6d6d6d8f0ead9d9d9dadadadcf2ecdfdfdfe1e1e1e1f2fbe2e2e2e3e3e3e4e4e4e5e5e5e5f4fce6e6e6e7e7e7e8e8e8e8f5fce9e9e9eaeaeaeaf7f3ebebebebf6fcebf8f4ecececedededeeeeeeeef9f6efefeff0e442f0f0f0f1f1f1f2e85bf2f2f2f2f9fdf3f3f3f3faf8f4f4f4f5ed81f5f5f5f6f6f6f6fcfaf7ef91f7f1a0f7f7f7f8f8f8f8fcfef9f4b6f9f9f9faf7c5fafafafbf8cdfbfbfbfbfdfefcf9d8fcfadefcfcfcfcfefdfcfefffdfbe2fdfbe6fdfce9fdfcecfdfdfdfefdeffefef6fefefefefffefeffffffffffdfd691ad000000097048597300000b1200000b1201d2dd7efc00000f0549444154789ced9d8f7f55651dc79f6043d0153a84c41f4b9210211d534b130db4a01ffe88ca04fb6969616a6a4191650906c62232d448114b20b48c25de2152d620634d5aac62b5d6caf5f3d6eaf927ba3f3676b9bbf7ee3cdee7dc7deff779bf5fbc9e8dbb7bce739ef3e67cf6d981d7c158508d19eb03807841b07210ac1c042b07c1ca41b07210ac1c042b07c1ca41b07210ac1c042b07c1ca41b07210ac9cea14fcce11147cdb2bf27979b3fd6204651c7aa541f0e820b8e2203832081e1d04571c0447469de0d4826e18fa3ca26033741a6e28fcf5e2824dcec642117d7045297d051f5d93abe02227a3e4158ce038282878d36bcede925e9031a6e93bf6f1790505afaead5f66cdc74fb8e5dd93565b7bff6b4fbe65d8516a437bffa9a73f604f3af498d9f8c249d6bca32ef5a682821bb7d96de70d5fc1d91dad9e727deaf3071b1a1e1ddbd3938b22c1b3d67cfbacc113fee9f7d8a5771414fcbab7b6a7def0a527c7af5d3dc1dade969d538ebd8267af5f77b63d6ffbb2375fbdadd19a75e93715147cfb07ed876e1b169cddd1ecf56b539fcff9d6836f18d3b3730c8a041fd793fe52e684779dba7bfaa182829f9a79c2666b92d60ca4dfd9fc960673ace0493dddc7d9b77dbe61dfd4cfbddd9afecc170a09ee38adfdb4178605677794da383d1a73fc189e9b3c14093ebbf9a119d9137ec07ef88d4b6d91efc10b4e1ef672d217bf748ce00376d6faf567d98f5ef07e7bd5eb3f36f48582df83df7bd5d5367f47b3be765f7adcfcd4989d98912812bca9615a7366416f3ac1fec03c6e0b0abefe9513560f7b79d7ab3e922b38b5e1c6535ffd90fd94d9663798db4b0a7ed43c60f377b46eeafb6aacfdc6e9e6d2313c377928129ccb9639e9b1d23f079fbced9e869737457c28153c654d7aacb4e07b679cf2e59737457c28159ca5d2822582e0d14170c5417064aa53304406c1ca41b07210ac1c042b07c1ca41b07210ac1c042b07c1ca41b07210ac1c042b07c1ca41b07210ac9cb20427f7bb6e71d8798ee79db7709ea3bd27f629dc97d1dbeb678ab204f73febba45bbf31cbb9db7709ea3ad2bf629dc97d1edfca7aef0140846707106ba5db7e8739ec3790af7397a93b14fe1be8ca4f341159e8292a51c042b87164d8b2e0e252b32d559b2101c99ea144c8b8e0c2d1ae201c1caa145d3a28b43c98acce032169ba6425f2d604144c94270640697611617f42655302d3a32d965a41fb5b67182a95d65cd45a6698e596c6faa3166be1d7a35075a7455923addc75fbe77e1046b2e5c3e6ed16263c72d3ab8dca45ecebe1acf8c50394ce62a4e5dc7666fbfd99ffaed63674e1a67b2cf5f34b1b8a04557b445a7053f3cf449fa57cdf94b5764043f9cb7012ddadf1c952c59d64e3c257141cd51c166f9e6bab4e0ecab39882859088eccb0e07b6acdf8e1c798361a734e5a70f6d51c4408a64547867bd1100f05043f39d5dae6691367af1d1ca19a1929f8c679a9d72e59d979eba583637168d19111742f7a656feab5fa4edb3e65702c0e252b32a2fec23ff55a6dd2266b06c7147b1289c4c14422f56dbc2d77dcdb996a02bdddddd1c75ec7f7276db7e3fb6d6f97e3fbbb0ff7b91e559feb2aec61d7551c39e27a6ebbf2ec64c66282a777da43f583637106fef2ebd0f8e71fc6fa088af22f972bf88abb7a56cd1f1c4bf0c791cfe954ce4bbf1deb2328cadf5d04afa91f3fad797044700e2a04476600c18288417012c18240b00fc2124c444b2206c1942c4920d807610926a22541c9f2018295f3d2ef7e29957ff8171c6244ffefbf5229ec8892e5c64b1f18f1bf6d49e1fb08f6405882438ce8b004fffb4fa1f19fdffc5c2a7ff52f38f9c34f86c6cfbefe09a9fcd4bfe081af8c752c559cef7d66e4ff7c2a8456ff822d820581601f8425988896440c8293081604827d109660225a12942c1f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2415882077ef2cdd0f8d517c6da6351ca15dcd7d1d1676d57ee78e4b9af86c68b9f1d6b8f4569cdb39319cb2c59df1deb45559c1f0515d10896441cdf83112c88385a34820581601f84259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684944176c52d4da5de90fa50553b224e17405df7c875db1acb45d040bc34570f395d62e699adcb8a3b460225a120e828fcc7ac6da860d7d3be70dbef0744b4bcbfe96962e6bf7e58e6d0816446b9e9dcc5858f09dd7663f26eb4a5fc1b46849385cc197ad4b0d33b7f66f5f58da2f112d0907c127ee490d5be6d62dd85d5a30254b12dc8bf641588289684970abd20708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb078a05f77574f459db953b1e41b0205af3ec644622da11d982cbba820b40c99204827d109660225a12b4681f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2018295a342f02e93c2364f9b387b6d69c144b424a20b5eb12c3d5eb2b2f3d64b4b0ba6644922bae0254d931b77d8fa4edb3e05c179a810dcb0a16fe73c5b9bb4c99ac157f6241289838944b7b56db9e301040ba235cf4e662c56b29275767aa73d545ffa02a6644922fa153c736bfff685f68abb7a56cd47701e2a046f995bb760b75d533f7e5a7369c1b4684970abd20708564e588289684970abd20708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e584259888960425cb0708564e588289684950b27c8060e5842598889644b9827b0e1ce8b5f650ee7808c18268cdb3931969d18ec8165cd6155c00225a12942c1f205839610926a225c1ad4a1f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2018295139660225a12942c1f205839610926a22541c9f2810ac18f9c3b69f626bbcba440701e2a04cf5cdb7df774bb62d928768968593845f4be197649d3e4c61da50553b224e1223879cd7db66143dfce7983bfdf9348240e2612ddd6b6e58efb112c88d63c3b99b1b0e0aeebeecd7aae2b7d0513d192887e056fbaf889d438736bfff685a50553b224115df01999febc656edd82dd08ce4385e0c810d192e056a50f10ac9cb00413d192e05eb40f10ac9cb00413d192a064f900c1ca094b30112d094a960f10ac9cb00413d192a064f900c1ca094b30112d094a960f10ac9cb00413d192a064f900c1ca094b30112d094a960f10ac9cb00413d192a064f900c1ca094b30112d094a960f10ac9cb00413d192a064f900c1ca094b30112d094a960f10ac9cb00413d192a064f900c1ca512cb8afa3a3cfdaaedcb10bc18268cdb3931929598ec8165cd6158ce0346109a6454b8292e503042b272cc144b42428593e40b072c2124c444b8292e503042b272cc144b42428593e40b072c2124c444b8292e503042b272cc144b42428593e40b072c2124c444b8292e503042b272cc144b42428593e40b072c2124c444b8292e503042b272cc144b42428593e40b072c2124c444b8292e503042b272cc144b42428593e40b072c2124c444bc24970f3b489b3d78e2a9892250927c197acecbcf552048f448be0fa4edb3e6554c144b4249c04d7266db266f8b74fb7b4b4ec6f69e9b2765feed8f6fbe742e3cf2f8ef51114e56f7976326331c1d33beda1fa51af60904f11c157dcd5b36afea81b27f7bb4e77d87503fbbcf316ce73b4f7c43e85fb327a7bfd4c5144f09afaf1d39a47dd65ffb3ae07d1eeba81ddedbc85f31c6d5db14fe1be8c6ee73f7585a728ebe7600447a63a050f74bb6ed1e73c87f314ee73f426639fc27d1949e7832a3c4579b72a413cd52bb87a8fbca294f7f7c163d9a28b1e392d3a976a2a59e622d334c72cb637d518333f75e41b2798da551ee6a06415a3d2822f5c3e6ed16263c72d3ab8dca48efcf8cbf72e9ce0610e0417a3c22ddaeced37fb5347fcd89993c6a5059b341ee6a0450bc10cfeaa397fe98a8ce087c7fa88aa806a146c966fae4b0b9e784ae2829ad1370b9b6a6ad143821b8d39272df89e5a33fe360f73d0a28bc1adcac85467c9427064aa5330f7a223438b867840b072aaa945c735072dba1894acc85467c9427064aa53302d3a32b4688807042b87164d8b2e0e252b32d559b22a7105ffd8790bf72bd8b901556019bdce45aef014e5096e73dd62c0790e77c1ce731c74be582ab10c4f535438a2dd718f6867dc23da9d0a2c43c48d0e77105cde1408467071929de56c1d8d8ef8a7e872bf31e54c059651780a6e742807c1ca294370b4472d95c123e74e9abdc9ee2afccfdbfd90dd79ac2b49cf501bef2a9e9c3a6463e44aca9834daa396ca60e6daeebba7db15cb629c22bbf3b85772f31db1aee2c67966680d23575286e0688f5a2a8f7d33ec92a6c98d3be2da7f76e731afa4f94a1beb2a56f69a211b23575286e0bc472dc541f29afb6cc386be9df3e29a20bbf378577264d63336de55a42d66d730722565088eff514b5dd7dd9bf998ac8b7192d4cee35dc99dd71e9d282ecc908d912b294370b4472d95c1a68b9f488d33b7f66f5f18d714d99dc7bb92cbd6d9985791b6985dc3c895942138daa396cae08c4cf3dc32b76e416cf781b23b8f772527ee393a515c98211b2357c2cfc1ca41b07210ac1c042b07c1ca41b07210ac1c042b07c1ca41b07210ac1c042b07c1ca41b07210ac1c042b07c1ca41b072fe0fa787f4495920090b0000000049454e44ae426082}
+}}}
+\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs16 Fluctuation diagram\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 At last but not least have a glance on the {\i fluctuation diagram}. Unlike the above two charts, here the colours does not have influence on the chart, but the sizes of the boxes, which obviously demonstrates here as well the cells of the crosstable.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The bigger are the boxes the higher are the numbers of the counts/the total percentages, which that boxes denote.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "plots/Crosstable-4-hires.png"}}{\fldrslt{\ul
+{\pict\pngblip 89504e470d0a1a0a0000000d49484452000001e0000001e008030000004a0a4ea7000001b9504c54450000000202020303030404040505050606060808080909090a0a0a0b0b0b0c0c0c0d0d0d1010101111111212121313131515151717171818181919191a1a1a1b1b1b1c1c1c1d1d1d1f1f1f2020202323232424242525252626262727272929292a2a2a2b2b2b2d2d2d2f2f2f3131313232323333333434343636363838383939393d3d3d4242424444444545454c4c4c4d4d4d53535354545456565656b4e95a5a5a5b5b5b5e5e5e60606061616162626263baeb6464646666666767676969696a6a6a6c6c6c6d6d6d6dbeec71717172727273737374747475757578c3ed7ac4ee7d7d7d7fc6ee83c8ef90909090cef195959596969697979799999999d2f29d9d9da2a2a2a6a6a6a8a8a8abababacacacadadadaeaeaeafafafb0b0b0b2b2b2b3b3b3b4b4b4b5b5b5b6b6b6b7b7b7b8b8b8b9b9b9babababbbbbbbdbdbdbebebec0c0c0c1c1c1c2c2c2c3c3c3c4c4c4c7c7c7c8c8c8cacacacbcbcbcccccccececed1d1d1d4d4d4d6d6d6d9d9d9dadadae1e1e1e3e3e3e5e5e5e6e6e6e7e7e7e9e9e9ebebebecececeeeeeeefefeff0f0f0f1f1f1f2f2f2f3f3f3f4f4f4f6f6f6f8f8f8f9f9f9fafafafbfbfbfcfcfcfdfdfdfefefeffffffb0cfd2bf000000097048597300000b1200000b1201d2dd7efc00000b5849444154789ceddd8d9f54551dc7f14badcb16dbae3d2093588ba81545d19342999a26a5905bd9135b63105b82ae90941b048e8908a93c2de72f6e6667f5ccea9ec3b9f79c33f7deef7cde2f5ef35a977dddfbbbe7c3e24f5ca0309056d43d00f222b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b23b038028b6b4ae0f7eb1ec088ced094c06fd63d80119d81c096e40c4d097ca5ee018ce80c4d098c4c082cae29812537d80ad8a233929c81c096e40c4d092cb9c156c0168d72082cae29812537d80ad8a233929c81c096e40c4d092cb9c156c0168d72082cae29812537d80ad8a233929c81c096e40c4d097cadee010c5b74a01f8e53f2e9e510581c812db6e820ed0dcc921584c031089c31305b7490f6069644607104b6d8a283b437304b561002c72070c6c06cd141da1b581281c511d8628b0ed2dec02c5941081c83c01903b34507696f6049041647608b2d3a487b03b3640521700c02670ccc161da4bd812511581c812db6e820ed0dcc921584c031089c31305b7490f6069644607104b6d8a283b437304b561002c72070c6c06cd141da1b581281c511d8628b0ed2dec02c5941081c83c01903b34507696fe0fabcb0953497267013647c36025bf56dd1041e4be0fa962c028f25f0db49af56068133073e3272c92389ae5946c66723f0c04405ee4e2f077ee4d6c65336e9214c56e0a9ee9dc08fdcda78ca263d84890a5c148559e974cef5df3a3ab37868ba6bcce9ddf38beb1f397c7f956173497308131578f09ebd6756f6f5df58bab0ed7877ca989b97cecf8dbcdf98b77abdded55eefba31ef7ce2f5ea78ca6eb8bce50ca55f37058ebe5ae9d7cb5b3e9beb84cbbc3a024f17c5f6fe1b6ba6b833f8c7e5039d62e4fdc6dcea5bbb75abff53f9ed4fbcae8da7ec86db5bce50fa7553e0e8ab957ebdbde5b3b94eb8ccab23f0c2d98bc33786df668f2d1523efbf8bf194dd50f6272c8749fb29fad4ae62ff48e0833b0e1723efaf326c2e690e61b202c71a4fd9a48740e032c65336e92110b88cf1944d7a08e67723ff1bf65789ae59068133071eaaef2b3a083c96c0f5213081ab22b0c5577404696fe0267cd96cf22f3a20b0d584c07c5d74c6c07c5d7490f6069644607104b6f8dd8541da1b98252b08816310386360b6e820ed0d2c89c0e2086cb14507696f6096ac20048e41e08c81d9a283b437b024028b23b0c5161da4bd8159b282103806813306668b0ed2dec092082c8ec0165b7490f60666c90a42e01804ce18982d3a487b034b22b038025b6cd141da1b98252b08816310386360b6e820ed0d2c89c0e2086cb14507696f6096ac20048e41e08c81d9a283b437b024028b23b0c5161da4bd8159b232aaefef0db4089c91e4065b410bb668340a81c53525b0e4065b410bb6e86a24179c0a64972cc9c3ad4036b0e4065b015b34ca21b0b8a604fea0ee010c5bb4c791bbffaa7176f14fc192e544e05408ec14ff146cd14e1a812511581c812db668278dc02c594e044e85c04ef14fc116eda411581281c511d8628b76d208cc92e544e05408ec14ff146cd14e1a812511581c812db668278dc02c594e044e85c04ef14fc116eda411581281c511d8628b76d208cc92e544e05408ec14ff146cd14e1a812511581c812db668278dc02c594e044e85c04ef14fc116eda411581281c511d8628b76d208cc92e544e05408ec14ff146cd14e1a812511581c812db668278dc02c594e044e85c04ef14fc116edd4c2c0bf7c3e4492d3a9d5c4060e1b39c9e9d48ac0292f1a8f2dda29cbc8494ea78ce47fc51f81535eb402fffd1f8fbe3e81535eb402fffd096c651939c9e978f9ef4f602bcbc8494ec7cb7f7f025b59464e723a5efefb13d8ca327292d3f1f2df9fc0569691939c8e97fffe04b6b28c9ce474bcfcf727b09565e424a7e3e5bf3f81ad2c2327391d2ffffd096c651939c9e978f9ef3faec077fb280257e6bf3f81ad920f3ee1818ba3338b87a6bbc69cde3dbfb8fe512b9dce39e755085c99fffef9022f5dd876bc3b65cccd4be7e7d63f6aef99957d1f7eef5bbd5eef6aaf77dd987786af4d087c79649e80d7b0912f97ba6685d71bfefb3f1e797d77e03553dc197ce7f2814eb1fe51d345b1ddf9c3a409814bfec89ef4cfe00fbfcd1e5b1abeb170f6a2fb2a04aecc7ffffc810fee383c7ce3d4ae62bff32a04aecc7f7ffe3bd8ca327292d3f1f2df9fc0569691939c8e97fffe04b6b28c9ce474bcfcf727b09565e424a7e3e5bf3f81ad2c2327391d2ffffd096c651939c9e978f9ef4f602bcbc8494ec7cb7f7f025b59464e723a5efefb13d8ca327292d3f1f2df9fc0569691939c8e97fffe04b6b28c9ce474bcfcf727b09565e424a7e3f533aff8df814ee094178dd74b7d4102a7bc683cfe8c0ea72c2327399d5a4d6ce04941608b3fe9ce4923307f109a13815321b053fc53f027dd3969049644607104b6d8a29d3402b36439113815023bc53f055bb493466049041647608b2dda4923304b9613815321b053fc53b0453b69049644607104b6d8a29d3402b36439113815023bc53f055bb493466049041647608b2dda4923304b9613815321b053fc53b0453b69049644607104b6d8a29d3402b36439113815023bc53f055bb493466049041647608b2dda4923304b9613815321b053fc53b0453b69049644607104b6d8a29d3402b36439bdf07cfde29f82c019496eb01534748b466311585c53024b6eb01534748b8e27b9e05420bb64491e6e05b2812537d80ad8a2510e81c53525b0e4065b015b7446923310d8929ca12981dfab7b00233a4353024b7ef65420fb192c79b815103823c9199a12f8bf750f604467684a60644260710416d790c0fd317e5ef3fd872751cf14c5c804e92fdd10b54ef2d1f1d636856ce057bebce7f5c11845517cfd5fe68dafe5bf63f7d39f7bd2144767160f4d778d39bd7b7ed11e6f7f0a737ae7ae57cdec7bff2c5e7e77d6143ff84c37e7308fac9ad587ed67f0709aeedc53fdb7573a9d73f137a83df0c24bff7860e3f17eff23f3c46ff3dff1abdfbdd6bfdbd2856dc7bb53c6dcbc747e6ef367f083274fec310ffffbc96f3fb6fa88294e0c3e289f179f36cffcda061e4ef3e0c9e3fdb7f79e59d9177f83da03df7363638cc27cb0f3cd2f8de1d7832f7e65e6ac29d64c716770dbe5039d6273e0e91bd7ef31dffb63e7ed7bfff07d53dcce7b44ffbbefda7defdac0c369fa130c5e8b627bfc0d6a0fbc67f9b5fb878f77c53cfbcd27c672cfefccdb239d3db6b429f015b370f2e403e617dff8a979f4a1e7b2fdabf1233f7ef431f3f16916fef6d7c1ebd98b09ae5f7be0573a9f5f5e1fe35b33e63fc51b63b8e3539f9deada233db8e3f068e0fe142feffcc26be637c5aaf97bf162fec0e78a57cdc7a73971ef4f3e65cca95dc5fef8ebd71e78d4eb7beb9ea019e657ffdc4975ad46059e7ba9ee099ae12ff77ff14fa9aed5a8c0488fc0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2082c8ec0e2fe0ff92e953ba37299250000000049454e44ae426082}
+}}}
+\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Description\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Variable description\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Two variables specified:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab "email" ("Email usage") with {\i 672} valid values and\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab "dwell" ("Dwelling") with {\i 662} valid values.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs24 Introduction\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Cross_tabulation"}}{\fldrslt{\ul
+Crosstables
+}}}
+ are applicable to show the frequencies of categorical variables in a matrix form, with a table view.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 We will present four types of these crosstables. The first of them shows the {\i exact numbers of the observations}, ergo the number of the observations each of the variables' categories commonly have.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The second also shows the possessions each of these cells have, but not the exact numbers of the observations, rather the {\i percentages} of them from the total data.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The last two type of the crosstabs contain the so-called {\i row and column percentages} which demonstrate us the distribution of the frequencies if we concentrate only on one variable.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 After that we present the {\i tests} with which we can investigate the possible relationships, associations between the variables, like Chi-squared test, Fisher Exact Test, Goodman and Kruskal's lambda.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 In the last part there are some {\i charts} presented, with that one can visually observe the distribution of the frequencies.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Counts\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2160\clbrdrb\brdrs\cellx3000\clbrdrb\brdrs\cellx4560\clbrdrb\brdrs\cellx5760\clbrdrb\brdrs\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Missing\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b never}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 12\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 30\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 41\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b sometimes}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 67\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 8\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 8\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 101\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 10\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 7\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 88\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 10\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b always}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 226\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 9\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 7\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 17\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Missing}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 34\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Sum}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 599\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 33\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 30\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 47\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Counted values: "email" and "dwell" (continued below)\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2160\clbrdrb\brdrs\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Sum\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b never}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 13\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 36\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 46\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b sometimes}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 87\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 123\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 108\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b always}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 259\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Missing}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 37\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Sum}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 709\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Most of the cases ({\i 226}) can be found in "always-city" categories. Row-wise "always" holds the highest number of cases ({\i 259}) while column-wise "city" has the utmost cases ({\i 599}).\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Percentages\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2160\clbrdrb\brdrs\cellx3000\clbrdrb\brdrs\cellx4560\clbrdrb\brdrs\cellx5760\clbrdrb\brdrs\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Missing\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b never}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.69\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.14\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.23\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.14\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.42\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.28\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.78\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.42\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.14\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.14\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b sometimes}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 9.45\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.56\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.13\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.13\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 14.25\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.41\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.71\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.99\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 12.41\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.71\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.71\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.41\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b always}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 31.88\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.27\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.99\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.4\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Missing}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.8\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.14\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.14\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.14\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Sum}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 84.49\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.65\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.23\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.63\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Total percentages: "email" and "dwell" (continued below)\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2160\clbrdrb\brdrs\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Sum\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b never}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.83\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.08\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.49\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b sometimes}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 12.27\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 17.35\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 15.23\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b always}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 36.53\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Missing}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.22\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Sum}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 100\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2160\clbrdrb\brdrs\cellx3000\clbrdrb\brdrs\cellx4560\clbrdrb\brdrs\cellx5760\clbrdrb\brdrs\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Missing\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b never}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 92.31\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 7.69\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 83.33\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.78\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 8.33\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.56\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 89.13\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.52\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.17\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.17\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b sometimes}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 77.01\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.6\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 9.2\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 9.2\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 82.11\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 8.13\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.07\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.69\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 81.48\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.63\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.63\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 9.26\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b always}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 87.26\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.47\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.7\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.56\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Missing}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 91.89\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.7\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.7\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.7\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Sum}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 84.49\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.65\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.23\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.63\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Row percentages: "email" and "dwell"\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2160\clbrdrb\brdrs\cellx3000\clbrdrb\brdrs\cellx4560\clbrdrb\brdrs\cellx5760\clbrdrb\brdrs\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Missing\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b never}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.13\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.01\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.03\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 10\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.26\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.84\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 9.09\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.33\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.13\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b sometimes}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 11.19\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 12.12\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 26.67\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 17.02\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 16.86\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 30.3\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 16.67\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 14.89\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 14.69\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 15.15\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 16.67\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 21.28\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b always}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 37.73\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 27.27\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 23.33\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 36.17\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5760\cellx6960
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Missing}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.68\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.03\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.33\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.13\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Column percentages: "email" and "dwell" (continued below)\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2160\clbrdrb\brdrs\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Sum\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b never}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.83\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.08\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 6.49\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b sometimes}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 12.27\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 17.35\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 15.23\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b always}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 36.53\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx2760
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b Missing}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.22\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Tests of Independence\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 In the below tests for {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Independence_(probability_theory)"}}{\fldrslt{\ul
+independece
+}}}
+ we assume that the row and column variables are independent of each other. If this {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Null_hypothesis"}}{\fldrslt{\ul
+null hypothesis
+}}}
+ would be rejected by the tests, then we can say that the assumption must have been wrong, so there is a good chance that the variables are associated.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs24 Chi-squared test\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 One of the most widespread independence test is the {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test"}}{\fldrslt{\ul
+Chi-squared test
+}}}
+. While using that we have the alternative hypothesis, that two variables have an association between each other, in opposite of the null hypothesis that the variables are independent.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 We use the cell frequencies from the crosstables to calculate the test statistic for that. The test statistic is based on the difference between this distribution and a theoretical distribution where the variables are independent of each other. The distribution of this test statistic follows a {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Chi-squared_distribution"}}{\fldrslt{\ul
+Chi-square distribution
+}}}
+.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The test was invented by Karl Pearson in 1900. It should be noted that the Chi-squared test has the disadvantage that it is sensitive to the sample size.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs20 Criteria\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Before analyzing the result of the Chi-squared test, we have to check if our data meets some requirements. There are two widely used criteria which have to take into consideration, both of them are related to the so-called expected counts. These expected counts are calculated from the marginal distributions and show how the crosstabs would look like if there were complete independency between the variables. The Chi-squared test calculates how different are the observed cells from the expected ones.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The two criteria are:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab none of the expected cells could be lower than 1\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 80% of the expected cells have to be at least 5\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Let's look at on expected values then:\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2160\clbrdrb\brdrs\cellx3000\clbrdrb\brdrs\cellx4560\clbrdrb\brdrs\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 {\b never}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 10.83\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.6134\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.5559\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 {\b very rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 30.69\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.738\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.575\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 {\b rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 40.62\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.3\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.085\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 {\b sometimes}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 71.3\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.038\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 3.66\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 {\b often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 104.7\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.93\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.374\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 {\b very often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 88.45\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 5.01\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 4.54\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 {\b always}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 218.4\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 12.37\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 11.21\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 We can see that the Chi-squared test met the requirements.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 So now check the result of the test:\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2040\clbrdrb\brdrs\cellx2640\clbrdrb\brdrs\cellx3720
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 Test statistic\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 df\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 P value\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2040\cellx2640\cellx3720
+\trkeep\intbl
+{
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 14.86\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 12\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 {\i 0.249}\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Pearson's Chi-squared test: {\f1 table}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 To decide if the null or the alternative hypothesis could be accepted we need to calculate the number of degrees of freedom. The degrees of freedom is easy to calculate, we substract one from the number of the categories of both the row and the coloumn variables and multiply them with each other.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 To each degrees of freedom there is denoted a {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Critical_value#Statistics"}}{\fldrslt{\ul
+critical value
+}}}
+. The result of the Chi-square test have to be lower than that value to be able to accept the nullhypothesis.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The requirements of the chi-squared test was not met, so {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Yates%27s_correction_for_continuity"}}{\fldrslt{\ul
+Yates's correction for continuity
+}}}
+ applied. The approximation may be incorrect.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 It seems that no real association can be pointed out between {\i email} and {\i dwell} by the {\i Pearson's Chi-squared test} ({\i \u967?}={\i 14.86} at the degree of freedom being {\i 12}) at the significance level of {\i 0.249}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs20 References\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Fisher, R. A. (1922): On the interpretation of chi-square from contingency tables, and the calculation of P. {\i Journal of the Royal Statistical Society} 85 (1): 87-94.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Fisher, R.A. (1954): {\i Statistical Methods for Research Workers}. Oliver and Boyd.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs20 Adjusted standardized residuals\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The residuals show the contribution to reject the null hypothesis at a cell level. An extremely high or low value indicates that the given cell had a major effect on the resulting chi-square, so thus helps understanding the association in the crosstable.\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2160\clbrdrb\brdrs\cellx3000\clbrdrb\brdrs\cellx4560\clbrdrb\brdrs\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 \u160?\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 city\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 small town\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 village\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b never}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.15\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -0.81\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -0.77\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -0.41\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -0.59\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.2\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b rarely}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.2\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.49\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -0.8\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b sometimes}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -1.75\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -0.02\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.49\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -1.28\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 1.9\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -0.18\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b very often}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -0.17\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 0.24\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2160\cellx3000\cellx4560\cellx5640
+\trkeep\intbl
+{
+{\intbl {\pard \qr \f0 \sa0 \li0 \fi0 {\b always}\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 2.1\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -1.26\par}
+\cell}
+{\intbl {\pard \qc \f0 \sa0 \li0 \fi0 -1.64\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 Residuals: "email" and "dwell"\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Based on Pearson's residuals the following cells seems interesting (with values higher than {\f1 2} or lower than {\f1 -2}):\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab "always - city"\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab "sometimes - village"\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs20 References\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Snedecor, George W. and Cochran, William G. (1989): {\i Statistical Methods}. Iowa State University Press.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Karl Pearson (1900): {\i Philosophical Magazine}, Series 5 50 (302): 157-175.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs24 Fisher Exact Test\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 An other test to check the possible association/independence between two variables, is the {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Fisher%27_exact_test"}}{\fldrslt{\ul
+Fisher exact test
+}}}
+. This test is especially useful with small samples, but could be used with bigger datasets as well.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 We have the advantage while using the Fisher's over the Chi-square test, that we could get an exact significance value not just a level of it, thus we can have an impression about the power of the test and the association.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The test was invented by, thus named after R.A. Fisher.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The test could not finish within resource limits.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Charts\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 If one would like to investigate the relationships rather visually than in a crosstable form, there are several possibilities to do that.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs16 Heat map\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 At first we can have a look at on the so-called {\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Heat_map"}}{\fldrslt{\ul
+heat map
+}}}
+. This kind of chart uses the same amount of cells and a similar form as the crosstable does, but instead of the numbers there are colours to show which cell contains the most counts (or likewise the highest total percentages).\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The darker colour is one cell painted, the most counts/the higher total percentage it has.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "plots/Crosstable-5-hires.png"}}{\fldrslt{\ul
+{\pict\pngblip 89504e470d0a1a0a0000000d49484452000001e0000001e00802000000f2b629c2000000097048597300000b1200000b1201d2dd7efc0000200049444154789ceddd7f7054d5fdfff17377930d1736106200ab01b2c8f2bb614a4054043e05453b0994414dc6f803f99504a6b5ad3085b65374fac7b7954a252288b649b575681d7f448c157f0448042709260608a984560b8d290ae4178949369bddfbfde3ea9a6643caee6673cf729f8fc93077cfbd7bef7b2fd9d79e9cddbd47d1344d0000e46331ba00f4adb3b3d3e8122295cbe5a2db113497cb657409f806012da98b172f1a5d42a46a6a6af27abd46571191bc5e6f6363a3d155e01b043400484ae18f4139b95cae989818a3ab88482e97cb66b3298a6274219147d3b4aeae2e7ef1e441400380a418e200004945195d80612e5dbad4d6d666741597d5dcdc1c171767741597257379972e5db2dbed168ba49d8f969696112346185d45dfbc5e6f6b6babb4e5b9ddeef1e3c71b5dc5a032ef10477d7d7de26389465711a9da9e96f7b54d7ed2be78c84f8d568d2e6150f18b02009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a00140528311d08aa20cc25100e02a430f1a002435f0015d5454e4743a1312127273737bb68f1c39b2adadedc30f3f5414e5dd77df6d6e6e1e3972a4fff673e6cca9a8a81042545656ce9e3dbba0a0203a3a3a3e3e3e272767c04b050099299aa60dec1edd6ef7b973e75a5b5b172c58d0d0d02084501445d3b459b3663dfffcf3bb77effee4934fc68c19b371e3c6b56bd7565656f6da3e3f3fffc89123f9f9f9d9d9d9292929bffbddef264d9af4e28b2f0e1f3efc4a8e5e5757e77b4476bbbdadad4d08316ad42855558510e7cf9fefececd45b1a1b1b131f4b1cd8c76e1e6d4fb7195d4204b358f8cb3558ddc2ffb9acb7343434c4c7c75f6503aa5103bec7a2a2a2ddbb77575757373636f66c9f3061424d4dcddb6fbf7df4e8d1193366dc71c71d13264cf0dffede7befddba75eb679f7df6e69b6f6edfbefdbbdffd6e5a5adab7bef5ad77de79e7d65b6ffd9f471f3b766ccf9bf1f1f13d6f8e1e3d7a001e210083e8592cfa7a2e5f73cd35835e4ed80dfc2b796666e6fdf7dfffc4134ff46a77381c3b76ec484d4d1d3d7af4edb7dfbe7dfb7687c3e1bfbdaaaae9e9e9e9e9e969696976bbdde974d6d6d6ce9b376ff9f2e5035e2a00c86ce0037ad9b265ebd6ad2b2d2dedd53e61c284a3478fae5dbb5608f1e0830f1e3f7e5cef41fb6f9f9393535a5a9a95952584d8b061436c6c6c7171f1ef7ffffb012f15006436f063d0a12b2b2bcbcaca3a71e244588f525f5fcf1874d018830e0563d04153a355a34b1854033f061dbad4d4d4bcbc3ca3ab000083c918d0fa673f00c0e4f8530b002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029f306b4cbe532ba0400e84f94d10518262626e60f0ffec1e82a225594d5bcbf39c0a0316f0f1a002447400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a4e40ae88282025555f7efdfbf69d326a36b010083299aa6195dc3376c36db4b2fbdb47cf9728bc512eec2eaebebdffef4edb01ee22a76ffcdf71b5d02cc28262ac6e8120655903de8949494aaaa2a21445555d5ac59b38410252525494949494949e5e5e5fa368aa22c5dba74ce9c391515154288cacacad9b367f7dc495151516262e2b871e30e1d3aa46fef76bb57ac5861b158f49b97db6d464686dd6e2f282808ae7800880841f6a0f7ecd9535353b373e7ce871f7e78ca94291b366c484e4edeb56b97d7ebddb2654b6969a91042519463c78e5556561e3972243f3f3f3b3b3b2525252b2bcbb7931933666cdbb6cdebf56edebcb9a6a646bf8b5e8f6fa1cfdd161616baddee8c8c8caeaeae5e85d5d5d5f91e91dd6e6f6b6b13428c1a354a555521c4f9f3e73b3b3bf596c6c6467ad041a3070d4378dd5effe7b2ded2d0d0101f1faf77ecae1a4106746b6bebb469d36a6a6aa64f9f5e5d5d1d1717a7aaaa7ebe54556d6f6f1742288ae2f1785c2e97d3e92c2b2b9b3b776e6d6daddd6ef7ed4455d59696164dd3860f1fee72b9445f01dde76ebbbbbbad56ab6f9be030c4110a021a866088e38ac4c6c62e59b264fdfaf50b172e8c8b8b1342381c8ec3870f9f3e7d5a8fd1aff66eb1a8aa9a9e9e9e9e9e9e9696d6339df5bb1415151d387060fcf8f1fe87686a6abadc6ead566b706503400409fe531c5959597bf7ee5db3668d7e33373737333373d2a4498b172feeb5654e4e4e696969cfc10ddd8e1d3bb2b2b2d6ac59f3873ffca1d7aaf9f3e7272626f6bf5b00b8ba0dc6a738cacacab2b2b24e9c3811ee030584218e5030c40143986d88236a108e919a9a9a97973708070280abc96004744343c3201c0500ae32727d931000e043400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029f30674474787d12500407fa28c2ec030aaaa3677341b5d45a4727bdc469710c1a2add1469780c860de1e3400488e8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a800600490d6a40171414a8aaba7ffffe4d9b360de6710120120d6a40676464ecddbbf7ce3befdcbe7dfb601e170022511803baa8a828313171dcb871870e1d1242288ae276bb57ac5861b158f49b4288929292a4a4a4a4a4a4f2f272fd5e8aa2646464d8edf6828282f0d50600f253344d0bd3ae67cc98b16ddb36afd7bb79f3e69a9a1a2184a27c7538df427272f2ae5dbbbc5eef962d5b4a4b4bf5558585856eb73b2323a3abab2bd083d6d5d5f91e91dd6e6f6b6b13428c1a354a555521c4f9f3e73b3b3bf596c6c6c6bfd6fc75c01eadc9642fcc36ba8408166d8d36ba8448e5757bfd9fcb7a4b4343437c7cbcdef3bb6a8431a055556d6969d1346df8f0e12e974bf415d0aaaaea675955d5f6f6767d557777b7d56af56d1326f5f5f50474d008e85010d0418b898a31ba844115c6210e87c351545474e0c081f1e3c7fbaf6d6a6ad2b7397cf8f0e9d3a7f574d659add6f055050091222a7cbbdeb163c7ead5ab3d1ecf4b2fbdd46bd5fcf9f3131313bffcf2cbdcdcdcccccccbababa458b161d3870207cc50040c409ef3082cc18e20805431ca1608823680c710000a440400380a40868009014010d009222a0014052043400488a8006004911d0002029021a8079699af6f4d34fcf98314355d5091326fce637bf19a8efee6ddcb831f49d10d000cc6bcd9a357bf7eecdcbcb6b6a6a7aefbdf7dc6ef78e1d3b0664cfcf3fff7ce83b21a00198d42bafbcf2c1071f141515cd9d3b77c8902137dc70c32f7ff9cbe2e2627dedbe7dfba64e9d3a74e8d0db6ebbadaeae4e6ffcc94f7ef2dbdffe565fdeb871e3934f3ea92fbcfaeaab2b56acb8eebaeb5e7ffd752184a2288d8d8da15ffb9480066052cf3cf3cca38f3e3a74e8d09e8dfbf6ed1342949797af5dbbf6c9279fbc70e1c2ecd9b3d7af5fafaf2d292959b06081be5c5a5aaa2f979696befcf2cb8f3df6584949c9430f3de4f1783efdf4d3091326843e5ac2c592100c2e96140a2e9614b481bd58525c5cdcc99327131313fd572d5bb6ec7bdffb9e9ecbadadadd75f7ffda54b975a5a5ac68e1ddbd0d0101d1ded72b9c68e1d7beedc398fc713171777fcf871a7d3d9dada3a72e4c8d6d6d6bffce52f478f1eddb3674f8815d283066052dddddd0909097dae3a72e4c88a152bf4e5969696e8e868bdf1c61b6fd4972b2b2b535252ac56eb471f7d949c9cec743a85101515154ea75355d543870edd76db6da15748400330a9c993277ffcf1c73d5bf6eddb77e79d770a21befcf24bdfd0c7abafbe7af3cd370b213ef8e083f9f3e7eb8dafbcf28abe5c5a5a7aebadb7ea8d478f1ed51b4b4a4a162d5a147a8504340093fae94f7fba71e3c68f3ffed8ed767ff1c5174f3df5d4a64d9b9e7efa6921c4cd37dfbc6ddbb6b6b6b637df7cf3d1471ffdd9cf7e26843875ea544242426363e3e6cd9bf7ecd9e31b80bee9a69bf41d9697972f58b0e0f3cf3f6f6f6fb7d96ca15748400330a98c8c8c9c9c9c071e7860e4c891b366cd3a71e2c4c18307274e9c2884c8cfcf2f292919356ad42f7ef18bbffef5aff3e6cd1342dc7befbd5bb76e9d3973e6942953468f1e7de38d378abe02da6eb78f1e3ddad7d70e056f122218bc49180ade240c1a33aa0000a440400380a4086800905494d10500c0602bffb47cfbbbdb03ba8b6a535f58fd4298eab91c021a80e9d437d7bf71fc8d80ee322c6658988ae907431c0020297ad0004c475114abc51ad05dac4a60db0f08021a80e90411d0168b01e30de60de88e8e0ea34b00600c4504de830e70fb0161de80565575f2b5938dae225299ed0b5d03cbed711b5d82d9298a12e89045afed4b4b4b376cd870ead4a91b6eb8e1a9a79e5ab468d1fefdfb57ad5ad5dcdc3c71e2c45ffffad74b972ef56f09b44ede2404603a7a0f3ad09f9e7b78e8a1877ef5ab5f3537376fddbaf581071e10423cfef8e38f3ffe784343437676b63e6f967f4bc0759af95a1c550d55465711a9ee987e87d12544307ad0411b6a1bfabf37ba026f9e7833eb4f59811efa9fffef9ffeede7cf9fbfe5965bfef9cf7fc6c7c7d7d5d50d1b36ecd2a54b0e87a3a1a1c1bf25d03acd3bc401c0b462a262fe6fd2ffe9cb1f9ef9b0d3dd79b92dc75d336e7cfc78214494b58fb4f47abd9b366dcacdcd1542b4b6b6aaaa2a84b0dbed2d2d2d7db6048a8006603a1eafa7e63f35bee57ede006c686b68eb6c13420c891ed26b554747c78f7ef4a3bbeeba2b35355508317af4e88e8e8e61c386b5b7b70f1f3ebccf964031060dc07434a1b5b9daf41ffd237797fb717bdcfa66ed5ded3df770f0e0c1254b96fcf8c73ffefef7bfafb7242727171616767575eddbb76fe6cc997db6048a1e3400d309e26376bd3e07bd6ad5aa7ffffbdfd3a74fd76f6a9a969d9dbd7af5eafbeebb6fd4a8517ffce31f8510fe2d8122a001984e30df24fcefedcf9e3ddb6b83e5cb972f5fbebcff964011d0004c4711a17e0e7a7010d0004c27f41ef4e020a001984e305ff5a6070d0083801e3400488a8006004985fe31bbc1414003301d7ad00020293e66070092a2070d009222a00140529132e51557b303603afd5fc1ee4a6654d17dfcf1c7a3478fd697cf9c39a3f42084d8bf7fffb5d75e3b64c890193366141616065127010dc0740624a07ffef39f3ff0c003172e5cd06f1617176767676b5f130331e515010dc074829893d0ff73d093274f2e2d2df5dd2c2e2eaeacac1c3162444a4a4a7575b510e2c4891377df7df7b061c356ae5c79ecd8b120ea640c1a80e9c444c7dc3af1567df9a37f7fe4ea765d6ecbb123c7268e4c14425894de01bd72e5ca9e378b8b8b9f7df6d9c58b17d7d6d6ae5cb9b2a2a28229af002060ee6e77f9bfca7d37fdc3d7a7beb9bebeb95e08111315d3ff3ecf9c39a32f4c9d3af5d4a9538229af00200803f526614f93274f3e7af4a8c7e33979f2e4bc79f304535e014010c2f14dc2175e7861ddba759f7cf2c92db7dc929f9f2f98f20a008230805f54d13fb02184b8e9a69b8e1f3fde7355e8535e193cc4b169d3267d41ffd820000c82700c718483c101bd7dfb767dc1f72a0400e1a60825ca1215e8cfe0d7197040171414444747c7c7c7e7e4e408218a8a8a121313c78d1b77e8d0217d034551b66edd3a6cd8b0dcdcdc55ab56a9aa5a5050a0af2a2929494a4a4a4a4a2a2f2f175ff79a7bfe1bd0dd7b5502005728881eb421d7835602edba4e993265d2a4492fbef8a2fea9911933666cdbb6cdebf56edebcb9a6a64608a128cacb2fbf3c7dfaf4193366bcfefaebdddddd1919195d5d5d4288e4e4e45dbb7679bdde2d5bb6e81ff05694af0ae8b9708577ef5589eedcb973be47346cd8b02fbffc520871cd35d7c4c4c408211a1a1a5c2e97de72f1e2c5aa86aad0cfa039dd31fd0ea34b88606e8fdbe812229555b3fa3f97f596e6e6e61123465ce160e9b17f1fcb3f921fd0a16d51b627d29f08bce490041cd0fff8c73fd2d2d23efbecb377de79e7d65b6f5555b5a5a545d3b4e1c387ebe74b51148fc763b1581445f17abdfad7d2f5a3a8aadad9d9a92fb4b7b78bcb04f415debd5725813ef2fafa7a023a6804742808e8a00db50d1d90fd1caf3bfefc07cf0774175b94edf1bb1f1f90a35fb9803bed4ea7b3b6b676debc79fabb930e87a3a8a8e8c08103e3c78fff66a75fff2dd0ebd5cce1701c3e7cf8f4e9d37a3aeb9a9a9a7ad7746577ef5509005ca148799330e061ef0d1b36fcf9cf7f76b95c2fbdf4921062c78e1dab57aff6783cfacdfee5e6e6666666d6d5d52d5ab4e8c081034288f9f3e7272626ea031181debd572500708522e572a3010f715c3518e20805431ca1608823680335c471b2fee4def2bd01ddc516657b6cd9630372f42bc7175500984e305f54614e420018048a5002fdd89c211fb323a001988f12708fb89f2bde850f57b303603a415cb0ff7f4e79e53fc115535e0140c0c231e595ff04574c790500011b9080ee35e595ff04574c79050001b3596ddf19f71d7df9d4e7a7bababb2eb7e598e163c60c1fd3e7aa5e535ef94f70c594570010b06e6f774d7d8def663f6f185e6cbd78b1f5a21022da1a7ddbd4dbfad9a7ff04574c790500011ba837097bf29fe08a29af0020600338a38a8fff0457a14f79c557bd110cbeea1d0abeea1db481faaaf7a7173f2dfa7b51407789b246ad9eb77a408e1ec04107f9780060388bb0043a438a2133aa10d0004c271c431ce1404003301d2e96040092d2278d0de82e0c7100c0605014ae66070052620c1a0024a50825222e374a4003301d7ad00020a9489934968006603a91d283e66249004c27f48b259d397346e9410cc4fc29fe086800a6a3288a55b106fad3730fc5c5c5d9d9d9dad7c440cc9fe28f8006603aa1f7a08b8b8b2b2b2b478c18919292525d5d2d0662fe147f8c4103301dabc5ea9b27a5a9bdc9e3f55c6ecba1b6a1fa25f4f4710c9fe2e2e2679f7d76f1e2c5b5b5b52b57aeaca8a8087dfe147f043400d3d134adb5a3f5eb1bfd5d67c3dded6ef5b40a2114cb7f05f4993367f485a953a79e3a754a0cc4fc29fecc3bc4e172b98c2e0180311445d184a6fff43face1db52fcf795f3274f9e7cf4e8518fc773f2e4c979f3e68981983fc59f797bd0313131e36ce38cae2252f5fa730f0119123dc4e812cc2e888fd9f5fa26e10b2fbcb06eddba4f3ef9e4965b6ec9cfcf1703317f4a1f759a79469506adc1e82a22d5b4eba6195d420433e44bc35787813a752ded2d671ace047ae86f277e7b408e7ee5ccdb8306605aa1f7a00707010dc07c9480bf19484003c060e06a760020298638004052415ccdce904f2e11d0004c27881e34010d0083818006004931c4010092a2070d00920a26a005010d00e117c4e7a00d0968ae0900c074f41e74403f16cb7fa5653826b8f2474003309dd0675409c704577dd4c9d5ec1004ae66170aae6617b4813a755ecddbcf2c2a97136d8df62dc7c7c7d7d5d50d1b36ecd2a54b0e87a3a1212c61c2183400d3511425caf255faf5be14bfffc67d8d3e8763822b7f043400d3517aa46e70effe8563822b7ffca90500010bc70457fee8410340c0c231c1953fde24443078933014bc491834b39d3a733d5a008820043400488a8006004911d0002029021a002445400380a4e40a68432e890d0072922ba001003ee10a684551962e5d2a84282a2a723a9d090909b9b9b9bd56959494242525252525959797f7bcef9c39732a2a2a8410959595b367cf0e53850020b9707d9350519463c78ecd9c39d3ed769f3b77aeb5b575c18205fa15f97cab92939377eddae5f57ab76cd9525a5aaaafd2342d3f3fffc89123f9f9f9d9d9d9292929595959577edc0b172ef81e91aaaa1d1d1d4288b8b8389bcd2684686e6eeeeaead25b2e5cb8c0370983c637094361b6afc30da06e77b7ff73596fb974e9526c6cec55364c1ac680f6783c168b65fffefdbb77efaeaeae3e7bf6ac7e2cdf2a55553b3b3b8510aaaab6b7b78baf03baa3a3c3e974969595cd9d3bb7b6b6d66eb75ff971bbbbbb7dcb168bc5ebf50a21ac56abfedfe6f178f41aac56eb7ffef31f023a6804742808e8a02942f17f2efb5aacd6c066b1925f182f96a4cf10939999b967cf1eabd57acf3df7f45ae570389e7beeb93163c6389dce9e775455353d3d3d3d3d3d2d2d2da07416424445fdd723ea354bcdd5f7ff07988aaf83ecff5cbe2a9fdd617f255fb66cd9ba75ebf4118c5e727373333333274d9ab478f1e25eab7272724a4b4b031adc0080ab8ca457b32b2b2bcbcaca3a71e244f80ec1d5ec42c110472818e2089ad94e9da4d7834e4d4dcdcbcb33ba0a003092a4011da6191801208298ebef05008820043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d0092326f40bb5c2ea34b0080fe44195d806162626284cde82222964531ef4b7be8bc9ad7e8122295d97ef1ccf56801208210d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d00020a9080b6845518c2e0100064984053400984730019d92925255552584a8aaaa9a356b9610a2a4a4242929292929a9bcbc5cdf465194a54b97ce9933a7a2a24208515959397bf6ec9e3bd1371042141515399dce848484dcdcdc5eabfc77abeb67b70070d550344d0bf43e7bf6eca9a9a9d9b973e7c30f3f3c65ca940d1b36242727efdab5cbebf56ed9b2a5b4b45408a128cab163c72a2b2b8f1c39929f9f9f9d9d9d9292929595f5cd8115e5d8b1633367ce74bbdde7ce9d6b6d6d5db06041434343cf557dee56d3b4fcfcfccbedb6a9a9c9b76cb3d9bababa841076bb3d3a3a5a08d1d6d6e676bbf596f3e7cfbb6caea04f9cc9252524195d4204f36a5ea34b88549a47f37f2eeb2dedededaaaa5e65a3a0c104746b6bebb469d36a6a6aa64f9f5e5d5d1d1717a7aa6a6767a7104255d5f6f6762184a2281e8fc7e572399dceb2b2b2b973e7d6d6d6daedf66f0eac281e8fc762b1ecdfbf7ff7eeddd5d5d567cf9ed58bf1adea73b79aa67574745c6eb79d9d9dbe4764b55a3d1e8f10c266b359ad562144575797afe5f3cf3f27a08346408782800e9aa229fecf65bdc5ed76eb497d35890ae23eb1b1b14b962c59bf7efdc2850be3e2e284100e87e3b9e79e1b33668cd3e9f46da6276c7a7a7a7a7a7a5a5a5acf18f56d2084c8ccccdcb3678fd56abde79e7b7aadea73b742887e763b64c8907e2ab7d96c413c5e0092d0b358f4f55cbefad25904fd26615656d6debd7bd7ac59a3dfcccdcdcdcccc9c3469d2e2c58b7b6d999393535a5ada7314a29765cb96ad5bb74e1fc1e82594dd0240a40b66882320656565595959274e9c906db7f5f5f50c71048d218e5030c411b4284b307ff447aeb03fdad4d4d4bcbcbc48d92d00c823ec01ad7f302352760b00f2e08b2a002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a800600499937a0bbbbbb8d2e0100fa1365740186511425c19e60741591caa298f7a53d749c3d5c21f3fea258ad56a34b0080fe9837a0014072043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d00020a97005b4a22819191976bbbda0a0406f292929494a4a4a4a4a2a2f2f1742a4a4a45455550921aaaaaa66cd9ae5bf81be93a54b970674dcb6b6b6d6af757676ea0bddddddfada8e8e8e5e2d0022483fcfe5cece4ee3ea0a1745d3b4b0ec57510a0b0bdd6e774646465757971022393979d7ae5d5eaf77cb962da5a5a57bf6eca9a9a9d9b973e7c30f3f3c65ca940d1b36f4da40dfc9b163c766ce9c79e5c76d6b6bf33da2e8e868b7db2d845055352a2a4a08d1d1d1a1ff77aaaafac5175fc4c6c70ef8033789e1ea70a34b8019757777fb3f97f596cecece214386185cdf400b63407777775bad5645f9ea10aaaaea2f71aaaab6b7b7b7b6b64e9b36ada6a666faf4e9d5d5d5717171bd36d077e2f1782c96b074f3ebebeb09e8a011d0c02008e318b4d56aed79d3e1701c3e7cf8f4e9d37af8c6c6c62e59b264fdfaf50b172e8c8b8bf3dfe0abfac293ce0020bfc18bbfdcdcdccccccc4993262d5ebc586fc9cacadabb77ef9a356b2eb701009859b88638e4c710472818e20006010308002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029f306b4a66946970000fd514c9b536eb7bbadadcde82a2eabababcb66b3195dc565793c1eabd56a74157debeaea8a8e8e5614c5e842fae6f57a2d16493b469aa6b9dd6e697ff11445898b8b33ba8a4165de800600c949fa4a0e0020a02575f1e245a34b88548d8d8d5eafd7e82a2292d7eb6d686830ba0a7c838096546767a7d12544aaaeae2e06ee82d6d5d56574091e8360a1000004a449444154f806012da9989818a34b8854369b4dda770825a7280abf785221a071b5a1fb1c344dd3181d920a012d2997cb65740991caed7693d14173bbdd4697806f10d0002029021a002445404b6ac48811469710a9626363799330388aa2c4c6c61a5d05bec13709014052f4a001405204b48c7c7fa16fdab4c9d84a2285ef8cf90f6e700e7bf13f578c08498b210ea9290aff4157c477a2fccf18e7f072fa396990043d68e31d3c78d0e1704c9f3ebdacac4c6fd17b34be7fe7cc995351512184a8acac9c3d7bb681a586554141417474747c7c7c4e4e8e10425194ad5bb70e1b362c373777d5aa55aaaa161414e85b161515399dce848484dcdcdcfef7d9f34c1615152526268e1b37eed0a1434288912347b6b5b57df8e1878aa2bcfbeebbcdcdcd23478ed437cec8c8b0dbedbec345b4949494aaaa2a21445555d5ac59b344bffd65ff135b505070cd35d76cd8b0c177af929292a4a4a4a4a4a4f2f2f2f0976f7a1a8c3675ead482828223478e389d4ebdc5f7ffa22fe4e5e5ad5ab54ad3b4acacac679f7dd6a83ac36df2e4c94b972e6d6969d16f0a215e7ef9e5bffffdef168be58d37de78edb5d7a2a3a3f5555d5d5d67cf9e3d79f2647c7cbc6fe35e0b3ebe96e9d3a7ffed6f7f2b2c2c9c366d9aa669dff9ce778e1f3f9e9d9d7ddb6db7dd77df7d1f7df4d1ac59b3f4ed0b0b0b7b1e2ea23df3cc333ff8c10f344dfbe10f7fb86bd72eadaf73e55bf03fb1fa497be38d377cdb7cfbdbdf7efffdf78b8b8b6fbae9a6c17c20e644401bcf66b3b95cae9e2dbd9e39edededd75f7f7d5d5ddd75d75dd7dada6a408983e2f4e9d393264d1a3a74e8e1c387354d1342783c1e7dc1ebf56a3d4ecb5b6fbd959696367efcf87eb2c6c7d73264c81097cbd5d9d969b3d9344dbbebaebbf6eedd3b7efcf82fbef862d4a8517ffad39feebefb6e7dfbeeeeee3e7715892e5dba949898d8d2d2929898d8d4d4a4f51bd0fe27d677d27ab6e87d3b555507f5919812431cc69b3871e2810307de7ffffd891327faaf6d6a6a5255353d3d3d3d3d3d2d2dcd6eb70f7e8583c3e974d6d6d6ce9b376ff9f2e57a8b6fe6915e7f95676666de7ffffd4f3cf1c415eeb9a9a94908e170388a8a8a0e1c38a00790c3e1d8b163476a6aeae8d1a36fbffdf6eddbb73b1c0e7d7b69278b09426c6cec92254bd6af5fbf70e1c2ff391d89ff8975381c070f1e2c2a2aead972f8f0e1d3a74fb7b7b787ab68f818fd0a014d8f8c3163c6bcf5d65b7a8befff65fefcf943870ed534adb6b65608515151615895e1b77efd7abbdd1e1d1dfdda6baf69fd76f41e7cf0c1d8d8d8471e79a49f6d7c7ce7f09d77deb9fefaebafbdf6da9292124dd376efde2d84f8e8a38f344d7bfbedb78510cf3cf34cffbb8a50fa7b1b070f1ed46f0674620b0b0b478d1ab576ed5aabd5aab7bcfbeebb63c78e15422c5ab468f01e8359f1ee6d64282b2bcbcaca3a71e284d185c05c121212de7befbd7ffdeb5f8f3cf2c89933678c2ec774a28c2e0057243535352f2fcfe82a603a797979f7dc734f7b7bfbce9d3b8daec58ce8410380a4789310002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a80060049fd7f3cd8ead93644fe7b0000000049454e44ae426082}
+}}}
+\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 There can be also shown the standardized adjusted residual of each cells:\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "plots/Crosstable-6-hires.png"}}{\fldrslt{\ul
+{\pict\pngblip 89504e470d0a1a0a0000000d49484452000001e0000001e00802000000f2b629c2000000097048597300000b1200000b1201d2dd7efc0000200049444154789ceddd7f585475defff1cf996190238321fe601552b0c052d754f46b7b97f6c3c436306d2bd828353311dd6abbca76ddeeebae7bf3deebdebad34beaab99a56deb5ed66e7bc796bbb9e9a8916e40619246887dd752fc913f0011187e0c33f3fde3b4130182c00ce73df07c5c5e5d67ce7ccee7bccfa179f1e13373ce685eaf570100e4b1985d00be555f5f6f7609a279bdde868606b3ab10cde572793c1eb3ab803f11d0529c3b77ceec12446b6a6a3a7ffebcd9558876e1c285c6c646b3ab803f11d0002094c61cb4100d0d0dfdfaf533bb0ab9bc5eafcbe50a0d0d35bb10b95c2e97d56ab5581875f51e04340008c52f5b00102ac4ec02cc515f5f7feedc39517f0c9e3f7f3e3232d2ec2abe53555575d96597995dc577dc6e776d6ded800103cc2ee43bd24e516d6d6d6868a8cd6633bb90ef848585454545995d4510eba301ed743a6f1b745ba32ee92defe16617f07da3ce8c7a6ffd64b3ab10ed8ca60d3f74c8ec2a443bb17ab5d925043741434800407304340008454003805004340008454003805004340008454003805004340008454003805004340008454003805004340008454003805004340008454003805004340008454003805004340008454003805004340008454003805004340008454003805004340008454003805004340008d51301ad695a0fec05007a1946d0002094ff03dae1702424240c1e3c383b3bbbf9fa810307d6d4d47cf2c9279aa66ddfbefdfcf9f303070e6cdd7eca94298585854aa97dfbf64d9e3c392727c766b3454545656565f9bd5400904cf37abdfeedd1e5729d3a75aababa7afaf4e9e5e5e54a294dd3bc5eefa449937ef7bbdfad5bb7ee9ffffc677474f4e38f3ffee0830feedbb7af45fb4d9b36edddbb77d3a64d4b962c494a4a5abd7a756262e21ffef0870103065ccadecbcaca7c4764b7db6b6a6a945243860cd1755d2975e6cc99fafa7aa5544848c8ad036f6dd41bfd7becbdc9a8a251efbd3dd9ec2a442bd2b409870e995d85689fffc77f18afdcd6afc1e1c387878484985c9f78fe3f410e8763ddba75070f1eaca8a868be7ed4a851c5c5c57ffffbdf3ffef8e371e3c6cd9a356bd4a851addbdf73cf3d4f3df5d4f1e3c7fffad7bfae5ab5eaa69b6e4a4d4d1d366cd8fbefbf7ffdf5d777b8f7cb2fbfbcf9c3a8a8a8e60f870e1d6a2cb4a80d40200c1c38302626a6f91adf6b1097c2ff531c191919f7dd77dff3cf3fdf627d7c7cfc9a356b525252860e1d3a73e6cc55ab56c5c7c7b76eafeb7a5a5a5a5a5a5a6a6aaadd6e4f4848282d2dbdeebaebe6ce9debf752014032ff07f4edb7dfbe78f1e2bcbcbc16eb478d1af5f1c71f3ff8e0834aa9f9f3e77ff6d967c608ba75fbacacacbcbcbccccc4ca5d4b265cb2222223ef8e083575e79c5efa5028064fe9f83eebefcfcfccccccc03070e046e1715151537ea373207dd0ee6a03bc41c74874eac5edd628a039d2271923e252565e3c68d66570100269318d0c6673f00a08fe3421500108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a142cc2ec01c6eb73bf24ca4cbe632bb10b942ea434e9a5d83700d4a9d0c0b33bb0ad1aaababcd2e21b8f5d180b65aadefdbded479755d5c91bb64f833d7995d8568678a8ab409d16657215ac4098fd9250437a638004028021a008422a0014028021a008422a0014028021a008422a0014028021a008422a0014028021a008422a0014028021a008422a0014028021a008422a0014028021a008422a0014028021a008422a0014028021a008422a0014028021a008422a0014028021a008422a0014028021a00849215d0393939baae6fdbb66df9f2e566d70200269315d0e9e9e95bb66cb9f5d65b57ad5a65762d0060b22e06745252d2fefdfb9552fbf7ef9f346992522a3737372e2e2e2e2eaea0a0c068a369daecd9b3a74c99525858a894dab76fdfe4c9939b77e27038626363478c18b17bf76ea3bdcbe5fac94f7e62b1588c8717eb363d3ddd6eb7e7e4e474ad7800080a9ad7ebedc266ebd7af2f2e2e7ef1c5171f79e491abaeba6ad9b265e3c78f5fbb76adc7e359b162455e5e9e524ad3b4a2a2a27dfbf6edddbb77d3a64d4b962c494a4acaccccf475326edcb8e79e7bcee3f1fcf297bf2c2e2e363631eaf12db4d9edd6ad5b5d2e577a7a7a6363638bc2cacaca7c4764b7db6b6a6a945243860cd1755d2975e6cc99fafa7aa5544848c840a5f4b0b02e1c7b1f51545232e1baebccae42b4a2a2a2e809d16657215af9e7e503060c506dbd06870f1f1e121262727de27531a0abababc78c19535c5c3c76ecd883070f464646eaba6e9c775dd79d4ea7524ad334b7dbddd0d0909090909f9f3f75ead4d2d252bbddeeeb44d7f5aaaa2aafd73b60c080868606d55640b7d96d535393d56af5b5e9828a8a0abdbe9e806e0701dd2102ba439e139e989818b3ab08625d9ce2888888484e4e5eba74e90d37dc101919a9948a8f8fdfb367cfe1c3878d18fdb6778b45d7f5b4b4b4b4b4b4d4d4d4e6e96c6ce2703876eedc3972e4c8d6bba8acacbc58b756abb56b65034010e9fa9b849999995bb66c59b46891f1303b3b3b232323313171c68c192d5a666565e5e5e5359fdc30ac59b326333373d1a245afbefa6a8ba7a64d9b161b1bdb7eb700d0bb757d96e0d2e5e7e76766661e387020d03bba744c717488298e0e31c5d121a638baa92726e9535252366edcd8033b0280dea42702babcbcbc07f60200bd8cac0b5500003e0434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000815627601e670bbdd474f9e0cb5d9cc2e44aeaaeaea23478e985d85685555554d479accae42b4fef5fd636262ccae2288f5d180b65aad23fff217ddec3224bb60b12cb8f537665721dab00bc3fe74d94b665721da897ef5669710dc98e20000a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a108680010aa47033a272747d7f56ddbb62d5fbebc27f70b00c1a847033a3d3d7dcb962db7de7aebaa55ab7a72bf00108c0218d00e8723363676c48811bb77ef564a699ae672b97ef2939f582c16e3a1522a3737372e2e2e2e2eaea0a0c0d84ad3b4f4f474bbdd9e939313b8da0040be90c075fde8a38f6ed8b0c1e3f13cf4d043c5c5c55eaf57d334afd7ab94f22d3cfcf0c39b376ff6783c8f3efa685e5e9eb1e1bc79f37efad39fa6a7a73736367676a765656546cf4a29bbdd5e5353a3941a326488aeeb4aa93367ced4d7d72ba5424242743f1d26808ba9acac74bbddaaadd7e0f0e1c3434202983fbd83e68b33bfd375bdaaaacaebf50e1830a0a1a14135cb65df82aeebc64f4bd775a7d3693cd5d4d464b55a7d6d02a1a2a2425fbd9a8c6e4791c5f2f033bbcdae42b46145c3fe74f94b665721da89fafa989818b3ab0862019ce2888f8f77381c3b77ee1c397264eb672b2b2b8d367bf6ec397cf8b091ce06abd51ab8aa00205804f04f8c356bd63cf0c0036eb7fb8f7ffc638ba7a64d9b161b1b5b5b5b9b9d9d9d919151565676f3cd37efdcb93370c50040d00960402727271f3f7ebcf91adf94c5871f7e682ccc9c39f3d8b1636db609dcfc060004052e540100a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a8006101cbefcf2cbdb6ebb2d3c3c3c3232f2a73ffde99933678cf58f3ffe78ebc65f7df5d5e5975fdeb51df9b63d76ec586c6c6c970bee3e021a4070484f4fbfe5965b4e9f3e7de4c891c183072f5ab4c858ffbbdffdae75e3ddbb77ffe8473feada8e7cdb8e1831a2c5e5d03d8c8006101c4a4a4ae6cd9b67b7dba3a2a27efbdbdf9697972ba5344daba8a8f0dd5f7ee2c4890909096fbcf186c3e1b858401f3f7e7cd6ac5976bbfd8a2baef8dffffd5f63659bdb3efae8a3efbdf75eeb1ebc5e6f6a6aea9a356bc2c3c33ffffcf31d3b764c9c38d16eb72727279f3c79d268b361c3864183060d1f3efcadb7deeaf22113d00082434646c6adb7defa8f7ffc432965b7db3ffae823a5d4912347468d1ae5f57a0f1e3c78cf3df7ac5ebdbaa0a0e0f5d75f7fe38d372e16d0191919c9c9c9e7ce9dfbfdef7fbf78f162a5d4c5b6cdcfcf4f4a4a6add435959d9471f7d545e5e7efefc7997cb75efbdf7fef6b7bf3d7dfaf475d75df7d0430f196d7ef18b5f381c8e3ffde94f8f3cf248970f998006101c5e7ef9e5bbefbefb8e3beeb8e38e3b4e9f3e6dacdcbd7bf7cc99339552cf3cf3ccaf7ef5ab9b6eba292a2aea17bff845bf7efd264d9ad4663f5bb76e9d3b77ee175f7cf1c5175f0c1830e062db3634349c3d7b363a3aba750f25252583060d7ae699676c36dbca952b57ae5c396bd6acf0f0f0279e78c2f80229a5d4ac59b31e7becb1b0b0b053a74e75f990096800c121242464c58a15df7cf3cdf8f1e3172c5860acdcbd7bf72db7dca294fae0830feebcf34e63657878f8a449934243435b77f2e69b6f464747a7a7a7af5cb9f2d5575f9d366ddac5b6fdf4d34fc78d1bd76625252525a9a9a9be7995acac2c4dd3344d0b0f0ff77d0fd41b6fbc919595357ffefcececec2e1f32010d2008f4efdfdff85a0f8bc5f2c4134fecddbbd7589f9b9b7bf3cd372ba59c4e676464a4b172fbf6ed179bdf78e289277273730b0b0b7372726c36db9c39732eb6edc5e637945225252513264c3096ebeaeaeaeaeabcff525b5bab941a3870605555557a7afa8e1d3bfef33fffb3cb474d400308023ffad18f5e7ffd75a7d3595b5bfbca2baf4c9f3e5d29f5cd37df389d4e63a43c61c284d5ab577ff3cd37fffeeffffe9bdffce66201ddd0d0d0d8d8585555f5b39ffdec1ffff8c74d37dd74b16ddb0fe8d1a3471bcbd3a74f5fb56a555d5d5d6161e1840913fefce73f2ba5feeddffeed85175ea8ababfbf0c30f870d1bd6e5a326a0010481575f7d75fbf6ed313131c3860d33deca534ad9edf6a143871ad3146bd7ae7df3cd376fbcf1c6cb2fbfdc6eb75f7bedb55f7ffd75eb4f31af5ebdfa8e3bee983c7972626262545494b1b2f5b64aa9828282a4a4a4363b292929494c4c3496d7af5fbf63c78ea8a8a8f9f3e7ffea57bfbaebaebb8c0e737373070d1af4ecb3cf6edebcb9cd4e2e4500bf985532be34b6437c696c87f8d2d80e05e997c65655551516162e5dbaf4f0e1c3e656c2d79e03c0f74c9d3ab5bcbcfcd5575f35bb10021a00beefd0a1436697f02de6a001402846d000a4fb8dfacd0175a0539ba4a894f96a7e80eae931043400e9f255fe4eb5b3539bc4a9b8c0d4d2a3086800d2694ab374723e56535a808ae949043400e9425448a86ae3baed7658953540c5f424021a80743665eb6c4087f48a70eb0dc7d0056eb7fba8a675ee07dec7542a157524caec2a440bab0c3ba2caccae42b4fad050bf5ca86255569bb2757693eeefd7747d34a0ad56ebc88307f5a626b30b91ebc2e0c1ef8c7cdbec2a442b3affd91513269a5d8568c74ff8e7eb48ba30826e11d0797979cb962d3b74e8d015575cf1c20b2f18f75792af8f06348020d2fd39e8fbefbffff9e79f4f4e4e7ee79d77e6cd9b77e2c409bf161828043400e9ba3f075d5a5a6a2cdc78e38dba1e34b7e121a00148778dba66841aa1943aabceee557bdb69f963f5e33015a6948a556ddc3dcee3f12c5fbebc3b77d0ef61043400e94a55e927ea1363b9fda1b4ef7a967495dee2a9bababa9ffffce777de79674a4a4a208a0c04021a8074dd9fe2d8b56bd7d34f3ffdf2cb2f8f1933c6afa50516010d40baeebf49b870e1c263c78e8d1d3bd678182cf7c127a00148d7fd803e7af4a85f2bea21043400e9b892100084eac295849dbdb9924c043400e91841038050dccd0e0084eafebd388214010d40ba2e8ca099e200809e6053b67eaa5fa73621a001a02730070d0042f5d939e8def0514100bd9b3182eed4bf36a7384a4a4a860e1ddaf3f57719236800d285a890ee7fe5d5934f3eb97dfbf6b367cffaafae8063040d40ba2e8ca05b07f4e8d1a3f3f2f24ca9bfcb184103906eb81a1ea5a29452b5aaf6983ad64ecb0495604c6e44aac8164f2d58b02070150608010d40ba4a5579529d3496db7fb7f0a8faf6ae7563d5d880971578043400e9f8981d0008d5673f6647400390ce8f977a07cb77a918086800d231c5010042f5d9290e933f07bd7cf9726341d334732b012096bfae240c3a6d04f4d5575ffdf8e38f3b1c8e86868640ef7ed5aa55c642704d0c01e849c608ba9b17aa04a33602fadd77df1d3972e4aa55ab626363e7cc99b37efdfae65f889b939363b3d9a2a2a2b2b2b294520e8723363676c48811bb77ef361a689af6d4534f8587876767672f5cb850d7f59c9c1ce3a9dcdcdcb8b8b8b8b8b8828202f5af5173f3ff766af3169500e8adfc72256130d2da19ba9e3e7d7ae5ca951b366c70b95c13264c58b972656a6aea55575d959898f8873ffc61c080014aa971e3c63df7dc731e8fe797bffc657171b1524ad3b4b7de7a6becd8b1e3c68dfbcb5ffed2d4d4949e9eded8d8a8941a3f7efcdab56b3d1ecf8a152b8c6b2e35eddb029a2f5ce2e62d2a319c3a75ca7744e1e1e1b5b5b54aa9418306f5ebd74f29555e5e6efc5960b1582ecbcad29b9a02745a7b81a2c183276cdc687615a2157df6d9c449496657215af117c5919191aaadd7607474b4d57aa9197a541dad55b59ddaf52035285a4577b25e71da08e823478efcf5af7fddba756b6969e9ac59b3e6cc99336ddab48f3ffef89e7bee3977eedc975f7e999a9a7afcf8f1f7df7ffffaebafd775bdaaaacaebf50e1830c038ef9aa6b9dd6e8bc5a2699ac7e3d134cd17bebaaed7d7d71b0b4ea7535d24a02f71f3169574eab02b2a2af4071e20a0db4140778880eed0f113c7636262badfcf4975d2a99c9dda2452450e5683bbbf6b73b5318f7edb6db7cd9933e7d7bffef5b5d75e6bb17c3b073273e6cc73e7ce29a51212124a4b4b939393e7ce9d7beedcb9f8f87887c3a1941a3972a4af07df562ddefa8b8f8fdfb061437474744242826f656565e5c081039b37bbc4cd5b54d2c51300403cabb276ff6e76c1a88d803e74e8503b1b2c5bb66cf3e6cd0d0d0d7ffce31f95526bd6ac79e08107dc6eb7f1b07dd9d9d919191965656537df7cf3ce9d3b9552d3a64d8b8d8d3526223abb798b4a00f4563665f3284fa736e91d01ddde1c742fc614478798e2e810531c1df2d714c70575c1a55c9dda244c8585ab70dfc36ddbb62d5cb8f0fcf9f3575e79e57ffff77fcf9e3dbbfb55f500ee070d40ba2e7cccaec5e7a09f7df6d9679f7db6bcbc7cc992256bd6ac31eb403a8b8006205df73f6677e0c081bbeeba2b3c3c7cc18205454545661d4867f5868b6d00f46eddbf2cb0baba5ad775a594dd6eafaaaaf247513d818006209dd6e4569ecebd49a8ac56d5ec73d643870eadabab0b0f0f773a9dcdaf9c108e290e00e2b95caab1b173ffbeff1180f1e3c76fddbab5b1b1f19d77deb9e69a6bcc3a8ece62040d403c974bb93af7290ea569aa5f3fdfa3254b963cf0c003f7de7bef9021435e7bed353f971730043400f19a9a3a1dd0a1dfbb3de9dcb973e7ce9debcf927a04010d40bca626d5d8d8b94d9a0d9f8317010d40bc2e04b4db1d98527a14010d403ce34dc24e21a001a027746104dd2b6ee4404003108f290e00108a290e00108a290e00108a11340008e57677fa42955e11d0dc8b0380785db81747bb015d52523274e8d01e2bbfcb18410310cfaf73d04f3ef9e4f6eddbcf9e3ddbddaa028f113400f18c80f6d3087af4e8d17979793d597e97318206205e64a40a0b534a29a7531d3bd65ecb2baf5421214a29d5bfffc59a2c58b0c0bfd5050e010d40bc53a75459d925b5fce28b6f17be7fd3674dd3945241f71dd9043400f1ba7d2561d045b3818006201e9f830600a102702561508ca9096800e231820600a1b89b5d9fe2f1784eeb7a68aff8110648b5cd76f2d429b3ab10adbaba7ad8c9616657215a7575b57f3ae266497d8ac562b16e7acea687995d885cdea2926f62cf985d856815e7ce9fccffbf665721da89a911fee988290e00108a290e00108a290e00108a290e00108a290e0010aa0b23e85e31c5c1ed460188e7bfdb8de6e5e54d9c3851d7f571e3c6eddab5ab878fa3b318410310cf7f531cf7df7ffff3cf3f9f9c9cfcce3befcc9b37efc489137e282f60086800e2f96f8aa3b4b4d458b8f1c61b755def665d81464003106ff468657c85e0d9b36aefdef65afef8c7dfdedabfddaf1cf4783ccb972fcfcecef6638d8140400310efb3cfd4257e49d53bef7cbb306f5ef3d5cd6fd85f5757f7f39ffffcce3bef4c4949f16f997e47400310afdb531cbe9b8beedab5ebe9a79f7ef9e597c78c19e3afea02878006209edbad5cae4e6fd296850b171e3b766cecd8b1c643e1778526a00188e7bf2b098f1e3dea877a7a0a010d403cae240400a1faea9584043400f118410380505eaff2783abd49f023a001883779b2b274f2c641575d1598527a14010d40bca79f36bb027370373b00108a800600a1086800108a800600a1086800108a800600a1086800104a56401b37d506002869010d00f00954406b9a367bf66ca594c3e1484848183c78b0efebbf7c4fe5e6e6c6c5c5c5c5c515141434df76ca94298585854aa97dfbf64d9e3c3940150280705a80be5040d3b4a2a2a26baeb9c6e5729d3a75aababa7afaf4e9e5e5e5cd9f1a3f7efcdab56b3d1ecf8a152bf2f2f28ca7bc5eefa64d9bf6eeddbb69d3a6254b962425256566665efa7ecf9e3deb3b225dd7ebeaea9452919191a1a1a14aa9f3e7cf3736362aa5bc5e6fe380c6303dccef07de6b941495d827d8cdae42b4b2a2b239477ac32dd302e7d09831515151aaadd7e0a04183ac56abc9f58917c08076bbdd168b65dbb66debd6ad3b78f0e0d1a3478d7df99ed275bdbebe5e29a5ebbad3e954ff0ae8bababa848484fcfcfca953a7969696daed9d8889a6663781b5582c1e8f472965b55a8dd96db7db6dd4505555e5ecef24a0db4140778880ee50d99429c3860d536dbd064342b81150c702788e2c168b522a232363fdfaf556abf5eebbef6ef1547c7cfc860d1ba2a3a31312129a6fa8eb7a5a5a5a5a5a5a6a6a6aa7d259b5faa95bbe7f072cdf6f6cde8d047a80c56269f19264d4dc29017f93f0f6db6f5fbc78715e5b5f999e9d9d9d91919198983863c68c164f656565e5e5e5756a7203007a99404d7174537e7e7e6666e681030702d47f454545ad5ecb14473b98e2e810531c1d3a31756a4c4c8cd9550431a1d3402929291b376e34bb0a003093d080363eef01007d1917aa0080500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000815627601e670bbdde7be3917da2fd4ec42e4aa395fd374b2c9ec2a44739e779e74bacdae42b49a9a1ab34b086e7d34a0ad56eb55559a1eaa995d885c2ea79af04f9bd955885674c6fada7d47ccae42b4fb4fdc647609c18d290e00108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1822ca0354d33bb0400e8214116d000d0777425a0939292f6efdfaf94dabf7fffa449939452b9b9b9717171717171050505461b4dd366cf9e3d65ca94c2c242a5d4be7dfb264f9edcbc13a38152cae1702424240c1e3c383b3bbbc553adbb35b4d32d00f41a9ad7ebedec36ebd7af2f2e2e7ef1c5171f79e491abaeba6ad9b265e3c78f5fbb76adc7e359b162455e5e9e524ad3b4a2a2a27dfbf6edddbb77d3a64d4b962c494a4acaccccfc6ec79a56545474cd35d7b85cae53a74e5557574f9f3ebdbcbcbcf9536d76ebf57a376dda74b16e2b2b2b7dcba1a1a18d8d8d4a29bbdd6eb3d994523535352e974b29e572b9224e9ed44343bb7ce27abda2afbf9e1011617615a2159d3af5b7b42fcdae42b4f4ff973e68d020d5d66bf0b2cb2eb358f80bbe035d09e8eaeaea3163c61417178f1d3bf6e0c183919191baaed7d7d72ba5745d773a9d4a294dd3dc6e774343434242427e7efed4a9534b4b4bed76fb773bd634b7db6db158b66ddbb66eddba83070f1e3d7ad428c6f7549bdd7abddebababa8b755b5f5fef3b22abd5ea76bb9552a1a1a156ab5529d5d8d868aca9a9a9b19f384140b78380ee1001dda17bbfbe373a3a5ab5f51a0c0b0be32da50e8574619b888888e4e4e4a54b97de70c30d9191914aa9f8f8f80d1b36444747272424f89a19099b9696969696969a9ada3c467d0d9452191919ebd7afb75aad77df7d778ba7daec5629d54eb7616161ed541efaaf44aeababebc28103e8149bcda6eb7af335a18c8a3aa38b7f626466666ed9b265d1a245c6c3ececec8c8c8cc4c4c4193366b468999595959797d77c16a285db6fbf7df1e2c5c60c460bdde91600825d57a6383a253f3f3f3333f3c08103a2baada8a8d08f1d638aa31d4c717488298e0edd7fe2fe989818b3ab08625d99e2e8949494948d1b37064bb7002047c003daf86046b0740b0072f0311700108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a142cc2ec01c1e8fe77c6d6dbdcb65762172d5d6d75786f4d1ff3d2e91b3b1d15be935bb0ad1eaeaeacc2e21b8f5d157a0a669af8fdaa3c2ccae43304f83674c59bcd95588e6aeaefed98e44b3ab10adeafff4d184f1973e7afa344dd322354dd7cc2e442e8fdd333034d4ec2a448bb0d906f6eb677615a2396d36b34b086ecc410380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380500434000845400380da25f8a8000007da49444154500434000845400380500434000845400380500434000815a880d6342d3d3ddd6eb7e7e4e4186b727373e3e2e2e2e2e20a0a0a9452494949fbf7ef574aeddfbf7fd2a449ad1b189dcc9e3dbb53fbada9a9a9fe97fafa7a63a1a9a9c978b6aeaece58e376bbfd75a4002ea6a1a1e162af418fc7636e6d41218023e879f3e66ddebc393d3ddd78f8f0c30f6fdebcf9f5d75f7ff4d14795528b172fdeb4699352eab5d75e7bf0c1075b3730fcd77ffd57e02a0400c934afd71b907e35ada9a9c96ab56adab7bbd075bdbebede58703a9dd5d5d563c68c292e2e1e3b76ecc183072323235b34303a71bbdd168bff7f8b545454bca2bfa2e99adf7bee359a8a9a9efce768b3ab10ada8b272c29021665721da89c993636262ccae22880570046db55a9b3f8c8f8fdfb367cfe1c3878df08d8888484e4e5eba74e90d37dc101919d9bac1b7f505209d012028f45cfc656767676464242626ce9831c358939999b965cb96458b165dac0100f4652101ead73773e25b983973e6b163c79ab7993a756af30996d60d0234fd02004181090400108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800108a800600a1086800102ac4ec02cc53afbcca6b76118235aa3ab7dbec22446bf478ea9a9accae42348fc7637609c14df37afb6248b9ddee0b172e985dc5f73436368686869a5dc5773c1e8fc522e80f2cafd7dbd4d464b3d9cc2ee43b6eb7db6ab59a5dc5779a9a9a2c168ba89f5afffefdfbf5eb67761541ac8f063400c827e8972d00a039025a8a73e7ce995d82684d4d4d959595665721da850b171a1b1bcdae02fe44404b515f5f6f7609a279bd5ed2a77d2e978b37e57a19025a0ade4b699fa669a2de4415c866b3897a8710ddc78f13418337b4dbc7f9e97d0868291a1a1acc2e4134afd7eb72b9ccae42b4a6a626a6387a19021a008422a0014028025a8acb2ebbccec1244b35aad1111116657215afffefd4342faf0cd1b7a23ae240400a1184103805004b4089aa6190bcb972f37b712517ca7c5b7e0d3674f54eb73d2fae4a0d7608a43164de327f21ddfd9687d5a3851ed9c1cf41a8ca04db06bd7aef8f8f8b163c7e6e7e71b6b8c4190efbf53a64c292c2c544aeddbb76ff2e4c92696da7d393939369b2d2a2a2a2b2b4b29a569da534f3d151e1e9e9d9dbd70e1425dd77372728c960e8723212161f0e0c1d9d9d9edf7d9fc74391c8ed8d8d8112346ecdebd5b293570e0c09a9a9a4f3ef944d3b4eddbb79f3f7f7ee0c08146e3f4f474bbddeedb5d50484a4adabf7fbf526afffefd93264d52ed8e975b9fc09c9c9c4183062d5bb6ccb7556e6e6e5c5c5c5c5c5c414141e0cb47b779d1e3aebefaea9c9c9cbd7bf7262424186b7c3f086361e3c68d0b172ef47abd9999992fbffcb25975fac5e8d1a367cf9e5d5555653c544abdf5d65b5f7cf185c56279f7dd77df7efb6d9bcd663cd5d8d878f4e8d1cf3fff3c2a2acad7b8c5828f6fcdd8b163fff6b7bf6dddba75cc98315eaf77e2c4899f7df6d992254b6eb9e5967befbdf7d34f3f9d346992d17eebd6adcd7717145e7ae9a5871e7ac8ebf53efcf0c36bd7aef5b6754e7c0bad4fa07172de7df75d5f9b1ffef0871f7ef8e1071f7c70edb5d7f6e481a06b086813848686363434345fd3e2c5e6743a636262cacaca860f1f5e5d5d6d4289fe73f8f0e1c4c4c4fefdfbefd9b3c7ebf52aa5dc6eb7b1e0f178bccd8efdbdf7de4b4d4d1d3972643b19e4e35b131616d6d0d0505f5f1f1a1aeaf57aefbcf3ce2d5bb68c1c39f2f4e9d343860cf9fdef7f7fd75d7719ed9b9a9adaec4ab20b172ec4c6c6565555c5c6c65656567adb0de8d627d077729aaf314666baaef7e891a04b98e230c195575eb973e7ce0f3ffcf0ca2baf6cfd6c6565a5aeeb696969696969a9a9a976bbbde72bf4a3848484d2d2d2ebaebb6eeedcb9c61adf0d7d5afcb59e919171df7df73dfffcf397d8b371f7d1f8f87887c3b173e74e2398e2e3e3d7ac599392923274e8d0993367ae5ab52a3e3ede682feadb4f2e514444447272f2d2a54b6fb8e186c8c8c8f61bb73e81f1f1f1bb76ed72381ccdd7ecd9b3e7f0e1c34ea7335045c38fccfe0dd1171969121d1dfdde7bef196b7c3f8869d3a6f5efdfdfebf59696962aa50a0b0b4dabd24f962e5d6ab7db6d36dbdb6fbfed6d7700387ffefc888888c71e7bac9d363ebe13f5fefbefc7c4c4fce0073fc8cdcdf57abdebd6ad534a7dfae9a75eaff7ef7fffbb52eaa5975e6abf2be18c372a76edda653cecd409dcba75eb9021431e7cf041abd56aacd9be7dfbe5975fae94baf9e69b7bee18d055bcff2b547e7e7e6666e6810307cc2e04416cf0e0c13b76ecf8eaabaf1e7becb1afbffedaec72d0695c182a544a4acac68d1bcdae02c16de3c68d77df7db7d3e97cf1c517cdae055dc1081a0084e24d4200108a800600a1086800108a804610b8edb6db8c0ff36edbb6edf6db6f37bb1ca087f0262182404949494646465e5eded4a953fffce73f272424985d11d013184123085c7df5d5d75f7ffd2db7dc3263c60cd2197d07236804872fbffc323131f1abafbe8a8b8b33bb16a0873082467078e18517aebffefa0eef440af426043482404949c9471f7de4703876edda65dca504e80b08680481c71f7ffcd9679fedd7afdffffccfff18370302fa02e6a001402846d0002014010d004211d0002014010d0042fd7f057128fdb8cb2f9e0000000049454e44ae426082}
+}}}
+\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs16 Mosaic chart\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 In front of the heat map, on the {\i mosaic charts}, not only the colours are important. The size of the cells shows the amount of the counts one cell has.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The width on the axis of email determinate one side and the height on the axis of the dwell gives the final shape of the box. The box which demonstrates a cell from the hypothetic crosstable. We can see on the top of the chart which category from the dwell draw the boxes what kind of colour.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "plots/Crosstable-7-hires.png"}}{\fldrslt{\ul
+{\pict\pngblip 89504e470d0a1a0a0000000d49484452000001e0000001e00802000000f2b629c2000000097048597300000b1200000b1201d2dd7efc0000200049444154789ceddd7b705465fee7f1e7f42d693a244048b8ca3d2012c2c8455df88d0ec34f2c070702323a2ba30c2a89ba5b6879d919a75cffc8d66ae10fa76058f8c9a85caa707496620366901191c90c43a11958244001991f651419508c1248d249fa72f68f33f636dd9d4ed3ddc9791e9ef7ab0aaafbe45cbefdf4733e7d729ed32786699a0200201f87dd0500001223a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a45c761700a9ddbfebab3496fafdbce24c366a6c7af65a173197adca648bbda0f9dc9c34962a18f661d62b8142388206004911d0002029021a002445400380a40868f42ac330ac07cf3e7bcd23813d2a5258e441846ca58a44d5c6978deb00018d5e15f92bf2afbefaaabd95a44ec25223cd88eb1b018d1eb46fdfbed1a3474f9a34e9a38f3eb2a658077a91ff67cc9871e8d02121c4e1c387a74f9f9ee1e6aaababdd6ef78001031e7bec316bfd2fbef8a2cfe75bb366cdb265cbbc5e6f7575b535e7debd7b4b4a4a060e1cb866cd9ae4eb8c2e78efdebdc3870f1f3162c49ffef4272144fffefd5b5a5afef6b7bf1986b167cf9e4b972ef5efdfdf9af9fefbefcfcbcb8b6c2e43d3a64d3b72e48810e2c8912353a74e15498f97e35f5a7575756161e1134f3c1159eacf7ffef3a851a3468d1af5f1c71f67a542f410838f622491e175d037dd74d34b2fbd545454b46cd9b2868606218461fcb3cb590f366edcf8d7bffe75e3c68d959595d3a64daba8a810195c077de38d378e1f3f7eebd6adf9f9f9d626b66ddb3669d2a4d2d2d21d3b760483c1fbefbfbfb3b35308110804ce9f3f7fe5ca95db6fbfbda9a929beb0e89547a6949696bef2ca2be170f817bff8c5891327a64e9dba79f3e6f5ebd79f397366d0a041cf3cf3cca38f3e7af8f061c3306a6a6a028140647322b3eba05f7bedb513274eac5dbb76c58a1537de78a315b531d5461ec4bf34abec5028347ffe7c6b9eb2b2b275ebd685c3e15ffef297070f1e4ca330f40e021ac96418d039393957ae5cf1783c911fc5048adfef2f2929f9e8a38f6ebdf5d6d3a74fe7e5e5890c02faef7ffffb3df7dcf3c5175fbcfffefbfff22fff621846281472381c866184c361c330225bdfbd7bf7faf5eb8f1d3bf6d9679f759574f1357bbddee6e666d334f3f3f33b3a3a162f5e7cefbdf73efffcf3757575a5a5a5afbefaeabbefbebb6ddb36c33082c1a0d3e98c5e5526017de5ca959b6ebae9c4891393264d3a76ec58bf7efd920474fc4b8b949d9b9b1b99d2dede6e3d686b6b4ba330f40e4e71a0078d1b37eec30f3ffccb5ffe326edcb8f89f7efbedb75eaff7befbeebbefbefbeeb9e71e2b9d3351525272faf4e959b3669597975b531c8e7ff6f09873020f3cf0c0cf7ef6b355ab52fdfee1b7df7e2b84183d7af4debd7b3ffcf0c39123475a4f57af5e3d6fdebce2e2e23befbcf3d5575f1d3d7ab435bfd3e9ccf0b544ebdbb7efdcb9731f7ffcf13beeb8a35fbf7ec9678e7f69a3478fdeb76fdfdebd7ba3a7ecdfbfbfa1a18174961c018d1eb476eddac71f7ffcbefbee5bbb766dcc8fbefffdef0f1f3e5c08f1d8638f1d3c78d03ab991a1279e78a26fdfbeb5b5b5afbffe7af239e7cf9fbf7cf9f2147fbb8f94ba7af5ea8a8a8a471e79e48d37de10428c1933a6aeaeeed1471f15423cf4d043478f1e1d33664cc62f22b18a8a8adffdee778f3cf248b773c6bfb4575e79e5a1871edab16347e46363cd9a350f3cf0c0f8f1e3e7cc49e7b81ebd86531c48a617eec5f1d1471f555454d4d7d747a6702f8e88acdc8b63e0c0811f7cf0c1a79f7efaf4d34f37363666be42f41a6e96049bcd9b37efcd37dfb4bb8aebd99b6fbef9939ffca4adad2dfef718488e8086cdac2b0dd073162c58b060c102bbab403a38070d009222a00140520c120280a4388206004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a00140524a0674381cfee69b6fecae22969c7fc1feebafbfb6bb8404246cabcb972f777676da5d452c091b4a48d9a90281402010b0bb8a5899379492016d9aa684fb523018b4bb8404dadbdbed2e210109db2a1008844221bbab8825614309293b55381c96f06f8f64de504a063400e840c93f79651d41e7e4e4d85dc85582c1a0cb25dd5f49efe8e890ada184946d1508049c4ea7c321d7218b840d25a4ec54e170580821dbdb9779432919d000a003b93e700000114a06345771a44ec2017721655b711547ea24ec545cc52111aee2489d8403ee42cab6e22a8ed449d8a9b88a0300d0ab941c24e42a8ed44938e02ea46c2baee2489d849d8aab380000bd4aae0f1c0040849201cd551ca99370c05d48d9565cc5913a093b15577148a4f7afe2300ca3db797a6dc03d72562b95aaec1a705fb4689161183366cc48780e4ec28b13b88a2375dd76aa547a66767115076411f97092b047465457572f5cb8f0c08103121e9602aa903da01d0ec76bafbd2684d8bc79b36118cdcdcd7bf6ecf17abd43860c71bbdd6fbdf59610c2308cc993273b9d4e6bfe37de784308f1f1c71f1b86d1d2d2125955f46c2fbcf082cbe5320cc3308cd9b367c7fc74cf9e3d1e8fc7308cc82622c574b57221449f3e7dba7a15d6e1a461184ea7f3e9a79f1642ecdab5cbed761b86e1f17876edda6515306bd62ceba8b3acaccc308c458b16c517631d9bc4fc9f64c11b6eb821f22ae2cbc88a84af4508515d5d6d1d3e5b4fa35fc88e1d3bace92525250e872352b38df2f3f365bb324124ed54362a2a2a8a7e1abf37591c0ec76f7ffb5b21c473cf3d6718c68a152b44d48e1cbf54fcfe957a8f75bbdd125eee12d350e930e55652523276ec58d334c78f1f5f5454649aa6d7ebbdebaebb2e5cb83077ee5cb7db6d9aa61062f6ecd9274f9eb4661b356a94699a53a64cb1e68f889ecd308cf9f3e75fba74a9aaaa4a7c77281af969c24d245f79724288fcfcfcb6b6b61ffff8c7866198a6999b9b3b7cf8f093274f0e1d3a342727c79ae7d65b6fadaaaab26a5bb870a1b5d1ae8a893cb8a60563cac88af8d7125f6457f58c1c39f2dcb973919aa1a2847b93699aa3478f1e3f7ebc699a43860c11420c1a34c834cd71e3c60d1c3830e152f1fb570ff55885c8be576cdbb6cde17098a6e970385e7ae92533ee977a6b4a43438335fff6eddbad37d2e17054555545af2a7ab6bababa3163c6e4e6e65a0777313f4db889e42b4fee7bdffb9e10a25fbf7ebffef5af83c1a0b5c2fafa7ad334ebebeb239bb870e18275ceb1a9a9c98ccadf84c544cf90e282f1656445fc6b892fb2ab1712dde6d9aa07bd2ce1de649ae6ebafbfee743a4dd3340ce381071e88d977e2978adfbf7aa8c72a4481bdc2e9742e59b224f2f92984d8bf7fbf9544912931f3df7df7ddf19fb7d1b3399dce1933665454546cdab42926f5acc7070e1c48b86c572b374db3b5b535c9ab78e49147468f1e6d18c62db7dc624685da91234712c6ae1995b35d1593ca82172f5e4c524656c4bf96aeaa8abc10abad62da3c5bf5a4a7b9b9b9a3a3c3de1ae225ef547689e95449f62687c3515151611d631986b178f1e2c8be13bf949968ff4ab1c776767676767666ef2566474c43a54181809e3a75aa1062d2a449d6d39c9c9c2143861c3972e4965b6eb13e9f63f6ede9d3a70b21c68d1b17b39e9838a8aaaadabf7fbfcfe78b0f686b13e7ce9d8bdf44572b374db3b9b9b9ab976018c68f7ef4a32b57ae9496965aabcac9c9193e7c784343c3d0a1433d1e8fd975ce262ca6aeaeceec2ea0ad050f1d3a145930be8cac887f2d31c558d5266955538280fefaebafdbdadaecad215e924e65a3b367cf463f4db2378d1b372eb2bf8c1d3b56083171e2c4ae9632e3f6afd47b6c7b7bbb849faf310d95060502fac081034288dada5aebe9f6eddbadd10087c3b16edd3a336edfdebf7fbf1062fbf6ed31eb899ecd0a7d2144e48d8ffe69924d74b57233e9bef4fcf3cf47be84ba70e1c2e84d389dce6ddbb6995de76c7c311e8f27bae6d4178c2f232be25f4b7431916aa3eb59b56a954940a74089804eb2376dddba5508f1e69b6f9aa6b965cb1621c4fbefbfdfd55266dcfe957a8fbd5e035ac9af7a9b49efc5b162c58af5ebd7f7d005a44956ce6d135227615b712f8ed4f55ca74a7be7e55e1cca300ce3fefbef7fe79d77945b39a039f6af18697ee09c3c79b2b8b8d87abc7bf7eec18307e7e6e6969696d6d4d4249cd29b4cd3ecb937b847570e688efd2b463a01fdab5ffdeac1071fbc78f1a2f574e5ca952b57ae6c6a6aaaacac5cbd7a75c229d9c5bd385227e16d1384946dc5bd38522761a7e25e1cffdf8409130e1e3c18795a5f5fbf78f1629fcfb774e9d24f3ef924e194ec32f98b2a2993f08f5f0829db8a7b71a44ec24e75bdde8b23fd73d0d6b58a4208b7dbddd1d1e17038c2e1b0c7e3090683f153224b9d3f7f3eb2459fcfd7dada2a84282c2cb44ea5373535757474743bc5e572e5e7e747df90c55a67644a2010b0060ddc6eb7356e90e21487c361d57f4d4b450628dc6e77c27982c1a0b5f3a7b7e64ca644de889879ace672381cbd5c8f3525180c5acdd543dbb2be537e4d4b8542218fc7638dc8f5726bc44c098542d62ee376bbc3e1b0cbe5b2b79ef8296d6d6dd64d1124a927f2e1eaf17824a9c79a120e87bd5eaf4839d962a688ac04f4b061c31a1a1a7c3e5f4b4bcb881123bef9e69bf829e96da22ba6695eee34cf34c7fe463365a027d8f6bf439da7d35badc33930b7e0f1b66ffe47c6055e25b7e0b150e789807f7f76579b2157ce74b777a6ffd26fec2ea447f4e9ffdf3a5a77a6dd136ce4f6fed0e91edd7ef94dbb0b4116e416fc1787b330933564e10a9eb2b2b29a9a9a458b16eddcb973ca942909a7649761187fbfd4f96f879a63a66f9c3bd0e83811683f90de6a1dae11b9058f05fc7fceb8c0abe4f47d3014f834ebabcd90e1e8e7ca992a5b55d962f67b3a94414fb091d33dcee11c78bdbe2fbac9cd5f2684dd015d5959f9f0c30f2f59b2a4a8a8c8fad666fc1400c0b54a3fa023e746cacbcbcbcbcba37f143f25bb241c0d0080ac93eb8b372922a001e840c98006001d48f735ff54f4e85f3c331c7db3bec62caf10801e08e8188efc213bb2be52e9bee10440054a0674cf099ba673f373d95d677df93325ceecae128016940c680609711d73ba47e515ffbbdd55200b1cce4119ae818006e472b6adfd7f9d6cb0bb0a64c1b3a5c38a723d99ac41c98006ae63ff68bbfccab15abbab40163c5c726b51ae2f9335287981418f5ec501009220a00140529ce2d097c335a827ae299481e1c8e8f74a40124a063483845971c1dff2d3daad7657d123fe70e7234afe6e085c8d80d6577b28f8e70b67ecaea24784cdb0cb35c4e91e6f7721d7cc700e7072060fdf5132a081e4729c2e577ea553c10f72a7e1280c7d6b771590859201cd202192f307033fdfffcececf4fd85dc835fb9fd3ee9e33a4c4ee2a200b25cfd411d00074a0644003800e940c68060901e840c973d00434ae63b7168d3097adb2bb0a4841c98006ae639f5d0eae3a7cc9ee2a9005fffdd6fec57d32bad7b09201cd2021ae6381b0f9555bd8ee2a9005c18c7fd557f21c34010d40074a063400e840c980669010800e08680090949283845d7118863377bae1ec9fdee286638021c498be85d9adcae3b8ae1a1940af51323bba1a24741ae28a6b8e5fdc9ede6a5d0ee760c3f88fc5cf67505a028610ed97b3bb4a005ab8ae023a10361ffdebb61d9f1f4f6fb513fb0d3a5efedc7f7eefab0c4a4be0df6e1f509cdd3502d08392e7a00140074a063483840074a0e4290eb502baafc791e3599293f713bb0bb99ae1e917b86ebfae96e3743d3779f692b153ed2ee49a95f61bec752979d8849ea06440aba52510defed9275bcffc5fbb0bb94af9c8498b4696d95d454f0999e1fece6161f760bb0bb966794e5748a9e30ff42825035aadaf7a9ba6686cf956b6bffe37a9dfa0f0f51b04c17078d7a7ed87beecb0bb906bf6d309bec9033d7657015928f9cb945a010d00e95132a00140074a9ee2e86a90d0308cb201435a8269fe623bc2d79f237300f2b8ae02daed102f4c991b4ef7ccaaf1cf7f0020052503ba2b9d21f3dfebaffced429a47d0c3f25cab6e1f90dd9200206d7606743018f4fbfd4208afd7eb72b984107ebf3f180c763b4508c1d97300aa4831d962a6087b03dae572f5eddb377a8ad7eb8d99a7cb2997d5bb824a365ea7eb5f8796d85d458f703b32fa437040765d43b25dedba3ac5816b52ecedfb877fadb0bb8a1e91e33484f0db5d05902925035aadaf7a4beb6b7fe8bfee6bb2bb8a1eb1696e91dd250059a0e4995c021a800e940c6800d0819201cd57bd01e880800600492919d000a003aee2e8711ea7f1fd41a37f3179b6dd855ce5b6e2912e07bf88005223a07b9cd310ffa9a8a4b460acdd855cc5e77690cf80e4940c68b5f883e6becfdbffcf7fb4da5dc855e68ef4ce1fdbc7ee2a0024a3e43968060901e880800600492919d000a00325035aad414200480f010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a064403348084007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a064403348084007043400484ac98006001d2819d00c1202d041fa016d4471bbdd4288c6c6c6e889d92b3216010d4007e907b4f99d975f7e79ddba754288dadadacacacac8f4ec1509003acaf414c7eeddbb8f1e3d5a51512184a8adad3d7cf8704141c1b469d38e1d3b968df212639010800e5c992cdcdedefecc33cf7cf0c107d6d3dadada0d1b36cc9933e7f4e9d34b972e3d74e850fc2267cf9e8d1c5ce7e5e5b5b4b408218a8a8abc5eaf10e2abafbe6a6f6fef768ad3e914222f93ca01a0d7a4986c3153448601bd75ebd69933670e1b36cc7adad8d8683d983871e2a953a7122e72c30d37443f1d306040f4d3e2e2e298f9bb9af2e9971d69160d00bd2bf5648b91d1298e77de79a7bcbc3cf274c28409757575a150e8f8f1e3b366cdca64cdc971821b800e323a823e74e8d0b469d3224fb76cd9b27cf9f23367cecc9c3973e3c68d19d7d625021a800e320ae84b972e453fbdedb6db8e1e3d9a593d00807f52f28b2a5cc5014007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a064403348084007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a064403348084007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a06440334808400704340048ca65e3b683c1a0dfef174278bd5e97cb2584f0fbfdc160b0db2986610841460350438ac9163345d81bd02e97ab6fdfbed153bc5e6fcc3c09a798a6294467cf160700599262b2c52fa8e4290eaee200a00325031a0074a064403348084007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a064403348084007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a064403348084007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074907e403736361a518410bb77ef1e3c78706e6e6e6969694d4d4df68a8cc52021001da41fd0b5b5b5959595e67784102b57ae5cb972655353536565e5ead5abb357642c021a800e320ae8c3870f1714144c9b36edd8b1634288fafafac58b17fb7cbea54b977ef2c927d92b120074e44a7bc9dadada0d1b36cc9933e7f4e9d34b972e3d74e8d0952b57bc5eaf10222f2fafb9b939e152e7cf9f8f0cf1f97cbed6d65621446161614e4e8e10a2a9a9a9a3a3a3db290e8743883e69570e00bd29c5648b99223209e8c6c646ebc1c489134f9d3a2584282e2ef6fbfd3e9fafadad2d3f3f3fe15243860c897e5a505010fdb4b0b03066fe8453c2e1b0b81848bb7200e84d29265bfc82e99fe2983061425d5d5d28143a7efcf8ac59b384106565653535359d9d9d3b77ee9c32654ada6b0600884c8ea0b76cd9b27cf9f23367cecc9c3973e3c68d4288cacaca871f7e78c992254545459b366dca5e91b1182404a083f403fab6db6e3b7af468f494f2f2f2f2f2f28c4bea1e010d40077c51050024a56440f3556f003a20a00140524a063400e840c980669010800e086800909492010d003a5032a0192404a003021a0024a5644003800e940c68060901e880800600492919d000a00325039a4142003a20a00140524a063400e840c980669010800e086800909492010d003a5032a0192404a003021a0024a5644003800e940c68060901e880800600492919d000a00325039a4142003a20a00140524a063400e840c980669010800e086800909492010d003a5032a0192404a003021a0024a5644003800e940c68060901e880800600492919d000a00325039a4142003a70d9b8edcececed6d65621445e5e9edbed1642b4b4b40402816ea708218470db5637005c8b14932d668ab037a03d1e8fc7e3899e92979717334fc229e17058b4067ab63800c89214932d7e41254f713048084007043400484ac98006001d2819d05cc5014007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a064403348084007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a064403348084007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d00020a9f403fae0c18337df7cb3d7eb2d2d2dddb76f9f10a2b1b1d18892bd22014047e907f4cf7ffef3aaaaaa4b972ebdf8e28b0f3ef8a010a2b6b6b6b2b2d2fc4ef68a8cc52021001db8d25ef2f4e9d3d6831ffce0075eaf5708515b5b7be2c48982828271e3c66ddebc79f2e4c9d9a9310e010d4007e907b4251c0e3ffbecb36bd6ac1142d4d6d66ed8b061ce9c39a74f9f5eba74e9a14387e2e73f7ffe7c245e7d3e5f6b6bab10a2b0b03027274708d1d4d4d4d1d1d1ed14c33084f065583900f48e14932d668ac830a0fd7eff934f3e79efbdf7ce9b374f08d1d8d8684d9f3871e2a953a7122e3264c890e8a7050505d14f0b0b0b63e64f38c5344df1556706850340ef4931d9e2174cff1cf4be7dfbe6ce9dfbd4534f2d58b0c09a3261c284bababa502874fcf8f159b366a5bde66e3102094007e91f412f5bb6ecf3cf3f9f346992f5d434cd2d5bb62c5fbefccc99333367cedcb87163962a04004da51fd09f7df659cc94db6ebbede8d1a399d59312060901e840c92faa10d00074a0644003800e940c68060901e880800600492919d000a00325039a4142003a20a00140524a063400e840c980669010800e086800909492010d003a5032a0192404a003021a0024a5644003800e940c68060901e880800600492919d000a00325039a4142003a20a00140524a063400e840c980669010800e086800909492010d003a5032a0192404a003021a0024a5644003800e940c68060901e880800600492919d000a00325039a4142003a20a00140524a063400e840c980669010800e086800909492010d003a5032a0192404a003021a0024a5644003800e5c366e3b180cfafd7e2184d7eb75b95c4208bfdf1f0c06bb9d2284e0a305802a524cb69829c2de8076b95c7dfbf68d9ee2f57a63e6e972cae58e9e2c0d00b2e61a92ed6a1c870280a4940c68060901e880800600492919d000a00325039aaf7a03d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a064403348084007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a064403348084007043400484ac98006001d2819d00c1202d001010d00925232a00140074a06348384007440400380a4940c6800d0819201cd2021001d10d000202925031a0074a0644033480840075908e8ddbb770f1e3c383737b7b4b4b4a6a626f315768b8006a0832c04f4ca952b57ae5cd9d4d4545959b97af5eacc570800105909e8fafafac58b17fb7cbea54b977ef2c92799afb05b0c1202d08191f9e902b7dbddd1d1e17038c2e1b0c7e309068349663e7bf66c648b7979792d2d2d4288a2a222afd72b84f8eaabafdadbdbbb9de2743af3fa0db8d4118e597991d779a533dc1e4af315b90c51e8757ed9164a6ff1ae14e63adb43e1d6805ca765fab88c3e6ec7d7fe2cbf5849147b9dcd9de18e747b828df2dc0e8fd3f8a6fdfa7c5f7433d0eb741a42a49c6c31534456027ad8b0610d0d0d3e9fafa5a565c48811df7cf34d862b040088ac9ce2282b2baba9a9e9ececdcb973e7942953325f61b7c2e1b0841f036d6d6d769790c0d75f7f6d77090948d856972f5feeececb4bb8a5812369490b2530502814020607715b1326f2857e6455456563efcf0c34b962c292a2adab46953e62bec96699a12ee4bc9cfedd8c5faa5493612b655201070bbdd7657114bc286125276aa70382ce1d054e60d9585802e2f2f2f2f2fcf7c3d008068593807ddfbac23e89c9c1cbb0bb94a301874b9b2f081975d1d1d1db2359490b2ad028180d3e97438e4faea96840d25a4ec54e170580821dbdb9779432919d000a003b93e705427e15930f49a458b1619863163c60cd98e2ea12e25039aab385227e180bb90b2ad32bf8aa3baba7ae1c285070e1cc8e208b6840d25a4ec54d7eb551cf206b461182525250e87c3308c458b160921f6ecd9e3f1780cc3f0783c6fbffdb610c2e170bcf6da6b4288cd9b371b86d1dcdc1c99c7ed76bff5d65bd67a264f9eec743a53df6e64fe175e78c1e57219866118c6ecd9b3637e1ab3adc880bbc3e178e38d3784101f7ffcb16118d69771ec22e180bbb0e9e284e4bde5edb7df0e8542d1ef6f92f771d7ae5d6eb752b96f76000006ef49444154dbea8abb76ed12dffdf2545d5d6d1d3e5b4f13f6c6985e9d1c5771a4281c0e4b78b6360b0d65ca4a083172e4c873e7ce2d5cb8d0aad3ebf5de75d75d172e5c983b77aedbed364db3a4a464ecd8b1a6698e1f3fbea8a828e13c4288d9b3679f3c7932f5ed46e6370c63fefcf9972e5daaaaaa12dfdda429f2d3986d3537375bf38c1f3f7ed4a851a6694e9932c5aaca46d6573765d3dcdcdcfb1bedb6b75887ab91f737c9fb989b9b3b7cf8f093274f0e1d3a342727c79a18d99b220f12f6c6985e9d9c2d0dd52d093b557b7b7b474787dd55c4cabca1a40ee8868686c86333eee3d134cd6ddbb6391c0ed3341d0ec74b2fbd94709ee8f55ceb76ebeaeac68c19939b9b6b1d10c55715cdfa0dcb34cdeddbb71b866155555555959de648577b7bbbbd05241408047a7fa3ddf696502814fdfe26791f8510f5f5f5a669d6d7d7c7e772f48324bd319580b6a5a1ba2561a70a8542a150c8ee2a6265de50520774cc6321c48103076266733a9d4b962cb176a484f35ceb6f09d1f33b9dce193366545454585fc089afaaab6d399dcebbefbe3b52152471adbda5abf73112d0478e1c491ed049d62ff3efaf9084bc5d24be2be7e4e40c1932e4dcb973b7dc728bd3e9b47e3475ea5421c4a44993aca7f1f36412d04288aaaaaafdfbf7fb7cbef8804eb2ade9d3a70b21c68d1b77edaf1b3de85a7b4b57ef634e4ecef0e1c31b1a1a860e1deaf178ac89d1b95c5757d7edfa0968744bde2e12df95b76fdf6e5db4ef70385e79e515eb47070e1c1042d4d6d65a4fa3e759b76e9d9959405bfbb310a2b4b4343ea063b6d5dada1af9e9fefdfb8510dbb76f4fe38567d7c58b17ed2e2181d6d6565bb69ba4b7ac5ab5aaa3a323a6b774f53e4616743a9ddbb66db3264696f5783cf13d36be37a6d233ed6aa8e424ec549d9d9d9d9d9d7657112bf38652f28b2aa150e8e2c58b83070fb6bb90ab5cbe7c393f3fdf7abc62c58af5ebd7cb3004ffc5175f0c1f3edcee2a6245b795249a9a9afaf4e913b9cda3c5f6f751c286125276aa8e8e0eeba21abb0bb94ae60d25ef65764a5bbb76ede2c58bedae0299e27d84bd943c8236b91747ca24bc6d8290b2adb81747ea24ec54dc8b0300d0abe4fac00100442819d0dc8b237512de364148d956fc4595d449d8a9b81787444cfea24aca24bc6d8290b2ad028180f54d42a948d85042ca4e75bdde8b43c98006001d283948c8551ca99370c05d48d9565cc5913a093b15577100007a955c1f3800800825039aab385227e180bb90b2adb88a237512762aaee290085771a44ec2017721655b711547ea24ec54d7eb551cd28d3fa442c2bba20821241ccc1142c836986391b0addc6eb76c434c42ca861252762aebaf88d95d45accc1b4ac6b73f15127e5ac6dc080d4948d856a6694ab8874bd8507272bbdd7697d023a43b644885699a129e6f9270f7164258f738968d846d150c06253cc521614309593b9584326f2825031a007440400380a4940c68c330faf6ed6b77156a282828b0bb0435f4e9d3e77a3d8f997574aa1465de507c93100024a5e4113400e840b180debd7bf7e0c1837373734b4b4b6b6a6aec2e4746070f1ebcf9e69bbd5e6f6969e9be7dfb84108d8d8d4614bb0b94457cb3d0bb128a6e25eb2c103d2aa193274f1617175b8fe3fb529abd2bc3bf0adecbeeb8e38ecd9b37b7b4b4fce637bff9e10f7f687739321a3f7efcbbefbedbdedefefbdfff7ee8d0a1a6696edab4a9b2b2d2eebaa413df2cf4aee45e7ef9e50d1b3698f4a8449e7ffef969d3a6451235be2fa5d7bb140be8fefdfbb7b4b498a6d9dcdc3c60c000bbcb91da975f7e3976ec58d334972e5d3a7dfaf4fcfcfca953a7d6d7d7db5d972ce29b85de95c47befbdf7d39ffed47a4c8f8ab779f366ebfe13d6d3f8be945eef522ca05d2e572814324d33140a399d4ebbcb915728147af0c107fff0873f98a63972e4c83ffef18f8140e0f8f1e3d3a64db3bb3459c4370bbdab2b7ebf7fe2c4895f7cf185f5941ed5954840c7f7a5f47a97625ff52e2e2ef6fbfd3e9fafadad2d3f3fdfee7224e5f7fb9f7cf2c97befbd77debc794288c6c6466bfac489134f9d3a65676532896f167a5757b66edd3a73e6cc61c386594fe951dd8aef4be9f52ec50609cbcaca6a6a6a3a3b3b77eedc3965ca14bbcb91d1be7dfbe6ce9dfbd4534f2d58b0c09a3261c284bababa502874fcf8f159b366d95b9e3ce29b85ded59577de79a7bcbc3cf2941ed5adf8be9466efea9923fd9e525d5dddbf7f7f87c33168d0a0f7de7bcfee72643462c48898f7f7e0c1836565653e9fefce3bef3c7bf6acdd05ca22be59e85d5d292828f8c73ffe11794a8fea4a2451e3fb527abd8b2faa0080a4143bc50100fa20a0014052043400488a8006004911d0002029021a002445400380a40868009014010d009222a0014052043400488a8006004911d0002029021a002445400380a40868009014010d0092fa7fc64625aabfc84efe0000000049454e44ae426082}
+}}}
+\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs16 Fluctuation diagram\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 At last but not least have a glance on the {\i fluctuation diagram}. Unlike the above two charts, here the colours does not have influence on the chart, but the sizes of the boxes, which obviously demonstrates here as well the cells of the crosstable.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The bigger are the boxes the higher are the numbers of the counts/the total percentages, which that boxes denote.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "plots/Crosstable-8-hires.png"}}{\fldrslt{\ul
+{\pict\pngblip 89504e470d0a1a0a0000000d49484452000001e0000001e008030000004a0a4ea700000213504c54450000000202020303030404040505050606060808080909090a0a0a0b0b0b0c0c0c0d0d0d1010101111111212121313131515151717171818181919191a1a1a1b1b1b1c1c1c1d1d1d1f1f1f2020202323232424242525252626262727272929292a2a2a2b2b2b2d2d2d2f2f2f3131313232323333333434343636363838383939393d3d3d4242424444444545454c4c4c4d4d4d53535354545456565656b4e959b5e95a5a5a5b5b5b5db7ea5e5e5e5eb8ea60606060b8ea61616161b9ea62626263baeb64646466666667676767bceb68bceb6969696a6a6a6bbdec6c6c6c6d6d6d6dbeec6fbfec71717172727273737373c1ed74747475757575c2ed76c2ed78c3ed79c4ee7ac4ee7cc5ee7d7d7d7fc6ee80c7ee81c7ef82c8ef83c8ef84c8ef84c9ef87caef88caef88caf08acbf08cccf08ecdf090909092cef195959595d0f19696969797979999999d9d9da2a2a2a6a6a6a8a8a8abababacacacadadadaeaeaeafafafb0b0b0b2b2b2b3b3b3b4b4b4b5b5b5b6b6b6b7b7b7b8b8b8b9b9b9babababbbbbbbdbdbdbebebec0c0c0c1c1c1c2c2c2c3c3c3c4c4c4c7c7c7c8c8c8cacacacbcbcbcccccccececed0d0d0d1d1d1d4d4d4d6d6d6d9d9d9dadadae1e1e1e3e3e3e5e5e5e6e6e6e7e7e7e9e9e9eaeaeaebebebecececedededeeeeeeefefeff0f0f0f1f1f1f2f2f2f3f3f3f4f4f4f5f5f5f6f6f6f7f7f7f8f8f8f9f9f9fafafafbfbfbfcfcfcfdfdfdfefefeffffff86576a81000000097048597300000b1200000b1201d2dd7efc00000ef049444154789ceddd8b7714e519c7f1b1228d8a60ad60ea0d4450ab55bc50a8b5620b2d56a95a6d29f5da6ab5d48a37da5029b414d15254e20db0461108d01812c2fc89dd9d7d92dde19dd9ccccee64def99defe7e4ec81cdccec245f933c2e9b798310d282aa4fa0245313c5f79d982abeefd7c5772d876ae0b1a3c5f73d3a567cdf23c5772d07815d04ae81aabe458f17dfb51caa8161082c4e35f0c4e9e2fb8e9e29beef97c5772d478d036f595dd8cfba1e9821cb0f04ce82c02ea6683f9416580a81c511d8c514ed0786ac2c08ec22b01f98a2b320b038028b23b08b29da0f0c595910d845603f304567416071041647601753b41f18b2b220b08bc07e608ace82c0e2082c8ec02ea6683f9411f8b79b67bc50e8a418b2faa78cc03f6a6fb325eff9fc6ee6bf8d677afbc0fa8ac031bd046e9fcf8f7bfbc0facaabc0f94e86c059103886c025d97bcda2adcd935970eafd60cff105adbfdffc4178f0a6a10b2fdb90bc0f81b3f024f0c4e18f17364f66c5471b6e5f3bbcb2f5f7d7ee0fd7bf7afd9da39d1b4e1d6e387ef8f0446f8147a223fcd7b9ed0cecbeb7fb6d67e0ee5bce254f02ef5e3518344fe6ae3706472e7ffdeed6dfc7161fb9f2d4a1eb06f627efc35770169e045ef0e6f628f0e3b73c18aeb9f109fbfb23b7ae6fbcef8e45c9fb10380b4f02df7be9a351e05782e1f09fc136fbfba7c1c170e325f38692f72170169e044e766079b7f712380baf032fdcd1edbd04cec2ebc0dd9511f8a9f673d17f2a745223853f9c9210d8c52b3afcc02b3ab220b038028b23b08b5774f881212b0b02bb08ec07a6e82c082c8ec0e208ec628af603435616047611d80f4cd15910581c81c511d8c514ed0786ac2c08ec22b01f98a2b320b038028b23b08b29da0f0c5959d438f04b9b0b7bb6eb81095c03ac006e5403c310589c6ae033a3b36f938629ba06c68e16df9721ab06086c540333451bd5c0300416a71a9829daa80666c8321a819f7f2e833f663d1a81bd93e91f96325f178929da3bfd0d2c85c0e208ec628af64e7f0333647987c0a908ec628af60e43562a028b23b08b29da3b0c59a908ec22b07798a25311581c81e39e9ffeed960267f1520ffb96c6e3c043f3773f9671d3fe059e39528113ee65dfd2781c78ded0b9ac6747e054d5065e391c0eaf08df191c7caf7126aba2d5469b77ef5d7cd5be30884cbff39e8b53d63f8b103855b581b73d143efc72b8fcdfef7cb771261f46ab8d36efbe61d7ce65d1a935deec9d3b87e6457b74ac3edab19e67b6c059d611ed889477f5d1ecfbcea56a039f5c32bae478383f08bed93893a968b5d1e6ddf3cf8c5f341dd8de79b6eb99f2159caae29fc10fac591b864bf71f6a9d496bb5d1c61dbb765ddb0a7cacfd4e02175271e0f7827d61f8afab82ef4567d25c6db469cfe22bde8deeb86da0fd4e0217e2d514dd7db5d12e089ccaabc0dd571beda2bfcf649de8e1f94616a72c05cf45a722b038028b23b08b577478877ff04f45601781bdc3149d8ac0e2082c8ec02ea668ef3064a522b08bc0de618a4ea511f8a975193c53f5595642233052a906e64a7746353057ba33047611b806b85eb4510d0c436071aa8199a28d6a60862c436017816b8029daa8068621b038d5c04cd1463530439621b08bc035c0146d5403c310589c6a60a668a31a9821cba806fefaabe2fb12d8372f6ccae417190fc714ed9b5f6579ddfbead5dfaffa3cab40607104763145fba6cf8119b27c43e07404763145fb86212b1d81c511d8c514ed1b86ac74047611d8374cd1e9082c8ec0319b3b947fde7381c0319d9b173a15a6e8327812f8451fbff67d0b9c63c9d1364f02b3ac4e0639961c6d23703a7f02e75e72b48dc0e9fc09dc65c9d10e89ab8f660dfcf9ac2b88766efe25ab8ff655ee2547dbf80a4ee74fe0dc4b8eb611389d3f81732f39da46e074fe04ee0181d31138a6a7c05e22700c81bdd4e77f4d3addc3ffc9f05c7419f807ff74047611d837bca2231d81c511581c815dbc2eda370c59e908ec22b06f98a2d311581c81c511d8c514ed1b86ac7412817fbf3993df643c1c816b80eb451bd5c0300416a71a98eb451bd5c05c2fda10d845e01a608a36aa8161082c4e353053b4510dcc906508ec22700d30451bd5c0300416a71a9829daa80666c832047611b80698a28d6a6018028b530dcc146d5403336419d5c0e3278aef4b601fad9b458e433145fb68b6df5ba9fafcaa42607104763145fba88f8119b27c44e06404763145fba88f81a510581c815d4cd13eea63e05e86accf8bef5a0e02bb0a067eb6d0f3a26523b06bb2d814bda5d08395cdcfc08fe53fb17e05fe616bf3024bc41238bb026745e06455061ebaf0b20dad4547c3e0c981adf7cd1f0a5beb8e3617200dcebf33da3a1d81935519f8fa3b4767161dddfec9056f35d71ab575475b6fb13ba3adc3a9cf1a463ffb6c220cbfe8bcfd72f6c05fb87bb9b723edc099b6efb8ed0cdc7dcbb95465e043d70dec9f5e74742a0cce75ac3bda7a8bdd196d9d8eafe064d5fe0cbe6351c7a2a3d19bad3b7aac7dcfcc9dcdadd31138599581375e326fa8bde868ebadb5eee86d03b1c0d19dd1d6e9089ccccf29ba807e05fee5a6c88bf9cf80c0a5ea57e08693c59e8b2670a9fa18b8e053957f7e6e46a1fdcb416017afe8f0511f03f38a0e1ff531b014028b23b08b5774f8a88f8119b27c44e06404763145fba88f81a510589c4ce0d9963dcb7128a6e81ae01a1d86c02e02d70057ba33aa8161082c4e353057ba33aa8119b20c815d04ae01a668a31a1886c0e2540333451bd5c00c5986c02e02d70053b4510d0c436071aa8199a28d6a60862c436017816b8029daa8068621b038d5c04cd1463530439621b08bc035c0146d5403c310589c6a60a668a31a9821cba8061eefe12b98c09eda92f6dbfd5bf21d8729da53fd0a2c85c0e208ec628af654bf023364798ac00908ec628af614435602028bf33870ee53eb4be0a7735f182f86293abb6a02db41f23ef6b491a23b96c59bc0c1aa70ef358bb6467f88561b6d9cdacd1f84076fca7e080f02fbf7f3c09fc01f8613873f5e18fd617a09d2d7ee0fd7bf1adf6c6aa4e1d4c8c864187e75fe6d7ae0e4ed136fed2067b36e1fbb3d1b3dd8ac5bcee9e7756e1f2e5d3015ee5e35d85a73747a09d2b1c547ae3c75de76930d672727cf457f8adfa6074ede3ef1d60e9279fbf86df460b36e39a79fd7b97db8748d1359f0e6f6d812a461f8c8adeb731cc2836fd19b366dfa43c15d4be253e07b2f7db47309d2c61f3e0d0ee638840781c31e5e67500e6f02273ab03ccfd6fdfaffe0133d3c1dc55395b92cdc91676b9e8b4ee077e07c782e3a0181c511581c815dbca2c3530c590908ec22b0a798a21310589c526024500dcc6f171ad5c0fc76a121b08bc035c0353a8c6a6018028b530dcc146d540333641902bb085c034cd14635300c81c5a906668a36aa8119b20c815d04ae01a668a31a1886c0e2540333451bd5c00c5986c02e02d70053b4510d0c436071aa8199a28d6a60862c436017816b8029daa8068621b038d5c04cd1463530439621b08bc035c0146d5403c310589c6ae089d3c5f7658af656e285947e9ef7280c59de22b083c02ea6686ff527b014028b23b08b29da5b0c598e7a04ce7a9615077eb6b7954b4b4160d764d129bac745b54a5169e095c3e1f08ae9b54657cdac355a7c21d2be04fec1ead5bf2ef2d110d8b1eda1f0e197a7d71afd7066add16e0b919e3bd6f0bf63c7ce366621f7362570c296e9b753cdc039b6efb8b5879f9a6dcbb95469e0934b46971c9f5e6b746a66add16e0b919e1b6b98181b6b7c12c7dddb94c0095b76b96d06ceb37dfbb61db8fb9673a9da9fc10fac599bb0d668f18548fbf22dfaa7ebd63d9df703893d7cb19d4b526de0f7827d096b8d165f88b43f43d6f1af737f20b1872fb877397c9aa2bbae359a6921d28a9f8b7e8aff4deaaaeb5aa3991622e5a94a874f817b476007815d3c17ed2d9e8b7610d845606ff18a0e0781c5690586433530bf5d685403f3cb6786c02e02d700bf5d685403c310589c6a60a668a31a9821cb10d845e01a608a36aa8161082c4e353053b4510dcc906508ec22700d30451bd5c0300416a71a9829daa80666c832047611b80698a28d6a6018028b530dcc146d540333641902bb085c034cd14635300c81c5a906668a36aa8119b20c815d04ae01a668a31a1886c0e2540333451bd5c00c5986c02e02d70053b4510d0c436071aa815901dce8058e5d90745391233064798dc031047631457badf7c052082c8ec02ea6e83204f75c3c14b656938daf3a1bdfecdcc986f193271b3f264f27dfc6039feab265daedd1a3f9b6efbc3d9265cb39fdbcceedc3a50b760ecd0b5babc9c6579d8d6f46e0bc9fd7b97db874c1d9e6b944abc9c6579dcd7b20a6e8187f0277ac261b5f75362786ac18cf02b756938daf3a9b138163bc09dc374cd1310476f154a5d7081ca317b8656ab2f8be4cd1a80f028b530dcceba28d6a605e366b08ec22700df0ba68a31a1886c0e2540333451bd5c00c5986c02e02d70053b4510d0c436071aa8199a28d6a60862c436017816b8029daa8068621b038d5c04cd1463530439621b08bc035c0146d5403c310589c6a60a668a31a9821cba8061eefe52bb88749e98be2bb964335f09913c5f73dd1c3b76802cf11be451b02bb085c030436aa81277b8834d6c3d5014e16dfb51caa8161082c4e3570e3e37aace07ead4f49bebd838e3dfde2e339f549a10f6d2653eebd093c47defeceb203cd8f2b08829b3f080fde94bee5d085976d08832707b6de377f280cf75eb3686b3b5363ef70efe2abf6850b4ebd1fec39bec02e77ec6a5dfb78e62bb87594a1851b03bb3672d5f4022fddf19f6bedd3fddafde1fa57d3b7bcfeced1c656db3fb9e0ade6958c270e7fbc30fe157cc3ae9dcbc2151f6db87dedf04abbdcb1ab75ede399c0ada3dcb0ebadc0ae8d5c35bdc017454f34469feeb1c547ae3c95bee5a1eb06f637af571c9c6b6ebe7bd560100f3cffccf845e15d6f0c8e5cfefadd76b96357ebdac7337bb68ed2d873fadac855d30bbc6cf7bb57b73eddc7c2476e5ddf75db3b16b5d32c78737b2cf0b170e9ae5dd7868fdff260b8e6c627d27fc446d73e3eef284bfff1f7996b23574c2ff0db83dfda1d7d5cb70d849f0607bb6cb9f1927943ed34f75efa6867e0c6de7b165ff16ef84a301cfe33d8961e38baf6f17947d979f94fbe317d41e48ae905ee746079358fbb68f8af83d53cb2433bf0c21dd53ceedfaefef65faa796487766010581d81c511581c81c511581c81c511581c81c511581c81c511581c81c511581c81c51158dcff01be504c03c3b3f9210000000049454e44ae426082}
+}}}
+\par}
+{\pard \qc \f0 \sa180 \li0 \fi0 \emdash\emdash\emdash\emdash\emdash\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This report was generated with {\field{\*\fldinst{HYPERLINK "http://www.r-project.org/"}}{\fldrslt{\ul
+R
+}}}
+ (3.0.1) and {\field{\*\fldinst{HYPERLINK "http://rapport-package.info/"}}{\fldrslt{\ul
+rapport
+}}}
+ (0.51) in {\i 7.099} sec on x86_64-unknown-linux-gnu platform.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\pict\pngblip 89504e470d0a1a0a0000000d4948445200000078000000a00806000000c709a8900000000473424954080808087c086488000000097048597300000b4100000b4101c9510a320000001974455874536f667477617265007777772e696e6b73636170652e6f72679bee3c1a00000d9149444154789ced9d798c1bd51d80bf676fee040890900b1a600f488b0ad4d4b50a2d37a1400809f9a32d55d392f56ea822159556b4859272145a89a24a28c97a1794bf5a556dc54d4312d885d21ab796b854927516292a39b90a0d6c76bdb15fffb0bd389b393d339ef1f87dd26a6dcf9bdffcecefbd99376f2e21a5a499109b774f259fffa14cb63fe0772ef520e27702f5446cde3d95d1b1c7412ef53b977ad13482c7e50a7995dfb9d493a610dcac72015afc4ec06b4adbdcd12710e24abf73f18350b7e071b934a75c08b16025b7442857d162f3eea98ce59f047185dfb9f84de85af0b85c49d3cb85900956728f45d81dc912bd83f740649247f918532cee925d1d8f684d120fed99c6cce1272cca7d07217eef7276da44227df2e63387eab22c0dec0b4ee5468029dea463c81091c825724deb9e63727a68cf34660c3f095cee435e66ec251abdd82fc98db28a6e54b9000b29140644cf8e363f16de08821b596e85858868bf1f92832ed84cee53045f6e85858868dd5b7290055b917b990f79396101223a207a77b6d76b8141151c46b915162023fdf5921c44c161965b6101323220360e7678bda0a00936963b7df8691a5f6e85f94445bfd7928324585f6e6aff74a60f3f8de0523f12f390f944c58048e5cef26a015e1e6cd8037c60ada8fc8848f4264db9201087ee014e025e773543f79906d8ddb6ce03fa452a77894cb6ef743b21ef46b2a4582bbbda36d59857432240d03bb80129ba6b98fd001171a95cd3b6c3cd9c82b48a6e7824483a3b6e41c85a2af63c8ab25ff4ed3adbcd9c9460977128f914b7252bc11ee08ae49ea1256ee4a2047bc4b864644f0db39f8228ba225909f610099264c7da1a25cf4514fb45efd0e79de4a0047b8c63c9b2f88213c94a701df84c32a91a669f8b2cf68b4d3bbe50cbb295e03a5192dcde4d6d92e71089be508b6425b88eb82279c3dba7da994909ae33e39225bd35cc3e87c8d899766650827d4082a4abbdab46c9b650827da25e9295601fa9876425d867c625439f17f195e00050ee7825f140b2121c10bc92ac04078871c902cdebaf6a2150d707a752a9e387274f167ee7510b0b67cc38b46ad5aa82d33812a4e86cefa43707929b9dc60b94e0021c9c92cffb71619b63de1b1b3b0f78cd8d586e4a56abe880523a9edcdee97475ad040700b1e9edb9223574fec4cfc725231ead35b6121c08c6a683dcae2b39d9b6a656c94a706090b3416e177d3bbf74cc14079295e0402167538c6e33941c99fcaa9d884a70e090b32946b68b9ec1d8315340cae4191fdb89a60407931310629b9664bb28c1c1a524b93777819320811ae8284a796554ca86ac74b258f4e22e3a2720d92a7a7357cacef67fd5122050827fd0d5f592df39049013906c139b7257caeef67fda9db9215b4b13723c11b68a4db92fdb9d51096e1c4a9253bbe2766652821b8be341da92ac04371ec781dc2afa86be62a5b012dc981c47b1f89c15c94a70e35292dc3394302aa4043736c7218c25076a3f78436fef6d1129039593658ac547bbbbbbdff561c9b310c5e744efcea5b2f3ac7f4c9cd8022036be399b96a99fb318d0b373a68494f74a7fee45ed18198d6e01fc100c300b19d9a225b9d45aa2278f523cf460086f34d64c94246f1abc5a7677fcbdf261044026e70f333cfd5ae079dfd253b8c12c22628bd834f8d5ca07e39d2c79eba2c37c3afd3a94e446672611b145a47217c2844e96bc75d161f1d09eeb1ae42eeacd8910d73169d2cba6e5a2ff1b038d5e7459f2322539a0140a9fc8ceb68fac16d7dc0f2eafae9721d8e65e660a3fd01de890b72e3acca4c94a72836338a820572f1e119b772fabe3431e0769d0fde0162947fcce410bd351a3b2e4ebebf180e5b5c9e417bd8cdf8c581a8b96ab178f3065d272a478ceeb8414ee62f960c3b864d8e2613e0a97b1753449ae5e3cc26844496e206c1f2e94eb5a47cb92ffea413e0a97a9e9787059f20d28c981a7e603fee39205cfba9990c25d1c9dd121d7b58e321259013ce3523e0a97717cca8e5cd73acaec234a7240b17d7a8ce81b5a34f1015672d592bcf8d35b2bf8b0e52f08aead35998da9d4eb34e848561496279349d71f6ce514fbe73f158bdbc5a69d4b65f759bbab3f2e4b5ee95072070d2af8881053fdce418b5a56d18b89881745dfe0e91327c8554bf29c786425c8a75cc84de102356e83c56914c58b62e3ae33264e91ab96e4995db89188f89bd3e414ce71d2c93a95a81c10a9a163ee402e572dc9cbced67f3b88ad7009a7bde853a138201e79bbd5956c14aee3c6950d8b281494e480e2d6a52b0b29140644cf8e3697e2295cc2cd6b931622a203a277a7dd07242b3cc4edeb801620230362e3e025726dc7a0dd9905dc260376bd94550a2d2d7bfdce410b2f7eccd273e97b767c4d769dbdcbce8cddc9e4c31ee4d3d47875f9e83c68b9cca3d80a1ba8eb83438e121c7294e090a304871c2538e428c12147090e394a70c85182438e121c7294e090a304871c2538e428c121c7c383ebf25b223578ae77f17d6794427ebd5c7bce7fb5268ad4ae24148f7916a1261131cbd5ccaaf04eb0e02210177916df5ff2c8c88dfa7273b703f77b78df56cb34e4e9313e9347889532d9fab4d644d19bfb29f0ab3ae7a48bda06dba324b7b34d5b6e2af7336470e482126c873c8815fa7277fd1cb8afce3999a2045b6314c40a996cd3bc06ba2457de5befa4aca0049b338a445f6ecfae3b822a175427cb8c510437c864bbe6cd66446af04e84b8bbde49d941b5607d4a723b75e4f6e67e01c1960b4ab01ea348b95c576e2a7717925fd63ba95ab0bf8a16bc8494933dc8c563c462c0ca93654690f206d9d5a179373fd1bbf32a44f46264f1451793b34e346af966e000424ae9552a8142a472eb81bb4c8a8d208acb65e759a1b9e9aa5a457f46e8e482ea45571881c8f5b2b37dabdf89b88d6ac1308214cb64b235747241093e8c14cb64575b689f4bd1ccabe8c308b14c26dbb6fb9d8897346b0b2ec9ed0cb75c684ec187915cd70c72a1f90497e476b537cdf3199b681b2c3e2552bc56aee978c1ef4cea49f3089e3df63bb96a49deef34ea4dd30c55362bcdb60d6e3a94e090a304871c2538e428c12147090e39cdb31f1c3212b1f81ae00a4a174055fe22c0703a9bb9a9524e096e5cae0656687c7ed41d7ed52aba7199aff3f9feea372d008958fc54e0db0e17f8301005bee930ce1f81c3c06a8771fe0c7c0cdcec30ce63e96ce66022164fe2ac413c9bce66fe9388c57f044c7210e7997436f326b04067fa498958fcc740111813524a12b1f872e031070b05980a9c0bbce230ce7ce078c0e963e24e0724b0db619cb329b50a5ba7ab6a90005ea354799d707d3a9b7932118b8f60fe94b803951aa9571bacf2413a9b19457fb5619502f0ae0b71a024254871f6e1fc7706d89788c54fc4da2300f755043bfd0295e71538fd0207d2d94cd18538950ae734ce703a9bf9d885381238803b15652fd6f3d9eb96e07d218d53e9b0388df37e3a9bc9bb10a7001cb411675f653749af46bc036ca87a7f37da1d04b316fc3ef060d5fb9f00b3b5123289330aacaf7abf4ea7ac599c027047d5fbb5c0691ae52a828d5acc9dc091f2ebef015a8f1532cb074abf6d65fbfc1d6089469903e96ca69888c58d04ff9ad2ef5d045ea908d69be18d7436f3004022169f06dcaf53ceacc5e42a71cab16e3789a3f743ec9d10e7961ae31c9c10e7fb2671f4bed7703a9b19bf3638118b6bed975a893306ac4f6733b21ce71a93384615e5be743673a8f2c6ac93b5afeaf53c83a0660b1edf374bc4e25329f5928dca99eee3256271619093e53816cb59f97d8cca99c53950915b6691c9f2f4f2fda45a2e404b22166f014ed699a1fa614f9301bdeb76de305970f50f718a4e99ea72a6158552ce7afb93762adc2c60a6491c2b152e82fe77338b33f1a15a6f005a0f16ab9c4f66e5f7014a031da7a0bf033f2e269dcd0c024b75ca51ae2873cce2606d4d60a5a218ada6dc8a63a705cf417fe8d7acc21db526486733d71be404d6be1750126be587b2c23cf4effc555db30c5bb0498baa8e63d4d1d89788c5270327398d6352c6ad38767e67abf90025c14689d9791e9fd58a62d682adc6312b371ffd0a67b9052762f1e380194ef349c4e253801375a6db7deea12f2dd8a8a254d72c3dc16394baf756e3e895b332a8501dc74a45319aee761c4312b1f809c034ab715a0c163c06bc6775c1187fc16f2462f10bcbaf2fd629b33f9dcdc8442c6ed6a2e601cb814b75cabc97ce66c62cc49903ac042ed7293392ce663e4ac4e2e719c4899737290057e99429521a9cb8c0208e9d166c5451ce49c4e2dde5d76fa5b399975a30e8914de8ba3b59f0af2dcc6f65f4691f7011b0d18538e7bb10679dc1b40aefa6b399232615cece9ad228ce77cb7f00bf015e32da06dbddf05b191f7d1578db6479baa358e96ce6430bcb318b5369516671ac8c6259c16a85b38ad561ca0360dcc9726bc35f613bf07560bace74abfbae4e05bf9bce660a36e2783d2efe69f9808655ac56b8fd60dcc972b305ff01b80618a1f6c100bb829dc671bb05bbf53bdb6ac12dc06fcbff231c7d0297ddfb40a5d01e82fc00e82b77a06602f7e8cc5fb94786590bde46e920881e959b9799c5e9c7b813d95ffeff38f03a9fed72d9fdff72f9ffd3408ea34f9013c01e831cb4789ed2264668fc51f57a0704f0e2b3442c7e08ed818e87d3d98c954e4d25ce7b680fc1f6a5b399ce5af36b340275d29d8d512cb3385647b1424fa004e3eea08b9551acd01334c156479fea15a7e1099a602b4776ea19a7e109da950d73813cc75e8e21b0b76a752b4ec3f37fb6f4a2f51d4dceaa0000000049454e44ae426082}\par}
+}

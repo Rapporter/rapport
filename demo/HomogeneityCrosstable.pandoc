@@ -1,0 +1,137 @@
+% Rapport  package  team
+% Homogeneity test of factor variables
+% 2011-04-26 20:25 CET
+
+
+
+## Description
+
+
+
+Test of homogeneity of a given factor variable split by another factor.
+
+
+
+
+
+
+
+### Variable description
+
+
+
+
+
+Analysing "gender" ("Gender") with _673_ valid values whether frequency counts are distributed equally across different categories of "dwell" ("Dwelling").
+
+"dwell" has _3_ categories:
+
+
+
+
+
+  * city
+  * small town
+  * village
+
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+### Counts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------
+          &nbsp;  male   female   Missing   Sum 
+---------------- ------ -------- --------- -----
+        **city**  338     234       27      599 
+
+  **small town**   28      3         2      33  
+
+     **village**   19      9         2      30  
+
+     **Missing**   25      17        5      47  
+
+         **Sum**  410     263       36      709 
+------------------------------------------------
+
+Table: Counted values: "dwell" and "gender"
+
+
+
+
+
+
+
+
+
+### Chi-squared test
+
+
+
+
+
+Our [null hypothetis](http://en.wikipedia.org/wiki/Null_hypothesis) says that the proportion of *gender* is indentical in each categories of *dwell*.
+
+
+
+
+
+
+
+
+---------------------------------
+ Test statistic   df    P value  
+---------------- ---- -----------
+     16.18        6   _0.01282_ *
+---------------------------------
+
+Table: Pearson's Chi-squared test: `table`
+
+
+
+
+
+The chi-squared test returned the value of _16.18_ with a degree of freedom being _6_. Based on the returned [p value](http://en.wikipedia.org/wiki/P-value) (_0.01282_) we could state that the null hypothesis is rejected.
+
+
+
+
+
+-------
+This report was generated with [R](http://www.r-project.org/) (3.0.1) and [rapport](http://rapport-package.info/) (0.51) in _0.298_ sec on x86_64-unknown-linux-gnu platform.
+
+
+![](images/logo.png)

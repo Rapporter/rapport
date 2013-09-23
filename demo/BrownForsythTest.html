@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Brown-Forsyth test" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  
+  <link rel="stylesheet" href="stylesheets/base.css" />
+  <link rel="stylesheet" href="stylesheets/skeleton.css" />
+  <link rel="stylesheet" href="stylesheets/layout.css" />
+  <link rel="stylesheet" href="stylesheets/fonts.css" />
+  <link rel="stylesheet" href="stylesheets/colorbox.css" />
+  <link rel="stylesheet" href="stylesheets/custom.css" />
+  
+  <link rel="shortcut icon" href="images/favicon.gif" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+  
+  <script type="text/javascript" src="javascripts/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="javascripts/tabs.js"></script>  <!--remove-->
+  <script type="text/javascript" src="javascripts/custom.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.colorbox.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Brown-Forsyth test</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<h2 id="description">Description</h2>
+<p>This template will run a Brown-Forsyth test to check the equality of variances among groups.</p>
+<h3 id="introduction">Introduction</h3>
+<p>The Brown-Forsyth test is used for checking the equality of the variances among the groups of one variable, in other words it tests the homogeneity of the variances. Equality of group variances is an assumption of the one-way ANOVA test.</p>
+<p>The base of the test is really similar to the Levene's test, but the Brown-Forsyth test uses the deviations from the group medians instead of the mean (what the Levene's does), thus the Brown-Forsyth test is called more robust.</p>
+<p>This test has the advantage over the other tests, which are also being used to check the homogeneity (F-test and Bartlett's test), that it does not have a normality assumption, so the variable we investigate do not have to follow a normal distribution.</p>
+<h4 id="references">References</h4>
+<ul>
+<li>Brown, M.~B. and Forsyth, A.~B. (1974). Robust tests for equality of variances. <em>Journal of the American Statistical Association</em>, 69:364-367.</li>
+</ul>
+<h3 id="result">Result</h3>
+<table>
+<col width="26%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">hov: Brown-Forsyth</td>
+<td align="center">0.3847</td>
+<td align="center">0.5353</td>
+</tr>
+</tbody>
+</table>
+<p>According to the <em>Brown-Forsyth test</em>, the variances of the <em>Age</em> across the groups of <em>Gender</em> does not differs significantly.</p>
+<p>We can conclude that, because the p-value is higher than 0.05</p>
+<h4 id="references-1">References</h4>
+<ul>
+<li>Heiberger, Richard M. and Holland, Burt (2004b). <em>Statistical Analysis and Data Display: An Intermediate Course with Examples in S-Plus, R, and SAS</em>.</li>
+</ul>
+<h2 id="description-1">Description</h2>
+<p>This template will run a Brown-Forsyth test to check the equality of variances among groups.</p>
+<h3 id="introduction-1">Introduction</h3>
+<p>The Brown-Forsyth test is used for checking the equality of the variances among the groups of one variable, in other words it tests the homogeneity of the variances. Equality of group variances is an assumption of the one-way ANOVA test.</p>
+<p>The base of the test is really similar to the Levene's test, but the Brown-Forsyth test uses the deviations from the group medians instead of the mean (what the Levene's does), thus the Brown-Forsyth test is called more robust.</p>
+<p>This test has the advantage over the other tests, which are also being used to check the homogeneity (F-test and Bartlett's test), that it does not have a normality assumption, so the variable we investigate do not have to follow a normal distribution.</p>
+<h4 id="references-2">References</h4>
+<ul>
+<li>Brown, M.~B. and Forsyth, A.~B. (1974). Robust tests for equality of variances. <em>Journal of the American Statistical Association</em>, 69:364-367.</li>
+</ul>
+<h3 id="result-1">Result</h3>
+<table>
+<col width="26%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">hov: Brown-Forsyth</td>
+<td align="center">4.681</td>
+<td align="center">0.03087</td>
+</tr>
+</tbody>
+</table>
+<p>According to the <em>Brown-Forsyth test</em>, the variances of the <em>Internet usage for educational purposes (hours per day)</em> across the groups of <em>Gender</em> significantly differs.</p>
+<p>We can conclude that, because the p-value is smaller than 0.05</p>
+<h4 id="references-3">References</h4>
+<ul>
+<li>Heiberger, Richard M. and Holland, Burt (2004b). <em>Statistical Analysis and Data Display: An Intermediate Course with Examples in S-Plus, R, and SAS</em>.</li>
+</ul>
+<h2 id="description-2">Description</h2>
+<p>This template will run a Brown-Forsyth test to check the equality of variances among groups.</p>
+<h3 id="introduction-2">Introduction</h3>
+<p>The Brown-Forsyth test is used for checking the equality of the variances among the groups of one variable, in other words it tests the homogeneity of the variances. Equality of group variances is an assumption of the one-way ANOVA test.</p>
+<p>The base of the test is really similar to the Levene's test, but the Brown-Forsyth test uses the deviations from the group medians instead of the mean (what the Levene's does), thus the Brown-Forsyth test is called more robust.</p>
+<p>This test has the advantage over the other tests, which are also being used to check the homogeneity (F-test and Bartlett's test), that it does not have a normality assumption, so the variable we investigate do not have to follow a normal distribution.</p>
+<h4 id="references-4">References</h4>
+<ul>
+<li>Brown, M.~B. and Forsyth, A.~B. (1974). Robust tests for equality of variances. <em>Journal of the American Statistical Association</em>, 69:364-367.</li>
+</ul>
+<h3 id="result-2">Result</h3>
+<table>
+<col width="26%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">hov: Brown-Forsyth</td>
+<td align="center">15.89</td>
+<td align="center">2.131e-12</td>
+</tr>
+</tbody>
+</table>
+<p>According to the <em>Brown-Forsyth test</em>, the variances of the <em>Internet usage for educational purposes (hours per day)</em> across the groups of <em>How often does your profession require Internet access?</em> significantly differs.</p>
+<p>We can conclude that, because the p-value is smaller than 0.05</p>
+<h4 id="references-5">References</h4>
+<ul>
+<li>Heiberger, Richard M. and Holland, Burt (2004b). <em>Statistical Analysis and Data Display: An Intermediate Course with Examples in S-Plus, R, and SAS</em>.</li>
+</ul>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>0.762</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" />
+</div>
+<p>
+  Logo and design: &copy; 2012 <i>rapport</i> Development Team | License (<a href="http://www.gnu.org/licenses/agpl.html" target="_blank">AGPL3</a>) | Fork on <a href="https://github.com/rapporter/rapport" target="_blank">GitHub</a> | Styled with <a href="http://www.getskeleton.com/" target="_blank">skeleton</a>
+</p>
+</body>
+</html>

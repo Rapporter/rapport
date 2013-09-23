@@ -1,0 +1,1023 @@
+h2(#description). Description
+
+An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.
+
+h3(#introduction). Introduction
+
+*Analysis of Variance* or *ANOVA* is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921 by famous English statistician Sir Ronald Aylmer Fisher.
+
+h3(#model-overview). Model Overview
+
+One-Way ANOVA was carried out, with _Gender_ as independent variable, and _Internet usage in leisure time (hours per day)_ as a response variable. Factor interaction was taken into account.
+
+h3(#descriptives). Descriptives
+
+In order to get more insight on the model data, a table of frequencies for ANOVA factors is displayed, as well as a table of descriptives.
+
+h4(#frequency-table). Frequency Table
+
+Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.
+
+<table>
+<col width="12%" />
+<col width="5%" />
+<col width="8%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="center">gender</th>
+<th align="center">N</th>
+<th align="center">%</th>
+<th align="center">Cumul. N</th>
+<th align="center">Cumul. %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">male</td>
+<td align="center">410</td>
+<td align="center">60.92</td>
+<td align="center">410</td>
+<td align="center">60.92</td>
+</tr>
+<tr class="even">
+<td align="center">female</td>
+<td align="center">263</td>
+<td align="center">39.08</td>
+<td align="center">673</td>
+<td align="center">100</td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">673</td>
+<td align="center">100</td>
+<td align="center">673</td>
+<td align="center">100</td>
+</tr>
+</tbody>
+</table>
+
+h4(#descriptive-statistics). Descriptive Statistics
+
+The following table displays the descriptive statistics of ANOVA model. Factor levels lie on the left-hand side, while the corresponding statistics for response variable are given on the right-hand side.
+
+<table>
+<caption>Table continues below</caption>
+<col width="12%" />
+<col width="8%" />
+<col width="8%" />
+<col width="9%" />
+<col width="15%" />
+<col width="12%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="center">Gender</th>
+<th align="center">Min</th>
+<th align="center">Max</th>
+<th align="center">Mean</th>
+<th align="center">Std.Dev.</th>
+<th align="center">Median</th>
+<th align="center">IQR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">male</td>
+<td align="center">0</td>
+<td align="center">12</td>
+<td align="center">3.27</td>
+<td align="center">1.953</td>
+<td align="center">3</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">female</td>
+<td align="center">0</td>
+<td align="center">12</td>
+<td align="center">3.064</td>
+<td align="center">2.355</td>
+<td align="center">2</td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="center">Skewness</th>
+<th align="center">Kurtosis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.9443</td>
+<td align="center">0.9858</td>
+</tr>
+<tr class="even">
+<td align="center">1.398</td>
+<td align="center">1.87</td>
+</tr>
+</tbody>
+</table>
+
+h3(#diagnostics). Diagnostics
+
+Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.
+
+h4(#diagnostics-1). Diagnostics
+
+h5(#univariate-normality). Univariate Normality
+
+<table>
+<col width="38%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="center">0.168</td>
+<td align="center">3e-52</td>
+</tr>
+<tr class="even">
+<td align="center">Anderson-Darling normality test</td>
+<td align="center">18.75</td>
+<td align="center">7.261e-44</td>
+</tr>
+<tr class="odd">
+<td align="center">Shapiro-Wilk normality test</td>
+<td align="center">0.9001</td>
+<td align="center">1.618e-20</td>
+</tr>
+</tbody>
+</table>
+
+So, the conclusions we can draw with the help of test statistics:
+
+* based on _Lilliefors test_, distribution of _Internet usage in leisure time (hours per day)_ is not normal
+* _Anderson-Darling test_ confirms violation of normality assumption
+* according to _Shapiro-Wilk test_, the distribution of _Internet usage in leisure time (hours per day)_ is not normal
+
+As you can see, the applied tests confirm departures from normality of the Internet usage in leisure time (hours per day).
+
+h5(#homoscedascity). Homoscedascity
+
+In order to test homoscedascity, _Bartlett_ and _Fligner-Kileen_ tests are applied.
+
+<table>
+<col width="40%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Fligner-Killeen test of homogeneity of variances</td>
+<td align="center">0.4629</td>
+<td align="center">0.4963</td>
+</tr>
+<tr class="even">
+<td align="center">Bartlett test of homogeneity of variances</td>
+<td align="center">10.77</td>
+<td align="center">0.001032</td>
+</tr>
+</tbody>
+</table>
+
+When it comes to equality of variances, applied tests yield inconsistent results. While _Fligner-Kileen test_ confirmed the hypotheses of homoscedascity, _Bartlett's test_ rejected it.
+
+h4(#diagnostic-plots). Diagnostic Plots
+
+Here you can see several diagnostic plots for ANOVA model:
+
+* residuals against fitted values
+* scale-location plot of square root of residuals against fitted values
+* normal Q-Q plot
+* residuals against leverages
+
+"!plots/ANOVA-5.png!":plots/ANOVA-5-hires.png
+
+h3(#anova-summary). ANOVA Summary
+
+h4(#anova-table). ANOVA Table
+
+<table>
+<col width="22%" />
+<col width="6%" />
+<col width="12%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Df</th>
+<th align="center">Sum.Sq</th>
+<th align="center">Mean.Sq</th>
+<th align="center">F.value</th>
+<th align="center">Pr..F.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*gender*</td>
+<td align="center">1</td>
+<td align="center">6.422</td>
+<td align="center">6.422</td>
+<td align="center">1.43</td>
+<td align="center">0.2322</td>
+</tr>
+<tr class="even">
+<td align="center">*Residuals*</td>
+<td align="center">636</td>
+<td align="center">2856</td>
+<td align="center">4.49</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+_F-test_ for _Gender_ is not statistically significant, which implies that there is no Gender effect on response variable.
+
+h4(#post-hoc-test). Post Hoc test
+
+h5(#results). Results
+
+After getting the results of the ANOVA, usually it is advisable to run a "post hoc test":http://en.wikipedia.org/wiki/Post-hoc_analysis to explore patterns that were not specified a priori. Now we are presenting "Tukey's HSD test":http://en.wikipedia.org/wiki/Tukey%27s_range_test.
+
+h6(#gender). gender
+
+<table>
+<caption>Table continues below</caption>
+<col width="25%" />
+<col width="18%" />
+<col width="19%" />
+<col width="19%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Difference</th>
+<th align="center">Lower Bound</th>
+<th align="center">Upper Bound</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*female-male*</td>
+<td align="center">-0.206</td>
+<td align="center">-0.543</td>
+<td align="center">0.132</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="25%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*female-male*</td>
+<td align="center">_0.232_</td>
+</tr>
+</tbody>
+</table>
+
+There are no categories which differ significantly here.
+
+h5(#plot). Plot
+
+Below you can see the result of the post hoc test on a plot.
+
+"!plots/ANOVA-6.png!":plots/ANOVA-6-hires.png
+
+h2(#description-1). Description
+
+An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.
+
+h3(#introduction-1). Introduction
+
+*Analysis of Variance* or *ANOVA* is a statistical procedure that tests equality of means for several samples. It was first introduced in 1921 by famous English statistician Sir Ronald Aylmer Fisher.
+
+h3(#model-overview-1). Model Overview
+
+Two-Way ANOVA was carried out, with _Gender_ and _Relationship status_ as independent variables, and _Internet usage in leisure time (hours per day)_ as a response variable. Factor interaction was taken into account.
+
+h3(#descriptives-1). Descriptives
+
+In order to get more insight on the model data, a table of frequencies for ANOVA factors is displayed, as well as a table of descriptives.
+
+h4(#frequency-table-1). Frequency Table
+
+Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.
+
+<table>
+<col width="12%" />
+<col width="25%" />
+<col width="5%" />
+<col width="8%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="center">gender</th>
+<th align="center">partner</th>
+<th align="center">N</th>
+<th align="center">%</th>
+<th align="center">Cumul. N</th>
+<th align="center">Cumul. %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">male</td>
+<td align="center">in a relationship</td>
+<td align="center">150</td>
+<td align="center">23.7</td>
+<td align="center">150</td>
+<td align="center">23.7</td>
+</tr>
+<tr class="even">
+<td align="center">female</td>
+<td align="center">in a relationship</td>
+<td align="center">120</td>
+<td align="center">18.96</td>
+<td align="center">270</td>
+<td align="center">42.65</td>
+</tr>
+<tr class="odd">
+<td align="center">male</td>
+<td align="center">married</td>
+<td align="center">33</td>
+<td align="center">5.213</td>
+<td align="center">303</td>
+<td align="center">47.87</td>
+</tr>
+<tr class="even">
+<td align="center">female</td>
+<td align="center">married</td>
+<td align="center">29</td>
+<td align="center">4.581</td>
+<td align="center">332</td>
+<td align="center">52.45</td>
+</tr>
+<tr class="odd">
+<td align="center">male</td>
+<td align="center">single</td>
+<td align="center">204</td>
+<td align="center">32.23</td>
+<td align="center">536</td>
+<td align="center">84.68</td>
+</tr>
+<tr class="even">
+<td align="center">female</td>
+<td align="center">single</td>
+<td align="center">97</td>
+<td align="center">15.32</td>
+<td align="center">633</td>
+<td align="center">100</td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">Total</td>
+<td align="center">633</td>
+<td align="center">100</td>
+<td align="center">633</td>
+<td align="center">100</td>
+</tr>
+</tbody>
+</table>
+
+h4(#descriptive-statistics-1). Descriptive Statistics
+
+The following table displays the descriptive statistics of ANOVA model. Factor levels and their combinations lie on the left-hand side, while the corresponding statistics for response variable are given on the right-hand side.
+
+<table>
+<caption>Table continues below</caption>
+<col width="12%" />
+<col width="30%" />
+<col width="8%" />
+<col width="8%" />
+<col width="9%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center">Gender</th>
+<th align="center">Relationship status</th>
+<th align="center">Min</th>
+<th align="center">Max</th>
+<th align="center">Mean</th>
+<th align="center">Std.Dev.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">male</td>
+<td align="center">in a relationship</td>
+<td align="center">0.5</td>
+<td align="center">12</td>
+<td align="center">3.058</td>
+<td align="center">1.969</td>
+</tr>
+<tr class="even">
+<td align="center">male</td>
+<td align="center">married</td>
+<td align="center">0</td>
+<td align="center">8</td>
+<td align="center">2.985</td>
+<td align="center">2.029</td>
+</tr>
+<tr class="odd">
+<td align="center">male</td>
+<td align="center">single</td>
+<td align="center">0</td>
+<td align="center">10</td>
+<td align="center">3.503</td>
+<td align="center">1.936</td>
+</tr>
+<tr class="even">
+<td align="center">female</td>
+<td align="center">in a relationship</td>
+<td align="center">0.5</td>
+<td align="center">10</td>
+<td align="center">3.044</td>
+<td align="center">2.216</td>
+</tr>
+<tr class="odd">
+<td align="center">female</td>
+<td align="center">married</td>
+<td align="center">0</td>
+<td align="center">10</td>
+<td align="center">2.481</td>
+<td align="center">1.967</td>
+</tr>
+<tr class="even">
+<td align="center">female</td>
+<td align="center">single</td>
+<td align="center">0</td>
+<td align="center">12</td>
+<td align="center">3.323</td>
+<td align="center">2.679</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="12%" />
+<col width="8%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="center">Median</th>
+<th align="center">IQR</th>
+<th align="center">Skewness</th>
+<th align="center">Kurtosis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">2.5</td>
+<td align="center">2</td>
+<td align="center">1.324</td>
+<td align="center">2.649</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">0.862</td>
+<td align="center">0.1509</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">0.7574</td>
+<td align="center">0.08749</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">1.383</td>
+<td align="center">1.831</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">1.75</td>
+<td align="center">2.063</td>
+<td align="center">5.586</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">3.5</td>
+<td align="center">1.185</td>
+<td align="center">0.9281</td>
+</tr>
+</tbody>
+</table>
+
+h3(#diagnostics-2). Diagnostics
+
+Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.
+
+h4(#diagnostics-3). Diagnostics
+
+h5(#univariate-normality-1). Univariate Normality
+
+<table>
+<col width="38%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="center">0.168</td>
+<td align="center">3e-52</td>
+</tr>
+<tr class="even">
+<td align="center">Anderson-Darling normality test</td>
+<td align="center">18.75</td>
+<td align="center">7.261e-44</td>
+</tr>
+<tr class="odd">
+<td align="center">Shapiro-Wilk normality test</td>
+<td align="center">0.9001</td>
+<td align="center">1.618e-20</td>
+</tr>
+</tbody>
+</table>
+
+So, the conclusions we can draw with the help of test statistics:
+
+* based on _Lilliefors test_, distribution of _Internet usage in leisure time (hours per day)_ is not normal
+* _Anderson-Darling test_ confirms violation of normality assumption
+* according to _Shapiro-Wilk test_, the distribution of _Internet usage in leisure time (hours per day)_ is not normal
+
+As you can see, the applied tests confirm departures from normality of the Internet usage in leisure time (hours per day).
+
+h5(#homoscedascity-1). Homoscedascity
+
+In order to test homoscedascity, _Bartlett_ and _Fligner-Kileen_ tests are applied.
+
+<table>
+<col width="40%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Fligner-Killeen test of homogeneity of variances</td>
+<td align="center">1.123</td>
+<td align="center">0.2892</td>
+</tr>
+<tr class="even">
+<td align="center">Bartlett test of homogeneity of variances</td>
+<td align="center">11.13</td>
+<td align="center">0.0008509</td>
+</tr>
+</tbody>
+</table>
+
+When it comes to equality of variances, applied tests yield inconsistent results. While _Fligner-Kileen test_ confirmed the hypotheses of homoscedascity, _Bartlett's test_ rejected it.
+
+h4(#diagnostic-plots-1). Diagnostic Plots
+
+Here you can see several diagnostic plots for ANOVA model:
+
+* residuals against fitted values
+* scale-location plot of square root of residuals against fitted values
+* normal Q-Q plot
+* residuals against leverages
+
+"!plots/ANOVA-7.png!":plots/ANOVA-7-hires.png
+
+h3(#anova-summary-1). ANOVA Summary
+
+h4(#anova-table-1). ANOVA Table
+
+<table>
+<caption>Table continues below</caption>
+<col width="29%" />
+<col width="6%" />
+<col width="12%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Df</th>
+<th align="center">Sum.Sq</th>
+<th align="center">Mean.Sq</th>
+<th align="center">F.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*gender*</td>
+<td align="center">1</td>
+<td align="center">4.947</td>
+<td align="center">4.947</td>
+<td align="center">1.085</td>
+</tr>
+<tr class="even">
+<td align="center">*partner*</td>
+<td align="center">2</td>
+<td align="center">31.21</td>
+<td align="center">15.61</td>
+<td align="center">3.424</td>
+</tr>
+<tr class="odd">
+<td align="center">*gender:partner*</td>
+<td align="center">2</td>
+<td align="center">3.038</td>
+<td align="center">1.519</td>
+<td align="center">0.3332</td>
+</tr>
+<tr class="even">
+<td align="center">*Residuals*</td>
+<td align="center">593</td>
+<td align="center">2703</td>
+<td align="center">4.558</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="29%" />
+<col width="11%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Pr..F.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*gender*</td>
+<td align="center">0.2979</td>
+</tr>
+<tr class="even">
+<td align="center">*partner*</td>
+<td align="center">0.03324</td>
+</tr>
+<tr class="odd">
+<td align="center">*gender:partner*</td>
+<td align="center">0.7168</td>
+</tr>
+<tr class="even">
+<td align="center">*Residuals*</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+_F-test_ for _Gender_ is not statistically significant, which implies that there is no Gender effect on response variable. Effect of _Relationship status_ on response variable is significant. Interaction between levels of _Gender_ and _Relationship status_ wasn't found significant (p = 0.717).
+
+h4(#post-hoc-test-1). Post Hoc test
+
+h5(#results-1). Results
+
+After getting the results of the ANOVA, usually it is advisable to run a "post hoc test":http://en.wikipedia.org/wiki/Post-hoc_analysis to explore patterns that were not specified a priori. Now we are presenting "Tukey's HSD test":http://en.wikipedia.org/wiki/Tukey%27s_range_test.
+
+h6(#gender-1). gender
+
+<table>
+<caption>Table continues below</caption>
+<col width="25%" />
+<col width="18%" />
+<col width="19%" />
+<col width="19%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Difference</th>
+<th align="center">Lower Bound</th>
+<th align="center">Upper Bound</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*female-male*</td>
+<td align="center">-0.186</td>
+<td align="center">-0.538</td>
+<td align="center">0.165</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="25%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*female-male*</td>
+<td align="center">_0.298_</td>
+</tr>
+</tbody>
+</table>
+
+There are no categories which differ significantly here.
+
+h6(#partner). partner
+
+<table>
+<caption>Table continues below</caption>
+<col width="44%" />
+<col width="18%" />
+<col width="18%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Difference</th>
+<th align="center">Lower Bound</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*married-in a relationship*</td>
+<td align="center">-0.289</td>
+<td align="center">-1.012</td>
+</tr>
+<tr class="even">
+<td align="center">*single-in a relationship*</td>
+<td align="center">0.371</td>
+<td align="center">-0.061</td>
+</tr>
+<tr class="odd">
+<td align="center">*single-married*</td>
+<td align="center">0.66</td>
+<td align="center">-0.059</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="44%" />
+<col width="19%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Upper Bound</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*married-in a relationship*</td>
+<td align="center">0.435</td>
+<td align="center">_0.616_</td>
+</tr>
+<tr class="even">
+<td align="center">*single-in a relationship*</td>
+<td align="center">0.803</td>
+<td align="center">_0.109_</td>
+</tr>
+<tr class="odd">
+<td align="center">*single-married*</td>
+<td align="center">1.379</td>
+<td align="center">_0.079_</td>
+</tr>
+</tbody>
+</table>
+
+There are no categories which differ significantly here.
+
+h6(#genderpartner). gender:partner
+
+<table>
+<caption>Table continues below</caption>
+<col width="48%" />
+<col width="18%" />
+<col width="18%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Difference</th>
+<th align="center">Lower Bound</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*female:in a relationship-male:in a relationship*</td>
+<td align="center">-0.014</td>
+<td align="center">-0.777</td>
+</tr>
+<tr class="even">
+<td align="center">*male:married-male:in a relationship*</td>
+<td align="center">-0.073</td>
+<td align="center">-1.25</td>
+</tr>
+<tr class="odd">
+<td align="center">*female:married-male:in a relationship*</td>
+<td align="center">-0.577</td>
+<td align="center">-1.877</td>
+</tr>
+<tr class="even">
+<td align="center">*male:single-male:in a relationship*</td>
+<td align="center">0.444</td>
+<td align="center">-0.23</td>
+</tr>
+<tr class="odd">
+<td align="center">*female:single-male:in a relationship*</td>
+<td align="center">0.264</td>
+<td align="center">-0.545</td>
+</tr>
+<tr class="even">
+<td align="center">*male:married-female:in a relationship*</td>
+<td align="center">-0.059</td>
+<td align="center">-1.266</td>
+</tr>
+<tr class="odd">
+<td align="center">*female:married-female:in a relationship*</td>
+<td align="center">-0.563</td>
+<td align="center">-1.89</td>
+</tr>
+<tr class="even">
+<td align="center">*male:single-female:in a relationship*</td>
+<td align="center">0.459</td>
+<td align="center">-0.267</td>
+</tr>
+<tr class="odd">
+<td align="center">*female:single-female:in a relationship*</td>
+<td align="center">0.279</td>
+<td align="center">-0.574</td>
+</tr>
+<tr class="even">
+<td align="center">*female:married-male:married*</td>
+<td align="center">-0.504</td>
+<td align="center">-2.105</td>
+</tr>
+<tr class="odd">
+<td align="center">*male:single-male:married*</td>
+<td align="center">0.518</td>
+<td align="center">-0.635</td>
+</tr>
+<tr class="even">
+<td align="center">*female:single-male:married*</td>
+<td align="center">0.338</td>
+<td align="center">-0.899</td>
+</tr>
+<tr class="odd">
+<td align="center">*male:single-female:married*</td>
+<td align="center">1.022</td>
+<td align="center">-0.256</td>
+</tr>
+<tr class="even">
+<td align="center">*female:single-female:married*</td>
+<td align="center">0.842</td>
+<td align="center">-0.512</td>
+</tr>
+<tr class="odd">
+<td align="center">*female:single-male:single*</td>
+<td align="center">-0.18</td>
+<td align="center">-0.955</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="48%" />
+<col width="19%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Upper Bound</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*female:in a relationship-male:in a relationship*</td>
+<td align="center">0.749</td>
+<td align="center">_1_</td>
+</tr>
+<tr class="even">
+<td align="center">*male:married-male:in a relationship*</td>
+<td align="center">1.103</td>
+<td align="center">_1_</td>
+</tr>
+<tr class="odd">
+<td align="center">*female:married-male:in a relationship*</td>
+<td align="center">0.722</td>
+<td align="center">_0.801_</td>
+</tr>
+<tr class="even">
+<td align="center">*male:single-male:in a relationship*</td>
+<td align="center">1.119</td>
+<td align="center">_0.412_</td>
+</tr>
+<tr class="odd">
+<td align="center">*female:single-male:in a relationship*</td>
+<td align="center">1.074</td>
+<td align="center">_0.938_</td>
+</tr>
+<tr class="even">
+<td align="center">*male:married-female:in a relationship*</td>
+<td align="center">1.148</td>
+<td align="center">_1_</td>
+</tr>
+<tr class="odd">
+<td align="center">*female:married-female:in a relationship*</td>
+<td align="center">0.764</td>
+<td align="center">_0.83_</td>
+</tr>
+<tr class="even">
+<td align="center">*male:single-female:in a relationship*</td>
+<td align="center">1.184</td>
+<td align="center">_0.461_</td>
+</tr>
+<tr class="odd">
+<td align="center">*female:single-female:in a relationship*</td>
+<td align="center">1.132</td>
+<td align="center">_0.938_</td>
+</tr>
+<tr class="even">
+<td align="center">*female:married-male:married*</td>
+<td align="center">1.097</td>
+<td align="center">_0.946_</td>
+</tr>
+<tr class="odd">
+<td align="center">*male:single-male:married*</td>
+<td align="center">1.67</td>
+<td align="center">_0.794_</td>
+</tr>
+<tr class="even">
+<td align="center">*female:single-male:married*</td>
+<td align="center">1.575</td>
+<td align="center">_0.971_</td>
+</tr>
+<tr class="odd">
+<td align="center">*male:single-female:married*</td>
+<td align="center">2.3</td>
+<td align="center">_0.201_</td>
+</tr>
+<tr class="even">
+<td align="center">*female:single-female:married*</td>
+<td align="center">2.196</td>
+<td align="center">_0.481_</td>
+</tr>
+<tr class="odd">
+<td align="center">*female:single-male:single*</td>
+<td align="center">0.594</td>
+<td align="center">_0.986_</td>
+</tr>
+</tbody>
+</table>
+
+There are no categories which differ significantly here.
+
+h5(#plot-1). Plot
+
+Below you can see the result of the post hoc test on a plot.
+
+"!plots/ANOVA-8.png!":plots/ANOVA-8-hires.png
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (3.0.1) and "rapport":http://rapport-package.info/ (0.51) in _3.431_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

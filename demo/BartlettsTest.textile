@@ -1,0 +1,264 @@
+h2(#description). Description
+
+This template will run the Bartlett's test to check the equality of variances between groups.
+
+h3(#introduction). Introduction
+
+Bartlett's test is used to test the homogeneity of the variances, in other words the equality of the tested variable's variances across the groups. With checking that we want to find if the two groups are coming from the same population.
+
+Homogeneity is useful to being tested, because that is an assumption of the One-Way ANOVA.
+
+h4(#references). References
+
+* Snedecor, George W. and Cochran, William G. (1989). _Statistical Methods_. Iowa State University Press
+
+h3(#normality-assumption). Normality assumption
+
+The Bartlett's test has an assumption of normality, thus one should obtain the information if the distribution of the tested variable had a normal distribution.
+
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
+
+<table>
+<col width="38%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="center">0.17</td>
+<td align="center">6.193e-54</td>
+</tr>
+<tr class="even">
+<td align="center">Anderson-Darling normality test</td>
+<td align="center">32.16</td>
+<td align="center">1.26e-71</td>
+</tr>
+<tr class="odd">
+<td align="center">Shapiro-Wilk normality test</td>
+<td align="center">0.8216</td>
+<td align="center">9.445e-27</td>
+</tr>
+</tbody>
+</table>
+
+So, the conclusions we can draw with the help of test statistics:
+
+* based on _Lilliefors test_, distribution of _Age_ is not normal
+* _Anderson-Darling test_ confirms violation of normality assumption
+* according to _Shapiro-Wilk test_, the distribution of _Age_ is not normal
+
+As you can see, the applied tests confirm departures from normality.
+
+h3(#test-results). Test results
+
+After checking the assumptions let's see what the test shows us!
+
+<table>
+<col width="40%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Bartlett test of homogeneity of variances</td>
+<td align="center">0.233</td>
+<td align="center">0.6293</td>
+</tr>
+</tbody>
+</table>
+
+According to the _Bartlett's test_, the variance of the _Age_ across the groups of _Gender_ does not differs significantly.
+
+We can conclude that, because the p-value is higher than 0.05.
+
+h2(#description-1). Description
+
+This template will run the Bartlett's test to check the equality of variances between groups.
+
+h3(#introduction-1). Introduction
+
+Bartlett's test is used to test the homogeneity of the variances, in other words the equality of the tested variable's variances across the groups. With checking that we want to find if the two groups are coming from the same population.
+
+Homogeneity is useful to being tested, because that is an assumption of the One-Way ANOVA.
+
+h4(#references-1). References
+
+* Snedecor, George W. and Cochran, William G. (1989). _Statistical Methods_. Iowa State University Press
+
+h3(#normality-assumption-1). Normality assumption
+
+The Bartlett's test has an assumption of normality, thus one should obtain the information if the distribution of the tested variable had a normal distribution.
+
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
+
+<table>
+<col width="38%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="center">0.2223</td>
+<td align="center">2.243e-92</td>
+</tr>
+<tr class="even">
+<td align="center">Anderson-Darling normality test</td>
+<td align="center">42.04</td>
+<td align="center">3.31e-90</td>
+</tr>
+<tr class="odd">
+<td align="center">Shapiro-Wilk normality test</td>
+<td align="center">0.7985</td>
+<td align="center">6.366e-28</td>
+</tr>
+</tbody>
+</table>
+
+So, the conclusions we can draw with the help of test statistics:
+
+* based on _Lilliefors test_, distribution of _Internet usage for educational purposes (hours per day)_ is not normal
+* _Anderson-Darling test_ confirms violation of normality assumption
+* according to _Shapiro-Wilk test_, the distribution of _Internet usage for educational purposes (hours per day)_ is not normal
+
+As you can see, the applied tests confirm departures from normality.
+
+h3(#test-results-1). Test results
+
+After checking the assumptions let's see what the test shows us!
+
+<table>
+<col width="40%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Bartlett test of homogeneity of variances</td>
+<td align="center">36.11</td>
+<td align="center">1.863e-09</td>
+</tr>
+</tbody>
+</table>
+
+According to the _Bartlett's test_, the variance of the _Internet usage for educational purposes (hours per day)_ across the groups of _Student_ significantly differs.
+
+We can conclude that, because the p-value is smaller than 0.05.
+
+h2(#description-2). Description
+
+This template will run the Bartlett's test to check the equality of variances between groups.
+
+h3(#introduction-2). Introduction
+
+Bartlett's test is used to test the homogeneity of the variances, in other words the equality of the tested variable's variances across the groups. With checking that we want to find if the two groups are coming from the same population.
+
+Homogeneity is useful to being tested, because that is an assumption of the One-Way ANOVA.
+
+h4(#references-2). References
+
+* Snedecor, George W. and Cochran, William G. (1989). _Statistical Methods_. Iowa State University Press
+
+h3(#normality-assumption-2). Normality assumption
+
+The Bartlett's test has an assumption of normality, thus one should obtain the information if the distribution of the tested variable had a normal distribution.
+
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
+
+<table>
+<col width="38%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Lilliefors (Kolmogorov-Smirnov) normality test</td>
+<td align="center">0.17</td>
+<td align="center">6.193e-54</td>
+</tr>
+<tr class="even">
+<td align="center">Anderson-Darling normality test</td>
+<td align="center">32.16</td>
+<td align="center">1.26e-71</td>
+</tr>
+<tr class="odd">
+<td align="center">Shapiro-Wilk normality test</td>
+<td align="center">0.8216</td>
+<td align="center">9.445e-27</td>
+</tr>
+</tbody>
+</table>
+
+So, the conclusions we can draw with the help of test statistics:
+
+* based on _Lilliefors test_, distribution of _Age_ is not normal
+* _Anderson-Darling test_ confirms violation of normality assumption
+* according to _Shapiro-Wilk test_, the distribution of _Age_ is not normal
+
+As you can see, the applied tests confirm departures from normality.
+
+h3(#test-results-2). Test results
+
+After checking the assumptions let's see what the test shows us!
+
+<table>
+<col width="40%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Bartlett test of homogeneity of variances</td>
+<td align="center">23.26</td>
+<td align="center">0.0001123</td>
+</tr>
+</tbody>
+</table>
+
+According to the _Bartlett's test_, the variance of the _Age_ across the groups of _How often does your profession require Internet access?_ significantly differs.
+
+We can conclude that, because the p-value is smaller than 0.05.
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (3.0.1) and "rapport":http://rapport-package.info/ (0.51) in _0.917_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

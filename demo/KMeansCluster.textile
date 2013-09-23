@@ -1,0 +1,251 @@
+h2(#description). Description
+
+K-means clustering with automatically estimated number of clusters
+
+h4(#introduction). Introduction
+
+"K-means Clustering":http://en.wikipedia.org/wiki/K-means_clustering is a specific and one of the most widespread method of "clustering":http://en.wikipedia.org/wiki/Cluster_analysis. With clustering we want to divide our data into groups, which in the objects are similar to each other. K-means clustering is specified in the way, here we set the number of groups we want to make. In our case we will take into account the following variables: _Age_, _Internet usage for educational purposes (hours per day)_ and _Internet usage in leisure time (hours per day)_, to find out which observations are the nearest to each other.
+
+h4(#references). References
+
+J. B. MacQueen (1967). _&quot;Some Methods for classification and Analysis of Multivariate Observations, Proceedings of 5-th Berkeley Symposium on Mathematical Statistics and Probability&quot;_. 1:281-297
+
+h4(#determining-the-number-of-clusters). Determining the number of clusters
+
+As it was mentioned above, the speciality of the K-means Cluster method is to set the number of groups we want to produce.
+
+Let's see how to decide which is the ideal number of them!
+
+"!plots/KMeansCluster.tpl-1.png!":plots/KMeansCluster.tpl-1-hires.png
+
+We can figure out that, as we see how much the Within groups sum of squares decreases if we set a higher number of the groups. So the smaller the difference the smaller the gain we can do with increasing the number of the clusters (thus in this case the larger decreasing means the bigger gain).
+
+The ideal number of clusters seems to be _2_.
+
+h4(#cluster-means). Cluster means
+
+The method of the K-means clustering starts with the step to set k number of centorids which could be the center of the groups we want to form. After that there comes several iterations, meanwhile the ideal centers are being calculated.
+
+The centroids are the observations which are the nearest in average to all the other observations of their group. But it could be also interesting which are the typical values of the clusters! One way to figure out these typical values is to see the group means. The _2_ cluster averages are:
+
+<table>
+<col width="22%" />
+<col width="11%" />
+<col width="9%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">age</th>
+<th align="center">edu</th>
+<th align="center">leisure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*1.Cluster*</td>
+<td align="center">0.4092</td>
+<td align="center">1.285</td>
+<td align="center">0.9275</td>
+</tr>
+<tr class="even">
+<td align="right">*2.Cluster*</td>
+<td align="center">-0.1251</td>
+<td align="center">-0.393</td>
+<td align="center">-0.2837</td>
+</tr>
+</tbody>
+</table>
+
+The size of the above clusters are: _141_ and _461_.
+
+h4(#results). Results
+
+On the chart below we can see the produced groups. To distinct which observation is related to which cluster each of the objects from the same groups have the same figure and there is a circle which shows the border of the clusters.
+
+"!plots/KMeansCluster.tpl-2.png!":plots/KMeansCluster.tpl-2-hires.png
+
+h2(#description-1). Description
+
+K-means clustering with automatically estimated number of clusters
+
+h4(#introduction-1). Introduction
+
+"K-means Clustering":http://en.wikipedia.org/wiki/K-means_clustering is a specific and one of the most widespread method of "clustering":http://en.wikipedia.org/wiki/Cluster_analysis. With clustering we want to divide our data into groups, which in the objects are similar to each other. K-means clustering is specified in the way, here we set the number of groups we want to make. In our case we will take into account the following variables: _drat_, _cyl_, _wt_ and _mpg_, to find out which observations are the nearest to each other.
+
+h4(#references-1). References
+
+J. B. MacQueen (1967). _&quot;Some Methods for classification and Analysis of Multivariate Observations, Proceedings of 5-th Berkeley Symposium on Mathematical Statistics and Probability&quot;_. 1:281-297
+
+h4(#determining-the-number-of-clusters-1). Determining the number of clusters
+
+As it was mentioned above, the speciality of the K-means Cluster method is to set the number of groups we want to produce.
+
+Let's see how to decide which is the ideal number of them!
+
+"!plots/KMeansCluster.tpl-3.png!":plots/KMeansCluster.tpl-3-hires.png
+
+We can figure out that, as we see how much the Within groups sum of squares decreases if we set a higher number of the groups. So the smaller the difference the smaller the gain we can do with increasing the number of the clusters (thus in this case the larger decreasing means the bigger gain).
+
+The ideal number of clusters seems to be _2_.
+
+h4(#cluster-means-1). Cluster means
+
+The method of the K-means clustering starts with the step to set k number of centorids which could be the center of the groups we want to form. After that there comes several iterations, meanwhile the ideal centers are being calculated.
+
+The centroids are the observations which are the nearest in average to all the other observations of their group. But it could be also interesting which are the typical values of the clusters! One way to figure out these typical values is to see the group means. The _2_ cluster averages are:
+
+<table>
+<col width="22%" />
+<col width="11%" />
+<col width="9%" />
+<col width="11%" />
+<col width="11%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">drat</th>
+<th align="center">cyl</th>
+<th align="center">wt</th>
+<th align="center">mpg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*1.Cluster*</td>
+<td align="center">0.838</td>
+<td align="center">-1.053</td>
+<td align="center">-0.8794</td>
+<td align="center">0.946</td>
+</tr>
+<tr class="even">
+<td align="right">*2.Cluster*</td>
+<td align="center">-0.4904</td>
+<td align="center">0.6649</td>
+<td align="center">0.3078</td>
+<td align="center">-0.5118</td>
+</tr>
+<tr class="odd">
+<td align="right">*3.Cluster*</td>
+<td align="center">-1.016</td>
+<td align="center">1.015</td>
+<td align="center">2.169</td>
+<td align="center">-1.37</td>
+</tr>
+</tbody>
+</table>
+
+The size of the above clusters are: _13_, _16_ and _3_.
+
+h4(#results-1). Results
+
+On the chart below we can see the produced groups. To distinct which observation is related to which cluster each of the objects from the same groups have the same figure and there is a circle which shows the border of the clusters.
+
+"!plots/KMeansCluster.tpl-4.png!":plots/KMeansCluster.tpl-4-hires.png
+
+h2(#description-2). Description
+
+K-means clustering with automatically estimated number of clusters
+
+h4(#introduction-2). Introduction
+
+"K-means Clustering":http://en.wikipedia.org/wiki/K-means_clustering is a specific and one of the most widespread method of "clustering":http://en.wikipedia.org/wiki/Cluster_analysis. With clustering we want to divide our data into groups, which in the objects are similar to each other. K-means clustering is specified in the way, here we set the number of groups we want to make. In our case we will take into account the following variables: _drat_, _cyl_, _wt_ and _mpg_, to find out which observations are the nearest to each other.
+
+h4(#references-2). References
+
+J. B. MacQueen (1967). _&quot;Some Methods for classification and Analysis of Multivariate Observations, Proceedings of 5-th Berkeley Symposium on Mathematical Statistics and Probability&quot;_. 1:281-297
+
+h4(#determining-the-number-of-clusters-2). Determining the number of clusters
+
+As it was mentioned above, the speciality of the K-means Cluster method is to set the number of groups we want to produce.
+
+As you set, there will be a _7_-means cluster analysis provided.
+
+h4(#cluster-means-2). Cluster means
+
+The method of the K-means clustering starts with the step to set k number of centorids which could be the center of the groups we want to form. After that there comes several iterations, meanwhile the ideal centers are being calculated.
+
+The centroids are the observations which are the nearest in average to all the other observations of their group. But it could be also interesting which are the typical values of the clusters! One way to figure out these typical values is to see the group means. The cluster averages are:
+
+<table>
+<col width="22%" />
+<col width="11%" />
+<col width="11%" />
+<col width="12%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">drat</th>
+<th align="center">cyl</th>
+<th align="center">wt</th>
+<th align="center">mpg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*1.Cluster*</td>
+<td align="center">-1.265</td>
+<td align="center">-0.105</td>
+<td align="center">0.1229</td>
+<td align="center">-0.05652</td>
+</tr>
+<tr class="even">
+<td align="right">*2.Cluster*</td>
+<td align="center">-0.8294</td>
+<td align="center">1.015</td>
+<td align="center">0.8644</td>
+<td align="center">-0.837</td>
+</tr>
+<tr class="odd">
+<td align="right">*3.Cluster*</td>
+<td align="center">0.3898</td>
+<td align="center">-1.225</td>
+<td align="center">-0.04829</td>
+<td align="center">0.5823</td>
+</tr>
+<tr class="even">
+<td align="right">*4.Cluster*</td>
+<td align="center">0.5925</td>
+<td align="center">0.08166</td>
+<td align="center">-0.1684</td>
+<td align="center">-0.1671</td>
+</tr>
+<tr class="odd">
+<td align="right">*5.Cluster*</td>
+<td align="center">0.8247</td>
+<td align="center">-1.225</td>
+<td align="center">-1.376</td>
+<td align="center">1.81</td>
+</tr>
+<tr class="even">
+<td align="right">*6.Cluster*</td>
+<td align="center">2.026</td>
+<td align="center">-1.225</td>
+<td align="center">-1.369</td>
+<td align="center">1.346</td>
+</tr>
+<tr class="odd">
+<td align="right">*7.Cluster*</td>
+<td align="center">0.5426</td>
+<td align="center">-1.225</td>
+<td align="center">-0.7109</td>
+<td align="center">0.3002</td>
+</tr>
+</tbody>
+</table>
+
+The size of the above clusters are: _2_, _13_, _2_, _6_, _4_, _2_ and _3_.
+
+h4(#results-2). Results
+
+On the chart below we can see the produced groups. To distinct which observation is related to which cluster each of the objects from the same groups have the same figure and there is a circle which shows the border of the clusters.
+
+"!plots/KMeansCluster.tpl-5.png!":plots/KMeansCluster.tpl-5-hires.png
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (3.0.1) and "rapport":http://rapport-package.info/ (0.51) in _8.181_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

@@ -1,0 +1,320 @@
+h2(#description). Description
+
+In this template Rapporter will present you Factor Analysis.
+
+h3(#introduction). Introduction
+
+"Factor Analysis":http://en.wikipedia.org/wiki/Factor_analysis is applied as a data reduction or structure detection method. There are two main applications of it: reducing the number of variables and detecting structure in the relationships between variables, thus explore latent structure behind the data, classify variables.
+
+h6(#determining-the-number-of-the-factors). Determining the number of the factors
+
+"!plots/FactorAnalysis.tpl-1.png!":plots/FactorAnalysis.tpl-1-hires.png
+
+h6(#eigenvalues). Eigenvalues
+
+You can find the eigenvalues of the possible factors in the following table (_2_ factors were produced as you set):
+
+<table>
+<col width="22%" />
+<col width="18%" />
+<thead>
+<tr class="header">
+<th align="center">Factor Number</th>
+<th align="center">Eigenvalues</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*1*</td>
+<td align="center">*2.461*</td>
+</tr>
+<tr class="even">
+<td align="center">*2*</td>
+<td align="center">*1.273*</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">0.1485</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">0.1176</td>
+</tr>
+</tbody>
+</table>
+
+h4(#factor-loadings). Factor loadings
+
+At the next step let's check the factor loadings. They mean that how deep the impact of a factor for the variables. We emphasized the cells when the explained is higher than 30% of the whole variance.
+
+<table>
+<col width="15%" />
+<col width="16%" />
+<col width="16%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">ML1</th>
+<th align="center">ML2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*carb*</td>
+<td align="center">*0.8723*</td>
+<td align="center">*0.3756*</td>
+</tr>
+<tr class="even">
+<td align="center">*gear*</td>
+<td align="center">-0.08811</td>
+<td align="center">*0.9343*</td>
+</tr>
+<tr class="odd">
+<td align="center">*mpg*</td>
+<td align="center">*-0.8197*</td>
+<td align="center">*0.4368*</td>
+</tr>
+<tr class="even">
+<td align="center">*cyl*</td>
+<td align="center">*0.7988*</td>
+<td align="center">*-0.452*</td>
+</tr>
+</tbody>
+</table>
+
+So it can be said that
+
+* ML1 is a latent factor of carb
+* ML1 is a latent factor of mpg
+* ML1 is a latent factor of cyl
+* ML2 is a latent factor of carb
+* ML2 is a latent factor of gear
+* ML2 is a latent factor of mpg
+* ML2 is a latent factor of cyl
+
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+From them in the cases of the _ML1's impact on mpg_ and _ML2's impact on cyl_, we can say they are negative effects.
+
+h4(#uniquenesses). Uniquenesses
+
+At last but not least let us say some words about the not explained part of the variables. There are two statistics which help us quantifying this concept: Communality and Uniqueness. They are in a really strong relationship, because Uniqueness is the variability of a variable minus its Communality. The first table contains the Uniqunesses, the second the Communalities of the variables:
+
+<table>
+<col width="15%" />
+<col width="19%" />
+<col width="20%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Uniqunesses</th>
+<th align="center">Communalities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*carb*</td>
+<td align="center">0.09805</td>
+<td align="center">0.902</td>
+</tr>
+<tr class="even">
+<td align="center">*gear*</td>
+<td align="center">0.1193</td>
+<td align="center">0.8807</td>
+</tr>
+<tr class="odd">
+<td align="center">*mpg*</td>
+<td align="center">0.1374</td>
+<td align="center">0.8626</td>
+</tr>
+<tr class="even">
+<td align="center">*cyl*</td>
+<td align="center">0.1576</td>
+<td align="center">0.8424</td>
+</tr>
+</tbody>
+</table>
+
+We can see from the table that variable cyl has the highest Uniqueness, so could be explained the least by the factors and variable carb variance's was explained the most, because it has the lowest Uniqueness. From the communalities we can draw the same conclusion.
+
+h2(#description-1). Description
+
+In this template Rapporter will present you Factor Analysis.
+
+h3(#introduction-1). Introduction
+
+"Factor Analysis":http://en.wikipedia.org/wiki/Factor_analysis is applied as a data reduction or structure detection method. There are two main applications of it: reducing the number of variables and detecting structure in the relationships between variables, thus explore latent structure behind the data, classify variables.
+
+h6(#eigenvalues-1). Eigenvalues
+
+You can find the eigenvalues of the possible factors in the following table (_3_ factors were produced as you set):
+
+<table>
+<col width="22%" />
+<col width="18%" />
+<thead>
+<tr class="header">
+<th align="center">Factor Number</th>
+<th align="center">Eigenvalues</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*1*</td>
+<td align="center">*2.461*</td>
+</tr>
+<tr class="even">
+<td align="center">*2*</td>
+<td align="center">*1.273*</td>
+</tr>
+<tr class="odd">
+<td align="center">*3*</td>
+<td align="center">*0.1485*</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">0.1176</td>
+</tr>
+</tbody>
+</table>
+
+h4(#factor-loadings-1). Factor loadings
+
+At the next step let's check the factor loadings. They mean that how deep the impact of a factor for the variables. We emphasized the cells when the explained is higher than 30% of the whole variance.
+
+<table>
+<col width="15%" />
+<col width="16%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">ML1</th>
+<th align="center">ML2</th>
+<th align="center">ML3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*carb*</td>
+<td align="center">*0.8771*</td>
+<td align="center">*0.3502*</td>
+<td align="center">-0.001772</td>
+</tr>
+<tr class="even">
+<td align="center">*gear*</td>
+<td align="center">-0.0595</td>
+<td align="center">*0.9317*</td>
+<td align="center">-0.005685</td>
+</tr>
+<tr class="odd">
+<td align="center">*mpg*</td>
+<td align="center">*-0.8132*</td>
+<td align="center">*0.4641*</td>
+<td align="center">0.0972</td>
+</tr>
+<tr class="even">
+<td align="center">*cyl*</td>
+<td align="center">*0.7917*</td>
+<td align="center">*-0.4774*</td>
+<td align="center">0.1361</td>
+</tr>
+</tbody>
+</table>
+
+So it can be said that
+
+* ML1 is a latent factor of carb
+* ML1 is a latent factor of mpg
+* ML1 is a latent factor of cyl
+* ML2 is a latent factor of carb
+* ML2 is a latent factor of gear
+* ML2 is a latent factor of mpg
+* ML2 is a latent factor of cyl
+
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+From them in the cases of the _ML1's impact on mpg_ and _ML2's impact on cyl_, we can say they are negative effects.
+
+h4(#uniquenesses-1). Uniquenesses
+
+At last but not least let us say some words about the not explained part of the variables. There are two statistics which help us quantifying this concept: Communality and Uniqueness. They are in a really strong relationship, because Uniqueness is the variability of a variable minus its Communality. The first table contains the Uniqunesses, the second the Communalities of the variables:
+
+<table>
+<col width="15%" />
+<col width="19%" />
+<col width="20%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Uniqunesses</th>
+<th align="center">Communalities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*carb*</td>
+<td align="center">0.1081</td>
+<td align="center">0.8919</td>
+</tr>
+<tr class="even">
+<td align="center">*gear*</td>
+<td align="center">0.1283</td>
+<td align="center">0.8717</td>
+</tr>
+<tr class="odd">
+<td align="center">*mpg*</td>
+<td align="center">0.1138</td>
+<td align="center">0.8862</td>
+</tr>
+<tr class="even">
+<td align="center">*cyl*</td>
+<td align="center">0.1268</td>
+<td align="center">0.8732</td>
+</tr>
+</tbody>
+</table>
+
+We can see from the table that variable gear has the highest Uniqueness, so could be explained the least by the factors and variable carb variance's was explained the most, because it has the lowest Uniqueness. From the communalities we can draw the same conclusion.
+
+h2(#description-2). Description
+
+In this template Rapporter will present you Factor Analysis.
+
+Your request cannot be implemented, because there are the same number of variables (_5_) like the number of the requested factors (_5_) . Please set the number of the factors to maximum _4_ with the same number of the variables or extend the number of those variables at least to _6_.
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (3.0.1) and "rapport":http://rapport-package.info/ (0.51) in _1.479_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

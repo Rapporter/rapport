@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Brown-Forsyth test" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Brown-Forsyth test</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#result">Result</a></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#introduction-1">Introduction</a></li>
+<li><a href="#result-1">Result</a></li>
+</ul></li>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#introduction-2">Introduction</a></li>
+<li><a href="#result-2">Result</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#description">Description</a></h2>
+<p>This template will run a Brown-Forsyth test to check the equality of variances among groups.</p>
+<h3 id="introduction"><a href="#introduction">Introduction</a></h3>
+<p>The Brown-Forsyth test is used for checking the equality of the variances among the groups of one variable, in other words it tests the homogeneity of the variances. Equality of group variances is an assumption of the one-way ANOVA test.</p>
+<p>The base of the test is really similar to the Levene's test, but the Brown-Forsyth test uses the deviations from the group medians instead of the mean (what the Levene's does), thus the Brown-Forsyth test is called more robust.</p>
+<p>This test has the advantage over the other tests, which are also being used to check the homogeneity (F-test and Bartlett's test), that it does not have a normality assumption, so the variable we investigate do not have to follow a normal distribution.</p>
+<h4 id="references"><a href="#references">References</a></h4>
+<ul>
+<li>Brown, M.~B. and Forsyth, A.~B. (1974). Robust tests for equality of variances. <em>Journal of the American Statistical Association</em>, 69:364-367.</li>
+</ul>
+<h3 id="result"><a href="#result">Result</a></h3>
+<table>
+<col width="26%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">hov: Brown-Forsyth</td>
+<td align="center">0.3847</td>
+<td align="center">0.5353</td>
+</tr>
+</tbody>
+</table>
+<p>According to the <em>Brown-Forsyth test</em>, the variances of the <em>Age</em> across the groups of <em>Gender</em> does not differs significantly.</p>
+<p>We can conclude that, because the p-value is higher than 0.05</p>
+<h4 id="references-1"><a href="#references-1">References</a></h4>
+<ul>
+<li>Heiberger, Richard M. and Holland, Burt (2004b). <em>Statistical Analysis and Data Display: An Intermediate Course with Examples in S-Plus, R, and SAS</em>.</li>
+</ul>
+<h2 id="description-1"><a href="#description-1">Description</a></h2>
+<p>This template will run a Brown-Forsyth test to check the equality of variances among groups.</p>
+<h3 id="introduction-1"><a href="#introduction-1">Introduction</a></h3>
+<p>The Brown-Forsyth test is used for checking the equality of the variances among the groups of one variable, in other words it tests the homogeneity of the variances. Equality of group variances is an assumption of the one-way ANOVA test.</p>
+<p>The base of the test is really similar to the Levene's test, but the Brown-Forsyth test uses the deviations from the group medians instead of the mean (what the Levene's does), thus the Brown-Forsyth test is called more robust.</p>
+<p>This test has the advantage over the other tests, which are also being used to check the homogeneity (F-test and Bartlett's test), that it does not have a normality assumption, so the variable we investigate do not have to follow a normal distribution.</p>
+<h4 id="references-2"><a href="#references-2">References</a></h4>
+<ul>
+<li>Brown, M.~B. and Forsyth, A.~B. (1974). Robust tests for equality of variances. <em>Journal of the American Statistical Association</em>, 69:364-367.</li>
+</ul>
+<h3 id="result-1"><a href="#result-1">Result</a></h3>
+<table>
+<col width="26%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">hov: Brown-Forsyth</td>
+<td align="center">4.681</td>
+<td align="center">0.03087</td>
+</tr>
+</tbody>
+</table>
+<p>According to the <em>Brown-Forsyth test</em>, the variances of the <em>Internet usage for educational purposes (hours per day)</em> across the groups of <em>Gender</em> significantly differs.</p>
+<p>We can conclude that, because the p-value is smaller than 0.05</p>
+<h4 id="references-3"><a href="#references-3">References</a></h4>
+<ul>
+<li>Heiberger, Richard M. and Holland, Burt (2004b). <em>Statistical Analysis and Data Display: An Intermediate Course with Examples in S-Plus, R, and SAS</em>.</li>
+</ul>
+<h2 id="description-2"><a href="#description-2">Description</a></h2>
+<p>This template will run a Brown-Forsyth test to check the equality of variances among groups.</p>
+<h3 id="introduction-2"><a href="#introduction-2">Introduction</a></h3>
+<p>The Brown-Forsyth test is used for checking the equality of the variances among the groups of one variable, in other words it tests the homogeneity of the variances. Equality of group variances is an assumption of the one-way ANOVA test.</p>
+<p>The base of the test is really similar to the Levene's test, but the Brown-Forsyth test uses the deviations from the group medians instead of the mean (what the Levene's does), thus the Brown-Forsyth test is called more robust.</p>
+<p>This test has the advantage over the other tests, which are also being used to check the homogeneity (F-test and Bartlett's test), that it does not have a normality assumption, so the variable we investigate do not have to follow a normal distribution.</p>
+<h4 id="references-4"><a href="#references-4">References</a></h4>
+<ul>
+<li>Brown, M.~B. and Forsyth, A.~B. (1974). Robust tests for equality of variances. <em>Journal of the American Statistical Association</em>, 69:364-367.</li>
+</ul>
+<h3 id="result-2"><a href="#result-2">Result</a></h3>
+<table>
+<col width="26%" />
+<col width="16%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Method</th>
+<th align="center">Statistic</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">hov: Brown-Forsyth</td>
+<td align="center">15.89</td>
+<td align="center">2.131e-12</td>
+</tr>
+</tbody>
+</table>
+<p>According to the <em>Brown-Forsyth test</em>, the variances of the <em>Internet usage for educational purposes (hours per day)</em> across the groups of <em>How often does your profession require Internet access?</em> significantly differs.</p>
+<p>We can conclude that, because the p-value is smaller than 0.05</p>
+<h4 id="references-5"><a href="#references-5">References</a></h4>
+<ul>
+<li>Heiberger, Richard M. and Holland, Burt (2004b). <em>Statistical Analysis and Data Display: An Intermediate Course with Examples in S-Plus, R, and SAS</em>.</li>
+</ul>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>0.762</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" />
+</div>
+</body>
+</html>

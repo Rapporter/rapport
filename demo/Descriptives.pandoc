@@ -1,0 +1,251 @@
+% Rapport  package  team
+% Descriptive statistics
+% 2011-04-26 20:25 CET
+
+
+
+## Description
+
+
+
+This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
+
+
+
+
+
+
+
+### *gender* ("Gender")
+
+
+
+
+
+The dataset has _709_ observations with _673_ valid values (missing: _36_).
+
+
+
+
+
+
+
+
+
+
+----------------------------------------
+ gender   N    %    Cumul. N   Cumul. % 
+-------- --- ----- ---------- ----------
+  male   410 60.92    410       60.92   
+
+ female  263 39.08    673        100    
+
+ Total   673  100     673        100    
+----------------------------------------
+
+Table: Frequency table: Gender
+
+
+
+
+
+The most frequent value is *male*.
+
+
+
+
+
+#### Charts
+
+
+
+
+
+
+
+
+
+
+
+[![Barplot: Gender](plots/Descriptives-1.png)](plots/Descriptives-1-hires.png)
+
+
+
+
+
+
+
+
+
+## Description
+
+
+
+This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
+
+
+
+
+
+
+
+### *age* ("Age")
+
+
+
+
+
+The dataset has _709_ observations with _677_ valid values (missing: _32_).
+
+
+
+
+
+
+#### Base statistics
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------
+ Variable   mean   sd    var 
+---------- ------ ----- -----
+   Age     24.57  6.849 46.91
+-----------------------------
+
+Table: Descriptives: Age
+
+
+
+
+
+The [standard deviation](http://en.wikipedia.org/wiki/Standard_deviation) equals to  _6.849_ (variance: _46.91_), which shows the unstandardized degree of [homogenity](http://en.wikipedia.org/wiki/Homogeneity_(statistics)): how much variation exists from the average. The [expected value](http://en.wikipedia.org/wiki/Mean) is around _24.57_, somewhere between _24.06_ and _25.09_ with the standard error of _0.2632_.
+
+The highest value found in the dataset is _58_, which is exactly _3.625_ times higher than the minimum (_16_). The difference between the two is described by the [range](http://en.wikipedia.org/wiki/Range_(statistics)): _42_.
+
+
+
+
+
+#### Chart
+
+
+
+
+
+A [histogram](http://en.wikipedia.org/wiki/Histogram) visually shows the [distribution](http://en.wikipedia.org/wiki/Probability_distribution) of the dataset based on artificially allocated [frequencies](http://en.wikipedia.org/wiki/Statistical_frequency). Each bar represents a theoretical interval of the data, where the height shows the count or density.
+
+
+
+
+
+
+
+[![Histogram: Age](plots/Descriptives-2.png)](plots/Descriptives-2-hires.png)
+
+
+
+
+If we *suppose* that *Age* is not near to the [normal distribution](http://en.wikipedia.org/wiki/Normal_distribution) (see for example [skewness](http://en.wikipedia.org/wiki/Skewness): _1.925_, [kurtosis](http://en.wikipedia.org/wiki/Kurtosis): _4.463_), checking the median (_23_) might be a better option instead of the mean. The [interquartile range](http://en.wikipedia.org/wiki/Interquartile_range) (_6_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+
+
+
+
+
+## Description
+
+
+
+This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
+
+
+
+
+
+
+
+### *hp*
+
+
+
+
+
+The dataset has _32_ observations with _32_ valid values (missing: _0_).
+
+
+
+
+
+
+#### Base statistics
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------
+ Variable   mean   sd    var 
+---------- ------ ----- -----
+    hp     146.7  68.56 4701 
+-----------------------------
+
+Table: Descriptives: hp
+
+
+
+
+
+The [standard deviation](http://en.wikipedia.org/wiki/Standard_deviation) equals to  _68.56_ (variance: _4701_), which shows the unstandardized degree of [homogenity](http://en.wikipedia.org/wiki/Homogeneity_(statistics)): how much variation exists from the average. The [expected value](http://en.wikipedia.org/wiki/Mean) is around _146.7_, somewhere between _122.9_ and _170.4_ with the standard error of _12.12_.
+
+The highest value found in the dataset is _335_, which is exactly _6.442_ times higher than the minimum (_52_). The difference between the two is described by the [range](http://en.wikipedia.org/wiki/Range_(statistics)): _283_.
+
+
+
+
+
+#### Chart
+
+
+
+
+
+A [histogram](http://en.wikipedia.org/wiki/Histogram) visually shows the [distribution](http://en.wikipedia.org/wiki/Probability_distribution) of the dataset based on artificially allocated [frequencies](http://en.wikipedia.org/wiki/Statistical_frequency). Each bar represents a theoretical interval of the data, where the height shows the count or density.
+
+
+
+
+
+
+
+[![Histogram: hp](plots/Descriptives-3.png)](plots/Descriptives-3-hires.png)
+
+
+
+
+If we *suppose* that *hp* is not near to the [normal distribution](http://en.wikipedia.org/wiki/Normal_distribution) (see for example [skewness](http://en.wikipedia.org/wiki/Skewness): _0.726_, [kurtosis](http://en.wikipedia.org/wiki/Kurtosis): _-0.1356_), checking the median (_123_) might be a better option instead of the mean. The [interquartile range](http://en.wikipedia.org/wiki/Interquartile_range) (_83.5_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+
+
+
+
+-------
+This report was generated with [R](http://www.r-project.org/) (3.0.1) and [rapport](http://rapport-package.info/) (0.51) in _1.105_ sec on x86_64-unknown-linux-gnu platform.
+
+
+![](images/logo.png)

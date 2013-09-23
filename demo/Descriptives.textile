@@ -1,0 +1,153 @@
+h2(#description). Description
+
+This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
+
+h3(#gender-gender). _gender_ (&quot;Gender&quot;)
+
+The dataset has _709_ observations with _673_ valid values (missing: _36_).
+
+<table>
+<caption>Frequency table: Gender</caption>
+<col width="12%" />
+<col width="5%" />
+<col width="8%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="center">gender</th>
+<th align="center">N</th>
+<th align="center">%</th>
+<th align="center">Cumul. N</th>
+<th align="center">Cumul. %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">male</td>
+<td align="center">410</td>
+<td align="center">60.92</td>
+<td align="center">410</td>
+<td align="center">60.92</td>
+</tr>
+<tr class="even">
+<td align="center">female</td>
+<td align="center">263</td>
+<td align="center">39.08</td>
+<td align="center">673</td>
+<td align="center">100</td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">673</td>
+<td align="center">100</td>
+<td align="center">673</td>
+<td align="center">100</td>
+</tr>
+</tbody>
+</table>
+
+The most frequent value is _male_.
+
+h4(#charts). Charts
+
+"!plots/Descriptives-1.png(Barplot: Gender)!":plots/Descriptives-1-hires.png
+
+h2(#description-1). Description
+
+This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
+
+h3(#age-age). _age_ (&quot;Age&quot;)
+
+The dataset has _709_ observations with _677_ valid values (missing: _32_).
+
+h4(#base-statistics). Base statistics
+
+<table>
+<caption>Descriptives: Age</caption>
+<col width="15%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="center">Variable</th>
+<th align="center">mean</th>
+<th align="center">sd</th>
+<th align="center">var</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Age</td>
+<td align="center">24.57</td>
+<td align="center">6.849</td>
+<td align="center">46.91</td>
+</tr>
+</tbody>
+</table>
+
+The "standard deviation":http://en.wikipedia.org/wiki/Standard_deviation equals to _6.849_ (variance: _46.91_), which shows the unstandardized degree of "homogenity":http://en.wikipedia.org/wiki/Homogeneity_(statistics): how much variation exists from the average. The "expected value":http://en.wikipedia.org/wiki/Mean is around _24.57_, somewhere between _24.06_ and _25.09_ with the standard error of _0.2632_.
+
+The highest value found in the dataset is _58_, which is exactly _3.625_ times higher than the minimum (_16_). The difference between the two is described by the "range":http://en.wikipedia.org/wiki/Range_(statistics): _42_.
+
+h4(#chart). Chart
+
+A "histogram":http://en.wikipedia.org/wiki/Histogram visually shows the "distribution":http://en.wikipedia.org/wiki/Probability_distribution of the dataset based on artificially allocated "frequencies":http://en.wikipedia.org/wiki/Statistical_frequency. Each bar represents a theoretical interval of the data, where the height shows the count or density.
+
+"!plots/Descriptives-2.png(Histogram: Age)!":plots/Descriptives-2-hires.png
+
+If we _suppose_ that _Age_ is not near to the "normal distribution":http://en.wikipedia.org/wiki/Normal_distribution (see for example "skewness":http://en.wikipedia.org/wiki/Skewness: _1.925_, "kurtosis":http://en.wikipedia.org/wiki/Kurtosis: _4.463_), checking the median (_23_) might be a better option instead of the mean. The "interquartile range":http://en.wikipedia.org/wiki/Interquartile_range (_6_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+h2(#description-2). Description
+
+This template will return descriptive statistics of a numerical or frequency table of a categorical variable.
+
+h3(#hp). _hp_
+
+The dataset has _32_ observations with _32_ valid values (missing: _0_).
+
+h4(#base-statistics-1). Base statistics
+
+<table>
+<caption>Descriptives: hp</caption>
+<col width="15%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="center">Variable</th>
+<th align="center">mean</th>
+<th align="center">sd</th>
+<th align="center">var</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">hp</td>
+<td align="center">146.7</td>
+<td align="center">68.56</td>
+<td align="center">4701</td>
+</tr>
+</tbody>
+</table>
+
+The "standard deviation":http://en.wikipedia.org/wiki/Standard_deviation equals to _68.56_ (variance: _4701_), which shows the unstandardized degree of "homogenity":http://en.wikipedia.org/wiki/Homogeneity_(statistics): how much variation exists from the average. The "expected value":http://en.wikipedia.org/wiki/Mean is around _146.7_, somewhere between _122.9_ and _170.4_ with the standard error of _12.12_.
+
+The highest value found in the dataset is _335_, which is exactly _6.442_ times higher than the minimum (_52_). The difference between the two is described by the "range":http://en.wikipedia.org/wiki/Range_(statistics): _283_.
+
+h4(#chart-1). Chart
+
+A "histogram":http://en.wikipedia.org/wiki/Histogram visually shows the "distribution":http://en.wikipedia.org/wiki/Probability_distribution of the dataset based on artificially allocated "frequencies":http://en.wikipedia.org/wiki/Statistical_frequency. Each bar represents a theoretical interval of the data, where the height shows the count or density.
+
+"!plots/Descriptives-3.png(Histogram: hp)!":plots/Descriptives-3-hires.png
+
+If we _suppose_ that _hp_ is not near to the "normal distribution":http://en.wikipedia.org/wiki/Normal_distribution (see for example "skewness":http://en.wikipedia.org/wiki/Skewness: _0.726_, "kurtosis":http://en.wikipedia.org/wiki/Kurtosis: _-0.1356_), checking the median (_123_) might be a better option instead of the mean. The "interquartile range":http://en.wikipedia.org/wiki/Interquartile_range (_83.5_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (3.0.1) and "rapport":http://rapport-package.info/ (0.51) in _1.105_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

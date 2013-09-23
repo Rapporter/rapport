@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Homogeneity test of factor variables" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  
+  <link rel="stylesheet" href="stylesheets/base.css" />
+  <link rel="stylesheet" href="stylesheets/skeleton.css" />
+  <link rel="stylesheet" href="stylesheets/layout.css" />
+  <link rel="stylesheet" href="stylesheets/fonts.css" />
+  <link rel="stylesheet" href="stylesheets/colorbox.css" />
+  <link rel="stylesheet" href="stylesheets/custom.css" />
+  
+  <link rel="shortcut icon" href="images/favicon.gif" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+  
+  <script type="text/javascript" src="javascripts/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="javascripts/tabs.js"></script>  <!--remove-->
+  <script type="text/javascript" src="javascripts/custom.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.colorbox.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Homogeneity test of factor variables</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<h2 id="description">Description</h2>
+<p>Test of homogeneity of a given factor variable split by another factor.</p>
+<h3 id="variable-description">Variable description</h3>
+<p>Analysing &quot;gender&quot; (&quot;Gender&quot;) with <em>673</em> valid values whether frequency counts are distributed equally across different categories of &quot;dwell&quot; (&quot;Dwelling&quot;).</p>
+<p>&quot;dwell&quot; has <em>3</em> categories:</p>
+<ul>
+<li>city</li>
+<li>small town</li>
+<li>village</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+<h3 id="counts">Counts</h3>
+<table>
+<caption>Counted values: &quot;dwell&quot; and &quot;gender&quot;</caption>
+<col width="23%" />
+<col width="9%" />
+<col width="12%" />
+<col width="13%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">male</th>
+<th align="center">female</th>
+<th align="center">Missing</th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><strong>city</strong></td>
+<td align="center">338</td>
+<td align="center">234</td>
+<td align="center">27</td>
+<td align="center">599</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>small town</strong></td>
+<td align="center">28</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">33</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>village</strong></td>
+<td align="center">19</td>
+<td align="center">9</td>
+<td align="center">2</td>
+<td align="center">30</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>Missing</strong></td>
+<td align="center">25</td>
+<td align="center">17</td>
+<td align="center">5</td>
+<td align="center">47</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>Sum</strong></td>
+<td align="center">410</td>
+<td align="center">263</td>
+<td align="center">36</td>
+<td align="center">709</td>
+</tr>
+</tbody>
+</table>
+<h3 id="chi-squared-test">Chi-squared test</h3>
+<p>Our <a href="http://en.wikipedia.org/wiki/Null_hypothesis">null hypothetis</a> says that the proportion of <em>gender</em> is indentical in each categories of <em>dwell</em>.</p>
+<table>
+<caption>Pearson's Chi-squared test: <code>table</code></caption>
+<col width="23%" />
+<col width="6%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">df</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">16.18</td>
+<td align="center">6</td>
+<td align="center"><em>0.01282</em> *</td>
+</tr>
+</tbody>
+</table>
+<p>The chi-squared test returned the value of <em>16.18</em> with a degree of freedom being <em>6</em>. Based on the returned <a href="http://en.wikipedia.org/wiki/P-value">p value</a> (<em>0.01282</em>) we could state that the null hypothesis is rejected.</p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>0.298</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" />
+</div>
+<p>
+  Logo and design: &copy; 2012 <i>rapport</i> Development Team | License (<a href="http://www.gnu.org/licenses/agpl.html" target="_blank">AGPL3</a>) | Fork on <a href="https://github.com/rapporter/rapport" target="_blank">GitHub</a> | Styled with <a href="http://www.getskeleton.com/" target="_blank">skeleton</a>
+</p>
+</body>
+</html>

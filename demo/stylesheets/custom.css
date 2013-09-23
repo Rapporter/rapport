@@ -190,10 +190,8 @@ table caption {
 
 th {
     padding: 4px 10px;
-}
-
-th * {
     color: #FFFFFF;
+    font-weight: bold;
 }
 
 tbody tr:nth-child(even) {
@@ -213,11 +211,33 @@ td {
 
 /* Math container */
 .math-container {
+    display: inline;
+}
+
+.math-container p span.math span.MathJax {
+    display: block;
     text-align: center;
 }
 
-.math-container span.math {
-    margin: 0 auto;
+.math-container .math {
+    border: 0 none;
+    direction: ltr;
+    display: inline;
+    float: none;
+    font-size: 100%;
+    font-size-adjust: none;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    text-indent: 0;
+    text-transform: none;
+    white-space: nowrap;
+    word-spacing: normal;
+    word-wrap: normal;
 }
 
 /* Mobile */

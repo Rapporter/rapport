@@ -1,0 +1,490 @@
+% Rapport  package  team
+% Bartlett's test
+% 2011-04-26 20:25 CET
+
+
+
+## Description
+
+
+
+This template will run the Bartlett's test to check the equality of variances between groups.
+
+
+
+
+
+
+
+
+### Introduction
+
+
+
+
+
+Bartlett's test is used to test the homogeneity of the variances, in other words the equality of the tested variable's variances across the groups. With checking that we want to find if the two groups are coming from the same population.
+
+Homogeneity is useful to being tested, because that is an assumption of the One-Way ANOVA.
+
+
+
+
+
+#### References
+
+
+
+
+
+  * Snedecor, George W. and Cochran, William G. (1989). _Statistical Methods_. Iowa State University Press
+
+
+
+
+
+### Normality assumption
+
+
+
+
+
+The Bartlett's test has an assumption of normality, thus one should obtain the information if the distribution of the tested variable had a normal distribution.
+
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------
+          Method             Statistic   p-value 
+--------------------------- ----------- ---------
+        Lilliefors             0.17     6.193e-54
+   (Kolmogorov-Smirnov)                          
+      normality test                             
+
+Anderson-Darling normality     32.16    1.26e-71 
+           test                                  
+
+Shapiro-Wilk normality test   0.8216    9.445e-27
+-------------------------------------------------
+
+
+
+
+So, the conclusions we can draw with the help of test statistics: 
+   
+ - based on _Lilliefors test_, distribution of _Age_ is not normal
+   
+ - _Anderson-Darling test_ confirms violation of normality assumption
+
+ - according to _Shapiro-Wilk test_, the distribution of _Age_ is not normal
+ 
+
+
+
+
+
+As you can see, the applied tests confirm departures from normality.
+
+
+
+
+
+
+
+
+### Test results
+
+
+
+
+
+After checking the assumptions let's see what the test shows us!
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------
+           Method             Statistic   p-value 
+---------------------------- ----------- ---------
+Bartlett test of homogeneity    0.233     0.6293  
+        of variances                              
+--------------------------------------------------
+
+
+
+
+
+
+
+
+According to the _Bartlett's test_, the variance of the _Age_ across the groups of _Gender_ does not differs significantly.
+
+We can conclude that, because the p-value is higher than 0.05.
+
+
+
+
+
+## Description
+
+
+
+This template will run the Bartlett's test to check the equality of variances between groups.
+
+
+
+
+
+
+
+
+### Introduction
+
+
+
+
+
+Bartlett's test is used to test the homogeneity of the variances, in other words the equality of the tested variable's variances across the groups. With checking that we want to find if the two groups are coming from the same population.
+
+Homogeneity is useful to being tested, because that is an assumption of the One-Way ANOVA.
+
+
+
+
+
+#### References
+
+
+
+
+
+  * Snedecor, George W. and Cochran, William G. (1989). _Statistical Methods_. Iowa State University Press
+
+
+
+
+
+### Normality assumption
+
+
+
+
+
+The Bartlett's test has an assumption of normality, thus one should obtain the information if the distribution of the tested variable had a normal distribution.
+
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------
+          Method             Statistic   p-value 
+--------------------------- ----------- ---------
+        Lilliefors            0.2223    2.243e-92
+   (Kolmogorov-Smirnov)                          
+      normality test                             
+
+Anderson-Darling normality     42.04    3.31e-90 
+           test                                  
+
+Shapiro-Wilk normality test   0.7985    6.366e-28
+-------------------------------------------------
+
+
+
+
+So, the conclusions we can draw with the help of test statistics: 
+   
+ - based on _Lilliefors test_, distribution of _Internet usage for educational purposes (hours per day)_ is not normal
+   
+ - _Anderson-Darling test_ confirms violation of normality assumption
+
+ - according to _Shapiro-Wilk test_, the distribution of _Internet usage for educational purposes (hours per day)_ is not normal
+ 
+
+
+
+
+
+As you can see, the applied tests confirm departures from normality.
+
+
+
+
+
+
+
+
+### Test results
+
+
+
+
+
+After checking the assumptions let's see what the test shows us!
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------
+           Method             Statistic   p-value 
+---------------------------- ----------- ---------
+Bartlett test of homogeneity    36.11    1.863e-09
+        of variances                              
+--------------------------------------------------
+
+
+
+
+
+
+
+
+According to the _Bartlett's test_, the variance of the _Internet usage for educational purposes (hours per day)_ across the groups of _Student_ significantly differs.
+
+We can conclude that, because the p-value is smaller than 0.05.
+
+
+
+
+
+## Description
+
+
+
+This template will run the Bartlett's test to check the equality of variances between groups.
+
+
+
+
+
+
+
+
+### Introduction
+
+
+
+
+
+Bartlett's test is used to test the homogeneity of the variances, in other words the equality of the tested variable's variances across the groups. With checking that we want to find if the two groups are coming from the same population.
+
+Homogeneity is useful to being tested, because that is an assumption of the One-Way ANOVA.
+
+
+
+
+
+#### References
+
+
+
+
+
+  * Snedecor, George W. and Cochran, William G. (1989). _Statistical Methods_. Iowa State University Press
+
+
+
+
+
+### Normality assumption
+
+
+
+
+
+The Bartlett's test has an assumption of normality, thus one should obtain the information if the distribution of the tested variable had a normal distribution.
+
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------
+          Method             Statistic   p-value 
+--------------------------- ----------- ---------
+        Lilliefors             0.17     6.193e-54
+   (Kolmogorov-Smirnov)                          
+      normality test                             
+
+Anderson-Darling normality     32.16    1.26e-71 
+           test                                  
+
+Shapiro-Wilk normality test   0.8216    9.445e-27
+-------------------------------------------------
+
+
+
+
+So, the conclusions we can draw with the help of test statistics: 
+   
+ - based on _Lilliefors test_, distribution of _Age_ is not normal
+   
+ - _Anderson-Darling test_ confirms violation of normality assumption
+
+ - according to _Shapiro-Wilk test_, the distribution of _Age_ is not normal
+ 
+
+
+
+
+
+As you can see, the applied tests confirm departures from normality.
+
+
+
+
+
+
+
+
+### Test results
+
+
+
+
+
+After checking the assumptions let's see what the test shows us!
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------
+           Method             Statistic   p-value 
+---------------------------- ----------- ---------
+Bartlett test of homogeneity    23.26    0.0001123
+        of variances                              
+--------------------------------------------------
+
+
+
+
+
+
+
+
+According to the _Bartlett's test_, the variance of the _Age_ across the groups of _How often does your profession require Internet access?_ significantly differs.
+
+We can conclude that, because the p-value is smaller than 0.05.
+
+
+
+
+-------
+This report was generated with [R](http://www.r-project.org/) (3.0.1) and [rapport](http://rapport-package.info/) (0.51) in _0.917_ sec on x86_64-unknown-linux-gnu platform.
+
+
+![](images/logo.png)

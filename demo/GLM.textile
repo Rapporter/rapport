@@ -1,0 +1,224 @@
+h2(#description). Description
+
+In this template Rapporter will present you GLM.
+
+h3(#introduction). Introduction
+
+"Generalized Linear Model (GLM)":http://en.wikipedia.org/wiki/Generalized_linear_model is a generalization of the ordinary "Linear Regression":http://en.wikipedia.org/wiki/Linear_regression. While using GLM we don't need the assumption of normality for response variables. There are two basic ideas of the model: It allows the linear model to be related to the response variable via a link function and the magnitude of the variance of each measurement to be a function of its predicted value. An extinsion to the GLM is the "Hierarchical generalized linear model":https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model.
+
+h1(#overview). Overview
+
+Multivariate-General Linear Model was carried out, with _Internet usage in leisure time (hours per day)_ and _Internet usage for educational purposes (hours per day)_ as independent variables, and _Age_ as a dependent variable. The "interaction":http://en.wikipedia.org/wiki/Interaction between the independent variables was taken into account.
+
+<table>
+<caption>Fitting General Linear Model: age based on _leisure_ and _edu_</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">z value</th>
+<th align="center">Pr(&gt;&#124;z&#124;)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*(Intercept)*</td>
+<td align="center">3.198</td>
+<td align="center">0.02122</td>
+<td align="center">150.7</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">*leisure*</td>
+<td align="center">-0.02021</td>
+<td align="center">0.005847</td>
+<td align="center">-3.457</td>
+<td align="center">0.000547</td>
+</tr>
+<tr class="odd">
+<td align="center">*edu*</td>
+<td align="center">0.01474</td>
+<td align="center">0.007586</td>
+<td align="center">1.944</td>
+<td align="center">0.05196</td>
+</tr>
+<tr class="even">
+<td align="center">*leisure:edu*</td>
+<td align="center">0.004439</td>
+<td align="center">0.001795</td>
+<td align="center">2.472</td>
+<td align="center">0.01342</td>
+</tr>
+</tbody>
+</table>
+
+From the table one can see that
+
+* (Intercept) has significant effect on the dependent variable, the p-value of that is 0
+* leisure has significant effect on the dependent variable, the p-value of that is 0.001
+* leisure:edu has significant effect on the dependent variable, the p-value of that is 0.013
+
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+h2(#description-1). Description
+
+In this template Rapporter will present you GLM.
+
+h3(#introduction-1). Introduction
+
+"Generalized Linear Model (GLM)":http://en.wikipedia.org/wiki/Generalized_linear_model is a generalization of the ordinary "Linear Regression":http://en.wikipedia.org/wiki/Linear_regression. While using GLM we don't need the assumption of normality for response variables. There are two basic ideas of the model: It allows the linear model to be related to the response variable via a link function and the magnitude of the variance of each measurement to be a function of its predicted value. An extinsion to the GLM is the "Hierarchical generalized linear model":https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model.
+
+h1(#overview-1). Overview
+
+Multivariate-General Linear Model was carried out, with _Internet usage in leisure time (hours per day)_ and _Internet usage for educational purposes (hours per day)_ as independent variables, and _Age_ as a dependent variable. The "interaction":http://en.wikipedia.org/wiki/Interaction between the independent variables wasn't taken into account.
+
+<table>
+<caption>Fitting General Linear Model: age based on _leisure_ and _edu_</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">z value</th>
+<th align="center">Pr(&gt;&#124;z&#124;)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*(Intercept)*</td>
+<td align="center">3.163</td>
+<td align="center">0.01605</td>
+<td align="center">197.1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">*leisure*</td>
+<td align="center">-0.0095</td>
+<td align="center">0.003888</td>
+<td align="center">-2.443</td>
+<td align="center">0.01455</td>
+</tr>
+<tr class="odd">
+<td align="center">*edu*</td>
+<td align="center">0.03071</td>
+<td align="center">0.003883</td>
+<td align="center">7.91</td>
+<td align="center">2.581e-15</td>
+</tr>
+</tbody>
+</table>
+
+From the table one can see that
+
+* (Intercept) has significant effect on the dependent variable, the p-value of that is 0
+* leisure has significant effect on the dependent variable, the p-value of that is 0.015
+* edu has significant effect on the dependent variable, the p-value of that is 0
+
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+h2(#description-2). Description
+
+In this template Rapporter will present you GLM.
+
+h3(#introduction-2). Introduction
+
+"Generalized Linear Model (GLM)":http://en.wikipedia.org/wiki/Generalized_linear_model is a generalization of the ordinary "Linear Regression":http://en.wikipedia.org/wiki/Linear_regression. While using GLM we don't need the assumption of normality for response variables. There are two basic ideas of the model: It allows the linear model to be related to the response variable via a link function and the magnitude of the variance of each measurement to be a function of its predicted value. An extinsion to the GLM is the "Hierarchical generalized linear model":https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model.
+
+h1(#overview-2). Overview
+
+Multivariate-General Linear Model was carried out, with _Internet usage in leisure time (hours per day)_ and _Internet usage for educational purposes (hours per day)_ as independent variables, and _Age_ as a dependent variable. The "interaction":http://en.wikipedia.org/wiki/Interaction between the independent variables wasn't taken into account.
+
+<table>
+<caption>Fitting General Linear Model: age based on _leisure_ and _edu_</caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;&#124;t&#124;)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*(Intercept)*</td>
+<td align="center">0.0422</td>
+<td align="center">0.0008599</td>
+<td align="center">49.08</td>
+<td align="center">4.612e-212</td>
+</tr>
+<tr class="even">
+<td align="center">*leisure*</td>
+<td align="center">0.0003828</td>
+<td align="center">0.0002093</td>
+<td align="center">1.829</td>
+<td align="center">0.06785</td>
+</tr>
+<tr class="odd">
+<td align="center">*edu*</td>
+<td align="center">-0.001182</td>
+<td align="center">0.0001948</td>
+<td align="center">-6.065</td>
+<td align="center">2.332e-09</td>
+</tr>
+</tbody>
+</table>
+
+From the table one can see that
+
+* (Intercept) has significant effect on the dependent variable, the p-value of that is 0
+* edu has significant effect on the dependent variable, the p-value of that is 0
+
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (3.0.1) and "rapport":http://rapport-package.info/ (0.51) in _0.681_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

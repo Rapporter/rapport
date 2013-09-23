@@ -1,0 +1,37 @@
+h2(#description). Description
+
+In this template Rapporter will present you Wilcoxon test.
+
+h3(#introduction). Introduction
+
+"Wilcoxon test":http://en.wikipedia.org/wiki/Wilcoxon_test (or its equivalent the Mann-Whitney U test) is a non-parametric statistical test which can be an alternative of the paired Student's t-test, t-test for matched pairs, or the t-test for dependent samples. When the Wilcoxon test is used to compare two samples of values which are not paired, it makes no assumption about the shape of the distribution, only that (as null hypothesis) the distribution from which mpg was sampled is the same as the distribution from which cyl was sampled. The null hypothesis states that the variances of the variables are equal.
+
+<table>
+<caption>Wilcoxon rank sum test with continuity correction mpg and cyl</caption>
+<col width="23%" />
+<col width="25%" />
+<col width="33%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">P value</th>
+<th align="center">Alternative hypothesis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1024</td>
+<td align="center">_4.306e-12_ &#42; &#42; &#42;</td>
+<td align="center">two.sided</td>
+</tr>
+</tbody>
+</table>
+
+As you can see in the table the the p-value of the Wilcoxon test is _4.306e-12_, thus we can accept the assumption of the null hypothesis, so we can say that statistically the variances are equal.
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (3.0.1) and "rapport":http://rapport-package.info/ (0.51) in _0.138_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

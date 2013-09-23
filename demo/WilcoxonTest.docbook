@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Wilcoxon test" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Wilcoxon test</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#description">Description</a></h2>
+<p>In this template Rapporter will present you Wilcoxon test.</p>
+<h3 id="introduction"><a href="#introduction">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Wilcoxon_test">Wilcoxon test</a> (or its equivalent the Mann-Whitney U test) is a non-parametric statistical test which can be an alternative of the paired Student's t-test, t-test for matched pairs, or the t-test for dependent samples. When the Wilcoxon test is used to compare two samples of values which are not paired, it makes no assumption about the shape of the distribution, only that (as null hypothesis) the distribution from which mpg was sampled is the same as the distribution from which cyl was sampled. The null hypothesis states that the variances of the variables are equal.</p>
+<table>
+<caption>Wilcoxon rank sum test with continuity correction mpg and cyl</caption>
+<col width="23%" />
+<col width="25%" />
+<col width="33%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">P value</th>
+<th align="center">Alternative hypothesis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1024</td>
+<td align="center"><em>4.306e-12</em> * * *</td>
+<td align="center">two.sided</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see in the table the the p-value of the Wilcoxon test is <em>4.306e-12</em>, thus we can accept the assumption of the null hypothesis, so we can say that statistically the variances are equal.</p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>0.138</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="/usr/lib/R/library/rapport/includes/images/logo.png" />
+</div>
+</body>
+</html>

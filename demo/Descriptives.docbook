@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Descriptive statistics" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">Descriptive statistics</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#gender-gender"><em>gender</em> (&quot;Gender&quot;)</a></li>
+</ul></li>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#age-age"><em>age</em> (&quot;Age&quot;)</a></li>
+</ul></li>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#hp"><em>hp</em></a></li>
+</ul></li>
+</ul>
+</div>
+<h2 id="description"><a href="#description">Description</a></h2>
+<p>This template will return descriptive statistics of a numerical or frequency table of a categorical variable.</p>
+<h3 id="gender-gender"><a href="#gender-gender"><em>gender</em> (&quot;Gender&quot;)</a></h3>
+<p>The dataset has <em>709</em> observations with <em>673</em> valid values (missing: <em>36</em>).</p>
+<table>
+<caption>Frequency table: Gender</caption>
+<col width="12%" />
+<col width="5%" />
+<col width="8%" />
+<col width="15%" />
+<col width="15%" />
+<thead>
+<tr class="header">
+<th align="center">gender</th>
+<th align="center">N</th>
+<th align="center">%</th>
+<th align="center">Cumul. N</th>
+<th align="center">Cumul. %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">male</td>
+<td align="center">410</td>
+<td align="center">60.92</td>
+<td align="center">410</td>
+<td align="center">60.92</td>
+</tr>
+<tr class="even">
+<td align="center">female</td>
+<td align="center">263</td>
+<td align="center">39.08</td>
+<td align="center">673</td>
+<td align="center">100</td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center">673</td>
+<td align="center">100</td>
+<td align="center">673</td>
+<td align="center">100</td>
+</tr>
+</tbody>
+</table>
+<p>The most frequent value is <em>male</em>.</p>
+<h4 id="charts"><a href="#charts">Charts</a></h4>
+<p><a href="plots/Descriptives-1-hires.png"><img src="plots/Descriptives-1.png" alt="Barplot: Gender" /></a></p>
+<h2 id="description-1"><a href="#description-1">Description</a></h2>
+<p>This template will return descriptive statistics of a numerical or frequency table of a categorical variable.</p>
+<h3 id="age-age"><a href="#age-age"><em>age</em> (&quot;Age&quot;)</a></h3>
+<p>The dataset has <em>709</em> observations with <em>677</em> valid values (missing: <em>32</em>).</p>
+<h4 id="base-statistics"><a href="#base-statistics">Base statistics</a></h4>
+<table>
+<caption>Descriptives: Age</caption>
+<col width="15%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="center">Variable</th>
+<th align="center">mean</th>
+<th align="center">sd</th>
+<th align="center">var</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Age</td>
+<td align="center">24.57</td>
+<td align="center">6.849</td>
+<td align="center">46.91</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="http://en.wikipedia.org/wiki/Standard_deviation">standard deviation</a> equals to <em>6.849</em> (variance: <em>46.91</em>), which shows the unstandardized degree of <a href="http://en.wikipedia.org/wiki/Homogeneity_(statistics)">homogenity</a>: how much variation exists from the average. The <a href="http://en.wikipedia.org/wiki/Mean">expected value</a> is around <em>24.57</em>, somewhere between <em>24.06</em> and <em>25.09</em> with the standard error of <em>0.2632</em>.</p>
+<p>The highest value found in the dataset is <em>58</em>, which is exactly <em>3.625</em> times higher than the minimum (<em>16</em>). The difference between the two is described by the <a href="http://en.wikipedia.org/wiki/Range_(statistics)">range</a>: <em>42</em>.</p>
+<h4 id="chart"><a href="#chart">Chart</a></h4>
+<p>A <a href="http://en.wikipedia.org/wiki/Histogram">histogram</a> visually shows the <a href="http://en.wikipedia.org/wiki/Probability_distribution">distribution</a> of the dataset based on artificially allocated <a href="http://en.wikipedia.org/wiki/Statistical_frequency">frequencies</a>. Each bar represents a theoretical interval of the data, where the height shows the count or density.</p>
+<p><a href="plots/Descriptives-2-hires.png"><img src="plots/Descriptives-2.png" alt="Histogram: Age" /></a></p>
+<p>If we <em>suppose</em> that <em>Age</em> is not near to the <a href="http://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a> (see for example <a href="http://en.wikipedia.org/wiki/Skewness">skewness</a>: <em>1.925</em>, <a href="http://en.wikipedia.org/wiki/Kurtosis">kurtosis</a>: <em>4.463</em>), checking the median (<em>23</em>) might be a better option instead of the mean. The <a href="http://en.wikipedia.org/wiki/Interquartile_range">interquartile range</a> (<em>6</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
+<h2 id="description-2"><a href="#description-2">Description</a></h2>
+<p>This template will return descriptive statistics of a numerical or frequency table of a categorical variable.</p>
+<h3 id="hp"><a href="#hp"><em>hp</em></a></h3>
+<p>The dataset has <em>32</em> observations with <em>32</em> valid values (missing: <em>0</em>).</p>
+<h4 id="base-statistics-1"><a href="#base-statistics-1">Base statistics</a></h4>
+<table>
+<caption>Descriptives: hp</caption>
+<col width="15%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="center">Variable</th>
+<th align="center">mean</th>
+<th align="center">sd</th>
+<th align="center">var</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">hp</td>
+<td align="center">146.7</td>
+<td align="center">68.56</td>
+<td align="center">4701</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="http://en.wikipedia.org/wiki/Standard_deviation">standard deviation</a> equals to <em>68.56</em> (variance: <em>4701</em>), which shows the unstandardized degree of <a href="http://en.wikipedia.org/wiki/Homogeneity_(statistics)">homogenity</a>: how much variation exists from the average. The <a href="http://en.wikipedia.org/wiki/Mean">expected value</a> is around <em>146.7</em>, somewhere between <em>122.9</em> and <em>170.4</em> with the standard error of <em>12.12</em>.</p>
+<p>The highest value found in the dataset is <em>335</em>, which is exactly <em>6.442</em> times higher than the minimum (<em>52</em>). The difference between the two is described by the <a href="http://en.wikipedia.org/wiki/Range_(statistics)">range</a>: <em>283</em>.</p>
+<h4 id="chart-1"><a href="#chart-1">Chart</a></h4>
+<p>A <a href="http://en.wikipedia.org/wiki/Histogram">histogram</a> visually shows the <a href="http://en.wikipedia.org/wiki/Probability_distribution">distribution</a> of the dataset based on artificially allocated <a href="http://en.wikipedia.org/wiki/Statistical_frequency">frequencies</a>. Each bar represents a theoretical interval of the data, where the height shows the count or density.</p>
+<p><a href="plots/Descriptives-3-hires.png"><img src="plots/Descriptives-3.png" alt="Histogram: hp" /></a></p>
+<p>If we <em>suppose</em> that <em>hp</em> is not near to the <a href="http://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a> (see for example <a href="http://en.wikipedia.org/wiki/Skewness">skewness</a>: <em>0.726</em>, <a href="http://en.wikipedia.org/wiki/Kurtosis">kurtosis</a>: <em>-0.1356</em>), checking the median (<em>123</em>) might be a better option instead of the mean. The <a href="http://en.wikipedia.org/wiki/Interquartile_range">interquartile range</a> (<em>83.5</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>1.105</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="/usr/lib/R/library/rapport/includes/images/logo.png" />
+</div>
+</body>
+</html>

@@ -1,0 +1,1160 @@
+h2(#description). Description
+
+Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
+
+h3(#variable-description). Variable description
+
+Two variables specified:
+
+* &quot;gender&quot; (&quot;Gender&quot;) with _673_ valid values and
+* &quot;dwell&quot; (&quot;Dwelling&quot;) with _662_ valid values.
+
+h4(#introduction). Introduction
+
+"Crosstables":http://en.wikipedia.org/wiki/Cross_tabulation are applicable to show the frequencies of categorical variables in a matrix form, with a table view.
+
+We will present four types of these crosstables. The first of them shows the _exact numbers of the observations_, ergo the number of the observations each of the variables' categories commonly have.
+
+The second also shows the possessions each of these cells have, but not the exact numbers of the observations, rather the _percentages_ of them from the total data.
+
+The last two type of the crosstabs contain the so-called _row and column percentages_ which demonstrate us the distribution of the frequencies if we concentrate only on one variable.
+
+After that we present the _tests_ with which we can investigate the possible relationships, associations between the variables, like Chi-squared test, Fisher Exact Test, Goodman and Kruskal's lambda.
+
+In the last part there are some _charts_ presented, with that one can visually observe the distribution of the frequencies.
+
+h3(#counts). Counts
+
+<table>
+<caption>Counted values: &quot;gender&quot; and &quot;dwell&quot;</caption>
+<col width="19%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+<th align="center">Missing</th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*male*</td>
+<td align="center">338</td>
+<td align="center">28</td>
+<td align="center">19</td>
+<td align="center">25</td>
+<td align="center">410</td>
+</tr>
+<tr class="even">
+<td align="right">*female*</td>
+<td align="center">234</td>
+<td align="center">3</td>
+<td align="center">9</td>
+<td align="center">17</td>
+<td align="center">263</td>
+</tr>
+<tr class="odd">
+<td align="right">*Missing*</td>
+<td align="center">27</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">36</td>
+</tr>
+<tr class="even">
+<td align="right">*Sum*</td>
+<td align="center">599</td>
+<td align="center">33</td>
+<td align="center">30</td>
+<td align="center">47</td>
+<td align="center">709</td>
+</tr>
+</tbody>
+</table>
+
+Most of the cases (_338_) can be found in &quot;male-city&quot; categories. Row-wise &quot;male&quot; holds the highest number of cases (_410_) while column-wise &quot;city&quot; has the utmost cases (_599_).
+
+h3(#percentages). Percentages
+
+<table>
+<caption>Total percentages: &quot;gender&quot; and &quot;dwell&quot;</caption>
+<col width="19%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+<th align="center">Missing</th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*male*</td>
+<td align="center">47.67</td>
+<td align="center">3.95</td>
+<td align="center">2.68</td>
+<td align="center">3.53</td>
+<td align="center">57.83</td>
+</tr>
+<tr class="even">
+<td align="right">*female*</td>
+<td align="center">33</td>
+<td align="center">0.42</td>
+<td align="center">1.27</td>
+<td align="center">2.4</td>
+<td align="center">37.09</td>
+</tr>
+<tr class="odd">
+<td align="right">*Missing*</td>
+<td align="center">3.81</td>
+<td align="center">0.28</td>
+<td align="center">0.28</td>
+<td align="center">0.71</td>
+<td align="center">5.08</td>
+</tr>
+<tr class="even">
+<td align="right">*Sum*</td>
+<td align="center">84.49</td>
+<td align="center">4.65</td>
+<td align="center">4.23</td>
+<td align="center">6.63</td>
+<td align="center">100</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<caption>Row percentages: &quot;gender&quot; and &quot;dwell&quot;</caption>
+<col width="19%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+<th align="center">Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*male*</td>
+<td align="center">82.44</td>
+<td align="center">6.83</td>
+<td align="center">4.63</td>
+<td align="center">6.1</td>
+</tr>
+<tr class="even">
+<td align="right">*female*</td>
+<td align="center">88.97</td>
+<td align="center">1.14</td>
+<td align="center">3.42</td>
+<td align="center">6.46</td>
+</tr>
+<tr class="odd">
+<td align="right">*Missing*</td>
+<td align="center">75</td>
+<td align="center">5.56</td>
+<td align="center">5.56</td>
+<td align="center">13.89</td>
+</tr>
+<tr class="even">
+<td align="right">*Sum*</td>
+<td align="center">84.49</td>
+<td align="center">4.65</td>
+<td align="center">4.23</td>
+<td align="center">6.63</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<caption>Column percentages: &quot;gender&quot; and &quot;dwell&quot;</caption>
+<col width="19%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+<th align="center">Missing</th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*male*</td>
+<td align="center">56.43</td>
+<td align="center">84.85</td>
+<td align="center">63.33</td>
+<td align="center">53.19</td>
+<td align="center">57.83</td>
+</tr>
+<tr class="even">
+<td align="right">*female*</td>
+<td align="center">39.07</td>
+<td align="center">9.09</td>
+<td align="center">30</td>
+<td align="center">36.17</td>
+<td align="center">37.09</td>
+</tr>
+<tr class="odd">
+<td align="right">*Missing*</td>
+<td align="center">4.51</td>
+<td align="center">6.06</td>
+<td align="center">6.67</td>
+<td align="center">10.64</td>
+<td align="center">5.08</td>
+</tr>
+</tbody>
+</table>
+
+h3(#tests-of-independence). Tests of Independence
+
+In the below tests for "independece":http://en.wikipedia.org/wiki/Independence_(probability_theory) we assume that the row and column variables are independent of each other. If this "null hypothesis":http://en.wikipedia.org/wiki/Null_hypothesis would be rejected by the tests, then we can say that the assumption must have been wrong, so there is a good chance that the variables are associated.
+
+h4(#chi-squared-test). Chi-squared test
+
+One of the most widespread independence test is the "Chi-squared test":http://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test. While using that we have the alternative hypothesis, that two variables have an association between each other, in opposite of the null hypothesis that the variables are independent.
+
+We use the cell frequencies from the crosstables to calculate the test statistic for that. The test statistic is based on the difference between this distribution and a theoretical distribution where the variables are independent of each other. The distribution of this test statistic follows a "Chi-square distribution":http://en.wikipedia.org/wiki/Chi-squared_distribution.
+
+The test was invented by Karl Pearson in 1900. It should be noted that the Chi-squared test has the disadvantage that it is sensitive to the sample size.
+
+h5(#criteria). Criteria
+
+Before analyzing the result of the Chi-squared test, we have to check if our data meets some requirements. There are two widely used criteria which have to take into consideration, both of them are related to the so-called expected counts. These expected counts are calculated from the marginal distributions and show how the crosstabs would look like if there were complete independency between the variables. The Chi-squared test calculates how different are the observed cells from the expected ones.
+
+The two criteria are:
+
+* none of the expected cells could be lower than 1
+* 80% of the expected cells have to be at least 5
+
+Let's look at on expected values then:
+
+<table>
+<col width="18%" />
+<col width="9%" />
+<col width="18%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*male*</td>
+<td align="center">349</td>
+<td align="center">18.91</td>
+<td align="center">17.08</td>
+</tr>
+<tr class="even">
+<td align="center">*female*</td>
+<td align="center">223</td>
+<td align="center">12.09</td>
+<td align="center">10.92</td>
+</tr>
+</tbody>
+</table>
+
+We can see that the Chi-squared test met the requirements.
+
+So now check the result of the test:
+
+<table>
+<caption>Pearson's Chi-squared test: @table@</caption>
+<col width="23%" />
+<col width="6%" />
+<col width="19%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">df</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">12.64</td>
+<td align="center">2</td>
+<td align="center">_0.001804_ &#42; &#42;</td>
+</tr>
+</tbody>
+</table>
+
+To decide if the null or the alternative hypothesis could be accepted we need to calculate the number of degrees of freedom. The degrees of freedom is easy to calculate, we substract one from the number of the categories of both the row and the coloumn variables and multiply them with each other.
+
+To each degrees of freedom there is denoted a "critical value":http://en.wikipedia.org/wiki/Critical_value#Statistics. The result of the Chi-square test have to be lower than that value to be able to accept the nullhypothesis.
+
+It seems that a real association can be pointed out between _gender_ and _dwell_ by the _Pearson's Chi-squared test_ (<span class="math">\chi</math>=_12.64_) at the "degree of freedom":http://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics) being _2_ at the "significance level":http://en.wikipedia.org/wiki/Statistical_significance of _0.001804_ &#42; &#42;.
+
+The association between the two variables seems to be weak based on "Cramer's V":http://en.wikipedia.org/wiki/Cram%C3%A9r%27s_V (_0.1001_).
+
+h5(#references). References
+
+* Fisher, R. A. (1922): On the interpretation of chi-square from contingency tables, and the calculation of P. _Journal of the Royal Statistical Society_ 85 (1): 87-94.
+* Fisher, R.A. (1954): _Statistical Methods for Research Workers_. Oliver and Boyd.
+
+h5(#adjusted-standardized-residuals). Adjusted standardized residuals
+
+The residuals show the contribution to reject the null hypothesis at a cell level. An extremely high or low value indicates that the given cell had a major effect on the resulting chi-square, so thus helps understanding the association in the crosstable.
+
+<table>
+<caption>Residuals: &quot;gender&quot; and &quot;dwell&quot;</caption>
+<col width="18%" />
+<col width="9%" />
+<col width="18%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*male*</td>
+<td align="center">-3.08</td>
+<td align="center">3.43</td>
+<td align="center">0.76</td>
+</tr>
+<tr class="even">
+<td align="right">*female*</td>
+<td align="center">3.08</td>
+<td align="center">-3.43</td>
+<td align="center">-0.76</td>
+</tr>
+</tbody>
+</table>
+
+Based on Pearson's residuals the following cells seems interesting (with values higher than @2@ or lower than @-2@):
+
+* &quot;male - city&quot;
+* &quot;female - city&quot;
+* &quot;male - small town&quot;
+* &quot;female - small town&quot;
+
+h5(#references-1). References
+
+* Snedecor, George W. and Cochran, William G. (1989): _Statistical Methods_. Iowa State University Press.
+* Karl Pearson (1900): _Philosophical Magazine_, Series 5 50 (302): 157-175.
+
+h4(#fisher-exact-test). Fisher Exact Test
+
+An other test to check the possible association/independence between two variables, is the "Fisher exact test":http://en.wikipedia.org/wiki/Fisher%27_exact_test. This test is especially useful with small samples, but could be used with bigger datasets as well.
+
+We have the advantage while using the Fisher's over the Chi-square test, that we could get an exact significance value not just a level of it, thus we can have an impression about the power of the test and the association.
+
+The test was invented by, thus named after R.A. Fisher.
+
+The variables seems to be dependent based on Fisher's exact test at the "significance level":http://en.wikipedia.org/wiki/P-value of _0.0008061_ &#42; &#42; &#42;.
+
+h3(#direction-of-relationship). Direction of relationship
+
+h4(#goodman-and-kruskals-lambda). Goodman and Kruskal's lambda
+
+With the help of the "Goodman and Kruskal's lambda":http://en.wikipedia.org/wiki/Goodman_and_Kruskal%27s_lambda we can look for not only relationship on its own, which have directions if we set one variable as a predictor and the other as a criterion variable.
+
+The computed value for "Goodman and Kruskal's lambda":http://en.wikipedia.org/wiki/Goodman_and_Kruskal%27s_lambda is the same for both directions: _0_. For this end, we do not know the direction of the relationship.
+
+h3(#charts). Charts
+
+If one would like to investigate the relationships rather visually than in a crosstable form, there are several possibilities to do that.
+
+h6(#heat-map). Heat map
+
+At first we can have a look at on the so-called "heat map":http://en.wikipedia.org/wiki/Heat_map. This kind of chart uses the same amount of cells and a similar form as the crosstable does, but instead of the numbers there are colours to show which cell contains the most counts (or likewise the highest total percentages).
+
+The darker colour is one cell painted, the most counts/the higher total percentage it has.
+
+"!plots/Crosstable-1.png(Heatmap)!":plots/Crosstable-1-hires.png
+
+There can be also shown the standardized adjusted residual of each cells:
+
+"!plots/Crosstable-2.png(Heatmap of residuals)!":plots/Crosstable-2-hires.png
+
+h6(#mosaic-chart). Mosaic chart
+
+In front of the heat map, on the _mosaic charts_, not only the colours are important. The size of the cells shows the amount of the counts one cell has.
+
+The width on the axis of gender determinate one side and the height on the axis of the dwell gives the final shape of the box. The box which demonstrates a cell from the hypothetic crosstable. We can see on the top of the chart which category from the dwell draw the boxes what kind of colour.
+
+"!plots/Crosstable-3.png(Mosaic chart)!":plots/Crosstable-3-hires.png
+
+h6(#fluctuation-diagram). Fluctuation diagram
+
+At last but not least have a glance on the _fluctuation diagram_. Unlike the above two charts, here the colours does not have influence on the chart, but the sizes of the boxes, which obviously demonstrates here as well the cells of the crosstable.
+
+The bigger are the boxes the higher are the numbers of the counts/the total percentages, which that boxes denote.
+
+"!plots/Crosstable-4.png(Fluctuation diagram)!":plots/Crosstable-4-hires.png
+
+h2(#description-1). Description
+
+Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
+
+h3(#variable-description-1). Variable description
+
+Two variables specified:
+
+* &quot;email&quot; (&quot;Email usage&quot;) with _672_ valid values and
+* &quot;dwell&quot; (&quot;Dwelling&quot;) with _662_ valid values.
+
+h4(#introduction-1). Introduction
+
+"Crosstables":http://en.wikipedia.org/wiki/Cross_tabulation are applicable to show the frequencies of categorical variables in a matrix form, with a table view.
+
+We will present four types of these crosstables. The first of them shows the _exact numbers of the observations_, ergo the number of the observations each of the variables' categories commonly have.
+
+The second also shows the possessions each of these cells have, but not the exact numbers of the observations, rather the _percentages_ of them from the total data.
+
+The last two type of the crosstabs contain the so-called _row and column percentages_ which demonstrate us the distribution of the frequencies if we concentrate only on one variable.
+
+After that we present the _tests_ with which we can investigate the possible relationships, associations between the variables, like Chi-squared test, Fisher Exact Test, Goodman and Kruskal's lambda.
+
+In the last part there are some _charts_ presented, with that one can visually observe the distribution of the frequencies.
+
+h3(#counts-1). Counts
+
+<table>
+<caption>Counted values: &quot;email&quot; and &quot;dwell&quot; (continued below)</caption>
+<col width="25%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+<th align="center">Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*never*</td>
+<td align="center">12</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="right">*very rarely*</td>
+<td align="center">30</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="right">*rarely*</td>
+<td align="center">41</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="right">*sometimes*</td>
+<td align="center">67</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="right">*often*</td>
+<td align="center">101</td>
+<td align="center">10</td>
+<td align="center">5</td>
+<td align="center">7</td>
+</tr>
+<tr class="even">
+<td align="right">*very often*</td>
+<td align="center">88</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">10</td>
+</tr>
+<tr class="odd">
+<td align="right">*always*</td>
+<td align="center">226</td>
+<td align="center">9</td>
+<td align="center">7</td>
+<td align="center">17</td>
+</tr>
+<tr class="even">
+<td align="right">*Missing*</td>
+<td align="center">34</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="right">*Sum*</td>
+<td align="center">599</td>
+<td align="center">33</td>
+<td align="center">30</td>
+<td align="center">47</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="25%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*never*</td>
+<td align="center">13</td>
+</tr>
+<tr class="even">
+<td align="right">*very rarely*</td>
+<td align="center">36</td>
+</tr>
+<tr class="odd">
+<td align="right">*rarely*</td>
+<td align="center">46</td>
+</tr>
+<tr class="even">
+<td align="right">*sometimes*</td>
+<td align="center">87</td>
+</tr>
+<tr class="odd">
+<td align="right">*often*</td>
+<td align="center">123</td>
+</tr>
+<tr class="even">
+<td align="right">*very often*</td>
+<td align="center">108</td>
+</tr>
+<tr class="odd">
+<td align="right">*always*</td>
+<td align="center">259</td>
+</tr>
+<tr class="even">
+<td align="right">*Missing*</td>
+<td align="center">37</td>
+</tr>
+<tr class="odd">
+<td align="right">*Sum*</td>
+<td align="center">709</td>
+</tr>
+</tbody>
+</table>
+
+Most of the cases (_226_) can be found in &quot;always-city&quot; categories. Row-wise &quot;always&quot; holds the highest number of cases (_259_) while column-wise &quot;city&quot; has the utmost cases (_599_).
+
+h3(#percentages-1). Percentages
+
+<table>
+<caption>Total percentages: &quot;email&quot; and &quot;dwell&quot; (continued below)</caption>
+<col width="25%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+<th align="center">Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*never*</td>
+<td align="center">1.69</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.14</td>
+</tr>
+<tr class="even">
+<td align="right">*very rarely*</td>
+<td align="center">4.23</td>
+<td align="center">0.14</td>
+<td align="center">0.42</td>
+<td align="center">0.28</td>
+</tr>
+<tr class="odd">
+<td align="right">*rarely*</td>
+<td align="center">5.78</td>
+<td align="center">0.42</td>
+<td align="center">0.14</td>
+<td align="center">0.14</td>
+</tr>
+<tr class="even">
+<td align="right">*sometimes*</td>
+<td align="center">9.45</td>
+<td align="center">0.56</td>
+<td align="center">1.13</td>
+<td align="center">1.13</td>
+</tr>
+<tr class="odd">
+<td align="right">*often*</td>
+<td align="center">14.25</td>
+<td align="center">1.41</td>
+<td align="center">0.71</td>
+<td align="center">0.99</td>
+</tr>
+<tr class="even">
+<td align="right">*very often*</td>
+<td align="center">12.41</td>
+<td align="center">0.71</td>
+<td align="center">0.71</td>
+<td align="center">1.41</td>
+</tr>
+<tr class="odd">
+<td align="right">*always*</td>
+<td align="center">31.88</td>
+<td align="center">1.27</td>
+<td align="center">0.99</td>
+<td align="center">2.4</td>
+</tr>
+<tr class="even">
+<td align="right">*Missing*</td>
+<td align="center">4.8</td>
+<td align="center">0.14</td>
+<td align="center">0.14</td>
+<td align="center">0.14</td>
+</tr>
+<tr class="odd">
+<td align="right">*Sum*</td>
+<td align="center">84.49</td>
+<td align="center">4.65</td>
+<td align="center">4.23</td>
+<td align="center">6.63</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="25%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*never*</td>
+<td align="center">1.83</td>
+</tr>
+<tr class="even">
+<td align="right">*very rarely*</td>
+<td align="center">5.08</td>
+</tr>
+<tr class="odd">
+<td align="right">*rarely*</td>
+<td align="center">6.49</td>
+</tr>
+<tr class="even">
+<td align="right">*sometimes*</td>
+<td align="center">12.27</td>
+</tr>
+<tr class="odd">
+<td align="right">*often*</td>
+<td align="center">17.35</td>
+</tr>
+<tr class="even">
+<td align="right">*very often*</td>
+<td align="center">15.23</td>
+</tr>
+<tr class="odd">
+<td align="right">*always*</td>
+<td align="center">36.53</td>
+</tr>
+<tr class="even">
+<td align="right">*Missing*</td>
+<td align="center">5.22</td>
+</tr>
+<tr class="odd">
+<td align="right">*Sum*</td>
+<td align="center">100</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<caption>Row percentages: &quot;email&quot; and &quot;dwell&quot;</caption>
+<col width="25%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+<th align="center">Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*never*</td>
+<td align="center">92.31</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">7.69</td>
+</tr>
+<tr class="even">
+<td align="right">*very rarely*</td>
+<td align="center">83.33</td>
+<td align="center">2.78</td>
+<td align="center">8.33</td>
+<td align="center">5.56</td>
+</tr>
+<tr class="odd">
+<td align="right">*rarely*</td>
+<td align="center">89.13</td>
+<td align="center">6.52</td>
+<td align="center">2.17</td>
+<td align="center">2.17</td>
+</tr>
+<tr class="even">
+<td align="right">*sometimes*</td>
+<td align="center">77.01</td>
+<td align="center">4.6</td>
+<td align="center">9.2</td>
+<td align="center">9.2</td>
+</tr>
+<tr class="odd">
+<td align="right">*often*</td>
+<td align="center">82.11</td>
+<td align="center">8.13</td>
+<td align="center">4.07</td>
+<td align="center">5.69</td>
+</tr>
+<tr class="even">
+<td align="right">*very often*</td>
+<td align="center">81.48</td>
+<td align="center">4.63</td>
+<td align="center">4.63</td>
+<td align="center">9.26</td>
+</tr>
+<tr class="odd">
+<td align="right">*always*</td>
+<td align="center">87.26</td>
+<td align="center">3.47</td>
+<td align="center">2.7</td>
+<td align="center">6.56</td>
+</tr>
+<tr class="even">
+<td align="right">*Missing*</td>
+<td align="center">91.89</td>
+<td align="center">2.7</td>
+<td align="center">2.7</td>
+<td align="center">2.7</td>
+</tr>
+<tr class="odd">
+<td align="right">*Sum*</td>
+<td align="center">84.49</td>
+<td align="center">4.65</td>
+<td align="center">4.23</td>
+<td align="center">6.63</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<caption>Column percentages: &quot;email&quot; and &quot;dwell&quot; (continued below)</caption>
+<col width="25%" />
+<col width="9%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+<th align="center">Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*never*</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2.13</td>
+</tr>
+<tr class="even">
+<td align="right">*very rarely*</td>
+<td align="center">5.01</td>
+<td align="center">3.03</td>
+<td align="center">10</td>
+<td align="center">4.26</td>
+</tr>
+<tr class="odd">
+<td align="right">*rarely*</td>
+<td align="center">6.84</td>
+<td align="center">9.09</td>
+<td align="center">3.33</td>
+<td align="center">2.13</td>
+</tr>
+<tr class="even">
+<td align="right">*sometimes*</td>
+<td align="center">11.19</td>
+<td align="center">12.12</td>
+<td align="center">26.67</td>
+<td align="center">17.02</td>
+</tr>
+<tr class="odd">
+<td align="right">*often*</td>
+<td align="center">16.86</td>
+<td align="center">30.3</td>
+<td align="center">16.67</td>
+<td align="center">14.89</td>
+</tr>
+<tr class="even">
+<td align="right">*very often*</td>
+<td align="center">14.69</td>
+<td align="center">15.15</td>
+<td align="center">16.67</td>
+<td align="center">21.28</td>
+</tr>
+<tr class="odd">
+<td align="right">*always*</td>
+<td align="center">37.73</td>
+<td align="center">27.27</td>
+<td align="center">23.33</td>
+<td align="center">36.17</td>
+</tr>
+<tr class="even">
+<td align="right">*Missing*</td>
+<td align="center">5.68</td>
+<td align="center">3.03</td>
+<td align="center">3.33</td>
+<td align="center">2.13</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<col width="25%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*never*</td>
+<td align="center">1.83</td>
+</tr>
+<tr class="even">
+<td align="right">*very rarely*</td>
+<td align="center">5.08</td>
+</tr>
+<tr class="odd">
+<td align="right">*rarely*</td>
+<td align="center">6.49</td>
+</tr>
+<tr class="even">
+<td align="right">*sometimes*</td>
+<td align="center">12.27</td>
+</tr>
+<tr class="odd">
+<td align="right">*often*</td>
+<td align="center">17.35</td>
+</tr>
+<tr class="even">
+<td align="right">*very often*</td>
+<td align="center">15.23</td>
+</tr>
+<tr class="odd">
+<td align="right">*always*</td>
+<td align="center">36.53</td>
+</tr>
+<tr class="even">
+<td align="right">*Missing*</td>
+<td align="center">5.22</td>
+</tr>
+</tbody>
+</table>
+
+h3(#tests-of-independence-1). Tests of Independence
+
+In the below tests for "independece":http://en.wikipedia.org/wiki/Independence_(probability_theory) we assume that the row and column variables are independent of each other. If this "null hypothesis":http://en.wikipedia.org/wiki/Null_hypothesis would be rejected by the tests, then we can say that the assumption must have been wrong, so there is a good chance that the variables are associated.
+
+h4(#chi-squared-test-1). Chi-squared test
+
+One of the most widespread independence test is the "Chi-squared test":http://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test. While using that we have the alternative hypothesis, that two variables have an association between each other, in opposite of the null hypothesis that the variables are independent.
+
+We use the cell frequencies from the crosstables to calculate the test statistic for that. The test statistic is based on the difference between this distribution and a theoretical distribution where the variables are independent of each other. The distribution of this test statistic follows a "Chi-square distribution":http://en.wikipedia.org/wiki/Chi-squared_distribution.
+
+The test was invented by Karl Pearson in 1900. It should be noted that the Chi-squared test has the disadvantage that it is sensitive to the sample size.
+
+h5(#criteria-1). Criteria
+
+Before analyzing the result of the Chi-squared test, we have to check if our data meets some requirements. There are two widely used criteria which have to take into consideration, both of them are related to the so-called expected counts. These expected counts are calculated from the marginal distributions and show how the crosstabs would look like if there were complete independency between the variables. The Chi-squared test calculates how different are the observed cells from the expected ones.
+
+The two criteria are:
+
+* none of the expected cells could be lower than 1
+* 80% of the expected cells have to be at least 5
+
+Let's look at on expected values then:
+
+<table>
+<col width="25%" />
+<col width="9%" />
+<col width="18%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">*never*</td>
+<td align="center">10.83</td>
+<td align="center">0.6134</td>
+<td align="center">0.5559</td>
+</tr>
+<tr class="even">
+<td align="center">*very rarely*</td>
+<td align="center">30.69</td>
+<td align="center">1.738</td>
+<td align="center">1.575</td>
+</tr>
+<tr class="odd">
+<td align="center">*rarely*</td>
+<td align="center">40.62</td>
+<td align="center">2.3</td>
+<td align="center">2.085</td>
+</tr>
+<tr class="even">
+<td align="center">*sometimes*</td>
+<td align="center">71.3</td>
+<td align="center">4.038</td>
+<td align="center">3.66</td>
+</tr>
+<tr class="odd">
+<td align="center">*often*</td>
+<td align="center">104.7</td>
+<td align="center">5.93</td>
+<td align="center">5.374</td>
+</tr>
+<tr class="even">
+<td align="center">*very often*</td>
+<td align="center">88.45</td>
+<td align="center">5.01</td>
+<td align="center">4.54</td>
+</tr>
+<tr class="odd">
+<td align="center">*always*</td>
+<td align="center">218.4</td>
+<td align="center">12.37</td>
+<td align="center">11.21</td>
+</tr>
+</tbody>
+</table>
+
+We can see that the Chi-squared test met the requirements.
+
+So now check the result of the test:
+
+<table>
+<caption>Pearson's Chi-squared test: @table@</caption>
+<col width="23%" />
+<col width="6%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="center">Test statistic</th>
+<th align="center">df</th>
+<th align="center">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">14.86</td>
+<td align="center">12</td>
+<td align="center">_0.249_</td>
+</tr>
+</tbody>
+</table>
+
+To decide if the null or the alternative hypothesis could be accepted we need to calculate the number of degrees of freedom. The degrees of freedom is easy to calculate, we substract one from the number of the categories of both the row and the coloumn variables and multiply them with each other.
+
+To each degrees of freedom there is denoted a "critical value":http://en.wikipedia.org/wiki/Critical_value#Statistics. The result of the Chi-square test have to be lower than that value to be able to accept the nullhypothesis.
+
+The requirements of the chi-squared test was not met, so "Yates's correction for continuity":http://en.wikipedia.org/wiki/Yates%27s_correction_for_continuity applied. The approximation may be incorrect.
+
+It seems that no real association can be pointed out between _email_ and _dwell_ by the _Pearson's Chi-squared test_ (<span class="math">\chi</math>=_14.86_ at the degree of freedom being _12_) at the significance level of _0.249_.
+
+h5(#references-2). References
+
+* Fisher, R. A. (1922): On the interpretation of chi-square from contingency tables, and the calculation of P. _Journal of the Royal Statistical Society_ 85 (1): 87-94.
+* Fisher, R.A. (1954): _Statistical Methods for Research Workers_. Oliver and Boyd.
+
+h5(#adjusted-standardized-residuals-1). Adjusted standardized residuals
+
+The residuals show the contribution to reject the null hypothesis at a cell level. An extremely high or low value indicates that the given cell had a major effect on the resulting chi-square, so thus helps understanding the association in the crosstable.
+
+<table>
+<caption>Residuals: &quot;email&quot; and &quot;dwell&quot;</caption>
+<col width="25%" />
+<col width="9%" />
+<col width="18%" />
+<col width="12%" />
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="center">city</th>
+<th align="center">small town</th>
+<th align="center">village</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">*never*</td>
+<td align="center">1.15</td>
+<td align="center">-0.81</td>
+<td align="center">-0.77</td>
+</tr>
+<tr class="even">
+<td align="right">*very rarely*</td>
+<td align="center">-0.41</td>
+<td align="center">-0.59</td>
+<td align="center">1.2</td>
+</tr>
+<tr class="odd">
+<td align="right">*rarely*</td>
+<td align="center">0.2</td>
+<td align="center">0.49</td>
+<td align="center">-0.8</td>
+</tr>
+<tr class="even">
+<td align="right">*sometimes*</td>
+<td align="center">-1.75</td>
+<td align="center">-0.02</td>
+<td align="center">2.49</td>
+</tr>
+<tr class="odd">
+<td align="right">*often*</td>
+<td align="center">-1.28</td>
+<td align="center">1.9</td>
+<td align="center">-0.18</td>
+</tr>
+<tr class="even">
+<td align="right">*very often*</td>
+<td align="center">-0.17</td>
+<td align="center">0</td>
+<td align="center">0.24</td>
+</tr>
+<tr class="odd">
+<td align="right">*always*</td>
+<td align="center">2.1</td>
+<td align="center">-1.26</td>
+<td align="center">-1.64</td>
+</tr>
+</tbody>
+</table>
+
+Based on Pearson's residuals the following cells seems interesting (with values higher than @2@ or lower than @-2@):
+
+* &quot;always - city&quot;
+* &quot;sometimes - village&quot;
+
+h5(#references-3). References
+
+* Snedecor, George W. and Cochran, William G. (1989): _Statistical Methods_. Iowa State University Press.
+* Karl Pearson (1900): _Philosophical Magazine_, Series 5 50 (302): 157-175.
+
+h4(#fisher-exact-test-1). Fisher Exact Test
+
+An other test to check the possible association/independence between two variables, is the "Fisher exact test":http://en.wikipedia.org/wiki/Fisher%27_exact_test. This test is especially useful with small samples, but could be used with bigger datasets as well.
+
+We have the advantage while using the Fisher's over the Chi-square test, that we could get an exact significance value not just a level of it, thus we can have an impression about the power of the test and the association.
+
+The test was invented by, thus named after R.A. Fisher.
+
+The test could not finish within resource limits.
+
+h3(#charts-1). Charts
+
+If one would like to investigate the relationships rather visually than in a crosstable form, there are several possibilities to do that.
+
+h6(#heat-map-1). Heat map
+
+At first we can have a look at on the so-called "heat map":http://en.wikipedia.org/wiki/Heat_map. This kind of chart uses the same amount of cells and a similar form as the crosstable does, but instead of the numbers there are colours to show which cell contains the most counts (or likewise the highest total percentages).
+
+The darker colour is one cell painted, the most counts/the higher total percentage it has.
+
+"!plots/Crosstable-5.png(Heatmap)!":plots/Crosstable-5-hires.png
+
+There can be also shown the standardized adjusted residual of each cells:
+
+"!plots/Crosstable-6.png(Heatmap of residuals)!":plots/Crosstable-6-hires.png
+
+h6(#mosaic-chart-1). Mosaic chart
+
+In front of the heat map, on the _mosaic charts_, not only the colours are important. The size of the cells shows the amount of the counts one cell has.
+
+The width on the axis of email determinate one side and the height on the axis of the dwell gives the final shape of the box. The box which demonstrates a cell from the hypothetic crosstable. We can see on the top of the chart which category from the dwell draw the boxes what kind of colour.
+
+"!plots/Crosstable-7.png(Mosaic chart)!":plots/Crosstable-7-hires.png
+
+h6(#fluctuation-diagram-1). Fluctuation diagram
+
+At last but not least have a glance on the _fluctuation diagram_. Unlike the above two charts, here the colours does not have influence on the chart, but the sizes of the boxes, which obviously demonstrates here as well the cells of the crosstable.
+
+The bigger are the boxes the higher are the numbers of the counts/the total percentages, which that boxes denote.
+
+"!plots/Crosstable-8.png(Fluctuation diagram)!":plots/Crosstable-8-hires.png
+
+<hr />
+
+This report was generated with "R":http://www.r-project.org/ (3.0.1) and "rapport":http://rapport-package.info/ (0.51) in _7.099_ sec on x86&#95;64-unknown-linux-gnu platform.
+
+!images/logo.png!
+

@@ -1,0 +1,165 @@
+% Rapport package team
+% Brown-Forsyth test
+% 2011-04-26 20:25 CET
+
+-   Description
+    -   Introduction
+    -   Result
+
+-   Description
+    -   Introduction
+    -   Result
+
+-   Description
+    -   Introduction
+    -   Result
+
+
+Description
+-----------
+
+This template will run a Brown-Forsyth test to check the equality of
+variances among groups.
+
+### Introduction
+
+The Brown-Forsyth test is used for checking the equality of the
+variances among the groups of one variable, in other words it tests the
+homogeneity of the variances. Equality of group variances is an
+assumption of the one-way ANOVA test.
+
+The base of the test is really similar to the Levene's test, but the
+Brown-Forsyth test uses the deviations from the group medians instead of
+the mean (what the Levene's does), thus the Brown-Forsyth test is called
+more robust.
+
+This test has the advantage over the other tests, which are also being
+used to check the homogeneity (F-test and Bartlett's test), that it does
+not have a normality assumption, so the variable we investigate do not
+have to follow a normal distribution.
+
+#### References
+
+-   Brown, M.\~B. and Forsyth, A.\~B. (1974). Robust tests for equality
+    of variances. *Journal of the American Statistical Association*,
+    69:364-367.
+
+### Result
+
+        Method         Statistic    p-value
+  ------------------- ------------ ---------
+  hov: Brown-Forsyth     0.3847     0.5353
+
+According to the *Brown-Forsyth test*, the variances of the *Age* across
+the groups of *Gender* does not differs significantly.
+
+We can conclude that, because the p-value is higher than 0.05
+
+#### References
+
+-   Heiberger, Richard M. and Holland, Burt (2004b). *Statistical
+    Analysis and Data Display: An Intermediate Course with Examples in
+    S-Plus, R, and SAS*.
+
+Description
+-----------
+
+This template will run a Brown-Forsyth test to check the equality of
+variances among groups.
+
+### Introduction
+
+The Brown-Forsyth test is used for checking the equality of the
+variances among the groups of one variable, in other words it tests the
+homogeneity of the variances. Equality of group variances is an
+assumption of the one-way ANOVA test.
+
+The base of the test is really similar to the Levene's test, but the
+Brown-Forsyth test uses the deviations from the group medians instead of
+the mean (what the Levene's does), thus the Brown-Forsyth test is called
+more robust.
+
+This test has the advantage over the other tests, which are also being
+used to check the homogeneity (F-test and Bartlett's test), that it does
+not have a normality assumption, so the variable we investigate do not
+have to follow a normal distribution.
+
+#### References
+
+-   Brown, M.\~B. and Forsyth, A.\~B. (1974). Robust tests for equality
+    of variances. *Journal of the American Statistical Association*,
+    69:364-367.
+
+### Result
+
+        Method         Statistic    p-value
+  ------------------- ------------ ---------
+  hov: Brown-Forsyth     4.681      0.03087
+
+According to the *Brown-Forsyth test*, the variances of the *Internet
+usage for educational purposes (hours per day)* across the groups of
+*Gender* significantly differs.
+
+We can conclude that, because the p-value is smaller than 0.05
+
+#### References
+
+-   Heiberger, Richard M. and Holland, Burt (2004b). *Statistical
+    Analysis and Data Display: An Intermediate Course with Examples in
+    S-Plus, R, and SAS*.
+
+Description
+-----------
+
+This template will run a Brown-Forsyth test to check the equality of
+variances among groups.
+
+### Introduction
+
+The Brown-Forsyth test is used for checking the equality of the
+variances among the groups of one variable, in other words it tests the
+homogeneity of the variances. Equality of group variances is an
+assumption of the one-way ANOVA test.
+
+The base of the test is really similar to the Levene's test, but the
+Brown-Forsyth test uses the deviations from the group medians instead of
+the mean (what the Levene's does), thus the Brown-Forsyth test is called
+more robust.
+
+This test has the advantage over the other tests, which are also being
+used to check the homogeneity (F-test and Bartlett's test), that it does
+not have a normality assumption, so the variable we investigate do not
+have to follow a normal distribution.
+
+#### References
+
+-   Brown, M.\~B. and Forsyth, A.\~B. (1974). Robust tests for equality
+    of variances. *Journal of the American Statistical Association*,
+    69:364-367.
+
+### Result
+
+        Method         Statistic    p-value
+  ------------------- ------------ ---------
+  hov: Brown-Forsyth     15.89     2.131e-12
+
+According to the *Brown-Forsyth test*, the variances of the *Internet
+usage for educational purposes (hours per day)* across the groups of
+*How often does your profession require Internet access?* significantly
+differs.
+
+We can conclude that, because the p-value is smaller than 0.05
+
+#### References
+
+-   Heiberger, Richard M. and Holland, Burt (2004b). *Statistical
+    Analysis and Data Display: An Intermediate Course with Examples in
+    S-Plus, R, and SAS*.
+
+* * * * *
+
+This report was generated with [R](http://www.r-project.org/) (3.0.1)
+and [rapport](http://rapport-package.info/) (0.51) in *0.762* sec on
+x86\_64-unknown-linux-gnu platform.
+
+![](images/logo.png)

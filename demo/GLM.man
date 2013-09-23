@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="GLM" />
+  <title>Rapport package team</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Rapport package team</h1>
+<h2 class="author">GLM</h2>
+<h3 class="date">2011-04-26 20:25 CET</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#description">Description</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+</ul></li>
+<li><a href="#overview">Overview</a><ul>
+<li><a href="#description-1">Description</a><ul>
+<li><a href="#introduction-1">Introduction</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#overview-1">Overview</a><ul>
+<li><a href="#description-2">Description</a><ul>
+<li><a href="#introduction-2">Introduction</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#overview-2">Overview</a></li>
+</ul>
+</div>
+<h2 id="description"><a href="#description">Description</a></h2>
+<p>In this template Rapporter will present you GLM.</p>
+<h3 id="introduction"><a href="#introduction">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Generalized_linear_model">Generalized Linear Model (GLM)</a> is a generalization of the ordinary <a href="http://en.wikipedia.org/wiki/Linear_regression">Linear Regression</a>. While using GLM we don't need the assumption of normality for response variables. There are two basic ideas of the model: It allows the linear model to be related to the response variable via a link function and the magnitude of the variance of each measurement to be a function of its predicted value. An extinsion to the GLM is the <a href="https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model">Hierarchical generalized linear model</a>.</p>
+<h1 id="overview"><a href="#overview">Overview</a></h1>
+<p>Multivariate-General Linear Model was carried out, with <em>Internet usage in leisure time (hours per day)</em> and <em>Internet usage for educational purposes (hours per day)</em> as independent variables, and <em>Age</em> as a dependent variable. The <a href="http://en.wikipedia.org/wiki/Interaction">interaction</a> between the independent variables was taken into account.</p>
+<table>
+<caption>Fitting General Linear Model: age based on <em>leisure</em> and <em>edu</em></caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">z value</th>
+<th align="center">Pr(&gt;|z|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">3.198</td>
+<td align="center">0.02122</td>
+<td align="center">150.7</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>leisure</strong></td>
+<td align="center">-0.02021</td>
+<td align="center">0.005847</td>
+<td align="center">-3.457</td>
+<td align="center">0.000547</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>edu</strong></td>
+<td align="center">0.01474</td>
+<td align="center">0.007586</td>
+<td align="center">1.944</td>
+<td align="center">0.05196</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>leisure:edu</strong></td>
+<td align="center">0.004439</td>
+<td align="center">0.001795</td>
+<td align="center">2.472</td>
+<td align="center">0.01342</td>
+</tr>
+</tbody>
+</table>
+<p>From the table one can see that</p>
+<ul>
+<li>(Intercept) has significant effect on the dependent variable, the p-value of that is 0</li>
+<li>leisure has significant effect on the dependent variable, the p-value of that is 0.001</li>
+<li>leisure:edu has significant effect on the dependent variable, the p-value of that is 0.013</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="description-1"><a href="#description-1">Description</a></h2>
+<p>In this template Rapporter will present you GLM.</p>
+<h3 id="introduction-1"><a href="#introduction-1">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Generalized_linear_model">Generalized Linear Model (GLM)</a> is a generalization of the ordinary <a href="http://en.wikipedia.org/wiki/Linear_regression">Linear Regression</a>. While using GLM we don't need the assumption of normality for response variables. There are two basic ideas of the model: It allows the linear model to be related to the response variable via a link function and the magnitude of the variance of each measurement to be a function of its predicted value. An extinsion to the GLM is the <a href="https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model">Hierarchical generalized linear model</a>.</p>
+<h1 id="overview-1"><a href="#overview-1">Overview</a></h1>
+<p>Multivariate-General Linear Model was carried out, with <em>Internet usage in leisure time (hours per day)</em> and <em>Internet usage for educational purposes (hours per day)</em> as independent variables, and <em>Age</em> as a dependent variable. The <a href="http://en.wikipedia.org/wiki/Interaction">interaction</a> between the independent variables wasn't taken into account.</p>
+<table>
+<caption>Fitting General Linear Model: age based on <em>leisure</em> and <em>edu</em></caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">z value</th>
+<th align="center">Pr(&gt;|z|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">3.163</td>
+<td align="center">0.01605</td>
+<td align="center">197.1</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>leisure</strong></td>
+<td align="center">-0.0095</td>
+<td align="center">0.003888</td>
+<td align="center">-2.443</td>
+<td align="center">0.01455</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>edu</strong></td>
+<td align="center">0.03071</td>
+<td align="center">0.003883</td>
+<td align="center">7.91</td>
+<td align="center">2.581e-15</td>
+</tr>
+</tbody>
+</table>
+<p>From the table one can see that</p>
+<ul>
+<li>(Intercept) has significant effect on the dependent variable, the p-value of that is 0</li>
+<li>leisure has significant effect on the dependent variable, the p-value of that is 0.015</li>
+<li>edu has significant effect on the dependent variable, the p-value of that is 0</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="description-2"><a href="#description-2">Description</a></h2>
+<p>In this template Rapporter will present you GLM.</p>
+<h3 id="introduction-2"><a href="#introduction-2">Introduction</a></h3>
+<p><a href="http://en.wikipedia.org/wiki/Generalized_linear_model">Generalized Linear Model (GLM)</a> is a generalization of the ordinary <a href="http://en.wikipedia.org/wiki/Linear_regression">Linear Regression</a>. While using GLM we don't need the assumption of normality for response variables. There are two basic ideas of the model: It allows the linear model to be related to the response variable via a link function and the magnitude of the variance of each measurement to be a function of its predicted value. An extinsion to the GLM is the <a href="https://en.wikipedia.org/wiki/Hierarchical_generalized_linear_model">Hierarchical generalized linear model</a>.</p>
+<h1 id="overview-2"><a href="#overview-2">Overview</a></h1>
+<p>Multivariate-General Linear Model was carried out, with <em>Internet usage in leisure time (hours per day)</em> and <em>Internet usage for educational purposes (hours per day)</em> as independent variables, and <em>Age</em> as a dependent variable. The <a href="http://en.wikipedia.org/wiki/Interaction">interaction</a> between the independent variables wasn't taken into account.</p>
+<table>
+<caption>Fitting General Linear Model: age based on <em>leisure</em> and <em>edu</em></caption>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">0.0422</td>
+<td align="center">0.0008599</td>
+<td align="center">49.08</td>
+<td align="center">4.612e-212</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>leisure</strong></td>
+<td align="center">0.0003828</td>
+<td align="center">0.0002093</td>
+<td align="center">1.829</td>
+<td align="center">0.06785</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>edu</strong></td>
+<td align="center">-0.001182</td>
+<td align="center">0.0001948</td>
+<td align="center">-6.065</td>
+<td align="center">2.332e-09</td>
+</tr>
+</tbody>
+</table>
+<p>From the table one can see that</p>
+<ul>
+<li>(Intercept) has significant effect on the dependent variable, the p-value of that is 0</li>
+<li>edu has significant effect on the dependent variable, the p-value of that is 0</li>
+</ul>
+<!-- end of list -->
+
+
+
+
+
+
+
+
+
+
+<hr />
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>0.681</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<div class="figure">
+<img src="images/logo.png" />
+</div>
+</body>
+</html>
