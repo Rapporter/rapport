@@ -9,7 +9,7 @@
  	<li><a href="#t-test">t-test.tpl</a></li>
  </ul>
 
-Please find below a detailed description about each with sample outputs of those in R console, HTML, odt and pdf too.
+Please find below a detailed description about each with sample outputs of those in R console, HTML, odt and pdf too. You can find 5 tabs below at each templates, which help you to gain more knowledge about them. At the Description tab you can see the basic information about the template (title, author, examples, required packages). After clicking on the Inputs tab you will find the input parameters which belong to the given template. Step on to the Example tab one could check a possible report based on the template. Export tab will list the possible options of formats to export the result. Clicking on them the template will show up in the required format. At the last but definitely not least you can find the code of the template after clicking on the Source tab.
 
 <a id="anova"> </a>
 #### anova.tpl

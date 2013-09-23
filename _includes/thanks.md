@@ -7,7 +7,7 @@ Special thanks to:
  * Prasad Chalasani for MacOS testing feedback
  * Roman Luštrik, Yihui Xie, Prasad Chalasani, Barry Rowlingson and David Purdy for casting their votes on a poll about the package name
 
-and following authors for their immense effort in development of packages that _rapport_ depends (or depended a while ago) on:
+and following authors for their immense effort in development of packages that **rapport** depends (or depended a while ago) on:
 
  * [ascii](http://cran.r-project.org/web/packages/ascii/index.html) by David Hajage,
  * [evaluate](http://cran.r-project.org/web/packages/evaluate/index.html) by Hadley Wickham,

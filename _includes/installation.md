@@ -1,6 +1,6 @@
 We'll start with a brief reminder: make sure that you have [Pandoc](http://johnmacfarlane.net/pandoc/installing.html) installed, and then proceed with package installation.
 
-Starting from v.0.2 _rapport_ is hosted on [CRAN](cran.r-project.org), so you can install it by calling:
+Starting from v.0.2 **rapport** is hosted on [CRAN](cran.r-project.org), so you can install it by calling:
 
 {% highlight r %}
 install.packages('rapport')
@@ -27,7 +27,7 @@ R CMD build --binary <path to .tar.gz file>
 R CMD INSTALL <path to .zip file>
 {% endhighlight %}
 
-In order to export _rapport_ templates to  _HTML_, _ODT_, _DOCX_ or _PDF_, please install [pandoc](http://johnmacfarlane.net/pandoc/installing.html).
+In order to export **rapport** templates to  **HTML**, **ODT**, **DOCX** or **PDF**, please install [pandoc](http://johnmacfarlane.net/pandoc/installing.html).
 
 And an up-to-date version of `pander` (an R markdown writer) installed from [GitHub](http://rapporter.github.com/pander/) is also really advocated:
 
