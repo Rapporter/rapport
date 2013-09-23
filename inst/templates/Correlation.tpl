@@ -58,10 +58,10 @@ Highly correlated (r < -0.7 or r > 0.7) variables:
 
 <%=paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i, 1]], colnames(cm)[h[i, 2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')%>
 
-<%} else {%>
+<%} else { %>
 
 There are no highly correlated (r < -0.7 or r > 0.7) variables.
-<%}%>
+<% } %>
 
 <%
 h <- which((cm < 0.2)&(cm > -0.2), arr.ind = T)
@@ -76,10 +76,10 @@ if (nrow(h) > 0) {
 }
 %>
 
-<%} else {%>
+<%} else { %>
 
 There are no uncorrelated correlated (r < -0.2 or r > 0.2) variables.
-<%}%>
+<% } %>
 
 # Correlation matrix
 

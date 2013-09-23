@@ -4,7 +4,7 @@ meta:
   author: Daniel Nagy
   description: In this template Rapporter will present you Principal Component Analysis.
   email: ~
-  packages: 
+  packages:
   - psych
   - GPArotation
   example:
@@ -71,26 +71,26 @@ Your request cannot be implemented, because there are more components (<%= compo
 
 
 # Introduction
- 
+
 [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) is a dimension reduction method. It produces linearly independent principal components using the variances of the observations in a set of variables.
- 
- 
+
+
 # Results
- 
+
 <%=
 vars <- na.omit(vars)
 summ <- as.matrix(summary(prcomp(vars))$importance[, 1:components])
 if (components == 1) colnames(summ)[1] <- "PC1"
 summ
 %>
-From the table above one can see that the <%=ifelse(components == 1, "", "first")%> <%=components%> Principal Component<%=ifelse(components == 1, '', 's')%> contains the <%=paste(summary(prcomp(vars))$importance[2, 1:components] * 100, "%")%> of the variance<%=ifelse(components == 1, '', 's')%><% if (components != 1) {%>, so together the <%=paste(sum(summary(prcomp(vars))$importance[2, 1:components] * 100), "%")%> of that.<%} else{%>.<%}%>
+From the table above one can see that the <%=ifelse(components == 1, "", "first")%> <%=components%> Principal Component<%=ifelse(components == 1, '', 's')%> contains the <%=paste(summary(prcomp(vars))$importance[2, 1:components] * 100, "%")%> of the variance<%=ifelse(components == 1, '', 's')%><% if (components != 1) { %>, so together the <%=paste(sum(summary(prcomp(vars))$importance[2, 1:components] * 100), "%")%> of that.<% } else { %>.<% } %>
 
 ### Visual representation
 
 It could be informative to see visually how the observations lies on these components. On that two dimensional plot below, where the axes are the components which contains the two most variances, you can see (the red vectors) the effect of the variables as well. <% if(ncol(vars) > 5) { %> In the case we have several variables, the plot could be a little bit confusing but it still helps us to explore the number of the Principal Components. <% } %>
 
-<%= 
-biplot(prcomp(vars)) 
+<%=
+biplot(prcomp(vars))
 %>
 
 <% if (rot.matrix) { %>
@@ -98,7 +98,7 @@ biplot(prcomp(vars))
 ## Rotation
 
 
-<%= 
+<%=
 ifelse(rot.matrix,"As you wanted to check the Rotation matrix let us present that for you:","")
 if (rot.matrix) {
 rot <- as.matrix(prcomp(vars)$rotation[,1:components])
@@ -116,8 +116,8 @@ The cells written in bold shows which components explain the most variances of t
 <%=neg.comp <- colnames(rot)[which(rot < -0.3, arr.ind = TRUE)[, 2]]%>
 
 From them in the case<%=ifelse(neg.comp < 1, "s", "")%> of the <%=paste(colnames(rot)[which(rot < -0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(rot < -0.3, arr.ind = TRUE)[, 1]], sep = "'s impact on ")%>, we can say <%=ifelse(neg.comp < 1, "they are", "that is")%> negative.
-  	
+
 <% } else { %>
-We can say that <%=ifelse(length(which(abs(rot) > 0.3)), "none of these impacts are negative", "this impact is positive")%>. 
+We can say that <%=ifelse(length(which(abs(rot) > 0.3)), "none of these impacts are negative", "this impact is positive")%>.
 
 <% }}} %>

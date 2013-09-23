@@ -125,7 +125,7 @@ lm(var ~ 1)
 
 <%=test <- grubbs.test(var); test$method%> shows that <%=ifelse(test$p.value>0.05, 'there are no outliers', test$alternative)%> (p=<%=test$p.value%>).
 
-<%if (references) {%>
+<%if (references) { %>
 
 ## References
 
