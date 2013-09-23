@@ -50,28 +50,34 @@ rapport("ANOVA", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-
 {% endhighlight %}
 </div></li>
 	<li id="inputs-ANOVA"><div><h5>Input parameters</h5><em>ANOVA.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "resp" (Response variable)  *required
- Dependent (response) variable
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "fac" (Factor variables)  *required
- Independent variables (factors)
-   - class:		factor
-   - standalone:	no
-   - length:		from 1 to 2 vectors
- 
- "fac.intr" (Factor interaction)
- Include factor interaction
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		TRUE
- </ul></div></li>
+	<li><h6>resp: <small><em>Response variable</em></small></h6>
+<div class="options">    <div class="options-desc">Dependent (response) variable
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>fac: <small><em>Factor variables</em></small></h6>
+<div class="options">    <div class="options-desc">Independent variables (factors)
+</div>
+    <em>Class:</em>	factor
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>fac.intr: <small><em>Factor interaction</em></small></h6>
+<div class="options">    <div class="options-desc">Include factor interaction
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-ANOVA">
 {% highlight text %}
 
@@ -199,7 +205,7 @@ Here you can see several diagnostic plots for ANOVA model:
  - normal Q-Q plot
  - residuals against leverages
 
-[![](plots/ANOVA-9.png)](plots/ANOVA-9-hires.png)
+[![](plots/rapport-ANOVA-31-1.png)](plots/rapport-ANOVA-31-1-hires.png)
 
 # ANOVA Summary
 
@@ -249,7 +255,7 @@ There are no categories which differ significantly here.
 
 Below you can see the result of the post hoc test on a plot.
 
-[![](plots/ANOVA-10.png)](plots/ANOVA-10-hires.png)
+[![](plots/rapport-ANOVA-31-2.png)](plots/rapport-ANOVA-31-2-hires.png)
 
 
 #######################################################################################################
@@ -391,7 +397,7 @@ Here you can see several diagnostic plots for ANOVA model:
  - normal Q-Q plot
  - residuals against leverages
 
-[![](plots/ANOVA-11.png)](plots/ANOVA-11-hires.png)
+[![](plots/rapport-ANOVA-32-1.png)](plots/rapport-ANOVA-32-1-hires.png)
 
 # ANOVA Summary
 
@@ -517,7 +523,7 @@ There are no categories which differ significantly here.
 
 Below you can see the result of the post hoc test on a plot.
 
-[![](plots/ANOVA-12.png)](plots/ANOVA-12-hires.png)
+[![](plots/rapport-ANOVA-32-2.png)](plots/rapport-ANOVA-32-2-hires.png)
 
 
 {% endhighlight %}
@@ -814,21 +820,25 @@ rapport('BartlettsTest.tpl', data=ius2008, resp='age', group='net.required')
 {% endhighlight %}
 </div></li>
 	<li id="inputs-BartlettsTest"><div><h5>Input parameters</h5><em>BartlettsTest.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "resp" (Response Variable)  *required
- This is the depend variables which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "group" (Grouping Variable)  *required
- This is the grouping variable which will be used here
-   - class:		factor
-   - standalone:	no
-   - length:		exactly 1 vector
- </ul></div></li>
+	<li><h6>resp: <small><em>Response Variable</em></small></h6>
+<div class="options">    <div class="options-desc">This is the depend variables which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>group: <small><em>Grouping Variable</em></small></h6>
+<div class="options">    <div class="options-desc">This is the grouping variable which will be used here
+</div>
+    <em>Class:</em>	factor
+<br>
+
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-BartlettsTest">
 {% highlight text %}
 
@@ -1237,21 +1247,25 @@ rapport('BrownForsythTest.tpl', data=ius2008, resp='edu', group='net.required')
 {% endhighlight %}
 </div></li>
 	<li id="inputs-BrownForsythTest"><div><h5>Input parameters</h5><em>BrownForsythTest.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "resp" (Response Variable)  *required
- This is the depend variables which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "group" (Grouping Variable)  *required
- This is the grouping variable which will be used here
-   - class:		factor
-   - standalone:	no
-   - length:		exactly 1 vector
- </ul></div></li>
+	<li><h6>resp: <small><em>Response Variable</em></small></h6>
+<div class="options">    <div class="options-desc">This is the depend variables which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>group: <small><em>Grouping Variable</em></small></h6>
+<div class="options">    <div class="options-desc">This is the grouping variable which will be used here
+</div>
+    <em>Class:</em>	factor
+<br>
+
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-BrownForsythTest">
 {% highlight text %}
 
@@ -1519,15 +1533,16 @@ rapport('Correlation', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', '
 {% endhighlight %}
 </div></li>
 	<li id="inputs-Correlation"><div><h5>Input parameters</h5><em>Correlation.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "vars" (Variable)  *required
- Numerical variables
-   - class:		numeric
-   - standalone:	no
-   - length:		from 2 to 50 vectors
- </ul></div></li>
+	<li><h6>vars: <small><em>Variable</em></small></h6>
+<div class="options">    <div class="options-desc">Numerical variables
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-Correlation">
 {% highlight text %}
 
@@ -1589,7 +1604,7 @@ Where the stars represent the [significance levels](http://en.wikipedia.org/wiki
 
 On the plot one can see the correlation in two forms: below the [diagonal](http://en.wikipedia.org/wiki/Main_diagonal) visually, above that one can find the coefficient(s).
 
-[![Scatterplot matrix](plots/Correlation-1.png)](plots/Correlation-1-hires.png)
+[![Scatterplot matrix](plots/rapport-Correlation-46-1.png)](plots/rapport-Correlation-46-1-hires.png)
 
 
 #########################################################################################
@@ -1659,7 +1674,7 @@ Where the stars represent the [significance levels](http://en.wikipedia.org/wiki
 
 On the plot one can see the correlation in two forms: below the [diagonal](http://en.wikipedia.org/wiki/Main_diagonal) visually, above that one can find the coefficient(s).
 
-[![Scatterplot matrix](plots/Correlation-2.png)](plots/Correlation-2-hires.png)
+[![Scatterplot matrix](plots/rapport-Correlation-47-1.png)](plots/rapport-Correlation-47-1-hires.png)
 
 
 #############################################################################################################################################
@@ -1861,7 +1876,7 @@ Where the stars represent the [significance levels](http://en.wikipedia.org/wiki
 
 On the plot one can see the correlation in two forms: below the [diagonal](http://en.wikipedia.org/wiki/Main_diagonal) visually, above that one can find the coefficient(s).
 
-[![Scatterplot matrix](plots/Correlation-3.png)](plots/Correlation-3-hires.png)
+[![Scatterplot matrix](plots/rapport-Correlation-48-1.png)](plots/rapport-Correlation-48-1-hires.png)
 
 
 {% endhighlight %}
@@ -1960,10 +1975,10 @@ Highly correlated (r < -0.7 or r > 0.7) variables:
 
 <%=paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i, 1]], colnames(cm)[h[i, 2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')%>
 
-<%} else {%>
+<%} else { %>
 
 There are no highly correlated (r < -0.7 or r > 0.7) variables.
-<%}%>
+<% } %>
 
 <%
 h <- which((cm < 0.2)&(cm > -0.2), arr.ind = T)
@@ -1978,10 +1993,10 @@ if (nrow(h) > 0) {
 }
 %>
 
-<%} else {%>
+<%} else { %>
 
 There are no uncorrelated correlated (r < -0.2 or r > 0.2) variables.
-<%}%>
+<% } %>
 
 # Correlation matrix
 
@@ -2062,21 +2077,25 @@ rapport('Crosstable', data=ius2008, row='email', col='dwell')
 {% endhighlight %}
 </div></li>
 	<li id="inputs-Crosstable"><div><h5>Input parameters</h5><em>Crosstable.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "row" (Row variable)  *required
- A categorical variable.
-   - class:		factor
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "col" (Column variable)  *required
- A categorical variable.
-   - class:		factor
-   - standalone:	no
-   - length:		exactly 1 vector
- </ul></div></li>
+	<li><h6>row: <small><em>Row variable</em></small></h6>
+<div class="options">    <div class="options-desc">A categorical variable.
+</div>
+    <em>Class:</em>	factor
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>col: <small><em>Column variable</em></small></h6>
+<div class="options">    <div class="options-desc">A categorical variable.
+</div>
+    <em>Class:</em>	factor
+<br>
+
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-Crosstable">
 {% highlight text %}
 
@@ -2332,12 +2351,12 @@ At first we can have a look at on the so-called [heat map](http://en.wikipedia.o
 
 The darker colour is one cell painted, the most counts/the higher total percentage it has.
 
-[![Heatmap](plots/Crosstable-1.png)](plots/Crosstable-1-hires.png)
+[![Heatmap](plots/rapport-Crosstable-31-1.png)](plots/rapport-Crosstable-31-1-hires.png)
 
 
 There can be also shown the standardized adjusted residual of each cells:
 
-[![Heatmap of residuals](plots/Crosstable-2.png)](plots/Crosstable-2-hires.png)
+[![Heatmap of residuals](plots/rapport-Crosstable-31-2.png)](plots/rapport-Crosstable-31-2-hires.png)
 
 #### Mosaic chart
 
@@ -2346,7 +2365,7 @@ In front of the heat map, on the *mosaic charts*, not only the colours are impor
 
 The width on the axis of gender determinate one side and the height on the axis of the dwell gives the final shape of the box. The box which demonstrates a cell from the hypothetic crosstable. We can see on the top of the chart which category from the dwell draw the boxes what kind of colour.
 
-[![Mosaic chart](plots/Crosstable-3.png)](plots/Crosstable-3-hires.png)
+[![Mosaic chart](plots/rapport-Crosstable-31-3.png)](plots/rapport-Crosstable-31-3-hires.png)
 
 #### Fluctuation diagram
 
@@ -2356,7 +2375,7 @@ At last but not least have a glance on the *fluctuation diagram*. Unlike the abo
 The bigger are the boxes the higher are the numbers of the counts/the total percentages, which that boxes denote.
 
 
-[![Fluctuation diagram](plots/Crosstable-4.png)](plots/Crosstable-4-hires.png)
+[![Fluctuation diagram](plots/rapport-Crosstable-31-4.png)](plots/rapport-Crosstable-31-4-hires.png)
 
 
 #################################################################################
@@ -2720,12 +2739,12 @@ At first we can have a look at on the so-called [heat map](http://en.wikipedia.o
 
 The darker colour is one cell painted, the most counts/the higher total percentage it has.
 
-[![Heatmap](plots/Crosstable-5.png)](plots/Crosstable-5-hires.png)
+[![Heatmap](plots/rapport-Crosstable-32-1.png)](plots/rapport-Crosstable-32-1-hires.png)
 
 
 There can be also shown the standardized adjusted residual of each cells:
 
-[![Heatmap of residuals](plots/Crosstable-6.png)](plots/Crosstable-6-hires.png)
+[![Heatmap of residuals](plots/rapport-Crosstable-32-2.png)](plots/rapport-Crosstable-32-2-hires.png)
 
 #### Mosaic chart
 
@@ -2734,7 +2753,7 @@ In front of the heat map, on the *mosaic charts*, not only the colours are impor
 
 The width on the axis of email determinate one side and the height on the axis of the dwell gives the final shape of the box. The box which demonstrates a cell from the hypothetic crosstable. We can see on the top of the chart which category from the dwell draw the boxes what kind of colour.
 
-[![Mosaic chart](plots/Crosstable-7.png)](plots/Crosstable-7-hires.png)
+[![Mosaic chart](plots/rapport-Crosstable-32-3.png)](plots/rapport-Crosstable-32-3-hires.png)
 
 #### Fluctuation diagram
 
@@ -2744,7 +2763,7 @@ At last but not least have a glance on the *fluctuation diagram*. Unlike the abo
 The bigger are the boxes the higher are the numbers of the counts/the total percentages, which that boxes denote.
 
 
-[![Fluctuation diagram](plots/Crosstable-8.png)](plots/Crosstable-8-hires.png)
+[![Fluctuation diagram](plots/rapport-Crosstable-32-4.png)](plots/rapport-Crosstable-32-4-hires.png)
 
 
 {% endhighlight %}
@@ -3128,14 +3147,14 @@ rapport('Descriptives', data=mtcars, var='hp')
 {% endhighlight %}
 </div></li>
 	<li id="inputs-Descriptives"><div><h5>Input parameters</h5><em>Descriptives.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "var" (Variable)  *required
- Categorical or numerical variable. This template will determine the measurement level of the given variable.
-   - standalone:	no
-   - length:		exactly 1 vector
- </ul></div></li>
+	<li><h6>var: <small><em>Variable</em></small></h6>
+<div class="options">    <div class="options-desc">Categorical or numerical variable. This template will determine the measurement level of the given variable.
+</div>
+
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-Descriptives">
 {% highlight text %}
 
@@ -3171,7 +3190,7 @@ The most frequent value is *male*.
 
 ## Charts
 
-[![Barplot: Gender](plots/Descriptives-1.png)](plots/Descriptives-1-hires.png)
+[![Barplot: Gender](plots/rapport-Descriptives-46-1.png)](plots/rapport-Descriptives-46-1-hires.png)
 
 
 ####################################################################
@@ -3208,7 +3227,7 @@ The highest value found in the dataset is _58_, which is exactly _3.625_ times h
 
 A [histogram](http://en.wikipedia.org/wiki/Histogram) visually shows the [distribution](http://en.wikipedia.org/wiki/Probability_distribution) of the dataset based on artificially allocated [frequencies](http://en.wikipedia.org/wiki/Statistical_frequency). Each bar represents a theoretical interval of the data, where the height shows the count or density.
 
-[![Histogram: Age](plots/Descriptives-2.png)](plots/Descriptives-2-hires.png)
+[![Histogram: Age](plots/rapport-Descriptives-47-1.png)](plots/rapport-Descriptives-47-1-hires.png)
 
 
 If we *suppose* that *Age* is not near to the [normal distribution](http://en.wikipedia.org/wiki/Normal_distribution) (see for example [skewness](http://en.wikipedia.org/wiki/Skewness): _1.925_, [kurtosis](http://en.wikipedia.org/wiki/Kurtosis): _4.463_), checking the median (_23_) might be a better option instead of the mean. The [interquartile range](http://en.wikipedia.org/wiki/Interquartile_range) (_6_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
@@ -3250,7 +3269,7 @@ The highest value found in the dataset is _335_, which is exactly _6.442_ times 
 
 A [histogram](http://en.wikipedia.org/wiki/Histogram) visually shows the [distribution](http://en.wikipedia.org/wiki/Probability_distribution) of the dataset based on artificially allocated [frequencies](http://en.wikipedia.org/wiki/Statistical_frequency). Each bar represents a theoretical interval of the data, where the height shows the count or density.
 
-[![Histogram: hp](plots/Descriptives-3.png)](plots/Descriptives-3-hires.png)
+[![Histogram: hp](plots/rapport-Descriptives-48-1.png)](plots/rapport-Descriptives-48-1-hires.png)
 
 
 If we *suppose* that *hp* is not near to the [normal distribution](http://en.wikipedia.org/wiki/Normal_distribution) (see for example [skewness](http://en.wikipedia.org/wiki/Skewness): _0.726_, [kurtosis](http://en.wikipedia.org/wiki/Kurtosis): _-0.1356_), checking the median (_123_) might be a better option instead of the mean. The [interquartile range](http://en.wikipedia.org/wiki/Interquartile_range) (_83.5_) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
@@ -3345,7 +3364,7 @@ hist(var)
 
 If we *suppose* that *<%=rp.label(var)%>* is not near to the [normal distribution](http://en.wikipedia.org/wiki/Normal_distribution) (see for example [skewness](http://en.wikipedia.org/wiki/Skewness): <%=rp.skewness(var)%>, [kurtosis](http://en.wikipedia.org/wiki/Kurtosis): <%=rp.kurtosis(var)%>), checking the median (<%=rp.median(var)%>) might be a better option instead of the mean. The [interquartile range](http://en.wikipedia.org/wiki/Interquartile_range) (<%=rp.iqr(var)%>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
 
-<%} else {%>
+<%} else { %>
 
 <%=
 set.caption(sprintf('Frequency table: %s', rp.label(var)))
@@ -3361,7 +3380,7 @@ set.caption(sprintf('Barplot: %s', rp.label(var)))
 rp.barplot(var)
 %>
 
-<%}%>
+<% } %>
 
 {% endhighlight %}
 </div></li>
@@ -3393,56 +3412,61 @@ rapport('FactorAnalysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl', 
 {% endhighlight %}
 </div></li>
 	<li id="inputs-FactorAnalysis"><div><h5>Input parameters</h5><em>FactorAnalysis.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "vars" (Used Variables)  *required
- The Variables that will be used in Factor Analysis
-   - class:		numeric
-   - standalone:	no
-   - length:		from 2 to 500 vectors
- 
- "fact.num" (Number of Factors)
- How many Factors you want to use?
-   - class:		integer
-   - standalone:	yes
-   - length:		exactly 1 value
-   - limits:		1 <= x <= 499
- 
- "method" (Method of factoring)
- The used method of the factoring
-   - class:		character
-   - standalone:	yes
-   - length:		exactly 1 value
-   - matchable:		TRUE
-   - options:		"minimum residual (OLS)", "weighted least squares (WLS)", "generalized weighted least squares (GLS)", "maximum likelihood" and "minimize the sample size weighted chi square"
-   - value:		"maximum likelihood"
- 
- "rot.method" (Method of Rotation)
- The used method of the rotation
-   - class:		character
-   - standalone:	yes
-   - length:		exactly 1 value
-   - matchable:		TRUE
-   - options:		"none", "varimax", "promax", "quartimax", "bentlerT", "geominT", "bifactor", "oblimin", "simplimax", "bentlerQ", "geominQ", "biquartimin" and "cluster"
-   - value:		"varimax"
- 
- "fa.scores" (Type of scores)
- Type of scores to produce
-   - class:		character
-   - standalone:	yes
-   - length:		exactly 1 value
-   - matchable:		TRUE
-   - options:		"regression" and "Bartlett"
-   - value:		"regression"
- 
- "max.iter" (Maximum iterations)
- Maximum number of iterations for convergence
-   - class:		integer
-   - standalone:	yes
-   - length:		exactly 1 value
-   - limits:		1 <= x <= 10000
- </ul></div></li>
+	<li><h6>vars: <small><em>Used Variables</em></small></h6>
+<div class="options">    <div class="options-desc">The Variables that will be used in Factor Analysis
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>fact.num: <small><em>Number of Factors</em></small></h6>
+<div class="options">    <div class="options-desc">How many Factors you want to use?
+</div>
+    <em>Class:</em>	integer
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>method: <small><em>Method of factoring</em></small></h6>
+<div class="options">    <div class="options-desc">The used method of the factoring
+</div>
+    <em>Class:</em>	character
+<br>
+    <em>Default value:</em>	maximum likelihood
+</div>
+</li>
+<br>
+<li><h6>rot.method: <small><em>Method of Rotation</em></small></h6>
+<div class="options">    <div class="options-desc">The used method of the rotation
+</div>
+    <em>Class:</em>	character
+<br>
+    <em>Default value:</em>	varimax
+</div>
+</li>
+<br>
+<li><h6>fa.scores: <small><em>Type of scores</em></small></h6>
+<div class="options">    <div class="options-desc">Type of scores to produce
+</div>
+    <em>Class:</em>	character
+<br>
+    <em>Default value:</em>	regression
+</div>
+</li>
+<br>
+<li><h6>max.iter: <small><em>Maximum iterations</em></small></h6>
+<div class="options">    <div class="options-desc">Maximum number of iterations for convergence
+</div>
+    <em>Class:</em>	integer
+<br>
+
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-FactorAnalysis">
 {% highlight text %}
 
@@ -3460,7 +3484,7 @@ rapport('FactorAnalysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl', 
 
 #### Determining the number of the factors
 
-[![](plots/FactorAnalysis.tpl-1.png)](plots/FactorAnalysis.tpl-1-hires.png)
+[![](plots/rapport-FactorAnalysis.tpl-16-1.png)](plots/rapport-FactorAnalysis.tpl-16-1-hires.png)
 
 #### Eigenvalues
 
@@ -3932,28 +3956,34 @@ rapport('FTest', data=mtcars, xvar='cyl', yvar='drat', norm.check=F)
 {% endhighlight %}
 </div></li>
 	<li id="inputs-FTest"><div><h5>Input parameters</h5><em>FTest.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "xvar" (X Variable(s))  *required
- This is the X variable which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "yvar" (Y Variable(s))  *required
- This is the Y variable which will be used here.
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "norm.check" (Normality check)
- You can set to run a normality check before the F test.
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		TRUE
- </ul></div></li>
+	<li><h6>xvar: <small><em>X Variable(s)</em></small></h6>
+<div class="options">    <div class="options-desc">This is the X variable which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>yvar: <small><em>Y Variable(s)</em></small></h6>
+<div class="options">    <div class="options-desc">This is the Y variable which will be used here.
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>norm.check: <small><em>Normality check</em></small></h6>
+<div class="options">    <div class="options-desc">You can set to run a normality check before the F test.
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-FTest">
 {% highlight text %}
 
@@ -4354,33 +4384,34 @@ We can see from the table (in the p-value coloumn) that there is<%=ifelse(f.p < 
 <br>
 <em>Example:</em> </div></li>
 	<li id="inputs-GenerateBeta"><div><h5>Input parameters</h5><em>GenerateBeta.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "n" (Observations)  *required
- Number of observations
-   - class:		numeric
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		100
-   - limits:		1 <= x <= Inf
- 
- "shape1" (Alpha)  *required
- First parameter of the Beta distribution
-   - class:		numeric
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		0.1
-   - limits:		0 <= x <= 100
- 
- "shape2" (Beta)  *required
- Second parameter of the Beta distribution
-   - class:		numeric
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		0.1
-   - limits:		0 <= x <= 100
- </ul></div></li>
+	<li><h6>n: <small><em>Observations</em></small></h6>
+<div class="options">    <div class="options-desc">Number of observations
+</div>
+    <em>Class:</em>	numeric
+<br>
+    <em>Default value:</em>	100
+</div>
+</li>
+<br>
+<li><h6>shape1: <small><em>Alpha</em></small></h6>
+<div class="options">    <div class="options-desc">First parameter of the Beta distribution
+</div>
+    <em>Class:</em>	numeric
+<br>
+    <em>Default value:</em>	0.1
+</div>
+</li>
+<br>
+<li><h6>shape2: <small><em>Beta</em></small></h6>
+<div class="options">    <div class="options-desc">Second parameter of the Beta distribution
+</div>
+    <em>Class:</em>	numeric
+<br>
+    <em>Default value:</em>	0.1
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-GenerateBeta">No examples provided with template, sorry.</li>
 	<li id="export-GenerateBeta">No examples provided with template, sorry.</li>
 	<li id="source-GenerateBeta"><div>
@@ -4543,36 +4574,41 @@ rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inte
 {% endhighlight %}
 </div></li>
 	<li id="inputs-GLM"><div><h5>Input parameters</h5><em>GLM.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "dep" (Dependent Variable)  *required
- These are the dependent variables which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		from 1 to 100 vectors
- 
- "indep" (Independent Variable)  *required
- These are the independent variables which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		from 1 to 100 vectors
- 
- "indep.inter" (Interaction)
- Interaction between the independent variables
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		TRUE
- 
- "family" (Method of GLM)
-   - class:		character
-   - standalone:	yes
-   - length:		exactly 1 value
-   - matchable:		TRUE
-   - options:		"gaussian", "binomial", "Gamma" and "poisson"
-   - value:		"gaussian"
- </ul></div></li>
+	<li><h6>dep: <small><em>Dependent Variable</em></small></h6>
+<div class="options">    <div class="options-desc">These are the dependent variables which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>indep: <small><em>Independent Variable</em></small></h6>
+<div class="options">    <div class="options-desc">These are the independent variables which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>indep.inter: <small><em>Interaction</em></small></h6>
+<div class="options">    <div class="options-desc">Interaction between the independent variables
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+<li><h6>family: <small><em>Method of GLM</em></small></h6>
+<div class="options">    <em>Class:</em>	character
+<br>
+    <em>Default value:</em>	gaussian
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-GLM">
 {% highlight text %}
 
@@ -4865,183 +4901,43 @@ From the table one can see that <%= paste(pandoc.list.return(paste(rownames(summ
 <br><br>
 <em>Required packages:</em> mclust
 <br>
-<em>Example:</em> 
-{% highlight text %}
-rapport('HierarchicalClusterAnalysis.tpl', data = ius2008, vars = c('age', 'edu'))
-rapport('HierarchicalClusterAnalysis.tpl', data=ius2008, vars = c('age', 'edu'), clust.num = 30)
-rapport('HierarchicalClusterAnalysis.tpl', data = mtcars, vars = c('drat', 'cyl', 'mpg'), clust.num = 30, method = "average")
-{% endhighlight %}
-</div></li>
+<em>Example:</em> </div></li>
 	<li id="inputs-HierarchicalClusterAnalysis"><div><h5>Input parameters</h5><em>HierarchicalClusterAnalysis.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "vars" (Used Variables)  *required
-   - class:		numeric
-   - standalone:	no
-   - length:		from 2 to 5000 vectors
- 
- "dist.mat" (Distance Matrix)
- Is your data a Distance matrix?
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		FALSE
- 
- "method" (Method)
-   - class:		character
-   - standalone:	yes
-   - length:		exactly 1 value
-   - matchable:		TRUE
-   - options:		"ward", "single", "complete", "average", "mcquitty", "median" and "centroid"
-   - value:		"ward"
- 
- "clust.num" (Number of Clusters)
- How many clusters you want to check on the Dendogram?
-   - class:		integer
-   - standalone:	yes
-   - length:		exactly 1 value
-   - limits:		2 <= x <= 9999
- </ul></div></li>
-	<li id="example-HierarchicalClusterAnalysis">
-{% highlight text %}
-
-
-######################################################################################################
-##	 Running: rapport('HierarchicalClusterAnalysis.tpl', data = ius2008, vars = c('age', 'edu'))
-######################################################################################################
-
-# Introduction
-
-
-[Hierarchical Cluster Analysis](http://en.wikipedia.org/wiki/Hierarchical_clustering) is a data mining method which seeks to build a hierarchy of clusters. Clusters are calculated based on the distances between the observations. At the beginning each observation is assigned to be a single cluster, later in every round the most similar clusters will be joined until all observations are in one cluster. One should not mix it up with [K-means Cluster Analysis](http://en.wikipedia.org/wiki/K-means_clustering), which calculates the clusters based on the final numbers of them.
-
-
-# HCA
-
-
-Below you can see on the plot how the clusters were made, how the observations were paired with each other. The horizontal linkage between the vertical lines indicates the stage where two clusters joined to each other. In the bottom of the plot you can see the clustering process in an other way, for each observations the shorter lines indicate later clustering. 
-
-[![](plots/HierarchicalClusterAnalysis.tpl-6.png)](plots/HierarchicalClusterAnalysis.tpl-6-hires.png)
-
-
-
-We can say that _438_ observations have the same values on the used variables, so they were joined in the first _438_ round. After that _40_ times there were only made clusters with 2 observations, the first cluster that contains 3 was made in the round _478_.
-
-
-
-### Optimal number of clusters
-
-
-
-According to the BIC for EM initialized by hierarchical clustering for parameterized Gaussian mixture models, the optimum numbers of the clusters are _8_.
-
-Let's see how the Dendogram looks like when we the optimal number of the clusters (_8_) plotted in it.
-[![](plots/HierarchicalClusterAnalysis.tpl-2.png)](plots/HierarchicalClusterAnalysis.tpl-2-hires.png)
-
-
-####################################################################################################################
-##	 Running: rapport('HierarchicalClusterAnalysis.tpl', data=ius2008, vars = c('age', 'edu'), clust.num = 30)
-####################################################################################################################
-
-# Introduction
-
-
-[Hierarchical Cluster Analysis](http://en.wikipedia.org/wiki/Hierarchical_clustering) is a data mining method which seeks to build a hierarchy of clusters. Clusters are calculated based on the distances between the observations. At the beginning each observation is assigned to be a single cluster, later in every round the most similar clusters will be joined until all observations are in one cluster. One should not mix it up with [K-means Cluster Analysis](http://en.wikipedia.org/wiki/K-means_clustering), which calculates the clusters based on the final numbers of them.
-
-
-# HCA
-
-
-Below you can see on the plot how the clusters were made, how the observations were paired with each other. The horizontal linkage between the vertical lines indicates the stage where two clusters joined to each other. In the bottom of the plot you can see the clustering process in an other way, for each observations the shorter lines indicate later clustering. 
-
-The red boxes shows the last 30 clusters.
-[![](plots/HierarchicalClusterAnalysis.tpl-3.png)](plots/HierarchicalClusterAnalysis.tpl-3-hires.png)
-
-
-
-We can say that _438_ observations have the same values on the used variables, so they were joined in the first _438_ round. After that _40_ times there were only made clusters with 2 observations, the first cluster that contains 3 was made in the round _478_.
-
-
-
-### Optimal number of clusters
-
-
-
-According to the BIC for EM initialized by hierarchical clustering for parameterized Gaussian mixture models, the optimum numbers of the clusters are _8_.
-
-
-Let's see how the Dendogram looks like when we the optimal number of the clusters plotted in it.
-[![](plots/HierarchicalClusterAnalysis.tpl-2.png)](plots/HierarchicalClusterAnalysis.tpl-2-hires.png)
-
-
-#################################################################################################################################################
-##	 Running: rapport('HierarchicalClusterAnalysis.tpl', data = mtcars, vars = c('drat', 'cyl', 'mpg'), clust.num = 30, method = "average")
-#################################################################################################################################################
-
-# Introduction
-
-
-[Hierarchical Cluster Analysis](http://en.wikipedia.org/wiki/Hierarchical_clustering) is a data mining method which seeks to build a hierarchy of clusters. Clusters are calculated based on the distances between the observations. At the beginning each observation is assigned to be a single cluster, later in every round the most similar clusters will be joined until all observations are in one cluster. One should not mix it up with [K-means Cluster Analysis](http://en.wikipedia.org/wiki/K-means_clustering), which calculates the clusters based on the final numbers of them.
-
-
-# HCA
-
-
-Below you can see on the plot how the clusters were made, how the observations were paired with each other. The horizontal linkage between the vertical lines indicates the stage where two clusters joined to each other. In the bottom of the plot you can see the clustering process in an other way, for each observations the shorter lines indicate later clustering. 
-
-The red boxes shows the last 30 clusters.
-[![](plots/HierarchicalClusterAnalysis.tpl-4.png)](plots/HierarchicalClusterAnalysis.tpl-4-hires.png)
-
-
-
-We can say that _1_ observations have the same values on the used variables, so they were joined in the first _1_ round. After that _8_ times there were only made clusters with 2 observations, the first cluster that contains 3 was made in the round _9_.
-
-
-
-### Optimal number of clusters
-
-
-
-According to the BIC for EM initialized by hierarchical clustering for parameterized Gaussian mixture models, the optimum numbers of the clusters are _7_.
-
-
-Let's see how the Dendogram looks like when we the optimal number of the clusters plotted in it.
-[![](plots/HierarchicalClusterAnalysis.tpl-7.png)](plots/HierarchicalClusterAnalysis.tpl-7-hires.png)
-
-
-{% endhighlight %}
+	<li><h6>vars: <small><em>Used Variables</em></small></h6>
+<div class="options">    <em>Class:</em>	numeric
+<br>
+
+</div>
 </li>
-	<li id="export-HierarchicalClusterAnalysis"><div>
-<h5>Exports of example</h5><em>pandoc</em> and the other backends provide a great number of formats to export your templates.<br>We have generated the following types for demonstartion purposes based on the example command(s):
-{% highlight text %}
+<br>
+<li><h6>dist.mat: <small><em>Distance Matrix</em></small></h6>
+<div class="options">    <div class="options-desc">Is your data a Distance matrix?
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	FALSE
+</div>
+</li>
+<br>
+<li><h6>method: <small><em>Method</em></small></h6>
+<div class="options">    <em>Class:</em>	character
+<br>
+    <em>Default value:</em>	ward
+</div>
+</li>
+<br>
+<li><h6>clust.num: <small><em>Number of Clusters</em></small></h6>
+<div class="options">    <div class="options-desc">How many clusters you want to check on the Dendogram?
+</div>
+    <em>Class:</em>	integer
+<br>
 
-rapport('HierarchicalClusterAnalysis.tpl', data = ius2008, vars = c('age', 'edu'))
-rapport('HierarchicalClusterAnalysis.tpl', data=ius2008, vars = c('age', 'edu'), clust.num = 30)
-rapport('HierarchicalClusterAnalysis.tpl', data = mtcars, vars = c('drat', 'cyl', 'mpg'), clust.num = 30, method = "average")
-
-{% endhighlight %}
-<h6>Popular formats:</h6>
-<ul>
-	<li><a href="demo/HierarchicalClusterAnalysis.html" target="_blank">HTML</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.pdf" target="_blank">pdf</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.docx">docx (MS Word 2007 format)</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.odt">odt (MS Word compatible)</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.rtf">rtf (MS Word compatible)</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.epub">epub</a></li>
-</ul>
-<h6>Other morkdown formats</h6>
-<ul>
-	<li><a href="demo/HierarchicalClusterAnalysis.textile" target="_blank">textile</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.docbook" target="_blank">docbook</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.man" target="_blank">man</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.md" target="_blank">markdown</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.mediawiki" target="_blank">mediawiki</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.wiki" target="_blank">wiki</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.org" target="_blank">org</a></li>
-	<li><a href="demo/HierarchicalClusterAnalysis.pandoc" target="_blank">pandoc</a></li>
-</ul>
-</div></li>
+</div>
+</li>
+<br>
+</ul></div></li>
+	<li id="example-HierarchicalClusterAnalysis">No examples provided with template, sorry.</li>
+	<li id="export-HierarchicalClusterAnalysis">No examples provided with template, sorry.</li>
 	<li id="source-HierarchicalClusterAnalysis"><div>
 <h5>Source of `HierarchicalClusterAnalysis.tpl`</h5>
 {% highlight text %}
@@ -5194,21 +5090,25 @@ rapport('HomogeneityCrosstable', data=ius2008, var='gender', split='dwell')
 {% endhighlight %}
 </div></li>
 	<li id="inputs-HomogeneityCrosstable"><div><h5>Input parameters</h5><em>HomogeneityCrosstable.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "var" (Variable to analyse)  *required
- Variable to analyse
-   - class:		factor
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "split" (Split variable)  *required
- Split variable
-   - class:		factor
-   - standalone:	no
-   - length:		exactly 1 vector
- </ul></div></li>
+	<li><h6>var: <small><em>Variable to analyse</em></small></h6>
+<div class="options">    <div class="options-desc">Variable to analyse
+</div>
+    <em>Class:</em>	factor
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>split: <small><em>Split variable</em></small></h6>
+<div class="options">    <div class="options-desc">Split variable
+</div>
+    <em>Class:</em>	factor
+<br>
+
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-HomogeneityCrosstable">
 {% highlight text %}
 
@@ -5404,22 +5304,25 @@ rapport('KMeansCluster.tpl', data=mtcars, vars=c('drat', 'cyl', 'wt', 'mpg'), cl
 {% endhighlight %}
 </div></li>
 	<li id="inputs-KMeansCluster"><div><h5>Input parameters</h5><em>KMeansCluster.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "vars" (Input variables)  *required
- These are the input variables which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		from 1 to 1000 vectors
- 
- "clust_num" (Number of Clusters)
- One can set the Number of the Clusters for the K-Mean Clustering
-   - class:		integer
-   - standalone:	yes
-   - length:		exactly 1 value
-   - limits:		2 <= x <= 9999
- </ul></div></li>
+	<li><h6>vars: <small><em>Input variables</em></small></h6>
+<div class="options">    <div class="options-desc">These are the input variables which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>clust_num: <small><em>Number of Clusters</em></small></h6>
+<div class="options">    <div class="options-desc">One can set the Number of the Clusters for the K-Mean Clustering
+</div>
+    <em>Class:</em>	integer
+<br>
+
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-KMeansCluster">
 {% highlight text %}
 
@@ -5450,7 +5353,7 @@ As it was mentioned above, the speciality of the K-means Cluster method is to se
 
 Let's see how to decide which is the ideal number of them!
 
-[![](plots/KMeansCluster.tpl-6.png)](plots/KMeansCluster.tpl-6-hires.png)
+[![](plots/rapport-KMeansCluster.tpl-46-1.png)](plots/rapport-KMeansCluster.tpl-46-1-hires.png)
 
 
 We can figure out that, as we see how much the Within groups sum of squares decreases if we set a higher number of the groups. So the smaller the difference the smaller the gain we can do with increasing the number of the clusters (thus in this case the larger decreasing means the bigger gain).
@@ -5470,17 +5373,17 @@ The method of the K-means clustering starts with the step to set k number of cen
 The centroids are the observations which are the nearest in average to all the other observations of their group. But it could be also interesting which are the typical values of the clusters! One way to figure out these typical values is to see the group means. The _2_ cluster averages are:
 
 
-----------------------------------------
-         &nbsp;  age     edu    leisure 
---------------- ------ ------- ---------
-  **1.Cluster** 0.3344  1.182    1.002  
+-----------------------------------------
+         &nbsp;   age     edu    leisure 
+--------------- ------- ------- ---------
+  **1.Cluster** 0.7716   1.298   0.5813  
 
-  **2.Cluster** -0.109 -0.3853  -0.3265 
-----------------------------------------
+  **2.Cluster** -0.2448 -0.4118  -0.1844 
+-----------------------------------------
 
 
 
-The size of the above clusters are: _148_ and _454_.
+The size of the above clusters are: _145_ and _457_.
 
 
 ## Results
@@ -5488,7 +5391,7 @@ The size of the above clusters are: _148_ and _454_.
 
 On the chart below we can see the produced groups. To distinct which observation is related to which cluster each of the objects from the same groups have the same figure and there is a circle which shows the border of the clusters.
 
-[![](plots/KMeansCluster.tpl-7.png)](plots/KMeansCluster.tpl-7-hires.png)
+[![](plots/rapport-KMeansCluster.tpl-46-2.png)](plots/rapport-KMeansCluster.tpl-46-2-hires.png)
 
 
 #################################################################################################
@@ -5517,7 +5420,7 @@ As it was mentioned above, the speciality of the K-means Cluster method is to se
 
 Let's see how to decide which is the ideal number of them!
 
-[![](plots/KMeansCluster.tpl-8.png)](plots/KMeansCluster.tpl-8-hires.png)
+[![](plots/rapport-KMeansCluster.tpl-47-1.png)](plots/rapport-KMeansCluster.tpl-47-1-hires.png)
 
 
 We can figure out that, as we see how much the Within groups sum of squares decreases if we set a higher number of the groups. So the smaller the difference the smaller the gain we can do with increasing the number of the clusters (thus in this case the larger decreasing means the bigger gain).
@@ -5539,17 +5442,17 @@ The centroids are the observations which are the nearest in average to all the o
 
 ----------------------------------------------
          &nbsp;  drat    cyl     wt      mpg  
---------------- ------ ------- ------- -------
-  **1.Cluster** -0.882 0.9349  0.8204  -0.8008
+--------------- ------- ------ ------- -------
+  **1.Cluster**  0.838  -1.053 -0.8794  0.946 
 
-  **2.Cluster** 0.3698 0.05499 -0.1447 -0.1122
+  **2.Cluster** -0.4904 0.6649 0.3078  -0.5118
 
-  **3.Cluster** 0.8872 -1.225  -0.952   1.091 
+  **3.Cluster** -1.016  1.015   2.169   -1.37 
 ----------------------------------------------
 
 
 
-The size of the above clusters are: _14_, _7_ and _11_.
+The size of the above clusters are: _13_, _16_ and _3_.
 
 
 ## Results
@@ -5557,7 +5460,7 @@ The size of the above clusters are: _14_, _7_ and _11_.
 
 On the chart below we can see the produced groups. To distinct which observation is related to which cluster each of the objects from the same groups have the same figure and there is a circle which shows the border of the clusters.
 
-[![](plots/KMeansCluster.tpl-9.png)](plots/KMeansCluster.tpl-9-hires.png)
+[![](plots/rapport-KMeansCluster.tpl-47-2.png)](plots/rapport-KMeansCluster.tpl-47-2-hires.png)
 
 
 ##############################################################################################################
@@ -5594,27 +5497,27 @@ The method of the K-means clustering starts with the step to set k number of cen
 The centroids are the observations which are the nearest in average to all the other observations of their group. But it could be also interesting which are the typical values of the clusters! One way to figure out these typical values is to see the group means. The  cluster averages are:
 
 
--------------------------------------------------
-         &nbsp;  drat     cyl      wt      mpg   
---------------- ------- ------- -------- --------
-  **1.Cluster** -1.265  -0.105   0.1229  -0.05652
+------------------------------------------------
+         &nbsp;  drat     cyl     wt      mpg   
+--------------- ------- ------- ------- --------
+  **1.Cluster** -0.7735  1.015  0.4729  -0.6771 
 
-  **2.Cluster** -0.8294  1.015   0.8644   -0.837 
+  **2.Cluster** -0.6856  1.015   2.175  -0.8944 
 
-  **3.Cluster** 0.3898  -1.225  -0.04829  0.5823 
+  **3.Cluster**  1.225  -1.225  -1.374   1.655  
 
-  **4.Cluster** 0.5925  0.08166 -0.1684  -0.1671 
+  **4.Cluster** 0.5925  0.08166 -0.1684 -0.1671 
 
-  **5.Cluster** 0.8247  -1.225   -1.376    1.81  
+  **5.Cluster** -1.265  -0.105  0.1229  -0.05652
 
-  **6.Cluster**  2.026  -1.225   -1.369   1.346  
+  **6.Cluster** 0.4815  -1.225  -0.4459  0.413  
 
-  **7.Cluster** 0.5426  -1.225  -0.7109   0.3002 
--------------------------------------------------
+  **7.Cluster** -1.181   1.015   2.166   -1.608 
+------------------------------------------------
 
 
 
-The size of the above clusters are: _2_, _13_, _2_, _6_, _4_, _2_ and _3_.
+The size of the above clusters are: _10_, _1_, _6_, _6_, _2_, _5_ and _2_.
 
 
 ## Results
@@ -5622,7 +5525,7 @@ The size of the above clusters are: _2_, _13_, _2_, _6_, _4_, _2_ and _3_.
 
 On the chart below we can see the produced groups. To distinct which observation is related to which cluster each of the objects from the same groups have the same figure and there is a circle which shows the border of the clusters.
 
-[![](plots/KMeansCluster.tpl-10.png)](plots/KMeansCluster.tpl-10-hires.png)
+[![](plots/rapport-KMeansCluster.tpl-48-1.png)](plots/rapport-KMeansCluster.tpl-48-1-hires.png)
 
 
 {% endhighlight %}
@@ -5829,21 +5732,25 @@ rapport('KolmogorovSmirnovTest', data=mtcars, xvar='cyl', yvar='carb')
 {% endhighlight %}
 </div></li>
 	<li id="inputs-KolmogorovSmirnovTest"><div><h5>Input parameters</h5><em>KolmogorovSmirnovTest.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "xvar" (X Variable)  *required
- This is the X variable which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "yvar" (Y Variable)  *required
- This is the Y variable which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- </ul></div></li>
+	<li><h6>xvar: <small><em>X Variable</em></small></h6>
+<div class="options">    <div class="options-desc">This is the X variable which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>yvar: <small><em>Y Variable</em></small></h6>
+<div class="options">    <div class="options-desc">This is the Y variable which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-KolmogorovSmirnovTest">
 {% highlight text %}
 
@@ -5863,8 +5770,8 @@ rapport('KolmogorovSmirnovTest', data=mtcars, xvar='cyl', yvar='carb')
 
 Before we use the K-S test to look at the possible statistical differences, it could be useful to see visually the distributions we want to observe. Below lie the [Cumulative Distribution Functions](http://en.wikipedia.org/wiki/Cumulative_distribution_function) of the variables we compared:
 
-[![](plots/KolmogorovSmirnovTest-1.png)](plots/KolmogorovSmirnovTest-1-hires.png)
-[![](plots/KolmogorovSmirnovTest-2.png)](plots/KolmogorovSmirnovTest-2-hires.png)
+[![](plots/rapport-KolmogorovSmirnovTest-31-1.png)](plots/rapport-KolmogorovSmirnovTest-31-1-hires.png)
+[![](plots/rapport-KolmogorovSmirnovTest-31-2.png)](plots/rapport-KolmogorovSmirnovTest-31-2-hires.png)
 
 ## Test results
 
@@ -5903,8 +5810,8 @@ So the variables do not follow the same distribution, according to the Kolmogoro
 
 Before we use the K-S test to look at the possible statistical differences, it could be useful to see visually the distributions we want to observe. Below lie the [Cumulative Distribution Functions](http://en.wikipedia.org/wiki/Cumulative_distribution_function) of the variables we compared:
 
-[![](plots/KolmogorovSmirnovTest-3.png)](plots/KolmogorovSmirnovTest-3-hires.png)
-[![](plots/KolmogorovSmirnovTest-4.png)](plots/KolmogorovSmirnovTest-4-hires.png)
+[![](plots/rapport-KolmogorovSmirnovTest-32-1.png)](plots/rapport-KolmogorovSmirnovTest-32-1-hires.png)
+[![](plots/rapport-KolmogorovSmirnovTest-32-2.png)](plots/rapport-KolmogorovSmirnovTest-32-2-hires.png)
 
 ## Test results
 
@@ -6059,21 +5966,25 @@ rapport('KruskalWallisTest.tpl', data=mtcars, var1='mpg', var2='drat')
 {% endhighlight %}
 </div></li>
 	<li id="inputs-KruskalWallisTest"><div><h5>Input parameters</h5><em>KruskalWallisTest.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "var1" (First Used Variable)  *required
- This is the first variable which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "var2" (Second Used Variable)  *required
- This is the second variable which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- </ul></div></li>
+	<li><h6>var1: <small><em>First Used Variable</em></small></h6>
+<div class="options">    <div class="options-desc">This is the first variable which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>var2: <small><em>Second Used Variable</em></small></h6>
+<div class="options">    <div class="options-desc">This is the second variable which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-KruskalWallisTest">
 {% highlight text %}
 
@@ -6262,34 +6173,43 @@ rapport('LinearRegression.tpl', data=mtcars, dep='carb', indep='cyl', indep.inte
 {% endhighlight %}
 </div></li>
 	<li id="inputs-LinearRegression"><div><h5>Input parameters</h5><em>LinearRegression.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "dep" (Dependent Variable)  *required
- This is the dependent variables which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "indep" (Independent Variable(s))  *required
- These are the independent variables which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		from 1 to 100 vectors
- 
- "indep.inter" (Interaction)  *required
- Should be calculated the interaction between the independent variables
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
- 
- "crPlots" (crplot)
- Plot checking linearity
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		TRUE
- </ul></div></li>
+	<li><h6>dep: <small><em>Dependent Variable</em></small></h6>
+<div class="options">    <div class="options-desc">This is the dependent variables which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>indep: <small><em>Independent Variable(s)</em></small></h6>
+<div class="options">    <div class="options-desc">These are the independent variables which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>indep.inter: <small><em>Interaction</em></small></h6>
+<div class="options">    <div class="options-desc">Should be calculated the interaction between the independent variables
+</div>
+    <em>Class:</em>	logical
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>crPlots: <small><em>crplot</em></small></h6>
+<div class="options">    <div class="options-desc">Plot checking linearity
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-LinearRegression">
 {% highlight text %}
 
@@ -6385,7 +6305,7 @@ References:
 As we want to fit a linear regression model, it is advisable to see if the relationship between the used variables are linear indeed.
 Next to the test statistic of the GVLMA it is advisable to use a graphical device as well to check that linearity. Here we will use the so-called crPlots funtion to do that, which is an abbreviation of the Component + Residual Plot.
 
-[![](plots/LinearRegression.tpl-7.png)](plots/LinearRegression.tpl-7-hires.png)
+[![](plots/rapport-LinearRegression.tpl-46-1.png)](plots/rapport-LinearRegression.tpl-46-1-hires.png)
 
 
 Here comes the question: What do we see on the plot?
@@ -6394,7 +6314,7 @@ We can talk about linearity if the green line did not lie too far from the red.
 
 
 Next to these options there is a possibility to have a glance on the so-called diagnostic plots, which on we can see the residuals in themselves and in standardized forms.
-[![](plots/LinearRegression.tpl-8.png)](plots/LinearRegression.tpl-8-hires.png)
+[![](plots/rapport-LinearRegression.tpl-46-2.png)](plots/rapport-LinearRegression.tpl-46-2-hires.png)
 
 # Results
 
@@ -6521,7 +6441,7 @@ References:
 As we want to fit a linear regression model, it is advisable to see if the relationship between the used variables are linear indeed.
 Next to the test statistic of the GVLMA it is advisable to use a graphical device as well to check that linearity. Here we will use the so-called crPlots funtion to do that, which is an abbreviation of the Component + Residual Plot.
 
-[![](plots/LinearRegression.tpl-9.png)](plots/LinearRegression.tpl-9-hires.png)
+[![](plots/rapport-LinearRegression.tpl-47-1.png)](plots/rapport-LinearRegression.tpl-47-1-hires.png)
 
 
 Here comes the question: What do we see on the plot?
@@ -6530,7 +6450,7 @@ We can talk about linearity if the green line did not lie too far from the red.
 
 
 Next to these options there is a possibility to have a glance on the so-called diagnostic plots, which on we can see the residuals in themselves and in standardized forms.
-[![](plots/LinearRegression.tpl-10.png)](plots/LinearRegression.tpl-10-hires.png)
+[![](plots/rapport-LinearRegression.tpl-47-2.png)](plots/rapport-LinearRegression.tpl-47-2-hires.png)
 
 # Results
 
@@ -6657,7 +6577,7 @@ References:
 As we want to fit a linear regression model, it is advisable to see if the relationship between the used variables are linear indeed.
 Next to the test statistic of the GVLMA it is advisable to use a graphical device as well to check that linearity. Here we will use the so-called crPlots funtion to do that, which is an abbreviation of the Component + Residual Plot.
 
-[![](plots/LinearRegression.tpl-11.png)](plots/LinearRegression.tpl-11-hires.png)
+[![](plots/rapport-LinearRegression.tpl-48-1.png)](plots/rapport-LinearRegression.tpl-48-1-hires.png)
 
 
 Here comes the question: What do we see on the plot?
@@ -6666,7 +6586,7 @@ We can talk about linearity if the green line did not lie too far from the red.
 
 
 Next to these options there is a possibility to have a glance on the so-called diagnostic plots, which on we can see the residuals in themselves and in standardized forms.
-[![](plots/LinearRegression.tpl-12.png)](plots/LinearRegression.tpl-12-hires.png)
+[![](plots/rapport-LinearRegression.tpl-48-2.png)](plots/rapport-LinearRegression.tpl-48-2-hires.png)
 
 # Results
 
@@ -6943,43 +6863,50 @@ rapport('MDS.tpl', data=mtcars, vars=c('drat', 'cyl', 'mpg'), max.dist.num=17, m
 {% endhighlight %}
 </div></li>
 	<li id="inputs-MDS"><div><h5>Input parameters</h5><em>MDS.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "vars" (Used Variables)  *required
- These are the variables which MDS use to differentiate between values
-   - class:		numeric
-   - standalone:	no
-   - length:		from 2 to 100 vectors
- 
- "id" (Labels of the cases)
- On the plot, these names will be shown as the labels of the cases
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "dist.mat" (Distance Matrix)
- Is your data a Distance matrix?
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		FALSE
- 
- "max.dist.num" (Maximum Distance Number)
- Number of pairs with the biggest differences
-   - class:		integer
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		10
-   - limits:		1 <= x <= 1000
- 
- "min.dist.num" (Minimum Distance Number)
- Number of pairs with the smallest distances
-   - class:		integer
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		10
-   - limits:		1 <= x <= 1000
- </ul></div></li>
+	<li><h6>vars: <small><em>Used Variables</em></small></h6>
+<div class="options">    <div class="options-desc">These are the variables which MDS use to differentiate between values
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>id: <small><em>Labels of the cases</em></small></h6>
+<div class="options">    <div class="options-desc">On the plot, these names will be shown as the labels of the cases
+</div>
+
+</div>
+</li>
+<br>
+<li><h6>dist.mat: <small><em>Distance Matrix</em></small></h6>
+<div class="options">    <div class="options-desc">Is your data a Distance matrix?
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	FALSE
+</div>
+</li>
+<br>
+<li><h6>max.dist.num: <small><em>Maximum Distance Number</em></small></h6>
+<div class="options">    <div class="options-desc">Number of pairs with the biggest differences
+</div>
+    <em>Class:</em>	integer
+<br>
+    <em>Default value:</em>	10
+</div>
+</li>
+<br>
+<li><h6>min.dist.num: <small><em>Minimum Distance Number</em></small></h6>
+<div class="options">    <div class="options-desc">Number of pairs with the smallest distances
+</div>
+    <em>Class:</em>	integer
+<br>
+    <em>Default value:</em>	10
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-MDS">
 {% highlight text %}
 
@@ -6999,7 +6926,7 @@ rapport('MDS.tpl', data=mtcars, vars=c('drat', 'cyl', 'mpg'), max.dist.num=17, m
 
 Below you can see a plot, that presents you the distance between the observations, which was calculated based on _Age_, _Internet usage for educational purposes (hours per day)_ and _Internet usage in leisure time (hours per day)_.
 
-[![](plots/MDS.tpl-1.png)](plots/MDS.tpl-1-hires.png)
+[![](plots/rapport-MDS.tpl-46-1.png)](plots/rapport-MDS.tpl-46-1-hires.png)
 
 ### What can be seen here?
 
@@ -7049,7 +6976,7 @@ There are _318_ observations which are the most similar and equal in the same ti
 
 Below you can see a plot, that presents you the distance between the observations, which was calculated based on _Age_, _Internet usage for educational purposes (hours per day)_ and _Internet usage in leisure time (hours per day)_.
 
-[![](plots/MDS.tpl-1.png)](plots/MDS.tpl-1-hires.png)
+[![](plots/rapport-MDS.tpl-47-1.png)](plots/rapport-MDS.tpl-47-1-hires.png)
 
 ### What can be seen here?
 
@@ -7124,7 +7051,7 @@ There are _318_ observations which are the most similar and equal in the same ti
 
 Below you can see a plot, that presents you the distance between the observations, which was calculated based on _drat_, _cyl_ and _mpg_.
 
-[![](plots/MDS.tpl-2.png)](plots/MDS.tpl-2-hires.png)
+[![](plots/rapport-MDS.tpl-48-1.png)](plots/rapport-MDS.tpl-48-1-hires.png)
 
 ### What can be seen here?
 
@@ -7442,29 +7369,34 @@ rapport("NormalityTest", ius2008, var = "leisure", qq.line = FALSE)
 {% endhighlight %}
 </div></li>
 	<li id="inputs-NormalityTest"><div><h5>Input parameters</h5><em>NormalityTest.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "var" (Test variables)  *required
- Variables to test for normality
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "nc.plot" (Normal curve plot)
- Plot normal curve?
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		TRUE
- 
- "qq.line" (Q-Q plot line)
- Add line to Q-Q plot?
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		TRUE
- </ul></div></li>
+	<li><h6>var: <small><em>Test variables</em></small></h6>
+<div class="options">    <div class="options-desc">Variables to test for normality
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>nc.plot: <small><em>Normal curve plot</em></small></h6>
+<div class="options">    <div class="options-desc">Plot normal curve?
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+<li><h6>qq.line: <small><em>Q-Q plot line</em></small></h6>
+<div class="options">    <div class="options-desc">Add line to Q-Q plot?
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-NormalityTest">
 {% highlight text %}
 
@@ -7485,7 +7417,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - $\mu$ - _mean_ or _expectation_ (location parameter)
  - $\sigma^2$ - _variance_ (scale parameter)
 
-[![](plots/NormalityTest-1.png)](plots/NormalityTest-1-hires.png)
+[![](plots/rapport-NormalityTest-46-1.png)](plots/rapport-NormalityTest-46-1-hires.png)
 
 # Normality Tests
 
@@ -7547,21 +7479,21 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-[![](plots/NormalityTest-2.png)](plots/NormalityTest-2-hires.png)
+[![](plots/rapport-NormalityTest-46-2.png)](plots/rapport-NormalityTest-46-2-hires.png)
 
 ## Q-Q Plot
 
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-[![](plots/NormalityTest-3.png)](plots/NormalityTest-3-hires.png)
+[![](plots/rapport-NormalityTest-46-3.png)](plots/rapport-NormalityTest-46-3-hires.png)
 
 ## Kernel Density Plot
 
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-[![](plots/NormalityTest-4.png)](plots/NormalityTest-4-hires.png)
+[![](plots/rapport-NormalityTest-46-4.png)](plots/rapport-NormalityTest-46-4-hires.png)
 
 
 #######################################################################################
@@ -7641,21 +7573,21 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-[![](plots/NormalityTest-2.png)](plots/NormalityTest-2-hires.png)
+[![](plots/rapport-NormalityTest-47-1.png)](plots/rapport-NormalityTest-47-1-hires.png)
 
 ## Q-Q Plot
 
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-[![](plots/NormalityTest-5.png)](plots/NormalityTest-5-hires.png)
+[![](plots/rapport-NormalityTest-47-2.png)](plots/rapport-NormalityTest-47-2-hires.png)
 
 ## Kernel Density Plot
 
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-[![](plots/NormalityTest-4.png)](plots/NormalityTest-4-hires.png)
+[![](plots/rapport-NormalityTest-47-3.png)](plots/rapport-NormalityTest-47-3-hires.png)
 
 
 #######################################################################################
@@ -7674,7 +7606,7 @@ _Normal distribution_ belongs to a _location-scale family_ of distributions, as 
  - $\mu$ - _mean_ or _expectation_ (location parameter)
  - $\sigma^2$ - _variance_ (scale parameter)
 
-[![](plots/NormalityTest-1.png)](plots/NormalityTest-1-hires.png)
+[![](plots/rapport-NormalityTest-48-1.png)](plots/rapport-NormalityTest-48-1-hires.png)
 
 # Normality Tests
 
@@ -7736,21 +7668,21 @@ There are various plots that can help you decide about the normality of the dist
 
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
-[![](plots/NormalityTest-2.png)](plots/NormalityTest-2-hires.png)
+[![](plots/rapport-NormalityTest-48-2.png)](plots/rapport-NormalityTest-48-2-hires.png)
 
 ## Q-Q Plot
 
 
 "Q" in _Q-Q plot_ stands for _quantile_, as this plot compares empirical and theoretical distribution (in this case, _normal_ distribution) by plotting their quantiles against each other. For normal distribution, plotted dots should approximate a "straight", `x = y` line.
 
-[![](plots/NormalityTest-6.png)](plots/NormalityTest-6-hires.png)
+[![](plots/rapport-NormalityTest-48-3.png)](plots/rapport-NormalityTest-48-3-hires.png)
 
 ## Kernel Density Plot
 
 
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
-[![](plots/NormalityTest-4.png)](plots/NormalityTest-4-hires.png)
+[![](plots/rapport-NormalityTest-48-4.png)](plots/rapport-NormalityTest-48-4-hires.png)
 
 
 {% endhighlight %}
@@ -7982,43 +7914,52 @@ rapport('OutlierTest', data=ius2008, var='edu', lund.res=FALSE, references=FALSE
 {% endhighlight %}
 </div></li>
 	<li id="inputs-OutlierTest"><div><h5>Input parameters</h5><em>OutlierTest.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "var" (Variable)  *required
- Numerical variable
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "lund.res" (Residuals)
- Return Lund's residuals?
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		FALSE
- 
- "references" (References)
- Print references?
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		TRUE
- 
- "grubb" (Grubb's test)
- Show Grubb's test?
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		TRUE
- 
- "dixon" (Dixon's test)
- Show Dixon's test?
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		TRUE
- </ul></div></li>
+	<li><h6>var: <small><em>Variable</em></small></h6>
+<div class="options">    <div class="options-desc">Numerical variable
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>lund.res: <small><em>Residuals</em></small></h6>
+<div class="options">    <div class="options-desc">Return Lund's residuals?
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	FALSE
+</div>
+</li>
+<br>
+<li><h6>references: <small><em>References</em></small></h6>
+<div class="options">    <div class="options-desc">Print references?
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+<li><h6>grubb: <small><em>Grubb's test</em></small></h6>
+<div class="options">    <div class="options-desc">Show Grubb's test?
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+<li><h6>dixon: <small><em>Dixon's test</em></small></h6>
+<div class="options">    <div class="options-desc">Show Dixon's test?
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-OutlierTest">
 {% highlight text %}
 
@@ -8048,7 +7989,7 @@ Among the graphical displays the Box plots are quite widespread, because of thei
 
 The Box Plot we used here is based on IQR (Interquartile Range), which is the difference between the higher and the lower quartiles. On the chart the blue box shows the "middle-half" of the data, the so-called whiskers shows the border where from the possible values can be called outliers. The lower whisker is placed 1.5 times below the first quartile, similarly the higher whisker 1.5 times above the third quartile.
 
-[![Boxplot: edu](plots/OutlierTest-1.png)](plots/OutlierTest-1-hires.png)
+[![Boxplot: edu](plots/rapport-OutlierTest-46-1.png)](plots/rapport-OutlierTest-46-1-hires.png)
 
 ## References
 
@@ -8152,7 +8093,7 @@ Among the graphical displays the Box plots are quite widespread, because of thei
 
 The Box Plot we used here is based on IQR (Interquartile Range), which is the difference between the higher and the lower quartiles. On the chart the blue box shows the "middle-half" of the data, the so-called whiskers shows the border where from the possible values can be called outliers. The lower whisker is placed 1.5 times below the first quartile, similarly the higher whisker 1.5 times above the third quartile.
 
-[![Boxplot: edu](plots/OutlierTest-1.png)](plots/OutlierTest-1-hires.png)
+[![Boxplot: edu](plots/rapport-OutlierTest-47-1.png)](plots/rapport-OutlierTest-47-1-hires.png)
 
 ## References
 
@@ -8256,7 +8197,7 @@ Among the graphical displays the Box plots are quite widespread, because of thei
 
 The Box Plot we used here is based on IQR (Interquartile Range), which is the difference between the higher and the lower quartiles. On the chart the blue box shows the "middle-half" of the data, the so-called whiskers shows the border where from the possible values can be called outliers. The lower whisker is placed 1.5 times below the first quartile, similarly the higher whisker 1.5 times above the third quartile.
 
-[![Boxplot: edu](plots/OutlierTest-1.png)](plots/OutlierTest-1-hires.png)
+[![Boxplot: edu](plots/rapport-OutlierTest-48-1.png)](plots/rapport-OutlierTest-48-1-hires.png)
 
 ## References
 
@@ -8450,7 +8391,7 @@ lm(var ~ 1)
 
 <%=test <- grubbs.test(var); test$method%> shows that <%=ifelse(test$p.value>0.05, 'there are no outliers', test$alternative)%> (p=<%=test$p.value%>).
 
-<%if (references) {%>
+<%if (references) { %>
 
 ## References
 
@@ -8507,39 +8448,43 @@ rapport('PCA.tpl', data=mtcars, vars=c('carb', 'mpg', 'cyl', 'drat'), components
 {% endhighlight %}
 </div></li>
 	<li id="inputs-PCA"><div><h5>Input parameters</h5><em>PCA.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "vars" (Used Variables)  *required
- Which variables would you use?
-   - class:		numeric
-   - standalone:	no
-   - length:		from 2 to 1000 vectors
- 
- "components" (Number of Components)  *required
- How many Principal Components you want to use?
-   - class:		integer
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		2
-   - limits:		1 <= x <= 999
- 
- "rot.matrix" (Rotation Matrix)
- Would you check the Rotation Matrix?
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		TRUE
- 
- "rot.method" (Method of Rotation)
- Which rotation method would you use?
-   - class:		character
-   - standalone:	yes
-   - length:		exactly 1 value
-   - matchable:		TRUE
-   - options:		"none", "varimax", "quartimax", "promax", "oblimin", "simplimax" and "cluster"
-   - value:		"varimax"
- </ul></div></li>
+	<li><h6>vars: <small><em>Used Variables</em></small></h6>
+<div class="options">    <div class="options-desc">Which variables would you use?
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>components: <small><em>Number of Components</em></small></h6>
+<div class="options">    <div class="options-desc">How many Principal Components you want to use?
+</div>
+    <em>Class:</em>	integer
+<br>
+    <em>Default value:</em>	2
+</div>
+</li>
+<br>
+<li><h6>rot.matrix: <small><em>Rotation Matrix</em></small></h6>
+<div class="options">    <div class="options-desc">Would you check the Rotation Matrix?
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	TRUE
+</div>
+</li>
+<br>
+<li><h6>rot.method: <small><em>Method of Rotation</em></small></h6>
+<div class="options">    <div class="options-desc">Which rotation method would you use?
+</div>
+    <em>Class:</em>	character
+<br>
+    <em>Default value:</em>	varimax
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-PCA">
 {% highlight text %}
 
@@ -8550,14 +8495,13 @@ rapport('PCA.tpl', data=mtcars, vars=c('carb', 'mpg', 'cyl', 'drat'), components
 
 # Introduction
 
- 
+
 [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) is a dimension reduction method. It produces linearly independent principal components using the variances of the observations in a set of variables.
- 
- 
+
+
 
 # Results
 
- 
 
 ---------------------------------------------------
            &nbsp;             PC1     PC2     PC3  
@@ -8578,7 +8522,7 @@ From the table above one can see that the first _3_ Principal Components contain
 
 It could be informative to see visually how the observations lies on these components. On that two dimensional plot below, where the axes are the components which contains the two most variances, you can see (the red vectors) the effect of the variables as well. 
 
-[![](plots/PCA.tpl-1.png)](plots/PCA.tpl-1-hires.png)
+[![](plots/rapport-PCA.tpl-31-1.png)](plots/rapport-PCA.tpl-31-1-hires.png)
 
 ## Rotation
 
@@ -8609,7 +8553,7 @@ The cells written in bold shows which components explain the most variances of t
 
 
 
-We can say that none of these impacts are negative. 
+We can say that none of these impacts are negative.
 
 
 
@@ -8620,14 +8564,13 @@ We can say that none of these impacts are negative.
 
 # Introduction
 
- 
+
 [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) is a dimension reduction method. It produces linearly independent principal components using the variances of the observations in a set of variables.
- 
- 
+
+
 
 # Results
 
- 
 
 ---------------------------------------------------
            &nbsp;             PC1     PC2     PC3  
@@ -8648,7 +8591,7 @@ From the table above one can see that the first _3_ Principal Components contain
 
 It could be informative to see visually how the observations lies on these components. On that two dimensional plot below, where the axes are the components which contains the two most variances, you can see (the red vectors) the effect of the variables as well. 
 
-[![](plots/PCA.tpl-1.png)](plots/PCA.tpl-1-hires.png)
+[![](plots/rapport-PCA.tpl-32-1.png)](plots/rapport-PCA.tpl-32-1-hires.png)
 
 ## Rotation
 
@@ -8679,7 +8622,7 @@ The cells written in bold shows which components explain the most variances of t
 
 
 
-We can say that none of these impacts are negative. 
+We can say that none of these impacts are negative.
 
 
 
@@ -8725,7 +8668,7 @@ meta:
   author: Daniel Nagy
   description: In this template Rapporter will present you Principal Component Analysis.
   email: ~
-  packages: 
+  packages:
   - psych
   - GPArotation
   example:
@@ -8792,26 +8735,26 @@ Your request cannot be implemented, because there are more components (<%= compo
 
 
 # Introduction
- 
+
 [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) is a dimension reduction method. It produces linearly independent principal components using the variances of the observations in a set of variables.
- 
- 
+
+
 # Results
- 
+
 <%=
 vars <- na.omit(vars)
 summ <- as.matrix(summary(prcomp(vars))$importance[, 1:components])
 if (components == 1) colnames(summ)[1] <- "PC1"
 summ
 %>
-From the table above one can see that the <%=ifelse(components == 1, "", "first")%> <%=components%> Principal Component<%=ifelse(components == 1, '', 's')%> contains the <%=paste(summary(prcomp(vars))$importance[2, 1:components] * 100, "%")%> of the variance<%=ifelse(components == 1, '', 's')%><% if (components != 1) {%>, so together the <%=paste(sum(summary(prcomp(vars))$importance[2, 1:components] * 100), "%")%> of that.<%} else{%>.<%}%>
+From the table above one can see that the <%=ifelse(components == 1, "", "first")%> <%=components%> Principal Component<%=ifelse(components == 1, '', 's')%> contains the <%=paste(summary(prcomp(vars))$importance[2, 1:components] * 100, "%")%> of the variance<%=ifelse(components == 1, '', 's')%><% if (components != 1) { %>, so together the <%=paste(sum(summary(prcomp(vars))$importance[2, 1:components] * 100), "%")%> of that.<% } else { %>.<% } %>
 
 ### Visual representation
 
 It could be informative to see visually how the observations lies on these components. On that two dimensional plot below, where the axes are the components which contains the two most variances, you can see (the red vectors) the effect of the variables as well. <% if(ncol(vars) > 5) { %> In the case we have several variables, the plot could be a little bit confusing but it still helps us to explore the number of the Principal Components. <% } %>
 
-<%= 
-biplot(prcomp(vars)) 
+<%=
+biplot(prcomp(vars))
 %>
 
 <% if (rot.matrix) { %>
@@ -8819,7 +8762,7 @@ biplot(prcomp(vars))
 ## Rotation
 
 
-<%= 
+<%=
 ifelse(rot.matrix,"As you wanted to check the Rotation matrix let us present that for you:","")
 if (rot.matrix) {
 rot <- as.matrix(prcomp(vars)$rotation[,1:components])
@@ -8837,9 +8780,9 @@ The cells written in bold shows which components explain the most variances of t
 <%=neg.comp <- colnames(rot)[which(rot < -0.3, arr.ind = TRUE)[, 2]]%>
 
 From them in the case<%=ifelse(neg.comp < 1, "s", "")%> of the <%=paste(colnames(rot)[which(rot < -0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(rot < -0.3, arr.ind = TRUE)[, 1]], sep = "'s impact on ")%>, we can say <%=ifelse(neg.comp < 1, "they are", "that is")%> negative.
-  	
+
 <% } else { %>
-We can say that <%=ifelse(length(which(abs(rot) > 0.3)), "none of these impacts are negative", "this impact is positive")%>. 
+We can say that <%=ifelse(length(which(abs(rot) > 0.3)), "none of these impacts are negative", "this impact is positive")%>.
 
 <% }}} %>
 
@@ -8872,58 +8815,68 @@ rapport("TTest", ius2008, x = "leisure", mu = 3.2)
 {% endhighlight %}
 </div></li>
 	<li id="inputs-TTest"><div><h5>Input parameters</h5><em>TTest.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "x" (X variable)  *required
- Dependent (response) variable
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "y" (Y variable)
- Independent variable (factor, or another numeric)
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "alter" (Alternative hypothesis)
- Whether two-sided, greater or less variant will be applied
-   - class:		character
-   - standalone:	yes
-   - length:		exactly 1 value
-   - matchable:		TRUE
-   - options:		"two.sided", "less" and "greater"
-   - value:		"two.sided"
- 
- "mu" (Mean value)
- Mean value for one-sample t-test
-   - class:		numeric
-   - standalone:	yes
-   - length:		exactly 1 value
-   - limits:		-Inf <= x <= Inf
- 
- "paired" (Paired t-test)
- Carry out paired t-test or not
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		FALSE
- 
- "var.equal" (Variance equality)
- Equal variances assumed: choose automatically or not
-   - class:		logical
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		FALSE
- 
- "ci.level" (Confidence interval)
- Confidence interval level
-   - class:		numeric
-   - standalone:	yes
-   - length:		exactly 1 value
-   - value:		0.95
-   - limits:		0 <= x <= 1
- </ul></div></li>
+	<li><h6>x: <small><em>X variable</em></small></h6>
+<div class="options">    <div class="options-desc">Dependent (response) variable
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>y: <small><em>Y variable</em></small></h6>
+<div class="options">    <div class="options-desc">Independent variable (factor, or another numeric)
+</div>
+
+</div>
+</li>
+<br>
+<li><h6>alter: <small><em>Alternative hypothesis</em></small></h6>
+<div class="options">    <div class="options-desc">Whether two-sided, greater or less variant will be applied
+</div>
+    <em>Class:</em>	character
+<br>
+    <em>Default value:</em>	two.sided
+</div>
+</li>
+<br>
+<li><h6>mu: <small><em>Mean value</em></small></h6>
+<div class="options">    <div class="options-desc">Mean value for one-sample t-test
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>paired: <small><em>Paired t-test</em></small></h6>
+<div class="options">    <div class="options-desc">Carry out paired t-test or not
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	FALSE
+</div>
+</li>
+<br>
+<li><h6>var.equal: <small><em>Variance equality</em></small></h6>
+<div class="options">    <div class="options-desc">Equal variances assumed: choose automatically or not
+</div>
+    <em>Class:</em>	logical
+<br>
+    <em>Default value:</em>	FALSE
+</div>
+</li>
+<br>
+<li><h6>ci.level: <small><em>Confidence interval</em></small></h6>
+<div class="options">    <div class="options-desc">Confidence interval level
+</div>
+    <em>Class:</em>	numeric
+<br>
+    <em>Default value:</em>	0.95
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-TTest">
 {% highlight text %}
 
@@ -9344,29 +9297,32 @@ rapport('WilcoxonTest.tpl', data=mtcars, var1='mpg', var2='cyl')
 {% endhighlight %}
 </div></li>
 	<li id="inputs-WilcoxonTest"><div><h5>Input parameters</h5><em>WilcoxonTest.tpl</em> template has the following options to be (optionally) set while calling <em>rapport</em>:<ul>
-	
- Inputs
- 
- "var1" (Variable1)  *required
- This is the first variable which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "var2" (Variable2)  *required
- This is the second variable which will be used here
-   - class:		numeric
-   - standalone:	no
-   - length:		exactly 1 vector
- 
- "alter" (Alternative hypothesis)
-   - class:		character
-   - standalone:	yes
-   - length:		exactly 1 value
-   - matchable:		TRUE
-   - options:		"two.sided", "less" and "greater"
-   - value:		"two.sided"
- </ul></div></li>
+	<li><h6>var1: <small><em>Variable1</em></small></h6>
+<div class="options">    <div class="options-desc">This is the first variable which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>var2: <small><em>Variable2</em></small></h6>
+<div class="options">    <div class="options-desc">This is the second variable which will be used here
+</div>
+    <em>Class:</em>	numeric
+<br>
+
+</div>
+</li>
+<br>
+<li><h6>alter: <small><em>Alternative hypothesis</em></small></h6>
+<div class="options">    <em>Class:</em>	character
+<br>
+    <em>Default value:</em>	two.sided
+</div>
+</li>
+<br>
+</ul></div></li>
 	<li id="example-WilcoxonTest">
 {% highlight text %}
 
