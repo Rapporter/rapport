@@ -90,17 +90,17 @@
 }
 \examples{
 \dontrun{
-rapport("example", ius2008, var = "leisure")
-rapport("example", ius2008, var = "leisure", desc = FALSE, hist = TRUE, theme = "Set1")
+rapport('Example', ius2008, v = "leisure")
+rapport('Descriptives', ius2008, var = "leisure")
 
 ## generating high resolution images also
-rapport("example", ius2008, var="leisure", hist = TRUE, graph.hi.res = TRUE)
-rapport.html("nortest", ius2008, var = "leisure", graph.hi.res=T)
+rapport('Example', ius2008, v = "leisure", graph.hi.res = TRUE)
+rapport.html('NormalityTest', ius2008, var = "leisure", graph.hi.res=T)
 ## generating only high resolution image
-rapport("example", ius2008, var="leisure", hist = TRUE, graph.width = 1280, graph.height = 1280)
+rapport('Example', ius2008, v = "leisure", graph.width = 1280, graph.height = 1280)
 ## nested templates cannot get custom setting, use custom rapport option:
 options('graph.hi.res' = TRUE)
-rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
+rapport('AnalyzeWizard.tpl', data=ius2008, variables=c('edu', 'game'))
 }
 }
 \seealso{

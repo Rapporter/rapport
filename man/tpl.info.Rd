@@ -21,9 +21,9 @@
 }
 \examples{
 \dontrun{
-tpl.info('example')  # return both metadata and inputs
-tpl.info('crosstable', inputs = FALSE)  # return only template metadata
-tpl.info('correlations', meta = FALSE)  # return only template inputs
+tpl.info('Example')  # return both metadata and inputs
+tpl.info('Crosstable', inputs = FALSE)  # return only template metadata
+tpl.info('Correlation', meta = FALSE)  # return only template inputs
 }
 }
 \seealso{

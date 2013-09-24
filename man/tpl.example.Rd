@@ -35,11 +35,11 @@
 }
 \examples{
 \dontrun{
-tpl.example('example')
-tpl.example('example', 1:2)
-tpl.example('example', 'all')
-tpl.example('crosstable')
-tpl.export(tpl.example('crosstable'))
+tpl.example('Example')
+tpl.example('Example', 1:2)
+tpl.example('Example', 'all')
+tpl.example('Crosstable')
+tpl.export(tpl.example('Crosstable'))
 }
 }
 

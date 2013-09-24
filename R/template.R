@@ -160,9 +160,9 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 #' @param meta return template metadata? (defaults to \code{TRUE})
 #' @param inputs return template inputs? (defaults to \code{TRUE})
 #' @examples \dontrun{
-#' tpl.info('example')  # return both metadata and inputs
-#' tpl.info('crosstable', inputs = FALSE)  # return only template metadata
-#' tpl.info('correlations', meta = FALSE)  # return only template inputs
+#' tpl.info('Example')  # return both metadata and inputs
+#' tpl.info('Crosstable', inputs = FALSE)  # return only template metadata
+#' tpl.info('Correlation', meta = FALSE)  # return only template inputs
 #' }
 #' @seealso {
 #' \code{\link{tpl.meta}}
@@ -457,11 +457,11 @@ tpl.inputs <- function(fp, use.header = FALSE){
 #' @param index a numeric vector indicating the example index - meaningful only for templates with multiple examples. Accepts vector of integers to match IDs of template example. Using 'all' (character string) as index will return all examples.
 #' @param env an environment where example will be evaluated (defaults to \code{.GlobalEnv})
 #' @examples \dontrun{
-#' tpl.example('example')
-#' tpl.example('example', 1:2)
-#' tpl.example('example', 'all')
-#' tpl.example('crosstable')
-#' tpl.export(tpl.example('crosstable'))
+#' tpl.example('Example')
+#' tpl.example('Example', 1:2)
+#' tpl.example('Example', 'all')
+#' tpl.example('Crosstable')
+#' tpl.export(tpl.example('Crosstable'))
 #' }
 #' @export
 tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
@@ -516,7 +516,7 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 #' Runs template with data and arguments included in \code{rapport} object. In order to get reproducible example, you have to make sure that \code{reproducible} argument is set to \code{TRUE} in \code{rapport} function.
 #' @param tpl a \code{rapport} object
 #' @examples \dontrun{
-#' tmp <- rapport("example", mtcars, x = "hp", y = "mpg", reproducible = TRUE)
+#' tmp <- rapport("Example", mtcars, v = "hp", reproducible = TRUE)
 #' tpl.rerun(tmp)
 #' }
 #' @export
@@ -565,17 +565,17 @@ tpl.rerun <- function(tpl){
 #' @return a list with \code{rapport} class.
 #' @seealso \code{\link{rapport-package}}
 #' @examples \dontrun{
-#' rapport("example", ius2008, var = "leisure")
-#' rapport("example", ius2008, var = "leisure", desc = FALSE, hist = TRUE, theme = "Set1")
+#' rapport('Example', ius2008, v = "leisure")
+#' rapport('Descriptives', ius2008, var = "leisure")
 #'
 #' ## generating high resolution images also
-#' rapport("example", ius2008, var="leisure", hist = TRUE, graph.hi.res = TRUE)
-#' rapport.html("nortest", ius2008, var = "leisure", graph.hi.res=T)
+#' rapport('Example', ius2008, v = "leisure", graph.hi.res = TRUE)
+#' rapport.html('NormalityTest', ius2008, var = "leisure", graph.hi.res=T)
 #' ## generating only high resolution image
-#' rapport("example", ius2008, var="leisure", hist = TRUE, graph.width = 1280, graph.height = 1280)
+#' rapport('Example', ius2008, v = "leisure", graph.width = 1280, graph.height = 1280)
 #' ## nested templates cannot get custom setting, use custom rapport option:
 #' options('graph.hi.res' = TRUE)
-#' rapport('descriptives-multivar', data=ius2008, vars=c("gender", 'age'))
+#' rapport('AnalyzeWizard.tpl', data=ius2008, variables=c('edu', 'game'))
 #' }
 #' @export
 rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evalsOptions('graph.output'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = evalsOptions('width'), graph.height = evalsOptions('height'), graph.res = evalsOptions('res'), graph.hi.res = evalsOptions('hi.res'), graph.replay = evalsOptions('graph.recordplot')) {
