@@ -1,6 +1,6 @@
 <p class="contact">Gergely Daróczi</p>
 
-Currently a Ph.D. student at [BCE, Hungary](http://www.uni-corvinus.hu/index.php?id=p1000290) and also a lecturer at [PPKE BTK, Hungary](http://btk.ppke.hu/english).
+Ph.D. student at [BCE, Hungary](http://www.uni-corvinus.hu/index.php?id=p1000290) and co-founder of [rapporter.net](http://rapporter.net).
 
  - [StackOverflow](http://stackoverflow.com/users/564164/daroczig)
  - [GitHub](https://github.com/daroczig)
@@ -10,7 +10,7 @@ Currently a Ph.D. student at [BCE, Hungary](http://www.uni-corvinus.hu/index.php
 
 <p class="contact">Aleksandar Blagotić</p>
 
-Since the beginning of time, a psychology student at [Faculty of philosophy, Niš, Serbia](http://www.filfak.ni.ac.rs/).
+Psychology student at [Faculty of Philosophy, Niš, Serbia](http://www.filfak.ni.ac.rs/) and R/web-developer at [rapporter.net](http://rapporter.net).
 
  - [StackOverflow](http://stackoverflow.com/users/457898/al3xa)
  - [GitHub](https://github.com/aL3xa/)
