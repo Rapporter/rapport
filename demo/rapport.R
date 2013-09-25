@@ -25,13 +25,13 @@ next.please <- function(msg = "Press ENTER to continue: ") invisible(readline(ms
 ## In order to render a template you should call \code{rapport} with some input specifications. ##
 ## To make this easy, check out the example commands of various templates:                      ##
 ##                                                                                              ##
-##       tpl.meta('example')$example                                                            ##
+##       tpl.meta('Example')$example                                                            ##
 ##                                                                                              ##
 ##################################################################################################
 
 
 next.please()
-tpl.meta('example')$example
+tpl.meta('Example')$example
 
 
 #####################################################
@@ -44,13 +44,13 @@ tpl.meta('example')$example
 ##                                                 ##
 ## Which is equivalent to:                         ##
 ##                                                 ##
-##      rapport("example", ius2008, var='leisure') ##
+##      rapport("Example", ius2008, var='leisure') ##
 ##                                                 ##
 #####################################################
 
 
 next.please()
-tpl.example('example', 1)
+tpl.example('Example', 1)
 
 
 #######################################################################################
@@ -77,13 +77,13 @@ tpl.list()
 ##                                                                          ##
 ## Will run:                                                                ##
 ##                                                                          ##
-##      tpl.example('correlations')                                         ##
+##      tpl.example('Correlation')                                          ##
 ##                                                                          ##
 ##############################################################################
 
 
 next.please()
-tpl.example('correlations')
+tpl.example('Correlation')
 
 
 ################################################################
@@ -92,7 +92,7 @@ tpl.example('correlations')
 ##                                                            ##
 ## Will run:                                                  ##
 ##                                                            ##
-##    tpl.export(tpl.example('correlations', 'all'))          ##
+##    tpl.export(tpl.example('Correlation', 'all'))           ##
 ##                                                            ##
 ## NOTE: this requires Pandoc to be installed!                ##
 ##       Please check out our INSTALLATION file for details.  ##
@@ -101,7 +101,7 @@ tpl.example('correlations')
 
 
 next.please()
-tpl.export(tpl.example('correlations', 'all'))
+tpl.export(tpl.example('Correlation', 'all'))
 
 
 ##################################################################################
@@ -110,13 +110,13 @@ tpl.export(tpl.example('correlations', 'all'))
 ##                                                                              ##
 ## Will run:                                                                    ##
 ##                                                                              ##
-##      rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec')) ##
+##      rapport('Correlation', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))  ##
 ##                                                                              ##
 ##################################################################################
 
 
 next.please()
-rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
+rapport('Correlation', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 
 
 ##################################################################################
@@ -138,7 +138,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 ##                                                                              ##
 ##      evalsOptions('graph.recordplot', TRUE)                                  ##
 ##      options('graph.replay' = TRUE)                                          ##
-##      rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec')) ##
+##      rapport('Correlation', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))  ##
 ##                                                                              ##
 ##################################################################################
 
@@ -146,7 +146,7 @@ rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 next.please()
 evalsOptions('graph.recordplot', TRUE)
 options('graph.replay' = TRUE)
-report <- rapport('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
+report <- rapport('Correlation', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
 report
 
 
@@ -173,7 +173,7 @@ tpl.export(report, format = 'odt')
 ##                                                                                                        ##
 ## Will run:                                                                                              ##
 ##                                                                                                        ##
-##      rapport.html('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE) ##
+##      rapport.html('Correlation', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE)  ##
 ##                                                                                                        ##
 ## NOTE: this requires Pandoc to be installed!                                                            ##
 ##                                                                                                        ##
@@ -181,7 +181,7 @@ tpl.export(report, format = 'odt')
 
 
 next.please()
-rapport.html('correlations', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE)
+rapport.html('Correlation', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE)
 
 
 rm(next.please); rm(report); options("demo.ask" = demo.opt); options("graph.replay" = replay.opt); evalsOptions("graph.recordplot", record.opt); options("device.ask.default" = dev.ask)
