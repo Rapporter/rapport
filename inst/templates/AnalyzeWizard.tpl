@@ -26,14 +26,12 @@ v  <- na.omit(variables)
 vc <- sapply(v, class, USE.NAMES = FALSE)
 
 ## force levels of measurement
-vc <- sapply(vc, function(x)
-             switch(x,
-                    'factor'    = 'factor',
-                    'character' = 'factor',
-                    'logical'   = 'factor',
-                    'integer'   = 'numeric',
-                    'numeric'   = 'numeric',
-                    'complex'   = 'numeric'))
+vc <- sapply(vc, function(x) {
+    if (any(x %in% c('character', 'factor', 'logical')))
+        return('factor')
+    if (any(x %in% c('integer', 'numeric', 'complex')))
+        return('numeric')
+})
 
 if ('factor' %in% vc && 'numeric' %in% vc) {
     rapport("ANOVA.tpl", data = rp.data, resp = variables.name[which(vc == 'numeric')], fac = variables.name[which(vc == 'factor')])

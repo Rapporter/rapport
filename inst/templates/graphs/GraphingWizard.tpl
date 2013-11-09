@@ -34,14 +34,12 @@ if (vl == 1) {
 }
 
 ## force levels of measurement
-vc <- sapply(vc, function(x)
-             switch(x,
-                    'factor'    = 'factor',
-                    'character' = 'factor',
-                    'logical'   = 'factor',
-                    'integer'   = 'numeric',
-                    'numeric'   = 'numeric',
-                    'complex'   = 'numeric'))
+vc <- sapply(vc, function(x) {
+    if (any(x %in% c('character', 'factor', 'logical')))
+        return('factor')
+    if (any(x %in% c('integer', 'numeric', 'complex')))
+        return('numeric')
+})
 
 if (vl == 1) {
     if (vc == 'factor') {
