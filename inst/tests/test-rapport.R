@@ -24,7 +24,7 @@ context("Errors (or lack thereof) in example report chunks")
 
 for (template in tpl.list()) {
     ## example template contains errors
-    if (template != "Example.tpl") {
+    if (template != "Example.rapport") {
         test_that(template, {
             for (example in tpl.meta(template)$example)
                 expect_that(check.report.chunks(eval(parse(text = example))), equals(NULL))

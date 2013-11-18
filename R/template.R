@@ -18,8 +18,8 @@ tpl.find <- function(fp, ...){
             file <- tmp.fp
         } else {
             ## is it local file found in working, package or custom \code{getOption('tpl.paths')} directory?
-            if (!grepl('.+\\.tpl$', fp, ignore.case = TRUE))
-                fp <- c(fp, sprintf('%s.tpl', fp))
+            if (!grepl('.+\\.rapport$', fp, ignore.case = TRUE))
+                fp <- c(fp, sprintf('%s.rapport', fp))
             fp <- c(fp, unlist(lapply(fp, function(file) file.path(getOption('tpl.paths'), file))), system.file('templates', fp, package = 'rapport'))
             fp <- fp[file.exists(fp)]
             if (length(fp) == 0)
@@ -575,7 +575,7 @@ tpl.rerun <- function(tpl){
 #' rapport('Example', ius2008, v = "leisure", graph.width = 1280, graph.height = 1280)
 #' ## nested templates cannot get custom setting, use custom rapport option:
 #' options('graph.hi.res' = TRUE)
-#' rapport('AnalyzeWizard.tpl', data=ius2008, variables=c('edu', 'game'))
+#' rapport('AnalyzeWizard', data=ius2008, variables=c('edu', 'game'))
 #' }
 #' @export
 rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evalsOptions('graph.output'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = evalsOptions('width'), graph.height = evalsOptions('height'), graph.res = evalsOptions('res'), graph.hi.res = evalsOptions('hi.res'), graph.replay = evalsOptions('graph.recordplot')) {

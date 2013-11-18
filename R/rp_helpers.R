@@ -320,7 +320,7 @@ check.tpl <- function(txt, open.tag = get.tags('header.open'), close.tag = get.t
 
 #' Package Templates
 #'
-#' Lists all templates bundled with current package build. By default, it will search for all \code{.tpl} files in current directory, path specified in \code{tpl.paths} option and package library path.
+#' Lists all templates bundled with current package build. By default, it will search for all \code{.rapport} files in current directory, path specified in \code{tpl.paths} option and package library path.
 #' @param ... additional parameters for \code{\link{dir}} function
 #' @return a character vector with template files
 #' @export
@@ -329,7 +329,7 @@ tpl.list <- function(...){
     if (is.null(mc$path))
         mc$path <- c('./', getOption('tpl.paths'), system.file('templates', package = 'rapport'))
     if (is.null(mc$pattern))
-        mc$pattern <- '^.+\\.tpl$'
+        mc$pattern <- '^.+\\.rapport$'
     mc[[1]] <- as.symbol('dir')
     eval(mc)
 }
