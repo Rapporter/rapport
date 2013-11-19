@@ -100,7 +100,7 @@ rapport.html('NormalityTest', ius2008, var = "leisure", graph.hi.res=T)
 rapport('Example', ius2008, v = "leisure", graph.width = 1280, graph.height = 1280)
 ## nested templates cannot get custom setting, use custom rapport option:
 options('graph.hi.res' = TRUE)
-rapport('AnalyzeWizard.tpl', data=ius2008, variables=c('edu', 'game'))
+rapport('AnalyzeWizard', data=ius2008, variables=c('edu', 'game'))
 }
 }
 \seealso{

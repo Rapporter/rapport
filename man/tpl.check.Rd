@@ -6,8 +6,8 @@
 }
 \arguments{
   \item{fp}{a character vector containing template name
-  (".tpl" extension is optional), file path or a text to be
-  split by line breaks}
+  (".rapport" extension is optional), file path or a text
+  to be split by line breaks}
 }
 \description{
   Checks if the examples of given template can be run
