@@ -34,12 +34,12 @@ vc <- sapply(vc, function(x) {
 })
 
 if ('factor' %in% vc && 'numeric' %in% vc) {
-    rapport("ANOVA.tpl", data = rp.data, resp = variables.name[which(vc == 'numeric')], fac = variables.name[which(vc == 'factor')])
+    rapport("ANOVA", data = rp.data, resp = variables.name[which(vc == 'numeric')], fac = variables.name[which(vc == 'factor')])
 } else {
     if ('factor' %in% vc) {
-        rapport('Crosstable.tpl', data = ius2008, row = variables.name[1], col = variables.name[2])
+        rapport('Crosstable', data = ius2008, row = variables.name[1], col = variables.name[2])
     } else {
-        rapport('Correlation.tpl', data = rp.data, vars = variables.name)
+        rapport('Correlation', data = rp.data, vars = variables.name)
     }
 }
 %>

@@ -43,18 +43,18 @@ vc <- sapply(vc, function(x) {
 
 if (vl == 1) {
     if (vc == 'factor') {
-        rapport('graphs/Barchart.tpl', data = rp.data, var = variables.name)
+        rapport('graphs/Barchart', data = rp.data, var = variables.name)
     } else {
-        rapport('graphs/Densityplot.tpl', data = rp.data, var = variables.name)
+        rapport('graphs/Densityplot', data = rp.data, var = variables.name)
     }
 } else {
     if ('factor' %in% vc && 'numeric' %in% vc) {
-        rapport('graphs/Boxplot.tpl', data = rp.data, var1 = variables.name[which(vc == 'numeric')], var2 = variables.name[which(vc == 'factor')])
+        rapport('graphs/Boxplot', data = rp.data, var1 = variables.name[which(vc == 'numeric')], var2 = variables.name[which(vc == 'factor')])
     } else {
         if ('factor' %in% vc) {
-            rapport('graphs/MosaicChart.tpl', data=rp.data, x = variables.name[1], y = variables.name[2])
+            rapport('graphs/MosaicChart', data=rp.data, x = variables.name[1], y = variables.name[2])
         } else {
-            rapport('graphs/Scatterplot.tpl', data=rp.data, x = variables.name[1], y = variables.name[2])
+            rapport('graphs/Scatterplot', data=rp.data, x = variables.name[1], y = variables.name[2])
         }
     }
 }
