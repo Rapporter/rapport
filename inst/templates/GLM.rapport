@@ -6,9 +6,9 @@ meta:
   email: ~
   packages: ~
   example:
-  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), family='poisson')
-  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='poisson')
-  - rapport('GLM.tpl', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='Gamma')
+  - rapport('GLM', data=ius2008, dep='age', indep=c('leisure','edu'), family='poisson')
+  - rapport('GLM', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='poisson')
+  - rapport('GLM', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='Gamma')
 inputs:
 - name: dep
   label: Dependent Variable

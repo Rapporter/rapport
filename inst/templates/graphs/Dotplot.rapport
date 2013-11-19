@@ -7,8 +7,8 @@ meta:
   packages:
   - RColorBrewer
   example:
-  - rapport('Dotplot.tpl', data=ius2008, var1='game')
-  - rapport('Dotplot.tpl', data=ius2008, var1='net.required', 
+  - rapport('Dotplot', data=ius2008, var1='game')
+  - rapport('Dotplot', data=ius2008, var1='net.required', 
             grid.color = "darkblue")
 inputs:
 - name: var1

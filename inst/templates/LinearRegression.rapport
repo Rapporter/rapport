@@ -10,9 +10,9 @@ meta:
   - nortest
   - gvlma
   example:
-  - rapport('LinearRegression.tpl', data=ius2008, dep='age', indep='edu', indep.inter=F)
-  - rapport('LinearRegression.tpl', data=ius2008, dep='age', indep='edu', indep.inter=T)
-  - rapport('LinearRegression.tpl', data=mtcars, dep='carb', indep='cyl', indep.inter=F)
+  - rapport('LinearRegression', data=ius2008, dep='age', indep='edu', indep.inter=F)
+  - rapport('LinearRegression', data=ius2008, dep='age', indep='edu', indep.inter=T)
+  - rapport('LinearRegression', data=mtcars, dep='carb', indep='cyl', indep.inter=F)
 inputs:
 - name: dep
   label: Dependent Variable

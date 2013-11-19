@@ -7,8 +7,8 @@ meta:
   packages:
   - RColorBrewer
   example:
-  - rapport('Boxplot.tpl', data=ius2008, var1='age', var2='gender')
-  - rapport('Boxplot.tpl', data=ius2008, var1='age', var2='gender', 
+  - rapport('Boxplot', data=ius2008, var1='age', var2='gender')
+  - rapport('Boxplot', data=ius2008, var1='age', var2='gender', 
             plot.title.pos = "nowhere", var1.lab = "Years of age", 
             var2.lab = "Male or Female?", fontfamily = "symbol", 
             fontcolor = "purple", fontsize = 13, background = "grey")

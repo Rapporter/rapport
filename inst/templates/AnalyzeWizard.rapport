@@ -6,9 +6,9 @@ meta:
   email: ~
   packages: ~
   example:
-  - rapport('AnalyzeWizard.tpl', data=ius2008, variables = c('edu', 'game'))
-  - rapport('AnalyzeWizard.tpl', data=ius2008, variables = c('gender', 'game'))
-  - rapport('AnalyzeWizard.tpl', data=ius2008, variables = c('edu', 'age'))
+  - rapport('AnalyzeWizard', data=ius2008, variables = c('edu', 'game'))
+  - rapport('AnalyzeWizard', data=ius2008, variables = c('gender', 'game'))
+  - rapport('AnalyzeWizard', data=ius2008, variables = c('edu', 'age'))
 inputs:
 - name: variables
   label: Used Variables

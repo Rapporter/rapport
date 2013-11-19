@@ -6,12 +6,12 @@ meta:
   email: ~
   packages: ~
   example:
-  - rapport('graphs/GraphingWizard.tpl', data = ius2008, variables = 'student')
-  - rapport('graphs/GraphingWizard.tpl', data = ius2008, variables = 'edu')
-  - rapport('graphs/GraphingWizard.tpl', data = ius2008, variables = 'socnet')
-  - rapport('graphs/GraphingWizard.tpl', data = ius2008, variables = c('edu', 'game'))
-  - rapport('graphs/GraphingWizard.tpl', data = ius2008, variables = c('game', 'gender'))
-  - rapport('graphs/GraphingWizard.tpl', data = ius2008, variables = c('edu', 'age'))
+  - rapport('graphs/GraphingWizard', data = ius2008, variables = 'student')
+  - rapport('graphs/GraphingWizard', data = ius2008, variables = 'edu')
+  - rapport('graphs/GraphingWizard', data = ius2008, variables = 'socnet')
+  - rapport('graphs/GraphingWizard', data = ius2008, variables = c('edu', 'game'))
+  - rapport('graphs/GraphingWizard', data = ius2008, variables = c('game', 'gender'))
+  - rapport('graphs/GraphingWizard', data = ius2008, variables = c('edu', 'age'))
 inputs:
 - name: variables
   label: Used Variables

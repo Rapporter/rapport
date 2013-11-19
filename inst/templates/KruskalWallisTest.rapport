@@ -6,8 +6,8 @@ meta:
   email: ~
   packages: ~
   example:
-  - rapport('KruskalWallisTest.tpl', data=ius2008, var1='age', var2='edu')
-  - rapport('KruskalWallisTest.tpl', data=mtcars, var1='mpg', var2='drat')
+  - rapport('KruskalWallisTest', data=ius2008, var1='age', var2='edu')
+  - rapport('KruskalWallisTest', data=mtcars, var1='mpg', var2='drat')
 inputs:
 - name: var1
   label: First Used Variable

@@ -8,10 +8,10 @@ meta:
   - grDevices
   - RColorBrewer
   example:
-  - rapport('Barchart.tpl', data=ius2008, var='gender', 
+  - rapport('Barchart', data=ius2008, var='gender', 
             bar.text.type="Percentage", horizontal=T, 
             bar.text=T)
-  - rapport('Barchart.tpl', data=ius2008, var='net.required', 
+  - rapport('Barchart', data=ius2008, var='net.required', 
             bar.text.type="Percentage", horizontal=T, bar.text=T, 
             bar.text.type = "Percentage", bar.text.col = "red", 
             grid.color = "darkblue")

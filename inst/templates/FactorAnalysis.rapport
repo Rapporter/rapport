@@ -8,11 +8,11 @@ meta:
   - psych
   - nFactors
   example:
-  - rapport('FactorAnalysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl'),
+  - rapport('FactorAnalysis', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl'),
             rot.method="varimax")
-  - rapport('FactorAnalysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl'),
+  - rapport('FactorAnalysis', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl'),
             rot.method="varimax", fact.num = 3)
-  - rapport('FactorAnalysis.tpl', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl', 
+  - rapport('FactorAnalysis', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl', 
             'drat'), rot.method="varimax", fact.num = 5)
 inputs:
 - name: vars
