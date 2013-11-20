@@ -170,7 +170,7 @@ As you can see, applied tests <%= ifelse(all(ntest$p < .05), "confirm departures
 
 # Results
 
-<%= tt$method %> was applied, and significant differences <%= ifelse(tt$p.value < 1 - ci.level, "weren't", "were") %> found.
+<%= tt$method %> was applied, and significant differences <%= ifelse(tt$p.value < 1 - ci.level, "were", "weren't") %> found.
 
 <%=
 with(tt, data.frame(statistic, df = parameter, p = p.value, `CI(lower)` = conf.int[1], `CI(upper)` = conf.int[2], check.names = FALSE))
