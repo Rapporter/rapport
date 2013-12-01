@@ -1,3 +1,20 @@
+rapport 1.00 (2013-12-06)
+----------------------------------------------------------------
+
+MAJOR VERSION BUMP
+
+We started the `rapport` package back in 2011 but never thought of that the version number should ever exceed ONE - because we are shy guys. Now, almost 3 years later, so much stuff have changes in the package, that time has come for a major version bump. Most important updates since the birth of the package:
+
+ * dropped dependecy packages (`evaluate` and `ascii`) and implemented custom solutions for our custom needs
+ * some part of the package were out-sourced to the `pander` package in the name of modularity
+ * `pander` became more popular compared to `rapport`
+ * new syntax for template headers with YAML syntax instead our custom solution
+ * new file extension (`rapport` instead of `tpl`) not to confuse new-comers
+ * bunch of fiddles with naming conventions
+ * build a production-ready system on the top of the package at rapporter.net
+ * take part in Google Summer of Code 2013
+
+
 rapport 0.51 (2013-05-06)
 ----------------------------------------------------------------
 
