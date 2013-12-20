@@ -10,9 +10,6 @@ meta:
   - nortest
   - gvlma
   example:
-  - rapport('LinearRegression.tpl', data=ius2008, dep='age', indep='edu', indep.inter=F)
-  - rapport('LinearRegression.tpl', data=ius2008, dep='age', indep='edu', indep.inter=T)
-  - rapport('LinearRegression.tpl', data=mtcars, dep='carb', indep='cyl', indep.inter=F)
 inputs:
 - name: dep
   label: Dependent Variable
@@ -36,8 +33,8 @@ inputs:
   label: Interaction
   description: Should be calculated the interaction between the independent variables
   class: logical
-  required: yes
   standalone: yes
+  value: no
 - name: crPlots
   label: crplot
   description: Plot checking linearity
@@ -58,7 +55,7 @@ gvmodel <- tryCatch(gvlma(fit), error = function(e) e)
 
 # Introduction 
 
-With the help of the [linear regression](http://en.wikipedia.org/wiki/Linear_regression) we can investigate the relationship <%=ifelse(indep.ilen == 1, 'between two variables', 'between the variables')%>. More punctually we can observe if one of the variables, the so-called [dependent](http://en.wikipedia.org/wiki/Dependent_variable) variable, significantly depended on the other variable<%=indep.plu%>, if an increase/decrease on the dependent variable's values made an increase/decrease on the independent variable<%=indep.plu%>.
+With the help of the [linear regression](http://en.wikipedia.org/wiki/Linear_regression) we can investigate the relationship <%=ifelse(indep.ilen == 1, 'between two variables', 'between the variables')%>. More punctually we can observe if one of the variables, the so-called [dependent](http://en.wikipedia.org/wiki/Dependent_variable) variable, significantly depended on the other variable<%=indep.plu%>, if an increase/decrease on the independent variable's values made an increase/decrease on the dependent variable.
 In this case we only observe linear relationships. <%=ifelse(indep.ilen == 1, '', 'As we use in the model more than 1 independent variables, we call the method [multivariate regression](http://en.wikipedia.org/wiki/Multivariate_regression_model).')%>
 
 # Overview
@@ -142,13 +139,32 @@ par(mfrow = c(2, 2))
 ### Multicollinearity
 
 <%=
-mcoll <- as.table(matrix(c(vif(fit), 1 / vif(fit)), ncol(d)-1, 2))
+v <- vcov(fit)
+assign <- attributes(model.matrix(fit))[["assign"]]
+if (names(coefficients(fit)[1]) == "(Intercept)") {
+v <- v[-1, -1]
+assign <- assign[-1]
+}
+tl <- indep
+n.terms <- length(tl)
+R <- cov2cor(v)
+detR <- det(R)
+result <- matrix(0, n.terms, 3)
+rownames(result) <- tl
+colnames(result) <- c("GVIF", "Df", "GVIF^(1/(2*Df))")
+for (term in 1:n.terms) {
+subs <- which(assign == term)
+result[term, 1] <- det(as.matrix(R[subs, subs])) * det(as.matrix(R[-subs, -subs]))/detR
+result[term, 2] <- length(subs) }
+if (all(result[, 2] == 1)) { result <- result[, 1] } else { result[, 3] <- result[, 1]^(1/(2 * result[, 2])) }
+mcoll <- as.table(matrix(c(result, 1/result), ncol(d)-1, 2))
 colnames(mcoll) <- c("VIF", "Tolerance")
 rownames(mcoll) <- c(indep.name)
-mcoll 
+mcoll
 CNM <- as.table(kappa(fit))
 row.names(CNM) <- "The Condition Number of a Matrix"
 CNM
+mcoll.names <- row.names(mcoll[which(mcoll[1,]>2)])
 %>
 <% } else { } %>
 
