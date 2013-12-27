@@ -81,7 +81,7 @@ The Box Plot we used here is based on IQR (Interquartile Range), which is the di
 
 <%=
 set.caption(sprintf('Boxplot: %s', rp.name(var)))
-rp.boxplot(var)
+bwplot(var, xlab = rp.label(var))
 %>
 
 ## References

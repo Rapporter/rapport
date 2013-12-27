@@ -83,6 +83,6 @@ _Kernel density plot_ is a plot of smoothed _empirical distribution function_. A
 
 <%=
 set.caption('Kernel Density Plot')
-rp.densityplot(g)
+densityplot(g, xlab = rp.label(g))
 %>
 

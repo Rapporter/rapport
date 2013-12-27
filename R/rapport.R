@@ -97,20 +97,6 @@ NULL
 #'     \item \code{\link{skewness}}
 #' }
 #'
-#' \emph{Graph helpers}
-#'
-#' \itemize{
-#'     \item \code{\link{rp.graph.check}}
-#'     \item \code{\link{rp.hist}}
-#'     \item \code{\link{rp.densityplot}}
-#'     \item \code{\link{rp.barplot}}
-#'     \item \code{\link{rp.dotplot}}
-#'     \item \code{\link{rp.scatterplot}}
-#'     \item \code{\link{rp.lineplot}}
-#'     \item \code{\link{rp.boxplot}}
-#'     \item \code{\link{rp.qqplot}}
-#' }
-#'
 #' \emph{Export helpers}
 #'
 #' \itemize{
