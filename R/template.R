@@ -618,7 +618,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         input.required <- sapply(inputs, function(x) structure(x$required, .Names = x$name))
         input.names    <- names(input.required)
         ## take default inputs into account
-        if (!all(input.names[input.required] %in% names(i)) && any(sapply(inputs, function(x) is.empty(x$value) & is.empty(i[[x$name]]) & x$required))) {
+        if (!all(input.names[input.required] %in% names(i)) && any(sapply(inputs, function(x) is.empty(x$value) & !identical(x$value, FALSE) & is.empty(i[[x$name]]) & x$required))) {
             stopf("you haven't provided a value for %s", p(input.names[input.required], '"'))
         }
 
