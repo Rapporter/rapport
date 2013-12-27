@@ -2,14 +2,14 @@
 \alias{guess.input.name}
 \title{Input Name Validation}
 \usage{
-  guess.input.name(name)
+guess.input.name(name)
 }
 \arguments{
   \item{name}{a character value with input name}
 }
 \description{
-  From v.\code{0.51} one or more characters that are not
-  newline should do the trick. Note that white spaces will
-  be trimmed from both ends in resulting string.
+From v.\code{0.51} one or more characters that are not
+newline should do the trick. Note that white spaces will be
+trimmed from both ends in resulting string.
 }
 

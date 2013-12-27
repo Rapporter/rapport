@@ -2,18 +2,18 @@
 \alias{is.string}
 \title{Strings}
 \usage{
-  is.string(x)
+is.string(x)
 }
 \arguments{
   \item{x}{an object to check}
 }
 \value{
-  a logical value indicating whether provided object is a
-  string
+a logical value indicating whether provided object is a
+string
 }
 \description{
-  Checks if provided object is a string i.e. a length-one
-  character vector.
+Checks if provided object is a string i.e. a length-one
+character vector.
 }
 \examples{
 is.string("foobar")          # [1] TRUE

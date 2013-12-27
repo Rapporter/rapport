@@ -2,8 +2,8 @@
 \alias{check.input.value}
 \title{Check input value}
 \usage{
-  check.input.value(input, value = NULL,
-    attribute.name = c("length", "nchar", "nlevels", "limit"))
+check.input.value(input, value = NULL, attribute.name = c("length", "nchar",
+  "nlevels", "limit"))
 }
 \arguments{
   \item{input}{input item}
@@ -15,9 +15,9 @@
   validation rules (defaults to \code{length})}
 }
 \description{
-  A bit misleading title/function name - it validates input
-  values, according to rules set in general input
-  attributes (\code{length}) or class-specific ones
-  (\code{nchar}, \code{nlevels} or \code{limit}).
+A bit misleading title/function name - it validates input
+values, according to rules set in general input attributes
+(\code{length}) or class-specific ones (\code{nchar},
+\code{nlevels} or \code{limit}).
 }
 

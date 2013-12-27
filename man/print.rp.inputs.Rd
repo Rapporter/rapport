@@ -2,7 +2,7 @@
 \alias{print.rp.inputs}
 \title{Print Template Inputs}
 \usage{
-  \method{print}{rp.inputs} (x, ...)
+\method{print}{rp.inputs}(x, ...)
 }
 \arguments{
   \item{x}{object of class \code{rp.inputs}. See
@@ -11,7 +11,7 @@
   \item{...}{ignored}
 }
 \description{
-  Prints out the contents of template inputs in
-  human-readable format.
+Prints out the contents of template inputs in
+human-readable format.
 }
 

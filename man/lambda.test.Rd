@@ -2,7 +2,7 @@
 \alias{lambda.test}
 \title{Goodman and Kruskal's lambda}
 \usage{
-  lambda.test(table, direction = 0)
+lambda.test(table, direction = 0)
 }
 \arguments{
   \item{table}{a \code{table} of two variables or a
@@ -14,10 +14,10 @@
   and 0 for both}
 }
 \value{
-  computed lambda value(s) for row/col of given table
+computed lambda value(s) for row/col of given table
 }
 \description{
-  Computes Goodman and Kruskal's lambda for given table.
+Computes Goodman and Kruskal's lambda for given table.
 }
 \examples{
 \dontrun{
@@ -45,9 +45,9 @@ lambda.test(table(mtcars$am, mtcars$gear), 2)
 }
 }
 \references{
-  \itemize{ \item Goodman, L.A., Kruskal, W.H. (1954)
-  Measures of association for cross classifications. Part
-  I. \emph{Journal of the American Statistical Association}
-  \bold{49}, 732--764 }
+\itemize{ \item Goodman, L.A., Kruskal, W.H. (1954)
+Measures of association for cross classifications. Part I.
+\emph{Journal of the American Statistical Association}
+\bold{49}, 732--764 }
 }
 

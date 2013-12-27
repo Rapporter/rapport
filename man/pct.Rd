@@ -2,9 +2,8 @@
 \alias{pct}
 \title{Percent}
 \usage{
-  pct(x, digits = panderOptions("digits"),
-    type = c("percent", "\%", "proportion"),
-    check.value = TRUE)
+pct(x, digits = panderOptions("digits"), type = c("percent", "\%",
+  "proportion"), check.value = TRUE)
 }
 \arguments{
   \item{x}{a numeric value that is to be rendered to
@@ -22,12 +21,12 @@
   \code{TRUE})}
 }
 \value{
-  a character value with formatted percent
+a character value with formatted percent
 }
 \description{
-  Appends a percent sign to provided numerical value.
-  Rounding is carried out according to value passed in
-  \code{decimals} formal argument (defaults to value
-  specified in \code{panderOptions('digits')}).
+Appends a percent sign to provided numerical value.
+Rounding is carried out according to value passed in
+\code{decimals} formal argument (defaults to value
+specified in \code{panderOptions('digits')}).
 }
 

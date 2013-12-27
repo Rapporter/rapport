@@ -2,8 +2,8 @@
 \alias{tpl.header}
 \title{Template Header}
 \usage{
-  tpl.header(fp, open.tag = get.tags("header.open"),
-    close.tag = get.tags("header.close"), ...)
+tpl.header(fp, open.tag = get.tags("header.open"),
+  close.tag = get.tags("header.close"), ...)
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -19,10 +19,10 @@
   \code{\link{grep}} function}
 }
 \value{
-  a character vector with template header contents
+a character vector with template header contents
 }
 \description{
-  Returns \code{rapport} template header from provided path
-  or a character vector.
+Returns \code{rapport} template header from provided path
+or a character vector.
 }
 

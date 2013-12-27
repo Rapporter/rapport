@@ -2,17 +2,17 @@
 \alias{tpl.paths.add}
 \title{Add Template Path}
 \usage{
-  tpl.paths.add(...)
+tpl.paths.add(...)
 }
 \arguments{
   \item{...}{character vector of paths}
 }
 \value{
-  TRUE on success (invisibly)
+TRUE on success (invisibly)
 }
 \description{
-  Adds a new element to custom paths' list where rapport
-  will look for templates.
+Adds a new element to custom paths' list where rapport will
+look for templates.
 }
 \examples{
 \dontrun{

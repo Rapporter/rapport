@@ -2,18 +2,18 @@
 \alias{is.boolean}
 \title{Boolean}
 \usage{
-  is.boolean(x)
+is.boolean(x)
 }
 \arguments{
   \item{x}{an object to check}
 }
 \value{
-  a logical value indicating whether provided object is a
-  boolean
+a logical value indicating whether provided object is a
+boolean
 }
 \description{
-  Checks if provided object is a boolean i.e. a length-one
-  logical vector.
+Checks if provided object is a boolean i.e. a length-one
+logical vector.
 }
 \examples{
 \dontrun{

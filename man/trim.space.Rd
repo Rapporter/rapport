@@ -2,9 +2,8 @@
 \alias{trim.space}
 \title{Trim Spaces}
 \usage{
-  trim.space(x,
-    what = c("both", "leading", "trailing", "none"),
-    space.regex = "[:space:]", ...)
+trim.space(x, what = c("both", "leading", "trailing", "none"),
+  space.regex = "[:space:]", ...)
 }
 \arguments{
   \item{x}{a character vector which values need whitespace
@@ -22,11 +21,11 @@
   function}
 }
 \value{
-  a character vector with (hopefully) trimmed spaces
+a character vector with (hopefully) trimmed spaces
 }
 \description{
-  Removes leading and/or trailing space(s) from a character
-  vector. By default, it removes both leading and trailing
-  spaces.
+Removes leading and/or trailing space(s) from a character
+vector. By default, it removes both leading and trailing
+spaces.
 }
 

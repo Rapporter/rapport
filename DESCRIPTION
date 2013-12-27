@@ -28,20 +28,3 @@ Imports:
     reshape
 SystemRequirements: Pandoc (http://johnmacfarlane.net/pandoc) for exporting
     markdown files to other formats.
-Collate:
-    'export.R'
-    'graphs.R'
-    'init.R'
-    'ius2008.R'
-    'print.methods.R'
-    'rapport.R'
-    'rp_helpers.R'
-    'stat_helpers.R'
-    'stats_univar.R'
-    'tables.R'
-    'template.R'
-    'utils.R'
-    'tpl-check.R'
-    'inputs.R'
-    'misc.R'
-    'deprecated.R'

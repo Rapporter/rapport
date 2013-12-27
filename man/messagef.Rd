@@ -2,7 +2,7 @@
 \alias{messagef}
 \title{Send Message with String Interpolated Messages}
 \usage{
-  messagef(s, ...)
+messagef(s, ...)
 }
 \arguments{
   \item{s}{a character vector of format strings}
@@ -10,8 +10,8 @@
   \item{...}{values to be interpolated}
 }
 \description{
-  Combines \code{warning} with \code{sprintf} thus allowing
-  string interpolated diagnostic messages.
+Combines \code{warning} with \code{sprintf} thus allowing
+string interpolated diagnostic messages.
 }
 \examples{
 \dontrun{

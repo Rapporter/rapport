@@ -2,17 +2,17 @@
 \alias{tpl.paths.remove}
 \title{Remove Template Path}
 \usage{
-  tpl.paths.remove(...)
+tpl.paths.remove(...)
 }
 \arguments{
   \item{...}{character vector of paths}
 }
 \value{
-  TRUE on success (invisibly)
+TRUE on success (invisibly)
 }
 \description{
-  Removes an element from custom paths' list where rapport
-  will look for templates.
+Removes an element from custom paths' list where rapport
+will look for templates.
 }
 \examples{
 \dontrun{

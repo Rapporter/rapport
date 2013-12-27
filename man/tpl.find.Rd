@@ -2,7 +2,7 @@
 \alias{tpl.find}
 \title{Read Template}
 \usage{
-  tpl.find(fp, ...)
+tpl.find(fp, ...)
 }
 \arguments{
   \item{fp}{a character string containing a template path,
@@ -14,13 +14,13 @@
   \code{\link{grep}})}
 }
 \value{
-  a character vector with template contents
+a character vector with template contents
 }
 \description{
-  Reads file either from template name in system folder,
-  file path or remote URL, and splits it into lines for
-  easier handling by \emph{rapport} internal parser. "find"
-  in \code{tpl.find} is borrowed from Emacs parlance - this
-  function actually reads the template.
+Reads file either from template name in system folder, file
+path or remote URL, and splits it into lines for easier
+handling by \emph{rapport} internal parser. "find" in
+\code{tpl.find} is borrowed from Emacs parlance - this
+function actually reads the template.
 }
 

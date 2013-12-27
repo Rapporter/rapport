@@ -2,7 +2,7 @@
 \alias{tpl.body}
 \title{Template Body}
 \usage{
-  tpl.body(fp, htag = get.tags("header.close"), ...)
+tpl.body(fp, htag = get.tags("header.close"), ...)
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -14,9 +14,9 @@
   \code{\link{grep}} function}
 }
 \value{
-  a character vector with template body contents
+a character vector with template body contents
 }
 \description{
-  Returns contents of the template body.
+Returns contents of the template body.
 }
 

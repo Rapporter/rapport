@@ -2,7 +2,7 @@
 \alias{is.empty}
 \title{Empty Value}
 \usage{
-  is.empty(x, trim = TRUE, ...)
+is.empty(x, trim = TRUE, ...)
 }
 \arguments{
   \item{x}{an object to check its emptiness}
@@ -12,12 +12,12 @@
   \item{...}{additional arguments for \code{\link{sapply}}}
 }
 \description{
-  Rails-inspired helper that checks if vector values are
-  "empty", i.e. if it's: \code{NULL}, zero-length,
-  \code{NA}, \code{NaN}, \code{FALSE}, an empty string or
-  \code{0}. Note that unlike its native R
-  \code{is.<something>} sibling functions, \code{is.empty}
-  is vectorised (hence the "values").
+Rails-inspired helper that checks if vector values are
+"empty", i.e. if it's: \code{NULL}, zero-length, \code{NA},
+\code{NaN}, \code{FALSE}, an empty string or \code{0}. Note
+that unlike its native R \code{is.<something>} sibling
+functions, \code{is.empty} is vectorised (hence the
+"values").
 }
 \examples{
 \dontrun{

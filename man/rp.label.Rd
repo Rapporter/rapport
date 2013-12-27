@@ -2,7 +2,7 @@
 \alias{rp.label}
 \title{Get Variable Label}
 \usage{
-  rp.label(x, fallback = TRUE, simplify = TRUE)
+rp.label(x, fallback = TRUE, simplify = TRUE)
 }
 \arguments{
   \item{x}{an R object to extract labels from}
@@ -14,15 +14,15 @@
   by default), otherwise, a \code{list} is returned}
 }
 \value{
-  a character vector with variable's label(s)
+a character vector with variable's label(s)
 }
 \description{
-  This function returns character value previously stored
-  in variable's \code{label} attribute. If none found, and
-  \code{fallback} argument is set to \code{TRUE} (default),
-  the function returns object's name (retrieved by
-  \code{deparse(substitute(x))}), otherwise \code{NA} is
-  returned with a warning notice.
+This function returns character value previously stored in
+variable's \code{label} attribute. If none found, and
+\code{fallback} argument is set to \code{TRUE} (default),
+the function returns object's name (retrieved by
+\code{deparse(substitute(x))}), otherwise \code{NA} is
+returned with a warning notice.
 }
 \examples{
 \dontrun{

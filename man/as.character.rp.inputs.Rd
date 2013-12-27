@@ -2,7 +2,7 @@
 \alias{as.character.rp.inputs}
 \title{Convert Inputs to Character}
 \usage{
-  \method{as.character}{rp.inputs} (x, ...)
+\method{as.character}{rp.inputs}(x, ...)
 }
 \arguments{
   \item{x}{template inputs object}
@@ -10,7 +10,7 @@
   \item{...}{ignored}
 }
 \description{
-  Converts template inputs to character vector with YAML
-  strings.
+Converts template inputs to character vector with YAML
+strings.
 }
 

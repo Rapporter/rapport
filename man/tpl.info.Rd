@@ -2,7 +2,7 @@
 \alias{tpl.info}
 \title{Template Info}
 \usage{
-  tpl.info(fp, meta = TRUE, inputs = TRUE)
+tpl.info(fp, meta = TRUE, inputs = TRUE)
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -15,9 +15,9 @@
   \code{TRUE})}
 }
 \description{
-  Provides information about template metadata and/or
-  inputs. See \code{\link{tpl.meta}} and
-  \code{\link{tpl.inputs}} for details.
+Provides information about template metadata and/or inputs.
+See \code{\link{tpl.meta}} and \code{\link{tpl.inputs}} for
+details.
 }
 \examples{
 \dontrun{
@@ -27,6 +27,6 @@ tpl.info('Correlation', meta = FALSE)  # return only template inputs
 }
 }
 \seealso{
-  { \code{\link{tpl.meta}} \code{\link{tpl.inputs}} }
+{ \code{\link{tpl.meta}} \code{\link{tpl.inputs}} }
 }
 

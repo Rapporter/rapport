@@ -2,20 +2,20 @@
 \alias{rapport.odt}
 \title{Rapport to ODT}
 \usage{
-  rapport.odt(...)
+rapport.odt(...)
 }
 \arguments{
   \item{...}{parameters passed directly to
   \code{\link{rapport}}}
 }
 \description{
-  This is a simple wrapper around \code{\link{rapport}} and
-  \code{\link{tpl.export}}. Basically it works like
-  \code{\link{rapport}} but the returned class is exported
-  at one go.
+This is a simple wrapper around \code{\link{rapport}} and
+\code{\link{tpl.export}}. Basically it works like
+\code{\link{rapport}} but the returned class is exported at
+one go.
 }
 \seealso{
-  \code{\link{tpl.export}} \code{\link{rapport.html}}
-  \code{\link{rapport.pdf}} \code{\link{rapport.docx}}
+\code{\link{tpl.export}} \code{\link{rapport.html}}
+\code{\link{rapport.pdf}} \code{\link{rapport.docx}}
 }
 

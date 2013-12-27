@@ -2,7 +2,7 @@
 \alias{rp.univar}
 \title{Descriptive Statistics}
 \usage{
-  rp.univar(x, subset = NULL, fn, na.rm = TRUE, ...)
+rp.univar(x, subset = NULL, fn, na.rm = TRUE, ...)
 }
 \arguments{
   \item{x}{a numeric variable to be summarised}
@@ -21,11 +21,11 @@
   \code{fn}}
 }
 \value{
-  a numeric
+a numeric
 }
 \description{
-  This function operates only on vectors or their subsets,
-  by calculating a descriptive statistic specified in
-  \code{fn} argument.
+This function operates only on vectors or their subsets, by
+calculating a descriptive statistic specified in \code{fn}
+argument.
 }
 

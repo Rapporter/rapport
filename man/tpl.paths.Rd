@@ -2,14 +2,14 @@
 \alias{tpl.paths}
 \title{Template Paths}
 \usage{
-  tpl.paths()
+tpl.paths()
 }
 \value{
-  a character vector with paths
+a character vector with paths
 }
 \description{
-  List all custom paths where rapport will look for
-  templates.
+List all custom paths where rapport will look for
+templates.
 }
 \examples{
 \dontrun{

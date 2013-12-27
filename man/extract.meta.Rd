@@ -2,9 +2,8 @@
 \alias{extract.meta}
 \title{Extract Template Metadata}
 \usage{
-  extract.meta(x, title, regex, short = NULL,
-    trim.white = TRUE, mandatory = TRUE,
-    default.value = NULL, field.length = 1000, ...)
+extract.meta(x, title, regex, short = NULL, trim.white = TRUE,
+  mandatory = TRUE, default.value = NULL, field.length = 1000, ...)
 }
 \arguments{
   \item{x}{a string containing template metadata}
@@ -35,12 +34,12 @@
   function}
 }
 \value{
-  a list with matched content, or \code{NULL} if the field
-  is not required
+a list with matched content, or \code{NULL} if the field is
+not required
 }
 \description{
-  Check if template metadata field matches provided format,
-  and return matched value in a list.
+Check if template metadata field matches provided format,
+and return matched value in a list.
 }
 \examples{
 \dontrun{

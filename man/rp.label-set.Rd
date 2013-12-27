@@ -2,7 +2,7 @@
 \alias{rp.label<-}
 \title{Set Variable Label}
 \usage{
-  rp.label(var) <- value
+rp.label(var) <- value
 }
 \arguments{
   \item{var}{a variable (see \code{\link{is.variable}} for
@@ -12,8 +12,8 @@
   variable label}
 }
 \description{
-  This function sets a label to a variable, by storing a
-  character string to its \code{label} attribute.
+This function sets a label to a variable, by storing a
+character string to its \code{label} attribute.
 }
 \examples{
 \dontrun{
@@ -22,6 +22,6 @@ x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
 }
 }
 \seealso{
-  \code{\link{rp.label}}
+\code{\link{rp.label}}
 }
 

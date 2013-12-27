@@ -2,7 +2,7 @@
 \alias{is.number}
 \title{Numbers}
 \usage{
-  is.number(x, integer = FALSE)
+is.number(x, integer = FALSE)
 }
 \arguments{
   \item{x}{an object to check}
@@ -10,12 +10,12 @@
   \item{integer}{logical: check if number is integer}
 }
 \value{
-  a logical value indicating whether provided object is a
-  string
+a logical value indicating whether provided object is a
+string
 }
 \description{
-  Checks if provided object is a number, i.e. a length-one
-  numeric vector.
+Checks if provided object is a number, i.e. a length-one
+numeric vector.
 }
 \examples{
 is.number(3)              # [1] TRUE

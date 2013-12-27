@@ -2,7 +2,7 @@
 \alias{stopf}
 \title{Stop Execution with String Interpolated Messages}
 \usage{
-  stopf(s, ...)
+stopf(s, ...)
 }
 \arguments{
   \item{s}{a character vector of format strings}
@@ -10,13 +10,13 @@
   \item{...}{values to be interpolated}
 }
 \value{
-  a string containing message that follows execution
-  termination
+a string containing message that follows execution
+termination
 }
 \description{
-  This helper combines \code{stop} function with
-  \code{sprintf} thus allowing string interpolated messages
-  when execution is halted.
+This helper combines \code{stop} function with
+\code{sprintf} thus allowing string interpolated messages
+when execution is halted.
 }
 \examples{
 \dontrun{

@@ -2,10 +2,10 @@
 \alias{rp.freq}
 \title{Frequency Table}
 \usage{
-  rp.freq(f.vars, data, na.rm = TRUE, include.na = FALSE,
-    drop.unused.levels = FALSE, count = TRUE, pct = TRUE,
-    cumul.count = TRUE, cumul.pct = TRUE,
-    total.name = "Total", reorder = FALSE)
+rp.freq(f.vars, data, na.rm = TRUE, include.na = FALSE,
+  drop.unused.levels = FALSE, count = TRUE, pct = TRUE,
+  cumul.count = TRUE, cumul.pct = TRUE, total.name = "Total",
+  reorder = FALSE)
 }
 \arguments{
   \item{f.vars}{a character vector with variable names}
@@ -34,11 +34,11 @@
   \item{reorder}{reorder the table based on frequencies?}
 }
 \value{
-  a \code{data.frame} with a frequency table
+a \code{data.frame} with a frequency table
 }
 \description{
-  Display frequency table with counts, percentage, and
-  cumulatives.
+Display frequency table with counts, percentage, and
+cumulatives.
 }
 \examples{
 \dontrun{

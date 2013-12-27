@@ -2,12 +2,10 @@
 \alias{rp.desc}
 \title{Descriptive Statistics}
 \usage{
-  rp.desc(measure.vars, id.vars = NULL, fn, data = NULL,
-    na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA,
-    add.missing = FALSE, total.name = "Total",
-    varcol.name = "Variable",
-    use.labels = getOption("rp.use.labels"),
-    remove.duplicate = TRUE)
+rp.desc(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
+  margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE,
+  total.name = "Total", varcol.name = "Variable",
+  use.labels = getOption("rp.use.labels"), remove.duplicate = TRUE)
 }
 \arguments{
   \item{measure.vars}{either a character vector with
@@ -57,20 +55,20 @@
   (defaults to \code{TRUE})}
 }
 \value{
-  a \code{data.frame} with aggregated data
+a \code{data.frame} with aggregated data
 }
 \description{
-  Aggregate table of descriptives according to functions
-  provided in \code{fn} argument. This function follows
-  melt/cast approach used in \code{reshape} package.
-  Variable names specified in \code{measure.vars} argument
-  are treated as \code{measure.vars}, while the ones in
-  \code{id.vars} are treated as \code{id.vars} (see
-  \code{\link[reshape]{melt.data.frame}} for details).
-  Other its formal arguments match with corresponding
-  arguments for \code{\link[reshape]{cast}} function. Some
-  post-processing is done after reshaping, in order to get
-  pretty row and column labels.
+Aggregate table of descriptives according to functions
+provided in \code{fn} argument. This function follows
+melt/cast approach used in \code{reshape} package. Variable
+names specified in \code{measure.vars} argument are treated
+as \code{measure.vars}, while the ones in \code{id.vars}
+are treated as \code{id.vars} (see
+\code{\link[reshape]{melt.data.frame}} for details). Other
+its formal arguments match with corresponding arguments for
+\code{\link[reshape]{cast}} function. Some post-processing
+is done after reshaping, in order to get pretty row and
+column labels.
 }
 \examples{
 rp.desc("cyl", "am", c(mean, sd), mtcars, margins = TRUE)

@@ -2,10 +2,9 @@
 \alias{tpl.export}
 \title{Export rapport object}
 \usage{
-  tpl.export(rp = NULL, file, append = FALSE,
-    create = TRUE, open = TRUE,
-    date = pander.return(Sys.time()), description = TRUE,
-    format = "html", options = "", logo = TRUE)
+tpl.export(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE,
+  date = pander.return(Sys.time()), description = TRUE, format = "html",
+  options = "", logo = TRUE)
 }
 \arguments{
   \item{rp}{a rapport class object or list of rapport class
@@ -41,26 +40,25 @@
   \item{logo}{add rapport logo}
 }
 \value{
-  filepath on \code{create = TRUE}, \code{Report} class
-  otherwise
+filepath on \code{create = TRUE}, \code{Report} class
+otherwise
 }
 \description{
-  This function exports rapport class objects to various
-  formats based on ascii package.
+This function exports rapport class objects to various
+formats based on ascii package.
 }
 \details{
-  By default this function tries to export the report to
-  HTML with pandoc. Some default styles are applied. If you
-  do not like those default settings, use your own
-  \code{options}.
+By default this function tries to export the report to HTML
+with pandoc. Some default styles are applied. If you do not
+like those default settings, use your own \code{options}.
 
-  Default parameters are read from \code{options}:
+Default parameters are read from \code{options}:
 
-  \itemize{ \item 'tpl.user' }
+\itemize{ \item 'tpl.user' }
 
-  Please be sure to set \code{'tpl.user'} option with
-  \code{options()} to get your name in the head of your
-  generated reports!
+Please be sure to set \code{'tpl.user'} option with
+\code{options()} to get your name in the head of your
+generated reports!
 }
 \examples{
 \dontrun{
@@ -103,11 +101,11 @@ tpl.export(x, options=sprintf('-c \%s', system.file('templates/css/default.css',
 }
 }
 \references{
-  John MacFarlane (2012): _Pandoc User's Guide_.
-  \url{http://johnmacfarlane.net/pandoc/README.html}
+John MacFarlane (2012): _Pandoc User's Guide_.
+\url{http://johnmacfarlane.net/pandoc/README.html}
 }
 \seealso{
-  \code{\link{rapport.html}} \code{\link{rapport.pdf}}
-  \code{\link{rapport.odt}} \code{\link{rapport.docx}}
+\code{\link{rapport.html}} \code{\link{rapport.pdf}}
+\code{\link{rapport.odt}} \code{\link{rapport.docx}}
 }
 

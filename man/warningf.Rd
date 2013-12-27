@@ -2,7 +2,7 @@
 \alias{warningf}
 \title{Send Warning with String Interpolated Messages}
 \usage{
-  warningf(s, ...)
+warningf(s, ...)
 }
 \arguments{
   \item{s}{a character vector of format strings}
@@ -10,8 +10,8 @@
   \item{...}{values to be interpolated}
 }
 \description{
-  Combines \code{warning} with \code{sprintf} thus allowing
-  string interpolated warnings.
+Combines \code{warning} with \code{sprintf} thus allowing
+string interpolated warnings.
 }
 \examples{
 \dontrun{

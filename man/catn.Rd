@@ -2,16 +2,16 @@
 \alias{catn}
 \title{Concatenate with newline}
 \usage{
-  catn(...)
+catn(...)
 }
 \arguments{
   \item{...}{arguments to be passed to \code{cat} function}
 }
 \value{
-  None (invisible \code{NULL}).
+None (invisible \code{NULL}).
 }
 \description{
-  A simple wrapper for \code{\link{cat}} function that
-  appends newline to output.
+A simple wrapper for \code{\link{cat}} function that
+appends newline to output.
 }
 

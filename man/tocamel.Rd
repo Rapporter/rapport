@@ -2,8 +2,7 @@
 \alias{tocamel}
 \title{CamelCase}
 \usage{
-  tocamel(x, delim = "[^[:alnum:]]", upper = FALSE,
-    sep = "", ...)
+tocamel(x, delim = "[^[:alnum:]]", upper = FALSE, sep = "", ...)
 }
 \arguments{
   \item{x}{a character vector to be converted to camelcase}
@@ -21,11 +20,11 @@
   \code{strsplit}}
 }
 \value{
-  a character vector with strings put in camelcase
+a character vector with strings put in camelcase
 }
 \description{
-  Convert character vector to camelcase - capitalise first
-  letter of each word.
+Convert character vector to camelcase - capitalise first
+letter of each word.
 }
 \examples{
 tocamel("foo.bar")

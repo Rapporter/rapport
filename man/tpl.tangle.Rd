@@ -2,7 +2,7 @@
 \alias{tpl.tangle}
 \title{Extract template chunk contents}
 \usage{
-  tpl.tangle(fp, file = "", show.inline.chunks = FALSE)
+tpl.tangle(fp, file = "", show.inline.chunks = FALSE)
 }
 \arguments{
   \item{fp}{template file pointer (see
@@ -15,12 +15,12 @@
   chunks as well? (defaults to \code{FALSE})}
 }
 \value{
-  (invisibly) a list with either inline or block chunk
-  contents
+(invisibly) a list with either inline or block chunk
+contents
 }
 \description{
-  \code{rapport}'s alternative to \code{\link{Stangle}} -
-  extracts contents of template chunks. If \code{file}
-  argument
+\code{rapport}'s alternative to \code{\link{Stangle}} -
+extracts contents of template chunks. If \code{file}
+argument
 }
 

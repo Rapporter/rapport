@@ -2,7 +2,7 @@
 \alias{kurtosis}
 \title{Kurtosis}
 \usage{
-  kurtosis(x, na.rm = FALSE)
+kurtosis(x, na.rm = FALSE)
 }
 \arguments{
   \item{x}{a \code{variable}, \code{matrix} or a
@@ -12,9 +12,9 @@
   computation?}
 }
 \description{
-  Calculates kurtosis coefficient for given variable (see
-  \code{\link{is.variable}}), \code{matrix} or a
-  \code{data.frame}.
+Calculates kurtosis coefficient for given variable (see
+\code{\link{is.variable}}), \code{matrix} or a
+\code{data.frame}.
 }
 \examples{
 set.seed(0)
@@ -25,7 +25,7 @@ kurtosis(mtcars)
 rm(x)
 }
 \references{
-  Tenjovic, L. (2000). Statistika u psihologiji -
-  prirucnik. Centar za primenjenu psihologiju.
+Tenjovic, L. (2000). Statistika u psihologiji - prirucnik.
+Centar za primenjenu psihologiju.
 }
 

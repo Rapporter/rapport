@@ -2,9 +2,8 @@
 \alias{htest}
 \title{Hypothesis Tests}
 \usage{
-  htest(x, ..., use.labels = getOption("rp.use.labels"),
-    use.method.names = TRUE,
-    colnames = c("Method", "Statistic", "p-value"))
+htest(x, ..., use.labels = getOption("rp.use.labels"),
+  use.method.names = TRUE, colnames = c("Method", "Statistic", "p-value"))
 }
 \arguments{
   \item{x}{arguments to be passed to function specified in
@@ -25,19 +24,19 @@
   names}
 }
 \value{
-  a \code{data.frame} with applied tests in rows, and their
-  results (statistic and p-value) in columns
+a \code{data.frame} with applied tests in rows, and their
+results (statistic and p-value) in columns
 }
 \description{
-  This function uses \code{\link{htest.short}}, to extract
-  statistic and p-value from \code{htest}-classed object.
-  Main advantage of using \code{htest} is that it's
-  vectorised, and can accept multiple methods.
+This function uses \code{\link{htest.short}}, to extract
+statistic and p-value from \code{htest}-classed object.
+Main advantage of using \code{htest} is that it's
+vectorised, and can accept multiple methods.
 }
 \details{
-  Default parameters are read from \code{options}:
+Default parameters are read from \code{options}:
 
-  \itemize{ \item 'rp.use.labels'. }
+\itemize{ \item 'rp.use.labels'. }
 }
 \examples{
 \dontrun{
