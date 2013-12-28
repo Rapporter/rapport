@@ -1,22 +1,28 @@
 #' Read Template
 #'
-#' Reads file either from template name in system folder, file path or remote URL, and splits it into lines for easier handling by \emph{rapport} internal parser. "find" in \code{tpl.find} is borrowed from Emacs parlance - this function actually reads the template.
+#' Reads file either from template name in system folder, file path (see \code{rapport.path}) or remote URL, and splits it into lines for easier handling by \emph{rapport} internal parser.
 #' @param fp a character string containing a template path, a template name (for package-bundled templates only), template contents separated by newline (\code{\\n}), or a character vector with template contents.
 #' @param ... additional params for header tag matching (see \code{\link{grep}})
 #' @return a character vector with template contents
-tpl.find <- function(fp, ...){
+#' @aliases rapport.read tpl.find
+rapport.read <- function(fp, ...) {
+
     if (missing(fp))
         stop('Template file pointer not provided!')
     stopifnot(is.character(fp))
+
     l <- length(fp)
+
     ## maybe it's file path?
-    if (l == 1){
+    if (l == 1) {
+
         ## is it URL?
         if (grepl('^(ftp|http(s)?)://.+$', fp)) {
             if (download.file(fp, tmp.fp <- tempfile(), method = 'wget') != 0)
                 stop('Remote template file not found!')
             file <- tmp.fp
         } else {
+
             ## is it local file found in working, package or custom \code{getOption('rapport.paths')} directory?
             if (!grepl('.+\\.rapport$', fp, ignore.case = TRUE))
                 fp <- c(fp, sprintf('%s.rapport', fp))
@@ -36,21 +42,25 @@ tpl.find <- function(fp, ...){
     } else {
         stop('Template file pointer error :O')      # you never know...
     }
-    check.tpl(txt, ...)
+
+    rapport.check.template(txt, ...)
     return(txt)
+
 }
+tpl.find <- rapport.read
 
 
 ##' Extract template chunk contents
 ##'
 ##' \code{rapport}'s alternative to \code{\link{Stangle}} - extracts contents of template chunks. If \code{file} argument
-##' @param fp template file pointer (see \code{\link{tpl.find}} for details)
+##' @param fp template file pointer (see \code{\link{rapport:::rapport.read}} for details)
 ##' @param file see \code{file} argument in \code{\link{cat}} function documentation
 ##' @param show.inline.chunks extract contents of inline chunks as well? (defaults to \code{FALSE})
 ##' @return (invisibly) a list with either inline or block chunk contents
 ##' @export
 tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
-    b <- tpl.body(tpl.find(fp))
+
+    b <- tpl.body(rapport.read(fp))
 
     re.block.open    <- "^<%=?$"
     re.block.close   <- "^%>$"
@@ -122,13 +132,13 @@ tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
 #' Template Header
 #'
 #' Returns \code{rapport} template header from provided path or a character vector.
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
 #' @param open.tag a string with opening tag (defaults to value of user-defined \code{"header.open"} tag)
 #' @param close.tag a string with closing tag (defaults to value of user-defined \code{"header.close"} tag)
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template header contents
 tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
-    txt <- tpl.find(fp)                 # split by newlines
+    txt <- rapport.read(fp)                 # split by newlines
     ## get header tag indices
     hopen.ind  <- grep(open.tag, txt, ...)[1]  # opening tag
     hclose.ind <- grep(close.tag, txt, ...)[1] # closing tag
@@ -140,13 +150,13 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 #' Template Body
 #'
 #' Returns contents of the template body.
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
 #' @param htag a string with closing body tag
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template body contents
 #' @export
 tpl.body <- function(fp, htag = get.tags('header.close'), ...){
-    txt   <- tpl.find(fp, ...)
+    txt   <- rapport.read(fp, ...)
     h.end <- grep(htag, txt, ...)
     b <- txt[(h.end + 1):length(txt)]
     structure(b, class = 'rp.body')
@@ -156,7 +166,7 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 #' Template Info
 #'
 #' Provides information about template metadata and/or inputs. See \code{\link{tpl.meta}} and \code{\link{tpl.inputs}} for details.
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
 #' @param meta return template metadata? (defaults to \code{TRUE})
 #' @param inputs return template inputs? (defaults to \code{TRUE})
 #' @examples \dontrun{
@@ -170,7 +180,7 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 #' }
 #' @export
 tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
-    txt <- tpl.find(fp)
+    txt <- rapport.read(fp)
     if (!meta & !inputs)
         stop('Either "meta" or "inputs" should be set to TRUE')
     res <- list()
@@ -199,7 +209,7 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 #' }
 #'
 #' As of version \code{0.5}, \code{dataRequired} field is deprecated. \code{rapport} function will automatically detect if the template requires a dataset based on the presence of \emph{standalone} inputs.
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
 #' @param fields a list of named lists containing key-value pairs of field titles and corresponding regexes
 #' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains only the header data (not the whole template)
 #' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
@@ -210,7 +220,7 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 #' }
 #' @export
 tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
-    header <- tpl.find(fp)
+    header <- rapport.read(fp)
     if (!use.header)
         header <- tpl.header(header)
     ## check if header is defined in YAML
@@ -374,7 +384,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #'     \item \code{nlevels} - accepts the same format as \code{length} attribute, but the check is performed rather on the number of factor levels.
 #'     \item \code{matchable} - \emph{ibid} as in character inputs (note that in previous versions of \code{rapport} matching was performed against factor levels - well, not any more, now we match against values to make it consistent with \code{character} inputs).
 #' }
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
 #' @param use.header a logical value indicating whether the header section is provided in \code{h} argument
 #' @seealso {
 #' \code{\link{tpl.meta}}
@@ -382,7 +392,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #' }
 #' @export
 tpl.inputs <- function(fp, use.header = FALSE){
-    header <- tpl.find(fp)
+    header <- rapport.read(fp)
     if (!use.header)
         header <- tpl.header(header)
     ## Try with YAML first ("inputs" is actually decoded header)
@@ -453,7 +463,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
 #' Template Examples
 #'
 #' Displays template examples defined in \code{Example} section. Handy to check out what template does and how does it look like once it's rendered. If multiple examples are available, and \code{index} argument is \code{NULL}, you will be prompted for input. If only one example is available in the header, user is not prompted for input action, and given template is evaluated automatically. At any time you can provide an integer vector with example indices to \code{index} argument, and specified examples will be evaluated without prompting, thus returning a list of \code{rapport} objects. Example output can be easily exported to various formats (HTML, ODT, etc.) - check out documentation for \code{rapport.export} for more info.
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
 #' @param index a numeric vector indicating the example index - meaningful only for templates with multiple examples. Accepts vector of integers to match IDs of template example. Using 'all' (character string) as index will return all examples.
 #' @param env an environment where example will be evaluated (defaults to \code{.GlobalEnv})
 #' @examples \dontrun{
@@ -548,7 +558,7 @@ tpl.rerun <- function(tpl){
 #'     \item 'rapport.file.path',
 #' }
 #'
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
 #' @param data a \code{data.frame} to be used in template
 #' @param ... matches template inputs in format 'key = "value"'
 #' @param env an environment where template commands be evaluated (defaults to \code{new.env()}
@@ -581,7 +591,7 @@ tpl.rerun <- function(tpl){
 rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evalsOptions('graph.output'), file.name = getOption('rapport.file.name'), file.path = getOption('rapport.file.path'), graph.width = evalsOptions('width'), graph.height = evalsOptions('height'), graph.res = evalsOptions('res'), graph.hi.res = evalsOptions('hi.res'), graph.replay = evalsOptions('rapport.graph.recordplot')) {
 
     timer         <- proc.time()                        # start timer
-    txt           <- tpl.find(fp)                       # split file to text
+    txt           <- rapport.read(fp)                   # split file to text
     h             <- tpl.info(txt)                      # template header
     meta          <- h$meta                             # header metadata
     inputs        <- h$inputs                           # header inputs

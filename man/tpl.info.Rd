@@ -6,7 +6,7 @@ tpl.info(fp, meta = TRUE, inputs = TRUE)
 }
 \arguments{
   \item{fp}{a template file pointer (see
-  \code{\link{tpl.find}} for details)}
+  \code{\link{rapport:::rapport.read}} for details)}
 
   \item{meta}{return template metadata? (defaults to
   \code{TRUE})}

@@ -13,7 +13,7 @@ rapport(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 }
 \arguments{
   \item{fp}{a template file pointer (see
-  \code{\link{tpl.find}} for details)}
+  \code{\link{rapport:::rapport.read}} for details)}
 
   \item{data}{a \code{data.frame} to be used in template}
 

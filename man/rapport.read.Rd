@@ -1,8 +1,9 @@
-\name{tpl.find}
+\name{rapport.read}
+\alias{rapport.read}
 \alias{tpl.find}
 \title{Read Template}
 \usage{
-tpl.find(fp, ...)
+rapport.read(fp, ...)
 }
 \arguments{
   \item{fp}{a character string containing a template path,
@@ -18,9 +19,8 @@ a character vector with template contents
 }
 \description{
 Reads file either from template name in system folder, file
-path or remote URL, and splits it into lines for easier
-handling by \emph{rapport} internal parser. "find" in
-\code{tpl.find} is borrowed from Emacs parlance - this
-function actually reads the template.
+path (see \code{rapport.path}) or remote URL, and splits it
+into lines for easier handling by \emph{rapport} internal
+parser.
 }
 

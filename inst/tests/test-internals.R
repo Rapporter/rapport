@@ -11,15 +11,15 @@ no.body.err.msg.re <- "what good is a template if it has no body\\? http://bit\\
 
 context('Header tags')
 
-expect_error(rapport:::tpl.find(tpl.no.htag.1), 'opening header tag not found in first line')
-expect_error(rapport:::tpl.find(tpl.no.htag.2), 'closing header tag not found')
-expect_error(rapport:::tpl.find(tpl.no.head), 'template header not found')
+expect_error(rapport:::rapport.read(tpl.no.htag.1), 'opening header tag not found in first line')
+expect_error(rapport:::rapport.read(tpl.no.htag.2), 'closing header tag not found')
+expect_error(rapport:::rapport.read(tpl.no.head), 'template header not found')
 expect_error(rapport:::tpl.header(tpl.empty.head), 'template header is empty')
 
 
 context('Template body presence')
 
-expect_error(rapport:::tpl.find(tpl.no.body), no.body.err.msg.re)
+expect_error(rapport:::rapport.read(tpl.no.body), no.body.err.msg.re)
 
 
 ## context("Rapport internal helpers")

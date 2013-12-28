@@ -7,7 +7,7 @@ tpl.header(fp, open.tag = get.tags("header.open"),
 }
 \arguments{
   \item{fp}{a template file pointer (see
-  \code{\link{tpl.find}} for details)}
+  \code{\link{rapport:::rapport.read}} for details)}
 
   \item{open.tag}{a string with opening tag (defaults to
   value of user-defined \code{"header.open"} tag)}
