@@ -12,7 +12,7 @@
 #' @param add.missing show missing level combinations
 #' @param total.name a character string with name for "grand" margin (defaults to "Total")
 #' @param varcol.name character string for column that contains summarised variables (defaults to \code{"Variable"})
-#' @param use.labels use labels instead of variable names in table header (handle with care, especially if you have lengthy labels). Defaults to value specified in \code{rp.use.labels} option.
+#' @param use.labels use labels instead of variable names in table header (handle with care, especially if you have lengthy labels). Defaults to value specified in \code{rapport.use.labels} option.
 #' @param remove.duplicate should name/label of the variable provided in \code{measure.vars} be removed from each column if only one \code{measure.var} is provided (defaults to \code{TRUE})
 #' @return a \code{data.frame} with aggregated data
 #' @examples
@@ -20,7 +20,7 @@
 #' ## c
 #' rp.desc("age", c("gender", "student"), c("Average" = mean, "Deviation" = sd), ius2008, remove.duplicate = FALSE)
 #' @export
-rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total', varcol.name = 'Variable', use.labels = getOption('rp.use.labels'), remove.duplicate = TRUE) {
+rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE, margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE, total.name = 'Total', varcol.name = 'Variable', use.labels = getOption('rapport.use.labels'), remove.duplicate = TRUE) {
 
     if (!is.character(id.vars) && !is.character(measure.vars)){
         data         <- if (is.null(id.vars)) data.frame(measure.vars) else data.frame(id.vars, measure.vars)

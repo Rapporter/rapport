@@ -2,7 +2,7 @@
 \alias{htest}
 \title{Hypothesis Tests}
 \usage{
-htest(x, ..., use.labels = getOption("rp.use.labels"),
+htest(x, ..., use.labels = getOption("rapport.use.labels"),
   use.method.names = TRUE, colnames = c("Method", "Statistic", "p-value"))
 }
 \arguments{
@@ -36,7 +36,7 @@ vectorised, and can accept multiple methods.
 \details{
 Default parameters are read from \code{options}:
 
-\itemize{ \item 'rp.use.labels'. }
+\itemize{ \item 'rapport.use.labels'. }
 }
 \examples{
 \dontrun{

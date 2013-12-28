@@ -232,7 +232,7 @@ get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment
         comment.close = '-->'
         )
     tag.default.names <- names(tag.default) # names of default tags
-    tag.current <- getOption('rp.tags')     # currently set tags
+    tag.current <- getOption('rapport.tags')     # currently set tags
     tag.current.names <- names(tag.current) # names of currently set tags
 
     ## check if tag list exists
@@ -320,14 +320,14 @@ check.tpl <- function(txt, open.tag = get.tags('header.open'), close.tag = get.t
 
 #' Package Templates
 #'
-#' Lists all templates bundled with current package build. By default, it will search for all \code{.rapport} files in current directory, path specified in \code{tpl.paths} option and package library path.
+#' Lists all templates bundled with current package build. By default, it will search for all \code{.rapport} files in current directory, path specified in \code{rapport.paths} option and package library path.
 #' @param ... additional parameters for \code{\link{dir}} function
 #' @return a character vector with template files
 #' @export
 tpl.list <- function(...){
     mc <- match.call()
     if (is.null(mc$path))
-        mc$path <- c('./', getOption('tpl.paths'), system.file('templates', package = 'rapport'))
+        mc$path <- c('./', getOption('rapport.paths'), system.file('templates', package = 'rapport'))
     if (is.null(mc$pattern))
         mc$pattern <- '^.+\\.rapport$'
     mc[[1]] <- as.symbol('dir')
@@ -344,7 +344,7 @@ tpl.list <- function(...){
 #' }
 #' @export
 tpl.paths <- function()
-    getOption('tpl.paths')
+    getOption('rapport.paths')
 
 
 #' Reset Template Paths
@@ -355,7 +355,7 @@ tpl.paths <- function()
 #' }
 #' @export
 tpl.paths.reset <- function()
-    options('tpl.paths' = NULL)
+    options('rapport.paths' = NULL)
 
 
 #' Add Template Path
@@ -377,7 +377,7 @@ tpl.paths.add <- function(...) {
         stop('Wrong arguments (not characters) supplied!')
     if (!all(file.exists(paths)))
         stop('Specified paths do not exists on filesystem!')
-    options('tpl.paths' = union(tpl.paths(), paths))
+    options('rapport.paths' = union(tpl.paths(), paths))
     invisible(TRUE)
 }
 
@@ -404,6 +404,6 @@ tpl.paths.remove <- function(...) {
         stop('Wrong arguments (not characters) supplied!')
     if (!all(paths %in% tpl.paths()))
         warning('Specified paths were not added to custom paths list before!')
-    options('tpl.paths' = setdiff(tpl.paths(), paths))
+    options('rapport.paths' = setdiff(tpl.paths(), paths))
     invisible(TRUE)
 }

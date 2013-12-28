@@ -17,10 +17,10 @@ tpl.find <- function(fp, ...){
                 stop('Remote template file not found!')
             file <- tmp.fp
         } else {
-            ## is it local file found in working, package or custom \code{getOption('tpl.paths')} directory?
+            ## is it local file found in working, package or custom \code{getOption('rapport.paths')} directory?
             if (!grepl('.+\\.rapport$', fp, ignore.case = TRUE))
                 fp <- c(fp, sprintf('%s.rapport', fp))
-            fp <- c(fp, unlist(lapply(fp, function(file) file.path(getOption('tpl.paths'), file))), system.file('templates', fp, package = 'rapport'))
+            fp <- c(fp, unlist(lapply(fp, function(file) file.path(getOption('rapport.paths'), file))), system.file('templates', fp, package = 'rapport'))
             fp <- fp[file.exists(fp)]
             if (length(fp) == 0)
                 stop('Template file not found!')
@@ -544,8 +544,8 @@ tpl.rerun <- function(tpl){
 #' Default parameters are read from \code{evalsOptions()} and the following \code{options}:
 #'
 #' \itemize{
-#'     \item 'rp.file.name',
-#'     \item 'rp.file.path',
+#'     \item 'rapport.file.name',
+#'     \item 'rapport.file.path',
 #' }
 #'
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
@@ -578,7 +578,7 @@ tpl.rerun <- function(tpl){
 #' rapport('AnalyzeWizard', data=ius2008, variables=c('edu', 'game'))
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evalsOptions('graph.output'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = evalsOptions('width'), graph.height = evalsOptions('height'), graph.res = evalsOptions('res'), graph.hi.res = evalsOptions('hi.res'), graph.replay = evalsOptions('graph.recordplot')) {
+rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evalsOptions('graph.output'), file.name = getOption('rapport.file.name'), file.path = getOption('rapport.file.path'), graph.width = evalsOptions('width'), graph.height = evalsOptions('height'), graph.res = evalsOptions('res'), graph.hi.res = evalsOptions('hi.res'), graph.replay = evalsOptions('rapport.graph.recordplot')) {
 
     timer         <- proc.time()                        # start timer
     txt           <- tpl.find(fp)                       # split file to text

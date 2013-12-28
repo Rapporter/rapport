@@ -174,7 +174,7 @@ kurtosis <- function(x, na.rm = FALSE){
 #' Default parameters are read from \code{options}:
 #'
 #' \itemize{
-#'     \item 'rp.use.labels'.
+#'     \item 'rapport.use.labels'.
 #' }
 #' @param x arguments to be passed to function specified in \code{test}
 #' @param ... additional arguments for function specified in \code{test}
@@ -190,7 +190,7 @@ kurtosis <- function(x, na.rm = FALSE){
 #' htest(mtcars, lillie.test, ad.test, shapiro.test)
 #' }
 #' @export
-htest <- function(x, ..., use.labels = getOption('rp.use.labels'), use.method.names = TRUE, colnames = c('Method', 'Statistic', 'p-value')){
+htest <- function(x, ..., use.labels = getOption('rapport.use.labels'), use.method.names = TRUE, colnames = c('Method', 'Statistic', 'p-value')){
 
     test <- list(...)
     test.len <- length(test)

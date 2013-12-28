@@ -5,7 +5,7 @@
 rp.desc(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
   margins = NULL, subset = TRUE, fill = NA, add.missing = FALSE,
   total.name = "Total", varcol.name = "Variable",
-  use.labels = getOption("rp.use.labels"), remove.duplicate = TRUE)
+  use.labels = getOption("rapport.use.labels"), remove.duplicate = TRUE)
 }
 \arguments{
   \item{measure.vars}{either a character vector with
@@ -47,7 +47,7 @@ rp.desc(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
   \item{use.labels}{use labels instead of variable names in
   table header (handle with care, especially if you have
   lengthy labels). Defaults to value specified in
-  \code{rp.use.labels} option.}
+  \code{rapport.use.labels} option.}
 
   \item{remove.duplicate}{should name/label of the variable
   provided in \code{measure.vars} be removed from each

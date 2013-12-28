@@ -37,17 +37,18 @@ of following options:
 
 \itemize{ \item \code{rapport.user}: a (user)name to show
 in exported report (defaults to \code{"Anonymous"}) \item
-\code{rp.file.name}: a general filename of generated images
-and exported documents without extension. Some helper
-pseudo-code would be replaced with handy strings while
-running \code{\link{rapport}} and \code{\link{tpl.export}}:
-\itemize{ \item \code{\%t}: unique random character strings
-based on \code{\link{tempfile}}, \item \code{\%T}: template
-name in action, \item \code{\%n}: an auto-increment integer
-based on similar (plot) file names (see:
-\code{?evalsOptions}), \item \code{\%N}: an auto-increment
-integer based on similar exported document's file name }
-\item \code{rp.file.path}: a directory where generated
+\code{rapport.file.name}: a general filename of generated
+images and exported documents without extension. Some
+helper pseudo-code would be replaced with handy strings
+while running \code{\link{rapport}} and
+\code{\link{tpl.export}}: \itemize{ \item \code{\%t}:
+unique random character strings based on
+\code{\link{tempfile}}, \item \code{\%T}: template name in
+action, \item \code{\%n}: an auto-increment integer based
+on similar (plot) file names (see: \code{?evalsOptions}),
+\item \code{\%N}: an auto-increment integer based on
+similar exported document's file name } \item
+\code{rapport.file.path}: a directory where generated
 images and exported documents would take place.  \item By
 default \code{\link{rapport}} function saves plots to image
 files (see the settings in \code{evalsOptions()}) and
@@ -55,15 +56,15 @@ files (see the settings in \code{evalsOptions()}) and
 image(s). If you would like to see the plot(s) when calling
 \code{\link{rapport}} function from an interactive R
 console, please set \code{evalsOptions('graph.recordplot')}
-and \code{graph.replay} options to \code{TRUE} beforehand.
-In that case all generated plots will be displayed after
-printing the \code{rapport} object. These options are set
-to \code{FALSE} by default although we find these settings
-really handy, as you can resize the images on the fly and
-export resized images to HTML/ODT/DOCX/PDF etc. If you
-would even like to save the actual environment of each
-generated plot (variables, data sets etc.) as an
-\code{RData} file, please set
+and the global \code{rapport.graph.replay} option to
+\code{TRUE} beforehand. In that case all generated plots
+will be displayed after printing the \code{rapport} object.
+These options are set to \code{FALSE} by default although
+we find these settings really handy, as you can resize the
+images on the fly and export resized images to
+HTML/ODT/DOCX/PDF etc. If you would even like to save the
+actual environment of each generated plot (variables, data
+sets etc.) as an \code{RData} file, please set
 \code{evalsOptions('graph.env')} to \code{TRUE}.  \item
 \code{\link{rapport}} also has some options to set
 formatting style of numbers, characters and dates specified

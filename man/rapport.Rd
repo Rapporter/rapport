@@ -4,12 +4,12 @@
 \usage{
 rapport(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
   header.levels.offset = 0, graph.output = evalsOptions("graph.output"),
-  file.name = getOption("rp.file.name"),
-  file.path = getOption("rp.file.path"),
+  file.name = getOption("rapport.file.name"),
+  file.path = getOption("rapport.file.path"),
   graph.width = evalsOptions("width"),
   graph.height = evalsOptions("height"), graph.res = evalsOptions("res"),
   graph.hi.res = evalsOptions("hi.res"),
-  graph.replay = evalsOptions("graph.recordplot"))
+  graph.replay = evalsOptions("rapport.graph.recordplot"))
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -83,7 +83,8 @@ details on template inputs.
 Default parameters are read from \code{evalsOptions()} and
 the following \code{options}:
 
-\itemize{ \item 'rp.file.name', \item 'rp.file.path', }
+\itemize{ \item 'rapport.file.name', \item
+'rapport.file.path', }
 }
 \examples{
 \dontrun{
