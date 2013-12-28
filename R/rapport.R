@@ -11,7 +11,7 @@
 #' The output of \code{rapport} command depends on various package-specific options. Please skim through the summary of following options:
 #'
 #' \itemize{
-#'     \item \code{tpl.user}: a (user)name to show in exported report (defaults to \code{"Anonymous"})
+#'     \item \code{rapport.user}: a (user)name to show in exported report (defaults to \code{"Anonymous"})
 #'     \item \code{rp.file.name}: a general filename of generated images and exported documents without extension. Some helper pseudo-code would be replaced with handy strings while running \code{\link{rapport}} and \code{\link{tpl.export}}:
 #'      \itemize{
 #'          \item \code{\%t}: unique random character strings based on \code{\link{tempfile}},

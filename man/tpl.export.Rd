@@ -55,9 +55,9 @@ argument.
 
 Default parameters are read from global \code{options}:
 
-\itemize{ \item 'tpl.user' }
+\itemize{ \item 'rapport.user' }
 
-Please be sure to set \code{'tpl.user'} option with
+Please be sure to set \code{'rapport.user'} option with
 \code{options()} to get your name in the head of your
 generated reports!
 }

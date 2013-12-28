@@ -6,11 +6,11 @@
     options('rp.file.path'          = tempdir())
 
     ## tpl username
-    options('tpl.user'  = {
-        if (is.empty(getOption('tpl.user')))
+    options('rapport.user'  = {
+        if (is.empty(getOption('rapport.user')))
             'Anonymous'
         else
-            getOption('tpl.user')
+            getOption('rapport.user')
     })
 
     ## use labels

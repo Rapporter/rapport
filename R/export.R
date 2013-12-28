@@ -7,10 +7,10 @@
 #' Default parameters are read from global \code{options}:
 #'
 #' \itemize{
-#'     \item 'tpl.user'
+#'     \item 'rapport.user'
 #' }
 #'
-#' Please be sure to set \code{'tpl.user'} option with \code{options()} to get your name in the head of your generated reports!
+#' Please be sure to set \code{'rapport.user'} option with \code{options()} to get your name in the head of your generated reports!
 #' @param rp a rapport class object or list of rapport class objects
 #' @param file filename of the generated document. Inherited from rapport class if not set. If \code{file} is set with path (not equal to \code{getwd()}), please set an absolute path for images (see: \code{evalsOptions()}).
 #' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added
@@ -92,7 +92,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
         if (is.null(rp))
             stop('There is no sense in exporting a blank report :)')
 
-        r <- Pandoc$new(author = as.character(getOption('tpl.user')), title = as.character(rp$meta['title']), date = date)
+        r <- Pandoc$new(author = as.character(getOption('rapport.user')), title = as.character(rp$meta['title']), date = date)
 
     }
 
