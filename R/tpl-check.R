@@ -5,10 +5,11 @@
 #' If everything went fine and you get a list of \code{success} equals to \code{TRUE} values, otherwise \code{success} returns \code{FALSE} with additional \code{message}
 #' @param fp a character vector containing template name (".rapport" extension is optional), file path or a text to be split by line breaks
 #' @export
+#' @aliases tpl.check rapport.check.template
 #' @examples \dontrun{
-#' tpl.check('example')
+#' rapport.check.template('Example')
 #' }
-tpl.check <- function(fp) {
+rapport.check.template <- function(fp) {
 
     examples <- tryCatch(tpl.example(fp, 'all'), error = function(e) e$message)
 
@@ -31,7 +32,8 @@ tpl.check <- function(fp) {
 
     return(list(success = TRUE))
 }
-
+#' @export
+tpl.check <- rapport.check.template
 
 #' Check Report Chunks
 #'

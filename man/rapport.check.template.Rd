@@ -1,8 +1,9 @@
-\name{tpl.check}
+\name{rapport.check.template}
+\alias{rapport.check.template}
 \alias{tpl.check}
 \title{Check Rapport Template}
 \usage{
-tpl.check(fp)
+rapport.check.template(fp)
 }
 \arguments{
   \item{fp}{a character vector containing template name
@@ -21,7 +22,7 @@ If everything went fine and you get a list of
 }
 \examples{
 \dontrun{
-tpl.check('example')
+rapport.check.template('Example')
 }
 }
 
