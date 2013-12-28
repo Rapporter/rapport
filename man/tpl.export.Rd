@@ -45,14 +45,15 @@ otherwise
 }
 \description{
 This function exports rapport class objects to various
-formats based on ascii package.
+formats based on the \code{pander} package.
 }
 \details{
 By default this function tries to export the report to HTML
 with pandoc. Some default styles are applied. If you do not
-like those default settings, use your own \code{options}.
+like those default settings, use your own \code{options}
+argument.
 
-Default parameters are read from \code{options}:
+Default parameters are read from global \code{options}:
 
 \itemize{ \item 'tpl.user' }
 
