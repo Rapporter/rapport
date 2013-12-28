@@ -1,6 +1,6 @@
 \name{tpl.check}
 \alias{tpl.check}
-\title{Check Template}
+\title{Check Rapport Template}
 \usage{
 tpl.check(fp)
 }

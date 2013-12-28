@@ -1,4 +1,4 @@
-#' Check Template
+#' Check Rapport Template
 #'
 #' Checks if the examples of given template can be run without any error.
 #'
@@ -38,7 +38,6 @@ tpl.check <- function(fp) {
 #' Checks for warnings and errors in report chunks.
 #' @param rp \code{rapport} object
 #' @param what what fields to check. defaults to all
-#' @export 
 check.report.chunks <- function(rp, what = c('errors', 'warnings', 'messages')) {
     stopifnot(is.rapport(rp))
     msg.type <- match.arg(what, several.ok = TRUE)
