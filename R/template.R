@@ -43,7 +43,7 @@ rapport.read <- function(fp, ...) {
         stop('Template file pointer error :O')      # you never know...
     }
 
-    rapport.check.template(txt, ...)
+    check.tpl(txt, ...)
     return(txt)
 
 }
@@ -58,7 +58,7 @@ tpl.find <- rapport.read
 ##' @param show.inline.chunks extract contents of inline chunks as well? (defaults to \code{FALSE})
 ##' @return (invisibly) a list with either inline or block chunk contents
 ##' @export
-tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
+rapport.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
 
     b <- tpl.body(rapport.read(fp))
 
