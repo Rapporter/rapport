@@ -48,6 +48,6 @@ that make your template writing and report creation easier.
 \itemize{ \item \code{\link{rapport.docx}} \item
 \code{\link{rapport.html}} \item \code{\link{rapport.odt}}
 \item \code{\link{rapport.pdf}} \item
-\code{\link{tpl.export}} }
+\code{\link{rapport.export}} }
 }
 

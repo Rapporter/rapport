@@ -1,10 +1,11 @@
-\name{tpl.export}
+\name{rapport.export}
+\alias{rapport.export}
 \alias{tpl.export}
 \title{Export rapport object}
 \usage{
-tpl.export(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE,
-  date = pander.return(Sys.time()), description = TRUE, format = "html",
-  options = "", logo = TRUE)
+rapport.export(rp = NULL, file, append = FALSE, create = TRUE,
+  open = TRUE, date = pander.return(Sys.time()), description = TRUE,
+  format = "html", options = "", logo = TRUE)
 }
 \arguments{
   \item{rp}{a rapport class object or list of rapport class
@@ -65,40 +66,34 @@ generated reports!
 \dontrun{
 
 ## eval some template
-x <- rapport('example', data = mtcars, var="hp")
+x <- rapport('Example', data = mtcars, var="hp")
 
 ## try basic parameters
-tpl.export(x)
-tpl.export(x, file='demo')
-tpl.export(x, file='demo', format='odt')
+rapport.export(x)
+rapport.export(x, file = 'demo')
+rapport.export(x, file = 'demo', format = 'odt')
 
 ### append reports
 # 1) Create a report object with the first report and do not export (optional)
-report <- tpl.export(x, create=F)
+report <- rapport.export(x, create = F)
 # 2) Append some other reports without exporting (optional)
-report <- tpl.export(x, create=F, append=report)
+report <- rapport.export(x, create = F, append = report)
 # 3) Export it!
-tpl.export(append=report)
+rapport.export(append=report)
 # 4) Export it to other formats too! (optional)
-tpl.export(append=report, format='rst')
+rapport.export(append=report, format='rst')
 
 ### exporting multiple reports at once
-tpl.export(tpl.example('example', 'all'))
-tpl.export(tpl.example('example', 'all'), format='odt')
-tpl.export(list(rapport('univar-descriptive', data = mtcars, var="hp"),
-    rapport('univar-descriptive', data = mtcars, var="mpg")))
+rapport.export(tpl.example('Example', 'all'))
+rapport.export(tpl.example('Example', 'all'), format = 'odt')
+rapport.export(list(rapport('univar-descriptive', data = mtcars, var = "hp"),
+    rapport('Descriptives', data = mtcars, var = "mpg")))
 
 ### Never do this as being dumb:
-tpl.export()
-
-### Using other backends
-## asciidoc
-tpl.export(tpl.example('example', 'all'), backend='asciidoc')
-## txt2tags
-tpl.export(tpl.example('example', 'all'), backend='t2t')
+rapport.export()
 
 ### Adding own custom CSS to exported HTML
-tpl.export(x, options=sprintf('-c \%s', system.file('templates/css/default.css', package='rapport')))
+rapport.export(x, options=sprintf('-c \%s', system.file('templates/css/default.css', package='rapport')))
 }
 }
 \references{

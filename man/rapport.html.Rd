@@ -10,12 +10,12 @@ rapport.html(...)
 }
 \description{
 This is a simple wrapper around \code{\link{rapport}} and
-\code{\link{tpl.export}}. Basically it works like
+\code{\link{rapport.export}}. Basically it works like
 \code{\link{rapport}} but the returned class is exported at
 one go.
 }
 \seealso{
-\code{\link{tpl.export}} \code{\link{rapport.pdf}}
+\code{\link{rapport.export}} \code{\link{rapport.pdf}}
 \code{\link{rapport.odt}} \code{\link{rapport.docx}}
 }
 

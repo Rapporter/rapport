@@ -12,7 +12,7 @@
 #'
 #' \itemize{
 #'     \item \code{rapport.user}: a (user)name to show in exported report (defaults to \code{"Anonymous"})
-#'     \item \code{rapport.file.name}: a general filename of generated images and exported documents without extension. Some helper pseudo-code would be replaced with handy strings while running \code{\link{rapport}} and \code{\link{tpl.export}}:
+#'     \item \code{rapport.file.name}: a general filename of generated images and exported documents without extension. Some helper pseudo-code would be replaced with handy strings while running \code{\link{rapport}} and \code{\link{rapport.export}}:
 #'      \itemize{
 #'          \item \code{\%t}: unique random character strings based on \code{\link{tempfile}},
 #'          \item \code{\%T}: template name in action,
@@ -104,7 +104,7 @@ NULL
 #'     \item \code{\link{rapport.html}}
 #'     \item \code{\link{rapport.odt}}
 #'     \item \code{\link{rapport.pdf}}
-#'     \item \code{\link{tpl.export}}
+#'     \item \code{\link{rapport.export}}
 #' }
 #' @name rapport-helpers
 NULL

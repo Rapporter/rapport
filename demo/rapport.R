@@ -92,7 +92,7 @@ tpl.example('Correlation')
 ##                                                            ##
 ## Will run:                                                  ##
 ##                                                            ##
-##    tpl.export(tpl.example('Correlation', 'all'))           ##
+##    rapport.export(tpl.example('Correlation', 'all'))       ##
 ##                                                            ##
 ## NOTE: this requires Pandoc to be installed!                ##
 ##       Please check out our INSTALLATION file for details.  ##
@@ -101,7 +101,7 @@ tpl.example('Correlation')
 
 
 next.please()
-tpl.export(tpl.example('Correlation', 'all'))
+rapport.export(tpl.example('Correlation', 'all'))
 
 
 ##################################################################################
@@ -116,7 +116,7 @@ tpl.export(tpl.example('Correlation', 'all'))
 
 
 next.please()
-rapport('Correlation', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
+rapport('Correlation', data = mtcars, vars = c('mpg', 'hp', 'wt', 'qsec'))
 
 
 ##################################################################################
@@ -156,7 +156,7 @@ report
 ##                                                                                                        ##
 ## Will run:                                                                                              ##
 ##                                                                                                        ##
-##      tpl.export(report, format = 'odt')                                                                ##
+##    rapport.export(report, format = 'odt')                                                              ##
 ##                                                                                                        ##
 ## NOTE: this requires Pandoc to be installed!                                                            ##
 ##                                                                                                        ##
@@ -164,7 +164,7 @@ report
 
 
 next.please()
-tpl.export(report, format = 'odt')
+rapport.export(report, format = 'odt')
 
 
 ############################################################################################################

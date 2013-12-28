@@ -41,7 +41,7 @@ in exported report (defaults to \code{"Anonymous"}) \item
 images and exported documents without extension. Some
 helper pseudo-code would be replaced with handy strings
 while running \code{\link{rapport}} and
-\code{\link{tpl.export}}: \itemize{ \item \code{\%t}:
+\code{\link{rapport.export}}: \itemize{ \item \code{\%t}:
 unique random character strings based on
 \code{\link{tempfile}}, \item \code{\%T}: template name in
 action, \item \code{\%n}: an auto-increment integer based

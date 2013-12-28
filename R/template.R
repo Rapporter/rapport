@@ -452,7 +452,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
 
 #' Template Examples
 #'
-#' Displays template examples defined in \code{Example} section. Handy to check out what template does and how does it look like once it's rendered. If multiple examples are available, and \code{index} argument is \code{NULL}, you will be prompted for input. If only one example is available in the header, user is not prompted for input action, and given template is evaluated automatically. At any time you can provide an integer vector with example indices to \code{index} argument, and specified examples will be evaluated without prompting, thus returning a list of \code{rapport} objects. Example output can be easily exported to various formats (HTML, ODT, etc.) - check out documentation for \code{tpl.export} for more info.
+#' Displays template examples defined in \code{Example} section. Handy to check out what template does and how does it look like once it's rendered. If multiple examples are available, and \code{index} argument is \code{NULL}, you will be prompted for input. If only one example is available in the header, user is not prompted for input action, and given template is evaluated automatically. At any time you can provide an integer vector with example indices to \code{index} argument, and specified examples will be evaluated without prompting, thus returning a list of \code{rapport} objects. Example output can be easily exported to various formats (HTML, ODT, etc.) - check out documentation for \code{rapport.export} for more info.
 #' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
 #' @param index a numeric vector indicating the example index - meaningful only for templates with multiple examples. Accepts vector of integers to match IDs of template example. Using 'all' (character string) as index will return all examples.
 #' @param env an environment where example will be evaluated (defaults to \code{.GlobalEnv})
@@ -461,7 +461,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
 #' tpl.example('Example', 1:2)
 #' tpl.example('Example', 'all')
 #' tpl.example('Crosstable')
-#' tpl.export(tpl.example('Crosstable'))
+#' rapport.export(tpl.example('Crosstable'))
 #' }
 #' @export
 tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {

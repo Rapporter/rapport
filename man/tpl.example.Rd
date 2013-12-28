@@ -30,7 +30,7 @@ indices to \code{index} argument, and specified examples
 will be evaluated without prompting, thus returning a list
 of \code{rapport} objects. Example output can be easily
 exported to various formats (HTML, ODT, etc.) - check out
-documentation for \code{tpl.export} for more info.
+documentation for \code{rapport.export} for more info.
 }
 \examples{
 \dontrun{
@@ -38,7 +38,7 @@ tpl.example('Example')
 tpl.example('Example', 1:2)
 tpl.example('Example', 'all')
 tpl.example('Crosstable')
-tpl.export(tpl.example('Crosstable'))
+rapport.export(tpl.example('Crosstable'))
 }
 }
 
