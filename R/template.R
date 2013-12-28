@@ -87,7 +87,7 @@ tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
     else
         chunk.ind <- block.ind
 
-    chunk.ind <- lapply(chunk.ind, function(x){
+    chunk.ind <- lapply(chunk.ind, function(x) {
         attr(x, "chunk.type") <- "block"
         x
     })
@@ -111,7 +111,7 @@ tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
             out <<- c(out, "", cc, "")
         } else {
             cc <- trim.space(vgsub("(<%=?|%>)", "", str_extract_all(cc, "<%=?[^%>]+%>")[[1]]))
-            sapply(cc, function(x){
+            sapply(cc, function(x) {
                 out <<- c(out, "##################")
                 out <<- c(out, "## inline chunk ##")
                 out <<- c(out, "##################")
@@ -137,12 +137,15 @@ tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
 #' @param close.tag a string with closing tag (defaults to value of user-defined \code{"header.close"} tag)
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template header contents
-tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
+tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...) {
+
     txt <- rapport.read(fp)                 # split by newlines
+
     ## get header tag indices
     hopen.ind  <- grep(open.tag, txt, ...)[1]  # opening tag
     hclose.ind <- grep(close.tag, txt, ...)[1] # closing tag
     hsection <- txt[(hopen.ind + 1):(hclose.ind - 1)] # get header
+
     return(hsection)
 }
 
@@ -155,7 +158,7 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template body contents
 #' @export
-tpl.body <- function(fp, htag = get.tags('header.close'), ...){
+tpl.body <- function(fp, htag = get.tags('header.close'), ...) {
     txt   <- rapport.read(fp, ...)
     h.end <- grep(htag, txt, ...)
     b <- txt[(h.end + 1):length(txt)]
@@ -179,16 +182,20 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...){
 #' \code{\link{tpl.inputs}}
 #' }
 #' @export
-tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
+tpl.info <- function(fp, meta = TRUE, inputs = TRUE) {
+
     txt <- rapport.read(fp)
+
     if (!meta & !inputs)
         stop('Either "meta" or "inputs" should be set to TRUE')
+
     res <- list()
     if (meta)
         res$meta <- tpl.meta(txt)
     if (inputs)
         res$inputs <- tpl.inputs(txt)
     class(res) <- 'rp.info'
+
     return(res)
 }
 
@@ -220,9 +227,11 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 #' }
 #' @export
 tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
+
     header <- rapport.read(fp)
     if (!use.header)
         header <- tpl.header(header)
+
     ## check if header is defined in YAML
     h <- tryCatch({
         y <- yaml.load(
@@ -259,7 +268,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
             )
 
         ## no fields specified, load default fields
-        if (!is.null(fields)){
+        if (!is.null(fields)) {
             fld.title <- sapply(fld, function(x) x$title)
             fields.title  <- sapply(fields, function(x) x$title)
             fld <- c(fld, fields) # merge required fields with default/specified ones
@@ -275,7 +284,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
         if (length(rm.ind) > 0)
             header <- header[-rm.ind]
 
-        h <- sapply(fld, function(x){
+        h <- sapply(fld, function(x) {
             m <- grep(sprintf("^%s:", x$title), header)
             x$x <- header[m]
             do.call(extract.meta, x)
@@ -288,7 +297,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 
         ## examples
         ## TODO: change to "examples" at some point (easy does it)
-        if (!is.null(h$example)){
+        if (!is.null(h$example)) {
             ## select all "untagged" lines after Example: that contain rapport(<smth>) string
             ## but it will not check if they're syntactically correct
             ind.start <- grep('^Example:', header)
@@ -391,10 +400,13 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #' \code{\link{tpl.info}}
 #' }
 #' @export
-tpl.inputs <- function(fp, use.header = FALSE){
+tpl.inputs <- function(fp, use.header = FALSE) {
+
     header <- rapport.read(fp)
+
     if (!use.header)
         header <- tpl.header(header)
+
     ## Try with YAML first ("inputs" is actually decoded header)
     inputs <- tryCatch(
         yaml.load(
@@ -481,13 +493,13 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
     examples.len <- length(examples)
 
     ## return NULL invisibly if no templates are found in the template
-    if (is.null(examples)){
+    if (is.null(examples)) {
         message('Provided template does not have any examples.')
         invisible(NULL)
     }
 
-    if (examples.len > 1){
-        if (is.null(index)){
+    if (examples.len > 1) {
+        if (is.null(index)) {
             opts  <- c(n.examples)
             catn('Enter example ID from the list below:')
             catn(sprintf('\n(%s)\t%s', opts, c(examples)))
@@ -530,7 +542,7 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 #' tpl.rerun(tmp)
 #' }
 #' @export
-tpl.rerun <- function(tpl){
+tpl.rerun <- function(tpl) {
 
     if (!inherits(tpl, 'rapport'))
         stop("You haven't provided a rapport template")
@@ -605,7 +617,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     file.path     <- gsub('\\', '/', file.path, fixed = TRUE)
 
     ## load required packages (if any)
-    if (!is.null(pkgs)){
+    if (!is.null(pkgs)) {
         pk <- suppressMessages(sapply(pkgs, require, character.only = TRUE, quietly = TRUE))
         nopkg <- pk == FALSE
         if (any(nopkg))
@@ -633,7 +645,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         }
 
         ## data required
-        if (data.required){
+        if (data.required) {
             if(is.null(data))
                 stop('"data" not provided, but is required')
             if (!inherits(data, c('data.frame', 'rp.data')))
@@ -642,7 +654,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
             assign('rp.data', data, envir = e) # load data to eval environment
         }
 
-        lapply(inputs, function(x){
+        lapply(inputs, function(x) {
             ## template inputs
             input.name   <- x$name
             input.class  <- x$class
@@ -736,7 +748,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
                 ## add labels
                 if (is.recursive(val)) {
-                    for (t in names(val)){
+                    for (t in names(val)) {
                         if (rp.label(val[, t]) == 't')
                             val[, t] <- structure(val[, t], label = t, name = t)
                         else
@@ -813,7 +825,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         stop(report$message)
 
     ## remove NULL/blank parts
-    ## ind.nullblank <- sapply(report, function(x){
+    ## ind.nullblank <- sapply(report, function(x) {
     ##     if (x$type == 'block')
     ##         ifelse(is.null(x$robjects[[1]]$output), FALSE, TRUE)
     ##     else
@@ -822,14 +834,14 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     ## report <- report[ind.nullblank]     # update template body contents
 
     ## tidy up (removing metadata, inputs from) nested templates
-    report <- unlist(lapply(report, function(x){
+    report <- unlist(lapply(report, function(x) {
 
         robj  <- x$robject
         rout  <- robj$result
         xtype <- x$type
 
         ## chunk holding a rapport class
-        if (xtype == 'block'){
+        if (xtype == 'block') {
 
             if (any(robj$type == 'rapport'))
                 return(rout$report)
@@ -862,7 +874,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         file.name   = file.path(file.path, file.name)
         )
 
-    if (isTRUE(reproducible)){
+    if (isTRUE(reproducible)) {
         res$data <- data
     }
 
