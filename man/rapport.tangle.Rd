@@ -1,8 +1,8 @@
-\name{tpl.tangle}
-\alias{tpl.tangle}
+\name{rapport.tangle}
+\alias{rapport.tangle}
 \title{Extract template chunk contents}
 \usage{
-tpl.tangle(fp, file = "", show.inline.chunks = FALSE)
+rapport.tangle(fp, file = "", show.inline.chunks = FALSE)
 }
 \arguments{
   \item{fp}{template file pointer (see
