@@ -20,7 +20,6 @@ is.rp.heading <- function(x)  inherits(x, 'rp.heading')
 #' Checks if provided string is a valid ATX-style pandoc heading.
 #' @param x a string to test for pandoc heading format
 #' @return a logical value indicating the string is (not) a pandoc heading
-#' @export
 is.heading <- function(x){
     if (missing(x))
         stop('no character value to test pandoc heading')
@@ -36,7 +35,6 @@ is.heading <- function(x){
 #' @param ... ignored
 #' @method as.character rp.meta
 #' @S3method as.character rp.meta
-#' @export
 as.character.rp.meta <- function(x, ...){
     if (!inherits(x, 'rp.meta'))
         stop("template metadata not provided")
@@ -51,7 +49,6 @@ as.character.rp.meta <- function(x, ...){
 #' @param ... ignored
 #' @method as.character rp.inputs
 #' @S3method as.character rp.inputs
-#' @export
 as.character.rp.inputs <- function(x, ...){
     if (!inherits(x, 'rp.inputs'))
         stop("template inputs not provided")

@@ -275,24 +275,3 @@ is.empty <- function(x, trim = TRUE, ...) {
     } else
         sapply(x, is.empty, trim = trim, ...)
 }
-
-
-
-#' Existed object with the value NULL
-#'
-#' Checks if provided object exists but the value of that is NULL.
-#' @param x an object to check
-#' @return a logical value indicating whether provided object exists but the value of that is NULL
-#' @examples
-#' is.exnull(1)		  # [1] FALSE
-#' is.exnull("")	  # [1] FALSE
-#' is.exnull(NULL) 	# [1] TRUE
-#' @export
-is.exnull <- function(x) {
-  if (exists(deparse(substitute(x))) && is.null(x)) {
-    return (TRUE)
-  } else {
-    return (FALSE)
-  }
-}
-
