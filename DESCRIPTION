@@ -24,7 +24,6 @@ Depends:
     stringr,
     yaml
 Imports:
-    grDevices,
     reshape
 SystemRequirements: Pandoc (http://johnmacfarlane.net/pandoc) for exporting
     markdown files to other formats.
