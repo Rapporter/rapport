@@ -40,35 +40,42 @@ head-->
 
 Hello, world!
 
-I have just specified a *Variable* in this template named to **<%=rp.name(var)%>**. The label of this *variable* is "<%=var.label%>".
+I have just specified a *Variable* in this template named to **<%= name(var) %>**. The label of this *variable* is "<%= var.label %>".
 
-And wow, the mean of *<%=var.name%>* is <%=mean(na.omit(var))%>!
+And wow, the mean of *<%= var.name %>* is <%= mean(na.omit(var)) %>!
 
 <%=
-if (!desc) '**For more detailed statistics, you should have set `desc=TRUE`!**'
- %>
+if (!desc) {
+    '**For more detailed statistics, you should have set `desc=TRUE`!**'
+}
+%>
 
 <% if (desc) { %>
 ##  'Descriptive statistics'
 <% } %>
 
 <%=
-if (desc) summary(var)
- %>
-
+if (desc) {
+    summary(var)
+}
+%>
 
 <%=
-if (desc) sprintf('The 5 highest value are: %s.', p(sort(var, decreasing = TRUE)[1:5]))
- %>
+if (desc) {
+    sprintf('The 5 highest value are: %s.', p(sort(var, decreasing = TRUE)[1:5]))
+}
+%>
 
- <% if (histogram) { %>
+<% if (histogram) { %>
 ## 'Histogram'
 <% } %>
 
 <%=
-if (histogram)
+if (histogram) {
     if (require(lattice)) {
         histogram(rp.data[, var.name])
-    } else
+    } else {
         hist(rp.data[, var.name])
+    }
+}
 %>
