@@ -1,8 +1,9 @@
-\name{rp.label}
+\name{label}
+\alias{label}
 \alias{rp.label}
 \title{Get Variable Label}
 \usage{
-rp.label(x, fallback = TRUE, simplify = TRUE)
+label(x, fallback = TRUE, simplify = TRUE)
 }
 \arguments{
   \item{x}{an R object to extract labels from}
@@ -27,13 +28,13 @@ returned with a warning notice.
 \examples{
 \dontrun{
 x <- rnorm(100)
-rp.label(x)         # returns "x"
-rp.label(x, FALSE)  # returns NA and issues a warning
+label(x)         # returns "x"
+label(x, FALSE)  # returns NA and issues a warning
 
-rp.label(mtcars$hp) <- "Horsepower"
-rp.label(mtcars)         # returns "Horsepower" instead of "hp"
-rp.label(mtcars, FALSE)  # returns NA where no labels are found
-rp.label(sleep, FALSE)   # returns NA for each variable and issues a warning
+label(mtcars$hp) <- "Horsepower"
+label(mtcars)         # returns "Horsepower" instead of "hp"
+label(mtcars, FALSE)  # returns NA where no labels are found
+label(sleep, FALSE)   # returns NA for each variable and issues a warning
 }
 }
 

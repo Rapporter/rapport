@@ -79,11 +79,11 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
     if (is.null(id.vars)) {
         names(res) <- c(varcol.name, fn.nms)
         if (use.labels)
-            res[, 1] <- c(rp.label(data[measure.vars]))
+            res[, 1] <- c(label(data[measure.vars]))
     } else {
         ## use labels for id.vars?
         if (use.labels)
-            names(res)[1:n.id] <- rp.label(data[id.vars])
+            names(res)[1:n.id] <- label(data[id.vars])
 
         ## remove nasty (all)
         ## (all) occurs only if margins is not NULL or FALSE
@@ -121,7 +121,7 @@ rp.desc <- function(measure.vars, id.vars = NULL, fn, data = NULL, na.rm = TRUE,
 
             ## use labels for measure vars?
             if (use.labels)
-                names(res)[ind.measure] <- vgsub(measure.vars, rp.label(data[measure.vars]), names(res)[ind.measure])
+                names(res)[ind.measure] <- vgsub(measure.vars, label(data[measure.vars]), names(res)[ind.measure])
         }
     }
 

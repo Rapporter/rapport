@@ -80,8 +80,8 @@ Among the graphical displays the Box plots are quite widespread, because of thei
 The Box Plot we used here is based on IQR (Interquartile Range), which is the difference between the higher and the lower quartiles. On the chart the blue box shows the "middle-half" of the data, the so-called whiskers shows the border where from the possible values can be called outliers. The lower whisker is placed 1.5 times below the first quartile, similarly the higher whisker 1.5 times above the third quartile.
 
 <%=
-set.caption(sprintf('Boxplot: %s', rp.name(var)))
-bwplot(var, xlab = rp.label(var))
+set.caption(sprintf('Boxplot: %s', name(var)))
+bwplot(var, xlab = label(var))
 %>
 
 ## References
@@ -91,14 +91,14 @@ bwplot(var, xlab = rp.label(var))
 
 # Lund test
 
-It seems that <%=out <- rp.outlier(var); length(out)%> extreme values can be found in "<%=rp.label(var)%>". <%=ifelse(length(out) > 0, sprintf('These are: %s.', p(out)), '')%>
+It seems that <%=out <- rp.outlier(var); length(out)%> extreme values can be found in "<%=label(var)%>". <%=ifelse(length(out) > 0, sprintf('These are: %s.', p(out)), '')%>
 
 ## Explanation
 
-The above test for outliers was based on *lm(<%=rp.name(var)%> ~ 1)*:
+The above test for outliers was based on *lm(<%=name(var)%> ~ 1)*:
 
 <%=
-set.caption(sprintf('Linear model: %s ~ 1', rp.name(var)))
+set.caption(sprintf('Linear model: %s ~ 1', name(var)))
 lm(var ~ 1)
 %>
 

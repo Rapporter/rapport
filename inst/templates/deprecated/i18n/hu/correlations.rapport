@@ -88,7 +88,7 @@ Ahol a csillagok száma a [szignifikancia szintet](http://en.wikipedia.org/wiki/
 <%=
 if (cor.plot) {
 
-    labels <- lapply(vars, rp.name)
+    labels <- lapply(vars, name)
 
     if (quick.plot)
         if (nrow(vars) > 1000)

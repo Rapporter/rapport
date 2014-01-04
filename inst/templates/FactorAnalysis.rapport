@@ -167,13 +167,13 @@ FA_loadings
 %>
 
 
-So it can be said that <%=paste(pandoc.list.return(paste(colnames(FA_loadings)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a latent factor of ")), collapse = '\n')%>
+So it can be said that <%=paste(pandoc.list.return(paste(colnames(FA_loadings)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 2]],name(vars)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a latent factor of ")), collapse = '\n')%>
 
 <% if (length(which(FA_loadings > 0.3)) != length(which(abs(FA_loadings) > 0.3))) { %>
 
 <%=neg.comp <- colnames(FA_loadings)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 2]]%>
 
-From them in the case<%=ifelse(length(neg.comp) > 1, "s", "")%> of the <%=paste(colnames(FA_loadings)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 2]], rp.name(vars)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 1]], sep = "'s impact on ")%>, we can say <%=ifelse(length(neg.comp) > 1, "they are", "that is")%> negative effects.
+From them in the case<%=ifelse(length(neg.comp) > 1, "s", "")%> of the <%=paste(colnames(FA_loadings)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 2]], name(vars)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 1]], sep = "'s impact on ")%>, we can say <%=ifelse(length(neg.comp) > 1, "they are", "that is")%> negative effects.
     
 <% } else { %>
 We can say that <%=ifelse(length(which(abs(FA_loadings) > 0.3)), "none of these impacts are negative", "this impact is positive")%>. 

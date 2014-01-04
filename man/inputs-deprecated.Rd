@@ -155,9 +155,9 @@ implicitly set to \code{[1,1]}. }
 \strong{Input Label and Description}
 
 Third block in input definition is an input label. While
-\emph{variable} can have its own label (see
-\code{rp.label}), you may want to use the one defined in
-input specifications. At last, fourth block contains input
+\emph{variable} can have its own label (see \code{label}),
+you may want to use the one defined in input
+specifications. At last, fourth block contains input
 description, which should be a lengthy description of
 current input. Note that all the fields in input
 specification are mandatory. You can cheat, though, by

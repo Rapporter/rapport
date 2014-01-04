@@ -92,7 +92,7 @@ Where the stars represent the [significance levels](http://en.wikipedia.org/wiki
 On the plot one can see the correlation in two forms: below the [diagonal](http://en.wikipedia.org/wiki/Main_diagonal) visually, above that one can find the coefficient(s).
 
 <%=
-labels <- lapply(vars, rp.name)
+labels <- lapply(vars, name)
 quick.plot <- FALSE
 if (nrow(vars) > 1000) {
     quick.plot <- TRUE

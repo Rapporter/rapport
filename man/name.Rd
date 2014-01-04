@@ -1,8 +1,9 @@
-\name{rp.name}
+\name{name}
+\alias{name}
 \alias{rp.name}
 \title{Variable Name}
 \usage{
-rp.name(x)
+name(x)
 }
 \arguments{
   \item{x}{an R (atomic or data.frame/list) object to
@@ -18,8 +19,9 @@ function defaults to object's name.
 }
 \examples{
 \dontrun{
-rp.name(mtcars$am)
-x <- 1:10; rp.name(x)
+name(mtcars$am)
+x <- 1:10
+name(x)
 }
 }
 

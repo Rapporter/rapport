@@ -109,13 +109,13 @@ rot
 %>
 
 The cells written in bold shows which components explain the most variances of the variables, with the help of them we can draw the following conclusion:
-<%=paste(pandoc.list.return(paste(colnames(rot)[which(abs(rot) > 0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(abs(rot) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a principal component of ")), collapse = '\n')%>
+<%=paste(pandoc.list.return(paste(colnames(rot)[which(abs(rot) > 0.3, arr.ind = TRUE)[, 2]],name(vars)[which(abs(rot) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a principal component of ")), collapse = '\n')%>
 
 <% if (length(which(rot > 0.3)) != length(which(abs(rot) > 0.3))) { %>
 
 <%=neg.comp <- colnames(rot)[which(rot < -0.3, arr.ind = TRUE)[, 2]]%>
 
-From them in the case<%=ifelse(neg.comp < 1, "s", "")%> of the <%=paste(colnames(rot)[which(rot < -0.3, arr.ind = TRUE)[, 2]],rp.name(vars)[which(rot < -0.3, arr.ind = TRUE)[, 1]], sep = "'s impact on ")%>, we can say <%=ifelse(neg.comp < 1, "they are", "that is")%> negative.
+From them in the case<%=ifelse(neg.comp < 1, "s", "")%> of the <%=paste(colnames(rot)[which(rot < -0.3, arr.ind = TRUE)[, 2]],name(vars)[which(rot < -0.3, arr.ind = TRUE)[, 1]], sep = "'s impact on ")%>, we can say <%=ifelse(neg.comp < 1, "they are", "that is")%> negative.
 
 <% } else { %>
 We can say that <%=ifelse(length(which(abs(rot) > 0.3)), "none of these impacts are negative", "this impact is positive")%>.

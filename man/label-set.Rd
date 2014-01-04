@@ -1,8 +1,9 @@
-\name{rp.label<-}
+\name{label<-}
+\alias{label<-}
 \alias{rp.label<-}
 \title{Set Variable Label}
 \usage{
-rp.label(var) <- value
+label(var) <- value
 }
 \arguments{
   \item{var}{a variable (see \code{\link{is.variable}} for
@@ -17,11 +18,12 @@ character string to its \code{label} attribute.
 }
 \examples{
 \dontrun{
-rp.label(mtcars$mpg) <- "fuel consumption"
-x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
+label(mtcars$mpg) <- "fuel consumption"
+x <- rnorm(100)
+(label(x) <- "pseudo-random normal variable")
 }
 }
 \seealso{
-\code{\link{rp.label}}
+\code{\link{label}}
 }
 

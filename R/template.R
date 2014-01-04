@@ -749,13 +749,13 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                 ## add labels
                 if (is.recursive(val)) {
                     for (t in names(val)) {
-                        if (rp.label(val[, t]) == 't')
+                        if (label(val[, t]) == 't')
                             val[, t] <- structure(val[, t], label = t, name = t)
                         else
                             val[, t] <- structure(val[, t], name = t)
                     }
                 } else {
-                    if (rp.label(val) == 'val')
+                    if (label(val) == 'val')
                         val <- structure(val, label = user.input, name = user.input)
                     else
                         val <- structure(val, name = user.input)
@@ -778,9 +778,9 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
             ## currently we support only data.frame and atomic vectos
             if (is.data.frame(val))
-                assign(sprintf('%s.label', input.name), sapply(val, rp.label), envir = e) # variable labels
+                assign(sprintf('%s.label', input.name), sapply(val, label), envir = e) # variable labels
             else if (is.atomic(val))
-                assign(sprintf('%s.label', input.name), rp.label(val), envir = e) # variable label
+                assign(sprintf('%s.label', input.name), label(val), envir = e) # variable label
             else
                 stopf('"%s" is not a "data.frame" or an atomic vector', input.name) # you never know...
         })

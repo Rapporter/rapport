@@ -62,11 +62,13 @@ as.character.rp.inputs <- function(x, ...){
 #' @param x an R (atomic or data.frame/list) object to extract names from
 #' @return a character value with variable's label
 #' @examples \dontrun{
-#' rp.name(mtcars$am)
-#' x <- 1:10; rp.name(x)
+#' name(mtcars$am)
+#' x <- 1:10
+#' name(x)
 #' }
 #' @export
-rp.name <- function(x){
+#' @aliases name rp.name
+name <- function(x){
 
     if (missing(x))
         stop('variable not provided')
@@ -97,6 +99,8 @@ rp.name <- function(x){
 
     stop('Wrong R object type provided!')
 }
+#' @export
+rp.name <- name
 
 
 #' Get Variable Label
@@ -108,19 +112,20 @@ rp.name <- function(x){
 #' @return a character vector with variable's label(s)
 #' @examples \dontrun{
 #' x <- rnorm(100)
-#' rp.label(x)         # returns "x"
-#' rp.label(x, FALSE)  # returns NA and issues a warning
+#' label(x)         # returns "x"
+#' label(x, FALSE)  # returns NA and issues a warning
 #'
-#' rp.label(mtcars$hp) <- "Horsepower"
-#' rp.label(mtcars)         # returns "Horsepower" instead of "hp"
-#' rp.label(mtcars, FALSE)  # returns NA where no labels are found
-#' rp.label(sleep, FALSE)   # returns NA for each variable and issues a warning
+#' label(mtcars$hp) <- "Horsepower"
+#' label(mtcars)         # returns "Horsepower" instead of "hp"
+#' label(mtcars, FALSE)  # returns NA where no labels are found
+#' label(sleep, FALSE)   # returns NA for each variable and issues a warning
 #' }
 #' @export
-rp.label <- function(x, fallback = TRUE, simplify = TRUE){
+#' @aliases label rp.label
+label <- function(x, fallback = TRUE, simplify = TRUE){
 
     if (missing(x))
-        stop('variable not provided')
+        stop('Variable not provided.')
 
     if (is.null(x))
         return (NULL)
@@ -131,12 +136,12 @@ rp.label <- function(x, fallback = TRUE, simplify = TRUE){
             if (fallback){
                 lbl <- tail(as.character(substitute(x)), 1)
             } else {
-                warning('atomic object has no labels')
+                warning('Atomic object has no labels.')
                 lbl <- NA
             }
         } else {
             if (length(lbl) > 1){
-                warning('variable label is not a length-one vector, only first element is returned')
+                warning('Variable label is not a length-one vector, only first element is returned.')
                 lbl <- lbl[1]
             }
         }
@@ -149,7 +154,7 @@ rp.label <- function(x, fallback = TRUE, simplify = TRUE){
             if (fallback){
                 lbl <- structure(names(lbl), .Names = names(lbl))
             } else {
-                warning('no labels found in recursive object')
+                warning('No labels found in recursive object,')
                 lbl[lbl.nil] <- NA
             }
         } else {
@@ -165,6 +170,8 @@ rp.label <- function(x, fallback = TRUE, simplify = TRUE){
 
     return(lbl)
 }
+#' @export
+rp.label <- label
 
 
 #' Set Variable Label
@@ -172,28 +179,32 @@ rp.label <- function(x, fallback = TRUE, simplify = TRUE){
 #' This function sets a label to a variable, by storing a character string to its \code{label} attribute.
 #' @param var a variable (see \code{\link{is.variable}} for details)
 #' @param value a character value that is to be set as variable label
-#' @usage rp.label(var) <- value
-#' @seealso \code{\link{rp.label}}
+#' @usage label(var) <- value
+#' @seealso \code{\link{label}}
 #' @examples \dontrun{
-#' rp.label(mtcars$mpg) <- "fuel consumption"
-#' x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
+#' label(mtcars$mpg) <- "fuel consumption"
+#' x <- rnorm(100)
+#' (label(x) <- "pseudo-random normal variable")
 #' }
 #' @export
-`rp.label<-` <- function(var, value){
+#' @aliases label<- rp.label<-
+`label<-` <- function(var, value){
 
     if (missing(var) | missing(value))
-        stop('both variable name and label should be provided')
+        stop('Both variable name and label should be provided.')
 
     if (!is.variable(var))
-        stop('label can only be assigned to a variable')
+        stop('Label can only be assigned to a variable.')
 
     if (!is.string(value))
-        stop('only a character string can be assigned to a variable label')
+        stop('Only a character string can be assigned to a variable label.')
 
     attr(var, 'label') <- value
 
     return (var)
 }
+#' @export
+`rp.label<-` <- `label<-`
 
 
 #' Tag Values

@@ -208,7 +208,7 @@ htest <- function(x, ..., use.labels = getOption('rapport.use.labels'), use.meth
         if (is.formula(x))
             x.nms <- deparse(substitute(x))
         else
-            x.nms <- if (use.labels) rp.label(x) else rp.name(x)
+            x.nms <- if (use.labels) label(x) else name(x)
         x.len <- 1
     } else {
         if (test.len == 1){
@@ -219,7 +219,7 @@ htest <- function(x, ..., use.labels = getOption('rapport.use.labels'), use.meth
             method.name <- sapply(res[[1]], attr, which = "method")
         }
         res <- t(data.frame(res))
-        x.nms <- if (use.labels) rp.label(x) else rp.name(x)
+        x.nms <- if (use.labels) label(x) else name(x)
         x.len <- length(x)
     }
 
