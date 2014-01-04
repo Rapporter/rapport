@@ -19,10 +19,10 @@ LazyLoad: yes
 Depends:
     R (>= 2.15.0),
     plyr,
-    pander,
-    stringr
+    pander
 Imports:
     reshape,
-    yaml
+    yaml,
+    stringr
 SystemRequirements: Pandoc (http://johnmacfarlane.net/pandoc) for exporting
     markdown files to other formats.
