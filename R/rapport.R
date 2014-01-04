@@ -26,6 +26,7 @@
 #'}
 #' @docType package
 #' @importFrom reshape melt melt.data.frame melt.table cast
+#' @importFrom yaml as.yaml yaml.load
 #' @seealso \code{pander} package: \url{http://rapporter.github.com/pander/}
 #' @name rapport-package
 NULL

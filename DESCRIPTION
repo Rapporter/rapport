@@ -20,9 +20,9 @@ Depends:
     R (>= 2.15.0),
     plyr,
     pander,
-    stringr,
-    yaml
+    stringr
 Imports:
-    reshape
+    reshape,
+    yaml
 SystemRequirements: Pandoc (http://johnmacfarlane.net/pandoc) for exporting
     markdown files to other formats.
