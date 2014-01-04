@@ -6,7 +6,7 @@ tpl.meta(fp, fields = NULL, use.header = FALSE, trim.white = TRUE)
 }
 \arguments{
   \item{fp}{a template file pointer (see
-  \code{\link{rapport:::rapport.read}} for details)}
+  \code{rapport:::rapport.read} for details)}
 
   \item{fields}{a list of named lists containing key-value
   pairs of field titles and corresponding regexes}

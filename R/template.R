@@ -53,7 +53,7 @@ tpl.find <- rapport.read
 ##' Extract template chunk contents
 ##'
 ##' \code{rapport}'s alternative to \code{\link{Stangle}} - extracts contents of template chunks. If \code{file} argument
-##' @param fp template file pointer (see \code{\link{rapport:::rapport.read}} for details)
+##' @param fp template file pointer (see \code{rapport:::rapport.read} for details)
 ##' @param file see \code{file} argument in \code{\link{cat}} function documentation
 ##' @param show.inline.chunks extract contents of inline chunks as well? (defaults to \code{FALSE})
 ##' @return (invisibly) a list with either inline or block chunk contents
@@ -132,7 +132,7 @@ rapport.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
 #' Template Header
 #'
 #' Returns \code{rapport} template header from provided path or a character vector.
-#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param open.tag a string with opening tag (defaults to value of user-defined \code{"header.open"} tag)
 #' @param close.tag a string with closing tag (defaults to value of user-defined \code{"header.close"} tag)
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
@@ -153,7 +153,7 @@ tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.t
 #' Template Body
 #'
 #' Returns contents of the template body.
-#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param htag a string with closing body tag
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template body contents
@@ -169,7 +169,7 @@ tpl.body <- function(fp, htag = get.tags('header.close'), ...) {
 #' Template Info
 #'
 #' Provides information about template metadata and/or inputs. See \code{\link{tpl.meta}} and \code{\link{tpl.inputs}} for details.
-#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param meta return template metadata? (defaults to \code{TRUE})
 #' @param inputs return template inputs? (defaults to \code{TRUE})
 #' @examples \dontrun{
@@ -216,7 +216,7 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE) {
 #' }
 #'
 #' As of version \code{0.5}, \code{dataRequired} field is deprecated. \code{rapport} function will automatically detect if the template requires a dataset based on the presence of \emph{standalone} inputs.
-#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param fields a list of named lists containing key-value pairs of field titles and corresponding regexes
 #' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains only the header data (not the whole template)
 #' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
@@ -393,7 +393,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #'     \item \code{nlevels} - accepts the same format as \code{length} attribute, but the check is performed rather on the number of factor levels.
 #'     \item \code{matchable} - \emph{ibid} as in character inputs (note that in previous versions of \code{rapport} matching was performed against factor levels - well, not any more, now we match against values to make it consistent with \code{character} inputs).
 #' }
-#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param use.header a logical value indicating whether the header section is provided in \code{h} argument
 #' @seealso {
 #' \code{\link{tpl.meta}}
@@ -475,7 +475,7 @@ tpl.inputs <- function(fp, use.header = FALSE) {
 #' Template Examples
 #'
 #' Displays template examples defined in \code{Example} section. Handy to check out what template does and how does it look like once it's rendered. If multiple examples are available, and \code{index} argument is \code{NULL}, you will be prompted for input. If only one example is available in the header, user is not prompted for input action, and given template is evaluated automatically. At any time you can provide an integer vector with example indices to \code{index} argument, and specified examples will be evaluated without prompting, thus returning a list of \code{rapport} objects. Example output can be easily exported to various formats (HTML, ODT, etc.) - check out documentation for \code{rapport.export} for more info.
-#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param index a numeric vector indicating the example index - meaningful only for templates with multiple examples. Accepts vector of integers to match IDs of template example. Using 'all' (character string) as index will return all examples.
 #' @param env an environment where example will be evaluated (defaults to \code{.GlobalEnv})
 #' @examples \dontrun{
@@ -570,7 +570,7 @@ tpl.rerun <- function(tpl) {
 #'     \item 'rapport.file.path',
 #' }
 #'
-#' @param fp a template file pointer (see \code{\link{rapport:::rapport.read}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param data a \code{data.frame} to be used in template
 #' @param ... matches template inputs in format 'key = "value"'
 #' @param env an environment where template commands be evaluated (defaults to \code{new.env()}

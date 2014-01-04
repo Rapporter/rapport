@@ -6,7 +6,7 @@ tpl.inputs(fp, use.header = FALSE)
 }
 \arguments{
   \item{fp}{a template file pointer (see
-  \code{\link{rapport:::rapport.read}} for details)}
+  \code{rapport:::rapport.read} for details)}
 
   \item{use.header}{a logical value indicating whether the
   header section is provided in \code{h} argument}

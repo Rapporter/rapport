@@ -6,7 +6,7 @@ tpl.example(fp, index = NULL, env = .GlobalEnv)
 }
 \arguments{
   \item{fp}{a template file pointer (see
-  \code{\link{rapport:::rapport.read}} for details)}
+  \code{rapport:::rapport.read} for details)}
 
   \item{index}{a numeric vector indicating the example
   index - meaningful only for templates with multiple

@@ -6,7 +6,7 @@ tpl.body(fp, htag = get.tags("header.close"), ...)
 }
 \arguments{
   \item{fp}{a template file pointer (see
-  \code{\link{rapport:::rapport.read}} for details)}
+  \code{rapport:::rapport.read} for details)}
 
   \item{htag}{a string with closing body tag}
 

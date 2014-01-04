@@ -6,7 +6,7 @@ rapport.tangle(fp, file = "", show.inline.chunks = FALSE)
 }
 \arguments{
   \item{fp}{template file pointer (see
-  \code{\link{rapport:::rapport.read}} for details)}
+  \code{rapport:::rapport.read} for details)}
 
   \item{file}{see \code{file} argument in \code{\link{cat}}
   function documentation}
