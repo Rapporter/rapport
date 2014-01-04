@@ -18,7 +18,6 @@ LazyData: yes
 LazyLoad: yes
 Depends:
     R (>= 2.15.0),
-    lattice,
     plyr,
     pander,
     stringr,
