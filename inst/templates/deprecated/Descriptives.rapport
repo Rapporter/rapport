@@ -26,7 +26,7 @@ rp.desc(name(var), NULL, c('mean', 'sd', 'var'), rp.data)
 
 The [standard deviation](http://en.wikipedia.org/wiki/Standard_deviation) equals to  <%=sd(var)%> (variance: <%=var(var)%>), which shows the unstandardized degree of [homogenity](http://en.wikipedia.org/wiki/Homogeneity_(statistics)): how much variation exists from the average. The [expected value](http://en.wikipedia.org/wiki/Mean) is around <%=mean(var)%>, somewhere between <%=mean(var)-1.96*se.mean(var)%> and <%=mean(var) + 1.96 * se.mean(var)%> with the standard error of <%=se.mean(var)%>.
 
-The highest value found in the dataset is <%=rp.max(var)%>, which is exactly <%=rp.max(var) / rp.min(var)%> times higher than the minimum (<%=rp.min(var)%>). The difference between the two is described by the [range](http://en.wikipedia.org/wiki/Range_(statistics)): <%=range(var, na.rm = TRUE)%>.
+The highest value found in the dataset is <%=rp.max(var)%>, which is exactly <%=rp.max(var) / rp.min(var)%> times higher than the minimum (<%=rp.min(var)%>). The difference between the two is described by the [range](http://en.wikipedia.org/wiki/Range_(statistics)): <%=range(var)%>.
 
 ## Chart
 
