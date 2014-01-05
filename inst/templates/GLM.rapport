@@ -40,7 +40,7 @@ inputs:
   standalone: yes
 - name: family
   label: Method of GLM
-  description: 
+  description: Error distribution and link function of the model 
   class: character
   length:
     min: 1.0
