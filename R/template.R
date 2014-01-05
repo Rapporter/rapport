@@ -613,7 +613,18 @@ rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE
     i             <- list(...)                          # user inputs
     i.names       <- names(i)                           # user input names
     data.required <- any(sapply(inputs, function(x) !x$standalone)) || (!is.null(data) && !identical(data, ''))
+
+    ## dealing with packages
+    oldpkgs       <- .packages()                        # currently loaded packages to revert later
     pkgs          <- meta$packages                      # required packages
+    newpkgs       <- setdiff(pkgs, oldpkgs)             # unload packages that were loaded on demand
+    if (length(newpkgs) > 0) {
+        on.exit(sapply(newpkgs, function(pkg) try(
+            detach(paste('package', pkg, sep = ':'),
+                   character.only = TRUE), silent = TRUE)))
+    }
+
+    ## path issue on Windows
     file.path     <- gsub('\\', '/', file.path, fixed = TRUE)
 
     ## load required packages (if any)
