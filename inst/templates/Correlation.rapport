@@ -4,7 +4,8 @@ meta:
   author: Daróczi Gergely, Nagy Dániel
   description: This template will return the correlation matrix of supplied numerical variables.
   email: gergely@snowl.net
-  packages: ~
+  packages:
+  - rapportools
   example:
   - rapport('Correlation', data=ius2008, vars=c('age', 'edu'))
   - rapport('Correlation', data=ius2008, vars=c('age', 'edu', 'leisure'))
