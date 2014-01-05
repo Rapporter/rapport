@@ -33,7 +33,7 @@ head-->
 
 # Variable description
 
-Analysing "<%=name(var)%>"<%=ifelse(label(var) == name(var), '', sprintf(' ("%s")', label(var)))%> with <%=valid(as.numeric(var))%> valid values whether frequency counts are distributed equally across different categories of "<%=name(split)%>"<%=ifelse(label(split) == name(split), '', sprintf(' ("%s")', label(split)))%>.
+Analysing "<%=name(var)%>"<%=ifelse(label(var) == name(var), '', sprintf(' ("%s")', label(var)))%> with <%=nvalid(as.numeric(var))%> valid values whether frequency counts are distributed equally across different categories of "<%=name(split)%>"<%=ifelse(label(split) == name(split), '', sprintf(' ("%s")', label(split)))%>.
 
 "<%=name(split)%>" has <%=split.cat <- names(table(split)); length(split.cat)%> categories:
 <%=as.list(split.cat)%>

@@ -16,8 +16,8 @@ head-->
 
 Two variables specified:
 
- * "<%=name(row)%>"<%=ifelse(label(row)==name(row), '', sprintf(' ("%s")', label(row)))%> with <%=valid(as.numeric(row))%> valid values and
- * "<%=name(col)%>"<%=ifelse(label(col)==name(col), '', sprintf(' ("%s")', label(col)))%> with <%=valid(as.numeric(col))%> valid values.
+ * "<%=name(row)%>"<%=ifelse(label(row)==name(row), '', sprintf(' ("%s")', label(row)))%> with <%=nvalid(as.numeric(row))%> valid values and
+ * "<%=name(col)%>"<%=ifelse(label(col)==name(col), '', sprintf(' ("%s")', label(col)))%> with <%=nvalid(as.numeric(col))%> valid values.
 
 ## Introduction
 

@@ -14,7 +14,7 @@ head-->
 
 # *<%=name(var)%>*<%=ifelse(label(var) == name(var), '', sprintf(' ("%s")', label(var)))%>
 
-The dataset has <%=nvar<-as.numeric(var); length(nvar)%> observations with <%=valid(nvar)%> valid values (missing: <%=missing(nvar)%>).
+The dataset has <%=nvar<-as.numeric(var); length(nvar)%> observations with <%=nvalid(nvar)%> valid values (missing: <%=nmissing(nvar)%>).
 
 <% if (is.numeric(var)) { %>
 ## Base statistics
