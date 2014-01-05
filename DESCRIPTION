@@ -21,10 +21,8 @@ Depends:
     plyr,
     pander
 Imports:
-    reshape,
     yaml,
-    stringr
-Suggests:
+    stringr,
     rapportools
 SystemRequirements: Pandoc (http://johnmacfarlane.net/pandoc) for exporting
     markdown files to other formats.
