@@ -573,7 +573,7 @@ tpl.rerun <- function(tpl) {
 #' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param data a \code{data.frame} to be used in template
 #' @param ... matches template inputs in format 'key = "value"'
-#' @param env an environment where template commands be evaluated (defaults to \code{new.env()}
+#' @param env the parent environment to be forked, in which temporary \code{new.env} template commands be evaluated
 #' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
 #' @param file.name set the file name of saved plots and exported documents. A simple character string might be provided where \code{\%N} would be replaced by an auto-increment integer based on similar exported document's file name , \code{\%n} an auto-increment integer based on similar (plot) file names (see: \code{?evalsOptions}), \code{\%T} by the name of the template in action and \code{\%t} by some uniqe random characters based on \code{\link{tempfile}}.
@@ -600,7 +600,7 @@ tpl.rerun <- function(tpl) {
 #' rapport('AnalyzeWizard', data=ius2008, variables=c('edu', 'game'))
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evalsOptions('graph.output'), file.name = getOption('rapport.file.name'), file.path = getOption('rapport.file.path'), graph.width = evalsOptions('width'), graph.height = evalsOptions('height'), graph.res = evalsOptions('res'), graph.hi.res = evalsOptions('hi.res'), graph.replay = evalsOptions('rapport.graph.recordplot')) {
+rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE, header.levels.offset = 0, graph.output = evalsOptions('graph.output'), file.name = getOption('rapport.file.name'), file.path = getOption('rapport.file.path'), graph.width = evalsOptions('width'), graph.height = evalsOptions('height'), graph.res = evalsOptions('res'), graph.hi.res = evalsOptions('hi.res'), graph.replay = evalsOptions('rapport.graph.recordplot')) {
 
     timer         <- proc.time()                        # start timer
     txt           <- rapport.read(fp)                   # split file to text

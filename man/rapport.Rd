@@ -2,7 +2,7 @@
 \alias{rapport}
 \title{Evaluate Template}
 \usage{
-rapport(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
+rapport(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE,
   header.levels.offset = 0, graph.output = evalsOptions("graph.output"),
   file.name = getOption("rapport.file.name"),
   file.path = getOption("rapport.file.path"),
@@ -20,8 +20,8 @@ rapport(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
   \item{...}{matches template inputs in format 'key =
   "value"'}
 
-  \item{env}{an environment where template commands be
-  evaluated (defaults to \code{new.env()}}
+  \item{env}{the parent environment to be forked, in which
+  temporary \code{new.env} template commands be evaluated}
 
   \item{reproducible}{a logical value indicating if the
   call and data should be stored in template object, thus
