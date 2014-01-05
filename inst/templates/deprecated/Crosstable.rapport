@@ -3,7 +3,7 @@ Title:          Crosstable
 Author:         Gergely Daróczi, Daniel Nagy
 Description:    Returning the Chi-squared test of two given variables with count, percentages and Pearson's residuals table.
 Email:          gergely@snowl.net
-Packages:       descr, ggplot2, reshape
+Packages:       descr, ggplot2, reshape, rapportools
 Data required:  TRUE
 Example:        rapport('Crosstable', data=ius2008, row='gender', col='dwell')
   rapport('Crosstable', data=ius2008, row='email', col='dwell')
@@ -16,8 +16,8 @@ head-->
 
 Two variables specified:
 
- * "<%=name(row)%>"<%=ifelse(label(row)==name(row), '', sprintf(' ("%s")', label(row)))%> with <%=rp.valid(as.numeric(row))%> valid values and
- * "<%=name(col)%>"<%=ifelse(label(col)==name(col), '', sprintf(' ("%s")', label(col)))%> with <%=rp.valid(as.numeric(col))%> valid values.
+ * "<%=name(row)%>"<%=ifelse(label(row)==name(row), '', sprintf(' ("%s")', label(row)))%> with <%=valid(as.numeric(row))%> valid values and
+ * "<%=name(col)%>"<%=ifelse(label(col)==name(col), '', sprintf(' ("%s")', label(col)))%> with <%=valid(as.numeric(col))%> valid values.
 
 ## Introduction
 

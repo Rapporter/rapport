@@ -12,7 +12,16 @@ We started the `rapport` package back in 2011 but never thought of that the vers
  * new file extension (`rapport` instead of `tpl`) not to confuse new-comers
  * bunch of fiddles with naming conventions
  * build a production-ready system on the top of the package at rapporter.net
- * take part in Google Summer of Code 2013
+ * take part in Google Summer of Code 2013 increasing the number of available templates
+
+Most recent changes since 0.51:
+
+ * helpers and statistical functions move to `rapportools` package
+ * ditched the `rp` prefix for all those (rp.max became max -- for those who load the package directly)
+ * ditched `tpl` prefix for tempalte functions as was confusing and every `rapport` template specific function starts with `rapport` now
+ * code review and doc update
+
+Please note that the functions can still be accessed by the old names to preserve backward-compatibility, but will be definitely removed later to keep the clutter in the namespace at a minimal level. So please be advised to update your functions if building on the top (or parts) of `rapport`.
 
 
 rapport 0.51 (2013-05-06)

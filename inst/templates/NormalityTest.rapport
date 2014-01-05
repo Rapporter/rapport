@@ -5,7 +5,9 @@ meta:
   description: Overview of several normality tests and diagnostic plots that can screen
     departures from normality.
   email: ~
-  packages: nortest
+  packages:
+  - nortest
+  - rapportools
   example:
   - rapport("NormalityTest", ius2008, var = "leisure")
   - rapport("NormalityTest", ius2008, var = "leisure", nc.plot = FALSE)

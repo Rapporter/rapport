@@ -2,7 +2,7 @@
 Title:          t-test Template
 Author:         Aleksandar Blagotić
 Description:    A t-test report with table of descriptives, diagnostic tests and t-test specific statistics.
-Packages:       nortest
+Packages:       nortest, rapportools
 Data required:  TRUE
 Example:        rapport("TTest", ius2008, x = "leisure", y = "gender")
                 rapport("TTest", ius2008, x = "leisure", mu = 3.2)

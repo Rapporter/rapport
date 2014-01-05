@@ -6,6 +6,7 @@ meta:
   email: ~
   packages:
   - nortest
+  - rapportools
   example:
   - rapport('BartlettsTest', data=ius2008, resp='age', group='gender')
   - rapport('BartlettsTest', data=ius2008, resp='edu', group='student')

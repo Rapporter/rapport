@@ -5,7 +5,9 @@ meta:
   description: An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific
     statistics.
   email: ~
-  packages: nortest
+  packages:
+  - nortest
+  - rapportools
   example:
   - 'rapport("ANOVA", ius2008, resp = "leisure", fac = "gender")  # one-way'
   - 'rapport("ANOVA", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way'

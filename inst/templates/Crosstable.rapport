@@ -8,6 +8,7 @@ meta:
   - descr
   - ggplot2
   - reshape
+  - rapportools
   example:
   - rapport('Crosstable', data=ius2008, row='gender', col='dwell')
   - rapport('Crosstable', data=ius2008, row='email', col='dwell')
@@ -38,8 +39,8 @@ head-->
 
 Two variables specified:
 
- * "<%=xname(row)%>"<%=ifelse(label(row)==name(row), '', sprintf(' ("%s")', label(row)))%> with <%=rp.valid(as.numeric(row))%> valid values and
- * "<%=name(col)%>"<%=ifelse(label(col)==name(col), '', sprintf(' ("%s")', label(col)))%> with <%=rp.valid(as.numeric(col))%> valid values.
+ * "<%=name(row)%>"<%=ifelse(label(row)==name(row), '', sprintf(' ("%s")', label(row)))%> with <%=valid(as.numeric(row))%> valid values and
+ * "<%=name(col)%>"<%=ifelse(label(col)==name(col), '', sprintf(' ("%s")', label(col)))%> with <%=valid(as.numeric(col))%> valid values.
 
 ## Introduction
 

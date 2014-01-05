@@ -4,7 +4,8 @@ meta:
   author: Daniel Nagy
   description: In this template Rapporter will present you Wilcoxon test.
   email: ~
-  packages: ~
+  packages:
+  - rapportools
   example:
   - rapport('WilcoxonTest', data=mtcars, var1='mpg', var2='cyl')
 inputs:

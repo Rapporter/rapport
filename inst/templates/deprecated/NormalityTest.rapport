@@ -2,7 +2,7 @@
 Title:          Normality Tests
 Author:         Aleksandar Blagotić
 Description:    Overview of several normality tests and diagnostic plots that can screen departures from normality.
-Packages:       nortest
+Packages:       nortest, rapportools
 Data required:  TRUE
 Example:        rapport("NormalityTest", ius2008, var = "leisure")
                 rapport("NormalityTest", ius2008, var = "leisure", nc.plot = FALSE)

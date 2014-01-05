@@ -6,6 +6,7 @@ meta:
   email: ~
   packages:
   - HH
+  - rapportools
   example:
   - rapport('BrownForsythTest', data=ius2008, resp='age', group='gender')
   - rapport('BrownForsythTest', data=ius2008, resp='edu', group='gender')

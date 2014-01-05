@@ -2,7 +2,7 @@
 Title: Generate beta distribution
 Description: Random generation for the Beta distribution with parameters.
 Author: Rapporter Team (@rapporter)
-Packages: nortest
+Packages: nortest, rapportools
 Data required: FALSE
 
 n | *number[1,Inf]=100 | Observations | Number of observations

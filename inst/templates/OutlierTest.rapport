@@ -4,7 +4,9 @@ meta:
   author: Gergely Daróczi, Dániel Nagy
   description: This template will check if provided variable has any outliers.
   email: gergely@snowl.net
-  packages: outliers
+  packages:
+  - outliers
+  - rapportools
   example:
   - rapport('OutlierTest', data=ius2008, var='edu')
   - rapport('OutlierTest', data=ius2008, var='edu', lund.res=FALSE)
