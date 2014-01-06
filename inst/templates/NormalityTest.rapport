@@ -8,6 +8,7 @@ meta:
   packages:
   - nortest
   - rapportools
+  - lattice
   example:
   - rapport("NormalityTest", ius2008, var = "leisure")
   - rapport("NormalityTest", ius2008, var = "leisure", nc.plot = FALSE)

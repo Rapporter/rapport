@@ -7,6 +7,7 @@ meta:
   packages:
   - outliers
   - rapportools
+  - lattice
   example:
   - rapport('OutlierTest', data=ius2008, var='edu')
   - rapport('OutlierTest', data=ius2008, var='edu', lund.res=FALSE)
