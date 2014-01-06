@@ -26,8 +26,10 @@ for (template in tpl.list()) {
     ## example template contains errors
     if (template != "Example.rapport") {
         test_that(template, {
-            for (example in tpl.meta(template)$example)
-                expect_that(rapport:::check.report.chunks(eval(parse(text = example))), equals(NULL))
+            for (example in tpl.meta(template)$example) {
+                e <- eval(parse(text = example))
+                expect_that(rapport:::check.report.chunks(e), equals(NULL), info = paste(unlist(sapply(e$report, function(x) x$msg$errors)), collapse = '\n'))
+            }
         })
     }
 }
