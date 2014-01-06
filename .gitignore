@@ -12,3 +12,6 @@ rapport_*.tar.gz
 .ackrc
 .Rproj.user
 rapport.Rproj
+*~
+[#]*[#]
+.\#*
