@@ -4,7 +4,8 @@ meta:
   author: Daniel Nagy
   description: In this template Rapporter will present you Multidimensional Scaling.
   email: ~
-  packages: ~
+  packages:
+  - rapportools
   example:
   - rapport('MDS', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=16)
   - rapport('MDS', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=17, min.dist.num=30)

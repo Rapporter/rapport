@@ -7,6 +7,7 @@ meta:
   packages:
   - psych
   - GPArotation
+  - rapportools
   example:
   - rapport('PCA', data=mtcars, vars=c('carb', 'mpg', 'cyl', 'drat'), components=3)
   - rapport('PCA', data=mtcars, vars=c('carb', 'mpg', 'cyl', 'drat'), components=3, rot.method="oblimin")

@@ -6,6 +6,7 @@ meta:
   email: gergely@snowl.net
   packages:
   - rapportools
+  - lattice
   example:
   - rapport('Descriptives', data=ius2008, var='gender')
   - rapport('Descriptives', data=ius2008, var='age')

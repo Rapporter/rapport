@@ -4,7 +4,8 @@ meta:
   author: Daniel Nagy
   description: In this template Rapporter will present you GLM.
   email: ~
-  packages: ~
+  packages:
+  - rapportools
   example:
   - rapport('GLM', data=ius2008, dep='age', indep=c('leisure','edu'), family='poisson')
   - rapport('GLM', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='poisson')
