@@ -28,7 +28,8 @@ for (template in tpl.list()) {
         test_that(template, {
             for (example in tpl.meta(template)$example) {
                 e <- eval(parse(text = example))
-                expect_that(rapport:::check.report.chunks(e), equals(NULL), info = paste(unlist(sapply(e$report, function(x) x$msg$errors)), collapse = '\n'))
+                expect_that(rapport:::check.report.chunks(e), equals(NULL),
+                            info = paste(unlist(c('', sapply(e$report, function(x) c(x$msg$errors, x$robject$msg$errors)),'')), collapse = '\n\t* '))
             }
         })
     }
