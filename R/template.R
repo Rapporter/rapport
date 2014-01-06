@@ -617,22 +617,25 @@ rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE
     ## dealing with packages
     oldpkgs       <- .packages()                        # currently loaded packages to revert later
     pkgs          <- meta$packages                      # required packages
-    newpkgs       <- setdiff(pkgs, oldpkgs)             # unload packages that were loaded on demand
-    if (length(newpkgs) > 0) {
-        on.exit(sapply(newpkgs, function(pkg) try(
-            detach(paste('package', pkg, sep = ':'),
-                   character.only = TRUE), silent = TRUE)))
-    }
 
     ## path issue on Windows
     file.path     <- gsub('\\', '/', file.path, fixed = TRUE)
 
     ## load required packages (if any)
     if (!is.null(pkgs)) {
+
         pk <- suppressMessages(sapply(pkgs, require, character.only = TRUE, quietly = TRUE))
+
+        ## unload packages that were loaded on demand
+        on.exit(sapply(setdiff(.packages(), oldpkgs), function(pkg) try(
+            detach(paste('package', pkg, sep = ':'),
+                   character.only = TRUE), silent = TRUE)))
+
+        ## checking for errors
         nopkg <- pk == FALSE
         if (any(nopkg))
             stopf('Following packages are required by the template, but were not loaded: %s', p(names(pk[nopkg]), wrap = '"'))
+
     }
 
     ## template contains no inputs
