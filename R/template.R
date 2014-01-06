@@ -610,6 +610,7 @@ rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE
     inputs.names  <- sapply(inputs, function(x) x$name) # input names
     b             <- tpl.body(txt)                      # template body
     e             <- new.env(parent = env)              # load/create evaluation environment
+    e$Pandoc.brew <- Pandoc.brew                        # inject brew function
     i             <- list(...)                          # user inputs
     i.names       <- names(i)                           # user input names
     data.required <- any(sapply(inputs, function(x) !x$standalone)) || (!is.null(data) && !identical(data, ''))
