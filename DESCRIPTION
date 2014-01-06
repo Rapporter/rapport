@@ -18,11 +18,10 @@ LazyData: yes
 LazyLoad: yes
 Depends:
     R (>= 2.15.0),
-    plyr,
     pander
 Imports:
     yaml,
     stringr,
-    rapportools
+    rapportools,
 SystemRequirements: Pandoc (http://johnmacfarlane.net/pandoc) for exporting
     markdown files to other formats.
