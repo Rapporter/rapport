@@ -8,6 +8,7 @@ meta:
   - psych
   - nFactors
   - rapportools
+  - pander
   example:
   - rapport('FactorAnalysis', data=mtcars, vars=c('carb', 'gear', 'mpg', 'cyl'),
             rot.method="varimax")

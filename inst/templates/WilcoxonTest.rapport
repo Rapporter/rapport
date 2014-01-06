@@ -6,6 +6,7 @@ meta:
   email: ~
   packages:
   - rapportools
+  - pander
   example:
   - rapport('WilcoxonTest', data=mtcars, var1='mpg', var2='cyl')
 inputs:

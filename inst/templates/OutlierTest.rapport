@@ -8,6 +8,7 @@ meta:
   - outliers
   - rapportools
   - lattice
+  - pander
   example:
   - rapport('OutlierTest', data=ius2008, var='edu')
   - rapport('OutlierTest', data=ius2008, var='edu', lund.res=FALSE)

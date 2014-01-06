@@ -6,6 +6,7 @@ meta:
   packages: 
   - descr
   - rapportools
+  - pander
   example:
   - rapport('HomogeneityCrosstable', data=ius2008, var='gender', split='dwell')
 inputs:

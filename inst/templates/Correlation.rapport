@@ -6,6 +6,7 @@ meta:
   email: gergely@snowl.net
   packages:
   - rapportools
+  - pander
   example:
   - rapport('Correlation', data=ius2008, vars=c('age', 'edu'))
   - rapport('Correlation', data=ius2008, vars=c('age', 'edu', 'leisure'))

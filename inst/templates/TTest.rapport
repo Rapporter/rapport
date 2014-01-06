@@ -8,6 +8,7 @@ meta:
   packages:
   - nortest
   - rapportools
+  - pander
   example:
   - rapport("TTest", ius2008, x = "leisure", y = "gender")
   - rapport("TTest", ius2008, x = "leisure", mu = 3.2)

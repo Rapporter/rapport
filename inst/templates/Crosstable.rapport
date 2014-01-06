@@ -9,6 +9,7 @@ meta:
   - ggplot2
   - reshape
   - rapportools
+  - pander
   example:
   - rapport('Crosstable', data=ius2008, row='gender', col='dwell')
   - rapport('Crosstable', data=ius2008, row='email', col='dwell')

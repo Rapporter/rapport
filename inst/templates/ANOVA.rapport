@@ -8,6 +8,7 @@ meta:
   packages:
   - nortest
   - rapportools
+  - pander
   example:
   - 'rapport("ANOVA", ius2008, resp = "leisure", fac = "gender")  # one-way'
   - 'rapport("ANOVA", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way'

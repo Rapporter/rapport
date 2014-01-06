@@ -6,6 +6,7 @@ meta:
   email: ~
   packages:
   - rapportools
+  - pander
   example:
   - rapport('GLM', data=ius2008, dep='age', indep=c('leisure','edu'), family='poisson')
   - rapport('GLM', data=ius2008, dep='age', indep=c('leisure','edu'), indep.inter=FALSE, family='poisson')

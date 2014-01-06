@@ -7,6 +7,7 @@ meta:
   packages:
   - rapportools
   - lattice
+  - pander
   example:
   - rapport('Descriptives', data=ius2008, var='gender')
   - rapport('Descriptives', data=ius2008, var='age')

@@ -6,6 +6,7 @@ meta:
   email: ~
   packages:
   - rapportools
+  - pander
   example:
   - rapport('MDS', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=16)
   - rapport('MDS', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=17, min.dist.num=30)

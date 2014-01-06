@@ -8,6 +8,7 @@ meta:
   - lattice
   - xtable
   - rapportools
+  - pander
   example:
   - rapport("Minimal", data = ius2008, var='leisure') 
   - rapport("Minimal", data = ius2008, var='leisure', desc=FALSE) 
