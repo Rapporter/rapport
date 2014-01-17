@@ -27,21 +27,19 @@ that make your template writing and report creation easier.
 \emph{Univariate descriptive statistics}
 
 \itemize{ \item \code{\link{rp.iqr}} \item
-\code{\link{rp.kurtosis}} \item \code{\link{rp.max}} \item
-\code{\link{rp.mean}} \item \code{\link{rp.median}} \item
-\code{\link{rp.min}} \item \code{\link{rp.missing}} \item
-\code{\link{rp.percent}} \item \code{\link{rp.range}} \item
-\code{\link{rp.sd}} \item \code{\link{rp.se.mean}} \item
-\code{\link{rp.skewness}} \item \code{\link{rp.sum}} \item
-\code{\link{rp.univar}} \item \code{\link{rp.valid}} \item
-\code{\link{rp.var}} }
+\code{\link{rp.max}} \item \code{\link{rp.mean}} \item
+\code{\link{rp.median}} \item \code{\link{rp.min}} \item
+\code{\link{rp.missing}} \item \code{\link{rp.percent}}
+\item \code{\link{rp.range}} \item \code{\link{rp.sd}}
+\item \code{\link{rp.se.mean}} \item \code{\link{rp.sum}}
+\item \code{\link{rp.valid}} \item \code{\link{rp.var}} }
 
 \emph{Miscelaneous stats helpers}
 
 \itemize{ \item \code{\link{htest}} \item
 \code{\link{htest.short}} \item \code{\link{kurtosis}}
-\item \code{\link{lambda.test}} \item
-\code{\link{rp.outlier}} \item \code{\link{skewness}} }
+\item \code{\link{skewness}} \item
+\code{\link{lambda.test}} \item \code{\link{rp.outlier}} }
 
 \emph{Export helpers}
 

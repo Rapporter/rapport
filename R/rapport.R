@@ -72,7 +72,6 @@ NULL
 #'
 #' \itemize{
 #'     \item \code{\link{rp.iqr}}
-#'     \item \code{\link{rp.kurtosis}}
 #'     \item \code{\link{rp.max}}
 #'     \item \code{\link{rp.mean}}
 #'     \item \code{\link{rp.median}}
@@ -82,9 +81,7 @@ NULL
 #'     \item \code{\link{rp.range}}
 #'     \item \code{\link{rp.sd}}
 #'     \item \code{\link{rp.se.mean}}
-#'     \item \code{\link{rp.skewness}}
 #'     \item \code{\link{rp.sum}}
-#'     \item \code{\link{rp.univar}}
 #'     \item \code{\link{rp.valid}}
 #'     \item \code{\link{rp.var}}
 #' }
@@ -95,9 +92,9 @@ NULL
 #'     \item \code{\link{htest}}
 #'     \item \code{\link{htest.short}}
 #'     \item \code{\link{kurtosis}}
+#'     \item \code{\link{skewness}}
 #'     \item \code{\link{lambda.test}}
 #'     \item \code{\link{rp.outlier}}
-#'     \item \code{\link{skewness}}
 #' }
 #'
 #' \emph{Export helpers}
