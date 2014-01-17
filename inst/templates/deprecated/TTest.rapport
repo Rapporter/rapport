@@ -70,9 +70,9 @@ In order to get more insight on the underlying data, a table of basic descriptiv
 
 <%=
 if (is.null(y)) {
-    rp.desc(x, NULL, c('min', 'max', 'mean', 'sd', 'var', 'median', 'IQR', 'skewness', 'kurtosis'), rp.data)
+    rp.desc(x, NULL, c('min', 'max', 'mean', 'sd', 'var', 'median', 'IQR', 'skewness', 'kurtosis'), rdf)
 } else {
-    rp.desc(x, y, c('min', 'max', 'mean', 'sd', 'var', 'median', 'IQR', 'skewness', 'kurtosis'), rp.data)
+    rp.desc(x, y, c('min', 'max', 'mean', 'sd', 'var', 'median', 'IQR', 'skewness', 'kurtosis'), rdf)
 }
 %>
 

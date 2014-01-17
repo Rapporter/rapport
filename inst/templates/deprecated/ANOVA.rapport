@@ -36,7 +36,7 @@ In order to get more insight on the model data, a table of frequencies for ANOVA
 Below lies a frequency table for factors in ANOVA model. Note that the missing values are removed from the summary.
 
 <%=
-(freq <- rp.freq(fac.name, rp.data))
+(freq <- rp.freq(fac.name, rdf))
 %>
 
 ## Descriptive Statistics

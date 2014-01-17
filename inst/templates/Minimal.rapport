@@ -75,9 +75,9 @@ if (desc) {
 <%=
 if (histogram) {
     if (require(lattice)) {
-        histogram(rp.data[, var.name])
+        histogram(rdf[, var.name])
     } else {
-        hist(rp.data[, var.name])
+        hist(rdf[, var.name])
     }
 }
 %>

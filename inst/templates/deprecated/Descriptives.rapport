@@ -21,7 +21,7 @@ The dataset has <%=nvar<-as.numeric(var); length(nvar)%> observations with <%=nv
 
 <%=
 set.caption(sprintf('Descriptives: %s', label(var)))
-rp.desc(name(var), NULL, c('mean', 'sd', 'var'), rp.data)
+rp.desc(name(var), NULL, c('mean', 'sd', 'var'), rdf)
 %>
 
 The [standard deviation](http://en.wikipedia.org/wiki/Standard_deviation) equals to  <%=sd(var)%> (variance: <%=var(var)%>), which shows the unstandardized degree of [homogenity](http://en.wikipedia.org/wiki/Homogeneity_(statistics)): how much variation exists from the average. The [expected value](http://en.wikipedia.org/wiki/Mean) is around <%=mean(var)%>, somewhere between <%=mean(var)-1.96*se.mean(var)%> and <%=mean(var) + 1.96 * se.mean(var)%> with the standard error of <%=se.mean(var)%>.
@@ -43,7 +43,7 @@ If we *suppose* that *<%=label(var)%>* is not near to the [normal distribution](
 
 <%=
 set.caption(sprintf('Frequency table: %s', label(var)))
-rp.freq(name(var), rp.data, na.rm = FALSE, include.na = TRUE)
+rp.freq(name(var), rdf, na.rm = FALSE, include.na = TRUE)
 %>
 
 The most frequent value is *<%=t <- table(var); names(t[t == max(t)])%>*.
