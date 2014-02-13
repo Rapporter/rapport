@@ -170,7 +170,8 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             if (length(prior) > 0)
                 r$body[prior] <- NULL
             r$add.paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://rapport-package.info/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, pander.return(r$proc.time), R.version$platform))
-            r$add.paragraph(pandoc.image.return(system.file('includes/images/logo.png', package='rapport')))
+            if (!(.Platform$OS.type == 'windows' && format == 'pdf'))
+                r$add.paragraph(pandoc.image.return(system.file('includes/images/logo.png', package='rapport')))
 
         }
 
