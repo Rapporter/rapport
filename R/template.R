@@ -766,7 +766,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
     ## pregenerate file name
     if (grepl('%T', file.name))
-        file.name <- gsub('%T', gsub('\\\\|/', '-', fp), file.name, fixed = TRUE)
+        file.name <- gsub('%T', gsub('\\\\|/|:|\\.', '-', fp), file.name, fixed = TRUE)
     if (grepl('%N', file.name)) {
         if (length(strsplit(sprintf('placeholder%splaceholder', file.name), '%N')[[1]]) > 2)
             stop('File name contains more then 1 "%N"!')
