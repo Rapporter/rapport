@@ -14,7 +14,7 @@ is.rapport <- function(x)  inherits(x, 'rapport')
 #' @return a logical value indicating the string is (not) a pandoc heading
 is.heading <- function(x){
     if (missing(x))
-        stop('no character value to test pandoc heading')
+        stop('No character value to test pandoc heading.')
     re.head <- '^#{1,6}([ \t]+)?[[:print:]]+$'
     grepl(re.head, x)
 }
@@ -153,17 +153,17 @@ check.tpl <- function(txt, open.tag = get.tags('header.open'), close.tag = get.t
     hclose.ind <- grep(close.tag, txt, ...)[1] # closing tag
     ## check header indices
     if (!isTRUE(hopen.ind == 1L))
-        stop('opening header tag not found in first line')
+        stop('Opening header tag not found in first line.')
     if (is.na(hclose.ind))
-        stop('closing header tag not found')
+        stop('Closing header tag not found.')
     if (hclose.ind - hopen.ind <= 1)
-        stop('template header not found')
+        stop('Template header not found.')
     h <- txt[(hopen.ind + 1):(hclose.ind - 1)] # get header
     if (all(trim.space(h) == ''))
-        stop('template header is empty')
+        stop('Template header is empty.')
     b <- txt[(hclose.ind + 1):length(txt)]
     if (hclose.ind == length(txt) || all(sapply(trim.space(b), function(x) x == '')))
-        stop('what good is a template if it has no body? http://bit.ly/11E5BQM')
+        stop('What good is a template if it has no body? http://bit.ly/11E5BQM')
 }
 
 
