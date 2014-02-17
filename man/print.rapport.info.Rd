@@ -1,8 +1,8 @@
-\name{print.rp.info}
-\alias{print.rp.info}
+\name{print.rapport.info}
+\alias{print.rapport.info}
 \title{Print Template Header}
 \usage{
-\method{print}{rp.info}(x, ...)
+\method{print}{rapport.info}(x, ...)
 }
 \arguments{
   \item{x}{object of class \code{rp.header}. See

@@ -1,11 +1,11 @@
-\name{print.rp.inputs}
-\alias{print.rp.inputs}
+\name{print.rapport.inputs}
+\alias{print.rapport.inputs}
 \title{Print Template Inputs}
 \usage{
-\method{print}{rp.inputs}(x, ...)
+\method{print}{rapport.inputs}(x, ...)
 }
 \arguments{
-  \item{x}{object of class \code{rp.inputs}. See
+  \item{x}{object of class \code{rapport.inputs}. See
   \code{\link{rapport.inputs}} for details.}
 
   \item{...}{ignored}

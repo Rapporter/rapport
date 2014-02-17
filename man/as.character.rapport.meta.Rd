@@ -1,8 +1,8 @@
-\name{as.character.rp.meta}
-\alias{as.character.rp.meta}
+\name{as.character.rapport.meta}
+\alias{as.character.rapport.meta}
 \title{Convert Metadata to Character}
 \usage{
-\method{as.character}{rp.meta}(x, ...)
+\method{as.character}{rapport.meta}(x, ...)
 }
 \arguments{
   \item{x}{template metadata object}

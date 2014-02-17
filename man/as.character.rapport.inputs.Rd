@@ -1,8 +1,8 @@
-\name{as.character.rp.inputs}
-\alias{as.character.rp.inputs}
+\name{as.character.rapport.inputs}
+\alias{as.character.rapport.inputs}
 \title{Convert Inputs to Character}
 \usage{
-\method{as.character}{rp.inputs}(x, ...)
+\method{as.character}{rapport.inputs}(x, ...)
 }
 \arguments{
   \item{x}{template inputs object}

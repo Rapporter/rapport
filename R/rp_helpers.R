@@ -33,11 +33,11 @@ is.heading <- function(x){
 #' Converts template metadata to character vector with YAML strings.
 #' @param x template metadata object
 #' @param ... ignored
-#' @method as.character rp.meta
-#' @S3method as.character rp.meta
-as.character.rp.meta <- function(x, ...){
-    if (!inherits(x, 'rp.meta'))
-        stop("template metadata not provided")
+#' @method as.character rapport.meta
+#' @S3method as.character rapport.meta
+as.character.rapport.meta <- function(x, ...){
+    if (!inherits(x, 'rapport.meta'))
+        stop("Template metadata not provided.")
     as.yaml(x)
 }
 
@@ -47,11 +47,11 @@ as.character.rp.meta <- function(x, ...){
 #' Converts template inputs to character vector with YAML strings.
 #' @param x template inputs object
 #' @param ... ignored
-#' @method as.character rp.inputs
-#' @S3method as.character rp.inputs
-as.character.rp.inputs <- function(x, ...){
-    if (!inherits(x, 'rp.inputs'))
-        stop("template inputs not provided")
+#' @method as.character rapport.inputs
+#' @S3method as.character rapport.inputs
+as.character.rapport.inputs <- function(x, ...){
+    if (!inherits(x, 'rapport.inputs'))
+        stop("Template inputs not provided.")
     as.yaml(x)
 }
 

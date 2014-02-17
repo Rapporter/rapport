@@ -162,7 +162,7 @@ rapport.body <- function(fp, htag = get.tags('header.close'), ...) {
     txt   <- rapport.read(fp, ...)
     h.end <- grep(htag, txt, ...)
     b <- txt[(h.end + 1):length(txt)]
-    structure(b, class = 'rp.body')
+    structure(b, class = 'rapport.body')
 }
 
 
@@ -194,7 +194,7 @@ rapport.info <- function(fp, meta = TRUE, inputs = TRUE) {
         res$meta <- rapport.meta(txt)
     if (inputs)
         res$inputs <- rapport.inputs(txt)
-    class(res) <- 'rp.info'
+    class(res) <- 'rapport.info'
 
     return(res)
 }
@@ -332,7 +332,7 @@ rapport.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRU
     if (length(unsupported.meta))
         warningf('Unsupported metadata field(s) found: %s', p(unsupported.meta, wrap = "\""))
 
-    structure(h, class = 'rp.meta')
+    structure(h, class = 'rapport.meta')
 }
 
 
@@ -432,7 +432,7 @@ rapport.inputs <- function(fp, use.header = FALSE) {
         inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
 
         if (length(inputs.ind) == 0)
-            return (structure(NULL, class = 'rp.inputs'))
+            return (structure(NULL, class = 'rapport.inputs'))
 
         inputs.raw <- lapply(strsplit(header[inputs.ind], '|', fixed = TRUE), function(x) trim.space(x)) # "raw" as in "unchecked", split by | and trimmed for whitespace
 
@@ -468,7 +468,7 @@ rapport.inputs <- function(fp, use.header = FALSE) {
     if (any(dupes))
         stopf('template contains duplicate input names: %s', p(nms[dupes], wrap = "\""))
 
-    structure(inputs, class = 'rp.inputs')
+    structure(inputs, class = 'rapport.inputs')
 }
 
 
@@ -825,7 +825,7 @@ rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE
     wd.bak   <- getwd()
     setwd(file.path)
     evalsOptions('graph.name', file.name)
-    assign('rp.body', paste(b, collapse = '\n'), envir = e)
+    assign('.rapport.body', paste(b, collapse = '\n'), envir = e)
     assign('.graph.name', file.name, envir = e)
     assign('.graph.dir', evalsOptions('graph.dir'), envir = e)
     assign('.graph.hi.res', graph.hi.res, envir = e)
@@ -833,7 +833,7 @@ rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE
         assign('.tmpout', 'NUL', envir = e)
     else
         assign('.tmpout', '/dev/null', envir = e)
-    report <- tryCatch(eval(parse(text = 'Pandoc.brew(text = rp.body, graph.name = .graph.name, graph.dir = .graph.dir, graph.hi.res = .graph.hi.res, output = .tmpout)'), envir = e), error = function(e) e)
+    report <- tryCatch(eval(parse(text = 'Pandoc.brew(text = .rapport.body, graph.name = .graph.name, graph.dir = .graph.dir, graph.hi.res = .graph.hi.res, output = .tmpout)'), envir = e), error = function(e) e)
 
     options(opts.bak)                          # resetting options
     setwd(wd.bak)

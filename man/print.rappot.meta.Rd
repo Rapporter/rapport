@@ -1,11 +1,11 @@
-\name{print.rp.meta}
-\alias{print.rp.meta}
+\name{print.rappot.meta}
+\alias{print.rappot.meta}
 \title{Print Template Metadata}
 \usage{
-\method{print}{rp.meta}(x, ...)
+\method{print}{rapport.meta}(x, ...)
 }
 \arguments{
-  \item{x}{object of class \code{rp.meta}. See
+  \item{x}{object of class \code{rapport.meta}. See
   \code{\link{rapport.meta}} for details.}
 
   \item{...}{ignored}
