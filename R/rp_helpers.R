@@ -73,15 +73,15 @@ get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment
 
     ## check if tag list exists
     if (is.null(tag.current))
-        stop('tag list does not exist')
+        stop('Tag list does not exist.')
 
     ## check tag list length
     if (length(tag.default) != length(tag.current))
-        stop('tag list incomplete')
+        stop('Tag list incomplete.')
 
     if (!all(sort(tag.default.names) == sort(tag.current.names))){
         tgs <- paste(setdiff(tag.current.names, tag.default.names), collapse = ", ")
-        stopf('tag list malformed!\nproblematic tags: %s', tgs)
+        stopf('Tag list malformed!\nproblematic tags: %s', tgs)
     }
 
     res <- switch(t.preset,
@@ -100,7 +100,7 @@ get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment
                       }
                       do.call(switch, c(EXPR = t.type, all = tag.default, tag.default))
                   },
-                  stopf('unknown preset option "%s"', t.preset)
+                  stopf('Unknown preset option "%s"', t.preset)
                   )
 
     return (res)
