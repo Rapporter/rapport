@@ -7,14 +7,6 @@
 is.rapport <- function(x)  inherits(x, 'rapport')
 
 
-#' Rapport Heading Element
-#'
-#' Checks if provided R object is a \code{rapport} heading element.
-#' @param x any R object to check
-#' @return a logical value indicating whether provided object is a \code{rp.heading} object
-is.rp.heading <- function(x)  inherits(x, 'rp.heading')
-
-
 #' Pandoc Heading
 #'
 #' Checks if provided string is a valid ATX-style pandoc heading.
