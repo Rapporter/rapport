@@ -1,5 +1,5 @@
 Package: rapport
-Maintainer: Aleksandar Blagotić <alex@rapporter.net>
+Maintainer: Gergely Daróczi <daroczig@rapporter.net>
 Title: A report templating system
 Type: Package
 Encoding: UTF-8
