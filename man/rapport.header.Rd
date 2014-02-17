@@ -1,8 +1,8 @@
-\name{tpl.header}
-\alias{tpl.header}
+\name{rapport.header}
+\alias{rapport.header}
 \title{Template Header}
 \usage{
-tpl.header(fp, open.tag = get.tags("header.open"),
+rapport.header(fp, open.tag = get.tags("header.open"),
   close.tag = get.tags("header.close"), ...)
 }
 \arguments{

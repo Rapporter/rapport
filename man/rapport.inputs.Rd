@@ -1,8 +1,8 @@
-\name{tpl.inputs}
-\alias{tpl.inputs}
+\name{rapport.inputs}
+\alias{rapport.inputs}
 \title{Template Inputs}
 \usage{
-tpl.inputs(fp, use.header = FALSE)
+rapport.inputs(fp, use.header = FALSE)
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -145,6 +145,6 @@ values to make it consistent with \code{character} inputs).
 }
 }
 \seealso{
-{ \code{\link{tpl.meta}} \code{\link{tpl.info}} }
+{ \code{\link{rapport.meta}} \code{\link{rapport.info}} }
 }
 

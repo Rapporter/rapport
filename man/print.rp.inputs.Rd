@@ -6,7 +6,7 @@
 }
 \arguments{
   \item{x}{object of class \code{rp.inputs}. See
-  \code{\link{tpl.inputs}} for details.}
+  \code{\link{rapport.inputs}} for details.}
 
   \item{...}{ignored}
 }

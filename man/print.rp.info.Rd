@@ -6,7 +6,7 @@
 }
 \arguments{
   \item{x}{object of class \code{rp.header}. See
-  \code{\link{tpl.header}} for details.}
+  \code{\link{rapport.header}} for details.}
 
   \item{...}{ignored}
 }

@@ -1,8 +1,8 @@
-\name{tpl.rerun}
-\alias{tpl.rerun}
+\name{rapport.rerun}
+\alias{rapport.rerun}
 \title{Reproduce Template}
 \usage{
-tpl.rerun(tpl)
+rapport.rerun(tpl)
 }
 \arguments{
   \item{tpl}{a \code{rapport} object}
@@ -16,7 +16,7 @@ argument is set to \code{TRUE} in \code{rapport} function.
 \examples{
 \dontrun{
 tmp <- rapport("Example", mtcars, v = "hp", reproducible = TRUE)
-tpl.rerun(tmp)
+rapport.rerun(tmp)
 }
 }
 

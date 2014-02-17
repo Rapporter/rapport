@@ -6,7 +6,7 @@
 }
 \arguments{
   \item{x}{object of class \code{rp.meta}. See
-  \code{\link{tpl.meta}} for details.}
+  \code{\link{rapport.meta}} for details.}
 
   \item{...}{ignored}
 }

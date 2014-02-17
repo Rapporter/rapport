@@ -1,12 +1,12 @@
-\name{tpl.renew}
-\alias{tpl.renew}
+\name{rapport.renew}
+\alias{rapport.renew}
 \title{Renew deprecated template}
 \usage{
-tpl.renew(fp, file = NULL)
+rapport.renew(fp, file = NULL)
 }
 \arguments{
   \item{fp}{pointer to an old template (see
-  \code{\link{tpl.find}} for details)}
+  \code{\link{rapport:::rapport.read}} for details)}
 
   \item{file}{a path to output file. If \code{NULL}, result
   will be flushed to stdout.}

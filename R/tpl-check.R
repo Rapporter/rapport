@@ -11,7 +11,7 @@
 #' }
 rapport.check.template <- function(fp) {
 
-    examples <- tryCatch(tpl.example(fp, 'all'), error = function(e) e$message)
+    examples <- tryCatch(rapport.example(fp, 'all'), error = function(e) e$message)
 
     if (is.character(examples))
         return(list(success = FALSE, message = sprintf('Errors found while running all examples: `%s`', examples)))

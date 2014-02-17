@@ -1,8 +1,8 @@
-\name{tpl.meta}
-\alias{tpl.meta}
+\name{rapport.meta}
+\alias{rapport.meta}
 \title{Header Metadata}
 \usage{
-tpl.meta(fp, fields = NULL, use.header = FALSE, trim.white = TRUE)
+rapport.meta(fp, fields = NULL, use.header = FALSE, trim.white = TRUE)
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -46,6 +46,6 @@ detect if the template requires a dataset based on the
 presence of \emph{standalone} inputs.
 }
 \seealso{
-{ \code{\link{tpl.inputs}} \code{\link{tpl.info}} }
+{ \code{\link{rapport.inputs}} \code{\link{rapport.info}} }
 }
 

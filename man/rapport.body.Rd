@@ -1,8 +1,8 @@
-\name{tpl.body}
-\alias{tpl.body}
+\name{rapport.body}
+\alias{rapport.body}
 \title{Template Body}
 \usage{
-tpl.body(fp, htag = get.tags("header.close"), ...)
+rapport.body(fp, htag = get.tags("header.close"), ...)
 }
 \arguments{
   \item{fp}{a template file pointer (see

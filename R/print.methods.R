@@ -1,7 +1,7 @@
 #' Print Template Metadata
 #'
 #' Prints out the contents of template metadata in human-readable format.
-#' @param x object of class \code{rp.meta}. See \code{\link{tpl.meta}} for details.
+#' @param x object of class \code{rp.meta}. See \code{\link{rapport.meta}} for details.
 #' @param ... ignored
 #' @method print rp.meta
 #' @S3method print rp.meta
@@ -32,7 +32,7 @@ print.rp.meta <- function(x, ...){
 #' Print Template Inputs
 #'
 #' Prints out the contents of template inputs in human-readable format.
-#' @param x object of class \code{rp.inputs}. See \code{\link{tpl.inputs}} for details.
+#' @param x object of class \code{rp.inputs}. See \code{\link{rapport.inputs}} for details.
 #' @param ... ignored
 #' @method print rp.inputs
 #' @S3method print rp.inputs
@@ -118,7 +118,7 @@ print.rp.inputs <- function(x, ...){
 #' Print Template Header
 #'
 #' Prints out the contents of template header (both metadata and inputs) in human-readable format, so you can get insight about the template requirements.
-#' @param x object of class \code{rp.header}. See \code{\link{tpl.header}} for details.
+#' @param x object of class \code{rp.header}. See \code{\link{rapport.header}} for details.
 #' @param ... ignored
 #' @method print rp.info
 #' @S3method print rp.info

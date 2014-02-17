@@ -44,8 +44,8 @@
 #' rapport.export(append=report, format='rst')
 #'
 #' ### exporting multiple reports at once
-#' rapport.export(tpl.example('Example', 'all'))
-#' rapport.export(tpl.example('Example', 'all'), format = 'odt')
+#' rapport.export(rapport.example('Example', 'all'))
+#' rapport.export(rapport.example('Example', 'all'), format = 'odt')
 #' rapport.export(list(rapport('univar-descriptive', data = mtcars, var = "hp"),
 #'     rapport('Descriptives', data = mtcars, var = "mpg")))
 #'

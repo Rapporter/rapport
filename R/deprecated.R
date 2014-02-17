@@ -250,12 +250,12 @@ guess.old.input.type <- function(x){
 #' Renew deprecated template
 #'
 #' Convert old-style template to new-style one (what we really do is just replacing old header syntax with YAML one).
-#' @param fp pointer to an old template (see \code{\link{tpl.find}} for details)
+#' @param fp pointer to an old template (see \code{\link{rapport:::rapport.read}} for details)
 #' @param file a path to output file. If \code{NULL}, result will be flushed to stdout.
 #' @export
-tpl.renew <- function(fp, file = NULL) {
-    h <- suppressWarnings(tpl.info(fp)) #header
-    b <- tpl.body(fp)                   #body
+rapport.renew <- function(fp, file = NULL) {
+    h <- suppressWarnings(rapport.info(fp)) #header
+    b <- rapport.body(fp)                   #body
     new <- as.yaml(h)
     tpl <- paste0("<!--head\n", as.yaml(h), "head-->\n", paste0(b, collapse = "\n"), collapse = "")
     if (missing(file))

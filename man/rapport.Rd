@@ -25,8 +25,8 @@ rapport(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE,
 
   \item{reproducible}{a logical value indicating if the
   call and data should be stored in template object, thus
-  making it reproducible (see \code{\link{tpl.rerun}} for
-  details)}
+  making it reproducible (see \code{\link{rapport.rerun}}
+  for details)}
 
   \item{header.levels.offset}{number added to header levels
   (handy when using nested templates)}
@@ -76,8 +76,8 @@ value of \code{Data required} field in template header.
 Template inputs are matched with \code{...} argument, and
 should be provided in \code{x = value} format, where
 \code{x} matches input name and \code{value}, wait for
-it... input value! See \code{\link{tpl.inputs}} for more
-details on template inputs.
+it... input value! See \code{\link{rapport.inputs}} for
+more details on template inputs.
 }
 \details{
 Default parameters are read from \code{evalsOptions()} and

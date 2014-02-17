@@ -1,8 +1,8 @@
-\name{tpl.example}
-\alias{tpl.example}
+\name{rapport.example}
+\alias{rapport.example}
 \title{Template Examples}
 \usage{
-tpl.example(fp, index = NULL, env = .GlobalEnv)
+rapport.example(fp, index = NULL, env = .GlobalEnv)
 }
 \arguments{
   \item{fp}{a template file pointer (see
@@ -34,11 +34,11 @@ documentation for \code{rapport.export} for more info.
 }
 \examples{
 \dontrun{
-tpl.example('Example')
-tpl.example('Example', 1:2)
-tpl.example('Example', 'all')
-tpl.example('Crosstable')
-rapport.export(tpl.example('Crosstable'))
+rapport.example('Example')
+rapport.example('Example', 1:2)
+rapport.example('Example', 'all')
+rapport.example('Crosstable')
+rapport.export(rapport.example('Crosstable'))
 }
 }
 
