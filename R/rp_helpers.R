@@ -7,19 +7,6 @@
 is.rapport <- function(x)  inherits(x, 'rapport')
 
 
-#' Pandoc Heading
-#'
-#' Checks if provided string is a valid ATX-style pandoc heading.
-#' @param x a string to test for pandoc heading format
-#' @return a logical value indicating the string is (not) a pandoc heading
-is.heading <- function(x){
-    if (missing(x))
-        stop('No character value to test pandoc heading.')
-    re.head <- '^#{1,6}([ \t]+)?[[:print:]]+$'
-    grepl(re.head, x)
-}
-
-
 #' Convert Metadata to Character
 #'
 #' Converts template metadata to character vector with YAML strings.
@@ -117,26 +104,6 @@ get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment
                   )
 
     return (res)
-}
-
-
-#' Purge Comments
-#'
-#' Remove comments from provided character vector.
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'comment.open',
-#'     \item 'comment.close'.
-#' }
-#' @param x a character string to remove comments from
-#' @param comment.open a string containing opening tag
-#' @param comment.close a string containing closing tag
-#' @return a string with removed pandoc comments
-purge.comments <- function(x, comment.open = get.tags('comment.open'), comment.close = get.tags('comment.close')){
-    stopifnot(is.string(x))
-    sub(sprintf('%s.*?%s', comment.open, comment.close), '', x)
 }
 
 
