@@ -53,7 +53,8 @@
 #' rapport.export()
 #'
 #' ### Adding own custom CSS to exported HTML
-#' rapport.export(x, options=sprintf('-c %s', system.file('templates/css/default.css', package='rapport')))
+#' rapport.export(x, options =
+#'     sprintf('-c %s', system.file('templates/css/default.css', package='rapport')))
 #'}
 #' @export
 #' @aliases tpl.export rapport.export

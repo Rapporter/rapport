@@ -6,7 +6,7 @@ rapport.renew(fp, file = NULL)
 }
 \arguments{
   \item{fp}{pointer to an old template (see
-  \code{\link{rapport:::rapport.read}} for details)}
+  \code{rapport:::rapport.read} for details)}
 
   \item{file}{a path to output file. If \code{NULL}, result
   will be flushed to stdout.}

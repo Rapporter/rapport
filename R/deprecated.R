@@ -250,7 +250,7 @@ guess.old.input.type <- function(x){
 #' Renew deprecated template
 #'
 #' Convert old-style template to new-style one (what we really do is just replacing old header syntax with YAML one).
-#' @param fp pointer to an old template (see \code{\link{rapport:::rapport.read}} for details)
+#' @param fp pointer to an old template (see \code{rapport:::rapport.read} for details)
 #' @param file a path to output file. If \code{NULL}, result will be flushed to stdout.
 #' @export
 rapport.renew <- function(fp, file = NULL) {
