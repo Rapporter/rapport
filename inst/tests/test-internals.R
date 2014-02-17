@@ -14,7 +14,7 @@ context('Header tags')
 expect_error(rapport:::rapport.read(tpl.no.htag.1), 'opening header tag not found in first line')
 expect_error(rapport:::rapport.read(tpl.no.htag.2), 'closing header tag not found')
 expect_error(rapport:::rapport.read(tpl.no.head), 'template header not found')
-expect_error(rapport:::tpl.header(tpl.empty.head), 'template header is empty')
+expect_error(rapport:::rapport.header(tpl.empty.head), 'template header is empty')
 
 
 context('Template body presence')
