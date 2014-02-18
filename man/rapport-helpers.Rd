@@ -3,9 +3,24 @@
 \title{\emph{rapport helpers}}
 \description{
 \code{rapport} package comes with bunch of helper functions
-that make your template writing and report creation easier.
+that make your template writing and report creation easier,
+although most of these helpers were migrated to the
+\code{rapportools} package.
 }
 \details{
+\emph{Export helpers}
+
+\itemize{ \item \code{\link{rapport.docx}} \item
+\code{\link{rapport.html}} \item \code{\link{rapport.odt}}
+\item \code{\link{rapport.pdf}} \item
+\code{\link{rapport.export}} }
+
+Please load the \code{rapportools} package if you would use
+any of the below functions in the \code{.GlobalEnv}, or
+simply add \code{rapportools} to the required packages
+section in your template file. That latter is a lot cleaner
+solution.
+
 \emph{General purpose helpers}
 
 \itemize{ \item \code{\link{adj.rle}} \item
@@ -40,12 +55,5 @@ that make your template writing and report creation easier.
 \code{\link{htest.short}} \item \code{\link{kurtosis}}
 \item \code{\link{skewness}} \item
 \code{\link{lambda.test}} \item \code{\link{rp.outlier}} }
-
-\emph{Export helpers}
-
-\itemize{ \item \code{\link{rapport.docx}} \item
-\code{\link{rapport.html}} \item \code{\link{rapport.odt}}
-\item \code{\link{rapport.pdf}} \item
-\code{\link{rapport.export}} }
 }
 
