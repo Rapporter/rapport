@@ -253,6 +253,7 @@ guess.old.input.type <- function(x){
 #' @param fp pointer to an old template (see \code{rapport:::rapport.read} for details)
 #' @param file a path to output file. If \code{NULL}, result will be flushed to stdout.
 #' @export
+#' @aliases rapport.renew tpl.renew
 rapport.renew <- function(fp, file = NULL) {
     h <- suppressWarnings(rapport.info(fp)) #header
     b <- rapport.body(fp)                   #body
@@ -265,6 +266,8 @@ rapport.renew <- function(fp, file = NULL) {
         invisible(tpl)
     }
 }
+#' @export
+tpl.renew <- rapport.renew
 
 
 #' Deprecated Input Definition

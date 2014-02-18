@@ -58,6 +58,7 @@ tpl.find <- rapport.read
 ##' @param show.inline.chunks extract contents of inline chunks as well? (defaults to \code{FALSE})
 ##' @return (invisibly) a list with either inline or block chunk contents
 ##' @export
+##' @aliases rapport.tangle tpl.tangle
 rapport.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
 
     b <- rapport.body(rapport.read(fp))
@@ -127,6 +128,8 @@ rapport.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
 
     invisible(res)
 }
+#' @export
+tpl.tangle <- rapport.tangle
 
 
 #' Template Header
@@ -137,6 +140,7 @@ rapport.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
 #' @param close.tag a string with closing tag (defaults to value of user-defined \code{"header.close"} tag)
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template header contents
+#' @aliases rapport.header tpl.header
 rapport.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...) {
 
     txt <- rapport.read(fp)                 # split by newlines
@@ -148,6 +152,8 @@ rapport.header <- function(fp, open.tag = get.tags('header.open'), close.tag = g
 
     return(hsection)
 }
+#' @export
+tpl.header <- rapport.header
 
 
 #' Template Body
@@ -158,12 +164,15 @@ rapport.header <- function(fp, open.tag = get.tags('header.open'), close.tag = g
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template body contents
 #' @export
+#' @aliases rapport.body tpl.body
 rapport.body <- function(fp, htag = get.tags('header.close'), ...) {
     txt   <- rapport.read(fp, ...)
     h.end <- grep(htag, txt, ...)
     b <- txt[(h.end + 1):length(txt)]
     structure(b, class = 'rapport.body')
 }
+#' @export
+tpl.body <- rapport.body
 
 
 #' Template Info
@@ -182,6 +191,7 @@ rapport.body <- function(fp, htag = get.tags('header.close'), ...) {
 #' \code{\link{rapport.inputs}}
 #' }
 #' @export
+#' @aliases rapport.info tpl.info
 rapport.info <- function(fp, meta = TRUE, inputs = TRUE) {
 
     txt <- rapport.read(fp)
@@ -198,6 +208,8 @@ rapport.info <- function(fp, meta = TRUE, inputs = TRUE) {
 
     return(res)
 }
+#' @export
+tpl.info <- rapport.info
 
 
 #' Header Metadata
@@ -226,6 +238,7 @@ rapport.info <- function(fp, meta = TRUE, inputs = TRUE) {
 #' \code{\link{rapport.info}}
 #' }
 #' @export
+#' @aliases rapport.meta tpl.meta
 rapport.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 
     header <- rapport.read(fp)
@@ -334,6 +347,8 @@ rapport.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRU
 
     structure(h, class = 'rapport.meta')
 }
+#' @export
+tpl.meta <- rapport.meta
 
 
 #' Template Inputs
@@ -400,6 +415,7 @@ rapport.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRU
 #' \code{\link{rapport.info}}
 #' }
 #' @export
+#' @aliases rapport.inputs tpl.inputs
 rapport.inputs <- function(fp, use.header = FALSE) {
 
     header <- rapport.read(fp)
@@ -470,6 +486,8 @@ rapport.inputs <- function(fp, use.header = FALSE) {
 
     structure(inputs, class = 'rapport.inputs')
 }
+#' @export
+tpl.inputs <- rapport.inputs
 
 
 #' Template Examples
@@ -486,6 +504,7 @@ rapport.inputs <- function(fp, use.header = FALSE) {
 #' rapport.export(rapport.example('Crosstable'))
 #' }
 #' @export
+#' @aliases rapport.example tpl.example
 rapport.example <- function(fp, index = NULL, env = .GlobalEnv) {
 
     examples   <- rapport.meta(fp)$example
@@ -531,6 +550,8 @@ rapport.example <- function(fp, index = NULL, env = .GlobalEnv) {
     else
         eval(parse(text = examples[index]), envir = env)
 }
+#' @export
+tpl.example <- rapport.example
 
 
 #' Reproduce Template
@@ -542,6 +563,7 @@ rapport.example <- function(fp, index = NULL, env = .GlobalEnv) {
 #' rapport.rerun(tmp)
 #' }
 #' @export
+#' @aliases rapport.rerun tpl.rerun
 rapport.rerun <- function(tpl) {
 
     if (!inherits(tpl, 'rapport'))
@@ -557,6 +579,8 @@ rapport.rerun <- function(tpl) {
     cl$data <- dt
     do.call(rapport, cl)
 }
+#' @export
+tpl.rerun <- rapport.rerun
 
 
 #' Evaluate Template

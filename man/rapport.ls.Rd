@@ -1,5 +1,6 @@
 \name{rapport.ls}
 \alias{rapport.ls}
+\alias{tpl.list}
 \title{Package Templates}
 \usage{
 rapport.ls(...)

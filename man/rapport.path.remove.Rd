@@ -1,5 +1,6 @@
 \name{rapport.path.remove}
 \alias{rapport.path.remove}
+\alias{tpl.paths.remove}
 \title{Remove Template Path}
 \usage{
 rapport.path.remove(...)

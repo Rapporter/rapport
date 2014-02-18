@@ -1,5 +1,6 @@
 \name{rapport.inputs}
 \alias{rapport.inputs}
+\alias{tpl.inputs}
 \title{Template Inputs}
 \usage{
 rapport.inputs(fp, use.header = FALSE)

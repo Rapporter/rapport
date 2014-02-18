@@ -140,6 +140,7 @@ check.tpl <- function(txt, open.tag = get.tags('header.open'), close.tag = get.t
 #' @param ... additional parameters for \code{\link{dir}} function
 #' @return a character vector with template files
 #' @export
+#' @aliases rapport.ls tpl.list
 rapport.ls <- function(...){
     mc <- match.call()
     if (is.null(mc$path))
@@ -149,6 +150,8 @@ rapport.ls <- function(...){
     mc[[1]] <- as.symbol('dir')
     eval(mc)
 }
+#' @export
+tpl.list <- rapport.ls
 
 
 #' Template Paths
@@ -159,8 +162,11 @@ rapport.ls <- function(...){
 #' rapport.path()
 #' }
 #' @export
+#' @aliases rapport.path tpl.paths
 rapport.path <- function()
     getOption('rapport.path')
+#' @export
+tpl.paths <- rapport.path
 
 
 #' Reset Template Paths
@@ -170,8 +176,11 @@ rapport.path <- function()
 #' rapport.path.reset()
 #' }
 #' @export
+#' @aliases rapport.path.reset tpl.paths.reset
 rapport.path.reset <- function()
     options('rapport.path' = NULL)
+#' @export
+tpl.paths.reset <- rapport.path.reset
 
 
 #' Add Template Path
@@ -184,6 +193,7 @@ rapport.path.reset <- function()
 #' rapport.ls()
 #' }
 #' @export
+#' @aliases rapport.path.add tpl.paths.add
 rapport.path.add <- function(...) {
     paths <- as.character(substitute(list(...)))[-1L]
     if (!all(sapply(paths, is.character)))
@@ -193,6 +203,8 @@ rapport.path.add <- function(...) {
     options('rapport.path' = union(rapport.path(), paths))
     invisible(TRUE)
 }
+#' @export
+tpl.paths.add <- rapport.path.add
 
 
 #' Remove Template Path
@@ -208,6 +220,7 @@ rapport.path.add <- function(...) {
 #' rapport.path()
 #' }
 #' @export
+#' @aliases rapport.path.remove tpl.paths.remove
 rapport.path.remove <- function(...) {
     paths <- as.character(substitute(list(...)))[-1L]
     if (!all(sapply(paths, is.character)))
@@ -217,3 +230,5 @@ rapport.path.remove <- function(...) {
     options('rapport.path' = setdiff(rapport.path(), paths))
     invisible(TRUE)
 }
+#' @export
+tpl.paths.remove <- rapport.path.remove

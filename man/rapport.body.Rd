@@ -1,5 +1,6 @@
 \name{rapport.body}
 \alias{rapport.body}
+\alias{tpl.body}
 \title{Template Body}
 \usage{
 rapport.body(fp, htag = get.tags("header.close"), ...)

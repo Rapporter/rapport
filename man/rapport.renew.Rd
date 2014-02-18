@@ -1,5 +1,6 @@
 \name{rapport.renew}
 \alias{rapport.renew}
+\alias{tpl.renew}
 \title{Renew deprecated template}
 \usage{
 rapport.renew(fp, file = NULL)

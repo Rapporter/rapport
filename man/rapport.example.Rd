@@ -1,5 +1,6 @@
 \name{rapport.example}
 \alias{rapport.example}
+\alias{tpl.example}
 \title{Template Examples}
 \usage{
 rapport.example(fp, index = NULL, env = .GlobalEnv)

@@ -1,5 +1,6 @@
 \name{rapport.meta}
 \alias{rapport.meta}
+\alias{tpl.meta}
 \title{Header Metadata}
 \usage{
 rapport.meta(fp, fields = NULL, use.header = FALSE, trim.white = TRUE)

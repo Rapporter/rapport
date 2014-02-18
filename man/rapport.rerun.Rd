@@ -1,5 +1,6 @@
 \name{rapport.rerun}
 \alias{rapport.rerun}
+\alias{tpl.rerun}
 \title{Reproduce Template}
 \usage{
 rapport.rerun(tpl)

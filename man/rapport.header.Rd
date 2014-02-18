@@ -1,5 +1,6 @@
 \name{rapport.header}
 \alias{rapport.header}
+\alias{tpl.header}
 \title{Template Header}
 \usage{
 rapport.header(fp, open.tag = get.tags("header.open"),

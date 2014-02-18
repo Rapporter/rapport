@@ -1,5 +1,6 @@
 \name{rapport.path.reset}
 \alias{rapport.path.reset}
+\alias{tpl.paths.reset}
 \title{Reset Template Paths}
 \usage{
 rapport.path.reset()

@@ -1,5 +1,6 @@
 \name{rapport.info}
 \alias{rapport.info}
+\alias{tpl.info}
 \title{Template Info}
 \usage{
 rapport.info(fp, meta = TRUE, inputs = TRUE)

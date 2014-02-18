@@ -1,5 +1,6 @@
 \name{rapport.tangle}
 \alias{rapport.tangle}
+\alias{tpl.tangle}
 \title{Extract template chunk contents}
 \usage{
 rapport.tangle(fp, file = "", show.inline.chunks = FALSE)

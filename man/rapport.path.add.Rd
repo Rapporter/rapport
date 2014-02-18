@@ -1,5 +1,6 @@
 \name{rapport.path.add}
 \alias{rapport.path.add}
+\alias{tpl.paths.add}
 \title{Add Template Path}
 \usage{
 rapport.path.add(...)
