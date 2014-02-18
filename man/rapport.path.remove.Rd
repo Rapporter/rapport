@@ -1,8 +1,8 @@
-\name{tpl.paths.remove}
-\alias{tpl.paths.remove}
+\name{rapport.path.remove}
+\alias{rapport.path.remove}
 \title{Remove Template Path}
 \usage{
-tpl.paths.remove(...)
+rapport.path.remove(...)
 }
 \arguments{
   \item{...}{character vector of paths}
@@ -16,14 +16,11 @@ will look for templates.
 }
 \examples{
 \dontrun{
-tpl.paths()
-tpl.paths.add('/tmp')
-tpl.paths()
-tpl.paths.remove('/tmp')
-tpl.paths()
-
-## might trigger an error:
-tpl.paths.remove('/root')
+rapport.path()
+rapport.path.add('/tmp')
+rapport.path()
+rapport.path.remove('/tmp')
+rapport.path()
 }
 }
 

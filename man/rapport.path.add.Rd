@@ -1,8 +1,8 @@
-\name{tpl.paths.add}
-\alias{tpl.paths.add}
+\name{rapport.path.add}
+\alias{rapport.path.add}
 \title{Add Template Path}
 \usage{
-tpl.paths.add(...)
+rapport.path.add(...)
 }
 \arguments{
   \item{...}{character vector of paths}
@@ -16,11 +16,8 @@ look for templates.
 }
 \examples{
 \dontrun{
-tpl.paths.add('/tmp')
+rapport.path.add('/tmp')
 rapport.ls()
-
-## might trigger an error:
-tpl.paths.add('/home', '/rapport')
 }
 }
 

@@ -156,22 +156,22 @@ rapport.ls <- function(...){
 #' List all custom paths where rapport will look for templates.
 #' @return a character vector with paths
 #' @examples \dontrun{
-#' tpl.paths()
+#' rapport.path()
 #' }
 #' @export
-tpl.paths <- function()
-    getOption('rapport.paths')
+rapport.path <- function()
+    getOption('rapport.path')
 
 
 #' Reset Template Paths
 #'
 #' Resets to default (NULL) all custom paths where rapport will look for templates.
 #' @examples \dontrun{
-#' tpl.paths.reset()
+#' rapport.path.reset()
 #' }
 #' @export
-tpl.paths.reset <- function()
-    options('rapport.paths' = NULL)
+rapport.path.reset <- function()
+    options('rapport.path' = NULL)
 
 
 #' Add Template Path
@@ -180,20 +180,17 @@ tpl.paths.reset <- function()
 #' @param ... character vector of paths
 #' @return TRUE on success (invisibly)
 #' @examples \dontrun{
-#' tpl.paths.add('/tmp')
+#' rapport.path.add('/tmp')
 #' rapport.ls()
-#'
-#' ## might trigger an error:
-#' tpl.paths.add('/home', '/rapport')
 #' }
 #' @export
-tpl.paths.add <- function(...) {
+rapport.path.add <- function(...) {
     paths <- as.character(substitute(list(...)))[-1L]
     if (!all(sapply(paths, is.character)))
         stop('Wrong arguments (not characters) supplied!')
     if (!all(file.exists(paths)))
         stop('Specified paths do not exists on filesystem!')
-    options('rapport.paths' = union(tpl.paths(), paths))
+    options('rapport.path' = union(rapport.path(), paths))
     invisible(TRUE)
 }
 
@@ -204,22 +201,19 @@ tpl.paths.add <- function(...) {
 #' @param ... character vector of paths
 #' @return TRUE on success (invisibly)
 #' @examples \dontrun{
-#' tpl.paths()
-#' tpl.paths.add('/tmp')
-#' tpl.paths()
-#' tpl.paths.remove('/tmp')
-#' tpl.paths()
-#'
-#' ## might trigger an error:
-#' tpl.paths.remove('/root')
+#' rapport.path()
+#' rapport.path.add('/tmp')
+#' rapport.path()
+#' rapport.path.remove('/tmp')
+#' rapport.path()
 #' }
 #' @export
-tpl.paths.remove <- function(...) {
+rapport.path.remove <- function(...) {
     paths <- as.character(substitute(list(...)))[-1L]
     if (!all(sapply(paths, is.character)))
         stop('Wrong arguments (not characters) supplied!')
-    if (!all(paths %in% tpl.paths()))
+    if (!all(paths %in% rapport.path()))
         warning('Specified paths were not added to custom paths list before!')
-    options('rapport.paths' = setdiff(tpl.paths(), paths))
+    options('rapport.path' = setdiff(rapport.path(), paths))
     invisible(TRUE)
 }

@@ -1,8 +1,8 @@
-\name{tpl.paths}
-\alias{tpl.paths}
+\name{rapport.path}
+\alias{rapport.path}
 \title{Template Paths}
 \usage{
-tpl.paths()
+rapport.path()
 }
 \value{
 a character vector with paths
@@ -13,7 +13,7 @@ templates.
 }
 \examples{
 \dontrun{
-tpl.paths()
+rapport.path()
 }
 }
 

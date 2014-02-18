@@ -1,8 +1,8 @@
-\name{tpl.paths.reset}
-\alias{tpl.paths.reset}
+\name{rapport.path.reset}
+\alias{rapport.path.reset}
 \title{Reset Template Paths}
 \usage{
-tpl.paths.reset()
+rapport.path.reset()
 }
 \description{
 Resets to default (NULL) all custom paths where rapport
@@ -10,7 +10,7 @@ will look for templates.
 }
 \examples{
 \dontrun{
-tpl.paths.reset()
+rapport.path.reset()
 }
 }
 
