@@ -36,7 +36,7 @@ panderOptions('graph.legend.position', 'top')
 
 
 <%=
-table <- table(rdf[,x.name], rdf[,y.name], deparse.level = 0, useNA = 'no')
+table <- table(rapport.data[,x.name], rapport.data[,y.name], deparse.level = 0, useNA = 'no')
 
 set.caption('Mosaic chart')
 t        <- melt(table)

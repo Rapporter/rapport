@@ -671,7 +671,7 @@ rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE
                 stop('"data" argument is required by the template')
             else {
                 assign('rp.data', data, envir = e)
-                assign('rdf', data, envir = e)
+                assign('rapport.data', data, envir = e)
             }
         }
         ## inputs required, carry on...
@@ -693,7 +693,7 @@ rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE
                 stop('"data" should be a "data.frame" object')
             data.names <- names(data)          # variable names
             assign('rp.data', data, envir = e) # load data to eval environment
-            assign('rdf', data, envir = e)
+            assign('rapport.data', data, envir = e)
         }
 
         lapply(inputs, function(x) {
@@ -737,7 +737,7 @@ rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE
                     if (!all(user.input %in% data.names))
                         stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(user.input, data.names), '"'))
 
-                    val <- e$rdf[user.input]
+                    val <- e$rapport.data[user.input]
                     ## we use this as data.frame with 0 columns will not be NULL
                     ## therefore the length check will not pass
                     ## OR we can just change the check.input.value function
