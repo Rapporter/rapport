@@ -1,8 +1,8 @@
-\name{tpl.list}
-\alias{tpl.list}
+\name{rapport.ls}
+\alias{rapport.ls}
 \title{Package Templates}
 \usage{
-tpl.list(...)
+rapport.ls(...)
 }
 \arguments{
   \item{...}{additional parameters for \code{\link{dir}}

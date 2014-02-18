@@ -17,7 +17,7 @@ look for templates.
 \examples{
 \dontrun{
 tpl.paths.add('/tmp')
-tpl.list()
+rapport.ls()
 
 ## might trigger an error:
 tpl.paths.add('/home', '/rapport')

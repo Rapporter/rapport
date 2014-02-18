@@ -140,7 +140,7 @@ check.tpl <- function(txt, open.tag = get.tags('header.open'), close.tag = get.t
 #' @param ... additional parameters for \code{\link{dir}} function
 #' @return a character vector with template files
 #' @export
-tpl.list <- function(...){
+rapport.ls <- function(...){
     mc <- match.call()
     if (is.null(mc$path))
         mc$path <- c('./', getOption('rapport.paths'), system.file('templates', package = 'rapport'))
@@ -181,7 +181,7 @@ tpl.paths.reset <- function()
 #' @return TRUE on success (invisibly)
 #' @examples \dontrun{
 #' tpl.paths.add('/tmp')
-#' tpl.list()
+#' rapport.ls()
 #'
 #' ## might trigger an error:
 #' tpl.paths.add('/home', '/rapport')

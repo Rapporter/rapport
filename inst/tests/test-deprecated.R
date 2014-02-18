@@ -59,7 +59,7 @@ test_that('should provide correct input definition', {
 
 context('Bundled templates backwards compatibility')
 
-oldies <- tpl.list(path = system.file("templates/deprecated", package = "rapport"), full.names = TRUE)
+oldies <- rapport.ls(path = system.file("templates/deprecated", package = "rapport"), full.names = TRUE)
 sapply(oldies, function(x) {
     new.path <- system.file(file.path("templates", basename(x)), package = "rapport")
     expect_that(suppressWarnings(rapport.info(x)), is_identical_to(rapport.info(new.path)))

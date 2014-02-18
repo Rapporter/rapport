@@ -2,7 +2,7 @@
 
 context("Bundled template examples")
 
-for (template in tpl.list(path = system.file("templates", package = "rapport"), full.names = TRUE)) {
+for (template in rapport.ls(path = system.file("templates", package = "rapport"), full.names = TRUE)) {
     test_that(template, {
         for (example in rapport.meta(template)$example)
             expect_that(eval(parse(text = example)), is_a('rapport'))
@@ -12,7 +12,7 @@ for (template in tpl.list(path = system.file("templates", package = "rapport"), 
 
 context("Bundled deprecated template examples")
 
-for (template in tpl.list(path = system.file("templates/deprecated", package = "rapport"), full.names = TRUE)) {
+for (template in rapport.ls(path = system.file("templates/deprecated", package = "rapport"), full.names = TRUE)) {
     test_that(template, {
         for (example in rapport.meta(template)$example)
             expect_that(eval(parse(text = example)), is_a('rapport'))
@@ -22,7 +22,7 @@ for (template in tpl.list(path = system.file("templates/deprecated", package = "
 
 context("Errors (or lack thereof) in example report chunks")
 
-for (template in tpl.list()) {
+for (template in rapport.ls()) {
     ## example template contains errors
     if (template != "Example.rapport") {
         test_that(template, {
