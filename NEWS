@@ -19,6 +19,7 @@ Most recent changes since 0.51:
  * helpers and statistical functions move to `rapportools` package
  * ditched the `rp` prefix for all those (rp.max became max -- for those who load the package directly)
  * ditched `tpl` prefix for tempalte functions as was confusing and every `rapport` template specific function starts with `rapport` now
+ * changing dependencies to Imports instead of cluttering the global namespace
  * code review and doc update
  * new variables available for easy access of template metadata (rapport.data, rapport.template, rapport.inputs)
 
