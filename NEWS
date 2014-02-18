@@ -20,6 +20,7 @@ Most recent changes since 0.51:
  * ditched the `rp` prefix for all those (rp.max became max -- for those who load the package directly)
  * ditched `tpl` prefix for tempalte functions as was confusing and every `rapport` template specific function starts with `rapport` now
  * code review and doc update
+ * new variables available for easy access of template metadata (rapport.data, rapport.template, rapport.inputs)
 
 Please note that the functions can still be accessed by the old names to preserve backward-compatibility, but will be definitely removed later to keep the clutter in the namespace at a minimal level. So please be advised to update your functions if building on the top (or parts) of `rapport`.
 

@@ -663,6 +663,10 @@ rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE
 
     }
 
+    ## assign template metadata and inputs to custom environment for easy access inside of the templates
+    assign('rapport.inputs', inputs, envir = e)
+    assign('rapport.template', meta, envir = e)
+
     ## template contains no inputs
     if (length(inputs) == 0) {
         ## check if data is required
