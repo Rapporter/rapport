@@ -1,5 +1,5 @@
 require(rapport)
-demo.opt <- getOption("demo.ask"); dev.ask <- getOption("device.ask.default"); replay.opt <- getOption("graph.replay"); record.opt <- evalsOptions('graph.recordplot'); options("demo.ask" = FALSE); options("device.ask.default" = FALSE)
+demo.opt <- getOption("demo.ask"); dev.ask <- getOption("device.ask.default"); replay.opt <- getOption("rapport.graph.replay"); record.opt <- evalsOptions('graph.recordplot'); options("demo.ask" = FALSE); options("device.ask.default" = FALSE)
 next.please <- function(msg = "Press ENTER to continue: ") invisible(readline(msg))
 
 
@@ -25,65 +25,65 @@ next.please <- function(msg = "Press ENTER to continue: ") invisible(readline(ms
 ## In order to render a template you should call \code{rapport} with some input specifications. ##
 ## To make this easy, check out the example commands of various templates:                      ##
 ##                                                                                              ##
-##       tpl.meta('Example')$example                                                            ##
+##       rapport.meta('Example')$example                                                        ##
 ##                                                                                              ##
 ##################################################################################################
 
 
 next.please()
-tpl.meta('Example')$example
+rapport.meta('Example')$example
 
 
-#####################################################
-##                                                 ##
-## Let us run the first example of 'example.tpl'.  ##
-##                                                 ##
-## Will run:                                       ##
-##                                                 ##
-##      tpl.example('example', 1)                  ##
-##                                                 ##
-## Which is equivalent to:                         ##
-##                                                 ##
-##      rapport("Example", ius2008, var='leisure') ##
-##                                                 ##
-#####################################################
+#########################################################
+##                                                     ##
+## Let us run the first example of 'Example.rapport'.  ##
+##                                                     ##
+## Will run:                                           ##
+##                                                     ##
+##      rapport.example('example', 1)                  ##
+##                                                     ##
+## Which is equivalent to:                             ##
+##                                                     ##
+##      rapport("Example", ius2008, var = 'leisure')   ##
+##                                                     ##
+#########################################################
 
 
 next.please()
-tpl.example('Example', 1)
+rapport.example('Example', 1)
 
 
-#######################################################################################
-##                                                                                   ##
-## In our previous example, we provided "leisure" variable to the template.          ##
-## In the same manner you can provide other inputs. See `?tpl.inputs` for details.   ##
-##                                                                                   ##
-## OK, let's see other templates. We'll list all templates bundled with the package: ##
-##                                                                                   ##
-## Will run:                                                                         ##
-##                                                                                   ##
-##      rapport.ls()                                                                 ##
-##                                                                                   ##
-#######################################################################################
+############################################################################################
+##                                                                                        ##
+## In our previous example, we provided "leisure" variable to the template.               ##
+## In the same manner you can provide other inputs. See `?rapport.inputs` for details.    ##
+##                                                                                        ##
+## OK, let's see other templates. We'll list all templates bundled with the package:      ##
+##                                                                                        ##
+## Will run:                                                                              ##
+##                                                                                        ##
+##      rapport.ls()                                                                      ##
+##                                                                                        ##
+############################################################################################
 
 
 next.please()
 rapport.ls()
 
 
-##############################################################################
-##                                                                          ##
-## OK, 'correlations.tpl' seems interesting, let us run a template example! ##
-##                                                                          ##
-## Will run:                                                                ##
-##                                                                          ##
-##      tpl.example('Correlation')                                          ##
-##                                                                          ##
-##############################################################################
+#################################################################################
+##                                                                             ##
+## OK, 'Correlation.rapport' seems interesting, let us run a template example! ##
+##                                                                             ##
+## Will run:                                                                   ##
+##                                                                             ##
+##      tpl.example('Correlation')                                             ##
+##                                                                             ##
+#################################################################################
 
 
 next.please()
-tpl.example('Correlation')
+rapport.example('Correlation')
 
 
 ################################################################
@@ -128,7 +128,7 @@ rapport('Correlation', data = mtcars, vars = c('mpg', 'hp', 'wt', 'qsec'))
 ## check out the generated images, please run `rapport` with custom options:    ##
 ##                                                                              ##
 ##     * evalsOptions('graph.recordplot', TRUE)                                 ##
-##     * options('graph.replay' = TRUE)                                         ##
+##     * options('rapport.graph.replay' = TRUE)                                 ##
 ##                                                                              ##
 ## This would tell `rapport` to save generated images and show them in the      ##
 ## the graphics device while printing. This would also let you resize images    ##
@@ -137,7 +137,7 @@ rapport('Correlation', data = mtcars, vars = c('mpg', 'hp', 'wt', 'qsec'))
 ## Will run:                                                                    ##
 ##                                                                              ##
 ##      evalsOptions('graph.recordplot', TRUE)                                  ##
-##      options('graph.replay' = TRUE)                                          ##
+##      options('rapport.graph.replay' = TRUE)                                  ##
 ##      rapport('Correlation', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))  ##
 ##                                                                              ##
 ##################################################################################
@@ -145,8 +145,8 @@ rapport('Correlation', data = mtcars, vars = c('mpg', 'hp', 'wt', 'qsec'))
 
 next.please()
 evalsOptions('graph.recordplot', TRUE)
-options('graph.replay' = TRUE)
-report <- rapport('Correlation', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'))
+options('rapport.graph.replay' = TRUE)
+report <- rapport('Correlation', data = mtcars, vars = c('mpg', 'hp', 'wt', 'qsec'))
 report
 
 
@@ -181,10 +181,10 @@ rapport.export(report, format = 'odt')
 
 
 next.please()
-rapport.html('Correlation', data=mtcars, vars=c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE)
+rapport.html('Correlation', data = mtcars, vars = c('mpg', 'hp', 'wt', 'qsec'), graph.hi.res = TRUE)
 
 
-rm(next.please); rm(report); options("demo.ask" = demo.opt); options("graph.replay" = replay.opt); evalsOptions("graph.recordplot", record.opt); options("device.ask.default" = dev.ask)
+rm(next.please); rm(report); options("demo.ask" = demo.opt); options("rapport.graph.replay" = replay.opt); evalsOptions("graph.recordplot", record.opt); options("device.ask.default" = dev.ask)
 
 
 ##############################################
