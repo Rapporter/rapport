@@ -7,39 +7,16 @@
 is.rapport <- function(x)  inherits(x, 'rapport')
 
 
-#' Rapport Heading Element
-#'
-#' Checks if provided R object is a \code{rapport} heading element.
-#' @param x any R object to check
-#' @return a logical value indicating whether provided object is a \code{rp.heading} object
-is.rp.heading <- function(x)  inherits(x, 'rp.heading')
-
-
-#' Pandoc Heading
-#'
-#' Checks if provided string is a valid ATX-style pandoc heading.
-#' @param x a string to test for pandoc heading format
-#' @return a logical value indicating the string is (not) a pandoc heading
-#' @export
-is.heading <- function(x){
-    if (missing(x))
-        stop('no character value to test pandoc heading')
-    re.head <- '^#{1,6}([ \t]+)?[[:print:]]+$'
-    grepl(re.head, x)
-}
-
-
 #' Convert Metadata to Character
 #'
 #' Converts template metadata to character vector with YAML strings.
 #' @param x template metadata object
 #' @param ... ignored
-#' @method as.character rp.meta
-#' @S3method as.character rp.meta
-#' @export
-as.character.rp.meta <- function(x, ...){
-    if (!inherits(x, 'rp.meta'))
-        stop("template metadata not provided")
+#' @method as.character rapport.meta
+#' @S3method as.character rapport.meta
+as.character.rapport.meta <- function(x, ...){
+    if (!inherits(x, 'rapport.meta'))
+        stop("Template metadata not provided.")
     as.yaml(x)
 }
 
@@ -49,153 +26,12 @@ as.character.rp.meta <- function(x, ...){
 #' Converts template inputs to character vector with YAML strings.
 #' @param x template inputs object
 #' @param ... ignored
-#' @method as.character rp.inputs
-#' @S3method as.character rp.inputs
-#' @export
-as.character.rp.inputs <- function(x, ...){
-    if (!inherits(x, 'rp.inputs'))
-        stop("template inputs not provided")
+#' @method as.character rapport.inputs
+#' @S3method as.character rapport.inputs
+as.character.rapport.inputs <- function(x, ...){
+    if (!inherits(x, 'rapport.inputs'))
+        stop("Template inputs not provided.")
     as.yaml(x)
-}
-
-
-#' Variable Name
-#'
-#' This function returns character value previously stored in variable's \code{name} attribute. If none found, the function defaults to object's name.
-#' @param x an R (atomic or data.frame/list) object to extract names from
-#' @return a character value with variable's label
-#' @examples \dontrun{
-#' rp.name(mtcars$am)
-#' x <- 1:10; rp.name(x)
-#' }
-#' @export
-rp.name <- function(x){
-
-    if (missing(x))
-        stop('variable not provided')
-
-    if (is.atomic(x)){
-        n <- attr(x, which = 'name', exact = TRUE)
-        if (is.null(n)) {
-            return (tail(as.character(substitute(x)), 1)) # return variable name if no label
-        } else {
-            if (length(n) > 1)
-                warning('variable name is not a length-one vector, only the first element is displayed')
-            return(attr(x, 'name'))                       # return variable label
-        }
-    }
-
-    if (is.recursive(x)){
-        n <- sapply(x, attr, which = 'name', exact = TRUE)
-        n.nil <- sapply(n, is.null)
-
-        ## no labels found
-        if (all(n.nil)){
-            n <- names(n)
-        } else
-            n[n.nil] <- names(n)[n.nil]
-
-        return(n)
-    }
-
-    stop('Wrong R object type provided!')
-}
-
-
-#' Get Variable Label
-#'
-#' This function returns character value previously stored in variable's \code{label} attribute. If none found, and \code{fallback} argument is set to \code{TRUE} (default), the function returns object's name (retrieved by \code{deparse(substitute(x))}), otherwise \code{NA} is returned with a warning notice.
-#' @param x an R object to extract labels from
-#' @param fallback a logical value indicating if labels should fallback to object name(s)
-#' @param simplify coerce results to a vector (\code{TRUE} by default), otherwise, a \code{list} is returned
-#' @return a character vector with variable's label(s)
-#' @examples \dontrun{
-#' x <- rnorm(100)
-#' rp.label(x)         # returns "x"
-#' rp.label(x, FALSE)  # returns NA and issues a warning
-#'
-#' rp.label(mtcars$hp) <- "Horsepower"
-#' rp.label(mtcars)         # returns "Horsepower" instead of "hp"
-#' rp.label(mtcars, FALSE)  # returns NA where no labels are found
-#' rp.label(sleep, FALSE)   # returns NA for each variable and issues a warning
-#' }
-#' @export
-rp.label <- function(x, fallback = TRUE, simplify = TRUE){
-
-    if (missing(x))
-        stop('variable not provided')
-
-    if (is.null(x))
-        return (NULL)
-
-    if (is.atomic(x)){
-        lbl <- attr(x, which = 'label', exact = TRUE)
-        if (is.null(lbl)){
-            if (fallback){
-                lbl <- tail(as.character(substitute(x)), 1)
-            } else {
-                warning('atomic object has no labels')
-                lbl <- NA
-            }
-        } else {
-            if (length(lbl) > 1){
-                warning('variable label is not a length-one vector, only first element is returned')
-                lbl <- lbl[1]
-            }
-        }
-    } else {
-        lbl <- sapply(x, attr, which = 'label', exact = TRUE)
-        lbl.nil <- sapply(lbl, is.null)
-
-        ## no labels found
-        if (all(lbl.nil)){
-            if (fallback){
-                lbl <- structure(names(lbl), .Names = names(lbl))
-            } else {
-                warning('no labels found in recursive object')
-                lbl[lbl.nil] <- NA
-            }
-        } else {
-            if (fallback)
-                lbl[lbl.nil] <- names(lbl)[lbl.nil]
-            else
-                lbl[lbl.nil] <- NA
-        }
-    }
-
-    if (simplify)
-        lbl <- unlist(lbl)
-
-    return(lbl)
-}
-
-
-#' Set Variable Label
-#'
-#' This function sets a label to a variable, by storing a character string to its \code{label} attribute.
-#' @param var a variable (see \code{\link{is.variable}} for details)
-#' @param value a character value that is to be set as variable label
-#' @usage rp.label(var) <- value
-#' @seealso \code{\link{rp.label}}
-#' @examples \dontrun{
-#' rp.label(mtcars$mpg) <- "fuel consumption"
-#' x <- rnorm(100); ( rp.label(x) <- "pseudo-random normal variable" )
-#' }
-#' @export
-`rp.label<-` <- function(var, value){
-
-    if (missing(var) | missing(value))
-        stop('both variable name and label should be provided')
-
-    if (!is.variable(var))
-        stop('label can only be assigned to a variable')
-
-    if (!is.string(value))
-        stop('only a character string can be assigned to a variable label')
-
-    attr(var, 'label') <- value
-
-    return (var)
 }
 
 
@@ -232,20 +68,20 @@ get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment
         comment.close = '-->'
         )
     tag.default.names <- names(tag.default) # names of default tags
-    tag.current <- getOption('rp.tags')     # currently set tags
+    tag.current <- getOption('rapport.tags')     # currently set tags
     tag.current.names <- names(tag.current) # names of currently set tags
 
     ## check if tag list exists
     if (is.null(tag.current))
-        stop('tag list does not exist')
+        stop('Tag list does not exist.')
 
     ## check tag list length
     if (length(tag.default) != length(tag.current))
-        stop('tag list incomplete')
+        stop('Tag list incomplete.')
 
     if (!all(sort(tag.default.names) == sort(tag.current.names))){
         tgs <- paste(setdiff(tag.current.names, tag.default.names), collapse = ", ")
-        stopf('tag list malformed!\nproblematic tags: %s', tgs)
+        stopf('Tag list malformed!\nproblematic tags: %s', tgs)
     }
 
     res <- switch(t.preset,
@@ -264,30 +100,10 @@ get.tags <- function(tag.type = c('all', 'header.open', 'header.close', 'comment
                       }
                       do.call(switch, c(EXPR = t.type, all = tag.default, tag.default))
                   },
-                  stopf('unknown preset option "%s"', t.preset)
+                  stopf('Unknown preset option "%s"', t.preset)
                   )
 
     return (res)
-}
-
-
-#' Purge Comments
-#'
-#' Remove comments from provided character vector.
-#'
-#' Default parameters are read from \code{options}:
-#'
-#' \itemize{
-#'     \item 'comment.open',
-#'     \item 'comment.close'.
-#' }
-#' @param x a character string to remove comments from
-#' @param comment.open a string containing opening tag
-#' @param comment.close a string containing closing tag
-#' @return a string with removed pandoc comments
-purge.comments <- function(x, comment.open = get.tags('comment.open'), comment.close = get.tags('comment.close')){
-    stopifnot(is.string(x))
-    sub(sprintf('%s.*?%s', comment.open, comment.close), '', x)
 }
 
 
@@ -304,35 +120,38 @@ check.tpl <- function(txt, open.tag = get.tags('header.open'), close.tag = get.t
     hclose.ind <- grep(close.tag, txt, ...)[1] # closing tag
     ## check header indices
     if (!isTRUE(hopen.ind == 1L))
-        stop('opening header tag not found in first line')
+        stop('Opening header tag not found in first line.')
     if (is.na(hclose.ind))
-        stop('closing header tag not found')
+        stop('Closing header tag not found.')
     if (hclose.ind - hopen.ind <= 1)
-        stop('template header not found')
+        stop('Template header not found.')
     h <- txt[(hopen.ind + 1):(hclose.ind - 1)] # get header
     if (all(trim.space(h) == ''))
-        stop('template header is empty')
+        stop('Template header is empty.')
     b <- txt[(hclose.ind + 1):length(txt)]
     if (hclose.ind == length(txt) || all(sapply(trim.space(b), function(x) x == '')))
-        stop('what good is a template if it has no body? http://bit.ly/11E5BQM')
+        stop('What good is a template if it has no body? http://bit.ly/11E5BQM')
 }
 
 
 #' Package Templates
 #'
-#' Lists all templates bundled with current package build. By default, it will search for all \code{.rapport} files in current directory, path specified in \code{tpl.paths} option and package library path.
+#' Lists all templates bundled with current package build. By default, it will search for all \code{.rapport} files in current directory, path specified in \code{rapport.paths} option and package library path.
 #' @param ... additional parameters for \code{\link{dir}} function
 #' @return a character vector with template files
 #' @export
-tpl.list <- function(...){
+#' @aliases rapport.ls tpl.list
+rapport.ls <- function(...){
     mc <- match.call()
     if (is.null(mc$path))
-        mc$path <- c('./', getOption('tpl.paths'), system.file('templates', package = 'rapport'))
+        mc$path <- c('./', getOption('rapport.paths'), system.file('templates', package = 'rapport'))
     if (is.null(mc$pattern))
         mc$pattern <- '^.+\\.rapport$'
     mc[[1]] <- as.symbol('dir')
     eval(mc)
 }
+#' @export
+tpl.list <- rapport.ls
 
 
 #' Template Paths
@@ -340,22 +159,28 @@ tpl.list <- function(...){
 #' List all custom paths where rapport will look for templates.
 #' @return a character vector with paths
 #' @examples \dontrun{
-#' tpl.paths()
+#' rapport.path()
 #' }
 #' @export
-tpl.paths <- function()
-    getOption('tpl.paths')
+#' @aliases rapport.path tpl.paths
+rapport.path <- function()
+    getOption('rapport.path')
+#' @export
+tpl.paths <- rapport.path
 
 
 #' Reset Template Paths
 #'
 #' Resets to default (NULL) all custom paths where rapport will look for templates.
 #' @examples \dontrun{
-#' tpl.paths.reset()
+#' rapport.path.reset()
 #' }
 #' @export
-tpl.paths.reset <- function()
-    options('tpl.paths' = NULL)
+#' @aliases rapport.path.reset tpl.paths.reset
+rapport.path.reset <- function()
+    options('rapport.path' = NULL)
+#' @export
+tpl.paths.reset <- rapport.path.reset
 
 
 #' Add Template Path
@@ -364,22 +189,22 @@ tpl.paths.reset <- function()
 #' @param ... character vector of paths
 #' @return TRUE on success (invisibly)
 #' @examples \dontrun{
-#' tpl.paths.add('/tmp')
-#' tpl.list()
-#'
-#' ## might trigger an error:
-#' tpl.paths.add('/home', '/rapport')
+#' rapport.path.add('/tmp')
+#' rapport.ls()
 #' }
 #' @export
-tpl.paths.add <- function(...) {
+#' @aliases rapport.path.add tpl.paths.add
+rapport.path.add <- function(...) {
     paths <- as.character(substitute(list(...)))[-1L]
     if (!all(sapply(paths, is.character)))
         stop('Wrong arguments (not characters) supplied!')
     if (!all(file.exists(paths)))
         stop('Specified paths do not exists on filesystem!')
-    options('tpl.paths' = union(tpl.paths(), paths))
+    options('rapport.path' = union(rapport.path(), paths))
     invisible(TRUE)
 }
+#' @export
+tpl.paths.add <- rapport.path.add
 
 
 #' Remove Template Path
@@ -388,22 +213,22 @@ tpl.paths.add <- function(...) {
 #' @param ... character vector of paths
 #' @return TRUE on success (invisibly)
 #' @examples \dontrun{
-#' tpl.paths()
-#' tpl.paths.add('/tmp')
-#' tpl.paths()
-#' tpl.paths.remove('/tmp')
-#' tpl.paths()
-#'
-#' ## might trigger an error:
-#' tpl.paths.remove('/root')
+#' rapport.path()
+#' rapport.path.add('/tmp')
+#' rapport.path()
+#' rapport.path.remove('/tmp')
+#' rapport.path()
 #' }
 #' @export
-tpl.paths.remove <- function(...) {
+#' @aliases rapport.path.remove tpl.paths.remove
+rapport.path.remove <- function(...) {
     paths <- as.character(substitute(list(...)))[-1L]
     if (!all(sapply(paths, is.character)))
         stop('Wrong arguments (not characters) supplied!')
-    if (!all(paths %in% tpl.paths()))
+    if (!all(paths %in% rapport.path()))
         warning('Specified paths were not added to custom paths list before!')
-    options('tpl.paths' = setdiff(tpl.paths(), paths))
+    options('rapport.path' = setdiff(rapport.path(), paths))
     invisible(TRUE)
 }
+#' @export
+tpl.paths.remove <- rapport.path.remove

@@ -1,11 +1,11 @@
 #' Print Template Metadata
 #'
 #' Prints out the contents of template metadata in human-readable format.
-#' @param x object of class \code{rp.meta}. See \code{\link{tpl.meta}} for details.
+#' @param x object of class \code{rapport.meta}. See \code{\link{rapport.meta}} for details.
 #' @param ... ignored
-#' @method print rp.meta
-#' @S3method print rp.meta
-print.rp.meta <- function(x, ...){
+#' @method print rapport.meta
+#' @S3method print rapport.meta
+print.rappot.meta <- function(x, ...){
     .x <- x                             # backup object
     ind <- c('title', 'author', 'email', 'description', 'example')
     email <- if (is.null(x$email)) '' else sprintf(' (%s)', x$email) # show email if any
@@ -32,11 +32,11 @@ print.rp.meta <- function(x, ...){
 #' Print Template Inputs
 #'
 #' Prints out the contents of template inputs in human-readable format.
-#' @param x object of class \code{rp.inputs}. See \code{\link{tpl.inputs}} for details.
+#' @param x object of class \code{rapport.inputs}. See \code{\link{rapport.inputs}} for details.
 #' @param ... ignored
-#' @method print rp.inputs
-#' @S3method print rp.inputs
-print.rp.inputs <- function(x, ...){
+#' @method print rapport.inputs
+#' @S3method print rapport.inputs
+print.rapport.inputs <- function(x, ...){
     catn('\n Inputs\n')
 
     if (length(x) == 0) {
@@ -118,11 +118,11 @@ print.rp.inputs <- function(x, ...){
 #' Print Template Header
 #'
 #' Prints out the contents of template header (both metadata and inputs) in human-readable format, so you can get insight about the template requirements.
-#' @param x object of class \code{rp.header}. See \code{\link{tpl.header}} for details.
+#' @param x object of class \code{rp.header}. See \code{\link{rapport.header}} for details.
 #' @param ... ignored
-#' @method print rp.info
-#' @S3method print rp.info
-print.rp.info <- function(x, ...){
+#' @method print rapport.info
+#' @S3method print rapport.info
+print.rapport.info <- function(x, ...){
     sapply(x, print)
 }
 
@@ -160,8 +160,8 @@ print.rapport <- function(x, ...) {
 
     }
 
-    if (getOption('graph.replay')) {
-        wd <- getwd(); setwd(getOption('rp.file.path'))
+    if (getOption('rapport.graph.replay')) {
+        wd <- getwd(); setwd(getOption('rapport.file.path'))
         cat('\n', rep('=', getOption('width')), sep='')
         cat('\n  Attached images:\n\n    Note: you may optionally resize images on the fly which new dimensions will be saved to disk.\n          Do not close graphics device before this happens (pressing ENTER) if you want to update your image files!\n')
 

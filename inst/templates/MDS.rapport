@@ -4,7 +4,9 @@ meta:
   author: Daniel Nagy
   description: In this template Rapporter will present you Multidimensional Scaling.
   email: ~
-  packages: ~
+  packages:
+  - rapportools
+  - pander
   example:
   - rapport('MDS', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=16)
   - rapport('MDS', data=ius2008, vars=c('age', 'edu', 'leisure'), max.dist.num=17, min.dist.num=30)
@@ -67,7 +69,7 @@ head-->
 
 # MDS
 
-Below you can see a plot, that presents you the distance between the observations, which was calculated based on <%=rp.label(vars)%>.
+Below you can see a plot, that presents you the distance between the observations, which was calculated based on <%=label(vars)%>.
 
 <%= if (exists('id') && !is.null(id)) {
 id <- as.character(id)
@@ -130,7 +132,7 @@ Now let's see which observations can be said statistically far/similar to each o
 
 <%if (nrow(h) <= max.dist.num) { %>
 
-According to the used variables (<%=rp.label(vars)%>) the <%=max.dist.num%> furthest pair of observations are:
+According to the used variables (<%=label(vars)%>) the <%=max.dist.num%> furthest pair of observations are:
 
 <%=
 paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(distance)[h[i, 1]], colnames(distance)[h[i, 2]])), ' (', round(distance[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')
@@ -144,7 +146,7 @@ There are <%=nrow(h)%> observations which are the most similar, and equal in the
  
 <%if (nrow(j) <= min.dist.num) { %>
 
-According to the used variables (<%=rp.label(vars)%>) the <%=min.dist.num%> nearest pair of observations are:
+According to the used variables (<%=label(vars)%>) the <%=min.dist.num%> nearest pair of observations are:
 
 <%=
 paste(pander.return(lapply(1:nrow(j), function(i) paste0(p(c(rownames(distance)[j[i, 1]], colnames(distance)[j[i, 2]])), ' (', round(distance[j[i, 1], j[i, 2]], 2), ')'))), collapse = '\n')

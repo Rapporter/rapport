@@ -1,26 +1,32 @@
 #' Read Template
 #'
-#' Reads file either from template name in system folder, file path or remote URL, and splits it into lines for easier handling by \emph{rapport} internal parser. "find" in \code{tpl.find} is borrowed from Emacs parlance - this function actually reads the template.
+#' Reads file either from template name in system folder, file path (see \code{rapport.path}) or remote URL, and splits it into lines for easier handling by \emph{rapport} internal parser.
 #' @param fp a character string containing a template path, a template name (for package-bundled templates only), template contents separated by newline (\code{\\n}), or a character vector with template contents.
 #' @param ... additional params for header tag matching (see \code{\link{grep}})
 #' @return a character vector with template contents
-tpl.find <- function(fp, ...){
+#' @aliases rapport.read tpl.find
+rapport.read <- function(fp, ...) {
+
     if (missing(fp))
         stop('Template file pointer not provided!')
     stopifnot(is.character(fp))
+
     l <- length(fp)
+
     ## maybe it's file path?
-    if (l == 1){
+    if (l == 1) {
+
         ## is it URL?
         if (grepl('^(ftp|http(s)?)://.+$', fp)) {
             if (download.file(fp, tmp.fp <- tempfile(), method = 'wget') != 0)
                 stop('Remote template file not found!')
             file <- tmp.fp
         } else {
-            ## is it local file found in working, package or custom \code{getOption('tpl.paths')} directory?
+
+            ## is it local file found in working, package or custom \code{getOption('rapport.paths')} directory?
             if (!grepl('.+\\.rapport$', fp, ignore.case = TRUE))
                 fp <- c(fp, sprintf('%s.rapport', fp))
-            fp <- c(fp, unlist(lapply(fp, function(file) file.path(getOption('tpl.paths'), file))), system.file('templates', fp, package = 'rapport'))
+            fp <- c(fp, unlist(lapply(fp, function(file) file.path(getOption('rapport.paths'), file))), system.file('templates', fp, package = 'rapport'))
             fp <- fp[file.exists(fp)]
             if (length(fp) == 0)
                 stop('Template file not found!')
@@ -36,21 +42,26 @@ tpl.find <- function(fp, ...){
     } else {
         stop('Template file pointer error :O')      # you never know...
     }
+
     check.tpl(txt, ...)
     return(txt)
+
 }
+tpl.find <- rapport.read
 
 
 ##' Extract template chunk contents
 ##'
 ##' \code{rapport}'s alternative to \code{\link{Stangle}} - extracts contents of template chunks. If \code{file} argument
-##' @param fp template file pointer (see \code{\link{tpl.find}} for details)
+##' @param fp template file pointer (see \code{rapport:::rapport.read} for details)
 ##' @param file see \code{file} argument in \code{\link{cat}} function documentation
 ##' @param show.inline.chunks extract contents of inline chunks as well? (defaults to \code{FALSE})
 ##' @return (invisibly) a list with either inline or block chunk contents
 ##' @export
-tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
-    b <- tpl.body(tpl.find(fp))
+##' @aliases rapport.tangle tpl.tangle
+rapport.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
+
+    b <- rapport.body(rapport.read(fp))
 
     re.block.open    <- "^<%=?$"
     re.block.close   <- "^%>$"
@@ -77,7 +88,7 @@ tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
     else
         chunk.ind <- block.ind
 
-    chunk.ind <- lapply(chunk.ind, function(x){
+    chunk.ind <- lapply(chunk.ind, function(x) {
         attr(x, "chunk.type") <- "block"
         x
     })
@@ -101,7 +112,7 @@ tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
             out <<- c(out, "", cc, "")
         } else {
             cc <- trim.space(vgsub("(<%=?|%>)", "", str_extract_all(cc, "<%=?[^%>]+%>")[[1]]))
-            sapply(cc, function(x){
+            sapply(cc, function(x) {
                 out <<- c(out, "##################")
                 out <<- c(out, "## inline chunk ##")
                 out <<- c(out, "##################")
@@ -117,70 +128,88 @@ tpl.tangle <- function(fp, file = "", show.inline.chunks = FALSE) {
 
     invisible(res)
 }
+#' @export
+tpl.tangle <- rapport.tangle
 
 
 #' Template Header
 #'
 #' Returns \code{rapport} template header from provided path or a character vector.
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param open.tag a string with opening tag (defaults to value of user-defined \code{"header.open"} tag)
 #' @param close.tag a string with closing tag (defaults to value of user-defined \code{"header.close"} tag)
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template header contents
-tpl.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...){
-    txt <- tpl.find(fp)                 # split by newlines
+#' @aliases rapport.header tpl.header
+rapport.header <- function(fp, open.tag = get.tags('header.open'), close.tag = get.tags('header.close'), ...) {
+
+    txt <- rapport.read(fp)                 # split by newlines
+
     ## get header tag indices
     hopen.ind  <- grep(open.tag, txt, ...)[1]  # opening tag
     hclose.ind <- grep(close.tag, txt, ...)[1] # closing tag
     hsection <- txt[(hopen.ind + 1):(hclose.ind - 1)] # get header
+
     return(hsection)
 }
+#' @export
+tpl.header <- rapport.header
 
 
 #' Template Body
 #'
 #' Returns contents of the template body.
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param htag a string with closing body tag
 #' @param ... additional arguments to be passed to \code{\link{grep}} function
 #' @return a character vector with template body contents
 #' @export
-tpl.body <- function(fp, htag = get.tags('header.close'), ...){
-    txt   <- tpl.find(fp, ...)
+#' @aliases rapport.body tpl.body
+rapport.body <- function(fp, htag = get.tags('header.close'), ...) {
+    txt   <- rapport.read(fp, ...)
     h.end <- grep(htag, txt, ...)
     b <- txt[(h.end + 1):length(txt)]
-    structure(b, class = 'rp.body')
+    structure(b, class = 'rapport.body')
 }
+#' @export
+tpl.body <- rapport.body
 
 
 #' Template Info
 #'
-#' Provides information about template metadata and/or inputs. See \code{\link{tpl.meta}} and \code{\link{tpl.inputs}} for details.
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' Provides information about template metadata and/or inputs. See \code{\link{rapport.meta}} and \code{\link{rapport.inputs}} for details.
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param meta return template metadata? (defaults to \code{TRUE})
 #' @param inputs return template inputs? (defaults to \code{TRUE})
 #' @examples \dontrun{
-#' tpl.info('Example')  # return both metadata and inputs
-#' tpl.info('Crosstable', inputs = FALSE)  # return only template metadata
-#' tpl.info('Correlation', meta = FALSE)  # return only template inputs
+#' rapport.info('Example')                    # return both metadata and inputs
+#' rapport.info('Crosstable', inputs = FALSE) # return only template metadata
+#' rapport.info('Correlation', meta = FALSE)  # return only template inputs
 #' }
 #' @seealso {
-#' \code{\link{tpl.meta}}
-#' \code{\link{tpl.inputs}}
+#' \code{\link{rapport.meta}}
+#' \code{\link{rapport.inputs}}
 #' }
 #' @export
-tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
-    txt <- tpl.find(fp)
+#' @aliases rapport.info tpl.info
+rapport.info <- function(fp, meta = TRUE, inputs = TRUE) {
+
+    txt <- rapport.read(fp)
+
     if (!meta & !inputs)
         stop('Either "meta" or "inputs" should be set to TRUE')
+
     res <- list()
     if (meta)
-        res$meta <- tpl.meta(txt)
+        res$meta <- rapport.meta(txt)
     if (inputs)
-        res$inputs <- tpl.inputs(txt)
-    class(res) <- 'rp.info'
+        res$inputs <- rapport.inputs(txt)
+    class(res) <- 'rapport.info'
+
     return(res)
 }
+#' @export
+tpl.info <- rapport.info
 
 
 #' Header Metadata
@@ -199,20 +228,23 @@ tpl.info <- function(fp, meta = TRUE, inputs = TRUE){
 #' }
 #'
 #' As of version \code{0.5}, \code{dataRequired} field is deprecated. \code{rapport} function will automatically detect if the template requires a dataset based on the presence of \emph{standalone} inputs.
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param fields a list of named lists containing key-value pairs of field titles and corresponding regexes
 #' @param use.header a logical value indicating if the character vector provided in \code{fp} argument contains only the header data (not the whole template)
 #' @param trim.white a logical value indicating if the extra spaces should removed from header fields before extraction
 #' @return a named list with template metadata
 #' @seealso {
-#' \code{\link{tpl.inputs}}
-#' \code{\link{tpl.info}}
+#' \code{\link{rapport.inputs}}
+#' \code{\link{rapport.info}}
 #' }
 #' @export
-tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
-    header <- tpl.find(fp)
+#' @aliases rapport.meta tpl.meta
+rapport.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
+
+    header <- rapport.read(fp)
     if (!use.header)
-        header <- tpl.header(header)
+        header <- rapport.header(header)
+
     ## check if header is defined in YAML
     h <- tryCatch({
         y <- yaml.load(
@@ -249,7 +281,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
             )
 
         ## no fields specified, load default fields
-        if (!is.null(fields)){
+        if (!is.null(fields)) {
             fld.title <- sapply(fld, function(x) x$title)
             fields.title  <- sapply(fields, function(x) x$title)
             fld <- c(fld, fields) # merge required fields with default/specified ones
@@ -265,7 +297,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
         if (length(rm.ind) > 0)
             header <- header[-rm.ind]
 
-        h <- sapply(fld, function(x){
+        h <- sapply(fld, function(x) {
             m <- grep(sprintf("^%s:", x$title), header)
             x$x <- header[m]
             do.call(extract.meta, x)
@@ -278,7 +310,7 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 
         ## examples
         ## TODO: change to "examples" at some point (easy does it)
-        if (!is.null(h$example)){
+        if (!is.null(h$example)) {
             ## select all "untagged" lines after Example: that contain rapport(<smth>) string
             ## but it will not check if they're syntactically correct
             ind.start <- grep('^Example:', header)
@@ -313,8 +345,10 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
     if (length(unsupported.meta))
         warningf('Unsupported metadata field(s) found: %s', p(unsupported.meta, wrap = "\""))
 
-    structure(h, class = 'rp.meta')
+    structure(h, class = 'rapport.meta')
 }
+#' @export
+tpl.meta <- rapport.meta
 
 
 #' Template Inputs
@@ -374,17 +408,21 @@ tpl.meta <- function(fp, fields = NULL, use.header = FALSE, trim.white = TRUE) {
 #'     \item \code{nlevels} - accepts the same format as \code{length} attribute, but the check is performed rather on the number of factor levels.
 #'     \item \code{matchable} - \emph{ibid} as in character inputs (note that in previous versions of \code{rapport} matching was performed against factor levels - well, not any more, now we match against values to make it consistent with \code{character} inputs).
 #' }
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param use.header a logical value indicating whether the header section is provided in \code{h} argument
 #' @seealso {
-#' \code{\link{tpl.meta}}
-#' \code{\link{tpl.info}}
+#' \code{\link{rapport.meta}}
+#' \code{\link{rapport.info}}
 #' }
 #' @export
-tpl.inputs <- function(fp, use.header = FALSE){
-    header <- tpl.find(fp)
+#' @aliases rapport.inputs tpl.inputs
+rapport.inputs <- function(fp, use.header = FALSE) {
+
+    header <- rapport.read(fp)
+
     if (!use.header)
-        header <- tpl.header(header)
+        header <- rapport.header(header)
+
     ## Try with YAML first ("inputs" is actually decoded header)
     inputs <- tryCatch(
         yaml.load(
@@ -410,7 +448,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
         inputs.ind <- grep("^(.+\\|){3}.+$", header) # get input definition indices
 
         if (length(inputs.ind) == 0)
-            return (structure(NULL, class = 'rp.inputs'))
+            return (structure(NULL, class = 'rapport.inputs'))
 
         inputs.raw <- lapply(strsplit(header[inputs.ind], '|', fixed = TRUE), function(x) trim.space(x)) # "raw" as in "unchecked", split by | and trimmed for whitespace
 
@@ -435,7 +473,7 @@ tpl.inputs <- function(fp, use.header = FALSE){
                 i.type
                 )
         })
-        warning("Oh, no! This template has outdated input definition! You can update it by running `tpl.renew`.")
+        warning("Oh, no! This template has outdated input definition! You can update it by running `rapport.renew`.")
     } else {
         inputs <- lapply(inputs$inputs, guess.input)
     }
@@ -446,38 +484,41 @@ tpl.inputs <- function(fp, use.header = FALSE){
     if (any(dupes))
         stopf('template contains duplicate input names: %s', p(nms[dupes], wrap = "\""))
 
-    structure(inputs, class = 'rp.inputs')
+    structure(inputs, class = 'rapport.inputs')
 }
+#' @export
+tpl.inputs <- rapport.inputs
 
 
 #' Template Examples
 #'
-#' Displays template examples defined in \code{Example} section. Handy to check out what template does and how does it look like once it's rendered. If multiple examples are available, and \code{index} argument is \code{NULL}, you will be prompted for input. If only one example is available in the header, user is not prompted for input action, and given template is evaluated automatically. At any time you can provide an integer vector with example indices to \code{index} argument, and specified examples will be evaluated without prompting, thus returning a list of \code{rapport} objects. Example output can be easily exported to various formats (HTML, ODT, etc.) - check out documentation for \code{tpl.export} for more info.
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' Displays template examples defined in \code{Example} section. Handy to check out what template does and how does it look like once it's rendered. If multiple examples are available, and \code{index} argument is \code{NULL}, you will be prompted for input. If only one example is available in the header, user is not prompted for input action, and given template is evaluated automatically. At any time you can provide an integer vector with example indices to \code{index} argument, and specified examples will be evaluated without prompting, thus returning a list of \code{rapport} objects. Example output can be easily exported to various formats (HTML, ODT, etc.) - check out documentation for \code{rapport.export} for more info.
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param index a numeric vector indicating the example index - meaningful only for templates with multiple examples. Accepts vector of integers to match IDs of template example. Using 'all' (character string) as index will return all examples.
 #' @param env an environment where example will be evaluated (defaults to \code{.GlobalEnv})
 #' @examples \dontrun{
-#' tpl.example('Example')
-#' tpl.example('Example', 1:2)
-#' tpl.example('Example', 'all')
-#' tpl.example('Crosstable')
-#' tpl.export(tpl.example('Crosstable'))
+#' rapport.example('Example')
+#' rapport.example('Example', 1:2)
+#' rapport.example('Example', 'all')
+#' rapport.example('Crosstable')
+#' rapport.export(rapport.example('Crosstable'))
 #' }
 #' @export
-tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
+#' @aliases rapport.example tpl.example
+rapport.example <- function(fp, index = NULL, env = .GlobalEnv) {
 
-    examples   <- tpl.meta(fp)$example
+    examples   <- rapport.meta(fp)$example
     n.examples <- 1:length(examples)
     examples.len <- length(examples)
 
     ## return NULL invisibly if no templates are found in the template
-    if (is.null(examples)){
+    if (is.null(examples)) {
         message('Provided template does not have any examples.')
         invisible(NULL)
     }
 
-    if (examples.len > 1){
-        if (is.null(index)){
+    if (examples.len > 1) {
+        if (is.null(index)) {
             opts  <- c(n.examples)
             catn('Enter example ID from the list below:')
             catn(sprintf('\n(%s)\t%s', opts, c(examples)))
@@ -509,6 +550,8 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
     else
         eval(parse(text = examples[index]), envir = env)
 }
+#' @export
+tpl.example <- rapport.example
 
 
 #' Reproduce Template
@@ -517,10 +560,11 @@ tpl.example <- function(fp, index = NULL, env = .GlobalEnv) {
 #' @param tpl a \code{rapport} object
 #' @examples \dontrun{
 #' tmp <- rapport("Example", mtcars, v = "hp", reproducible = TRUE)
-#' tpl.rerun(tmp)
+#' rapport.rerun(tmp)
 #' }
 #' @export
-tpl.rerun <- function(tpl){
+#' @aliases rapport.rerun tpl.rerun
+rapport.rerun <- function(tpl) {
 
     if (!inherits(tpl, 'rapport'))
         stop("You haven't provided a rapport template")
@@ -535,24 +579,26 @@ tpl.rerun <- function(tpl){
     cl$data <- dt
     do.call(rapport, cl)
 }
+#' @export
+tpl.rerun <- rapport.rerun
 
 
 #' Evaluate Template
 #'
-#' This is the central function in the \code{rapport} package, and hence eponymous. In following lines we'll use \code{rapport} to denote the function, not the package. \code{rapport} requires a template file, while dataset (\code{data} argument) can be optional, depending on the value of \code{Data required} field in template header. Template inputs are matched with \code{...} argument, and should be provided in \code{x = value} format, where \code{x} matches input name and \code{value}, wait for it... input value! See \code{\link{tpl.inputs}} for more details on template inputs.
+#' This is the central function in the \code{rapport} package, and hence eponymous. In following lines we'll use \code{rapport} to denote the function, not the package. \code{rapport} requires a template file, while dataset (\code{data} argument) can be optional, depending on the value of \code{Data required} field in template header. Template inputs are matched with \code{...} argument, and should be provided in \code{x = value} format, where \code{x} matches input name and \code{value}, wait for it... input value! See \code{\link{rapport.inputs}} for more details on template inputs.
 #'
 #' Default parameters are read from \code{evalsOptions()} and the following \code{options}:
 #'
 #' \itemize{
-#'     \item 'rp.file.name',
-#'     \item 'rp.file.path',
+#'     \item 'rapport.file.name',
+#'     \item 'rapport.file.path',
 #' }
 #'
-#' @param fp a template file pointer (see \code{\link{tpl.find}} for details)
+#' @param fp a template file pointer (see \code{rapport:::rapport.read} for details)
 #' @param data a \code{data.frame} to be used in template
 #' @param ... matches template inputs in format 'key = "value"'
-#' @param env an environment where template commands be evaluated (defaults to \code{new.env()}
-#' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{tpl.rerun}} for details)
+#' @param env the parent environment to be forked, in which temporary \code{new.env} template commands be evaluated
+#' @param reproducible a logical value indicating if the call and data should be stored in template object, thus making it reproducible (see \code{\link{rapport.rerun}} for details)
 #' @param header.levels.offset number added to header levels (handy when using nested templates)
 #' @param file.name set the file name of saved plots and exported documents. A simple character string might be provided where \code{\%N} would be replaced by an auto-increment integer based on similar exported document's file name , \code{\%n} an auto-increment integer based on similar (plot) file names (see: \code{?evalsOptions}), \code{\%T} by the name of the template in action and \code{\%t} by some uniqe random characters based on \code{\link{tempfile}}.
 #' @param file.path path of a directory where to store generated images and exported reports
@@ -578,29 +624,48 @@ tpl.rerun <- function(tpl){
 #' rapport('AnalyzeWizard', data=ius2008, variables=c('edu', 'game'))
 #' }
 #' @export
-rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE, header.levels.offset = 0, graph.output = evalsOptions('graph.output'), file.name = getOption('rp.file.name'), file.path = getOption('rp.file.path'), graph.width = evalsOptions('width'), graph.height = evalsOptions('height'), graph.res = evalsOptions('res'), graph.hi.res = evalsOptions('hi.res'), graph.replay = evalsOptions('graph.recordplot')) {
+rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE, header.levels.offset = 0, graph.output = evalsOptions('graph.output'), file.name = getOption('rapport.file.name'), file.path = getOption('rapport.file.path'), graph.width = evalsOptions('width'), graph.height = evalsOptions('height'), graph.res = evalsOptions('res'), graph.hi.res = evalsOptions('hi.res'), graph.replay = evalsOptions('rapport.graph.recordplot')) {
 
     timer         <- proc.time()                        # start timer
-    txt           <- tpl.find(fp)                       # split file to text
-    h             <- tpl.info(txt)                      # template header
+    txt           <- rapport.read(fp)                   # split file to text
+    h             <- rapport.info(txt)                  # template header
     meta          <- h$meta                             # header metadata
     inputs        <- h$inputs                           # header inputs
     inputs.names  <- sapply(inputs, function(x) x$name) # input names
-    b             <- tpl.body(txt)                      # template body
+    b             <- rapport.body(txt)                  # template body
     e             <- new.env(parent = env)              # load/create evaluation environment
+    e$Pandoc.brew <- Pandoc.brew                        # inject brew function
     i             <- list(...)                          # user inputs
     i.names       <- names(i)                           # user input names
     data.required <- any(sapply(inputs, function(x) !x$standalone)) || (!is.null(data) && !identical(data, ''))
+
+    ## dealing with packages
+    oldpkgs       <- .packages()                        # currently loaded packages to revert later
     pkgs          <- meta$packages                      # required packages
+
+    ## path issue on Windows
     file.path     <- gsub('\\', '/', file.path, fixed = TRUE)
 
     ## load required packages (if any)
-    if (!is.null(pkgs)){
+    if (!is.null(pkgs)) {
+
         pk <- suppressMessages(sapply(pkgs, require, character.only = TRUE, quietly = TRUE))
+
+        ## unload packages that were loaded on demand
+        on.exit(sapply(setdiff(.packages(), oldpkgs), function(pkg) try(
+            detach(paste('package', pkg, sep = ':'),
+                   character.only = TRUE), silent = TRUE)))
+
+        ## checking for errors
         nopkg <- pk == FALSE
         if (any(nopkg))
             stopf('Following packages are required by the template, but were not loaded: %s', p(names(pk[nopkg]), wrap = '"'))
+
     }
+
+    ## assign template metadata and inputs to custom environment for easy access inside of the templates
+    assign('rapport.inputs', inputs, envir = e)
+    assign('rapport.template', meta, envir = e)
 
     ## template contains no inputs
     if (length(inputs) == 0) {
@@ -608,8 +673,10 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         if (data.required) {
             if (is.null(data))
                 stop('"data" argument is required by the template')
-            else
+            else {
                 assign('rp.data', data, envir = e)
+                assign('rapport.data', data, envir = e)
+            }
         }
         ## inputs required, carry on...
     } else {
@@ -618,21 +685,22 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         input.required <- sapply(inputs, function(x) structure(x$required, .Names = x$name))
         input.names    <- names(input.required)
         ## take default inputs into account
-        if (!all(input.names[input.required] %in% names(i)) && any(sapply(inputs, function(x) is.empty(x$value) & is.empty(i[[x$name]]) & x$required))) {
+        if (!all(input.names[input.required] %in% names(i)) && any(sapply(inputs, function(x) is.empty(x$value) & !identical(x$value, FALSE) & is.empty(i[[x$name]]) & x$required))) {
             stopf("you haven't provided a value for %s", p(input.names[input.required], '"'))
         }
 
         ## data required
-        if (data.required){
+        if (data.required) {
             if(is.null(data))
                 stop('"data" not provided, but is required')
             if (!inherits(data, c('data.frame', 'rp.data')))
                 stop('"data" should be a "data.frame" object')
             data.names <- names(data)          # variable names
             assign('rp.data', data, envir = e) # load data to eval environment
+            assign('rapport.data', data, envir = e)
         }
 
-        lapply(inputs, function(x){
+        lapply(inputs, function(x) {
             ## template inputs
             input.name   <- x$name
             input.class  <- x$class
@@ -673,7 +741,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
                     if (!all(user.input %in% data.names))
                         stopf('provided data.frame does not contain column(s) named: %s', p(setdiff(user.input, data.names), '"'))
 
-                    val <- e$rp.data[user.input]
+                    val <- e$rapport.data[user.input]
                     ## we use this as data.frame with 0 columns will not be NULL
                     ## therefore the length check will not pass
                     ## OR we can just change the check.input.value function
@@ -726,14 +794,14 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
                 ## add labels
                 if (is.recursive(val)) {
-                    for (t in names(val)){
-                        if (rp.label(val[, t]) == 't')
+                    for (t in names(val)) {
+                        if (label(val[, t]) == 't')
                             val[, t] <- structure(val[, t], label = t, name = t)
                         else
                             val[, t] <- structure(val[, t], name = t)
                     }
                 } else {
-                    if (rp.label(val) == 'val')
+                    if (label(val) == 'val')
                         val <- structure(val, label = user.input, name = user.input)
                     else
                         val <- structure(val, name = user.input)
@@ -756,9 +824,9 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
 
             ## currently we support only data.frame and atomic vectos
             if (is.data.frame(val))
-                assign(sprintf('%s.label', input.name), sapply(val, rp.label), envir = e) # variable labels
+                assign(sprintf('%s.label', input.name), sapply(val, label), envir = e) # variable labels
             else if (is.atomic(val))
-                assign(sprintf('%s.label', input.name), rp.label(val), envir = e) # variable label
+                assign(sprintf('%s.label', input.name), label(val), envir = e) # variable label
             else
                 stopf('"%s" is not a "data.frame" or an atomic vector', input.name) # you never know...
         })
@@ -785,7 +853,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     wd.bak   <- getwd()
     setwd(file.path)
     evalsOptions('graph.name', file.name)
-    assign('rp.body', paste(b, collapse = '\n'), envir = e)
+    assign('.rapport.body', paste(b, collapse = '\n'), envir = e)
     assign('.graph.name', file.name, envir = e)
     assign('.graph.dir', evalsOptions('graph.dir'), envir = e)
     assign('.graph.hi.res', graph.hi.res, envir = e)
@@ -793,7 +861,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         assign('.tmpout', 'NUL', envir = e)
     else
         assign('.tmpout', '/dev/null', envir = e)
-    report <- tryCatch(eval(parse(text = 'Pandoc.brew(text = rp.body, graph.name = .graph.name, graph.dir = .graph.dir, graph.hi.res = .graph.hi.res, output = .tmpout)'), envir = e), error = function(e) e)
+    report <- tryCatch(eval(parse(text = 'Pandoc.brew(text = .rapport.body, graph.name = .graph.name, graph.dir = .graph.dir, graph.hi.res = .graph.hi.res, output = .tmpout)'), envir = e), error = function(e) e)
 
     options(opts.bak)                          # resetting options
     setwd(wd.bak)
@@ -803,7 +871,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         stop(report$message)
 
     ## remove NULL/blank parts
-    ## ind.nullblank <- sapply(report, function(x){
+    ## ind.nullblank <- sapply(report, function(x) {
     ##     if (x$type == 'block')
     ##         ifelse(is.null(x$robjects[[1]]$output), FALSE, TRUE)
     ##     else
@@ -812,14 +880,14 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
     ## report <- report[ind.nullblank]     # update template body contents
 
     ## tidy up (removing metadata, inputs from) nested templates
-    report <- unlist(lapply(report, function(x){
+    report <- unlist(lapply(report, function(x) {
 
         robj  <- x$robject
         rout  <- robj$result
         xtype <- x$type
 
         ## chunk holding a rapport class
-        if (xtype == 'block'){
+        if (xtype == 'block') {
 
             if (any(robj$type == 'rapport'))
                 return(rout$report)
@@ -852,7 +920,7 @@ rapport <- function(fp, data = NULL, ..., env = new.env(), reproducible = FALSE,
         file.name   = file.path(file.path, file.name)
         )
 
-    if (isTRUE(reproducible)){
+    if (isTRUE(reproducible)) {
         res$data <- data
     }
 

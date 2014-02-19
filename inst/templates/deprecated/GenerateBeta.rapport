@@ -2,7 +2,7 @@
 Title: Generate beta distribution
 Description: Random generation for the Beta distribution with parameters.
 Author: Rapporter Team (@rapporter)
-Packages: nortest
+Packages: nortest, rapportools
 Data required: FALSE
 
 n | *number[1,Inf]=100 | Observations | Number of observations
@@ -83,6 +83,6 @@ _Kernel density plot_ is a plot of smoothed _empirical distribution function_. A
 
 <%=
 set.caption('Kernel Density Plot')
-rp.densityplot(g)
+densityplot(g, xlab = label(g))
 %>
 

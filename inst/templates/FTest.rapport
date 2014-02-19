@@ -6,6 +6,8 @@ meta:
   email: ~
   packages:
   - nortest
+  - rapportools
+  - pander
   example:
   - rapport('FTest', data=ius2008, xvar='edu', yvar='age')
   - rapport('FTest', data=ius2008, xvar='edu', yvar='age', norm.check=F)

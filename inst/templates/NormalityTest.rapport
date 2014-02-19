@@ -5,7 +5,10 @@ meta:
   description: Overview of several normality tests and diagnostic plots that can screen
     departures from normality.
   email: ~
-  packages: nortest
+  packages:
+  - nortest
+  - rapportools
+  - lattice
   example:
   - rapport("NormalityTest", ius2008, var = "leisure")
   - rapport("NormalityTest", ius2008, var = "leisure", nc.plot = FALSE)
@@ -135,7 +138,7 @@ There are various plots that can help you decide about the normality of the dist
 _Histogram_ was first introduced by _Karl Pearson_ and it's probably the most popular plot for depicting the probability distribution of a random variable. However, the decision depends on number of bins, so it can sometimes be misleading. If the variable distribution is normal, bins should resemble the "bell-like" shape.
 
 <%=
-rp.hist(var)
+histogram(var, xlab = label(var))
 %>
 
 ## Q-Q Plot
@@ -149,7 +152,7 @@ if (qq.line){
                panel.qqmathline(x, distribution = qnorm)
    }, xlab = "Theoretical Quantiles", ylab = "Empirical Quantiles")
 } else {
-   rp.qqplot(var)
+   qqmath(var, xlab = 'The Normal Distribution', ylab = label(var))
 }
 %>
 
@@ -158,5 +161,5 @@ if (qq.line){
 _Kernel density plot_ is a plot of smoothed _empirical distribution function_. As such, it provides good insight about the shape of the distribution. For normal distributions, it should resemble the well known "bell shape".
 
 <%=
-rp.densityplot(var)
+densityplot(var, xlab = label(var))
 %>

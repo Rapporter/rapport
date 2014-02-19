@@ -2,7 +2,7 @@
 \alias{guess.old.input.length}
 \title{Deprecated input limits}
 \usage{
-  guess.old.input.length(x, input.type)
+guess.old.input.length(x, input.type)
 }
 \arguments{
   \item{x}{a character string containing input length
@@ -12,6 +12,6 @@
   type}
 }
 \description{
-  Guess deprecated input length.
+Guess deprecated input length.
 }
 

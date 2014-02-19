@@ -4,6 +4,7 @@ Author:         Daróczi Gergely, Nagy Dániel
 Email:          gergely@snowl.net
 Description:    This template will return the correlation matrix of supplied numerical variables.
 Data required:  TRUE
+Packages:       rapportools, pander
 Example:        rapport('Correlation', data=ius2008, vars=c('age', 'edu'))
 		rapport('Correlation', data=ius2008, vars=c('age', 'edu', 'leisure'))
 		rapport('Correlation', data=mtcars, vars=c('mpg', 'cyl', 'disp', 'hp', 'drat', 'wt', 'qsec', 'vs', 'am', 'gear', 'carb'))
@@ -92,7 +93,7 @@ Where the stars represent the [significance levels](http://en.wikipedia.org/wiki
 On the plot one can see the correlation in two forms: below the [diagonal](http://en.wikipedia.org/wiki/Main_diagonal) visually, above that one can find the coefficient(s).
 
 <%=
-labels <- lapply(vars, rp.name)
+labels <- lapply(vars, name)
 quick.plot <- FALSE
 if (nrow(vars) > 1000) {
     quick.plot <- TRUE

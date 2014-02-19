@@ -4,7 +4,8 @@ meta:
   author: Daniel Nagy
   description: In this template Rapporter will present you Kruskal Wallis test.
   email: ~
-  packages: ~
+  packages:
+  - pander
   example:
   - rapport('KruskalWallisTest', data=ius2008, var1='age', var2='edu')
   - rapport('KruskalWallisTest', data=mtcars, var1='mpg', var2='drat')

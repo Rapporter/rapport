@@ -2,33 +2,31 @@
 \alias{rapport}
 \title{Evaluate Template}
 \usage{
-  rapport(fp, data = NULL, ..., env = new.env(),
-    reproducible = FALSE, header.levels.offset = 0,
-    graph.output = evalsOptions("graph.output"),
-    file.name = getOption("rp.file.name"),
-    file.path = getOption("rp.file.path"),
-    graph.width = evalsOptions("width"),
-    graph.height = evalsOptions("height"),
-    graph.res = evalsOptions("res"),
-    graph.hi.res = evalsOptions("hi.res"),
-    graph.replay = evalsOptions("graph.recordplot"))
+rapport(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE,
+  header.levels.offset = 0, graph.output = evalsOptions("graph.output"),
+  file.name = getOption("rapport.file.name"),
+  file.path = getOption("rapport.file.path"),
+  graph.width = evalsOptions("width"),
+  graph.height = evalsOptions("height"), graph.res = evalsOptions("res"),
+  graph.hi.res = evalsOptions("hi.res"),
+  graph.replay = evalsOptions("rapport.graph.recordplot"))
 }
 \arguments{
   \item{fp}{a template file pointer (see
-  \code{\link{tpl.find}} for details)}
+  \code{rapport:::rapport.read} for details)}
 
   \item{data}{a \code{data.frame} to be used in template}
 
   \item{...}{matches template inputs in format 'key =
   "value"'}
 
-  \item{env}{an environment where template commands be
-  evaluated (defaults to \code{new.env()}}
+  \item{env}{the parent environment to be forked, in which
+  temporary \code{new.env} template commands be evaluated}
 
   \item{reproducible}{a logical value indicating if the
   call and data should be stored in template object, thus
-  making it reproducible (see \code{\link{tpl.rerun}} for
-  details)}
+  making it reproducible (see \code{\link{rapport.rerun}}
+  for details)}
 
   \item{header.levels.offset}{number added to header levels
   (handy when using nested templates)}
@@ -66,27 +64,27 @@
   \code{print}ing \code{rapport} objects in R console)}
 }
 \value{
-  a list with \code{rapport} class.
+a list with \code{rapport} class.
 }
 \description{
-  This is the central function in the \code{rapport}
-  package, and hence eponymous. In following lines we'll
-  use \code{rapport} to denote the function, not the
-  package. \code{rapport} requires a template file, while
-  dataset (\code{data} argument) can be optional, depending
-  on the value of \code{Data required} field in template
-  header. Template inputs are matched with \code{...}
-  argument, and should be provided in \code{x = value}
-  format, where \code{x} matches input name and
-  \code{value}, wait for it... input value! See
-  \code{\link{tpl.inputs}} for more details on template
-  inputs.
+This is the central function in the \code{rapport} package,
+and hence eponymous. In following lines we'll use
+\code{rapport} to denote the function, not the package.
+\code{rapport} requires a template file, while dataset
+(\code{data} argument) can be optional, depending on the
+value of \code{Data required} field in template header.
+Template inputs are matched with \code{...} argument, and
+should be provided in \code{x = value} format, where
+\code{x} matches input name and \code{value}, wait for
+it... input value! See \code{\link{rapport.inputs}} for
+more details on template inputs.
 }
 \details{
-  Default parameters are read from \code{evalsOptions()}
-  and the following \code{options}:
+Default parameters are read from \code{evalsOptions()} and
+the following \code{options}:
 
-  \itemize{ \item 'rp.file.name', \item 'rp.file.path', }
+\itemize{ \item 'rapport.file.name', \item
+'rapport.file.path', }
 }
 \examples{
 \dontrun{
@@ -104,6 +102,6 @@ rapport('AnalyzeWizard', data=ius2008, variables=c('edu', 'game'))
 }
 }
 \seealso{
-  \code{\link{rapport-package}}
+\code{\link{rapport-package}}
 }
 

@@ -11,21 +11,24 @@
 #' The output of \code{rapport} command depends on various package-specific options. Please skim through the summary of following options:
 #'
 #' \itemize{
-#'     \item \code{tpl.user}: a (user)name to show in exported report (defaults to \code{"Anonymous"})
-#'     \item \code{rp.file.name}: a general filename of generated images and exported documents without extension. Some helper pseudo-code would be replaced with handy strings while running \code{\link{rapport}} and \code{\link{tpl.export}}:
+#'     \item \code{rapport.user}: a (user)name to show in exported report (defaults to \code{"Anonymous"})
+#'     \item \code{rapport.file.name}: a general filename of generated images and exported documents without extension. Some helper pseudo-code would be replaced with handy strings while running \code{\link{rapport}} and \code{\link{rapport.export}}:
 #'      \itemize{
 #'          \item \code{\%t}: unique random character strings based on \code{\link{tempfile}},
 #'          \item \code{\%T}: template name in action,
 #'          \item \code{\%n}: an auto-increment integer based on similar (plot) file names (see: \code{?evalsOptions}),
 #'          \item \code{\%N}: an auto-increment integer based on similar exported document's file name
 #'      }
-#'     \item \code{rp.file.path}: a directory where generated images and exported documents would take place.
-#'     \item By default \code{\link{rapport}} function saves plots to image files (see the settings in \code{evalsOptions()}) and \code{print} method just shows the path(s) of the generated image(s). If you would like to see the plot(s) when calling \code{\link{rapport}} function from an interactive R console, please set \code{evalsOptions('graph.recordplot')} and \code{graph.replay} options to \code{TRUE} beforehand. In that case all generated plots will be displayed after printing the \code{rapport} object. These options are set to \code{FALSE} by default although we find these settings really handy, as you can resize the images on the fly and export resized images to HTML/ODT/DOCX/PDF etc. If you would even like to save the actual environment of each generated plot (variables, data sets etc.) as an \code{RData} file, please set \code{evalsOptions('graph.env')} to \code{TRUE}.
+#'     \item \code{rapport.file.path}: a directory where generated images and exported documents would take place.
+#'     \item By default \code{\link{rapport}} function saves plots to image files (see the settings in \code{evalsOptions()}) and \code{print} method just shows the path(s) of the generated image(s). If you would like to see the plot(s) when calling \code{\link{rapport}} function from an interactive R console, please set \code{evalsOptions('graph.recordplot')} and the global \code{rapport.graph.replay} option to \code{TRUE} beforehand. In that case all generated plots will be displayed after printing the \code{rapport} object. These options are set to \code{FALSE} by default although we find these settings really handy, as you can resize the images on the fly and export resized images to HTML/ODT/DOCX/PDF etc. If you would even like to save the actual environment of each generated plot (variables, data sets etc.) as an \code{RData} file, please set \code{evalsOptions('graph.env')} to \code{TRUE}.
 #'     \item \code{\link{rapport}} also has some options to set formatting style of numbers, characters and dates specified in \code{panderOptions()}
 #'     \item the exported graphs can be customised via further \code{panderOptions}
 #'}
 #' @docType package
-#' @importFrom reshape melt melt.data.frame melt.table cast
+#' @importFrom rapportools is.variable is.tabular is.string is.boolean is.number pct fml alike.integer trim.space adj.rle catn vgsub tocamel capitalise stopf warningf messagef is.empty name rp.name label rp.label rp.label<- label<-
+#' @importFrom yaml as.yaml yaml.load
+#' @importFrom stringr str_extract_all
+#' @importFrom pander Pandoc.brew evalsOptions panderOptions pander.return Pandoc pandoc.header.return pandoc.image.return pandoc.header p redraw.recordedplot
 #' @seealso \code{pander} package: \url{http://rapporter.github.com/pander/}
 #' @name rapport-package
 NULL
@@ -33,7 +36,19 @@ NULL
 
 #' \emph{rapport helpers}
 #'
-#' \code{rapport} package comes with bunch of helper functions that make your template writing and report creation easier.
+#' \code{rapport} package comes with bunch of helper functions that make your template writing and report creation easier, although most of these helpers were migrated to the \code{rapportools} package.
+#'
+#' \emph{Export helpers}
+#'
+#' \itemize{
+#'     \item \code{\link{rapport.docx}}
+#'     \item \code{\link{rapport.html}}
+#'     \item \code{\link{rapport.odt}}
+#'     \item \code{\link{rapport.pdf}}
+#'     \item \code{\link{rapport.export}}
+#' }
+#'
+#' Please load the \code{rapportools} package if you would use any of the below functions in the \code{.GlobalEnv}, or simply add \code{rapportools} to the required packages section in your template file. That latter is a lot cleaner solution.
 #'
 #' \emph{General purpose helpers}
 #'
@@ -69,7 +84,6 @@ NULL
 #'
 #' \itemize{
 #'     \item \code{\link{rp.iqr}}
-#'     \item \code{\link{rp.kurtosis}}
 #'     \item \code{\link{rp.max}}
 #'     \item \code{\link{rp.mean}}
 #'     \item \code{\link{rp.median}}
@@ -79,9 +93,7 @@ NULL
 #'     \item \code{\link{rp.range}}
 #'     \item \code{\link{rp.sd}}
 #'     \item \code{\link{rp.se.mean}}
-#'     \item \code{\link{rp.skewness}}
 #'     \item \code{\link{rp.sum}}
-#'     \item \code{\link{rp.univar}}
 #'     \item \code{\link{rp.valid}}
 #'     \item \code{\link{rp.var}}
 #' }
@@ -92,33 +104,9 @@ NULL
 #'     \item \code{\link{htest}}
 #'     \item \code{\link{htest.short}}
 #'     \item \code{\link{kurtosis}}
+#'     \item \code{\link{skewness}}
 #'     \item \code{\link{lambda.test}}
 #'     \item \code{\link{rp.outlier}}
-#'     \item \code{\link{skewness}}
-#' }
-#'
-#' \emph{Graph helpers}
-#'
-#' \itemize{
-#'     \item \code{\link{rp.graph.check}}
-#'     \item \code{\link{rp.hist}}
-#'     \item \code{\link{rp.densityplot}}
-#'     \item \code{\link{rp.barplot}}
-#'     \item \code{\link{rp.dotplot}}
-#'     \item \code{\link{rp.scatterplot}}
-#'     \item \code{\link{rp.lineplot}}
-#'     \item \code{\link{rp.boxplot}}
-#'     \item \code{\link{rp.qqplot}}
-#' }
-#'
-#' \emph{Export helpers}
-#'
-#' \itemize{
-#'     \item \code{\link{rapport.docx}}
-#'     \item \code{\link{rapport.html}}
-#'     \item \code{\link{rapport.odt}}
-#'     \item \code{\link{rapport.pdf}}
-#'     \item \code{\link{tpl.export}}
 #' }
 #' @name rapport-helpers
 NULL

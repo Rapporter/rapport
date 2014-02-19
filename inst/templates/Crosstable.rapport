@@ -8,6 +8,8 @@ meta:
   - descr
   - ggplot2
   - reshape
+  - rapportools
+  - pander
   example:
   - rapport('Crosstable', data=ius2008, row='gender', col='dwell')
   - rapport('Crosstable', data=ius2008, row='email', col='dwell')
@@ -38,8 +40,8 @@ head-->
 
 Two variables specified:
 
- * "<%=rp.name(row)%>"<%=ifelse(rp.label(row)==rp.name(row), '', sprintf(' ("%s")', rp.label(row)))%> with <%=rp.valid(as.numeric(row))%> valid values and
- * "<%=rp.name(col)%>"<%=ifelse(rp.label(col)==rp.name(col), '', sprintf(' ("%s")', rp.label(col)))%> with <%=rp.valid(as.numeric(col))%> valid values.
+ * "<%=name(row)%>"<%=ifelse(label(row)==name(row), '', sprintf(' ("%s")', label(row)))%> with <%=nvalid(as.numeric(row))%> valid values and
+ * "<%=name(col)%>"<%=ifelse(label(col)==name(col), '', sprintf(' ("%s")', label(col)))%> with <%=nvalid(as.numeric(col))%> valid values.
 
 ## Introduction
 
@@ -64,7 +66,7 @@ if (length(which(is.na(rownames(table)))) > 0) {
 if (length(which(is.na(colnames(table)))) > 0) {
     colnames(table)[which(is.na(colnames(table)))] <- 'Missing' }
 fulltable	<- addmargins(table)
-set.caption(sprintf('Counted values: "%s" and "%s"', rp.name(row), rp.name(col)))
+set.caption(sprintf('Counted values: "%s" and "%s"', name(row), name(col)))
 set.alignment(row.names = "right")
 fulltable
 %>
@@ -78,21 +80,21 @@ Most of the cases (<%=table[table.max]%>) can be found in "<%=paste(rownames(tab
 # Percentages
 
 <%=
-set.caption(sprintf('Total percentages: "%s" and "%s"', rp.name(row), rp.name(col)))
+set.caption(sprintf('Total percentages: "%s" and "%s"', name(row), name(col)))
 set.alignment(row.names = "right")
 fulltable <- round(addmargins(prop.table(table) * 100), 2)
 fulltable
 %>
 
 <%=
-set.caption(sprintf('Row percentages: "%s" and "%s"', rp.name(row), rp.name(col)))
+set.caption(sprintf('Row percentages: "%s" and "%s"', name(row), name(col)))
 set.alignment(row.names = "right")
 fulltable <- round(prop.table(addmargins(table, 1), 1) * 100, 2)
 fulltable
 %>
 
 <%=
-set.caption(sprintf('Column percentages: "%s" and "%s"', rp.name(row), rp.name(col)))
+set.caption(sprintf('Column percentages: "%s" and "%s"', name(row), name(col)))
 set.alignment(row.names = "right")
 fulltable <- round(prop.table(addmargins(table, 2), 2) * 100, 2)
 fulltable
@@ -159,13 +161,13 @@ The requirements of the chi-squared test was not met, so [Yates's correction for
 <%if (!is.na(cramer)) { %>
 <%if (t$p.value < 0.05) { %>
 
-It seems that a real association can be pointed out between *<%=rp.name(row)%>* and *<%=rp.name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%>) at the [degree of freedom](http://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)) being <%=as.numeric(t$parameter)%> at the [significance level](http://en.wikipedia.org/wiki/Statistical_significance) of <%=add.significance.stars(t$p.value)%>.
+It seems that a real association can be pointed out between *<%=name(row)%>* and *<%=name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%>) at the [degree of freedom](http://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)) being <%=as.numeric(t$parameter)%> at the [significance level](http://en.wikipedia.org/wiki/Statistical_significance) of <%=add.significance.stars(t$p.value)%>.
 
 The association between the two variables seems to be <%=ifelse(cramer < 0.2, "weak", "strong")%> based on [Cramer's V](http://en.wikipedia.org/wiki/Cram%C3%A9r%27s_V) (<%=cramer%>).
 
 <% } else { %>
 
-It seems that no real association can be pointed out between *<%=rp.name(row)%>* and *<%=rp.name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%> at the degree of freedom being <%=as.numeric(t$parameter)%>) at the significance level of <%=add.significance.stars(t$p.value)%>.
+It seems that no real association can be pointed out between *<%=name(row)%>* and *<%=name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%> at the degree of freedom being <%=as.numeric(t$parameter)%>) at the significance level of <%=add.significance.stars(t$p.value)%>.
 
 <% } %>
 
@@ -179,7 +181,7 @@ It seems that no real association can be pointed out between *<%=rp.name(row)%>*
 The residuals show the contribution to reject the null hypothesis at a cell level. An extremely high or low value indicates that the given cell had a major effect on the resulting chi-square, so thus helps understanding the association in the crosstable.
 
 <%=
-set.caption(sprintf('Residuals: "%s" and "%s"', rp.name(row), rp.name(col)))
+set.caption(sprintf('Residuals: "%s" and "%s"', name(row), name(col)))
 set.alignment(row.names = "right")
 table.res <- suppressWarnings(CrossTable(table, asresid = TRUE))$asr
 table.res <- round(table.res, 2)
@@ -240,7 +242,7 @@ With the help of the [Goodman and Kruskal's lambda](http://en.wikipedia.org/wiki
 
 <%if (diff(unlist(lambda, use.names = FALSE)) != 0 & !is.na(cramer)) { %>
 
-Based on Goodman and Kruskal's lambda it seems that *<%=c(rp.name(col),rp.name(row))[which.max(lambda)]%>* ($\lambda$=<%=pander.return(max(as.numeric(lambda)))%>) has an effect on *<%=c(rp.name(col),rp.name(row))[which.min(lambda)]%>* ($\lambda$=<%=min(as.numeric(lambda))%>) if we assume both variables to be nominal.
+Based on Goodman and Kruskal's lambda it seems that *<%=c(name(col),name(row))[which.max(lambda)]%>* ($\lambda$=<%=pander.return(max(as.numeric(lambda)))%>) has an effect on *<%=c(name(col),name(row))[which.min(lambda)]%>* ($\lambda$=<%=min(as.numeric(lambda))%>) if we assume both variables to be nominal.
 
 <% } else { %>
 
@@ -281,7 +283,7 @@ ggplot(table2, aes_string(x = "x", y = "y", fill = "freq")) + geom_tile(colour =
 
 In front of the heat map, on the *mosaic charts*, not only the colours are important. The size of the cells shows the amount of the counts one cell has.
 
-The width on the axis of <%=rp.name(row)%> determinate one side and the height on the axis of the <%=rp.name(col)%> gives the final shape of the box. The box which demonstrates a cell from the hypothetic crosstable. We can see on the top of the chart which category from the <%=rp.name(col)%> draw the boxes what kind of colour.
+The width on the axis of <%=name(row)%> determinate one side and the height on the axis of the <%=name(col)%> gives the final shape of the box. The box which demonstrates a cell from the hypothetic crosstable. We can see on the top of the chart which category from the <%=name(col)%> draw the boxes what kind of colour.
 
 <%=
 set.caption('Mosaic chart')

@@ -2,12 +2,12 @@
 \alias{guess.input.label}
 \title{Input Label}
 \usage{
-  guess.input.label(label)
+guess.input.label(label)
 }
 \arguments{
   \item{label}{a character string containing input label}
 }
 \description{
-  Checks and returns input label.
+Checks and returns input label.
 }
 

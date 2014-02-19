@@ -250,12 +250,13 @@ guess.old.input.type <- function(x){
 #' Renew deprecated template
 #'
 #' Convert old-style template to new-style one (what we really do is just replacing old header syntax with YAML one).
-#' @param fp pointer to an old template (see \code{\link{tpl.find}} for details)
+#' @param fp pointer to an old template (see \code{rapport:::rapport.read} for details)
 #' @param file a path to output file. If \code{NULL}, result will be flushed to stdout.
 #' @export
-tpl.renew <- function(fp, file = NULL) {
-    h <- suppressWarnings(tpl.info(fp)) #header
-    b <- tpl.body(fp)                   #body
+#' @aliases rapport.renew tpl.renew
+rapport.renew <- function(fp, file = NULL) {
+    h <- suppressWarnings(rapport.info(fp)) #header
+    b <- rapport.body(fp)                   #body
     new <- as.yaml(h)
     tpl <- paste0("<!--head\n", as.yaml(h), "head-->\n", paste0(b, collapse = "\n"), collapse = "")
     if (missing(file))
@@ -265,6 +266,8 @@ tpl.renew <- function(fp, file = NULL) {
         invisible(tpl)
     }
 }
+#' @export
+tpl.renew <- rapport.renew
 
 
 #' Deprecated Input Definition
@@ -318,6 +321,6 @@ tpl.renew <- function(fp, file = NULL) {
 #'
 #' \strong{Input Label and Description}
 #'
-#' Third block in input definition is an input label. While \emph{variable} can have its own label (see \code{rp.label}), you may want to use the one defined in input specifications. At last, fourth block contains input description, which should be a lengthy description of current input. Note that all the fields in input specification are mandatory. You can cheat, though, by providing a non-space character (e.g. a dot) as an input label and/or description, but please don't do that unless you're testing the template. Labels and descriptions are meant to be informative.
+#' Third block in input definition is an input label. While \emph{variable} can have its own label (see \code{label}), you may want to use the one defined in input specifications. At last, fourth block contains input description, which should be a lengthy description of current input. Note that all the fields in input specification are mandatory. You can cheat, though, by providing a non-space character (e.g. a dot) as an input label and/or description, but please don't do that unless you're testing the template. Labels and descriptions are meant to be informative.
 #' @name inputs-deprecated
 NULL

@@ -4,7 +4,9 @@ meta:
   author: Rapporter Team (@rapporter)
   description: Random generation for the Beta distribution with parameters.
   email: ~
-  packages: nortest
+  packages:
+  - nortest
+  - rapportools
   example: ~
 inputs:
 - name: 'n'
@@ -121,5 +123,5 @@ _Kernel density plot_ is a plot of smoothed _empirical distribution function_. A
 
 <%=
 set.caption('Kernel Density Plot')
-rp.densityplot(g)
+densityplot(g, xlab = label(g))
 %>

@@ -1,0 +1,28 @@
+\name{rapport.check.template}
+\alias{rapport.check.template}
+\alias{tpl.check}
+\title{Check Rapport Template}
+\usage{
+rapport.check.template(fp)
+}
+\arguments{
+  \item{fp}{a character vector containing template name
+  (".rapport" extension is optional), file path or a text
+  to be split by line breaks}
+}
+\description{
+Checks if the examples of given template can be run without
+any error.
+}
+\details{
+If everything went fine and you get a list of
+\code{success} equals to \code{TRUE} values, otherwise
+\code{success} returns \code{FALSE} with additional
+\code{message}
+}
+\examples{
+\dontrun{
+rapport.check.template('Example')
+}
+}
+

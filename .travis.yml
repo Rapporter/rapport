@@ -19,8 +19,10 @@ install:
   - R -e '.libPaths(); sessionInfo()'
   - Rscript -e 'install.packages("testthat", dep = TRUE, repos = "http://cran.r-project.org")'
   - Rscript -e 'install.packages("yaml", dep = TRUE, repos = "http://cran.r-project.org")'
-  - Rscript -e 'install.packages(c("nortest", "descr", "ggplot2", "xtable", "outliers",  "psych", "nFactors", "mclust", "GPArotation", "grDevices", "RColorBrewer", "HH", "fpc", "car", "gvlma"), dep = TRUE, repos = "http://cran.r-project.org")'
+  - Rscript -e 'install.packages(c("lattice", "nortest", "descr", "ggplot2", "xtable", "outliers",  "psych", "nFactors", "mclust", "GPArotation", "grDevices", "RColorBrewer", "fpc", "car", "gvlma", "devtools", "latticeExtra", "multcomp", "reshape", "reshap2", "leaps", "vcd", "colorspace"), dep = TRUE, repos = "http://cran.r-project.org")'
+  - Rscript -e 'library(methods); library(devtools);install_url("http://cran.r-project.org/src/contrib/Archive/HH/HH_2.3-42.tar.gz")'
   - Rscript -e 'install.packages("rapport", dep = TRUE, repos = "http://cran.r-project.org")'
+  - Rscript -e 'library(methods); library(devtools); install_github("pander", "rapporter"); install_github("rapportools", "rapporter")'
 
 # run tests
 script:

@@ -1,16 +1,17 @@
-#' Check Template
+#' Check Rapport Template
 #'
 #' Checks if the examples of given template can be run without any error.
 #'
 #' If everything went fine and you get a list of \code{success} equals to \code{TRUE} values, otherwise \code{success} returns \code{FALSE} with additional \code{message}
 #' @param fp a character vector containing template name (".rapport" extension is optional), file path or a text to be split by line breaks
 #' @export
+#' @aliases tpl.check rapport.check.template
 #' @examples \dontrun{
-#' tpl.check('example')
+#' rapport.check.template('Example')
 #' }
-tpl.check <- function(fp) {
+rapport.check.template <- function(fp) {
 
-    examples <- tryCatch(tpl.example(fp, 'all'), error = function(e) e$message)
+    examples <- tryCatch(rapport.example(fp, 'all'), error = function(e) e$message)
 
     if (is.character(examples))
         return(list(success = FALSE, message = sprintf('Errors found while running all examples: `%s`', examples)))
@@ -31,14 +32,14 @@ tpl.check <- function(fp) {
 
     return(list(success = TRUE))
 }
-
+#' @export
+tpl.check <- rapport.check.template
 
 #' Check Report Chunks
 #'
 #' Checks for warnings and errors in report chunks.
 #' @param rp \code{rapport} object
 #' @param what what fields to check. defaults to all
-#' @export 
 check.report.chunks <- function(rp, what = c('errors', 'warnings', 'messages')) {
     stopifnot(is.rapport(rp))
     msg.type <- match.arg(what, several.ok = TRUE)

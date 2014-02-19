@@ -9,6 +9,8 @@ meta:
   - car
   - nortest
   - gvlma
+  - rapportools
+  - pander
   example:
   - rapport('LinearRegression', data=ius2008, dep='age', indep='edu', indep.inter=F)
   - rapport('LinearRegression', data=ius2008, dep='age', indep='edu', indep.inter=T)

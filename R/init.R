@@ -2,23 +2,23 @@
 {
 
     ## file path and name settings
-    options('rp.file.name'          = 'rapport-%T-%N-%n')
-    options('rp.file.path'          = tempdir())
+    options('rapport.file.name'          = 'rapport-%T-%N-%n')
+    options('rapport.file.path'          = tempdir())
 
     ## tpl username
-    options('tpl.user'  = {
-        if (is.empty(getOption('tpl.user')))
+    options('rapport.user'  = {
+        if (is.empty(getOption('rapport.user')))
             'Anonymous'
         else
-            getOption('tpl.user')
+            getOption('rapport.user')
     })
 
     ## use labels
     ## IMO, this should be implemented for all functions (sometimes you may not want labels)
-    options('rp.use.labels' = TRUE)
+    options('rapport.use.labels' = TRUE)
 
     ## paths settings
-    options('tpl.paths' = NULL)
+    options('rapport.paths' = NULL)
 
     ## pander options
     eO  <- getOption('evals')
@@ -26,11 +26,11 @@
     options('evals' = eO)
 
     ## image format/envir settings
-    options('graph.replay'        = FALSE) # TODO: fix on Win platform!
+    options('rapport.graph.replay'        = FALSE) # TODO: fix on Win platform!
 
     ## tag regexes
     ## TODO: user customized "brew" tags should be added here
-    options('rp.tags' = c(
+    options('rapport.tags' = c(
                 header.open   = '^<!--head$',
                 header.close  = '^head-->$',
                 comment.open  = '<!--',

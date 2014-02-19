@@ -2,8 +2,8 @@
 \alias{check.tpl}
 \title{Check template validity}
 \usage{
-  check.tpl(txt, open.tag = get.tags("header.open"),
-    close.tag = get.tags("header.close"), ...)
+check.tpl(txt, open.tag = get.tags("header.open"),
+  close.tag = get.tags("header.close"), ...)
 }
 \arguments{
   \item{txt}{character vector with template contents}
@@ -16,6 +16,6 @@
   \code{\link{grep}})}
 }
 \description{
-  Throw error
+Throw error
 }
 

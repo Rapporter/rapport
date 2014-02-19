@@ -1,5 +1,5 @@
 Package: rapport
-Maintainer: Aleksandar Blagotić <alex@rapporter.net>
+Maintainer: Gergely Daróczi <daroczig@rapporter.net>
 Title: A report templating system
 Type: Package
 Encoding: UTF-8
@@ -9,8 +9,8 @@ Description: A package that facilitates creation of reproducible statistical
     converter backend.
 Author: Aleksandar Blagotić <alex@rapporter.net> and Gergely Daróczi
     <daroczig@rapporter.net>
-Version: 0.51
-Date: 2013-05-06
+Version: 1.0
+Date: 2013-12-06
 URL: http://rapport-package.info/
 BugReports: https://github.com/rapporter/rapport/issues
 License: AGPL-3
@@ -18,30 +18,10 @@ LazyData: yes
 LazyLoad: yes
 Depends:
     R (>= 2.15.0),
-    lattice,
-    plyr,
-    pander,
-    stringr,
-    yaml
 Imports:
-    grDevices,
-    reshape
+    yaml,
+    stringr,
+    rapportools,
+    pander
 SystemRequirements: Pandoc (http://johnmacfarlane.net/pandoc) for exporting
     markdown files to other formats.
-Collate:
-    'export.R'
-    'graphs.R'
-    'init.R'
-    'ius2008.R'
-    'print.methods.R'
-    'rapport.R'
-    'rp_helpers.R'
-    'stat_helpers.R'
-    'stats_univar.R'
-    'tables.R'
-    'template.R'
-    'utils.R'
-    'tpl-check.R'
-    'inputs.R'
-    'misc.R'
-    'deprecated.R'

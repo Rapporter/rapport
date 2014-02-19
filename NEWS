@@ -1,3 +1,68 @@
+rapport 1.0 (2013-12-06)
+----------------------------------------------------------------
+
+MAJOR VERSION BUMP
+
+We started the `rapport` package back in 2011 but never thought of that the version number should ever exceed ONE - because we are shy guys. Now, almost 3 years later, so much stuff have changes in the package, that time has come for a major version bump. Most important updates since the birth of the package:
+
+ * dropped dependecy packages (`evaluate` and `ascii`) and implemented custom solutions for our custom needs
+ * some part of the package were out-sourced to the `pander` package in the name of modularity
+ * `pander` became more popular compared to `rapport`
+ * new syntax for template headers with YAML syntax instead our custom solution
+ * new file extension (`rapport` instead of `tpl`) not to confuse new-comers
+ * bunch of fiddles with naming conventions
+ * build a production-ready system on the top of the package at rapporter.net
+ * take part in Google Summer of Code 2013 increasing the number of available templates
+
+Most recent changes since 0.51:
+
+ * helpers and statistical functions move to `rapportools` package
+ * ditched the `rp` prefix for all those (rp.max became max -- for those who load the package directly)
+ * ditched `tpl` prefix for tempalte functions as was confusing and every `rapport` template specific function starts with `rapport` now
+ * changing dependencies to Imports instead of cluttering the global namespace
+ * code review and doc update
+ * new variables available for easy access of template metadata (rapport.data, rapport.template, rapport.inputs)
+
+Please note that the functions can still be accessed by the old names to preserve backward-compatibility, but will be definitely removed later to keep the clutter in the namespace at a minimal level. So please be advised to update your functions if building on the top (or parts) of `rapport`.
+
+Full list of changed function and variable names:
+
+  Function name changes:
+   * tpl.find          -> rapport.read
+   * tpl.tangle        -> rapport.tangle
+   * tpl.list          -> rapport.ls
+   * tpl.header        -> rapport.header
+   * tpl.body          -> rapport.body
+   * tpl.info          -> rapport.info
+   * tpl.meta          -> rapport.meta
+   * tpl.inputs        -> rapport.inputs
+   * tpl.example       -> rapport.example
+   * tpl.rerun         -> rapport.rerun
+   * tpl.renew         -> rapport.renew
+   * tpl.export        -> rapport.export
+   * tpl.check         -> rapport.check.template
+   * tpl.paths         -> rapport.path
+   * tpl.paths.reset   -> rapport.path.reset
+   * tpl.paths.add     -> rapport.path.add
+   * tpl.paths.remove  -> rapport.path.remove
+
+  Variable name changes inside of templates:
+   * rp.data           -> rapport.data
+
+  Option name changes:
+   * tpl.file.name     -> rapport.file.name
+   * tpl.file.path     -> rapport.file.path
+   * tpl.user          -> rapport.user
+   * rp.use.labels     -> rapport.user.labels
+   * tpl.paths         -> rapport.path
+   * rp.tags           -> rapport.tags
+   * graph.reply       -> rapport.graph.replay
+  
+  Classes:
+   * rp.meta           -> rapport.meta
+   * rp.inputs         -> rapport.inputs
+  
+
 rapport 0.51 (2013-05-06)
 ----------------------------------------------------------------
 

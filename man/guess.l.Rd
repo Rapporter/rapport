@@ -2,10 +2,8 @@
 \alias{guess.l}
 \title{Guess length-like fields}
 \usage{
-  guess.l(len,
-    type = c("length", "nchar", "nlevels", "limit"),
-    input.name = NULL,
-    limit.class = c("numeric", "integer"))
+guess.l(len, type = c("length", "nchar", "nlevels", "limit"),
+  input.name = NULL, limit.class = c("numeric", "integer"))
 }
 \arguments{
   \item{len}{length field value, either a number or a named
@@ -19,7 +17,7 @@
   checks}
 }
 \description{
-  Since length, nchar, nlevels and limit have (almost) same
-  format,
+Since length, nchar, nlevels and limit have (almost) same
+format,
 }
 

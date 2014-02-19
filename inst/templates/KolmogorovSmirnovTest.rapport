@@ -6,6 +6,7 @@ meta:
   email: ~
   packages:
   - nortest
+  - pander
   example:
   - rapport('KolmogorovSmirnovTest', data=ius2008, xvar='edu', yvar='age')
   - rapport('KolmogorovSmirnovTest', data=mtcars, xvar='cyl', yvar='carb')

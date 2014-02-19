@@ -1,16 +1,16 @@
 #' Export rapport object
 #'
-#' This function exports rapport class objects to various formats based on ascii package.
+#' This function exports rapport class objects to various formats based on the \code{pander} package.
 #'
-#' By default this function tries to export the report to HTML with pandoc. Some default styles are applied. If you do not like those default settings, use your own \code{options}.
+#' By default this function tries to export the report to HTML with pandoc. Some default styles are applied. If you do not like those default settings, use your own \code{options} argument.
 #'
-#' Default parameters are read from \code{options}:
+#' Default parameters are read from global \code{options}:
 #'
 #' \itemize{
-#'     \item 'tpl.user'
+#'     \item 'rapport.user'
 #' }
 #'
-#' Please be sure to set \code{'tpl.user'} option with \code{options()} to get your name in the head of your generated reports!
+#' Please be sure to set \code{'rapport.user'} option with \code{options()} to get your name in the head of your generated reports!
 #' @param rp a rapport class object or list of rapport class objects
 #' @param file filename of the generated document. Inherited from rapport class if not set. If \code{file} is set with path (not equal to \code{getwd()}), please set an absolute path for images (see: \code{evalsOptions()}).
 #' @param append FALSE (new report created) or an R object (class of "Report") to which the new report will be added
@@ -26,44 +26,40 @@
 #' @examples \dontrun{
 #'
 #' ## eval some template
-#' x <- rapport('example', data = mtcars, var="hp")
+#' x <- rapport('Example', data = mtcars, var="hp")
 #'
 #' ## try basic parameters
-#' tpl.export(x)
-#' tpl.export(x, file='demo')
-#' tpl.export(x, file='demo', format='odt')
+#' rapport.export(x)
+#' rapport.export(x, file = 'demo')
+#' rapport.export(x, file = 'demo', format = 'odt')
 #'
 #' ### append reports
 #' # 1) Create a report object with the first report and do not export (optional)
-#' report <- tpl.export(x, create=F)
+#' report <- rapport.export(x, create = F)
 #' # 2) Append some other reports without exporting (optional)
-#' report <- tpl.export(x, create=F, append=report)
+#' report <- rapport.export(x, create = F, append = report)
 #' # 3) Export it!
-#' tpl.export(append=report)
+#' rapport.export(append=report)
 #' # 4) Export it to other formats too! (optional)
-#' tpl.export(append=report, format='rst')
+#' rapport.export(append=report, format='rst')
 #'
 #' ### exporting multiple reports at once
-#' tpl.export(tpl.example('example', 'all'))
-#' tpl.export(tpl.example('example', 'all'), format='odt')
-#' tpl.export(list(rapport('univar-descriptive', data = mtcars, var="hp"),
-#'     rapport('univar-descriptive', data = mtcars, var="mpg")))
+#' rapport.export(rapport.example('Example', 'all'))
+#' rapport.export(rapport.example('Example', 'all'), format = 'odt')
+#' rapport.export(list(rapport('univar-descriptive', data = mtcars, var = "hp"),
+#'     rapport('Descriptives', data = mtcars, var = "mpg")))
 #'
 #' ### Never do this as being dumb:
-#' tpl.export()
-#'
-#' ### Using other backends
-#' ## asciidoc
-#' tpl.export(tpl.example('example', 'all'), backend='asciidoc')
-#' ## txt2tags
-#' tpl.export(tpl.example('example', 'all'), backend='t2t')
+#' rapport.export()
 #'
 #' ### Adding own custom CSS to exported HTML
-#' tpl.export(x, options=sprintf('-c %s', system.file('templates/css/default.css', package='rapport')))
+#' rapport.export(x, options =
+#'     sprintf('-c %s', system.file('templates/css/default.css', package='rapport')))
 #'}
 #' @export
+#' @aliases tpl.export rapport.export
 #' @seealso \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}
-tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = pander.return(Sys.time()), description = TRUE, format = 'html', options = '', logo = TRUE) {
+rapport.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = pander.return(Sys.time()), description = TRUE, format = 'html', options = '', logo = TRUE) {
 
     if (missing(file)) {
         if (is.null(rp$file.name))
@@ -92,7 +88,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
         if (is.null(rp))
             stop('There is no sense in exporting a blank report :)')
 
-        r <- Pandoc$new(author = as.character(getOption('tpl.user')), title = as.character(rp$meta['title']), date = date)
+        r <- Pandoc$new(author = as.character(getOption('rapport.user')), title = as.character(rp$meta['title']), date = date)
 
     }
 
@@ -112,7 +108,7 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
             r$title <- as.character(rp[[1]]$meta['title'])
 
             for (i in 1:length(rp)) {
-                r <- tpl.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, description = description)
+                r <- rapport.export(rp[[i]], file = file, append = r, create = FALSE, open = FALSE, format = format, description = description)
             }
 
         } else
@@ -199,39 +195,47 @@ tpl.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TR
 
 #' Rapport to HTML
 #'
-#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
+#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{rapport.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
 #' @param ... parameters passed directly to \code{\link{rapport}}
-#' @seealso \code{\link{tpl.export}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}
+#' @seealso \code{\link{rapport.export}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}
 #' @export
 rapport.html <- function(...)
-    tpl.export(rapport(...))
+    rapport.export(rapport(...))
 
 
 #' Rapport to ODT
 #'
-#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
+#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{rapport.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
 #' @param ... parameters passed directly to \code{\link{rapport}}
-#' @seealso \code{\link{tpl.export}} \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.docx}}
+#' @seealso \code{\link{rapport.export}} \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.docx}}
 #' @export
 rapport.odt <- function(...)
-    tpl.export(rapport(...), format='odt')
+    rapport.export(rapport(...), format = 'odt')
 
 
 #' Rapport to PDF
 #'
-#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
+#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{rapport.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
 #' @param ... parameters passed directly to \code{\link{rapport}}
-#' @seealso \code{\link{tpl.export}} \code{\link{rapport.html}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}
+#' @seealso \code{\link{rapport.export}} \code{\link{rapport.html}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}
 #' @export
 rapport.pdf <- function(...)
-    tpl.export(rapport(...), format='pdf')
+    rapport.export(rapport(...), format = 'pdf')
 
 
 #' Rapport to DOCX
 #'
-#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{tpl.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
+#' This is a simple wrapper around \code{\link{rapport}} and \code{\link{rapport.export}}. Basically it works like \code{\link{rapport}} but the returned class is exported at one go.
 #' @param ... parameters passed directly to \code{\link{rapport}}
-#' @seealso \code{\link{tpl.export}} \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}}
+#' @seealso \code{\link{rapport.export}} \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}}
 #' @export
 rapport.docx <- function(...)
-    tpl.export(rapport(...), format='docx')
+    rapport.export(rapport(...), format = 'docx')
+
+
+############################
+## Deprecated function names
+
+#' @export
+tpl.export <- rapport.export
+
