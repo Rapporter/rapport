@@ -24,6 +24,7 @@ inputs:
   standalone: no
 head-->
 
+
 # Introduction
 
 [Correlation](http://en.wikipedia.org/wiki/Correlation_and_dependence) is one of the most commonly used statistical tool. With the help of that we can get information about a possible [linear relation](http://en.wikipedia.org/wiki/Linear_independence) between two variables. According to the definition of the correlation, one can call it also as the standardized [covariance](http://en.wikipedia.org/wiki/Covariance).
@@ -39,7 +40,7 @@ Please note that [correlation has nothing to do with causal models](http://en.wi
 
 # Variable description
 
-<%=dim(vars)[1]%> variables with <%=dim(vars)[2]%> cases provided.
+<%=dim(vars)[2]%> variables with <%=dim(vars)[1]%> cases provided.
 
 <%=
 cm <- cor(vars, use = 'complete.obs')
@@ -80,7 +81,7 @@ if (nrow(h) > 0) {
 
 <%} else { %>
 
-There are no uncorrelated correlated (r < -0.2 or r > 0.2) variables.
+There are no uncorrelated (r < -0.2 or r > 0.2) variables.
 <% } %>
 
 # Correlation matrix

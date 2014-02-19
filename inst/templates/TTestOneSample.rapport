@@ -1,0 +1,115 @@
+<!--head
+meta:
+  title: One-sample t-test Template
+  author: Aleksandar Blagotić
+  description: A one-sample t-test report with table of descriptives, diagnostic tests and t-test
+    specific statistics.
+  email: ~
+  packages: nortest
+  example:
+  - rapport("TTest", ius2008, x = "leisure", mu = 3.2)
+inputs:
+- name: x
+  label: X variable
+  description: Dependent (response) variable
+  class: numeric
+  length:
+    min: 1.0
+    max: 1.0
+  value: ~
+  required: yes
+  standalone: no
+- name: alter
+  label: Alternative hypothesis
+  description: Whether two-sided, greater or less variant will be applied
+  class: character
+  length:
+    min: 1.0
+    max: 1.0
+  options:
+  - two.sided
+  - less
+  - greater
+  value: two.sided
+  matchable: yes
+  allow_multiple: no
+  required: no
+  standalone: yes
+- name: mu
+  label: Mean value
+  description: Mean value for one-sample t-test
+  class: numeric
+  length:
+    min: 1.0
+    max: 1.0
+  value: ~
+  limit:
+    min: -.inf
+    max: .inf
+  required: yes
+  standalone: yes
+- name: ci.level
+  label: Confidence interval
+  description: Confidence interval level
+  class: numeric
+  length:
+    min: 1.0
+    max: 1.0
+  value: 0.95
+  limit:
+    min: 0.0
+    max: 1.0
+  required: no
+  standalone: yes
+head-->
+<%=
+
+tt <- t.test(x = x, mu = mu, alternative = alter, conf.level = ci.level)
+
+%>
+
+# Introduction
+
+In a nutshell, the [one-sample t-test](http://en.wikipedia.org/wiki/Student%27s_t-test#One-sample_t-test) is a statistical test, that assesses the hypothesis of equality of a variable's mean and a specified value.
+
+# Overview
+
+In this case _one-sample t-test_ is carried out comparing the mean of the <%= p(x.label) %> variable, to a specified value of _<%= mu%>_. Confidence interval is set to <%= pct(ci.level * 100, 0) %>.
+
+# Descriptives
+
+In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
+
+<%=
+rp.desc(x, NULL, c('min', 'max', 'mean', 'sd', 'var', 'median', 'IQR', 'skewness', 'kurtosis'), rapport.data)
+%>
+
+# Diagnostics
+
+Since _t-test_ is a parametric technique, it sets some basic assumptions on distribution shape: it has to be _normal_ (or approximately normal). A few normality test are to be applied, in order to screen possible departures from normality.
+
+## Normality Tests
+
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the (<%= p(x.label) %>) variable.
+
+<%=
+if (length(x)>5000) {
+  ntest <- htest(sample(x, 5000), shapiro.test)
+  ntest <- rbind(ntest, htest(x, lillie.test, ad.test))
+} else {
+  ntest <- htest(x, shapiro.test, lillie.test, ad.test)
+}
+ntest
+%>
+
+As you can see, based on the [p-values](http://en.wikipedia.org/wiki/P-value), applied tests <%= ifelse(all(ntest$p < .05), "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most") %>.<%= ifelse(length(x)>5000, " Please note: The Shapiro-Wilk test was only run on a sample (N=5000) of the data.", "")%>
+
+
+# Results
+
+<%=
+with(tt, data.frame(statistic, df = parameter, p = p.value, `CI(lower)` = conf.int[1], `CI(upper)` = conf.int[2], check.names = FALSE))
+%> 
+
+<%= tt$method %> was applied and, based on the p-value, significant differences <%= ifelse(tt$p.value < 1 - ci.level, "were", "weren't") %> found.
+

@@ -34,22 +34,22 @@ head-->
 
 ## Introduction
 
-[Kolmogorov-Smirnov test](http://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test) is one of the most widely used [nonparametric tests](http://en.wikipedia.org/wiki/Non-parametric_statistics). With the help of that in this case we use to check if two continuous variables had the same distribution. We do not test that here, but there is a possibility to use that in the way to check if a sample/variable followed an expected distribution.
+[Kolmogorov-Smirnov test](http://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test) is one of the most widely used [nonparametric tests](http://en.wikipedia.org/wiki/Non-parametric_statistics). In this case, we use it to check if two continuous variables have the same distribution.
 
 ## Distributions
 
 Before we use the K-S test to look at the possible statistical differences, it could be useful to see visually the distributions we want to observe. Below lie the [Cumulative Distribution Functions](http://en.wikipedia.org/wiki/Cumulative_distribution_function) of the variables we compared:
 
 <%=
-plot(ecdf(xvar), main = sprintf('Cumulative Distribution of %s', xvar.label))
+plot(ecdf(xvar), main = sprintf('Cumulative Distribution of %s', xvar.label), xlab=xvar.label)
 
 
-plot(ecdf(yvar), main = sprintf('Cumulative Distribution of %s', xvar.label))
+plot(ecdf(yvar), main = sprintf('Cumulative Distribution of %s', yvar.label), xlab=yvar.label)
 %>
 
 ## Test results
 
-Now we will test if the <%=xvar.label%> and the <%=yvar.label%> had statistically the same distribution.
+Now we will test whether the <%=xvar.label%> and the <%=yvar.label%> variables have statistically the same distribution, or not.
 
 <%=
 set.caption(sprintf('Two-sample Kolmogorov-Smirnov test on %s and %s', xvar.label, yvar.label))
@@ -60,8 +60,8 @@ p <- 0.05
 %>
 
 <%if (inherits(tryCatch(ks.test(xvar, yvar), warning = function(w) w), 'warning')) { %>
-The requirements of the Kolmogorov-Smirnov Test test was not met, the approximation may be incorrect.
+The variables didn't meet the requirements of the Kolmogorov-Smirnov test, so the approximation may be incorrect.
 <% } %>
-<%=ifelse(ksp > p,'So the nullhypothesis, that the variables follow the same distribution was not rejected. Here the stars represent the [significance levels](http://en.wikipedia.org/wiki/Statistical_significance) of the Kolmogorov-Smirnov test coefficients: one star for `0.05`, two for `0.01` and three  for `0.001`.','So the variables do not follow the same distribution, according to the Kolmogorov-Smirnov test statistic.')%>
+<%=ifelse(ksp > p,'Based on the [p-value](http://en.wikipedia.org/wiki/P-value), the nullhypothesis was not rejected. The variables follow statistically the same destribution.','Based on the [p-value](http://en.wikipedia.org/wiki/P-value), the variables do not follow the same distribution. The stars represent the [significance levels](http://en.wikipedia.org/wiki/Statistical_significance) of the Kolmogorov-Smirnov test coefficients: one star for `0.05`, two for `0.01` and three  for `0.001`.')%>
 
 
