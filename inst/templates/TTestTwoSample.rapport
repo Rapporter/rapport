@@ -5,9 +5,11 @@ meta:
   description: A two-sample t-test report with table of descriptives, diagnostic tests and t-test
     specific statistics.
   email: ~
-  packages: nortest
+  packages:
+  - nortest
+  - rapportools
   example:
-  - rapport("TTest", ius2008, x = "leisure", y = "gender")
+  - rapport("TTestTwoSample", ius2008, x = "leisure", y = "gender")
 inputs:
 - name: x
   label: X variable
