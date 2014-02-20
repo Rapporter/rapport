@@ -8,6 +8,7 @@ meta:
   packages:
   - nortest
   - rapportools
+  - pander
   example:
   - rapport("TTestTwoSample", ius2008, x = "leisure", y = "gender")
 inputs:
@@ -99,7 +100,7 @@ In a nutshell, [two-sample t-test](http://en.wikipedia.org/wiki/Student%27s_t-te
 
 # Overview
 
-<%= capitalise(variant) %> _t-test_ is carried out with <%= p(x.label) %> as dependent variable<%= if (!is.null(y)) sprintf(", and %s as independent variable", p(y.label)) else ""%>. Confidence interval is set to <%= pct(ci.level * 100, 0) %>. <%= if (!is.null(variant)) sprintf("Equality of variances %s assumed.", ifelse(var.equal, "was", "wasn't")) else "" %>
+<%= capitalise(variant) %> _t-test_ is carried out with <%= x.label %> as dependent variable<%= if (!is.null(y)) sprintf(", and %s as independent variable", y.label) else ""%>. Confidence interval is set to <%= pct(ci.level * 100, 0) %>. <%= if (!is.null(variant)) sprintf("Equality of variances %s assumed.", ifelse(var.equal, "was", "wasn't")) else "" %>
 
 # Descriptives
 
@@ -119,7 +120,7 @@ Since _t-test_ is a parametric technique, it sets some basic assumptions on dist
 
 ## Normality Tests
 
-We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<%= p(x.label) %>).
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable (<%= x.label %>).
 
 <%=
 if (length(x)>5000) {

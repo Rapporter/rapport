@@ -8,6 +8,7 @@ meta:
   packages:
   - nortest
   - rapportools
+  - pander
   example:
   - rapport("TTestOneSample", ius2008, x = "leisure", mu = 3.2)
 inputs:
@@ -76,7 +77,7 @@ In a nutshell, the [one-sample t-test](http://en.wikipedia.org/wiki/Student%27s_
 
 # Overview
 
-In this case _one-sample t-test_ is carried out comparing the mean of the <%= p(x.label) %> variable, to a specified value of _<%= mu%>_. Confidence interval is set to <%= pct(ci.level * 100, 0) %>.
+In this case _one-sample t-test_ is carried out comparing the mean of the <%= x.label %> variable, to a specified value of _<%= mu%>_. Confidence interval is set to <%= pct(ci.level * 100, 0) %>.
 
 # Descriptives
 
@@ -92,7 +93,7 @@ Since _t-test_ is a parametric technique, it sets some basic assumptions on dist
 
 ## Normality Tests
 
-We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the (<%= p(x.label) %>) variable.
+We will use _Shapiro-Wilk_, _Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the (<%= x.label %>) variable.
 
 <%=
 if (length(x)>5000) {
