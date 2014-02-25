@@ -300,42 +300,46 @@ if (axis.angle != 1) panderOptions('graph.axis.angle', axis.angle)
 if (symbol != 1) panderOptions('graph.symbol', symbol)
 
 if (plot.title == "default") {
-main_lab <- sprintf('Scatterplot of %s and %s',x.name, y.name)
+  main_lab <- sprintf('Scatterplot of %s and %s',x.name, y.name)
 } else {
-main_lab <- plot.title
+  main_lab <- plot.title
 }
 if (x.lab == "default")  x_lab <- sprintf(x.label)
 if (y.lab == "default")  y_lab <- sprintf(y.label)
 
 
 if (exists('log.num.x') && !is.null(log.num.x) && log.num.x > 0) {
-log.scale.x <- TRUE
+  log.scale.x <- TRUE
 } else {
-log.scale.x <- FALSE
+  log.scale.x <- FALSE
 }
 if (exists('log.num.y') && !is.null(log.num.y) && log.num.y > 0)  {
-log.scale.y <- TRUE
+  log.scale.y <- TRUE
 } else {
-log.scale.y <- FALSE
+  log.scale.y <- FALSE
 }
 
 if (log.scale.x & !log.scale.y) {
-log_axis <- list(x = list(log = log.num.x))
-} else if (log.scale.y & !log.scale.x) {
-log_axis <- list(y = list(log = log.num.y))
-} else if (log.scale.x & log.scale.y) {
-log_axis <- list(x = list(log = log.num.x), y = list(log = log.num.y))
+    log_axis <- list(x = list(log = log.num.x))
 } else {
-log_axis <- list()
+  if (log.scale.y & !log.scale.x) {
+    log_axis <- list(y = list(log = log.num.y))
+  } else {
+    if (log.scale.x & log.scale.y) {
+      log_axis <- list(x = list(log = log.num.x), y = list(log = log.num.y))
+    } else {
+      log_axis <- list()
+    }
+  }
 }
 
 if (lmline) {
-lm_line <- function(...) {
-panel.xyplot(...)
-panel.lmline(..., col=lmline.col) 
-}
+  lm_line <- function(...) {
+    panel.xyplot(...)
+    panel.lmline(..., col=lmline.col) 
+  }
 } else {
-lm_line <- lattice.getOption("panel.xyplot")
+  lm_line <- lattice.getOption("panel.xyplot")
 }
 
 NAs <- which(is.na(x) | is.na(y))

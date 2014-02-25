@@ -292,11 +292,13 @@ if (colp != "Set1") panderOptions('graph.colors', cs)
 
 
 if (plot.title == "default")  {
-main_lab <- sprintf('Histogram of %s',var.name)
+  main_lab <- sprintf('Histogram of %s',var.name)
 } else {
-main_lab <- plot.title
+  main_lab <- plot.title
 }
-if (x.lab == "default")  x_lab <- sprintf(var.label)
+if (x.lab == "default") {
+  x_lab <- sprintf(var.label)
+}
 %>
 
 
@@ -310,9 +312,7 @@ breaks <- col.num - 1
 %>
 <% } %>
 <% } else { %>
-<%= 
-breaks <- NULL
-%>
+<%= breaks <- NULL %>
 <% } %>
 
 <%=

@@ -102,10 +102,10 @@ biplot(prcomp(vars))
 <%=
 ifelse(rot.matrix,"As you wanted to check the Rotation matrix let us present that for you:","")
 if (rot.matrix) {
-rot <- as.matrix(prcomp(vars)$rotation[,1:components])
-if (components == 1) colnames(rot)[1] <- "PC1"
-emphasize.strong.cells(which(abs(rot) > 0.3, arr.ind = TRUE))
-rot
+  rot <- as.matrix(prcomp(vars)$rotation[,1:components])
+  if (components == 1) {colnames(rot)[1] <- "PC1"}
+  emphasize.strong.cells(which(abs(rot) > 0.3, arr.ind = TRUE))
+  rot
 } else { }
 %>
 

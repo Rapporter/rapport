@@ -72,29 +72,30 @@ head-->
 Below you can see a plot, that presents you the distance between the observations, which was calculated based on <%= label(vars) %>.
 
 <%= if (exists('id') && !is.null(id)) {
-id <- as.character(id)
-id[which(is.na(id))] <- "noname"
-dd <- duplicated(id)
-if (any(dd)) {
-warning("Among labels some of them are duplicated. Possibly there is a better way to label, please consider other options. In this report duplications will be distinguished by following '_' and numbers after them.")
-}
-whichisduplicated <- apply(data.frame(need = names(table(id[dd]))), 1, function(i) which(id==i))
-if (class(whichisduplicated) != "list") {
-  whichisduplicated <- list('1' = whichisduplicated) }
-lapply(whichisduplicated, function(i) id[i] <<- paste(id[i], 1:length(i), sep = "_") )
-rownames(vars) <- id
+  id <- as.character(id)
+  id[which(is.na(id))] <- "noname"
+  dd <- duplicated(id)
+  if (any(dd)) {
+    warning("Among labels some of them are duplicated. Possibly there is a better way to label, please consider other options. In this report duplications will be distinguished by following '_' and numbers after them.")
+  }
+  whichisduplicated <- apply(data.frame(need = names(table(id[dd]))), 1, function(i) which(id==i))
+  if (class(whichisduplicated) != "list") {
+    whichisduplicated <- list('1' = whichisduplicated)
+  }
+  lapply(whichisduplicated, function(i) id[i] <<- paste(id[i], 1:length(i), sep = "_") )
+  rownames(vars) <- id
 }
 variables <- scale(na.omit(vars))
 if (!dist.mat) {
-d <- dist(variables) 
+  d <- dist(variables) 
 } else { 
-d <- variables
+  d <- variables
 }
 try(fit <- cmdscale(d, eig = TRUE, k = 2))
 if (exists('fit') && !is.null(fit)) { 
 } else {
-d <- dist(variables)
-fit <- cmdscale(d, eig = TRUE, k = 2)
+  d <- dist(variables)
+  fit <- cmdscale(d, eig = TRUE, k = 2)
 }
 x <- fit$points[, 1]
 y <- fit$points[, 2]

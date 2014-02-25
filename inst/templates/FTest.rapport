@@ -93,9 +93,9 @@ So, the conclusions we can draw with the help of test statistics:
 <% } %>
 
 <%= if (n > 0) {
-sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
+  sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
 } else { 
-sprintf("reject departures from normality") 
+  sprintf("reject departures from normality") 
 } 
 %>
 
@@ -145,9 +145,9 @@ So, the conclusions we can draw with the help of test statistics:
 <% } %>
 
 <%= if (n2 > 0) {
-sprintf("As you can see, the applied tests %s.", ifelse(n2 > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
+  sprintf("As you can see, the applied tests %s.", ifelse(n2 > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
 } else { 
-sprintf("reject departures from normality") 
+  sprintf("reject departures from normality") 
 } 
 %>
 

@@ -295,20 +295,20 @@ head-->
 var <- as.vector(na.omit(var))
 
 if (plot.title == "default")  {
-main_lab <- sprintf('Barchart of %s',var.name)
+  main_lab <- sprintf('Barchart of %s',var.name)
 } else {
-main_lab <- plot.title
+  main_lab <- plot.title
 }
 if (var.lab == "default")  {
-var_lab <- sprintf(var.label)
+  var_lab <- sprintf(var.label)
 } else {
-var_lab <- var.lab
+  var_lab <- var.lab
 }
 
 if (bar.text.type == "Frequency"){
-labels <- table(var)
+  labels <- table(var)
 } else {
-labels <- paste(round(table(var)/length(var),4)*100, "%")
+  labels <- paste(round(table(var)/length(var),4)*100, "%")
 }
 
 if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
@@ -329,28 +329,27 @@ cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], co
 if (colp != "Set1") panderOptions('graph.colors', cs)
 
 
-
 if (horizontal) {
-formula <- as.formula(fml("rownames(table(var))", "table(var)"))
-ylab <- ifelse(var.lab == "default", var_lab, var.lab)
-xlab <- "Frequency"
-pos <- 4
+  formula <- as.formula(fml("rownames(table(var))", "table(var)"))
+  ylab <- ifelse(var.lab == "default", var_lab, var.lab)
+  xlab <- "Frequency"
+  pos <- 4
 } else {
-formula <- as.formula(fml("table(var)", "rownames(table(var))"))
-xlab <- ifelse(var.lab == "default", var_lab, var.lab)
-ylab <- "Frequency"
-pos <- 3
+  formula <- as.formula(fml("table(var)", "rownames(table(var))"))
+  xlab <- ifelse(var.lab == "default", var_lab, var.lab)
+  ylab <- "Frequency"
+  pos <- 3
 }
 
 if (bar.text) {
-bar_text <- function(...) {
-args <- list(...)
-panel.text(args$x, args$y, labels=labels, pos=pos, offset=0.5, col=bar.text.col)
-panel.barchart(...) }
+  bar_text <- function(...) {
+    args <- list(...)
+    panel.text(args$x, args$y, labels=labels, pos=pos, offset=0.5, col=bar.text.col)
+    panel.barchart(...)
+  }
 } else {
-bar_text <- lattice.getOption("panel.barchart")
+  bar_text <- lattice.getOption("panel.barchart")
 }
-
 
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
 bc <- barchart(formula, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = xlab, ylab=ylab, space=bar.space, horiz=horizontal, panel = bar_text)

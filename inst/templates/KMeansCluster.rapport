@@ -107,7 +107,7 @@ The ideal number of clusters seems to be <%= cn$nc %>.
 
 The method of the K-means clustering starts with the step to set k number of centorids which could be the center of the groups we want to form. After that there comes several iterations, meanwhile the ideal centers are being calculated.
 
-The centroids are the observations which are the nearest in average to all the other observations of their group. But it could be also interesting which are the typical values of the clusters! One way to figure out these typical values is to see the group means. The <%=cn$nc%> cluster averages are:
+The centroids are the observations which are the nearest in average to all the other observations of their group. But it could be also interesting which are the typical values of the clusters! One way to figure out these typical values is to see the group means. The <%= cn$nc %> cluster averages are:
 
 <%=
 res <- fit$centers
@@ -116,7 +116,7 @@ set.alignment(rep('centre', ncol(res)), 'right')
 res
 %>
 
-The size of the above clusters are: <%=fit$size%>.
+The size of the above clusters are: <%= fit$size %>.
 
 ## Results
 
@@ -124,16 +124,16 @@ On the chart below we can see the produced groups. To distinct which observation
 
 <%=
 if (exists('clust_num') && !is.null(clust_num) && clust_num > 0) {
-cn <- tryCatch(pam(vars, clust_num), error = function(e) e)
-fit <- kmeans(varsScaled, clust_num)
+  cn <- tryCatch(pam(vars, clust_num), error = function(e) e)
+  fit <- kmeans(varsScaled, clust_num)
 } else {
-cn <- tryCatch(pamk(vars), error = function(e) e)
-fit <- kmeans(varsScaled, cn$nc)
-cn <- cn$pamobject
+  cn <- tryCatch(pamk(vars), error = function(e) e)
+  fit <- kmeans(varsScaled, cn$nc)
+  cn <- cn$pamobject
 }
 if (ncol(res) > 1) {
-clusplot(cn, fit$cluster, color = TRUE, shade = TRUE, labels = ifelse(nrow(vars) < 100, 2, 4), lines = 1, main = '', col.p = 'black', col.clus = panderOptions('graph.colors'))
+  clusplot(cn, fit$cluster, color = TRUE, shade = TRUE, labels = ifelse(nrow(vars) < 100, 2, 4), lines = 1, main = '', col.p = 'black', col.clus = panderOptions('graph.colors'))
 } else {
-    warning('Only one variable provided, so there is no sense drawing a 2D plot here.')
+  warning('Only one variable provided, so there is no sense drawing a 2D plot here.')
 }
 %>

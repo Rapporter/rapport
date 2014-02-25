@@ -147,8 +147,8 @@ par(mfrow = c(2, 2))
 v <- vcov(fit)
 assign <- attributes(model.matrix(fit))[["assign"]]
 if (names(coefficients(fit)[1]) == "(Intercept)") {
-v <- v[-1, -1]
-assign <- assign[-1]
+  v <- v[-1, -1]
+  assign <- assign[-1]
 }
 tl <- indep
 n.terms <- length(tl)

@@ -241,9 +241,9 @@ cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], co
 if (colp != "Set1") panderOptions('graph.colors', cs)
 
 if (plot.title == "default")  {
-main_lab <- sprintf('Dotplot of %s',var1.name)
+  main_lab <- sprintf('Dotplot of %s',var1.name)
 } else {
-main_lab <- plot.title
+  main_lab <- plot.title
 }
 
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
