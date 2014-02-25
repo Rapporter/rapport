@@ -59,7 +59,7 @@ A rapport template is a regular [Pandoc's markdown](http://johnmacfarlane.net/pa
   * the file starts with a special `header` which is documented on the (rapport homepage](http://rapport-package.info/#custom). In short: you need to specify some metadata (like: author, title and description of the template, what kind of parameters would you like to use *in* the template and some examples of the template)
   * and text between `brew` tags are recognized as R commands. Details about this can be found in [`pander`'s documentation](http://rapporter.github.com/pander/#brew-to-pandoc).
 
-Let us check out this latter (short descriptives about _<%=v.name%>_):
+Let us check out this latter (short descriptives about _<% =v.name %>_):
 
 <%=
 if (is.numeric(v)) {
@@ -71,14 +71,14 @@ if (is.numeric(v)) {
 
 Above we have a so called `chunk` between the special `brew` tags and the result is printed in the run template. Everything between the tags are evaluated after parsing the chunk line-by-line and are also printed if returned anything.
 
-Tags can be inline too <%='of course'%>, but multi line results (e.g. <%=mtcars[1:5, 1:2]%>) are get separated.
+Tags can be inline too <%= 'of course' %>, but multi line results (e.g. <%= mtcars[1:5, 1:2] %>) are get separated.
 
 `brew` ninjas also know that another pair of tag is existing in the syntax, but please hold on. We really suggest to always use the so called `BRCATCODE` (ending in an equal sign), because only those are [cached](http://rapporter.github.com/pander/#caching) and the robust error handling does not happen in "simple" `BRCODE`.
 
 `BRCODE` tags are useful when you want to loop through something or optionally filter out/conditionally format a part of the template. A really easy example of this:
 
-<%for (l in letters) { %>
- * <%=l%>
+<% for (l in letters) { %>
+ * <%= l %>
 <% } %>
 
 We have just shown the alphabet to the users in a list.
@@ -89,13 +89,13 @@ Loops and `if` conditionals without the curly braces do not work between the `BR
 
 What happens if you have an error in your document?
 
-<%=mean(foobar)%>
+<%= mean(foobar) %>
 
-Which is possible even inline too: <%=foo%> and <%=bar%> beside a normal chunk showing $\pi$ (<%=pi%>).
+Which is possible even inline too: <%= foo %> and <%= bar %> beside a normal chunk showing $\pi$ (<%= pi %>).
 
 And how do warnings show up?
 
-<%=chisq.test(mtcars$am, mtcars$gear)%>
+<%= chisq.test(mtcars$am, mtcars$gear) %>
 
 # Control-flow
 
@@ -104,7 +104,7 @@ We almost forgot about our inputs! A quite detailed documentation can be found o
 Let us check if the template was called with `pacman` parameter set to TRUE and show some great stuff if so:
 
 <% if (pacman) { %>
-<%=pie(c(2,8), init.angle=-30, main = "I was born 30 years ago!")%>
+<%= pie(c(2,8), init.angle=-30, main = "I was born 30 years ago!") %>
 Yeah, this plot is generated with `pie` from `graphics` package, no fancy `lattice` or `ggplot2` call :)
 <% } %>
 
@@ -122,6 +122,6 @@ par(mfrow = c(2, 1))
 
 ### H3 tag
 
-Oh, and by the way: <%=s%>
+Oh, and by the way: <%= s %>
 
 

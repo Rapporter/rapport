@@ -65,10 +65,9 @@ inputs:
   required: no
   standalone: yes
 head-->
+
 <%=
-
 tt <- t.test(x = x, mu = mu, alternative = alter, conf.level = ci.level)
-
 %>
 
 # Introduction
@@ -77,7 +76,7 @@ In a nutshell, the [one-sample t-test](http://en.wikipedia.org/wiki/Student%27s_
 
 # Overview
 
-In this case _one-sample t-test_ is carried out comparing the mean of the <%= x.label %> variable, to a specified value of _<%= mu%>_. Confidence interval is set to <%= pct(ci.level * 100, 0) %>.
+In this case _one-sample t-test_ is carried out comparing the mean of the <%= x.label %> variable, to a specified value of _<%= mu %>_. Confidence interval is set to <%= pct(ci.level * 100, 0) %>.
 
 # Descriptives
 
@@ -105,7 +104,7 @@ if (length(x)>5000) {
 ntest
 %>
 
-As you can see, based on the [p-values](http://en.wikipedia.org/wiki/P-value), applied tests <%= ifelse(all(ntest$p < .05), "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most") %>.<%= ifelse(length(x)>5000, " Please note: The Shapiro-Wilk test was only run on a sample (N=5000) of the data.", "")%>
+As you can see, based on the [p-values](http://en.wikipedia.org/wiki/P-value), applied tests <%= ifelse(all(ntest$p < .05), "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most") %>.<%= ifelse(length(x)>5000, " Please note: The Shapiro-Wilk test was only run on a sample (N=5000) of the data.", "") %>
 
 
 # Results

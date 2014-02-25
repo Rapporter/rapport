@@ -76,7 +76,7 @@ Below lies a frequency table for factors in ANOVA model. Note that the missing v
 
 ## Descriptive Statistics
 
-The following table displays the descriptive statistics of ANOVA model. Factor levels <%=ifelse(ncol(fac) > 1, "and their combinations", "")%> lie on the left-hand side, while the corresponding statistics for response variable are given on the right-hand side.
+The following table displays the descriptive statistics of ANOVA model. Factor levels <%= ifelse(ncol(fac) > 1, "and their combinations", "") %> lie on the left-hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
 <%=
 (desc <- rp.desc(resp, fac, c(Min = min, Max = max, Mean = mean, Std.Dev. = sd, Median = median, IQR, Skewness = skewness, Kurtosis = kurtosis)))

@@ -60,15 +60,15 @@ gvmodel <- tryCatch(gvlma(fit), error = function(e) e)
 
 # Introduction 
 
-With the help of the [linear regression](http://en.wikipedia.org/wiki/Linear_regression) we can investigate the relationship <%=ifelse(indep.ilen == 1, 'between two variables', 'between the variables')%>. More punctually we can observe if one of the variables, the so-called [dependent](http://en.wikipedia.org/wiki/Dependent_variable) variable, significantly depended on the other variable<%=indep.plu%>, if an increase/decrease on the independent variable's values made an increase/decrease on the dependent variable.
-In this case we only observe linear relationships. <%=ifelse(indep.ilen == 1, '', 'As we use in the model more than 1 independent variables, we call the method [multivariate regression](http://en.wikipedia.org/wiki/Multivariate_regression_model).')%>
+With the help of the [linear regression](http://en.wikipedia.org/wiki/Linear_regression) we can investigate the relationship <%= ifelse(indep.ilen == 1, 'between two variables', 'between the variables') %>. More punctually we can observe if one of the variables, the so-called [dependent](http://en.wikipedia.org/wiki/Dependent_variable) variable, significantly depended on the other variable<%= indep.plu %>, if an increase/decrease on the independent variable's values made an increase/decrease on the dependent variable.
+In this case we only observe linear relationships. <%= ifelse(indep.ilen == 1, '', 'As we use in the model more than 1 independent variables, we call the method [multivariate regression](http://en.wikipedia.org/wiki/Multivariate_regression_model).') %>
 
 # Overview
 
 <%= ifelse(indep.ilen == 1, '', 'Multivariate-') %>Linear Regression was carried out, with <%= p(indep.label) %> as independent variable<%= indep.plu %>, and <%= p(dep.label) %> as a dependent variable.
 
 <% if (ncol(as.matrix(indep)) > 1) { %>
-The [interaction](http://en.wikipedia.org/wiki/Interaction) between the independent variables was<%=ifelse(indep.inter, "", "n't")%> taken into account.
+The [interaction](http://en.wikipedia.org/wiki/Interaction) between the independent variables was<%= ifelse(indep.inter, "", "n't") %> taken into account.
 <% } %>
 
 
@@ -96,17 +96,17 @@ As a generally accepted thumb-rule we use the critical [p-value](http://en.wikip
 
 So let's see the results, which the test gave us:
 
- - The general statistic tells us about the linear model, that it <%= ifelse(decision1, "does not fit to our data", "can fit to our data")%>.
+ - The general statistic tells us about the linear model, that it <%= ifelse(decision1, "does not fit to our data", "can fit to our data") %>.
 
- - According to the GVLMA the residuals of our model's skewness<%= ifelse(decision2, "", " does not")%> differs significantly from the normal distribution's skewness.
+ - According to the GVLMA the residuals of our model's skewness<%= ifelse(decision2, "", " does not") %> differs significantly from the normal distribution's skewness.
 
- - The residuals of our model's kurtosis<%= ifelse(decision3, "", " does not")%> differs significantly from the normal distribution's kurtosis, based on the result of the GVLMA.
+ - The residuals of our model's kurtosis<%= ifelse(decision3, "", " does not") %> differs significantly from the normal distribution's kurtosis, based on the result of the GVLMA.
 
- - In the row of the link function we can read that the linearity assumption of our model was <%=ifelse(decision4, "rejected", "accepted")%>.
+ - In the row of the link function we can read that the linearity assumption of our model was <%= ifelse(decision4, "rejected", "accepted") %>.
 
  - At last but not least GVLMA confirms<%= ifelse(decision5, " the violation of", "") %> homoscedasticity.
 
-In summary: We can<%=ifelse(decision.any, " 't", "")%> be sure that the linear model used here fits to the data.
+In summary: We can<%= ifelse(decision.any, " 't", "") %> be sure that the linear model used here fits to the data.
 
 References:
 
@@ -114,7 +114,7 @@ References:
 
 <% } else { %>
 
-We could not test the assumptions as the following R error occured: <%=gvmodel$message%>
+We could not test the assumptions as the following R error occured: <%= gvmodel$message %>
 
 <% } %>
 
@@ -131,7 +131,7 @@ suppressWarnings(crPlots(fit.nonint))
 Here comes the question: What do we see on the plot?
 First of all we can see two lines and several circles. The red interrupted line is the best fitted linear line, which means that te square of the residuals are the least while fitting that line in the model. The green curved line is the best fitted line, which does not have to be straight, of all. The observations we investigate are the circles.
 We can talk about linearity if the green line did not lie too far from the red.
-<%=ifelse(indep.ilen==1,'','The other plots we see are simple [boxplots](http://en.wikipedia.org/wiki/Box_plot).')%>
+<%= ifelse(indep.ilen==1,'','The other plots we see are simple [boxplots](http://en.wikipedia.org/wiki/Box_plot).') %>
 
 Next to these options there is a possibility to have a glance on the so-called diagnostic plots, which on we can see the residuals in themselves and in standardized forms.
 <%=
@@ -176,7 +176,7 @@ mcoll.names <- row.names(mcoll[which(mcoll[1,]>2)])
 # Results
 
 After successfully checked the assumptions we can finally turn to the main part of the interest, the results of the Linear Regression Model.
-From the table we can read the variables <%=ifelse(indep.inter,'and interactions ','')%>which have significant effect on the dependent variable.
+From the table we can read the variables <%= ifelse(indep.inter,'and interactions ','') %>which have significant effect on the dependent variable.
 
 <%=
 set.caption(sprintf('Fitting linear model: %s based on %s', dep.name, p(indep.name)))
@@ -187,6 +187,6 @@ gof
 p_val <- summary(fit)$coefficients[, 4]
 %>
 
-From the table one can see that <%= paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val, 3)[which(p_val < 0.05)], sep = " has significant effect on the dependent variable, the p-value of that is ")%>
+From the table one can see that <%= paste(rownames(summary(fit)$coefficients)[which(p_val < 0.05)], round(p_val, 3)[which(p_val < 0.05)], sep = " has significant effect on the dependent variable, the p-value of that is ") %>
 
-The model <%= sprintf("%s %s well", ifelse(gof[2] > 0.2, "fits", "does not fit"), ifelse(gof[2] > 0.4, "very", "")) %>, because the Adjusted R Square is <%=gof[2]%>.
+The model <%= sprintf("%s %s well", ifelse(gof[2] > 0.2, "fits", "does not fit"), ifelse(gof[2] > 0.4, "very", "")) %>, because the Adjusted R Square is <%= gof[2] %>.

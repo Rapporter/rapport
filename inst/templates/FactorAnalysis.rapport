@@ -98,7 +98,7 @@ head-->
 
 <% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0 && fact.num >= ncol(vars)) { %>
 
-Your request cannot be implemented, because there are <%=ifelse(ncol(vars) == fact.num, "the same number of variables", "less variables")%> (<%= ncol(vars) %>) <%=ifelse(ncol(vars) == fact.num, "like", "than")%> the number of the requested factors (<%= fact.num %>) . Please set the number of the factors to maximum <%= ncol(vars) - 1 %> with the same number of the variables or extend the number of those variables at least to <%= fact.num + 1 %>.
+Your request cannot be implemented, because there are <%= ifelse(ncol(vars) == fact.num, "the same number of variables", "less variables") %> (<%= ncol(vars) %>) <%= ifelse(ncol(vars) == fact.num, "like", "than") %> the number of the requested factors (<%= fact.num %>) . Please set the number of the factors to maximum <%= ncol(vars) - 1 %> with the same number of the variables or extend the number of those variables at least to <%= fact.num + 1 %>.
 
 <% } else { %>
 
@@ -144,13 +144,13 @@ suppressMessages(FA <- fa(fact.matrix, nfactors = fact.num, scores = fa.scores, 
 #### Eigenvalues
 
 <% if (exists('fact.num') && !is.null(fact.num) && fact.num > 0) { %>
-You can find the eigenvalues of the possible factors in the following table (<%=fact.num%> factors were produced as you set):
+You can find the eigenvalues of the possible factors in the following table (<%= fact.num %> factors were produced as you set):
 <%=
 emphasize.strong.rows(1:fact.num)
 cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)
 %>
 <% } else { %>
-As you haven't provided value for the number of the factors, we calculated that automatically based on the eigenvalues, thus it is: <%=max(which(ev$values >= 1))%>. The eigenvalues you can find in the following table:
+As you haven't provided value for the number of the factors, we calculated that automatically based on the eigenvalues, thus it is: <%= max(which(ev$values >= 1)) %>. The eigenvalues you can find in the following table:
 <%=
 emphasize.strong.rows(1:max(which(ev$values >= 1)))
 cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)
@@ -160,7 +160,7 @@ cbind("Factor Number" = 1:length(ev$values), "Eigenvalues" = ev$values)
 
 ## Factor loadings
 
-At the next step let's check the factor loadings. They mean that how deep the impact of a factor for the variables<%= ifelse(rot.method != "none",""," (Keep in mind that these are the results without rotation, please set the parameter rot.method to see the rotated ones)")%>. We emphasized the cells when the explained is higher than 30% of the whole variance.
+At the next step let's check the factor loadings. They mean that how deep the impact of a factor for the variables<%= ifelse(rot.method != "none",""," (Keep in mind that these are the results without rotation, please set the parameter rot.method to see the rotated ones)") %>. We emphasized the cells when the explained is higher than 30% of the whole variance.
 <%= 
 FA_loadings <- FA$loadings
 class(FA_loadings) <- "matrix"
@@ -169,26 +169,27 @@ FA_loadings
 %>
 
 
-So it can be said that <%=paste(pandoc.list.return(paste(colnames(FA_loadings)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 2]],name(vars)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a latent factor of ")), collapse = '\n')%>
+So it can be said that <%= paste(pandoc.list.return(paste(colnames(FA_loadings)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 2]],name(vars)[which(abs(FA_loadings) > 0.3, arr.ind = TRUE)[, 1]], sep = " is a latent factor of ")), collapse = '\n') %>
 
 <% if (length(which(FA_loadings > 0.3)) != length(which(abs(FA_loadings) > 0.3))) { %>
 
-<%=neg.comp <- colnames(FA_loadings)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 2]]%>
+<%= neg.comp <- colnames(FA_loadings)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 2]] %>
 
-From them in the case<%=ifelse(length(neg.comp) > 1, "s", "")%> of the <%=paste(colnames(FA_loadings)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 2]], name(vars)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 1]], sep = "'s impact on ")%>, we can say <%=ifelse(length(neg.comp) > 1, "they are", "that is")%> negative effects.
+From them in the case<%= ifelse(length(neg.comp) > 1, "s", "") %> of the <%= paste(colnames(FA_loadings)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 2]], name(vars)[which(FA_loadings < -0.3, arr.ind = TRUE)[, 1]], sep = "'s impact on ") %>, we can say <%= ifelse(length(neg.comp) > 1, "they are", "that is") %> negative effects.
     
 <% } else { %>
-We can say that <%=ifelse(length(which(abs(FA_loadings) > 0.3)), "none of these impacts are negative", "this impact is positive")%>. 
+We can say that <%= ifelse(length(which(abs(FA_loadings) > 0.3)), "none of these impacts are negative", "this impact is positive") %>. 
 
-<% }%>
+<% } %>
 
 
 <% if (length(rownames(FA$scores)) > 0 & nrow(vars) < 10) { %>
 
 ## Plot about the distribution of the observations
 
-Now let's check how the observations distribute among the <%= ifelse(fact.num < 2, "factor", "first and the second factors")%>.
-<%= FA_scores <- FA$scores
+Now let's check how the observations distribute among the <%= ifelse(fact.num < 2, "factor", "first and the second factors") %>.
+<%=
+FA_scores <- FA$scores
 plot(FA_scores)
 +text(FA_scores, labels = rownames(fact.matrix), cex = 1)
 %>
@@ -206,6 +207,6 @@ colnames(table) <- c("Uniqunesses", "Communalities")
 table
 %>
 
-We can see from the table that variable <%=rownames(uni)[which(max(uni) == uni)]%> has the highest Uniqueness, so could be explained the least by the factors and variable <%= rownames(uni)[which(min(uni) == uni)]%> variance's was explained the most, because it has the lowest Uniqueness. From the communalities we can draw the same conclusion.
+We can see from the table that variable <%= rownames(uni)[which(max(uni) == uni)] %> has the highest Uniqueness, so could be explained the least by the factors and variable <%= rownames(uni)[which(min(uni) == uni)] %> variance's was explained the most, because it has the lowest Uniqueness. From the communalities we can draw the same conclusion.
 
 <% } %>

@@ -222,7 +222,6 @@ inputs:
   standalone: yes
 head-->
 
-
 <%=
 if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
 if (fontfamily != "sans") panderOptions('graph.fontfamily', fontfamily)

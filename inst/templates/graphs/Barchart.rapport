@@ -355,5 +355,4 @@ bar_text <- lattice.getOption("panel.barchart")
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
 bc <- barchart(formula, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = xlab, ylab=ylab, space=bar.space, horiz=horizontal, panel = bar_text)
 bc
-
 %>

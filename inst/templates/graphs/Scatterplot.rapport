@@ -283,7 +283,6 @@ inputs:
   standalone: yes
 head-->
 
-
 <%=
 if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
 if (fontfamily != "sans") panderOptions('graph.fontfamily', fontfamily)
@@ -345,5 +344,4 @@ y <- y[-NAs]
 
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
 xyplot(x ~ y, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), ylab = ifelse(x.lab == "default", x_lab, x.lab), xlab = ifelse(y.lab == "default", y_lab, y.lab), scales=log_axis, panel = lm_line)
-
 %>
