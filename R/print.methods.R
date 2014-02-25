@@ -5,7 +5,7 @@
 #' @param ... ignored
 #' @method print rapport.meta
 #' @S3method print rapport.meta
-print.rappot.meta <- function(x, ...){
+print.rapport.meta <- function(x, ...){
     .x <- x                             # backup object
     ind <- c('title', 'author', 'email', 'description', 'example')
     email <- if (is.null(x$email)) '' else sprintf(' (%s)', x$email) # show email if any

@@ -1,5 +1,5 @@
-\name{print.rappot.meta}
-\alias{print.rappot.meta}
+\name{print.rapport.meta}
+\alias{print.rapport.meta}
 \title{Print Template Metadata}
 \usage{
 \method{print}{rapport.meta}(x, ...)
