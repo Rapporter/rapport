@@ -8,7 +8,6 @@ meta:
   packages:
   - lattice
   - ggplot2
-  - xtable
   example:
   - rapport("Example", data = ius2008, v='age')
   - rapport("Example", data = ius2008, v='gender', pacman=FALSE)
@@ -59,7 +58,7 @@ A rapport template is a regular [Pandoc's markdown](http://johnmacfarlane.net/pa
   * the file starts with a special `header` which is documented on the (rapport homepage](http://rapport-package.info/#custom). In short: you need to specify some metadata (like: author, title and description of the template, what kind of parameters would you like to use *in* the template and some examples of the template)
   * and text between `brew` tags are recognized as R commands. Details about this can be found in [`pander`'s documentation](http://rapporter.github.com/pander/#brew-to-pandoc).
 
-Let us check out this latter (short descriptives about _<% =v.name %>_):
+Let us check out this latter (short descriptives about _<%= v.name %>_):
 
 <%=
 if (is.numeric(v)) {
