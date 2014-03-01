@@ -49,7 +49,7 @@ plot(ecdf(yvar), main = sprintf('Cumulative Distribution of %s', yvar.label), xl
 
 ## Test results
 
-Now we will test whether the <%=xvar.label%> and the <%=yvar.label%> variables have statistically the same distribution, or not.
+Now we will test whether the <%= xvar.label %> and the <%= yvar.label %> variables have statistically the same distribution, or not.
 
 <%=
 set.caption(sprintf('Two-sample Kolmogorov-Smirnov test on %s and %s', xvar.label, yvar.label))
@@ -59,9 +59,9 @@ ksp <- kstest$'p.value'
 p <- 0.05
 %>
 
-<%if (inherits(tryCatch(ks.test(xvar, yvar), warning = function(w) w), 'warning')) { %>
+<% if (inherits(tryCatch(ks.test(xvar, yvar), warning = function(w) w), 'warning')) { %>
 The variables didn't meet the requirements of the Kolmogorov-Smirnov test, so the approximation may be incorrect.
 <% } %>
-<%=ifelse(ksp > p,'Based on the [p-value](http://en.wikipedia.org/wiki/P-value), the nullhypothesis was not rejected. The variables follow statistically the same destribution.','Based on the [p-value](http://en.wikipedia.org/wiki/P-value), the variables do not follow the same distribution. The stars represent the [significance levels](http://en.wikipedia.org/wiki/Statistical_significance) of the Kolmogorov-Smirnov test coefficients: one star for `0.05`, two for `0.01` and three  for `0.001`.')%>
+<%= ifelse(ksp > p,'Based on the [p-value](http://en.wikipedia.org/wiki/P-value), the nullhypothesis was not rejected. The variables follow statistically the same destribution.','Based on the [p-value](http://en.wikipedia.org/wiki/P-value), the variables do not follow the same distribution. The stars represent the [significance levels](http://en.wikipedia.org/wiki/Statistical_significance) of the Kolmogorov-Smirnov test coefficients: one star for `0.05`, two for `0.01` and three  for `0.001`.') %>
 
 

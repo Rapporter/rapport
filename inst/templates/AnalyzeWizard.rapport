@@ -20,7 +20,6 @@ inputs:
   standalone: no
 head-->
 
-
 <%=
 v  <- na.omit(variables)
 vc <- sapply(v, class, USE.NAMES = FALSE)

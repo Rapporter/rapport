@@ -34,7 +34,6 @@ head-->
 panderOptions('graph.legend.position', 'top')
 %>
 
-
 <%=
 table <- table(rapport.data[,x.name], rapport.data[,y.name], deparse.level = 0, useNA = 'no')
 

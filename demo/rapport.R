@@ -1,4 +1,5 @@
 require(rapport)
+require(pander)
 demo.opt <- getOption("demo.ask"); dev.ask <- getOption("device.ask.default"); replay.opt <- getOption("rapport.graph.replay"); record.opt <- evalsOptions('graph.recordplot'); options("demo.ask" = FALSE); options("device.ask.default" = FALSE)
 next.please <- function(msg = "Press ENTER to continue: ") invisible(readline(msg))
 
@@ -40,11 +41,11 @@ rapport.meta('Example')$example
 ##                                                     ##
 ## Will run:                                           ##
 ##                                                     ##
-##      rapport.example('example', 1)                  ##
+##      rapport.example('Example', 1)                  ##
 ##                                                     ##
 ## Which is equivalent to:                             ##
 ##                                                     ##
-##      rapport("Example", ius2008, var = 'leisure')   ##
+##      rapport("Example", ius2008, v = 'leisure')     ##
 ##                                                     ##
 #########################################################
 
@@ -77,7 +78,7 @@ rapport.ls()
 ##                                                                             ##
 ## Will run:                                                                   ##
 ##                                                                             ##
-##      tpl.example('Correlation')                                             ##
+##      rapport.example('Correlation')                                         ##
 ##                                                                             ##
 #################################################################################
 
@@ -92,7 +93,7 @@ rapport.example('Correlation')
 ##                                                            ##
 ## Will run:                                                  ##
 ##                                                            ##
-##    rapport.export(tpl.example('Correlation', 'all'))       ##
+##    rapport.export(rapport.example('Correlation', 'all'))   ##
 ##                                                            ##
 ## NOTE: this requires Pandoc to be installed!                ##
 ##       Please check out our INSTALLATION file for details.  ##
@@ -101,7 +102,7 @@ rapport.example('Correlation')
 
 
 next.please()
-rapport.export(tpl.example('Correlation', 'all'))
+rapport.export(rapport.example('Correlation', 'all'))
 
 
 ##################################################################################

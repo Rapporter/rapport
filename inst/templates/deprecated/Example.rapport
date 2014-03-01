@@ -2,7 +2,7 @@
 Title:          Example template
 Author:         Gergely Daróczi
 Description:    This template demonstrates the basic features of rapport. We all hope you will like it!
-Packages:       lattice,ggplot2,xtable
+Packages:       lattice,ggplot2
 Data required:  TRUE
 Example:        rapport("Example", data = ius2008, v='age')
                 rapport("Example", data = ius2008, v='gender', pacman=FALSE)

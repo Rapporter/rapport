@@ -47,7 +47,7 @@ Homogeneity is useful to being tested, because that is an assumption of the One-
 
 The Bartlett's test has an assumption of normality, thus one should obtain the information if the distribution of the tested variable had a normal distribution.
 
-We will use <%=ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
+We will use <%= ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "") %>_Lilliefors_ and _Anderson-Darling_ tests to screen departures from normality in the response variable.
 
 <% if (length(resp) < 5000) { %>
 

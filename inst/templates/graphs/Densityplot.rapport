@@ -237,7 +237,6 @@ inputs:
 head-->
 
 <%=
-
 if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
 if (fontfamily != "sans") panderOptions('graph.fontfamily', fontfamily)
 if (fontcolor != "black") panderOptions('graph.fontcolor', fontcolor)
@@ -255,16 +254,16 @@ if (symbol != 1) panderOptions('graph.symbol', symbol)
 cs <- brewer.pal(brewer.pal.info[which(rownames(brewer.pal.info) == colp),1], colp)
 if (colp != "Set1") panderOptions('graph.colors', cs)
 
-
 if (plot.title == "default")  {
-main_lab <- sprintf('Densityplot of %s',var.name)
+  main_lab <- sprintf('Densityplot of %s',var.name)
 } else {
-main_lab <- plot.title
+  main_lab <- plot.title
 }
-if (x.lab == "default")  x_lab <- sprintf(var.label)
+if (x.lab == "default") {
+   x_lab <- sprintf(var.label)
+}
 
 vars <- na.omit(var)
 set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-densityplot(var, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab)) 
-
+densityplot(var, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(x.lab == "default", x_lab, x.lab))
 %>

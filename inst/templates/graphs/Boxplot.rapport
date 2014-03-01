@@ -253,7 +253,6 @@ inputs:
 head-->
 
 <%=
-
 if (nomargin != TRUE) panderOptions('graph.nomargin', nomargin)
 if (fontfamily != "sans") panderOptions('graph.fontfamily', fontfamily)
 if (fontcolor != "black") panderOptions('graph.fontcolor', fontcolor)
@@ -273,38 +272,37 @@ if (colp != "Set1") panderOptions('graph.colors', cs)
 
 
 if (length(var2) == 0) {
-var1 <- na.omit(var1)
-if (var1.lab == "default")  var1_lab <- sprintf(var1.label)
+  var1 <- na.omit(var1)
+  if (var1.lab == "default")  var1_lab <- sprintf(var1.label)
 } else {
-NAs <- which(is.na(var1) | is.na(var2))
-var1 <- var1[-NAs]
-var2 <- var2[-NAs]
-if (var1.lab == "default")  var1_lab <- sprintf(var1.label)
-if (var2.lab == "default")  var2_lab <- sprintf(var2.label)
+  NAs <- which(is.na(var1) | is.na(var2))
+  var1 <- var1[-NAs]
+  var2 <- var2[-NAs]
+  if (var1.lab == "default") { var1_lab <- sprintf(var1.label) }
+  if (var2.lab == "default") { var2_lab <- sprintf(var2.label) }
 }
 
 
 if (length(var2) == 0) {
-if (plot.title == "default")  {
-main_lab <- sprintf('Boxplot of %s',var1.name)
+  if (plot.title == "default")  {
+    main_lab <- sprintf('Boxplot of %s',var1.name)
+  } else {
+    main_lab <- plot.title
+  }
 } else {
-main_lab <- plot.title
+  if (plot.title == "default") { 
+    main_lab <- sprintf('Boxplot of %s and %s',var1.name, var2.name)
+  } else {
+    main_lab <- plot.title
+  }
 }
-} else {
-if (plot.title == "default") { 
-main_lab <- sprintf('Boxplot of %s and %s',var1.name, var2.name)
-} else {
-main_lab <- plot.title
-}}
 
 
 if (length(var2) == 0) {
-set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-suppressWarnings(bwplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var1_lab, var1.lab)))
+  set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
+  suppressWarnings(bwplot(var1, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var1_lab, var1.lab)))
 } else {
-set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
-suppressWarnings(bwplot(var1 ~ var2, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var2_lab, var2.lab), ylab = ifelse(var1.lab == "default", var1_lab, var1.lab)))
+  set.caption(ifelse(plot.title.pos == "outside the plot", main_lab, ""))
+  suppressWarnings(bwplot(var1 ~ var2, main = ifelse(plot.title.pos == "on the plot", main_lab, ""), xlab = ifelse(var2.lab == "default", var2_lab, var2.lab), ylab = ifelse(var1.lab == "default", var1_lab, var1.lab)))
 }
 %>
-
-

@@ -47,13 +47,14 @@ We should be careful, while using the F test, because of the strict normality as
 
 <% if (norm.check) { %>
 
-# Normality assumption check (<%=p(xvar.label)%>)
+# Normality assumption check (<%= p(xvar.label) %>)
 
-The <%=ifelse(length(xvar) < 5000, "[_Shapiro-Wilk test_](http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test), the", "")%> [_Lilliefors test_](http://en.wikipedia.org/wiki/Lilliefors_test) and the [_Anderson-Darling test_](http://en.wikipedia.org/wiki/Anderson_Darling_test) help us to decide if the above-mentioned assumption can be accepted of the <%=p(xvar.label)%>.
+The <%= ifelse(length(xvar) < 5000, "[_Shapiro-Wilk test_](http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test), the", "") %> [_Lilliefors test_](http://en.wikipedia.org/wiki/Lilliefors_test) and the [_Anderson-Darling test_](http://en.wikipedia.org/wiki/Anderson_Darling_test) help us to decide if the above-mentioned assumption can be accepted of the <%= p(xvar.label) %>.
 
 <% if (length(xvar) < 5000) { %>
 
-<%= ntest <- htest(xvar, lillie.test, ad.test, shapiro.test)
+<%=
+ntest <- htest(xvar, lillie.test, ad.test, shapiro.test)
 k <- 0
 l <- 0
 m <- 0
@@ -92,19 +93,20 @@ So, the conclusions we can draw with the help of test statistics:
 <% } %>
 
 <%= if (n > 0) {
-sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
+  sprintf("As you can see, the applied tests %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
 } else { 
-sprintf("reject departures from normality") 
+  sprintf("reject departures from normality") 
 } 
 %>
 
-# Normality assumption check (<%=p(yvar.label)%>)
+# Normality assumption check (<%= p(yvar.label) %>)
 
-The <%=ifelse(length(yvar) < 5000, "[_Shapiro-Wilk test_](http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test), the", "")%> [_Lilliefors test_](http://en.wikipedia.org/wiki/Lilliefors_test) and the [_Anderson-Darling test_](http://en.wikipedia.org/wiki/Anderson_Darling_test) help us to decide if the above-mentioned assumption can be accepted of the <%=p(xvar.label)%>.
+The <%= ifelse(length(yvar) < 5000, "[_Shapiro-Wilk test_](http://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test), the", "") %> [_Lilliefors test_](http://en.wikipedia.org/wiki/Lilliefors_test) and the [_Anderson-Darling test_](http://en.wikipedia.org/wiki/Anderson_Darling_test) help us to decide if the above-mentioned assumption can be accepted of the <%= p(xvar.label) %>.
 
 <% if (length(yvar) < 5000) { %>
 
-<%= ntest <- htest(yvar, lillie.test, ad.test, shapiro.test)
+<%=
+ntest <- htest(yvar, lillie.test, ad.test, shapiro.test)
 k2 <- 0
 l2 <- 0
 m2 <- 0
@@ -143,9 +145,9 @@ So, the conclusions we can draw with the help of test statistics:
 <% } %>
 
 <%= if (n2 > 0) {
-sprintf("As you can see, the applied tests %s.", ifelse(n2 > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
+  sprintf("As you can see, the applied tests %s.", ifelse(n2 > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) 
 } else { 
-sprintf("reject departures from normality") 
+  sprintf("reject departures from normality") 
 } 
 %>
 
@@ -153,7 +155,7 @@ sprintf("reject departures from normality")
 
 # The F-test
 
-Whereas we have checked the normality assumptions, let's see the results of the _F test_ to compare the means of <%= p(xvar.label) %> and <%=p(yvar.label)%>.
+Whereas we have checked the normality assumptions, let's see the results of the _F test_ to compare the means of <%= p(xvar.label) %> and <%= p(yvar.label) %>.
 
 <%=
 ftest <- function(xvar) var.test(xvar, yvar)
@@ -163,7 +165,7 @@ p <- 0.05
 Ftest
 %>
 
-We can see from the table (in the p-value coloumn) that there is<%=ifelse(f.p < p,""," not")%> a significant difference between the means of _<%=xvar.label%>_ and _<%=yvar.label%>_.
+We can see from the table (in the p-value coloumn) that there is<%= ifelse(f.p < p,""," not") %> a significant difference between the means of _<%= xvar.label %>_ and _<%= yvar.label %>_.
 
 <% } else { %>
 _In this case it is advisable to run a more robust test, then the F-test._
@@ -172,7 +174,7 @@ _In this case it is advisable to run a more robust test, then the F-test._
 <% } else { %>
 # The F-test
 
-Here is the the result of the _F test_ to compare the means of <%= p(xvar.label) %> and <%=p(yvar.label)%>.
+Here is the the result of the _F test_ to compare the means of <%= p(xvar.label) %> and <%= p(yvar.label) %>.
 
 <%=
 ftest <- function(xvar) var.test(xvar, yvar)
@@ -182,5 +184,5 @@ p <- 0.05
 Ftest
 %>
 
-We can see from the table (in the p-value coloumn) that there is<%=ifelse(f.p < p,""," not")%> a significant difference between the means of _<%=xvar.label%>_ and _<%=yvar.label%>_.
+We can see from the table (in the p-value coloumn) that there is<%= ifelse(f.p < p,""," not") %> a significant difference between the means of _<%= xvar.label %>_ and _<%= yvar.label %>_.
 <% } %>

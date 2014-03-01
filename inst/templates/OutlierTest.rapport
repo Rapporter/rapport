@@ -71,9 +71,9 @@ head-->
 
 An outlying observation, or [outlier](http://en.wikipedia.org/wiki/Outlier), is one that appears to deviate markedly from other members of the sample in which it occurs.
 There are several ways to detect the outliers of our data. However, we cannot say one of them is the perfect method for that, thus it could be useful to take different methods into consideration.
-We present here, one by a chart (a Box Plot based on IQR) and these by statistical descriptions: Lund Test<%= if(grubb) {", Grubb's test"}%><%= if (dixon) {", Dixon's test"} %>.
+We present here, one by a chart (a Box Plot based on IQR) and these by statistical descriptions: Lund Test<%= if(grubb) {", Grubb's test"} %><%= if (dixon) {", Dixon's test"} %>.
 
-<%if (references) { %>
+<% if (references) { %>
 
 ## References
 
@@ -92,7 +92,7 @@ set.caption(sprintf('Boxplot: %s', name(var)))
 bwplot(var, xlab = label(var))
 %>
 
-<%if (references) { %>
+<% if (references) { %>
 
 ## References
 
@@ -103,11 +103,11 @@ bwplot(var, xlab = label(var))
 
 # Lund test
 
-It seems that <%=out <- rp.outlier(var); length(out)%> extreme values can be found in "<%=label(var)%>". <%=ifelse(length(out) > 0, sprintf('These are: %s.', p(out)), '')%>
+It seems that <%= out <- rp.outlier(var); length(out) %> extreme values can be found in "<%= label(var) %>". <%= ifelse(length(out) > 0, sprintf('These are: %s.', p(out)), '') %>
 
 ## Explanation
 
-The above test for outliers was based on *lm(<%=name(var)%> ~ 1)*:
+The above test for outliers was based on *lm(<%= name(var) %> ~ 1)*:
 
 <%=
 set.caption(sprintf('Linear model: %s ~ 1', name(var)))
@@ -118,13 +118,13 @@ lm(var ~ 1)
 
 ## Summary of the residuals
 
-<%=summary(rstandard(lm(var ~ 1)))%>
+<%= summary(rstandard(lm(var ~ 1))) %>
 
 Here we can see a summary of the [standardized residuals](http://en.wikipedia.org/wiki/Studentized_residual) of the linear model used in the Lund test.
 
 <% } %>
 
-<%if (references) { %>
+<% if (references) { %>
 
 ## References
 
@@ -133,13 +133,13 @@ Here we can see a summary of the [standardized residuals](http://en.wikipedia.or
 
 <% } %>
 
-<%if (grubb & suppressMessages(suppressWarnings(require(outliers)))) { %>
+<% if (grubb & suppressMessages(suppressWarnings(require(outliers)))) { %>
 
 # Grubb's test
 
-<%=test <- grubbs.test(var); test$method%> shows that, based on the [p-value](http://en.wikipedia.org/wiki/P-value), <%=ifelse(test$p.value>0.05, 'there are no outliers', test$alternative)%> (p=<%=test$p.value%>).
+<%= test <- grubbs.test(var); test$method %> shows that, based on the [p-value](http://en.wikipedia.org/wiki/P-value), <%= ifelse(test$p.value>0.05, 'there are no outliers', test$alternative) %> (p=<%= test$p.value %>).
 
-<%if (references) { %>
+<% if (references) { %>
 
 ## References
 
@@ -155,7 +155,7 @@ Here we can see a summary of the [standardized residuals](http://en.wikipedia.or
 
 # Dixon's test
 
-<%=test <- chisq.out.test(var); test$method%> shows that, based on the [p-value](http://en.wikipedia.org/wiki/P-value), <%=ifelse(test$p.value > 0.05, 'there are no outliers', test$alternative)%> (p=<%=test$p.value%>).
+<%= test <- chisq.out.test(var); test$method %> shows that, based on the [p-value](http://en.wikipedia.org/wiki/P-value), <%= ifelse(test$p.value > 0.05, 'there are no outliers', test$alternative) %> (p=<%= test$p.value %>).
 
 <% if (references) { %>
 
