@@ -40,8 +40,8 @@ head-->
 
 Two variables specified:
 
- * "<%=name(row)%>"<%=ifelse(label(row)==name(row), '', sprintf(' ("%s")', label(row)))%> with <%=nvalid(as.numeric(row))%> valid values and
- * "<%=name(col)%>"<%=ifelse(label(col)==name(col), '', sprintf(' ("%s")', label(col)))%> with <%=nvalid(as.numeric(col))%> valid values.
+ * "<%= name(row) %>"<%= ifelse(label(row)==name(row), '', sprintf(' ("%s")', label(row))) %> with <%= nvalid(as.numeric(row)) %> valid values and
+ * "<%= name(col) %>"<%= ifelse(label(col)==name(col), '', sprintf(' ("%s")', label(col))) %> with <%= nvalid(as.numeric(col)) %> valid values.
 
 ## Introduction
 
@@ -62,9 +62,11 @@ In the last part there are some *charts* presented, with that one can visually o
 <%=
 table <- table(row, col, deparse.level = 0, useNA = 'ifany')
 if (length(which(is.na(rownames(table)))) > 0) {
-    rownames(table)[which(is.na(rownames(table)))] <- 'Missing' }
+    rownames(table)[which(is.na(rownames(table)))] <- 'Missing'
+}
 if (length(which(is.na(colnames(table)))) > 0) {
-    colnames(table)[which(is.na(colnames(table)))] <- 'Missing' }
+    colnames(table)[which(is.na(colnames(table)))] <- 'Missing'
+}
 fulltable	<- addmargins(table)
 set.caption(sprintf('Counted values: "%s" and "%s"', name(row), name(col)))
 set.alignment(row.names = "right")
@@ -75,7 +77,7 @@ fulltable
 table.max <- which(table == max(table), arr.ind = TRUE)
 %>
 
-Most of the cases (<%=table[table.max]%>) can be found in "<%=paste(rownames(table)[table.max[, 1]], colnames(table)[table.max[, 2]], sep = '-')%>" categories. Row-wise "<%=names(which.max(rowSums(table)))%>" holds the highest number of cases (<%=max(rowSums(table))%>) while column-wise "<%=names(which.max(colSums(table)))%>" has the utmost cases (<%=max(colSums(table))%>).
+Most of the cases (<%= table[table.max] %>) can be found in "<%= paste(rownames(table)[table.max[, 1]], colnames(table)[table.max[, 2]], sep = '-') %>" categories. Row-wise "<%= names(which.max(rowSums(table))) %>" holds the highest number of cases (<%= max(rowSums(table)) %>) while column-wise "<%= names(which.max(colSums(table))) %>" has the utmost cases (<%= max(colSums(table)) %>).
 
 # Percentages
 
@@ -154,20 +156,20 @@ To decide if the null or the alternative hypothesis could be accepted we need to
 
 To each degrees of freedom belongs a denoted [critical value](http://en.wikipedia.org/wiki/Critical_value#Statistics). The result of the Chi-square test have to be lower than that value for us to be able to accept the nullhypothesis.
 
-<%if (inherits(tryCatch(chisq.test(table), warning = function(w) w), 'warning')) { %>
+<% if (inherits(tryCatch(chisq.test(table), warning = function(w) w), 'warning')) { %>
 The requirements of the chi-squared test was not met, so [Yates's correction for continuity](http://en.wikipedia.org/wiki/Yates%27s_correction_for_continuity) applied. The approximation may be incorrect.
 <% } %>
 
-<%if (!is.na(cramer)) { %>
-<%if (t$p.value < 0.05) { %>
+<% if (!is.na(cramer)) { %>
+<% if (t$p.value < 0.05) { %>
 
-It seems that a real association can be pointed out between *<%=name(row)%>* and *<%=name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%>) with the [degree of freedom](http://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)) being <%=as.numeric(t$parameter)%>, and a [significance level](http://en.wikipedia.org/wiki/Statistical_significance) of <%= add.significance.stars(t$p.value) %>.
+It seems that a real association can be pointed out between *<%= name(row) %>* and *<%= name(col) %>* by the *<%= t$method %>* ($\chi$=<%= as.numeric(t$statistic) %>) with the [degree of freedom](http://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)) being <%= as.numeric(t$parameter) %>, and a [significance level](http://en.wikipedia.org/wiki/Statistical_significance) of <%= add.significance.stars(t$p.value) %>.
 
-The association between the two variables seems to be <%=ifelse(cramer < 0.2, "weak", "strong")%> based on [Cramer's V](http://en.wikipedia.org/wiki/Cram%C3%A9r%27s_V) (<%=cramer%>).
+The association between the two variables seems to be <%= ifelse(cramer < 0.2, "weak", "strong") %> based on [Cramer's V](http://en.wikipedia.org/wiki/Cram%C3%A9r%27s_V) (<%= cramer %>).
 
 <% } else { %>
 
-It seems that no real association can be pointed out between *<%=name(row)%>* and *<%=name(col)%>* by the *<%=t$method%>* ($\chi$=<%=as.numeric(t$statistic)%> at the degree of freedom being <%=as.numeric(t$parameter)%>) at the significance level of <%=add.significance.stars(t$p.value)%>.
+It seems that no real association can be pointed out between *<%= name(row) %>* and *<%= name(col) %>* by the *<%= t$method %>* ($\chi$=<%= as.numeric(t$statistic) %> at the degree of freedom being <%= as.numeric(t$parameter) %>) at the significance level of <%= add.significance.stars(t$p.value) %>.
 
 <% } %>
 
@@ -225,15 +227,14 @@ While using the Fisher's over the Chi-square test, we have the advantage that we
 The test was invented by, thus named after R.A. Fisher.
 
 <%
-
     if (f$p.value < 0.05) {
 %>
 
-The variables seems to be dependent based on Fisher's exact test at the [significance level](http://en.wikipedia.org/wiki/P-value) of <%=add.significance.stars(f$p.value)%>.
+The variables seems to be dependent based on Fisher's exact test at the [significance level](http://en.wikipedia.org/wiki/P-value) of <%= add.significance.stars(f$p.value) %>.
 
 <% } else { %>
 
-The variables seems to be independent based on Fisher's exact test at the [significance level](http://en.wikipedia.org/wiki/P-value) of <%=add.significance.stars(f$p.value)%>.
+The variables seems to be independent based on Fisher's exact test at the [significance level](http://en.wikipedia.org/wiki/P-value) of <%= add.significance.stars(f$p.value) %>.
 
 <% }} %>
 
@@ -245,13 +246,13 @@ The variables seems to be independent based on Fisher's exact test at the [signi
 
 With the help of the [Goodman and Kruskal's lambda](http://en.wikipedia.org/wiki/Goodman_and_Kruskal%27s_lambda) we can identify not only the relationship between the variables, but also the direction of it, if we set one variable as the predictor and the other one as the response variable.
 
-<%if (diff(unlist(lambda, use.names = FALSE)) != 0 & !is.na(cramer)) { %>
+<% if (diff(unlist(lambda, use.names = FALSE)) != 0 & !is.na(cramer)) { %>
 
-Based on Goodman and Kruskal's lambda it seems that *<%=c(name(col),name(row))[which.max(lambda)]%>* ($\lambda$=<%=pander.return(max(as.numeric(lambda)))%>) has an effect on *<%=c(name(col),name(row))[which.min(lambda)]%>* ($\lambda$=<%=min(as.numeric(lambda))%>) if we assume both variables to be nominal.
+Based on Goodman and Kruskal's lambda it seems that *<%= c(name(col),name(row))[which.max(lambda)] %>* ($\lambda$=<%= pander.return(max(as.numeric(lambda))) %>) has an effect on *<%= c(name(col),name(row))[which.min(lambda)] %>* ($\lambda$=<%= min(as.numeric(lambda)) %>) if we assume both variables to be nominal.
 
 <% } else { %>
 
-The computed value for [Goodman and Kruskal's lambda](http://en.wikipedia.org/wiki/Goodman_and_Kruskal%27s_lambda) is the same for both directions: <%=lambda$row%>. For this end, we do not know the direction of the relationship.
+The computed value for [Goodman and Kruskal's lambda](http://en.wikipedia.org/wiki/Goodman_and_Kruskal%27s_lambda) is the same for both directions: <%= lambda$row %>. For this end, we do not know the direction of the relationship.
 
 <% }}} else { %>
 Moreover: **it seems that the provided variables do not fit a real crosstable**.
@@ -288,7 +289,7 @@ ggplot(table2, aes_string(x = "x", y = "y", fill = "freq")) + geom_tile(colour =
 
 On the *mosaic charts*, not only the colours are important. The size of a cell shows the amount of the counts it has.
 
-The width on the axis of <%=name(row)%> determinate one side and the height on the axis of the <%=name(col)%> gives the final shape of the box. The box which demonstrates a cell from the crosstable. We can see on the top of the chart which category from the <%=name(col)%> draws which colour.
+The width on the axis of <%= name(row) %> determinate one side and the height on the axis of the <%= name(col) %> gives the final shape of the box. The box which demonstrates a cell from the crosstable. We can see on the top of the chart which category from the <%= name(col) %> draws which colour.
 
 <%=
 set.caption('Mosaic chart')

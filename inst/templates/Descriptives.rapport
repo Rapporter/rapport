@@ -25,9 +25,9 @@ inputs:
   standalone: no
 head-->
 
-# *<%=name(var)%>*<%=ifelse(label(var) == name(var), '', sprintf(' ("%s")', label(var)))%>
+# *<%= name(var) %>*<%= ifelse(label(var) == name(var), '', sprintf(' ("%s")', label(var))) %>
 
-The dataset has <%=nvar<-as.numeric(var); length(nvar)%> observations with <%=nvalid(nvar)%> valid values (missing: <%=nmissing(nvar)%>).
+The dataset has <%= nvar<-as.numeric(var); length(nvar) %> observations with <%= nvalid(nvar) %> valid values (missing: <%= nmissing(nvar) %>).
 
 <% if (is.numeric(var)) { %>
 ## Base statistics
@@ -37,12 +37,12 @@ set.caption(sprintf('Descriptives: %s', label(var)))
 rp.desc(name(var), NULL, c('mean', 'sd', 'var'), rapport.data)
 %>
 
-The [standard deviation](http://en.wikipedia.org/wiki/Standard_deviation) equals to  <%=sd(var)%> (variance: <%=var(var)%>), which shows the unstandardized degree of [homogenity](http://en.wikipedia.org/wiki/Homogeneity_(statistics)): how much variation exists from the average. The [expected value](http://en.wikipedia.org/wiki/Mean) is around <%=mean(var)%>, somewhere between <%=mean(var)-1.96*se.mean(var)%> and <%=mean(var) + 1.96 * se.mean(var)%> with the standard error of <%=se.mean(var)%>.
+The [standard deviation](http://en.wikipedia.org/wiki/Standard_deviation) equals to  <%= sd(var) %> (variance: <%= var(var) %>), which shows the unstandardized degree of [homogenity](http://en.wikipedia.org/wiki/Homogeneity_(statistics)): how much variation exists from the average. The [expected value](http://en.wikipedia.org/wiki/Mean) is around <%= mean(var) %>, somewhere between <%= mean(var)-1.96*se.mean(var) %> and <%= mean(var) + 1.96 * se.mean(var) %> with the standard error of <%= se.mean(var) %>.
 
 <% if (rp.min(var)<=0) { %>
-The highest value found in the dataset is <%=rp.max(var)%>, while the minimum is <%=rp.min(var)%>. The difference between the two is described by the [range](http://en.wikipedia.org/wiki/Range_(statistics)): <%=diff(range(var, na.rm = TRUE))%>.
+The highest value found in the dataset is <%= rp.max(var) %>, while the minimum is <%= rp.min(var) %>. The difference between the two is described by the [range](http://en.wikipedia.org/wiki/Range_(statistics)): <%= diff(range(var, na.rm = TRUE)) %>.
 <% } else { %>
-The highest value found in the dataset is <%=max(var)%>, which is exactly <%=max(var) / min(var)%> times higher than the minimum (<%=min(var)%>). The difference between the two is described by the [range](http://en.wikipedia.org/wiki/Range_(statistics)): <%=range(var)%>.
+The highest value found in the dataset is <%= max(var) %>, which is exactly <%= max(var) / min(var) %> times higher than the minimum (<%= min(var) %>). The difference between the two is described by the [range](http://en.wikipedia.org/wiki/Range_(statistics)): <%= range(var) %>.
 <% } %>
 
 ## Chart
@@ -54,9 +54,9 @@ set.caption(sprintf('Histogram: %s', label(var)))
 histogram(var, xlab = label(var))
 %>
 
-If we *suppose* that *<%=label(var)%>* is not near to the [normal distribution](http://en.wikipedia.org/wiki/Normal_distribution) (see for example [skewness](http://en.wikipedia.org/wiki/Skewness): <%=skewness(var)%>, [kurtosis](http://en.wikipedia.org/wiki/Kurtosis): <%=kurtosis(var)%>), checking the median (<%=median(var)%>) might be a better option instead of the mean. The [interquartile range](http://en.wikipedia.org/wiki/Interquartile_range) (<%=iqr(var)%>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
+If we *suppose* that *<%= label(var) %>* is not near to the [normal distribution](http://en.wikipedia.org/wiki/Normal_distribution) (see for example [skewness](http://en.wikipedia.org/wiki/Skewness): <%= skewness(var) %>, [kurtosis](http://en.wikipedia.org/wiki/Kurtosis): <%= kurtosis(var) %>), checking the median (<%= median(var) %>) might be a better option instead of the mean. The [interquartile range](http://en.wikipedia.org/wiki/Interquartile_range) (<%= iqr(var) %>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.
 
-<%} else { %>
+<% } else { %>
 
 ## Base statistics
 
@@ -65,7 +65,7 @@ set.caption(sprintf('Frequency table: %s', label(var)))
 rp.freq(name(var), rapport.data, na.rm = FALSE, include.na = TRUE)
 %>
 
-The most frequent value is *<%=t <- table(var); names(t[t == max(t)])%>*.
+The most frequent value is *<%= t <- table(var); names(t[t == max(t)]) %>*.
 
 ## Charts
 

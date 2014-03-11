@@ -60,7 +60,7 @@ fac.plu <- switch(fac.ilen, '', 's')
 
 # Model Overview
 
-<%= switch(fac.ilen, 'One', 'Two') %>-Way ANOVA was carried out, with <%= p(fac.label) %> as independent variable<%= fac.plu %>, and <%= p(resp.label) %> as a response variable. Factor interaction was<%= ifelse(fac.intr, "", "n't")%> taken into account.
+<%= switch(fac.ilen, 'One', 'Two') %>-Way ANOVA was carried out, with <%= p(fac.label) %> as independent variable<%= fac.plu %>, and <%= p(resp.label) %> as a response variable. Factor interaction was<%= ifelse(fac.intr, "", "n't") %> taken into account.
 
 # Descriptives
 
@@ -76,7 +76,7 @@ Below lies a frequency table for factors in ANOVA model. Note that the missing v
 
 ## Descriptive Statistics
 
-The following table displays the descriptive statistics of ANOVA model. Factor levels <%=ifelse(ncol(fac) > 1, "and their combinations", "")%> lie on the left-hand side, while the corresponding statistics for response variable are given on the right-hand side.
+The following table displays the descriptive statistics of ANOVA model. Factor levels <%= ifelse(ncol(fac) > 1, "and their combinations", "") %> lie on the left-hand side, while the corresponding statistics for response variable are given on the right-hand side.
 
 <%=
 (desc <- rp.desc(resp, fac, c(Min = min, Max = max, Mean = mean, Std.Dev. = sd, Median = median, IQR, Skewness = skewness, Kurtosis = kurtosis)))
@@ -131,9 +131,9 @@ So, the conclusions we can draw with the help of test statistics:
 <% } %>
 
 <%= if (n > 0) {
-sprintf("As you can see, the applied tests %s of the %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most in the case"), resp.label) 
+  sprintf("As you can see, the applied tests %s of the %s.", ifelse(n > 1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most in the case"), resp.label) 
 } else { 
-sprintf("reject departures from normality") 
+  sprintf("reject departures from normality") 
 } 
 %>
 
@@ -201,9 +201,9 @@ colnames(posthoc) <- c("Difference", "Lower Bound", "Upper Bound", "P value")
 is.signif <- length(posthoc[,4][which(abs(posthoc[,4]) < 0.05)]) > 0
 length.signif <- length(posthoc[,4][which(abs(posthoc[,4]) < 0.05)])
 if (is.signif) {
-post.signif <- paste(pander.return(lapply(1:length.signif, function(i) paste0(p(c(rownames(posthoc)[which(abs(posthoc[,4]) < 0.05)][i])), ' (', round(posthoc[,4][which(abs(posthoc[,4]) < 0.05)][i], 3), ')'))), collapse = '\n')
+  post.signif <- paste(pander.return(lapply(1:length.signif, function(i) paste0(p(c(rownames(posthoc)[which(abs(posthoc[,4]) < 0.05)][i])), ' (', round(posthoc[,4][which(abs(posthoc[,4]) < 0.05)][i], 3), ')'))), collapse = '\n')
 } else {
-post.signif <- NULL
+  post.signif <- NULL
 }
 
 posthoc[,4] <- add.significance.stars(posthoc[,4])
