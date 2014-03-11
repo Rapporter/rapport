@@ -649,7 +649,7 @@ rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE
     ## load required packages (if any)
     if (!is.null(pkgs)) {
 
-        pk <- suppressMessages(sapply(pkgs, require, character.only = TRUE, quietly = TRUE))
+        pk <- suppressWarnings(suppressMessages(sapply(pkgs, require, character.only = TRUE, quietly = TRUE)))
 
         ## unload packages that were loaded on demand
         on.exit(sapply(setdiff(.packages(), oldpkgs), function(pkg) try(
@@ -659,7 +659,7 @@ rapport <- function(fp, data = NULL, ..., env = .GlobalEnv, reproducible = FALSE
         ## checking for errors
         nopkg <- pk == FALSE
         if (any(nopkg))
-            stopf('Following packages are required by the template, but were not loaded: %s', p(names(pk[nopkg]), wrap = '"'))
+            stop(sprintf('Following packages are required by the template, but were not loaded: %s', p(names(pk[nopkg]), wrap = '"')), call. = NULL)
 
     }
 
