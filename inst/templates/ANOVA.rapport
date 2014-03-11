@@ -10,8 +10,8 @@ meta:
   - rapportools
   - pander
   example:
-  - 'rapport("ANOVA", ius2008, resp = "leisure", fac = "gender")  # one-way'
-  - 'rapport("ANOVA", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way'
+  - rapport("ANOVA", ius2008, resp = "leisure", fac = "gender")
+  - rapport("ANOVA", ius2008, resp = "leisure", fac = c("gender", "partner"))
 inputs:
 - name: resp
   label: Response variable

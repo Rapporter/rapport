@@ -83,7 +83,7 @@ In this case _one-sample t-test_ is carried out comparing the mean of the <%= x.
 In order to get more insight on the underlying data, a table of basic descriptive statistics is displayed below.
 
 <%=
-rp.desc(x, NULL, c('min', 'max', 'mean', 'sd', 'var', 'median', 'IQR', 'skewness', 'kurtosis'), rapport.data)
+rp.desc(x, NULL, c(min, max, mean, sd, var, median, IQR, skewness, kurtosis), rapport.data)
 %>
 
 # Diagnostics
