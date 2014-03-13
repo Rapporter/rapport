@@ -4,8 +4,8 @@ Author:       Aleksandar Blagotić, Dániel Nagy
 Description:  An ANOVA report with table of descriptives, diagnostic tests and ANOVA-specific statistics.
 Packages:     nortest, rapportools, pander
 Data required: TRUE
-Example:      rapport("ANOVA", ius2008, resp = "leisure", fac = "gender")  # one-way
-              rapport("ANOVA", ius2008, resp = "leisure", fac = c("gender", "partner")) # two-way
+Example:      rapport("ANOVA", ius2008, resp = "leisure", fac = "gender")
+              rapport("ANOVA", ius2008, resp = "leisure", fac = c("gender", "partner"))
 
 resp     | *numeric     | Response variable  | Dependent (response) variable
 fac      | *factor[1,2] | Factor variables   | Independent variables (factors)
