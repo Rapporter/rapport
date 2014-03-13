@@ -44,9 +44,9 @@ Of course, with some limitations: see [license terms](#license) for details.
 
 #### How can I use my custom templates without always specifying the full path and name of the templates?
 
-Check out [`tpl.path`](/functions#tpl.path) and [`tpl.path.add`](/functions#tpl.path.add). If you add the paths of the directories holding your custom templates, [`rapport`](/functions#rapport) and any related function would easily find it just like you would use a [package bundled template](#templates). So if you have e.g. `mytemplate.tpl` in `/tmp`, adding that to the list of custom paths like `tpl.path.add('/tmp')`, you can easily call `rapport('mytemplate', ...)`. You don't even have to include the extension of the file (unless it ends with something other than `tpl`).
+Check out [`rapport.path`](/functions#rapport.path) and [`rapport.path.add`](/functions#rapport.path.add). If you add the paths of the directories holding your custom templates, [`rapport`](/functions#rapport) and any related function would easily find it just like you would use a [package bundled template](#templates). So if you have e.g. `mytemplate.rapport` in `/tmp`, adding that to the list of custom paths like `rapport.path.add('/tmp')`, you can easily call `rapport('mytemplate', ...)`. You don't even have to include the extension of the file (unless it ends with something other than `rapport`).
 
-It would be a good practice to add a call to [`tpl.paths.add(...)`](/functions#tpl.paths.add) to your [`.Rprofile`](http://www.statmethods.net/interface/customizing.html), which would be evaluated on each R session startup.
+It would be a good practice to add a call to [`rapport.paths.add(...)`](/functions#rapport.paths.add) to your [`.Rprofile`](http://www.statmethods.net/interface/customizing.html), which would be evaluated on each R session startup.
 
 #### Why do you write such complex templates? Why not including those in [helpers](/functions) like `rp.anova`?
 
@@ -68,7 +68,7 @@ Set it to `false` (by double-clicking on it) and refresh the page (you may want 
 
 #### I'm trying to produce those fancy **HTML** tables you have in **rapport**. Any tips on how to do that? (Q of **Roman Luštrik**)
 
-Sure, just put a piece of code that returns a `data.frame` object in a **chunk**, and it will be converted to HTML table once you export it. Put something like this in your `.tpl` file:
+Sure, just put a piece of code that returns a `data.frame` object in a **chunk**, and it will be converted to HTML table once you export it. Put something like this in your `.rapport` file:
 
 {% highlight r %}
 <%=

@@ -21,7 +21,7 @@ Template metadata can contain following fields:
 
 If you're familiar with the package development in R, you'll probably find this specification similar to the `DESCRIPTION` file. Here's an example of metadata section:
 
-{% highlight yaml %}
+<div class="highlight"><pre><code class="yaml">
 meta:
   title: Custom template
   author: John Doe
@@ -33,7 +33,7 @@ meta:
   example:
   - rapport("custom-template", mtcars, x = "wt")
 	- rapport("custom-template", mtcars, x = c("mpg", "hp"))
-{% endhighlight %}
+</code></pre></div>
 
 As you can see, it depends on `lme4`, `nortest` and `ggplot2` packages, and it has 2 example calls to rapport. 
 
@@ -125,8 +125,8 @@ Brew syntaxes basically have two parts:
  - **commands** between special tags
 
 The special tags have two types:
- - '<% command %>' running R command
- - '<%= command %>' next to running an R command, applies `pander` to the returning R object, thus it will appear in a nice Pandoc markdown format.
+ - `<% command %>`` running R command
+ - `<%= command %>` next to running an R command, applies `pander` to the returning R object, thus it will appear in a nice Pandoc markdown format.
  
 These two codes look pretty the same and actually doesn't differ too much, but still in a crucial way. Both of them are good for running R commands, but:
  - the code in the belly of the first tag is good for unprinted results and mostly for conditional statements or loops
@@ -136,21 +136,31 @@ Let us show you some basic examples to show how they work and the difference bet
 
 Tags without equal sign:
 
-'<% if (2 > 1) { %>
+`<% if (2 > 1) { %>
 Math works, 2 is more than 1!
-<% } %>
+<% } %>`
 The following sentence will be written on the interface we use: "Math works, 2 is more than 1!"
 
 Tags with the equal sign:
-'<%=
+`<%=
 2 > 1
-%>'
+%>`
 That was not more complicated than just create a logical value with comparing two integer.
 
 And obviously you can mix the two types as well:
 
-'<% if (2 > 1) { %>
+`<% if (2 > 1) { %>
 Math works? Is 2 really more than 1? Yeah, that's <%= 2 > 1 %>.
-<% } %> '
+<% } %> `
 That will produce the same sentence like in the first example.
 
+
+Here are a few useful calls, that you can use in the body section of a template:
+- `rapport.data` returns the entire active dataset as a data frame
+- `rapport.template` produces a list with the meta informations of the template
+- `rapport.inputs` gives you a list with the inputs of the template.
+
+If you need information about the variables from the dataset, you can use the followings ("var" is any input variable):
+- `var.name` tells you the name of the variable in the dataset (ie.: If you are using the `edu` variable from the `ius2008` dataset in the input variable called `x`, `x.name` will return `edu`.)
+- `var.len` gives you the length of the variable
+- `var.label` returns the variable label.

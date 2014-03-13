@@ -1,6 +1,6 @@
 Translating an existing template could not be easier: just copy the content of the desired template to a new file and translate the text in the header and body of the template. **Warning: this is harder than it seems!**
 
-See e.g. `rapport:::tpl.find('i18n/hu/correlations')` which is based on `rapport:::tpl.find('correlations')`. Check out the [colorized diff of the two files](http://diffchecker.com/5Gg306Io)!
+See e.g. `rapport:::rapport.find('i18n/hu/correlations')` which is based on `rapport:::rapport.find('correlations')`. Check out the [colorized diff of the two files](http://diffchecker.com/5Gg306Io)!
 
 Fields to be translated in header section (between `<!--head` and `head-->` tags):
 
