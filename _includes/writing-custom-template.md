@@ -61,34 +61,41 @@ Following options are available for all inputs:
  - `length` (integer value, or a specific `key: value` pair) - sets restrictions on the matched **R** object's `lenght` attribute. `length` input attribute can be defined in various ways:
     - an integer value, e.g. `length: 10`, which require all R object values to have the length of 10.
     - `exactly` tag - previous example (`length: 10`) will be interpreted as:
+
 	<div class="highlight"><pre><code class="yaml">length:
     &nbsp;&nbsp;exactly: 10
 	</code></pre></div>
     - `min` and/or `max` tags that define the range within which an input length must fall. Note that the range limits are inclusive - for instance:
+
     <div class="highlight"><pre><code class="yaml">length:
     &nbsp;&nbsp;min: 2
     &nbsp;&nbsp;max: 10
     </code></pre></div>
     will accept all **R** objects with length of at least 2 and at most 10.
     Either `min` or `max` tag can be omitted, and they will default to `1` and `Inf`, respectively. For example:
+
 	<div class="highlight"><pre><code class="yaml">length:
     &nbsp;&nbsp;min: 1
     </code></pre></div>
     is identical to:
+
 	<div class="highlight"><pre><code class="yaml">length:
     &nbsp;&nbsp;min: 1
     &nbsp;&nbsp;max: Inf
     </code></pre></div>
 	Similarly,
+
 	<div class="highlight"><pre><code class="yaml">length:
     &nbsp;&nbsp;max: 10
 	</code></pre></div>
 	is identical to:
+
 	<div class="highlight"><pre><code class="yaml">length:
     &nbsp;&nbsp;min: 1
 	&nbsp;&nbsp;max: 10
 	</code></pre></div>
     - if omitted (`NULL`) `length` will default to:
+
 	<div class="highlight"><pre><code class="yaml">length:
     &nbsp;&nbsp;exactly: 10
 	</code></pre></div>
@@ -125,7 +132,7 @@ Brew syntaxes basically have two parts:
  - **commands** between special tags
 
 The special tags have two types:
- - `<% command %>`` running R command
+ - `<% command %>` running R command
  - `<%= command %>` next to running an R command, applies `pander` to the returning R object, thus it will appear in a nice Pandoc markdown format.
  
 These two codes look pretty the same and actually doesn't differ too much, but still in a crucial way. Both of them are good for running R commands, but:
