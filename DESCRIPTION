@@ -1,9 +1,9 @@
 Package: rapport
 Maintainer: Gergely Daróczi <daroczig@rapporter.net>
-Title: A report templating system
+Title: A Report Templating System
 Type: Package
 Encoding: UTF-8
-Description: A package that facilitates creation of reproducible statistical
+Description: Facilitating the creation of reproducible statistical
     report templates. Once created, rapport templates can be exported to
     various external formats (HTML, LaTeX, PDF, ODT etc.) with Pandoc as the
     converter backend.
