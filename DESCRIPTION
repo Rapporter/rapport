@@ -5,7 +5,7 @@ Type: Package
 Encoding: UTF-8
 Description: Facilitating the creation of reproducible statistical
     report templates. Once created, rapport templates can be exported to
-    various external formats (HTML, LaTeX, PDF, ODT etc.) with Pandoc as the
+    various external formats (HTML, LaTeX, PDF, ODT etc.) with pandoc as the
     converter backend.
 Author: Aleksandar Blagotić <alex@rapporter.net> and Gergely Daróczi
     <daroczig@rapporter.net>
@@ -23,5 +23,5 @@ Imports:
     stringr,
     rapportools,
     pander
-SystemRequirements: Pandoc (http://johnmacfarlane.net/pandoc) for exporting
+SystemRequirements: pandoc (http://johnmacfarlane.net/pandoc) for exporting
     markdown files to other formats.
