@@ -240,7 +240,7 @@ The darker colour is one cell painted, the most counts/the higher total percenta
 
 <%=
 set.caption('Heatmap')
-suppressWarnings(suppressMessages(ggfluctuation(table, type = 'colour') + geom_tile() + xlab('') + ylab('') + labs(fill = 'Count'))) # TODO: drop ggfluctuation
+ggplot(as.data.frame(table), aes(x = Var1, y = Var2, fill = Freq)) + geom_tile() + xlab(row) + ylab(col) + labs(fill = 'Count')
 %>
 
 There can be also shown the standardized adjusted residual of each cells:
@@ -277,16 +277,4 @@ t$xxtext <- with(t, xmin + (xmax - xmin) / 2)
 t$xytext <- as.vector(sapply(rep(c(103, -3), length.out = nrow(table)), rep, ncol(table)))
 ggplot(t, aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = Var.2)) + geom_rect() + geom_rect(colour = 'white', show_guide = FALSE) + geom_text(aes(x = xxtext, y = xytext, label = Var.1), size = 4) + xlab('') + ylab('') + theme(legend.position = 'top') + labs(fill = '')
 panderOptions('graph.legend.position', glp)
-%>
-
-#### Fluctuation diagram
-
-At last but not least have a glance on the *fluctuation diagram*. Unlike the above two charts, here the colours does not have influence on the chart, but the sizes of the boxes, which obviously demonstrates here as well the cells of the crosstable.
-
-The bigger are the boxes the higher are the numbers of the counts/the total percentages, which that boxes denote.
-
-
-<%=
-set.caption('Fluctuation diagram')
-suppressWarnings(suppressMessages(ggfluctuation(table) + xlab('') + ylab(''))) # TODO: drop ggfluctuation
 %>
