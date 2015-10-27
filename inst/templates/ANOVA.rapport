@@ -201,7 +201,7 @@ colnames(posthoc) <- c("Difference", "Lower Bound", "Upper Bound", "P value")
 is.signif <- length(posthoc[,4][which(abs(posthoc[,4]) < 0.05)]) > 0
 length.signif <- length(posthoc[,4][which(abs(posthoc[,4]) < 0.05)])
 if (is.signif) {
-  post.signif <- paste(pander.return(lapply(1:length.signif, function(i) paste0(p(c(rownames(posthoc)[which(abs(posthoc[,4]) < 0.05)][i])), ' (', round(posthoc[,4][which(abs(posthoc[,4]) < 0.05)][i], 3), ')'))), collapse = '\n')
+  post.signif <- paste(pander_return(lapply(1:length.signif, function(i) paste0(p(c(rownames(posthoc)[which(abs(posthoc[,4]) < 0.05)][i])), ' (', round(posthoc[,4][which(abs(posthoc[,4]) < 0.05)][i], 3), ')'))), collapse = '\n')
 } else {
   post.signif <- NULL
 }

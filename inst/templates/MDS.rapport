@@ -136,7 +136,7 @@ Now let's see which observations can be said statistically far/similar to each o
 According to the used variables (<%= label(vars) %>) the <%= max.dist.num %> furthest pair of observations are:
 
 <%=
-paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(distance)[h[i, 1]], colnames(distance)[h[i, 2]])), ' (', round(distance[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')
+paste(pander_return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(distance)[h[i, 1]], colnames(distance)[h[i, 2]])), ' (', round(distance[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')
 %>
 
 <% } else { %>
@@ -150,7 +150,7 @@ There are <%= nrow(h) %> observations which are the most similar, and equal in t
 According to the used variables (<%=label(vars)%>) the <%=min.dist.num%> nearest pair of observations are:
 
 <%=
-paste(pander.return(lapply(1:nrow(j), function(i) paste0(p(c(rownames(distance)[j[i, 1]], colnames(distance)[j[i, 2]])), ' (', round(distance[j[i, 1], j[i, 2]], 2), ')'))), collapse = '\n')
+paste(pander_return(lapply(1:nrow(j), function(i) paste0(p(c(rownames(distance)[j[i, 1]], colnames(distance)[j[i, 2]])), ' (', round(distance[j[i, 1], j[i, 2]], 2), ')'))), collapse = '\n')
 %>
 
 <% } else { %>

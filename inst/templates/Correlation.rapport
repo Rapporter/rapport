@@ -58,7 +58,7 @@ if (nrow(h) > 0) {
 
 Highly correlated (r < -0.7 or r > 0.7) variables:
 
-<%= paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i, 1]], colnames(cm)[h[i, 2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n') %>
+<%= paste(pander_return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i, 1]], colnames(cm)[h[i, 2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n') %>
 
 <%} else { %>
 
@@ -74,7 +74,7 @@ Uncorrelated (-0.2 < r < 0.2) variables:
 
 <%=
 if (nrow(h) > 0) {
-    paste(pander.return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i, 1]], colnames(cm)[h[i, 2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')
+    paste(pander_return(lapply(1:nrow(h), function(i) paste0(p(c(rownames(cm)[h[i, 1]], colnames(cm)[h[i, 2]])), ' (', round(cm[h[i, 1], h[i, 2]], 2), ')'))), collapse = '\n')
 }
 %>
 

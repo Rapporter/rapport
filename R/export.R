@@ -59,7 +59,7 @@
 #' @export
 #' @aliases tpl.export rapport.export
 #' @seealso \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}
-rapport.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = pander.return(Sys.time()), description = TRUE, format = 'html', options = '', logo = TRUE) {
+rapport.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open = TRUE, date = pander_return(Sys.time()), description = TRUE, format = 'html', options = '', logo = TRUE) {
 
     if (missing(file)) {
         if (is.null(rp$file.name))
@@ -138,7 +138,7 @@ rapport.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open 
                 if (x.type=='text')
                     r$add.paragraph(x$text$eval)
                 if (x.type=='block')
-                    r$add.paragraph(pander.return(x$robject))
+                    r$add.paragraph(pander_return(x$robject))
 
             })
 
@@ -165,7 +165,7 @@ rapport.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open 
             prior <- which(logo.prior | footer.prior)
             if (length(prior) > 0)
                 r$body[prior] <- NULL
-            r$add.paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://rapport-package.info/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, pander.return(r$proc.time), R.version$platform))
+            r$add.paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://rapport-package.info/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, pander_return(r$proc.time), R.version$platform))
             if (!(.Platform$OS.type == 'windows' && format == 'pdf'))
                 r$add.paragraph(pandoc.image.return(system.file('includes/images/logo.png', package='rapport')))
 

@@ -28,7 +28,7 @@
 #' @importFrom rapportools is.variable is.tabular is.string is.boolean is.number pct fml alike.integer trim.space adj.rle catn vgsub tocamel capitalise stopf warningf messagef is.empty name rp.name label rp.label rp.label<- label<-
 #' @importFrom yaml as.yaml yaml.load
 #' @importFrom stringr str_extract_all
-#' @importFrom pander Pandoc.brew evalsOptions panderOptions pander.return Pandoc pandoc.header.return pandoc.image.return pandoc.header p redraw.recordedplot
+#' @importFrom pander Pandoc.brew evalsOptions panderOptions pander_return Pandoc pandoc.header.return pandoc.image.return pandoc.header p redraw.recordedplot
 #' @seealso \code{pander} package: \url{http://rapporter.github.com/pander/}
 #' @name rapport-package
 NULL

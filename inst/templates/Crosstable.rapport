@@ -248,7 +248,7 @@ With the help of the [Goodman and Kruskal's lambda](http://en.wikipedia.org/wiki
 
 <% if (diff(unlist(lambda, use.names = FALSE)) != 0 & !is.na(cramer)) { %>
 
-Based on Goodman and Kruskal's lambda it seems that *<%= c(name(col),name(row))[which.max(lambda)] %>* ($\lambda$=<%= pander.return(max(as.numeric(lambda))) %>) has an effect on *<%= c(name(col),name(row))[which.min(lambda)] %>* ($\lambda$=<%= min(as.numeric(lambda)) %>) if we assume both variables to be nominal.
+Based on Goodman and Kruskal's lambda it seems that *<%= c(name(col),name(row))[which.max(lambda)] %>* ($\lambda$=<%= pander_return(max(as.numeric(lambda))) %>) has an effect on *<%= c(name(col),name(row))[which.min(lambda)] %>* ($\lambda$=<%= min(as.numeric(lambda)) %>) if we assume both variables to be nominal.
 
 <% } else { %>
 
