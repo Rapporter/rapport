@@ -28,7 +28,8 @@ for (template in rapport.ls()) {
         test_that(template, {
             for (example in rapport.meta(template)$example) {
                 e <- eval(parse(text = example))
-                expect_that(rapport:::check.report.chunks(e), equals(NULL),
+                expect_that(rapport:::check.report.chunks(e, what = 'errors'),
+                            equals(NULL),
                             info = paste(unlist(c('', sapply(e$report, function(x) c(x$msg$errors, x$robject$msg$errors)),'')), collapse = '\n\t* '))
             }
         })
