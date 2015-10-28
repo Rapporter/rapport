@@ -86,8 +86,6 @@ The following table displays the descriptive statistics of ANOVA model. Factor l
 
 Before we carry out ANOVA, we'd like to check some basic assumptions. For those purposes, normality and homoscedascity tests are carried out alongside several graphs that may help you with your decision on model's main assumptions.
 
-## Diagnostics
-
 ### Univariate Normality
 
 <% if (length(resp) < 5000) { %>
