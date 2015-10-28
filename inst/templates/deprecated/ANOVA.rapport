@@ -76,6 +76,8 @@ We will use <%=ifelse(length(resp) < 5000, "_Shapiro-Wilk_, ", "")%>_Lilliefors_
 <%= if (n>0) 
 sprintf("As you can see, the applied tests %s.", ifelse(n>1, "confirm departures from normality", "yield different results on hypotheses of normality, so you may want to stick with one you find most appropriate or you trust the most.")) else sprintf("reject departures from normality") %>
 
+<% if (fac.ilen == 1) { %>
+
 ### Homoscedascity
 
 In order to test homoscedascity, _Bartlett_ and _Fligner-Kileen_ tests are applied.
@@ -90,6 +92,8 @@ hsced
 
 
 When it comes to equality of variances, applied tests yield <%= ifelse(hcons, "consistent", "inconsistent") %> results. <%= if (hcons) sprintf("Homoscedascity assumption is %s.", ifelse(hp.all, "rejected", "confirmed")) else sprintf("While _Fligner-Kileen test_ %s the hypotheses of homoscedascity, _Bartlett's test_ %s it.", ifelse(hp[1] < .05, "rejected", "confirmed"), ifelse(hp[2] < .05, "rejected", "confirmed")) %>
+
+<% } %>
 
 ## Diagnostic Plots
 

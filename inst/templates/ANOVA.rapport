@@ -137,6 +137,7 @@ So, the conclusions we can draw with the help of test statistics:
 } 
 %>
 
+<% if (fac.ilen == 1) { %>
 
 ### Homoscedascity
 
@@ -150,8 +151,9 @@ hp.all <- all(hp < .05)
 hsced
 %>
 
-
 When it comes to equality of variances, applied tests yield <%= ifelse(hcons, "consistent", "inconsistent") %> results. <%= if (hcons) { sprintf("Homoscedascity assumption is %s.", ifelse(hp.all, "rejected", "confirmed")) } else { sprintf("While _Fligner-Kileen test_ %s the hypotheses of homoscedascity, _Bartlett's test_ %s it.", ifelse(hp[1] < .05, "rejected", "confirmed"), ifelse(hp[2] < .05, "rejected", "confirmed")) } %>
+
+<% } %>
 
 ## Diagnostic Plots
 
