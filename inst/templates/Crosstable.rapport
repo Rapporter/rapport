@@ -67,14 +67,11 @@ if (length(which(is.na(rownames(table)))) > 0) {
 if (length(which(is.na(colnames(table)))) > 0) {
     colnames(table)[which(is.na(colnames(table)))] <- 'Missing'
 }
-fulltable	<- addmargins(table)
+table.max <- which(table == max(table), arr.ind = TRUE)
+fulltable <- addmargins(table)
 set.caption(sprintf('Counted values: "%s" and "%s"', name(row), name(col)))
 set.alignment(row.names = "right")
 fulltable
-%>
-
-<%=
-table.max <- which(table == max(table), arr.ind = TRUE)
 %>
 
 Most of the cases (<%= table[table.max] %>) can be found in "<%= paste(rownames(table)[table.max[, 1]], colnames(table)[table.max[, 2]], sep = '-') %>" categories. Row-wise "<%= names(which.max(rowSums(table))) %>" holds the highest number of cases (<%= max(rowSums(table)) %>) while column-wise "<%= names(which.max(colSums(table))) %>" has the utmost cases (<%= max(colSums(table)) %>).
