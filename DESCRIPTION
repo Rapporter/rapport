@@ -19,6 +19,8 @@ LazyLoad: yes
 Depends:
     R (>= 2.15.0)
 Imports:
+    grDevices,
+    utils,
     yaml,
     stringr,
     rapportools,
