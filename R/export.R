@@ -183,7 +183,7 @@ rapport.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open 
 
         }
         if (.Platform$OS.type == 'windows') # short-name tweak on Windows
-            file <- shortPathName(file)
+            file <- utils::shortPathName(file)
 
         r$export(f = file, open = open, options = options, footer = FALSE)
         return(sprintf('%s.%s', file, format))

@@ -10,7 +10,7 @@ Description: Facilitating the creation of reproducible statistical
 Author: Aleksandar Blagotić <alex@rapporter.net> and Gergely Daróczi
     <daroczig@rapporter.net>
 Version: 1.0
-Date: 2013-12-06
+Date: 2015-11-15
 URL: http://rapport-package.info/
 BugReports: https://github.com/rapporter/rapport/issues
 License: AGPL-3

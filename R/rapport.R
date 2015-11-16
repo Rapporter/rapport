@@ -29,6 +29,8 @@
 #' @importFrom yaml as.yaml yaml.load
 #' @importFrom stringr str_extract_all
 #' @importFrom pander Pandoc.brew evalsOptions panderOptions pander_return Pandoc pandoc.header.return pandoc.image.return pandoc.header p redraw.recordedplot
+#' @importFrom grDevices dev.copy dev.list dev.off dev.size
+#' @importFrom utils download.file packageDescription tail
 #' @seealso \code{pander} package: \url{http://rapporter.github.com/pander/}
 #' @name rapport-package
 NULL
