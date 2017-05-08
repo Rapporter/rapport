@@ -16,4 +16,4 @@ Psychology student at [Faculty of Philosophy, Niš, Serbia](http://www.filfak.ni
  - [GitHub](https://github.com/aL3xa/)
  - [LinkedIn](http://www.linkedin.com/pub/aleksandar-blagoti%C4%87/31/409/a05)
  - [Google+](https://plus.google.com/105705293887826322118/about)
- - [twitter](https://twitter.com/alexablag)
+ - [twitter](https://twitter.com/acablag)
