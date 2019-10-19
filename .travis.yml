@@ -31,4 +31,4 @@ r_packages:
 
 after_success:
 - Rscript -e 'library(methods); library(devtools); install_url("http://cran.r-project.org/src/contrib/Archive/HH/HH_2.3-42.tar.gz")'
-- Rscript -e 'library(devtools);install();test_package("rapport")'
+- Rscript -e 'library(devtools);install();library(testthat);test_package("rapport")'
