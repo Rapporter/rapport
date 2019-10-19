@@ -1,31 +1,33 @@
-#
-# Forked from Yihui's `knitr` version: https://raw.github.com/yihui/knitr/master/.travis.yml
-#
+language: R
+sudo: false
+cache:
+- packages
 
-# it is not really python, but there is no R support on Travis CI yet
-language: python
+r_packages:
+- yaml
+- lattice
+- nortest
+- descr
+- ggplot2
+- xtable
+- outliers
+- psych
+- nFactors
+- mclust
+- GPArotation
+- grDevices
+- RColorBrewer
+- fpc
+- car
+- gvlma
+- latticeExtra
+- multcomp
+- reshape
+- reshape2
+- leaps
+- vcd
+- colorspace
 
-# environment variables
-env:
-  - R_LIBS_USER=~/R
-
-# install dependencies
-install:
-  - sudo apt-add-repository -y ppa:marutter/rdev
-  - sudo apt-get update
-  - sudo apt-get install r-base-dev pandoc qpdf texinfo texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
-  - "[ ! -d ~/R ] && mkdir ~/R"
-  - R --version
-  - R -e '.libPaths(); sessionInfo()'
-  - Rscript -e 'install.packages("testthat", dep = TRUE, repos = "http://cran.r-project.org")'
-  - Rscript -e 'install.packages("yaml", dep = TRUE, repos = "http://cran.r-project.org")'
-  - Rscript -e 'install.packages(c("lattice", "nortest", "descr", "ggplot2", "xtable", "outliers",  "psych", "nFactors", "mclust", "GPArotation", "grDevices", "RColorBrewer", "fpc", "car", "gvlma", "devtools", "latticeExtra", "multcomp", "reshape", "reshap2", "leaps", "vcd", "colorspace"), dep = TRUE, repos = "http://cran.r-project.org")'
-  - Rscript -e 'library(methods); library(devtools);install_url("http://cran.r-project.org/src/contrib/Archive/HH/HH_2.3-42.tar.gz")'
-  - Rscript -e 'install.packages("rapport", dep = TRUE, repos = "http://cran.r-project.org")'
-  - Rscript -e 'library(methods); library(devtools); install_github("pander", "rapporter"); install_github("rapportools", "rapporter")'
-
-# run tests
-script:
-  - make install
-  - make check
-  - make test
+after_success:
+- Rscript -e 'library(methods); library(devtools); install_url("http://cran.r-project.org/src/contrib/Archive/HH/HH_2.3-42.tar.gz")'
+- Rscript -e 'library(devtools);install();test_package("rapport")'
