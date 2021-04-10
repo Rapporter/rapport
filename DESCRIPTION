@@ -9,8 +9,8 @@ Description: Facilitating the creation of reproducible statistical
     converter backend.
 Author: Aleksandar Blagotić <alex@rapporter.net> and Gergely Daróczi
     <daroczig@rapporter.net>
-Version: 1.0
-Date: 2015-11-15
+Version: 1.1
+Date: 2021-04-11
 URL: https://rapporter.github.io/rapport
 BugReports: https://github.com/rapporter/rapport/issues
 License: AGPL-3
