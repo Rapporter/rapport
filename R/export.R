@@ -161,11 +161,11 @@ rapport.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open 
 
             ## removing logo and footer if added before
             logo.prior <- sapply(r$body, function(x) grepl('rapport/includes/images/logo.png', x))
-            footer.prior <- sapply(r$body, function(x) grepl('-------\\nThis report was generated with \\[R\\]\\(http://www.r-project.org/\\) \\([0-9\\.]*\\) and \\[rapport\\]\\(http://rapport-package.info/\\) \\([0-9\\.]*\\) in [0-9\\.,\\*]* sec', x))
+            footer.prior <- sapply(r$body, function(x) grepl('-------\\nThis report was generated with \\[R\\]\\(http://www.r-project.org/\\) \\([0-9\\.]*\\) and \\[rapport\\]\\(https://rapporter.github.io/rapport/\\) \\([0-9\\.]*\\) in [0-9\\.,\\*]* sec', x))
             prior <- which(logo.prior | footer.prior)
             if (length(prior) > 0)
                 r$body[prior] <- NULL
-            r$add.paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](http://rapport-package.info/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, pander_return(r$proc.time), R.version$platform))
+            r$add.paragraph(sprintf('-------\nThis report was generated with [R](http://www.r-project.org/) (%s) and [rapport](https://rapporter.github.io/rapport/) (%s) in %s sec on %s platform.', sprintf('%s.%s', R.version$major, R.version$minor), packageDescription("rapport")$Version, pander_return(r$proc.time), R.version$platform))
             if (!(.Platform$OS.type == 'windows' && format == 'pdf'))
                 r$add.paragraph(pandoc.image.return(system.file('includes/images/logo.png', package='rapport')))
 

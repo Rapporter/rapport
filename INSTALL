@@ -9,7 +9,7 @@ backend for that:
     http://johnmacfarlane.net/pandoc
 
 In order to export templates to our factory default HTML design
-(http://rapport-package.info), and use other formats (like pdf, odt, 
+(https://rapporter.github.io/rapport), and use other formats (like pdf, odt, 
 docx etc.), install pandoc from: 
 
     http://johnmacfarlane.net/pandoc/installing.html

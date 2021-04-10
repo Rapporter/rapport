@@ -14,22 +14,22 @@ head-->
 
 # Hello, world!
 
-This template is a tutorial on how to write [rapport](http://rapport-package.info) templates.
+This template is a tutorial on how to write [rapport](https://rapporter.github.io/rapport) templates.
 
 You have already learned a lot: above we [say hello to the world](http://en.wikipedia.org/wiki/Hello_world_program) in a header (of level `1`) in [ATX-style](http://johnmacfarlane.net/pandoc/README.html#atx-style-headers). So the first lesson of all programming tutorials is accomplished :)
 
 A rapport template is a regular [Pandoc's markdown](http://johnmacfarlane.net/pandoc/) file with two exceptions:
 
-  * the file starts with a special `header` which is documented on the (rapport homepage](http://rapport-package.info/#custom). In short: you need to specify some metadata (like: author, title and description of the template, what kind of parameters would you like to use *in* the template and some examples of the template)
+  * the file starts with a special `header` which is documented on the (rapport homepage](https://rapporter.github.io/rapport/#custom). In short: you need to specify some metadata (like: author, title and description of the template, what kind of parameters would you like to use *in* the template and some examples of the template)
   * and text between `brew` tags are recognized as R commands. Details about this can be found in [`pander`'s documentation](http://rapporter.github.com/pander/#brew-to-pandoc).
 
 Let us check out this latter (short descriptives about _<%=v.name%>_):
 
 <%=
 if (is.numeric(v)) {
-	summary(v)
+    summary(v)
 } else {
-	table(v)
+    table(v)
 }
 %>
 
@@ -63,7 +63,7 @@ And how do warnings show up?
 
 # Control-flow
 
-We almost forgot about our inputs! A quite detailed documentation can be found on [rapport homepage](http://rapport-package.info/#custom).
+We almost forgot about our inputs! A quite detailed documentation can be found on [rapport homepage](https://rapporter.github.io/rapport/#custom).
 
 Let us check if the template was called with `pacman` parameter set to TRUE and show some great stuff if so:
 

@@ -11,7 +11,7 @@ next.please <- function(msg = "Press ENTER to continue: ") invisible(readline(ms
 ## You will find some simple rapport calls below, for more details and tutorials      ##
 ## please check out our homepage at:                                                  ##
 ##                                                                                    ##
-##                          http://rapport-package.info                               ##
+##                       https://rapporter.github.io/rapport                          ##
 ##                                                                                    ##
 ## NOTE: If you get "Hit <Return> to see next plot:" messages while running this demo ##
 ## (usually happens on a Windows machine), please rerun the demo with `ask = FALSE`:  ##
@@ -194,7 +194,7 @@ rm(next.please); rm(report); options("demo.ask" = demo.opt); options("rapport.gr
 ##                                          ##
 ## Please visit "rapport" homepage:         ##
 ##                                          ##
-##      http://rapport-package.info         ##
+##   https://rapporter.github.io/rapport    ##
 ##                                          ##
 ## Thank you for your patience!             ##
 ##                                          ##

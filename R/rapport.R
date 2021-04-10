@@ -2,7 +2,7 @@
 #'
 #' \emph{rapport} is an R package that facilitates creation of reproducible statistical report templates. Once created, \emph{rapport} templates can be exported to various external formats: \emph{HTML}, \emph{LaTeX}, \emph{PDF}, \emph{ODT}, etc.
 #'
-#' For detailed introductions please check out our homepage: \url{http://rapport-package.info}.
+#' For detailed introductions please check out our homepage: \url{https://rapporter.github.io/rapport}.
 #'
 #' You may use the package-bundled templates with a minimal R knowledge - a quick tutorial is shown in the package demo: \code{demo(rapport, ask = FALSE)}.
 #'
