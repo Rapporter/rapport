@@ -164,7 +164,7 @@ The above test for outliers was based on *lm(1 \~ edu)*:
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.15.1)
-and [rapport](http://rapport-package.info/) (0.4) in *0.916* sec on
+and [rapport](https://rapporter.github.io/rapport/) (0.4) in *0.916* sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![](images/logo.png)

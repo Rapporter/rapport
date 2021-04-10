@@ -331,7 +331,7 @@ One Sample t-test was applied, and significant differences were found.
 
 
 -------
-This report was generated with [R](http://www.r-project.org/) (3.0.1) and [rapport](http://rapport-package.info/) (0.51) in _0.88_ sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [R](http://www.r-project.org/) (3.0.1) and [rapport](https://rapporter.github.io/rapport/) (0.51) in _0.88_ sec on x86_64-unknown-linux-gnu platform.
 
 
 ![](images/logo.png)

@@ -221,7 +221,7 @@ and three for `0.001`.
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (2.15.1)
-and [rapport](http://rapport-package.info/) (0.4) in *2.209* sec on
+and [rapport](https://rapporter.github.io/rapport/) (0.4) in *2.209* sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![](images/logo.png)

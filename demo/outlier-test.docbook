@@ -186,7 +186,7 @@
 </tbody>
 </table>
 <hr />
-<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="http://rapport-package.info/">rapport</a> (0.4) in <em>0.916</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="https://rapporter.github.io/rapport/">rapport</a> (0.4) in <em>0.916</em> sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
 <img src="/usr/lib/R/library/rapport/includes/images/logo.png" /><p class="caption"></p>
 </div>

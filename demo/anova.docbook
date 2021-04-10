@@ -631,7 +631,7 @@
 </table>
 <p><em>F-test</em> for <em>Gender</em> is not statistically significant, which implies that there is no Gender effect on response variable. Effect of <em>Relationship status</em> on response variable is significant. Interaction between levels of <em>Gender</em> and <em>Relationship status</em> wasn't found significant (p = 0.717).</p>
 <hr />
-<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="http://rapport-package.info/">rapport</a> (0.4) in <em>1.999</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="https://rapporter.github.io/rapport/">rapport</a> (0.4) in <em>1.999</em> sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
 <img src="/usr/lib/R/library/rapport/includes/images/logo.png" /><p class="caption"></p>
 </div>

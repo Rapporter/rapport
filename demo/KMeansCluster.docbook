@@ -210,7 +210,7 @@
 <p>On the chart below we can see the produced groups. To distinct which observation is related to which cluster each of the objects from the same groups have the same figure and there is a circle which shows the border of the clusters.</p>
 <p><a href="plots/KMeansCluster.tpl-5-hires.png"><img src="plots/KMeansCluster.tpl-5.png" /></a></p>
 <hr />
-<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>8.181</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="https://rapporter.github.io/rapport/">rapport</a> (0.51) in <em>8.181</em> sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
 <img src="/usr/lib/R/library/rapport/includes/images/logo.png" />
 </div>

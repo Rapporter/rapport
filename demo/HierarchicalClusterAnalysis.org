@@ -145,7 +145,7 @@ clusters plotted in it.
 --------------
 
 This report was generated with [[http://www.r-project.org/][R]] (3.0.1)
-and [[http://rapport-package.info/][rapport]] (0.51) in /4.12/ sec on
+and [[https://rapporter.github.io/rapport/][rapport]] (0.51) in /4.12/ sec on
 x86\_64-unknown-linux-gnu platform.
 
 [[images/logo.png]]

@@ -460,7 +460,7 @@ Where the stars represent the "significance levels":http://en.wikipedia.org/wiki
 
 <hr />
 
-This report was generated with "R":http://www.r-project.org/ (2.15.1) and "rapport":http://rapport-package.info/ (0.4) in _2.209_ sec on x86&#95;64-unknown-linux-gnu platform.
+This report was generated with "R":http://www.r-project.org/ (2.15.1) and "rapport":https://rapporter.github.io/rapport/ (0.4) in _2.209_ sec on x86&#95;64-unknown-linux-gnu platform.
 
 !images/logo.png!
 

@@ -517,7 +517,7 @@
 <p>From the table one can see that cyl has significant effect on the dependent variable, the p-value of that is 0.002</p>
 <p>The model fits well, because the Adjusted R Square is <em>0.2536</em>.</p>
 <hr />
-<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>3.731</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="https://rapporter.github.io/rapport/">rapport</a> (0.51) in <em>3.731</em> sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
 <img src="images/logo.png" />
 </div>

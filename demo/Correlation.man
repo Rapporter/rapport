@@ -538,7 +538,7 @@
 <p>On the plot one can see the correlation in two forms: below the <a href="http://en.wikipedia.org/wiki/Main_diagonal">diagonal</a> visually, above that one can find the coefficient(s).</p>
 <p><a href="plots/Correlation-3-hires.png"><img src="plots/Correlation-3.png" alt="Scatterplot matrix" /></a></p>
 <hr />
-<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>4.769</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="https://rapporter.github.io/rapport/">rapport</a> (0.51) in <em>4.769</em> sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
 <img src="images/logo.png" />
 </div>

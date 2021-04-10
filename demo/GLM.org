@@ -175,7 +175,7 @@ From the table one can see that
 --------------
 
 This report was generated with [[http://www.r-project.org/][R]] (3.0.1)
-and [[http://rapport-package.info/][rapport]] (0.51) in /0.681/ sec on
+and [[https://rapporter.github.io/rapport/][rapport]] (0.51) in /0.681/ sec on
 x86\_64-unknown-linux-gnu platform.
 
 [[images/logo.png]]

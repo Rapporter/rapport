@@ -472,7 +472,7 @@ Your request cannot be implemented, because there are the same number of variabl
 
 
 -------
-This report was generated with [R](http://www.r-project.org/) (3.0.1) and [rapport](http://rapport-package.info/) (0.51) in _1.479_ sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [R](http://www.r-project.org/) (3.0.1) and [rapport](https://rapporter.github.io/rapport/) (0.51) in _1.479_ sec on x86_64-unknown-linux-gnu platform.
 
 
 ![](images/logo.png)

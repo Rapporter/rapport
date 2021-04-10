@@ -247,7 +247,7 @@
 <p>According to the <em>Bartlett's test</em>, the variance of the <em>Age</em> across the groups of <em>How often does your profession require Internet access?</em> significantly differs.</p>
 <p>We can conclude that, because the p-value is smaller than 0.05.</p>
 <hr />
-<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>0.917</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="https://rapporter.github.io/rapport/">rapport</a> (0.51) in <em>0.917</em> sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
 <img src="/usr/lib/R/library/rapport/includes/images/logo.png" />
 </div>

@@ -673,7 +673,7 @@ _F-test_ for _Gender_ is not statistically significant, which implies that there
 
 
 -------
-This report was generated with [R](http://www.r-project.org/) (2.15.1) and [rapport](http://rapport-package.info/) (0.4) in _1.999_ sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [R](http://www.r-project.org/) (2.15.1) and [rapport](https://rapporter.github.io/rapport/) (0.4) in _1.999_ sec on x86_64-unknown-linux-gnu platform.
 
 
 ![](images/logo.png)

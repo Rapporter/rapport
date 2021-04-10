@@ -305,7 +305,7 @@
 <p>In this template Rapporter will present you Factor Analysis.</p>
 <p>Your request cannot be implemented, because there are the same number of variables (<em>5</em>) like the number of the requested factors (<em>5</em>) . Please set the number of the factors to maximum <em>4</em> with the same number of the variables or extend the number of those variables at least to <em>6</em>.</p>
 <hr />
-<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>1.479</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="https://rapporter.github.io/rapport/">rapport</a> (0.51) in <em>1.479</em> sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
 <img src="images/logo.png" />
 </div>

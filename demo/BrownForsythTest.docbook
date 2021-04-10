@@ -139,7 +139,7 @@
 <li>Heiberger, Richard M. and Holland, Burt (2004b). <em>Statistical Analysis and Data Display: An Intermediate Course with Examples in S-Plus, R, and SAS</em>.</li>
 </ul>
 <hr />
-<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="http://rapport-package.info/">rapport</a> (0.51) in <em>0.762</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (3.0.1) and <a href="https://rapporter.github.io/rapport/">rapport</a> (0.51) in <em>0.762</em> sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
 <img src="/usr/lib/R/library/rapport/includes/images/logo.png" />
 </div>

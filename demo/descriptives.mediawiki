@@ -149,7 +149,7 @@
 <p>It seems that the highest value is <em>335</em> which is exactly <em>6.442</em> times higher than the smallest value (<em>52</em>).</p>
 <p>If we <em>suppose</em> that <em>hp</em> is not near to a normal distribution (skewness: <em>0.726</em>, kurtosis: <em>-0.1356</em>), checking the median (<em>123</em>) might be a better option instead of the mean. The interquartile range (<em>83.5</em>) measures the statistics dispersion of the variable (similar to standard deviation) based on median.</p>
 <hr />
-<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="http://rapport-package.info/">rapport</a> (0.4) in <em>1.258</em> sec on x86_64-unknown-linux-gnu platform.</p>
+<p>This report was generated with <a href="http://www.r-project.org/">R</a> (2.15.1) and <a href="https://rapporter.github.io/rapport/">rapport</a> (0.4) in <em>1.258</em> sec on x86_64-unknown-linux-gnu platform.</p>
 <div class="figure">
 <img src="images/logo.png" /><p class="caption"></p>
 </div>

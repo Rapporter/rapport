@@ -165,7 +165,7 @@ significant difference between the means of *cyl* and *drat*.
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (3.0.1)
-and [rapport](http://rapport-package.info/) (0.51) in *0.814* sec on
+and [rapport](https://rapporter.github.io/rapport/) (0.51) in *0.814* sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![](images/logo.png)

@@ -206,7 +206,7 @@ two for =0.01= and three for =0.001=.
 --------------
 
 This report was generated with [[http://www.r-project.org/][R]] (2.15.1)
-and [[http://rapport-package.info/][rapport]] (0.4) in /2.209/ sec on
+and [[https://rapporter.github.io/rapport/][rapport]] (0.4) in /2.209/ sec on
 x86\_64-unknown-linux-gnu platform.
 
 #+CAPTION: 

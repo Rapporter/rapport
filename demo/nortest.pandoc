@@ -562,7 +562,7 @@ _Kernel density plot_ is a plot of smoothed _empirical distribution function_. A
 
 
 -------
-This report was generated with [R](http://www.r-project.org/) (2.15.1) and [rapport](http://rapport-package.info/) (0.4) in _1.872_ sec on x86_64-unknown-linux-gnu platform.
+This report was generated with [R](http://www.r-project.org/) (2.15.1) and [rapport](https://rapporter.github.io/rapport/) (0.4) in _1.872_ sec on x86_64-unknown-linux-gnu platform.
 
 
 ![](images/logo.png)

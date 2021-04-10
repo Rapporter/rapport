@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     var $b = $('body'),
         $h = $('#header'),
-        rapportUrl = 'http://rapport-package.info/';
+        rapportUrl = 'https://rapporter.github.io/rapport/';
 
     // add container div
     var $container = $('<div/>', {

@@ -146,7 +146,7 @@ standard deviation) based on median.
 * * * * *
 
 This report was generated with [R](http://www.r-project.org/) (3.0.1)
-and [rapport](http://rapport-package.info/) (0.51) in *1.105* sec on
+and [rapport](https://rapporter.github.io/rapport/) (0.51) in *1.105* sec on
 x86\_64-unknown-linux-gnu platform.
 
 ![](images/logo.png)
