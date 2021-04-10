@@ -7,9 +7,9 @@ citEntry(entry       = "Manual",
          author      = as.person("Aleksandar Blagotić and Gergely Daróczi"),
          year        = year,
          note        = vers,
-         url         = "http://cran.r-project.org/package=rapport",
+         url         = "https://cran.r-project.org/package=rapport",
          textVersion = paste("Blagotić, A. and Daróczi, G. (",
                              year,
                              "). Rapport: a report templating system. ",
                              vers,
-                             ", URL http://cran.r-project.org/package=rapport", sep = ""))
+                             ", URL https://cran.r-project.org/package=rapport", sep = ""))
