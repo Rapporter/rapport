@@ -14,4 +14,4 @@ In the body of the report (after `head-->` tag) you may change any text, reorder
 
 We suggest placing the translated templates in a directory named to the [short, alpha-2 abbreviation of the language](http://www.loc.gov/standards/iso639-2/php/code_list.php) (e.g. `hu` for Hungarian).
 
-Translated (or just altered) templates are highly welcome, so please give the [pull request](https://github.com/rapporter/rapport/pull/new/master) a try or [open an issue](https://github.com/rapporter/rapport/issues/new) on GitHub, or you can send us your template via [email](mailto:info@rapport-package.info).
+Translated (or just altered) templates are highly welcome, so please give the [pull request](https://github.com/rapporter/rapport/pull/new/master) a try or [open an issue](https://github.com/rapporter/rapport/issues/new) on GitHub.
