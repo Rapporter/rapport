@@ -51,7 +51,7 @@ head-->
 
 This template is a tutorial on how to write [rapport](https://rapporter.github.io/rapport) templates.
 
-You have already learned a lot: above we [say hello to the world](http://en.wikipedia.org/wiki/Hello_world_program) in a header (of level `1`) in [ATX-style](http://johnmacfarlane.net/pandoc/README.html#atx-style-headers). So the first lesson of all programming tutorials is accomplished :)
+You have already learned a lot: above we [say hello to the world](http://en.wikipedia.org/wiki/Hello_world_program) in a header (of level `1`) in [ATX-style](https://johnmacfarlane.net/pandoc/README.html#atx-style-headers). So the first lesson of all programming tutorials is accomplished :)
 
 A rapport template is a regular [Pandoc's markdown](http://johnmacfarlane.net/pandoc/) file with two exceptions:
 

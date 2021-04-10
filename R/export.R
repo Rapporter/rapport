@@ -22,7 +22,7 @@
 #' @param options options passed to \code{Pandoc.convert}.
 #' @param logo add rapport logo
 #' @return filepath on \code{create = TRUE}, \code{Report} class otherwise
-#' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
+#' @references John MacFarlane (2012): _Pandoc User's Guide_. \url{https://johnmacfarlane.net/pandoc/README.html}
 #' @examples \dontrun{
 #'
 #' ## eval some template

@@ -92,7 +92,7 @@ rapport.export(x, options =
 }
 }
 \references{
-John MacFarlane (2012): _Pandoc User's Guide_. \url{http://johnmacfarlane.net/pandoc/README.html}
+John MacFarlane (2012): _Pandoc User's Guide_. \url{https://johnmacfarlane.net/pandoc/README.html}
 }
 \seealso{
 \code{\link{rapport.html}} \code{\link{rapport.pdf}} \code{\link{rapport.odt}} \code{\link{rapport.docx}}

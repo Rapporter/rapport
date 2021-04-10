@@ -25,6 +25,6 @@ Imports:
     stringr,
     rapportools,
     pander
-SystemRequirements: pandoc (http://johnmacfarlane.net/pandoc) for exporting
+SystemRequirements: pandoc (https://johnmacfarlane.net/pandoc) for exporting
     markdown files to other formats.
 RoxygenNote: 7.1.1

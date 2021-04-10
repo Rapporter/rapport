@@ -32,5 +32,5 @@ The output of \code{rapport} command depends on various package-specific options
 }
 }
 \seealso{
-\code{pander} package: \url{http://rapporter.github.com/pander/}
+\code{pander} package: \url{https://rapporter.github.com/pander/}
 }
