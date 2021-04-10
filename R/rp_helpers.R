@@ -13,7 +13,7 @@ is.rapport <- function(x)  inherits(x, 'rapport')
 #' @param x template metadata object
 #' @param ... ignored
 #' @method as.character rapport.meta
-#' @S3method as.character rapport.meta
+#' @export
 as.character.rapport.meta <- function(x, ...){
     if (!inherits(x, 'rapport.meta'))
         stop("Template metadata not provided.")
@@ -27,7 +27,7 @@ as.character.rapport.meta <- function(x, ...){
 #' @param x template inputs object
 #' @param ... ignored
 #' @method as.character rapport.inputs
-#' @S3method as.character rapport.inputs
+#' @export
 as.character.rapport.inputs <- function(x, ...){
     if (!inherits(x, 'rapport.inputs'))
         stop("Template inputs not provided.")

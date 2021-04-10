@@ -4,7 +4,7 @@
 #' @param x object of class \code{rapport.meta}. See \code{\link{rapport.meta}} for details.
 #' @param ... ignored
 #' @method print rapport.meta
-#' @S3method print rapport.meta
+#' @export
 print.rapport.meta <- function(x, ...){
     .x <- x                             # backup object
     ind <- c('title', 'author', 'email', 'description', 'example')
@@ -35,7 +35,7 @@ print.rapport.meta <- function(x, ...){
 #' @param x object of class \code{rapport.inputs}. See \code{\link{rapport.inputs}} for details.
 #' @param ... ignored
 #' @method print rapport.inputs
-#' @S3method print rapport.inputs
+#' @export
 print.rapport.inputs <- function(x, ...){
     catn('\n Inputs\n')
 
@@ -121,7 +121,7 @@ print.rapport.inputs <- function(x, ...){
 #' @param x object of class \code{rp.header}. See \code{\link{rapport.header}} for details.
 #' @param ... ignored
 #' @method print rapport.info
-#' @S3method print rapport.info
+#' @export
 print.rapport.info <- function(x, ...){
     sapply(x, print)
 }
@@ -136,7 +136,7 @@ print.rapport.info <- function(x, ...){
 #' rapport('example', data = mtcars, var='hp')
 #' }
 #' @method print rapport
-#' @S3method print rapport
+#' @export
 print.rapport <- function(x, ...) {
 
     if (!is.rapport(x))

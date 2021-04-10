@@ -27,3 +27,4 @@ Imports:
     pander
 SystemRequirements: pandoc (http://johnmacfarlane.net/pandoc) for exporting
     markdown files to other formats.
+RoxygenNote: 7.1.1
