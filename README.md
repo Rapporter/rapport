@@ -6,7 +6,7 @@ Several [predefined templates](https://rapporter.github.io/rapport/#templates ) 
 
 ## Installation
 
-The most recent version of this package is hosted on [GitHub](https://github.com/rapporter/rapport), but we also submit stable versions to [CRAN](cran.r-project.org) from time to time (read:  once in a blue moon).
+The most recent version of this package is hosted on [GitHub](https://github.com/rapporter/rapport/), but we also submit stable versions to [CRAN](cran.r-project.org) from time to time (read:  once in a blue moon).
 
 Build status:
 
@@ -44,6 +44,6 @@ demo(rapport)
 
 ## Pages
 
-For more info head over to [package homepage](https://rapporter.github.io/rapport).
+For more info head over to [package homepage](https://rapporter.github.io/rapport/).
 
 [![githalytics.com alpha](https://cruel-carlota.gopagoda.com/daa9a09d617573cbfb02b2d3903181cf "githalytics.com")](http://githalytics.com/Rapporter/rapport)
