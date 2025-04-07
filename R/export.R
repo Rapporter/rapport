@@ -75,7 +75,7 @@ rapport.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open 
 
     if (!is.logical(append)) {
 
-        if (class(append) != 'Pandoc')
+        if (!inherits(append, 'Pandoc'))
             stop('Wrong class (!="Report") found in append parameter.')
 
         r <- append
@@ -101,7 +101,7 @@ rapport.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open 
         stop('Wrong logo (!=TRUE|FALSE) parameter!')
 
     ## exporting multiple rapport classes at once
-    if (class(rp) == 'list') {
+    if (inherits(rp, 'list')) {
         if (all(lapply(rp, class) == 'rapport')) {
 
             ## using the first rapport's title as global
@@ -119,7 +119,7 @@ rapport.export <- function(rp = NULL, file, append = FALSE, create = TRUE, open 
 
     if (!is.null(rp))
 
-        if(class(rp) == 'rapport') {
+        if (inherits(rp, 'rapport')) {
 
             r$proc.time <- r$proc.time + rp$time
 

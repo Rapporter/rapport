@@ -17,7 +17,7 @@ rapport.check.template <- function(fp) {
         return(list(success = FALSE, message = sprintf('Errors found while running all examples: `%s`', examples)))
 
     errors <- NULL
-    if (class(examples) == 'rapport')
+    if (inherits(examples, 'rapport'))
         examples <- list(examples)
     for (example in examples)
         for (part in example$report) {
