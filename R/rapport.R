@@ -24,7 +24,6 @@
 #'     \item \code{\link{rapport}} also has some options to set formatting style of numbers, characters and dates specified in \code{panderOptions()}
 #'     \item the exported graphs can be customised via further \code{panderOptions}
 #'}
-#' @docType package
 #' @importFrom rapportools is.variable is.tabular is.string is.boolean is.number pct fml alike.integer trim.space adj.rle catn vgsub tocamel capitalise stopf warningf messagef is.empty name rp.name label rp.label rp.label<- label<-
 #' @importFrom yaml as.yaml yaml.load
 #' @importFrom stringr str_extract_all
@@ -32,8 +31,7 @@
 #' @importFrom grDevices dev.copy dev.list dev.off dev.size
 #' @importFrom utils download.file packageDescription tail
 #' @seealso \code{pander} package: \url{https://rapporter.github.io/pander/}
-#' @name rapport-package
-NULL
+"_PACKAGE"
 
 
 #' \emph{rapport helpers}
