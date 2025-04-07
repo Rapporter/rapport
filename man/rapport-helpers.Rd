@@ -22,59 +22,59 @@ Please load the \code{rapportools} package if you would use any of the below fun
 \emph{General purpose helpers}
 
 \itemize{
-    \item \code{\link{adj.rle}}
-    \item \code{\link{alike.integer}}
-    \item \code{\link{capitalise}}
-    \item \code{\link{catn}}
-    \item \code{\link{fml}}
-    \item \code{\link{is.boolean}}
-    \item \code{\link{is.empty}}
-    \item \code{\link{is.number}}
-    \item \code{\link{is.string}}
-    \item \code{\link{is.tabular}}
-    \item \code{\link{is.variable}}
-    \item \code{\link{messagef}}
-    \item \code{\link{pct}}
-    \item \code{\link{stopf}}
-    \item \code{\link{tocamel}}
-    \item \code{\link{trim.space}}
-    \item \code{\link{vgsub}}
-    \item \code{\link{warningf}}
+    \item \code{\link[rapportools]{adj.rle}}
+    \item \code{\link[rapportools]{alike.integer}}
+    \item \code{\link[rapportools]{capitalise}}
+    \item \code{\link[rapportools]{catn}}
+    \item \code{\link[rapportools]{fml}}
+    \item \code{\link[rapportools]{is.boolean}}
+    \item \code{\link[rapportools]{is.empty}}
+    \item \code{\link[rapportools]{is.number}}
+    \item \code{\link[rapportools]{is.string}}
+    \item \code{\link[rapportools]{is.tabular}}
+    \item \code{\link[rapportools]{is.variable}}
+    \item \code{\link[rapportools]{messagef}}
+    \item \code{\link[rapportools]{pct}}
+    \item \code{\link[rapportools]{stopf}}
+    \item \code{\link[rapportools]{tocamel}}
+    \item \code{\link[rapportools]{trim.space}}
+    \item \code{\link[rapportools]{vgsub}}
+    \item \code{\link[rapportools]{warningf}}
 }
 
 \emph{Summary statistics}
 
 \itemize{
-    \item \code{\link{rp.desc}}
-    \item \code{\link{rp.freq}}
+    \item \code{\link[rapportools]{rp.desc}}
+    \item \code{\link[rapportools]{rp.freq}}
 }
 
 \emph{Univariate descriptive statistics}
 
 \itemize{
-    \item \code{\link{rp.iqr}}
-    \item \code{\link{rp.max}}
-    \item \code{\link{rp.mean}}
-    \item \code{\link{rp.median}}
-    \item \code{\link{rp.min}}
-    \item \code{\link{rp.missing}}
-    \item \code{\link{rp.percent}}
-    \item \code{\link{rp.range}}
-    \item \code{\link{rp.sd}}
-    \item \code{\link{rp.se.mean}}
-    \item \code{\link{rp.sum}}
-    \item \code{\link{rp.valid}}
-    \item \code{\link{rp.var}}
+    \item \code{\link[rapportools]{rp.iqr}}
+    \item \code{\link[rapportools]{rp.max}}
+    \item \code{\link[rapportools]{rp.mean}}
+    \item \code{\link[rapportools]{rp.median}}
+    \item \code{\link[rapportools]{rp.min}}
+    \item \code{\link[rapportools]{rp.missing}}
+    \item \code{\link[rapportools]{rp.percent}}
+    \item \code{\link[rapportools]{rp.range}}
+    \item \code{\link[rapportools]{rp.sd}}
+    \item \code{\link[rapportools]{rp.se.mean}}
+    \item \code{\link[rapportools]{rp.sum}}
+    \item \code{\link[rapportools]{rp.valid}}
+    \item \code{\link[rapportools]{rp.var}}
 }
 
 \emph{Miscelaneous stats helpers}
 
 \itemize{
-    \item \code{\link{htest}}
-    \item \code{\link{htest.short}}
-    \item \code{\link{kurtosis}}
-    \item \code{\link{skewness}}
-    \item \code{\link{lambda.test}}
-    \item \code{\link{rp.outlier}}
+    \item \code{\link[rapportools]{htest}}
+    \item \code{\link[rapportools]{htest.short}}
+    \item \code{\link[rapportools]{kurtosis}}
+    \item \code{\link[rapportools]{skewness}}
+    \item \code{\link[rapportools]{lambda.test}}
+    \item \code{\link[rapportools]{rp.outlier}}
 }
 }

@@ -362,7 +362,7 @@ tpl.meta <- rapport.meta
 #' Inputs can be divided into two categories:
 #'
 #' \itemize{
-#'     \item \emph{dataset inputs}, i.e. the inputs that refer to named element of an |code{R} object provided in \code{data} argument in \code{rapport} call. Currently, \code{rapport} supports only \code{data.frame} objects, but that may change in the (near) future.
+#'     \item \emph{dataset inputs}, i.e. the inputs that refer to named element of an \code{R} object provided in \code{data} argument in \code{rapport} call. Currently, \code{rapport} supports only \code{data.frame} objects, but that may change in the (near) future.
 #'     \item \emph{standalone inputs} - the inputs that do not depend on the dataset. The user can just provide an \code{R} object of an appropriate class (and other input attributes) to match a \emph{standalone} input.
 #' }
 #'
